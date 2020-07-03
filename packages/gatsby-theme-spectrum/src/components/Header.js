@@ -1,0 +1,117 @@
+// todo use wrapPageElement
+
+import React, {useRef, useEffect, createRef} from 'react'
+import {useStaticQuery, graphql} from 'gatsby';
+import {css} from '@emotion/core';
+import {Grid, Flex} from '@react-spectrum/layout';
+import {View} from '@react-spectrum/view';
+// import {Picker, Item} from '@react-spectrum/picker';
+import {Button} from '@react-spectrum/button';
+import '@spectrum-css/typography/dist/index-vars.css';
+import '@spectrum-css/tabs/dist/index-vars.css';
+
+const stretched = css`
+  height: 100%;
+`;
+
+export default ({path}) => {
+  const nav = useRef(null);
+  const tabs = [];
+  const selectedTabIndicator = useRef(null);
+  
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            header {
+              title,
+              url
+            }
+          }
+        }
+      }
+    `
+  );
+  
+  const positionSelectedTabIndicator = (ref) => {
+    if (ref) {
+      selectedTabIndicator.current.style.transform = `translate(${ref.current.offsetLeft}px, 0px)`;
+      selectedTabIndicator.current.style.width = `${ref.current.offsetWidth}px`;
+    }
+  };
+  
+  useEffect(() => {
+    positionSelectedTabIndicator(tabs.find(ref => ref.current.getAttribute('href') === path));
+  
+    // Font load changes tab size
+    const resizeObserver = new ResizeObserver(() => {
+      positionSelectedTabIndicator(tabs.find(ref => ref.current && ref.current.getAttribute('href') === path));
+    });
+  
+    resizeObserver.observe(nav.current);
+  }, [path]);
+  
+  return (
+    <header
+      css={css`
+        ${stretched};
+        border-bottom: var(--spectrum-global-dimension-static-size-10) solid var(--spectrum-global-color-gray-200);
+        box-sizing: border-box;
+      `}>
+      <nav css={stretched}>
+        <Grid
+          areas={[
+            'title navigation console profile',
+          ]}
+          columns={['256px', 'auto', 'size-1200', 'size-1200']}
+          alignItems="center"
+          marginX="size-400"
+          height="100%">
+          <View gridArea="title" justifySelf="flex-start">
+            <a href="https://adobe.io" css={css`text-decoration:none;`}>
+              <Flex alignItems="center">
+                <svg
+                  css={css`
+                    width: 36px;
+                    height: 32px;
+                    display: block;
+                    margin-right: 16px;
+                  `}
+                  viewBox="0 0 30 26"
+                  fill="#E1251B"
+                  aria-label="Adobe">
+                  <polygon points="19,0 30,0 30,26"></polygon>
+                  <polygon points="11.1,0 0,0 0,26"></polygon>
+                  <polygon points="15,9.6 22.1,26 17.5,26 15.4,20.8 10.2,20.8"></polygon>
+                </svg>
+                <strong className="spectrum-Heading--XXS">Developer</strong>
+              </Flex>
+            </a>
+          </View>
+          <View gridArea="navigation">
+            <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal">
+              {data.site.siteMetadata.header.map(({title, url}, index) => {
+                const ref = createRef();
+                tabs.push(ref);
+                
+                return (
+                  <a key={index} ref={ref} href={url} className="spectrum-Tabs-item">
+                    <span className="spectrum-Tabs-itemLabel">{title}</span>
+                  </a>
+                );
+              })}
+              <div ref={selectedTabIndicator} className="spectrum-Tabs-selectionIndicator" css={css`bottom: -10px !important; transition: none !important;`}></div>
+            </div>
+          </View>
+          <View gridArea="console" justifySelf="center">
+            <Button elementType="a" href="https://console.adobe.io" target="_blank" variant="primary">Console</Button>
+          </View>
+          <View gridArea="profile" justifySelf="center">
+            <Button isQuiet variant="primary">Sign in</Button>
+          </View>
+        </Grid>
+      </nav>
+    </header>
+  );
+};
