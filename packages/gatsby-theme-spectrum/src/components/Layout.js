@@ -134,12 +134,18 @@ export default ({children, pageContext, path}) => (
                               css={css`
                                 margin-top: var(--spectrum-global-dimension-static-size-200);
                               `}>
-                              <Link href={link}
-                                    target="_blank"
-                                    rel="nofollow noopener noreferrer">
+                              <a href={link}
+                                 target="_blank"
+                                 rel="nofollow noopener noreferrer">
                                 <span css={css`margin-right: var(--spectrum-global-dimension-static-size-100)`}>{text}</span>
                                 <LinkOut size="XS"/>
-                              </Link>
+                              </a>
+                              {/*<Link href={link}*/}
+                              {/*      target="_blank"*/}
+                              {/*      rel="nofollow noopener noreferrer">*/}
+                              {/*  <span css={css`margin-right: var(--spectrum-global-dimension-static-size-100)`}>{text}</span>*/}
+                              {/*  <LinkOut size="XS"/>*/}
+                              {/*</Link>*/}
                             </li>
                           ))}
                         </ul>

@@ -116,10 +116,10 @@ export default ({path}) => {
             </div>
           </View>
           <View gridArea="console" justifySelf="center">
-            <Button elementType="a" href="https://console.adobe.io" target="_blank" variant="primary">Console</Button>
+            {/*<Button elementType="a" href="https://console.adobe.io" target="_blank" variant="primary">Console</Button>*/}
           </View>
           <View gridArea="profile" justifySelf="center">
-            <Button isQuiet variant="primary">Sign in</Button>
+            {/*<Button isQuiet variant="primary">Sign in</Button>*/}
           </View>
         </Grid>
       </nav>

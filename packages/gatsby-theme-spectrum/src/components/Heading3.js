@@ -30,9 +30,10 @@ export default ({children, ...props}) => (
         }
       `}>
       {children}
-      <Link marginStart="size-50">
-        <a href={`#${props.id}`}>#</a>
-      </Link>
+      <a href={`#${props.id}`}>#</a>
+      {/*<Link marginStart="size-50">*/}
+      {/*  <a href={`#${props.id}`}>#</a>*/}
+      {/*</Link>*/}
     </h3>
   </>
 );

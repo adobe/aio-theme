@@ -22,8 +22,8 @@ const Feedback = ({onYes, onNo}) => (
   <Flex alignItems="center">
     <span css={css`padding-right: var(--spectrum-global-dimension-static-size-200);`}>Was this helpful ?</span>
     <ButtonGroup>
-      <Button variant="primary" onPress={() => {onYes && onYes()}}>Yes</Button>
-      <Button variant="primary" onPress={() => {onNo && onNo()}}>No</Button>
+      {/*<Button variant="primary" onPress={() => {onYes && onYes()}}>Yes</Button>*/}
+      {/*<Button variant="primary" onPress={() => {onNo && onNo()}}>No</Button>*/}
     </ButtonGroup>
   </Flex>
 );
