@@ -17,18 +17,16 @@ import MDX from '@mdx-js/runtime';
 
 import {layoutColumns} from './utils';
 
-export default ({children}) => {
-  return (
-    <div
-      css={css`
-        display: inline-block;
-        max-width: ${layoutColumns(3)};
-        & a {
-          display: block;
-          margin-bottom: var(--spectrum-global-dimension-static-size-100);
-        }
-      `}>
-      {children && <MDX>{children}</MDX>}
-    </div>
-  );
-}
+export default ({children}) => (
+  <div
+    css={css`
+      display: inline-block;
+      max-width: ${layoutColumns(3)};
+      & a {
+        display: block;
+        margin-bottom: var(--spectrum-global-dimension-static-size-100);
+      }
+    `}>
+    {children && <MDX>{children}</MDX>}
+  </div>
+);

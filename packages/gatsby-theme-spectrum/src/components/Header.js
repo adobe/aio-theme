@@ -17,7 +17,6 @@ import {useStaticQuery, graphql} from 'gatsby';
 import {css} from '@emotion/core';
 import {Grid, Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
-// import {Picker, Item} from '@react-spectrum/picker';
 import {Button} from '@react-spectrum/button';
 import '@spectrum-css/typography/dist/index-vars.css';
 import '@spectrum-css/tabs/dist/index-vars.css';
