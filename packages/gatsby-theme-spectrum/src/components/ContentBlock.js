@@ -21,7 +21,7 @@ export default ({children}) => (
   <div
     css={css`
       display: inline-block;
-      max-width: ${layoutColumns(3)};
+      max-width: ${layoutColumns(3, ['var(--spectrum-global-dimension-static-size-400)'])};
       & a {
         display: block;
         margin-bottom: var(--spectrum-global-dimension-static-size-100);
