@@ -27,27 +27,27 @@ const Contributors = ({href = '#', contributors = [], date}) => (
     <Flex alignItems="center">
       <div css={css`
         display: inline-flex;
-        padding-left: 16px;
+        padding-left: var(--spectrum-global-dimension-static-size-200);
       `}>
         {contributors.slice(0, 5).map((contributor, index) => (
           <span
             key={index}
             css={css`
-              margin-left: -16px;
+              margin-left: calc(-1 * var(--spectrum-global-dimension-static-size-200));
               position: relative;
-              border: 3px solid white;
-              width: 32px;
-              height: 32px;
-              border-radius: 50%;
-              background: white;
+              border: var(--spectrum-global-dimension-static-size-40) solid white;
+              width: var(--spectrum-global-dimension-static-size-400);
+              height: var(--spectrum-global-dimension-static-size-400);
+              border-radius: var(--spectrum-global-dimension-static-percent-50);
+              background: var(--spectrum-global-color-gray-50);
             `}>
           <img
             alt={contributor}
             src={`https://github.com/${contributor}.png`}
             css={css`
-              width: 32px;
-              height: 32px;
-              border-radius: 50%;
+              width: var(--spectrum-global-dimension-static-size-400);
+              height: var(--spectrum-global-dimension-static-size-400);
+              border-radius: var(--spectrum-global-dimension-static-percent-50);
             `}
           />
         </span>
@@ -55,7 +55,7 @@ const Contributors = ({href = '#', contributors = [], date}) => (
       </div>
       <span
         css={css`
-          padding-left: 16px;
+          padding-left: var(--spectrum-global-dimension-static-size-200);
         `}>
       {date && `Last updated ${date}`}
     </span>

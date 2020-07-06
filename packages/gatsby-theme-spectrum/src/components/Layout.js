@@ -14,6 +14,8 @@ import React from 'react';
 import {MDXProvider} from '@mdx-js/react';
 import {css} from '@emotion/core';
 import {Helmet, HelmetProvider} from 'react-helmet-async';
+
+import {layoutColumns} from './utils';
 import './Layout.css';
 
 import {Provider} from '@react-spectrum/provider';
@@ -81,14 +83,17 @@ export default ({children, pageContext, path}) => (
               <main className="spectrum-Typography">
                 {pageContext.frontmatter.hero && <Hero {...pageContext.frontmatter.hero[0]} />}
                 <section css={css`
-                  max-width: 1120px;
-                  margin: 0 64px;
+                  max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+                  margin: 0 var(--spectrum-global-dimension-static-size-800);
                 `}>
                   <Flex>
                     <article
                       css={css`
-                        min-width: 872px;
-                      `}>
+                        min-width: ${layoutColumns(9, [
+                        'var(--spectrum-global-dimension-static-size-400)',
+                        'var(--spectrum-global-dimension-static-size-200)',
+                        'var(--spectrum-global-dimension-static-size-100)'
+                      ])};`}>
                       {children}
                       <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
                         <View>
@@ -109,9 +114,12 @@ export default ({children, pageContext, path}) => (
                     {pageContext.frontmatter.resources &&
                       <aside
                         css={css`
-                          min-width: 280px;
-                          margin-left: 32px;
-                          margin-top: 32px;
+                          min-width: ${layoutColumns(3, [
+                          'var(--spectrum-global-dimension-static-size-400)',
+                          'var(--spectrum-global-dimension-static-size-100)'
+                          ])};
+                          margin-left: var(--spectrum-global-dimension-static-size-400);
+                          margin-top: var(--spectrum-global-dimension-static-size-400);
                         `}>
                         <h4 className="spectrum-Heading--XS">Resources</h4>
                         <ul
@@ -124,12 +132,12 @@ export default ({children, pageContext, path}) => (
                             <li
                               key={i}
                               css={css`
-                                margin-top: 16px;
+                                margin-top: var(--spectrum-global-dimension-static-size-200);
                               `}>
                               <Link href={link}
                                     target="_blank"
                                     rel="nofollow noopener noreferrer">
-                                <span css={css`margin-right: 8px`}>{text}</span>
+                                <span css={css`margin-right: var(--spectrum-global-dimension-static-size-100)`}>{text}</span>
                                 <LinkOut size="XS"/>
                               </Link>
                             </li>

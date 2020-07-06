@@ -18,8 +18,8 @@ import '@spectrum-css/typography/dist/index-vars.css';
 
 export default ({heading, text, illustration, background}) => (
   <section css={css`
-    height:270px;
-    margin-bottom: 32px;
+    height:var(--spectrum-global-dimension-static-size-3400);
+    margin-bottom: var(--spectrum-global-dimension-static-size-400);
     background-color: ${background};
   `}>
     <Flex height="100%" alignItems="center">
@@ -27,7 +27,7 @@ export default ({heading, text, illustration, background}) => (
         <h1
           className="spectrum-Heading--XL"
           css={css`
-          margin-bottom:16px;
+          margin-bottom: var(--spectrum-global-dimension-static-size-200);
           color: var(--spectrum-global-color-gray-200);
           `}>
           {heading}

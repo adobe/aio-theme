@@ -19,6 +19,6 @@ export default ({alt, src}) => (
     src={src}
     css={css`
       max-width: 100%;
-      border-radius: 4px;
+      border-radius: var(--spectrum-global-dimension-static-size-50);
     `}/>
 );

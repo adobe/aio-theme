@@ -15,15 +15,17 @@ import {css} from '@emotion/core';
 // https://github.com/mdx-js/mdx/issues/628
 import MDX from '@mdx-js/runtime';
 
+import {layoutColumns} from './utils';
+
 export default ({children}) => {
   return (
     <div
       css={css`
         display: inline-block;
-        max-width: ${3 * 1120 / 12}px;
+        max-width: ${layoutColumns(3)};
         & a {
           display: block;
-          margin-bottom: 8px;
+          margin-bottom: var(--spectrum-global-dimension-static-size-100);
         }
       `}>
       {children && <MDX>{children}</MDX>}

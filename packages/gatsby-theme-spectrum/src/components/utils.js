@@ -10,19 +10,4 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import {css} from '@emotion/core';
-import '@spectrum-css/typography/dist/index-vars.css';
-import '@spectrum-css/well/dist/index-vars.css';
-
-export default ({children, ...props}) => (
-  <code {...props}
-        className="spectrum-Code4 spectrum-Well"
-        css={css`
-          padding: 0 var(--spectrum-global-dimension-static-size-50);
-          display: inline-block;
-          min-width: auto;
-        `}>
-    {children}
-  </code>
-)
+export const layoutColumns = (columns, gutters = []) => `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${gutters.length && ` - ${gutters.join(' - ')}`})`;

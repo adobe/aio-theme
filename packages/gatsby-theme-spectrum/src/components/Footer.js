@@ -21,7 +21,7 @@ export default () => (
   <footer
     className="spectrum-Body--XS"
     css={css`
-      margin: 0 32px;
+      margin: 0 var(--spectrum-global-dimension-static-size-400);
     `}>
     <Divider size="M"/>
     <Flex justifyContent="space-between" alignItems="center">
@@ -32,7 +32,7 @@ export default () => (
             list-style: none;
             padding: 0;
             & > li {
-              margin-right: 32px;
+              margin-right: var(--spectrum-global-dimension-static-size-400);
             }
           `}>
           <li>Terms of use</li>

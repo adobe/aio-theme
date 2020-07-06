@@ -85,10 +85,10 @@ export default ({path}) => {
               <Flex alignItems="center">
                 <svg
                   css={css`
-                    width: 36px;
-                    height: 32px;
+                    width: var(--spectrum-global-dimension-static-size-450);
+                    height: var(--spectrum-global-dimension-static-size-400);
                     display: block;
-                    margin-right: 16px;
+                    margin-right: var(--spectrum-global-dimension-static-size-200);
                   `}
                   viewBox="0 0 30 26"
                   fill="#E1251B"
