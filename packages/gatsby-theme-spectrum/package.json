@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-spectrum",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
     "gatsby": "^2.23.11",
