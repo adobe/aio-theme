@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "gatsby": "^2.23.11",
     "react": "^16.13.1",

@@ -16,7 +16,7 @@ import {Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
 import '@spectrum-css/typography/dist/index-vars.css';
 
-export default ({heading, text, illustration, background}) => (
+export const Hero = ({heading, text, illustration, background}) => (
   <section css={css`
     height:var(--spectrum-global-dimension-static-size-3400);
     margin-bottom: var(--spectrum-global-dimension-static-size-400);

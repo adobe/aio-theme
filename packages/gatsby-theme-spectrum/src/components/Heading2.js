@@ -14,9 +14,9 @@ import React from 'react';
 import {css} from '@emotion/core';
 import '@spectrum-css/typography/dist/index-vars.css';
 import {Divider} from '@react-spectrum/divider';
-import {Link} from '@react-spectrum/link';
+import {Link} from './Link';
 
-export default ({children, ...props}) => (
+export const Heading2 = ({children, ...props}) => (
   <>
     <h2
       {...props}
@@ -31,10 +31,11 @@ export default ({children, ...props}) => (
         }
       `}>
       {children}
-      <a href={`#${props.id}`}>#</a>
-      {/*<Link marginStart="size-100">*/}
-      {/*  <a href={`#${props.id}`}>#</a>*/}
-      {/*</Link>*/}
+      <Link
+        href={`#${props.id}`}
+        css={css`
+          margin-inline-start: var(--spectrum-global-dimension-static-size-100)
+        `}>#</Link>
     </h2>
     <Divider marginBottom="size-300"/>
   </>

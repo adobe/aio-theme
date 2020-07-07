@@ -1539,17 +1539,6 @@
     "@react-types/label" "^3.0.0"
     "@react-types/shared" "^3.0.0"
 
-"@react-aria/link@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/link/-/link-3.0.0.tgz#d33caddabd5fbd975332b5bc6101b2136b57f9ca"
-  integrity sha512-06/JGFrzhpu8IGLGEHaHSCMdSrC6xfqutBDpIw5Ny6ItkSV3LvgjzfHWoCa1ozQ3ZVRooOGcytGZBhwkJkzcyQ==
-  dependencies:
-    "@babel/runtime" "^7.6.2"
-    "@react-aria/interactions" "^3.0.0"
-    "@react-aria/utils" "^3.0.0"
-    "@react-types/link" "^3.0.0"
-    "@react-types/shared" "^3.0.0"
-
 "@react-aria/listbox@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-aria/listbox/-/listbox-3.0.0.tgz#2273d7d972606c2fb89fe420a24227880d33684b"
@@ -1692,19 +1681,6 @@
     "@react-types/shared" "^3.0.0"
     "@spectrum-icons/ui" "^3.0.0"
 
-"@react-spectrum/buttongroup@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@react-spectrum/buttongroup/-/buttongroup-3.0.0.tgz#2151cad689d0f85b0655f4c39aa618702b4a3791"
-  integrity sha512-V2ZkGscWSkTdEBnbFFJohtx50YXUi2B+Q0yAc+hHUG+71w2q7mvRFDwr/hhXAgCZ9oWPGq/d8YeTKca8mp2anA==
-  dependencies:
-    "@babel/runtime" "^7.6.2"
-    "@react-aria/utils" "^3.0.0"
-    "@react-spectrum/button" "^3.0.0"
-    "@react-spectrum/text" "^3.0.0"
-    "@react-spectrum/utils" "^3.0.0"
-    "@react-types/buttongroup" "^3.0.0"
-    "@react-types/shared" "^3.0.0"
-
 "@react-spectrum/divider@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-spectrum/divider/-/divider-3.0.0.tgz#504550c3adb3ec061cf20202812ccd9925b455ca"
@@ -1762,17 +1738,6 @@
     "@react-types/layout" "^3.0.0"
     "@react-types/shared" "^3.0.0"
     classnames "^2.2.6"
-
-"@react-spectrum/link@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@react-spectrum/link/-/link-3.0.0.tgz#39214362104ad67072f20af56bfda55863bac199"
-  integrity sha512-okO2cdk6TIhNI3fZysoUVTcKBHllP0VNRx9snmS4uSB4S2zsXXbZRTtJ22Xu6dcZYpzwIJzwFPeTA6Peb0W7Hw==
-  dependencies:
-    "@babel/runtime" "^7.6.2"
-    "@react-aria/focus" "^3.0.0"
-    "@react-aria/link" "^3.0.0"
-    "@react-spectrum/utils" "^3.0.0"
-    "@react-types/link" "^3.0.0"
 
 "@react-spectrum/listbox@^3.0.0":
   version "3.0.0"
@@ -2017,13 +1982,6 @@
   dependencies:
     "@react-types/shared" "^3.0.0"
 
-"@react-types/buttongroup@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@react-types/buttongroup/-/buttongroup-3.0.0.tgz#8915c275e476a8c6da21ec9e36f730d4d6ec00bb"
-  integrity sha512-wf9TDcBiFZTAvgU2RXKS027Acw+QDBc/GjoWM+gTFJiiAyPDv1GE/u1x2NExScAuBWoQKDf7XdwGKNLGeAryVA==
-  dependencies:
-    "@react-types/shared" "^3.0.0"
-
 "@react-types/divider@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-types/divider/-/divider-3.0.0.tgz#89b1e1c53ce258dc35994cfc7d71a6558901e1b3"
@@ -2050,14 +2008,6 @@
   resolved "https://registry.yarnpkg.com/@react-types/layout/-/layout-3.0.0.tgz#3edd2b306bff84c3e3aa49c75296bd5dfdb143b9"
   integrity sha512-jpLmicwxpkaJGQ+tm43aae7Px9uE8RvouzzUeZO6RzaAaIrlwhAJfJkfTVSvFjIM2BZibYBbPHvyRcwRdoMBFA==
   dependencies:
-    "@react-types/shared" "^3.0.0"
-
-"@react-types/link@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@react-types/link/-/link-3.0.0.tgz#cf9ecba6dfa7e66096d552549b6a64a3478a862c"
-  integrity sha512-NdgXwQhtns/mjyfgitpR8VIQumRMOlH/XxYuTGzEtYcqz43PVTQUdp7c9u5mfVLqdlsQf0BIBDALoaGepU99ig==
-  dependencies:
-    "@react-aria/interactions" "^3.0.0"
     "@react-types/shared" "^3.0.0"
 
 "@react-types/listbox@^3.0.0":
@@ -2144,10 +2094,15 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@spectrum-css/sidenav@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/sidenav/-/sidenav-3.0.0-beta.2.tgz#b2431fdaaf8ef06d2c4bfbd3c85fb2ebe6eb7816"
-  integrity sha512-0/g/3lROiRnF4fSMBOQyG9V18x8yr49uWFpMeLGTY3pw8dv2LlfQNULAJs3HxXG/egxHmwjVcIlwLbQAziBP1Q==
+"@spectrum-css/button@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0-beta.3.tgz#52ceb42f76fef170f7cd3010df56c1247a80e6b2"
+  integrity sha512-C9g1ZJrq0fGs9Vu5z/Ft+Cr/plnSWtsk8rK394yAyOrQQym0zajiTvIMJLDlu764ah6k/4PkyPXmN+28/8vJSw==
+
+"@spectrum-css/link@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.0.0.tgz#544821b3eafec7e89b86254bb42e3d01024095e4"
+  integrity sha512-TPWFopMTGWxxO4+Ush9L0dowI+tWRyxdWG8Gqy7/Q9c3emdJ7SA3hCQV9MRBoRRQHlx9lKFPfjZJ+/ErbTW++A==
 
 "@spectrum-css/tabs@^3.0.0-beta.3":
   version "3.0.0-beta.3"

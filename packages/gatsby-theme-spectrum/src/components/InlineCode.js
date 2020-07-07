@@ -15,7 +15,7 @@ import {css} from '@emotion/core';
 import '@spectrum-css/typography/dist/index-vars.css';
 import '@spectrum-css/well/dist/index-vars.css';
 
-export default ({children, ...props}) => (
+export const InlineCode = ({children, ...props}) => (
   <code {...props}
         className="spectrum-Code4 spectrum-Well"
         css={css`

@@ -25,23 +25,23 @@ import {View} from '@react-spectrum/view';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
 import '@spectrum-css/typography/dist/index-vars.css';
 
-import Header from './Header';
-import Hero from './Hero';
-import Footer from './Footer';
+import {Header} from './Header';
+import {Hero} from './Hero';
+import {Footer} from './Footer';
 
-import Heading1 from './Heading1';
-import Heading2 from './Heading2';
-import Heading3 from './Heading3';
-import Paragraph from './Paragraph';
-import List from './List';
-import Code from './Code';
-import InlineCode from './InlineCode';
-import Link from './Link';
-import Image from './Image';
+import {Heading1} from './Heading1';
+import {Heading2} from './Heading2';
+import {Heading3} from './Heading3';
+import {Paragraph} from './Paragraph';
+import {List} from './List';
+import {Code} from './Code';
+import {InlineCode} from './InlineCode';
+import {Link} from './Link';
+import {Image} from './Image';
 
-import ContentBlock from './ContentBlock';
-import Contributors from './Contributors';
-import Feedback from './Feedback';
+import {ContentBlock} from './ContentBlock';
+import {Contributors} from './Contributors';
+import {Feedback} from './Feedback';
 
 const mdxComponents = {
   // Markdown components
@@ -66,7 +66,7 @@ export default ({children, pageContext, path}) => (
       <title>{pageContext.frontmatter.title}</title>
       <meta name="description" content={pageContext.frontmatter.description}/>
     </Helmet>
-    <Provider theme={theme} colorScheme="light" locale="en-US">
+    <Provider theme={theme} colorScheme="light" locale="en-US" scale="medium">
       <MDXProvider components={mdxComponents}>
         <View backgroundColor="gray-50">
           <Grid

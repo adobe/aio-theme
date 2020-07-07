@@ -14,23 +14,22 @@ import React from 'react';
 import {css} from '@emotion/core';
 import PropTypes from 'prop-types';
 import {Flex} from '@react-spectrum/layout';
-import {Button} from '@react-spectrum/button';
-import {ButtonGroup} from '@react-spectrum/buttongroup';
-import Contributors from "./Contributors";
+import {Button} from "./Button";
+import '@spectrum-css/button/dist/index-vars.css';
 
 const Feedback = ({onYes, onNo}) => (
   <Flex alignItems="center">
     <span css={css`padding-right: var(--spectrum-global-dimension-static-size-200);`}>Was this helpful ?</span>
-    <ButtonGroup>
-      {/*<Button variant="primary" onPress={() => {onYes && onYes()}}>Yes</Button>*/}
-      {/*<Button variant="primary" onPress={() => {onNo && onNo()}}>No</Button>*/}
-    </ButtonGroup>
+    <Flex gap="size-200">
+      <Button variant="primary" onClick={() => {onYes && onYes()}}>Yes</Button>
+      <Button variant="primary" onClick={() => {onNo && onNo()}}>No</Button>
+    </Flex>
   </Flex>
 );
 
-Contributors.propTypes = {
+Feedback.propTypes = {
   onYes: PropTypes.func,
   onNo: PropTypes.func
 };
 
-export default Feedback;
+export {Feedback};

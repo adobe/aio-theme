@@ -10,12 +10,11 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import {Link} from '@react-spectrum/link';
+// todo use https://www.gatsbyjs.org/docs/gatsby-link/ and check https://www.gatsbyjs.org/docs/path-prefix/
 
-export default ({children, ...props}) => (
-  <a {...props}>{children}</a>
-  // <Link>
-  //   <a {...props}>{children}</a>
-  // </Link>
+import React from 'react';
+import '@spectrum-css/link/dist/index-vars.css';
+
+export const Link = ({children, ...props}) => (
+  <a className="spectrum-Link" {...props}>{children}</a>
 )

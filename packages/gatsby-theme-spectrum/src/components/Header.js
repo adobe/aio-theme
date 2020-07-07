@@ -17,7 +17,7 @@ import {useStaticQuery, graphql} from 'gatsby';
 import {css} from '@emotion/core';
 import {Grid, Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
-import {Button} from '@react-spectrum/button';
+import {Button} from './Button';
 import '@spectrum-css/typography/dist/index-vars.css';
 import '@spectrum-css/tabs/dist/index-vars.css';
 
@@ -25,7 +25,7 @@ const stretched = css`
   height: 100%;
 `;
 
-export default ({path}) => {
+export const Header = ({path}) => {
   const nav = useRef(null);
   const tabs = [];
   const selectedTabIndicator = useRef(null);
@@ -116,10 +116,10 @@ export default ({path}) => {
             </div>
           </View>
           <View gridArea="console" justifySelf="center">
-            {/*<Button elementType="a" href="https://console.adobe.io" target="_blank" variant="primary">Console</Button>*/}
+            <Button variant="primary">Console</Button>
           </View>
           <View gridArea="profile" justifySelf="center">
-            {/*<Button isQuiet variant="primary">Sign in</Button>*/}
+            <Button isQuiet variant="primary">Sign in</Button>
           </View>
         </Grid>
       </nav>

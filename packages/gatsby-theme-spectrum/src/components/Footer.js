@@ -17,7 +17,7 @@ import {View} from '@react-spectrum/view';
 import {Divider} from '@react-spectrum/divider';
 import '@spectrum-css/typography/dist/index-vars.css';
 
-export default () => (
+export const Footer = () => (
   <footer
     className="spectrum-Body--XS"
     css={css`

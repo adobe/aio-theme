@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "gatsby-theme-spectrum",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "workspaces": ["example", "packages/*"],
   "scripts": {
     "dev": "yarn workspace example develop",

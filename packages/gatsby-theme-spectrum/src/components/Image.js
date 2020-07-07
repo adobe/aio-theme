@@ -10,10 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
+// todo use https://www.gatsbyjs.org/packages/gatsby-image/
+
 import React from 'react';
 import {css} from '@emotion/core';
 
-export default ({alt, src}) => (
+export const Image = ({alt, src}) => (
   <img
     alt={alt}
     src={src}

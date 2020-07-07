@@ -10,4 +10,17 @@
  * governing permissions and limitations under the License.
  */
 
-export const layoutColumns = (columns, gutters = []) => `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''})`;
+import React from 'react';
+import PropTypes from 'prop-types';
+import '@spectrum-css/button/dist/index-vars.css';
+
+const Button = ({children, variant, isQuiet, ...props}) => (
+  <button {...props} className={`spectrum-Button spectrum-Button--${variant} ${isQuiet ? 'spectrum-Button--quiet' : ''}`}>{children}</button>
+);
+
+Button.propTypes = {
+  variant: PropTypes.string,
+  isQuiet: PropTypes.bool
+};
+
+export {Button};

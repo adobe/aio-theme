@@ -13,9 +13,9 @@
 import React from 'react';
 import {css} from '@emotion/core';
 import '@spectrum-css/typography/dist/index-vars.css';
-import {Link} from '@react-spectrum/link';
+import {Link} from './Link';
 
-export default ({children, ...props}) => (
+export const Heading3 = ({children, ...props}) => (
   <>
     <h3
       {...props}
@@ -30,10 +30,11 @@ export default ({children, ...props}) => (
         }
       `}>
       {children}
-      <a href={`#${props.id}`}>#</a>
-      {/*<Link marginStart="size-50">*/}
-      {/*  <a href={`#${props.id}`}>#</a>*/}
-      {/*</Link>*/}
+      <Link
+        css={css`
+          margin-inline-start: var(--spectrum-global-dimension-static-size-50)
+        `}
+        href={`#${props.id}`}>#</Link>
     </h3>
   </>
 );
