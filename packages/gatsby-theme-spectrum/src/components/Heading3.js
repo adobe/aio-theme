@@ -11,12 +11,12 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
-import {Link} from './Link';
+import { Link } from './Link';
 
-export const Heading3 = ({children, className, ...props}) => (
+export const Heading3 = ({ children, className, ...props }) => (
   <>
     <h3
       {...props}
@@ -25,7 +25,7 @@ export const Heading3 = ({children, className, ...props}) => (
         & a {
           visibility: hidden;
         }
-        
+
         &:hover a {
           visibility: visible;
         }
@@ -33,9 +33,11 @@ export const Heading3 = ({children, className, ...props}) => (
       {children}
       <Link
         css={css`
-          margin-inline-start: var(--spectrum-global-dimension-static-size-50)
+          margin-inline-start: var(--spectrum-global-dimension-static-size-50);
         `}
-        href={`#${props.id}`}>#</Link>
+        href={`#${props.id}`}>
+        #
+      </Link>
     </h3>
   </>
 );

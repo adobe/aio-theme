@@ -11,19 +11,20 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/well';
 
-export const InlineCode = ({children, className, ...props}) => (
-  <code {...props}
-        className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
-        css={css`
-          padding: 0 var(--spectrum-global-dimension-static-size-50);
-          display: inline-block;
-          min-width: auto;
-        `}>
+export const InlineCode = ({ children, className, ...props }) => (
+  <code
+    {...props}
+    className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
+    css={css`
+      padding: 0 var(--spectrum-global-dimension-static-size-50);
+      display: inline-block;
+      min-width: auto;
+    `}>
     {children}
   </code>
-)
+);

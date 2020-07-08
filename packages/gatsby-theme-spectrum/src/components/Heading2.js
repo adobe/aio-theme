@@ -11,13 +11,13 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
-import {Divider} from '@react-spectrum/divider';
-import {Link} from './Link';
+import { Divider } from '@react-spectrum/divider';
+import { Link } from './Link';
 
-export const Heading2 = ({children, className, ...props}) => (
+export const Heading2 = ({ children, className, ...props }) => (
   <>
     <h2
       {...props}
@@ -26,7 +26,7 @@ export const Heading2 = ({children, className, ...props}) => (
         & a {
           visibility: hidden;
         }
-        
+
         &:hover a {
           visibility: visible;
         }
@@ -35,9 +35,11 @@ export const Heading2 = ({children, className, ...props}) => (
       <Link
         href={`#${props.id}`}
         css={css`
-          margin-inline-start: var(--spectrum-global-dimension-static-size-100)
-        `}>#</Link>
+          margin-inline-start: var(--spectrum-global-dimension-static-size-100);
+        `}>
+        #
+      </Link>
     </h2>
-    <Divider marginBottom="size-300"/>
+    <Divider marginBottom="size-300" />
   </>
 );

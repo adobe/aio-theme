@@ -14,6 +14,8 @@ import React from 'react';
 import '@spectrum-css/typography';
 import classNames from 'classnames';
 
-export const Code = ({children, className, ...props}) => (
-  <code {...props} className={classNames(className, 'spectrum-Code4')}>{children}</code>
-)
+export const Code = ({ children, className, ...props }) => (
+  <code {...props} className={classNames(className, 'spectrum-Code4')}>
+    {children}
+  </code>
+);

@@ -11,13 +11,13 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 // https://github.com/mdx-js/mdx/issues/628
 import MDX from '@mdx-js/runtime';
 
-import {layoutColumns} from './utils';
+import { layoutColumns } from './utils';
 
-export const ContentBlock = ({children}) => (
+export const ContentBlock = ({ children }) => (
   <div
     css={css`
       display: inline-block;

@@ -11,10 +11,10 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
-import {Flex} from '@react-spectrum/layout';
-import {View} from '@react-spectrum/view';
-import {Divider} from '@react-spectrum/divider';
+import { css } from '@emotion/core';
+import { Flex } from '@react-spectrum/layout';
+import { View } from '@react-spectrum/view';
+import { Divider } from '@react-spectrum/divider';
 import '@spectrum-css/typography';
 
 export const Footer = () => (
@@ -23,7 +23,7 @@ export const Footer = () => (
     css={css`
       margin: 0 var(--spectrum-global-dimension-static-size-400);
     `}>
-    <Divider size="M"/>
+    <Divider size="M" />
     <Flex justifyContent="space-between" alignItems="center">
       <View>
         <ul
@@ -38,7 +38,9 @@ export const Footer = () => (
           <li>Terms of use</li>
           <li>Privacy policy</li>
           <li>Cookies</li>
-          <li>Language: <u>English</u></li>
+          <li>
+            Language: <u>English</u>
+          </li>
         </ul>
       </View>
       <View>

@@ -13,9 +13,9 @@
 // todo use https://www.gatsbyjs.org/packages/gatsby-image/
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 
-export const Image = ({alt, src, ...props}) => (
+export const Image = ({ alt, src, ...props }) => (
   <img
     {...props}
     alt={alt}
@@ -23,5 +23,6 @@ export const Image = ({alt, src, ...props}) => (
     css={css`
       max-width: 100%;
       border-radius: var(--spectrum-global-dimension-static-size-50);
-    `}/>
+    `}
+  />
 );

@@ -15,8 +15,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '@spectrum-css/button';
 
-const Button = ({children, variant, isQuiet, className, ...props}) => (
-  <button {...props} className={classNames(className, ['spectrum-Button', `spectrum-Button--${variant}`, {'spectrum-Button--quiet': isQuiet}])}>{children}</button>
+const Button = ({ children, variant, isQuiet, className, ...props }) => (
+  <button
+    {...props}
+    className={classNames(className, [
+      'spectrum-Button',
+      `spectrum-Button--${variant}`,
+      { 'spectrum-Button--quiet': isQuiet }
+    ])}>
+    {children}
+  </button>
 );
 
 Button.propTypes = {
@@ -24,4 +32,4 @@ Button.propTypes = {
   isQuiet: PropTypes.bool
 };
 
-export {Button};
+export { Button };

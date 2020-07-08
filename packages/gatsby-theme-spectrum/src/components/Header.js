@@ -12,12 +12,12 @@
 
 // todo use wrapPageElement
 
-import React, {useRef, useEffect, createRef} from 'react'
-import {useStaticQuery, graphql} from 'gatsby';
-import {css} from '@emotion/core';
-import {Grid, Flex} from '@react-spectrum/layout';
-import {View} from '@react-spectrum/view';
-import {Button} from './Button';
+import React, { useRef, useEffect, createRef } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { css } from '@emotion/core';
+import { Grid, Flex } from '@react-spectrum/layout';
+import { View } from '@react-spectrum/view';
+import { Button } from './Button';
 import '@spectrum-css/typography';
 import '@spectrum-css/tabs';
 
@@ -25,18 +25,18 @@ const stretched = css`
   height: 100%;
 `;
 
-export const Header = ({path}) => {
+export const Header = ({ path }) => {
   const nav = useRef(null);
   const tabs = [];
   const selectedTabIndicator = useRef(null);
-  
+
   const data = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             header {
-              title,
+              title
               url
             }
           }
@@ -44,25 +44,25 @@ export const Header = ({path}) => {
       }
     `
   );
-  
+
   const positionSelectedTabIndicator = (ref) => {
     if (ref) {
       selectedTabIndicator.current.style.transform = `translate(${ref.current.offsetLeft}px, 0px)`;
       selectedTabIndicator.current.style.width = `${ref.current.offsetWidth}px`;
     }
   };
-  
+
   useEffect(() => {
-    positionSelectedTabIndicator(tabs.find(ref => ref.current.getAttribute('href') === path));
-  
+    positionSelectedTabIndicator(tabs.find((ref) => ref.current.getAttribute('href') === path));
+
     // Font load changes tab size
     const resizeObserver = new ResizeObserver(() => {
-      positionSelectedTabIndicator(tabs.find(ref => ref.current && ref.current.getAttribute('href') === path));
+      positionSelectedTabIndicator(tabs.find((ref) => ref.current && ref.current.getAttribute('href') === path));
     });
-  
+
     resizeObserver.observe(nav.current);
   }, [path]);
-  
+
   return (
     <header
       css={css`
@@ -72,15 +72,17 @@ export const Header = ({path}) => {
       `}>
       <nav css={stretched}>
         <Grid
-          areas={[
-            'title navigation console profile',
-          ]}
+          areas={['title navigation console profile']}
           columns={['256px', 'auto', 'size-1200', 'size-1200']}
           alignItems="center"
           marginX="size-400"
           height="100%">
           <View gridArea="title" justifySelf="flex-start">
-            <a href="https://adobe.io" css={css`text-decoration:none;`}>
+            <a
+              href="https://adobe.io"
+              css={css`
+                text-decoration: none;
+              `}>
               <Flex alignItems="center">
                 <svg
                   css={css`
@@ -102,24 +104,32 @@ export const Header = ({path}) => {
           </View>
           <View gridArea="navigation">
             <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal">
-              {data.site.siteMetadata.header.map(({title, url}, index) => {
+              {data.site.siteMetadata.header.map(({ title, url }, index) => {
                 const ref = createRef();
                 tabs.push(ref);
-                
+
                 return (
                   <a key={index} ref={ref} href={url} className="spectrum-Tabs-item">
                     <span className="spectrum-Tabs-itemLabel">{title}</span>
                   </a>
                 );
               })}
-              <div ref={selectedTabIndicator} className="spectrum-Tabs-selectionIndicator" css={css`bottom: -10px !important; transition: none !important;`}></div>
+              <div
+                ref={selectedTabIndicator}
+                className="spectrum-Tabs-selectionIndicator"
+                css={css`
+                  bottom: -10px !important;
+                  transition: none !important;
+                `}></div>
             </div>
           </View>
           <View gridArea="console" justifySelf="center">
             <Button variant="primary">Console</Button>
           </View>
           <View gridArea="profile" justifySelf="center">
-            <Button isQuiet variant="primary">Sign in</Button>
+            <Button isQuiet variant="primary">
+              Sign in
+            </Button>
           </View>
         </Grid>
       </nav>

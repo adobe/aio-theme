@@ -10,4 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-export const layoutColumns = (columns, gutters = []) => `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''})`;
+export const layoutColumns = (columns, gutters = []) =>
+  `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${
+    gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''
+  })`;

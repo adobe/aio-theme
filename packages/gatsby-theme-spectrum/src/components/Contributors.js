@@ -11,25 +11,26 @@
  */
 
 import React from 'react';
-import {css} from '@emotion/core';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import {Flex} from '@react-spectrum/layout';
-import {Link} from './Link';
+import { Flex } from '@react-spectrum/layout';
+import { Link } from './Link';
 
-const Contributors = ({href = '#', contributors = [], date}) => (
+const Contributors = ({ href = '#', contributors = [], date }) => (
   <Link
     href={href}
-    target='_blank'
-    rel='noopener noreferrer nofollow'
+    target="_blank"
+    rel="noopener noreferrer nofollow"
     css={css`
       text-decoration: none;
       color: inherit;
     `}>
     <Flex alignItems="center">
-      <div css={css`
-        display: inline-flex;
-        padding-left: var(--spectrum-global-dimension-static-size-200);
-      `}>
+      <div
+        css={css`
+          display: inline-flex;
+          padding-left: var(--spectrum-global-dimension-static-size-200);
+        `}>
         {contributors.slice(0, 5).map((contributor, index) => (
           <span
             key={index}
@@ -42,24 +43,24 @@ const Contributors = ({href = '#', contributors = [], date}) => (
               border-radius: var(--spectrum-global-dimension-static-percent-50);
               background: var(--spectrum-global-color-gray-50);
             `}>
-          <img
-            alt={contributor}
-            src={`https://github.com/${contributor}.png`}
-            css={css`
-              width: var(--spectrum-global-dimension-static-size-400);
-              height: var(--spectrum-global-dimension-static-size-400);
-              border-radius: var(--spectrum-global-dimension-static-percent-50);
-            `}
-          />
-        </span>
+            <img
+              alt={contributor}
+              src={`https://github.com/${contributor}.png`}
+              css={css`
+                width: var(--spectrum-global-dimension-static-size-400);
+                height: var(--spectrum-global-dimension-static-size-400);
+                border-radius: var(--spectrum-global-dimension-static-percent-50);
+              `}
+            />
+          </span>
         ))}
       </div>
       <span
         css={css`
           padding-left: var(--spectrum-global-dimension-static-size-200);
         `}>
-      {date && `Last updated ${date}`}
-    </span>
+        {date && `Last updated ${date}`}
+      </span>
     </Flex>
   </Link>
 );
@@ -70,4 +71,4 @@ Contributors.propTypes = {
   date: PropTypes.string
 };
 
-export {Contributors};
+export { Contributors };

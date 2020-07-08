@@ -16,6 +16,8 @@ import React from 'react';
 import '@spectrum-css/link';
 import classNames from 'classnames';
 
-export const Link = ({children, className, ...props}) => (
-  <a {...props} className={classNames(className, 'spectrum-Link')}>{children}</a>
-)
+export const Link = ({ children, className, ...props }) => (
+  <a {...props} className={classNames(className, 'spectrum-Link')}>
+    {children}
+  </a>
+);

@@ -19,7 +19,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/src/pages`
       }
     },
     {
@@ -29,14 +29,9 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve(`./src/components/Layout.js`)
         },
-        rehypePlugins: [
-          require(`rehype-slug`)
-        ],
-        remarkPlugins: [
-          require(`remark-external-links`),
-          require(`remark-docz`)
-        ]
+        rehypePlugins: [require(`rehype-slug`)],
+        remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]
       }
     }
   ]
-}
+};

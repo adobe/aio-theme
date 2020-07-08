@@ -14,6 +14,8 @@ import React from 'react';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 
-export const List = ({children, className, ...props}) => (
-  <ul {...props} className={classNames(className, 'spectrum-Body--M')}>{children}</ul>
+export const List = ({ children, className, ...props }) => (
+  <ul {...props} className={classNames(className, 'spectrum-Body--M')}>
+    {children}
+  </ul>
 );
