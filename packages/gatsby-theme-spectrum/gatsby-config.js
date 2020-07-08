@@ -12,6 +12,12 @@
 
 module.exports = {
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Wrapper.js`)
+      }
+    },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,

@@ -10,10 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-// todo use wrapPageElement
-
-import React, { useRef, useEffect, createRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { useRef, useEffect, useState, createRef } from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
@@ -25,10 +24,10 @@ const stretched = css`
   height: 100%;
 `;
 
-export const Header = ({ path }) => {
+const Header = ({ path = '/' }) => {
   const nav = useRef(null);
-  const tabs = [];
   const selectedTabIndicator = useRef(null);
+  const [tabs] = useState([]);
 
   const data = useStaticQuery(
     graphql`
@@ -45,23 +44,22 @@ export const Header = ({ path }) => {
     `
   );
 
-  const positionSelectedTabIndicator = (ref) => {
-    if (ref) {
-      selectedTabIndicator.current.style.transform = `translate(${ref.current.offsetLeft}px, 0px)`;
-      selectedTabIndicator.current.style.width = `${ref.current.offsetWidth}px`;
+  const positionSelectedTabIndicator = (path, tabs) => {
+    const selectedTab = tabs.find((tab) => tab.current.getAttribute('href') === path);
+    if (selectedTab) {
+      selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
+      selectedTabIndicator.current.style.width = `${selectedTab.current.offsetWidth}px`;
     }
   };
 
   useEffect(() => {
-    positionSelectedTabIndicator(tabs.find((ref) => ref.current.getAttribute('href') === path));
+    positionSelectedTabIndicator(path, tabs);
 
-    // Font load changes tab size
-    const resizeObserver = new ResizeObserver(() => {
-      positionSelectedTabIndicator(tabs.find((ref) => ref.current && ref.current.getAttribute('href') === path));
+    // Font affects positioning of the Tab indicator
+    document.fonts.ready.then(() => {
+      positionSelectedTabIndicator(path, tabs);
     });
-
-    resizeObserver.observe(nav.current);
-  }, [path]);
+  }, [path, tabs]);
 
   return (
     <header
@@ -109,9 +107,9 @@ export const Header = ({ path }) => {
                 tabs.push(ref);
 
                 return (
-                  <a key={index} ref={ref} href={url} className="spectrum-Tabs-item">
+                  <Link key={index} ref={ref} to={url} className="spectrum-Tabs-item" activeClassName="is-selected">
                     <span className="spectrum-Tabs-itemLabel">{title}</span>
-                  </a>
+                  </Link>
                 );
               })}
               <div
@@ -119,7 +117,7 @@ export const Header = ({ path }) => {
                 className="spectrum-Tabs-selectionIndicator"
                 css={css`
                   bottom: -10px !important;
-                  transition: none !important;
+                  transition-property: transform, width;
                 `}></div>
             </div>
           </View>
@@ -136,3 +134,9 @@ export const Header = ({ path }) => {
     </header>
   );
 };
+
+Header.propTypes = {
+  path: PropTypes.string
+};
+
+export { Header };

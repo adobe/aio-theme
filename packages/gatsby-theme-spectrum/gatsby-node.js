@@ -16,9 +16,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     node: {
       fs: 'empty'
     },
-    resolve: {
-      // Put main before module else it messes up react spectrum css import
-      mainFields: ['browser', 'main', 'module']
+    optimization: {
+      // Else react-spectrum css is discarded
+      sideEffects: false
     }
   });
 };

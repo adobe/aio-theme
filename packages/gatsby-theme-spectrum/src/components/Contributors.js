@@ -66,7 +66,7 @@ const Contributors = ({ href = '#', contributors = [], date }) => (
 );
 
 Contributors.propTypes = {
-  href: '',
+  href: PropTypes.string,
   contributors: PropTypes.array,
   date: PropTypes.string
 };
