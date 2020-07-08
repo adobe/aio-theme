@@ -12,10 +12,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import '@spectrum-css/button/dist/index-vars.css';
+import classNames from 'classnames';
+import '@spectrum-css/button';
 
-const Button = ({children, variant, isQuiet, ...props}) => (
-  <button {...props} className={`spectrum-Button spectrum-Button--${variant} ${isQuiet ? 'spectrum-Button--quiet' : ''}`}>{children}</button>
+const Button = ({children, variant, isQuiet, className, ...props}) => (
+  <button {...props} className={classNames(className, ['spectrum-Button', `spectrum-Button--${variant}`, {'spectrum-Button--quiet': isQuiet}])}>{children}</button>
 );
 
 Button.propTypes = {

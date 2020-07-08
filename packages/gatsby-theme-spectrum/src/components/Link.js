@@ -13,8 +13,9 @@
 // todo use https://www.gatsbyjs.org/docs/gatsby-link/ and check https://www.gatsbyjs.org/docs/path-prefix/
 
 import React from 'react';
-import '@spectrum-css/link/dist/index-vars.css';
+import '@spectrum-css/link';
+import classNames from 'classnames';
 
-export const Link = ({children, ...props}) => (
-  <a className="spectrum-Link" {...props}>{children}</a>
+export const Link = ({children, className, ...props}) => (
+  <a {...props} className={classNames(className, 'spectrum-Link')}>{children}</a>
 )

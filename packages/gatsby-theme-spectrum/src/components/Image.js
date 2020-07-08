@@ -15,8 +15,9 @@
 import React from 'react';
 import {css} from '@emotion/core';
 
-export const Image = ({alt, src}) => (
+export const Image = ({alt, src, ...props}) => (
   <img
+    {...props}
     alt={alt}
     src={src}
     css={css`

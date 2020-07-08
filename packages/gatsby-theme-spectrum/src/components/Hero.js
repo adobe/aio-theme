@@ -14,7 +14,7 @@ import React from 'react';
 import {css} from '@emotion/core';
 import {Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
-import '@spectrum-css/typography/dist/index-vars.css';
+import '@spectrum-css/typography';
 
 export const Hero = ({heading, text, illustration, background}) => (
   <section css={css`

@@ -12,12 +12,13 @@
 
 import React from 'react';
 import {css} from '@emotion/core';
-import '@spectrum-css/typography/dist/index-vars.css';
-import '@spectrum-css/well/dist/index-vars.css';
+import classNames from 'classnames';
+import '@spectrum-css/typography';
+import '@spectrum-css/well';
 
-export const InlineCode = ({children, ...props}) => (
+export const InlineCode = ({children, className, ...props}) => (
   <code {...props}
-        className="spectrum-Code4 spectrum-Well"
+        className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
         css={css`
           padding: 0 var(--spectrum-global-dimension-static-size-50);
           display: inline-block;

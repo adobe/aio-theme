@@ -18,8 +18,8 @@ import {css} from '@emotion/core';
 import {Grid, Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
 import {Button} from './Button';
-import '@spectrum-css/typography/dist/index-vars.css';
-import '@spectrum-css/tabs/dist/index-vars.css';
+import '@spectrum-css/typography';
+import '@spectrum-css/tabs';
 
 const stretched = css`
   height: 100%;

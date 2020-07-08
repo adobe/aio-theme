@@ -11,10 +11,11 @@
  */
 
 import React from 'react';
-import '@spectrum-css/typography/dist/index-vars.css';
+import classNames from 'classnames';
+import '@spectrum-css/typography';
 
-export const Heading1 = ({children, ...props}) => (
-  <h1 {...props} className="spectrum-Heading--XXXL">
+export const Heading1 = ({children, className, ...props}) => (
+  <h1 {...props} className={classNames(className, 'spectrum-Heading--XXXL')}>
     {children}
   </h1>
 );

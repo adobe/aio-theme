@@ -23,7 +23,7 @@ import {theme} from '@react-spectrum/theme-default';
 import {Grid, Flex} from '@react-spectrum/layout';
 import {View} from '@react-spectrum/view';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
-import '@spectrum-css/typography/dist/index-vars.css';
+import '@spectrum-css/typography';
 
 import {Header} from './Header';
 import {Hero} from './Hero';

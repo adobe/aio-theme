@@ -11,8 +11,9 @@
  */
 
 import React from 'react';
-import '@spectrum-css/typography/dist/index-vars.css';
+import '@spectrum-css/typography';
+import classNames from 'classnames';
 
-export const Code = ({children, ...props}) => (
-  <code {...props} className="spectrum-Code4">{children}</code>
+export const Code = ({children, className, ...props}) => (
+  <code {...props} className={classNames(className, 'spectrum-Code4')}>{children}</code>
 )

@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "workspaces": ["example", "packages/*"],
   "scripts": {
+    "start": "npm run build && npm run serve",
     "dev": "yarn workspace example develop",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
-    "clean": "yarn workspace example clean"
+    "clean": "yarn workspace example clean",
+    "format": "prettier --write '**/*.{js,json}'"
   }
 }

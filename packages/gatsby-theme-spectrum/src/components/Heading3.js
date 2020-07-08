@@ -12,14 +12,15 @@
 
 import React from 'react';
 import {css} from '@emotion/core';
-import '@spectrum-css/typography/dist/index-vars.css';
+import classNames from 'classnames';
+import '@spectrum-css/typography';
 import {Link} from './Link';
 
-export const Heading3 = ({children, ...props}) => (
+export const Heading3 = ({children, className, ...props}) => (
   <>
     <h3
       {...props}
-      className="spectrum-Heading--M"
+      className={classNames(className, 'spectrum-Heading--M')}
       css={css`
         & a {
           visibility: hidden;
