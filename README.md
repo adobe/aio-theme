@@ -1,3 +1,3 @@
 # ⚠ Under Construction  ⚠
 
-`yarn && npm run dev`
+`yarn && npm run start`

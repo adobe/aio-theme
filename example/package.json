@@ -1,6 +1,16 @@
 {
+  "private": true,
   "name": "example",
   "version": "0.0.1",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/gatsby-theme-spectrum-example"
+  },
+  "author": {
+    "name": "Stephan Ringel",
+    "url": "https://github.com/icaraps"
+  },
   "dependencies": {
     "gatsby": "^2.23.11",
     "react": "^16.13.1",
@@ -8,6 +18,7 @@
     "@adobe/gatsby-theme-spectrum": "*"
   },
   "scripts": {
+    "start": "gatsby build && gatsby serve",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
