@@ -18,7 +18,7 @@
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
     "clean": "yarn workspace example clean",
-    "format": "prettier --write '**/*.{js,json}'",
+    "format": "npx prettier --write '**/*.{js,json}'",
     "test": "echo 'https://www.gatsbyjs.org/docs/testing/'"
   }
 }
