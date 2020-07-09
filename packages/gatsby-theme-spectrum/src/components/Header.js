@@ -24,7 +24,7 @@ const stretched = css`
   height: 100%;
 `;
 
-const Header = ({ path = '/' }) => {
+const Header = ({ path }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   const [tabs] = useState([]);

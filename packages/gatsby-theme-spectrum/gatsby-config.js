@@ -11,6 +11,14 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    header: [
+      {
+        title: 'Overview',
+        url: '/'
+      },
+    ]
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-layout`,
