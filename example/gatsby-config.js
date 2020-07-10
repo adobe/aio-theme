@@ -12,24 +12,26 @@
 
 module.exports = {
   siteMetadata: {
-    header: [
-      {
-        title: 'Adobe Analytics',
-        url: '/'
-      },
-      {
-        title: 'Guides',
-        url: '/guides/'
-      },
-      {
-        title: 'API Reference',
-        url: '/api/'
-      },
-      {
-        title: 'Support',
-        url: '/support/'
-      }
-    ]
+    header: {
+      nav: [
+        {
+          title: 'Adobe Analytics',
+          path: '/'
+        },
+        {
+          title: 'Guides',
+          path: '/guides/'
+        },
+        {
+          title: 'API Reference',
+          path: '/api/'
+        },
+        {
+          title: 'Support',
+          path: '/support/'
+        }
+      ]
+    }
   },
   plugins: [`@adobe/gatsby-theme-spectrum`],
 };

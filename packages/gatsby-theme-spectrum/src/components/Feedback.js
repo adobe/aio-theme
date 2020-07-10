@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Button } from './Button';
-import '@spectrum-css/button';
 
 const Feedback = ({ onYes, onNo }) => (
   <Flex alignItems="center">

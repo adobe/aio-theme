@@ -12,12 +12,14 @@
 
 module.exports = {
   siteMetadata: {
-    header: [
-      {
-        title: 'Overview',
-        url: '/'
-      },
-    ]
+    header: {
+      nav: [
+        {
+          title: 'Overview',
+          path: '/'
+        }
+      ]
+    }
   },
   plugins: [
     {

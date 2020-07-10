@@ -35,8 +35,10 @@ const Header = ({ path }) => {
         site {
           siteMetadata {
             header {
-              title
-              url
+              nav {
+                title
+                path
+              }
             }
           }
         }
@@ -102,12 +104,12 @@ const Header = ({ path }) => {
           </View>
           <View gridArea="navigation">
             <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal">
-              {data.site.siteMetadata.header.map(({ title, url }, index) => {
+              {data.site.siteMetadata.header.nav.map(({ title, path }, index) => {
                 const ref = createRef();
                 tabs.push(ref);
 
                 return (
-                  <Link key={index} ref={ref} to={url} className="spectrum-Tabs-item" activeClassName="is-selected">
+                  <Link key={index} ref={ref} to={path} className="spectrum-Tabs-item" activeClassName="is-selected">
                     <span className="spectrum-Tabs-itemLabel">{title}</span>
                   </Link>
                 );
