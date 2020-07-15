@@ -23,9 +23,18 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          pages: `src/pages`,
+          components: `src/components`
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Wrapper.js`)
+        component: require.resolve(`./src/components/Provider.js`)
       }
     },
     `gatsby-plugin-catch-links`,

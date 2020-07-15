@@ -45,7 +45,7 @@ const Contributors = ({ href = '#', contributors = [], date }) => (
             `}>
             <img
               alt={contributor}
-              src={`https://github.com/${contributor}.png`}
+              src={contributor.startsWith('https://github.com/') ? `${contributor}.png` : contributor}
               css={css`
                 width: var(--spectrum-global-dimension-static-size-400);
                 height: var(--spectrum-global-dimension-static-size-400);

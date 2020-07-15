@@ -16,42 +16,46 @@ import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
 
-export const Hero = ({ heading, text, illustration, background }) => (
-  <section
-    css={css`
-      height: var(--spectrum-global-dimension-static-size-3400);
-      margin-bottom: var(--spectrum-global-dimension-static-size-400);
-      background-color: ${background};
-    `}>
-    <Flex height="100%" alignItems="center">
-      <View marginStart="size-800">
-        <h1
-          className="spectrum-Heading--XL"
-          css={css`
-            margin-bottom: var(--spectrum-global-dimension-static-size-200);
-            color: var(--spectrum-global-color-gray-200);
-          `}>
-          {heading}
-        </h1>
-        <p
-          className="spectrum-Body--L"
-          css={css`
-            color: var(--spectrum-global-color-gray-200);
-          `}>
-          {text}
-        </p>
-      </View>
-      <View>
-        <img
-          alt=""
-          src={illustration}
-          css={css`
-            min-width: 750px;
-            max-height: 210px;
-            object-fit: contain;
-          `}
-        />
-      </View>
-    </Flex>
-  </section>
-);
+export const Hero = ({ background, heading, text, image }) => {
+  return (
+    <section
+      css={css`
+        height: var(--spectrum-global-dimension-static-size-3400);
+        margin-bottom: var(--spectrum-global-dimension-static-size-400);
+        background-color: ${background};
+      `}>
+      <Flex height="100%" alignItems="center">
+        <View marginStart="size-800">
+          {React.cloneElement(heading, {
+            className: 'spectrum-Heading--XL',
+            css: css`
+              margin-bottom: var(--spectrum-global-dimension-static-size-200);
+              color: var(--spectrum-global-color-gray-200);
+            `
+          })}
+
+          {React.cloneElement(text, {
+            className: 'spectrum-Body--L',
+            css: css`
+              margin-bottom: var(--spectrum-global-dimension-static-size-200);
+              color: var(--spectrum-global-color-gray-200);
+            `
+          })}
+        </View>
+        <View>
+          {React.cloneElement(image, {
+            className: '',
+            css: css`
+              margin: 0;
+              & img {
+                min-width: 750px;
+                max-height: 210px;
+                object-fit: contain;
+              }
+            `
+          })}
+        </View>
+      </Flex>
+    </section>
+  );
+};

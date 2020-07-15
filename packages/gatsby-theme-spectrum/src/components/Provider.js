@@ -6,11 +6,12 @@ import '@spectrum-css/vars/dist/spectrum-light.css';
 import '@adobe/focus-ring-polyfill';
 import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
+import { Provider } from './Context';
 import { Header } from './Header';
 import { SEO } from './SEO';
 
 export default ({ children, pageContext, path }) => (
-  <>
+  <Provider value={{ path, pageContext }}>
     <SEO title={pageContext.frontmatter.title} description={pageContext.frontmatter.description} />
     <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
       <View backgroundColor="gray-50">
@@ -22,6 +23,5 @@ export default ({ children, pageContext, path }) => (
         </Grid>
       </View>
     </div>
-    }
-  </>
+  </Provider>
 );

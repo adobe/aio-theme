@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import '@spectrum-css/typography';
 import { Link } from './Link';
 
-export const Heading3 = ({ children, className, ...props }) => (
+export const Heading3 = ({ children, className, id, ...props }) => (
   <>
     <h3
       {...props}
@@ -35,7 +35,7 @@ export const Heading3 = ({ children, className, ...props }) => (
         css={css`
           margin-inline-start: var(--spectrum-global-dimension-static-size-50);
         `}
-        href={`#${props.id}`}>
+        href={`#${id}`}>
         #
       </Link>
     </h3>

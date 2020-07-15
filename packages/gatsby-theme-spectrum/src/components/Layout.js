@@ -21,9 +21,6 @@ import { View } from '@react-spectrum/view';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
 import '@spectrum-css/typography';
 
-import { Hero } from './Hero';
-import { Footer } from './Footer';
-
 import { Heading1 } from './Heading1';
 import { Heading2 } from './Heading2';
 import { Heading3 } from './Heading3';
@@ -34,6 +31,8 @@ import { InlineCode } from './InlineCode';
 import { Link } from './Link';
 import { Image } from './Image';
 
+import { Footer } from './Footer';
+import { Hero } from './Hero';
 import { ContentBlock } from './ContentBlock';
 import { Contributors } from './Contributors';
 import { Feedback } from './Feedback';
@@ -52,96 +51,129 @@ const mdxComponents = {
   // React Spectrum components
   Flex,
   // Custom components
+  Hero,
   ContentBlock
 };
 
-export default ({ children, pageContext }) => (
-  <MDXProvider components={mdxComponents}>
-    <main className="spectrum-Typography">
-      {pageContext.frontmatter.hero && <Hero {...pageContext.frontmatter.hero[0]} />}
-      <section
-        css={css`
-          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-          margin: 0 var(--spectrum-global-dimension-static-size-800);
-        `}>
-        <Flex>
-          <article
-            css={css`
-              min-width: ${layoutColumns(9, [
-                'var(--spectrum-global-dimension-static-size-400)',
-                'var(--spectrum-global-dimension-static-size-200)',
-                'var(--spectrum-global-dimension-static-size-100)'
-              ])};
-            `}>
-            {children}
-            <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
-              <View>
-                {pageContext.frontmatter.contributors && (
-                  <Contributors
-                    href="#"
-                    contributors={pageContext.frontmatter.contributors}
-                    date={new Date().toLocaleDateString()}
-                  />
-                )}
-              </View>
-              <View>
-                <Feedback
-                  onYes={() => {
-                    alert('thanks');
-                  }}
-                  onNo={() => {
-                    alert('why not ?');
-                  }}
-                />
-              </View>
-            </Flex>
-          </article>
-          {pageContext.frontmatter.resources && (
-            <aside
+const filterChildren = (children) => {
+  const childrenArray = React.Children.toArray(children);
+  const filteredChildren = [];
+  let ignoredChildren = [];
+
+  let heroChild;
+
+  childrenArray.forEach((child, i) => {
+    if (child.props.mdxType === 'Hero') {
+      let slots = child.props.slots.split(',').map((slot, k) => [slot, childrenArray[i + k + 1]]);
+
+      if (slots.length) {
+        slots = Object.fromEntries(slots);
+
+        ignoredChildren = ignoredChildren.concat(Object.values(slots));
+        heroChild = React.cloneElement(child, {
+          ...slots
+        });
+      }
+    } else if (ignoredChildren.indexOf(child) === -1) {
+      filteredChildren.push(child);
+    }
+
+    // if (child?.props?.children && typeof child.props.children === 'function') {
+    //   filterChildren(child.props.children);
+    // }
+  });
+
+  return {
+    filteredChildren,
+    heroChild
+  };
+};
+
+export default ({ children, pageContext }) => {
+  const { filteredChildren, heroChild } = filterChildren(children);
+
+  return (
+    <MDXProvider components={mdxComponents}>
+      <main className="spectrum-Typography">
+        {heroChild && heroChild}
+        <section
+          css={css`
+            max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+            margin: 0 var(--spectrum-global-dimension-static-size-800);
+          `}>
+          <Flex>
+            <article
               css={css`
-                min-width: ${layoutColumns(3, [
+                min-width: ${layoutColumns(9, [
                   'var(--spectrum-global-dimension-static-size-400)',
+                  'var(--spectrum-global-dimension-static-size-200)',
                   'var(--spectrum-global-dimension-static-size-100)'
                 ])};
-                margin-left: var(--spectrum-global-dimension-static-size-400);
-                margin-top: var(--spectrum-global-dimension-static-size-400);
               `}>
-              <h4 className="spectrum-Heading--XS">Resources</h4>
-              <ul
-                className="spectrum-Body--M"
+              {filteredChildren}
+              <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+                <View>
+                  {pageContext.frontmatter.contributors && (
+                    <Contributors
+                      href="#"
+                      contributors={pageContext.frontmatter.contributors}
+                      date={new Date().toLocaleDateString()}
+                    />
+                  )}
+                </View>
+                <View>
+                  <Feedback
+                    onYes={() => {
+                      alert('thanks');
+                    }}
+                    onNo={() => {
+                      alert('why not ?');
+                    }}
+                  />
+                </View>
+              </Flex>
+            </article>
+            {pageContext.frontmatter.resources && (
+              <aside
                 css={css`
-                  list-style: none;
-                  padding: 0;
+                  min-width: ${layoutColumns(3, [
+                    'var(--spectrum-global-dimension-static-size-400)',
+                    'var(--spectrum-global-dimension-static-size-100)'
+                  ])};
+                  margin-left: var(--spectrum-global-dimension-static-size-400);
+                  margin-top: var(--spectrum-global-dimension-static-size-400);
                 `}>
-                {pageContext.frontmatter.resources.map(({ link, text }, i) => (
-                  <li
-                    key={i}
-                    css={css`
-                      margin-top: var(--spectrum-global-dimension-static-size-200);
-                    `}>
-                    <a href={link} target="_blank" rel="nofollow noopener noreferrer">
-                      <span
-                        css={css`
-                          margin-right: var(--spectrum-global-dimension-static-size-100);
-                        `}>
-                        {text}
-                      </span>
-                      <LinkOut size="XS" />
-                    </a>
-                    {/*<Link href={link}*/}
-                    {/*      target="_blank"*/}
-                    {/*      rel="nofollow noopener noreferrer">*/}
-                    {/*  <span css={css`margin-right: var(--spectrum-global-dimension-static-size-100)`}>{text}</span>*/}
-                    {/*  <LinkOut size="XS"/>*/}
-                    {/*</Link>*/}
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          )}
-        </Flex>
-      </section>
-      <Footer />
-    </main>
-  </MDXProvider>
-);
+                <h4 className="spectrum-Heading--XS">Resources</h4>
+                <ul
+                  className="spectrum-Body--M"
+                  css={css`
+                    list-style: none;
+                    padding: 0;
+                  `}>
+                  {pageContext.frontmatter.resources.map(({ link, text }, i) => (
+                    <li
+                      key={i}
+                      css={css`
+                        margin-top: var(--spectrum-global-dimension-static-size-200);
+                      `}>
+                      <a href={link} target="_blank" rel="nofollow noopener noreferrer">
+                        <span
+                          css={css`
+                            margin-right: var(--spectrum-global-dimension-static-size-100);
+                          `}>
+                          {text}
+                        </span>
+                        <LinkOut size="XS" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
+          </Flex>
+        </section>
+        <Footer />
+      </main>
+    </MDXProvider>
+  );
+};

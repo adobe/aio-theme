@@ -17,7 +17,7 @@ import '@spectrum-css/typography';
 import { Divider } from '@react-spectrum/divider';
 import { Link } from './Link';
 
-export const Heading2 = ({ children, className, ...props }) => (
+export const Heading2 = ({ children, className, id, ...props }) => (
   <>
     <h2
       {...props}
@@ -33,7 +33,7 @@ export const Heading2 = ({ children, className, ...props }) => (
       `}>
       {children}
       <Link
-        href={`#${props.id}`}
+        href={`#${id}`}
         css={css`
           margin-inline-start: var(--spectrum-global-dimension-static-size-100);
         `}>

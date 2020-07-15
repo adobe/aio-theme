@@ -13,16 +13,47 @@
 // todo use https://www.gatsbyjs.org/packages/gatsby-image/
 
 import React from 'react';
+// import Context from './Context'
 import { css } from '@emotion/core';
+// import { useStaticQuery, graphql } from 'gatsby';
 
-export const Image = ({ alt, src, ...props }) => (
-  <img
-    {...props}
-    alt={alt}
-    src={src}
-    css={css`
-      max-width: 100%;
-      border-radius: var(--spectrum-global-dimension-static-size-50);
-    `}
-  />
-);
+export const Image = ({ alt, src, className, ...props }) => {
+  // const {path} = useContext(Context);
+  //
+  // const data = useStaticQuery(
+  //   graphql`
+  //     query MyQuery {
+  //       allSitePage {
+  //         nodes {
+  //           componentPath
+  //           path
+  //         }
+  //       }
+  //     }
+  //   `
+  // );
+
+  // let staticSrc = src;
+  // if (!src.startsWith('/static')) {
+  //   data.allSitePage.nodes.forEach((page) => {
+  //     if (page.path === path) {
+  //       // Use URL to create the path
+  //       const imagePath = new URL(src, `file://base${page.componentPath}`).pathname;
+  //       // Clean out absolute path in favor of webpack alias
+  //       staticSrc = require('pages/' + imagePath.replace(/.*\/src\/pages\//g, ''));
+  //     }
+  //   });
+  // }
+
+  return (
+    <img
+      {...props}
+      alt={alt}
+      src={src}
+      css={css`
+        max-width: 100%;
+        border-radius: var(--spectrum-global-dimension-static-size-50);
+      `}
+    />
+  );
+};
