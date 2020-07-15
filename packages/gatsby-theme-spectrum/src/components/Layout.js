@@ -64,7 +64,7 @@ const filterChildren = (children) => {
 
   childrenArray.forEach((child, i) => {
     if (child.props.mdxType === 'Hero') {
-      let slots = child.props.slots.split(',').map((slot, k) => [slot, childrenArray[i + k + 1]]);
+      let slots = child.props.slots.split(',').map((slot, k) => [slot.trim(), childrenArray[i + k + 1]]);
 
       if (slots.length) {
         slots = Object.fromEntries(slots);

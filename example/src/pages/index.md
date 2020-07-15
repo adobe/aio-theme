@@ -14,7 +14,7 @@ contributors:
   - https://github.com/duynguyen
 ---
 
-<Hero slots="image,heading,text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](./illustration.png) 
 
