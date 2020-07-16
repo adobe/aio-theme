@@ -33,7 +33,6 @@
     "@emotion/core": "^10.0.28",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.6",
-    "@mdx-js/runtime": "^1.6.6",
     "@react-spectrum/divider": "^3.0.0",
     "@react-spectrum/layout": "^3.0.0",
     "@react-spectrum/provider": "^3.0.0",

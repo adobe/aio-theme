@@ -12,21 +12,17 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-// https://github.com/mdx-js/mdx/issues/628
-import MDX from '@mdx-js/runtime';
-
 import { layoutColumns } from './utils';
 
-export const ContentBlock = ({ children }) => (
+export const ContentBlock = ({ width, link, text }) => (
   <div
     css={css`
-      display: inline-block;
-      max-width: ${layoutColumns(3, ['var(--spectrum-global-dimension-static-size-400)'])};
-      & a {
-        display: block;
-        margin-bottom: var(--spectrum-global-dimension-static-size-100);
-      }
+      display: inline-flex;
+      flex-direction: column;
+      margin-right: var(--spectrum-global-dimension-static-size-200);
+      width: ${width ? width : layoutColumns(3, ['var(--spectrum-global-dimension-static-size-400)'])};
     `}>
-    {children && <MDX>{children}</MDX>}
+    {link}
+    {text}
   </div>
 );

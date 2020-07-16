@@ -19,7 +19,7 @@ contributors:
 ![Hero image](./illustration.png) 
 
 # Adobe Analytics 
-  
+
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
 
 ## Overview
@@ -34,53 +34,45 @@ You can also create reports to explore, get insights, or answer important questi
 
 ### Get Started
 
-<ContentBlock>
-         
-[Quickstart Guide](https://adobe.io) 
-   
+<ContentBlock width="100%" slots="link, text"/>
+
+[Quickstart Guide](https://adobe.io)
+    
 Get started with the Adobe Analytics APIs.
-</ContentBlock> 
 
 ### Guides
 
-<Flex gap="size-200" wrap alignItems="bottom"> 
-  <ContentBlock>
-         
-  [Calculated Metrics API](https://adobe.io) 
-     
-  Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
-  </ContentBlock> 
-  
-  <ContentBlock>
-       
-  [Segments API](https://adobe.io) 
-     
-  Provides configuration guidance and best practices for the /segments endpoint.
-  </ContentBlock> 
-    
-  <ContentBlock>
-     
-  [Reporting Guide API](https://adobe.io) 
-     
-  Provides configuration guidance and best practices for the /reports endpoint.
-  </ContentBlock> 
-  
-  <ContentBlock>
-   
-  [Migrating from 1.4 to 2.0](https://adobe.io) 
-   
-  For help migrating from 1.3/1.4 versions of the Analytics API to the newer and more capable /reports API.
-  </ContentBlock>     
-</Flex>
+<ContentBlock slots="link, text"/>
 
+[Calculated Metrics API](https://adobe.io) 
+     
+Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
+
+<ContentBlock slots="link, text"/>
+
+[Segments API](https://adobe.io) 
+
+Provides configuration guidance and best practices for the /segments endpoint.
+
+<ContentBlock slots="link, text"/>
+
+[Reporting Guide API](https://adobe.io)
+
+Provides configuration guidance and best practices for the /reports endpoint.  
+
+<ContentBlock slots="link, text"/>     
+
+[Migrating from 1.4 to 2.0](https://adobe.io)
+
+For help migrating from 1.3/1.4 versions of the Analytics API to the newer and more capable /reports API. 
+     
 ### API References
 
-<ContentBlock>
- 
+<ContentBlock width="100%" slots="link, text"/>
+
 [Try the API](https://adobe.io) 
- 
+
 Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
-</ContentBlock>      
 
 ## Contributing 
 

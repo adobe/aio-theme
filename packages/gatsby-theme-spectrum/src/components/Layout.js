@@ -37,8 +37,12 @@ import { ContentBlock } from './ContentBlock';
 import { Contributors } from './Contributors';
 import { Feedback } from './Feedback';
 
+const customComponents = {
+  Hero,
+  ContentBlock
+};
+
 const mdxComponents = {
-  // Markdown components
   h1: Heading1,
   h2: Heading2,
   h3: Heading3,
@@ -48,40 +52,49 @@ const mdxComponents = {
   inlineCode: InlineCode,
   a: Link,
   img: Image,
-  // React Spectrum components
-  Flex,
-  // Custom components
-  Hero,
-  ContentBlock
+  ...customComponents
 };
 
 const filterChildren = (children) => {
-  const childrenArray = React.Children.toArray(children);
+  let childrenArray = React.Children.toArray(children);
   const filteredChildren = [];
-  let ignoredChildren = [];
 
   let heroChild;
 
-  childrenArray.forEach((child, i) => {
-    if (child.props.mdxType === 'Hero') {
-      let slots = child.props.slots.split(',').map((slot, k) => [slot.trim(), childrenArray[i + k + 1]]);
+  while (childrenArray.length) {
+    const child = childrenArray[0];
 
-      if (slots.length) {
-        slots = Object.fromEntries(slots);
+    let ignoredChildrenCount = 0;
+    Object.keys(customComponents).forEach((customComponent) => {
+      if (child?.props?.mdxType === customComponent) {
+        ignoredChildrenCount++;
+        let slots = child.props.slots.split(',').map((slot, i) => [slot.trim(), childrenArray[i + 1]]);
 
-        ignoredChildren = ignoredChildren.concat(Object.values(slots));
-        heroChild = React.cloneElement(child, {
-          ...slots
-        });
+        if (slots.length) {
+          ignoredChildrenCount += slots.length;
+
+          slots = Object.fromEntries(slots);
+
+          const childClone = React.cloneElement(child, {
+            ...slots
+          });
+
+          if (child.props.mdxType === 'Hero') {
+            heroChild = childClone;
+          } else {
+            filteredChildren.push(childClone);
+          }
+        }
       }
-    } else if (ignoredChildren.indexOf(child) === -1) {
+    });
+
+    if (ignoredChildrenCount === 0) {
+      ignoredChildrenCount++;
       filteredChildren.push(child);
     }
 
-    // if (child?.props?.children && typeof child.props.children === 'function') {
-    //   filterChildren(child.props.children);
-    // }
-  });
+    childrenArray = childrenArray.splice(ignoredChildrenCount);
+  }
 
   return {
     filteredChildren,
