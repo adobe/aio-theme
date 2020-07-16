@@ -11,7 +11,7 @@
  */
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link, withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
@@ -47,7 +47,7 @@ const Header = ({ path }) => {
   );
 
   const positionSelectedTabIndicator = (path, tabs) => {
-    const selectedTab = tabs.find((tab) => tab.current.getAttribute('href') === path);
+    const selectedTab = tabs.find((tab) => tab.current.getAttribute('href') === withPrefix(path));
     if (selectedTab) {
       selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
       selectedTabIndicator.current.style.width = `${selectedTab.current.offsetWidth}px`;
