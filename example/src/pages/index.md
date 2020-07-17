@@ -1,17 +1,10 @@
 ---
 title: Overview - Adobe Analytics
 description: This is an overview page of Adobe Analytics 
-resources:
-  - text: Adobe Analytics Product Docs
-    link: https://adobe.io
-  - text: Adobe Analytics Github Repo 
-    link: https://adobe.io
 contributors:
   - https://github.com/icaraps
   - https://github.com/macdonst
   - https://github.com/simonwex
-  - https://github.com/schaulinsan
-  - https://github.com/duynguyen
 ---
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
@@ -21,6 +14,13 @@ contributors:
 # Adobe Analytics 
 
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+
+<Resources slots="heading, links"/>
+
+#### Resources
+
+* [Quickstart Guide](https://adobe.io)
+* [Adobe Analytics Github Repo](https://adobe.io)
 
 ## Overview
 

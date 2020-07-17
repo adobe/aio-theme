@@ -15,7 +15,7 @@ import { css } from '@emotion/core';
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
   return (
@@ -43,21 +43,21 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
             `
           })}
         </View>
-        {image &&
-        <View>
-          {React.cloneElement(image, {
-            className: '',
-            css: css`
-              margin: 0;
-              & img {
-                min-width: 750px;
-                max-height: 210px;
-                object-fit: contain;
-              }
-            `
-          })}
-        </View>
-        }
+        {image && (
+          <View>
+            {React.cloneElement(image, {
+              className: '',
+              css: css`
+                margin: 0;
+                & img {
+                  min-width: 750px;
+                  max-height: 210px;
+                  object-fit: contain;
+                }
+              `
+            })}
+          </View>
+        )}
       </Flex>
     </section>
   );
@@ -70,4 +70,4 @@ Hero.propTypes = {
   image: PropTypes.func
 };
 
-export { Hero }
+export { Hero };

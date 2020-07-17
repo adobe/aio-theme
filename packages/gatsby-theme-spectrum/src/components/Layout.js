@@ -18,12 +18,12 @@ import './Layout.css';
 
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
-import LinkOut from '@spectrum-icons/workflow/LinkOut';
 import '@spectrum-css/typography';
 
 import { Heading1 } from './Heading1';
 import { Heading2 } from './Heading2';
 import { Heading3 } from './Heading3';
+import { Heading4 } from './Heading4';
 import { Paragraph } from './Paragraph';
 import { List } from './List';
 import { Code } from './Code';
@@ -32,6 +32,7 @@ import { Link } from './Link';
 import { Image } from './Image';
 
 import { Footer } from './Footer';
+import { Resources } from './Resources';
 import { Hero } from './Hero';
 import { ContentBlock } from './ContentBlock';
 import { Contributors } from './Contributors';
@@ -39,13 +40,15 @@ import { Feedback } from './Feedback';
 
 const customComponents = {
   Hero,
-  ContentBlock
+  ContentBlock,
+  Resources
 };
 
 const mdxComponents = {
   h1: Heading1,
   h2: Heading2,
   h3: Heading3,
+  h4: Heading4,
   p: Paragraph,
   ul: List,
   code: Code,
@@ -60,6 +63,7 @@ const filterChildren = (children) => {
   const filteredChildren = [];
 
   let heroChild;
+  let resourcesChild;
 
   while (childrenArray.length) {
     const child = childrenArray[0];
@@ -81,6 +85,8 @@ const filterChildren = (children) => {
 
           if (child.props.mdxType === 'Hero') {
             heroChild = childClone;
+          } else if (child.props.mdxType === 'Resources') {
+            resourcesChild = childClone;
           } else {
             filteredChildren.push(childClone);
           }
@@ -98,12 +104,13 @@ const filterChildren = (children) => {
 
   return {
     filteredChildren,
-    heroChild
+    heroChild,
+    resourcesChild
   };
 };
 
 export default ({ children, pageContext }) => {
-  const { filteredChildren, heroChild } = filterChildren(children);
+  const { filteredChildren, heroChild, resourcesChild } = filterChildren(children);
 
   return (
     <MDXProvider components={mdxComponents}>
@@ -146,43 +153,7 @@ export default ({ children, pageContext }) => {
                 </View>
               </Flex>
             </article>
-            {pageContext.frontmatter.resources && (
-              <aside
-                css={css`
-                  min-width: ${layoutColumns(3, [
-                    'var(--spectrum-global-dimension-static-size-400)',
-                    'var(--spectrum-global-dimension-static-size-100)'
-                  ])};
-                  margin-left: var(--spectrum-global-dimension-static-size-400);
-                  margin-top: var(--spectrum-global-dimension-static-size-400);
-                `}>
-                <h4 className="spectrum-Heading--XS">Resources</h4>
-                <ul
-                  className="spectrum-Body--M"
-                  css={css`
-                    list-style: none;
-                    padding: 0;
-                  `}>
-                  {pageContext.frontmatter.resources.map(({ link, text }, i) => (
-                    <li
-                      key={i}
-                      css={css`
-                        margin-top: var(--spectrum-global-dimension-static-size-200);
-                      `}>
-                      <a href={link} target="_blank" rel="nofollow noopener noreferrer">
-                        <span
-                          css={css`
-                            margin-right: var(--spectrum-global-dimension-static-size-100);
-                          `}>
-                          {text}
-                        </span>
-                        <LinkOut size="XS" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
+            {resourcesChild && resourcesChild}
           </Flex>
         </section>
         <Footer />
