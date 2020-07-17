@@ -43,6 +43,7 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
             `
           })}
         </View>
+        {image &&
         <View>
           {React.cloneElement(image, {
             className: '',
@@ -56,6 +57,7 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
             `
           })}
         </View>
+        }
       </Flex>
     </section>
   );
