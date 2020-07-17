@@ -15,8 +15,9 @@ import { css } from '@emotion/core';
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
+import PropTypes from "prop-types";
 
-export const Hero = ({ background, heading, text, image }) => {
+const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
   return (
     <section
       css={css`
@@ -59,3 +60,12 @@ export const Hero = ({ background, heading, text, image }) => {
     </section>
   );
 };
+
+Hero.propTypes = {
+  background: PropTypes.string,
+  heading: PropTypes.func,
+  text: PropTypes.func,
+  image: PropTypes.func
+};
+
+export { Hero }

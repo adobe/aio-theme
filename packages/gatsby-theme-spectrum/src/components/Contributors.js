@@ -14,10 +14,9 @@ import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Flex } from '@react-spectrum/layout';
-import { Link } from './Link';
 
 const Contributors = ({ href = '#', contributors = [], date }) => (
-  <Link
+  <a
     href={href}
     target="_blank"
     rel="noopener noreferrer nofollow"
@@ -62,7 +61,7 @@ const Contributors = ({ href = '#', contributors = [], date }) => (
         {date && `Last updated ${date}`}
       </span>
     </Flex>
-  </Link>
+  </a>
 );
 
 Contributors.propTypes = {

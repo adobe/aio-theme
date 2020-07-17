@@ -13,16 +13,47 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { layoutColumns } from './utils';
+import '@spectrum-css/typography';
+import PropTypes from "prop-types";
 
-export const ContentBlock = ({ width, link, text }) => (
+const imageWidth = '100px';
+
+const ContentBlock = ({ width, heading, link, text, image }) => (
   <div
     css={css`
+      ${image ? `
+      position: relative;
+      margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-static-size-400));
+      ` : ''}
       display: inline-flex;
       flex-direction: column;
       margin-right: var(--spectrum-global-dimension-static-size-200);
-      width: ${width ? width : layoutColumns(3, ['var(--spectrum-global-dimension-static-size-400)'])};
+      width: ${width ? width : layoutColumns(3, ['var(--spectrum-global-dimension-static-size-800)'])};
     `}>
+    {image && React.cloneElement(image, {
+      css: css`
+          position: absolute;
+          top: var(--spectrum-heading-m-margin-top, var(--spectrum-alias-heading-m-margin-top));
+          left: calc(-${imageWidth} - var(--spectrum-global-dimension-static-size-400));
+          display: flex;
+          align-items: flex-start;
+          height: 100%;
+          width: ${imageWidth};
+          `
+    })}
+    {heading ?? <div className="spectrum-Heading--M" aria-hidden="true">&nbsp;</div>}
     {link}
     {text}
   </div>
 );
+
+
+ContentBlock.propTypes = {
+  width: PropTypes.string,
+  heading: PropTypes.func,
+  text: PropTypes.func,
+  image: PropTypes.func,
+  link: PropTypes.func
+};
+
+export { ContentBlock }
