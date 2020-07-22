@@ -37,11 +37,13 @@ import { Hero } from './Hero';
 import { ContentBlock } from './ContentBlock';
 import { Contributors } from './Contributors';
 import { Feedback } from './Feedback';
+import { Alert } from './Alert';
 
 const customComponents = {
   Hero,
   ContentBlock,
-  Resources
+  Resources,
+  Alert
 };
 
 const mdxComponents = {

@@ -12,46 +12,62 @@
 
 module.exports = {
   siteMetadata: {
-    header: {
-      globalNav: {
-        home: {
+    globalNav: {
+      home: {
+        title: '',
+        path: ''
+      },
+      menus: [
+        {
           title: '',
-          path: ''
-        },
-        menus: [
+          sections: [
+            {
+              heading: '',
+              viewAll: {
+                title: '',
+                path: ''
+              },
+              divider: false,
+              items: [
+                {
+                  title: '',
+                  path: '',
+                  description: ''
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      console: false,
+      signIn: false
+    },
+    pages: [
+      {
+        title: 'Overview',
+        path: '/overview/'
+      }
+    ],
+    sideNavs: [
+      {
+        title: '',
+        path: '',
+        items: [
           {
             title: '',
-            sections: [
+            path: '',
+            items: [
               {
-                heading: '',
-                viewAll: {
-                  title: '',
-                  path: ''
-                },
-                divider: false,
-                items: [
-                  {
-                    title: '',
-                    path: '',
-                    description: ''
-                  }
-                ]
+                title: '',
+                path: ''
               }
             ]
           }
-        ],
-        console: false,
-        signIn: false
-      },
-      pages: [
-        {
-          title: 'Overview',
-          path: '/'
-        }
-      ],
-      docs: {
-        path: ''
+        ]
       }
+    ],
+    docs: {
+      path: ''
     }
   },
   plugins: [

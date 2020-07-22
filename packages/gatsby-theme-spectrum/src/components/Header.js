@@ -11,7 +11,7 @@
  */
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
-import { useStaticQuery, graphql, Link as GatsbyLink, withPrefix } from 'gatsby';
+import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
@@ -45,39 +45,37 @@ const Header = ({ path }) => {
       query {
         site {
           siteMetadata {
-            header {
-              globalNav {
-                home {
-                  title
-                  path
-                  logo
-                }
-                menus {
-                  title
-                  sections {
-                    heading
-                    divider
-                    viewAll {
-                      title
-                      path
-                    }
-                    items {
-                      title
-                      path
-                      description
-                    }
-                  }
-                }
-                signIn
-                console
-              }
-              pages {
+            globalNav {
+              home {
                 title
                 path
+                logo
               }
-              docs {
-                path
+              menus {
+                title
+                sections {
+                  heading
+                  divider
+                  viewAll {
+                    title
+                    path
+                  }
+                  items {
+                    title
+                    path
+                    description
+                  }
+                }
               }
+              signIn
+              console
+            }
+            pages {
+              title
+              path
+            }
+            docs {
+              path
             }
           }
         }
@@ -85,12 +83,13 @@ const Header = ({ path }) => {
     `
   );
 
-  const globalNav = data.site.siteMetadata.header.globalNav;
-  const pages = data.site.siteMetadata.header.pages;
-  const docs = data.site.siteMetadata.header.docs;
+  const globalNav = data.site.siteMetadata.globalNav;
+  const pages = data.site.siteMetadata.pages;
+  const docs = data.site.siteMetadata.docs;
 
   const positionSelectedTabIndicator = (path, tabs) => {
-    const selectedTab = tabs.find((tab) => tab.current.getAttribute('href') === withPrefix(path));
+    const selectedTab = tabs[pages.indexOf(pages.find((page) => path.startsWith(page.path)))];
+
     if (selectedTab) {
       selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
       selectedTabIndicator.current.style.width = `${selectedTab.current.offsetWidth}px`;
@@ -118,7 +117,7 @@ const Header = ({ path }) => {
         }
       }
     });
-  }, [path, tabs]);
+  }, [path]);
 
   return (
     <header
@@ -240,14 +239,14 @@ const Header = ({ path }) => {
                         )}
                         css={css`
                           display: block;
-                          padding: 24px;
+                          padding: var(--spectrum-global-dimension-static-size-300);
                           z-index: 1;
                           max-width: none !important;
                         `}>
                         <Flex gap="size-400">
                           {menu.sections.map((section, i) => (
-                            <>
-                              <View key={i}>
+                            <React.Fragment key={i}>
+                              <View>
                                 {section.heading && (
                                   <View marginBottom="size-200" marginStart="size-200">
                                     <strong className="spectrum-Heading--XS">{section.heading}</strong>
@@ -262,7 +261,9 @@ const Header = ({ path }) => {
                                         width: auto !important;
                                         height: auto !important;
                                         min-height: var(--spectrum-global-dimension-static-size-500) !important;
-                                        ${item.description ? 'margin-bottom: 16px' : ''}
+                                        ${item.description
+                                          ? 'margin-bottom: var(--spectrum-global-dimension-static-size-200);'
+                                          : ''}
                                       `}>
                                       <a
                                         css={css`
@@ -273,8 +274,8 @@ const Header = ({ path }) => {
                                           align-items: center;
                                           color: inherit;
                                           text-decoration: none;
-                                          padding-top: 8px;
-                                          padding-bottom: 8px;
+                                          padding-top: var(--spectrum-global-dimension-static-size-100);
+                                          padding-bottom: var(--spectrum-global-dimension-static-size-100);
                                         `}
                                         href={item.path}>
                                         <Flex direction="column">
@@ -297,7 +298,7 @@ const Header = ({ path }) => {
                                 </ul>
                               </View>
                               {section.divider && <Divider orientation="vertical" size="S" marginTop="size-600" />}
-                            </>
+                            </React.Fragment>
                           ))}
                         </Flex>
                         {menu.sections[0].viewAll && (
@@ -321,8 +322,8 @@ const Header = ({ path }) => {
           </View>
           <View gridArea="navigation" marginStart="size-200">
             <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal">
-              {pages.slice(0, 4).map((header, index) => {
-                const { title, path } = header;
+              {pages.slice(0, 4).map((page, index) => {
+                const { title, path } = page;
                 const ref = createRef();
                 tabs.push(ref);
 
@@ -331,6 +332,7 @@ const Header = ({ path }) => {
                     key={index}
                     ref={ref}
                     to={path}
+                    partiallyActive={true}
                     className="spectrum-Tabs-item"
                     activeClassName="is-selected">
                     <span className="spectrum-Tabs-itemLabel">{title}</span>

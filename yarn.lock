@@ -1735,6 +1735,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/popover/-/popover-3.0.0-beta.3.tgz#09a1662935b88a57012db5782a7198c2b0d9b531"
   integrity sha512-0qoQFbVcGeaqdaKx8KQS5y+7nLZiqR8vIvSkhb86iNBQ8DXEKPEqK7a0Z3iyi63Xtlx04j5y+Z4F3DWd+EEKHQ==
 
+"@spectrum-css/sidenav@^3.0.0-beta.2":
+  version "3.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/sidenav/-/sidenav-3.0.0-beta.2.tgz#b2431fdaaf8ef06d2c4bfbd3c85fb2ebe6eb7816"
+  integrity sha512-0/g/3lROiRnF4fSMBOQyG9V18x8yr49uWFpMeLGTY3pw8dv2LlfQNULAJs3HxXG/egxHmwjVcIlwLbQAziBP1Q==
+
 "@spectrum-css/tabs@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/tabs/-/tabs-3.0.0-beta.3.tgz#d9dc83cf0c1e310dc39170c1de8dd45cbf36877f"
