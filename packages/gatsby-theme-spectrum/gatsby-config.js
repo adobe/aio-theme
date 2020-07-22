@@ -13,12 +13,45 @@
 module.exports = {
   siteMetadata: {
     header: {
-      nav: [
+      globalNav: {
+        home: {
+          title: '',
+          path: ''
+        },
+        menus: [
+          {
+            title: '',
+            sections: [
+              {
+                heading: '',
+                viewAll: {
+                  title: '',
+                  path: ''
+                },
+                divider: false,
+                items: [
+                  {
+                    title: '',
+                    path: '',
+                    description: ''
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        console: false,
+        signIn: false
+      },
+      pages: [
         {
           title: 'Overview',
           path: '/'
         }
-      ]
+      ],
+      docs: {
+        path: ''
+      }
     }
   },
   plugins: [

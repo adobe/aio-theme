@@ -1705,15 +1705,35 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
+"@spectrum-css/assetlist@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.0-beta.3.tgz#18a8d77f5285e5e189cd3d6df103c058f9af4784"
+  integrity sha512-U9J7qJ+QgVsroaRh8cvef42GfrEHtcRilp/s6DLIMLxl8T9FOqtrB85PpWSGmVCazQdRjR9laqN16GlPr0FyxQ==
+
 "@spectrum-css/button@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0-beta.3.tgz#52ceb42f76fef170f7cd3010df56c1247a80e6b2"
   integrity sha512-C9g1ZJrq0fGs9Vu5z/Ft+Cr/plnSWtsk8rK394yAyOrQQym0zajiTvIMJLDlu764ah6k/4PkyPXmN+28/8vJSw==
 
+"@spectrum-css/dropdown@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/dropdown/-/dropdown-3.0.0-beta.3.tgz#2195714d6aeaafcc43b3ff2984481116de84f537"
+  integrity sha512-KYpcLl/cnxK208hY9tpqoISk3A2piUlqggSu3kS7qNGbIZQgizpT0YxYvN8F2BqnlAI1NL2KYZ8loMiI7sfQgA==
+
+"@spectrum-css/icon@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-2.1.1.tgz#53b371b293833e501898472dda8661a07db09fd8"
+  integrity sha512-Ddnjw3YTZiuJC8uVJ9x6i+ufQN+Vp4vibc+YxE7nXn8tWzT8zTRzwv6oHwSG9m+KzonTfnwqPuQx6ZA8vbK9xA==
+
 "@spectrum-css/link@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.0.0.tgz#544821b3eafec7e89b86254bb42e3d01024095e4"
   integrity sha512-TPWFopMTGWxxO4+Ush9L0dowI+tWRyxdWG8Gqy7/Q9c3emdJ7SA3hCQV9MRBoRRQHlx9lKFPfjZJ+/ErbTW++A==
+
+"@spectrum-css/popover@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/popover/-/popover-3.0.0-beta.3.tgz#09a1662935b88a57012db5782a7198c2b0d9b531"
+  integrity sha512-0qoQFbVcGeaqdaKx8KQS5y+7nLZiqR8vIvSkhb86iNBQ8DXEKPEqK7a0Z3iyi63Xtlx04j5y+Z4F3DWd+EEKHQ==
 
 "@spectrum-css/tabs@^3.0.0-beta.3":
   version "3.0.0-beta.3"

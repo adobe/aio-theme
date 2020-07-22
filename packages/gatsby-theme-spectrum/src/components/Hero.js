@@ -17,7 +17,13 @@ import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
-const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
+const Hero = ({
+  background = '#1D7DEE',
+  textColor = 'var(--spectrum-global-color-gray-200)',
+  heading,
+  text,
+  image
+}) => {
   return (
     <section
       css={css`
@@ -31,7 +37,7 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
             className: 'spectrum-Heading--XL',
             css: css`
               margin-bottom: var(--spectrum-global-dimension-static-size-200);
-              color: var(--spectrum-global-color-gray-200);
+              color: ${textColor};
             `
           })}
 
@@ -39,7 +45,7 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
             className: 'spectrum-Body--L',
             css: css`
               margin-bottom: var(--spectrum-global-dimension-static-size-200);
-              color: var(--spectrum-global-color-gray-200);
+              color: ${textColor};
             `
           })}
         </View>
@@ -65,9 +71,9 @@ const Hero = ({ background = '#1D7DEE', heading, text, image }) => {
 
 Hero.propTypes = {
   background: PropTypes.string,
-  heading: PropTypes.func,
-  text: PropTypes.func,
-  image: PropTypes.func
+  heading: PropTypes.element,
+  text: PropTypes.element,
+  image: PropTypes.element
 };
 
 export { Hero };

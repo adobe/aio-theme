@@ -28,31 +28,35 @@ const Contributors = ({ href = '#', contributors = [], date }) => (
       <div
         css={css`
           display: inline-flex;
+          flex-direction: row-reverse;
           padding-left: var(--spectrum-global-dimension-static-size-200);
         `}>
-        {contributors.slice(0, 5).map((contributor, index) => (
-          <span
-            key={index}
-            css={css`
-              margin-left: calc(-1 * var(--spectrum-global-dimension-static-size-200));
-              position: relative;
-              border: var(--spectrum-global-dimension-static-size-40) solid white;
-              width: var(--spectrum-global-dimension-static-size-400);
-              height: var(--spectrum-global-dimension-static-size-400);
-              border-radius: var(--spectrum-global-dimension-static-percent-50);
-              background: var(--spectrum-global-color-gray-50);
-            `}>
-            <img
-              alt={contributor}
-              src={contributor.startsWith('https://github.com/') ? `${contributor}.png` : contributor}
+        {contributors
+          .slice(0, 5)
+          .reverse()
+          .map((contributor, index) => (
+            <span
+              key={index}
               css={css`
+                margin-left: calc(-1 * var(--spectrum-global-dimension-static-size-200));
+                position: relative;
+                border: var(--spectrum-global-dimension-static-size-40) solid var(--spectrum-global-color-gray-50);
                 width: var(--spectrum-global-dimension-static-size-400);
                 height: var(--spectrum-global-dimension-static-size-400);
                 border-radius: var(--spectrum-global-dimension-static-percent-50);
-              `}
-            />
-          </span>
-        ))}
+                background: var(--spectrum-global-color-gray-50);
+              `}>
+              <img
+                alt={contributor}
+                src={contributor.startsWith('https://github.com/') ? `${contributor}.png` : contributor}
+                css={css`
+                  width: var(--spectrum-global-dimension-static-size-400);
+                  height: var(--spectrum-global-dimension-static-size-400);
+                  border-radius: var(--spectrum-global-dimension-static-percent-50);
+                `}
+              />
+            </span>
+          ))}
       </div>
       <span
         css={css`

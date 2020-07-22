@@ -30,7 +30,12 @@ const ContentBlock = ({ width, heading, link, text, image }) => (
       display: inline-flex;
       flex-direction: column;
       margin-right: var(--spectrum-global-dimension-static-size-200);
-      width: ${width ? width : layoutColumns(3, ['var(--spectrum-global-dimension-static-size-800)'])};
+      width: ${width
+        ? width
+        : layoutColumns(3, [
+            'var(--spectrum-global-dimension-static-size-400)',
+            'var(--spectrum-global-dimension-static-size-400)'
+          ])};
     `}>
     {image &&
       React.cloneElement(image, {
@@ -56,10 +61,10 @@ const ContentBlock = ({ width, heading, link, text, image }) => (
 
 ContentBlock.propTypes = {
   width: PropTypes.string,
-  heading: PropTypes.func,
-  text: PropTypes.func,
-  image: PropTypes.func,
-  link: PropTypes.func
+  heading: PropTypes.element,
+  text: PropTypes.element,
+  image: PropTypes.element,
+  link: PropTypes.element
 };
 
 export { ContentBlock };

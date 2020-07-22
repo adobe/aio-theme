@@ -10,10 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
+const globalNav = require('@adobe/gatsby-theme-spectrum/globalNav.json');
+
+globalNav.menus = [globalNav.menus[1]];
+
 module.exports = {
   siteMetadata: {
     header: {
-      nav: [
+      globalNav,
+      pages: [
         {
           title: 'Adobe Analytics',
           path: '/'

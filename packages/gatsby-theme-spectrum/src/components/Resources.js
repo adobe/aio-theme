@@ -64,8 +64,8 @@ const Resources = ({ heading, links }) => {
 };
 
 Resources.propTypes = {
-  heading: PropTypes.func,
-  links: PropTypes.func
+  heading: PropTypes.element,
+  links: PropTypes.element
 };
 
 export { Resources };

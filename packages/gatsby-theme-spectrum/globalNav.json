@@ -1,0 +1,164 @@
+{
+  "home": {
+    "title": "Developer",
+    "path": "https://adobe.io",
+    "logo": "adobe"
+  },
+  "signIn": true,
+  "console": true,
+  "menus": [
+    {
+      "title": "Discover",
+      "sections": [
+        {
+          "heading": "APIs",
+          "viewAll": {
+            "title": "View all APIs",
+            "path": "https://adobe.io"
+          },
+          "divider": true,
+          "items": [
+            {
+              "title": "Adobe XD",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Photoshop",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Document Cloud View SDK",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Acrobat",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Target",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Runtime",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Project Firefly",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Events",
+              "path": "https://adobe.io"
+            }
+          ]
+        },
+        {
+          "heading": "Solutions",
+          "items": [
+            {
+              "title": "Adobe Creative Cloud",
+              "description": "Find out how to extend and develop on Creative Cloud apps",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Experience Platform",
+              "description": "Build and manage complete solutions that drive customer experience",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Document Cloud",
+              "description": "Build engaging digital document experiences with Adobe's cloud-based APIs",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Creative Cloud",
+              "description": "Build and jargon words for Adobe Experience Cloud products and services",
+              "path": "https://adobe.io"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Docs",
+      "sections": [
+        {
+          "viewAll": {
+            "title": "View all docs",
+            "path": "https://adobe.io"
+          },
+          "items": [
+            {
+              "title": "Adobe XD",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Photoshop",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Document Cloud View SDK",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Acrobat",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Target",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Runtime",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Project Firefly",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Events",
+              "path": "https://adobe.io"
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "title": "Adobe XD",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Photoshop",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Document Cloud View SDK",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Acrobat",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe Target",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Runtime",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Project Firefly",
+              "path": "https://adobe.io"
+            },
+            {
+              "title": "Adobe I/O Events",
+              "path": "https://adobe.io"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
