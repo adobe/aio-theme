@@ -88,18 +88,38 @@ export default ({ children, pageContext, path }) => {
     <Provider value={{ path, pageContext, hasSideNav }}>
       <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
       <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
-        <Grid areas={['header header', 'sidenav main']} rows={['size-800']} columns={hasSideNav ? ['256px', 'auto'] : ['auto']}>
-          <View gridArea="header" position="fixed" height="size-800" left="size-0" right="size-0" backgroundColor="gray-50" zIndex="1">
+        <Grid
+          areas={['header header', 'sidenav main']}
+          rows={['size-800']}
+          columns={hasSideNav ? ['256px', 'auto'] : ['auto']}>
+          <View
+            gridArea="header"
+            position="fixed"
+            height="size-800"
+            left="size-0"
+            right="size-0"
+            backgroundColor="gray-50"
+            zIndex="1">
             <Header path={path} />
           </View>
-          <View backgroundColor="gray-75" gridArea="sidenav" isHidden={!hasSideNav} position="fixed" width="256px" height="100%">
+          <View
+            backgroundColor="gray-75"
+            gridArea="sidenav"
+            isHidden={!hasSideNav}
+            position="fixed"
+            width="256px"
+            height="100%">
             {/* TODO move to SideNav component */}
             <View elementType="nav" marginTop="size-800" padding="size-400">
               <ul className="spectrum-SideNav spectrum-SideNav--multiLevel">{renderSubtree(sideNavs)}</ul>
             </View>
           </View>
           <View gridArea="main">
-            <main className="spectrum-Typography" css={css`min-height: 100vh;`}>
+            <main
+              className="spectrum-Typography"
+              css={css`
+                min-height: 100vh;
+              `}>
               {children}
             </main>
           </View>

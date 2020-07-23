@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/core';
 import Context from './Context';
@@ -118,30 +118,35 @@ export default ({ children, pageContext }) => {
 
   return (
     <MDXProvider components={mdxComponents}>
-        {heroChild && heroChild}
-        <section
-          css={css`
-            max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-            margin: 0 var(--spectrum-global-dimension-static-size-800);
-          `}>
-          <Flex>
-            <article
-              css={css`
-                width: ${layoutColumns(9, [
-                  'var(--spectrum-global-dimension-static-size-400)',
-                  'var(--spectrum-global-dimension-static-size-200)',
-                  'var(--spectrum-global-dimension-static-size-100)'
-                ])};
-              `}>
-              {hasSideNav && typeof heroChild === 'undefined' &&
-              <nav css={css`
-                margin-top: var(--spectrum-global-dimension-static-size-400);
-              `}>
+      {heroChild && heroChild}
+      <section
+        css={css`
+          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+          margin: 0 var(--spectrum-global-dimension-static-size-800);
+        `}>
+        <Flex>
+          <article
+            css={css`
+              width: ${layoutColumns(9, [
+                'var(--spectrum-global-dimension-static-size-400)',
+                'var(--spectrum-global-dimension-static-size-200)',
+                'var(--spectrum-global-dimension-static-size-100)'
+              ])};
+            `}>
+            {hasSideNav && typeof heroChild === 'undefined' && (
+              <nav
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-static-size-400);
+                `}>
                 <ul className="spectrum-Breadcrumbs">
                   <li className="spectrum-Breadcrumbs-item">
-                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">Nav Root</div>
-                    <svg className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
-                         focusable="false" aria-hidden="true">
+                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">
+                      Nav Root
+                    </div>
+                    <svg
+                      className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
+                      focusable="false"
+                      aria-hidden="true">
                       <path
                         d="M7 5a.747.747 0 00-.22-.53L2.54.23a.75.75 0 10-1.06 1.06L5.19 5 1.48 8.71a.75.75 0 101.06 1.06l4.24-4.24A.747.747 0 007 5z"
                         className="spectrum-UIIcon--large"></path>
@@ -151,9 +156,13 @@ export default ({ children, pageContext }) => {
                     </svg>
                   </li>
                   <li className="spectrum-Breadcrumbs-item">
-                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">Trend</div>
-                    <svg className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
-                         focusable="false" aria-hidden="true">
+                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">
+                      Trend
+                    </div>
+                    <svg
+                      className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
+                      focusable="false"
+                      aria-hidden="true">
                       <path
                         d="M7 5a.747.747 0 00-.22-.53L2.54.23a.75.75 0 10-1.06 1.06L5.19 5 1.48 8.71a.75.75 0 101.06 1.06l4.24-4.24A.747.747 0 007 5z"
                         className="spectrum-UIIcon--large"></path>
@@ -163,38 +172,40 @@ export default ({ children, pageContext }) => {
                     </svg>
                   </li>
                   <li className="spectrum-Breadcrumbs-item">
-                    <a className="spectrum-Breadcrumbs-itemLink" role="link" aria-current="page">January 2019 Assets</a>
+                    <a className="spectrum-Breadcrumbs-itemLink" role="link" aria-current="page">
+                      January 2019 Assets
+                    </a>
                   </li>
                 </ul>
               </nav>
-              }
-              {filteredChildren}
-              <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
-                <View>
-                  {pageContext.frontmatter.contributors && (
-                    <Contributors
-                      href="#"
-                      contributors={pageContext.frontmatter.contributors}
-                      date={new Date().toLocaleDateString()}
-                    />
-                  )}
-                </View>
-                <View>
-                  <Feedback
-                    onYes={() => {
-                      alert('thanks');
-                    }}
-                    onNo={() => {
-                      alert('why not ?');
-                    }}
+            )}
+            {filteredChildren}
+            <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+              <View>
+                {pageContext.frontmatter.contributors && (
+                  <Contributors
+                    href="#"
+                    contributors={pageContext.frontmatter.contributors}
+                    date={new Date().toLocaleDateString()}
                   />
-                </View>
-              </Flex>
-            </article>
-            {resourcesChild && resourcesChild}
-          </Flex>
-        </section>
-        <Footer />
+                )}
+              </View>
+              <View>
+                <Feedback
+                  onYes={() => {
+                    alert('thanks');
+                  }}
+                  onNo={() => {
+                    alert('why not ?');
+                  }}
+                />
+              </View>
+            </Flex>
+          </article>
+          {resourcesChild && resourcesChild}
+        </Flex>
+      </section>
+      <Footer />
     </MDXProvider>
   );
 };
