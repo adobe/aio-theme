@@ -11,10 +11,19 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 
-export const Heading1 = ({ children, className, ...props }) => (
-  <h1 {...props} className={className ?? 'spectrum-Heading--XL spectrum-Heading--light'}>
+export const Heading1 = ({ children, className, css : styles, ...props }) => (
+  <h1 {...props}
+      className={className ?? 'spectrum-Heading--XL spectrum-Heading--light'}
+      css={css`
+        ${styles}
+        & + p {
+          margin-top: var(--spectrum-global-dimension-static-size-300) !important;
+          font-size: var(--spectrum-global-dimension-static-size-225);
+        }
+      `}>
     {children}
   </h1>
 );

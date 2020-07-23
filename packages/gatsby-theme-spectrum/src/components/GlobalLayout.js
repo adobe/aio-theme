@@ -8,7 +8,8 @@ import '@spectrum-css/vars/dist/spectrum-large.css';
 import '@spectrum-css/vars/dist/spectrum-light.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
-import { Grid, Flex } from '@react-spectrum/layout';
+import './GlobalLayout.css';
+import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Provider } from './Context';
 import { Header } from './Header';
@@ -84,43 +85,25 @@ export default ({ children, pageContext, path }) => {
   const hasSideNav = selectedSideNavItems.length > 0;
 
   return (
-    <Provider value={{ path, pageContext }}>
+    <Provider value={{ path, pageContext, hasSideNav }}>
       <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
       <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
-        <View backgroundColor="gray-50">
-          <Grid areas={['header', 'main']} rows={['size-800']}>
-            <View gridArea="header">
-              <Header path={path} />
+        <Grid areas={['header header', 'sidenav main']} rows={['size-800']} columns={hasSideNav ? ['256px', 'auto'] : ['auto']}>
+          <View gridArea="header" position="fixed" height="size-800" left="size-0" right="size-0" backgroundColor="gray-50" zIndex="1">
+            <Header path={path} />
+          </View>
+          <View backgroundColor="gray-75" gridArea="sidenav" isHidden={!hasSideNav} position="fixed" width="256px" height="100%">
+            {/* TODO move to SideNav component */}
+            <View elementType="nav" marginTop="size-800" padding="size-400">
+              <ul className="spectrum-SideNav spectrum-SideNav--multiLevel">{renderSubtree(sideNavs)}</ul>
             </View>
-            <View gridArea="main">
-              {hasSideNav ? (
-                <>
-                  <Flex>
-                    <div
-                      css={css`
-                        flex: 0 0 256px;
-                        background-color: var(--spectrum-global-color-gray-75);
-                      `}>
-                      <nav
-                        css={css`
-                          position: sticky;
-                          top: 0;
-                          box-sizing: border-box;
-                          padding: var(--spectrum-global-dimension-static-size-400)
-                            var(--spectrum-global-dimension-static-size-300);
-                        `}>
-                        <ul className="spectrum-SideNav spectrum-SideNav--multiLevel">{renderSubtree(sideNavs)}</ul>
-                      </nav>
-                    </div>
-                    {children}
-                  </Flex>
-                </>
-              ) : (
-                children
-              )}
-            </View>
-          </Grid>
-        </View>
+          </View>
+          <View gridArea="main">
+            <main className="spectrum-Typography" css={css`min-height: 100vh;`}>
+              {children}
+            </main>
+          </View>
+        </Grid>
       </div>
     </Provider>
   );

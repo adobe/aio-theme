@@ -1,6 +1,6 @@
 ---
 title: Overview - Adobe Analytics
-description: This is an overview page of Adobe Analytics 
+description: This is the overview page of Adobe Analytics 
 contributors:
   - https://github.com/icaraps
   - https://github.com/macdonst

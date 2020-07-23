@@ -83,7 +83,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Provider.js`)
+        component: require.resolve(`./src/components/GlobalLayout.js`)
       }
     },
     `gatsby-plugin-catch-links`,
@@ -101,7 +101,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/Layout.js`)
+          default: require.resolve(`./src/components/MDXLayout.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]

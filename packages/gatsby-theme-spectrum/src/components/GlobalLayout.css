@@ -64,7 +64,3 @@ html, body {
   margin: 0;
   text-size-adjust: none;
 }
-
-main {
-  min-height: 100vh;
-}

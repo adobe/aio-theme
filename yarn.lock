@@ -1710,6 +1710,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.0-beta.3.tgz#18a8d77f5285e5e189cd3d6df103c058f9af4784"
   integrity sha512-U9J7qJ+QgVsroaRh8cvef42GfrEHtcRilp/s6DLIMLxl8T9FOqtrB85PpWSGmVCazQdRjR9laqN16GlPr0FyxQ==
 
+"@spectrum-css/breadcrumb@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/breadcrumb/-/breadcrumb-3.0.0-beta.3.tgz#7f61fd02f0a4eb4907543e1f6ea848f0ca2b80fa"
+  integrity sha512-OT4iRD1OxvIQ+4u2EjI77WDCyQdgWrhe4zL6DT0D30WQiwl/mW5qr2JlZybUP2exlLogOrZCr1PEiyZLq2tzfw==
+
 "@spectrum-css/button@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0-beta.3.tgz#52ceb42f76fef170f7cd3010df56c1247a80e6b2"

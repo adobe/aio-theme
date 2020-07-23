@@ -1,3 +1,12 @@
+---
+title: Guides - Adobe Analytics
+description: This is the guides overview page of Adobe Analytics 
+contributors:
+  - https://github.com/icaraps
+  - https://github.com/macdonst
+  - https://github.com/simonwex
+---
+
 # Get Started
 
 To get started with Analytics 2.0 APIs you must first decide whether your application will need

@@ -10,14 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, {useContext} from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/core';
+import Context from './Context';
 import { layoutColumns } from './utils';
-import './Layout.css';
 
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
+import '@spectrum-css/breadcrumb';
 import '@spectrum-css/typography';
 
 import { Heading1 } from './Heading1';
@@ -113,10 +114,10 @@ const filterChildren = (children) => {
 
 export default ({ children, pageContext }) => {
   const { filteredChildren, heroChild, resourcesChild } = filterChildren(children);
+  const { hasSideNav } = useContext(Context);
 
   return (
     <MDXProvider components={mdxComponents}>
-      <main className="spectrum-Typography">
         {heroChild && heroChild}
         <section
           css={css`
@@ -126,12 +127,47 @@ export default ({ children, pageContext }) => {
           <Flex>
             <article
               css={css`
-                min-width: ${layoutColumns(9, [
+                width: ${layoutColumns(9, [
                   'var(--spectrum-global-dimension-static-size-400)',
                   'var(--spectrum-global-dimension-static-size-200)',
                   'var(--spectrum-global-dimension-static-size-100)'
                 ])};
               `}>
+              {hasSideNav && typeof heroChild === 'undefined' &&
+              <nav css={css`
+                margin-top: var(--spectrum-global-dimension-static-size-400);
+              `}>
+                <ul className="spectrum-Breadcrumbs">
+                  <li className="spectrum-Breadcrumbs-item">
+                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">Nav Root</div>
+                    <svg className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
+                         focusable="false" aria-hidden="true">
+                      <path
+                        d="M7 5a.747.747 0 00-.22-.53L2.54.23a.75.75 0 10-1.06 1.06L5.19 5 1.48 8.71a.75.75 0 101.06 1.06l4.24-4.24A.747.747 0 007 5z"
+                        className="spectrum-UIIcon--large"></path>
+                      <path
+                        d="M5.5 4a.747.747 0 00-.22-.53C4.703 2.862 3.242 1.5 2.04.23A.75.75 0 10.98 1.29L3.69 4 .98 6.71a.75.75 0 101.06 1.06l3.24-3.24A.747.747 0 005.5 4z"
+                        className="spectrum-UIIcon--medium"></path>
+                    </svg>
+                  </li>
+                  <li className="spectrum-Breadcrumbs-item">
+                    <div className="spectrum-Breadcrumbs-itemLink" role="link" tabIndex="0">Trend</div>
+                    <svg className="spectrum-Icon spectrum-UIIcon-ChevronRightSmall spectrum-Breadcrumbs-itemSeparator"
+                         focusable="false" aria-hidden="true">
+                      <path
+                        d="M7 5a.747.747 0 00-.22-.53L2.54.23a.75.75 0 10-1.06 1.06L5.19 5 1.48 8.71a.75.75 0 101.06 1.06l4.24-4.24A.747.747 0 007 5z"
+                        className="spectrum-UIIcon--large"></path>
+                      <path
+                        d="M5.5 4a.747.747 0 00-.22-.53C4.703 2.862 3.242 1.5 2.04.23A.75.75 0 10.98 1.29L3.69 4 .98 6.71a.75.75 0 101.06 1.06l3.24-3.24A.747.747 0 005.5 4z"
+                        className="spectrum-UIIcon--medium"></path>
+                    </svg>
+                  </li>
+                  <li className="spectrum-Breadcrumbs-item">
+                    <a className="spectrum-Breadcrumbs-itemLink" role="link" aria-current="page">January 2019 Assets</a>
+                  </li>
+                </ul>
+              </nav>
+              }
               {filteredChildren}
               <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
                 <View>
@@ -159,7 +195,6 @@ export default ({ children, pageContext }) => {
           </Flex>
         </section>
         <Footer />
-      </main>
     </MDXProvider>
   );
 };
