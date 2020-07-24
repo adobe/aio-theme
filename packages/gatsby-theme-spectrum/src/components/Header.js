@@ -10,15 +10,16 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useRef, useEffect, useState, createRef } from 'react';
-import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
-import PropTypes from 'prop-types';
+import React, { useContext, useRef, useEffect, useState, createRef } from 'react';
+import { Link as GatsbyLink } from 'gatsby';
+import { findSelectedTopPage } from './utils';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Divider } from '@react-spectrum/divider';
 import { Button } from './Button';
 import { Link } from './Link';
+import { Adobe, ChevronDown } from './Icons';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/tabs';
@@ -26,12 +27,14 @@ import '@spectrum-css/icon';
 import '@spectrum-css/dropdown';
 import '@spectrum-css/popover';
 import '@spectrum-css/assetlist';
+import Context from './Context';
 
 const stretched = css`
   height: 100%;
 `;
 
-const Header = ({ path }) => {
+export const Header = () => {
+  const { siteMetadata, location } = useContext(Context);
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   const [tabs] = useState([]);
@@ -39,56 +42,14 @@ const Header = ({ path }) => {
   const secondaryPopover = useRef(null);
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
 
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            globalNav {
-              home {
-                title
-                path
-                logo
-              }
-              menus {
-                title
-                sections {
-                  heading
-                  divider
-                  viewAll {
-                    title
-                    path
-                  }
-                  items {
-                    title
-                    path
-                    description
-                  }
-                }
-              }
-              signIn
-              console
-            }
-            pages {
-              title
-              path
-            }
-            docs {
-              path
-            }
-          }
-        }
-      }
-    `
-  );
-
-  const globalNav = data.site.siteMetadata.globalNav;
-  const pages = data.site.siteMetadata.pages;
-  const docs = data.site.siteMetadata.docs;
+  const globalNav = siteMetadata.globalNav;
+  const pages = siteMetadata.pages;
+  const docs = siteMetadata.docs;
 
   const positionSelectedTabIndicator = (path, tabs) => {
-    const selectedTab = tabs[pages.indexOf(pages.find((page) => path.startsWith(page.path)))];
+    const selectedTab = tabs[pages.indexOf(findSelectedTopPage(location.pathname, pages))];
 
     if (selectedTab) {
       selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
@@ -97,11 +58,13 @@ const Header = ({ path }) => {
   };
 
   useEffect(() => {
-    positionSelectedTabIndicator(path, tabs);
+    selectedTabIndicator.current.style.transition = isAnimated ? '' : 'none';
+    positionSelectedTabIndicator(location.pathname, tabs);
 
     // Font affects positioning of the Tab indicator
     document.fonts.ready.then(() => {
-      positionSelectedTabIndicator(path, tabs);
+      positionSelectedTabIndicator(location.pathname, tabs);
+      setIsAnimated(true);
     });
 
     document.addEventListener('click', (event) => {
@@ -117,7 +80,7 @@ const Header = ({ path }) => {
         }
       }
     });
-  }, [path]);
+  }, [location.pathname]);
 
   return (
     <header
@@ -143,20 +106,14 @@ const Header = ({ path }) => {
                   `}>
                   <Flex alignItems="center">
                     {globalNav.home.logo === 'adobe' ? (
-                      <svg
+                      <Adobe
                         css={css`
                           width: var(--spectrum-global-dimension-static-size-450);
                           height: var(--spectrum-global-dimension-static-size-400);
                           display: block;
                           margin-right: var(--spectrum-global-dimension-static-size-200);
                         `}
-                        viewBox="0 0 30 26"
-                        fill="#E1251B"
-                        aria-label="Adobe">
-                        <polygon points="19,0 30,0 30,26"></polygon>
-                        <polygon points="11.1,0 0,0 0,26"></polygon>
-                        <polygon points="15,9.6 22.1,26 17.5,26 15.4,20.8 10.2,20.8"></polygon>
-                      </svg>
+                      />
                     ) : (
                       globalNav.home.logo
                     )}
@@ -215,17 +172,7 @@ const Header = ({ path }) => {
                             }
                           }}>
                           <span className="spectrum-Dropdown-label">{menu.title}</span>
-                          <svg
-                            className="spectrum-Icon spectrum-UIIcon-ChevronDownMedium spectrum-Dropdown-icon"
-                            focusable="false"
-                            aria-hidden="true">
-                            <path
-                              d="M11.99 1.51a1 1 0 00-1.707-.707L6 5.086 1.717.803A1 1 0 10.303 2.217l4.99 4.99a1 1 0 001.414 0l4.99-4.99a.997.997 0 00.293-.707z"
-                              className="spectrum-UIIcon--large"></path>
-                            <path
-                              d="M9.99 1.01A1 1 0 008.283.303L5 3.586 1.717.303A1 1 0 10.303 1.717l3.99 3.98a1 1 0 001.414 0l3.99-3.98a.997.997 0 00.293-.707z"
-                              className="spectrum-UIIcon--medium"></path>
-                          </svg>
+                          <ChevronDown className="spectrum-Dropdown-icon" />
                         </button>
                       </div>
                       <div
@@ -240,7 +187,7 @@ const Header = ({ path }) => {
                         css={css`
                           display: block;
                           padding: var(--spectrum-global-dimension-static-size-300);
-                          z-index: 1;
+                          z-index: 2;
                           max-width: none !important;
                         `}>
                         <Flex gap="size-400">
@@ -253,7 +200,7 @@ const Header = ({ path }) => {
                                   </View>
                                 )}
                                 <ul className="spectrum-AssetList">
-                                  {section.items.map((item, k) => (
+                                  {section.pages.map((page, k) => (
                                     <li
                                       key={k}
                                       className="spectrum-AssetList-item"
@@ -261,7 +208,7 @@ const Header = ({ path }) => {
                                         width: auto !important;
                                         height: auto !important;
                                         min-height: var(--spectrum-global-dimension-static-size-500) !important;
-                                        ${item.description
+                                        ${page.description
                                           ? 'margin-bottom: var(--spectrum-global-dimension-static-size-200);'
                                           : ''}
                                       `}>
@@ -277,17 +224,17 @@ const Header = ({ path }) => {
                                           padding-top: var(--spectrum-global-dimension-static-size-100);
                                           padding-bottom: var(--spectrum-global-dimension-static-size-100);
                                         `}
-                                        href={item.path}>
+                                        href={page.path}>
                                         <Flex direction="column">
-                                          <View>{item.title}</View>
-                                          {item.description && (
+                                          <View>{page.title}</View>
+                                          {page.description && (
                                             <View marginTop="size-100">
                                               <span
                                                 className="spectrum-Body--XS"
                                                 css={css`
                                                   color: var(--spectrum-global-color-gray-700);
                                                 `}>
-                                                {item.description}
+                                                {page.description}
                                               </span>
                                             </View>
                                           )}
@@ -374,9 +321,3 @@ const Header = ({ path }) => {
     </header>
   );
 };
-
-Header.propTypes = {
-  path: PropTypes.string
-};
-
-export { Header };

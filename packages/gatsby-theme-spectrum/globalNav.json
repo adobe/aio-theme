@@ -17,7 +17,7 @@
             "path": "https://adobe.io"
           },
           "divider": true,
-          "items": [
+          "pages": [
             {
               "title": "Adobe XD",
               "path": "https://adobe.io"
@@ -54,7 +54,7 @@
         },
         {
           "heading": "Solutions",
-          "items": [
+          "pages": [
             {
               "title": "Adobe Creative Cloud",
               "description": "Find out how to extend and develop on Creative Cloud apps",
@@ -87,7 +87,7 @@
             "title": "View all docs",
             "path": "https://adobe.io"
           },
-          "items": [
+          "pages": [
             {
               "title": "Adobe XD",
               "path": "https://adobe.io"
@@ -123,7 +123,7 @@
           ]
         },
         {
-          "items": [
+          "pages": [
             {
               "title": "Adobe XD",
               "path": "https://adobe.io"

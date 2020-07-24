@@ -28,7 +28,7 @@ module.exports = {
                 path: ''
               },
               divider: false,
-              items: [
+              pages: [
                 {
                   title: '',
                   path: '',
@@ -48,15 +48,15 @@ module.exports = {
         path: '/overview/'
       }
     ],
-    sideNavs: [
+    subPages: [
       {
         title: '',
         path: '',
-        items: [
+        pages: [
           {
             title: '',
             path: '',
-            items: [
+            pages: [
               {
                 title: '',
                 path: ''
@@ -68,6 +68,10 @@ module.exports = {
     ],
     docs: {
       path: ''
+    },
+    github: {
+      repository: 'adobe/gatsby-theme-spectrum',
+      branch: 'main'
     }
   },
   plugins: [
@@ -83,7 +87,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/GlobalLayout.js`)
+        component: require.resolve(`./src/components/Layout.js`)
       }
     },
     `gatsby-plugin-catch-links`,
@@ -93,7 +97,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages`
+        path: `src/pages`
       }
     },
     {
@@ -101,7 +105,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/MDXLayout.js`)
+          default: require.resolve(`./src/components/MDXFilter.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]

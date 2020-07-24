@@ -14,6 +14,7 @@
   "workspaces": ["example", "packages/*"],
   "scripts": {
     "start": "yarn workspace example start",
+    "start:prefix": "yarn workspace example start:prefix",
     "dev": "yarn workspace example develop",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",

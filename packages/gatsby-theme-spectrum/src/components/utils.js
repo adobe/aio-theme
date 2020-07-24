@@ -10,7 +10,102 @@
  * governing permissions and limitations under the License.
  */
 
-export const layoutColumns = (columns, gutters = []) =>
+import { withPrefix } from 'gatsby';
+
+const layoutColumns = (columns, gutters = []) =>
   `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${
     gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''
   })`;
+
+const findSelectedTopPage = (pathname, pages) => {
+  return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
+};
+
+const findSelectedPages = (pathname, pages) => {
+  let selectedPages = [];
+
+  const find = (page) => {
+    let subPages = [];
+    if (page.path && pathname.startsWith(withPrefix(page.path))) {
+      subPages.push(page);
+    }
+
+    if (page.pages) {
+      page.pages.forEach((subPage) => {
+        subPages = [...subPages, ...find(subPage)];
+      });
+    }
+
+    return subPages;
+  };
+
+  pages.forEach((page) => {
+    const subPages = find(page);
+    if (subPages.length) {
+      selectedPages.push(subPages);
+    }
+  });
+
+  return selectedPages.length ? selectedPages.pop() : [];
+};
+
+const flattenPages = (pages) => {
+  let flat = [];
+  const find = (page) => {
+    flat.push(page);
+
+    if (page.pages) {
+      page.pages.forEach(find);
+    }
+  };
+
+  pages.forEach(find);
+
+  flat = flat.flat();
+  return flat.filter((page, index) => page.path && page.path !== flat[index + 1]?.path);
+};
+
+const findSelectedPageNext = (pathname, pages) => {
+  const flat = flattenPages(pages);
+  const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
+
+  return flat[flat.indexOf(selectedPage) + 1];
+};
+
+const findSelectedPagePrevious = (pathname, pages) => {
+  const flat = flattenPages(pages);
+  const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
+
+  return flat[flat.indexOf(selectedPage) + -1];
+};
+
+const findSelectedPageSiblings = (pathname, pages) => {
+  let siblings = [];
+
+  const find = (page) => {
+    if (page.pages) {
+      const selectedPage = page.pages.find((subPage) => withPrefix(subPage.path) === pathname);
+      if (selectedPage) {
+        siblings = page.pages;
+      } else {
+        page.pages.forEach(find);
+      }
+    }
+  };
+
+  pages.forEach((page) => {
+    find(page);
+  });
+
+  return siblings;
+};
+
+export {
+  layoutColumns,
+  findSelectedTopPage,
+  findSelectedPages,
+  flattenPages,
+  findSelectedPageNext,
+  findSelectedPagePrevious,
+  findSelectedPageSiblings
+};

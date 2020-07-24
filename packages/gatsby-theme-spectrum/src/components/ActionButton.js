@@ -11,18 +11,27 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import '@spectrum-css/button';
 
-export const Image = ({ alt, src, className, ...props }) => {
-  return (
-    <img
-      {...props}
-      alt={alt}
-      src={src}
-      css={css`
-        max-width: 100%;
-        border-radius: var(--spectrum-global-dimension-static-size-50);
-      `}
-    />
-  );
+const ActionButton = ({ children, isQuiet, href, className, ...props }) => (
+  <a
+    {...props}
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+    href={href}
+    className={classNames(className, ['spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet }])}>
+    {children}
+  </a>
+);
+
+ActionButton.propTypes = {
+  href: PropTypes.string,
+  variant: PropTypes.string,
+  isQuiet: PropTypes.bool
 };
+
+const Text = ({ children }) => <span className="spectrum-ActionButton-label">{children}</span>;
+
+export { ActionButton, Text };

@@ -1,37 +1,85 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { useStaticQuery, graphql } from 'gatsby';
-import classNames from 'classnames';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
 import '@spectrum-css/vars/dist/spectrum-light.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
-import './GlobalLayout.css';
+import './Layout.css';
 import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Provider } from './Context';
 import { Header } from './Header';
 import { SEO } from './SEO';
+import { SideNav } from './SideNav';
 
-export default ({ children, pageContext, path }) => {
+export default ({ children, pageContext, location }) => {
   const data = useStaticQuery(
     graphql`
       query {
+        allMdx {
+          nodes {
+            tableOfContents
+            fileAbsolutePath
+          }
+        }
+        allSitePage {
+          nodes {
+            componentPath
+            path
+          }
+        }
         site {
           siteMetadata {
-            sideNavs {
-              title
-              path
-              items {
+            globalNav {
+              home {
                 title
                 path
-                items {
+                logo
+              }
+              menus {
+                title
+                sections {
+                  heading
+                  divider
+                  viewAll {
+                    title
+                    path
+                  }
+                  pages {
+                    title
+                    path
+                    description
+                  }
+                }
+              }
+              signIn
+              console
+            }
+            docs {
+              path
+            }
+            pages {
+              title
+              path
+            }
+            subPages {
+              title
+              path
+              pages {
+                title
+                path
+                pages {
                   title
                   path
                 }
               }
+            }
+            github {
+              repository
+              branch
             }
           }
         }
@@ -39,53 +87,15 @@ export default ({ children, pageContext, path }) => {
     `
   );
 
-  const sideNavs = data.site.siteMetadata.sideNavs;
-  const selectedSideNavItems = [];
-
-  const findSelectedSideNavItems = (items) => {
-    items.forEach((item) => {
-      if (item.path && path.startsWith(item.path)) {
-        selectedSideNavItems.push(item);
-      }
-
-      if (item.items) {
-        findSelectedSideNavItems(item.items);
-      }
-    });
-  };
-
-  const renderSubtree = (items) =>
-    items.map((item, index) => {
-      if (item.title && item.path) {
-        const isSelected = selectedSideNavItems.find((selectedItem) => selectedItem === item);
-
-        return (
-          <li
-            key={index}
-            css={css`
-              &:not(.is-expanded) .spectrum-SideNav {
-                display: none;
-              }
-            `}
-            className={classNames([
-              'spectrum-SideNav-item',
-              { 'is-expanded': isSelected },
-              { 'is-selected': selectedSideNavItems[selectedSideNavItems.length - 1] === item && isSelected }
-            ])}>
-            <a href={item.path} className="spectrum-SideNav-itemLink">
-              {item.title}
-            </a>
-            {item.items && <ul className="spectrum-SideNav">{renderSubtree(item.items)}</ul>}
-          </li>
-        );
-      }
-    });
-
-  findSelectedSideNavItems(sideNavs);
-  const hasSideNav = selectedSideNavItems.length > 0;
+  const allMdx = data.allMdx;
+  const allSitePage = data.allSitePage;
+  const siteMetadata = data.site.siteMetadata;
+  const hasSideNav = siteMetadata.subPages.some(
+    (page) => page.path && location.pathname.startsWith(withPrefix(page.path))
+  );
 
   return (
-    <Provider value={{ path, pageContext, hasSideNav }}>
+    <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx }}>
       <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
       <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
         <Grid
@@ -99,19 +109,19 @@ export default ({ children, pageContext, path }) => {
             left="size-0"
             right="size-0"
             backgroundColor="gray-50"
-            zIndex="1">
-            <Header path={path} />
+            zIndex="2">
+            <Header />
           </View>
           <View
             backgroundColor="gray-75"
             gridArea="sidenav"
             isHidden={!hasSideNav}
             position="fixed"
+            zIndex="1"
             width="256px"
             height="100%">
-            {/* TODO move to SideNav component */}
             <View elementType="nav" marginTop="size-800" padding="size-400">
-              <ul className="spectrum-SideNav spectrum-SideNav--multiLevel">{renderSubtree(sideNavs)}</ul>
+              <SideNav />
             </View>
           </View>
           <View gridArea="main">

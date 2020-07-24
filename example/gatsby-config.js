@@ -35,11 +35,11 @@ module.exports = {
         path: '/support/'
       }
     ],
-    sideNavs: [
+    subPages: [
       {
         title: 'Get Started',
         path: '/guides/',
-        items: [
+        pages: [
           {
             title: 'Overview',
             path: '/guides/'
@@ -65,14 +65,24 @@ module.exports = {
       {
         title: 'Reporting API',
         path: '/guides/reporting_api/',
-        items: [
+        pages: [
           {
             title: 'Overview',
             path: '/guides/reporting_api/'
           },
           {
-            title: 'Reporting with multiple breakdowns',
-            path: '/guides/reporting_api/reporting_multiple_breakdowns/'
+            title: 'Reporting with breakdowns',
+            path: '/guides/reporting_api/reporting_breakdowns/',
+            pages: [
+              {
+                title: 'Reporting with single breakdowns',
+                path: '/guides/reporting_api/reporting_breakdowns/',
+              },
+              {
+                title: 'Reporting with multiple breakdowns',
+                path: '/guides/reporting_api/reporting_breakdowns/reporting_multiple_breakdowns/',
+              },
+            ]
           },
           {
             title: 'Reporting tips and tricks',
@@ -96,7 +106,12 @@ module.exports = {
         title: 'Migrating',
         path: '/guides/migrating/'
       }
-    ]
+    ],
+    github: {
+      repository: 'adobe/gatsby-theme-spectrum',
+      branch: 'main'
+    }
   },
   plugins: [`@adobe/gatsby-theme-spectrum`],
+  pathPrefix: '/example'
 };

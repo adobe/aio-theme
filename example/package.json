@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",
+    "start:prefix": "gatsby build --prefix-paths && gatsby serve --prefix-paths",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
