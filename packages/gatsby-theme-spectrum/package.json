@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@adobe/focus-ring-polyfill": "^0.1.5",
+    "@adobe/parliament-transformer-navigation": "^1.0.1",
     "@emotion/core": "^10.0.28",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.6",
