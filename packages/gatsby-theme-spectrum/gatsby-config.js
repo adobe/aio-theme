@@ -111,5 +111,9 @@ module.exports = {
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]
       }
     }
+    {
+      resolve: `@adobe/parliament-transformer-navigation`,
+      options: {},
+    }
   ]
 };
