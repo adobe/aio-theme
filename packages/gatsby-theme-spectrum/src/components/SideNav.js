@@ -11,13 +11,14 @@ export const SideNav = () => {
 
   const selectedSideNavPages = findSelectedPages(location.pathname, siteMetadata.subPages);
 
-  const renderSubtree = (pages) =>
+  const renderSubtree = (pages, level) =>
     pages.map((page, index) => {
       if (page.title && page.path) {
         const isSelected = selectedSideNavPages.find((selectedItem) => selectedItem === page);
 
         return (
           <li
+            role="none"
             key={index}
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
@@ -29,14 +30,26 @@ export const SideNav = () => {
               { 'is-expanded': isSelected },
               { 'is-selected': selectedSideNavPages[selectedSideNavPages.length - 1] === page && isSelected }
             ])}>
-            <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink">
+            <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
               {page.title}
             </GatsbyLink>
-            {page.pages && <ul className="spectrum-SideNav">{renderSubtree(page.pages)}</ul>}
+            {page.pages && <ul className="spectrum-SideNav">{renderSubtree(page.pages, level + 1)}</ul>}
           </li>
         );
       }
     });
 
-  return <ul className="spectrum-SideNav spectrum-SideNav--multiLevel">{renderSubtree(siteMetadata.subPages)}</ul>;
+  return (
+    <nav
+      role="Navigation"
+      aria-label="Primary"
+      css={css`
+        margin-top: var(--spectrum-global-dimension-static-size-800);
+        padding: var(--spectrum-global-dimension-static-size-400);
+      `}>
+      <ul role="tree" aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
+        {renderSubtree(siteMetadata.subPages, 1)}
+      </ul>
+    </nav>
+  );
 };

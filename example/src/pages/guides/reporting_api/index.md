@@ -1,3 +1,12 @@
+---
+title: Guides - Adobe Analytics
+description: This is the guides reporting overview page of Adobe Analytics 
+contributors:
+  - https://github.com/icaraps
+  - https://github.com/macdonst
+  - https://github.com/simonwex
+---
+
 # Reporting API
 
 The `/reports` endpoint is the primary endpoint for reporting requests. In order to provide maximum flexibility,

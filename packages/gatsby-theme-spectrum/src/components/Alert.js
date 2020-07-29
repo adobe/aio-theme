@@ -11,20 +11,43 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/core';
+import * as Icons from './Icons';
 import PropTypes from 'prop-types';
 
-const Alert = ({ variant, title, text }) => {
+import '@spectrum-css/alert';
+
+const Alert = ({ variant = 'info', text }) => {
+  const Icon = Icons[`${variant.charAt(0).toUpperCase()}${variant.slice(1)}Medium`];
+
   return (
-    <div variant={variant}>
-      {title}
-      {text}
+    <div
+      role="alert"
+      variant={variant}
+      className={`spectrum-Alert spectrum-Alert--${variant}`}
+      css={css`
+        width: 100%;
+      `}>
+      <Icon className="spectrum-Alert-icon" />
+      <div
+        className="spectrum-Alert-content"
+        css={css`
+          margin-top: 0;
+          margin-right: var(--spectrum-global-dimension-static-size-400);
+        `}>
+        {React.cloneElement(text, {
+          className: ' ',
+          css: css`
+            margin: 0 !important;
+          `
+        })}
+      </div>
     </div>
   );
 };
 
 Alert.propTypes = {
   variant: PropTypes.string,
-  title: PropTypes.element,
   text: PropTypes.element
 };
 

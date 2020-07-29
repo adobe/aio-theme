@@ -45,7 +45,11 @@ const Resources = ({ heading, links }) => {
               css={css`
                 margin-top: var(--spectrum-global-dimension-static-size-200);
               `}>
-              <Link href={link.props.href} target="_blank" rel="nofollow noopener noreferrer" className="spectrum-Link">
+              <Link
+                href={link.props.href}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="spectrum-Link spectrum-Link--quiet">
                 <span
                   css={css`
                     display: inline-flex;

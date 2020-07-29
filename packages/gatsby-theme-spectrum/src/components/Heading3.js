@@ -18,16 +18,24 @@ import { Link } from './Link';
 
 export const Heading3 = ({ children, className, id, ...props }) => (
   <>
+    <span
+      aria-hidden="true"
+      id={id}
+      css={css`
+        position: relative;
+        top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
+      `}></span>
     <h3
       {...props}
       className={classNames(className, 'spectrum-Heading--M')}
       css={css`
         & a {
-          visibility: hidden;
+          opacity: 0;
+          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
         }
 
         &:hover a {
-          visibility: visible;
+          opacity: 1;
         }
       `}>
       {children}

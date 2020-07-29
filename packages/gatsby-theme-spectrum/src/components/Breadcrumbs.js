@@ -34,7 +34,7 @@ export const Breadcrumbs = () => {
   selectedBreadcrumbPages = selectedBreadcrumbPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
   return (
-    <nav>
+    <nav aria-label="Breadcrumb" role="navigation">
       <ul
         className="spectrum-Breadcrumbs"
         css={css`

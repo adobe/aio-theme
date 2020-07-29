@@ -21,6 +21,10 @@ const findSelectedTopPage = (pathname, pages) => {
   return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
 };
 
+const findSelectedPage = (pathname, pages) => {
+  return pages.find((page) => pathname === withPrefix(page.path));
+};
+
 const findSelectedPages = (pathname, pages) => {
   let selectedPages = [];
 
@@ -65,18 +69,14 @@ const flattenPages = (pages) => {
   return flat.filter((page, index) => page.path && page.path !== flat[index + 1]?.path);
 };
 
-const findSelectedPageNext = (pathname, pages) => {
+const findSelectedPageNextPrev = (pathname, pages) => {
   const flat = flattenPages(pages);
   const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
 
-  return flat[flat.indexOf(selectedPage) + 1];
-};
-
-const findSelectedPagePrevious = (pathname, pages) => {
-  const flat = flattenPages(pages);
-  const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
-
-  return flat[flat.indexOf(selectedPage) + -1];
+  return {
+    next: flat[flat.indexOf(selectedPage) + 1],
+    prev: flat[flat.indexOf(selectedPage) - 1]
+  };
 };
 
 const findSelectedPageSiblings = (pathname, pages) => {
@@ -86,7 +86,7 @@ const findSelectedPageSiblings = (pathname, pages) => {
     if (page.pages) {
       const selectedPage = page.pages.find((subPage) => withPrefix(subPage.path) === pathname);
       if (selectedPage) {
-        siblings = page.pages;
+        siblings = [...page.pages];
       } else {
         page.pages.forEach(find);
       }
@@ -103,9 +103,9 @@ const findSelectedPageSiblings = (pathname, pages) => {
 export {
   layoutColumns,
   findSelectedTopPage,
+  findSelectedPage,
   findSelectedPages,
   flattenPages,
-  findSelectedPageNext,
-  findSelectedPagePrevious,
+  findSelectedPageNextPrev,
   findSelectedPageSiblings
 };

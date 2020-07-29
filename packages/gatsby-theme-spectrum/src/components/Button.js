@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '@spectrum-css/button';
 
-const Button = ({ children, elementType = 'button', variant, isQuiet, className, ...props }) => {
+const Button = ({ children, elementType = 'button', variant = 'primary', isQuiet, className, ...props }) => {
   const Element = elementType;
   if (elementType === 'a') {
     props.role = 'button';

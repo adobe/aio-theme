@@ -20,6 +20,7 @@ const imageWidth = '100px';
 
 const ContentBlock = ({ width, heading, link, text, image }) => (
   <div
+    className={width === '100%' ? 'is-block' : ''}
     css={css`
       ${image
         ? `
@@ -36,6 +37,11 @@ const ContentBlock = ({ width, heading, link, text, image }) => (
             'var(--spectrum-global-dimension-static-size-400)',
             'var(--spectrum-global-dimension-static-size-400)'
           ])};
+
+      &:not(.is-block) {
+        height: 176px;
+        vertical-align: bottom;
+      }
     `}>
     {image &&
       React.cloneElement(image, {

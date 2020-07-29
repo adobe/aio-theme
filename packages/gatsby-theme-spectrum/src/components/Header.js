@@ -66,8 +66,10 @@ export const Header = () => {
       positionSelectedTabIndicator(location.pathname, tabs);
       setIsAnimated(true);
     });
+  }, [location.pathname]);
 
-    document.addEventListener('click', (event) => {
+  useEffect(() => {
+    const onClick = (event) => {
       if (globalNav.menus.length) {
         if (!primaryPopover.current.contains(event.target)) {
           setOpenPrimaryMenu(false);
@@ -79,17 +81,22 @@ export const Header = () => {
           setOpenSecondaryMenu(false);
         }
       }
-    });
-  }, [location.pathname]);
+    };
+
+    document.addEventListener('click', onClick);
+
+    return () => document.removeEventListener('click', onClick);
+  }, []);
 
   return (
     <header
+      role="banner"
       css={css`
         ${stretched};
         border-bottom: var(--spectrum-global-dimension-static-size-10) solid var(--spectrum-global-color-gray-200);
         box-sizing: border-box;
       `}>
-      <nav css={stretched}>
+      <nav css={stretched} role="navigation" aria-label="Global">
         <Grid
           areas={['title navigation console profile']}
           columns={['minmax(256px, max-content)', 'auto', 'size-1200', 'size-1200']}
@@ -123,6 +130,7 @@ export const Header = () => {
               </View>
               {globalNav.menus.slice(0, 2).map((menu, index) => {
                 const isPrimary = index === 0;
+                const id = new Date().getTime();
 
                 return (
                   menu.title && (
@@ -159,6 +167,8 @@ export const Header = () => {
                             { 'is-selected': isPrimary ? openPrimaryMenu : openSecondaryMenu }
                           )}
                           aria-haspopup="listbox"
+                          aria-expanded={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                          aria-controls={id}
                           onClick={(event) => {
                             event.stopPropagation();
                             event.nativeEvent.stopImmediatePropagation();
@@ -177,6 +187,8 @@ export const Header = () => {
                       </div>
                       <div
                         ref={isPrimary ? primaryPopover : secondaryPopover}
+                        id={id}
+                        aria-hidden={isPrimary ? !openPrimaryMenu : !openSecondaryMenu}
                         className={classNames(
                           'spectrum-Popover',
                           'spectrum-Popover--bottom',
@@ -268,20 +280,22 @@ export const Header = () => {
             </Flex>
           </View>
           <View gridArea="navigation" marginStart="size-200">
-            <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal">
+            <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal" role="tablist">
               {pages.slice(0, 4).map((page, index) => {
                 const { title, path } = page;
                 const ref = createRef();
                 tabs.push(ref);
 
+                const isActive = ({ isPartiallyCurrent }) =>
+                  isPartiallyCurrent
+                    ? {
+                        'aria-selected': 'true',
+                        className: 'is-selected spectrum-Tabs-item'
+                      }
+                    : { className: 'spectrum-Tabs-item' };
+
                 return (
-                  <GatsbyLink
-                    key={index}
-                    ref={ref}
-                    to={path}
-                    partiallyActive={true}
-                    className="spectrum-Tabs-item"
-                    activeClassName="is-selected">
+                  <GatsbyLink role="tab" getProps={isActive} key={index} ref={ref} to={path} partiallyActive={true}>
                     <span className="spectrum-Tabs-itemLabel">{title}</span>
                   </GatsbyLink>
                 );

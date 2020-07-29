@@ -14,7 +14,7 @@ import React, { useContext } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/core';
 import Context from './Context';
-import { layoutColumns, findSelectedPagePrevious, findSelectedPageNext, findSelectedPageSiblings } from './utils';
+import { layoutColumns, findSelectedPage, findSelectedPageSiblings } from './utils';
 
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
@@ -39,6 +39,9 @@ import { Feedback } from './Feedback';
 import { Alert } from './Alert';
 import { GitHubActions } from './GitHubActions';
 import { Breadcrumbs } from './Breadcrumbs';
+import { OnThisPage } from './OnThisPage';
+import { NextSteps } from './NextSteps';
+import { NextPrev } from './NextPrev';
 
 const customComponents = {
   Hero,
@@ -105,6 +108,16 @@ const filterChildren = (children) => {
     childrenArray = childrenArray.splice(ignoredChildrenCount);
   }
 
+  if (!heroChild) {
+    const heading1 = filteredChildren.find((child) => child?.props?.mdxType === 'h1');
+    const heading1Index = filteredChildren.indexOf(heading1);
+    const heading1Next = filteredChildren[heading1Index + 1];
+    if (heading1) {
+      // TODO
+      filteredChildren.splice(heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1), 0, <OnThisPage />);
+    }
+  }
+
   return {
     filteredChildren,
     heroChild,
@@ -114,13 +127,13 @@ const filterChildren = (children) => {
 
 export default ({ children, pageContext }) => {
   const { filteredChildren, heroChild, resourcesChild } = filterChildren(children);
-  const { hasSideNav, siteMetadata, allMdx, allSitePage, location } = useContext(Context);
+  const { hasSideNav, siteMetadata, location } = useContext(Context);
 
-  console.log(findSelectedPagePrevious(location.pathname, siteMetadata.subPages));
-  console.log(findSelectedPageNext(location.pathname, siteMetadata.subPages));
-  console.log(findSelectedPageSiblings(location.pathname, siteMetadata.subPages));
-  console.log(allMdx);
-  console.log(allSitePage);
+  const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
+  const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
+
+  const isGuides = hasSideNav && typeof heroChild === 'undefined';
+  const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
   return (
     <MDXProvider components={mdxComponents}>
@@ -133,13 +146,13 @@ export default ({ children, pageContext }) => {
         <Flex>
           <article
             css={css`
-              width: ${layoutColumns(9, [
+              width: ${layoutColumns(isGuides ? 7 : 9, [
                 'var(--spectrum-global-dimension-static-size-400)',
                 'var(--spectrum-global-dimension-static-size-200)',
                 'var(--spectrum-global-dimension-static-size-100)'
               ])};
             `}>
-            {hasSideNav && typeof heroChild === 'undefined' && (
+            {isGuides && (
               <Flex marginTop="size-400" gap="size-400">
                 <View>
                   <Breadcrumbs />
@@ -150,6 +163,8 @@ export default ({ children, pageContext }) => {
               </Flex>
             )}
             {filteredChildren}
+            {isGuides && isFirstSubPage && <NextSteps />}
+            {isGuides && <NextPrev />}
             <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
               <View>
                 {pageContext.frontmatter.contributors && (

@@ -120,9 +120,7 @@ export default ({ children, pageContext, location }) => {
             zIndex="1"
             width="256px"
             height="100%">
-            <View elementType="nav" marginTop="size-800" padding="size-400">
-              <SideNav />
-            </View>
+            <SideNav />
           </View>
           <View gridArea="main">
             <main
