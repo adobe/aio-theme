@@ -32,7 +32,7 @@ You can also create reports to explore, get insights, or answer important questi
 
 ## Discover 
 
-<ContentBlock width="100%" slots="heading, link, text"/>
+<DiscoverBlock width="100%" slots="heading, link, text"/>
 
 ### Get Started
 
@@ -40,7 +40,7 @@ You can also create reports to explore, get insights, or answer important questi
     
 Get started with the Adobe Analytics APIs.
 
-<ContentBlock slots="heading, link, text"/> 
+<DiscoverBlock slots="heading, link, text"/> 
 
 ### Guides
 
@@ -48,19 +48,19 @@ Get started with the Adobe Analytics APIs.
      
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
-<ContentBlock slots="link, text"/>
+<DiscoverBlock slots="link, text"/>
 
 [Segments API](https://adobe.io) 
 
 Provides configuration guidance and best practices for the /segments endpoint.
 
-<ContentBlock slots="link, text"/>
+<DiscoverBlock slots="link, text"/>
 
 [Reporting Guide API](https://adobe.io)
 
 Provides configuration guidance and best practices for the /reports endpoint.  
 
-<ContentBlock width="100%" slots="heading, link, text"/>
+<DiscoverBlock width="100%" slots="heading, link, text"/>
 
 ### API References
 

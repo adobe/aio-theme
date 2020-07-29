@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedPages } from './utils';
+import { findSubPages, findSelectedPages } from './utils';
 import Context from './Context';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
@@ -48,7 +48,7 @@ export const SideNav = () => {
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
       <ul role="tree" aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
-        {renderSubtree(siteMetadata.subPages, 1)}
+        {renderSubtree(findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages), 1)}
       </ul>
     </nav>
   );

@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 
 const imageWidth = '100px';
 
-const ContentBlock = ({ width, heading, link, text, image }) => (
+const DiscoverBlock = ({ width, heading, link, text, image }) => (
   <div
     className={width === '100%' ? 'is-block' : ''}
     css={css`
@@ -65,7 +65,7 @@ const ContentBlock = ({ width, heading, link, text, image }) => (
   </div>
 );
 
-ContentBlock.propTypes = {
+DiscoverBlock.propTypes = {
   width: PropTypes.string,
   heading: PropTypes.element,
   text: PropTypes.element,
@@ -73,4 +73,4 @@ ContentBlock.propTypes = {
   link: PropTypes.element
 };
 
-export { ContentBlock };
+export { DiscoverBlock };

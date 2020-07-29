@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
-import { useStaticQuery, graphql, withPrefix } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import { findSubPages } from './utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -90,9 +91,7 @@ export default ({ children, pageContext, location }) => {
   const allMdx = data.allMdx;
   const allSitePage = data.allSitePage;
   const siteMetadata = data.site.siteMetadata;
-  const hasSideNav = siteMetadata.subPages.some(
-    (page) => page.path && location.pathname.startsWith(withPrefix(page.path))
-  );
+  const hasSideNav = findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages).length > 0;
 
   return (
     <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx }}>

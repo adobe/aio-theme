@@ -105,6 +105,14 @@ module.exports = {
       {
         title: 'Migrating',
         path: '/guides/migrating/'
+      },
+      {
+        title: 'FAQ',
+        path: '/support/FAQ/'
+      },
+      {
+        title: 'How to contribute',
+        path: '/support/contribute/'
       }
     ],
     github: {

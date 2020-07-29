@@ -9,45 +9,35 @@ contributors:
 
 <Hero slots="heading, text" background="rgb(19, 93, 183)"/>
 
-# TODO Support
+# Support
 
 Learn where to ask questions, report bugs, make feature requests, and spark discussions.
 
 ## Feedback
 
-You've got a place to join the conversation.
+You've got a place to start discussions.
 
-<ContentBlock slots="link, text"/>
+<DiscoverBlock slots="image, heading, link, text" width="100%"/>
 
-[Developer Forums](https://adobe.io)
+![Adobe Experience Cloud](experience_cloud.png)
+
+### Developer forum
+
+[Get started](https://adobe.io)
 
 Open discussion and support with community experts and Adobe staff.
-
-<ContentBlock slots="link, text"/>
-
-[Stack Overflow](https://adobe.io)
-
-Developer Q&A using a specific tag.
-
-<ContentBlock slots="link, text"/>
-
-[Stack Overflow](https://adobe.io)
-
-Developer Q&A using a specific tag.
 
 ## Community
 
 You've got a place to join the conversation.
 
-<ContentBlock slots="link, text"/>
+<DiscoverBlock slots="image, heading, link, text" width="100%"/>
 
-[Developer Forums](https://adobe.io)
+![Stack Overflow](stack-overflow.png)
 
-Open discussion and support with community experts and Adobe staff.
+### Stack Overflow
 
-<ContentBlock slots="link, text"/>
-
-[Stack Overflow](https://adobe.io)
+[Explore](https://adobe.io)
 
 Developer Q&A using a specific tag.
 

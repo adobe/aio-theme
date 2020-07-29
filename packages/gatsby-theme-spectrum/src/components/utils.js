@@ -21,6 +21,11 @@ const findSelectedTopPage = (pathname, pages) => {
   return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
 };
 
+const findSubPages = (pathname, pages, subPages) => {
+  const selectedTopPage = findSelectedTopPage(pathname, pages);
+  return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage.path)));
+};
+
 const findSelectedPage = (pathname, pages) => {
   return pages.find((page) => pathname === withPrefix(page.path));
 };
@@ -102,6 +107,7 @@ const findSelectedPageSiblings = (pathname, pages) => {
 
 export {
   layoutColumns,
+  findSubPages,
   findSelectedTopPage,
   findSelectedPage,
   findSelectedPages,

@@ -33,7 +33,7 @@ import { Image } from './Image';
 import { Footer } from './Footer';
 import { Resources } from './Resources';
 import { Hero } from './Hero';
-import { ContentBlock } from './ContentBlock';
+import { DiscoverBlock } from './DiscoverBlock';
 import { Contributors } from './Contributors';
 import { Feedback } from './Feedback';
 import { Alert } from './Alert';
@@ -45,7 +45,7 @@ import { NextPrev } from './NextPrev';
 
 const customComponents = {
   Hero,
-  ContentBlock,
+  DiscoverBlock,
   Resources,
   Alert
 };
