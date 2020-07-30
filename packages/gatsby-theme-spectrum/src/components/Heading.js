@@ -11,119 +11,74 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core'
-import classNames from 'classnames'
-import '@spectrum-css/typography'
-import { Divider } from '@react-spectrum/divider'
-import { Link } from './Link'
+import { css } from '@emotion/core';
+import classNames from 'classnames';
+import '@spectrum-css/typography';
+import { Divider } from '@react-spectrum/divider';
+import { Link } from './Link';
 
-export const Heading1 = ({ children, id, className, css: styles, ...props }) => (
-  <>
-    <span
-      aria-hidden="true"
-      id={id}
-      css={css`
-        position: relative;
-        top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
-      `}></span>
-    <h1
-      {...props}
-      className={className ?? 'spectrum-Heading--XL spectrum-Heading--light'}
-      css={css`
-        ${styles}
-        & + p {
+const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
+
+const Anchor = ({ id }) => (
+  <span
+    aria-hidden="true"
+    id={id}
+    css={css`
+      position: relative;
+      top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
+    `}
+  />
+);
+
+const createHeading = (level, { id, children, className, css: styles, ...props }) => {
+  const HeadingTag = `h${level}`;
+  const isHeading1 = level === 1;
+  const isHeading2 = level === 2;
+
+  return (
+    <>
+      {!isHeading1 && <Anchor />}
+      <HeadingTag
+        {...props}
+        className={classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
+          'spectrum-Heading--XL': isHeading1
+        })}
+        css={css`
+          ${isHeading1
+            ? `& + p {
           margin-top: var(--spectrum-global-dimension-static-size-300) !important;
           font-size: var(--spectrum-global-dimension-static-size-225);
-        }
-      `}>
-      {children}
-    </h1>
-  </>
-);
-
-export const Heading2 = ({ children, className, id, ...props }) => (
-  <>
-    <span
-      aria-hidden="true"
-      id={id}
-      css={css`
-        position: relative;
-        top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
-      `}></span>
-    <h2
-      {...props}
-      className={classNames(className, 'spectrum-Heading--L')}
-      css={css`
-        & a {
+        }`
+            : `& a {
           opacity: 0;
           transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
         }
 
         &:hover a {
           opacity: 1;
-        }
-      `}>
-      {children}
-      <Link
-        href={`#${id}`}
-        css={css`
-          margin-inline-start: var(--spectrum-global-dimension-static-size-100);
+        }`}
+
+          ${styles}
         `}>
-        #
-      </Link>
-    </h2>
-    <Divider marginBottom="size-300" />
-  </>
-);
+        {children}
+        {!isHeading1 && (
+          <Link
+            href={`#${id}`}
+            css={css`
+              margin-inline-start: var(--spectrum-global-dimension-static-size- ${isHeading2 ? '100' : '50'});
+            `}>
+            #
+          </Link>
+        )}
+      </HeadingTag>
+      {isHeading2 && <Divider marginBottom="size-300" />}
+    </>
+  );
+};
 
-export const Heading3 = ({ children, className, id, ...props }) => (
-  <>
-    <span
-      aria-hidden="true"
-      id={id}
-      css={css`
-        position: relative;
-        top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
-      `}></span>
-    <h3
-      {...props}
-      className={classNames(className, 'spectrum-Heading--M')}
-      css={css`
-        & a {
-          opacity: 0;
-          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-        }
-
-        &:hover a {
-          opacity: 1;
-        }
-      `}>
-      {children}
-      <Link
-        css={css`
-          margin-inline-start: var(--spectrum-global-dimension-static-size-50);
-        `}
-        href={`#${id}`}>
-        #
-      </Link>
-    </h3>
-  </>
-);
-
-export const Heading4 = ({ children, className, ...props }) => (
-  <h4 {...props} className={className ?? 'spectrum-Heading--S'}>
-    {children}
-  </h4>
-);
-
-export const Heading5 = ({ children, className, ...props }) => (
-  <h5 {...props} className={className ?? 'spectrum-Heading--XS'}>
-    {children}
-  </h5>
-);
-
-export const Heading6 = ({ children, className, ...props }) => (
-  <h4 {...props} className={className ?? 'spectrum-Heading--XXS'}>
-    {children}
-  </h4>
-);
+export const Heading1 = (props) => createHeading(1, props);
+export const Heading2 = (props) => createHeading(2, props);
+export const Heading3 = (props) => createHeading(3, props);
+export const Heading4 = (props) => createHeading(4, props);
+export const Heading5 = (props) => createHeading(5, props);
+export const Heading6 = (props) => createHeading(6, props);

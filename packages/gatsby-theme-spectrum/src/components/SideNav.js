@@ -7,8 +7,9 @@ import '@spectrum-css/sidenav';
 
 const SideNav = ({ selectedPages, selectedSubPages }) => {
   const renderSubtree = (pages, level) =>
-    pages.map((page, index) => {
-      if (page.title && page.path) {
+    pages
+      .filter((page) => page.title && page.path)
+      .map((page, index) => {
         const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
 
         return (
@@ -31,8 +32,7 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
             {page.pages && <ul className="spectrum-SideNav">{renderSubtree(page.pages, level + 1)}</ul>}
           </li>
         );
-      }
-    });
+      });
 
   return (
     <nav

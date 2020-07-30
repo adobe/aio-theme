@@ -25,8 +25,6 @@ const OnThisPage = ({ tableOfContents }) => {
 
   const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
 
-  let activeHeadingLinks = [];
-
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -43,6 +41,7 @@ const OnThisPage = ({ tableOfContents }) => {
 
   useEffect(() => {
     const observers = [];
+    let activeHeadingLinks = [];
     const headingLinks = Array.from(document.querySelectorAll('h2 a, h3 a'));
     const findActiveHeadingLink = () => {
       let activeHref = null;
@@ -54,6 +53,8 @@ const OnThisPage = ({ tableOfContents }) => {
             activeHref = href;
             return true;
           }
+
+          return false;
         });
       });
 
