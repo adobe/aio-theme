@@ -10,8 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-// todo use https://www.gatsbyjs.org/docs/gatsby-link/ and check https://www.gatsbyjs.org/docs/path-prefix/
-
 import React from 'react';
 import '@spectrum-css/link';
 import classNames from 'classnames';

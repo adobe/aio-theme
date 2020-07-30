@@ -143,7 +143,7 @@ const OnThisPage = ({ tableOfContents }) => {
   );
 
   return tableOfContentsItems ? (
-    <React.Fragment>
+    <>
       <div ref={outlineRef}>
         <Outline />
       </div>
@@ -169,7 +169,7 @@ const OnThisPage = ({ tableOfContents }) => {
         `}>
         <Outline withSubHeading={true} />
       </aside>
-    </React.Fragment>
+    </>
   ) : null;
 };
 
