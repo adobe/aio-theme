@@ -70,7 +70,7 @@ module.exports = {
       path: ''
     },
     github: {
-      repository: 'adobe/gatsby-theme-spectrum',
+      repository: 'adobe/gatsby-theme-parliament',
       branch: 'main'
     }
   },

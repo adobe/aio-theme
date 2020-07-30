@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/adobe/gatsby-theme-spectrum-example"
+    "url": "https://github.com/adobe/gatsby-theme-parliament-example"
   },
   "author": {
     "name": "Stephan Ringel",
@@ -15,7 +15,7 @@
     "gatsby": "^2.23.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "@adobe/gatsby-theme-spectrum": "*"
+    "@adobe/gatsby-theme-parliament": "*"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",

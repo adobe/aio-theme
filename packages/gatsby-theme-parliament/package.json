@@ -1,12 +1,12 @@
 {
-  "name": "@adobe/gatsby-theme-spectrum",
-  "version": "0.0.7",
+  "name": "@adobe/gatsby-theme-parliament",
+  "version": "0.0.1",
   "description": "Gatsby theme for building sites with the Spectrum look and feel",
   "main": "index.js",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/adobe/gatsby-theme-spectrum"
+    "url": "https://github.com/adobe/gatsby-theme-parliament"
   },
   "author": {
     "name": "Stephan Ringel",
