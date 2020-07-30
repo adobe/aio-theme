@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
-import { findSubPages } from './utils';
+import { findSelectedPages, findSubPages } from './utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -91,7 +91,14 @@ export default ({ children, pageContext, location }) => {
   const allMdx = data.allMdx;
   const allSitePage = data.allSitePage;
   const siteMetadata = data.site.siteMetadata;
-  const hasSideNav = findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages).length > 0;
+
+  const globalNav = siteMetadata.globalNav;
+  const pages = siteMetadata.pages;
+  const docs = siteMetadata.docs;
+
+  const selectedPages = findSelectedPages(location.pathname, siteMetadata.subPages);
+  const selectedSubPages = findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages);
+  const hasSideNav = selectedSubPages.length > 0;
 
   return (
     <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx }}>
@@ -109,7 +116,7 @@ export default ({ children, pageContext, location }) => {
             right="size-0"
             backgroundColor="gray-50"
             zIndex="2">
-            <Header />
+            <Header globalNav={globalNav} pages={pages} docs={docs} location={location} />
           </View>
           <View
             backgroundColor="gray-75"
@@ -119,7 +126,7 @@ export default ({ children, pageContext, location }) => {
             zIndex="1"
             width="256px"
             height="100%">
-            <SideNav />
+            <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} />
           </View>
           <View gridArea="main">
             <main

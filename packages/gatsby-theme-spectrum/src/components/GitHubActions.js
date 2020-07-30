@@ -11,30 +11,23 @@ import { graphql, useStaticQuery } from 'gatsby';
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext } from 'react';
-import { withPrefix } from 'gatsby';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex } from '@react-spectrum/layout';
 import { ActionButton, Text } from './ActionButton';
 import { Bug, Edit } from './Icons';
 import { css } from '@emotion/core';
-import Context from './Context';
 
-export const GitHubActions = () => {
-  const { siteMetadata, location, allSitePage } = useContext(Context);
-  const { repository, branch } = siteMetadata.github;
-
-  const { componentPath } = allSitePage.nodes.find((page) => withPrefix(page.path) === location.pathname);
-  const path = componentPath.replace(/.*\/src\/pages\//g, '');
-
+const GitHubActions = ({ repository, branch, pagePath }) => {
   return (
     <Flex>
-      <ActionButton isQuiet href={`https://github.com/${repository}/edit/${branch}/src/pages/${path}`}>
+      <ActionButton isQuiet href={`https://github.com/${repository}/edit/${branch}/src/pages/${pagePath}`}>
         <Edit />
         <Text>Edit in Github</Text>
       </ActionButton>
 
       <ActionButton
-        href={`https://github.com/${repository}/issues/new?body=Issue%20in%20/src/pages/${path}`}
+        href={`https://github.com/${repository}/issues/new?body=Issue%20in%20/src/pages/${pagePath}`}
         isQuiet
         css={css`
           margin-inline-start: var(--spectrum-global-dimension-static-size-100);
@@ -45,3 +38,11 @@ export const GitHubActions = () => {
     </Flex>
   );
 };
+
+GitHubActions.propTypes = {
+  repository: PropTypes.string,
+  branch: PropTypes.string,
+  pagePath: PropTypes.string
+};
+
+export { GitHubActions };

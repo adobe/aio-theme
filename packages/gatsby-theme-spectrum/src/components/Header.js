@@ -10,7 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext, useRef, useEffect, useState, createRef } from 'react';
+import React, { useRef, useEffect, useState, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { findSelectedTopPage } from './utils';
 import { css } from '@emotion/core';
@@ -27,14 +28,12 @@ import '@spectrum-css/icon';
 import '@spectrum-css/dropdown';
 import '@spectrum-css/popover';
 import '@spectrum-css/assetlist';
-import Context from './Context';
 
 const stretched = css`
   height: 100%;
 `;
 
-export const Header = () => {
-  const { siteMetadata, location } = useContext(Context);
+const Header = ({ globalNav, pages, docs, location }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   const [tabs] = useState([]);
@@ -43,10 +42,6 @@ export const Header = () => {
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
-
-  const globalNav = siteMetadata.globalNav;
-  const pages = siteMetadata.pages;
-  const docs = siteMetadata.docs;
 
   const positionSelectedTabIndicator = (path, tabs) => {
     const selectedTab = tabs[pages.indexOf(findSelectedTopPage(location.pathname, pages))];
@@ -335,3 +330,12 @@ export const Header = () => {
     </header>
   );
 };
+
+Header.propTypes = {
+  globalNav: PropTypes.object,
+  pages: PropTypes.array,
+  docs: PropTypes.object,
+  location: PropTypes.object
+};
+
+export { Header };

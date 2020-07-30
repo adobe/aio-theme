@@ -10,23 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { withPrefix } from 'gatsby';
+import React, { useEffect, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import { Link } from './Link';
 import '@spectrum-css/typography';
-import Context from './Context';
 import { layoutColumns } from './utils';
 
-const OnThisPage = () => {
+const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');
   const [isPinned, setIsPinned] = useState(false);
   const outlineRef = useRef(null);
-  const { location, allMdx, allSitePage } = useContext(Context);
 
-  const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
-  const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
   const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
 
   let activeHeadingLinks = [];
@@ -175,6 +171,10 @@ const OnThisPage = () => {
       </aside>
     </React.Fragment>
   ) : null;
+};
+
+OnThisPage.propTypes = {
+  tableOfContents: PropTypes.object
 };
 
 export { OnThisPage };

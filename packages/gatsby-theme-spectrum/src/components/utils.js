@@ -12,25 +12,25 @@
 
 import { withPrefix } from 'gatsby';
 
-const layoutColumns = (columns, gutters = []) =>
+export const layoutColumns = (columns, gutters = []) =>
   `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${
     gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''
   })`;
 
-const findSelectedTopPage = (pathname, pages) => {
+export const findSelectedTopPage = (pathname, pages) => {
   return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
 };
 
-const findSubPages = (pathname, pages, subPages) => {
+export const findSubPages = (pathname, pages, subPages) => {
   const selectedTopPage = findSelectedTopPage(pathname, pages);
   return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage.path)));
 };
 
-const findSelectedPage = (pathname, pages) => {
+export const findSelectedPage = (pathname, pages) => {
   return pages.find((page) => pathname === withPrefix(page.path));
 };
 
-const findSelectedPages = (pathname, pages) => {
+export const findSelectedPages = (pathname, pages) => {
   let selectedPages = [];
 
   const find = (page) => {
@@ -58,7 +58,7 @@ const findSelectedPages = (pathname, pages) => {
   return selectedPages.length ? selectedPages.pop() : [];
 };
 
-const flattenPages = (pages) => {
+export const flattenPages = (pages) => {
   let flat = [];
   const find = (page) => {
     flat.push(page);
@@ -74,17 +74,17 @@ const flattenPages = (pages) => {
   return flat.filter((page, index) => page.path && page.path !== flat[index + 1]?.path);
 };
 
-const findSelectedPageNextPrev = (pathname, pages) => {
+export const findSelectedPageNextPrev = (pathname, pages) => {
   const flat = flattenPages(pages);
   const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
 
   return {
-    next: flat[flat.indexOf(selectedPage) + 1],
-    prev: flat[flat.indexOf(selectedPage) - 1]
+    nextPage: flat[flat.indexOf(selectedPage) + 1],
+    previousPage: flat[flat.indexOf(selectedPage) - 1]
   };
 };
 
-const findSelectedPageSiblings = (pathname, pages) => {
+export const findSelectedPageSiblings = (pathname, pages) => {
   let siblings = [];
 
   const find = (page) => {
@@ -103,15 +103,4 @@ const findSelectedPageSiblings = (pathname, pages) => {
   });
 
   return siblings;
-};
-
-export {
-  layoutColumns,
-  findSubPages,
-  findSelectedTopPage,
-  findSelectedPage,
-  findSelectedPages,
-  flattenPages,
-  findSelectedPageNextPrev,
-  findSelectedPageSiblings
 };

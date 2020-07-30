@@ -11,10 +11,18 @@
  */
 
 import React, { useContext } from 'react';
+import { withPrefix } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/core';
 import Context from './Context';
-import { layoutColumns, findSelectedPage, findSelectedPageSiblings } from './utils';
+import {
+  layoutColumns,
+  findSelectedPage,
+  findSelectedPageSiblings,
+  findSelectedPageNextPrev,
+  findSelectedTopPage,
+  findSelectedPages
+} from './utils';
 
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
@@ -64,7 +72,7 @@ const mdxComponents = {
   ...customComponents
 };
 
-const filterChildren = (children) => {
+const filterChildren = (children, tableOfContents) => {
   let childrenArray = React.Children.toArray(children);
   const filteredChildren = [];
 
@@ -114,7 +122,11 @@ const filterChildren = (children) => {
     const heading1Next = filteredChildren[heading1Index + 1];
     if (heading1) {
       // TODO
-      filteredChildren.splice(heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1), 0, <OnThisPage />);
+      filteredChildren.splice(
+        heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1),
+        0,
+        <OnThisPage tableOfContents={tableOfContents} />
+      );
     }
   }
 
@@ -126,11 +138,34 @@ const filterChildren = (children) => {
 };
 
 export default ({ children, pageContext }) => {
-  const { filteredChildren, heroChild, resourcesChild } = filterChildren(children);
-  const { hasSideNav, siteMetadata, location } = useContext(Context);
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx } = useContext(Context);
 
+  // PrevNext
   const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
   const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
+  const { nextPage, previousPage } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
+
+  // OnThisPage
+  const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
+  const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+
+  // Breadcrumbs
+  const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
+  let selectedSubPages = findSelectedPages(location.pathname, siteMetadata.subPages);
+  const duplicates = [];
+  if (selectedSubPages.length > 2 && selectedSubPages[0].path === selectedSubPages[1]?.path) {
+    duplicates.push(1);
+  }
+  if (selectedSubPages.length > 4 && selectedSubPages[2].path === selectedSubPages[3]?.path) {
+    duplicates.push(3);
+  }
+  selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
+
+  // GithubActions
+  const { repository, branch } = siteMetadata.github;
+  const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
+
+  const { filteredChildren, heroChild, resourcesChild } = filterChildren(children, tableOfContents);
 
   const isGuides = hasSideNav && typeof heroChild === 'undefined';
   const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
@@ -155,16 +190,16 @@ export default ({ children, pageContext }) => {
             {isGuides && (
               <Flex marginTop="size-400" gap="size-400">
                 <View>
-                  <Breadcrumbs />
+                  <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                 </View>
                 <View marginStart="auto">
-                  <GitHubActions />
+                  <GitHubActions repository={repository} branch={branch} pagePath={pagePath} />
                 </View>
               </Flex>
             )}
             {filteredChildren}
-            {isGuides && isFirstSubPage && <NextSteps />}
-            {isGuides && <NextPrev />}
+            {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+            {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
             <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
               <View>
                 {pageContext.frontmatter.contributors && (

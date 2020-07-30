@@ -10,38 +10,34 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import '@spectrum-css/typography';
 import { View } from '@react-spectrum/view';
 import { Flex } from '@react-spectrum/layout';
 import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
 import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
-import { findSelectedPageNextPrev } from './utils';
-import Context from './Context';
 
-export const NextPrev = () => {
-  const { location, siteMetadata } = useContext(Context);
-  const { next, prev } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
-
-  return next || prev ? (
+const NextPrev = ({ nextPage, previousPage }) =>
+  nextPage || previousPage ? (
     <div className="spectrum-Body--M">
       <Flex marginBottom="size-800" marginTop="size-800">
         <View>
-          {prev && (
-            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={prev.path} rel="prev">
+          {previousPage && (
+            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={previousPage.path} rel="prev">
               <Flex alignItems="center" gap="size-100">
                 <ChevronLeft size="S" />
-                {prev.title}
+                {previousPage.title}
               </Flex>
             </GatsbyLink>
           )}
         </View>
         <View marginStart="auto">
-          {next && (
-            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={next.path} rel="next">
+          {nextPage && (
+            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={nextPage.path} rel="next">
               <Flex alignItems="center" gap="size-100">
-                {next.title}
+                {nextPage.title}
                 <ChevronRight size="S" />
               </Flex>
             </GatsbyLink>
@@ -50,4 +46,9 @@ export const NextPrev = () => {
       </Flex>
     </div>
   ) : null;
+
+NextPrev.propTypes = {
+  nextPage: PropTypes.object
 };
+
+export { NextPrev };

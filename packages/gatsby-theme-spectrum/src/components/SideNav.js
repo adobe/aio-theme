@@ -1,20 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSubPages, findSelectedPages } from './utils';
-import Context from './Context';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 
-export const SideNav = () => {
-  const { siteMetadata, location } = useContext(Context);
-
-  const selectedSideNavPages = findSelectedPages(location.pathname, siteMetadata.subPages);
-
+const SideNav = ({ selectedPages, selectedSubPages }) => {
   const renderSubtree = (pages, level) =>
     pages.map((page, index) => {
       if (page.title && page.path) {
-        const isSelected = selectedSideNavPages.find((selectedItem) => selectedItem === page);
+        const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
 
         return (
           <li
@@ -28,7 +23,7 @@ export const SideNav = () => {
             className={classNames([
               'spectrum-SideNav-item',
               { 'is-expanded': isSelected },
-              { 'is-selected': selectedSideNavPages[selectedSideNavPages.length - 1] === page && isSelected }
+              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
             ])}>
             <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
               {page.title}
@@ -48,8 +43,15 @@ export const SideNav = () => {
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
       <ul role="tree" aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
-        {renderSubtree(findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages), 1)}
+        {renderSubtree(selectedSubPages, 1)}
       </ul>
     </nav>
   );
 };
+
+SideNav.propTypes = {
+  selectedPages: PropTypes.array,
+  selectedSubPages: PropTypes.array
+};
+
+export { SideNav };

@@ -10,22 +10,18 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
-import { findSelectedPageSiblings } from './utils';
 import { Heading4 } from './Heading4';
 import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
 import '@spectrum-css/link';
-import Context from './Context';
 import Document from '@spectrum-icons/workflow/Document';
+import PropTypes from 'prop-types';
 
-export const NextSteps = () => {
-  const { location, siteMetadata } = useContext(Context);
-  const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
-
-  return selectedPageSiblings.length > 0 ? (
+const NextSteps = ({ pages }) => {
+  return pages.length > 0 ? (
     <View elementType="nav" marginTop="size-800">
       <Heading4>Next steps</Heading4>
       <ul
@@ -34,7 +30,7 @@ export const NextSteps = () => {
           list-style: none;
           padding: 0;
         `}>
-        {selectedPageSiblings.splice(1).map((page, index) => (
+        {pages.splice(1).map((page, index) => (
           <li
             key={index}
             css={css`
@@ -52,3 +48,9 @@ export const NextSteps = () => {
     </View>
   ) : null;
 };
+
+NextSteps.propTypes = {
+  pages: PropTypes.array
+};
+
+export { NextSteps };
