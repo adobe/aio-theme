@@ -23,7 +23,7 @@ export const findSelectedTopPage = (pathname, pages) => {
 
 export const findSubPages = (pathname, pages, subPages) => {
   const selectedTopPage = findSelectedTopPage(pathname, pages);
-  return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage.path)));
+  return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage?.path)));
 };
 
 export const findSelectedPage = (pathname, pages) => {

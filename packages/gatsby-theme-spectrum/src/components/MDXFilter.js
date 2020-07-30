@@ -27,10 +27,7 @@ import {
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 
-import { Heading1 } from './Heading1';
-import { Heading2 } from './Heading2';
-import { Heading3 } from './Heading3';
-import { Heading4 } from './Heading4';
+import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from './Heading';
 import { Paragraph } from './Paragraph';
 import { List } from './List';
 import { Code } from './Code';
@@ -63,6 +60,8 @@ const mdxComponents = {
   h2: Heading2,
   h3: Heading3,
   h4: Heading4,
+  h5: Heading5,
+  h6: Heading6,
   p: Paragraph,
   ul: List,
   code: Code,

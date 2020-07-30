@@ -13,7 +13,7 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
-import { Heading4 } from './Heading4';
+import { Heading4 } from './Heading';
 import { View } from '@react-spectrum/view';
 import '@spectrum-css/typography';
 import '@spectrum-css/link';
