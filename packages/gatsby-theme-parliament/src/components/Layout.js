@@ -12,7 +12,7 @@ import './Layout.css';
 import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Provider } from './Context';
-import { GlobalHeader } from './Header';
+import { GlobalHeader } from './GlobalHeader';
 import { SEO } from './SEO';
 import { SideNav } from './SideNav';
 

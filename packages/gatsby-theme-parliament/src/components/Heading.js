@@ -37,7 +37,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
 
   return (
     <>
-      {!isHeading1 && <Anchor />}
+      {!isHeading1 && <Anchor id={id} />}
       <HeadingTag
         {...props}
         className={classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
@@ -65,7 +65,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
           <Link
             href={`#${id}`}
             css={css`
-              margin-inline-start: var(--spectrum-global-dimension-static-size- ${isHeading2 ? '100' : '50'});
+              margin-inline-start: var(--spectrum-global-dimension-static-size-${isHeading2 ? '100' : '50'});
             `}>
             #
           </Link>
