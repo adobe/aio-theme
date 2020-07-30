@@ -12,7 +12,7 @@ import './Layout.css';
 import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Provider } from './Context';
-import { Header } from './Header';
+import { GlobalHeader } from './Header';
 import { SEO } from './SEO';
 import { SideNav } from './SideNav';
 
@@ -116,7 +116,7 @@ export default ({ children, pageContext, location }) => {
             right="size-0"
             backgroundColor="gray-50"
             zIndex="2">
-            <Header globalNav={globalNav} pages={pages} docs={docs} location={location} />
+            <GlobalHeader globalNav={globalNav} pages={pages} docs={docs} location={location} />
           </View>
           <View
             backgroundColor="gray-75"

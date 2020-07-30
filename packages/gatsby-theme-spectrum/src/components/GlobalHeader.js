@@ -33,7 +33,7 @@ const stretched = css`
   height: 100%;
 `;
 
-const Header = ({ globalNav, pages, docs, location }) => {
+const GlobalHeader = ({ globalNav, pages, docs, location }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   const [tabs] = useState([]);
@@ -331,11 +331,11 @@ const Header = ({ globalNav, pages, docs, location }) => {
   );
 };
 
-Header.propTypes = {
+GlobalHeader.propTypes = {
   globalNav: PropTypes.object,
   pages: PropTypes.array,
   docs: PropTypes.object,
   location: PropTypes.object
 };
 
-export { Header };
+export { GlobalHeader };
