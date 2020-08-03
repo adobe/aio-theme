@@ -22,7 +22,7 @@ import PropTypes from 'prop-types';
 
 const NextSteps = ({ pages }) => {
   return pages.length > 0 ? (
-    <View elementType="nav" marginTop="size-800">
+    <View marginTop="size-800">
       <Heading4>Next steps</Heading4>
       <ul
         className="spectrum-Body--M"

@@ -72,7 +72,10 @@ const OnThisPage = ({ tableOfContents }) => {
           }
         }
 
-        setActiveHeadingLink(findActiveHeadingLink());
+        const activeHeadingLink = findActiveHeadingLink();
+        if (activeHeadingLink) {
+          setActiveHeadingLink(findActiveHeadingLink());
+        }
       });
 
       observer.observe(headingLink);

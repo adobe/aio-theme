@@ -48,7 +48,8 @@ const NextPrev = ({ nextPage, previousPage }) =>
   ) : null;
 
 NextPrev.propTypes = {
-  nextPage: PropTypes.object
+  nextPage: PropTypes.object,
+  previousPage: PropTypes.object
 };
 
 export { NextPrev };

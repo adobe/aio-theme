@@ -48,8 +48,7 @@ const Resources = ({ heading, links }) => {
               <Link
                 href={link.props.href}
                 target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="spectrum-Link spectrum-Link--quiet">
+                rel="nofollow noopener noreferrer">
                 <span
                   css={css`
                     display: inline-flex;
