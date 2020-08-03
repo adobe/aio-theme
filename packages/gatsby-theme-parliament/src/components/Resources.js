@@ -38,6 +38,11 @@ const Resources = ({ heading, links }) => {
         `}>
         {React.Children.toArray(links.props.children).map((item, i) => {
           const link = React.Children.toArray(item.props.children)[0];
+          const isExternalLink = link.props.href.startsWith('http://') || link.props.href.startsWith('https://');
+          const externalLinkProps = isExternalLink ? {
+            target: "_blank",
+            rel: "nofollow noopener noreferrer"
+          } : {};
 
           return (
             <li
@@ -45,10 +50,7 @@ const Resources = ({ heading, links }) => {
               css={css`
                 margin-top: var(--spectrum-global-dimension-static-size-200);
               `}>
-              <Link
-                href={link.props.href}
-                target="_blank"
-                rel="nofollow noopener noreferrer">
+              <Link href={link.props.href} {...externalLinkProps}>
                 <span
                   css={css`
                     display: inline-flex;
@@ -56,7 +58,7 @@ const Resources = ({ heading, links }) => {
                   `}>
                   {link.props.children}
                 </span>
-                <LinkOut size="XS" />
+                {isExternalLink && <LinkOut size="XS" />}
               </Link>
             </li>
           );
