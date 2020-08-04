@@ -110,6 +110,22 @@ module.exports = {
         rehypePlugins: [require(`rehype-slug`)],
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]
       }
+    },
+    {
+      resolve: `gatsby-source-github-file-contributors`,
+      options: {
+        pages: {
+          prefix: 'example',
+          paths: ['src/pages'],
+          extensions: ['md']
+        },
+        repo: {
+          token: process.env.GITHUB_TOKEN,
+          owner: process.env.GITHUB_REPO_OWNER || 'adobe',
+          name: process.env.GITHUB_REPO_NAME || 'gatsby-theme-parliament',
+          branch: process.env.GITHUB_REPO_BRANCH || 'main'
+        }
+      }
     }
   ]
 };

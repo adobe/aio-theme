@@ -59,6 +59,7 @@
     "gatsby-plugin-mdx": "^1.2.19",
     "gatsby-plugin-react-helmet-async": "^1.0.17-0",
     "gatsby-source-filesystem": "^2.3.14",
+    "gatsby-source-github-file-contributors": "*",
     "prop-types": "^15.7.2",
     "react-helmet-async": "^1.0.6",
     "rehype-slug": "^3.0.0",
