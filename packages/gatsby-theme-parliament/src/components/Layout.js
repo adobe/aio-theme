@@ -27,7 +27,8 @@ export default ({ children, pageContext, location }) => {
               login
               name
             }
-            path
+            path,
+            href
           }
         }        
         allMdx {

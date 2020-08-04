@@ -29,6 +29,7 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, opt
     actions.createNode({
       contributors,
       path: path.resolve(_path),
+      href: `https://github.com/${owner}/${name}`,
       id: createNodeId(_path),
       internal: {
         type: "GithubContributors",

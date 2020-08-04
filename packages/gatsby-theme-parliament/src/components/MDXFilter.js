@@ -147,7 +147,7 @@ export default ({ children, pageContext }) => {
   // OnThisPage
   const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
   const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
-  const { contributors } = allGithubContributors.nodes.find(({ path }) => {  
+  const { contributors, href: pageHref } = allGithubContributors.nodes.find(({ path }) => {  
     return withPrefix(path) === componentPath 
   })
 
@@ -206,7 +206,7 @@ export default ({ children, pageContext }) => {
               <View>
                 {pageContext.frontmatter.contributors && (
                   <Contributors
-                    href="#"
+                    href={pageHref}
                     contributors={contributors}
                     date={new Date(contributors[0].date).toLocaleDateString()}
                   />
