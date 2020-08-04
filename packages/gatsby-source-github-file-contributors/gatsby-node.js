@@ -16,7 +16,11 @@ const path = require('path')
 
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }, options) => {
   const { paths: pages = ['src/pages'], extensions = ['md'], prefix } = options.pages
-  const { token = 'token_not_set', owner, name, branch } = options.repo
+  const { token, owner, name, branch } = options.repo
+
+  if (!token) {
+    throw new Error('token is required (GITHUB_TOKEN environment variable)')
+  }
 
   const paths = await globby(pages, { 
     expandDirectories: {
