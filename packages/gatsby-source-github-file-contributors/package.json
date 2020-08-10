@@ -1,8 +1,0 @@
-{
-  "name": "gatsby-source-github-file-contributors",
-  "version": "0.0.1",
-  "dependencies": {
-    "globby": "^11.0.1",
-    "graphql-fetch": "^1.0.1"
-  }
-}
