@@ -137,7 +137,7 @@ const filterChildren = (children, tableOfContents) => {
 };
 
 export default ({ children, pageContext }) => {
-  const { hasSideNav, siteMetadata, location, allSitePage, allMdx } = useContext(Context);
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithubContributors } = useContext(Context);
 
   // PrevNext
   const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
@@ -147,6 +147,9 @@ export default ({ children, pageContext }) => {
   // OnThisPage
   const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
   const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+  const { contributors, href: pageHref } = allGithubContributors.nodes.find(({ path }) => {  
+    return withPrefix(path) === componentPath 
+  })
 
   // Breadcrumbs
   const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
@@ -203,9 +206,9 @@ export default ({ children, pageContext }) => {
               <View>
                 {pageContext.frontmatter.contributors && (
                   <Contributors
-                    href="#"
-                    contributors={pageContext.frontmatter.contributors}
-                    date={new Date().toLocaleDateString()}
+                    href={pageHref}
+                    contributors={contributors}
+                    date={new Date(contributors[0].date).toLocaleDateString()}
                   />
                 )}
               </View>

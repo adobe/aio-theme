@@ -20,6 +20,17 @@ export default ({ children, pageContext, location }) => {
   const data = useStaticQuery(
     graphql`
       query {
+        allGithubContributors {
+          nodes {
+            contributors {
+              date
+              login
+              name
+            }
+            path,
+            href
+          }
+        }        
         allMdx {
           nodes {
             tableOfContents
@@ -91,6 +102,7 @@ export default ({ children, pageContext, location }) => {
   const allMdx = data.allMdx;
   const allSitePage = data.allSitePage;
   const siteMetadata = data.site.siteMetadata;
+  const allGithubContributors = data.allGithubContributors;
 
   const globalNav = siteMetadata.globalNav;
   const pages = siteMetadata.pages;
@@ -101,7 +113,7 @@ export default ({ children, pageContext, location }) => {
   const hasSideNav = selectedSubPages.length > 0;
 
   return (
-    <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx }}>
+    <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx, allGithubContributors }}>
       <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
       <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
         <Grid
