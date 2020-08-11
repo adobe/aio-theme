@@ -47,6 +47,47 @@ export const OpenAPIBlock = ({ specUrl }) => {
             [role='navigation'] {
               padding: var(--spectrum-global-dimension-static-size-400);
 
+              label span[type] {
+                text-transform: uppercase;
+                border-radius: var(--spectrum-global-dimension-size-50);
+                font-size: var(--spectrum-global-dimension-size-100);
+                margin-right: var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100));
+                padding: var(--spectrum-global-dimension-size-50) var(--spectrum-global-dimension-size-125);
+                background-color: inherit;
+                width: var(--spectrum-global-dimension-size-700);
+                height: var(--spectrum-global-dimension-size-1);
+              }
+
+              label span[type='get'] {
+                border: 2px solid var(--spectrum-global-color-blue-400);
+                color: var(--spectrum-global-color-blue-400);
+              }
+
+              label span[type='patch'] {
+                border: 2px solid var(--spectrum-global-color-seafoam-400);
+                color: var(--spectrum-global-color-seafoam-400);
+              }
+
+              label span[type='post'] {
+                border: 2px solid var(--spectrum-global-color-green-400);
+                color: var(--spectrum-global-color-green-400);
+              }
+
+              label span[type='put'] {
+                border: 2px solid var(--spectrum-global-color-orange-400);
+                color: var(--spectrum-global-color-orange-400);
+              }
+
+              label span[type='head'] {
+                border: 2px solid var(--spectrum-global-color-fuchsia-400);
+                color: var(--spectrum-global-color-fuchsia-400);
+              }
+
+              label span[type='delete'] {
+                border: 2px solid var(--spectrum-global-color-red-400);
+                color: var(--spectrum-global-color-red-400);
+              }
+
               [role='menuitem'] {
                 position: relative;
                 display: inline-flex;
