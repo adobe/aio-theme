@@ -11,11 +11,56 @@
  */
 
 import React from 'react';
-import '@spectrum-css/typography';
+import { css } from '@emotion/core';
 import classNames from 'classnames';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import '@spectrum-css/typography';
+import '@adobe/prism-adobe';
 
-export const Code = ({ children, className, ...props }) => (
-  <code {...props} className={classNames(className, 'spectrum-Code4')}>
-    {children}
-  </code>
-);
+export const Code = ({ children, className = '' }) => {
+  const language = className.replace(/language-/, '');
+
+  return (
+    <Highlight {...defaultProps} code={children} language={language}>
+      {({ className, tokens, getLineProps, getTokenProps }) => {
+        const lines = tokens.slice(0, -1);
+        const isMultiLine = lines.length > 1;
+
+        return (
+          <pre className={classNames(className, 'spectrum-Code4')}>
+            {tokens.slice(0, -1).map((line, i) => {
+              const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
+
+              return (
+                <div
+                  key={i}
+                  css={css`
+                    display: table-row;
+                  `}>
+                  {isMultiLine && (
+                    <span
+                      css={css`
+                        display: table-cell;
+                        color: var(--spectrum-global-color-gray-500);
+                        text-align: left;
+                        padding-right: var(--spectrum-global-dimension-static-size-200);
+                        user-select: none;
+                      `}>
+                      {i + 1}
+                    </span>
+                  )}
+                  <span {...lineProps}>
+                    {line.map((token, key) => {
+                      const { style: tokenStyles, ...tokenProps } = getTokenProps({ token, key });
+                      return <span key={key} {...tokenProps} />;
+                    })}
+                  </span>
+                </div>
+              );
+            })}
+          </pre>
+        );
+      }}
+    </Highlight>
+  );
+};

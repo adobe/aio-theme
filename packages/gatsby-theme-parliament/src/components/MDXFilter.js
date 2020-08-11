@@ -39,6 +39,7 @@ import { Footer } from './Footer';
 import { Resources } from './Resources';
 import { Hero } from './Hero';
 import { DiscoverBlock } from './DiscoverBlock';
+import { CodeBlock } from './CodeBlock';
 import { Contributors } from './Contributors';
 import { Feedback } from './Feedback';
 import { Alert } from './Alert';
@@ -47,12 +48,15 @@ import { Breadcrumbs } from './Breadcrumbs';
 import { OnThisPage } from './OnThisPage';
 import { NextSteps } from './NextSteps';
 import { NextPrev } from './NextPrev';
+import { OpenAPIBlock } from './OpenAPIBlock';
 
 const customComponents = {
   Hero,
   DiscoverBlock,
   Resources,
-  Alert
+  Alert,
+  CodeBlock,
+  OpenAPIBlock
 };
 
 const mdxComponents = {
@@ -77,6 +81,7 @@ const filterChildren = (children, tableOfContents) => {
 
   let heroChild;
   let resourcesChild;
+  let openAPIChild;
 
   while (childrenArray.length) {
     const child = childrenArray[0];
@@ -85,7 +90,19 @@ const filterChildren = (children, tableOfContents) => {
     Object.keys(customComponents).forEach((customComponent) => {
       if (child?.props?.mdxType === customComponent) {
         ignoredChildrenCount++;
-        let slots = child.props.slots.split(',').map((slot, i) => [slot.trim(), childrenArray[i + 1]]);
+
+        let slots = [];
+        if (child.props.slots) {
+          const repeat = Math.max(parseInt(child.props.repeat) || 1, 1);
+
+          for (let i = 0; i < repeat; i++) {
+            slots = slots.concat(
+              child.props.slots
+                .split(',')
+                .map((slot, k) => [`${slot.trim()}${repeat === 1 ? '' : i}`, childrenArray[slots.length + k + 1]])
+            );
+          }
+        }
 
         if (slots.length) {
           ignoredChildrenCount += slots.length;
@@ -103,6 +120,8 @@ const filterChildren = (children, tableOfContents) => {
           } else {
             filteredChildren.push(childClone);
           }
+        } else if (child.props.mdxType === 'OpenAPIBlock') {
+          openAPIChild = child;
         }
       }
     });
@@ -124,7 +143,7 @@ const filterChildren = (children, tableOfContents) => {
       filteredChildren.splice(
         heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1),
         0,
-        <OnThisPage tableOfContents={tableOfContents} />
+        <OnThisPage key="-1" tableOfContents={tableOfContents} />
       );
     }
   }
@@ -132,7 +151,8 @@ const filterChildren = (children, tableOfContents) => {
   return {
     filteredChildren,
     heroChild,
-    resourcesChild
+    resourcesChild,
+    openAPIChild
   };
 };
 
@@ -164,67 +184,78 @@ export default ({ children, pageContext }) => {
   const { repository, branch } = siteMetadata.github;
   const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
-  const { filteredChildren, heroChild, resourcesChild } = filterChildren(children, tableOfContents);
+  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(children, tableOfContents);
 
   const isGuides = hasSideNav && typeof heroChild === 'undefined';
   const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
   return (
     <MDXProvider components={mdxComponents}>
-      {heroChild && heroChild}
-      <section
-        css={css`
-          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-          margin: 0 var(--spectrum-global-dimension-static-size-800);
-        `}>
-        <Flex>
-          <article
+      {openAPIChild ? (
+        openAPIChild
+      ) : (
+        <>
+          {heroChild && heroChild}
+          <section
             css={css`
-              width: ${layoutColumns(isGuides ? 7 : 9, [
-                'var(--spectrum-global-dimension-static-size-400)',
-                'var(--spectrum-global-dimension-static-size-200)',
-                'var(--spectrum-global-dimension-static-size-100)'
-              ])};
+              max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+              margin: 0 var(--spectrum-global-dimension-static-size-800);
             `}>
-            {isGuides && (
-              <Flex marginTop="size-400" gap="size-400">
-                <View>
-                  <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
-                </View>
-                <View marginStart="auto">
-                  <GitHubActions repository={repository} branch={branch} pagePath={pagePath} />
-                </View>
-              </Flex>
-            )}
-            {filteredChildren}
-            {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
-            {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
-            <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
-              <View>
-                {pageContext.frontmatter.contributors && (
-                  <Contributors
-                    href="#"
-                    contributors={pageContext.frontmatter.contributors}
-                    date={new Date().toLocaleDateString()}
-                  />
+            <Flex>
+              <article
+                css={css`
+                  width: ${layoutColumns(isGuides ? 7 : 9, [
+                    'var(--spectrum-global-dimension-static-size-400)',
+                    'var(--spectrum-global-dimension-static-size-200)',
+                    'var(--spectrum-global-dimension-static-size-100)'
+                  ])};
+                `}>
+                {isGuides && (
+                  <div
+                    css={css`
+                      display: flex;
+                      gap: var(--spectrum-global-dimension-static-size-400);
+                      margin-top: var(--spectrum-global-dimension-static-size-400);
+                    `}>
+                    <View>
+                      <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+                    </View>
+                    <View marginStart="auto">
+                      <GitHubActions repository={repository} branch={branch} pagePath={pagePath} />
+                    </View>
+                  </div>
                 )}
-              </View>
-              <View>
-                <Feedback
-                  onYes={() => {
-                    alert('thanks');
-                  }}
-                  onNo={() => {
-                    alert('why not ?');
-                  }}
-                />
-              </View>
+                {filteredChildren}
+                {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+                {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
+                <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+                  <View>
+                    {pageContext.frontmatter.contributors && (
+                      <Contributors
+                        href="#"
+                        contributors={pageContext.frontmatter.contributors}
+                        date={new Date().toLocaleDateString()}
+                      />
+                    )}
+                  </View>
+                  <View>
+                    <Feedback
+                      onYes={() => {
+                        alert('thanks');
+                      }}
+                      onNo={() => {
+                        alert('why not ?');
+                      }}
+                    />
+                  </View>
+                </Flex>
+              </article>
+              {resourcesChild && resourcesChild}
             </Flex>
-          </article>
-          {resourcesChild && resourcesChild}
-        </Flex>
-      </section>
-      <Footer />
+          </section>
+          <Footer />
+        </>
+      )}
     </MDXProvider>
   );
 };

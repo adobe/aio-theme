@@ -36,7 +36,8 @@ const Button = ({ children, elementType = 'button', variant = 'primary', isQuiet
 
 Button.propTypes = {
   variant: PropTypes.string,
-  isQuiet: PropTypes.bool
+  isQuiet: PropTypes.bool,
+  elementType: PropTypes.string
 };
 
 export { Button };

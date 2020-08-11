@@ -39,10 +39,12 @@ const Resources = ({ heading, links }) => {
         {React.Children.toArray(links.props.children).map((item, i) => {
           const link = React.Children.toArray(item.props.children)[0];
           const isExternalLink = link.props.href.startsWith('http://') || link.props.href.startsWith('https://');
-          const externalLinkProps = isExternalLink ? {
-            target: "_blank",
-            rel: "nofollow noopener noreferrer"
-          } : {};
+          const externalLinkProps = isExternalLink
+            ? {
+                target: '_blank',
+                rel: 'nofollow noopener noreferrer'
+              }
+            : {};
 
           return (
             <li

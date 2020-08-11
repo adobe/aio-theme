@@ -30,11 +30,14 @@
   },
   "dependencies": {
     "@adobe/focus-ring-polyfill": "^0.1.5",
+    "@adobe/gatsby-remark-afm": "^0.6.0",
+    "@adobe/prism-adobe": "^1.0.0",
     "@emotion/core": "^10.0.28",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.6",
     "@react-spectrum/divider": "^3.1.0",
     "@react-spectrum/layout": "^3.1.0",
+    "@react-spectrum/progress": "^3.1.0",
     "@react-spectrum/provider": "^3.1.0",
     "@react-spectrum/view": "^3.1.0",
     "@spectrum-css/alert": "^3.0.0-beta.3",
@@ -44,6 +47,7 @@
     "@spectrum-css/dropdown": "^3.0.0-beta.3",
     "@spectrum-css/icon": "^2.1.1",
     "@spectrum-css/link": "3.0.0",
+    "@spectrum-css/menu": "^3.0.0-beta.2",
     "@spectrum-css/popover": "^3.0.0-beta.3",
     "@spectrum-css/sidenav": "^3.0.0-beta.2",
     "@spectrum-css/tabs": "^3.0.0-beta.3",
@@ -59,10 +63,14 @@
     "gatsby-plugin-mdx": "^1.2.19",
     "gatsby-plugin-react-helmet-async": "^1.0.17-0",
     "gatsby-source-filesystem": "^2.3.14",
+    "mobx": "^5.15.5",
+    "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
     "react-helmet-async": "^1.0.6",
+    "redoc": "^2.0.0-rc.36",
     "rehype-slug": "^3.0.0",
     "remark-docz": "^2.1.0",
-    "remark-external-links": "^6.1.0"
+    "remark-external-links": "^6.1.0",
+    "styled-components": "^5.1.1"
   }
 }

@@ -10,23 +10,33 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
+import '@spectrum-css/popover';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import '@spectrum-css/typography';
-import '@spectrum-css/well';
 
-export const InlineCode = ({ children, className, ...props }) => (
-  <code
-    {...props}
-    className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
+const Popover = forwardRef(({ isOpen, isQuiet, children, css: styles }, ref) => (
+  <div
+    ref={ref}
+    aria-hidden={!isOpen}
     css={css`
-      background-color: var(--spectrum-global-color-gray-100);
-      padding: 0 var(--spectrum-global-dimension-static-size-50);
-      margin: 0;
-      display: inline-block;
-      min-width: auto;
-    `}>
+      min-width: var(--spectrum-global-dimension-static-size-800);
+      width: 100%;
+      z-index: 1;
+      max-height: var(--spectrum-global-dimension-static-size-2400);
+      ${styles}
+    `}
+    className={classNames('spectrum-Popover', 'spectrum-Popover--bottom', 'spectrum-Dropdown-popover', {
+      'is-open': isOpen
+    })}>
     {children}
-  </code>
-);
+  </div>
+));
+
+Popover.propTypes = {
+  isOpen: PropTypes.bool,
+  isQuiet: PropTypes.bool
+};
+
+export { Popover };

@@ -42,7 +42,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
       <HeadingTag
         {...props}
         className={classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
-          'spectrum-Heading--XL': isHeading1
+          'spectrum-Heading--light': isHeading1
         })}
         css={css`
           ${isHeading1

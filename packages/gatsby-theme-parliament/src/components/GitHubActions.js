@@ -18,16 +18,22 @@ import { Bug, Edit } from './Icons';
 import { css } from '@emotion/core';
 
 const GitHubActions = ({ repository, branch, pagePath }) => {
+  const commonsProps = {
+    elementType: 'a',
+    isQuiet: true,
+    target: '_blank',
+    rel: 'noopener noreferrer nofollow'
+  };
   return (
     <Flex>
-      <ActionButton isQuiet href={`https://github.com/${repository}/edit/${branch}/src/pages/${pagePath}`}>
+      <ActionButton {...commonsProps} href={`https://github.com/${repository}/edit/${branch}/src/pages/${pagePath}`}>
         <Edit />
         <Text>Edit in Github</Text>
       </ActionButton>
 
       <ActionButton
+        {...commonsProps}
         href={`https://github.com/${repository}/issues/new?body=Issue%20in%20/src/pages/${pagePath}`}
-        isQuiet
         css={css`
           margin-inline-start: var(--spectrum-global-dimension-static-size-100);
         `}>

@@ -12,11 +12,17 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { View } from '@react-spectrum/view';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import { Link } from './Link';
-import '@spectrum-css/typography';
+import { Picker } from './Picker';
 import { layoutColumns } from './utils';
+import '@spectrum-css/typography';
+import '@spectrum-css/icon';
+import '@spectrum-css/dropdown';
+import '@spectrum-css/popover';
+import '@spectrum-css/menu';
 
 const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');
@@ -88,12 +94,7 @@ const OnThisPage = ({ tableOfContents }) => {
   }, []);
 
   const Outline = ({ withSubHeading }) => (
-    <nav
-      role="navigation"
-      aria-label="Article Outline"
-      css={css`
-        margin: var(--spectrum-global-dimension-static-size-400) 0;
-      `}>
+    <View elementType="nav" role="navigation" aria-label="Article Outline" marginY="size-400">
       <h4
         className="spectrum-Detail--L"
         css={css`
@@ -143,19 +144,33 @@ const OnThisPage = ({ tableOfContents }) => {
           </li>
         ))}
       </ol>
-    </nav>
+    </View>
+  );
+
+  const OutlinePicker = () => (
+    <View marginY="size-400">
+      <h4
+        className="spectrum-Detail--L"
+        css={css`
+          color: var(--spectrum-global-color-gray-600);
+          margin-bottom: var(--spectrum-global-dimension-static-size-200);
+        `}>
+        On this page
+      </h4>
+      <Picker label="Navigate to section" items={tableOfContentsItems} />
+    </View>
   );
 
   return tableOfContentsItems ? (
     <>
-      <div ref={outlineRef}>
-        <Outline />
-      </div>
+      <div ref={outlineRef}>{tableOfContentsItems.length <= 10 ? <Outline /> : <OutlinePicker />}</div>
       <aside
         className={isPinned ? 'is-pinned' : ''}
         aria-hidden={!isPinned}
         css={css`
           position: fixed;
+          overflow: auto;
+          bottom: 0;
           top: var(--spectrum-global-dimension-static-size-800);
           padding-left: var(--spectrum-global-dimension-static-size-900);
           left: ${layoutColumns(9)};

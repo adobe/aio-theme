@@ -108,7 +108,8 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)]
+        remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)],
+        gatsbyRemarkPlugins: ['@adobe/gatsby-remark-afm']
       }
     }
   ]

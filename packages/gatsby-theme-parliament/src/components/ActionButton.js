@@ -15,21 +15,26 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '@spectrum-css/button';
 
-const ActionButton = ({ children, isQuiet, href, className, ...props }) => (
-  <a
-    {...props}
-    target="_blank"
-    rel="noopener noreferrer nofollow"
-    href={href}
-    className={classNames(className, ['spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet }])}>
-    {children}
-  </a>
-);
+const ActionButton = ({ children, elementType = 'button', isQuiet, className, ...props }) => {
+  const Element = elementType;
+  if (elementType === 'a') {
+    props.role = 'button';
+  }
+
+  return (
+    <Element
+      {...props}
+      className={classNames(className, ['spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet }])}>
+      {children}
+    </Element>
+  );
+};
 
 ActionButton.propTypes = {
   href: PropTypes.string,
   variant: PropTypes.string,
-  isQuiet: PropTypes.bool
+  isQuiet: PropTypes.bool,
+  elementType: PropTypes.string
 };
 
 const Text = ({ children }) => <span className="spectrum-ActionButton-label">{children}</span>;
