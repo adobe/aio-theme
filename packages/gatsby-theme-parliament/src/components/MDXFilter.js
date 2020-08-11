@@ -167,9 +167,9 @@ export default ({ children, pageContext }) => {
   // OnThisPage
   const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
   const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
-  const { contributors, href: pageHref } = allGithubContributors.nodes.find(({ path }) => {
-    return withPrefix(path) === componentPath
-  })
+  
+  // Contributors
+  const { contributors, href: pageHref } = allGithubContributors.nodes.find(({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath)
 
   // Breadcrumbs
   const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
@@ -233,13 +233,11 @@ export default ({ children, pageContext }) => {
                 {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
                 <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
                   <View>
-                    {pageContext.frontmatter.contributors && (
-                      <Contributors
-                        href={pageHref}
-                        contributors={contributors}
-                        date={new Date(contributors[0].date).toLocaleDateString()}
-                      />
-                    )}
+                    <Contributors
+                      href={pageHref}
+                      contributors={contributors}
+                      date={new Date(contributors[0].date).toLocaleDateString()}
+                    />
                   </View>
                   <View>
                     <Feedback

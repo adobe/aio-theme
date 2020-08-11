@@ -115,10 +115,7 @@ module.exports = {
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
       options: {
-        pages: {
-          paths: ['src/pages'],
-          extensions: ['md']
-        },
+        root: 'example',
         repo: {
           token: process.env.GITHUB_TOKEN,
           owner: process.env.GITHUB_REPO_OWNER,

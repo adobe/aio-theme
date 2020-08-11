@@ -1,10 +1,6 @@
 ---
 title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics 
-contributors:
-  - https://github.com/icaraps
-  - https://github.com/macdonst
-  - https://github.com/simonwex
 ---
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
