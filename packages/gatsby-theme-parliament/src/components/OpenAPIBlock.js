@@ -218,6 +218,60 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 color: var(--spectrum-global-color-red-400);
               }
 
+              div[data-tabs] ul[role='tablist'] {
+                border-bottom-color: var(--spectrum-tabs-rule-color, var(--spectrum-global-color-gray-200));
+                align-items: center;
+                display: flex;
+                position: relative;
+                z-index: 0;
+                margin: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: var(--spectrum-tabs-focus-ring-padding-x, var(--spectrum-global-dimension-size-100));
+                padding-right: var(--spectrum-tabs-focus-ring-padding-x, var(--spectrum-global-dimension-size-100));
+                vertical-align: top;
+                background-color: rgb(50, 50, 50);
+              }
+
+              div[data-tabs] ul[role='tablist'] li[role='tab'] {
+                position: relative;
+                box-sizing: border-box;
+                height: calc(
+                  var(--spectrum-tabs-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick))
+                );
+                line-height: calc(
+                  var(--spectrum-tabs-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick))
+                );
+                z-index: 1;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: color var(--spectrum-global-animation-duration-100, 130ms) ease-out;
+                cursor: pointer;
+                outline: none;
+                color: var(--spectrum-tabs-text-color, var(--spectrum-alias-label-text-color));
+                cursor: pointer;
+                vertical-align: top;
+                display: inline-block;
+                font-size: var(--spectrum-tabs-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-tabs-text-font-weight, var(--spectrum-alias-body-text-font-weight));
+                text-decoration: none;
+                background-color: inherit;
+                border: 0px;
+                border-bottom: var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick)) solid;
+                padding-right: 15px;
+                padding-left: 15px;
+                padding-bottom: 10px;
+                margin-right: 0px;
+                margin-left: 0px;
+                border-radius: 0px;
+              }
+
+              div[data-tabs] ul[role='tablist'] li[aria-selected='true'] {
+                color: var(--spectrum-tabs-text-color-selected, var(--spectrum-global-color-gray-400));
+              }
+
               h1 {
                 font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size));
                 line-height: var(--spectrum-heading-l-text-line-height, var(--spectrum-alias-heading-text-line-height));
