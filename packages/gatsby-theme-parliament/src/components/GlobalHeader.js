@@ -260,13 +260,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         </div>
                         {menu.sections[0].viewAll && (
                           <View marginTop="size-100" marginStart="size-200">
-                            <Link
-                              css={css`
-                                text-decoration: none;
-                                font-weight: 700;
-                              `}
-                              href={menu.sections[0].viewAll.path}>
-                              {menu.sections[0].viewAll.title}
+                            <Link href={menu.sections[0].viewAll.path}>
+                              <strong>{menu.sections[0].viewAll.title}</strong>
                             </Link>
                           </View>
                         )}

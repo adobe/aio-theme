@@ -11,11 +11,23 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import '@spectrum-css/link';
 import classNames from 'classnames';
 
-export const Link = ({ children, className, href, ...props }) => (
-  <a {...props} href={href} className={classNames(className, 'spectrum-Link spectrum-Link--quiet')}>
+const Link = ({ children, className, variant = 'primary', isQuiet = true, href, ...props }) => (
+  <a
+    {...props}
+    href={href}
+    className={classNames(className, `spectrum-Link spectrum-Link--${variant}`, { 'spectrum-Link--quiet': isQuiet })}>
     {children}
   </a>
 );
+
+Link.propTypes = {
+  variant: PropTypes.string,
+  isQuiet: PropTypes.bool,
+  href: PropTypes.string
+};
+
+export { Link };
