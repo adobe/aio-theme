@@ -25,10 +25,10 @@
     unist-util-remove "^2.0.0"
     unist-util-visit "^2.0.1"
 
-"@adobe/gatsby-source-github-file-contributors@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-source-github-file-contributors/-/gatsby-source-github-file-contributors-0.0.2.tgz#907d510efa4d3cc748279a6d845ee6c6e93db6f8"
-  integrity sha512-61zrr5yhyJ8uLMpSS7hKyywpE9RbHl8UDkBUEwmsbhlUvcR44vYsuCE4uZQS+F31AhdfTm70ztO0YfJTinM4eA==
+"@adobe/gatsby-source-github-file-contributors@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-source-github-file-contributors/-/gatsby-source-github-file-contributors-0.0.4.tgz#39477efda4d37b5430010fbe017b73104e6c0688"
+  integrity sha512-YiQFZlper/Wc2tjDgtsiLQWuWXUBEM8AVX9LOoCD3IzFA2vhIXOvOFEGYKpyKaWXmupGmdAdWG3PzefGW4u6YA==
   dependencies:
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
