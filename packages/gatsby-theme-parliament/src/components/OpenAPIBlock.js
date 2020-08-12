@@ -330,6 +330,23 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 }
               }
 
+              h5 {
+                font-size: var(--spectrum-body-m-text-size, var(--spectrum-global-dimension-font-size-200));
+                font-weight: var(--spectrum-body-xl-strong-text-font-weight, var(--spectrum-global-font-weight-bold));
+                line-height: var(--spectrum-body-m-text-line-height, var(--spectrum-alias-body-text-line-height));
+                font-style: var(--spectrum-body-m-text-font-style, var(--spectrum-global-font-style-regular));
+                letter-spacing: var(
+                  --spectrum-body-m-text-letter-spacing,
+                  var(--spectrum-global-font-letter-spacing-none)
+                );
+                text-transform: var(--spectrum-body-m-text-transform, none);
+                margin-top: 0;
+                margin-bottom: var(--spectrum-global-dimension-size-200, var(--spectrum-alias-size-200));
+                color: var(--spectrum-body-text-color, var(--spectrum-alias-text-color));
+                text-transform: capitalize;
+                border-bottom: 0px;
+              }
+
               pre {
                 border-radius: var(--spectrum-global-dimension-static-size-50);
 
