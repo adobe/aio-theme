@@ -20,7 +20,7 @@ import '@spectrum-css/icon';
 import '@spectrum-css/dropdown';
 import '@spectrum-css/menu';
 
-const Picker = ({ label, isQuiet, items, onChange }) => {
+const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [options, setOptions] = useState(items);
@@ -40,6 +40,7 @@ const Picker = ({ label, isQuiet, items, onChange }) => {
 
   return (
     <div
+      {...props}
       className={classNames('spectrum-Dropdown', {
         'is-open': openMenu,
         'spectrum-Dropdown--quiet': isQuiet
@@ -92,7 +93,7 @@ const Picker = ({ label, isQuiet, items, onChange }) => {
                     text-decoration: none;
                     color: inherit;
                   `}
-                  href={option.url}
+                  href={option.path}
                   className="spectrum-Menu-itemLabel">
                   {option.title}
                 </a>

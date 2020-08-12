@@ -48,6 +48,12 @@ module.exports = {
         path: '/overview/'
       }
     ],
+    versions: [
+      {
+        title: '',
+        path: ''
+      }
+    ],
     subPages: [
       {
         title: '',

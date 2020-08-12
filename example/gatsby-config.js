@@ -21,6 +21,16 @@ globalNav.menus = [globalNav.menus[1]];
 module.exports = {
   siteMetadata: {
     globalNav,
+    versions: [
+      {
+        title: 'v2.0',
+        selected: true
+      },
+      {
+        title: 'v1.4',
+        path: 'https://adobe.io'
+      }
+    ],
     pages: [
       {
         title: 'Adobe Analytics',

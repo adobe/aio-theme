@@ -21,6 +21,7 @@ import { Divider } from '@react-spectrum/divider';
 import { Button } from './Button';
 import { Link } from './Link';
 import { Adobe, ChevronDown } from './Icons';
+import { Picker } from './Picker';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/tabs';
@@ -33,7 +34,7 @@ const stretched = css`
   height: 100%;
 `;
 
-const GlobalHeader = ({ globalNav, pages, docs, location }) => {
+const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   const [tabs] = useState([]);
@@ -278,7 +279,7 @@ const GlobalHeader = ({ globalNav, pages, docs, location }) => {
           </View>
           <View gridArea="navigation" marginStart="size-200">
             <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal" role="tablist">
-              {pages.slice(0, 4).map((page, index) => {
+              {pages.slice(0, 4).map((page, i) => {
                 const { title, path } = page;
                 const ref = createRef();
                 tabs.push(ref);
@@ -292,9 +293,27 @@ const GlobalHeader = ({ globalNav, pages, docs, location }) => {
                     : { className: 'spectrum-Tabs-item' };
 
                 return (
-                  <GatsbyLink role="tab" getProps={isActive} key={index} ref={ref} to={path} partiallyActive={true}>
-                    <span className="spectrum-Tabs-itemLabel">{title}</span>
-                  </GatsbyLink>
+                  <React.Fragment key={i}>
+                    <GatsbyLink role="tab" getProps={isActive} ref={ref} to={path} partiallyActive={true}>
+                      <span className="spectrum-Tabs-itemLabel">{title}</span>
+                    </GatsbyLink>
+                    {i === 0 && versions[0]?.title && (
+                      <div
+                        css={css`
+                          margin-left: var(--spectrum-global-dimension-static-size-200) !important;
+                          margin-right: var(--spectrum-global-dimension-static-size-300);
+                        `}>
+                        <Picker
+                          isQuiet
+                          items={versions.map((version, k) => ({
+                            title: version.title,
+                            path: version.path,
+                            selected: k === 0
+                          }))}
+                        />
+                      </div>
+                    )}
+                  </React.Fragment>
                 );
               })}
               <div

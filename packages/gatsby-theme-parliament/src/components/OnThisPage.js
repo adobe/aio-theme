@@ -157,7 +157,10 @@ const OnThisPage = ({ tableOfContents }) => {
         `}>
         On this page
       </h4>
-      <Picker label="Navigate to section" items={tableOfContentsItems} />
+      <Picker
+        label="Navigate to section"
+        items={tableOfContentsItems.map((item) => ({ title: item.title, path: item.url }))}
+      />
     </View>
   );
 

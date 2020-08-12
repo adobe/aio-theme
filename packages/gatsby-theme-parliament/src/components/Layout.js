@@ -39,10 +39,10 @@ export default ({ children, pageContext, location }) => {
               login
               name
             }
-            path,
+            path
             href
           }
-        }        
+        }
         allMdx {
           nodes {
             tableOfContents
@@ -85,6 +85,10 @@ export default ({ children, pageContext, location }) => {
             docs {
               path
             }
+            versions {
+              title
+              path
+            }
             pages {
               title
               path
@@ -111,17 +115,12 @@ export default ({ children, pageContext, location }) => {
     `
   );
 
-  const allMdx = data.allMdx;
-  const allSitePage = data.allSitePage;
-  const siteMetadata = data.site.siteMetadata;
-  const allGithubContributors = data.allGithubContributors;
+  const { allMdx, allSitePage, site, allGithubContributors } = data;
+  const { siteMetadata } = site;
+  const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
-  const globalNav = siteMetadata.globalNav;
-  const pages = siteMetadata.pages;
-  const docs = siteMetadata.docs;
-
-  const selectedPages = findSelectedPages(location.pathname, siteMetadata.subPages);
-  const selectedSubPages = findSubPages(location.pathname, siteMetadata.pages, siteMetadata.subPages);
+  const selectedPages = findSelectedPages(location.pathname, subPages);
+  const selectedSubPages = findSubPages(location.pathname, pages, subPages);
   const hasSideNav = selectedSubPages.length > 0;
 
   return (
@@ -140,7 +139,7 @@ export default ({ children, pageContext, location }) => {
             right="size-0"
             backgroundColor="gray-50"
             zIndex="2">
-            <GlobalHeader globalNav={globalNav} pages={pages} docs={docs} location={location} />
+            <GlobalHeader globalNav={globalNav} versions={versions} pages={pages} docs={docs} location={location} />
           </View>
           <View
             backgroundColor="gray-75"

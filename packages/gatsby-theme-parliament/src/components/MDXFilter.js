@@ -167,9 +167,11 @@ export default ({ children, pageContext }) => {
   // OnThisPage
   const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
   const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
-  
+
   // Contributors
-  const { contributors, href: pageHref } = allGithubContributors.nodes.find(({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath)
+  const { contributors, href: pageHref } = allGithubContributors.nodes.find(
+    ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
+  );
 
   // Breadcrumbs
   const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
