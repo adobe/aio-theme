@@ -300,7 +300,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     {i === 0 && versions[0]?.title && (
                       <div
                         css={css`
-                          margin-left: var(--spectrum-global-dimension-static-size-200) !important;
+                          margin-left: var(--spectrum-global-dimension-static-size-100) !important;
                           margin-right: var(--spectrum-global-dimension-static-size-300);
                         `}>
                         <Picker
