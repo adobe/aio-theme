@@ -490,6 +490,20 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 color: var(--spectrum-global-color-red-400);
               }
 
+              button + div[aria-hidden] div {
+                color: rgb(227, 227, 227);
+                background-color: rgb(50, 50, 50);
+              }
+
+              button + div[aria-hidden] div div[role='button'] div {
+                border-color: rgb(90, 90, 90);
+                background-color: rgb(37, 37, 37);
+              }
+
+              button + div[aria-hidden] div div[role='button'] div span {
+                color: rgb(227, 227, 227);
+              }
+
               div[data-tabs] ul[role='tablist'] {
                 border-bottom-color: var(--spectrum-tabs-rule-color, rgb(62, 62, 62));
                 align-items: center;
