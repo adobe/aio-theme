@@ -625,7 +625,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 &:after {
                   content: '';
                   border-radius: var(--spectrum-global-dimension-static-size-25);
-                  background-color: rgb(227, 227, 227);
+                  background-color: var(--spectrum-heading-l-text-color, var(--spectrum-alias-heading-text-color));
                   height: var(--spectrum-global-dimension-static-size-50);
                   width: 100%;
                   position: absolute;
