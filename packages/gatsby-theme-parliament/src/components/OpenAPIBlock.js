@@ -273,6 +273,45 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 margin-left: 0px;
               }
 
+              td + td div div:first-of-type span + span {
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -ms-flex-align: center;
+                align-items: center;
+                box-sizing: border-box;
+                margin-top: calc(var(--spectrum-taggroup-tag-gap-y, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-bottom: calc(var(--spectrum-taggroup-tag-gap-y, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-left: calc(var(--spectrum-taggroup-tag-gap-x, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-right: calc(var(--spectrum-taggroup-tag-gap-x, var(--spectrum-global-dimension-size-100)) / 2);
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: calc(
+                  var(--spectrum-tag-padding-x, var(--spectrum-global-dimension-size-125)) -
+                    var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin))
+                );
+                padding-right: calc(
+                  var(--spectrum-tag-padding-x, var(--spectrum-global-dimension-size-125)) -
+                    var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin))
+                );
+                height: var(--spectrum-tag-height, var(--spectrum-global-dimension-size-300));
+                max-width: 100%;
+                border-width: var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin));
+                border-style: solid;
+                border-radius: var(--spectrum-global-dimension-size-50);
+                outline: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                transition: border-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  box-shadow var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  background-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out;
+                color: var(--spectrum-tag-text-color, var(--spectrum-global-color-gray-700));
+                background-color: var(--spectrum-tag-background-color, var(--spectrum-global-color-gray-75));
+                border-color: var(--spectrum-tag-border-color, var(--spectrum-global-color-gray-600));
+              }
+
               code[class*='language-'],
               pre[class*='language-'] {
                 /*   --hljs-color: rgb(227, 227, 227); */
