@@ -545,6 +545,54 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 color: var(--spectrum-tabs-text-color-selected, var(--spectrum-global-color-gray-400));
               }
 
+              div[role='tabpanel'] div div + div div div button {
+                position: relative;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                box-sizing: border-box;
+                -ms-flex-align: center;
+                align-items: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                overflow: visible;
+                margin: 0 var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100)) 0 0;
+                border-style: solid;
+                text-transform: none;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-appearance: button;
+                vertical-align: top;
+                transition: background var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  border-color var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  color var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  box-shadow var(--spectrum-global-animation-duration-100, 130ms) ease-out;
+                text-decoration: none;
+                font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
+                line-height: 1.3;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-user-select: none;
+                -ms-touch-action: none;
+                touch-action: none;
+                cursor: pointer;
+                position: relative;
+                height: var(--spectrum-actionbutton-height, var(--spectrum-alias-single-line-height));
+                min-width: var(--spectrum-actionbutton-min-width, var(--spectrum-global-dimension-size-400));
+                padding: 0
+                  calc(
+                    var(--spectrum-actionbutton-icon-padding-x, var(--spectrum-global-dimension-size-85)) -
+                      var(--spectrum-actionbutton-border-size, var(--spectrum-alias-border-size-thin))
+                  );
+                border-width: var(--spectrum-actionbutton-border-size, var(--spectrum-alias-border-size-thin));
+                border-radius: var(--spectrum-actionbutton-border-radius, var(--spectrum-alias-border-radius-regular));
+                font-size: var(--spectrum-actionbutton-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-actionbutton-text-font-weight, var(--spectrum-alias-body-text-font-weight));
+                border-color: var(--spectrum-actionbutton-border-color, var(--spectrum-alias-border-color));
+                background-color: black;
+                color: var(--spectrum-global-color-gray-50, var(--spectrum-global-color-gray-75));
+              }
+
               h1 {
                 font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size));
                 line-height: var(--spectrum-heading-l-text-line-height, var(--spectrum-alias-heading-text-line-height));
