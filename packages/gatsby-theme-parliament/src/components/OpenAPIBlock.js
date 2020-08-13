@@ -601,9 +601,9 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 border-radius: var(--spectrum-actionbutton-border-radius, var(--spectrum-alias-border-radius-regular));
                 font-size: var(--spectrum-actionbutton-text-size, var(--spectrum-alias-font-size-default));
                 font-weight: var(--spectrum-actionbutton-text-font-weight, var(--spectrum-alias-body-text-font-weight));
-                border-color: var(--spectrum-actionbutton-border-color, var(--spectrum-alias-border-color));
-                background-color: black;
-                color: var(--spectrum-global-color-gray-50, var(--spectrum-global-color-gray-75));
+                background-color: rgb(47, 47, 47);
+                border-color: rgb(90, 90, 90);
+                color: rgb(227, 227, 227);
               }
 
               h1 {
