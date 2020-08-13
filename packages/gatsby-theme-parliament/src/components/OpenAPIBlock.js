@@ -181,16 +181,36 @@ export const OpenAPIBlock = ({ specUrl }) => {
             }
 
             .api-content {
+              table {
+                margin-bottom: var(--spectrum-global-dimension-size-400, var(--spectrum-alias-size-400));
+              }
+
               td[kind='field'] {
                 background-image: none;
               }
 
               td[kind='field'] {
                 border-left: none;
+                color: var(--spectrum-code-s-text-color, var(--spectrum-alias-text-color));
+                font-size: var(--spectrum-code-s-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(
+                  --spectrum-code-s-text-font-weight,
+                  var(--spectrum-alias-code-text-font-weight-regular)
+                );
+                line-height: var(--spectrum-code-s-text-line-height, var(--spectrum-alias-code-text-line-height));
+                font-style: var(--spectrum-code-s-text-font-style, var(--spectrum-global-font-style-regular));
+                letter-spacing: var(
+                  --spectrum-code-s-text-letter-spacing,
+                  var(--spectrum-global-font-letter-spacing-none)
+                );
+                margin-top: 0;
+                margin-bottom: 0;
+                font-family: var(--spectrum-code-s-text-font-family, var(--spectrum-alias-code-text-font-family));
               }
 
               td[kind='field'] span {
                 display: none;
+                color: var(--spectrum-global-color-red-700);
               }
 
               td[kind='field'] div {
@@ -488,6 +508,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 }
               }
 
+              h3,
               h5 {
                 font-size: var(--spectrum-body-m-text-size, var(--spectrum-global-dimension-font-size-200));
                 font-weight: var(--spectrum-body-xl-strong-text-font-weight, var(--spectrum-global-font-weight-bold));
