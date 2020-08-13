@@ -181,6 +181,22 @@ export const OpenAPIBlock = ({ specUrl }) => {
             }
 
             .api-content {
+              td[kind='field'] {
+                background-image: none;
+              }
+
+              td[kind='field'] {
+                border-left: none;
+              }
+
+              td[kind='field'] span {
+                display: none;
+              }
+
+              td[kind='field'] div {
+                margin-left: 0px;
+              }
+
               code[class*='language-'],
               pre[class*='language-'] {
                 /*   --hljs-color: rgb(227, 227, 227); */
