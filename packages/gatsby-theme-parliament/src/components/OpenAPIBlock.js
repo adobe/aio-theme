@@ -15,8 +15,6 @@ import { css } from '@emotion/core';
 import { ProgressCircle } from '@react-spectrum/progress';
 import { RedocStandalone } from 'redoc';
 
-import '@adobe/prism-adobe';
-
 export const OpenAPIBlock = ({ specUrl }) => {
   const [showProgress, setShowProgress] = useState(true);
 
