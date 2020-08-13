@@ -167,6 +167,11 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 }
               }
 
+              h1 span {
+                float: right;
+                line-height: 36px;
+              }
+
               p {
                 font-size: var(--spectrum-body-l-text-size, var(--spectrum-global-dimension-font-size-300));
                 font-weight: var(--spectrum-body-l-text-font-weight, var(--spectrum-alias-body-text-font-weight));
@@ -183,13 +188,64 @@ export const OpenAPIBlock = ({ specUrl }) => {
             .api-content {
               table {
                 margin-bottom: var(--spectrum-global-dimension-size-400, var(--spectrum-alias-size-400));
+                border-collapse: separate;
+                border-spacing: 0;
+              }
+
+              tbody {
+                border-width: 1px 0;
+                background-color: var(
+                  --spectrum-table-quiet-cell-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                border-radius: var(--spectrum-table-quiet-border-radius, 0px);
+                border: none;
+                border-color: var(--spectrum-table-border-color, var(--spectrum-alias-border-color-mid));
+                position: relative;
+                overflow: auto;
+                vertical-align: var(--spectrum-table-cell-vertical-alignment, top);
+              }
+
+              tr {
+                position: relative;
+                cursor: pointer;
+                transition: background-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out;
+                border-bottom: 1px solid var(--spectrum-table-cell-border-color, var(--spectrum-global-color-gray-300));
+                background-color: var(
+                  --spectrum-table-quiet-row-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                border-top: none;
+              }
+
+              td {
+                border-bottom: none;
+                border-right: none;
+                border-left: none;
+                border-top: 1px solid var(--spectrum-table-cell-border-color, var(--spectrum-global-color-gray-300));
+                color: var(--spectrum-table-cell-text-color, var(--spectrum-alias-text-color));
+                background-color: var(
+                  --spectrum-table-cell-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                position: relative;
+
+                box-sizing: border-box;
+                font-size: var(--spectrum-table-cell-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-table-cell-text-font-weight, var(--spectrum-global-font-weight-regular));
+                line-height: var(--spectrum-table-cell-text-line-height, var(--spectrum-alias-body-text-line-height));
+                padding-top: var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175));
+                padding-bottom: var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175));
+                padding-left: var(--spectrum-table-cell-padding-x, var(--spectrum-global-dimension-size-200));
+                padding-right: var(--spectrum-table-cell-padding-x, var(--spectrum-global-dimension-size-200));
+                min-height: calc(
+                  var(--spectrum-table-cell-min-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175)) * 2
+                );
               }
 
               td[kind='field'] {
                 background-image: none;
-              }
-
-              td[kind='field'] {
                 border-left: none;
                 color: var(--spectrum-code-s-text-color, var(--spectrum-alias-text-color));
                 font-size: var(--spectrum-code-s-text-size, var(--spectrum-alias-font-size-default));
@@ -524,6 +580,14 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 color: var(--spectrum-body-text-color, var(--spectrum-alias-text-color));
                 text-transform: capitalize;
                 border-bottom: 0px;
+              }
+
+              h5 span {
+                float: right;
+              }
+
+              h5 + div p {
+                margin-bottom: var(--spectrum-global-dimension-size-200, var(--spectrum-alias-size-200));
               }
 
               pre {
