@@ -15,6 +15,8 @@ import { css } from '@emotion/core';
 import { ProgressCircle } from '@react-spectrum/progress';
 import { RedocStandalone } from 'redoc';
 
+import '@adobe/prism-adobe';
+
 export const OpenAPIBlock = ({ specUrl }) => {
   const [showProgress, setShowProgress] = useState(true);
 
@@ -179,6 +181,146 @@ export const OpenAPIBlock = ({ specUrl }) => {
             }
 
             .api-content {
+              code[class*='language-'],
+              pre[class*='language-'] {
+                /*   --hljs-color: rgb(227, 227, 227); */
+                color: rgb(227, 227, 227);
+                background: none;
+                font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+                font-size: 1em;
+                text-align: left;
+                white-space: pre;
+                word-spacing: normal;
+                word-break: normal;
+                word-wrap: normal;
+                line-height: 1.5;
+                border-radius: 4px;
+
+                -moz-tab-size: 4;
+                -o-tab-size: 4;
+                tab-size: 4;
+
+                -webkit-hyphens: none;
+                -moz-hyphens: none;
+                -ms-hyphens: none;
+                hyphens: none;
+              }
+
+              /* Code blocks */
+              pre[class*='language-'] {
+                padding: 1em;
+                margin: 0.5em 0;
+                overflow: auto;
+              }
+
+              :not(pre) > code[class*='language-'],
+              pre[class*='language-'] {
+                /* --hljs-background: rgb(47, 47, 47); */
+                background: rgb(47, 47, 47);
+              }
+
+              /* Inline code */
+              :not(pre) > code[class*='language-'] {
+                color: rgb(227, 227, 227);
+                font-size: 14px;
+                background-color: rgb(50, 50, 50);
+                border-radius: 4px;
+                border-color: rgb(62, 62, 62);
+                padding: 4px;
+                white-space: pre-wrap;
+              }
+
+              .token.comment,
+              .token.block-comment,
+              .token.prolog,
+              .token.doctype,
+              .token.cdata {
+                /* --hljs-comment-color: rgb(185, 185, 185); */
+                color: rgb(185, 185, 185);
+              }
+
+              .token.punctuation {
+                color: rgb(227, 227, 227);
+              }
+
+              .token.tag,
+              .token.namespace,
+              .token.deleted {
+                color: rgb(245, 107, 183);
+              }
+
+              .token.boolean,
+              .token.number,
+              .token.attr-name,
+              .token.function,
+              .token.function-name {
+                /* --hljs-function-color: rgb(75, 156, 245); */
+                color: rgb(75, 156, 245);
+              }
+
+              .token.attr-name {
+                /* --hljs-attribute-color: rgb(144, 144, 250); */
+                color: rgb(144, 144, 250);
+              }
+
+              .token.property,
+              .token.property.string,
+              .token.class-name,
+              .token.constant,
+              .token.symbol {
+                /* --hljs-literal-color: rgb(180, 131, 240); */
+                color: rgb(180, 131, 240);
+              }
+
+              .token.class-name {
+                /* --hljs-class-color: rgb(35, 178, 184);
+               */
+                color: rgb(35, 178, 184);
+              }
+
+              .token.selector,
+              .token.important,
+              .token.atrule,
+              .token.keyword,
+              .token.builtin {
+                color: rgb(227, 102, 239);
+              }
+
+              .token.string,
+              .token.char,
+              .token.attr-value,
+              .token.regex {
+                /* --hljs-string-color: rgb(57, 185, 144); */
+                color: rgb(57, 185, 144);
+              }
+
+              .token.variable {
+                /* --hljs-variable-color: rgb(236, 90, 170); */
+                color: rgb(236, 90, 170);
+              }
+
+              .token.operator,
+              .token.entity,
+              .token.url {
+                color: rgb(75, 156, 245);
+              }
+
+              .token.important,
+              .token.bold {
+                font-weight: bold;
+              }
+              .token.italic {
+                font-style: italic;
+              }
+
+              .token.entity {
+                cursor: help;
+              }
+
+              .token.inserted {
+                color: rgb(57, 185, 144);
+              }
+
               button span[type] {
                 text-transform: uppercase;
                 border-radius: var(--spectrum-global-dimension-size-50);
@@ -219,7 +361,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               div[data-tabs] ul[role='tablist'] {
-                border-bottom-color: var(--spectrum-tabs-rule-color, var(--spectrum-global-color-gray-200));
+                border-bottom-color: var(--spectrum-tabs-rule-color, rgb(62, 62, 62));
                 align-items: center;
                 display: flex;
                 position: relative;
@@ -306,7 +448,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 &:after {
                   content: '';
                   border-radius: var(--spectrum-global-dimension-static-size-25);
-                  background-color: var(--spectrum-global-color-gray-800);
+                  background-color: rgb(227, 227, 227);
                   height: var(--spectrum-global-dimension-static-size-50);
                   width: 100%;
                   position: absolute;
@@ -374,7 +516,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               a[href] {
-                color: var(--spectrum-link-text-color, var(--spectrum-global-color-blue-600));
+                color: var(--spectrum-link-text-color, rgb(75, 156, 245));
 
                 &:hover {
                   text-decoration: underline;
