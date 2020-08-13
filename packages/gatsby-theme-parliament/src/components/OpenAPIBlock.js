@@ -47,6 +47,47 @@ export const OpenAPIBlock = ({ specUrl }) => {
             [role='navigation'] {
               padding: var(--spectrum-global-dimension-static-size-400);
 
+              label span[type] {
+                text-transform: uppercase;
+                border-radius: var(--spectrum-global-dimension-size-50);
+                font-size: var(--spectrum-global-dimension-size-100);
+                margin-right: var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100));
+                padding: var(--spectrum-global-dimension-size-50) var(--spectrum-global-dimension-size-125);
+                background-color: inherit;
+                width: var(--spectrum-global-dimension-size-700);
+                height: var(--spectrum-global-dimension-size-1);
+              }
+
+              label span[type='get'] {
+                border: 2px solid var(--spectrum-global-color-blue-400);
+                color: var(--spectrum-global-color-blue-400);
+              }
+
+              label span[type='patch'] {
+                border: 2px solid var(--spectrum-global-color-seafoam-400);
+                color: var(--spectrum-global-color-seafoam-400);
+              }
+
+              label span[type='post'] {
+                border: 2px solid var(--spectrum-global-color-green-400);
+                color: var(--spectrum-global-color-green-400);
+              }
+
+              label span[type='put'] {
+                border: 2px solid var(--spectrum-global-color-orange-400);
+                color: var(--spectrum-global-color-orange-400);
+              }
+
+              label span[type='head'] {
+                border: 2px solid var(--spectrum-global-color-fuchsia-400);
+                color: var(--spectrum-global-color-fuchsia-400);
+              }
+
+              label span[type='delete'] {
+                border: 2px solid var(--spectrum-global-color-red-400);
+                color: var(--spectrum-global-color-red-400);
+              }
+
               [role='menuitem'] {
                 position: relative;
                 display: inline-flex;
@@ -124,6 +165,11 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 }
               }
 
+              h1 span {
+                float: right;
+                line-height: 36px;
+              }
+
               p {
                 font-size: var(--spectrum-body-l-text-size, var(--spectrum-global-dimension-font-size-300));
                 font-weight: var(--spectrum-body-l-text-font-weight, var(--spectrum-alias-body-text-font-weight));
@@ -138,6 +184,413 @@ export const OpenAPIBlock = ({ specUrl }) => {
             }
 
             .api-content {
+              table {
+                margin-bottom: var(--spectrum-global-dimension-size-400, var(--spectrum-alias-size-400));
+                border-collapse: separate;
+                border-spacing: 0;
+              }
+
+              tbody {
+                border-width: 1px 0;
+                background-color: var(
+                  --spectrum-table-quiet-cell-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                border-radius: var(--spectrum-table-quiet-border-radius, 0px);
+                border: none;
+                border-color: var(--spectrum-table-border-color, var(--spectrum-alias-border-color-mid));
+                position: relative;
+                overflow: auto;
+                vertical-align: var(--spectrum-table-cell-vertical-alignment, top);
+              }
+
+              tr {
+                position: relative;
+                cursor: pointer;
+                transition: background-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out;
+                border-bottom: 1px solid var(--spectrum-table-cell-border-color, var(--spectrum-global-color-gray-300));
+                background-color: var(
+                  --spectrum-table-quiet-row-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                border-top: none;
+              }
+
+              td {
+                border-bottom: none;
+                border-right: none;
+                border-left: none;
+                border-top: 1px solid var(--spectrum-table-cell-border-color, var(--spectrum-global-color-gray-300));
+                color: var(--spectrum-table-cell-text-color, var(--spectrum-alias-text-color));
+                background-color: var(
+                  --spectrum-table-cell-background-color,
+                  var(--spectrum-alias-background-color-transparent)
+                );
+                position: relative;
+
+                box-sizing: border-box;
+                font-size: var(--spectrum-table-cell-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-table-cell-text-font-weight, var(--spectrum-global-font-weight-regular));
+                line-height: var(--spectrum-table-cell-text-line-height, var(--spectrum-alias-body-text-line-height));
+                padding-top: var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175));
+                padding-bottom: var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175));
+                padding-left: var(--spectrum-table-cell-padding-x, var(--spectrum-global-dimension-size-200));
+                padding-right: var(--spectrum-table-cell-padding-x, var(--spectrum-global-dimension-size-200));
+                min-height: calc(
+                  var(--spectrum-table-cell-min-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-table-cell-padding-y, var(--spectrum-global-dimension-size-175)) * 2
+                );
+              }
+
+              td[kind='field'] {
+                background-image: none;
+                border-left: none;
+                color: var(--spectrum-code-s-text-color, var(--spectrum-alias-text-color));
+                font-size: var(--spectrum-code-s-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(
+                  --spectrum-code-s-text-font-weight,
+                  var(--spectrum-alias-code-text-font-weight-regular)
+                );
+                line-height: var(--spectrum-code-s-text-line-height, var(--spectrum-alias-code-text-line-height));
+                font-style: var(--spectrum-code-s-text-font-style, var(--spectrum-global-font-style-regular));
+                letter-spacing: var(
+                  --spectrum-code-s-text-letter-spacing,
+                  var(--spectrum-global-font-letter-spacing-none)
+                );
+                margin-top: 0;
+                margin-bottom: 0;
+                font-family: var(--spectrum-code-s-text-font-family, var(--spectrum-alias-code-text-font-family));
+              }
+
+              td[kind='field'] span {
+                display: none;
+                color: var(--spectrum-global-color-red-700);
+              }
+
+              td[kind='field'] div {
+                margin-left: 0px;
+              }
+
+              td + td div div:first-of-type span + span {
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -ms-flex-align: center;
+                align-items: center;
+                box-sizing: border-box;
+                margin-top: calc(var(--spectrum-taggroup-tag-gap-y, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-bottom: calc(var(--spectrum-taggroup-tag-gap-y, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-left: calc(var(--spectrum-taggroup-tag-gap-x, var(--spectrum-global-dimension-size-100)) / 2);
+                margin-right: calc(var(--spectrum-taggroup-tag-gap-x, var(--spectrum-global-dimension-size-100)) / 2);
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: calc(
+                  var(--spectrum-tag-padding-x, var(--spectrum-global-dimension-size-125)) -
+                    var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin))
+                );
+                padding-right: calc(
+                  var(--spectrum-tag-padding-x, var(--spectrum-global-dimension-size-125)) -
+                    var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin))
+                );
+                height: var(--spectrum-tag-height, var(--spectrum-global-dimension-size-300));
+                max-width: 100%;
+                border-width: var(--spectrum-tag-border-size, var(--spectrum-alias-border-size-thin));
+                border-style: solid;
+                border-radius: var(--spectrum-global-dimension-size-50);
+                outline: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                transition: border-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  box-shadow var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
+                  background-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out;
+                color: var(--spectrum-tag-text-color, var(--spectrum-global-color-gray-700));
+                background-color: var(--spectrum-tag-background-color, var(--spectrum-global-color-gray-75));
+                border-color: var(--spectrum-tag-border-color, var(--spectrum-global-color-gray-600));
+              }
+
+              code[class*='language-'],
+              pre[class*='language-'] {
+                /*   --hljs-color: rgb(227, 227, 227); */
+                color: rgb(227, 227, 227);
+                background: none;
+                font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+                font-size: 1em;
+                text-align: left;
+                white-space: pre;
+                word-spacing: normal;
+                word-break: normal;
+                word-wrap: normal;
+                line-height: 1.5;
+                border-radius: 4px;
+
+                -moz-tab-size: 4;
+                -o-tab-size: 4;
+                tab-size: 4;
+
+                -webkit-hyphens: none;
+                -moz-hyphens: none;
+                -ms-hyphens: none;
+                hyphens: none;
+              }
+
+              /* Code blocks */
+              pre[class*='language-'] {
+                padding: 1em;
+                margin: 0.5em 0;
+                overflow: auto;
+              }
+
+              :not(pre) > code[class*='language-'],
+              pre[class*='language-'] {
+                /* --hljs-background: rgb(47, 47, 47); */
+                background: rgb(47, 47, 47);
+              }
+
+              /* Inline code */
+              :not(pre) > code[class*='language-'] {
+                color: rgb(227, 227, 227);
+                font-size: 14px;
+                background-color: rgb(50, 50, 50);
+                border-radius: 4px;
+                border-color: rgb(62, 62, 62);
+                padding: 4px;
+                white-space: pre-wrap;
+              }
+
+              .token.comment,
+              .token.block-comment,
+              .token.prolog,
+              .token.doctype,
+              .token.cdata {
+                /* --hljs-comment-color: rgb(185, 185, 185); */
+                color: rgb(185, 185, 185);
+              }
+
+              .token.punctuation {
+                color: rgb(227, 227, 227);
+              }
+
+              .token.tag,
+              .token.namespace,
+              .token.deleted {
+                color: rgb(245, 107, 183);
+              }
+
+              .token.boolean,
+              .token.number,
+              .token.attr-name,
+              .token.function,
+              .token.function-name {
+                /* --hljs-function-color: rgb(75, 156, 245); */
+                color: rgb(75, 156, 245);
+              }
+
+              .token.attr-name {
+                /* --hljs-attribute-color: rgb(144, 144, 250); */
+                color: rgb(144, 144, 250);
+              }
+
+              .token.property,
+              .token.property.string,
+              .token.class-name,
+              .token.constant,
+              .token.symbol {
+                /* --hljs-literal-color: rgb(180, 131, 240); */
+                color: rgb(180, 131, 240);
+              }
+
+              .token.class-name {
+                /* --hljs-class-color: rgb(35, 178, 184);
+               */
+                color: rgb(35, 178, 184);
+              }
+
+              .token.selector,
+              .token.important,
+              .token.atrule,
+              .token.keyword,
+              .token.builtin {
+                color: rgb(227, 102, 239);
+              }
+
+              .token.string,
+              .token.char,
+              .token.attr-value,
+              .token.regex {
+                /* --hljs-string-color: rgb(57, 185, 144); */
+                color: rgb(57, 185, 144);
+              }
+
+              .token.variable {
+                /* --hljs-variable-color: rgb(236, 90, 170); */
+                color: rgb(236, 90, 170);
+              }
+
+              .token.operator,
+              .token.entity,
+              .token.url {
+                color: rgb(75, 156, 245);
+              }
+
+              .token.important,
+              .token.bold {
+                font-weight: bold;
+              }
+              .token.italic {
+                font-style: italic;
+              }
+
+              .token.entity {
+                cursor: help;
+              }
+
+              .token.inserted {
+                color: rgb(57, 185, 144);
+              }
+
+              button span[type] {
+                text-transform: uppercase;
+                border-radius: var(--spectrum-global-dimension-size-50);
+                font-size: var(--spectrum-global-dimension-size-125);
+                margin-right: var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100));
+                padding: var(--spectrum-global-dimension-size-50) var(--spectrum-global-dimension-size-125);
+                background-color: inherit;
+              }
+
+              button span[type='get'] {
+                border: 2px solid var(--spectrum-global-color-blue-400);
+                color: var(--spectrum-global-color-blue-400);
+              }
+
+              button span[type='patch'] {
+                border: 2px solid var(--spectrum-global-color-seafoam-400);
+                color: var(--spectrum-global-color-seafoam-400);
+              }
+
+              button span[type='post'] {
+                border: 2px solid var(--spectrum-global-color-green-400);
+                color: var(--spectrum-global-color-green-400);
+              }
+
+              button span[type='put'] {
+                border: 2px solid var(--spectrum-global-color-orange-400);
+                color: var(--spectrum-global-color-orange-400);
+              }
+
+              button span[type='head'] {
+                border: 2px solid var(--spectrum-global-color-fuchsia-400);
+                color: var(--spectrum-global-color-fuchsia-400);
+              }
+
+              button span[type='delete'] {
+                border: 2px solid var(--spectrum-global-color-red-400);
+                color: var(--spectrum-global-color-red-400);
+              }
+
+              div[data-tabs] ul[role='tablist'] {
+                border-bottom-color: var(--spectrum-tabs-rule-color, rgb(62, 62, 62));
+                align-items: center;
+                display: flex;
+                position: relative;
+                z-index: 0;
+                margin: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: var(--spectrum-tabs-focus-ring-padding-x, var(--spectrum-global-dimension-size-100));
+                padding-right: var(--spectrum-tabs-focus-ring-padding-x, var(--spectrum-global-dimension-size-100));
+                vertical-align: top;
+                background-color: rgb(50, 50, 50);
+              }
+
+              div[data-tabs] ul[role='tablist'] li[role='tab'] {
+                position: relative;
+                box-sizing: border-box;
+                height: calc(
+                  var(--spectrum-tabs-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick))
+                );
+                line-height: calc(
+                  var(--spectrum-tabs-height, var(--spectrum-global-dimension-size-600)) -
+                    var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick))
+                );
+                z-index: 1;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: color var(--spectrum-global-animation-duration-100, 130ms) ease-out;
+                cursor: pointer;
+                outline: none;
+                color: var(--spectrum-tabs-text-color, var(--spectrum-alias-label-text-color));
+                cursor: pointer;
+                vertical-align: top;
+                display: inline-block;
+                font-size: var(--spectrum-tabs-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-tabs-text-font-weight, var(--spectrum-alias-body-text-font-weight));
+                text-decoration: none;
+                background-color: inherit;
+                border: 0px;
+                border-bottom: var(--spectrum-tabs-rule-height, var(--spectrum-alias-border-size-thick)) solid;
+                padding-right: 15px;
+                padding-left: 15px;
+                padding-bottom: 10px;
+                margin-right: 0px;
+                margin-left: 0px;
+                border-radius: 0px;
+              }
+
+              div[data-tabs] ul[role='tablist'] li[aria-selected='true'] {
+                color: var(--spectrum-tabs-text-color-selected, var(--spectrum-global-color-gray-400));
+              }
+
+              div[role='tabpanel'] div div + div div div button {
+                position: relative;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                box-sizing: border-box;
+                -ms-flex-align: center;
+                align-items: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                overflow: visible;
+                margin: 0 var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100)) 0 0;
+                border-style: solid;
+                text-transform: none;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-appearance: button;
+                vertical-align: top;
+                transition: background var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  border-color var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  color var(--spectrum-global-animation-duration-100, 130ms) ease-out,
+                  box-shadow var(--spectrum-global-animation-duration-100, 130ms) ease-out;
+                text-decoration: none;
+                font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
+                line-height: 1.3;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-user-select: none;
+                -ms-touch-action: none;
+                touch-action: none;
+                cursor: pointer;
+                position: relative;
+                height: var(--spectrum-actionbutton-height, var(--spectrum-alias-single-line-height));
+                min-width: var(--spectrum-actionbutton-min-width, var(--spectrum-global-dimension-size-400));
+                padding: 0
+                  calc(
+                    var(--spectrum-actionbutton-icon-padding-x, var(--spectrum-global-dimension-size-85)) -
+                      var(--spectrum-actionbutton-border-size, var(--spectrum-alias-border-size-thin))
+                  );
+                border-width: var(--spectrum-actionbutton-border-size, var(--spectrum-alias-border-size-thin));
+                border-radius: var(--spectrum-actionbutton-border-radius, var(--spectrum-alias-border-radius-regular));
+                font-size: var(--spectrum-actionbutton-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-actionbutton-text-font-weight, var(--spectrum-alias-body-text-font-weight));
+                border-color: var(--spectrum-actionbutton-border-color, var(--spectrum-alias-border-color));
+                background-color: black;
+                color: var(--spectrum-global-color-gray-50, var(--spectrum-global-color-gray-75));
+              }
+
               h1 {
                 font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size));
                 line-height: var(--spectrum-heading-l-text-line-height, var(--spectrum-alias-heading-text-line-height));
@@ -172,7 +625,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 &:after {
                   content: '';
                   border-radius: var(--spectrum-global-dimension-static-size-25);
-                  background-color: var(--spectrum-global-color-gray-800);
+                  background-color: rgb(227, 227, 227);
                   height: var(--spectrum-global-dimension-static-size-50);
                   width: 100%;
                   position: absolute;
@@ -194,6 +647,32 @@ export const OpenAPIBlock = ({ specUrl }) => {
                     text-transform: var(--spectrum-body-m-text-transform, none);
                   }
                 }
+              }
+
+              h3,
+              h5 {
+                font-size: var(--spectrum-body-m-text-size, var(--spectrum-global-dimension-font-size-200));
+                font-weight: var(--spectrum-body-xl-strong-text-font-weight, var(--spectrum-global-font-weight-bold));
+                line-height: var(--spectrum-body-m-text-line-height, var(--spectrum-alias-body-text-line-height));
+                font-style: var(--spectrum-body-m-text-font-style, var(--spectrum-global-font-style-regular));
+                letter-spacing: var(
+                  --spectrum-body-m-text-letter-spacing,
+                  var(--spectrum-global-font-letter-spacing-none)
+                );
+                text-transform: var(--spectrum-body-m-text-transform, none);
+                margin-top: 0;
+                margin-bottom: var(--spectrum-global-dimension-size-200, var(--spectrum-alias-size-200));
+                color: var(--spectrum-body-text-color, var(--spectrum-alias-text-color));
+                text-transform: capitalize;
+                border-bottom: 0px;
+              }
+
+              h5 span {
+                float: right;
+              }
+
+              h5 + div p {
+                margin-bottom: var(--spectrum-global-dimension-size-200, var(--spectrum-alias-size-200));
               }
 
               pre {
@@ -223,7 +702,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               a[href] {
-                color: var(--spectrum-link-text-color, var(--spectrum-global-color-blue-600));
+                color: var(--spectrum-link-text-color, rgb(75, 156, 245));
 
                 &:hover {
                   text-decoration: underline;
