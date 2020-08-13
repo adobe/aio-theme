@@ -702,7 +702,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               a[href] {
-                color: var(--spectrum-link-text-color, rgb(75, 156, 245));
+                color: var(--spectrum-link-text-color, var(--spectrum-global-color-blue-600));
 
                 &:hover {
                   text-decoration: underline;
