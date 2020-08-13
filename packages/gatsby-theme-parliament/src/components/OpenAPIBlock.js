@@ -318,6 +318,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
                 font-size: 1em;
                 text-align: left;
+                text-shadow: none;
                 white-space: pre;
                 word-spacing: normal;
                 word-break: normal;
