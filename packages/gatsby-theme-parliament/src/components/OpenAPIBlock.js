@@ -15,8 +15,9 @@ import { css } from '@emotion/core';
 import { ProgressCircle } from '@react-spectrum/progress';
 import { RedocStandalone } from 'redoc';
 
-export const OpenAPIBlock = ({ specUrl }) => {
+export const OpenAPIBlock = ({ specUrl, spec }) => {
   const [showProgress, setShowProgress] = useState(true);
+  let input = specUrl ? { specUrl } : { spec };
 
   return (
     <div
@@ -732,7 +733,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
           }
         `}>
         <RedocStandalone
-          specUrl={specUrl}
+          {...input}
           options={{
             nativeScrollbars: true,
             disableSearch: true,
