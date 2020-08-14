@@ -10,10 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-require('dotenv').config({
-  path: `.env`,
-});
-
 const globalNav = require('@adobe/gatsby-theme-parliament/globalNav.json');
 
 globalNav.menus = [globalNav.menus[1]];

@@ -10,6 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
+require('dotenv').config({
+  path: `.env`
+});
+
 module.exports = {
   siteMetadata: {
     globalNav: {
@@ -117,7 +121,7 @@ module.exports = {
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
       options: {
-        root: 'example',
+        root: process.env.ROOT,
         repo: {
           token: process.env.GITHUB_TOKEN,
           owner: process.env.GITHUB_REPO_OWNER,
