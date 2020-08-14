@@ -25,10 +25,10 @@
     unist-util-remove "^2.0.0"
     unist-util-visit "^2.0.1"
 
-"@adobe/gatsby-source-github-file-contributors@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-source-github-file-contributors/-/gatsby-source-github-file-contributors-0.0.4.tgz#39477efda4d37b5430010fbe017b73104e6c0688"
-  integrity sha512-YiQFZlper/Wc2tjDgtsiLQWuWXUBEM8AVX9LOoCD3IzFA2vhIXOvOFEGYKpyKaWXmupGmdAdWG3PzefGW4u6YA==
+"@adobe/gatsby-source-github-file-contributors@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-source-github-file-contributors/-/gatsby-source-github-file-contributors-0.1.0.tgz#8de14e55ab229ff8b6fa4ee45532d6329207a821"
+  integrity sha512-VoVxekzwDkFdMuLCIuhTHigaZlby7wvLEvpG1R22HEvYGVhloyFTtAKDpLqQ+kIAQNTAoxBwt7zvNcQfY57lOw==
   dependencies:
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
@@ -1857,6 +1857,11 @@
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/tabs/-/tabs-3.0.0-beta.3.tgz#d9dc83cf0c1e310dc39170c1de8dd45cbf36877f"
   integrity sha512-ulLWE56VL+x2fmb0LfCYPknMCSvmreQMYYECjnvOMncxsJjPaLZ1a9v0mb5K+XTVXumHMkIEHDGHciY5fJiF3w==
+
+"@spectrum-css/tooltip@^3.0.0-beta.2":
+  version "3.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/tooltip/-/tooltip-3.0.0-beta.2.tgz#b30538c05eb8edc080e4ab53538ef59bb6a60bc7"
+  integrity sha512-Kpl5rR13M/qlm82W0T6jJ0B9zE1v15onGmoDpntUMqixeNwCJYplVVnxG1qAOQWNoG3rokFD/uP2HfEVOXFWuA==
 
 "@spectrum-css/typography@^2.1.3":
   version "2.1.3"
@@ -10932,6 +10937,11 @@ react-icons@^3.0.1:
   integrity sha512-WsQ5n1JToG9VixWilSo1bHv842Cj5aZqTGiS3Ud47myF6aK7S/IUY2+dHcBdmkQcCFRuHsJ9OMUI0kTDfjyZXQ==
   dependencies:
     camelcase "^5.0.0"
+
+react-id-generator@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-id-generator/-/react-id-generator-3.0.1.tgz#30ec683954b3c0a5aa0732c4b98ed0f88fd85d00"
+  integrity sha512-YxorMaYxB8ItXA3Cuadcl/8ZaquU9Tzrrr5ogFL8tNqevF96cmCtx3LZLXYqBEj3BxoV9aBIK5yJjIuX/XHQ1A==
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"

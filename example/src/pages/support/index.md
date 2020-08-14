@@ -13,7 +13,7 @@ Learn where to ask questions, report bugs, make feature requests, and spark disc
 
 You've got a place to start discussions.
 
-<DiscoverBlock slots="image, heading, link, text" width="100%"/>
+<DiscoverBlock slots="image, heading, link, text"/>
 
 ![Adobe Experience Cloud](experience_cloud.png)
 
@@ -22,6 +22,12 @@ You've got a place to start discussions.
 [Get started](https://adobe.io)
 
 Open discussion and support with community experts and Adobe staff.
+
+<DiscoverBlock slots="link, text"/>
+
+[Experience league](https://adobe.io) 
+
+Tutorials and videos for the community.
 
 ## Community
 

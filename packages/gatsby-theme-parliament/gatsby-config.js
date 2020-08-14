@@ -74,10 +74,6 @@ module.exports = {
     ],
     docs: {
       path: ''
-    },
-    github: {
-      repository: 'adobe/gatsby-theme-parliament',
-      branch: 'main'
     }
   },
   plugins: [

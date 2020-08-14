@@ -19,10 +19,6 @@ import { Link } from './Link';
 import { Picker } from './Picker';
 import { layoutColumns } from './utils';
 import '@spectrum-css/typography';
-import '@spectrum-css/icon';
-import '@spectrum-css/dropdown';
-import '@spectrum-css/popover';
-import '@spectrum-css/menu';
 
 const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');

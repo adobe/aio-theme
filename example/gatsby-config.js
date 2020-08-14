@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         title: 'v1.4',
-        path: 'https://adobe.io'
+        path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
       }
     ],
     pages: [
@@ -128,11 +128,7 @@ module.exports = {
         title: 'How to contribute',
         path: '/support/contribute/'
       }
-    ],
-    github: {
-      repository: 'adobe/gatsby-theme-parliament',
-      branch: 'main'
-    }
+    ]
   },
   plugins: [`@adobe/gatsby-theme-parliament`],
   pathPrefix: '/example'

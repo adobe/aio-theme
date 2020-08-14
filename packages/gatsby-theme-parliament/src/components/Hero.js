@@ -36,6 +36,10 @@ const Hero = ({
           {React.cloneElement(heading, {
             className: 'spectrum-Heading--XL',
             css: css`
+              font-weight: var(
+                --spectrum-heading-xl-text-font-weight,
+                var(--spectrum-alias-heading-text-font-weight-regular)
+              );
               margin-bottom: var(--spectrum-global-dimension-static-size-200);
               color: ${textColor};
             `

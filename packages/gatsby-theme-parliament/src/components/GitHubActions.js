@@ -17,25 +17,30 @@ import { ActionButton, Text } from './ActionButton';
 import { Bug, Edit } from './Icons';
 import { css } from '@emotion/core';
 
-const GitHubActions = ({ repository, branch, pagePath }) => {
+const GitHubActions = ({ repository, branch, root, pagePath }) => {
   const commonsProps = {
     elementType: 'a',
     isQuiet: true,
     target: '_blank',
     rel: 'noopener noreferrer nofollow'
   };
+
+  const rootFolder = root ? `/${root}` : '';
+
   return (
     <Flex>
-      <ActionButton {...commonsProps} href={`https://github.com/${repository}/edit/${branch}/src/pages/${pagePath}`}>
+      <ActionButton
+        {...commonsProps}
+        href={`https://github.com/${repository}/edit/${branch}${rootFolder}/src/pages/${pagePath}`}>
         <Edit />
         <Text>Edit in Github</Text>
       </ActionButton>
 
       <ActionButton
         {...commonsProps}
-        href={`https://github.com/${repository}/issues/new?body=Issue%20in%20/src/pages/${pagePath}`}
+        href={`https://github.com/${repository}/issues/new?body=Issue%20in%20${rootFolder}/src/pages/${pagePath}`}
         css={css`
-          margin-inline-start: var(--spectrum-global-dimension-static-size-100);
+          margin-left: var(--spectrum-global-dimension-static-size-100);
         `}>
         <Bug />
         <Text>Log an issue</Text>

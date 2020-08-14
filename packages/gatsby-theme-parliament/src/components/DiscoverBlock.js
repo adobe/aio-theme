@@ -13,56 +13,54 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { layoutColumns } from './utils';
-import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
-const imageWidth = '100px';
+const imageWidth = 'var(--spectrum-global-dimension-size-1250)';
 
 const DiscoverBlock = ({ width, heading, link, text, image }) => (
-  <div
-    className={width === '100%' ? 'is-block' : ''}
-    css={css`
-      ${image
-        ? `
+  <>
+    {image
+      ? React.cloneElement(heading, {
+          css: css`
+            margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-static-size-400));
+          `
+        })
+      : heading}
+    <div
+      css={css`
+        ${image
+          ? `
       position: relative;
       margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-static-size-400));
       `
-        : ''}
-      display: inline-flex;
-      flex-direction: column;
-      margin-right: var(--spectrum-global-dimension-static-size-200);
-      width: ${width
-        ? width
-        : layoutColumns(3, [
-            'var(--spectrum-global-dimension-static-size-400)',
-            'var(--spectrum-global-dimension-static-size-400)'
-          ])};
-
-      &:not(.is-block) {
-        height: 176px;
-        vertical-align: bottom;
-      }
-    `}>
-    {image &&
-      React.cloneElement(image, {
-        css: css`
-          position: absolute;
-          top: var(--spectrum-heading-m-margin-top, var(--spectrum-alias-heading-m-margin-top));
-          left: calc(-${imageWidth} - var(--spectrum-global-dimension-static-size-400));
-          display: flex;
-          align-items: flex-start;
-          height: 100%;
-          width: ${imageWidth};
-        `
-      })}
-    {heading ?? (
-      <div className="spectrum-Heading--M" aria-hidden="true">
-        &nbsp;
-      </div>
-    )}
-    {link}
-    {text}
-  </div>
+          : ''}
+        display: inline-flex;
+        flex-direction: column;
+        margin-right: var(--spectrum-global-dimension-static-size-200);
+        margin-bottom: var(--spectrum-global-dimension-static-size-100);
+        width: ${width
+          ? width
+          : layoutColumns(3, [
+              'var(--spectrum-global-dimension-static-size-400)',
+              'var(--spectrum-global-dimension-static-size-400)'
+            ])};
+      `}>
+      {image &&
+        React.cloneElement(image, {
+          css: css`
+            position: absolute;
+            top: calc(-1 * var(--spectrum-global-dimension-size-350));
+            left: calc(-1 * (${imageWidth} + var(--spectrum-global-dimension-static-size-400)));
+            display: flex;
+            align-items: flex-start;
+            height: 100%;
+            width: ${imageWidth};
+          `
+        })}
+      {link}
+      {text}
+    </div>
+  </>
 );
 
 DiscoverBlock.propTypes = {

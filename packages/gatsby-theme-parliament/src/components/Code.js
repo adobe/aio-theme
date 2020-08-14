@@ -10,24 +10,87 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { createRef, useState } from 'react';
 import { css } from '@emotion/core';
+import nextId from 'react-id-generator';
 import classNames from 'classnames';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import '@spectrum-css/typography';
+import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
+import { ActionButton } from './ActionButton';
+import globalTheme from '../theme';
+
+const theme = globalTheme.code;
+const tooltipId = nextId();
 
 export const Code = ({ children, className = '' }) => {
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const language = className.replace(/language-/, '');
+
+  const openTooltip = () => {
+    setIsTooltipOpen(true);
+    setTimeout(() => {
+      setIsTooltipOpen(false);
+    }, 3000);
+  };
 
   return (
     <Highlight {...defaultProps} code={children} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
         const lines = tokens.slice(0, -1);
         const isMultiLine = lines.length > 1;
+        const textarea = createRef();
 
         return (
-          <pre className={classNames(className, 'spectrum-Code4')}>
+          <pre className={classNames(className, 'spectrum-Code4', `spectrum--${theme}`)}>
+            <div
+              css={css`
+                position: relative;
+              `}>
+              <textarea
+                readOnly={true}
+                aria-hidden="true"
+                css={css`
+                  position: fixed;
+                  left: -999px;
+                  opacity: 0;
+                `}
+                ref={textarea}
+                value={children}
+              />
+              <ActionButton
+                aria-describedby={tooltipId}
+                onClick={() => {
+                  textarea.current.select();
+                  document.execCommand('copy');
+                  openTooltip();
+                }}
+                css={css`
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                `}>
+                Copy
+              </ActionButton>
+              <span
+                role="tooltip"
+                id={tooltipId}
+                css={css`
+                  position: absolute;
+                  top: 4px;
+                  right: 48px;
+                  left: initial;
+                  font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
+                `}
+                className={classNames('spectrum-Tooltip spectrum-Tooltip--left', {
+                  'is-open': isTooltipOpen
+                })}>
+                <span className="spectrum-Tooltip-label">Copied</span>
+                <span className="spectrum-Tooltip-tip"></span>
+              </span>
+            </div>
+
             {tokens.slice(0, -1).map((line, i) => {
               const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 

@@ -11,7 +11,6 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import '@spectrum-css/typography';
@@ -20,12 +19,6 @@ import { Flex } from '@react-spectrum/layout';
 import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
 import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
 
-const centered = css`
-  display: flex;
-  align-items: center;
-  gap: var(--spectrum-global-dimension-static-size-100);
-`;
-
 const NextPrev = ({ nextPage, previousPage }) =>
   nextPage || previousPage ? (
     <div className="spectrum-Body--M">
@@ -33,26 +26,20 @@ const NextPrev = ({ nextPage, previousPage }) =>
         <View>
           {previousPage && (
             <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={previousPage.path} rel="prev">
-              <div
-                css={css`
-                  ${centered}
-                `}>
+              <Flex alignItems="center">
                 <ChevronLeft size="S" />
-                {previousPage.title}
-              </div>
+                <View marginStart="size-100">{previousPage.title}</View>
+              </Flex>
             </GatsbyLink>
           )}
         </View>
         <View marginStart="auto">
           {nextPage && (
             <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={nextPage.path} rel="next">
-              <div
-                css={css`
-                  ${centered}
-                `}>
-                {nextPage.title}
+              <Flex alignItems="center">
+                <View marginEnd="size-100">{nextPage.title}</View>
                 <ChevronRight size="S" />
-              </div>
+              </Flex>
             </GatsbyLink>
           )}
         </View>

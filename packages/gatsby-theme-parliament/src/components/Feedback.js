@@ -25,12 +25,8 @@ const Feedback = ({ onYes, onNo }) => (
       `}>
       Was this helpful ?
     </span>
-    <div
-      css={css`
-        display: flex;
-        gap: var(--spectrum-global-dimension-static-size-200);
-      `}>
-      <View>
+    <Flex>
+      <View marginEnd="size-200">
         <Button
           variant="primary"
           onClick={() => {
@@ -48,7 +44,7 @@ const Feedback = ({ onYes, onNo }) => (
           No
         </Button>
       </View>
-    </div>
+    </Flex>
   </Flex>
 );
 

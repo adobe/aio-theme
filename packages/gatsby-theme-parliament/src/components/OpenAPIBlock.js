@@ -272,9 +272,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               td + td div div:first-of-type span + span {
-                display: -ms-inline-flexbox;
                 display: inline-flex;
-                -ms-flex-align: center;
                 align-items: center;
                 box-sizing: border-box;
                 margin-top: calc(var(--spectrum-taggroup-tag-gap-y, var(--spectrum-global-dimension-size-100)) / 2);
@@ -297,9 +295,6 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 border-style: solid;
                 border-radius: var(--spectrum-global-dimension-size-50);
                 outline: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
                 user-select: none;
                 transition: border-color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
                   color var(--spectrum-global-animation-duration-100, 130ms) ease-in-out,
@@ -325,14 +320,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 word-wrap: normal;
                 line-height: 1.5;
                 border-radius: 4px;
-
-                -moz-tab-size: 4;
-                -o-tab-size: 4;
                 tab-size: 4;
-
-                -webkit-hyphens: none;
-                -moz-hyphens: none;
-                -ms-hyphens: none;
                 hyphens: none;
               }
 
@@ -563,17 +551,12 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 display: -ms-inline-flexbox;
                 display: inline-flex;
                 box-sizing: border-box;
-                -ms-flex-align: center;
                 align-items: center;
-                -ms-flex-pack: center;
                 justify-content: center;
                 overflow: visible;
                 margin: 0 var(--spectrum-global-dimension-size-100, var(--spectrum-alias-size-100)) 0 0;
                 border-style: solid;
                 text-transform: none;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-appearance: button;
                 vertical-align: top;
                 transition: background var(--spectrum-global-animation-duration-100, 130ms) ease-out,
                   border-color var(--spectrum-global-animation-duration-100, 130ms) ease-out,
@@ -582,11 +565,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 text-decoration: none;
                 font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
                 line-height: 1.3;
-                -moz-user-select: none;
-                -ms-user-select: none;
                 user-select: none;
-                -webkit-user-select: none;
-                -ms-touch-action: none;
                 touch-action: none;
                 cursor: pointer;
                 position: relative;

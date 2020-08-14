@@ -32,6 +32,13 @@ export default ({ children, pageContext, location }) => {
   const data = useStaticQuery(
     graphql`
       query {
+        allGithub {
+          nodes {
+            repository
+            branch
+            root
+          }
+        }
         allGithubContributors {
           nodes {
             contributors {
@@ -40,7 +47,6 @@ export default ({ children, pageContext, location }) => {
               name
             }
             path
-            href
           }
         }
         allMdx {
@@ -105,17 +111,13 @@ export default ({ children, pageContext, location }) => {
                 }
               }
             }
-            github {
-              repository
-              branch
-            }
           }
         }
       }
     `
   );
 
-  const { allMdx, allSitePage, site, allGithubContributors } = data;
+  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
   const { siteMetadata } = site;
   const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
@@ -124,7 +126,17 @@ export default ({ children, pageContext, location }) => {
   const hasSideNav = selectedSubPages.length > 0;
 
   return (
-    <Provider value={{ location, pageContext, hasSideNav, siteMetadata, allSitePage, allMdx, allGithubContributors }}>
+    <Provider
+      value={{
+        location,
+        pageContext,
+        hasSideNav,
+        siteMetadata,
+        allSitePage,
+        allMdx,
+        allGithub,
+        allGithubContributors
+      }}>
       <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
       <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
         <Grid

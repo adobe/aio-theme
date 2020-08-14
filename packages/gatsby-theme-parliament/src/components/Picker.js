@@ -12,11 +12,11 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import nextId from 'react-id-generator';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import { ChevronDown } from './Icons';
 import { Popover } from './Popover';
-import '@spectrum-css/icon';
 import '@spectrum-css/dropdown';
 import '@spectrum-css/menu';
 
@@ -24,7 +24,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [options, setOptions] = useState(items);
-  const id = new Date().getTime();
+  const id = nextId();
 
   useEffect(() => {
     const onClick = (event) => {
@@ -65,7 +65,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
         </span>
         <ChevronDown className="spectrum-Dropdown-icon" />
       </button>
-      <Popover isOpen={openMenu} isQuiet={isQuiet} ref={popover}>
+      <Popover variant="picker" isQuiet={isQuiet} isOpen={openMenu} ref={popover}>
         <ul className="spectrum-Menu" role="listbox">
           {options.map((option, i) => {
             const isSelected = option.selected;
@@ -106,6 +106,26 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   );
 };
 
+const PickerButton = ({ children, isOpen, isQuiet, ariaControls, ...props }) => (
+  <div
+    {...props}
+    className={classNames('spectrum-Dropdown', { 'spectrum-Dropdown--quiet': isQuiet }, { 'is-open': isOpen })}>
+    <button
+      className={classNames(
+        'spectrum-FieldButton',
+        'spectrum-Dropdown-trigger',
+        { 'spectrum-FieldButton--quiet': isQuiet },
+        { 'is-selected': isOpen }
+      )}
+      aria-haspopup="listbox"
+      aria-expanded={isOpen}
+      aria-controls={ariaControls}>
+      <span className="spectrum-Dropdown-label">{children}</span>
+      <ChevronDown className="spectrum-Dropdown-icon" />
+    </button>
+  </div>
+);
+
 Picker.propTypes = {
   label: PropTypes.string,
   isQuiet: PropTypes.bool,
@@ -114,4 +134,10 @@ Picker.propTypes = {
   onChange: PropTypes.func
 };
 
-export { Picker };
+PickerButton.propTypes = {
+  isQuiet: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  ariaControls: PropTypes.string
+};
+
+export { Picker, PickerButton };

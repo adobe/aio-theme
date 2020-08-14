@@ -24,11 +24,9 @@ const Button = ({ children, elementType = 'button', variant = 'primary', isQuiet
   return (
     <Element
       {...props}
-      className={classNames(className, [
-        'spectrum-Button',
-        `spectrum-Button--${variant}`,
-        { 'spectrum-Button--quiet': isQuiet }
-      ])}>
+      className={classNames(className, 'spectrum-Button', `spectrum-Button--${variant}`, {
+        'spectrum-Button--quiet': isQuiet
+      })}>
       {children}
     </Element>
   );

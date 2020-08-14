@@ -24,7 +24,7 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, ..
   return (
     <Element
       {...props}
-      className={classNames(className, ['spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet }])}>
+      className={classNames(className, 'spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet })}>
       {children}
     </Element>
   );

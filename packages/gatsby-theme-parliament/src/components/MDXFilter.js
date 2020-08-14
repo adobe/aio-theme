@@ -157,7 +157,9 @@ const filterChildren = (children, tableOfContents) => {
 };
 
 export default ({ children, pageContext }) => {
-  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithubContributors } = useContext(Context);
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
+    Context
+  );
 
   // PrevNext
   const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
@@ -168,10 +170,12 @@ export default ({ children, pageContext }) => {
   const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
   const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
 
-  // Contributors
-  const { contributors, href: pageHref } = allGithubContributors.nodes.find(
+  // Github
+  const { repository, branch, root } = allGithub.nodes[0];
+  const { contributors } = allGithubContributors.nodes.find(
     ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
   );
+  const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
   // Breadcrumbs
   const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
@@ -185,10 +189,7 @@ export default ({ children, pageContext }) => {
   }
   selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
-  // GithubActions
-  const { repository, branch } = siteMetadata.github;
-  const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
-
+  // Custom MDX components
   const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(children, tableOfContents);
 
   const isGuides = hasSideNav && typeof heroChild === 'undefined';
@@ -216,19 +217,14 @@ export default ({ children, pageContext }) => {
                   ])};
                 `}>
                 {isGuides && (
-                  <div
-                    css={css`
-                      display: flex;
-                      gap: var(--spectrum-global-dimension-static-size-400);
-                      margin-top: var(--spectrum-global-dimension-static-size-400);
-                    `}>
-                    <View>
+                  <Flex marginTop="size-400">
+                    <View marginEnd="size-400">
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                     </View>
                     <View marginStart="auto">
-                      <GitHubActions repository={repository} branch={branch} pagePath={pagePath} />
+                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
                     </View>
-                  </div>
+                  </Flex>
                 )}
                 {filteredChildren}
                 {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
@@ -236,8 +232,12 @@ export default ({ children, pageContext }) => {
                 <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
                   <View>
                     <Contributors
-                      href={pageHref}
+                      repository={repository}
+                      branch={branch}
+                      root={root}
+                      pagePath={pagePath}
                       contributors={contributors}
+                      externalContributors={pageContext?.frontmatter?.contributors}
                       date={new Date(contributors[0].date).toLocaleDateString()}
                     />
                   </View>

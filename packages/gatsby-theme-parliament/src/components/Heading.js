@@ -34,7 +34,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const HeadingTag = `h${level}`;
   const isHeading1 = level === 1;
   const isHeading2 = level === 2;
-  const marginLink = `margin-inline-start: var(--spectrum-global-dimension-static-size-${isHeading2 ? '100' : '50'});`;
+  const marginLink = `margin-left: var(--spectrum-global-dimension-static-size-${isHeading2 ? '100' : '50'});`;
 
   return (
     <>

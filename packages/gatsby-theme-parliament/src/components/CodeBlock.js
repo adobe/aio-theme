@@ -15,11 +15,13 @@ import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/vars/dist/spectrum-dark.css';
 import PropTypes from 'prop-types';
-import '@spectrum-css/tabs';
+import { Tabs, TabsIndicator, positionIndicator } from './Tabs';
 import { Picker } from './Picker';
-import { ActionButton } from './ActionButton';
+import globalTheme from '../theme';
 
-const CodeBlock = ({ theme = 'dark', ...props }) => {
+const theme = globalTheme.code;
+
+const CodeBlock = (props) => {
   const [tabs] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState({
     tab: 0,
@@ -29,17 +31,11 @@ const CodeBlock = ({ theme = 'dark', ...props }) => {
 
   const positionSelectedTabIndicator = (index = selectedIndex.tab) => {
     const selectedTab = tabs.filter((tab) => tab.current)[index];
-    selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
-    selectedTabIndicator.current.style.width = `${selectedTab.current.offsetWidth}px`;
+    positionIndicator(selectedTabIndicator, selectedTab);
   };
 
   useEffect(() => {
     positionSelectedTabIndicator();
-
-    // Font affects positioning of the Tab indicator
-    document.fonts.ready.then(() => {
-      positionSelectedTabIndicator();
-    });
   }, [tabs]);
 
   const codeBlocks = [];
@@ -92,13 +88,12 @@ const CodeBlock = ({ theme = 'dark', ...props }) => {
           width: 100%;
           height: var(--spectrum-global-dimension-static-size-600);
         `}>
-        <div
+        <Tabs
           css={css`
             padding-left: var(--spectrum-global-dimension-static-size-200);
             box-sizing: border-box;
           `}
-          className="spectrum-Tabs spectrum-Tabs--horizontal spectrum-Tabs--quiet"
-          role="tabs">
+          onFontsReady={positionSelectedTabIndicator}>
           {codeBlocks.map((block, index) => {
             const ref = createRef();
             tabs.push(ref);
@@ -124,13 +119,8 @@ const CodeBlock = ({ theme = 'dark', ...props }) => {
               </div>
             );
           })}
-          <div
-            ref={selectedTabIndicator}
-            css={css`
-              transition-property: transform, width;
-            `}
-            className="spectrum-Tabs-selectionIndicator"></div>
-        </div>
+          <TabsIndicator ref={selectedTabIndicator} />
+        </Tabs>
         <div
           css={css`
             display: flex;
@@ -160,51 +150,20 @@ const CodeBlock = ({ theme = 'dark', ...props }) => {
         </div>
       </div>
       {codeBlocks.map((block, i) =>
-        block.code.map((code, k) => {
-          const textarea = createRef();
-
-          return (
-            <div
-              key={k}
-              hidden={!(selectedIndex.tab === i && selectedIndex.language === k)}
-              css={css`
-                position: relative;
-              `}>
-              <div
-                css={css`
-                  & pre {
-                    margin-top: 0;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                  }
-                `}>
-                {props[code]}
-                <textarea
-                  readOnly={true}
-                  aria-hidden="true"
-                  css={css`
-                    position: fixed;
-                    left: -999px;
-                    opacity: 0;
-                  `}
-                  ref={textarea}
-                  value={props[code].props.children.props.children}></textarea>
-              </div>
-              <ActionButton
-                onClick={() => {
-                  textarea.current.select();
-                  document.execCommand('copy');
-                }}
-                css={css`
-                  position: absolute;
-                  top: var(--spectrum-global-dimension-static-size-200);
-                  right: var(--spectrum-global-dimension-static-size-200);
-                `}>
-                Copy
-              </ActionButton>
-            </div>
-          );
-        })
+        block.code.map((code, k) => (
+          <div
+            css={css`
+              & pre {
+                margin-top: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+              }
+            `}
+            key={k}
+            hidden={!(selectedIndex.tab === i && selectedIndex.language === k)}>
+            {props[code]}
+          </div>
+        ))
       )}
     </div>
   );

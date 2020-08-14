@@ -16,7 +16,7 @@ import '@spectrum-css/popover';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 
-const Popover = forwardRef(({ isOpen, isQuiet, children, css: styles }, ref) => (
+const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, ref) => (
   <div
     ref={ref}
     aria-hidden={!isOpen}
@@ -25,11 +25,15 @@ const Popover = forwardRef(({ isOpen, isQuiet, children, css: styles }, ref) => 
       width: 100%;
       z-index: 1;
       max-height: var(--spectrum-global-dimension-static-size-2400);
-      ${styles}
     `}
-    className={classNames('spectrum-Popover', 'spectrum-Popover--bottom', 'spectrum-Dropdown-popover', {
-      'is-open': isOpen
-    })}>
+    className={classNames(
+      className,
+      'spectrum-Popover',
+      'spectrum-Popover--bottom',
+      { 'is-open': isOpen },
+      { 'spectrum-Dropdown-popover': variant === 'picker' },
+      { 'spectrum-Dropdown-popover--quiet': variant === 'picker' && isQuiet }
+    )}>
     {children}
   </div>
 ));

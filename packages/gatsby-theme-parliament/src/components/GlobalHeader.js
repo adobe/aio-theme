@@ -12,6 +12,7 @@
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
+import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
 import { findSelectedTopPage } from './utils';
 import { css } from '@emotion/core';
@@ -20,14 +21,11 @@ import { View } from '@react-spectrum/view';
 import { Divider } from '@react-spectrum/divider';
 import { Button } from './Button';
 import { Link } from './Link';
-import { Adobe, ChevronDown } from './Icons';
-import { Picker } from './Picker';
-import classNames from 'classnames';
+import { Adobe } from './Icons';
+import { Picker, PickerButton } from './Picker';
+import { Popover } from './Popover';
+import { Tabs, TabsIndicator, positionIndicator, animateIndicator } from './Tabs';
 import '@spectrum-css/typography';
-import '@spectrum-css/tabs';
-import '@spectrum-css/icon';
-import '@spectrum-css/dropdown';
-import '@spectrum-css/popover';
 import '@spectrum-css/assetlist';
 
 const stretched = css`
@@ -37,28 +35,21 @@ const stretched = css`
 const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
+  const [isAnimated, setIsAnimated] = useState(false);
   const [tabs] = useState([]);
   const primaryPopover = useRef(null);
   const secondaryPopover = useRef(null);
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
-  const [isAnimated, setIsAnimated] = useState(false);
 
   const positionSelectedTabIndicator = () => {
     const selectedTab = tabs.filter((tab) => tab.current)[pages.indexOf(findSelectedTopPage(location.pathname, pages))];
-    selectedTabIndicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
-    selectedTabIndicator.current.style.width = `${selectedTab.current.offsetWidth}px`;
+    positionIndicator(selectedTabIndicator, selectedTab);
   };
 
   useEffect(() => {
-    selectedTabIndicator.current.style.transition = isAnimated ? '' : 'none';
+    animateIndicator(selectedTabIndicator, isAnimated);
     positionSelectedTabIndicator();
-
-    // Font affects positioning of the Tab indicator
-    document.fonts.ready.then(() => {
-      positionSelectedTabIndicator();
-      setIsAnimated(true);
-    });
   }, [location.pathname]);
 
   useEffect(() => {
@@ -123,7 +114,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               </View>
               {globalNav.menus.slice(0, 2).map((menu, index) => {
                 const isPrimary = index === 0;
-                const id = new Date().getTime();
+                const id = nextId();
 
                 return (
                   menu.title && (
@@ -148,64 +139,45 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         `
                           : ''}
                       `}>
-                      <div
-                        className={classNames('spectrum-Dropdown', 'spectrum-Dropdown--quiet', {
-                          'is-open': isPrimary ? openPrimaryMenu : openSecondaryMenu
-                        })}>
-                        <button
-                          className={classNames(
-                            'spectrum-FieldButton',
-                            'spectrum-FieldButton--quiet',
-                            'spectrum-Dropdown-trigger',
-                            { 'is-selected': isPrimary ? openPrimaryMenu : openSecondaryMenu }
-                          )}
-                          aria-haspopup="listbox"
-                          aria-expanded={isPrimary ? openPrimaryMenu : openSecondaryMenu}
-                          aria-controls={id}
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            event.nativeEvent.stopImmediatePropagation();
+                      <PickerButton
+                        isQuiet
+                        isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                        ariaControls={id}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          event.nativeEvent.stopImmediatePropagation();
 
-                            if (isPrimary) {
-                              setOpenPrimaryMenu(!openPrimaryMenu);
-                              setOpenSecondaryMenu(false);
-                            } else {
-                              setOpenSecondaryMenu(!openSecondaryMenu);
-                              setOpenPrimaryMenu(false);
-                            }
-                          }}>
-                          <span className="spectrum-Dropdown-label">{menu.title}</span>
-                          <ChevronDown className="spectrum-Dropdown-icon" />
-                        </button>
-                      </div>
-                      <div
+                          if (isPrimary) {
+                            setOpenPrimaryMenu(!openPrimaryMenu);
+                            setOpenSecondaryMenu(false);
+                          } else {
+                            setOpenSecondaryMenu(!openSecondaryMenu);
+                            setOpenPrimaryMenu(false);
+                          }
+                        }}>
+                        {menu.title}
+                      </PickerButton>
+                      <Popover
                         ref={isPrimary ? primaryPopover : secondaryPopover}
                         id={id}
-                        aria-hidden={isPrimary ? !openPrimaryMenu : !openSecondaryMenu}
-                        className={classNames(
-                          'spectrum-Popover',
-                          'spectrum-Popover--bottom',
-                          'spectrum-Dropdown-popover',
-                          'spectrum-Dropdown-popover--quiet',
-                          { 'is-open': isPrimary ? openPrimaryMenu : openSecondaryMenu }
-                        )}
+                        variant="picker"
+                        isQuiet
+                        isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
                         css={css`
                           display: block;
                           padding: var(--spectrum-global-dimension-static-size-300);
                           z-index: 2;
                           max-width: none !important;
+                          max-height: none !important;
+                          width: auto !important;
                         `}>
-                        <div
-                          css={css`
-                            display: flex;
-                            gap: var(--spectrum-global-dimension-static-size-200);
-                          `}>
+                        <Flex>
                           {menu.sections.map((section, i) => (
-                            <React.Fragment key={i}>
+                            <View key={i} marginEnd="size-400" position="relative">
                               <View>
                                 {section.heading && (
                                   <View marginBottom="size-200" marginStart="size-200">
-                                    <strong className="spectrum-Heading--XS">{section.heading}</strong>
+                                    <strong className="spectrum-Heading--S">{section.heading}</strong>
                                   </View>
                                 )}
                                 <ul className="spectrum-AssetList" role="menu">
@@ -254,10 +226,20 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                   ))}
                                 </ul>
                               </View>
-                              {section.divider && <Divider orientation="vertical" size="S" marginTop="size-600" />}
-                            </React.Fragment>
+                              {section.divider && (
+                                <div
+                                  css={css`
+                                    position: absolute;
+                                    height: 100%;
+                                    top: 0;
+                                    right: calc(-1 * var(--spectrum-global-dimension-static-size-200));
+                                  `}>
+                                  <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
+                                </div>
+                              )}
+                            </View>
                           ))}
-                        </div>
+                        </Flex>
                         {menu.sections[0].viewAll && (
                           <View marginTop="size-100" marginStart="size-200">
                             <Link href={menu.sections[0].viewAll.path}>
@@ -265,15 +247,20 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                             </Link>
                           </View>
                         )}
-                      </div>
+                      </Popover>
                     </div>
                   )
                 );
               })}
             </Flex>
           </View>
-          <View gridArea="navigation" marginStart="size-200">
-            <div ref={nav} className="spectrum-Tabs spectrum-Tabs--quiet spectrum-Tabs--horizontal" role="tablist">
+          <View gridArea="navigation" marginStart={globalNav.menus.length === 1 ? 'size-0' : 'size-200'}>
+            <Tabs
+              ref={nav}
+              onFontsReady={() => {
+                positionSelectedTabIndicator();
+                setIsAnimated(true);
+              }}>
               {pages.slice(0, 4).map((page, i) => {
                 const { title, path } = page;
                 const ref = createRef();
@@ -311,13 +298,12 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                   </React.Fragment>
                 );
               })}
-              <div
+              <TabsIndicator
                 ref={selectedTabIndicator}
-                className="spectrum-Tabs-selectionIndicator"
                 css={css`
                   bottom: -10px !important;
-                  transition-property: transform, width;
-                `}></div>
+                `}
+              />
               <View marginStart="size-400">
                 {docs.path && (
                   <Button variant="primary" elementType="a" href={docs.path}>
@@ -325,7 +311,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                   </Button>
                 )}
               </View>
-            </div>
+            </Tabs>
           </View>
           <View gridArea="console" justifySelf="center">
             {globalNav.console && (
