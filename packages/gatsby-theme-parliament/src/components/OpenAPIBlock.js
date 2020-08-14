@@ -586,6 +586,21 @@ export const OpenAPIBlock = ({ specUrl, spec }) => {
                 color: rgb(227, 227, 227);
               }
 
+              div[data-section-id] h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+
+                a {
+                  margin-left: 4px;
+                }
+              }
+
               h1 {
                 font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size));
                 line-height: var(--spectrum-heading-l-text-line-height, var(--spectrum-alias-heading-text-line-height));
