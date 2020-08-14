@@ -318,6 +318,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
                 font-size: 1em;
                 text-align: left;
+                text-shadow: none;
                 white-space: pre;
                 word-spacing: normal;
                 word-break: normal;
@@ -489,6 +490,20 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 color: var(--spectrum-global-color-red-400);
               }
 
+              button + div[aria-hidden] div {
+                color: rgb(227, 227, 227);
+                background-color: rgb(50, 50, 50);
+              }
+
+              button + div[aria-hidden] div div[role='button'] div {
+                border-color: rgb(90, 90, 90);
+                background-color: rgb(37, 37, 37);
+              }
+
+              button + div[aria-hidden] div div[role='button'] div span {
+                color: rgb(227, 227, 227);
+              }
+
               div[data-tabs] ul[role='tablist'] {
                 border-bottom-color: var(--spectrum-tabs-rule-color, rgb(62, 62, 62));
                 align-items: center;
@@ -586,9 +601,9 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 border-radius: var(--spectrum-actionbutton-border-radius, var(--spectrum-alias-border-radius-regular));
                 font-size: var(--spectrum-actionbutton-text-size, var(--spectrum-alias-font-size-default));
                 font-weight: var(--spectrum-actionbutton-text-font-weight, var(--spectrum-alias-body-text-font-weight));
-                border-color: var(--spectrum-actionbutton-border-color, var(--spectrum-alias-border-color));
-                background-color: black;
-                color: var(--spectrum-global-color-gray-50, var(--spectrum-global-color-gray-75));
+                background-color: rgb(47, 47, 47);
+                border-color: rgb(90, 90, 90);
+                color: rgb(227, 227, 227);
               }
 
               h1 {
@@ -625,7 +640,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
                 &:after {
                   content: '';
                   border-radius: var(--spectrum-global-dimension-static-size-25);
-                  background-color: rgb(227, 227, 227);
+                  background-color: var(--spectrum-heading-l-text-color, var(--spectrum-alias-heading-text-color));
                   height: var(--spectrum-global-dimension-static-size-50);
                   width: 100%;
                   position: absolute;
@@ -702,7 +717,7 @@ export const OpenAPIBlock = ({ specUrl }) => {
               }
 
               a[href] {
-                color: var(--spectrum-link-text-color, rgb(75, 156, 245));
+                color: var(--spectrum-link-text-color, var(--spectrum-global-color-blue-600));
 
                 &:hover {
                   text-decoration: underline;
