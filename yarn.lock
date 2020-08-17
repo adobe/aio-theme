@@ -16,6 +16,14 @@
   resolved "https://registry.yarnpkg.com/@adobe/focus-ring-polyfill/-/focus-ring-polyfill-0.1.5.tgz#b20b5bd1ffb0ceaf42aae1f0837f39ce29f9eb9b"
   integrity sha512-OLa/TlzPv6vzMPi3DT9/Gefu/HJptcBcFmMYTpeNTZ6Y+t2TL+CZtjGlu438O2V03c86KEEgMlm9nQ70kW3bPw==
 
+"@adobe/gatsby-add-launch-script@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-add-launch-script/-/gatsby-add-launch-script-0.0.3.tgz#b038770b72f74d05ebf8418e54ec0a1d18d76d69"
+  integrity sha512-W3ZmolZvb8WeXSroSZZ1dNTPIDSReBDtXG1k4pDJRWaxanA+ziKWzTcT2gy8wl9qd8xCED0bo0bvvyx4g4ItKA==
+  dependencies:
+    react "^16.13.1"
+    react-dom "^16.13.1"
+
 "@adobe/gatsby-remark-afm@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@adobe/gatsby-remark-afm/-/gatsby-remark-afm-0.6.0.tgz#5de2ab8fd0ebe8e5eea3a7f46ec3feb8f8d51a16"
