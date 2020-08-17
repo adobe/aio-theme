@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-parliament",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Gatsby theme for building sites with the Spectrum look and feel",
   "main": "index.js",
   "license": "Apache-2.0",
