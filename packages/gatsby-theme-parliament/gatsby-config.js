@@ -129,6 +129,13 @@ module.exports = {
           branch: process.env.GITHUB_REPO_BRANCH
         }
       }
-    }
+    },
+    {
+      resolve: `@adobe/gatsby-add-launch-script`,
+      options: {
+        scriptUrl: process.env.GATSBY_LAUNCH_SRC,
+        includeInDevelopment: process.env.GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
+      }      
+    }    
   ]
 };
