@@ -589,9 +589,7 @@ export const OpenAPIBlock = ({ specUrl, spec }) => {
               div[data-section-id] h1,
               h2,
               h3,
-              h4,
-              h5,
-              h6 {
+              h4 {
                 display: flex;
                 flex-direction: row-reverse;
                 justify-content: flex-end;
@@ -709,6 +707,37 @@ export const OpenAPIBlock = ({ specUrl, spec }) => {
                     var(--spectrum-alias-code-text-font-family)
                   );
                 }
+              }
+
+              div div div div div button {
+                border-radius: 0px;
+                z-index: inherit;
+                position: relative;
+                display: list-item;
+                margin: 0;
+                border-bottom: var(--spectrum-accordion-item-border-size, var(--spectrum-alias-border-size-thin)) solid
+                  var(--spectrum-table-cell-border-color, var(--spectrum-global-color-gray-300));
+                color: var(--spectrum-body-text-color, var(--spectrum-alias-text-color));
+                background-color: inherit;
+
+                &:hover {
+                  color: var(--spectrum-global-color-gray-900);
+                  background-color: var(--spectrum-global-color-gray-200);
+                }
+
+                &:focus {
+                  outline-color: transparent;
+                }
+              }
+
+              div div div div div button svg {
+                filter: brightness(0) saturate(100%) invert(61%) sepia(6%) saturate(11%) hue-rotate(13deg)
+                  brightness(91%) contrast(86%);
+              }
+
+              div div div div div button[aria-expanded='true'] {
+                border-bottom: var(--spectrum-accordion-item-border-size, var(--spectrum-alias-border-size-thin)) solid
+                  transparent;
               }
 
               a[href] {
