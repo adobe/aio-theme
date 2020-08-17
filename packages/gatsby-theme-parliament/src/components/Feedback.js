@@ -29,6 +29,7 @@ const Feedback = ({ onYes, onNo }) => (
       <View marginEnd="size-200">
         <Button
           variant="primary"
+          className="feedback-yes"
           onClick={() => {
             onYes && onYes();
           }}>
@@ -37,6 +38,7 @@ const Feedback = ({ onYes, onNo }) => (
       </View>
       <View>
         <Button
+          className="feedback-no"
           variant="primary"
           onClick={() => {
             onNo && onNo();
