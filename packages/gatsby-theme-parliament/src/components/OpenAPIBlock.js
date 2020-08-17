@@ -272,6 +272,12 @@ export const OpenAPIBlock = ({ specUrl, spec }) => {
                 margin-left: 0px;
               }
 
+              td button {
+                font-size: var(--spectrum-table-cell-text-size, var(--spectrum-alias-font-size-default));
+                font-weight: var(--spectrum-table-cell-text-font-weight, var(--spectrum-global-font-weight-regular));
+                font-family: var(--spectrum-code-s-text-font-family, var(--spectrum-alias-code-text-font-family));
+              }
+
               td + td div div:first-of-type span + span {
                 display: inline-flex;
                 align-items: center;
