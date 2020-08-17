@@ -739,6 +739,7 @@ export const OpenAPIBlock = ({ specUrl, spec }) => {
               div div div div div button svg {
                 filter: brightness(0) saturate(100%) invert(61%) sepia(6%) saturate(11%) hue-rotate(13deg)
                   brightness(91%) contrast(86%);
+                padding-right: 6px;
               }
 
               div div div div div button[aria-expanded='true'] {
