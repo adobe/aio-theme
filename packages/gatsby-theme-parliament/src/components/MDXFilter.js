@@ -238,7 +238,11 @@ export default ({ children, pageContext }) => {
                       pagePath={pagePath}
                       contributors={contributors}
                       externalContributors={pageContext?.frontmatter?.contributors}
-                      date={new Date(contributors[0].date).toLocaleDateString()}
+                      date={
+                        contributors[0]
+                          ? new Date(contributors[0].date).toLocaleDateString()
+                          : new Date().toLocaleDateString()
+                      }
                     />
                   </View>
                   <View>
