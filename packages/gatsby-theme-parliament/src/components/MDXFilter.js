@@ -157,22 +157,44 @@ const filterChildren = (childrenArray, tableOfContents) => {
   };
 };
 
-const jsDocFilter = (children, tableOfContents) => {
-  console.log(children);
-
+const jsDocFilter = (children) => {
   let childrenArray = React.Children.toArray(children);
   const filteredArray = [];
   let jsDoc = null;
   let jsDocItems = [];
+  let headingLevel = -1;
 
   for (let i = 0; i < childrenArray.length; i++) {
-    if (!jsDoc && childrenArray[i]?.props?.mdxType !== 'JsDocParameters') {
+    let type = childrenArray[i]?.props?.mdxType;
+    if (!jsDoc && type !== 'JsDocParameters') {
       filteredArray.push(childrenArray[i]);
-    } else if (childrenArray[i]?.props?.mdxType === 'JsDocParameters') {
-      console.log('found JS Docs');
+    } else if (type === 'JsDocParameters') {
       jsDoc = childrenArray[i];
     } else if (jsDoc) {
-      jsDocItems.push(childrenArray[i]);
+      if (type.match(/h\d/)) {
+        // found a header
+        let level = parseInt(type.charAt(1, 10));
+        if (level >= headingLevel) {
+          headingLevel = level;
+          jsDocItems.push(childrenArray[i]);
+        } else {
+          // the anchor gets gobbled
+          filteredArray.push(jsDocItems.pop());
+
+          // break out of loop
+          const jsDocClone = React.cloneElement(jsDoc, {
+            items: jsDocItems
+          });
+          filteredArray.push(jsDocClone);
+          jsDoc = null;
+          jsDocItems = [];
+          headingLevel = -1;
+
+          filteredArray.push(childrenArray[i]);
+        }
+      } else {
+        jsDocItems.push(childrenArray[i]);
+      }
     }
   }
   if (jsDoc) {
@@ -219,7 +241,7 @@ export default ({ children, pageContext }) => {
   selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
   // Custom MDX components
-  const processedChildren = jsDocFilter(children, tableOfContents);
+  const processedChildren = jsDocFilter(children);
   const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(
     processedChildren,
     tableOfContents
