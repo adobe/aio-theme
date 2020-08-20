@@ -69,6 +69,10 @@ module.exports = {
           {
             title: 'JWT Authentication',
             path: '/guides/jwt_authentication/'
+          },
+          {
+            title: 'Test Page',
+            path: '/guides/testpage/'
           }
         ]
       },
