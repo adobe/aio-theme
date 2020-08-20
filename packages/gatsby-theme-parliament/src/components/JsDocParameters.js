@@ -13,13 +13,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const JsDocParameters = ({ items }) => (
-  <div>
-    <p>JS Docs</p>
-    {items}
-    <p>End JS Docs</p>
-  </div>
-);
+import { Accordion } from './Accordion';
+import { AccordionItem } from './AccordionItem';
+
+const JsDocParameters = ({ items }) => {
+  const createAccordionItems = (items) => {
+    const acc = [];
+    let header = '';
+    let body = [];
+    for (let i = 0; i < items.length; i++) {
+      let type = items[i].props.mdxType;
+      if (type === 'a' && body.length === 0) {
+        body.push(items[i]);
+      } else if (type === 'a' && body.length > 0) {
+        // create new Item
+        acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
+        body = [items[i]];
+      } else if (type.match(/h\d/)) {
+        console.log(items[i]);
+        header = items[i].props.children;
+      } else {
+        body.push(items[i]);
+      }
+    }
+
+    acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
+
+    return acc;
+  };
+  const accordionItems = createAccordionItems(items);
+  return <Accordion>{accordionItems}</Accordion>;
+};
 
 JsDocParameters.propTypes = {};
 
