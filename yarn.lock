@@ -16,20 +16,23 @@
   resolved "https://registry.yarnpkg.com/@adobe/focus-ring-polyfill/-/focus-ring-polyfill-0.1.5.tgz#b20b5bd1ffb0ceaf42aae1f0837f39ce29f9eb9b"
   integrity sha512-OLa/TlzPv6vzMPi3DT9/Gefu/HJptcBcFmMYTpeNTZ6Y+t2TL+CZtjGlu438O2V03c86KEEgMlm9nQ70kW3bPw==
 
-"@adobe/gatsby-add-launch-script@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-add-launch-script/-/gatsby-add-launch-script-0.0.3.tgz#b038770b72f74d05ebf8418e54ec0a1d18d76d69"
-  integrity sha512-W3ZmolZvb8WeXSroSZZ1dNTPIDSReBDtXG1k4pDJRWaxanA+ziKWzTcT2gy8wl9qd8xCED0bo0bvvyx4g4ItKA==
+"@adobe/gatsby-add-launch-script@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-add-launch-script/-/gatsby-add-launch-script-0.0.4.tgz#d90a1bdda8eccabd42b7abb5826f731b013b10a2"
+  integrity sha512-3OWEaFUc1ccXSJayC4ncS+kEoUDssoVsPKMBlpe75FTU5QqWrt3/YW3UkSxwaWf010wbiPIaFh7CJtC7PUBIxA==
   dependencies:
     react "^16.13.1"
     react-dom "^16.13.1"
 
-"@adobe/gatsby-remark-afm@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@adobe/gatsby-remark-afm/-/gatsby-remark-afm-0.6.0.tgz#5de2ab8fd0ebe8e5eea3a7f46ec3feb8f8d51a16"
-  integrity sha512-ssKv8MM0AlMU7mzUqCShhA1Mre+rTOFA9Dnx5V3UQIq9ljyI2UUio2+JH0CRhOOlo6bw2hbD2lAcvOzWA7MKrw==
+"@adobe/gatsby-remark-afm@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@adobe/gatsby-remark-afm/-/gatsby-remark-afm-0.8.1.tgz#f784c019da6849872ede34e33c09debb56eb9b76"
+  integrity sha512-ULfT/daarAasLSFn5K7eaWAhpAPdv1ccvp9FMi4nKPK4ltElfWWODuStyq2ZaG1OF1ZmCILnve4o9Xsqxp4PhQ==
   dependencies:
     mdast-util-to-string "^1.1.0"
+    normalize-path "^3.0.0"
+    remark-parse "^8.0.3"
+    unified "^9.1.0"
     unist-util-remove "^2.0.0"
     unist-util-visit "^2.0.1"
 
@@ -11369,7 +11372,7 @@ remark-parse@8.0.2:
     vfile-location "^3.0.0"
     xtend "^4.0.1"
 
-remark-parse@8.0.3:
+remark-parse@8.0.3, remark-parse@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-8.0.3.tgz#9c62aa3b35b79a486454c690472906075f40c7e1"
   integrity sha512-E1K9+QLGgggHxCQtLt++uXltxEprmWzNfg+MxpfHsZlrddKzZ/hZyWHDbK3/Ap8HJQqYJRXP+jHczdL6q6i85Q==
@@ -13170,7 +13173,7 @@ unified@9.0.0:
     trough "^1.0.0"
     vfile "^4.0.0"
 
-unified@9.1.0:
+unified@9.1.0, unified@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.1.0.tgz#7ba82e5db4740c47a04e688a9ca8335980547410"
   integrity sha512-VXOv7Ic6twsKGJDeZQ2wwPqXs2hM0KNu5Hkg9WgAZbSD1pxhZ7p8swqg583nw1Je2fhwHy6U8aEjiI79x1gvag==
