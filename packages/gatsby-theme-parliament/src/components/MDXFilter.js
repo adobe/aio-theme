@@ -49,6 +49,7 @@ import { OnThisPage } from './OnThisPage';
 import { NextSteps } from './NextSteps';
 import { NextPrev } from './NextPrev';
 import { OpenAPIBlock } from './OpenAPIBlock';
+import { JsDocParameters } from './JsDocParameters';
 
 const customComponents = {
   Hero,
@@ -72,11 +73,11 @@ const mdxComponents = {
   inlineCode: InlineCode,
   a: Link,
   img: Image,
+  JsDocParameters,
   ...customComponents
 };
 
-const filterChildren = (children, tableOfContents) => {
-  let childrenArray = React.Children.toArray(children);
+const filterChildren = (childrenArray, tableOfContents) => {
   const filteredChildren = [];
 
   let heroChild;
@@ -156,6 +157,34 @@ const filterChildren = (children, tableOfContents) => {
   };
 };
 
+const jsDocFilter = (children, tableOfContents) => {
+  console.log(children);
+
+  let childrenArray = React.Children.toArray(children);
+  const filteredArray = [];
+  let jsDoc = null;
+  let jsDocItems = [];
+
+  for (let i = 0; i < childrenArray.length; i++) {
+    if (!jsDoc && childrenArray[i]?.props?.mdxType !== 'JsDocParameters') {
+      filteredArray.push(childrenArray[i]);
+    } else if (childrenArray[i]?.props?.mdxType === 'JsDocParameters') {
+      console.log('found JS Docs');
+      jsDoc = childrenArray[i];
+    } else if (jsDoc) {
+      jsDocItems.push(childrenArray[i]);
+    }
+  }
+  if (jsDoc) {
+    const jsDocClone = React.cloneElement(jsDoc, {
+      items: jsDocItems
+    });
+    filteredArray.push(jsDocClone);
+  }
+
+  return filteredArray;
+};
+
 export default ({ children, pageContext }) => {
   const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
     Context
@@ -190,7 +219,11 @@ export default ({ children, pageContext }) => {
   selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
   // Custom MDX components
-  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(children, tableOfContents);
+  const processedChildren = jsDocFilter(children, tableOfContents);
+  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(
+    processedChildren,
+    tableOfContents
+  );
 
   const isGuides = hasSideNav && typeof heroChild === 'undefined';
   const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
