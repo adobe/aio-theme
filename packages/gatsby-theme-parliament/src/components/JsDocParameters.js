@@ -13,8 +13,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Accordion } from './Accordion';
-import { AccordionItem } from './AccordionItem';
+import { Accordion, AccordionItem } from '@adobe/parliament-ui-components';
 
 const JsDocParameters = ({ items }) => {
   const createAccordionItems = (items) => {
@@ -30,7 +29,6 @@ const JsDocParameters = ({ items }) => {
         acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
         body = [items[i]];
       } else if (type.match(/h\d/)) {
-        console.log(items[i]);
         header = items[i].props.children;
       } else {
         body.push(items[i]);
@@ -45,6 +43,8 @@ const JsDocParameters = ({ items }) => {
   return <Accordion>{accordionItems}</Accordion>;
 };
 
-JsDocParameters.propTypes = {};
+JsDocParameters.propTypes = {
+  items: PropTypes.array
+};
 
 export { JsDocParameters };
