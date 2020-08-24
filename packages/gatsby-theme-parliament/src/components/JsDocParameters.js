@@ -29,7 +29,11 @@ const JsDocParameters = ({ items }) => {
           body.push(item);
         } else {
           // create new Item
-          acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
+          acc.push(
+            <AccordionItem uppercase={false} header={header}>
+              {body}
+            </AccordionItem>
+          );
           body = [item];
         }
       } else if (type.match(/h\d/)) {
@@ -39,7 +43,11 @@ const JsDocParameters = ({ items }) => {
       }
     });
 
-    acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
+    acc.push(
+      <AccordionItem uppercase={false} header={header}>
+        {body}
+      </AccordionItem>
+    );
 
     return acc;
   };
