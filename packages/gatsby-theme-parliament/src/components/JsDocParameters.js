@@ -15,32 +15,35 @@ import PropTypes from 'prop-types';
 
 import { Accordion, AccordionItem } from '@adobe/parliament-ui-components';
 
+const ANCHOR = 'a';
+
 const JsDocParameters = ({ items }) => {
   const createAccordionItems = (items) => {
     const acc = [];
     let header = '';
     let body = [];
-    for (let i = 0; i < items.length; i++) {
-      let type = items[i].props.mdxType;
-      if (type === 'a' && body.length === 0) {
-        body.push(items[i]);
-      } else if (type === 'a' && body.length > 0) {
-        // create new Item
-        acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
-        body = [items[i]];
+    items.map((item) => {
+      let type = item.props.mdxType;
+      if (type === ANCHOR) {
+        if (body.length === 0) {
+          body.push(item);
+        } else {
+          // create new Item
+          acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
+          body = [item];
+        }
       } else if (type.match(/h\d/)) {
-        header = items[i].props.children;
+        header = item.props.children;
       } else {
-        body.push(items[i]);
+        body.push(item);
       }
-    }
+    });
 
     acc.push(<AccordionItem header={header}>{body}</AccordionItem>);
 
     return acc;
   };
-  const accordionItems = createAccordionItems(items);
-  return <Accordion>{accordionItems}</Accordion>;
+  return <Accordion>{createAccordionItems(items)}</Accordion>;
 };
 
 JsDocParameters.propTypes = {
