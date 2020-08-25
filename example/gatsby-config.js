@@ -47,6 +47,16 @@ module.exports = {
     ],
     subPages: [
       {
+        title: 'API Reference',
+        path: '/api/',
+        pages: [
+          {
+            title: 'JS Docs',
+            path: '/jsdoc/'
+          }
+        ]
+      },
+      {
         title: 'Get Started',
         path: '/guides/',
         pages: [
@@ -69,10 +79,6 @@ module.exports = {
           {
             title: 'JWT Authentication',
             path: '/guides/jwt_authentication/'
-          },
-          {
-            title: 'Test Page',
-            path: '/guides/testpage/'
           }
         ]
       },
