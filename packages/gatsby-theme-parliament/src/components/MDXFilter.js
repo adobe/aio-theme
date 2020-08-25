@@ -175,41 +175,56 @@ const jsDocFilter = (children) => {
   for (let i = 0; i < childrenArray.length; i++) {
     let type = childrenArray[i]?.props?.mdxType;
     if (!jsDoc && type !== 'JsDocParameters') {
+      // We are not in a JS Doc block so return the current element
       filteredArray.push(childrenArray[i]);
     } else if (type === 'JsDocParameters') {
+      // We found a JS Doc block so save a pointer to it
       jsDoc = childrenArray[i];
     } else if (jsDoc) {
+      // We are inside a JS Doc Block so we need to add children to it.
       if (type.match(/h\d/)) {
-        // found a header
+        // We found a header, so we need to check it's level (1-6)
         let level = parseInt(type.charAt(1, 10));
         if (level >= headingLevel) {
+          // The heading is >= the current level so we are still in a JS Block
           headingLevel = level;
           jsDocItems.push(childrenArray[i]);
         } else {
-          // the anchor gets gobbled
+          // The heading is less than current level so we are out of the JS Doc Block
+          // Pop the previous child, the anchor, off the JS Doc block and onto the page
           filteredArray.push(jsDocItems.pop());
 
-          // break out of loop
-          const jsDocClone = React.cloneElement(jsDoc, {
-            items: jsDocItems
-          });
-          filteredArray.push(jsDocClone);
+          // Finish the JS Doc Block
+          filteredArray.push(
+            React.cloneElement(jsDoc, {
+              items: jsDocItems
+            })
+          );
+
+          // Reset for the next loop
           jsDoc = null;
           jsDocItems = [];
           headingLevel = -1;
 
+          // Push the header onto the page
           filteredArray.push(childrenArray[i]);
         }
       } else {
+        // We are in a JS Doc block and the element is not a header
+        // so add it to the JS Doc Block
         jsDocItems.push(childrenArray[i]);
       }
     }
   }
+
+  // If we finished parsing all the elements but there is a
+  // open JS Doc Block, finish it off
   if (jsDoc) {
-    const jsDocClone = React.cloneElement(jsDoc, {
-      items: jsDocItems
-    });
-    filteredArray.push(jsDocClone);
+    filteredArray.push(
+      React.cloneElement(jsDoc, {
+        items: jsDocItems
+      })
+    );
   }
 
   return filteredArray;
