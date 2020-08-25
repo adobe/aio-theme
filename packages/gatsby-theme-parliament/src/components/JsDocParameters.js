@@ -30,7 +30,7 @@ const JsDocParameters = ({ items }) => {
         if (body.length > 0) {
           // create new Item
           acc.push(
-            <AccordionItem uppercase={false} header={header} id={id}>
+            <AccordionItem uppercase={false} header={header} id={id} key={id}>
               {body}
             </AccordionItem>
           );
@@ -44,7 +44,7 @@ const JsDocParameters = ({ items }) => {
     }
 
     acc.push(
-      <AccordionItem uppercase={false} header={header} id={id}>
+      <AccordionItem uppercase={false} header={header} id={id} key={id}>
         {body}
       </AccordionItem>
     );

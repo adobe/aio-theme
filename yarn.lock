@@ -44,10 +44,10 @@
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
 
-"@adobe/parliament-ui-components@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@adobe/parliament-ui-components/-/parliament-ui-components-2.2.2.tgz#3a81a40c8b6a6465a7ecbe3ffc8a43cf0363e191"
-  integrity sha512-SwLl3W11fFS7wDCmgLXz05sEXjIhCs5CzHdD0Z8X9Wpv9klxWfOICxs8BPe2/DQ3HKrE+RKw0k7e8OdGp8J4+w==
+"@adobe/parliament-ui-components@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@adobe/parliament-ui-components/-/parliament-ui-components-2.2.3.tgz#a372822540d2caad439a574b0ae61952246fa748"
+  integrity sha512-FlUTtrIrzMC/kR8glTW/g2MJDZwcGx1LlDpL4yxeUJfkMxBD8b4lZRB8DuS4Zauw7kquGUXIFYlRLKvk8mM7eg==
   dependencies:
     "@adobe/focus-ring-polyfill" "^0.1.5"
     "@emotion/babel-preset-css-prop" "^10.0.27"
