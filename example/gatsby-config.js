@@ -52,7 +52,7 @@ module.exports = {
         pages: [
           {
             title: 'JS Docs',
-            path: '/jsdoc/'
+            path: '/api/jsdoc/'
           }
         ]
       },
