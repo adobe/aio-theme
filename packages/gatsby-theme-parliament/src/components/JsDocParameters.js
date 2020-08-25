@@ -34,6 +34,7 @@ const JsDocParameters = ({ items }) => {
               {body}
             </AccordionItem>
           );
+          body = [];
         }
         id = item.props.id;
       } else if (type.match(/h\d/)) {
