@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Accordion, AccordionItem } from '@adobe/parliament-ui-components';
@@ -51,6 +51,20 @@ const JsDocParameters = ({ items }) => {
 
     return acc;
   };
+
+  useEffect(() => {
+    window.addEventListener('popstate', shouldOpenAccordion);
+    return () => window.removeEventListener('popstate', shouldOpenAccordion);
+  }, []);
+
+  const shouldOpenAccordion = (event) => {
+    const hash = event.target.location.hash ? event.target.location.hash.substring(1) : null;
+    const el = document.getElementById(hash);
+    if (el.classList.contains('spectrum-Accordion-item')) {
+      el.classList.add('is-open');
+    }
+  };
+
   return <Accordion>{createAccordionItems(items)}</Accordion>;
 };
 
