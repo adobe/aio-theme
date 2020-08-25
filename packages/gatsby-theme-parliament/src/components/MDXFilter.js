@@ -51,6 +51,8 @@ import { NextPrev } from './NextPrev';
 import { OpenAPIBlock } from './OpenAPIBlock';
 import { JsDocParameters } from './JsDocParameters';
 
+import { Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
+
 const customComponents = {
   Hero,
   DiscoverBlock,
@@ -73,6 +75,12 @@ const mdxComponents = {
   inlineCode: InlineCode,
   a: Link,
   img: Image,
+  table: Table,
+  tbody: TBody,
+  th: Th,
+  td: Td,
+  thead: THead,
+  tr: Tr,
   JsDocParameters,
   ...customComponents
 };
