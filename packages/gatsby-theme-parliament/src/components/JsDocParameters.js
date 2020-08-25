@@ -22,21 +22,20 @@ const JsDocParameters = ({ items }) => {
     const acc = [];
     let header = '';
     let body = [];
+    let id = '';
     for (let i = 0; i < items.length; i++) {
       let item = items[i];
       let type = item.props.mdxType;
       if (type === ANCHOR) {
-        if (body.length === 0) {
-          body.push(item);
-        } else {
+        if (body.length > 0) {
           // create new Item
           acc.push(
-            <AccordionItem uppercase={false} header={header}>
+            <AccordionItem uppercase={false} header={header} id={id}>
               {body}
             </AccordionItem>
           );
-          body = [item];
         }
+        id = item.props.id;
       } else if (type.match(/h\d/)) {
         header = item.props.children;
       } else {
@@ -45,7 +44,7 @@ const JsDocParameters = ({ items }) => {
     }
 
     acc.push(
-      <AccordionItem uppercase={false} header={header}>
+      <AccordionItem uppercase={false} header={header} id={id}>
         {body}
       </AccordionItem>
     );
