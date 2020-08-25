@@ -22,7 +22,8 @@ const JsDocParameters = ({ items }) => {
     const acc = [];
     let header = '';
     let body = [];
-    items.map((item) => {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
       let type = item.props.mdxType;
       if (type === ANCHOR) {
         if (body.length === 0) {
@@ -41,7 +42,7 @@ const JsDocParameters = ({ items }) => {
       } else {
         body.push(item);
       }
-    });
+    }
 
     acc.push(
       <AccordionItem uppercase={false} header={header}>
