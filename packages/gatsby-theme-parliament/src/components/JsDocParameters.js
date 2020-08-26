@@ -61,7 +61,7 @@ const JsDocParameters = ({ items }) => {
   const shouldOpenAccordion = (event) => {
     const hash = event.target.location.hash ? event.target.location.hash.substring(1) : null;
     const el = document.getElementById(hash);
-    if (el.classList.contains('spectrum-Accordion-item')) {
+    if (el?.classList.contains('spectrum-Accordion-item')) {
       el.classList.add('is-open');
     }
   };
