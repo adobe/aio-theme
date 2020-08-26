@@ -115,7 +115,14 @@ module.exports = {
         },
         rehypePlugins: [require(`rehype-slug`)],
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)],
-        gatsbyRemarkPlugins: ['@adobe/gatsby-remark-afm']
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `@adobe/gatsby-remark-afm`,
+            options: {
+              directory: `src/pages`
+            }
+          }
+        ]
       }
     },
     {
@@ -135,7 +142,7 @@ module.exports = {
       options: {
         scriptUrl: process.env.GATSBY_LAUNCH_SRC,
         includeInDevelopment: process.env.GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
-      }      
-    }    
+      }
+    }
   ]
 };

@@ -47,6 +47,16 @@ module.exports = {
     ],
     subPages: [
       {
+        title: 'API Reference',
+        path: '/api/',
+        pages: [
+          {
+            title: 'JS Docs',
+            path: '/api/jsdoc/'
+          }
+        ]
+      },
+      {
         title: 'Get Started',
         path: '/guides/',
         pages: [

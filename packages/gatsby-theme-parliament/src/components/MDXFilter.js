@@ -49,6 +49,9 @@ import { OnThisPage } from './OnThisPage';
 import { NextSteps } from './NextSteps';
 import { NextPrev } from './NextPrev';
 import { OpenAPIBlock } from './OpenAPIBlock';
+import { JsDocParameters } from './JsDocParameters';
+
+import { Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
 
 const customComponents = {
   Hero,
@@ -72,11 +75,17 @@ const mdxComponents = {
   inlineCode: InlineCode,
   a: Link,
   img: Image,
+  table: Table,
+  tbody: TBody,
+  th: Th,
+  td: Td,
+  thead: THead,
+  tr: Tr,
+  JsDocParameters,
   ...customComponents
 };
 
-const filterChildren = (children, tableOfContents) => {
-  let childrenArray = React.Children.toArray(children);
+const filterChildren = (childrenArray, tableOfContents) => {
   const filteredChildren = [];
 
   let heroChild;
@@ -156,6 +165,71 @@ const filterChildren = (children, tableOfContents) => {
   };
 };
 
+const jsDocFilter = (children) => {
+  let childrenArray = React.Children.toArray(children);
+  const filteredArray = [];
+  let jsDoc = null;
+  let jsDocItems = [];
+  let headingLevel = -1;
+
+  for (let i = 0; i < childrenArray.length; i++) {
+    let type = childrenArray[i]?.props?.mdxType;
+    if (!jsDoc && type !== 'JsDocParameters') {
+      // We are not in a JS Doc block so return the current element
+      filteredArray.push(childrenArray[i]);
+    } else if (type === 'JsDocParameters') {
+      // We found a JS Doc block so save a pointer to it
+      jsDoc = childrenArray[i];
+    } else if (jsDoc) {
+      // We are inside a JS Doc Block so we need to add children to it.
+      if (type.match(/h\d/)) {
+        // We found a header, so we need to check it's level (1-6)
+        let level = parseInt(type.charAt(1, 10));
+        if (level >= headingLevel) {
+          // The heading is >= the current level so we are still in a JS Block
+          headingLevel = level;
+          jsDocItems.push(childrenArray[i]);
+        } else {
+          // The heading is less than current level so we are out of the JS Doc Block
+          // Pop the previous child, the anchor, off the JS Doc block and onto the page
+          filteredArray.push(jsDocItems.pop());
+
+          // Finish the JS Doc Block
+          filteredArray.push(
+            React.cloneElement(jsDoc, {
+              items: jsDocItems
+            })
+          );
+
+          // Reset for the next loop
+          jsDoc = null;
+          jsDocItems = [];
+          headingLevel = -1;
+
+          // Push the header onto the page
+          filteredArray.push(childrenArray[i]);
+        }
+      } else {
+        // We are in a JS Doc block and the element is not a header
+        // so add it to the JS Doc Block
+        jsDocItems.push(childrenArray[i]);
+      }
+    }
+  }
+
+  // If we finished parsing all the elements but there is a
+  // open JS Doc Block, finish it off
+  if (jsDoc) {
+    filteredArray.push(
+      React.cloneElement(jsDoc, {
+        items: jsDocItems
+      })
+    );
+  }
+
+  return filteredArray;
+};
+
 export default ({ children, pageContext }) => {
   const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
     Context
@@ -190,7 +264,11 @@ export default ({ children, pageContext }) => {
   selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
   // Custom MDX components
-  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(children, tableOfContents);
+  const processedChildren = jsDocFilter(children);
+  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(
+    processedChildren,
+    tableOfContents
+  );
 
   const isGuides = hasSideNav && typeof heroChild === 'undefined';
   const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
