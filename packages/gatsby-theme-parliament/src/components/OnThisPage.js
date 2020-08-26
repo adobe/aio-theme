@@ -27,6 +27,38 @@ const OnThisPage = ({ tableOfContents }) => {
 
   const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
 
+  // TODO
+  useEffect(() => {
+    if (tableOfContentsItems) {
+      const allHeadings2and3Ids = [];
+
+      tableOfContentsItems.forEach((heading2) => {
+        if (heading2.url) {
+          allHeadings2and3Ids.push(heading2.url.substr(1));
+        }
+
+        if (heading2.items) {
+          heading2.items.forEach((heading3) => {
+            if (heading3.url) {
+              allHeadings2and3Ids.push(heading3.url.substr(1));
+            }
+          });
+        }
+      });
+
+      document.querySelectorAll('h2, h3').forEach((heading) => {
+        if (heading.previousElementSibling && heading.previousElementSibling.id) {
+          if (allHeadings2and3Ids.indexOf(heading.previousElementSibling.id) === -1) {
+            console.log({
+              title: heading.textContent.trim().slice(0, -1),
+              url: heading.querySelector('a').getAttribute('href')
+            });
+          }
+        }
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -160,35 +192,43 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  return tableOfContentsItems ? (
-    <>
-      <div ref={outlineRef}>{tableOfContentsItems.length <= 10 ? <Outline /> : <OutlinePicker />}</div>
-      <aside
-        className={isPinned ? 'is-pinned' : ''}
-        aria-hidden={!isPinned}
-        css={css`
-          position: fixed;
-          overflow: auto;
-          bottom: 0;
-          top: var(--spectrum-global-dimension-static-size-800);
-          padding-left: var(--spectrum-global-dimension-static-size-900);
-          left: ${layoutColumns(9)};
-          min-width: ${layoutColumns(3, [
-            'var(--spectrum-global-dimension-static-size-400)',
-            'var(--spectrum-global-dimension-static-size-100)'
-          ])};
-          margin-left: var(--spectrum-global-dimension-static-size-400);
-          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-          opacity: 0;
+  if (tableOfContentsItems) {
+    const withSubHeading = !(tableOfContentsItems?.[0]?.title && tableOfContentsItems?.[0]?.url);
 
-          &.is-pinned {
-            opacity: 1;
-          }
-        `}>
-        <Outline withSubHeading={true} />
-      </aside>
-    </>
-  ) : null;
+    return (
+      <>
+        <div ref={outlineRef}>
+          {tableOfContentsItems.length <= 10 ? <Outline withSubHeading={withSubHeading} /> : <OutlinePicker />}
+        </div>
+        <aside
+          className={isPinned ? 'is-pinned' : ''}
+          aria-hidden={!isPinned}
+          css={css`
+            position: fixed;
+            overflow: auto;
+            bottom: 0;
+            top: var(--spectrum-global-dimension-static-size-800);
+            padding-left: var(--spectrum-global-dimension-static-size-900);
+            left: ${layoutColumns(9)};
+            min-width: ${layoutColumns(3, [
+              'var(--spectrum-global-dimension-static-size-400)',
+              'var(--spectrum-global-dimension-static-size-100)'
+            ])};
+            margin-left: var(--spectrum-global-dimension-static-size-400);
+            transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+            opacity: 0;
+
+            &.is-pinned {
+              opacity: 1;
+            }
+          `}>
+          <Outline withSubHeading={true} />
+        </aside>
+      </>
+    );
+  }
+
+  return null;
 };
 
 OnThisPage.propTypes = {

@@ -41,21 +41,15 @@ module.exports = {
         path: '/api/'
       },
       {
+        title: 'JS Doc',
+        path: '/jsdoc/'
+      },
+      {
         title: 'Support',
         path: '/support/'
       }
     ],
     subPages: [
-      {
-        title: 'API Reference',
-        path: '/api/',
-        pages: [
-          {
-            title: 'JS Docs',
-            path: '/api/jsdoc/'
-          }
-        ]
-      },
       {
         title: 'Get Started',
         path: '/guides/',

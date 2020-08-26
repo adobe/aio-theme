@@ -86,7 +86,8 @@ module.exports = {
       options: {
         aliases: {
           pages: `src/pages`,
-          components: `src/components`
+          components: `src/components`,
+          theme: `src/theme`
         }
       }
     },

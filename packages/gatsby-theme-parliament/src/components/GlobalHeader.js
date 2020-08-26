@@ -112,7 +112,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                   </Flex>
                 </a>
               </View>
-              {globalNav.menus.slice(0, 2).map((menu, index) => {
+              {globalNav.menus.map((menu, index) => {
                 const isPrimary = index === 0;
                 const id = nextId();
 
@@ -261,7 +261,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                 positionSelectedTabIndicator();
                 setIsAnimated(true);
               }}>
-              {pages.slice(0, 4).map((page, i) => {
+              {pages.map((page, i) => {
                 const { title, path } = page;
                 const ref = createRef();
                 tabs.push(ref);

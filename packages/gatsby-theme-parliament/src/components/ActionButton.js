@@ -31,8 +31,6 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, ..
 };
 
 ActionButton.propTypes = {
-  href: PropTypes.string,
-  variant: PropTypes.string,
   isQuiet: PropTypes.bool,
   elementType: PropTypes.string
 };

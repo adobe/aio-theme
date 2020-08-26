@@ -39,6 +39,7 @@ const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, r
 ));
 
 Popover.propTypes = {
+  variant: PropTypes.string,
   isOpen: PropTypes.bool,
   isQuiet: PropTypes.bool
 };

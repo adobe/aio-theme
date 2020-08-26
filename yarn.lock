@@ -13715,6 +13715,15 @@ uuid@^8.2.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
   integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
+uxp-tutorials@icaraps/test#main:
+  version "0.0.1"
+  resolved "https://codeload.github.com/icaraps/test/tar.gz/3ff5a79f8213777170ca413c8a3a67fef8d22ee5"
+  dependencies:
+    "@adobe/gatsby-theme-parliament" "0.0.7"
+    gatsby "^2.23.11"
+    react "^16.13.1"
+    react-dom "^16.13.1"
+
 v8-compile-cache@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-1.1.2.tgz#8d32e4f16974654657e676e0e467a348e89b0dc4"

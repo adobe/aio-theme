@@ -33,25 +33,27 @@ const Hero = ({
       `}>
       <Flex height="100%" alignItems="center">
         <View marginStart="size-800">
-          {React.cloneElement(heading, {
-            className: 'spectrum-Heading--XL',
-            css: css`
-              font-weight: var(
-                --spectrum-heading-xl-text-font-weight,
-                var(--spectrum-alias-heading-text-font-weight-regular)
-              );
-              margin-bottom: var(--spectrum-global-dimension-static-size-200);
-              color: ${textColor};
-            `
-          })}
+          {heading &&
+            React.cloneElement(heading, {
+              className: 'spectrum-Heading--XL',
+              css: css`
+                font-weight: var(
+                  --spectrum-heading-xl-text-font-weight,
+                  var(--spectrum-alias-heading-text-font-weight-regular)
+                );
+                margin-bottom: var(--spectrum-global-dimension-static-size-200);
+                color: ${textColor};
+              `
+            })}
 
-          {React.cloneElement(text, {
-            className: 'spectrum-Body--L',
-            css: css`
-              margin-bottom: var(--spectrum-global-dimension-static-size-200);
-              color: ${textColor};
-            `
-          })}
+          {text &&
+            React.cloneElement(text, {
+              className: 'spectrum-Body--L',
+              css: css`
+                margin-bottom: var(--spectrum-global-dimension-static-size-200);
+                color: ${textColor};
+              `
+            })}
         </View>
         {image && (
           <View>

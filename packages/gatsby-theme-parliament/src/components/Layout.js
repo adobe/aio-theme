@@ -142,7 +142,7 @@ export default ({ children, pageContext, location }) => {
         <Grid
           areas={['header header', 'sidenav main']}
           rows={['size-800']}
-          columns={hasSideNav ? ['256px', 'auto'] : ['auto']}>
+          columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
           <View
             gridArea="header"
             position="fixed"

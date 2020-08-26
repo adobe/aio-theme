@@ -49,6 +49,7 @@ import { OnThisPage } from './OnThisPage';
 import { NextSteps } from './NextSteps';
 import { NextPrev } from './NextPrev';
 import { OpenAPIBlock } from './OpenAPIBlock';
+import { Variant } from './Variant';
 import { JsDocParameters } from './JsDocParameters';
 
 import { Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
@@ -59,7 +60,7 @@ const customComponents = {
   Resources,
   Alert,
   CodeBlock,
-  OpenAPIBlock
+  Variant
 };
 
 const mdxComponents = {
@@ -85,12 +86,11 @@ const mdxComponents = {
   ...customComponents
 };
 
-const filterChildren = (childrenArray, tableOfContents) => {
+const filterChildren = ({ childrenArray, tableOfContents, query }) => {
   const filteredChildren = [];
 
-  let heroChild;
-  let resourcesChild;
-  let openAPIChild;
+  let heroChild = null;
+  let resourcesChild = null;
 
   while (childrenArray.length) {
     const child = childrenArray[0];
@@ -101,12 +101,13 @@ const filterChildren = (childrenArray, tableOfContents) => {
         ignoredChildrenCount++;
 
         let slots = [];
-        if (child.props.slots) {
+        if (child.props.slots || child.props.repeat) {
           const repeat = Math.max(parseInt(child.props.repeat) || 1, 1);
 
           for (let i = 0; i < repeat; i++) {
             slots = slots.concat(
-              child.props.slots
+              // Set default slots to element if repeat is defined
+              (child.props.slots || 'element')
                 .split(',')
                 .map((slot, k) => [`${slot.trim()}${repeat === 1 ? '' : i}`, childrenArray[slots.length + k + 1]])
             );
@@ -116,10 +117,14 @@ const filterChildren = (childrenArray, tableOfContents) => {
         if (slots.length) {
           ignoredChildrenCount += slots.length;
 
-          slots = Object.fromEntries(slots);
+          const props = Object.fromEntries(slots);
+
+          if (child.props.mdxType === 'Variant') {
+            props.query = query;
+          }
 
           const childClone = React.cloneElement(child, {
-            ...slots
+            ...props
           });
 
           if (child.props.mdxType === 'Hero') {
@@ -129,8 +134,6 @@ const filterChildren = (childrenArray, tableOfContents) => {
           } else {
             filteredChildren.push(childClone);
           }
-        } else if (child.props.mdxType === 'OpenAPIBlock') {
-          openAPIChild = child;
         }
       }
     });
@@ -148,7 +151,6 @@ const filterChildren = (childrenArray, tableOfContents) => {
     const heading1Index = filteredChildren.indexOf(heading1);
     const heading1Next = filteredChildren[heading1Index + 1];
     if (heading1) {
-      // TODO
       filteredChildren.splice(
         heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1),
         0,
@@ -160,13 +162,11 @@ const filterChildren = (childrenArray, tableOfContents) => {
   return {
     filteredChildren,
     heroChild,
-    resourcesChild,
-    openAPIChild
+    resourcesChild
   };
 };
 
-const jsDocFilter = (children) => {
-  let childrenArray = React.Children.toArray(children);
+const jsDocFilter = (childrenArray) => {
   const filteredArray = [];
   let jsDoc = null;
   let jsDocItems = [];
@@ -230,117 +230,124 @@ const jsDocFilter = (children) => {
   return filteredArray;
 };
 
-export default ({ children, pageContext }) => {
-  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
-    Context
-  );
+export default ({ children, pageContext, query }) => {
+  let childrenArray = React.Children.toArray(children);
+  
+  if (query) {
+    const { filteredChildren } = filterChildren({ childrenArray, query });
+    return <MDXProvider>{filteredChildren}</MDXProvider>;
+  } else {
+    const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
+      Context
+    );
 
-  // PrevNext
-  const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
-  const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
-  const { nextPage, previousPage } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
+    // PrevNext
+    const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
+    const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
+    const { nextPage, previousPage } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
 
-  // OnThisPage
-  const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
-  const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+    // OnThisPage
+    const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
+    const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
 
-  // Github
-  const { repository, branch, root } = allGithub.nodes[0];
-  const { contributors } = allGithubContributors.nodes.find(
-    ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
-  );
-  const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
+    // Github
+    const { repository, branch, root } = allGithub.nodes[0];
+    const { contributors } = allGithubContributors.nodes.find(
+      ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
+    );
+    const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
-  // Breadcrumbs
-  const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
-  let selectedSubPages = findSelectedPages(location.pathname, siteMetadata.subPages);
-  const duplicates = [];
-  if (selectedSubPages.length > 2 && selectedSubPages[0].path === selectedSubPages[1]?.path) {
-    duplicates.push(1);
-  }
-  if (selectedSubPages.length > 4 && selectedSubPages[2].path === selectedSubPages[3]?.path) {
-    duplicates.push(3);
-  }
-  selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
+    // Breadcrumbs
+    const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
+    let selectedSubPages = findSelectedPages(location.pathname, siteMetadata.subPages);
+    const duplicates = [];
+    if (selectedSubPages.length > 2 && selectedSubPages[0].path === selectedSubPages[1]?.path) {
+      duplicates.push(1);
+    }
+    if (selectedSubPages.length > 4 && selectedSubPages[2].path === selectedSubPages[3]?.path) {
+      duplicates.push(3);
+    }
+    selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
 
-  // Custom MDX components
-  const processedChildren = jsDocFilter(children);
-  const { filteredChildren, heroChild, resourcesChild, openAPIChild } = filterChildren(
-    processedChildren,
-    tableOfContents
-  );
+    // Custom MDX components
+    childrenArray = jsDocFilter(childrenArray);
+    const { filteredChildren, heroChild, resourcesChild } = filterChildren({
+      childrenArray,
+      tableOfContents
+    });
 
-  const isGuides = hasSideNav && typeof heroChild === 'undefined';
-  const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
+    const isGuides = hasSideNav && heroChild === null;
+    const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
-  return (
-    <MDXProvider components={mdxComponents}>
-      {openAPIChild ? (
-        openAPIChild
-      ) : (
-        <>
-          {heroChild && heroChild}
-          <section
-            css={css`
-              max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-              margin: 0 var(--spectrum-global-dimension-static-size-800);
-            `}>
-            <Flex>
-              <article
-                css={css`
-                  width: ${layoutColumns(isGuides ? 7 : 9, [
-                    'var(--spectrum-global-dimension-static-size-400)',
-                    'var(--spectrum-global-dimension-static-size-200)',
-                    'var(--spectrum-global-dimension-static-size-100)'
-                  ])};
-                `}>
-                {isGuides && (
-                  <Flex marginTop="size-400">
-                    <View marginEnd="size-400">
-                      <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+    return (
+      <MDXProvider components={mdxComponents}>
+        {pageContext?.frontmatter?.openAPISpec ? (
+          <OpenAPIBlock specUrl={pageContext.frontmatter.openAPISpec} />
+        ) : (
+          <>
+            {heroChild && heroChild}
+            <section
+              css={css`
+                max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+                margin: 0 var(--spectrum-global-dimension-static-size-800);
+              `}>
+              <Flex>
+                <article
+                  css={css`
+                    width: ${layoutColumns(isGuides ? 7 : 9, [
+                      'var(--spectrum-global-dimension-static-size-400)',
+                      'var(--spectrum-global-dimension-static-size-200)',
+                      'var(--spectrum-global-dimension-static-size-100)'
+                    ])};
+                  `}>
+                  {isGuides && (
+                    <Flex marginTop="size-400">
+                      <View marginEnd="size-400">
+                        <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+                      </View>
+                      <View marginStart="auto">
+                        <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
+                      </View>
+                    </Flex>
+                  )}
+                  {filteredChildren}
+                  {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+                  {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
+                  <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+                    <View>
+                      <Contributors
+                        repository={repository}
+                        branch={branch}
+                        root={root}
+                        pagePath={pagePath}
+                        contributors={contributors}
+                        externalContributors={pageContext?.frontmatter?.contributors}
+                        date={
+                          contributors[0]
+                            ? new Date(contributors[0].date).toLocaleDateString()
+                            : new Date().toLocaleDateString()
+                        }
+                      />
                     </View>
-                    <View marginStart="auto">
-                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
+                    <View>
+                      <Feedback
+                        onYes={() => {
+                          alert('thanks');
+                        }}
+                        onNo={() => {
+                          alert('why not ?');
+                        }}
+                      />
                     </View>
                   </Flex>
-                )}
-                {filteredChildren}
-                {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
-                {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
-                <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
-                  <View>
-                    <Contributors
-                      repository={repository}
-                      branch={branch}
-                      root={root}
-                      pagePath={pagePath}
-                      contributors={contributors}
-                      externalContributors={pageContext?.frontmatter?.contributors}
-                      date={
-                        contributors[0]
-                          ? new Date(contributors[0].date).toLocaleDateString()
-                          : new Date().toLocaleDateString()
-                      }
-                    />
-                  </View>
-                  <View>
-                    <Feedback
-                      onYes={() => {
-                        alert('thanks');
-                      }}
-                      onNo={() => {
-                        alert('why not ?');
-                      }}
-                    />
-                  </View>
-                </Flex>
-              </article>
-              {resourcesChild && resourcesChild}
-            </Flex>
-          </section>
-          <Footer />
-        </>
-      )}
-    </MDXProvider>
-  );
+                </article>
+                {resourcesChild && resourcesChild}
+              </Flex>
+            </section>
+            <Footer />
+          </>
+        )}
+      </MDXProvider>
+    );
+  }
 };

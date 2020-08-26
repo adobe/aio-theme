@@ -68,7 +68,7 @@ export const Code = ({ children, className = '' }) => {
                 }}
                 css={css`
                   position: absolute;
-                  top: 0;
+                  top: ${isMultiLine ? '0' : '-6px'};
                   right: 0;
                 `}>
                 Copy
@@ -78,7 +78,7 @@ export const Code = ({ children, className = '' }) => {
                 id={tooltipId}
                 css={css`
                   position: absolute;
-                  top: 4px;
+                  top: ${isMultiLine ? '4px' : '-2px'};
                   right: 48px;
                   left: initial;
                   font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
