@@ -17,12 +17,13 @@ import { View } from '@react-spectrum/view';
 import { Divider } from '@react-spectrum/divider';
 import { Link } from './Link';
 import '@spectrum-css/typography';
+import { layoutColumns } from './utils';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
-export const Footer = () => (
+export const Footer = ({ hasSideNav }) => (
   <View
     elementType="footer"
     position="relative"
@@ -33,8 +34,8 @@ export const Footer = () => (
     <div
       css={css`
         box-sizing: border-box;
-        max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-        padding: 0 var(--spectrum-global-dimension-static-size-800);
+        max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
+        padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-static-size-800)'};
 
         ul {
           list-style: none;
@@ -81,7 +82,7 @@ export const Footer = () => (
                 </li>
                 <li>
                   <Link variant="secondary" href="#">
-                    Adobe Experience C
+                    Adobe Experience Cloud
                   </Link>
                 </li>
                 <li>

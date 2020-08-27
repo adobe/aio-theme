@@ -344,7 +344,7 @@ export default ({ children, pageContext, query }) => {
                 {resourcesChild && resourcesChild}
               </Flex>
             </section>
-            <Footer />
+            <Footer hasSideNav={hasSideNav} />
           </>
         )}
       </MDXProvider>
