@@ -86,16 +86,38 @@ const mdxComponents = {
   ...customComponents
 };
 
-const filterChildren = ({ childrenArray, tableOfContents, query }) => {
+const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, query }) => {
   const filteredChildren = [];
 
   let heroChild = null;
   let resourcesChild = null;
 
+  let isFirstChild = true;
+
   while (childrenArray.length) {
     const child = childrenArray[0];
-
     let ignoredChildrenCount = 0;
+
+    // Magic rule to render a Hero:
+    // 1) First child has an image with a filename that starts with "hero"
+    // 2) Second child is a heading level 1
+    // 3) Third child is a paragraph
+    if (isFirstChild) {
+      if (child?.props?.children?.[0]?.props?.src) {
+        const image = child.props.children[0].props.src.split('/').pop();
+        if (
+          image.toLowerCase().startsWith('hero') &&
+          childrenArray?.[1]?.props?.mdxType === 'h1' &&
+          childrenArray?.[2]?.props?.mdxType === 'p'
+        ) {
+          heroChild = <Hero image={child} heading={childrenArray[1]} text={childrenArray[2]} />;
+          ignoredChildrenCount += 3;
+        }
+      }
+
+      isFirstChild = false;
+    }
+
     Object.keys(customComponents).forEach((customComponent) => {
       if (child?.props?.mdxType === customComponent) {
         ignoredChildrenCount++;
@@ -146,7 +168,7 @@ const filterChildren = ({ childrenArray, tableOfContents, query }) => {
     childrenArray = childrenArray.splice(ignoredChildrenCount);
   }
 
-  if (!heroChild) {
+  if (!heroChild && (hasSideNav || hasJSDoc)) {
     const heading1 = filteredChildren.find((child) => child?.props?.mdxType === 'h1');
     const heading1Index = filteredChildren.indexOf(heading1);
     const heading1Next = filteredChildren[heading1Index + 1];
@@ -227,11 +249,14 @@ const jsDocFilter = (childrenArray) => {
     );
   }
 
-  return filteredArray;
+  return {
+    filteredArray,
+    hasJSDoc: jsDoc !== null
+  };
 };
 
 export default ({ children, pageContext, query }) => {
-  let childrenArray = React.Children.toArray(children);
+  const childrenArray = React.Children.toArray(children);
 
   if (query) {
     const { filteredChildren } = filterChildren({ childrenArray, query });
@@ -270,10 +295,12 @@ export default ({ children, pageContext, query }) => {
     selectedSubPages = selectedSubPages.filter((page, index) => !duplicates.includes(index));
 
     // Custom MDX components
-    childrenArray = jsDocFilter(childrenArray);
+    const { filteredArray, hasJSDoc } = jsDocFilter(childrenArray);
     const { filteredChildren, heroChild, resourcesChild } = filterChildren({
-      childrenArray,
-      tableOfContents
+      childrenArray: filteredArray,
+      tableOfContents,
+      hasSideNav,
+      hasJSDoc
     });
 
     const isGuides = hasSideNav && heroChild === null;
