@@ -45,7 +45,7 @@ const CodeBlock = (props) => {
 
   const ignoredHeadings = [];
   filteredHeadingProps.forEach((headingI, i) => {
-    if (ignoredHeadings.indexOf(headingI) === -1) {
+    if (!ignoredHeadings.includes(headingI)) {
       codeBlocks.push({
         heading: headingI,
         code: [filteredCodeProps[i]],

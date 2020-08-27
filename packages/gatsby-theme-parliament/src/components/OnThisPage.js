@@ -20,16 +20,52 @@ import { Picker } from './Picker';
 import { layoutColumns } from './utils';
 import '@spectrum-css/typography';
 
+const readTableOfContents = (setTableOfContentsItems) => {
+  const newTableOfContentsItems = [
+    {
+      items: []
+    }
+  ];
+
+  document.querySelectorAll('h2, h3').forEach((heading, index) => {
+    if (heading.previousElementSibling && heading.previousElementSibling.id) {
+      const title = heading.textContent.trim().slice(0, -1);
+      const url = heading.querySelector('a').getAttribute('href');
+
+      if (heading.tagName === 'H2') {
+        if (index === 0) {
+          newTableOfContentsItems[0].title = title;
+          newTableOfContentsItems[0].url = url;
+        } else {
+          newTableOfContentsItems.push({
+            title,
+            url,
+            items: []
+          });
+        }
+      } else if (heading.tagName === 'H3') {
+        newTableOfContentsItems[newTableOfContentsItems.length - 1].items.push({
+          title,
+          url
+        });
+      }
+    }
+  });
+
+  setTableOfContentsItems(newTableOfContentsItems);
+};
+
 const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');
   const [isPinned, setIsPinned] = useState(false);
   const outlineRef = useRef(null);
+  const [tableOfContentsItems, setTableOfContentsItems] = useState(tableOfContents?.items?.[0]?.items);
 
-  const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
-
-  // TODO
+  // To support transclusion with headings
   useEffect(() => {
-    if (tableOfContentsItems) {
+    if (!tableOfContentsItems) {
+      readTableOfContents(setTableOfContentsItems);
+    } else {
       const allHeadings2and3Ids = [];
 
       tableOfContentsItems.forEach((heading2) => {
@@ -46,16 +82,15 @@ const OnThisPage = ({ tableOfContents }) => {
         }
       });
 
-      document.querySelectorAll('h2, h3').forEach((heading) => {
+      const found = Array.from(document.querySelectorAll('h2, h3')).some((heading) => {
         if (heading.previousElementSibling && heading.previousElementSibling.id) {
-          if (allHeadings2and3Ids.indexOf(heading.previousElementSibling.id) === -1) {
-            console.log({
-              title: heading.textContent.trim().slice(0, -1),
-              url: heading.querySelector('a').getAttribute('href')
-            });
-          }
+          return !allHeadings2and3Ids.includes(heading.previousElementSibling.id);
         }
       });
+
+      if (found) {
+        readTableOfContents(setTableOfContentsItems);
+      }
     }
   }, []);
 
@@ -71,7 +106,7 @@ const OnThisPage = ({ tableOfContents }) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [tableOfContentsItems]);
 
   useEffect(() => {
     const observers = [];
@@ -152,7 +187,7 @@ const OnThisPage = ({ tableOfContents }) => {
               href={section.url}>
               {section.title}
             </Link>
-            {withSubHeading && section?.items?.length && (
+            {withSubHeading && section?.items?.length > 0 && (
               <ul
                 css={css`
                   list-style: none;
@@ -192,43 +227,41 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  if (tableOfContentsItems) {
-    const withSubHeading = !(tableOfContentsItems?.[0]?.title && tableOfContentsItems?.[0]?.url);
+  return tableOfContentsItems ? (
+    <>
+      <div ref={outlineRef}>
+        {tableOfContentsItems.length <= 10 ? (
+          <Outline withSubHeading={!(tableOfContentsItems[0]?.title && tableOfContentsItems[0]?.url)} />
+        ) : (
+          <OutlinePicker />
+        )}
+      </div>
+      <aside
+        className={isPinned ? 'is-pinned' : ''}
+        aria-hidden={!isPinned}
+        css={css`
+          position: fixed;
+          overflow: auto;
+          bottom: 0;
+          top: var(--spectrum-global-dimension-static-size-800);
+          padding-left: var(--spectrum-global-dimension-static-size-900);
+          left: ${layoutColumns(9)};
+          min-width: ${layoutColumns(3, [
+            'var(--spectrum-global-dimension-static-size-400)',
+            'var(--spectrum-global-dimension-static-size-100)'
+          ])};
+          margin-left: var(--spectrum-global-dimension-static-size-400);
+          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+          opacity: 0;
 
-    return (
-      <>
-        <div ref={outlineRef}>
-          {tableOfContentsItems.length <= 10 ? <Outline withSubHeading={withSubHeading} /> : <OutlinePicker />}
-        </div>
-        <aside
-          className={isPinned ? 'is-pinned' : ''}
-          aria-hidden={!isPinned}
-          css={css`
-            position: fixed;
-            overflow: auto;
-            bottom: 0;
-            top: var(--spectrum-global-dimension-static-size-800);
-            padding-left: var(--spectrum-global-dimension-static-size-900);
-            left: ${layoutColumns(9)};
-            min-width: ${layoutColumns(3, [
-              'var(--spectrum-global-dimension-static-size-400)',
-              'var(--spectrum-global-dimension-static-size-100)'
-            ])};
-            margin-left: var(--spectrum-global-dimension-static-size-400);
-            transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-            opacity: 0;
-
-            &.is-pinned {
-              opacity: 1;
-            }
-          `}>
-          <Outline withSubHeading={true} />
-        </aside>
-      </>
-    );
-  }
-
-  return null;
+          &.is-pinned {
+            opacity: 1;
+          }
+        `}>
+        <Outline withSubHeading={true} />
+      </aside>
+    </>
+  ) : null;
 };
 
 OnThisPage.propTypes = {

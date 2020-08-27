@@ -232,7 +232,7 @@ const jsDocFilter = (childrenArray) => {
 
 export default ({ children, pageContext, query }) => {
   let childrenArray = React.Children.toArray(children);
-  
+
   if (query) {
     const { filteredChildren } = filterChildren({ childrenArray, query });
     return <MDXProvider>{filteredChildren}</MDXProvider>;
@@ -267,7 +267,7 @@ export default ({ children, pageContext, query }) => {
     if (selectedSubPages.length > 4 && selectedSubPages[2].path === selectedSubPages[3]?.path) {
       duplicates.push(3);
     }
-    selectedSubPages = selectedSubPages.filter((page, index) => duplicates.indexOf(index) === -1);
+    selectedSubPages = selectedSubPages.filter((page, index) => !duplicates.includes(index));
 
     // Custom MDX components
     childrenArray = jsDocFilter(childrenArray);
