@@ -15,11 +15,8 @@ import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/vars/dist/spectrum-dark.css';
 import PropTypes from 'prop-types';
-import { Tabs, TabsIndicator, positionIndicator } from './Tabs';
-import { Picker } from './Picker';
-import globalTheme from '../theme';
-
-const theme = globalTheme.code;
+import { Tabs, TabsIndicator, positionIndicator } from '../Tabs';
+import { Picker } from '../Picker';
 
 const CodeBlock = (props) => {
   const [tabs] = useState([]);
@@ -38,11 +35,13 @@ const CodeBlock = (props) => {
     positionSelectedTabIndicator();
   }, [tabs]);
 
+  const { theme } = props;
   const codeBlocks = [];
   const filteredCodeProps = Object.keys(props).filter((key) => key.startsWith('code'));
   const filteredHeadingProps = Object.keys(props).filter((key) => key.startsWith('heading'));
   const languages = props.languages.split(',').map((language) => language.trim());
 
+  // A code language maps to a code content but one tab heading can have multiple codes
   const ignoredHeadings = [];
   filteredHeadingProps.forEach((headingI, i) => {
     if (!ignoredHeadings.includes(headingI)) {
@@ -111,6 +110,7 @@ const CodeBlock = (props) => {
                   const index = tabs.filter((tab) => tab.current).indexOf(ref);
                   setSelectedIndex({
                     tab: index,
+                    // Set language index to 0 when switching between tabs
                     language: 0
                   });
                   positionSelectedTabIndicator(index);

@@ -14,7 +14,7 @@ import React, { useContext } from 'react';
 import { withPrefix } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/core';
-import Context from './Context';
+import Context from '../Context';
 import {
   layoutColumns,
   findSelectedPage,
@@ -22,43 +22,46 @@ import {
   findSelectedPageNextPrev,
   findSelectedTopPage,
   findSelectedPages
-} from './utils';
+} from '../utils';
 
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 
-import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from './Heading';
-import { Paragraph } from './Paragraph';
-import { List } from './List';
-import { Code } from './Code';
-import { InlineCode } from './InlineCode';
-import { Link } from './Link';
-import { Image } from './Image';
+import globalTheme from '../../theme';
 
-import { Footer } from './Footer';
-import { Resources } from './Resources';
-import { Hero } from './Hero';
-import { DiscoverBlock } from './DiscoverBlock';
-import { CodeBlock } from './CodeBlock';
-import { Contributors } from './Contributors';
-import { Feedback } from './Feedback';
-import { Alert } from './Alert';
-import { GitHubActions } from './GitHubActions';
-import { Breadcrumbs } from './Breadcrumbs';
-import { OnThisPage } from './OnThisPage';
-import { NextSteps } from './NextSteps';
-import { NextPrev } from './NextPrev';
-import { OpenAPIBlock } from './OpenAPIBlock';
-import { Variant } from './Variant';
-import { JsDocParameters } from './JsDocParameters';
+import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../Heading';
+import { Paragraph } from '../Paragraph';
+import { List } from '../List';
+import { Code } from '../Code';
+import { InlineCode } from '../InlineCode';
+import { Link } from '../Link';
+import { Image } from '../Image';
 
+import { Footer } from '../Footer';
+import { Resources } from '../Resources';
+import { Hero } from '../Hero';
+import { DiscoverBlock } from '../DiscoverBlock';
+import { CodeBlock } from '../CodeBlock';
+import { Contributors } from '../Contributors';
+import { Feedback } from '../Feedback';
+import { InlineAlert } from '../InlineAlert';
+import { GitHubActions } from '../GitHubActions';
+import { Breadcrumbs } from '../Breadcrumbs';
+import { OnThisPage } from '../OnThisPage';
+import { NextSteps } from '../NextSteps';
+import { NextPrev } from '../NextPrev';
+import { OpenAPIBlock } from '../OpenAPIBlock';
+import { Variant } from '../Variant';
+import { JsDocParameters } from '../JsDocParameters';
 import { Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
+
+const theme = globalTheme.code;
 
 const customComponents = {
   Hero,
   DiscoverBlock,
   Resources,
-  Alert,
+  InlineAlert,
   CodeBlock,
   Variant
 };
@@ -86,6 +89,7 @@ const mdxComponents = {
   ...customComponents
 };
 
+// Filters custom MDX components out of the markdown and applies magic rules
 const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, query }) => {
   const filteredChildren = [];
 
@@ -118,11 +122,14 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, 
       isFirstChild = false;
     }
 
+    // Verify if child is a custom MDX component
     Object.keys(customComponents).forEach((customComponent) => {
       if (child?.props?.mdxType === customComponent) {
         ignoredChildrenCount++;
 
         let slots = [];
+        // Custom MDX components have slots and/or repeat props to identify markdown content
+        // It's currently not possible to Interleaving Markdown in JSX with MDX v1 (https://github.com/mdx-js/mdx/issues/628)
         if (child.props.slots || child.props.repeat) {
           const repeat = Math.max(parseInt(child.props.repeat) || 1, 1);
 
@@ -142,7 +149,11 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, 
           const props = Object.fromEntries(slots);
 
           if (child.props.mdxType === 'Variant') {
+            // Set the query to define if the Variant should show its content
             props.query = query;
+          } else if (child.props.mdxType === 'CodeBlock') {
+            // Use the global code theme for CodeBlock
+            props.theme = props.theme || theme;
           }
 
           const childClone = React.cloneElement(child, {
@@ -150,9 +161,11 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, 
           });
 
           if (child.props.mdxType === 'Hero') {
-            heroChild = childClone;
+            // Only 1 Hero per page allowed
+            heroChild = heroChild || childClone;
           } else if (child.props.mdxType === 'Resources') {
-            resourcesChild = childClone;
+            // Only 1 Resources per page allowed
+            resourcesChild = resourcesChild || childClone;
           } else {
             filteredChildren.push(childClone);
           }
@@ -162,12 +175,28 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, 
 
     if (ignoredChildrenCount === 0) {
       ignoredChildrenCount++;
-      filteredChildren.push(child);
+
+      // Use the global code theme for Code
+      if (child?.props?.mdxType === 'pre' && child?.props?.children?.props?.mdxType === 'code') {
+        const { children: preChild, ...preProps } = child.props;
+        filteredChildren.push(
+          React.cloneElement(child, {
+            children: React.cloneElement(preChild, {
+              theme,
+              ...preChild.props
+            }),
+            ...preProps
+          })
+        );
+      } else {
+        filteredChildren.push(child);
+      }
     }
 
     childrenArray = childrenArray.splice(ignoredChildrenCount);
   }
 
+  // Insert OnThisPage after heading 1 [+ Paragraph] if not a Hero
   if (!heroChild && (hasSideNav || hasJSDoc)) {
     const heading1 = filteredChildren.find((child) => child?.props?.mdxType === 'h1');
     const heading1Index = filteredChildren.indexOf(heading1);
@@ -258,6 +287,7 @@ const jsDocFilter = (childrenArray) => {
 export default ({ children, pageContext, query }) => {
   const childrenArray = React.Children.toArray(children);
 
+  // If we have a query, we are inside transclusion
   if (query) {
     const { filteredChildren } = filterChildren({ childrenArray, query });
     return <MDXProvider>{filteredChildren}</MDXProvider>;
@@ -357,14 +387,7 @@ export default ({ children, pageContext, query }) => {
                       />
                     </View>
                     <View>
-                      <Feedback
-                        onYes={() => {
-                          alert('thanks');
-                        }}
-                        onNo={() => {
-                          alert('why not ?');
-                        }}
-                      />
+                      <Feedback />
                     </View>
                   </Flex>
                 </article>

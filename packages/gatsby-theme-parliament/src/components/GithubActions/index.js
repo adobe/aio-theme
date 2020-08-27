@@ -13,18 +13,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex } from '@react-spectrum/layout';
-import { ActionButton, Text } from './ActionButton';
-import { Bug, Edit } from './Icons';
+import { ActionButton, Text } from '../ActionButton';
+import { Bug, Edit } from '../Icons';
 import { css } from '@emotion/core';
 
-const GitHubActions = ({ repository, branch, root, pagePath }) => {
-  const commonsProps = {
-    elementType: 'a',
-    isQuiet: true,
-    target: '_blank',
-    rel: 'noopener noreferrer nofollow'
-  };
+const commonsProps = {
+  elementType: 'a',
+  isQuiet: true,
+  target: '_blank',
+  rel: 'noopener noreferrer nofollow'
+};
 
+const GitHubActions = ({ repository, branch, root, pagePath }) => {
   const rootFolder = root ? `/${root}` : '';
 
   return (

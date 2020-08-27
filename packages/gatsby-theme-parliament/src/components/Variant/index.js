@@ -11,13 +11,31 @@
  */
 
 import React from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-export const SEO = ({ title, description }) => (
-  <HelmetProvider>
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-    </Helmet>
-  </HelmetProvider>
-);
+export const Variant = (props) => {
+  const queryParams = new URLSearchParams(props.query);
+  const keys = queryParams.keys();
+
+  // Get all elements that can be toggled by this Variant
+  const elements = [];
+  for (const key of Object.keys(props)) {
+    if (key.startsWith('element')) {
+      elements.push(props[key]);
+    }
+  }
+
+  // Show all elements if the query matches a property on the Variant
+  let show = false;
+  for (const key of keys) {
+    if (props[key] === queryParams.get(key)) {
+      show = true;
+      break;
+    }
+  }
+
+  if (show) {
+    return elements;
+  }
+
+  return null;
+};

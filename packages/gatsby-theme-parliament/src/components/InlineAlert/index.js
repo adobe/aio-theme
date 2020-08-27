@@ -12,12 +12,12 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import * as Icons from './Icons';
+import * as Icons from '../Icons';
 import PropTypes from 'prop-types';
 
 import '@spectrum-css/alert';
 
-const Alert = ({ variant = 'info', text }) => {
+const InlineAlert = ({ variant = 'info', text }) => {
   const Icon = Icons[`${variant.charAt(0).toUpperCase()}${variant.slice(1)}Medium`];
 
   return (
@@ -46,9 +46,9 @@ const Alert = ({ variant = 'info', text }) => {
   );
 };
 
-Alert.propTypes = {
+InlineAlert.propTypes = {
   variant: PropTypes.string,
   text: PropTypes.element
 };
 
-export { Alert };
+export { InlineAlert };

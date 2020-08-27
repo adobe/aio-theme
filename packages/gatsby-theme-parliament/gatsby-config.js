@@ -94,7 +94,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout.js`)
+        component: require.resolve(`./src/components/Layout/index.js`)
       }
     },
     `gatsby-plugin-catch-links`,
@@ -112,7 +112,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/MDXFilter.js`)
+          default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
         remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)],

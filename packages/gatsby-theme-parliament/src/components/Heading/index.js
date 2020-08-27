@@ -15,10 +15,11 @@ import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import { Divider } from '@react-spectrum/divider';
-import { Link } from './Link';
+import { Link } from '../Link';
 
 const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
 
+// Use the Anchor to allow scrolling to heading position minus GlobalNav height
 const Anchor = ({ id }) => (
   <span
     aria-hidden="true"

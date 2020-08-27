@@ -14,8 +14,8 @@ import React from 'react';
 import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { layoutColumns } from './utils';
-import { Link } from './Link';
+import { layoutColumns } from '../utils';
+import { Link } from '../Link';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
 
 const Resources = ({ heading, links }) => {

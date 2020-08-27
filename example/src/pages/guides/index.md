@@ -21,7 +21,7 @@ calling the Adobe Analytics APIs. The OAuth tokens expire after 24 hours and the
 re-authenticate before they will be able to call the APIs. To authenticate with an OAuth client, you first
 create an OAuth client on the [Adobe I/O Console](https://console.adobe.io).
 
-<Alert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text"/>
 
 The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
 

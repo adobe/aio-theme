@@ -18,22 +18,27 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import '@spectrum-css/typography';
 import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
-import { ActionButton } from './ActionButton';
-import globalTheme from '../theme';
+import { ActionButton } from '../ActionButton';
+import PropTypes from 'prop-types';
 
-const theme = globalTheme.code;
 const tooltipId = nextId();
 
-export const Code = ({ children, className = '' }) => {
+const openTooltip = (setIsTooltipOpen) => {
+  setIsTooltipOpen(true);
+  setTimeout(() => {
+    setIsTooltipOpen(false);
+  }, 3000);
+};
+
+const copy = (textarea, document, setIsTooltipOpen) => {
+  textarea.current.select();
+  document.execCommand('copy');
+  openTooltip(setIsTooltipOpen);
+};
+
+const Code = ({ children, className = '', theme }) => {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const language = className.replace(/language-/, '');
-
-  const openTooltip = () => {
-    setIsTooltipOpen(true);
-    setTimeout(() => {
-      setIsTooltipOpen(false);
-    }, 3000);
-  };
 
   return (
     <Highlight {...defaultProps} code={children} language={language}>
@@ -62,9 +67,7 @@ export const Code = ({ children, className = '' }) => {
               <ActionButton
                 aria-describedby={tooltipId}
                 onClick={() => {
-                  textarea.current.select();
-                  document.execCommand('copy');
-                  openTooltip();
+                  copy(textarea, document, setIsTooltipOpen);
                 }}
                 css={css`
                   position: absolute;
@@ -86,7 +89,7 @@ export const Code = ({ children, className = '' }) => {
                 className={classNames('spectrum-Tooltip spectrum-Tooltip--left', {
                   'is-open': isTooltipOpen
                 })}>
-                <span className="spectrum-Tooltip-label">Copied</span>
+                <span className="spectrum-Tooltip-label">Copied to your clipboard</span>
                 <span className="spectrum-Tooltip-tip"></span>
               </span>
             </div>
@@ -127,3 +130,9 @@ export const Code = ({ children, className = '' }) => {
     </Highlight>
   );
 };
+
+Code.propTypes = {
+  theme: PropTypes.oneOf(['light', 'dark'])
+};
+
+export { Code };

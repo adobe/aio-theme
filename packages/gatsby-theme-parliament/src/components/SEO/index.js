@@ -11,29 +11,14 @@
  */
 
 import React from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-export const Variant = (props) => {
-  const queryParams = new URLSearchParams(props.query);
-  const keys = queryParams.keys();
-
-  const elements = [];
-  for (const key of Object.keys(props)) {
-    if (key.startsWith('element')) {
-      elements.push(props[key]);
-    }
-  }
-
-  let show = false;
-  for (const key of keys) {
-    if (props[key] === queryParams.get(key)) {
-      show = true;
-      break;
-    }
-  }
-
-  if (show) {
-    return elements;
-  }
-
-  return null;
-};
+// TODO Define additional meta properties
+export const SEO = ({ title, description }) => (
+  <HelmetProvider>
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+    </Helmet>
+  </HelmetProvider>
+);

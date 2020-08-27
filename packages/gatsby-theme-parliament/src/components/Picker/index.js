@@ -15,8 +15,8 @@ import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { ChevronDown } from './Icons';
-import { Popover } from './Popover';
+import { ChevronDown } from '../Icons';
+import { Popover } from '../Popover';
 import '@spectrum-css/dropdown';
 import '@spectrum-css/menu';
 

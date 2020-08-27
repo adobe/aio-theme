@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { layoutColumns } from './utils';
+import { layoutColumns } from '../utils';
 import PropTypes from 'prop-types';
 
 const imageWidth = 'var(--spectrum-global-dimension-size-1250)';

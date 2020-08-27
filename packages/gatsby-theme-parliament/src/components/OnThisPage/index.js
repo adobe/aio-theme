@@ -15,19 +15,20 @@ import PropTypes from 'prop-types';
 import { View } from '@react-spectrum/view';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { Link } from './Link';
-import { Picker } from './Picker';
-import { layoutColumns } from './utils';
+import { Link } from '../Link';
+import { Picker } from '../Picker';
+import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 
-const readTableOfContents = (setTableOfContentsItems) => {
+// Builds a ToC based on the current rendered document
+const readTableOfContents = (headings, setTableOfContentsItems) => {
   const newTableOfContentsItems = [
     {
       items: []
     }
   ];
 
-  document.querySelectorAll('h2, h3').forEach((heading, index) => {
+  headings.forEach((heading, index) => {
     if (heading.previousElementSibling && heading.previousElementSibling.id) {
       const title = heading.textContent.trim().slice(0, -1);
       const url = heading.querySelector('a').getAttribute('href');
@@ -63,8 +64,10 @@ const OnThisPage = ({ tableOfContents }) => {
 
   // To support transclusion with headings
   useEffect(() => {
+    const headings = document.querySelectorAll('h2, h3');
+
     if (!tableOfContentsItems) {
-      readTableOfContents(setTableOfContentsItems);
+      readTableOfContents(headings, setTableOfContentsItems);
     } else {
       const allHeadings2and3Ids = [];
 
@@ -82,18 +85,20 @@ const OnThisPage = ({ tableOfContents }) => {
         }
       });
 
-      const found = Array.from(document.querySelectorAll('h2, h3')).some((heading) => {
+      const found = Array.from(headings).some((heading) => {
+        // Identify headings with anchors
         if (heading.previousElementSibling && heading.previousElementSibling.id) {
           return !allHeadings2and3Ids.includes(heading.previousElementSibling.id);
         }
       });
 
       if (found) {
-        readTableOfContents(setTableOfContentsItems);
+        readTableOfContents(headings, setTableOfContentsItems);
       }
     }
   }, []);
 
+  // Toggles the pinned ToC based on scrolling
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -108,6 +113,7 @@ const OnThisPage = ({ tableOfContents }) => {
     return () => observer.disconnect();
   }, [tableOfContentsItems]);
 
+  // Highlights the visible sections on the page based on scrolling
   useEffect(() => {
     const observers = [];
     let activeHeadingLinks = [];
@@ -210,6 +216,7 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
+  // Used in case we have more than 10 headings on the page
   const OutlinePicker = () => (
     <View marginY="size-400">
       <h4

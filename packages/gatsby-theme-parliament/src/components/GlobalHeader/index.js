@@ -14,17 +14,17 @@ import React, { useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage } from './utils';
+import { findSelectedTopPage } from '../utils';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Divider } from '@react-spectrum/divider';
-import { Button } from './Button';
-import { Link } from './Link';
-import { Adobe } from './Icons';
-import { Picker, PickerButton } from './Picker';
-import { Popover } from './Popover';
-import { Tabs, TabsIndicator, positionIndicator, animateIndicator } from './Tabs';
+import { Button } from '../Button';
+import { Link } from '../Link';
+import { Adobe } from '../Icons';
+import { Picker, PickerButton } from '../Picker';
+import { Popover } from '../Popover';
+import { Tabs, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 
@@ -35,6 +35,7 @@ const stretched = css`
 const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
+  // Don't animate the tab indicator by default
   const [isAnimated, setIsAnimated] = useState(false);
   const [tabs] = useState([]);
   const primaryPopover = useRef(null);
@@ -53,6 +54,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   }, [location.pathname]);
 
   useEffect(() => {
+    // Clicking outside of menu should close menu
     const onClick = (event) => {
       if (globalNav.menus.length) {
         if (!primaryPopover.current.contains(event.target)) {

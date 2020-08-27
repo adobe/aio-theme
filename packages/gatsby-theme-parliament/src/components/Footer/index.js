@@ -15,9 +15,9 @@ import { css } from '@emotion/core';
 import { Flex, Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
 import { Divider } from '@react-spectrum/divider';
-import { Link } from './Link';
+import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns } from './utils';
+import { layoutColumns } from '../utils';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
 

@@ -13,22 +13,23 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
-import { findSelectedPages, findSubPages } from './utils';
+import { findSelectedPages, findSubPages } from '../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
 import '@spectrum-css/vars/dist/spectrum-light.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
-import './Layout.css';
+import './index.css';
 import { Grid } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
-import { Provider } from './Context';
-import { GlobalHeader } from './GlobalHeader';
-import { SEO } from './SEO';
-import { SideNav } from './SideNav';
+import { Provider } from '../Context';
+import { GlobalHeader } from '../GlobalHeader';
+import { SEO } from '../SEO';
+import { SideNav } from '../SideNav';
 
 export default ({ children, pageContext, location }) => {
+  // Load all data once and pass it to the Provider
   const data = useStaticQuery(
     graphql`
       query {
