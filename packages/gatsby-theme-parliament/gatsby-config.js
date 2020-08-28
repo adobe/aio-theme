@@ -48,8 +48,8 @@ module.exports = {
     },
     pages: [
       {
-        title: 'Overview',
-        path: '/overview/'
+        title: 'Home',
+        path: '/'
       }
     ],
     versions: [

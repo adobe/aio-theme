@@ -13,7 +13,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
-import { findSelectedPages, findSubPages } from '../utils';
+import { rootFix, rootFixPages, findSelectedPages, findSubPages } from '../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -122,8 +122,10 @@ export default ({ children, pageContext, location }) => {
   const { siteMetadata } = site;
   const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
-  const selectedPages = findSelectedPages(location.pathname, subPages);
-  const selectedSubPages = findSubPages(location.pathname, pages, subPages);
+  const pathWithRootFix = rootFix(location.pathname);
+  const pagesWithRootFix = rootFixPages(pages);
+  const selectedPages = findSelectedPages(pathWithRootFix, subPages);
+  const selectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
   const hasSideNav = selectedSubPages.length > 0;
 
   return (

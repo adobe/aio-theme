@@ -14,7 +14,7 @@ import React, { useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage } from '../utils';
+import { findSelectedTopPage, rootFix, rootFixPages } from '../utils';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
@@ -44,7 +44,11 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
 
   const positionSelectedTabIndicator = () => {
-    const selectedTab = tabs.filter((tab) => tab.current)[pages.indexOf(findSelectedTopPage(location.pathname, pages))];
+    const pathWithRootFix = rootFix(location.pathname);
+    const pagesWithRootFix = rootFixPages(pages);
+    const selectedTab = tabs.filter((tab) => tab.current)[
+      pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix))
+    ];
     positionIndicator(selectedTabIndicator, selectedTab);
   };
 

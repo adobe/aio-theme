@@ -30,7 +30,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Analytics',
-        path: '/overview/'
+        path: '/'
       },
       {
         title: 'Guides',

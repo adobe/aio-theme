@@ -34,7 +34,7 @@ You can also create reports to explore, get insights, or answer important questi
 
 ### Get Started
 
-[Quickstart Guide](../guides/)
+[Quickstart Guide](guides/)
     
 Get started with the Adobe Analytics APIs.
 
@@ -42,25 +42,25 @@ Get started with the Adobe Analytics APIs.
 
 ### Guides
 
-[Calculated Metrics API](../guides/calculated_metrics_api/) 
+[Calculated Metrics API](guides/calculated_metrics_api/) 
      
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
 <DiscoverBlock slots="link, text"/>
 
-[Segments API](../guides/segments_api/) 
+[Segments API](guides/segments_api/) 
 
 Provides configuration guidance and best practices for the /segments endpoint.
 
 <DiscoverBlock slots="link, text"/>
 
-[Reporting Guide API](../guides/reporting_api/)
+[Reporting Guide API](guides/reporting_api/)
 
 Provides configuration guidance and best practices for the /reports endpoint.
 
 <DiscoverBlock slots="link, text"/>
 
-[Migrating from 1.4 to 2.0](../guides/migrating/)
+[Migrating from 1.4 to 2.0](guides/migrating/)
 
 For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
 
@@ -68,7 +68,7 @@ For help migrating from the 1.4 versions of the Analytics API to the newer and m
 
 ### API References
 
-[Try the API](../api/) 
+[Try the API](api/) 
 
 Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
 
@@ -76,7 +76,7 @@ Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint d
 
 We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions 
 or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull 
-request with your contribution. For more information, refer to the [contributing page](../support/contribute/).
+request with your contribution. For more information, refer to the [contributing page](support/contribute/).
 
 ## API Requests & Rate Limits
 
