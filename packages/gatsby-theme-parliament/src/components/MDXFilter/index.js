@@ -90,7 +90,7 @@ const mdxComponents = {
 };
 
 // Filters custom MDX components out of the markdown and applies magic rules
-const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, query }) => {
+const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, query }) => {
   const filteredChildren = [];
 
   let heroChild = null;
@@ -197,7 +197,7 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, hasJSDoc, 
   }
 
   // Insert OnThisPage after heading 1 [+ Paragraph] if not a Hero
-  if (!heroChild && (hasSideNav || hasJSDoc)) {
+  if (!heroChild && (hasSideNav || isJsDoc)) {
     const heading1 = filteredChildren.find((child) => child?.props?.mdxType === 'h1');
     const heading1Index = filteredChildren.indexOf(heading1);
     const heading1Next = filteredChildren[heading1Index + 1];
@@ -278,14 +278,11 @@ const jsDocFilter = (childrenArray) => {
     );
   }
 
-  return {
-    filteredArray,
-    hasJSDoc: jsDoc !== null
-  };
+  return filteredArray;
 };
 
 export default ({ children, pageContext, query }) => {
-  const childrenArray = React.Children.toArray(children);
+  let childrenArray = React.Children.toArray(children);
 
   // If we have a query, we are inside transclusion
   if (query) {
@@ -324,13 +321,19 @@ export default ({ children, pageContext, query }) => {
     }
     selectedSubPages = selectedSubPages.filter((page, index) => !duplicates.includes(index));
 
+    // JSDoc filter
+    let isJsDoc = false;
+    if (pageContext?.frontmatter?.jsDoc) {
+      isJsDoc = true;
+      childrenArray = jsDocFilter(childrenArray);
+    }
+
     // Custom MDX components
-    const { filteredArray, hasJSDoc } = jsDocFilter(childrenArray);
     const { filteredChildren, heroChild, resourcesChild } = filterChildren({
-      childrenArray: filteredArray,
+      childrenArray,
       tableOfContents,
       hasSideNav,
-      hasJSDoc
+      isJsDoc
     });
 
     const isGuides = hasSideNav && heroChild === null;

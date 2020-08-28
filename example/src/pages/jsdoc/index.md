@@ -1,3 +1,7 @@
+---
+jsDoc: true 
+---
+
 # Storage
 
 <a name="module-storage-entry" id="module-storage-entry"></a>
