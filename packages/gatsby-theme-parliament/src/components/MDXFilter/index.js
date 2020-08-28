@@ -50,10 +50,9 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { OnThisPage } from '../OnThisPage';
 import { NextSteps } from '../NextSteps';
 import { NextPrev } from '../NextPrev';
-import { OpenAPIBlock } from '../OpenAPIBlock';
 import { Variant } from '../Variant';
 import { JsDocParameters } from '../JsDocParameters';
-import { Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
+import { OpenAPIBlock, Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
 
 const theme = globalTheme.code;
 
