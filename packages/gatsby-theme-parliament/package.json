@@ -1,7 +1,7 @@
 {
   "name": "@adobe/gatsby-theme-parliament",
   "version": "0.0.7",
-  "description": "Gatsby theme for building sites with the Spectrum look and feel",
+  "description": "Gatsby theme for building markdown powered Adobe I/O sites",
   "main": "index.js",
   "license": "Apache-2.0",
   "repository": {
@@ -12,6 +12,12 @@
     "name": "Stephan Ringel",
     "url": "https://github.com/icaraps"
   },
+  "contributors": [
+    {
+      "name": "Simon Mac Donald",
+      "url": "https://github.com/macdonst"
+    }
+  ],
   "publishConfig": {
     "access": "public"
   },
