@@ -37,7 +37,7 @@ const Tabs = forwardRef(({ children, className, onFontsReady, ...props }, ref) =
       ref={ref}
       {...props}
       className={classNames('spectrum-Tabs', 'spectrum-Tabs--horizontal', 'spectrum-Tabs--quiet', className)}
-      role="tabs">
+      role="tablist">
       {children}
     </div>
   );

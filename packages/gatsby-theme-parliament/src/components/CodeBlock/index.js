@@ -105,6 +105,7 @@ const CodeBlock = (props) => {
                 ref={ref}
                 className={classNames('spectrum-Tabs-item', { 'is-selected': isSelected })}
                 aria-selected={isSelected}
+                role="tab"
                 tabIndex="0"
                 onClick={() => {
                   const index = tabs.filter((tab) => tab.current).indexOf(ref);

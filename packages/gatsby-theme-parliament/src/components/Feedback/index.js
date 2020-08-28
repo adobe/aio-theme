@@ -62,7 +62,8 @@ export const Feedback = () => {
       </Flex>
       <div
         className={classNames('spectrum-Toast', 'spectrum-Toast--positive', { 'is-open': isOpen })}
-        role="success"
+        role="alert"
+        aria-live="polite"
         css={css`
           pointer-events: none;
           position: fixed;

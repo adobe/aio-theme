@@ -26,7 +26,6 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
 
         return (
           <li
-            role="none"
             key={index}
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
@@ -48,15 +47,17 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
 
   return (
     <nav
-      role="Navigation"
+      role="navigation"
       aria-label="Primary"
       css={css`
         margin-top: var(--spectrum-global-dimension-static-size-800);
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
-      <ul role="tree" aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
-        {renderSubtree(selectedSubPages, 1)}
-      </ul>
+      <div role="tree">
+        <ul aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
+          {renderSubtree(selectedSubPages, 1)}
+        </ul>
+      </div>
     </nav>
   );
 };
