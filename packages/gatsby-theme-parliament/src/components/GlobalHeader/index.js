@@ -89,7 +89,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
       <nav css={stretched} role="navigation" aria-label="Global">
         <Grid
           areas={['title navigation console profile']}
-          columns={['minmax(256px, max-content)', 'auto', 'size-1200', 'size-1200']}
+          columns={['minmax(auto, min-content)', 'auto', 'size-1200', 'size-1200']}
           alignItems="center"
           marginX="size-400"
           height="100%">
@@ -260,7 +260,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               })}
             </Flex>
           </View>
-          <View gridArea="navigation" marginStart={globalNav.menus.length === 1 ? 'size-0' : 'size-200'}>
+          <View gridArea="navigation" marginStart={globalNav.menus.length === 1 ? 'size-200' : 'size-0'}>
             <Tabs
               ref={nav}
               onFontsReady={() => {
