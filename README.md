@@ -26,6 +26,15 @@ Using a theme, all of your default configuration lives in an npm package.
 * [Product site]() TODO
 * [Platform site]() TODO
 
+## Contents
+
+* [Getting started](#getting-started)
+* [Configuration](#configuration)
+* [Building](#building-the-gatsby-site)
+* [Publishing](#publishing-the-gatsby-site)
+* [Customizations](#customizations)
+* [Contributing](#contributing)
+
 ## Getting started
 
 This section will help you get started building a Gatsby site with Gatsby Theme Parliament.
