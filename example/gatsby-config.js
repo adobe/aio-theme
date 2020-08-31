@@ -19,8 +19,7 @@ module.exports = {
     globalNav,
     versions: [
       {
-        title: 'v2.0',
-        selected: true
+        title: 'v2.0'
       },
       {
         title: 'v1.4',
