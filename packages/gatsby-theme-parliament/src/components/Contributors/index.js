@@ -55,7 +55,7 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
                   background: var(--spectrum-global-color-gray-50);
                 `}>
                 <img
-                  alt={contributor.name || contributors.login}
+                  alt={contributor.name || contributor.login}
                   src={`https://github.com/${contributor.login}.png`}
                   css={css`
                     width: var(--spectrum-global-dimension-static-size-400);

@@ -10,8 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-
 export const Variant = (props) => {
   const queryParams = new URLSearchParams(props.query);
   const keys = queryParams.keys();
