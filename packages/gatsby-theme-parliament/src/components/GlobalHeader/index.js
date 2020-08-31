@@ -177,8 +177,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           max-height: none !important;
                           width: auto !important;
                         `}>
-                        <Flex>
-                          <nav aria-label="Secondary">
+                        <nav aria-label="Secondary">
+                          <Flex>
                             {menu.sections.map((section, i) => (
                               <View key={i} marginEnd="size-400" position="relative">
                                 <View>
@@ -245,15 +245,15 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                 )}
                               </View>
                             ))}
-                          </nav>
-                        </Flex>
-                        {menu.sections[0].viewAll && (
-                          <View marginTop="size-100" marginStart="size-200">
-                            <Link href={menu.sections[0].viewAll.path}>
-                              <strong>{menu.sections[0].viewAll.title}</strong>
-                            </Link>
-                          </View>
-                        )}
+                          </Flex>
+                          {menu.sections[0].viewAll && (
+                            <View marginTop="size-100" marginStart="size-200">
+                              <Link href={menu.sections[0].viewAll.path}>
+                                <strong>{menu.sections[0].viewAll.title}</strong>
+                              </Link>
+                            </View>
+                          )}
+                        </nav>
                       </Popover>
                     </div>
                   )
