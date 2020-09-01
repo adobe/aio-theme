@@ -154,10 +154,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           event.nativeEvent.stopImmediatePropagation();
 
                           if (isPrimary) {
-                            setOpenPrimaryMenu(!openPrimaryMenu);
+                            setOpenPrimaryMenu((openPrimaryMenu) => !openPrimaryMenu);
                             setOpenSecondaryMenu(false);
                           } else {
-                            setOpenSecondaryMenu(!openSecondaryMenu);
+                            setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
                             setOpenPrimaryMenu(false);
                           }
                         }}>

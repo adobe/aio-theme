@@ -58,7 +58,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
         onClick={(event) => {
           event.stopPropagation();
           event.nativeEvent.stopImmediatePropagation();
-          setOpenMenu(!openMenu);
+          setOpenMenu((openMenu) => !openMenu);
         }}>
         <span className={classNames('spectrum-Dropdown-label', { 'is-placeholder': label })}>
           {label || options.find((option) => option.selected).title}
