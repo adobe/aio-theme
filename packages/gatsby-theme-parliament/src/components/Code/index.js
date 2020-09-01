@@ -80,9 +80,10 @@ const Code = ({ children, className = '', theme }) => {
                 role="tooltip"
                 id={tooltipId}
                 css={css`
+                  display: block;
                   position: absolute;
                   top: ${isMultiLine ? '4px' : '-2px'};
-                  right: 48px;
+                  right: var(--spectrum-global-dimension-static-size-600);
                   left: initial;
                   font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
                 `}
