@@ -11,6 +11,9 @@
  */
 const elasticlunr = require(`elasticlunr`);
 const { GraphQLJSONObject } = require('graphql-type-json');
+const fetch = require('node-fetch');
+const JSON5 = require('json5')
+const converter = require("widdershins");
 
 function getObjects(obj, key, val) {
   var objects = [];
@@ -81,19 +84,35 @@ const createIndex = async (nodes, site) => {
   index.addField(`path`);
   index.addField(`type`);
 
-
   for (node of nodes) {
-    let filePath = node.fileAbsolutePath.endsWith('index.md') ? node.fileAbsolutePath.slice(0, -8) : node.fileAbsolutePath;
-    let objs = getObjects(site.siteMetadata.subPages, 'path', filePath)
-    if (objs.length > 0) {
+    if (node.frontmatter && node.frontmatter.openAPISpec) {
+      // convert openapi to markdown
+      const response = await fetch(node.frontmatter.openAPISpec);
+      const text = await response.text();
+      const object = JSON5.parse(text)
+      const md = await converter.convert(object, {});
+
       const doc = {
         id: node.id,
-        title: objs[0].title,
-        body: node.internal.content,
-        path: objs[0].path,
-        type: "docs",
+        title: node.frontmatter.title,
+        body: md,
+        path: '/api/',
+        type: "apis",
       }
       index.addDoc(doc)
+    } else {
+      let filePath = node.fileAbsolutePath.endsWith('index.md') ? node.fileAbsolutePath.slice(0, -8) : node.fileAbsolutePath;
+      let objs = getObjects(site.siteMetadata.subPages, 'path', filePath)
+      if (objs.length > 0) {
+        const doc = {
+          id: node.id,
+          title: objs[0].title,
+          body: node.internal.content,
+          path: objs[0].path,
+          type: "docs",
+        }
+        index.addDoc(doc)
+      }
     }
   }
 
