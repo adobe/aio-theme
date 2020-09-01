@@ -133,6 +133,9 @@ module.exports = {
       }
     ]
   },
-  plugins: [`@adobe/gatsby-theme-parliament`],
+  plugins: [
+    `@adobe/gatsby-theme-parliament`,
+    `parliament-site-search-index`
+  ],
   pathPrefix: '/example'
 };

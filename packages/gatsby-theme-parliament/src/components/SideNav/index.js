@@ -12,12 +12,21 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link as GatsbyLink } from 'gatsby';
+import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
+import { Search } from '@adobe/parliament-ui-components';
 
 const SideNav = ({ selectedPages, selectedSubPages }) => {
+  const { ParliamentSearchIndex } = useStaticQuery(
+    graphql`
+      query {
+        ParliamentSearchIndex
+      }
+    `
+  );
+
   const renderSubtree = (pages, level) =>
     pages
       .filter((page) => page.title && page.path)
@@ -53,6 +62,7 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
         margin-top: var(--spectrum-global-dimension-static-size-800);
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
+      <Search searchIndex={ParliamentSearchIndex} />
       <div role="tree">
         <ul aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
           {renderSubtree(selectedSubPages, 1)}
