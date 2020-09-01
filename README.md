@@ -33,6 +33,7 @@ Using a theme, all of your default configuration lives in an npm package.
 * [Building](#building-the-gatsby-site)
 * [Publishing](#publishing-the-gatsby-site)
 * [Customizations](#customizations)
+* [Issue tracker](#issue-tracker)
 * [Contributing](#contributing)
 
 ## Getting started
@@ -598,6 +599,13 @@ export default {
   code: 'light'
 }; 
 ```     
+
+## Issue tracker
+
+Use the [GitHub issue tracker](https://github.com/adobe/gatsby-theme-parliament/issues) to report issues, ask questions or log feature requests.
+Any feedback is welcome !
+   
+Please check existing issues before filing anything new.
 
 ## Contributing
 
