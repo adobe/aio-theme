@@ -335,7 +335,8 @@ export default ({ children, pageContext, query }) => {
       isJsDoc
     });
 
-    const isGuides = hasSideNav && heroChild === null;
+    const isDocs = hasSideNav && heroChild === null;
+    const isDiscovery = heroChild !== null && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
     return (
@@ -353,13 +354,13 @@ export default ({ children, pageContext, query }) => {
               <Flex>
                 <article
                   css={css`
-                    width: ${layoutColumns(isGuides ? 7 : 9, [
+                    width: ${layoutColumns(isDocs ? 7 : 9, [
                       'var(--spectrum-global-dimension-static-size-400)',
                       'var(--spectrum-global-dimension-static-size-200)',
                       'var(--spectrum-global-dimension-static-size-100)'
                     ])};
                   `}>
-                  {isGuides && (
+                  {isDocs && (
                     <Flex marginTop="size-400">
                       <View marginEnd="size-400">
                         <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
@@ -369,30 +370,41 @@ export default ({ children, pageContext, query }) => {
                       </View>
                     </Flex>
                   )}
+
                   {filteredChildren}
-                  {isGuides && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
-                  {isGuides && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
-                  <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
-                    <View>
-                      <Contributors
-                        repository={repository}
-                        branch={branch}
-                        root={root}
-                        pagePath={pagePath}
-                        contributors={contributors}
-                        externalContributors={pageContext?.frontmatter?.contributors}
-                        date={
-                          contributors[0]
-                            ? new Date(contributors[0].date).toLocaleDateString()
-                            : new Date().toLocaleDateString()
-                        }
-                      />
-                    </View>
-                    <View>
-                      <Feedback />
-                    </View>
-                  </Flex>
+
+                  {isDocs && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+
+                  {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
+
+                  {!isDiscovery && (
+                    <Flex
+                      alignItems="center"
+                      justifyContent="space-between"
+                      marginTop="size-800"
+                      marginBottom="size-400">
+                      <View>
+                        <Contributors
+                          repository={repository}
+                          branch={branch}
+                          root={root}
+                          pagePath={pagePath}
+                          contributors={contributors}
+                          externalContributors={pageContext?.frontmatter?.contributors}
+                          date={
+                            contributors[0]
+                              ? new Date(contributors[0].date).toLocaleDateString()
+                              : new Date().toLocaleDateString()
+                          }
+                        />
+                      </View>
+                      <View>
+                        <Feedback />
+                      </View>
+                    </Flex>
+                  )}
                 </article>
+
                 {resourcesChild && resourcesChild}
               </Flex>
             </section>

@@ -13,7 +13,6 @@
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import '@spectrum-css/vars/dist/spectrum-dark.css';
 import PropTypes from 'prop-types';
 import { Tabs, TabsIndicator, positionIndicator } from '../Tabs';
 import { Picker } from '../Picker';

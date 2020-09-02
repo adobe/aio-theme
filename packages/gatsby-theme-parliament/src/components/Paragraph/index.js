@@ -14,7 +14,7 @@ import React from 'react';
 import '@spectrum-css/typography';
 
 export const Paragraph = ({ children, className, ...props }) => (
-  <p {...props} className={className ?? 'spectrum-Body--M'}>
+  <p {...props} className={className || 'spectrum-Body--M'}>
     {children}
   </p>
 );

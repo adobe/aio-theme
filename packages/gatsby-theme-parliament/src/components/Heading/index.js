@@ -42,9 +42,12 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
       {!isHeading1 && <Anchor id={id} />}
       <HeadingTag
         {...props}
-        className={classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
-          'spectrum-Heading--light': isHeading1
-        })}
+        className={
+          className ||
+          classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
+            'spectrum-Heading--light': isHeading1
+          })
+        }
         css={css`
           ${isHeading1
             ? `& + p {

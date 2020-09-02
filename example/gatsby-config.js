@@ -32,6 +32,10 @@ module.exports = {
         path: '/'
       },
       {
+        title: 'Adobe Creative Cloud',
+        path: '/creative_cloud/'
+      },
+      {
         title: 'Guides',
         path: '/guides/'
       },

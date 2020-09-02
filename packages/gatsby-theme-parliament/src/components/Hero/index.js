@@ -14,72 +14,233 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { Flex } from '@react-spectrum/layout';
 import { View } from '@react-spectrum/view';
+import { Button } from '../Button';
+import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
 const Hero = ({
   background = '#1D7DEE',
-  textColor = 'var(--spectrum-global-color-gray-200)',
+  theme = 'dark',
   heading,
   text,
-  image
+  image,
+  icon,
+  variant = 'default',
+  ...props
 }) => {
-  return (
-    <section
-      css={css`
-        height: var(--spectrum-global-dimension-static-size-3400);
-        margin-bottom: var(--spectrum-global-dimension-static-size-400);
-        background-color: ${background};
-      `}>
-      <Flex height="100%" alignItems="center">
-        <View marginStart="size-800">
-          {heading &&
-            React.cloneElement(heading, {
-              className: 'spectrum-Heading--XL',
-              css: css`
-                font-weight: var(
-                  --spectrum-heading-xl-text-font-weight,
-                  var(--spectrum-alias-heading-text-font-weight-regular)
-                );
-                margin-bottom: var(--spectrum-global-dimension-static-size-200);
-                color: ${textColor};
-              `
-            })}
+  const buttonKeys = Object.keys(props).filter((key) => key.startsWith('button'));
+  const height =
+    'calc(var(--spectrum-global-dimension-static-size-6000) + var(--spectrum-global-dimension-static-size-250))';
 
-          {text &&
-            React.cloneElement(text, {
-              className: 'spectrum-Body--L',
+  const buttons = buttonKeys.length ? (
+    <Flex>
+      {buttonKeys.map((buttonKey, i) => {
+        const variant = i === 0 ? 'cta' : 'primary';
+        const linkProps = props[buttonKey]?.props.children?.props;
+
+        return (
+          <Button
+            key={i}
+            elementType="a"
+            css={css`
+              &:not(:last-of-type) {
+                margin-right: var(--spectrum-global-dimension-static-size-200);
+              }
+            `}
+            isQuiet={true}
+            href={linkProps?.href || '#'}
+            variant={variant}>
+            {linkProps?.children}
+          </Button>
+        );
+      })}
+    </Flex>
+  ) : null;
+
+  switch (variant) {
+    case 'default':
+      return (
+        <section
+          className={`spectrum--${theme}`}
+          css={css`
+            height: var(--spectrum-global-dimension-static-size-3400);
+            margin-bottom: var(--spectrum-global-dimension-static-size-400);
+            background: ${background};
+          `}>
+          <Flex height="100%" alignItems="center">
+            <div
+              css={css`
+                margin-left: var(--spectrum-global-dimension-static-size-800);
+                width: ${layoutColumns(5)};
+              `}>
+              {heading &&
+                React.cloneElement(heading, {
+                  className: 'spectrum-Heading--XL'
+                })}
+
+              {text &&
+                React.cloneElement(text, {
+                  className: 'spectrum-Body--L'
+                })}
+            </div>
+            {image && (
+              <View>
+                {React.cloneElement(image, {
+                  className: '',
+                  css: css`
+                    margin: 0;
+                    & img {
+                      min-width: ${layoutColumns(7)};
+                      max-height: var(--spectrum-global-dimension-static-size-2600);
+                      object-fit: contain;
+                      border-radius: 0;
+                    }
+                  `
+                })}
+              </View>
+            )}
+          </Flex>
+        </section>
+      );
+    case 'fullwidth':
+      return (
+        <section
+          className={`spectrum--${theme}`}
+          css={css`
+            position: relative;
+            height: ${height};
+            background: ${background};
+          `}>
+          {image &&
+            React.cloneElement(image, {
               css: css`
-                margin-bottom: var(--spectrum-global-dimension-static-size-200);
-                color: ${textColor};
-              `
-            })}
-        </View>
-        {image && (
-          <View>
-            {React.cloneElement(image, {
-              className: '',
-              css: css`
-                margin: 0;
-                & img {
-                  min-width: 750px;
-                  max-height: 210px;
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                & > img {
+                  max-height: 100%;
                   object-fit: contain;
+                  border-radius: 0;
                 }
               `
             })}
-          </View>
-        )}
-      </Flex>
-    </section>
-  );
+
+          <div
+            css={css`
+              height: 100%;
+              position: absolute;
+              top: 0;
+              padding: 0 var(--spectrum-global-dimension-static-size-3600);
+              margin: 0 var(--spectrum-global-dimension-static-size-125);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+            `}>
+            {heading &&
+              React.cloneElement(heading, {
+                className: 'spectrum-Heading--XXL spectrum-Heading--serif',
+                css: css`
+                  margin-bottom: 0 !important;
+
+                  & + p {
+                    margin-top: var(--spectrum-global-dimension-static-size-200) !important;
+                    margin-bottom: var(--spectrum-global-dimension-static-size-400) !important;
+                  }
+                `
+              })}
+
+            {text &&
+              React.cloneElement(text, {
+                className: 'spectrum-Body--L'
+              })}
+
+            {buttons}
+          </div>
+        </section>
+      );
+      break;
+    case 'halfwidth':
+      return (
+        <section
+          className={`spectrum--lightest`}
+          css={css`
+            height: ${height};
+          `}>
+          <Flex>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: ${layoutColumns(5)};
+                box-sizing: border-box;
+                padding-left: var(--spectrum-global-dimension-static-size-800);
+                padding-right: var(--spectrum-global-dimension-static-size-400);
+              `}>
+              {icon &&
+                React.cloneElement(icon, {
+                  css: css`
+                    height: var(--spectrum-global-dimension-static-size-600);
+                    width: var(--spectrum-global-dimension-static-size-600);
+                    margin-bottom: var(--spectrum-global-dimension-static-size-300) !important;
+                  `
+                })}
+
+              {heading &&
+                React.cloneElement(heading, {
+                  className: 'spectrum-Heading--XXL spectrum-Heading--serif',
+                  css: css`
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+
+                    & + p {
+                      margin-top: var(--spectrum-global-dimension-static-size-200) !important;
+                      margin-bottom: var(--spectrum-global-dimension-static-size-300) !important;
+                    }
+                  `
+                })}
+
+              {text &&
+                React.cloneElement(text, {
+                  className: 'spectrum-Body--L'
+                })}
+
+              {buttons}
+            </div>
+            <div
+              css={css`
+                width: ${layoutColumns(7)};
+              `}>
+              {image &&
+                React.cloneElement(image, {
+                  css: css`
+                    & > img {
+                      max-height: 100%;
+                      object-fit: contain;
+                      border-radius: 0;
+                    }
+                  `
+                })}
+            </div>
+          </Flex>
+        </section>
+      );
+      break;
+  }
 };
 
 Hero.propTypes = {
   background: PropTypes.string,
   heading: PropTypes.element,
   text: PropTypes.element,
-  image: PropTypes.element
+  image: PropTypes.element,
+  icon: PropTypes.element,
+  variant: PropTypes.string,
+  theme: PropTypes.string
 };
 
 export { Hero };

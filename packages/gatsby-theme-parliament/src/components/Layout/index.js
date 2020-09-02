@@ -18,6 +18,9 @@ import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
 import '@spectrum-css/vars/dist/spectrum-light.css';
+import '@spectrum-css/vars/dist/spectrum-dark.css';
+import '@spectrum-css/vars/dist/spectrum-lightest.css';
+import '@spectrum-css/vars/dist/spectrum-darkest.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import './index.css';
@@ -161,6 +164,7 @@ export default ({ children, pageContext, location }) => {
             gridArea="sidenav"
             isHidden={!hasSideNav}
             position="fixed"
+            overflow="auto"
             zIndex="1"
             width="256px"
             height="100%">
