@@ -187,7 +187,6 @@ export default ({ children, pageContext, location }) => {
                   gridArea="sidenav"
                   isHidden={!hasSideNav}
                   position="fixed"
-                  overflow="auto"
                   zIndex="1"
                   width="256px"
                   height="100%">
