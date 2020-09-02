@@ -145,6 +145,7 @@ module.exports = {
         scriptUrl: process.env.GATSBY_LAUNCH_SRC,
         includeInDevelopment: process.env.GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
       }
-    }
+    },
+    `@adobe/parliament-site-search-index`
   ]
 };
