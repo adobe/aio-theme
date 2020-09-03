@@ -14,8 +14,8 @@ import React from 'react';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
-import { Divider } from '@react-spectrum/divider';
-import { Link } from '../Link';
+import { Divider } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 
 const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
 
@@ -67,13 +67,14 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         `}>
         {children}
         {!isHeading1 && (
-          <Link
-            href={`#${id}`}
+          <span
             css={css`
               ${marginLink}
             `}>
-            #
-          </Link>
+            <Link isQuiet={true}>
+              <a href={`#${id}`}>#</a>
+            </Link>
+          </span>
         )}
       </HeadingTag>
       {isHeading2 && <Divider marginBottom="size-300" />}

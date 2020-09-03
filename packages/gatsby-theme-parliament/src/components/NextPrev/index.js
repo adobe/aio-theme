@@ -14,8 +14,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import '@spectrum-css/typography';
-import { View } from '@react-spectrum/view';
-import { Flex } from '@react-spectrum/layout';
+import { View } from '@adobe/react-spectrum';
+import { Flex } from '@adobe/react-spectrum';
 import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
 import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
 

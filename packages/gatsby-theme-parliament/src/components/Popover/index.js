@@ -21,6 +21,7 @@ const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, r
     ref={ref}
     aria-hidden={!isOpen}
     css={css`
+      display: flex;
       min-width: var(--spectrum-global-dimension-static-size-800);
       width: 100%;
       z-index: 1;

@@ -12,16 +12,21 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { Flex, Grid } from '@react-spectrum/layout';
-import { View } from '@react-spectrum/view';
-import { Divider } from '@react-spectrum/divider';
-import { Link } from '../Link';
+import { Flex, Grid } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
+import { Divider } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import { layoutColumns } from '../utils';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
+
+const externalLinkProps = {
+  target: '_blank',
+  rel: 'noopener noreferrer nofollow'
+};
 
 export const Footer = ({ hasSideNav }) => (
   <View
@@ -66,28 +71,38 @@ export const Footer = ({ hasSideNav }) => (
               <Heading>APIs and Services</Heading>
               <List>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Creative Cloud
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://creativecloud.adobe.com/">
+                      Adobe Creative Cloud
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Experience Platform
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://www.adobe.com/experience-platform.html">
+                      Adobe Experience Platform
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Document Cloud
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://documentcloud.adobe.com/">
+                      Adobe Document Cloud
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Experience Cloud
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://experience.adobe.com/">
+                      Adobe Experience Cloud
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <strong>View All</strong>
+                  <Link isQuiet={true}>
+                    <a {...externalLinkProps} href="http://adobe.com/">
+                      <strong>View All</strong>
+                    </a>
                   </Link>
                 </li>
               </List>
@@ -95,23 +110,31 @@ export const Footer = ({ hasSideNav }) => (
             <View marginStart="size-400">
               <ul className="spectrum-Body--S">
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe XD Platform
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://adobexdplatform.com/">
+                      Adobe XD Platform
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Target
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://www.adobe.com/marketing/target.html">
+                      Adobe Target
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Adobe Analytics
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://www.adobe.com/analytics/adobe-analytics.html">
+                      Adobe Analytics
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link variant="secondary" href="#">
-                    Project Firefly
+                  <Link isQuiet={true} variant="secondary">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/experienceplatform/project-firefly.html">
+                      Project Firefly
+                    </a>
                   </Link>
                 </li>
               </ul>
@@ -125,28 +148,38 @@ export const Footer = ({ hasSideNav }) => (
           <Heading>Blogs & Community</Heading>
           <List>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe Tech Blog
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://medium.com/adobetech">
+                  Adobe Tech Blog
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe on Github
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://github.com/adobe">
+                  Adobe on Github
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe Developer on Youtube
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ">
+                  Adobe Developer on Youtube
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe Developer on Twitter
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://twitter.com/adobedevs">
+                  Adobe Developer on Twitter
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Community Forums
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/communities/index.html">
+                  Community Forums
+                </a>
               </Link>
             </li>
           </List>
@@ -158,23 +191,31 @@ export const Footer = ({ hasSideNav }) => (
           <Heading>Support</Heading>
           <List>
             <li>
-              <Link variant="secondary" href="#">
-                Contact us
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/about-adobe/contact.html">
+                  Contact us
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe Developer support
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.io/support">
+                  Adobe Developer support
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe Product support
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://helpx.adobe.com/contact/enterprise-support.html">
+                  Adobe Product support
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Release notes
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.io/releasenotes.html">
+                  Release notes
+                </a>
               </Link>
             </li>
           </List>
@@ -186,23 +227,31 @@ export const Footer = ({ hasSideNav }) => (
           <Heading>Adobe Developer</Heading>
           <List>
             <li>
-              <Link variant="secondary" href="#">
-                Adobe I/O Console
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://console.adobe.io/">
+                  Adobe I/O Console
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Open source at Adobe
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.io/open.html">
+                  Open source at Adobe
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Download SDKs
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://console.adobe.io/downloads">
+                  Download SDKs
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="#">
-                Careers
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/careers.html">
+                  Careers
+                </a>
               </Link>
             </li>
           </List>
@@ -222,23 +271,31 @@ export const Footer = ({ hasSideNav }) => (
               }
             `}>
             <li>
-              <Link variant="secondary" href="https://www.adobe.com/legal/terms.html">
-                Terms of use
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/legal/terms.html">
+                  Terms of use
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="https://www.adobe.com/privacy.html">
-                Privacy policy
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/privacy.html">
+                  Privacy policy
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="https://www.adobe.com/privacy/cookies.html">
-                Cookies
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/privacy/cookies.html">
+                  Cookies
+                </a>
               </Link>
             </li>
             <li>
-              <Link variant="secondary" href="https://www.adobe.com/privacy/cookies.html">
-                AdChoices
+              <Link isQuiet={true} variant="secondary">
+                <a {...externalLinkProps} href="https://www.adobe.com/privacy/cookies.html">
+                  AdChoices
+                </a>
               </Link>
             </li>
           </ul>

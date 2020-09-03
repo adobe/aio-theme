@@ -13,7 +13,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import { Flex } from '@react-spectrum/layout';
+import { Flex } from '@adobe/react-spectrum';
 
 const Contributors = ({ repository, branch, root, pagePath, contributors = [], externalContributors = [], date }) => {
   externalContributors = externalContributors.map((contributor) => ({

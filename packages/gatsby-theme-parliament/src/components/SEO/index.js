@@ -14,9 +14,10 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // TODO Define additional meta properties
-export const SEO = ({ title, description }) => (
+export const SEO = ({ title, description, locale, direction }) => (
   <HelmetProvider>
     <Helmet>
+      <html lang={locale} dir={direction} />
       <title>{title}</title>
       <meta name="description" content={description} />
     </Helmet>

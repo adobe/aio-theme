@@ -12,7 +12,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex } from '@react-spectrum/layout';
+import { Flex } from '@adobe/react-spectrum';
 import { ActionButton, Text } from '../ActionButton';
 import { Bug, Edit } from '../Icons';
 import { css } from '@emotion/core';

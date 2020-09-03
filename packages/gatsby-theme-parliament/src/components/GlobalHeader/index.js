@@ -16,15 +16,15 @@ import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
 import { findSelectedTopPage, rootFix, rootFixPages } from '../utils';
 import { css } from '@emotion/core';
-import { Grid, Flex } from '@react-spectrum/layout';
-import { View } from '@react-spectrum/view';
-import { Divider } from '@react-spectrum/divider';
-import { Button } from '../Button';
-import { Link } from '../Link';
+import { Grid, Flex } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
+import { Divider } from '@adobe/react-spectrum';
+import { Button } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 import { Adobe } from '../Icons';
 import { Picker, PickerButton } from '../Picker';
 import { Popover } from '../Popover';
-import { Tabs, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
+import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 
@@ -43,12 +43,17 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
 
-  const positionSelectedTabIndicator = () => {
+  const getSelectedTabIndex = () => {
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(pages);
-    const selectedTab = tabs.filter((tab) => tab.current)[
-      pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix))
-    ];
+
+    return pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+  };
+
+  const positionSelectedTabIndicator = () => {
+    const selectedTabIndex = getSelectedTabIndex();
+    const selectedTab = tabs.filter((tab) => tab.current)[selectedTabIndex];
+
     positionIndicator(selectedTabIndicator, selectedTab);
   };
 
@@ -248,8 +253,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           </Flex>
                           {menu.sections[0].viewAll && (
                             <View marginTop="size-100" marginStart="size-200">
-                              <Link href={menu.sections[0].viewAll.path}>
-                                <strong>{menu.sections[0].viewAll.title}</strong>
+                              <Link isQuiet={true}>
+                                <a href={menu.sections[0].viewAll.path}>
+                                  <strong>{menu.sections[0].viewAll.title}</strong>
+                                </a>
                               </Link>
                             </View>
                           )}
@@ -273,19 +280,11 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                 const ref = createRef();
                 tabs.push(ref);
 
-                const isActive = ({ isPartiallyCurrent }) =>
-                  isPartiallyCurrent
-                    ? {
-                        'aria-selected': 'true',
-                        className: 'is-selected spectrum-Tabs-item'
-                      }
-                    : { className: 'spectrum-Tabs-item' };
-
                 return (
                   <React.Fragment key={i}>
-                    <GatsbyLink role="tab" getProps={isActive} ref={ref} to={path} partiallyActive={true}>
-                      <span className="spectrum-Tabs-itemLabel">{title}</span>
-                    </GatsbyLink>
+                    <TabsItem elementType={GatsbyLink} ref={ref} to={path} selected={getSelectedTabIndex() === i}>
+                      {title}
+                    </TabsItem>
                     {i === 0 && versions[0]?.title && (
                       <div
                         css={css`

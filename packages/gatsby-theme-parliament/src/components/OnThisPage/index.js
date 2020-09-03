@@ -12,10 +12,10 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { View } from '@react-spectrum/view';
+import { View } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { Link } from '../Link';
 import { Picker } from '../Picker';
 import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
@@ -90,6 +90,8 @@ const OnThisPage = ({ tableOfContents }) => {
         if (heading.previousElementSibling && heading.previousElementSibling.id) {
           return !allHeadings2and3Ids.includes(heading.previousElementSibling.id);
         }
+
+        return false;
       });
 
       if (found) {
@@ -177,7 +179,7 @@ const OnThisPage = ({ tableOfContents }) => {
           list-style: none;
           padding: 0;
 
-          & a.is-active {
+          & span.is-active a {
             font-weight: bold;
             color: var(--spectrum-global-color-gray-900);
           }
@@ -188,11 +190,11 @@ const OnThisPage = ({ tableOfContents }) => {
             css={css`
               margin-top: var(--spectrum-global-dimension-static-size-150);
             `}>
-            <Link
-              className={classNames({ 'is-active': withSubHeading && activeHeadingLink === section.url })}
-              href={section.url}>
-              {section.title}
-            </Link>
+            <span className={classNames({ 'is-active': withSubHeading && activeHeadingLink === section.url })}>
+              <Link isQuiet={true}>
+                <a href={section.url}>{section.title}</a>
+              </Link>
+            </span>
             {withSubHeading && section?.items?.length > 0 && (
               <ul
                 css={css`
@@ -200,12 +202,13 @@ const OnThisPage = ({ tableOfContents }) => {
                   padding-left: var(--spectrum-global-dimension-static-size-200);
                 `}>
                 {section.items.map((subSection, subIndex) => (
-                  <li key={subIndex} css={css``}>
-                    <Link
-                      className={classNames({ 'is-active': withSubHeading && activeHeadingLink === subSection.url })}
-                      href={subSection.url}>
-                      {subSection.title}
-                    </Link>
+                  <li key={subIndex}>
+                    <span
+                      className={classNames({ 'is-active': withSubHeading && activeHeadingLink === subSection.url })}>
+                      <Link isQuiet={true}>
+                        <a href={subSection.url}>{subSection.title}</a>
+                      </Link>
+                    </span>
                   </li>
                 ))}
               </ul>

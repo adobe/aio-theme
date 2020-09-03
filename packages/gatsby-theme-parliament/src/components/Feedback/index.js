@@ -13,9 +13,9 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { Flex } from '@react-spectrum/layout';
-import { View } from '@react-spectrum/view';
-import { Button } from '../Button';
+import { Flex } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
+import { Button } from '@adobe/react-spectrum';
 import '@spectrum-css/toast';
 
 const onFeedback = (setIsOpen) => {
@@ -40,9 +40,9 @@ export const Feedback = () => {
         <Flex>
           <View marginEnd="size-200">
             <Button
+              UNSAFE_className="feedback-yes"
               variant="primary"
-              className="feedback-yes"
-              onClick={() => {
+              onPress={() => {
                 onFeedback(setIsOpen);
               }}>
               Yes
@@ -50,9 +50,9 @@ export const Feedback = () => {
           </View>
           <View>
             <Button
-              className="feedback-no"
+              UNSAFE_className="feedback-no"
               variant="primary"
-              onClick={() => {
+              onPress={() => {
                 onFeedback(setIsOpen);
               }}>
               No

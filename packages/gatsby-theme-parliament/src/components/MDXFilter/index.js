@@ -24,8 +24,9 @@ import {
   findSelectedPages
 } from '../utils';
 
-import { Flex } from '@react-spectrum/layout';
-import { View } from '@react-spectrum/view';
+import { Flex } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 
 import globalTheme from '../../theme';
 
@@ -34,7 +35,6 @@ import { Paragraph } from '../Paragraph';
 import { List } from '../List';
 import { Code } from '../Code';
 import { InlineCode } from '../InlineCode';
-import { Link } from '../Link';
 import { Image } from '../Image';
 
 import { Footer } from '../Footer';
@@ -76,7 +76,11 @@ const mdxComponents = {
   ul: List,
   code: Code,
   inlineCode: InlineCode,
-  a: Link,
+  a: ({ children, ...props }) => (
+    <Link isQuiet={true} {...props}>
+      <a {...props}>{children}</a>
+    </Link>
+  ),
   img: Image,
   table: Table,
   tbody: TBody,
@@ -336,7 +340,7 @@ export default ({ children, pageContext, query }) => {
     });
 
     const isDocs = hasSideNav && heroChild === null;
-    const isDiscovery = heroChild !== null && heroChild.props.variant !== 'default';
+    const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
     return (

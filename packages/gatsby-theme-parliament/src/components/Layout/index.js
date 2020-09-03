@@ -11,6 +11,8 @@
  */
 
 import React from 'react';
+import { SSRProvider, Provider as RSProvider, defaultTheme } from '@adobe/react-spectrum';
+import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
 import { rootFix, rootFixPages, findSelectedPages, findSubPages } from '../utils';
@@ -24,14 +26,16 @@ import '@spectrum-css/vars/dist/spectrum-darkest.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import './index.css';
-import { Grid } from '@react-spectrum/layout';
-import { View } from '@react-spectrum/view';
+import { Grid } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
 import { Provider } from '../Context';
 import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { SideNav } from '../SideNav';
 
 export default ({ children, pageContext, location }) => {
+  const { locale, direction } = useLocale();
+
   // Load all data once and pass it to the Provider
   const data = useStaticQuery(
     graphql`
@@ -143,44 +147,60 @@ export default ({ children, pageContext, location }) => {
         allGithub,
         allGithubContributors
       }}>
-      <SEO title={pageContext?.frontmatter?.title} description={pageContext?.frontmatter?.description} />
-      <div className="spectrum spectrum--medium spectrum--large spectrum--light" lang="en" dir="ltr">
-        <Grid
-          areas={['header header', 'sidenav main']}
-          rows={['size-800']}
-          columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
-          <View
-            gridArea="header"
-            position="fixed"
-            height="size-800"
-            left="size-0"
-            right="size-0"
-            backgroundColor="gray-50"
-            zIndex="2">
-            <GlobalHeader globalNav={globalNav} versions={versions} pages={pages} docs={docs} location={location} />
-          </View>
-          <View
-            backgroundColor="gray-75"
-            gridArea="sidenav"
-            isHidden={!hasSideNav}
-            position="fixed"
-            overflow="auto"
-            zIndex="1"
-            width="256px"
-            height="100%">
-            <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} />
-          </View>
-          <View gridArea="main">
-            <main
-              className="spectrum-Typography"
+      <SEO
+        title={pageContext?.frontmatter?.title}
+        description={pageContext?.frontmatter?.description}
+        locale={locale}
+        direction={direction}
+      />
+      <SSRProvider>
+        <I18nProvider locale={locale}>
+          <RSProvider theme={defaultTheme} colorScheme="light">
+            <div
+              className="spectrum--medium spectrum--large"
               css={css`
                 min-height: 100vh;
+                background-color: var(--spectrum-global-color-gray-50);
               `}>
-              {children}
-            </main>
-          </View>
-        </Grid>
-      </div>
+              <Grid
+                areas={['header header', 'sidenav main']}
+                rows={['size-800']}
+                columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
+                <View
+                  gridArea="header"
+                  position="fixed"
+                  height="size-800"
+                  left="size-0"
+                  right="size-0"
+                  backgroundColor="gray-50"
+                  zIndex="2">
+                  <GlobalHeader
+                    globalNav={globalNav}
+                    versions={versions}
+                    pages={pages}
+                    docs={docs}
+                    location={location}
+                  />
+                </View>
+                <View
+                  backgroundColor="gray-75"
+                  gridArea="sidenav"
+                  isHidden={!hasSideNav}
+                  position="fixed"
+                  overflow="auto"
+                  zIndex="1"
+                  width="256px"
+                  height="100%">
+                  <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} />
+                </View>
+                <View gridArea="main">
+                  <main className="spectrum-Typography">{children}</main>
+                </View>
+              </Grid>
+            </div>
+          </RSProvider>
+        </I18nProvider>
+      </SSRProvider>
     </Provider>
   );
 };

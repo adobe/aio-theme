@@ -15,7 +15,9 @@ import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../utils';
-import { Link } from '../Link';
+import { Link } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
+import { Flex } from '@adobe/react-spectrum';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
 
 const Resources = ({ heading, links }) => {
@@ -52,16 +54,14 @@ const Resources = ({ heading, links }) => {
               css={css`
                 margin-top: var(--spectrum-global-dimension-static-size-200);
               `}>
-              <Link href={link.props.href} {...externalLinkProps}>
-                <span
-                  css={css`
-                    display: inline-flex;
-                    margin-right: var(--spectrum-global-dimension-static-size-100);
-                  `}>
-                  {link.props.children}
-                </span>
-                {isExternalLink && <LinkOut size="XS" />}
-              </Link>
+              <Flex>
+                <Link isQuiet={true}>
+                  <a href={link.props.href} {...externalLinkProps}>
+                    {link.props.children}
+                  </a>
+                </Link>
+                <View marginStart="size-100">{isExternalLink && <LinkOut size="XS" />}</View>
+              </Flex>
             </li>
           );
         })}

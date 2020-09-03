@@ -14,7 +14,7 @@ import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
 import { Heading4 } from '../Heading';
-import { View } from '@react-spectrum/view';
+import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import '@spectrum-css/link';
 import Document from '@spectrum-icons/workflow/Document';

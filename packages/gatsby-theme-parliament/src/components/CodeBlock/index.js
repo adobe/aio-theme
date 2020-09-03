@@ -12,9 +12,8 @@
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/core';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Tabs, TabsIndicator, positionIndicator } from '../Tabs';
+import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator } from '../Tabs';
 import { Picker } from '../Picker';
 
 const CodeBlock = (props) => {
@@ -99,13 +98,11 @@ const CodeBlock = (props) => {
             const isSelected = selectedIndex.tab === index;
 
             return (
-              <div
+              <TabsItem
                 key={index}
                 ref={ref}
-                className={classNames('spectrum-Tabs-item', { 'is-selected': isSelected })}
-                aria-selected={isSelected}
-                role="tab"
-                tabIndex="0"
+                selected={isSelected}
+                tabIndex={0}
                 onClick={() => {
                   const index = tabs.filter((tab) => tab.current).indexOf(ref);
                   setSelectedIndex({
@@ -115,8 +112,8 @@ const CodeBlock = (props) => {
                   });
                   positionSelectedTabIndicator(index);
                 }}>
-                <span className="spectrum-Tabs-itemLabel">{props[block.heading].props.children}</span>
-              </div>
+                {props[block.heading].props.children}
+              </TabsItem>
             );
           })}
           <TabsIndicator ref={selectedTabIndicator} />
