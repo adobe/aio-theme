@@ -121,11 +121,12 @@ export default ({ children, pageContext, location }) => {
             }
           }
         }
+        ParliamentSearchIndex
       }
     `
   );
 
-  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
+  const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
   const { siteMetadata } = site;
   const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
@@ -187,10 +188,11 @@ export default ({ children, pageContext, location }) => {
                   gridArea="sidenav"
                   isHidden={!hasSideNav}
                   position="fixed"
+                  overflow="auto"
                   zIndex="1"
                   width="256px"
                   height="100%">
-                  <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} />
+                  <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} searchIndex={ParliamentSearchIndex}/>
                 </View>
                 <View gridArea="main">
                   <main className="spectrum-Typography">{children}</main>

@@ -18,15 +18,7 @@ import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import { Search } from '@adobe/parliament-ui-components';
 
-const SideNav = ({ selectedPages, selectedSubPages }) => {
-  const { ParliamentSearchIndex } = useStaticQuery(
-    graphql`
-      query {
-        ParliamentSearchIndex
-      }
-    `
-  );
-
+const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
   const renderSubtree = (pages, level) =>
     pages
       .filter((page) => page.title && page.path)
@@ -62,7 +54,7 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
         margin-top: var(--spectrum-global-dimension-static-size-800);
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
-      <Search searchIndex={ParliamentSearchIndex} />
+      <Search searchIndex={searchIndex} />
       <div role="tree">
         <ul aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
           {renderSubtree(selectedSubPages, 1)}
@@ -74,7 +66,8 @@ const SideNav = ({ selectedPages, selectedSubPages }) => {
 
 SideNav.propTypes = {
   selectedPages: PropTypes.array,
-  selectedSubPages: PropTypes.array
+  selectedSubPages: PropTypes.array,
+  searchIndex: PropTypes.object
 };
 
 export { SideNav };
