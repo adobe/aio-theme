@@ -16,11 +16,11 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../utils';
 
-const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectrum-global-color-gray-100)' }) => (
+const TitleBlock = ({ heading, text, theme = 'light' }) => (
   <section
     className={`spectrum--${theme}`}
     css={css`
-      background: ${background};
+      background: var(--spectrum-global-color-gray-100);
       padding: var(--spectrum-global-dimension-static-size-800) 0;
       text-align: center;
     `}>
@@ -34,11 +34,15 @@ const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectr
           ])}
         );
       `}>
-      {heading && <h2
-        className="spectrum-Heading--L"
-        css={css`
-        margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
-      `}>{heading?.props?.children}</h2>}
+      {heading && (
+        <h2
+          className="spectrum-Heading--L"
+          css={css`
+            margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
+          `}>
+          {heading?.props?.children}
+        </h2>
+      )}
 
       {text &&
         React.cloneElement(text, {
@@ -51,8 +55,7 @@ const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectr
 TitleBlock.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
-  theme: PropTypes.string,
-  background: PropTypes.string
+  theme: PropTypes.string
 };
 
 export { TitleBlock };
