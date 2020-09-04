@@ -34,7 +34,11 @@ const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectr
           ])}
         );
       `}>
-      {heading && <h2 className="spectrum-HeadingL">{heading?.props?.children}</h2>}
+      {heading && <h2
+        className="spectrum-Heading--L"
+        css={css`
+        margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
+      `}>{heading?.props?.children}</h2>}
 
       {text &&
         React.cloneElement(text, {
@@ -47,7 +51,8 @@ const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectr
 TitleBlock.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
-  theme: PropTypes.string
+  theme: PropTypes.string,
+  background: PropTypes.string
 };
 
 export { TitleBlock };
