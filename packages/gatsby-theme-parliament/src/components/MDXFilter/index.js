@@ -296,13 +296,6 @@ export default ({ children, pageContext, query }) => {
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
-    let columns = 9;
-    if (isDocs) {
-      columns = 7;
-    } else if (isDiscovery) {
-      columns = 12;
-    }
-
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
         {pageContext?.frontmatter?.openAPISpec ? (
@@ -312,17 +305,23 @@ export default ({ children, pageContext, query }) => {
             {heroChild && heroChild}
             <section
               css={css`
+                ${isDiscovery
+                  ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
+                  : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                margin: ${isDiscovery ? 'auto' : '0 var(--spectrum-global-dimension-static-size-800)'};
+                margin: 0 var(--spectrum-global-dimension-static-size-800);
+                `}
               `}>
               <Flex>
                 <article
                   css={css`
-                    width: ${layoutColumns(columns, [
-                      'var(--spectrum-global-dimension-static-size-400)',
-                      'var(--spectrum-global-dimension-static-size-200)',
-                      'var(--spectrum-global-dimension-static-size-100)'
-                    ])};
+                    width: ${isDiscovery
+                      ? 'var(--spectrum-global-dimension-static-grid-fluid-width);'
+                      : layoutColumns(isDocs ? 7 : 9, [
+                          'var(--spectrum-global-dimension-static-size-400)',
+                          'var(--spectrum-global-dimension-static-size-200)',
+                          'var(--spectrum-global-dimension-static-size-100)'
+                        ])};
                   `}>
                   {isDocs && (
                     <Flex marginTop="size-400">

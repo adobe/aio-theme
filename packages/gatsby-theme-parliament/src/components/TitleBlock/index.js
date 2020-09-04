@@ -16,30 +16,38 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../utils';
 
-const TitleBlock = ({ heading, text }) => (
+const TitleBlock = ({ heading, text, theme = 'light', background = 'var(--spectrum-global-color-gray-100)' }) => (
   <section
+    className={`spectrum--${theme}`}
     css={css`
-      margin: var(--spectrum-global-dimension-static-size-800) auto;
+      background: ${background};
+      padding: var(--spectrum-global-dimension-static-size-800) 0;
       text-align: center;
-      max-width: calc(
-        ${layoutColumns(12, [
-          'var(--spectrum-global-dimension-static-size-4600)',
-          'var(--spectrum-global-dimension-static-size-150)'
-        ])}
-      );
     `}>
-    {heading && <h2 className="spectrum-HeadingL">{heading?.props?.children}</h2>}
+    <div
+      css={css`
+        margin: auto;
+        max-width: calc(
+          ${layoutColumns(12, [
+            'var(--spectrum-global-dimension-static-size-4600)',
+            'var(--spectrum-global-dimension-static-size-150)'
+          ])}
+        );
+      `}>
+      {heading && <h2 className="spectrum-HeadingL">{heading?.props?.children}</h2>}
 
-    {text &&
-      React.cloneElement(text, {
-        className: 'spectrum-Body--L'
-      })}
+      {text &&
+        React.cloneElement(text, {
+          className: 'spectrum-Body--L'
+        })}
+    </div>
   </section>
 );
 
 TitleBlock.propTypes = {
   heading: PropTypes.element,
-  text: PropTypes.element
+  text: PropTypes.element,
+  theme: PropTypes.string
 };
 
 export { TitleBlock };

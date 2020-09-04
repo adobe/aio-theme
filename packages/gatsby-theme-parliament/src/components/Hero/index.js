@@ -21,7 +21,7 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
 const Hero = ({
-  background = '#1D7DEE',
+  background = 'rgb( 29, 125, 238)',
   theme = 'dark',
   heading,
   text,
@@ -109,6 +109,7 @@ const Hero = ({
             css: css`
               display: flex;
               align-items: center;
+              justify-content: center;
               height: 100%;
 
               & > img {
@@ -160,14 +161,15 @@ const Hero = ({
         className={`spectrum--lightest`}
         css={css`
           height: ${height};
+          overflow: hidden;
         `}>
-        <Flex justifyContent="center">
+        <Flex justifyContent="center" height="100%">
           <div
             css={css`
               display: flex;
               flex-direction: column;
               justify-content: center;
-              width: ${layoutColumns(5)};
+              width: calc(5 * 100% / 12);
               box-sizing: border-box;
               padding-left: var(--spectrum-global-dimension-static-size-800);
               padding-right: var(--spectrum-global-dimension-static-size-400);
@@ -204,14 +206,19 @@ const Hero = ({
           </div>
           <div
             css={css`
-              width: ${layoutColumns(7)};
+              flex: 1;
             `}>
             {image &&
               React.cloneElement(image, {
                 css: css`
+                  & {
+                    display: flex;
+                    justify-content: center;
+                    height: 100%;
+                  }
+
                   & > img {
-                    max-height: 100%;
-                    object-fit: contain;
+                    object-fit: cover;
                     border-radius: 0;
                   }
                 `
