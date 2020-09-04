@@ -26,71 +26,24 @@ import {
 
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
-import { Link } from '@adobe/react-spectrum';
 
 import globalTheme from '../../theme';
 
-import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../Heading';
-import { Paragraph } from '../Paragraph';
-import { List } from '../List';
-import { Code } from '../Code';
-import { InlineCode } from '../InlineCode';
-import { Image } from '../Image';
-
 import { Footer } from '../Footer';
-import { Resources } from '../Resources';
 import { Hero } from '../Hero';
-import { DiscoverBlock } from '../DiscoverBlock';
-import { CodeBlock } from '../CodeBlock';
 import { Contributors } from '../Contributors';
 import { Feedback } from '../Feedback';
-import { InlineAlert } from '../InlineAlert';
 import { GitHubActions } from '../GitHubActions';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { OnThisPage } from '../OnThisPage';
 import { NextSteps } from '../NextSteps';
 import { NextPrev } from '../NextPrev';
-import { Variant } from '../Variant';
-import { JsDocParameters } from '../JsDocParameters';
-import { OpenAPIBlock, Table, TBody, Th, Td, THead, Tr } from '@adobe/parliament-ui-components';
+import { OpenAPIBlock } from '@adobe/parliament-ui-components';
+
+import { MDXComponents } from './MDXComponents';
+import { MDXBlocks } from './MDXBlocks';
 
 const theme = globalTheme.code;
-
-const customComponents = {
-  Hero,
-  DiscoverBlock,
-  Resources,
-  InlineAlert,
-  CodeBlock,
-  Variant
-};
-
-const mdxComponents = {
-  h1: Heading1,
-  h2: Heading2,
-  h3: Heading3,
-  h4: Heading4,
-  h5: Heading5,
-  h6: Heading6,
-  p: Paragraph,
-  ul: List,
-  code: Code,
-  inlineCode: InlineCode,
-  a: ({ children, ...props }) => (
-    <Link isQuiet={true} {...props}>
-      <a {...props}>{children}</a>
-    </Link>
-  ),
-  img: Image,
-  table: Table,
-  tbody: TBody,
-  th: Th,
-  td: Td,
-  thead: THead,
-  tr: Tr,
-  JsDocParameters,
-  ...customComponents
-};
 
 // Filters custom MDX components out of the markdown and applies magic rules
 const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, query }) => {
@@ -126,7 +79,7 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, q
     }
 
     // Verify if child is a custom MDX component
-    Object.keys(customComponents).forEach((customComponent) => {
+    Object.keys(MDXBlocks).forEach((customComponent) => {
       if (child?.props?.mdxType === customComponent) {
         ignoredChildrenCount++;
 
@@ -343,8 +296,15 @@ export default ({ children, pageContext, query }) => {
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
 
+    let columns = 9;
+    if (isDocs) {
+      columns = 7;
+    } else if (isDiscovery) {
+      columns = 12;
+    }
+
     return (
-      <MDXProvider components={mdxComponents}>
+      <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
         {pageContext?.frontmatter?.openAPISpec ? (
           <OpenAPIBlock specUrl={pageContext.frontmatter.openAPISpec} />
         ) : (
@@ -353,12 +313,12 @@ export default ({ children, pageContext, query }) => {
             <section
               css={css`
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                margin: 0 var(--spectrum-global-dimension-static-size-800);
+                margin: ${isDiscovery ? 'auto' : '0 var(--spectrum-global-dimension-static-size-800)'};
               `}>
               <Flex>
                 <article
                   css={css`
-                    width: ${layoutColumns(isDocs ? 7 : 9, [
+                    width: ${layoutColumns(columns, [
                       'var(--spectrum-global-dimension-static-size-400)',
                       'var(--spectrum-global-dimension-static-size-200)',
                       'var(--spectrum-global-dimension-static-size-100)'

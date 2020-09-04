@@ -161,7 +161,7 @@ const Hero = ({
         css={css`
           height: ${height};
         `}>
-        <Flex>
+        <Flex justifyContent="center">
           <div
             css={css`
               display: flex;
