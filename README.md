@@ -104,7 +104,21 @@ Github's API is being called during the site build phase to retrieve the authors
 The build will currently fail if the Github information is missing.
 
 To retrieve your Github personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-Only `READ` permissions on repositories are required for the token.   
+Only `READ` permissions on repositories are required for the token.
+
+### .env settings for Github Contributors
+
+For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-parliament using the `main` branch, this would be what your `.env` would look like:
+
+```properties
+GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+GITHUB_REPO_OWNER=adobe
+GITHUB_REPO_NAME=gatsby-theme-parliament
+GITHUB_REPO_BRANCH=main
+ROOT=example
+```
+
+By default, you can omit the `ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `ROOT`.
 
 ### Global Navigation
 
