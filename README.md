@@ -104,7 +104,50 @@ Github's API is being called during the site build phase to retrieve the authors
 The build will currently fail if the Github information is missing.
 
 To retrieve your Github personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-Only `READ` permissions on repositories are required for the token.   
+Only `READ` permissions on repositories are required for the token.
+
+### .env settings for Github Contributors
+
+For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-parliament using the `main` branch, this would be what your `.env` would look like:
+
+```properties
+GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+GITHUB_REPO_OWNER=adobe
+GITHUB_REPO_NAME=gatsby-theme-parliament
+GITHUB_REPO_BRANCH=main
+ROOT=example
+```
+
+By default, you can omit the `ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `ROOT`.
+
+### .env settings for the Feedback Component and Analytics
+
+- You need to set up [Adobe Launch](https://launch.adobe.com), with an Adobe Analytics Reporting Suite
+- In Adobe Analytics, add a custom eVar (Text String type) to capture the feedback. This eVar will contain either "yes" or "no".
+- In Adobe Launch, create two Data Elements:
+  1. Feedback-Yes: edit the code and paste in `return document.querySelectorAll('button.feedback-yes')[0].innerText`
+  2. Feedback-No: edit the code and paste in `return document.querySelectorAll('button.feedback-no')[0].innerText`
+- In Adobe Launch, for the two Data Elements, make sure these checkboxes are checked:
+  1. Enable Default Value
+  2. Force lowercase value
+  3. Clean text
+- In Adobe Launch, create three Rules:
+  1. Feedback-Yes: On click, it will set variables in Adobe Analytics (set the custom eVar to value of the Feedback-Yes Data Element), and then Send the Beacon
+  2. Feedback-No: On click, it will set variables in Adobe Analytics (set the custom eVar to the value of the Feedback-No Data Element), and then Send the Beacon
+  3. Analytics: On library loaded (page top), Send the Beacon
+- In Adobe Launch:
+  1. Go through the `Publishing Flow`, don't forget to `Add All Resources`
+  2. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon
+  3. Copy the url displayed in the `script` tag
+
+This last value will be the value you put in `GATSBY_LAUNCH_SRC`.
+`GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT` is a boolean value, set to `true` if you want to enable the script to run in development.
+
+Example:
+```properties
+GATSBY_LAUNCH_SRC=https://your.adobe.launch.url.here
+GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
+```
 
 ### Global Navigation
 
