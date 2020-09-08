@@ -33,7 +33,7 @@ export const MDXComponents = {
   code: Code,
   inlineCode: InlineCode,
   a: ({ children, ...props }) => (
-    <Link isQuiet={true} {...props}>
+    <Link isQuiet={true}>
       <a {...props}>{children}</a>
     </Link>
   ),

@@ -17,7 +17,16 @@ import PropTypes from 'prop-types';
 
 const imageWidth = 'var(--spectrum-global-dimension-size-1250)';
 
-const DiscoverBlock = ({ width, heading, link, text, image }) => (
+const DiscoverBlock = ({
+  width = layoutColumns(3, [
+    'var(--spectrum-global-dimension-static-size-400)',
+    'var(--spectrum-global-dimension-static-size-400)'
+  ]),
+  heading,
+  link,
+  text,
+  image
+}) => (
   <>
     {image
       ? React.cloneElement(heading, {
@@ -30,20 +39,15 @@ const DiscoverBlock = ({ width, heading, link, text, image }) => (
       css={css`
         ${image
           ? `
-      position: relative;
-      margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-static-size-400));
-      `
+        position: relative;
+        margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-static-size-400));
+        `
           : ''}
         display: inline-flex;
         flex-direction: column;
         margin-right: var(--spectrum-global-dimension-static-size-200);
         margin-bottom: var(--spectrum-global-dimension-static-size-100);
-        width: ${width
-          ? width
-          : layoutColumns(3, [
-              'var(--spectrum-global-dimension-static-size-400)',
-              'var(--spectrum-global-dimension-static-size-400)'
-            ])};
+        width: ${width};
       `}>
       {image &&
         React.cloneElement(image, {

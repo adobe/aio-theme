@@ -316,7 +316,10 @@ export default ({ children, pageContext, query }) => {
                 <article
                   css={css`
                     width: ${isDiscovery
-                      ? 'var(--spectrum-global-dimension-static-grid-fluid-width);'
+                      ? `
+                      var(--spectrum-global-dimension-static-grid-fluid-width);
+                      text-align: center;
+                      `
                       : layoutColumns(isDocs ? 7 : 9, [
                           'var(--spectrum-global-dimension-static-size-400)',
                           'var(--spectrum-global-dimension-static-size-200)',
@@ -371,7 +374,7 @@ export default ({ children, pageContext, query }) => {
                 {resourcesChild && resourcesChild}
               </Flex>
             </section>
-            <Footer hasSideNav={hasSideNav} />
+            <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} />
           </>
         )}
       </MDXProvider>

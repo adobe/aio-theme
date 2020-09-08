@@ -38,7 +38,7 @@ const Resources = ({ heading, links }) => {
           list-style: none;
           padding: 0;
         `}>
-        {React.Children.toArray(links.props.children).map((item, i) => {
+        {React.Children.map(links.props.children, (item, i) => {
           const link = React.Children.toArray(item.props.children)[0];
           const isExternalLink = link.props.href.startsWith('http://') || link.props.href.startsWith('https://');
           const externalLinkProps = isExternalLink

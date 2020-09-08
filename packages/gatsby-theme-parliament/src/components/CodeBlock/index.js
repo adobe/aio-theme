@@ -35,8 +35,9 @@ const CodeBlock = (props) => {
 
   const { theme } = props;
   const codeBlocks = [];
-  const filteredCodeProps = Object.keys(props).filter((key) => key.startsWith('code'));
-  const filteredHeadingProps = Object.keys(props).filter((key) => key.startsWith('heading'));
+  const propKeys = Object.keys(props);
+  const filteredCodeProps = propKeys.filter((key) => key.startsWith('code'));
+  const filteredHeadingProps = propKeys.filter((key) => key.startsWith('heading'));
   const languages = props.languages.split(',').map((language) => language.trim());
 
   // A code language maps to a code content but one tab heading can have multiple codes

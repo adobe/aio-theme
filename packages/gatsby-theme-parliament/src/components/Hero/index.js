@@ -20,6 +20,22 @@ import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
+const Buttons = ({ buttons }) =>
+  buttons ? (
+    <ButtonGroup>
+      {React.Children.map(buttons.props.children, (item, i) => {
+        const variant = i === 0 ? 'cta' : 'primary';
+        const link = React.Children.toArray(item.props.children)[0];
+
+        return (
+          <Button key={i} elementType="a" isQuiet={true} href={link.props.href} variant={variant}>
+            {link.props.children}
+          </Button>
+        );
+      })}
+    </ButtonGroup>
+  ) : null;
+
 const Hero = ({
   background = 'rgb( 29, 125, 238)',
   theme = 'dark',
@@ -27,29 +43,11 @@ const Hero = ({
   text,
   image,
   icon,
-  variant = 'default',
-  ...props
+  buttons,
+  variant = 'default'
 }) => {
-  const buttonKeys = Object.keys(props).filter((key) => key.startsWith('button'));
   const height =
     'calc(var(--spectrum-global-dimension-static-size-6000) + var(--spectrum-global-dimension-static-size-250))';
-
-  const buttons = buttonKeys.length ? (
-    <Flex>
-      <ButtonGroup>
-        {buttonKeys.map((buttonKey, i) => {
-          const variant = i === 0 ? 'cta' : 'primary';
-          const linkProps = props[buttonKey]?.props.children?.props;
-
-          return (
-            <Button key={i} elementType="a" isQuiet={true} href={linkProps?.href || '#'} variant={variant}>
-              {linkProps?.children}
-            </Button>
-          );
-        })}
-      </ButtonGroup>
-    </Flex>
-  ) : null;
 
   if (!variant || variant === 'default') {
     return (
@@ -151,7 +149,7 @@ const Hero = ({
               className: 'spectrum-Body--L'
             })}
 
-          {buttons}
+          <Buttons buttons={buttons} />
         </div>
       </section>
     );
@@ -169,10 +167,9 @@ const Hero = ({
               display: flex;
               flex-direction: column;
               justify-content: center;
-              width: calc(5 * 100% / 12);
-              box-sizing: border-box;
-              padding-left: var(--spectrum-global-dimension-static-size-800);
-              padding-right: var(--spectrum-global-dimension-static-size-400);
+              width: ${layoutColumns(5)};
+              margin-left: var(--spectrum-global-dimension-static-size-800);
+              margin-right: var(--spectrum-global-dimension-static-size-400);
             `}>
             {icon &&
               React.cloneElement(icon, {
@@ -202,7 +199,7 @@ const Hero = ({
                 className: 'spectrum-Body--L'
               })}
 
-            {buttons}
+            <Buttons buttons={buttons} />
           </div>
           <div
             css={css`
@@ -215,9 +212,12 @@ const Hero = ({
                     display: flex;
                     justify-content: center;
                     height: 100%;
+                    width: 100%;
                   }
 
                   & > img {
+                    height: 100%;
+                    width: 100%;
                     object-fit: cover;
                     border-radius: 0;
                   }
@@ -236,6 +236,7 @@ Hero.propTypes = {
   text: PropTypes.element,
   image: PropTypes.element,
   icon: PropTypes.element,
+  buttons: PropTypes.element,
   variant: PropTypes.string,
   theme: PropTypes.string
 };

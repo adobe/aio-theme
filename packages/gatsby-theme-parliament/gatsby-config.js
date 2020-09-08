@@ -126,6 +126,7 @@ module.exports = {
         ]
       }
     },
+    `@pauliescanlon/gatsby-mdx-embed`,
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
       options: {

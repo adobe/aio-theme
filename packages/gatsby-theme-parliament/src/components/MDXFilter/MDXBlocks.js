@@ -17,6 +17,8 @@ import { InlineAlert } from '../InlineAlert';
 import { CodeBlock } from '../CodeBlock';
 import { Variant } from '../Variant';
 import { TitleBlock } from '../TitleBlock';
+import { TextBlock } from '../TextBlock';
+import { AnnouncementBlock } from '../AnnouncementBlock';
 import { JsDocParameters } from '../JsDocParameters';
 
 export const MDXBlocks = {
@@ -27,5 +29,7 @@ export const MDXBlocks = {
   CodeBlock,
   Variant,
   TitleBlock,
+  TextBlock,
+  AnnouncementBlock,
   JsDocParameters
 };

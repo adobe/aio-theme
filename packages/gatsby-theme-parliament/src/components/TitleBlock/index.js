@@ -16,12 +16,12 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../utils';
 
-const TitleBlock = ({ heading, text, theme = 'light' }) => (
+const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
   <section
     className={`spectrum--${theme}`}
     css={css`
       background: var(--spectrum-global-color-gray-100);
-      padding: var(--spectrum-global-dimension-static-size-800) 0;
+      padding: var(--spectrum-global-dimension-static-size-400) 0;
       text-align: center;
     `}>
     <div
@@ -40,7 +40,7 @@ const TitleBlock = ({ heading, text, theme = 'light' }) => (
           css={css`
             margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
           `}>
-          {heading?.props?.children}
+          {heading.props.children}
         </h2>
       )}
 

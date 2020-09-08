@@ -18,6 +18,7 @@ import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import { layoutColumns } from '../utils';
+import PropTypes from 'prop-types';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
 
@@ -28,7 +29,7 @@ const externalLinkProps = {
   rel: 'noopener noreferrer nofollow'
 };
 
-export const Footer = ({ hasSideNav }) => (
+const Footer = ({ hasSideNav = false, isCentered = false }) => (
   <View
     elementType="footer"
     position="relative"
@@ -40,6 +41,7 @@ export const Footer = ({ hasSideNav }) => (
       css={css`
         box-sizing: border-box;
         max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
+        ${isCentered && 'margin: auto;'}
         padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-static-size-800)'};
 
         ul {
@@ -313,3 +315,10 @@ export const Footer = ({ hasSideNav }) => (
     </div>
   </View>
 );
+
+Footer.propTypes = {
+  hasSideNav: PropTypes.bool,
+  isCentered: PropTypes.bool
+};
+
+export { Footer };
