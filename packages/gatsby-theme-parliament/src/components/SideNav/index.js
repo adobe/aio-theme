@@ -55,7 +55,15 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
       <Search searchIndex={searchIndex} />
-      <div role="tree">
+      <div
+        role="tree"
+        css={css`
+          overflow: auto;
+          height: calc(
+            100vh - var(--spectrum-global-dimension-size-800) - var(--spectrum-global-dimension-size-400) -
+              var(--spectrum-global-dimension-size-400)
+          );
+        `}>
         <ul aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
           {renderSubtree(selectedSubPages, 1)}
         </ul>

@@ -188,11 +188,14 @@ export default ({ children, pageContext, location }) => {
                   gridArea="sidenav"
                   isHidden={!hasSideNav}
                   position="fixed"
-                  overflow="auto"
                   zIndex="1"
                   width="256px"
                   height="100%">
-                  <SideNav selectedPages={selectedPages} selectedSubPages={selectedSubPages} searchIndex={ParliamentSearchIndex}/>
+                  <SideNav
+                    selectedPages={selectedPages}
+                    selectedSubPages={selectedSubPages}
+                    searchIndex={ParliamentSearchIndex}
+                  />
                 </View>
                 <View gridArea="main">
                   <main className="spectrum-Typography">{children}</main>
