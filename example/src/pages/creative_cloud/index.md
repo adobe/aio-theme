@@ -26,7 +26,7 @@ Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time 
 
 <TextBlock slots="image, heading, text1, text2, links" />
 
-![Creative Cloud banner](images/overview-intro.png)
+![Screenshot 1](screenshots/intro1.png)
 
 ### Extend Adobe CC Flagship Apps
 
@@ -40,7 +40,7 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 * ![Adobe InDesign](icons/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
 * ![Adobe After Effect](icons/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)   
 
-<TextBlock slots="heading, text, buttons, links, video"/>
+<TextBlock slots="heading, text, buttons, links, image"/>
 
 ### Start Building Adobe XD Plugins
 
@@ -52,7 +52,7 @@ When you’re ready, you can ship your plugin to XD users right from within the 
 
 - [No Icon Product](https://www.adobe.com/products/premiere.html)
 
-[Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
+![Screenshot 2](screenshots/intro2.png)
 
 <TitleBlock slots="heading, text" theme="light" />
 
@@ -89,3 +89,18 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 Instantly share Creative Cloud files, designs, specs, and notifications all in real time.
 
 * [Learn more](https://slack.com/enterprise)
+
+<TextBlock slots="video, icons, heading, text, buttons" theme="dark" />
+
+[Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
+
+* ![Adobe](icons/adobe.png)
+* ![Microsoft](icons/msft.png)
+
+### Partner Success Story
+
+Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to 
+world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
+
+* [Learn more](https://adobe.io)
+* [Sign up for partner program](https://adobe.io)

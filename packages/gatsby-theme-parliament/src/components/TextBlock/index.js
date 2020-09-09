@@ -18,6 +18,33 @@ import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
 import { layoutColumns } from '../utils';
 
+const Icons = ({ icons, isCentered }) =>
+  icons
+    ? React.cloneElement(icons, {
+        css: css`
+          list-style: none;
+          padding: 0;
+          margin-bottom: var(--spectrum-global-dimension-size-400) !important;
+          display: flex;
+          justify-content: ${isCentered ? 'center' : 'left'};
+
+          & li {
+            display: flex;
+            border-right: 1px solid var(--spectrum-global-color-gray-300);
+          }
+
+          & img {
+            height: var(--spectrum-global-dimension-size-600);
+          }
+
+          & li:last-of-type {
+            padding-right: 0;
+            border-right: none;
+          }
+        `
+      })
+    : null;
+
 const Texts = ({ texts }) => {
   const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
   return textKeys.map((textKey) => texts[textKey]);
@@ -101,6 +128,7 @@ const TextBlock = ({
   heading,
   links,
   buttons,
+  icons,
   image,
   video,
   theme = 'lightest',
@@ -128,6 +156,8 @@ const TextBlock = ({
           background: var(--spectrum-global-color-gray-100);
         `}>
         <div>
+          <Icons icons={icons} isCentered={isCentered} />
+
           {image &&
             React.cloneElement(image, {
               css: css`
@@ -226,6 +256,8 @@ const TextBlock = ({
                 box-sizing: border-box;
                 padding: 0 var(--spectrum-global-dimension-size-400);
               `}>
+              <Icons icons={icons} isCentered={isCentered} />
+
               {heading && (
                 <h3
                   className="spectrum-Heading--M"
@@ -253,6 +285,7 @@ const TextBlock = ({
 TextBlock.propTypes = {
   heading: PropTypes.element,
   links: PropTypes.element,
+  icons: PropTypes.element,
   buttons: PropTypes.element,
   image: PropTypes.element,
   video: PropTypes.element,
