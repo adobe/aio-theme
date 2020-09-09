@@ -20,15 +20,15 @@ import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
-const Buttons = ({ buttons }) =>
+const Buttons = ({ buttons, variant }) =>
   buttons ? (
     <ButtonGroup>
       {React.Children.map(buttons.props.children, (item, i) => {
-        const variant = i === 0 ? 'cta' : 'primary';
+        const buttonVariant = i === 0 ? 'cta' : variant === 'fullwidth' ? 'overBackground' : 'primary';
         const link = React.Children.toArray(item.props.children)[0];
 
         return (
-          <Button key={i} elementType="a" isQuiet={true} href={link.props.href} variant={variant}>
+          <Button key={i} elementType="a" isQuiet={true} href={link.props.href} variant={buttonVariant}>
             {link.props.children}
           </Button>
         );
@@ -149,7 +149,7 @@ const Hero = ({
               className: 'spectrum-Body--L'
             })}
 
-          <Buttons buttons={buttons} />
+          <Buttons buttons={buttons} variant={variant} />
         </div>
       </section>
     );
@@ -199,7 +199,7 @@ const Hero = ({
                 className: 'spectrum-Body--L'
               })}
 
-            <Buttons buttons={buttons} />
+            <Buttons buttons={buttons} variant={variant} />
           </div>
           <div
             css={css`
