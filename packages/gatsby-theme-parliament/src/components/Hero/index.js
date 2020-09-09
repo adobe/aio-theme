@@ -167,7 +167,7 @@ const Hero = ({
               display: flex;
               flex-direction: column;
               justify-content: center;
-              width: ${layoutColumns(5)};
+              width: calc(5 * 100% / 12);
               margin-left: var(--spectrum-global-dimension-static-size-800);
               margin-right: var(--spectrum-global-dimension-static-size-400);
             `}>
