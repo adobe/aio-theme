@@ -54,7 +54,12 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
         margin-top: var(--spectrum-global-dimension-static-size-800);
         padding: var(--spectrum-global-dimension-static-size-400);
       `}>
-      <Search searchIndex={searchIndex} />
+      <Search
+        searchIndex={searchIndex}
+        css={css`
+          margin-bottom: 16px;
+        `}
+      />
       <div
         role="tree"
         css={css`
