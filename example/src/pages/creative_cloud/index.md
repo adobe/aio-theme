@@ -5,11 +5,11 @@ description: This is the home page of Creative Cloud
  
 <Hero slots="image, heading, icon, text, buttons" variant="halfwidth" />
 
-![Creative Cloud banner](banners/cc-banner.png)
+![Creative Cloud banner](images/cc-hero.png)
 
 # Creativity for all
 
-![Creative Cloud icon](icons/cc-icon.png)
+![Creative Cloud icon](images/cc-icon.png)
 
 Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size 
 
@@ -26,7 +26,7 @@ Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time 
 
 <TextBlock slots="image, heading, text1, text2, links" />
 
-![Screenshot 1](screenshots/intro1.png)
+![Screenshot 1](images/intro1.png)
 
 ### Extend Adobe CC Flagship Apps
 
@@ -36,9 +36,9 @@ Be sure to check out [Common Extensibility Platform (CEP)](https://www.adobe.io/
 When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users. 
 And be sure to join the [Exchange Program for Creative Cloud](https://partners.adobe.com/exchangeprogram/creativecloud) to unlock more benefits, including streamlined publishing and promotional opportunities.
 
-* ![Adobe Premiere Pro](icons/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
-* ![Adobe InDesign](icons/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
-* ![Adobe After Effect](icons/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)   
+* ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
+* ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
+* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)   
 
 <TextBlock slots="heading, text, buttons, links, image"/>
 
@@ -52,7 +52,7 @@ When you’re ready, you can ship your plugin to XD users right from within the 
 
 - [No Icon Product](https://www.adobe.com/products/premiere.html)
 
-![Screenshot 2](screenshots/intro2.png)
+![Screenshot 2](images/intro2.png)
 
 <TitleBlock slots="heading, text" theme="light" />
 
@@ -62,7 +62,7 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
 
-![MSFT Teams logo](logos/msfteams.png)
+![MSFT Teams logo](images/msfteams.png)
 
 ### Microsoft teams
 
@@ -72,7 +72,7 @@ Easily share Creative Cloud assets and files, and get comment notifications on y
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
 
-![JIRA Cloud logo](logos/jira.png)
+![JIRA Cloud logo](images/jira.png)
 
 ### JIRA Cloud
 
@@ -82,7 +82,7 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
 
-![Slack logo](logos/slack.png)
+![Slack logo](images/slack.png)
 
 ### Slack
 
@@ -94,8 +94,8 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 
 [Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
 
-* ![Adobe](icons/adobe.png)
-* ![Microsoft](icons/msft.png)
+* ![Adobe](images/adobe.png)
+* ![Microsoft](images/msft.png)
 
 ### Partner Success Story
 
@@ -104,3 +104,15 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 * [Learn more](https://adobe.io)
 * [Sign up for partner program](https://adobe.io)
+
+<SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
+
+![CC banner](images/cc-banner.png)
+
+## Subscribe to the Creative Cloud developers newsletter 
+
+A monthly newsletter featuring news for anyone who creates, develops, or build plugins, extensions, or integrations for the
+Creative Cloud family of products.
+
+* [Subscribe to the newsletter](https://adobe.io)
+* [Learn more](https://adobe.io)

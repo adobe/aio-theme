@@ -7,7 +7,7 @@ contributors:
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
-![Hero image](illustration.png) 
+![Hero image](analytics-hero.png) 
 
 # Adobe Analytics 
 

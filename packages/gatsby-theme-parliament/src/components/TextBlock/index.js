@@ -12,7 +12,8 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { Flex, Button, ButtonGroup, View } from '@adobe/react-spectrum';
+import { HeroButtons } from '../Hero';
+import { Flex, View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
@@ -81,22 +82,6 @@ const Links = ({ links, isCentered }) =>
         `
       })
     : null;
-
-const Buttons = ({ buttons }) =>
-  buttons ? (
-    <ButtonGroup marginTop="size-150" marginBottom="size-150">
-      {React.Children.map(buttons.props.children, (item, i) => {
-        const variant = i === 0 ? 'cta' : 'primary';
-        const link = React.Children.toArray(item.props.children)[0];
-
-        return (
-          <Button key={i} elementType="a" isQuiet={true} href={link.props.href} variant={variant}>
-            {link.props.children}
-          </Button>
-        );
-      })}
-    </ButtonGroup>
-  ) : null;
 
 const YouTubeVideo = ({ video }) => {
   let youTubeId = null;
@@ -195,7 +180,7 @@ const TextBlock = ({
 
           <Texts texts={props} />
 
-          <Buttons buttons={buttons} />
+          <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
 
           <Links links={links} isCentered={isCentered} />
 
@@ -271,7 +256,7 @@ const TextBlock = ({
 
               <Texts texts={props} />
 
-              <Buttons buttons={buttons} />
+              <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
 
               <Links links={links} isCentered={isCentered} />
             </div>

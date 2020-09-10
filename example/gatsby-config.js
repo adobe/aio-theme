@@ -32,10 +32,6 @@ module.exports = {
         path: '/'
       },
       {
-        title: 'Adobe Creative Cloud',
-        path: '/creative_cloud/'
-      },
-      {
         title: 'Guides',
         path: '/guides/'
       },
@@ -50,6 +46,14 @@ module.exports = {
       {
         title: 'Support',
         path: '/support/'
+      },
+      {
+        title: 'Adobe Creative Cloud',
+        path: '/creative_cloud/'
+      },
+      {
+        title: 'Project Firefly',
+        path: '/project_firefly/'
       }
     ],
     subPages: [
