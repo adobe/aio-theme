@@ -23,8 +23,8 @@ Using a theme, all of your default configuration lives in an npm package.
 **View the demos of Gatsby sites using Gatsby Theme Parliament:** 
 
 * [Documentation site](https://adobedocs.github.io/gatsby-theme-parliament-documentation/)
+* [Platform site](https://adobedocs.github.io/gatsby-theme-parliament-platform/) WIP
 * [Product site]() TODO
-* [Platform site]() TODO
 
 ## Contents
 
@@ -44,6 +44,18 @@ This section will help you get started building a Gatsby site with Gatsby Theme 
 
 * Install [Node.js LTS](https://nodejs.org/en/download/)
 * Install a package manager like [npm](https://docs.npmjs.com/cli/npm) or [yarn]() 
+
+### Using Github repository templates
+
+To initialize a site repository, you can also use of the available templates in Github: 
+
+* [Documentation site template](https://github.com/adobe/gatsby-theme-parliament-documentation/)
+* [Platform site template](https://github.com/adobe/gatsby-theme-parliament-platform/) WIP  
+* [Product site template]() TODO
+
+Simply click on the “Use this template” button to create a new GitHub repository of the template.
+
+*The templates are pre-configured with example pages.*
 
 ### Using the Adobe I/O CLI
 
@@ -76,16 +88,6 @@ You can specify another template with
 ```bash
 aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
 ```
-
-### Using Github repository templates
-
-To initialize a site repository, you can also use one of the available templates in Github: 
-
-* [Documentation site template](https://github.com/adobe/gatsby-theme-parliament-documentation/)
-* [Product site template]() TODO
-* [Platform site template]() TODO  
-
-Simply click on the “Use this template” button to create a new GitHub repository of the template.
 
 ## Configuration
 
@@ -348,7 +350,10 @@ And annotate your JS parameters with `<JsDocParameters/>` to render them nicely.
 [MDX](https://mdxjs.com/) is supported out of the box. MDX enables writing [JSX React components](https://reactjs.org/docs/introducing-jsx.html) in markdown giving authors new powers.
 Despite the markdown files having all an `md` extension, they are actually treated as MDX files. You can use `md` and `mdx` extensions interchangeably.
 
-As we try to limit the use of MDX in favor of pure markdown, we have come up with a way to couple the use of basic markdown syntax with JSX see examples below.  
+As we try to limit the use of MDX in favor of pure markdown, we have come up with a way to couple the use of basic markdown syntax with JSX.
+The JSX blocks are using a `slots` property to identify which markdown elements to ingest. 
+
+Also all JSX blocks are self-closing and using only string properties. This helps maintain better readability when rendered on https://github.com.  
 
 ### Writing a Hero block
 
@@ -514,8 +519,23 @@ The refresh token grant type is automatically added to OAuth clients created aft
 
 ## Embedding external markdown documents and filter with Variant Blocks
 
+### Linking sites
+
 You can use MDX transclusion to embed markdown documents into other markdown documents and because Gatsby sites are using `npm` to define
 dependencies, we can also include external markdown documents. 
+
+**You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/package.json#L3) to be able to include it
+as a dependency in another site.**
+
+You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/
+as a dependency in another site, you can run the command `yarn add adobedocs/gatsby-theme-parliament-documentation`;
+
+You can also link sites locally using `yarn link`. For example, you can checkout https://github.com/AdobeDocs/gatsby-theme-parliament-documentation locally 
+and run the command `yarn link` inside. This will register "gatsby-theme-parliament-documentation" so that you can then run `yarn link "gatsby-theme-parliament-documentation"` in the site where you want to use it.
+
+See full example below using a Variant block. 
+
+### Filtering content
 
 Together with Variant Blocks, the author can query what should be rendered from external sources.
  
