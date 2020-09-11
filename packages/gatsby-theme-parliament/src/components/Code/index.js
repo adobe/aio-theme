@@ -83,7 +83,7 @@ const Code = ({ children, className = '', theme }) => {
                   display: block;
                   position: absolute;
                   top: ${isMultiLine ? '4px' : '-2px'};
-                  right: var(--spectrum-global-dimension-static-size-600);
+                  right: var(--spectrum-global-dimension-size-600);
                   left: initial;
                   font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
                 `}
@@ -110,7 +110,7 @@ const Code = ({ children, className = '', theme }) => {
                         display: table-cell;
                         color: var(--spectrum-global-color-gray-500);
                         text-align: left;
-                        padding-right: var(--spectrum-global-dimension-static-size-200);
+                        padding-right: var(--spectrum-global-dimension-size-200);
                         user-select: none;
                       `}>
                       {i + 1}

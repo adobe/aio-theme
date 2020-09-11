@@ -21,7 +21,7 @@ export const Image = ({ alt, src, className, ...props }) => {
       src={src}
       css={css`
         max-width: 100%;
-        border-radius: var(--spectrum-global-dimension-static-size-50);
+        border-radius: var(--spectrum-global-dimension-size-50);
       `}
     />
   );

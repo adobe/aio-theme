@@ -66,8 +66,8 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
       <section
         className={`spectrum--${theme}`}
         css={css`
-          height: var(--spectrum-global-dimension-static-size-3400);
-          margin-bottom: var(--spectrum-global-dimension-static-size-400);
+          height: var(--spectrum-global-dimension-size-3400);
+          margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
           position: relative;
         `}>
@@ -75,7 +75,7 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
 
         <div
           css={css`
-            margin-left: var(--spectrum-global-dimension-static-size-800);
+            margin-left: var(--spectrum-global-dimension-size-800);
             width: calc(5 * 100% / 12);
             height: 100%;
             position: absolute;
@@ -99,8 +99,7 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
       </section>
     );
   } else {
-    const height =
-      'calc(var(--spectrum-global-dimension-static-size-6000) + var(--spectrum-global-dimension-static-size-250))';
+    const height = 'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-250))';
 
     if (variant === 'fullwidth') {
       return (
@@ -118,8 +117,8 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
               height: 100%;
               position: absolute;
               top: 0;
-              padding: 0 var(--spectrum-global-dimension-static-size-3600);
-              margin: 0 var(--spectrum-global-dimension-static-size-125);
+              padding: 0 var(--spectrum-global-dimension-size-3600);
+              margin: 0 var(--spectrum-global-dimension-size-125);
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -133,8 +132,8 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                   margin-bottom: 0 !important;
 
                   & + p {
-                    margin-top: var(--spectrum-global-dimension-static-size-200) !important;
-                    margin-bottom: var(--spectrum-global-dimension-static-size-400) !important;
+                    margin-top: var(--spectrum-global-dimension-size-200) !important;
+                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
                   }
                 `
               })}
@@ -164,15 +163,15 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                 flex-direction: column;
                 justify-content: center;
                 width: calc(5 * 100% / 12);
-                margin-left: var(--spectrum-global-dimension-static-size-800);
-                margin-right: var(--spectrum-global-dimension-static-size-400);
+                margin-left: var(--spectrum-global-dimension-size-800);
+                margin-right: var(--spectrum-global-dimension-size-400);
               `}>
               {icon &&
                 React.cloneElement(icon, {
                   css: css`
-                    height: var(--spectrum-global-dimension-static-size-600);
-                    width: var(--spectrum-global-dimension-static-size-600);
-                    margin-bottom: var(--spectrum-global-dimension-static-size-300) !important;
+                    height: var(--spectrum-global-dimension-size-600);
+                    width: var(--spectrum-global-dimension-size-600);
+                    margin-bottom: var(--spectrum-global-dimension-size-300) !important;
                   `
                 })}
 
@@ -184,8 +183,8 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                     margin-bottom: 0 !important;
 
                     & + p {
-                      margin-top: var(--spectrum-global-dimension-static-size-200) !important;
-                      margin-bottom: var(--spectrum-global-dimension-static-size-300) !important;
+                      margin-top: var(--spectrum-global-dimension-size-200) !important;
+                      margin-bottom: var(--spectrum-global-dimension-size-300) !important;
                     }
                   `
                 })}

@@ -34,7 +34,7 @@ const NextSteps = ({ pages }) => {
           <li
             key={index}
             css={css`
-              margin-top: var(--spectrum-global-dimension-static-size-150);
+              margin-top: var(--spectrum-global-dimension-size-150);
             `}>
             <GatsbyLink to={page.path} className="spectrum-Link spectrum-Link--quiet">
               <Document size="XS" />

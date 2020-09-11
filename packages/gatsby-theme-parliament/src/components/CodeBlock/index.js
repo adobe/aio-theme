@@ -76,19 +76,19 @@ const CodeBlock = (props) => {
       className={`spectrum--${theme}`}
       css={css`
         ${backgroundColor}
-        margin: var(--spectrum-global-dimension-static-size-400) 0;
-        border-top-left-radius: var(--spectrum-global-dimension-static-size-50);
-        border-top-right-radius: var(--spectrum-global-dimension-static-size-50);
+        margin: var(--spectrum-global-dimension-size-400) 0;
+        border-top-left-radius: var(--spectrum-global-dimension-size-50);
+        border-top-right-radius: var(--spectrum-global-dimension-size-50);
       `}>
       <div
         css={css`
           display: flex;
           width: 100%;
-          height: var(--spectrum-global-dimension-static-size-600);
+          height: var(--spectrum-global-dimension-size-600);
         `}>
         <Tabs
           css={css`
-            padding-left: var(--spectrum-global-dimension-static-size-200);
+            padding-left: var(--spectrum-global-dimension-size-200);
             box-sizing: border-box;
           `}
           onFontsReady={positionSelectedTabIndicator}>
@@ -124,7 +124,7 @@ const CodeBlock = (props) => {
             display: flex;
             align-items: center;
             margin-left: auto;
-            padding-right: var(--spectrum-global-dimension-static-size-200);
+            padding-right: var(--spectrum-global-dimension-size-200);
           `}>
           {codeBlocks.map(
             (block, i) =>

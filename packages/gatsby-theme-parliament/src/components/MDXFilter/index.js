@@ -309,7 +309,7 @@ export default ({ children, pageContext, query }) => {
                   ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
                   : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                margin: 0 var(--spectrum-global-dimension-static-size-800);
+                margin: 0 var(--spectrum-global-dimension-size-800);
                 `}
               `}>
               <Flex>
@@ -321,9 +321,9 @@ export default ({ children, pageContext, query }) => {
                       text-align: center;
                       `
                       : layoutColumns(isDocs ? 7 : 9, [
-                          'var(--spectrum-global-dimension-static-size-400)',
-                          'var(--spectrum-global-dimension-static-size-200)',
-                          'var(--spectrum-global-dimension-static-size-100)'
+                          'var(--spectrum-global-dimension-size-400)',
+                          'var(--spectrum-global-dimension-size-200)',
+                          'var(--spectrum-global-dimension-size-100)'
                         ])};
                   `}>
                   {isDocs && (

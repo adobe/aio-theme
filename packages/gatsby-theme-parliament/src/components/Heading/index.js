@@ -26,7 +26,7 @@ const Anchor = ({ id }) => (
     id={id}
     css={css`
       position: relative;
-      top: calc(-1 * var(--spectrum-global-dimension-static-size-800));
+      top: calc(-1 * var(--spectrum-global-dimension-size-800));
     `}
   />
 );
@@ -35,7 +35,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const HeadingTag = `h${level}`;
   const isHeading1 = level === 1;
   const isHeading2 = level === 2;
-  const marginLink = `margin-left: var(--spectrum-global-dimension-static-size-${isHeading2 ? '100' : '50'});`;
+  const marginLink = `margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
 
   return (
     <>
@@ -51,8 +51,8 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         css={css`
           ${isHeading1
             ? `& + p {
-          margin-top: var(--spectrum-global-dimension-static-size-300) !important;
-          font-size: var(--spectrum-global-dimension-static-size-225);
+          margin-top: var(--spectrum-global-dimension-size-300) !important;
+          font-size: var(--spectrum-global-dimension-size-225);
         }`
             : `& a {
           opacity: 0;

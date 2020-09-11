@@ -25,11 +25,11 @@ const Resources = ({ heading, links }) => {
     <aside
       css={css`
         min-width: ${layoutColumns(3, [
-          'var(--spectrum-global-dimension-static-size-400)',
-          'var(--spectrum-global-dimension-static-size-100)'
+          'var(--spectrum-global-dimension-size-400)',
+          'var(--spectrum-global-dimension-size-100)'
         ])};
-        margin-left: var(--spectrum-global-dimension-static-size-400);
-        margin-top: var(--spectrum-global-dimension-static-size-400);
+        margin-left: var(--spectrum-global-dimension-size-400);
+        margin-top: var(--spectrum-global-dimension-size-400);
       `}>
       {heading}
       <ul
@@ -52,7 +52,7 @@ const Resources = ({ heading, links }) => {
             <li
               key={i}
               css={css`
-                margin-top: var(--spectrum-global-dimension-static-size-200);
+                margin-top: var(--spectrum-global-dimension-size-200);
               `}>
               <Flex>
                 <Link isQuiet={true}>

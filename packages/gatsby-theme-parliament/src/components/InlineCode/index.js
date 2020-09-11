@@ -22,7 +22,7 @@ export const InlineCode = ({ children, className, ...props }) => (
     className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
     css={css`
       background-color: var(--spectrum-global-color-gray-100);
-      padding: 0 var(--spectrum-global-dimension-static-size-50);
+      padding: 0 var(--spectrum-global-dimension-size-50);
       margin: 0;
       display: inline-block;
       min-width: auto;

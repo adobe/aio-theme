@@ -37,7 +37,7 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
           css={css`
             display: inline-flex;
             flex-direction: row-reverse;
-            padding-left: var(--spectrum-global-dimension-static-size-200);
+            padding-left: var(--spectrum-global-dimension-size-200);
           `}>
           {contributors
             .slice(0, 5)
@@ -46,11 +46,11 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
               <span
                 key={index}
                 css={css`
-                  margin-left: calc(-1 * var(--spectrum-global-dimension-static-size-200));
+                  margin-left: calc(-1 * var(--spectrum-global-dimension-size-200));
                   position: relative;
-                  border: var(--spectrum-global-dimension-static-size-40) solid var(--spectrum-global-color-gray-50);
-                  width: var(--spectrum-global-dimension-static-size-400);
-                  height: var(--spectrum-global-dimension-static-size-400);
+                  border: var(--spectrum-global-dimension-size-40) solid var(--spectrum-global-color-gray-50);
+                  width: var(--spectrum-global-dimension-size-400);
+                  height: var(--spectrum-global-dimension-size-400);
                   border-radius: var(--spectrum-global-dimension-static-percent-50);
                   background: var(--spectrum-global-color-gray-50);
                 `}>
@@ -58,8 +58,8 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
                   alt={contributor.name || contributor.login}
                   src={`https://github.com/${contributor.login}.png`}
                   css={css`
-                    width: var(--spectrum-global-dimension-static-size-400);
-                    height: var(--spectrum-global-dimension-static-size-400);
+                    width: var(--spectrum-global-dimension-size-400);
+                    height: var(--spectrum-global-dimension-size-400);
                     border-radius: var(--spectrum-global-dimension-static-percent-50);
                   `}
                 />
@@ -68,7 +68,7 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
         </div>
         <span
           css={css`
-            padding-left: var(--spectrum-global-dimension-static-size-200);
+            padding-left: var(--spectrum-global-dimension-size-200);
           `}>
           {date && `Last updated ${date}`}
         </span>

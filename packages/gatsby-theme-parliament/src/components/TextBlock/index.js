@@ -162,7 +162,7 @@ const TextBlock = ({
               css={css`
                 white-space: nowrap;
                 overflow: auto;
-                margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
+                margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
                 & ~ p {
                   ${columns === 1
@@ -248,7 +248,7 @@ const TextBlock = ({
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-static-size-200) !important;
+                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
                   `}>
                   {heading.props.children}
                 </h3>

@@ -88,7 +88,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
       role="banner"
       css={css`
         ${stretched}
-        border-bottom: var(--spectrum-global-dimension-static-size-10) solid var(--spectrum-global-color-gray-200);
+        border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
         box-sizing: border-box;
       `}>
       <nav css={stretched} role="navigation" aria-label="Global">
@@ -110,10 +110,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     {globalNav.home.logo === 'adobe' ? (
                       <Adobe
                         css={css`
-                          width: var(--spectrum-global-dimension-static-size-450);
-                          height: var(--spectrum-global-dimension-static-size-400);
+                          width: var(--spectrum-global-dimension-size-450);
+                          height: var(--spectrum-global-dimension-size-400);
                           display: block;
-                          margin-right: var(--spectrum-global-dimension-static-size-200);
+                          margin-right: var(--spectrum-global-dimension-size-200);
                         `}
                       />
                     ) : (
@@ -133,15 +133,14 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                       key={index}
                       css={css`
                         box-sizing: border-box;
-                        padding: var(--spectrum-global-dimension-static-size-200)
-                          var(--spectrum-global-dimension-static-size-300) 0
-                          var(--spectrum-global-dimension-static-size-300);
+                        padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-300) 0
+                          var(--spectrum-global-dimension-size-300);
                         height: calc(100% + 1px);
                         border-left: 1px solid transparent;
                         border-right: 1px solid transparent;
                         ${isPrimary
                           ? `
-                        margin-left: var(--spectrum-global-dimension-static-size-300);
+                        margin-left: var(--spectrum-global-dimension-size-300);
                         `
                           : ''}
                         ${globalNav.menus.length === 1
@@ -176,7 +175,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
                         css={css`
                           display: block;
-                          padding: var(--spectrum-global-dimension-static-size-300);
+                          padding: var(--spectrum-global-dimension-size-300);
                           z-index: 2;
                           max-width: none !important;
                           max-height: none !important;
@@ -200,9 +199,9 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                         css={css`
                                           width: auto !important;
                                           height: auto !important;
-                                          min-height: var(--spectrum-global-dimension-static-size-500) !important;
+                                          min-height: var(--spectrum-global-dimension-size-500) !important;
                                           ${page.description
-                                            ? 'margin-bottom: var(--spectrum-global-dimension-static-size-200);'
+                                            ? 'margin-bottom: var(--spectrum-global-dimension-size-200);'
                                             : ''}
                                         `}>
                                         <a
@@ -214,8 +213,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                             align-items: center;
                                             color: inherit;
                                             text-decoration: none;
-                                            padding-top: var(--spectrum-global-dimension-static-size-100);
-                                            padding-bottom: var(--spectrum-global-dimension-static-size-100);
+                                            padding-top: var(--spectrum-global-dimension-size-100);
+                                            padding-bottom: var(--spectrum-global-dimension-size-100);
                                           `}
                                           href={page.path}>
                                           <Flex direction="column">
@@ -243,7 +242,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                       position: absolute;
                                       height: 100%;
                                       top: 0;
-                                      right: calc(-1 * var(--spectrum-global-dimension-static-size-200));
+                                      right: calc(-1 * var(--spectrum-global-dimension-size-200));
                                     `}>
                                     <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
                                   </div>
@@ -288,8 +287,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     {i === 0 && versions[0]?.title && (
                       <div
                         css={css`
-                          margin-left: var(--spectrum-global-dimension-static-size-100) !important;
-                          margin-right: var(--spectrum-global-dimension-static-size-300);
+                          margin-left: var(--spectrum-global-dimension-size-100) !important;
+                          margin-right: var(--spectrum-global-dimension-size-300);
                         `}>
                         <Picker
                           isQuiet

@@ -188,7 +188,7 @@ const OnThisPage = ({ tableOfContents }) => {
           <li
             key={index}
             css={css`
-              margin-top: var(--spectrum-global-dimension-static-size-150);
+              margin-top: var(--spectrum-global-dimension-size-150);
             `}>
             <span className={classNames({ 'is-active': withSubHeading && activeHeadingLink === section.url })}>
               <Link isQuiet={true}>
@@ -199,7 +199,7 @@ const OnThisPage = ({ tableOfContents }) => {
               <ul
                 css={css`
                   list-style: none;
-                  padding-left: var(--spectrum-global-dimension-static-size-200);
+                  padding-left: var(--spectrum-global-dimension-size-200);
                 `}>
                 {section.items.map((subSection, subIndex) => (
                   <li key={subIndex}>
@@ -226,7 +226,7 @@ const OnThisPage = ({ tableOfContents }) => {
         className="spectrum-Detail--L"
         css={css`
           color: var(--spectrum-global-color-gray-600);
-          margin-bottom: var(--spectrum-global-dimension-static-size-200);
+          margin-bottom: var(--spectrum-global-dimension-size-200);
         `}>
         On this page
       </h4>
@@ -253,14 +253,14 @@ const OnThisPage = ({ tableOfContents }) => {
           position: fixed;
           overflow: auto;
           bottom: 0;
-          top: var(--spectrum-global-dimension-static-size-800);
-          padding-left: var(--spectrum-global-dimension-static-size-900);
+          top: var(--spectrum-global-dimension-size-800);
+          padding-left: var(--spectrum-global-dimension-size-900);
           left: ${layoutColumns(9)};
           min-width: ${layoutColumns(3, [
-            'var(--spectrum-global-dimension-static-size-400)',
-            'var(--spectrum-global-dimension-static-size-100)'
+            'var(--spectrum-global-dimension-size-400)',
+            'var(--spectrum-global-dimension-size-100)'
           ])};
-          margin-left: var(--spectrum-global-dimension-static-size-400);
+          margin-left: var(--spectrum-global-dimension-size-400);
           transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
           opacity: 0;
 

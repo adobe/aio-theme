@@ -33,7 +33,7 @@ export const Feedback = () => {
       <Flex alignItems="center">
         <span
           css={css`
-            padding-right: var(--spectrum-global-dimension-static-size-200);
+            padding-right: var(--spectrum-global-dimension-size-200);
           `}>
           Was this helpful ?
         </span>
@@ -68,7 +68,7 @@ export const Feedback = () => {
           pointer-events: none;
           position: fixed;
           left: 50%;
-          bottom: var(--spectrum-global-dimension-static-size-200);
+          bottom: var(--spectrum-global-dimension-size-200);
           z-index: 10;
           visibility: hidden;
           opacity: 0;
@@ -84,7 +84,7 @@ export const Feedback = () => {
             visibility: visible;
             opacity: 1;
             transition-delay: var(--spectrum-global-animation-duration-0);
-            transform: translate3d(-50%, calc(-1 * var(--spectrum-global-dimension-static-size-200)), 0);
+            transform: translate3d(-50%, calc(-1 * var(--spectrum-global-dimension-size-200)), 0);
           }
         `}>
         <div className="spectrum-Toast-body">

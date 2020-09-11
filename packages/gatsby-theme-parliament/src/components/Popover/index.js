@@ -22,10 +22,10 @@ const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, r
     aria-hidden={!isOpen}
     css={css`
       display: flex;
-      min-width: var(--spectrum-global-dimension-static-size-800);
+      min-width: var(--spectrum-global-dimension-size-800);
       width: 100%;
       z-index: 1;
-      max-height: var(--spectrum-global-dimension-static-size-2400);
+      max-height: var(--spectrum-global-dimension-size-2400);
     `}
     className={classNames(
       className,

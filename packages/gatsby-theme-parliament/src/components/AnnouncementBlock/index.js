@@ -26,7 +26,7 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
         display: flex;
         background: var(--spectrum-global-color-gray-100);
         box-sizing: border-box;
-        padding: var(--spectrum-global-dimension-static-size-400) 0;
+        padding: var(--spectrum-global-dimension-size-400) 0;
         text-align: center;
         height: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
       `}>
@@ -39,7 +39,7 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
             className="spectrum-Heading--M"
             css={css`
               margin-top: 0 !important;
-              margin-bottom: var(--spectrum-global-dimension-static-size-100) !important;
+              margin-bottom: var(--spectrum-global-dimension-size-100) !important;
             `}>
             {heading.props.children}
           </h3>

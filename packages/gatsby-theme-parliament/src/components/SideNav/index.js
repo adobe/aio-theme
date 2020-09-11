@@ -12,7 +12,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link as GatsbyLink, graphql, useStaticQuery } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
@@ -51,13 +51,13 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
       role="navigation"
       aria-label="Primary"
       css={css`
-        margin-top: var(--spectrum-global-dimension-static-size-800);
-        padding: var(--spectrum-global-dimension-static-size-400);
+        margin-top: var(--spectrum-global-dimension-size-800);
+        padding: var(--spectrum-global-dimension-size-400);
       `}>
       <Search
         searchIndex={searchIndex}
         css={css`
-          margin-bottom: 16px;
+          margin-bottom: var(--spectrum-global-dimension-size-200);
         `}
       />
       <div

@@ -42,7 +42,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
         box-sizing: border-box;
         max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
         ${isCentered && 'margin: auto;'}
-        padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-static-size-800)'};
+        padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-size-800)'};
 
         ul {
           list-style: none;
@@ -55,7 +55,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
         }
 
         ul.spectrum-Body--S {
-          padding-top: var(--spectrum-global-dimension-static-size-1000);
+          padding-top: var(--spectrum-global-dimension-size-1000);
 
           & > li {
             margin-top: 16px;
@@ -269,7 +269,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
               color: var(--spectrum-global-color-gray-700);
 
               & > li {
-                margin-right: var(--spectrum-global-dimension-static-size-400);
+                margin-right: var(--spectrum-global-dimension-size-400);
               }
             `}>
             <li>

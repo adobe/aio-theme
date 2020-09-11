@@ -36,7 +36,7 @@ const SummaryBlock = ({
     <div
       css={css`
         box-sizing: border-box;
-        padding-left: var(--spectrum-global-dimension-static-size-800);
+        padding-left: var(--spectrum-global-dimension-size-800);
         width: calc(7 * 100% / 12);
         height: 100%;
         position: absolute;

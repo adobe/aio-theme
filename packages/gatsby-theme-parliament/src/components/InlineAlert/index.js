@@ -33,7 +33,7 @@ const InlineAlert = ({ variant = 'info', text }) => {
         className="spectrum-Alert-content"
         css={css`
           margin-top: 0;
-          margin-right: var(--spectrum-global-dimension-static-size-400);
+          margin-right: var(--spectrum-global-dimension-size-400);
         `}>
         {React.cloneElement(text, {
           className: ' ',
