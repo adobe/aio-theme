@@ -13,17 +13,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
-import { css } from '@emotion/core';
 import classNames from 'classnames';
 import { ChevronDown } from '../Icons';
 import { Popover } from '../Popover';
+import { Menu, Item } from '../Menu';
 import '@spectrum-css/dropdown';
-import '@spectrum-css/menu';
 
 const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   const [options, setOptions] = useState(items);
+  const [hasSelection, setHasSelection] = useState(false);
   const id = nextId();
 
   useEffect(() => {
@@ -37,6 +37,12 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
 
     return () => document.removeEventListener('click', onClick);
   }, []);
+
+  useEffect(() => {
+    if (options.find((option) => option.selected)) {
+      setHasSelection(true);
+    }
+  }, [options]);
 
   return (
     <div
@@ -61,17 +67,15 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
           setOpenMenu((openMenu) => !openMenu);
         }}>
         <span className={classNames('spectrum-Dropdown-label', { 'is-placeholder': label })}>
-          {label || options.find((option) => option.selected).title}
+          {label || options.find((option) => option.selected)?.title || options[0].title}
         </span>
         <ChevronDown className="spectrum-Dropdown-icon" />
       </button>
       <Popover variant="picker" isQuiet={isQuiet} isOpen={openMenu} ref={popover}>
-        <ul className="spectrum-Menu" role="listbox">
+        <Menu>
           {options.map((option, i) => {
-            const isSelected = option.selected;
-
             return (
-              <li
+              <Item
                 key={i}
                 onClick={() => {
                   setOptions(
@@ -84,23 +88,14 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
                   setOpenMenu(false);
                   onChange && onChange(i);
                 }}
-                aria-selected={isSelected}
-                className={classNames('spectrum-Menu-item', { 'is-selected': isSelected })}
-                role="option"
-                tabIndex="0">
-                <a
-                  css={css`
-                    text-decoration: none;
-                    color: inherit;
-                  `}
-                  href={option.path}
-                  className="spectrum-Menu-itemLabel">
-                  {option.title}
-                </a>
-              </li>
+                isHighlighted={(!hasSelection && i === 0) || option.selected}
+                isSelected={option.selected}
+                href={option.path}>
+                {option.title}
+              </Item>
             );
           })}
-        </ul>
+        </Menu>
       </Popover>
     </div>
   );

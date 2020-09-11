@@ -292,10 +292,9 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         `}>
                         <Picker
                           isQuiet
-                          items={versions.map((version, k) => ({
+                          items={versions.map((version) => ({
                             title: version.title,
-                            path: version.path,
-                            selected: k === 0
+                            path: version.path
                           }))}
                         />
                       </div>

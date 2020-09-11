@@ -95,10 +95,10 @@
     redoc "^2.0.0-rc.38"
     styled-components "^5.1.1"
 
-"@adobe/prism-adobe@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@adobe/prism-adobe/-/prism-adobe-1.0.0.tgz#cb291dd6dca9515e10d72dfcb8ab34b07ed1c867"
-  integrity sha512-0FCA0uBTvLDRiej2Htx9Q02voqLjcfrEFa+zg+VrdtqhWByvARRU1rlzXfzU3/jFIAuU0V+m7neJri9tvwtyyQ==
+"@adobe/prism-adobe@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@adobe/prism-adobe/-/prism-adobe-1.0.3.tgz#32eeead3c8ee71da2596541a25040e3a13b1a18d"
+  integrity sha512-NjOQoUcC8dFT4zeov3LLMC7lBtbdRKvfIKbjuIhO2ixwPZxjppIGMGVco/osuVcSLdISFSk1ueseA7PKCs/ijw==
 
 "@adobe/react-spectrum-ui@^1.0.0":
   version "1.0.1"

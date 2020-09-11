@@ -23,9 +23,10 @@ const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, r
     css={css`
       display: flex;
       min-width: var(--spectrum-global-dimension-size-800);
-      width: 100%;
-      z-index: 1;
-      max-height: var(--spectrum-global-dimension-size-2400);
+      width: auto;
+      z-index: 100;
+      max-height: calc(100vh - var(--spectrum-global-dimension-size-2400));
+      overflow: auto;
     `}
     className={classNames(
       className,

@@ -35,8 +35,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
     position="relative"
     paddingBottom="size-400"
     paddingTop="size-700"
-    backgroundColor="gray-75"
-    zIndex="1">
+    backgroundColor="gray-75">
     <div
       css={css`
         box-sizing: border-box;
