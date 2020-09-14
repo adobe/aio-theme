@@ -145,7 +145,7 @@ Follow these steps to configure your `.env` file.
 **The .env should not be committed.** 
 
 Github's API is being called during the site build phase to retrieve the authors of every markdown page under `src/pages`.
-The build will currently fail if the Github information is missing.
+If the Github Token information is missing, the build will just print a warning, and no contributor information will be retrieved (just the contributor information in a page's front matter, if any, will be used).
 
 To retrieve your Github personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 Only `READ` permissions on repositories are required for the token.
