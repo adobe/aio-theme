@@ -29,11 +29,12 @@ Using a theme, all of your default configuration lives in an npm package.
 ## Contents
 
 * [Getting started](#getting-started)
+* [Content structure](#content-structure)
 * [Configuration](#configuration)
 * [Building](#building-the-gatsby-site)
 * [Publishing](#publishing-the-gatsby-site)
 * [Upgrading the theme](#upgrading-the-theme)
-* [Writing content](#writing-content)
+* [Enhanced Markdown](#enhanced-markdown)
 * [Customizations](#customizations)
 * [Issue tracker](#issue-tracker)
 * [Contributing](#contributing)
@@ -90,6 +91,45 @@ You can specify another template with
 ```bash
 aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
 ```
+
+## Content structure
+
+The content of the site is written in [Markdown](https://daringfireball.net/projects/markdown/) which is both easy to read and easy to learn.
+
+As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs. 
+Additionally, Adobe extended Markdown in a few ways to support certain features see [Enhanced Markdown](#enhanced-markdown). 
+
+Make sure the markdown content is located  under `src/pages` and please follow below guidelines for writing content.
+
+Use a folder structure to define your site pages e.g. :
+ 
+```
+root
+├- src/pages [/]
+│  ├- index.md 
+│  ├- hero.png
+│  ├- api [/api/]
+│  │  └- index.md   
+│  └- guides [/guides/]
+│      ├─ index.md 
+│      └- get_started [/guides/get_started/]
+│        ├- index.md
+│        └- debugging [/guides/get_started/debugging/]
+│           └- index.md
+├- .env
+├─ gatsby-config.js
+└─ package.json 
+```   
+
+**Folder names should be unique.**
+
+### Internal links
+
+Use relative links between markdown pages e.g. with the example folder structure you can add a link from `/guides/index.md` to `/api/index.md` with:
+
+```
+[Link to API](../api/) 
+```    
 
 ## Configuration
 
@@ -156,6 +196,20 @@ GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ### Global Navigation
 
 The Global navigation links are configurable in `gatsby-config.js` under `pages`. 
+If you follow the recommended [content structure](#content-structure), you can define the `path` value using the folder names.
+
+For example, the following folder structure maps to the URL defined in brackets:
+
+```
+src/pages [/]
+├- index.md 
+├- api [/api/]
+│  └- index.md   
+└- guides [/guides/]
+   └─ index.md 
+```     
+
+then define your Global Navigation using `pages` in `gatsby-config.js`:
 
 ```
 pages: [
@@ -170,52 +224,132 @@ pages: [
   {
     title: 'API Reference',
     path: '/api/'
-  },
-  {
-    title: 'JS Doc',
-    path: '/jsdoc/'
-  },
-  {
-    title: 'Support',
-    path: '/support/'
   }
 ]
 ```   
 
+*The order in which the pages are defined is respected in the Global Navigation.*  
+
 ### Side Navigation
 
-The Side navigation links are configurable in `gatsby-config.js` under `subPages` and the paths should map to a path defined in `pages`. 
+The Side navigation links are configurable in `gatsby-config.js` under `subPages`.
+You have to create a directory hierarchy which will be represented literally in the URL so that any sub page `path` starts with a `path` from `pages`.  
+
+For example, the following folder structure maps to the URL defined in brackets:
 
 ```
+src/pages [/]
+├- index.md 
+├- api [/api/]
+│  └- index.md   
+└- guides [/guides/]
+   ├─ index.md 
+   └- get_started [/guides/get_started/]
+      ├- index.md
+      └- debugging [/guides/get_started/debugging/]
+         └- index.md
+```     
+
+then define your Side Navigation for `/guides/` using `subPages` in `gatsby-config.js`:
+
+```
+pages: [
+  {
+    title: 'Adobe Analytics',
+    path: '/'
+  },
+  {
+    title: 'Guides',
+    path: '/guides/'
+  },
+  {
+    title: 'API Reference',
+    path: '/api/'
+  }
+],
 subPages: [
   {
     title: 'Get Started',
-    path: '/guides/',
+    path: '/guides/get_started',
     pages: [
       {
-        title: 'Overview',
-        path: '/guides/'
-      },
-      {
-        title: 'Creating an OAuth Client',
-        path: '/guides/creating_oauth_client/'
-      },
-      {
-        title: 'OAuth using cURL',
-        path: '/guides/oauth_using_curl/'
-      },
-      {
-        title: 'OAuth using POSTMAN',
-        path: '/guides/oauth_using_postman/'
-      },
-      {
-        title: 'JWT Authentication',
-        path: '/guides/jwt_authentication/'
+        title: 'Debugging',
+        path: '/guides/get_started/debugging/'
       }
     ]
   }
 ]
 ```
+
+*Notice that all sub pages paths have to be children of the top-level navigation path.*
+
+If you don't want to associate a location with a top-level navigation item, you have to reuse the same top page `path` for a sub page e.g. 
+for the top level navigation `Get started`: 
+
+```
+pages: [
+  {
+    title: 'Adobe Analytics',
+    path: '/'
+  },
+  {
+    title: 'Guides',
+    path: '/guides/'
+  },
+  {
+    title: 'API Reference',
+    path: '/api/'
+  }
+],
+subPages: [
+  {
+    title: 'Get Started',
+    path: '/guides/get_started',
+    pages: [
+      {
+        title: 'Overview',
+        path: '/guides/get_started/'
+      },
+      {
+        title: 'Debugging',
+        path: '/guides/get_started/debugging/'
+      }
+    ]
+  }
+]
+```
+
+*Similarly to the Global Navigation, the order in which the sub pages are defined is respected in the Side Navigation.*
+
+#### Use descriptive titles
+
+Navigation should be helpful. Choose titles for navigation items that clearly represent the surfaces where they'll go. Avoid using titles that are arbitrary or un-useful, since this can pose usability issues for your product. 
+
+#### Be concise 
+
+Along with being descriptive, navigation items should be succinct. Reduce any unnecessary words in order to ensure simplicity. Navigation items should never be so long that they require truncation, except in instances where navigation is user-generated.
+
+#### Use sentence case
+
+Navigation items should be written in sentence case.
+
+#### Use the right variation
+
+Make sure that you are using the right variation for your products’ context and users’ needs. Don’t mix behavior, styles, or variations together in a single navigation menu:
+
+* When navigation is simple, use the single-level side navigation.
+* When navigation is simple but categorical, use the single-level side navigation with headers.
+* When navigation is expansive, hierarchical, and/or you need progressive disclosure in your menu behavior, use the multi-level side navigation.
+
+#### Avoid deep nested menus
+
+The multi-level side navigation should only go 3 levels deep. More than 3 levels will make the indentation indiscernible, which can become a major usability issue in your product.
+
+#### Use consistent multi-level behavior
+
+If top-level navigation items have a location associated with them, send the user to that location and open the sub-level navigation items. If a top-level navigation item does not have any associated location, only open the sub-level navigation items.
+
+Side navigation can use either of these behaviors, but should never mix behaviors in the same experience.
 
 ### Versions
 
@@ -273,41 +407,7 @@ You can check the latest released version on https://github.com/adobe/gatsby-the
 
 If your lock file is outdated or corrupt, delete `yarn.lock` and run `yarn install`. This will create a new lock file. *Don't forget to commit the updated lock file*.
 
-## Writing content
-
-The content of the site is written in [Markdown](https://daringfireball.net/projects/markdown/) which is both easy to read and easy to learn.
-
-As in most cases, the markdown content is stored in GitHub, we also support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs. 
-Additionally, Adobe extended Markdown in a few ways to support certain features. 
-
-Make sure the markdown content is located  under `src/pages` and please follow below guidelines for writing content.
-
-### Content structure
-
-Use a folder structure to define your site pages e.g. :
- 
-```
-root
-├- index.md
-├- hero.png
-├- api
-│  └- index.md   
-├- guides 
-│   ├─ index.md
-│   └- nested_guides
-│      └- index.md
-├- .env
-├─ gatsby-config.js
-└─ package.json 
-```   
-
-### Internal links
-
-Use relative links between markdown pages e.g. with the example folder structure you can add a link from `/guides/index.md` to `/api/index.md` with:
-
-```
-[Link to API](../api/) 
-```    
+## Enhanced Markdown 
 
 ### Front matter support
 
