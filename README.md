@@ -304,7 +304,29 @@ pages: [
 subPages: [
   {
     title: 'Get Started',
-    path: '/guides/get_started',
+    path: '/guides/get_started/',
+    pages: [
+      {
+        title: 'Overview',
+        path: '/guides/get_started/'
+      },
+      {
+        title: 'Debugging',
+        path: '/guides/get_started/debugging/'
+      }
+    ]
+  }
+]
+```
+
+This is also necessary if you want to display a categorical Side Navigation using headers as separators. For that you'll have to add the `header` flag to `true` on a top level navigation item e.g. : 
+ 
+```
+subPages: [
+  {
+    title: 'Get Started',
+    path: '/guides/get_started/',
+    header: true,
     pages: [
       {
         title: 'Overview',

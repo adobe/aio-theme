@@ -110,6 +110,7 @@ export default ({ children, pageContext, location }) => {
             subPages {
               title
               path
+              header
               pages {
                 title
                 path

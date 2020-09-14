@@ -17,13 +17,18 @@ import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import { Search } from '../Search';
+import nextId from 'react-id-generator';
 
 const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
+  // If one page has header enabled, use header navigation type for all navigation items
+  const hasHeader = selectedSubPages.some((page) => page.header);
+
   const renderSubtree = (pages, level) =>
     pages
       .filter((page) => page.title && page.path)
       .map((page, index) => {
         const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
+        const id = nextId();
 
         return (
           <li
@@ -35,13 +40,23 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
             `}
             className={classNames([
               'spectrum-SideNav-item',
-              { 'is-expanded': isSelected },
+              { 'is-expanded': isSelected || hasHeader },
               { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
             ])}>
-            <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
-              {page.title}
-            </GatsbyLink>
-            {page.pages && <ul className="spectrum-SideNav">{renderSubtree(page.pages, level + 1)}</ul>}
+            {page.header ? (
+              <h2 className="spectrum-SideNav-heading" id={id}>
+                {page.title}
+              </h2>
+            ) : (
+              <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
+                {page.title}
+              </GatsbyLink>
+            )}
+            {page.pages && (
+              <ul className="spectrum-SideNav" {...(page.heading ? { 'aria-labelledby': id } : {})}>
+                {renderSubtree(page.pages, level + 1)}
+              </ul>
+            )}
           </li>
         );
       });
@@ -72,7 +87,9 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
               var(--spectrum-global-dimension-size-400)
           );
         `}>
-        <ul aria-label="Table of contents" className="spectrum-SideNav spectrum-SideNav--multiLevel">
+        <ul
+          aria-label="Table of contents"
+          className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': !hasHeader })}>
           {renderSubtree(selectedSubPages, 1)}
         </ul>
       </div>

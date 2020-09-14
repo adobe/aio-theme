@@ -62,6 +62,7 @@ module.exports = {
       {
         title: '',
         path: '',
+        header: false,
         pages: [
           {
             title: '',
