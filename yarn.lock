@@ -44,10 +44,10 @@
     globby "^11.0.1"
     graphql-fetch "^1.0.1"
 
-"@adobe/parliament-site-search-index@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@adobe/parliament-site-search-index/-/parliament-site-search-index-0.0.3.tgz#dc46890e50da5f1027696391f0acac50892dadf9"
-  integrity sha512-SLPU2LabbGgJsVSeuL753dYRRHfeP3QOdenYXlCA3kzXD3s3DqdBK+PmMnZYYpAy4AGdVp9KEsbHIiW3JekSsw==
+"@adobe/parliament-site-search-index@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@adobe/parliament-site-search-index/-/parliament-site-search-index-0.0.4.tgz#0bdf78a45877515b85c3ace556f5724ef4f7304c"
+  integrity sha512-Y3Rdh20f2BGQldwV9mXHNvrSha++vKCT1X6C/aiWodA2VK7hGqQUSp7C6hBzBTNT2fS5YFVO0HJBEPulmRboHQ==
   dependencies:
     elasticlunr "^0.9.5"
     graphql-type-json "^0.3.2"
