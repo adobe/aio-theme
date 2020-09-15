@@ -131,12 +131,12 @@ module.exports = {
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
       options: {
-        root: process.env.ROOT,
+        root: process.env.REPO_ROOT,
         repo: {
-          token: process.env.GITHUB_TOKEN,
-          owner: process.env.GITHUB_REPO_OWNER,
-          name: process.env.GITHUB_REPO_NAME,
-          branch: process.env.GITHUB_REPO_BRANCH
+          token: process.env.REPO_GITHUB_TOKEN,
+          owner: process.env.REPO_OWNER,
+          name: process.env.REPO_NAME,
+          branch: process.env.REPO_BRANCH
         }
       }
     },
