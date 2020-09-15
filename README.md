@@ -447,10 +447,11 @@ TODO
 ## Upgrading the theme
 
 To upgrade to the latest version of the Gatsby Theme Parliament, simply run `yarn upgrade` in your site. 
-This should update the dependency `@adobe/gatsby-theme-parliament` defined in your `package.json` to the latest version.
+This should update the dependency `@adobe/gatsby-theme-parliament` defined in your `package.json` to the latest version based on the specified version range.
+
 You can check the latest released version on https://github.com/adobe/gatsby-theme-parliament/releases. 
 
-If your lock file is outdated or corrupt, delete `yarn.lock` and run `yarn install`. This will create a new lock file. *Don't forget to commit the updated lock file*.
+If your lock file is corrupt, delete `yarn.lock` and run `yarn install`. This will create a new lock file. *Don't forget to commit the updated lock file*.
 
 ## Enhanced Markdown 
 
