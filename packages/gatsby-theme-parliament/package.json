@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-parliament",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gatsby theme for building markdown powered Adobe I/O sites",
   "main": "index.js",
   "license": "Apache-2.0",
