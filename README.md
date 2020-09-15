@@ -48,9 +48,9 @@ This section will help you get started building a Gatsby site with Gatsby Theme 
 * Install [Node.js LTS](https://nodejs.org/en/download/)
 * Install a package manager like [npm](https://docs.npmjs.com/cli/npm) or [yarn]() 
 
-### Using Github repository templates
+### Using GitHub repository templates
 
-To initialize a site repository, you can also use of the available templates in Github: 
+To initialize a site repository, you can also use of the available templates in GitHub: 
 
 * [Documentation site template](https://github.com/adobe/gatsby-theme-parliament-documentation/)
 * [Platform site template](https://github.com/adobe/gatsby-theme-parliament-platform/) WIP  
@@ -144,13 +144,13 @@ Follow these steps to configure your `.env` file.
 
 **The .env should not be committed.** 
 
-Github's API is being called during the site build phase to retrieve the authors of every markdown page under `src/pages`.
-If the Github Token information is missing, the build will just print a warning, and no contributor information will be retrieved (just the contributor information in a page's front matter, if any, will be used).
+GitHub's API is being called during the site build phase to retrieve the authors of every markdown page under `src/pages`.
+If the GitHub Token information is missing, the build will just print a warning, and no contributor information will be retrieved (just the contributor information in a page's front matter, if any, will be used).
 
-To retrieve your Github personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+To retrieve your GitHub personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 Only `READ` permissions on repositories are required for the token.
 
-### .env settings for Github Contributors
+### .env settings for GitHub Contributors
 
 For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-parliament using the `main` branch, this would be what your `.env` would look like:
 
@@ -192,6 +192,29 @@ Example:
 GATSBY_LAUNCH_SRC=https://your.adobe.launch.url.here
 GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ```
+### Publishing to GitHub Pages (Dev)
+
+On every commit to the `master` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default for new repos in GitHub: on Oct 1st, this will [default to main](https://github.blog/changelog/2020-08-26-set-the-default-branch-for-newly-created-repositories/)
+
+`GitHub Contributors component`: this will use the GitHub token automatically provided by the GitHub Action to retrieve data
+
+`Feedback component`: no environmental variable should be set since GitHub Pages should only be for development purposes
+
+### Publishing to Azure Storage Static Websites (Production)
+
+A site is published via a Pull Request:
+1. The Pull Request must be `approved`
+2. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
+3. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
+
+**Pre-requisites:**
+1. Create a GitHub label called `deploy` if it does not exist
+2. Create a GitHub label called `deploy:dev` if it does not exist
+3. Add a Azure Blob Storage connection string GitHub Secret for `production` called `AZURE_PROD_CONNECTION_STRING`
+4. Add a Azure Blob Storage connection string GitHub Secret for `development` called `AZURE_DEV_CONNECTION_STRING`
+4. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
+6. The Pull Request must be on a `branch in the same repo` (this is a GitHub Actions security restriction for secrets access)
+7. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
 
 ### Global Navigation
 
@@ -444,8 +467,8 @@ description: This is the guides overview page of Adobe Analytics
 
 ### Specifying external contributors
 
-In addition to the Github contributors of a markdown file, you can specify external contributors with front matter.
-They'll show up first before the Github contributors.
+In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
+They'll show up first before the GitHub contributors.
 
 <pre>
 ---
@@ -520,7 +543,7 @@ Use Resources List to display a side list of links. Those links can point to int
 #### Resources
 
 * [Quickstart Guide](https://www.adobe.io/apis/experiencecloud/analytics/docs.html)
-* [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis) 
+* [Adobe Analytics GitHub Repo](https://github.com/AdobeDocs/analytics-2.0-apis) 
 ```
 
 *Use `slots` to identify the markdown content to be used by the Resources List.*
