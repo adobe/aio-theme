@@ -194,15 +194,18 @@ GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ```
 ### Publishing to Github Pages (Dev)
 
-On every commit to the `master` branch, the site will be built to Github Pages automatically, for you to preview as a development version.
+On every commit to the `master` branch, the site will be built to Github Pages automatically, for you to preview as a development version. This is the default for new repos in Github: on Oct 1st, this will [default to main](https://github.blog/changelog/2020-08-26-set-the-default-branch-for-newly-created-repositories/)
 
-`Github Contributors component`: this will use the Github token automatically provided by the Github Action to retrieve data.
-`Feedback component`: no environmental variable should be set since Github Pages should only be for development purposes.
+`Github Contributors component`: this will use the Github token automatically provided by the Github Action to retrieve data
+
+`Feedback component`: no environmental variable should be set since Github Pages should only be for development purposes
 
 ### Publishing to Azure Storage Static Websites (Production)
 
-This is a pull request flow: a pull request must be approved, and tagged with `deploy` or `deploy:dev` labels.
-The Github label `deploy` will deploy the site to a `production` blob, while the Github label `deploy:dev` will deploy the site to a `production` blob
+A site is published via a Pull Request:
+1. The Pull Request must be `approved`
+2. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
+3. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
 
 **Pre-requisites:**
 1. Create a Github label called `deploy` if it does not exist
@@ -210,8 +213,8 @@ The Github label `deploy` will deploy the site to a `production` blob, while the
 3. Add a Azure Blob Storage connection string Github Secret for `production` called `AZURE_PROD_CONNECTION_STRING`
 4. Add a Azure Blob Storage connection string Github Secret for `development` called `AZURE_DEV_CONNECTION_STRING`
 4. Add a Adobe Launch URL Github Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
-6. The Pull Request must be on a branch in the same repo (this is a Github Actions security restriction for secrets access)
-7. The person initiating the Pull Request must be have a `Contributor` role to the repo (because of the previous requirement)
+6. The Pull Request must be on a `branch in the same repo` (this is a Github Actions security restriction for secrets access)
+7. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
 
 ### Global Navigation
 
