@@ -689,6 +689,27 @@ as a dependency in another site, you can run the command `yarn add adobedocs/gat
 You can also link sites locally using `yarn link`. For example, you can checkout https://github.com/AdobeDocs/gatsby-theme-parliament-documentation locally 
 and run the command `yarn link` inside. This will register "gatsby-theme-parliament-documentation" so that you can then run `yarn link "gatsby-theme-parliament-documentation"` in the site where you want to use it.
 
+**Important**
+
+To avoid the [invalid hook call](https://reactjs.org/warnings/invalid-hook-call-warning.html) warning, you'll also have to link `react` and `react-dom` e.g. : 
+
+```
+yarn link // inside your site folder e.g. gatsby-theme-parliament-documentation 
+cd node_modules/react
+yarn link
+cd ../react-dom
+yarn link 
+```
+
+then add them all to your site with 
+
+```
+yarn link react
+yarn link react-dom
+yarn link [NPM_PACKAGE_NAME] // e.g. gatsby-theme-parliament-documentation
+
+``` 
+
 See full example below using a Variant block. 
 
 ### Filtering content
