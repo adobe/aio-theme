@@ -155,11 +155,11 @@ Only `READ` permissions on repositories are required for the token.
 For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-parliament using the `main` branch, this would be what your `.env` would look like:
 
 ```properties
-GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
-GITHUB_REPO_OWNER=adobe
-GITHUB_REPO_NAME=gatsby-theme-parliament
-GITHUB_REPO_BRANCH=main
-ROOT=example
+REPO_GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
+REPO_OWNER=adobe
+REPO_NAME=gatsby-theme-parliament
+REPO_BRANCH=main
+REPO_ROOT=example
 ```
 
 By default, you can omit the `ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `ROOT`.
