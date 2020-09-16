@@ -2854,6 +2854,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0-beta.3.tgz#52ceb42f76fef170f7cd3010df56c1247a80e6b2"
   integrity sha512-C9g1ZJrq0fGs9Vu5z/Ft+Cr/plnSWtsk8rK394yAyOrQQym0zajiTvIMJLDlu764ah6k/4PkyPXmN+28/8vJSw==
 
+"@spectrum-css/card@^3.0.0-beta.3":
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/card/-/card-3.0.0-beta.3.tgz#3b48763854c0284528b0e38f9fd96b21b8334f3a"
+  integrity sha512-deOx4ldZJyNlKAAjwRXQ1LsmrAQJrBaKIEaso0J7PQQ0fLM4qmo+LW2Vli1lPY4fedY2F4LBb9nf0WQ6uE4Mdg==
+
 "@spectrum-css/dropdown@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@spectrum-css/dropdown/-/dropdown-3.0.0-beta.3.tgz#2195714d6aeaafcc43b3ff2984481116de84f537"

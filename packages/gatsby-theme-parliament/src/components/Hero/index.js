@@ -172,6 +172,11 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                     height: var(--spectrum-global-dimension-size-600);
                     width: var(--spectrum-global-dimension-size-600);
                     margin-bottom: var(--spectrum-global-dimension-size-300) !important;
+
+                    img {
+                      height: 100%;
+                      object-fit: contain;
+                    }
                   `
                 })}
 

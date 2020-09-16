@@ -20,6 +20,7 @@ import { TitleBlock } from '../TitleBlock';
 import { TextBlock } from '../TextBlock';
 import { AnnouncementBlock } from '../AnnouncementBlock';
 import { SummaryBlock } from '../SummaryBlock';
+import { ProductCard } from '../ProductCard';
 import { JsDocParameters } from '../JsDocParameters';
 
 export const MDXBlocks = {
@@ -33,5 +34,6 @@ export const MDXBlocks = {
   TextBlock,
   AnnouncementBlock,
   SummaryBlock,
+  ProductCard,
   JsDocParameters
 };

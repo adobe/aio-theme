@@ -19,6 +19,9 @@ import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
 import { layoutColumns } from '../utils';
 
+let counter = 0;
+const alignMapping = ['flex-start', 'flex-end'];
+
 const Icons = ({ icons, isCentered }) =>
   icons
     ? React.cloneElement(icons, {
@@ -128,6 +131,8 @@ const TextBlock = ({
   const columns = 100 / parseFloat(width);
 
   if (isCentered) {
+    counter++;
+
     return (
       <section
         className={`spectrum--${theme}`}
@@ -135,12 +140,15 @@ const TextBlock = ({
           display: inline-flex;
           flex-direction: column;
           width: ${width};
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-400)
-            ${columns === 4 ? 'var(--spectrum-global-dimension-size-400)' : 'var(--spectrum-global-dimension-size-800)'};
+          align-items: ${columns === 3 ? alignMapping[counter % 3] || 'center' : 'center'};
           background: var(--spectrum-global-color-gray-100);
         `}>
-        <div>
+        <div
+          css={css`
+            width: ${columns > 3
+              ? 'var(--spectrum-global-dimension-size-3600)'
+              : 'var(--spectrum-global-dimension-size-4600)'};
+          `}>
           <Icons icons={icons} isCentered={isCentered} />
 
           {image &&
