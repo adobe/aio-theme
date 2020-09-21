@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
 import { Flex, View } from '@adobe/react-spectrum';
@@ -130,6 +130,14 @@ const TextBlock = ({
 
   const columns = 100 / parseFloat(width);
 
+  useEffect(() => {
+    return () => {
+      if (isCentered) {
+        counter--;
+      }
+    };
+  });
+
   if (isCentered) {
     counter++;
 
@@ -223,9 +231,7 @@ const TextBlock = ({
                   align-items: center;
                   justify-content: center;
                   width: 50%;
-                  max-height: calc(
-                    var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225)
-                  );
+                  height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
                   box-sizing: border-box;
                   padding: 0 var(--spectrum-global-dimension-size-400);
 

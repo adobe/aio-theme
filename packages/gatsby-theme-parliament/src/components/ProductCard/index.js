@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
@@ -22,6 +22,12 @@ const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
   counter++;
+
+  useEffect(() => {
+    return () => {
+      counter--;
+    };
+  });
 
   if (width === '33%') {
     width = `${100 / 3}%`;

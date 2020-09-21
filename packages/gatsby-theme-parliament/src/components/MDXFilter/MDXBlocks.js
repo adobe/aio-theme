@@ -21,6 +21,7 @@ import { TextBlock } from '../TextBlock';
 import { AnnouncementBlock } from '../AnnouncementBlock';
 import { SummaryBlock } from '../SummaryBlock';
 import { ProductCard } from '../ProductCard';
+import { ResourceCard } from '../ResourceCard';
 import { JsDocParameters } from '../JsDocParameters';
 
 export const MDXBlocks = {
@@ -35,5 +36,6 @@ export const MDXBlocks = {
   AnnouncementBlock,
   SummaryBlock,
   ProductCard,
+  ResourceCard,
   JsDocParameters
 };

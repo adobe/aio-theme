@@ -21,8 +21,6 @@ import '@adobe/prism-adobe';
 import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
 
-const tooltipId = nextId();
-
 const openTooltip = (setIsTooltipOpen) => {
   setIsTooltipOpen(true);
   setTimeout(() => {
@@ -37,6 +35,7 @@ const copy = (textarea, document, setIsTooltipOpen) => {
 };
 
 const Code = ({ children, className = '', theme }) => {
+  const tooltipId = nextId();
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const language = className.replace(/language-/, '');
 
@@ -54,6 +53,7 @@ const Code = ({ children, className = '', theme }) => {
                 position: relative;
               `}>
               <textarea
+                tabIndex="-1"
                 readOnly={true}
                 aria-hidden="true"
                 css={css`
