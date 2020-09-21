@@ -22,7 +22,8 @@ import { Divider } from '@adobe/react-spectrum';
 import { Button } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { Adobe } from '../Icons';
-import { Picker, PickerButton } from '../Picker';
+import { PickerButton } from '../Picker';
+import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
 import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
 import '@spectrum-css/typography';
@@ -40,8 +41,11 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const [tabs] = useState([]);
   const primaryPopover = useRef(null);
   const secondaryPopover = useRef(null);
+  const versionPopover = useRef(null);
+  const versionPopoverId = nextId();
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
+  const [openVersionMenu, setOpenVersionMenu] = useState(false);
 
   const getSelectedTabIndex = () => {
     const pathWithRootFix = rootFix(location.pathname);
@@ -65,15 +69,21 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   useEffect(() => {
     // Clicking outside of menu should close menu
     const onClick = (event) => {
-      if (globalNav.menus.length) {
+      if (globalNav.menus[0].title) {
         if (!primaryPopover.current.contains(event.target)) {
           setOpenPrimaryMenu(false);
         }
       }
 
-      if (globalNav.menus.length > 1) {
+      if (globalNav.menus[1]) {
         if (!secondaryPopover.current.contains(event.target)) {
           setOpenSecondaryMenu(false);
+        }
+      }
+
+      if (versions[0].title) {
+        if (!versionPopover.current.contains(event.target)) {
+          setOpenVersionMenu(false);
         }
       }
     };
@@ -166,6 +176,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                             setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
                             setOpenPrimaryMenu(false);
                           }
+
+                          setOpenVersionMenu(false);
                         }}>
                         {menu.title}
                       </PickerButton>
@@ -292,13 +304,38 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           margin-left: var(--spectrum-global-dimension-size-100) !important;
                           margin-right: var(--spectrum-global-dimension-size-300);
                         `}>
-                        <Picker
+                        <PickerButton
                           isQuiet
-                          items={versions.map((version) => ({
-                            title: version.title,
-                            path: version.path
-                          }))}
-                        />
+                          isOpen={openVersionMenu}
+                          ariaControls={versionPopoverId}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            event.nativeEvent.stopImmediatePropagation();
+
+                            setOpenVersionMenu((openVersionMenu) => !openVersionMenu);
+                            setOpenPrimaryMenu(false);
+                            setOpenSecondaryMenu(false);
+                          }}>
+                          {versions[0].title}
+                        </PickerButton>
+                        <Popover
+                          ref={versionPopover}
+                          id={versionPopoverId}
+                          variant="picker"
+                          isQuiet
+                          isOpen={openVersionMenu}>
+                          <Menu>
+                            {versions.map((version, i) => {
+                              const isFirst = i === 0;
+
+                              return (
+                                <MenuItem isSelected={isFirst} isHighlighted={isFirst} href={version.path}>
+                                  {version.title}
+                                </MenuItem>
+                              );
+                            })}
+                          </Menu>
+                        </Popover>
                       </div>
                     )}
                   </React.Fragment>
