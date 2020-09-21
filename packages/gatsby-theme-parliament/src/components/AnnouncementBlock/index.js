@@ -15,9 +15,11 @@ import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import { Button, View } from '@adobe/react-spectrum';
 import PropTypes from 'prop-types';
+import { getElementChild, getExternalLinkProps } from '../utils';
 
 const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
-  const link = button?.props?.children;
+  const link = getElementChild(button);
+  const externalLinkProps = getExternalLinkProps(link.props.href);
 
   return (
     <section
@@ -52,7 +54,7 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
 
         {link && (
           <View marginTop="size-200">
-            <Button elementType="a" href={link.props.href} variant="primary">
+            <Button elementType="a" href={link.props.href} {...externalLinkProps} variant="primary">
               {link.props.children}
             </Button>
           </View>

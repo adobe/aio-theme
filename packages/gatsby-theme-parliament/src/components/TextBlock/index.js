@@ -17,7 +17,7 @@ import { Flex, View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
-import { layoutColumns } from '../utils';
+import { getElementChild, layoutColumns } from '../utils';
 
 let counter = 0;
 const alignMapping = ['flex-start', 'flex-end'];
@@ -89,7 +89,7 @@ const Links = ({ links, isCentered }) =>
 const YouTubeVideo = ({ video }) => {
   let youTubeId = null;
   if (video) {
-    const link = React.Children.toArray(video.props.children)[0];
+    const link = getElementChild(video);
     const url = new URL(link.props.href);
     if (url.hostname.startsWith('youtube.com') || url.hostname.startsWith('www.youtube.com')) {
       const queryParams = new URLSearchParams(url.search);

@@ -19,6 +19,7 @@ import { Link } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Flex } from '@adobe/react-spectrum';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
+import { getElementChild, isExternalLink, getExternalLinkProps } from '../utils';
 
 const Resources = ({ heading, links }) => {
   return (
@@ -39,14 +40,8 @@ const Resources = ({ heading, links }) => {
           padding: 0;
         `}>
         {React.Children.map(links.props.children, (item, i) => {
-          const link = React.Children.toArray(item.props.children)[0];
-          const isExternalLink = link.props.href.startsWith('http://') || link.props.href.startsWith('https://');
-          const externalLinkProps = isExternalLink
-            ? {
-                target: '_blank',
-                rel: 'nofollow noopener noreferrer'
-              }
-            : {};
+          const link = getElementChild(item);
+          const href = link.props.href;
 
           return (
             <li
@@ -56,11 +51,11 @@ const Resources = ({ heading, links }) => {
               `}>
               <Flex>
                 <Link isQuiet={true}>
-                  <a href={link.props.href} {...externalLinkProps}>
+                  <a href={link.props.href} {...getExternalLinkProps(href)}>
                     {link.props.children}
                   </a>
                 </Link>
-                <View marginStart="size-100">{isExternalLink && <LinkOut size="XS" />}</View>
+                <View marginStart="size-100">{isExternalLink(href) && <LinkOut size="XS" />}</View>
               </Flex>
             </li>
           );

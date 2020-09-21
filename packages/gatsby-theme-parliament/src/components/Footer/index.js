@@ -17,17 +17,14 @@ import { View } from '@adobe/react-spectrum';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
-import { layoutColumns } from '../utils';
+import { layoutColumns, getExternalLinkProps } from '../utils';
 import PropTypes from 'prop-types';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
-const externalLinkProps = {
-  target: '_blank',
-  rel: 'noopener noreferrer nofollow'
-};
+const externalLinkProps = getExternalLinkProps();
 
 const Footer = ({ hasSideNav = false, isCentered = false }) => (
   <View

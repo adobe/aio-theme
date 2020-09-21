@@ -17,6 +17,7 @@ import { Button } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
+import { getElementChild, getExternalLinkProps } from '../utils';
 
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
@@ -30,10 +31,17 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
           quiet = quiets[1];
         }
 
-        const link = React.Children.toArray(item.props.children)[0];
+        const link = getElementChild(item);
+        const externalLinkProps = getExternalLinkProps(link.props.href);
 
         return (
-          <Button key={i} elementType="a" isQuiet={quiet} href={link.props.href} variant={variant}>
+          <Button
+            key={i}
+            elementType="a"
+            isQuiet={quiet}
+            href={link.props.href}
+            {...externalLinkProps}
+            variant={variant}>
             {link.props.children}
           </Button>
         );

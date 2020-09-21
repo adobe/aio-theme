@@ -14,7 +14,7 @@ import React, { useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage, rootFix, rootFixPages } from '../utils';
+import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps } from '../utils';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
@@ -82,6 +82,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
 
     return () => document.removeEventListener('click', onClick);
   }, []);
+
+  const externalLinkProps = getExternalLinkProps();
 
   return (
     <header
@@ -319,14 +321,14 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
           </View>
           <View gridArea="console" justifySelf="center">
             {globalNav.console && (
-              <Button variant="primary" elementType="a" href="https://console.adobe.io">
+              <Button variant="primary" elementType="a" href="https://console.adobe.io" {...externalLinkProps}>
                 Console
               </Button>
             )}
           </View>
           <View gridArea="profile" justifySelf="center">
             {globalNav.signIn && (
-              <Button isQuiet variant="primary" elementType="a" href="https://adobe.io">
+              <Button isQuiet variant="primary" elementType="a" href="https://adobe.io" {...externalLinkProps}>
                 Sign in
               </Button>
             )}

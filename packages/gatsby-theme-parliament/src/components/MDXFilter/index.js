@@ -21,7 +21,8 @@ import {
   findSelectedPageSiblings,
   findSelectedPageNextPrev,
   findSelectedTopPage,
-  findSelectedPages
+  findSelectedPages,
+  getElementChild
 } from '../utils';
 
 import { Flex } from '@adobe/react-spectrum';
@@ -64,7 +65,7 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, q
     // 3) Third child is a paragraph
     if (isFirstChild) {
       if (child?.props?.children?.[0]?.props?.src) {
-        const image = child.props.children[0].props.src.split('/').pop();
+        const image = getElementChild(child).props.src.split('/').pop();
         if (
           image.toLowerCase().startsWith('hero') &&
           childrenArray?.[1]?.props?.mdxType === 'h1' &&

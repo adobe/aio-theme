@@ -16,12 +16,14 @@ import { Flex } from '@adobe/react-spectrum';
 import { ActionButton, Text } from '../ActionButton';
 import { Bug, Edit } from '../Icons';
 import { css } from '@emotion/core';
+import { getExternalLinkProps } from '../utils';
+
+const externalLinkProps = getExternalLinkProps();
 
 const commonsProps = {
   elementType: 'a',
   isQuiet: true,
-  target: '_blank',
-  rel: 'noopener noreferrer nofollow'
+  ...externalLinkProps
 };
 
 const GitHubActions = ({ repository, branch, root, pagePath }) => {

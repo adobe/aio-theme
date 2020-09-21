@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
+import React from 'react';
 import { withPrefix } from 'gatsby';
 
 export const rootFix = (pathname) => {
@@ -125,3 +126,15 @@ export const findSelectedPageSiblings = (pathname, pages) => {
 
   return siblings;
 };
+
+export const isExternalLink = (url) => url.startsWith('https://') || url.startsWith('http://');
+
+export const getExternalLinkProps = (url) =>
+  typeof url === 'undefined' || isExternalLink(url)
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer nofollow'
+      }
+    : {};
+
+export const getElementChild = (element) => React.Children.toArray(element.props.children)[0];

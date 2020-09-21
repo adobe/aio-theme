@@ -12,7 +12,7 @@
 
 import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
-import { layoutColumns } from '../utils';
+import { getElementChild, getExternalLinkProps, layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
@@ -21,10 +21,8 @@ let horizontalCounter = 0;
 let verticalCounter = 0;
 
 const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizontal', link, heading, text, image }) => {
-  let href = '';
-  if (link) {
-    href = React.Children.toArray(link.props.children)[0].props.href;
-  }
+  const href = getElementChild(link).props.href;
+  const externalProps = getExternalLinkProps(href);
 
   if (width === '33%') {
     width = `${100 / 3}%`;
@@ -68,7 +66,8 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
       }
 
       if (horizontalCounter % 2 === 0) {
-        extraMargin = 'margin-top: calc(var(--spectrum-global-dimension-size-2400) + var(--spectrum-global-dimension-size-150));';
+        extraMargin =
+          'margin-top: calc(var(--spectrum-global-dimension-size-2400) + var(--spectrum-global-dimension-size-150));';
       } else {
         extraMargin = '';
       }
@@ -91,6 +90,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
         <a
           className={`spectrum-Card spectrum-Card--${variant}`}
           href={href}
+          {...externalProps}
           css={css`
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-2000) - var(--spectrum-global-dimension-size-50));
