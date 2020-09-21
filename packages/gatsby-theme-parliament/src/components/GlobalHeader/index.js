@@ -21,6 +21,7 @@ import { View } from '@adobe/react-spectrum';
 import { Divider } from '@adobe/react-spectrum';
 import { Button } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
+import { ButtonGroup } from '@adobe/react-spectrum';
 import { Adobe } from '../Icons';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
@@ -69,19 +70,19 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   useEffect(() => {
     // Clicking outside of menu should close menu
     const onClick = (event) => {
-      if (globalNav.menus[0].title) {
+      if (globalNav.menus.length) {
         if (!primaryPopover.current.contains(event.target)) {
           setOpenPrimaryMenu(false);
         }
       }
 
-      if (globalNav.menus[1]) {
+      if (globalNav.menus.length > 1) {
         if (!secondaryPopover.current.contains(event.target)) {
           setOpenSecondaryMenu(false);
         }
       }
 
-      if (versions[0].title) {
+      if (versions?.length) {
         if (!versionPopover.current.contains(event.target)) {
           setOpenVersionMenu(false);
         }
@@ -105,8 +106,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
       `}>
       <nav css={stretched} role="navigation" aria-label="Global">
         <Grid
-          areas={['title navigation console profile']}
-          columns={['minmax(auto, min-content)', 'auto', 'size-1200', 'size-1200']}
+          areas={['title navigation optional']}
+          columns={['minmax(auto, min-content)', 'auto', 'size-2400']}
           alignItems="center"
           marginX="size-400"
           height="100%">
@@ -140,143 +141,141 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                 const id = nextId();
 
                 return (
-                  menu.title && (
-                    <div
-                      key={index}
-                      css={css`
-                        box-sizing: border-box;
-                        padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-300) 0
-                          var(--spectrum-global-dimension-size-300);
-                        height: calc(100% + 1px);
-                        border-left: 1px solid transparent;
-                        border-right: 1px solid transparent;
-                        ${isPrimary
-                          ? `
+                  <div
+                    key={index}
+                    css={css`
+                      box-sizing: border-box;
+                      padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-300) 0
+                        var(--spectrum-global-dimension-size-300);
+                      height: calc(100% + 1px);
+                      border-left: 1px solid transparent;
+                      border-right: 1px solid transparent;
+                      ${isPrimary
+                        ? `
                         margin-left: var(--spectrum-global-dimension-size-300);
                         `
-                          : ''}
-                        ${globalNav.menus.length === 1
-                          ? `
+                        : ''}
+                      ${globalNav.menus.length === 1
+                        ? `
                           border-color: var(--spectrum-global-color-gray-200);
                         `
-                          : ''}
+                        : ''}
+                    `}>
+                    <PickerButton
+                      isQuiet
+                      isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                      ariaControls={id}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        event.nativeEvent.stopImmediatePropagation();
+
+                        if (isPrimary) {
+                          setOpenPrimaryMenu((openPrimaryMenu) => !openPrimaryMenu);
+                          setOpenSecondaryMenu(false);
+                        } else {
+                          setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
+                          setOpenPrimaryMenu(false);
+                        }
+
+                        setOpenVersionMenu(false);
+                      }}>
+                      {menu.title}
+                    </PickerButton>
+                    <Popover
+                      ref={isPrimary ? primaryPopover : secondaryPopover}
+                      id={id}
+                      variant="picker"
+                      isQuiet
+                      isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                      css={css`
+                        display: block;
+                        padding: var(--spectrum-global-dimension-size-300);
+                        z-index: 2;
+                        max-width: none !important;
+                        max-height: none !important;
+                        width: auto !important;
                       `}>
-                      <PickerButton
-                        isQuiet
-                        isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
-                        ariaControls={id}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          event.nativeEvent.stopImmediatePropagation();
-
-                          if (isPrimary) {
-                            setOpenPrimaryMenu((openPrimaryMenu) => !openPrimaryMenu);
-                            setOpenSecondaryMenu(false);
-                          } else {
-                            setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
-                            setOpenPrimaryMenu(false);
-                          }
-
-                          setOpenVersionMenu(false);
-                        }}>
-                        {menu.title}
-                      </PickerButton>
-                      <Popover
-                        ref={isPrimary ? primaryPopover : secondaryPopover}
-                        id={id}
-                        variant="picker"
-                        isQuiet
-                        isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
-                        css={css`
-                          display: block;
-                          padding: var(--spectrum-global-dimension-size-300);
-                          z-index: 2;
-                          max-width: none !important;
-                          max-height: none !important;
-                          width: auto !important;
-                        `}>
-                        <nav aria-label="Secondary">
-                          <Flex>
-                            {menu.sections.map((section, i) => (
-                              <View key={i} marginEnd="size-400" position="relative">
-                                <View>
-                                  {section.heading && (
-                                    <View marginBottom="size-200" marginStart="size-200">
-                                      <strong className="spectrum-Heading--S">{section.heading}</strong>
-                                    </View>
-                                  )}
-                                  <ul className="spectrum-AssetList">
-                                    {section.pages.map((page, k) => (
-                                      <li
-                                        key={k}
-                                        className="spectrum-AssetList-item"
-                                        css={css`
-                                          width: auto !important;
-                                          height: auto !important;
-                                          min-height: var(--spectrum-global-dimension-size-500) !important;
-                                          ${page.description
-                                            ? 'margin-bottom: var(--spectrum-global-dimension-size-200);'
-                                            : ''}
-                                        `}>
-                                        <a
-                                          css={css`
-                                            display: flex;
-                                            z-index: 1;
-                                            height: 100%;
-                                            width: 100%;
-                                            align-items: center;
-                                            color: inherit;
-                                            text-decoration: none;
-                                            padding-top: var(--spectrum-global-dimension-size-100);
-                                            padding-bottom: var(--spectrum-global-dimension-size-100);
-                                          `}
-                                          href={page.path}>
-                                          <Flex direction="column">
-                                            <View>{page.title}</View>
-                                            {page.description && (
-                                              <View marginTop="size-100">
-                                                <span
-                                                  className="spectrum-Body--XS"
-                                                  css={css`
-                                                    color: var(--spectrum-global-color-gray-700);
-                                                  `}>
-                                                  {page.description}
-                                                </span>
-                                              </View>
-                                            )}
-                                          </Flex>
-                                        </a>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </View>
-                                {section.divider && (
-                                  <div
-                                    css={css`
-                                      position: absolute;
-                                      height: 100%;
-                                      top: 0;
-                                      right: calc(-1 * var(--spectrum-global-dimension-size-200));
-                                    `}>
-                                    <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
-                                  </div>
+                      <nav aria-label="Secondary">
+                        <Flex>
+                          {menu.sections.map((section, i) => (
+                            <View key={i} marginEnd="size-400" position="relative">
+                              <View>
+                                {section.heading && (
+                                  <View marginBottom="size-200" marginStart="size-200">
+                                    <strong className="spectrum-Heading--S">{section.heading}</strong>
+                                  </View>
                                 )}
+                                <ul className="spectrum-AssetList">
+                                  {section.pages.map((page, k) => (
+                                    <li
+                                      key={k}
+                                      className="spectrum-AssetList-item"
+                                      css={css`
+                                        width: auto !important;
+                                        height: auto !important;
+                                        min-height: var(--spectrum-global-dimension-size-500) !important;
+                                        ${page.description
+                                          ? 'margin-bottom: var(--spectrum-global-dimension-size-200);'
+                                          : ''}
+                                      `}>
+                                      <a
+                                        css={css`
+                                          display: flex;
+                                          z-index: 1;
+                                          height: 100%;
+                                          width: 100%;
+                                          align-items: center;
+                                          color: inherit;
+                                          text-decoration: none;
+                                          padding-top: var(--spectrum-global-dimension-size-100);
+                                          padding-bottom: var(--spectrum-global-dimension-size-100);
+                                        `}
+                                        href={page.path}>
+                                        <Flex direction="column">
+                                          <View>{page.title}</View>
+                                          {page.description && (
+                                            <View marginTop="size-100">
+                                              <span
+                                                className="spectrum-Body--XS"
+                                                css={css`
+                                                  color: var(--spectrum-global-color-gray-700);
+                                                `}>
+                                                {page.description}
+                                              </span>
+                                            </View>
+                                          )}
+                                        </Flex>
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
                               </View>
-                            ))}
-                          </Flex>
-                          {menu.sections[0].viewAll && (
-                            <View marginTop="size-100" marginStart="size-200">
-                              <Link isQuiet={true}>
-                                <a href={menu.sections[0].viewAll.path}>
-                                  <strong>{menu.sections[0].viewAll.title}</strong>
-                                </a>
-                              </Link>
+                              {section.divider && (
+                                <div
+                                  css={css`
+                                    position: absolute;
+                                    height: 100%;
+                                    top: 0;
+                                    right: calc(-1 * var(--spectrum-global-dimension-size-200));
+                                  `}>
+                                  <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
+                                </div>
+                              )}
                             </View>
-                          )}
-                        </nav>
-                      </Popover>
-                    </div>
-                  )
+                          ))}
+                        </Flex>
+                        {menu.sections[0].viewAll && (
+                          <View marginTop="size-100" marginStart="size-200">
+                            <Link isQuiet={true}>
+                              <a href={menu.sections[0].viewAll.path}>
+                                <strong>{menu.sections[0].viewAll.title}</strong>
+                              </a>
+                            </Link>
+                          </View>
+                        )}
+                      </nav>
+                    </Popover>
+                  </div>
                 );
               })}
             </Flex>
@@ -298,7 +297,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     <TabsItem elementType={GatsbyLink} ref={ref} to={path} selected={getSelectedTabIndex() === i}>
                       {title}
                     </TabsItem>
-                    {i === 0 && versions[0]?.title && (
+                    {i === 0 && versions?.length && (
                       <div
                         css={css`
                           margin-left: var(--spectrum-global-dimension-size-100) !important;
@@ -348,7 +347,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                 `}
               />
               <View marginStart="size-400">
-                {docs.path && (
+                {docs && (
                   <Button variant="primary" elementType="a" href={docs.path}>
                     View Docs
                   </Button>
@@ -356,18 +355,20 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               </View>
             </Tabs>
           </View>
-          <View gridArea="console" justifySelf="center">
-            {globalNav.console && (
-              <Button variant="primary" elementType="a" href="https://console.adobe.io" {...externalLinkProps}>
-                Console
-              </Button>
-            )}
-          </View>
-          <View gridArea="profile" justifySelf="center">
-            {globalNav.signIn && (
-              <Button isQuiet variant="primary" elementType="a" href="https://adobe.io" {...externalLinkProps}>
-                Sign in
-              </Button>
+          <View gridArea="optional" justifySelf="flex-end">
+            {(globalNav.console || globalNav.signIn) && (
+              <ButtonGroup>
+                {globalNav.console && (
+                  <Button variant="primary" elementType="a" href="https://console.adobe.io" {...externalLinkProps}>
+                    Console
+                  </Button>
+                )}
+                {globalNav.signIn && (
+                  <Button isQuiet variant="primary" elementType="a" href="https://adobe.io" {...externalLinkProps}>
+                    Sign in
+                  </Button>
+                )}
+              </ButtonGroup>
             )}
           </View>
         </Grid>

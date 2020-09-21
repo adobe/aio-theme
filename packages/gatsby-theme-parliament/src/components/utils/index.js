@@ -44,15 +44,27 @@ export const findSelectedTopPage = (pathname, pages) => {
 };
 
 export const findSubPages = (pathname, pages, subPages) => {
+  if (subPages === null) {
+    return [];
+  }
+
   const selectedTopPage = findSelectedTopPage(pathname, pages);
   return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage?.path)));
 };
 
 export const findSelectedPage = (pathname, pages) => {
+  if (pages === null) {
+    return [];
+  }
+
   return pages.find((page) => pathname === withPrefix(page.path));
 };
 
 export const findSelectedPages = (pathname, pages) => {
+  if (pages === null) {
+    return [];
+  }
+
   let selectedPages = [];
 
   const find = (page) => {
@@ -81,6 +93,10 @@ export const findSelectedPages = (pathname, pages) => {
 };
 
 export const flattenPages = (pages) => {
+  if (pages === null) {
+    return [];
+  }
+
   let flat = [];
   const find = (page) => {
     flat.push(page);
@@ -109,6 +125,10 @@ export const findSelectedPageNextPrev = (pathname, pages) => {
 export const findSelectedPageSiblings = (pathname, pages) => {
   let siblings = [];
 
+  if (pages === null) {
+    return siblings;
+  }
+
   const find = (page) => {
     if (page.pages) {
       const selectedPage = page.pages.find((subPage) => withPrefix(subPage.path) === pathname);
@@ -129,8 +149,8 @@ export const findSelectedPageSiblings = (pathname, pages) => {
 
 export const isExternalLink = (url) => url.startsWith('https://') || url.startsWith('http://');
 
-export const getExternalLinkProps = (url) =>
-  typeof url === 'undefined' || isExternalLink(url)
+export const getExternalLinkProps = (url = null) =>
+  url === null || isExternalLink(url)
     ? {
         target: '_blank',
         rel: 'noopener noreferrer nofollow'

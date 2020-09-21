@@ -19,3 +19,85 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     }
   });
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type SiteSiteMetadata {
+      globalNav: GlobalNav
+      pages: [Page]
+      subPages: [SubPage]
+      versions: [Version],
+      docs: Docs
+    }
+    
+    type GlobalNav {
+      home: Home
+      menus: [Menu]
+      console: Boolean
+      signIn: Boolean
+    }
+    
+    type Home {
+      title: String
+      path: String
+    }
+    
+    type Menu {
+      title: String,
+      sections: [Section]
+    }
+    
+    type Section {
+      heading: String,
+      viewAll: ViewAll,
+      divider: Boolean,
+      pages: [SectionPage]
+    }
+    
+    type ViewAll {
+      title: String,
+      path: String
+    }
+    
+    type SectionPage {
+      title: String,
+      path: String,
+      description: String
+    }
+    
+    type Page {
+      title: String,
+      path: String
+    }
+    
+    type SubPage {
+      title: String,
+      path: String,
+      header: Boolean,
+      pages: [NestedSubPage1]
+    }
+    
+    type NestedSubPage1 {
+      title: String,
+      path: String,
+      pages: [NestedSubPage2]
+    }
+    
+    type NestedSubPage2 {
+      title: String,
+      path: String
+    }
+    
+    type Version {
+      title: String,
+      path: String
+    }
+    
+    type Docs {
+      path: String
+    }
+  `;
+
+  createTypes(typeDefs);
+};
