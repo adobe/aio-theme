@@ -329,7 +329,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                               const isFirst = i === 0;
 
                               return (
-                                <MenuItem isSelected={isFirst} isHighlighted={isFirst} href={version.path}>
+                                <MenuItem key={i} isSelected={isFirst} isHighlighted={isFirst} href={version.path}>
                                   {version.title}
                                 </MenuItem>
                               );
