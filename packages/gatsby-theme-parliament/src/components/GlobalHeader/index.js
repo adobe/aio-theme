@@ -230,7 +230,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                                           padding-top: var(--spectrum-global-dimension-size-100);
                                           padding-bottom: var(--spectrum-global-dimension-size-100);
                                         `}
-                                        href={page.path}>
+                                        href={page.path}
+                                        {...getExternalLinkProps(page.path)}>
                                         <Flex direction="column">
                                           <View>{page.title}</View>
                                           {page.description && (
@@ -267,7 +268,9 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         {menu.sections[0].viewAll && (
                           <View marginTop="size-100" marginStart="size-200">
                             <Link isQuiet={true}>
-                              <a href={menu.sections[0].viewAll.path}>
+                              <a
+                                href={menu.sections[0].viewAll.path}
+                                {...getExternalLinkProps(menu.sections[0].viewAll.path)}>
                                 <strong>{menu.sections[0].viewAll.title}</strong>
                               </a>
                             </Link>
@@ -348,7 +351,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               />
               <View marginStart="size-400">
                 {docs && (
-                  <Button variant="primary" elementType="a" href={docs.path}>
+                  <Button variant="primary" elementType="a" href={docs.path} {...getExternalLinkProps(docs.path)}>
                     View Docs
                   </Button>
                 )}
