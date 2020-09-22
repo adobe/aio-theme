@@ -23,8 +23,8 @@ Using a theme, all of your default configuration lives in an npm package.
 **View the demo templates of Gatsby sites using Gatsby Theme Parliament:** 
 
 * [Documentation site](https://adobedocs.github.io/gatsby-theme-parliament-documentation/)
-* [Platform site](https://adobedocs.github.io/gatsby-theme-parliament-platform/) WIP
-* [Product site]() TODO
+* [Platform site](https://adobedocs.github.io/gatsby-theme-parliament-platform/)
+* [Product site](https://adobedocs.github.io/gatsby-theme-parliament-product/) 
 
 ## Contents
 
@@ -53,8 +53,8 @@ This section will help you get started building a Gatsby site with Gatsby Theme 
 To initialize a site repository, you can also use one of the available templates in GitHub: 
 
 * [Documentation site template](https://github.com/adobe/gatsby-theme-parliament-documentation/)
-* [Platform site template](https://github.com/adobe/gatsby-theme-parliament-platform/) WIP  
-* [Product site template]() TODO
+* [Platform site template](https://github.com/adobe/gatsby-theme-parliament-platform/)  
+* [Product site template](https://github.com/adobe/gatsby-theme-parliament-product/)
 
 Simply click on the “Use this template” button to create a new GitHub repository of the template.
 
