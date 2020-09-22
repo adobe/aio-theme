@@ -20,7 +20,7 @@ and more ... see https://www.gatsbyjs.com/why-gatsby/.
 [Gatsby themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow Gatsby site functionality to be packaged as a standalone product for others to easily reuse.
 Using a theme, all of your default configuration lives in an npm package.
 
-**View the demos of Gatsby sites using Gatsby Theme Parliament:** 
+**View the demo templates of Gatsby sites using Gatsby Theme Parliament:** 
 
 * [Documentation site](https://adobedocs.github.io/gatsby-theme-parliament-documentation/)
 * [Platform site](https://adobedocs.github.io/gatsby-theme-parliament-platform/) WIP
@@ -50,7 +50,7 @@ This section will help you get started building a Gatsby site with Gatsby Theme 
 
 ### Using GitHub repository templates
 
-To initialize a site repository, you can also use of the available templates in GitHub: 
+To initialize a site repository, you can also use one of the available templates in GitHub: 
 
 * [Documentation site template](https://github.com/adobe/gatsby-theme-parliament-documentation/)
 * [Platform site template](https://github.com/adobe/gatsby-theme-parliament-platform/) WIP  
