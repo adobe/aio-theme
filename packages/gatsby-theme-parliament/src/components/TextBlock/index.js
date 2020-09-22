@@ -81,6 +81,7 @@ const Links = ({ links, isCentered }) =>
           & img {
             max-height: var(--spectrum-global-dimension-size-400);
             margin-right: var(--spectrum-global-dimension-size-150);
+            border-radius: 0;
           }
         `
       })
@@ -101,6 +102,7 @@ const YouTubeVideo = ({ video }) => {
     <div
       css={css`
         & {
+          display: inline;
           width: ${layoutColumns(6)};
           box-sizing: border-box;
           padding: 0 var(--spectrum-global-dimension-size-400);
@@ -132,17 +134,28 @@ const TextBlock = ({
 
   useEffect(() => {
     return () => {
-      if (isCentered) {
+      if (isCentered && columns > 1) {
         counter--;
       }
     };
   });
 
   if (isCentered) {
-    counter++;
+    let blockWidth = '';
+
+    if (columns === 1) {
+      blockWidth = `width: ${layoutColumns(6)};`;
+    } else if (columns > 3) {
+      counter++;
+      blockWidth = 'width: var(--spectrum-global-dimension-size-3600);';
+    } else {
+      counter++;
+      blockWidth = 'width: var(--spectrum-global-dimension-size-4600);';
+    }
 
     return (
       <section
+        data-counter={counter}
         className={`spectrum--${theme}`}
         css={css`
           display: inline-flex;
@@ -150,12 +163,12 @@ const TextBlock = ({
           width: ${width};
           align-items: ${columns === 3 ? alignMapping[counter % 3] || 'center' : 'center'};
           background: var(--spectrum-global-color-gray-100);
+          padding: var(--spectrum-global-dimension-size-400) 0;
+          box-sizing: border-box;
         `}>
         <div
           css={css`
-            width: ${columns > 3
-              ? 'var(--spectrum-global-dimension-size-3600)'
-              : 'var(--spectrum-global-dimension-size-4600)'};
+            ${blockWidth}
           `}>
           <Icons icons={icons} isCentered={isCentered} />
 
@@ -181,6 +194,8 @@ const TextBlock = ({
                 margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
                 & ~ p {
+                  margin-bottom: 0 !important;
+
                   ${columns === 1
                     ? `
             height: auto;
@@ -200,9 +215,11 @@ const TextBlock = ({
 
           <Links links={links} isCentered={isCentered} />
 
-          <View marginTop="size-400">
-            <YouTubeVideo video={video} />
-          </View>
+          {video && (
+            <View marginTop="size-400">
+              <YouTubeVideo video={video} />
+            </View>
+          )}
         </div>
       </section>
     );

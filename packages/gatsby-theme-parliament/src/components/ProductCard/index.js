@@ -21,19 +21,23 @@ let counter = 0;
 const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
-  counter++;
-
-  useEffect(() => {
-    return () => {
-      counter--;
-    };
-  });
-
   if (width === '33%') {
     width = `${100 / 3}%`;
   }
 
   const columns = 100 / parseFloat(width);
+
+  if (columns > 1) {
+    counter++;
+  }
+
+  useEffect(() => {
+    return () => {
+      if (columns > 1) {
+        counter--;
+      }
+    };
+  });
 
   return (
     <section
