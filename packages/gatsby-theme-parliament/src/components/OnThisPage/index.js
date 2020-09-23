@@ -10,13 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { View } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { Picker } from '../Picker';
 import { layoutColumns } from '../utils';
 import '@spectrum-css/typography';
 
@@ -58,8 +57,6 @@ const readTableOfContents = (headings, setTableOfContentsItems) => {
 
 const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');
-  const [isPinned, setIsPinned] = useState(false);
-  const outlineRef = useRef(null);
   const [tableOfContentsItems, setTableOfContentsItems] = useState(tableOfContents?.items?.[0]?.items);
 
   // To support transclusion with headings
@@ -99,21 +96,6 @@ const OnThisPage = ({ tableOfContents }) => {
       }
     }
   }, []);
-
-  // Toggles the pinned ToC based on scrolling
-  useEffect(() => {
-    const observer = new window.IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        setIsPinned(!entry.isIntersecting);
-      }
-    });
-
-    if (outlineRef?.current) {
-      observer.observe(outlineRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [tableOfContentsItems]);
 
   // Highlights the visible sections on the page based on scrolling
   useEffect(() => {
@@ -164,12 +146,13 @@ const OnThisPage = ({ tableOfContents }) => {
     };
   }, []);
 
-  const Outline = ({ withSubHeading }) => (
-    <View elementType="nav" role="navigation" aria-label="Article Outline" marginY="size-400">
+  const Outline = () => (
+    <View elementType="nav" role="navigation" aria-label="Article Outline">
       <h4
         className="spectrum-Detail--L"
         css={css`
           color: var(--spectrum-global-color-gray-600);
+          margin-bottom: var(--spectrum-global-dimension-size-250);
         `}>
         On this page
       </h4>
@@ -190,12 +173,12 @@ const OnThisPage = ({ tableOfContents }) => {
             css={css`
               margin-top: var(--spectrum-global-dimension-size-150);
             `}>
-            <span className={classNames({ 'is-active': withSubHeading && activeHeadingLink === section.url })}>
+            <span className={classNames({ 'is-active': activeHeadingLink === section.url })}>
               <Link isQuiet={true}>
                 <a href={section.url}>{section.title}</a>
               </Link>
             </span>
-            {withSubHeading && section?.items?.length > 0 && (
+            {section?.items?.length > 0 && (
               <ul
                 css={css`
                   list-style: none;
@@ -203,8 +186,7 @@ const OnThisPage = ({ tableOfContents }) => {
                 `}>
                 {section.items.map((subSection, subIndex) => (
                   <li key={subIndex}>
-                    <span
-                      className={classNames({ 'is-active': withSubHeading && activeHeadingLink === subSection.url })}>
+                    <span className={classNames({ 'is-active': activeHeadingLink === subSection.url })}>
                       <Link isQuiet={true}>
                         <a href={subSection.url}>{subSection.title}</a>
                       </Link>
@@ -219,58 +201,23 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  // Used in case we have more than 10 headings on the page
-  const OutlinePicker = () => (
-    <View marginY="size-400">
-      <h4
-        className="spectrum-Detail--L"
-        css={css`
-          color: var(--spectrum-global-color-gray-600);
-          margin-bottom: var(--spectrum-global-dimension-size-200);
-        `}>
-        On this page
-      </h4>
-      <Picker
-        label="Navigate to section"
-        items={tableOfContentsItems.map((item) => ({ title: item.title, path: item.url }))}
-      />
-    </View>
-  );
-
   return tableOfContentsItems ? (
-    <>
-      <div ref={outlineRef}>
-        {tableOfContentsItems.length <= 10 ? (
-          <Outline withSubHeading={!(tableOfContentsItems[0]?.title && tableOfContentsItems[0]?.url)} />
-        ) : (
-          <OutlinePicker />
-        )}
-      </div>
-      <aside
-        className={isPinned ? 'is-pinned' : ''}
-        aria-hidden={!isPinned}
-        css={css`
-          position: fixed;
-          overflow: auto;
-          bottom: 0;
-          top: var(--spectrum-global-dimension-size-800);
-          padding-left: var(--spectrum-global-dimension-size-900);
-          left: ${layoutColumns(9)};
-          min-width: ${layoutColumns(3, [
-            'var(--spectrum-global-dimension-size-400)',
-            'var(--spectrum-global-dimension-size-100)'
-          ])};
-          margin-left: var(--spectrum-global-dimension-size-400);
-          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-          opacity: 0;
-
-          &.is-pinned {
-            opacity: 1;
-          }
-        `}>
-        <Outline withSubHeading={true} />
-      </aside>
-    </>
+    <aside
+      css={css`
+        position: fixed;
+        overflow: auto;
+        bottom: 0;
+        top: calc(
+          var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400) +
+            var(--spectrum-global-dimension-size-85)
+        );
+        left: ${layoutColumns(10)};
+        width: ${layoutColumns(3)};
+        margin-left: var(--spectrum-global-dimension-size-400);
+        transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+      `}>
+      <Outline />
+    </aside>
   ) : null;
 };
 

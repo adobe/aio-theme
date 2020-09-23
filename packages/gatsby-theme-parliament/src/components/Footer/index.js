@@ -27,12 +27,15 @@ const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 const externalLinkProps = getExternalLinkProps();
 
 const Footer = ({ hasSideNav = false, isCentered = false }) => (
-  <View
-    elementType="footer"
-    position="relative"
-    paddingBottom="size-400"
-    paddingTop="size-700"
-    backgroundColor="gray-75">
+  <footer
+    css={css`
+      position: relative;
+      box-sizing: border-box;
+      padding-bottom: var(--spectrum-global-dimension-size-400);
+      padding-top: var(--spectrum-global-dimension-size-700);
+      background-color: var(--spectrum-global-color-gray-75);
+      ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
+    `}>
     <div
       css={css`
         box-sizing: border-box;
@@ -309,7 +312,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
         </View>
       </Flex>
     </div>
-  </View>
+  </footer>
 );
 
 Footer.propTypes = {

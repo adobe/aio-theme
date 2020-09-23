@@ -25,10 +25,7 @@ const Resources = ({ heading, links }) => {
   return (
     <aside
       css={css`
-        min-width: ${layoutColumns(3, [
-          'var(--spectrum-global-dimension-size-400)',
-          'var(--spectrum-global-dimension-size-100)'
-        ])};
+        width: ${layoutColumns(3)};
         margin-left: var(--spectrum-global-dimension-size-400);
         margin-top: var(--spectrum-global-dimension-size-400);
       `}>

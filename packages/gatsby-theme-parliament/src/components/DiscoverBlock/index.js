@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 const imageWidth = 'var(--spectrum-global-dimension-size-1250)';
 
 const DiscoverBlock = ({
-  width = layoutColumns(3, ['var(--spectrum-global-dimension-size-400)', 'var(--spectrum-global-dimension-size-400)']),
+  width = layoutColumns(3, ['var(--spectrum-global-dimension-size-500)']),
   heading,
   link,
   text,
@@ -42,7 +42,7 @@ const DiscoverBlock = ({
           : ''}
         display: inline-flex;
         flex-direction: column;
-        margin-right: var(--spectrum-global-dimension-size-200);
+        margin-right: var(--spectrum-global-dimension-size-400);
         margin-bottom: var(--spectrum-global-dimension-size-100);
         width: ${width};
       `}>

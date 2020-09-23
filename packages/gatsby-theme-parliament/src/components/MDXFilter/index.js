@@ -47,7 +47,7 @@ import { MDXBlocks } from './MDXBlocks';
 const theme = globalTheme.code;
 
 // Filters custom MDX components out of the markdown and applies magic rules
-const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, query }) => {
+const filterChildren = ({ childrenArray, query }) => {
   const filteredChildren = [];
 
   let heroChild = null;
@@ -151,20 +151,6 @@ const filterChildren = ({ childrenArray, tableOfContents, hasSideNav, isJsDoc, q
     }
 
     childrenArray = childrenArray.splice(ignoredChildrenCount);
-  }
-
-  // Insert OnThisPage after heading 1 [+ Paragraph] if not a Hero
-  if (!heroChild && (hasSideNav || isJsDoc)) {
-    const heading1 = filteredChildren.find((child) => child?.props?.mdxType === 'h1');
-    const heading1Index = filteredChildren.indexOf(heading1);
-    const heading1Next = filteredChildren[heading1Index + 1];
-    if (heading1) {
-      filteredChildren.splice(
-        heading1Index + (heading1Next?.props?.mdxType === 'p' ? 2 : 1),
-        0,
-        <OnThisPage key="-1" tableOfContents={tableOfContents} />
-      );
-    }
   }
 
   return {
@@ -286,12 +272,7 @@ export default ({ children, pageContext, query }) => {
     }
 
     // Custom MDX components
-    const { filteredChildren, heroChild, resourcesChild } = filterChildren({
-      childrenArray,
-      tableOfContents,
-      hasSideNav,
-      isJsDoc
-    });
+    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray });
 
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
@@ -321,11 +302,7 @@ export default ({ children, pageContext, query }) => {
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                      : layoutColumns(isDocs ? 7 : 9, [
-                          'var(--spectrum-global-dimension-size-400)',
-                          'var(--spectrum-global-dimension-size-200)',
-                          'var(--spectrum-global-dimension-size-100)'
-                        ])};
+                      : layoutColumns(isDocs ? 7 : 9)};
                   `}>
                   {isDocs && (
                     <Flex marginTop="size-400">
@@ -375,6 +352,7 @@ export default ({ children, pageContext, query }) => {
                 {resourcesChild && resourcesChild}
               </Flex>
             </section>
+            {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
             <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} />
           </>
         )}

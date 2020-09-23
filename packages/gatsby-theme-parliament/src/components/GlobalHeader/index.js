@@ -123,8 +123,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     {globalNav.home.logo === 'adobe' ? (
                       <Adobe
                         css={css`
-                          width: var(--spectrum-global-dimension-size-450);
-                          height: var(--spectrum-global-dimension-size-400);
+                          width: var(--spectrum-global-dimension-size-300);
+                          height: var(--spectrum-global-dimension-size-250);
                           display: block;
                           margin-right: var(--spectrum-global-dimension-size-200);
                         `}

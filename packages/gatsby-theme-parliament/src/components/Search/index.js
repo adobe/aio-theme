@@ -88,13 +88,13 @@ const SearchResults = ({ results, setIsOpen }) => {
   return (
     <View marginTop="size-800" marginBottom="size-800">
       <Flex direction="column" alignItems="center" justifyContent="center">
-        <h3
-          className="spectrum-Heading--M"
+        <h4
+          className="spectrum-Heading--S"
           css={css`
-            margin-bottom: var(--spectrum-global-dimension-size-200);
+            margin-bottom: var(--spectrum-global-dimension-size-100);
           `}>
           No Results Found
-        </h3>
+        </h4>
         <em>Try another search term</em>
       </Flex>
     </View>
@@ -157,7 +157,7 @@ const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
         css={css`
           position: absolute;
           top: var(--spectrum-global-dimension-size-800);
-          width: var(--spectrum-global-dimension-size-4600);
+          width: var(--spectrum-global-dimension-size-3600);
         `}>
         <SearchResults results={results} setIsOpen={setIsOpen} />
       </Popover>
