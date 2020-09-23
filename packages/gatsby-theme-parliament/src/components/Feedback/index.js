@@ -10,87 +10,40 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
-import classNames from 'classnames';
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Button } from '@adobe/react-spectrum';
-import '@spectrum-css/toast';
+import { DialogTrigger } from '@adobe/react-spectrum';
+import { AlertDialog } from '@adobe/react-spectrum';
 
-const onFeedback = (setIsOpen) => {
-  setIsOpen(true);
-  setTimeout(() => {
-    setIsOpen(false);
-  }, 3000);
-};
+const FeedbackButton = ({ variant }) => (
+  <DialogTrigger>
+    <Button UNSAFE_className={`feedback-${variant.toLowerCase()}`} variant="primary">
+      {variant}
+    </Button>
+    <AlertDialog title="Was this helpful ?" primaryActionLabel="Close">
+      Thank you for providing your feedback.
+    </AlertDialog>
+  </DialogTrigger>
+);
 
-export const Feedback = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <Flex alignItems="center">
-        <span
-          css={css`
-            padding-right: var(--spectrum-global-dimension-size-200);
-          `}>
-          Was this helpful ?
-        </span>
-        <Flex>
-          <View marginEnd="size-200">
-            <Button
-              UNSAFE_className="feedback-yes"
-              variant="primary"
-              onPress={() => {
-                onFeedback(setIsOpen);
-              }}>
-              Yes
-            </Button>
-          </View>
-          <View>
-            <Button
-              UNSAFE_className="feedback-no"
-              variant="primary"
-              onPress={() => {
-                onFeedback(setIsOpen);
-              }}>
-              No
-            </Button>
-          </View>
-        </Flex>
-      </Flex>
-      <div
-        className={classNames('spectrum-Toast', 'spectrum-Toast--positive', { 'is-open': isOpen })}
-        role="alert"
-        aria-live="polite"
-        css={css`
-          pointer-events: none;
-          position: fixed;
-          left: 50%;
-          bottom: var(--spectrum-global-dimension-size-200);
-          z-index: 10;
-          visibility: hidden;
-          opacity: 0;
-          transform: translate3d(-50%, 0, 0);
-          transition: transform var(--spectrum-global-animation-duration-100)
-              var(--spectrum-global-animation-ease-in-out),
-            opacity var(--spectrum-global-animation-duration-100) var(--spectrum-global-animation-ease-in-out),
-            visibility var(--spectrum-global-animation-duration-0) var(--spectrum-global-animation-linear)
-              var(--spectrum-global-animation-duration-100);
-
-          &.is-open {
-            pointer-events: auto;
-            visibility: visible;
-            opacity: 1;
-            transition-delay: var(--spectrum-global-animation-duration-0);
-            transform: translate3d(-50%, calc(-1 * var(--spectrum-global-dimension-size-200)), 0);
-          }
-        `}>
-        <div className="spectrum-Toast-body">
-          <div className="spectrum-Toast-content">Thank you for your feedback.</div>
-        </div>
-      </div>
-    </>
-  );
-};
+export const Feedback = () => (
+  <Flex alignItems="center">
+    <span
+      css={css`
+        padding-right: var(--spectrum-global-dimension-size-200);
+      `}>
+      Was this helpful ?
+    </span>
+    <Flex>
+      <View marginEnd="size-200">
+        <FeedbackButton variant="Yes" />
+      </View>
+      <View>
+        <FeedbackButton variant="No" />
+      </View>
+    </Flex>
+  </Flex>
+);
