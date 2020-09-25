@@ -12,6 +12,8 @@
 
 import React from 'react';
 
+import globalTheme from '../../theme';
+
 import { Link } from '@adobe/react-spectrum';
 import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../Heading';
 import { Paragraph } from '../Paragraph';
@@ -30,7 +32,16 @@ export const MDXComponents = {
   h6: Heading6,
   p: Paragraph,
   ul: List,
-  code: Code,
+  ol: ({ children, ...props }) => (
+    <List elementType="ol" {...props}>
+      {children}
+    </List>
+  ),
+  code: ({ children, theme, ...props }) => (
+    <Code {...props} theme={theme ?? globalTheme.code}>
+      {children}
+    </Code>
+  ),
   inlineCode: InlineCode,
   a: ({ children, ...props }) => (
     <Link isQuiet={true}>

@@ -54,12 +54,12 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
           margin-top: var(--spectrum-global-dimension-size-300) !important;
           font-size: var(--spectrum-global-dimension-size-225);
         }`
-            : `& a {
+            : `& span a {
           opacity: 0;
           transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
         }
 
-        &:hover a {
+        &:hover span a {
           opacity: 1;
         }`}
 

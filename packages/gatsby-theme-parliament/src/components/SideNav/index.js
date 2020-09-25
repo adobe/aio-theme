@@ -13,6 +13,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
+import { isExternalLink, getExternalLinkProps } from '../utils';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
@@ -47,6 +48,15 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
               <h2 className="spectrum-SideNav-heading" id={id}>
                 {page.title}
               </h2>
+            ) : isExternalLink(page.path) ? (
+              <a
+                {...getExternalLinkProps(page.path)}
+                href={page.path}
+                className="spectrum-SideNav-itemLink"
+                role="treeitem"
+                aria-level={level}>
+                {page.title}
+              </a>
             ) : (
               <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
                 {page.title}

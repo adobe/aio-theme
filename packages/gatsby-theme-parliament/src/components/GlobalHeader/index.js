@@ -300,7 +300,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     <TabsItem elementType={GatsbyLink} ref={ref} to={path} selected={getSelectedTabIndex() === i}>
                       {title}
                     </TabsItem>
-                    {i === 0 && versions?.length && (
+                    {i === 0 && versions?.length > 0 && (
                       <div
                         css={css`
                           margin-left: var(--spectrum-global-dimension-size-100) !important;

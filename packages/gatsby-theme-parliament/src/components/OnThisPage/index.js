@@ -101,7 +101,7 @@ const OnThisPage = ({ tableOfContents }) => {
   useEffect(() => {
     const observers = [];
     let activeHeadingLinks = [];
-    const headingLinks = Array.from(document.querySelectorAll('h2 a, h3 a'));
+    const headingLinks = Array.from(document.querySelectorAll('h2 span a, h3 span a'));
     const findActiveHeadingLink = () => {
       let activeHref = null;
 

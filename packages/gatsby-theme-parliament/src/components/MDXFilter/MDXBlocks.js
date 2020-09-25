@@ -10,6 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
+import React from 'react';
+
+import globalTheme from '../../theme';
+
 import { Hero } from '../Hero';
 import { DiscoverBlock } from '../DiscoverBlock';
 import { Resources } from '../Resources';
@@ -29,7 +33,7 @@ export const MDXBlocks = {
   DiscoverBlock,
   Resources,
   InlineAlert,
-  CodeBlock,
+  CodeBlock: ({ theme, ...props }) => <CodeBlock theme={theme ?? globalTheme.code} {...props} />,
   Variant,
   TitleBlock,
   TextBlock,

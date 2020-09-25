@@ -17,16 +17,6 @@ require('dotenv').config({
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-alias-imports`,
-      options: {
-        aliases: {
-          pages: `src/pages`,
-          components: `src/components`,
-          theme: `src/theme`
-        }
-      }
-    },
-    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/Layout/index.js`)

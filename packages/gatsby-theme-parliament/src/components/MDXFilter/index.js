@@ -28,8 +28,6 @@ import {
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 
-import globalTheme from '../../theme';
-
 import { Footer } from '../Footer';
 import { Hero } from '../Hero';
 import { Contributors } from '../Contributors';
@@ -43,8 +41,6 @@ import { OpenAPIBlock } from '@adobe/parliament-ui-components';
 
 import { MDXComponents } from './MDXComponents';
 import { MDXBlocks } from './MDXBlocks';
-
-const theme = globalTheme.code;
 
 // Filters custom MDX components out of the markdown and applies magic rules
 const filterChildren = ({ childrenArray, query }) => {
@@ -108,9 +104,6 @@ const filterChildren = ({ childrenArray, query }) => {
           if (child.props.mdxType === 'Variant') {
             // Set the query to define if the Variant should show its content
             props.query = query;
-          } else if (child.props.mdxType === 'CodeBlock') {
-            // Use the global code theme for CodeBlock
-            props.theme = props.theme || theme;
           }
 
           const childClone = React.cloneElement(child, {
@@ -133,21 +126,7 @@ const filterChildren = ({ childrenArray, query }) => {
     if (ignoredChildrenCount === 0) {
       ignoredChildrenCount++;
 
-      // Use the global code theme for Code
-      if (child?.props?.mdxType === 'pre' && child?.props?.children?.props?.mdxType === 'code') {
-        const { children: preChild, ...preProps } = child.props;
-        filteredChildren.push(
-          React.cloneElement(child, {
-            children: React.cloneElement(preChild, {
-              theme,
-              ...preChild.props
-            }),
-            ...preProps
-          })
-        );
-      } else {
-        filteredChildren.push(child);
-      }
+      filteredChildren.push(child);
     }
 
     childrenArray = childrenArray.splice(ignoredChildrenCount);

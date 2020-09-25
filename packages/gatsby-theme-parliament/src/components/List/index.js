@@ -12,10 +12,21 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import '@spectrum-css/typography';
 
-export const List = ({ children, className, ...props }) => (
-  <ul {...props} className={classNames(className, 'spectrum-Body--M')}>
-    {children}
-  </ul>
-);
+const List = ({ children, elementType = 'ul', className, ...props }) => {
+  const Element = elementType;
+
+  return (
+    <Element {...props} className={classNames(className, 'spectrum-Body--M')}>
+      {children}
+    </Element>
+  );
+};
+
+List.propTypes = {
+  elementType: PropTypes.string
+};
+
+export { List };
