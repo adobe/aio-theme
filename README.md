@@ -52,7 +52,8 @@ Using a theme, all of your default configuration lives in an npm package.
 * [Building](#building-the-gatsby-site)
 * [Publishing](#publishing-the-gatsby-site)
 * [Upgrading the theme](#upgrading-the-theme)
-* [Enhanced Markdown](#enhanced-markdown)
+* [Writing Enhanced Markdown](#writing-enhanced-markdown)
+* [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
 * [Issue tracker](#issue-tracker)
 * [Contributing](#contributing)
@@ -459,14 +460,14 @@ A site is published via a Pull Request:
 
 ## Upgrading the theme
 
-To upgrade to the latest version of the Gatsby Theme Parliament, simply run `yarn upgrade` in your site. 
-This should update the dependency `@adobe/gatsby-theme-parliament` defined in your `package.json` to the latest version based on the specified version range.
+To upgrade to the latest version of `@adobe/gatsby-theme-parliament`, simply run `yarn upgrade` or `npm update` if you have defined the dependency with a version range selector.
+If not, update the version of the dependency by setting the version manually in the `package.json` and run `yarn install` or `npm install`. 
+
+This will also update the lock file `yarn.lock` or `package-lock.json`. 
 
 You can check the latest released version on https://github.com/adobe/gatsby-theme-parliament/releases. 
 
-If your lock file is corrupt, delete `yarn.lock` and run `yarn install`. This will create a new lock file. *Don't forget to commit the updated lock file*.
-
-## Enhanced Markdown 
+## Writing Enhanced Markdown 
 
 ### Front matter support
 
@@ -686,12 +687,56 @@ You can use the Inline Alert to visually inform the reader of important content.
 The refresh token grant type is automatically added to OAuth clients created after September 18, 2019 
 ```
 
-## Embedding external markdown documents and filter with Variant Blocks
+## Embedding markdown documents and filtering content
 
-### Linking sites
+You can use MDX transclusion to embed markdown documents into other markdown documents see the [MDX documentation](https://mdxjs.com/getting-started#documents).
 
-You can use MDX transclusion to embed markdown documents into other markdown documents and because Gatsby sites are using `npm` to define
-dependencies, we can also include external markdown documents. 
+### Embedding local markdown files
+
+For example, if you want to include the content of `overview.md` into `index.md`: 
+
+`index.md` content: 
+```
+import Overview from './overview.md'
+
+# Welcome
+
+Lorem ipsum
+
+<Overview/> 
+
+## Questions
+
+Lorem ipsum
+``` 
+
+`overview.md` content:
+
+```
+## Overview
+
+Lorem ipsum
+```
+
+`index.md` will be rendered as:
+
+``` 
+# Welcome
+
+Lorem ipsum
+
+## Overview
+
+Lorem ipsum
+
+## Questions
+
+Lorem ipsum
+```
+
+### Embedding external markdown files
+
+Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents. 
 
 **You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
@@ -703,7 +748,7 @@ Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_mo
 
 See full example below using a Variant block. 
 
-### Filtering content
+### Filtering content with Variant Blocks
 
 Together with Variant Blocks, the author can query what should be rendered from external sources.
  

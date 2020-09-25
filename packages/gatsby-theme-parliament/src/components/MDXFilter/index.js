@@ -207,7 +207,7 @@ export default ({ children, pageContext, query }) => {
   let childrenArray = React.Children.toArray(children);
 
   // If we have a query, we are inside transclusion
-  if (query) {
+  if (query || typeof pageContext === 'undefined') {
     const { filteredChildren } = filterChildren({ childrenArray, query });
     return <MDXProvider>{filteredChildren}</MDXProvider>;
   } else {

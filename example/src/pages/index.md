@@ -5,6 +5,8 @@ contributors:
   - https://github.com/simonwex 
 ---
 
+import Overview from './overview.md'
+
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](analytics-hero.png) 
@@ -20,13 +22,7 @@ Adobe Product API offers limitless ways to integrate your most important custome
 * [Quickstart Guide](https://www.adobe.io/apis/experiencecloud/analytics/docs.html)
 * [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
 
-## Overview
-
-This documentation provides instructions for Adobe Analytics 2.0 APIs. For working with Analytics 1.4 APIs, see [Analytics 1.4 API Documentation](https://github.com/AdobeDocs/analytics-1.4-apis).
-
-The Adobe Analytics APIs are a collection of APIs that power Adobe Analytics products like Analysis Workspace. 
-The APIs allow for the creation of data rich user interfaces that you can use to manipulate and integrate data.
-You can also create reports to explore, get insights, or answer important questions about your data.
+<Overview />
 
 ## Discover 
 
