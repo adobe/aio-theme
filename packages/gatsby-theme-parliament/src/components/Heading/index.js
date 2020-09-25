@@ -21,7 +21,7 @@ const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
 
 // Use the Anchor to allow scrolling to heading position minus GlobalNav height
 const Anchor = ({ id }) => (
-  <span
+  <div
     aria-hidden="true"
     id={id}
     css={css`
@@ -51,17 +51,18 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         css={css`
           ${isHeading1
             ? `& + p {
-          margin-top: var(--spectrum-global-dimension-size-300) !important;
-          font-size: var(--spectrum-global-dimension-size-225);
-        }`
-            : `& span a {
-          opacity: 0;
-          transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-        }
-
-        &:hover span a {
-          opacity: 1;
-        }`}
+              margin-top: var(--spectrum-global-dimension-size-300) !important;
+              font-size: var(--spectrum-global-dimension-size-225);
+            }`
+            : `
+            & span a {
+              opacity: 0;
+              transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+            }
+    
+            &:hover span a {
+              opacity: 1;
+            }`}
 
           ${styles}
         `}>
