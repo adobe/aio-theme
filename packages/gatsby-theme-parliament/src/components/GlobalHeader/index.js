@@ -52,7 +52,14 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(pages);
 
-    return pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+    let selectedTabIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+
+    // Assume first tab is selected
+    if (selectedTabIndex === -1) {
+      selectedTabIndex = 0;
+    }
+
+    return selectedTabIndex;
   };
 
   const positionSelectedTabIndicator = () => {
