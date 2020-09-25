@@ -23,8 +23,8 @@ const FeedbackButton = ({ variant }) => (
     <Button UNSAFE_className={`feedback-${variant.toLowerCase()}`} variant="primary">
       {variant}
     </Button>
-    <AlertDialog title="Was this helpful ?" primaryActionLabel="Close">
-      Thank you for providing your feedback.
+    <AlertDialog title="Thank you for your feedback" primaryActionLabel="Close">
+      Thank you for helping improve Adobe's documentation.
     </AlertDialog>
   </DialogTrigger>
 );
