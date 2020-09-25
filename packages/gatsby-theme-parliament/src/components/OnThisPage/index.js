@@ -201,7 +201,13 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  return tableOfContentsItems ? (
+  const showTableOfContents =
+    tableOfContentsItems &&
+    (tableOfContentsItems.length > 1 ||
+      (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
+      tableOfContentsItems[0]?.title);
+
+  return showTableOfContents ? (
     <aside
       css={css`
         position: fixed;
