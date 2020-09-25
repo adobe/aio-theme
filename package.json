@@ -2,7 +2,10 @@
   "private": true,
   "name": "gatsby-theme-parliament",
   "version": "0.0.1",
-  "workspaces": ["example", "packages/*"],
+  "workspaces": [
+    "example",
+    "packages/*"
+  ],
   "scripts": {
     "start": "yarn workspace example start",
     "start:prefix": "yarn workspace example start:prefix",

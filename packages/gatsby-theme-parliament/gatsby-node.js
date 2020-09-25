@@ -86,6 +86,30 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type NestedSubPage2 {
       title: String,
+      path: String,
+      pages: [NestedSubPage3]
+    }
+    
+    type NestedSubPage3 {
+      title: String,
+      path: String,
+      pages: [NestedSubPage4]
+    }
+    
+    type NestedSubPage4 {
+      title: String,
+      path: String,
+      pages: [NestedSubPage5]
+    }
+    
+    type NestedSubPage5 {
+      title: String,
+      path: String,
+      pages: [NestedSubPage6]
+    }
+    
+    type NestedSubPage6 {
+      title: String,
       path: String
     }
     

@@ -109,6 +109,34 @@ module.exports = {
             ]
           },
           {
+            title: 'Nested level 2',
+            path: '/guides/reporting_api/nested_level_2/',
+            pages: [
+              {
+                title: 'Nested level 3',
+                path: '/guides/reporting_api/nested_level_2/nested_level_3/',
+                pages: [
+                  {
+                    title: 'Nested level 4',
+                    path: '/guides/reporting_api/nested_level_2/nested_level_3/nested_level_4/',
+                    pages: [
+                      {
+                        title: 'Nested level 5',
+                        path: '/guides/reporting_api/nested_level_2/nested_level_3/nested_level_4/nested_level_5/',
+                        pages: [
+                          {
+                            title: 'Nested level 6',
+                            path: '/guides/reporting_api/nested_level_2/nested_level_3/nested_level_4/nested_level_5/nested_level_6/'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             title: 'Reporting tips and tricks',
             path: '/guides/reporting_api/reporting_tips_tricks/'
           }

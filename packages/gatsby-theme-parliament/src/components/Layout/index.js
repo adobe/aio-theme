@@ -117,6 +117,18 @@ export default ({ children, pageContext, location }) => {
                 pages {
                   title
                   path
+                  pages {
+                    title
+                    path
+                    pages {
+                      title
+                      path
+                      pages {
+                        title
+                        path
+                      }
+                    }
+                  }
                 }
               }
             }
