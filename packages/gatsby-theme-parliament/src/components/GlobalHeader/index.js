@@ -132,7 +132,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           width: var(--spectrum-global-dimension-size-300);
                           height: var(--spectrum-global-dimension-size-250);
                           display: block;
-                          margin-right: var(--spectrum-global-dimension-size-200);
+                          margin-right: var(--spectrum-global-dimension-size-100);
                         `}
                       />
                     ) : (

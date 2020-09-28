@@ -17,7 +17,7 @@ import '@spectrum-css/typography';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 
-const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
+const headingSizes = ['L', 'M', 'S', 'XS', 'XXS', 'XXS'];
 
 // Use the Anchor to allow scrolling to heading position minus GlobalNav height
 const Anchor = ({ id }) => (
@@ -35,7 +35,27 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const HeadingTag = `h${level}`;
   const isHeading1 = level === 1;
   const isHeading2 = level === 2;
+  const isHeading3 = level === 3;
   const marginLink = `margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
+  const animateAnchor = `
+    & span a {
+      opacity: 0;
+      transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+    }
+
+    &:hover span a {
+      opacity: 1;
+    }
+  `;
+  const heading1Overrides = `
+    & + p {
+      margin-top: var(--spectrum-global-dimension-size-300) !important;
+      font-size: var(--spectrum-global-dimension-size-225);
+    }
+  `;
+  const heading3Overrides = `
+    color: var(--spectrum-global-color-gray-800);
+  `;
 
   return (
     <>
@@ -45,25 +65,13 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         className={
           className ||
           classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
-            'spectrum-Heading--light': isHeading1
+            'spectrum-Heading--light': isHeading1,
           })
         }
         css={css`
-          ${isHeading1
-            ? `& + p {
-              margin-top: var(--spectrum-global-dimension-size-300) !important;
-              font-size: var(--spectrum-global-dimension-size-225);
-            }`
-            : `
-            & span a {
-              opacity: 0;
-              transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-            }
-    
-            &:hover span a {
-              opacity: 1;
-            }`}
-
+          ${!isHeading1 && animateAnchor}
+          ${isHeading1 && heading1Overrides}
+          ${isHeading3 && heading3Overrides}
           ${styles}
         `}>
         {children}
