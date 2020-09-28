@@ -17,13 +17,22 @@ import PropTypes from 'prop-types';
 
 import '@spectrum-css/alert';
 
+const getIconName = (variant) => {
+  let icon = variant;
+  
+  if (variant === 'error') {
+    icon = 'alert';
+  }
+  
+  return `${icon.charAt(0).toUpperCase()}${icon.slice(1)}Medium`;
+};
+
 const InlineAlert = ({ variant = 'info', text }) => {
-  const Icon = Icons[`${variant.charAt(0).toUpperCase()}${variant.slice(1)}Medium`];
+  const Icon = Icons[getIconName(variant)];
 
   return (
     <div
       role="alert"
-      variant={variant}
       className={`spectrum-Alert spectrum-Alert--${variant}`}
       css={css`
         width: 100%;

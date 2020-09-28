@@ -521,19 +521,42 @@ And annotate your JS parameters with `<JsDocParameters/>` to render them nicely.
 Despite the markdown files having all an `md` extension, they are actually treated as MDX files. You can use `md` and `mdx` extensions interchangeably.
 
 As we try to limit the use of MDX in favor of pure markdown, we have come up with a way to couple the use of basic markdown syntax with JSX.
-The JSX blocks are using a `slots` property to identify which markdown elements to ingest. 
 
-Also all JSX blocks are self-closing and using only string properties. This helps maintain better readability when rendered on https://github.com.  
+**Always make sure to close JSX blocks and use line breaks between JSX blocks and markdown content to avoid MDX parser issues.**  
 
-### Writing a Hero block
+### Modular Content System
 
-A Hero block should be used on every home page. **Only 1 Hero block per page is allowed**.
+The modular content system is a set of content blocks with variants and compositions that can be used to create pages.
+
+* **Content Blocks are goal-focused.** A group of content that has a specific goal or intention, to structure and support the overall narrative.
+*Examples are groupings of text, groupings of buttons, and hero content.*
+
+* **Variants are messaging-focused.** The messaging points/content (this includes both written and visual content/images) that makes the goal of the content block happen.
+*Examples are text content blocks with icons vs no icons.*
+
+* **Compositions are layout-focused.** The overall narrative for the page.
+
+**A variant can go into a *content block*. Multiple *content blocks* make up a *composition*.**
+
+### JSX Blocks
  
-There are currently 2 ways to write a Hero block.
+**The Content Blocks are defined as JSX Blocks.** They use a `slots` property to identify which markdown elements to ingest using only string properties. 
+This helps maintain better readability when rendered on https://github.com.
 
-1) Using magic rules. If the markdown document starts with an image named `hero` followed by a heading level 1 and a paragraph, the Hero block will be created automatically. 
+Common slots are: `heading`, `image` and `text`. See below examples for full details.   
 
-2) If you need more flexibility e.g. you need to define a specific background color for the Hero, you can use the following syntax: 
+#### Hero Block
+
+A Hero Block should be used on every home page. **Only 1 Hero Block per page is allowed**.
+They are used to set up the tone of the page and optionally add call to actions and intentions for users.
+
+There are 3 different variants: 
+
+* The default variant for Documentation pages.  
+* The half width variant for Product/Platform authored pages. 
+* The full width variant for Index home pages. 
+
+**Default variant:** 
 
 ```
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
@@ -545,12 +568,77 @@ There are currently 2 ways to write a Hero block.
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways. 
 ``` 
 
-*Use `slots` to identify the markdown content to be used by the Hero block. The `image` slot is optional.*
+Use `slots` to identify the markdown content: 
 
-### Writing a Resources List 
+* `heading` (required)
+* `text` (required)
+* `image` (optional)
 
-Use Resources List to display a side list of links. Those links can point to internal or external documents or pages.
-**Only 1 Resources List per page is allowed**.
+Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`; 
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.   
+
+**Half width variant**
+
+```
+<Hero slots="image, heading, icon, text, buttons" variant="halfwidth" />
+
+![Creative Cloud banner](images/cc-hero.png)
+
+# Creativity for all
+
+![Creative Cloud icon](images/cc-icon.png)
+
+Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size 
+
+* [Get started](https://adobe.io)
+* [Sign up for the newsletter](https://adobe.io) 
+```
+
+Use `variant="halfwidth""` to set the half width variant.  
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)
+* `text` (required)
+* `image` (required)
+* `background` (optional)
+* `icon` (optional)
+* `buttons` (optional)  
+
+**Full width variant**
+
+```
+<Hero slots="image, heading, text, buttons" variant="fullwidth" background="rgb(51, 51, 51)" />
+
+![IO banner](images/io-banner.png)
+
+# The most memorable digital experiences are unleashed by developer creativity
+
+Adobe products and technologies power them
+
+* [Explore our APIs](https://adobe.io)
+* [Subscribe](https://adobe.io)
+```
+
+Use `variant="fullwidth""` to set the full width variant.  
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)
+* `text` (required)
+* `image` (required)
+* `background` (optional)
+* `buttons` (optional)  
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+#### Resources Block
+
+Each Documentation overview page has a Resources Block with to display a list of links. 
+They can point to internal or external documents or pages.
+
+**Only 1 Resource Block per page is allowed**.
 
 ```
 <Resources slots="heading, links"/>
@@ -561,12 +649,15 @@ Use Resources List to display a side list of links. Those links can point to int
 * [Adobe Analytics GitHub Repo](https://github.com/AdobeDocs/analytics-2.0-apis) 
 ```
 
-*Use `slots` to identify the markdown content to be used by the Resources List.*
+Use `slots` to identify the markdown content: 
 
-### Writing a Discover Block
+* `heading` (required)
+* `links` (required)  
+
+#### Discover Block
  
-A Discover Block is a section of content that can be used to emphasize certain areas of the page. Multiple Discover Blocks can be displayed in a row. 
-
+A Discover Block is a section of content that can be used to highlight certain areas of a Documentation overview page. There can be multiple Discover Blocks in a row. 
+Discover Blocks can be illustrated but only one illustration per row is allowed.  
 
 **Single Discover Block**
 ```
@@ -590,11 +681,15 @@ Get started with the Adobe Analytics APIs.
      
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
+
+
 <DiscoverBlock slots="link, text"/>
 
 [Segments API](guides/segments_api/) 
 
 Provides configuration guidance and best practices for the /segments endpoint.
+
+
 
 <DiscoverBlock slots="link, text"/>
 
@@ -605,7 +700,7 @@ Provides configuration guidance and best practices for the /reports endpoint.
 <DiscoverBlock slots="link, text"/> 
 ```
 
-**Discover Block with image**
+**Discover Block with illustrations**
 
 ```
 <DiscoverBlock slots="image, heading, link, text"/>
@@ -625,9 +720,16 @@ Open discussion and support with community experts and Adobe staff.
 Tutorials and videos for the community.
 ```
 
-*Use `slots` to identify the markdown content to be used by the Discover Block. The `heading` and `image` slots are optional.*
+Use `slots` to identify the markdown content: 
 
-### Writing a Code Block
+* `heading` (1 required per row)
+* `text` (required)
+* `link` (required) 
+* `image` (optional) 
+
+Use `width` to define the size of the block.  
+
+#### Code Block
 
 A Code Block is an enhanced code section which supports additional features like request/response format, multiple languages etc.
 
@@ -674,18 +776,308 @@ curl -X POST \
 ```
 </pre>     
 
-*Use `repeat` to define how many code sections are part of the Code Block. 
-Use `languages` to define a language name for each code section. Code sections with the same heading are automatically grouped together.*
+Use `slots` to identify the markdown content: 
 
-### Writing an Inline Alert
+* `heading` (required)
+* `code` (required)  
 
-You can use the Inline Alert to visually inform the reader of important content. 
+Use `repeat` to define how many code sections are part of the Code Block.
+ 
+Use `languages` to define a language name for each code section. Code sections with the same heading are automatically grouped together.
+
+#### Inline Alert Block
+
+The Inline Alert Block is used to highlight information. 
 
 ```
-<InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="help" slots="text"/>
 
 The refresh token grant type is automatically added to OAuth clients created after September 18, 2019 
 ```
+
+Use `slots` to identify the markdown content: 
+
+* `text` (required)  
+
+Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
+
+#### Announcement Block
+
+The Announcement Block goes directly underneath the Hero Block for Product/Platform pages. 
+It's used to call out new features, blog posts, news etc. anything that needs that needs to be surfaced above the fold.
+
+```
+<AnnouncementBlock slots="heading, text, button" />
+
+### Try out the magic of Photoshop
+
+Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time spent in each app, freeing you up for more creative time.
+
+[Demo](https://www.adobe.io/apis/creativecloud/photo-imaging-api/api-demo.html) 
+``` 
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)
+* `button` (required)  
+* `text` (optional)  
+
+Use `theme` to match the text color to your color scheme. Defaults to `light`.
+
+#### Summary Block
+
+The Summary Block acts as an anchor at the end of the page. It's a change for Products to give users another call to action, and encourage them to interact after they have gotten to the bottom of the page.
+
+```
+<SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
+
+![CC banner](images/cc-banner.png)
+
+## Subscribe to the Creative Cloud developers newsletter 
+
+A monthly newsletter featuring news for anyone who creates, develops, or build plugins, extensions, or integrations for the
+Creative Cloud family of products.
+
+* [Subscribe to the newsletter](https://adobe.io)
+* [Learn more](https://adobe.io) 
+``` 
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)
+* `buttons` (1 button required at least)  
+* `text` (optional) 
+* `image` (optional)
+
+Use `background` to set a custom background color matching your color scheme. 
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+#### Title Block
+
+A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.  
+
+```
+<TitleBlock slots="heading, text" theme="light" />
+
+### Collaborate better with Content Cloud APIs
+
+With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
+``` 
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)  
+* `text` (optional) 
+
+Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+#### Text Block
+
+Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages. 
+They are coupled with images or videos.   
+
+**With an image, texts and links**
+
+```
+<TextBlock slots="image, heading, text1, text2, links" />
+
+![Screenshot 1](images/intro1.png)
+
+### Extend Adobe CC Flagship Apps
+
+Extend Creative Cloud desktop apps like [Photoshop](https://www.adobe.com/products/photoshop.html), [Premiere Pro](https://www.adobe.com/products/premiere.html), and [InDesign](https://www.adobe.com/products/indesign.html) through our APIs and SDKs. 
+Be sure to check out [Common Extensibility Platform (CEP)](https://www.adobe.io/apis/creativecloud/cep.html), which lets you build custom UI panels for multiple CC apps at once.
+
+When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users. 
+And be sure to join the [Exchange Program for Creative Cloud](https://partners.adobe.com/exchangeprogram/creativecloud) to unlock more benefits, including streamlined publishing and promotional opportunities.
+
+* ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
+* ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
+* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html) 
+```
+
+**Multiple centered Text Blocks in a row**
+
+```
+<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+
+![MSFT Teams logo](images/msfteams.png)
+
+### Microsoft teams
+
+Easily share Creative Cloud assets and files, and get comment notifications on your prototypes.
+
+* [Learn more](https://www.microsoft.com/microsoft-365/microsoft-teams/group-chat-software)
+
+
+
+<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+
+![JIRA Cloud logo](images/jira.png)
+
+### JIRA Cloud
+
+Make designer to developer handoffs easy. Find the latest designs and specs and get thumbnail previews and asset info.
+
+* [Learn more](https://www.atlassian.com/enterprise/cloud)
+
+
+
+<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+
+![Slack logo](images/slack.png)
+
+### Slack
+
+Instantly share Creative Cloud files, designs, specs, and notifications all in real time.
+
+* [Learn more](https://slack.com/enterprise) 
+```
+
+**With a video, icons, buttons dark themed**
+
+```
+<TextBlock slots="video, icons, heading, text, buttons" theme="dark" />
+
+[Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
+
+* ![Adobe](images/adobe.png)
+* ![Microsoft](images/msft.png)
+
+### Partner Success Story
+
+Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to 
+world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
+
+* [Learn more](https://adobe.io)
+* [Sign up for partner program](https://adobe.io) 
+```
+
+Use `slots` to identify the markdown content: 
+
+* `heading` (required)  
+* `text` (required). Support multiple texts e.g `text1, text2` etc. 
+* `links` (optional). Supports 1 optional image per link. 
+* `buttons` (optional)
+* `icons` (optional)
+* `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.      
+* `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`. Supports youtube videos only.
+  
+Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
+  
+Use `isCentered` to center the text.   
+  
+Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+#### Product Card
+
+Product Cards group information that allow to browse a collection of related content.
+
+```
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+
+![CC icon](images/cc-icon.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
+
+
+
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+
+![CC icon](images/cc-icon.png)
+
+#### Adobe Stock
+
+Gives your users access to the perfect Adobe Stock asset to enhance their creative projects. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
+
+
+
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+
+![CC icon](images/cc-icon.png)
+
+#### Common Extensibility Platform
+
+Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io) 
+``` 
+
+Use `slots` to identify the markdown content: 
+  
+* `heading` (required) 
+* `text` (required) 
+* `buttons` (1 button required at least)
+* `icon` (optional)
+
+Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
+
+#### Resource Card
+
+Resource Cards are used on Product/Platform pages for external cross-promotion of materials. Examples includes articles, videos etc.
+
+There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resource Cards with different variants to create a Resource composition.  
+
+```
+<ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 3](images/resource3.png)
+
+### Creating a Great Adobe XD Plugin Listing 
+
+Rob Kleiman, July 8th 2020
+
+
+
+<ResourceCard slots="link, image, heading, text" width="50%" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 1](images/resource1.png)
+
+### Pattern Builder: A Behind the Scenes Look at Adobe Capture
+
+Nihil Gupta, July 24th 2020
+
+
+
+<ResourceCard slots="link, image, heading, text" width="50%" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 1](images/resource2.png)
+
+### Photoshop Extensibility Enters a New Era Soon: How to get Involved Early
+
+Ash Ryan Arnwine, March 12th 2020 
+```
+
+Use `slots` to identify the markdown content: 
+  
+* `link` (required) 
+* `heading` (required) 
+* `image` (required)
+* `text` (optional)
+
+Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
 
 ## Embedding markdown documents and filtering content
 

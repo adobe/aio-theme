@@ -116,7 +116,7 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
           css={css`
             position: relative;
             height: ${height};
-            background: ${background ?? 'transparent'};
+            background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
           `}>
           <HeroImage image={image} />
 

@@ -49,31 +49,9 @@ const filterChildren = ({ childrenArray, query }) => {
   let heroChild = null;
   let resourcesChild = null;
 
-  let isFirstChild = true;
-
   while (childrenArray.length) {
     const child = childrenArray[0];
     let ignoredChildrenCount = 0;
-
-    // Magic rule to render a Hero:
-    // 1) First child has an image with a filename that starts with "hero"
-    // 2) Second child is a heading level 1
-    // 3) Third child is a paragraph
-    if (isFirstChild) {
-      if (child?.props?.children?.[0]?.props?.src) {
-        const image = getElementChild(child).props.src.split('/').pop();
-        if (
-          image.toLowerCase().startsWith('hero') &&
-          childrenArray?.[1]?.props?.mdxType === 'h1' &&
-          childrenArray?.[2]?.props?.mdxType === 'p'
-        ) {
-          heroChild = <Hero image={child} heading={childrenArray[1]} text={childrenArray[2]} />;
-          ignoredChildrenCount += 3;
-        }
-      }
-
-      isFirstChild = false;
-    }
 
     // Verify if child is a custom MDX component
     Object.keys(MDXBlocks).forEach((customComponent) => {
