@@ -545,7 +545,7 @@ This helps maintain better readability when rendered on https://github.com.
 
 Common slots are: `heading`, `image` and `text`. See below examples for full details.   
 
-#### Hero Block
+### Hero Block
 
 A Hero Block should be used on every home page. **Only 1 Hero Block per page is allowed**.
 They are used to set up the tone of the page and optionally add call to actions and intentions for users.
@@ -633,7 +633,7 @@ Use `slots` to identify the markdown content:
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-#### Resources Block
+### Resources Block
 
 Each Documentation overview page has a Resources Block with to display a list of links. 
 They can point to internal or external documents or pages.
@@ -654,7 +654,7 @@ Use `slots` to identify the markdown content:
 * `heading` (required)
 * `links` (required)  
 
-#### Discover Block
+### Discover Block
  
 A Discover Block is a section of content that can be used to highlight certain areas of a Documentation overview page. There can be multiple Discover Blocks in a row. 
 Discover Blocks can be illustrated but only one illustration per row is allowed.  
@@ -729,7 +729,7 @@ Use `slots` to identify the markdown content:
 
 Use `width` to define the size of the block.  
 
-#### Code Block
+### Code Block
 
 A Code Block is an enhanced code section which supports additional features like request/response format, multiple languages etc.
 
@@ -785,7 +785,7 @@ Use `repeat` to define how many code sections are part of the Code Block.
  
 Use `languages` to define a language name for each code section. Code sections with the same heading are automatically grouped together.
 
-#### Inline Alert Block
+### Inline Alert Block
 
 The Inline Alert Block is used to highlight information. 
 
@@ -801,7 +801,7 @@ Use `slots` to identify the markdown content:
 
 Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
 
-#### Announcement Block
+### Announcement Block
 
 The Announcement Block goes directly underneath the Hero Block for Product/Platform pages. 
 It's used to call out new features, blog posts, news etc. anything that needs that needs to be surfaced above the fold.
@@ -824,7 +824,7 @@ Use `slots` to identify the markdown content:
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
 
-#### Summary Block
+### Summary Block
 
 The Summary Block acts as an anchor at the end of the page. It's a change for Products to give users another call to action, and encourage them to interact after they have gotten to the bottom of the page.
 
@@ -853,7 +853,7 @@ Use `background` to set a custom background color matching your color scheme.
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-#### Title Block
+### Title Block
 
 A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.  
 
@@ -872,7 +872,7 @@ Use `slots` to identify the markdown content:
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
-#### Text Block
+### Text Block
 
 Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages. 
 They are coupled with images or videos.   
@@ -972,7 +972,7 @@ Use `isCentered` to center the text.
   
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
-#### Product Card
+### Product Card
 
 Product Cards group information that allow to browse a collection of related content.
 
@@ -1026,7 +1026,7 @@ Use `theme` to match the text color to your color scheme. Defaults to `lightest`
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
 
-#### Resource Card
+### Resource Card
 
 Resource Cards are used on Product/Platform pages for external cross-promotion of materials. Examples includes articles, videos etc.
 

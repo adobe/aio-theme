@@ -19,11 +19,11 @@ import '@spectrum-css/alert';
 
 const getIconName = (variant) => {
   let icon = variant;
-  
+
   if (variant === 'error') {
     icon = 'alert';
   }
-  
+
   return `${icon.charAt(0).toUpperCase()}${icon.slice(1)}Medium`;
 };
 
