@@ -11,6 +11,7 @@
  */
 
 import React, { useEffect } from 'react';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { Accordion, AccordionItem } from '@adobe/parliament-ui-components';
@@ -66,7 +67,20 @@ const JsDocParameters = ({ items }) => {
     }
   };
 
-  return <Accordion>{createAccordionItems(items)}</Accordion>;
+  return (
+    <div
+      css={css`
+        .spectrum-Accordion-itemHeader {
+          font-size: var(--spectrum-global-dimension-font-size-200);
+        }
+
+        .spectrum-Accordion-itemContent {
+          padding-top: var(--spectrum-global-dimension-size-100);
+        }
+      `}>
+      <Accordion>{createAccordionItems(items)}</Accordion>
+    </div>
+  );
 };
 
 JsDocParameters.propTypes = {
