@@ -21,8 +21,7 @@ import {
   findSelectedPageSiblings,
   findSelectedPageNextPrev,
   findSelectedTopPage,
-  findSelectedPages,
-  getElementChild
+  findSelectedPages
 } from '../utils';
 
 import { Flex } from '@adobe/react-spectrum';
@@ -97,6 +96,8 @@ const filterChildren = ({ childrenArray, query }) => {
           } else {
             filteredChildren.push(childClone);
           }
+        } else {
+          filteredChildren.push(child);
         }
       }
     });
@@ -184,9 +185,9 @@ const jsDocFilter = (childrenArray) => {
 export default ({ children, pageContext, query }) => {
   let childrenArray = React.Children.toArray(children);
 
-  // If we have a query, we are inside transclusion
   if (query || typeof pageContext === 'undefined') {
     const { filteredChildren } = filterChildren({ childrenArray, query });
+    // No layout for transclusions
     return <MDXProvider>{filteredChildren}</MDXProvider>;
   } else {
     const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
@@ -199,27 +200,33 @@ export default ({ children, pageContext, query }) => {
     const { nextPage, previousPage } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
 
     // OnThisPage
-    const { componentPath } = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
-    const { tableOfContents } = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+    const componentPathObj = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
+    const componentPath = componentPathObj?.componentPath ?? '';
+    const tableOfContentsObj = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+    const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
     const { repository, branch, root } = allGithub.nodes[0];
-    const { contributors } = allGithubContributors.nodes.find(
+    const contributorsObj = allGithubContributors.nodes.find(
       ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
     );
+    const contributors = contributorsObj?.contributors ?? [];
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
     const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
     let selectedSubPages = findSelectedPages(location.pathname, siteMetadata.subPages);
-    const duplicates = [];
-    if (selectedSubPages.length > 2 && selectedSubPages[0].path === selectedSubPages[1]?.path) {
-      duplicates.push(1);
+    if (selectedSubPages.length > 2) {
+      const filteredSelectedSubPages = [];
+      let lastPath = '';
+      selectedSubPages.forEach((subPage) => {
+        if (subPage.path !== lastPath) {
+          filteredSelectedSubPages.push(subPage);
+        }
+        lastPath = subPage.path;
+      });
+      selectedSubPages = filteredSelectedSubPages;
     }
-    if (selectedSubPages.length > 4 && selectedSubPages[2].path === selectedSubPages[3]?.path) {
-      duplicates.push(3);
-    }
-    selectedSubPages = selectedSubPages.filter((page, index) => !duplicates.includes(index));
 
     // JSDoc filter
     let isJsDoc = false;
