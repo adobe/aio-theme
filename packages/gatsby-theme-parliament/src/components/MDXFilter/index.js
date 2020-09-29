@@ -248,7 +248,12 @@ export default ({ children, pageContext, query }) => {
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
-        <main className="spectrum-Typography">
+        <main css={css`
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+        `}>
           {heroChild && heroChild}
           <div
             css={css`
@@ -267,7 +272,7 @@ export default ({ children, pageContext, query }) => {
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                    : layoutColumns(isDocs ? 7 : 9)};
+                    : layoutColumns(isDocs ? 9 : 12)};
                 `}>
                 {isDocs && (
                   <Flex marginTop="size-400">

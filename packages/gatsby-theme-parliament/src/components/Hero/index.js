@@ -107,9 +107,10 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
           margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
           position: relative;
+          width: 100%;
+          justify-content: center;
+          display: flex;
         `}>
-        <HeroImage image={image} />
-
         <div
           css={css`
             margin-left: var(--spectrum-global-dimension-size-800);

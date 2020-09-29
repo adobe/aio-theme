@@ -217,8 +217,8 @@ const OnThisPage = ({ tableOfContents }) => {
           var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400) +
             var(--spectrum-global-dimension-size-85)
         );
-        left: ${layoutColumns(10)};
-        width: ${layoutColumns(3)};
+        left: ${layoutColumns(12)};
+        width: ${layoutColumns(2)};
         margin-left: var(--spectrum-global-dimension-size-400);
         transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
       `}>

@@ -53,8 +53,12 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
       font-size: var(--spectrum-global-dimension-size-225);
     }
   `;
+  const heading2Overrides = `
+    margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+  `;
   const heading3Overrides = `
     color: var(--spectrum-global-color-gray-800);
+    margin-bottom: var(--spectrum-global-dimension-size-100) !important;
   `;
 
   return (
@@ -71,6 +75,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         css={css`
           ${!isHeading1 && animateAnchor}
           ${isHeading1 && heading1Overrides}
+          ${isHeading2 && heading2Overrides}
           ${isHeading3 && heading3Overrides}
           ${styles}
         `}>
