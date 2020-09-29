@@ -18,7 +18,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import '@spectrum-css/typography';
 import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
-import { ActionButton } from '../ActionButton';
+import { ActionButton } from '@adobe/react-spectrum';
 import PropTypes from 'prop-types';
 
 const openTooltip = (setIsTooltipOpen) => {
@@ -47,10 +47,16 @@ const Code = ({ children, className = '', theme }) => {
         const textarea = createRef();
 
         return (
-          <pre className={classNames(className, 'spectrum-Code4', `spectrum--${theme}`)}>
+          <div
+            className={`spectrum--${theme}`}
+            css={css`
+              position: relative;
+            `}>
             <div
               css={css`
-                position: relative;
+                position: absolute;
+                top: var(--spectrum-global-dimension-size-200);
+                right: var(--spectrum-global-dimension-size-200);
               `}>
               <textarea
                 tabIndex="-1"
@@ -66,14 +72,9 @@ const Code = ({ children, className = '', theme }) => {
               />
               <ActionButton
                 aria-describedby={tooltipId}
-                onClick={() => {
+                onPress={() => {
                   copy(textarea, document, setIsTooltipOpen);
-                }}
-                css={css`
-                  position: absolute;
-                  top: ${isMultiLine ? '0' : '-6px'};
-                  right: 0;
-                `}>
+                }}>
                 Copy
               </ActionButton>
               <span
@@ -82,8 +83,8 @@ const Code = ({ children, className = '', theme }) => {
                 css={css`
                   display: block;
                   position: absolute;
-                  top: ${isMultiLine ? '4px' : '-2px'};
-                  right: var(--spectrum-global-dimension-size-600);
+                  top: var(--spectrum-global-dimension-size-50);
+                  right: var(--spectrum-global-dimension-size-675);
                   left: initial;
                   font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
                 `}
@@ -91,41 +92,42 @@ const Code = ({ children, className = '', theme }) => {
                   'is-open': isTooltipOpen
                 })}>
                 <span className="spectrum-Tooltip-label">Copied to your clipboard</span>
-                <span className="spectrum-Tooltip-tip"></span>
+                <span className="spectrum-Tooltip-tip" />
               </span>
             </div>
+            <pre className={classNames(className, 'spectrum-Code4')}>
+              {tokens.slice(0, -1).map((line, i) => {
+                const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 
-            {tokens.slice(0, -1).map((line, i) => {
-              const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
-
-              return (
-                <div
-                  key={i}
-                  css={css`
-                    display: table-row;
-                  `}>
-                  {isMultiLine && (
-                    <span
-                      css={css`
-                        display: table-cell;
-                        color: var(--spectrum-global-color-gray-500);
-                        text-align: left;
-                        padding-right: var(--spectrum-global-dimension-size-200);
-                        user-select: none;
-                      `}>
-                      {i + 1}
+                return (
+                  <div
+                    key={i}
+                    css={css`
+                      display: table-row;
+                    `}>
+                    {isMultiLine && (
+                      <span
+                        css={css`
+                          display: table-cell;
+                          color: var(--spectrum-global-color-gray-500);
+                          text-align: left;
+                          padding-right: var(--spectrum-global-dimension-size-200);
+                          user-select: none;
+                        `}>
+                        {i + 1}
+                      </span>
+                    )}
+                    <span {...lineProps}>
+                      {line.map((token, key) => {
+                        const { style: tokenStyles, ...tokenProps } = getTokenProps({ token, key });
+                        return <span key={key} {...tokenProps} />;
+                      })}
                     </span>
-                  )}
-                  <span {...lineProps}>
-                    {line.map((token, key) => {
-                      const { style: tokenStyles, ...tokenProps } = getTokenProps({ token, key });
-                      return <span key={key} {...tokenProps} />;
-                    })}
-                  </span>
-                </div>
-              );
-            })}
-          </pre>
+                  </div>
+                );
+              })}
+            </pre>
+          </div>
         );
       }}
     </Highlight>
