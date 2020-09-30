@@ -35,10 +35,10 @@ export const Feedback = () => (
       css={css`
         padding-right: var(--spectrum-global-dimension-size-200);
       `}>
-      Was this helpful ?
+      Was this helpful?
     </span>
     <Flex>
-      <View marginEnd="size-200">
+      <View marginEnd="size-100">
         <FeedbackButton variant="Yes" />
       </View>
       <View>
