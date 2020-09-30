@@ -1,9 +1,15 @@
+.editorconfig
+
+# npm yarn
+node_modules
+package.lock
+yarn-error.log
+
 # gatsby files
 .env
 .cache
 public
-node_modules
-package.lock
 
-yarn-error.log
-.editorconfig
+# cypress
+cypress/videos
+cypress/screenshots

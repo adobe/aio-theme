@@ -1,11 +1,19 @@
 {
   "private": true,
-  "name": "gatsby-theme-parliament",
-  "version": "0.0.1",
+  "name": "gatsby-theme-parliament-root",
   "workspaces": [
     "example",
     "packages/*"
   ],
+  "devDependencies": {
+    "@testing-library/cypress": "^6.0.1",
+    "axe-core": "^4.0.1",
+    "cypress": "^5.0.0",
+    "cypress-axe": "^0.8.1",
+    "gatsby-cypress": "^0.4.10",
+    "lerna": "^3.22.1",
+    "start-server-and-test": "^1.11.3"
+  },
   "scripts": {
     "start": "yarn workspace example start",
     "start:prefix": "yarn workspace example start:prefix",
@@ -14,6 +22,7 @@
     "serve": "yarn workspace example serve",
     "clean": "yarn workspace example clean",
     "format": "npx prettier --write '**/*.{js,json}'",
-    "test": "echo 'https://www.gatsbyjs.org/docs/testing/'"
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test dev http://localhost:8000 cy:open"
   }
 }
