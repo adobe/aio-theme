@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.9](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.8...@adobe/gatsby-theme-parliament@2.1.9) (2020-09-30)
+
+
+### Bug Fixes
+
+* prepare lerna ([4961f18](https://github.com/adobe/gatsby-theme-parliament/commit/4961f184fcf2fa6b8a69381d082ffd6d25c51fbe))
+
+
+
+
+
 ## 2.1.8 (2020-09-30)
 
 
