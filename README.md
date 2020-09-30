@@ -1278,3 +1278,12 @@ Please check existing issues before filing anything new.
 ## Contributing
 
 Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING.md) for more information.
+
+See [Conventional Commits](https://conventionalcommits.org/) for commit guidelines.
+
+
+## Publishing
+
+The repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
+
+Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna publish --create-release github --conventional-commits` for publishing `@adobe/gatsby-theme-parliament` on npm.

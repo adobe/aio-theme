@@ -24,6 +24,10 @@ as part of the project. [Sign our CLA](https://opensource.adobe.com/cla.html). Y
 only need to submit an Adobe CLA one time, so if you have submitted one previously,
 you are good to go!
 
+## Commit guidelines
+
+See [Conventional Commits](https://conventionalcommits.org/) for commit guidelines.
+
 ## Code Reviews
 
 All submissions should come in the form of pull requests and need to be reviewed
