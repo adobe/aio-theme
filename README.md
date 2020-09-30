@@ -1286,4 +1286,4 @@ See [Conventional Commits](https://conventionalcommits.org/) for commit guidelin
 
 The repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
-Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna publish --create-release github --conventional-commits` for publishing `@adobe/gatsby-theme-parliament` on npm.
+Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna publish --create-release github --conventional-commits --no-private` for publishing `@adobe/gatsby-theme-parliament` on npm.
