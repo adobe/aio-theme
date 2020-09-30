@@ -87,5 +87,6 @@
     "remark-docz": "^2.1.0",
     "remark-external-links": "^6.1.0",
     "styled-components": "^5.1.1"
-  }
+  },
+  "gitHead": "05c3c34f577abe7f035a1f18d0e8197074ccc0b8"
 }
