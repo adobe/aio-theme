@@ -13,3 +13,6 @@ public
 # cypress
 cypress/videos
 cypress/screenshots
+
+# lerna
+lerna-debug.log
