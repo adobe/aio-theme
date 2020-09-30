@@ -155,7 +155,6 @@ const TextBlock = ({
 
     return (
       <section
-        data-counter={counter}
         className={`spectrum--${theme}`}
         css={css`
           display: inline-flex;
