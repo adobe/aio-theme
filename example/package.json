@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "example",
-  "version": "0.0.1",
   "dependencies": {
     "@adobe/gatsby-theme-parliament": "*",
     "gatsby": "^2.23.11",
