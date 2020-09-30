@@ -66,14 +66,17 @@ export const findSelectedPages = (pathname, pages) => {
   }
 
   let selectedPages = [];
+  let level = 1;
 
   const find = (page) => {
     let subPages = [];
     if (page.path && pathname.startsWith(withPrefix(page.path))) {
+      page.level = level;
       subPages.push(page);
     }
 
     if (page.pages) {
+      level++;
       page.pages.forEach((subPage) => {
         subPages = [...subPages, ...find(subPage)];
       });

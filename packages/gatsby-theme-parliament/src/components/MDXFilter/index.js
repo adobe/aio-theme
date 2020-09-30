@@ -215,17 +215,19 @@ export default ({ children, pageContext, query }) => {
 
     // Breadcrumbs
     const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
-    let selectedSubPages = findSelectedPages(location.pathname, siteMetadata.subPages);
-    if (selectedSubPages.length > 2) {
-      const filteredSelectedSubPages = [];
-      let lastPath = '';
-      selectedSubPages.forEach((subPage) => {
-        if (subPage.path !== lastPath) {
-          filteredSelectedSubPages.push(subPage);
+    const selectedPages = findSelectedPages(location.pathname, siteMetadata.subPages);
+
+    // Remove duplicated levels
+    let selectedSubPages = [];
+    if (selectedPages.length) {
+      const levels = selectedPages[selectedPages.length - 1].level + 1;
+      for (let level = 0; level < levels; level++) {
+        const selectedSubPage = selectedPages.filter((page) => page.level === level);
+        if (selectedSubPage.length) {
+          // Add the last item corresponding to the current level
+          selectedSubPages.push(selectedSubPage.pop());
         }
-        lastPath = subPage.path;
-      });
-      selectedSubPages = filteredSelectedSubPages;
+      }
     }
 
     // JSDoc filter
