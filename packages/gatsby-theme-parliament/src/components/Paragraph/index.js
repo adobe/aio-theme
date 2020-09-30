@@ -11,10 +11,19 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 
+const paragraphOverrides = `
+  margin-top: var(--spectrum-global-dimension-size-300);
+`;
+
 export const Paragraph = ({ children, className, ...props }) => (
-  <p {...props} className={className || 'spectrum-Body--M'}>
+  <p {...props}
+  className={className || 'spectrum-Body--M'}
+  css={css`
+    ${paragraphOverrides}
+  `}>
     {children}
   </p>
 );

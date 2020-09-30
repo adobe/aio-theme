@@ -54,11 +54,20 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     }
   `;
   const heading2Overrides = `
+    margin-top: var(--spectrum-global-dimension-size-800);
     margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   `;
   const heading3Overrides = `
     color: var(--spectrum-global-color-gray-800);
-    margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+    margin-top: var(--spectrum-global-dimension-size-500);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   `;
 
   return (

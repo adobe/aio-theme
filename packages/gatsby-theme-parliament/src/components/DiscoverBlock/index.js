@@ -43,8 +43,12 @@ const DiscoverBlock = ({
         display: inline-flex;
         flex-direction: column;
         margin-right: var(--spectrum-global-dimension-size-400);
-        margin-bottom: var(--spectrum-global-dimension-size-100);
+        margin-top: var(--spectrum-global-dimension-size-200);
         width: ${width};
+
+        p {
+          margin-top: 0;
+        }
       `}>
       {image &&
         React.cloneElement(image, {
