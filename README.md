@@ -320,8 +320,8 @@ is matching to the following config:
 ```
 pages: [
   {
-	title: 'Support',
-	path: '/support/'
+    title: 'Support',
+    path: '/support/'
   }
 ],
 subPages: [
@@ -355,8 +355,8 @@ is matching the following config:
 ``` 
 pages: [
   {
-	title: 'Support',
-	path: '/support/'
+    title: 'Support',
+    path: '/support/'
   }
 ],
 subPages: [
@@ -404,8 +404,8 @@ is matching the following config:
 ```
 pages: [
   {
-	title: 'Support',
-	path: '/support/'
+    title: 'Support',
+    path: '/support/'
   }
 ],
 subPages: [
@@ -455,8 +455,8 @@ you would have to define a different path for `Overview`:
 ``` 
 pages: [
   {
-	title: 'Support',
-	path: '/support/'
+    title: 'Support',
+    path: '/support/'
   }
 ],
 subPages: [
