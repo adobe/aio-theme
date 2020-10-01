@@ -23,6 +23,7 @@ import nextId from 'react-id-generator';
 const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
+  const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
 
   const renderSubtree = (pages, level) =>
     pages
@@ -41,7 +42,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
             `}
             className={classNames([
               'spectrum-SideNav-item',
-              { 'is-expanded': isSelected || hasHeader },
+              { 'is-expanded': isSelected || page.header },
               { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
             ])}>
             {page.header ? (
@@ -99,7 +100,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
         `}>
         <ul
           aria-label="Table of contents"
-          className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': !hasHeader })}>
+          className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader })}>
           {renderSubtree(selectedSubPages, 1)}
         </ul>
       </div>
