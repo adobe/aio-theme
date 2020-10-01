@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.12](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.11...@adobe/gatsby-theme-parliament@2.1.12) (2020-10-01)
+
+
+### Bug Fixes
+
+* Fix Search form submit missing path prefix ([363f4c6](https://github.com/adobe/gatsby-theme-parliament/commit/363f4c650d9237feac8394de2cb51e6f4672c4da))
+* Update links in menus and footer ([1058e9f](https://github.com/adobe/gatsby-theme-parliament/commit/1058e9f98275aef9f00310409858f2376dc57233))
+
+
+
+
+
 ## [2.1.11](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.10...@adobe/gatsby-theme-parliament@2.1.11) (2020-10-01)
 
 
