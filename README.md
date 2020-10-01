@@ -833,7 +833,7 @@ Get started with the Adobe Analytics APIs.
 
 **Multiple Discover Blocks in a row**
 
-[multiple discover blocks](docs/images/discover-block-multiple.png)
+![multiple discover blocks](docs/images/discover-block-multiple.png)
 
 ```
 <DiscoverBlock slots="heading, link, text"/> 
