@@ -464,15 +464,10 @@ subPages: [
 
 #### Auto-collapsing of multi-level side navigation 
  
-In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because: 
- 
-1. The current location is `/support/`   
-2. `Overview` and `Help` paths both matches the current location `/support/`
-3. `Overview` is defined as first `subPage` with path `/support/`
-4. `Help` is defined as first `page` of `Overview` with path `support`
+In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because `Overview` and `Help` paths both matches the current location `/support/`. 
 
-It also means that if you don't want auto-collapsing, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`, 
-you would have to define a different path for `Overview`:
+It also means that if you don't want the auto-collapsing behavior, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`, 
+you would have to define a different path for `Overview` and `Help`:
 
 ``` 
 pages: [
