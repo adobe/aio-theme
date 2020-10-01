@@ -47,16 +47,38 @@ Using a theme, all of your default configuration lives in an npm package.
 ## Contents
 
 * [Getting started](#getting-started)
+  + [Using GitHub repository templates](#using-github-repository-templates)
+  + [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
 * [Content structure](#content-structure)
 * [Configuration](#configuration)
-* [Building](#building-the-gatsby-site)
-* [Publishing](#publishing-the-gatsby-site)
-* [Upgrading the theme](#upgrading-the-theme)
+  + [.env file](#env-file)
+  + [Global Navigation](#global-navigation)
+  + [Side Navigation](#side-navigation)
+  + [Versions](#versions)
+* [Building the Gatsby site](#building-the-gatsby-site)
+* [Publishing the Gatsby site](#publishing-the-gatsby-site)
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
+  + [Front matter support](#front-matter-support)
+  + [MDX support](#mdx-support)
+  + [Modular Content System](#modular-content-system)
+  + [JSX Blocks](#jsx-blocks)
+  + [Hero Block](#hero-block)
+  + [Resources Block](#resources-block)
+  + [Discover Block](#discover-block)
+  + [Code Block](#code-block)
+  + [Inline Alert Block](#inline-alert-block)
+  + [Announcement Block](#announcement-block)
+  + [Summary Block](#summary-block)
+  + [Title Block](#title-block)
+  + [Text Block](#text-block)
+  + [Product Card](#product-card)
+  + [Resource Card](#resource-card)
 * [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
+* [Upgrading](#upgrading)
 * [Issue tracker](#issue-tracker)
 * [Contributing](#contributing)
+* [Releases](#releases)
 
 ## Getting started
 
@@ -594,17 +616,7 @@ A site is published via a Pull Request:
 4. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
 6. The Pull Request must be on a `branch in the same repo` (this is a GitHub Actions security restriction for secrets access)
 7. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
-
-
-## Upgrading the theme
-
-To upgrade to the latest version of `@adobe/gatsby-theme-parliament`, simply run `yarn upgrade` or `npm update` if you have defined the dependency with a version range selector.
-If not, update the version of the dependency by setting the version manually in the `package.json` and run `yarn install` or `npm install`. 
-
-This will also update the lock file `yarn.lock` or `package-lock.json`. 
-
-You can check the latest released version on https://github.com/adobe/gatsby-theme-parliament/releases. 
-
+ 
 ## Writing Enhanced Markdown 
 
 ### Front matter support
@@ -696,6 +708,8 @@ There are 3 different variants:
 
 **Default variant:** 
 
+![hero default](docs/images/hero-default.png)
+
 ```
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
@@ -717,6 +731,8 @@ Use `background` to set a custom background color matching your color scheme. De
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.   
 
 **Half width variant**
+
+![hero halfwidth](docs/images/hero-halfwidth.png)
 
 ```
 <Hero slots="image, heading, icon, text, buttons" variant="halfwidth" />
@@ -745,6 +761,8 @@ Use `slots` to identify the markdown content:
 * `buttons` (optional)  
 
 **Full width variant**
+
+![hero fullwidth](docs/images/hero-fullwidth.png)
 
 ```
 <Hero slots="image, heading, text, buttons" variant="fullwidth" background="rgb(51, 51, 51)" />
@@ -778,6 +796,8 @@ They can point to internal or external documents or pages.
 
 **Only 1 Resource Block per page is allowed**.
 
+![resources block](docs/images/resources-block.png)
+
 ```
 <Resources slots="heading, links"/>
 
@@ -798,6 +818,9 @@ A Discover Block is a section of content that can be used to highlight certain a
 Discover Blocks can be illustrated but only one illustration per row is allowed.  
 
 **Single Discover Block**
+
+![single discover block](docs/images/discover-block-single.png)
+
 ```
 <DiscoverBlock width="100%" slots="heading, link, text"/>
 
@@ -809,6 +832,8 @@ Get started with the Adobe Analytics APIs.
 ```
 
 **Multiple Discover Blocks in a row**
+
+[multiple discover blocks](docs/images/discover-block-multiple.png)
 
 ```
 <DiscoverBlock slots="heading, link, text"/> 
@@ -840,6 +865,8 @@ Provides configuration guidance and best practices for the /reports endpoint.
 
 **Discover Block with illustrations**
 
+![illustrated discover block](docs/images/discover-block-illustrated.png)
+
 ```
 <DiscoverBlock slots="image, heading, link, text"/>
 
@@ -870,6 +897,8 @@ Use `width` to define the size of the block.
 ### Code Block
 
 A Code Block is an enhanced code section which supports additional features like request/response format, multiple languages etc.
+
+![code block](docs/images/code-block.png)
 
 ```
 <CodeBlock slots="heading, code" repeat="3" languages="JSON, CURL, JSON" /> 
@@ -925,7 +954,9 @@ Use `languages` to define a language name for each code section. Code sections w
 
 ### Inline Alert Block
 
-The Inline Alert Block is used to highlight information. 
+The Inline Alert Block is used to highlight information.
+
+![inline alert](docs/images/inline-alert.png) 
 
 ```
 <InlineAlert variant="help" slots="text"/>
@@ -943,6 +974,8 @@ Use `variant` to define the indicator type: `info` (default), `help`, `error`, `
 
 The Announcement Block goes directly underneath the Hero Block for Product/Platform pages. 
 It's used to call out new features, blog posts, news etc. anything that needs that needs to be surfaced above the fold.
+
+![announcement block](docs/images/announcement-block.png)
 
 ```
 <AnnouncementBlock slots="heading, text, button" />
@@ -965,6 +998,8 @@ Use `theme` to match the text color to your color scheme. Defaults to `light`.
 ### Summary Block
 
 The Summary Block acts as an anchor at the end of the page. It's a change for Products to give users another call to action, and encourage them to interact after they have gotten to the bottom of the page.
+
+![summary block](docs/images/summary-block.png)
 
 ```
 <SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
@@ -993,7 +1028,9 @@ Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 ### Title Block
 
-A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.  
+A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.
+
+![title block](docs/images/title-block.png)  
 
 ```
 <TitleBlock slots="heading, text" theme="light" />
@@ -1013,7 +1050,9 @@ Use `theme` to match the text color to your color scheme. Defaults to `lightest`
 ### Text Block
 
 Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages. 
-They are coupled with images or videos.   
+They are coupled with images or videos.
+
+![text block with image](docs/images/text-block-image.png)   
 
 **With an image, texts and links**
 
@@ -1036,6 +1075,8 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 ```
 
 **Multiple centered Text Blocks in a row**
+
+![centered text blocks](docs/images/text-block-centered.png)
 
 ```
 <TextBlock slots="image, heading, text, links" width="33%" isCentered />
@@ -1075,6 +1116,8 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 
 **With a video, icons, buttons dark themed**
 
+![text block with a video](docs/images/text-block-video.png)
+
 ```
 <TextBlock slots="video, icons, heading, text, buttons" theme="dark" />
 
@@ -1113,6 +1156,8 @@ Use `theme` to match the text color to your color scheme. Defaults to `lightest`
 ### Product Card
 
 Product Cards group information that allow to browse a collection of related content.
+
+![product card](docs/images/product-card.png)
 
 ```
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
@@ -1168,7 +1213,9 @@ Use `width` to define the size of the block. Supported values are `100%`, `50%`,
 
 Resource Cards are used on Product/Platform pages for external cross-promotion of materials. Examples includes articles, videos etc.
 
-There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resource Cards with different variants to create a Resource composition.  
+There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resource Cards with different variants to create a Resource composition.
+
+![resource card](docs/images/resource-card.png)  
 
 ```
 <ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
@@ -1406,6 +1453,22 @@ export default {
 }; 
 ```     
 
+## Upgrading
+
+### Locally
+
+To upgrade to the latest version of `@adobe/gatsby-theme-parliament`, simply run `yarn upgrade` or `npm update` if you have defined the dependency with a version range selector.
+If not, update the version of the dependency by setting the version manually in the `package.json` and run `yarn install` or `npm install`. 
+
+This will also update the lock file `yarn.lock` or `package-lock.json`. 
+
+### Automated
+
+We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository. 
+Simply copy the [dependabot](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/.github/dependabot.yml) file in your `.github` folder.
+
+The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-parliament` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-parliament": "^2.1.5"`.   
+
 ## Issue tracker
 
 Use the [GitHub issue tracker](https://github.com/adobe/gatsby-theme-parliament/issues) to report issues, ask questions or log feature requests.
@@ -1419,9 +1482,10 @@ Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING
 
 See [Conventional Commits](https://conventionalcommits.org/) for commit guidelines.
 
+## Releases
 
-## Publishing
+You can check the latest released version of `@adobe/gatsby-theme-parliament` at https://github.com/adobe/gatsby-theme-parliament/releases.
 
-The repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
+This repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
 Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna publish --create-release github --conventional-commits --no-private` for publishing `@adobe/gatsby-theme-parliament` on npm.
