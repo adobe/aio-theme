@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.10](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.9...@adobe/gatsby-theme-parliament@2.1.10) (2020-10-01)
+
+
+### Bug Fixes
+
+* Fix SideNav single level without headers ([a90c118](https://github.com/adobe/gatsby-theme-parliament/commit/a90c11887f30a53ca7da23943729d208919f6a28))
+
+
+
+
+
 ## [2.1.9](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.8...@adobe/gatsby-theme-parliament@2.1.9) (2020-09-30)
 
 
