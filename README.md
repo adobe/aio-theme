@@ -264,10 +264,15 @@ pages: [
 ]
 ```   
 
+If the current location corresponds to a `path` defined under `pages`, the correspond tab in the Global Navigation is set as active. 
+Otherwise, the first defined tab is set as active by default. 
+
+**At least one defined page is required. It's recommended to define the first page `path` as the root path `/`.**
+
 *The order in which the pages are defined is respected in the Global Navigation.*
 
 A common shared configuration at `@adobe/gatsby-theme-parliament/globalNav.json` defines the Global Navigation logo, title, menus etc.
-It's pre-configured and used in the templates in the `gatsby-config.js` file by default.   
+It's pre-configured and used in the templates inside the `gatsby-config.js` file by default.   
 
 ### Side Navigation
 
