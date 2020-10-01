@@ -73,35 +73,35 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
               <List>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://creativecloud.adobe.com/">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/creativecloud.html">
                       Adobe Creative Cloud
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://www.adobe.com/experience-platform.html">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/experienceplatform/home.html">
                       Adobe Experience Platform
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://documentcloud.adobe.com/">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/documentcloud.html">
                       Adobe Document Cloud
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://experience.adobe.com/">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/experiencecloud.html">
                       Adobe Experience Cloud
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true}>
-                    <a {...externalLinkProps} href="http://adobe.com/">
+                    <a {...externalLinkProps} href="http://adobe.io/">
                       <strong>View All</strong>
                     </a>
                   </Link>
@@ -112,21 +112,21 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
               <ul className="spectrum-Body--S">
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://adobexdplatform.com/">
-                      Adobe XD Platform
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/creativecloud/xd.html">
+                      Adobe XD
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://www.adobe.com/marketing/target.html">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/experiencecloud/target.html">
                       Adobe Target
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href="https://www.adobe.com/analytics/adobe-analytics.html">
+                    <a {...externalLinkProps} href="https://www.adobe.io/apis/experiencecloud/analytics/docs.html">
                       Adobe Analytics
                     </a>
                   </Link>
@@ -193,7 +193,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
           <List>
             <li>
               <Link isQuiet={true} variant="secondary">
-                <a {...externalLinkProps} href="https://www.adobe.com/about-adobe/contact.html">
+                <a {...externalLinkProps} href="https://www.adobe.io/contactus.html">
                   Contact us
                 </a>
               </Link>
@@ -294,7 +294,7 @@ const Footer = ({ hasSideNav = false, isCentered = false }) => (
             </li>
             <li>
               <Link isQuiet={true} variant="secondary">
-                <a {...externalLinkProps} href="https://www.adobe.com/privacy/cookies.html">
+                <a {...externalLinkProps} href="https://www.adobe.com/privacy/opt-out.html#interest-based-ads">
                   AdChoices
                 </a>
               </Link>

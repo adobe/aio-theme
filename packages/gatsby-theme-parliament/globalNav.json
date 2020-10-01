@@ -4,7 +4,7 @@
     "path": "https://adobe.io",
     "logo": "adobe"
   },
-  "signIn": true,
+  "signIn": false,
   "console": true,
   "menus": [
     {
@@ -14,41 +14,41 @@
           "heading": "APIs",
           "viewAll": {
             "title": "View all APIs",
-            "path": "https://adobe.io"
+            "path": "https://www.adobe.io/apis.html"
           },
           "divider": true,
           "pages": [
             {
               "title": "Adobe XD",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/creativecloud/xd.html"
             },
             {
               "title": "Adobe Photoshop",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/creativecloud/photo-imaging-api.html"
             },
             {
               "title": "Document Cloud View SDK",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/documentcloud/dcsdk/"
             },
             {
               "title": "Adobe Acrobat",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/documentcloud/acrobat.html"
             },
             {
               "title": "Adobe Target",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experiencecloud/target.html"
             },
             {
               "title": "Adobe I/O Runtime",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform/runtime.html"
             },
             {
               "title": "Project Firefly",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform/project-firefly.html"
             },
             {
               "title": "Adobe I/O Events",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform/events.html"
             }
           ]
         },
@@ -58,22 +58,22 @@
             {
               "title": "Adobe Creative Cloud",
               "description": "Find out how to extend and develop on Creative Cloud apps",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/creativecloud.html"
             },
             {
               "title": "Adobe Experience Platform",
               "description": "Build and manage complete solutions that drive customer experience",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform.html"
             },
             {
               "title": "Adobe Document Cloud",
               "description": "Build engaging digital document experiences with Adobe's cloud-based APIs",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/documentcloud.html"
             },
             {
-              "title": "Adobe Creative Cloud",
+              "title": "Adobe Experience Cloud",
               "description": "Build and jargon words for Adobe Experience Cloud products and services",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experiencecloud.html"
             }
           ]
         }
@@ -85,72 +85,72 @@
         {
           "viewAll": {
             "title": "View all docs",
-            "path": "https://adobe.io"
+            "path": "https://www.adobe.io/apis.html"
           },
           "pages": [
             {
               "title": "Adobe XD",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/creativecloud/xd.html"
             },
             {
               "title": "Adobe Photoshop",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/creativecloud/photo-imaging-api.html"
             },
             {
               "title": "Document Cloud View SDK",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/documentcloud/dcsdk/"
             },
             {
               "title": "Adobe Acrobat",
+              "path": "https://www.adobe.io/apis/documentcloud/acrobat.html"
+            },
+            {
+              "title": "Adobe Analytics",
               "path": "https://adobe.io"
             },
             {
               "title": "Adobe Target",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experiencecloud/target.html"
             },
             {
               "title": "Adobe I/O Runtime",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform/runtime.html"
             },
             {
               "title": "Project Firefly",
-              "path": "https://adobe.io"
-            },
-            {
-              "title": "Adobe I/O Events",
-              "path": "https://adobe.io"
+              "path": "https://www.adobe.io/apis/experienceplatform/project-firefly.html"
             }
           ]
         },
         {
           "pages": [
             {
-              "title": "Adobe XD",
+              "title": "Adobe Lightroom",
+              "path": "https://www.adobe.io/apis/creativecloud/lightroom.html"
+            },
+            {
+              "title": "Adobe InDesign",
+              "path": "https://www.adobe.io/apis/creativecloud/indesign.html"
+            },
+            {
+              "title": "Adobe Sign",
+              "path": "https://www.adobe.io/apis/documentcloud/sign.html"
+            },
+            {
+              "title": "Adobe Campaign",
               "path": "https://adobe.io"
             },
             {
-              "title": "Adobe Photoshop",
-              "path": "https://adobe.io"
+              "title": "Adobe Experience Manager",
+              "path": "https://www.adobe.io/apis/experiencecloud/aem.html"
             },
             {
-              "title": "Document Cloud View SDK",
-              "path": "https://adobe.io"
+              "title": "Cloud Manager",
+              "path": "https://www.adobe.io/apis/experiencecloud/cloud-manager.html"
             },
             {
-              "title": "Adobe Acrobat",
-              "path": "https://adobe.io"
-            },
-            {
-              "title": "Adobe Target",
-              "path": "https://adobe.io"
-            },
-            {
-              "title": "Adobe I/O Runtime",
-              "path": "https://adobe.io"
-            },
-            {
-              "title": "Project Firefly",
-              "path": "https://adobe.io"
+              "title": "Adobe Campaign",
+              "path": "https://www.adobe.io/apis/experiencecloud/campaign.html"
             },
             {
               "title": "Adobe I/O Events",
