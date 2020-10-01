@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.11](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.10...@adobe/gatsby-theme-parliament@2.1.11) (2020-10-01)
+
+
+### Bug Fixes
+
+* Fix centered Text blocks overflow text scrollbars ([e29da19](https://github.com/adobe/gatsby-theme-parliament/commit/e29da19deaf7d86fe369bc51bd9856764c7f64d4))
+* Fix Text blocks width ([d59d7e4](https://github.com/adobe/gatsby-theme-parliament/commit/d59d7e4da24e5f7cebd5258dcd59e5a7498e41f1))
+
+
+
+
+
 ## [2.1.10](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.9...@adobe/gatsby-theme-parliament@2.1.10) (2020-10-01)
 
 
