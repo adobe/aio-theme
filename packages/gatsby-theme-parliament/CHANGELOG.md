@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.13](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.12...@adobe/gatsby-theme-parliament@2.1.13) (2020-10-01)
+
+
+### Bug Fixes
+
+* Close Search Popover on form submit ([d2f976f](https://github.com/adobe/gatsby-theme-parliament/commit/d2f976f9a541198552abebc859f89b3a4eca37a6))
+
+
+
+
+
 ## [2.1.12](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.11...@adobe/gatsby-theme-parliament@2.1.12) (2020-10-01)
 
 
