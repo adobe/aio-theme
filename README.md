@@ -297,65 +297,203 @@ subPages: [
 
 *Notice that all sub pages paths have to be children of the top-level navigation path.*
 
-If you don't want to associate a location with a top-level navigation item, you have to reuse the same top page `path` for a sub page e.g. 
-for the top level navigation `Get started`: 
+*Similarly to the Global Navigation, the order in which the sub pages are defined is respected in the Side Navigation.*
+
+#### Variations
+
+There are 3 variations of the Side Navigation: 
+
+1. Single-level side navigation
+2. Categorical single-level side navigation
+3. Multi-level side navigation
+
+Please refer to the section [use the right variation](#use-the-right-variation) to understand which side navigation variation to use.
+
+#### Single-level side navigation
+
+To create a single-level side navigation, you shouldn't specify `pages` for `subPages` for example:
+  
+![single-level side navigation](docs/images/single-level-sidenav.png)
+
+is matching to the following config: 
 
 ```
 pages: [
   {
-    title: 'Adobe Analytics',
-    path: '/'
-  },
-  {
-    title: 'Guides',
-    path: '/guides/'
-  },
-  {
-    title: 'API Reference',
-    path: '/api/'
+	title: 'Support',
+	path: '/support/'
   }
 ],
 subPages: [
   {
-    title: 'Get Started',
-    path: '/guides/get_started/',
-    pages: [
-      {
-        title: 'Overview',
-        path: '/guides/get_started/'
-      },
-      {
-        title: 'Debugging',
-        path: '/guides/get_started/debugging/'
-      }
-    ]
+    title: 'Help',
+    path: '/support/'
+  },
+  {
+    title: 'How to contribute',
+    path: '/support/contribute/'
+  },
+  {
+    title: 'FAQ',
+    path: '/support/FAQ/'
+  },
+  {
+    title: 'Community',
+    path: '/support/community/'
   }
-]
-```
+] 
+```    
 
-This is also necessary if you want to display a categorical Side Navigation using headers as separators. For that you'll have to add the `header` flag to `true` on a top level navigation item e.g. : 
- 
-```
+#### Single-level side navigation with headers
+
+To create a single-level side navigation with headers, you should set `header: true` on top-level `subPages` and follow the [auto-collapsing](#auto-collapsing-of-multi-level-side-navigation) rules for example: 
+
+![single-level side navigation with headers](docs/images/single-level-sidenav-with-header.png)
+
+is matching the following config:
+
+``` 
+pages: [
+  {
+	title: 'Support',
+	path: '/support/'
+  }
+],
 subPages: [
   {
-    title: 'Get Started',
-    path: '/guides/get_started/',
+    title: 'Overview',
+    path: '/support/',
     header: true,
     pages: [
       {
-        title: 'Overview',
-        path: '/guides/get_started/'
+        title: 'Help',
+        path: '/support/'
       },
       {
-        title: 'Debugging',
-        path: '/guides/get_started/debugging/'
+        title: 'FAQ',
+        path: '/support/FAQ/'
+      },
+      {
+        title: 'How to contribute',
+        path: '/support/contribute/'
+      }
+    ]
+  },
+  {
+    title: 'Community',
+    path: '/support/community/',
+    header: true,
+    pages: [
+      {
+        title: 'Information',
+        path: '/support/community/'
       }
     ]
   }
 ]
 ```
 
-*Similarly to the Global Navigation, the order in which the sub pages are defined is respected in the Side Navigation.*
+#### Multi-level side navigation
+
+To create a multi-level side navigation, you have to define `pages` for `subPages` for example:
+
+![multi-level side navigation](docs/images/multi-level-sidenav.png)
+
+is matching the following config:
+
+```
+pages: [
+  {
+	title: 'Support',
+	path: '/support/'
+  }
+],
+subPages: [
+  {
+    title: 'Overview',
+    path: '/support/',
+    pages: [
+      {
+        title: 'Help',
+        path: '/support/'
+      },
+      {
+        title: 'FAQ',
+        path: '/support/FAQ/'
+      },
+      {
+        title: 'How to contribute',
+        path: '/support/contribute/'
+      }
+    ]
+  },
+  {
+    title: 'Community',
+    path: '/support/community/',
+    pages: [
+      {
+        title: 'Information',
+        path: '/support/community/'
+      }
+    ]
+  } 
+]
+```
+
+#### Auto-collapsing of multi-level side navigation 
+ 
+In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because: 
+ 
+1. The current location is `/support/`   
+2. `Overview` and `Help` paths both matches the current location `/support/`
+3. `Overview` is defined as first `subPage` with path `/support/`
+4. `Help` is defined as first `page` of `Overview` with path `support`
+
+It also means that if you don't want auto-collapsing, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`, 
+you would have to define a different path for `Overview`:
+
+``` 
+pages: [
+  {
+	title: 'Support',
+	path: '/support/'
+  }
+],
+subPages: [
+  {
+    title: 'Overview',
+    path: '/support/overview/',
+    pages: [
+      {
+        title: 'Help',
+        path: '/support/overview/help/'
+      },
+      {
+        title: 'FAQ',
+        path: '/support/overview/FAQ/'
+      },
+      {
+        title: 'How to contribute',
+        path: '/support/overview/contribute/'
+      }
+    ]
+  },
+  {
+    title: 'Community',
+    path: '/support/community/',
+    pages: [
+      {
+        title: 'Information',
+        path: '/support/community/'
+      }
+    ]
+  } 
+]
+```      
+
+which will render: 
+
+![multi level sidenav without auto collapsing](docs/images/multi-level-sidenav-no-auto-collapsing.png)
 
 #### Use descriptive titles
 
