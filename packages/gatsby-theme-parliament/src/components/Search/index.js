@@ -147,7 +147,8 @@ const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
         }}
         onSubmit={() => {
           if (results.length > 0) {
-            navigate(withPrefix(results[0].path));
+            navigate(results[0].path);
+            setIsOpen(false);
           }
         }}
         autoComplete="off"
