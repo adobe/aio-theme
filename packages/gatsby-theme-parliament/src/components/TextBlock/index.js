@@ -164,13 +164,11 @@ const TextBlock = ({
             width: ${width.replace('%', 'vw')};
             background: var(--spectrum-global-color-gray-100);
             padding: var(--spectrum-global-dimension-size-400) 0;
-            box-sizing: border-box;
           `}>
           <div
             css={css`
               ${blockWidth}
               padding: 0 var(--spectrum-global-dimension-size-400);
-              box-sizing: border-box;
               margin: auto;
               ${extraMargin}
             `}>
