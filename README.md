@@ -264,7 +264,10 @@ pages: [
 ]
 ```   
 
-*The order in which the pages are defined is respected in the Global Navigation.*  
+*The order in which the pages are defined is respected in the Global Navigation.*
+
+A common shared configuration at `@adobe/gatsby-theme-parliament/globalNav.json` defines the Global Navigation logo, title, menus etc.
+It's pre-configured and used in the templates in the `gatsby-config.js` file by default.   
 
 ### Side Navigation
 
