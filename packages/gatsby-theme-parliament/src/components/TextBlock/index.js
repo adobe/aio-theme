@@ -20,7 +20,7 @@ import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
 import { getElementChild, layoutColumns } from '../utils';
 
 let counter = 0;
-const alignMapping = ['flex-start', 'flex-end'];
+const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
 const Icons = ({ icons, isCentered }) =>
   icons
@@ -142,85 +142,84 @@ const TextBlock = ({
 
   if (isCentered) {
     let blockWidth = '';
+    let extraMargin = '';
 
     if (columns === 1) {
-      blockWidth = `width: ${layoutColumns(6)};`;
+      blockWidth = `max-width: ${layoutColumns(6)};`;
     } else if (columns > 3) {
       counter++;
-      blockWidth = 'width: var(--spectrum-global-dimension-size-3600);';
+      blockWidth = 'max-width: var(--spectrum-global-dimension-size-3600);';
     } else {
       counter++;
-      blockWidth = 'width: var(--spectrum-global-dimension-size-4600);';
+      blockWidth = 'max-width: var(--spectrum-global-dimension-size-4600);';
+      extraMargin = alignMapping[counter % columns];
     }
 
     return (
-      <section
-        className={`spectrum--${theme}`}
-        css={css`
-          display: inline-flex;
-          flex-direction: column;
-          width: ${width};
-          align-items: ${columns === 3 ? alignMapping[counter % 3] || 'center' : 'center'};
-          background: var(--spectrum-global-color-gray-100);
-          padding: var(--spectrum-global-dimension-size-400) 0;
-          box-sizing: border-box;
-        `}>
-        <div
+      <>
+        <section
+          className={`spectrum--${theme}`}
           css={css`
-            ${blockWidth}
+            display: table-cell;
+            width: ${width.replace('%', 'vw')};
+            background: var(--spectrum-global-color-gray-100);
+            padding: var(--spectrum-global-dimension-size-400) 0;
+            box-sizing: border-box;
           `}>
-          <Icons icons={icons} isCentered={isCentered} />
+          <div
+            css={css`
+              ${blockWidth}
+              padding: 0 var(--spectrum-global-dimension-size-400);
+              box-sizing: border-box;
+              margin: auto;
+              ${extraMargin}
+            `}>
+            <Icons icons={icons} isCentered={isCentered} />
 
-          {image &&
-            React.cloneElement(image, {
-              css: css`
-                height: var(--spectrum-global-dimension-size-1600);
+            {image &&
+              React.cloneElement(image, {
+                css: css`
+                  height: var(--spectrum-global-dimension-size-1600);
 
-                & img {
-                  height: 100%;
-                  border-radius: 0;
-                  object-fit: contain;
-                }
-              `
-            })}
+                  & img {
+                    height: 100%;
+                    border-radius: 0;
+                    object-fit: contain;
+                  }
+                `
+              })}
 
-          {heading && (
-            <h3
-              className="spectrum-Heading--M"
-              css={css`
-                white-space: nowrap;
-                overflow: auto;
-                margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+            {heading && (
+              <h3
+                className="spectrum-Heading--M"
+                css={css`
+                  white-space: nowrap;
+                  overflow: auto;
+                  margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
-                & ~ p {
-                  margin-bottom: 0 !important;
+                  & ~ p {
+                    margin-bottom: 0 !important;
+                  }
+                `}>
+                {heading.props.children}
+              </h3>
+            )}
 
-                  ${columns === 1
-                    ? `
-            height: auto;
-            `
-                    : `
-            height: var(--spectrum-global-dimension-size-900);
-            overflow: auto;`}
-                }
-              `}>
-              {heading.props.children}
-            </h3>
-          )}
+            <Texts texts={props} />
 
-          <Texts texts={props} />
+            <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
 
-          <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
+            <Links links={links} isCentered={isCentered} />
 
-          <Links links={links} isCentered={isCentered} />
-
-          {video && (
-            <View marginTop="size-400">
-              <YouTubeVideo video={video} />
-            </View>
-          )}
-        </div>
-      </section>
+            {video && (
+              <View marginTop="size-400">
+                <YouTubeVideo video={video} />
+              </View>
+            )}
+          </div>
+        </section>
+        {counter % columns === 0 ? <div aria-hidden="true" /> : null}
+      </>
     );
   } else {
     const isReversed = props.slots.endsWith('image') || props.slots.endsWith('video');
