@@ -85,7 +85,7 @@
     "redoc": "^2.0.0-rc.36",
     "rehype-slug": "^3.0.0",
     "remark-docz": "^2.1.0",
-    "remark-external-links": "^6.1.0",
+    "remark-external-links": "^7.0.1",
     "styled-components": "^5.1.1"
   }
 }
