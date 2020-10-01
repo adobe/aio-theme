@@ -111,7 +111,7 @@ aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
 The content of the site is written in [Markdown](https://daringfireball.net/projects/markdown/) which is both easy to read and easy to learn.
 
 As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs. 
-Additionally, Adobe extended Markdown in a few ways to support certain features see [Enhanced Markdown](#enhanced-markdown). 
+Additionally, Adobe extended Markdown in a few ways to support certain features see [Writing Enhanced Markdown](#writing-enhanced-markdown). 
 
 Make sure the markdown content is located  under `src/pages` and please follow below guidelines for writing content.
 
