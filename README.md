@@ -598,7 +598,7 @@ pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX'
 
 ### Publishing to GitHub Pages (Dev)
 
-On every commit to the `master` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default for new repos in GitHub: on Oct 1st, this will [default to main](https://github.blog/changelog/2020-08-26-set-the-default-branch-for-newly-created-repositories/)
+On every commit to the `main` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default branch for new repos in GitHub.
 
 `GitHub Contributors component`: this will use the GitHub token automatically provided by the GitHub Action to retrieve data
 
