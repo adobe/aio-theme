@@ -28,7 +28,6 @@ import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 
 import { Footer } from '../Footer';
-import { Hero } from '../Hero';
 import { Contributors } from '../Contributors';
 import { Feedback } from '../Feedback';
 import { GitHubActions } from '../GitHubActions';

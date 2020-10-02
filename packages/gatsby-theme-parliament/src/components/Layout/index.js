@@ -79,6 +79,7 @@ export default ({ children, pageContext, location }) => {
               }
               menus {
                 title
+                path
                 sections {
                   heading
                   divider

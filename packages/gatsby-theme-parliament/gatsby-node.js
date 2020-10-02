@@ -46,6 +46,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type Menu {
       title: String,
+      path: String,
       sections: [Section]
     }
     

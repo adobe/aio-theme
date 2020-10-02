@@ -23,6 +23,7 @@ import { Button } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
 import { Adobe } from '../Icons';
+import { ActionButton, Text } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
@@ -77,7 +78,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   useEffect(() => {
     // Clicking outside of menu should close menu
     const onClick = (event) => {
-      if (globalNav.menus.length) {
+      if (globalNav.menus.length && !globalNav.menus[0].path) {
         if (!primaryPopover.current.contains(event.target)) {
           setOpenPrimaryMenu(false);
         }
@@ -168,123 +169,131 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         `
                         : ''}
                     `}>
-                    <PickerButton
-                      isQuiet
-                      isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
-                      ariaControls={id}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        event.nativeEvent.stopImmediatePropagation();
+                    {menu.path ? (
+                      <ActionButton elementType="a" isQuiet href={menu.path} {...externalLinkProps}>
+                        <Text>{menu.title}</Text>
+                      </ActionButton>
+                    ) : (
+                      <>
+                        <PickerButton
+                          isQuiet
+                          isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                          ariaControls={id}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            event.nativeEvent.stopImmediatePropagation();
 
-                        if (isPrimary) {
-                          setOpenPrimaryMenu((openPrimaryMenu) => !openPrimaryMenu);
-                          setOpenSecondaryMenu(false);
-                        } else {
-                          setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
-                          setOpenPrimaryMenu(false);
-                        }
+                            if (isPrimary) {
+                              setOpenPrimaryMenu((openPrimaryMenu) => !openPrimaryMenu);
+                              setOpenSecondaryMenu(false);
+                            } else {
+                              setOpenSecondaryMenu((openSecondaryMenu) => !openSecondaryMenu);
+                              setOpenPrimaryMenu(false);
+                            }
 
-                        setOpenVersionMenu(false);
-                      }}>
-                      {menu.title}
-                    </PickerButton>
-                    <Popover
-                      ref={isPrimary ? primaryPopover : secondaryPopover}
-                      id={id}
-                      variant="picker"
-                      isQuiet
-                      isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
-                      css={css`
-                        display: block;
-                        padding: var(--spectrum-global-dimension-size-300);
-                        z-index: 2;
-                        max-width: none !important;
-                        max-height: none !important;
-                        width: auto !important;
-                      `}>
-                      <nav aria-label="Secondary">
-                        <Flex>
-                          {menu.sections.map((section, i) => (
-                            <View key={i} marginEnd="size-400" position="relative">
-                              <View>
-                                {section.heading && (
-                                  <View marginBottom="size-200" marginStart="size-200">
-                                    <strong className="spectrum-Heading--S">{section.heading}</strong>
+                            setOpenVersionMenu(false);
+                          }}>
+                          {menu.title}
+                        </PickerButton>
+                        <Popover
+                          ref={isPrimary ? primaryPopover : secondaryPopover}
+                          id={id}
+                          variant="picker"
+                          isQuiet
+                          isOpen={isPrimary ? openPrimaryMenu : openSecondaryMenu}
+                          css={css`
+                            display: block;
+                            padding: var(--spectrum-global-dimension-size-300);
+                            z-index: 2;
+                            max-width: none !important;
+                            max-height: none !important;
+                            width: auto !important;
+                          `}>
+                          <nav aria-label="Secondary">
+                            <Flex>
+                              {menu.sections.map((section, i) => (
+                                <View key={i} marginEnd="size-400" position="relative">
+                                  <View>
+                                    {section.heading && (
+                                      <View marginBottom="size-200" marginStart="size-200">
+                                        <strong className="spectrum-Heading--S">{section.heading}</strong>
+                                      </View>
+                                    )}
+                                    <ul className="spectrum-AssetList">
+                                      {section.pages.map((page, k) => (
+                                        <li
+                                          key={k}
+                                          className="spectrum-AssetList-item"
+                                          css={css`
+                                            width: auto !important;
+                                            height: auto !important;
+                                            min-height: var(--spectrum-global-dimension-size-500) !important;
+                                            ${page.description
+                                              ? 'margin-bottom: var(--spectrum-global-dimension-size-200);'
+                                              : ''}
+                                          `}>
+                                          <a
+                                            css={css`
+                                              display: flex;
+                                              z-index: 1;
+                                              height: 100%;
+                                              width: 100%;
+                                              align-items: center;
+                                              color: inherit;
+                                              text-decoration: none;
+                                              padding-top: var(--spectrum-global-dimension-size-100);
+                                              padding-bottom: var(--spectrum-global-dimension-size-100);
+                                            `}
+                                            href={page.path}
+                                            {...getExternalLinkProps(page.path)}>
+                                            <Flex direction="column">
+                                              <View>{page.title}</View>
+                                              {page.description && (
+                                                <View marginTop="size-100">
+                                                  <span
+                                                    className="spectrum-Body--XS"
+                                                    css={css`
+                                                      color: var(--spectrum-global-color-gray-700);
+                                                    `}>
+                                                    {page.description}
+                                                  </span>
+                                                </View>
+                                              )}
+                                            </Flex>
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
                                   </View>
-                                )}
-                                <ul className="spectrum-AssetList">
-                                  {section.pages.map((page, k) => (
-                                    <li
-                                      key={k}
-                                      className="spectrum-AssetList-item"
+                                  {section.divider && (
+                                    <div
                                       css={css`
-                                        width: auto !important;
-                                        height: auto !important;
-                                        min-height: var(--spectrum-global-dimension-size-500) !important;
-                                        ${page.description
-                                          ? 'margin-bottom: var(--spectrum-global-dimension-size-200);'
-                                          : ''}
+                                        position: absolute;
+                                        height: 100%;
+                                        top: 0;
+                                        right: calc(-1 * var(--spectrum-global-dimension-size-200));
                                       `}>
-                                      <a
-                                        css={css`
-                                          display: flex;
-                                          z-index: 1;
-                                          height: 100%;
-                                          width: 100%;
-                                          align-items: center;
-                                          color: inherit;
-                                          text-decoration: none;
-                                          padding-top: var(--spectrum-global-dimension-size-100);
-                                          padding-bottom: var(--spectrum-global-dimension-size-100);
-                                        `}
-                                        href={page.path}
-                                        {...getExternalLinkProps(page.path)}>
-                                        <Flex direction="column">
-                                          <View>{page.title}</View>
-                                          {page.description && (
-                                            <View marginTop="size-100">
-                                              <span
-                                                className="spectrum-Body--XS"
-                                                css={css`
-                                                  color: var(--spectrum-global-color-gray-700);
-                                                `}>
-                                                {page.description}
-                                              </span>
-                                            </View>
-                                          )}
-                                        </Flex>
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
+                                      <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
+                                    </div>
+                                  )}
+                                </View>
+                              ))}
+                            </Flex>
+                            {menu.sections[0].viewAll && (
+                              <View marginTop="size-100" marginStart="size-200">
+                                <Link isQuiet={true}>
+                                  <a
+                                    href={menu.sections[0].viewAll.path}
+                                    {...getExternalLinkProps(menu.sections[0].viewAll.path)}>
+                                    <strong>{menu.sections[0].viewAll.title}</strong>
+                                  </a>
+                                </Link>
                               </View>
-                              {section.divider && (
-                                <div
-                                  css={css`
-                                    position: absolute;
-                                    height: 100%;
-                                    top: 0;
-                                    right: calc(-1 * var(--spectrum-global-dimension-size-200));
-                                  `}>
-                                  <Divider orientation="vertical" marginStart="size-200" size="M" height="100%" />
-                                </div>
-                              )}
-                            </View>
-                          ))}
-                        </Flex>
-                        {menu.sections[0].viewAll && (
-                          <View marginTop="size-100" marginStart="size-200">
-                            <Link isQuiet={true}>
-                              <a
-                                href={menu.sections[0].viewAll.path}
-                                {...getExternalLinkProps(menu.sections[0].viewAll.path)}>
-                                <strong>{menu.sections[0].viewAll.title}</strong>
-                              </a>
-                            </Link>
-                          </View>
-                        )}
-                      </nav>
-                    </Popover>
+                            )}
+                          </nav>
+                        </Popover>
+                      </>
+                    )}
                   </div>
                 );
               })}

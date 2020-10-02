@@ -159,6 +159,10 @@
           ]
         }
       ]
+    },
+    {
+      "title": "APIs",
+      "path": "https://www.adobe.io/apis/"
     }
   ],
   "footer": {
