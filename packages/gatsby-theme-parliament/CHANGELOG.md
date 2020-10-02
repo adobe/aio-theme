@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.13...@adobe/gatsby-theme-parliament@2.2.0) (2020-10-02)
+
+
+### Bug Fixes
+
+* Refactor Footer ([5f8ce9e](https://github.com/adobe/gatsby-theme-parliament/commit/5f8ce9eefc43d9a8f3f0453c00609e1d8b4f4354))
+
+
+### Features
+
+* Support single link section in GlobalNav ([2db04d7](https://github.com/adobe/gatsby-theme-parliament/commit/2db04d7a355dfda183ddb2d793c8d053e50d477f))
+
+
+
+
+
 ## [2.1.13](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.12...@adobe/gatsby-theme-parliament@2.1.13) (2020-10-01)
 
 
