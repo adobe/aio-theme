@@ -55,10 +55,10 @@
     node-fetch "^2.6.0"
     widdershins "^4.0.1"
 
-"@adobe/parliament-ui-components@^2.6.3":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@adobe/parliament-ui-components/-/parliament-ui-components-2.6.3.tgz#1c292f229c2280bb19caeedceaa56c08af029305"
-  integrity sha512-jhTqOOnb7onCR5n5khilrUvZ6fRvivY1sr/5JyVb1ZSgb2GSFAT9XcogYqzTMj9zqVknLk0DLAAN38lPS+XiLg==
+"@adobe/parliament-ui-components@^2.6.4":
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/@adobe/parliament-ui-components/-/parliament-ui-components-2.6.4.tgz#f17edec9721d46db6c06365bd88d413f7f300c7c"
+  integrity sha512-uCTma/+779YcF7fQY6Opk+0pdkK1ZXHoiF6x65VvfonPDsKRiFUNqkVqvruqU2BPjRYbd842YdFMPFKdwvjBAw==
   dependencies:
     "@adobe/focus-ring-polyfill" "^0.1.5"
     "@adobe/prism-adobe" "^1.0.3"
