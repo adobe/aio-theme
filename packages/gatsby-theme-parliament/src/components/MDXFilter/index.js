@@ -194,6 +194,9 @@ export default ({ children, pageContext, query }) => {
       Context
     );
 
+    // Footer
+    const { footer: footerLinks } = siteMetadata.globalNav;
+
     // PrevNext
     const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
     const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
@@ -319,7 +322,7 @@ export default ({ children, pageContext, query }) => {
               </Flex>
             </section>
             {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
-            <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} />
+            <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
           </>
         )}
       </MDXProvider>

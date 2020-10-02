@@ -95,6 +95,32 @@ export default ({ children, pageContext, location }) => {
               }
               signIn
               console
+              footer {
+                APIs {
+                  title
+                  path
+                }
+                services {
+                  title
+                  path
+                }
+                community {
+                  title
+                  path
+                }
+                support {
+                  title
+                  path
+                }
+                developer {
+                  title
+                  path
+                }
+                legal {
+                  title
+                  path
+                }
+              }
             }
             docs {
               path

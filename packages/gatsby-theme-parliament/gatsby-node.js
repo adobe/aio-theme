@@ -23,24 +23,25 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
+    type Link {
+      title: String,
+      path: String
+    }
+    
     type SiteSiteMetadata {
       globalNav: GlobalNav
-      pages: [Page]
+      pages: [Link]
       subPages: [SubPage]
-      versions: [Version],
-      docs: Docs
+      versions: [Link],
+      docs: Link
     }
     
     type GlobalNav {
-      home: Home
+      home: Link
       menus: [Menu]
       console: Boolean
       signIn: Boolean
-    }
-    
-    type Home {
-      title: String
-      path: String
+      footer: Footer
     }
     
     type Menu {
@@ -50,25 +51,15 @@ exports.createSchemaCustomization = ({ actions }) => {
     
     type Section {
       heading: String,
-      viewAll: ViewAll,
+      viewAll: Link,
       divider: Boolean,
       pages: [SectionPage]
-    }
-    
-    type ViewAll {
-      title: String,
-      path: String
     }
     
     type SectionPage {
       title: String,
       path: String,
       description: String
-    }
-    
-    type Page {
-      title: String,
-      path: String
     }
     
     type SubPage {
@@ -105,21 +96,16 @@ exports.createSchemaCustomization = ({ actions }) => {
     type NestedSubPage5 {
       title: String,
       path: String,
-      pages: [NestedSubPage6]
+      pages: [Link]
     }
     
-    type NestedSubPage6 {
-      title: String,
-      path: String
-    }
-    
-    type Version {
-      title: String,
-      path: String
-    }
-    
-    type Docs {
-      path: String
+    type Footer {
+      APIs: [Link]
+      services: [Link]
+      community: [Link]
+      support: [Link]
+      developer: [Link]
+      legal: [Link]
     }
   `;
 

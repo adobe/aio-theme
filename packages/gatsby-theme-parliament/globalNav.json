@@ -160,5 +160,119 @@
         }
       ]
     }
-  ]
+  ],
+  "footer": {
+    "APIs": [
+      {
+        "title": "Adobe Creative Cloud",
+        "path": "https://www.adobe.io/apis/creativecloud.html"
+      },
+      {
+        "title": "Adobe Experience Platform",
+        "path": "https://www.adobe.io/apis/experienceplatform/home.html"
+      },
+      {
+        "title": "Adobe Document Cloud",
+        "path": "https://www.adobe.io/apis/documentcloud.html"
+      },
+      {
+        "title": "Adobe Experience Cloud",
+        "path": "https://www.adobe.io/apis/experiencecloud.html"
+      }
+    ],
+    "services": [
+      {
+        "title": "Adobe XD",
+        "path": "https://www.adobe.io/apis/creativecloud/xd.html"
+      },
+      {
+        "title": "Adobe Target",
+        "path": "https://www.adobe.io/apis/experiencecloud/target.html"
+      },
+      {
+        "title": "Adobe Analytics",
+        "path": "https://www.adobe.io/apis/experiencecloud/analytics.html"
+      },
+      {
+        "title": "Project Firefly",
+        "path": "https://www.adobe.io/apis/experienceplatform/project-firefly.html"
+      }
+    ],
+    "community": [
+      {
+        "title": "Adobe Tech Blog",
+        "path": "https://medium.com/adobetech"
+      },
+      {
+        "title": "Adobe on GitHub",
+        "path": "https://github.com/adobe"
+      },
+      {
+        "title": "Adobe Developer on YouTube",
+        "path": "https://www.youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ"
+      },
+      {
+        "title": "Adobe Developer on Twitter",
+        "path": "https://twitter.com/adobedevs"
+      },
+      {
+        "title": "Community Forums",
+        "path": "https://www.adobe.com/communities/index.html"
+      }
+    ],
+    "support": [
+      {
+        "title": "Contact us",
+        "path": "https://www.adobe.io/contactus.html"
+      },
+      {
+        "title": "Adobe Developer support",
+        "path": "https://www.adobe.io/support"
+      },
+      {
+        "title": "Adobe Product support",
+        "path": "https://helpx.adobe.com/contact/enterprise-support.html"
+      },
+      {
+        "title": "Release notes",
+        "path": "https://www.adobe.io/releasenotes.html"
+      }
+    ],
+    "developer": [
+      {
+        "title": "Adobe I/O console",
+        "path": "https://console.adobe.io/"
+      },
+      {
+        "title": "Open source at Adobe",
+        "path": "https://www.adobe.io/open.html"
+      },
+      {
+        "title": "Download SDKs",
+        "path": "https://console.adobe.io/downloads"
+      },
+      {
+        "title": "Careers",
+        "path": "https://www.adobe.com/careers.html"
+      }
+    ],
+    "legal": [
+      {
+        "title": "Terms of use",
+        "path": "https://www.adobe.com/legal/terms.html"
+      },
+      {
+        "title": "Privacy policy",
+        "path": "https://www.adobe.com/privacy.html"
+      },
+      {
+        "title": "Cookies",
+        "path": "https://www.adobe.com/privacy/cookies.html"
+      },
+      {
+        "title": "AdChoices",
+        "path": "https://www.adobe.com/privacy/opt-out.html#interest-based-ads"
+      }
+    ]
+  }
 }
