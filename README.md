@@ -58,8 +58,10 @@ Using a theme, all of your default configuration lives in an npm package.
 * [Building the Gatsby site](#building-the-gatsby-site)
 * [Publishing the Gatsby site](#publishing-the-gatsby-site)
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
-  + [Front matter support](#front-matter-support)
-  + [MDX support](#mdx-support)
+  + [Front matter](#front-matter)
+  + [OpenAPI](#openapi)
+  + [JSDoc](#jsdoc)
+  + [MDX](#mdx)
   + [Modular Content System](#modular-content-system)
   + [JSX Blocks](#jsx-blocks)
   + [Hero Block](#hero-block)
@@ -73,7 +75,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Text Block](#text-block)
   + [Product Card](#product-card)
   + [Resource Card](#resource-card)
-* [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
+  + [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
 * [Upgrading](#upgrading)
 * [Issue tracker](#issue-tracker)
@@ -622,7 +624,7 @@ A site is published via a Pull Request:
  
 ## Writing Enhanced Markdown 
 
-### Front matter support
+### Front matter
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file: 
 
@@ -632,8 +634,6 @@ title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics 
 ---
 </pre>
-
-### Specifying external contributors
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
@@ -645,7 +645,7 @@ contributors:
 ---
 </pre>
 
-### OpenAPI spec
+### OpenAPI
 
 We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply use front matter to define the spec URL.
 
@@ -657,8 +657,9 @@ openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/mast
 
 ### JSDoc
 
-We currently recommend to use the [jsdoc to markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) converter and annotate your markdown to render JSDoc.
-Use front matter to specify a JSdoc markdown document.
+We currently recommend to use the [JSDoc to markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) converter.
+
+Use front matter to specify a JSDoc markdown document.
 
 <pre>
 ---
@@ -666,9 +667,9 @@ jsDoc: true
 ---
 </pre>
 
-And annotate your JS parameters with `<JsDocParameters/>` to render them nicely.  
+Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-parliament/main/example/src/pages/jsdoc/index.md).   
 
-### MDX support 
+### MDX 
 
 [MDX](https://mdxjs.com/) is supported out of the box. MDX enables writing [JSX React components](https://reactjs.org/docs/introducing-jsx.html) in markdown giving authors new powers.
 Despite the markdown files having all an `md` extension, they are actually treated as MDX files. You can use `md` and `mdx` extensions interchangeably.
@@ -1267,11 +1268,11 @@ Use `theme` to match the text color to your color scheme. Defaults to `lightest`
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
 
-## Embedding markdown documents and filtering content
+### Embedding markdown documents and filtering content
 
 You can use MDX transclusion to embed markdown documents into other markdown documents see the [MDX documentation](https://mdxjs.com/getting-started#documents).
 
-### Embedding local markdown files
+#### Embedding local markdown files
 
 For example, if you want to include the content of `overview.md` into `index.md`: 
 
@@ -1314,7 +1315,7 @@ Lorem ipsum
 Lorem ipsum
 ```
 
-### Embedding external markdown files
+#### Embedding external markdown files
 
 Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents. 
 
@@ -1328,7 +1329,7 @@ Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_mo
 
 See full example below using a Variant block. 
 
-### Filtering content with Variant Blocks
+#### Filtering content with Variant Blocks
 
 Together with Variant Blocks, the author can query what should be rendered from external sources.
  

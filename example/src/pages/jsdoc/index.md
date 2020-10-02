@@ -7,19 +7,13 @@ jsDoc: true
 <a name="module-storage-entry" id="module-storage-entry"></a>
 
 ### storage.Entry
-An `Entry` is the base class for `File` and `Folder`. You'll
-never instantiate an `Entry` directly, but it provides
-the common fields and methods that both `File` and `Folder`
-share.
 
-> **Info**
->
-> Important:
->
-> * An Entry object may exist even if the corresponding file/folder on disk does not
->   currently exist.
-> * It's possible for multiple Entry objects to represent the same item on disk,
->   for example if the item was picked via multiple separate file picker invocations.
+<InlineAlert slots="text" />
+
+* An Entry object may exist even if the corresponding file/folder on disk does not
+   currently exist.
+* It's possible for multiple Entry objects to represent the same item on disk,
+   for example if the item was picked via multiple separate file picker invocations.
 
 **Kind**: static class of [`storage`](#module-storage)
 **Since**: XD 13
