@@ -125,8 +125,9 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
               height: 100%;
               position: absolute;
               top: 0;
-              padding: 0 var(--spectrum-global-dimension-size-3600);
-              margin: 0 var(--spectrum-global-dimension-size-125);
+              width: 100%;
+              box-sizing: border-box;
+              padding: 0 calc(var(--spectrum-global-dimension-size-3600) + var(--spectrum-global-dimension-size-125));
               display: flex;
               flex-direction: column;
               align-items: center;

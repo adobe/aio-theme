@@ -57,6 +57,10 @@ module.exports = {
       {
         title: 'Project Firefly',
         path: '/project_firefly/'
+      },
+      {
+        title: 'Cloud filter',
+        path: '/cloud_filter/'
       }
     ],
     subPages: [
