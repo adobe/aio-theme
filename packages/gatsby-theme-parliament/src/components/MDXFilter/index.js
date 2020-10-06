@@ -135,7 +135,7 @@ const jsDocFilter = (childrenArray) => {
       // We are inside a JS Doc Block so we need to add children to it.
       if (type.match(/h\d/)) {
         // We found a header, so we need to check it's level (1-6)
-        let level = parseInt(type.charAt(1, 10));
+        let level = parseInt(type.charAt(1), 10);
         if (level >= headingLevel) {
           // The heading is >= the current level so we are still in a JS Block
           headingLevel = level;
@@ -185,7 +185,7 @@ export default ({ children, pageContext, query }) => {
   let childrenArray = React.Children.toArray(children);
 
   if (query || typeof pageContext === 'undefined') {
-    const { filteredChildren } = filterChildren({ childrenArray, query });
+    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query });
     // No layout for transclusions
     return <MDXProvider>{filteredChildren}</MDXProvider>;
   } else {
