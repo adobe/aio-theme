@@ -29,4 +29,8 @@ describe('Check theme for a11Y', () => {
   it('Product a11y violations', () => {
     checkA11y('/project_firefly/');
   });
+
+  it('Cloud Filter a11y violations', () => {
+    checkA11y('/cloud_filter/');
+  });
 });

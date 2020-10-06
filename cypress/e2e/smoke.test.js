@@ -28,4 +28,9 @@ describe('Smoke Test', () => {
     cy.visit(`/project_firefly/`).assertRoute(`/project_firefly/`);
     cy.contains('Developer');
   });
+
+  it('Cloud Filter loads', () => {
+    cy.visit(`/cloud_filter/`).assertRoute(`/cloud_filter/`);
+    cy.contains('Adobe I/O');
+  });
 });
