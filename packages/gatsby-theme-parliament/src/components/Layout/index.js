@@ -30,6 +30,7 @@ import { Grid } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Provider } from '../Context';
 import { GlobalHeader } from '../GlobalHeader';
+import { GlobalHeaderTemp } from '../GlobalHeader/temp';
 import { SEO } from '../SEO';
 import { SideNav } from '../SideNav';
 
@@ -176,6 +177,8 @@ export default ({ children, pageContext, location }) => {
   const selectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
   const hasSideNav = selectedSubPages.length > 0;
 
+  const hasGlobalHeaderTemp = pageContext?.frontmatter?.GlobalHeaderTemp;
+
   return (
     <Provider
       value={{
@@ -210,18 +213,22 @@ export default ({ children, pageContext, location }) => {
                 <View
                   gridArea="header"
                   position="fixed"
-                  height="size-800"
+                  height={hasGlobalHeaderTemp ? 'size-1000' : 'size-800'}
                   left="size-0"
                   right="size-0"
                   backgroundColor="gray-50"
                   zIndex="2">
-                  <GlobalHeader
-                    globalNav={globalNav}
-                    versions={versions}
-                    pages={pages}
-                    docs={docs}
-                    location={location}
-                  />
+                  {pageContext?.frontmatter?.GlobalHeaderTemp ? (
+                    <GlobalHeaderTemp />
+                  ) : (
+                    <GlobalHeader
+                      globalNav={globalNav}
+                      versions={versions}
+                      pages={pages}
+                      docs={docs}
+                      location={location}
+                    />
+                  )}
                 </View>
                 <View
                   backgroundColor="gray-75"

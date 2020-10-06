@@ -1,6 +1,7 @@
 ---
 title: Index
-description: This is the index page  
+description: This is the index page
+GlobalHeaderTemp: true  
 ---
 
 <Hero slots="image, heading, text" variant="fullwidth" background="rgb(51, 51, 51)" />
