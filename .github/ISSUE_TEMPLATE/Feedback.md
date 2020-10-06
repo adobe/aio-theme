@@ -1,6 +1,6 @@
 ---
 name: 📝 Feedback
-about: Have some feedback?
+about: Have some feedback ?
 ---
 
 <!---

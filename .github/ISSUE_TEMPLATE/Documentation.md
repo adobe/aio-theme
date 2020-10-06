@@ -1,6 +1,6 @@
 ---
 name: 📚 Documentation
-about: Have an issue or improvement for the documentation?
+about: Have an issue or improvement for the documentation ?
 ---
 
 <!---

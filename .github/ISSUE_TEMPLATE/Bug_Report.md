@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug Report
-about: Did something not work as expected?
+about: Did something not work as expected ?
 ---
 
 <!---
