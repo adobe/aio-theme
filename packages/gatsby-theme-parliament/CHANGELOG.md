@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.2.0...@adobe/gatsby-theme-parliament@2.3.0) (2020-10-06)
+
+
+### Bug Fixes
+
+* Add support for JSDocParameters in transcluded content ([5d7447b](https://github.com/adobe/gatsby-theme-parliament/commit/5d7447b8b799cdf2559046eefed9a2ac7cd45ec6))
+
+
+### Features
+
+* Add brand icons to ProductCardFilter ([122b9af](https://github.com/adobe/gatsby-theme-parliament/commit/122b9af2fbfbc5d3977a271a7a7a06f0ca6df153))
+* Add ProductCardFilter and index page example ([180f756](https://github.com/adobe/gatsby-theme-parliament/commit/180f75643c16c29bacbba0679a9897ba0b86d2b4))
+* Add temporary support for old GlobalHeader ([989eca3](https://github.com/adobe/gatsby-theme-parliament/commit/989eca31113987e61de07995ba79e9e1dc463eba))
+
+
+
+
+
 # [2.2.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.1.13...@adobe/gatsby-theme-parliament@2.2.0) (2020-10-02)
 
 
