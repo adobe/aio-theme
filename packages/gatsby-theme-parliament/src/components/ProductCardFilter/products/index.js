@@ -10,6 +10,26 @@
  * governing permissions and limitations under the License.
  */
 
+import CC from './icons/cc_appicon_64.svg';
+import XD from './icons/xd_appicon_64.svg';
+import ST from './icons/st_appicon_64.svg';
+import PS from './icons/ps_appicon_64.svg';
+import LR from './icons/lr_appicon_64.svg';
+import ID from './icons/id_appicon_64.svg';
+import AI from './icons/ai_appicon_64.svg';
+import PR from './icons/pr_appicon_64.svg';
+import AE from './icons/ae_appicon_64.svg';
+import BR from './icons/br_appicon_64.svg';
+import AN from './icons/an_appicon_64.svg';
+import AU from './icons/au_appicon_64.svg';
+import DW from './icons/dw_appicon_64.svg';
+import AF from './icons/adobe_fonts_appicon_darktile_32.svg';
+import DC from './icons/dc_appicon_64.svg';
+import AC from './icons/acrobat_standard_appicon_64.svg';
+import AS from './icons/adobe_sign_appicon_64.svg';
+import EC from './icons/ec_helpx_ontile_48.svg';
+import EP from './icons/experience_platform_appicon_RGB_noshadow_64.svg';
+
 export default [
   {
     name: 'Adobe Creative Cloud',
@@ -17,7 +37,7 @@ export default [
       {
         name: 'Adobe Creative Cloud',
         description: 'Extend Creative Cloud apps and integrate Creative Cloud API services.',
-        icon: '',
+        icon: CC,
         discover: 'https://www.adobe.io/apis/creativecloud.html',
         docs: '',
         lastUpdated: '10/5/2020'
@@ -26,7 +46,7 @@ export default [
         name: 'Adobe XD',
         description:
           "The Adobe XD SDK enables you to build plugins that can create and manipulate content, automate design workflows, and unleash your user's creativity.",
-        icon: '',
+        icon: XD,
         discover: 'https://www.adobe.io/apis/creativecloud/xd.html',
         docs: '',
         lastUpdated: '10/5/2018'
@@ -51,7 +71,7 @@ export default [
       {
         name: 'Stock',
         description: 'Give your users access to the perfect Adobe Stock asset to enhance their creative projects.',
-        icon: '',
+        icon: ST,
         discover: 'https://www.adobe.io/apis/creativecloud/stock.html',
         docs: '',
         lastUpdated: '10/5/2015'
@@ -60,7 +80,7 @@ export default [
         name: 'Photoshop',
         description:
           'Build custom extensions for unique image processing workflows, connect to web services, and more.',
-        icon: '',
+        icon: PS,
         discover: 'https://www.adobe.io/apis/creativecloud/photoshop.html',
         docs: '',
         lastUpdated: '10/5/2015'
@@ -68,7 +88,7 @@ export default [
       {
         name: 'Lightroom',
         description: 'Create effects, define presets and brushes, manipulate metadata, and much more in Lightroom.',
-        icon: '',
+        icon: LR,
         discover: 'https://www.adobe.io/apis/creativecloud/lightroom.html',
         docs: '',
         lastUpdated: '10/5/2014'
@@ -76,7 +96,7 @@ export default [
       {
         name: 'InDesign',
         description: 'Give your InDesign users the power to streamline their editorial and publishing workflows.',
-        icon: '',
+        icon: ID,
         discover: 'https://www.adobe.io/apis/creativecloud/indesign.html',
         docs: '',
         lastUpdated: '10/5/2013'
@@ -84,7 +104,7 @@ export default [
       {
         name: 'Illustrator',
         description: 'Give users enhanced power over their vector image projects with effects, automation, and more.',
-        icon: '',
+        icon: AI,
         discover: 'https://www.adobe.io/apis/creativecloud/illustrator.html',
         docs: '',
         lastUpdated: '10/5/2012'
@@ -93,7 +113,7 @@ export default [
         name: 'Premier Pro',
         description:
           'Automate complex tasks, communicate with external hardware, add support for new codecs, and more.',
-        icon: '',
+        icon: PR,
         discover: 'https://www.adobe.io/apis/creativecloud/premierepro.html',
         docs: '',
         lastUpdated: '10/5/2011'
@@ -102,7 +122,7 @@ export default [
         name: 'After Effects',
         description:
           'Create stunning visual effects, manipulate project elements, and automate complex tasks in After Effects.',
-        icon: '',
+        icon: AE,
         discover: 'https://www.adobe.io/apis/creativecloud/aftereffects.html',
         docs: '',
         lastUpdated: '10/5/2010'
@@ -111,7 +131,7 @@ export default [
         name: 'Bridge',
         description:
           'The ExtendScript SDK, Common Extensibility Platform, for Adobe Bridge let you enhance and extend the application with ExtendScript and HTML-based panels.',
-        icon: '',
+        icon: BR,
         discover: 'https://www.adobe.io/apis/creativecloud/bridge.html',
         docs: '',
         lastUpdated: '10/5/2009'
@@ -119,7 +139,7 @@ export default [
       {
         name: 'Animate',
         description: 'Build Animate extensions that provide custom tools for creatives, automate workflows, and more.',
-        icon: '',
+        icon: AN,
         discover: 'https://www.adobe.io/apis/creativecloud/animate.html',
         docs: '',
         lastUpdated: '10/5/2008'
@@ -127,7 +147,7 @@ export default [
       {
         name: 'Audition',
         description: 'Tune Adobe Audition to your specs by automating tasks, connecting to web services, and more.',
-        icon: '',
+        icon: AU,
         discover: 'https://www.adobe.io/apis/creativecloud/audition.html',
         docs: '',
         lastUpdated: '10/5/2007'
@@ -135,7 +155,7 @@ export default [
       {
         name: 'Dreamweaver',
         description: 'Add powerful features for building web apps. Automate your cross-application workflows.',
-        icon: '',
+        icon: DW,
         discover: 'https://www.adobe.io/apis/creativecloud/dreamweaver.html',
         docs: '',
         lastUpdated: '10/5/2006'
@@ -144,7 +164,7 @@ export default [
         name: 'Adobe Fonts',
         description:
           'The Typekit API gives you programmatic access to the functionality of Typekit over a RESTful HTTP based API.',
-        icon: '',
+        icon: AF,
         discover: 'https://www.adobe.io/apis/creativecloud/adobe-fonts.html',
         docs: '',
         lastUpdated: '10/5/2005'
@@ -167,7 +187,7 @@ export default [
         name: 'Adobe Document Cloud',
         description:
           'Improve the way you engage with documents. With Adobe services, you can extend applications like Adobe Acrobat Reader DC and integrate our platform into your systems and apps.',
-        icon: '',
+        icon: DC,
         discover: 'https://www.adobe.io/apis/documentcloud.html',
         docs: '',
         lastUpdated: '10/5/2020'
@@ -175,7 +195,7 @@ export default [
       {
         name: 'Acrobat DC',
         description: 'Create, edit, sign, and share PDFs faster and easier than ever.',
-        icon: '',
+        icon: AC,
         discover: 'https://www.adobe.io/apis/documentcloud/acrobat.html',
         docs: '',
         lastUpdated: '10/5/2019'
@@ -183,7 +203,7 @@ export default [
       {
         name: 'Acrobat Sign',
         description: 'Create, edit, sign, and share PDFs faster and easier than ever.',
-        icon: '',
+        icon: AS,
         discover: 'https://www.adobe.io/apis/documentcloud/sign.html',
         docs: 'https://www.adobe.io/apis/documentcloud/sign/docs.html',
         lastUpdated: '10/5/2018'
@@ -206,7 +226,7 @@ export default [
         name: 'Adobe Experience Cloud',
         description:
           'The most complete set of marketing solutions available. And it gives you everything you need to get deep insight into your customers, build personalized campaigns and manage your content and assets.',
-        icon: '',
+        icon: EC,
         discover: 'https://www.adobe.io/apis/experiencecloud.html',
         docs: '',
         lastUpdated: '10/5/2020'
@@ -308,7 +328,7 @@ export default [
         name: 'Adobe Experience Platform',
         description:
           'Adobe Experience Platform provides a central service for Data Ingestion, Governance, Insights, and Actioning. These services are built API First.',
-        icon: '',
+        icon: EP,
         discover: 'https://www.adobe.io/apis/experienceplatform.html',
         docs: '',
         lastUpdated: '10/5/2020'

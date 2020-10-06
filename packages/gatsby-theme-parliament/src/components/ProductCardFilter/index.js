@@ -20,7 +20,7 @@ import { CheckboxGroup } from '@adobe/react-spectrum';
 import { Checkbox } from '@adobe/react-spectrum';
 import { Picker, Item } from '@adobe/react-spectrum';
 import SortOrderDown from '@spectrum-icons/workflow/SortOrderDown';
-import clouds from './clouds';
+import clouds from './products';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import { getExternalLinkProps } from '../utils';
