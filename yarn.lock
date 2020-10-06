@@ -3076,7 +3076,7 @@
     "@react-types/form" "^3.2.1"
     "@react-types/shared" "^3.2.1"
 
-"@react-spectrum/icon@^3.1.0", "@react-spectrum/icon@^3.2.0":
+"@react-spectrum/icon@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@react-spectrum/icon/-/icon-3.2.0.tgz#0c9b19eb102f8958204abaf537eff64430c3f3c7"
   integrity sha512-XfKz3aQ6+4YbmnzK1fKLMbIui8zXWuP9KPUAvf8Y4NQJ4KNeBS/TIIfUH3DKF0TE94TkSOgmVBI1Z0pSVsVkrw==
@@ -3989,13 +3989,13 @@
     "@adobe/react-spectrum-ui" "^1.0.0"
     "@react-spectrum/icon" "^3.2.0"
 
-"@spectrum-icons/workflow@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@spectrum-icons/workflow/-/workflow-3.1.0.tgz#d618eda2906da5d735557546d7e849776e37e821"
-  integrity sha512-Uwl8W61imY4iL0KB9va56EIw73s0AVBVOe+ESABor5WPYPLDO3vffGGvbVvOJQvWqL3WxTAJ5+hOnKO5Q3jI6Q==
+"@spectrum-icons/workflow@^3.1.0", "@spectrum-icons/workflow@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-icons/workflow/-/workflow-3.2.0.tgz#3d5c7e124a8967294782c9ae56350996491b2fdd"
+  integrity sha512-DCmyyLMfsAL5OpEzsfwBCeoGNcYgnh2vi8bPjBg+Wp/PTAD3RGERc8Len9KDwjntgwLsT8TVPMc5aqFfoWUFRw==
   dependencies:
     "@adobe/react-spectrum-workflow" "^1.0.0"
-    "@react-spectrum/icon" "^3.1.0"
+    "@react-spectrum/icon" "^3.2.0"
 
 "@styled-system/css@^5.0.16":
   version "5.1.5"
