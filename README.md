@@ -618,9 +618,15 @@ A site is published via a Pull Request:
 2. Create a GitHub label called `deploy:dev` if it does not exist
 3. Add a Azure Blob Storage connection string GitHub Secret for `production` called `AZURE_PROD_CONNECTION_STRING`
 4. Add a Azure Blob Storage connection string GitHub Secret for `development` called `AZURE_DEV_CONNECTION_STRING`
-4. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
-6. The Pull Request must be on a `branch in the same repo` (this is a GitHub Actions security restriction for secrets access)
-7. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
+5. Add a Github Secret for `production` called `PATH_PREFIX`. This is the sub-folder to deploy this micro-site to.
+  * For example, if you want to deploy to https://example.com/foo/bar you must set `PATH_PREFIX` to `foo/bar`
+  * For sites deployed to the `root`, you *must* do three things:
+    1. Don't deploy to the same blob/bucket as the other micro-sites; this will prevent folder name conflicts
+    2. Set the Github Secret `PATH_PREFIX` to the special token `%%none%%`
+    3. Modify `.github/workflows/pr-approved.yml`: search for all `PREFIX_PATHS: true` and replace with `PREFIX_PATHS: false` (this couldn't be set via Github Secret because of a quirk with booleans as secrets) 
+6. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
+7. The Pull Request must be on a `branch in the same repo` (this is a GitHub Actions security restriction for secrets access)
+8. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
  
 ## Writing Enhanced Markdown 
 
