@@ -275,7 +275,8 @@ export default ({ children, pageContext, query }) => {
                     : layoutColumns(isDocs ? 9 : 12)};
                 `}>
                 {isDocs && (
-                  <Flex marginTop="size-400">
+                  <Flex marginTop="size-500"
+                        marginBottom="size-500">
                     <View marginEnd="size-400">
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                     </View>
@@ -314,11 +315,10 @@ export default ({ children, pageContext, query }) => {
                   </Flex>
                 )}
               </div>
-
+              {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
               {resourcesChild && resourcesChild}
             </Flex>
           </div>
-          {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
           <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
         </main>
       </MDXProvider>

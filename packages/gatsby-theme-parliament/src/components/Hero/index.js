@@ -133,6 +133,51 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
   } else {
     const height = 'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-250))';
 
+    if (variant === 'supportHero') {
+      return (
+        <section
+          className={`spectrum--${theme}`}
+          css={css`
+            height: var(--spectrum-global-dimension-size-3400);
+            margin-bottom: var(--spectrum-global-dimension-size-500);
+            background: ${background ?? 'rgb( 29, 125, 238)'};
+            width: 100%;
+            justify-content: center;
+            display: flex;
+          `}>
+          <div
+            css={css`
+              width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+              margin: 0 var(--spectrum-global-dimension-size-800);
+          `}>
+            <HeroImage image={image} />
+
+            <div
+              css={css`
+                width: calc(5 * 100% / 12);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                justify-content: center;
+                text-align: left;
+                `}>
+              {heading &&
+                React.cloneElement(heading, {
+                  className: 'spectrum-Heading--XL'
+                })}
+
+              {text &&
+                React.cloneElement(text, {
+                  className: 'spectrum-Body--L',
+                  className: 'margin-bottom-0'
+                })}
+              </div>
+            </div>
+        </section>
+      );
+    }
+
     if (variant === 'fullwidth') {
       return (
         <section
