@@ -126,11 +126,12 @@ const TextBlock = ({
   isCentered = false,
   ...props
 }) => {
-  if (width === '33%') {
-    width = `${100 / 3}%`;
-  }
+  let columns = 100 / parseFloat(width);
 
-  const columns = 100 / parseFloat(width);
+  if (width === '33%') {
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
+  }
 
   useEffect(() => {
     return () => {

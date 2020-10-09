@@ -21,11 +21,12 @@ let counter = 0;
 const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
-  if (width === '33%') {
-    width = `${100 / 3}%`;
-  }
+  let columns = 100 / parseFloat(width);
 
-  const columns = 100 / parseFloat(width);
+  if (width === '33%') {
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
+  }
 
   if (columns > 1) {
     counter++;

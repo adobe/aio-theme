@@ -23,12 +23,12 @@ let verticalCounter = 0;
 const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizontal', link, heading, text, image }) => {
   const href = getElementChild(link).props.href;
   const externalProps = getExternalLinkProps(href);
+  let columns = 100 / parseFloat(width);
 
   if (width === '33%') {
-    width = `${100 / 3}%`;
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
   }
-
-  const columns = 100 / parseFloat(width);
 
   const is2Columns = columns === 2;
   if (is2Columns) {
