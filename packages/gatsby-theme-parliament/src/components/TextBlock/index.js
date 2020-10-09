@@ -192,8 +192,6 @@ const TextBlock = ({
               <h3
                 className="spectrum-Heading--M"
                 css={css`
-                  white-space: nowrap;
-                  overflow: auto;
                   margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
                   & ~ p {
