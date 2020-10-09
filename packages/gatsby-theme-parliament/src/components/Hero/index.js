@@ -68,7 +68,36 @@ const HeroImage = ({ image }) =>
       })
     : null;
 
-const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons, variant = 'default' }) => {
+const HeroTexts = ({ texts }) => {
+  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
+  return textKeys.map((textKey) =>
+    React.cloneElement(texts[textKey], {
+      className: 'spectrum-Body--L',
+      css: css`
+        &.spectrum-Body--L {
+          margin-top: 0 !important;
+
+          &:last-of-type {
+            margin-bottom: 0 !important;
+          }
+        }
+      `
+    })
+  );
+};
+
+const HeroHeading = ({ heading, variant }) =>
+  heading
+    ? React.cloneElement(heading, {
+        className: variant === 'default' ? 'spectrum-Heading--XL' : 'spectrum-Heading--XXL spectrum-Heading--serif',
+        css: css`
+          margin-top: 0 !important;
+          margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+        `
+      })
+    : null;
+
+const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, variant = 'default', ...props }) => {
   if (!variant || variant === 'default') {
     return (
       <section
@@ -94,15 +123,9 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
             justify-content: center;
             text-align: left;
           `}>
-          {heading &&
-            React.cloneElement(heading, {
-              className: 'spectrum-Heading--XL'
-            })}
+          <HeroHeading heading={heading} variant={variant} />
 
-          {text &&
-            React.cloneElement(text, {
-              className: 'spectrum-Body--L'
-            })}
+          <HeroTexts texts={props} />
         </div>
       </section>
     );
@@ -134,25 +157,11 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
               justify-content: center;
               text-align: center;
             `}>
-            {heading &&
-              React.cloneElement(heading, {
-                className: 'spectrum-Heading--XXL spectrum-Heading--serif',
-                css: css`
-                  margin-bottom: 0 !important;
+            <HeroHeading heading={heading} variant={variant} />
 
-                  & + p {
-                    margin-top: var(--spectrum-global-dimension-size-200) !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
-                  }
-                `
-              })}
+            <HeroTexts texts={props} />
 
-            {text &&
-              React.cloneElement(text, {
-                className: 'spectrum-Body--L'
-              })}
-
-            <HeroButtons buttons={buttons} variants={['cta', 'overBackground']} />
+            <HeroButtons buttons={buttons} variants={['cta', 'overBackground']} marginTop="size-400" />
           </div>
         </section>
       );
@@ -189,26 +198,11 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                   `
                 })}
 
-              {heading &&
-                React.cloneElement(heading, {
-                  className: 'spectrum-Heading--XXL spectrum-Heading--serif',
-                  css: css`
-                    margin-top: 0 !important;
-                    margin-bottom: 0 !important;
+              <HeroHeading heading={heading} isVariant />
 
-                    & + p {
-                      margin-top: var(--spectrum-global-dimension-size-200) !important;
-                      margin-bottom: var(--spectrum-global-dimension-size-300) !important;
-                    }
-                  `
-                })}
+              <HeroTexts texts={props} />
 
-              {text &&
-                React.cloneElement(text, {
-                  className: 'spectrum-Body--L'
-                })}
-
-              <HeroButtons buttons={buttons} />
+              <HeroButtons buttons={buttons} marginTop="size-300" />
             </div>
             <div
               css={css`
