@@ -102,8 +102,6 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
     return () => document.removeEventListener('click', onClick);
   }, []);
 
-  const externalLinkProps = getExternalLinkProps();
-
   return (
     <header
       role="banner"
@@ -170,7 +168,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         : ''}
                     `}>
                     {menu.path ? (
-                      <ActionButton elementType="a" isQuiet href={menu.path} {...externalLinkProps}>
+                      <ActionButton elementType="a" isQuiet href={menu.path} {...getExternalLinkProps(menu.path)}>
                         <Text>{menu.title}</Text>
                       </ActionButton>
                     ) : (
@@ -378,12 +376,21 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
             {(globalNav.console || globalNav.signIn) && (
               <ButtonGroup>
                 {globalNav.console && (
-                  <Button variant="primary" elementType="a" href="https://console.adobe.io" {...externalLinkProps}>
+                  <Button
+                    variant="primary"
+                    elementType="a"
+                    href="https://console.adobe.io"
+                    {...getExternalLinkProps('https://console.adobe.io')}>
                     Console
                   </Button>
                 )}
                 {globalNav.signIn && (
-                  <Button isQuiet variant="primary" elementType="a" href="https://adobe.io" {...externalLinkProps}>
+                  <Button
+                    isQuiet
+                    variant="primary"
+                    elementType="a"
+                    href="https://adobe.io"
+                    {...getExternalLinkProps('https://adobe.io')}>
                     Sign in
                   </Button>
                 )}

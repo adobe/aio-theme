@@ -24,10 +24,8 @@ const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
-const externalLinkProps = getExternalLinkProps();
-
 const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
-  const { APIs = [], services = [], community = [], support = [], developer = [], legal = [] } = links;
+  const { APIs = [], services = [], community = [], support = [], developer = [], legal = [], allAPIs } = links;
 
   return (
     <footer
@@ -77,7 +75,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
                   {APIs.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...externalLinkProps} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path}>
                           {title}
                         </a>
                       </Link>
@@ -85,8 +83,8 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
                   ))}
                   <li>
                     <Link isQuiet={true}>
-                      <a {...externalLinkProps} href="https://www.adobe.io/apis.html">
-                        <strong>View All</strong>
+                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path}>
+                        <strong>{allAPIs.title}</strong>
                       </a>
                     </Link>
                   </li>
@@ -97,7 +95,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
                   {services.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...externalLinkProps} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path}>
                           {title}
                         </a>
                       </Link>
@@ -116,7 +114,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {community.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -133,7 +131,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {support.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -150,7 +148,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {developer.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -175,7 +173,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {legal.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>

@@ -17,15 +17,15 @@ import '@spectrum-css/button';
 const links = [
   {
     title: 'Discover',
-    path: 'https://www.adobe.io/apis.html'
+    path: '/apis.html'
   },
   {
     title: 'Open Source',
-    path: 'https://www.adobe.io/open.html'
+    path: '/open.html'
   },
   {
     title: 'Blog',
-    path: 'https://www.adobe.io/blog.html'
+    path: '/blog.html'
   },
   {
     title: 'Console',
@@ -47,7 +47,7 @@ export const GlobalHeaderTemp = () => (
         height: 100%;
       `}>
       <a
-        href="https://adobe.io"
+        href="/"
         css={css`
           display: flex;
           position: absolute;

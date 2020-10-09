@@ -102,6 +102,10 @@ export default ({ children, pageContext, location }) => {
               signIn
               console
               footer {
+                allAPIs {
+                  title
+                  path
+                }
                 APIs {
                   title
                   path

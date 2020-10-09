@@ -25,8 +25,6 @@ import '@spectrum-css/card';
 import { getExternalLinkProps } from '../utils';
 import nextId from 'react-id-generator';
 
-const externalLinkProps = getExternalLinkProps();
-
 const allProducts = clouds.map(({ products }) => products).flat();
 
 const filterByClouds = (cloudFilter, additionalFilter, setFilteredProducts) => {
@@ -183,13 +181,17 @@ const ProductCardFilter = () => {
                         elementType="a"
                         isQuiet
                         href={product.discover}
-                        {...externalLinkProps}
+                        {...getExternalLinkProps(product.discover)}
                         variant="secondary">
                         Learn more
                       </Button>
                     )}
                     {product.docs && (
-                      <Button elementType="a" href={product.docs} {...externalLinkProps} variant="primary">
+                      <Button
+                        elementType="a"
+                        href={product.docs}
+                        {...getExternalLinkProps(product.docs)}
+                        variant="primary">
                         View docs
                       </Button>
                     )}
