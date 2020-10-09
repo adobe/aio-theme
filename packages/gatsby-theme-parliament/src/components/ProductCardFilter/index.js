@@ -19,15 +19,14 @@ import { ButtonGroup } from '@adobe/react-spectrum';
 import { CheckboxGroup } from '@adobe/react-spectrum';
 import { Checkbox } from '@adobe/react-spectrum';
 import { Picker, Item } from '@adobe/react-spectrum';
-import clouds from './products';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import { getExternalLinkProps } from '../utils';
 import nextId from 'react-id-generator';
 
-const allProducts = clouds.map(({ products }) => products).flat();
+const flattenProducts = (clouds) => clouds.map(({ products }) => products).flat();
 
-const filterByClouds = (cloudFilter, additionalFilter, setFilteredProducts) => {
+const filterByClouds = (clouds, cloudFilter, additionalFilter, setFilteredProducts) => {
   if (!cloudFilter.length) {
     cloudFilter = clouds.map(({ name }) => name);
   }
@@ -35,7 +34,7 @@ const filterByClouds = (cloudFilter, additionalFilter, setFilteredProducts) => {
   let selectedClouds = clouds.filter(({ name }) => cloudFilter.some((cloud) => name === cloud));
   let selectedProducts = selectedClouds.map(({ products }) => products).flat();
   if (!selectedProducts.length) {
-    selectedProducts = allProducts;
+    selectedProducts = flattenProducts(clouds);
   }
 
   const { filter } = additionalFilters.find(({ value }) => value === additionalFilter);
@@ -62,13 +61,13 @@ const additionalFilters = [
   }
 ];
 
-const ProductCardFilter = () => {
-  const [filteredProducts, setFilteredProducts] = useState(filterByLastUpdated(allProducts));
+const ProductCardFilter = ({ products: clouds }) => {
+  const [filteredProducts, setFilteredProducts] = useState(filterByLastUpdated(flattenProducts(clouds)));
   const [cloudFilter, setCloudFilter] = useState([]);
   const [additionalFilter, setAdditionalFilter] = useState('last_updated');
 
   useEffect(() => {
-    filterByClouds(cloudFilter, additionalFilter, setFilteredProducts);
+    filterByClouds(clouds, cloudFilter, additionalFilter, setFilteredProducts);
   }, [cloudFilter, additionalFilter]);
 
   const headingId = nextId();
