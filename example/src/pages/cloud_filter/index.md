@@ -3,7 +3,7 @@ title: Index
 description: This is the index page
 GlobalHeaderTemp: true  
 ---
-import products from './products'
+import products from './products/_index.js'
 
 <Hero slots="image, heading, text" variant="fullwidth" background="rgb(51, 51, 51)" />
 
