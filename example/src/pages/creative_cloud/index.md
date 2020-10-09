@@ -3,18 +3,20 @@ title: Home - Creative Cloud
 description: This is the home page of Creative Cloud 
 ---
  
-<Hero slots="image, heading, icon, text, buttons" variant="halfwidth" />
+<Hero slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
 ![Creative Cloud banner](images/cc-hero.png)
 
+![Creative Cloud icon](images/cc-icon.png)
+
 # Creativity for all
 
-![Creative Cloud icon](images/cc-icon.png)
+Start building.
 
 Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size 
 
 * [Get started](https://adobe.io)
-* [Sign up for the newsletter](https://adobe.io)
+* [Sign up for the newsletter](https://adobe.io) 
 
 
 
