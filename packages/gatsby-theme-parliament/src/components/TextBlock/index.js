@@ -91,10 +91,12 @@ const YouTubeVideo = ({ video }) => {
   let youTubeId = null;
   if (video) {
     const link = getElementChild(video);
-    const url = new URL(link.props.href);
+    let url = new URL(link.props.href);
     if (url.hostname.startsWith('youtube.com') || url.hostname.startsWith('www.youtube.com')) {
       const queryParams = new URLSearchParams(url.search);
       youTubeId = queryParams.get('v');
+    } else if (url.hostname.startsWith('youtu.be')) {
+      youTubeId = url.pathname.slice(1);
     }
   }
 
