@@ -19,7 +19,6 @@ import { ButtonGroup } from '@adobe/react-spectrum';
 import { CheckboxGroup } from '@adobe/react-spectrum';
 import { Checkbox } from '@adobe/react-spectrum';
 import { Picker, Item } from '@adobe/react-spectrum';
-import SortOrderDown from '@spectrum-icons/workflow/SortOrderDown';
 import clouds from './products';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
@@ -87,7 +86,6 @@ const ProductCardFilter = () => {
       `}>
       <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-800">
         <Flex alignItems="center" justifyContent="center">
-          <SortOrderDown size="S" />
           <Picker
             isQuiet
             items={additionalFilters}
