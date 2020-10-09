@@ -248,82 +248,74 @@ export default ({ children, pageContext, query }) => {
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
-        {pageContext?.frontmatter?.openAPISpec ? (
-          <OpenAPIBlock specUrl={pageContext.frontmatter.openAPISpec} />
-        ) : (
-          <>
-            {heroChild && heroChild}
-            <section
-              css={css`
-                ${isDiscovery
-                  ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
-                  : `
+        <main className="spectrum-Typography">
+          {heroChild && heroChild}
+          <div
+            css={css`
+              ${isDiscovery
+                ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
+                : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
                 margin: 0 var(--spectrum-global-dimension-size-800);
                 `}
-              `}>
-              <Flex>
-                <article
-                  css={css`
-                    width: ${isDiscovery
-                      ? `
+            `}>
+            <Flex>
+              <div
+                css={css`
+                  width: ${isDiscovery
+                    ? `
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                      : layoutColumns(isDocs ? 7 : 9)};
-                  `}>
-                  {isDocs && (
-                    <Flex marginTop="size-400">
-                      <View marginEnd="size-400">
-                        <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
-                      </View>
-                      <View marginStart="auto">
-                        <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
-                      </View>
-                    </Flex>
-                  )}
+                    : layoutColumns(isDocs ? 7 : 9)};
+                `}>
+                {isDocs && (
+                  <Flex marginTop="size-400">
+                    <View marginEnd="size-400">
+                      <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+                    </View>
+                    <View marginStart="auto">
+                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
+                    </View>
+                  </Flex>
+                )}
 
-                  {filteredChildren}
+                {filteredChildren}
 
-                  {isDocs && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+                {isDocs && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
 
-                  {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
+                {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
 
-                  {!isDiscovery && (
-                    <Flex
-                      alignItems="center"
-                      justifyContent="space-between"
-                      marginTop="size-800"
-                      marginBottom="size-400">
-                      <View>
-                        <Contributors
-                          repository={repository}
-                          branch={branch}
-                          root={root}
-                          pagePath={pagePath}
-                          contributors={contributors}
-                          externalContributors={pageContext?.frontmatter?.contributors}
-                          date={
-                            contributors[0]
-                              ? new Date(contributors[0].date).toLocaleDateString()
-                              : new Date().toLocaleDateString()
-                          }
-                        />
-                      </View>
-                      <View>
-                        <Feedback />
-                      </View>
-                    </Flex>
-                  )}
-                </article>
+                {!isDiscovery && (
+                  <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+                    <View>
+                      <Contributors
+                        repository={repository}
+                        branch={branch}
+                        root={root}
+                        pagePath={pagePath}
+                        contributors={contributors}
+                        externalContributors={pageContext?.frontmatter?.contributors}
+                        date={
+                          contributors[0]
+                            ? new Date(contributors[0].date).toLocaleDateString()
+                            : new Date().toLocaleDateString()
+                        }
+                      />
+                    </View>
+                    <View>
+                      <Feedback />
+                    </View>
+                  </Flex>
+                )}
+              </div>
 
-                {resourcesChild && resourcesChild}
-              </Flex>
-            </section>
-            {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
-            <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
-          </>
-        )}
+              {resourcesChild && resourcesChild}
+            </Flex>
+          </div>
+          {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
+          <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
+        </main>
       </MDXProvider>
     );
   }

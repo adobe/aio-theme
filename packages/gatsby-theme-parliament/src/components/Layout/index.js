@@ -33,6 +33,10 @@ import { GlobalHeader } from '../GlobalHeader';
 import { GlobalHeaderTemp } from '../GlobalHeader/temp';
 import { SEO } from '../SEO';
 import { SideNav } from '../SideNav';
+import { OpenAPIBlock } from '@adobe/parliament-ui-components';
+
+// Cache spec
+let openAPISpec;
 
 export default ({ children, pageContext, location }) => {
   const { locale, direction } = useLocale();
@@ -177,7 +181,15 @@ export default ({ children, pageContext, location }) => {
   const selectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
   const hasSideNav = selectedSubPages.length > 0;
 
-  const hasGlobalHeaderTemp = pageContext?.frontmatter?.GlobalHeaderTemp;
+  const frontmatter = pageContext?.frontmatter;
+  const hasGlobalHeaderTemp = frontmatter?.GlobalHeaderTemp;
+  const hasOpenAPISpec = frontmatter?.openAPISpec;
+
+  if (typeof hasOpenAPISpec !== 'undefined') {
+    if (openAPISpec !== hasOpenAPISpec) {
+      openAPISpec = hasOpenAPISpec;
+    }
+  }
 
   return (
     <Provider
@@ -191,12 +203,7 @@ export default ({ children, pageContext, location }) => {
         allGithub,
         allGithubContributors
       }}>
-      <SEO
-        title={pageContext?.frontmatter?.title}
-        description={pageContext?.frontmatter?.description}
-        locale={locale}
-        direction={direction}
-      />
+      <SEO title={frontmatter?.title} description={frontmatter?.description} locale={locale} direction={direction} />
       <SSRProvider>
         <I18nProvider locale={locale}>
           <RSProvider theme={defaultTheme} colorScheme="light">
@@ -218,7 +225,7 @@ export default ({ children, pageContext, location }) => {
                   right="size-0"
                   backgroundColor="gray-50"
                   zIndex="2">
-                  {pageContext?.frontmatter?.GlobalHeaderTemp ? (
+                  {hasGlobalHeaderTemp ? (
                     <GlobalHeaderTemp />
                   ) : (
                     <GlobalHeader
@@ -245,7 +252,8 @@ export default ({ children, pageContext, location }) => {
                   />
                 </View>
                 <View gridArea="main">
-                  <main className="spectrum-Typography">{children}</main>
+                  <View isHidden={!hasOpenAPISpec}>{openAPISpec && <OpenAPIBlock specUrl={openAPISpec} />}</View>
+                  {!hasOpenAPISpec && children}
                 </View>
               </Grid>
             </div>
