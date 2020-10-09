@@ -64,7 +64,18 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
               </GatsbyLink>
             )}
             {page.pages && (
-              <ul className="spectrum-SideNav" {...(page.heading ? { 'aria-labelledby': id } : {})}>
+              <ul
+                className="spectrum-SideNav"
+                css={css`
+                  ${level > 1
+                    ? `
+                    & > li > a {
+                      padding-left: calc(${level + 1} * var(--spectrum-global-dimension-size-150)) !important;
+                    }
+                  `
+                    : ''}
+                `}
+                {...(page.heading ? { 'aria-labelledby': id } : {})}>
                 {renderSubtree(page.pages, level + 1)}
               </ul>
             )}
