@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.3.0...@adobe/gatsby-theme-parliament@2.4.0) (2020-10-10)
+
+
+### Bug Fixes
+
+* Add space for copy button in Code Block ([903a573](https://github.com/adobe/gatsby-theme-parliament/commit/903a57302faebefac8d1da85bd8c015d3343a825))
+* Cache API pages ([26ee329](https://github.com/adobe/gatsby-theme-parliament/commit/26ee329d3d97fb031d0fc47f400cf79027b2472f))
+* Move ProductCardFilter content out of component ([a3a2f78](https://github.com/adobe/gatsby-theme-parliament/commit/a3a2f782ed6757fbc28a69c6593b9bf646a84d79))
+* Remove adobe.io links ([aa8ac7d](https://github.com/adobe/gatsby-theme-parliament/commit/aa8ac7dd31d07e70d0790efb9e389f12cf8e3b35))
+* Remove sort icon from ProductCard filter ([275c126](https://github.com/adobe/gatsby-theme-parliament/commit/275c12654ccdd92d12f89d52c3b13cd9d8cb2b54))
+* Restore visuals of deep nested SideNav items ([2e96dcf](https://github.com/adobe/gatsby-theme-parliament/commit/2e96dcf146850fde2d5607b9a3d5f46e2c634119))
+* Support multiline heading in Text Block ([6a04b32](https://github.com/adobe/gatsby-theme-parliament/commit/6a04b32ba58afe428419546fefe7bfd66bf72358))
+* Support youtu.be videos in Text Blocks ([2c03442](https://github.com/adobe/gatsby-theme-parliament/commit/2c03442b9c7b127f6e2141a032402d311c9f3fc1))
+* TextBlocks in 3 columns are not always in a row ([c8cc3f8](https://github.com/adobe/gatsby-theme-parliament/commit/c8cc3f8f31b3063788245b9956332f205d4ef274))
+
+
+### Features
+
+* Support multiple text in Hero Block ([d299b2c](https://github.com/adobe/gatsby-theme-parliament/commit/d299b2c77516770106422e6ad65015c9d99e7aa5))
+
+
+
+
+
 # [2.3.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.2.0...@adobe/gatsby-theme-parliament@2.3.0) (2020-10-06)
 
 
