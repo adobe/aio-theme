@@ -56,8 +56,10 @@ export const GlobalHeaderTemp = () => (
           padding: 0 20px;
           text-decoration: none;
           z-index: 1;
+          outline: none;
 
-          &:hover {
+          &:hover,
+          &:focus {
             text-decoration: underline;
           }
         `}>
@@ -114,7 +116,6 @@ export const GlobalHeaderTemp = () => (
                       font-weight: 700;
                       color: black;
                       text-decoration: none;
-                      outline: none;
                     `}>
                     {title}
                   </a>
