@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.4.1...@adobe/gatsby-theme-parliament@2.5.0) (2020-10-12)
+
+
+### Bug Fixes
+
+* FOUC ProductCard text on desktop ([b12cda8](https://github.com/adobe/gatsby-theme-parliament/commit/b12cda80694e3f3cc98842c4545f14d5ad41c651))
+* Update Adobe logo color ([1490901](https://github.com/adobe/gatsby-theme-parliament/commit/149090101cce3afb4a5b8a4a7a9e58cc5f8cc8cf))
+
+
+### Features
+
+* Support frontmatter favIcon ([8116b2c](https://github.com/adobe/gatsby-theme-parliament/commit/8116b2cd54d2efa852f8d90fe90b3506dbc30acb))
+
+
+
+
+
 ## [2.4.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.4.0...@adobe/gatsby-theme-parliament@2.4.1) (2020-10-12)
 
 
