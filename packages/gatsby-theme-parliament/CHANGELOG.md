@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.4.0...@adobe/gatsby-theme-parliament@2.4.1) (2020-10-12)
+
+
+### Bug Fixes
+
+* ProductCard without icon should display heading at the top ([e8c243a](https://github.com/adobe/gatsby-theme-parliament/commit/e8c243a5cd6dda43a288c8295a875dd01511690e))
+* Restore GlobalHeader temp focus state ([ad4b581](https://github.com/adobe/gatsby-theme-parliament/commit/ad4b581dca7b6e106dcfcae8277cc9c7d899f112))
+
+
+
+
+
 # [2.4.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.3.0...@adobe/gatsby-theme-parliament@2.4.0) (2020-10-10)
 
 
