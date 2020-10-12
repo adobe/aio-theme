@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+// TODO reuse ProductCard
+
 import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/core';
 import { Flex } from '@adobe/react-spectrum';
@@ -72,7 +74,7 @@ const ProductCardFilter = ({ products: clouds }) => {
 
   const headingId = nextId();
   const height = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500))';
-  const width = 'var(--spectrum-global-dimension-size-3600)';
+  const width = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800))';
 
   return (
     <section
@@ -81,7 +83,7 @@ const ProductCardFilter = ({ products: clouds }) => {
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
         margin: var(--spectrum-global-dimension-size-400) auto;
       `}>
-      <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-800">
+      <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-400">
         <Flex alignItems="center" justifyContent="center">
           <Picker
             isQuiet

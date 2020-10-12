@@ -56,13 +56,21 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         tabIndex="0"
         className="spectrum-Card"
         css={css`
-          width: var(--spectrum-global-dimension-size-3600);
+          width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
           height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
         `}>
-        <div className="spectrum-Card-body">
+        <div
+          className="spectrum-Card-body"
+          css={css`
+            height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+            overflow: auto;
+            text-align: left;
+          `}>
           <div
             css={css`
+              position: absolute;
               height: var(--spectrum-global-dimension-size-800);
+              z-index: 1;
             `}>
             {icon &&
               React.cloneElement(icon, {
@@ -78,17 +86,31 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                 `
               })}
           </div>
-          <div className="spectrum-Card-header">
-            <div className="spectrum-Card-title">{heading && <strong>{heading.props.children}</strong>}</div>
-          </div>
           <div
-            className="spectrum-Card-content"
             css={css`
-              text-align: left;
-              height: var(--spectrum-global-dimension-size-1700);
-              overflow: auto;
+              position: relative;
+              z-index: 1;
+              background-color: var(--spectrum-global-color-gray-50);
+              ${icon ? 'top: 64px;' : ''}
             `}>
-            {text && text.props.children}
+            <div
+              className="spectrum-Card-header spectrum-Heading--XXS"
+              css={css`
+                margin-top: 0 !important;
+                margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+              `}>
+              <div className="spectrum-Card-title">
+                <strong>{heading && heading.props.children}</strong>
+              </div>
+            </div>
+            <div
+              className="spectrum-Card-content spectrum-Body--S"
+              css={css`
+                height: auto;
+                margin-bottom: 0 !important;
+              `}>
+              {text && text.props.children}
+            </div>
           </div>
         </div>
         <div
