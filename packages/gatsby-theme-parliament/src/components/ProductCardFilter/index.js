@@ -164,12 +164,24 @@ const ProductCardFilter = ({ products: clouds }) => {
                       </div>
                     )}
                   </div>
-                  <div className="spectrum-Card-header">
+                  <div
+                    className="spectrum-Card-header spectrum-Heading--XXS"
+                    css={css`
+                      margin-top: 0 !important;
+                      margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+                    `}>
                     <div className="spectrum-Card-title">
                       <strong>{product.name}</strong>
                     </div>
                   </div>
-                  <div className="spectrum-Card-content">{product.description}</div>
+                  <div
+                    className="spectrum-Card-content spectrum-Body--S"
+                    css={css`
+                      height: auto;
+                      margin-bottom: 0 !important;
+                    `}>
+                    {product.description}
+                  </div>
                 </div>
                 <div
                   className="spectrum-Card-footer"
