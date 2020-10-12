@@ -207,7 +207,13 @@ export default ({ children, pageContext, location }) => {
         allGithub,
         allGithubContributors
       }}>
-      <SEO title={frontmatter?.title} description={frontmatter?.description} locale={locale} direction={direction} />
+      <SEO
+        title={frontmatter?.title}
+        description={frontmatter?.description}
+        favIcon={frontmatter?.favIcon}
+        locale={locale}
+        direction={direction}
+      />
       <SSRProvider>
         <I18nProvider locale={locale}>
           <RSProvider theme={defaultTheme} colorScheme="light">
