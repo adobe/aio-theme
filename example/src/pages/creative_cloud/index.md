@@ -179,6 +179,65 @@ Ash Ryan Arnwine, March 12th 2020
 
 
 
+<ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 3](images/resource3.png)
+
+### Creating a Great Adobe XD Plugin Listing 
+
+Rob Kleiman, July 8th 2020
+
+
+
+<ResourceCard slots="link, image, heading, text" width="50%" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 1](images/resource1.png)
+
+### Pattern Builder: A Behind the Scenes Look at Adobe Capture
+
+Nihil Gupta, July 24th 2020
+
+
+
+<ResourceCard slots="link, image, heading, text" width="50%" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 1](images/resource2.png)
+
+### Photoshop Extensibility Enters a New Era Soon: How to get Involved Early
+
+Ash Ryan Arnwine, March 12th 2020
+
+
+<ResourceCard slots="link, image, heading, text" variant="vertical" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 3](images/resource3.png)
+
+### Creating a Great Adobe XD Plugin Listing 
+
+Rob Kleiman, July 8th 2020
+
+
+
+<ResourceCard slots="link, image, heading, text" variant="horizontal" />
+
+[Adobe I/O](https://adobe.io)
+
+![Resource 3](images/resource3.png)
+
+### Creating a Great Adobe XD Plugin Listing 
+
+Rob Kleiman, July 8th 2020
+
+
+
 
 <TitleBlock slots="heading" theme="light" />
 
@@ -186,48 +245,7 @@ Ash Ryan Arnwine, March 12th 2020
 
 
 
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
-
-![CC icon](images/cc-icon.png)
-
-#### CC Storage API
-
-CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
-
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
-
-
-<ProductCard slots="heading, text, buttons" theme="light" width="33%" />
-
-#### Adobe Stock
-
-Gives your users access to the perfect Adobe Stock asset to enhance their creative projects. 
-
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
-
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
-
-![CC icon](images/cc-icon.png)
-
-#### Common Extensibility Platform
-
-Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps. 
-
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
-
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+<ProductCard slots="icon, heading, text, buttons" theme="light" />
 
 ![CC icon](images/cc-icon.png)
 
@@ -240,31 +258,29 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 
 
-
-<ProductCard slots="heading, text, buttons" theme="light" width="33%" />
-
-#### Adobe Stock
-
-Gives your users access to the perfect Adobe Stock asset to enhance their creative projects. 
-
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
-
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="50%" />
 
 ![CC icon](images/cc-icon.png)
 
-#### Common Extensibility Platform
+#### CC Storage API
 
-Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps. 
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
 
 * [Learn more](https://adobe.io)
 * [View docs](https://adobe.io)
 
 
+
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="50%" />
+
+![CC icon](images/cc-icon.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
 
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
@@ -306,8 +322,7 @@ Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Ado
 
 
 
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="25%" />
 
 ![CC icon](images/cc-icon.png)
 
@@ -320,30 +335,42 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 
 
-
-<ProductCard slots="heading, text, buttons" theme="light" width="33%" />
-
-#### Adobe Stock
-
-Gives your users access to the perfect Adobe Stock asset to enhance their creative projects. 
-
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
-
-
-<ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="25%" />
 
 ![CC icon](images/cc-icon.png)
 
-#### Common Extensibility Platform
+#### CC Storage API
 
-Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps. 
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
 
 * [Learn more](https://adobe.io)
 * [View docs](https://adobe.io)
 
+
+
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="25%" />
+
+![CC icon](images/cc-icon.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
+
+
+
+<ProductCard slots="icon, heading, text, buttons" theme="light" width="25%" />
+
+![CC icon](images/cc-icon.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
+
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
 
 
 
