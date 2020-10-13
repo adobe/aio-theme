@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.2...@adobe/gatsby-theme-parliament@2.6.0) (2020-10-13)
+
+
+### Bug Fixes
+
+* Adjust TextBlock size ([5227e34](https://github.com/adobe/gatsby-theme-parliament/commit/5227e34bf5a341abb04597c2a162bd7370dd449e))
+* Fix ProductCard alignment ([a9449e3](https://github.com/adobe/gatsby-theme-parliament/commit/a9449e3f7a52410269e272670fd4e2b02b584973))
+* Fix ResourceCard alignment ([cd716c7](https://github.com/adobe/gatsby-theme-parliament/commit/cd716c7868e0eb2eb19cd75e295189aa6d9878bc))
+* Temp fix for overflow footer ([138db76](https://github.com/adobe/gatsby-theme-parliament/commit/138db7629c1a1779ca2715adb7d461449017f5ec))
+
+
+### Features
+
+* Add default 404 page ([43d7b1c](https://github.com/adobe/gatsby-theme-parliament/commit/43d7b1c2737b501b0054d827682d8c1a873214ea))
+
+
+
+
+
 ## [2.5.2](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.1...@adobe/gatsby-theme-parliament@2.5.2) (2020-10-13)
 
 
