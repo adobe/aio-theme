@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.2](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.1...@adobe/gatsby-theme-parliament@2.6.2) (2020-10-13)
+
+
+### Bug Fixes
+
+* Remove .html suffix for most links ([44d33c3](https://github.com/adobe/gatsby-theme-parliament/commit/44d33c3690bdfa0156135d1f94a92d8550563f85))
+
+
+
+
+
 ## [2.6.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.0...@adobe/gatsby-theme-parliament@2.6.1) (2020-10-13)
 
 
