@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.0...@adobe/gatsby-theme-parliament@2.6.1) (2020-10-13)
+
+
+### Bug Fixes
+
+* Remove overflowing ResourceCard content ([89101e2](https://github.com/adobe/gatsby-theme-parliament/commit/89101e25525d9308ade87086c606a6b51d0a0d35))
+
+
+
+
+
 # [2.6.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.2...@adobe/gatsby-theme-parliament@2.6.0) (2020-10-13)
 
 
