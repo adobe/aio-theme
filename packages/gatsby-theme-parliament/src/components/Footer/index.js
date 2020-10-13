@@ -34,6 +34,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
         box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-400);
         padding-top: var(--spectrum-global-dimension-size-700);
+        overflow: hidden;
         background-color: var(--spectrum-global-color-gray-75);
         ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
       `}>
@@ -142,7 +143,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               <Divider height="100%" orientation="vertical" size="M" />
             </View>
           </View>
-          <View gridArea="developer">
+          <View gridArea="developer" position="relative">
             <Heading>Adobe Developer</Heading>
             <List>
               {developer.map(({ title, path }, i) => (
