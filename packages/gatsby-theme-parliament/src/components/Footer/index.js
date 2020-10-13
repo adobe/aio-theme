@@ -31,17 +31,19 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
     <footer
       css={css`
         position: relative;
-        box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-400);
         padding-top: var(--spectrum-global-dimension-size-600);
         background-color: var(--spectrum-global-color-gray-75);
+        width: 100%;
         ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
+        ${hasSideNav && 'background-color: white;'}
     `}>
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
+          max-width: ${layoutColumns(12)};
           margin: 0 auto;
+          ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800)'};
           padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-size-800)'};
 
           ul {
@@ -55,7 +57,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
           }
 
           ul.spectrum-Body--S {
-            padding-top: var(--spectrum-global-dimension-size-600);
+            padding-top: var(--spectrum-global-dimension-size-400);
 
             & > li {
               margin-top: 16px;
@@ -109,7 +111,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             </View>
           </View>
           <View gridArea="blogs" position="relative">
-            <Heading>Blogs & Community</Heading>
+            <Heading>Community</Heading>
             <List>
               {community.map(({ title, path }, i) => (
                 <li key={i}>

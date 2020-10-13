@@ -190,6 +190,10 @@
     ],
     "services": [
       {
+        "title": "",
+        "path": ""
+      },
+      {
         "title": "Adobe XD",
         "path": "/apis/creativecloud/xd"
       },
@@ -258,6 +262,10 @@
       {
         "title": "Download SDKs",
         "path": "https://console.adobe.io/downloads"
+      },
+      {
+        "title": "Authentication",
+        "path": "https://www.adobe.io/authentication.html"
       },
       {
         "title": "Careers",

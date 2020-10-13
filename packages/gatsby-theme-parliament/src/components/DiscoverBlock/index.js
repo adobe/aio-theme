@@ -49,6 +49,7 @@ const DiscoverBlock = ({
         p {
           margin-top: 0;
         }
+
       `}>
       {image &&
         React.cloneElement(image, {
