@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.0...@adobe/gatsby-theme-parliament@2.5.1) (2020-10-13)
+
+
+### Bug Fixes
+
+* Update path /apis.html to /apis ([35c95f9](https://github.com/adobe/gatsby-theme-parliament/commit/35c95f91bbb0b8ea9f07df8ed29c8841eb3684ff))
+
+
+
+
+
 # [2.5.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.4.1...@adobe/gatsby-theme-parliament@2.5.0) (2020-10-12)
 
 
