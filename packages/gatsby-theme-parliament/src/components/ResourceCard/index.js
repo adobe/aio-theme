@@ -125,6 +125,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
+              overflow: auto;
             `}>
             <div
               className="spectrum-Card-header"
@@ -141,7 +142,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
+                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
                   `}>
                   {heading && heading.props.children}
                 </h3>
@@ -149,7 +150,11 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             </div>
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
-                <p className="spectrum-Detail spectrum-Detail--L">
+                <p
+                  className="spectrum-Detail spectrum-Detail--L"
+                  css={css`
+                    text-align: left;
+                  `}>
                   <strong>{text && text.props.children}</strong>
                 </p>
               </div>
@@ -222,6 +227,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
+              overflow: auto;
             `}>
             <div
               className="spectrum-Card-header"
@@ -239,7 +245,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
+                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
                   `}>
                   {heading && heading.props.children}
                 </h3>
@@ -247,7 +253,11 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             </div>
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
-                <p className="spectrum-Detail spectrum-Detail--L">
+                <p
+                  className="spectrum-Detail spectrum-Detail--L"
+                  css={css`
+                    text-align: left;
+                  `}>
                   <strong>{text && text.props.children}</strong>
                 </p>
               </div>
@@ -262,7 +272,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
 ResourceCard.propTypes = {
   theme: PropTypes.string,
   variant: PropTypes.oneOf(['horizontal', 'vertical']),
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%']),
   link: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,
