@@ -19,7 +19,11 @@ import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
 import { getElementChild, layoutColumns } from '../utils';
 
-let counter = 0;
+const counter = {
+  2: 0,
+  3: 0,
+  4: 0
+};
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
 const Icons = ({ icons, isCentered }) =>
@@ -137,8 +141,8 @@ const TextBlock = ({
 
   useEffect(() => {
     return () => {
-      if (isCentered && columns > 1) {
-        counter--;
+      if (typeof counter[columns] !== 'undefined') {
+        counter[columns]--;
       }
     };
   });
@@ -147,15 +151,17 @@ const TextBlock = ({
     let blockWidth = '';
     let extraMargin = '';
 
+    if (typeof counter[columns] !== 'undefined') {
+      counter[columns]++;
+    }
+
     if (columns === 1) {
       blockWidth = `max-width: ${layoutColumns(6)};`;
     } else if (columns > 3) {
-      counter++;
       blockWidth = 'max-width: var(--spectrum-global-dimension-size-3600);';
     } else {
-      counter++;
       blockWidth = 'max-width: var(--spectrum-global-dimension-size-4600);';
-      extraMargin = alignMapping[counter % columns];
+      extraMargin = alignMapping[counter[columns] % columns];
     }
 
     return (
@@ -217,7 +223,9 @@ const TextBlock = ({
             )}
           </div>
         </section>
-        {counter % columns === 0 ? <div aria-hidden="true" /> : null}
+        {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? (
+          <div aria-hidden="true" />
+        ) : null}
       </>
     );
   } else {
@@ -229,12 +237,12 @@ const TextBlock = ({
         css={css`
           width: 100%;
           background: var(--spectrum-global-color-gray-100);
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-400);
         `}>
         <div
           css={css`
             width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+            box-sizing: border-box;
+            padding: var(--spectrum-global-dimension-size-400);
             margin: auto;
           `}>
           <Flex alignItems="center" direction={isReversed ? 'row-reverse' : 'row'}>
@@ -303,7 +311,7 @@ TextBlock.propTypes = {
   image: PropTypes.element,
   video: PropTypes.element,
   theme: PropTypes.string,
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%', '33%', '25%']),
   isCentered: PropTypes.bool
 };
 
