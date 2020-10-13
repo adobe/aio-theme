@@ -17,7 +17,7 @@ import '@spectrum-css/button';
 const links = [
   {
     title: 'Discover',
-    path: '/apis.html'
+    path: '/apis'
   },
   {
     title: 'Open Source',

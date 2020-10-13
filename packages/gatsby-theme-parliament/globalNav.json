@@ -14,7 +14,7 @@
           "heading": "APIs",
           "viewAll": {
             "title": "View all APIs",
-            "path": "/apis.html"
+            "path": "/apis"
           },
           "divider": true,
           "pages": [
@@ -85,7 +85,7 @@
         {
           "viewAll": {
             "title": "View all docs",
-            "path": "/apis.html"
+            "path": "/apis"
           },
           "pages": [
             {
@@ -162,13 +162,13 @@
     },
     {
       "title": "Discover",
-      "path": "/apis.html"
+      "path": "/apis"
     }
   ],
   "footer": {
     "allAPIs": {
       "title": "View All",
-      "path": "/apis.html"
+      "path": "/apis"
     },
     "APIs": [
       {
