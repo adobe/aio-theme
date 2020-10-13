@@ -21,11 +21,11 @@ const links = [
   },
   {
     title: 'Open Source',
-    path: '/open.html'
+    path: '/open'
   },
   {
     title: 'Blog',
-    path: '/blog.html'
+    path: '/blog'
   },
   {
     title: 'Console',

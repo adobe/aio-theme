@@ -20,35 +20,35 @@
           "pages": [
             {
               "title": "Adobe XD",
-              "path": "/apis/creativecloud/xd.html"
+              "path": "/apis/creativecloud/xd"
             },
             {
               "title": "Adobe Photoshop",
-              "path": "/apis/creativecloud/photo-imaging-api.html"
+              "path": "/apis/creativecloud/photo-imaging-api"
             },
             {
               "title": "Document Cloud View SDK",
-              "path": "/apis/documentcloud/dcsdk/"
+              "path": "/apis/documentcloud/dcsdk"
             },
             {
               "title": "Adobe Acrobat",
-              "path": "/apis/documentcloud/acrobat.html"
+              "path": "/apis/documentcloud/acrobat"
             },
             {
               "title": "Adobe Target",
-              "path": "/apis/experiencecloud/target.html"
+              "path": "/apis/experiencecloud/target"
             },
             {
               "title": "Adobe I/O Runtime",
-              "path": "/apis/experienceplatform/runtime.html"
+              "path": "/apis/experienceplatform/runtime"
             },
             {
               "title": "Project Firefly",
-              "path": "/apis/experienceplatform/project-firefly.html"
+              "path": "/apis/experienceplatform/project-firefly"
             },
             {
               "title": "Adobe I/O Events",
-              "path": "/apis/experienceplatform/events.html"
+              "path": "/apis/experienceplatform/events"
             }
           ]
         },
@@ -58,22 +58,22 @@
             {
               "title": "Adobe Creative Cloud",
               "description": "Find out how to extend and develop on Creative Cloud apps",
-              "path": "/apis/creativecloud.html"
+              "path": "/apis/creativecloud"
             },
             {
               "title": "Adobe Experience Platform",
               "description": "Build and manage complete solutions that drive customer experience",
-              "path": "/apis/experienceplatform.html"
+              "path": "/apis/experienceplatform"
             },
             {
               "title": "Adobe Document Cloud",
               "description": "Build engaging digital document experiences with Adobe's cloud-based APIs",
-              "path": "/apis/documentcloud.html"
+              "path": "/apis/documentcloud"
             },
             {
               "title": "Adobe Experience Cloud",
               "description": "Build and jargon words for Adobe Experience Cloud products and services",
-              "path": "/apis/experiencecloud.html"
+              "path": "/apis/experiencecloud"
             }
           ]
         }
@@ -90,35 +90,35 @@
           "pages": [
             {
               "title": "Adobe XD",
-              "path": "/apis/creativecloud/xd.html"
+              "path": "/apis/creativecloud/xd"
             },
             {
               "title": "Adobe Photoshop",
-              "path": "/apis/creativecloud/photo-imaging-api.html"
+              "path": "/apis/creativecloud/photo-imaging-api"
             },
             {
               "title": "Document Cloud View SDK",
-              "path": "/apis/documentcloud/dcsdk/"
+              "path": "/apis/documentcloud/dcsdk"
             },
             {
               "title": "Adobe Acrobat",
-              "path": "/apis/documentcloud/acrobat.html"
+              "path": "/apis/documentcloud/acrobat"
             },
             {
               "title": "Adobe Analytics",
-              "path": "/apis/experiencecloud/analytics.html"
+              "path": "/apis/experiencecloud/analytics"
             },
             {
               "title": "Adobe Target",
-              "path": "/apis/experiencecloud/target.html"
+              "path": "/apis/experiencecloud/target"
             },
             {
               "title": "Adobe I/O Runtime",
-              "path": "/apis/experienceplatform/runtime.html"
+              "path": "/apis/experienceplatform/runtime"
             },
             {
               "title": "Project Firefly",
-              "path": "/apis/experienceplatform/project-firefly.html"
+              "path": "/apis/experienceplatform/project-firefly"
             }
           ]
         },
@@ -126,35 +126,35 @@
           "pages": [
             {
               "title": "Adobe Lightroom",
-              "path": "/apis/creativecloud/lightroom.html"
+              "path": "/apis/creativecloud/lightroom"
             },
             {
               "title": "Adobe InDesign",
-              "path": "/apis/creativecloud/indesign.html"
+              "path": "/apis/creativecloud/indesign"
             },
             {
               "title": "Adobe Sign",
-              "path": "/apis/documentcloud/sign.html"
+              "path": "/apis/documentcloud/sign"
             },
             {
               "title": "Adobe Campaign",
-              "path": "/apis/experiencecloud/campaign.html"
+              "path": "/apis/experiencecloud/campaign"
             },
             {
               "title": "Adobe Experience Manager",
-              "path": "/apis/experiencecloud/aem.html"
+              "path": "/apis/experiencecloud/aem"
             },
             {
               "title": "Cloud Manager",
-              "path": "/apis/experiencecloud/cloud-manager.html"
+              "path": "/apis/experiencecloud/cloud-manager"
             },
             {
               "title": "Adobe Campaign",
-              "path": "/apis/experiencecloud/campaign.html"
+              "path": "/apis/experiencecloud/campaign"
             },
             {
               "title": "Adobe I/O Events",
-              "path": "/apis/experienceplatform/events.html"
+              "path": "/apis/experienceplatform/events"
             }
           ]
         }
@@ -173,37 +173,37 @@
     "APIs": [
       {
         "title": "Adobe Creative Cloud",
-        "path": "/apis/creativecloud.html"
+        "path": "/apis/creativecloud"
       },
       {
         "title": "Adobe Experience Platform",
-        "path": "/apis/experienceplatform/home.html"
+        "path": "/apis/experienceplatform/home"
       },
       {
         "title": "Adobe Document Cloud",
-        "path": "/apis/documentcloud.html"
+        "path": "/apis/documentcloud"
       },
       {
         "title": "Adobe Experience Cloud",
-        "path": "/apis/experiencecloud.html"
+        "path": "/apis/experiencecloud"
       }
     ],
     "services": [
       {
         "title": "Adobe XD",
-        "path": "/apis/creativecloud/xd.html"
+        "path": "/apis/creativecloud/xd"
       },
       {
         "title": "Adobe Target",
-        "path": "/apis/experiencecloud/target.html"
+        "path": "/apis/experiencecloud/target"
       },
       {
         "title": "Adobe Analytics",
-        "path": "/apis/experiencecloud/analytics.html"
+        "path": "/apis/experiencecloud/analytics"
       },
       {
         "title": "Project Firefly",
-        "path": "/apis/experienceplatform/project-firefly.html"
+        "path": "/apis/experienceplatform/project-firefly"
       }
     ],
     "community": [
@@ -231,7 +231,7 @@
     "support": [
       {
         "title": "Contact us",
-        "path": "/contactus.html"
+        "path": "/contactus"
       },
       {
         "title": "Adobe Developer support",
@@ -243,7 +243,7 @@
       },
       {
         "title": "Release notes",
-        "path": "/releasenotes.html"
+        "path": "/releasenotes"
       }
     ],
     "developer": [
@@ -253,7 +253,7 @@
       },
       {
         "title": "Open source at Adobe",
-        "path": "/open.html"
+        "path": "/open"
       },
       {
         "title": "Download SDKs",
