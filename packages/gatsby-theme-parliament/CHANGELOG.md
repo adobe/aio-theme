@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.1...@adobe/gatsby-theme-parliament@2.5.2) (2020-10-13)
+
+
+### Bug Fixes
+
+* Stretch temp GlobalNav links ([3b93af3](https://github.com/adobe/gatsby-theme-parliament/commit/3b93af3b5aba745c588544073d18183c885e92e0))
+
+
+
+
+
 ## [2.5.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.5.0...@adobe/gatsby-theme-parliament@2.5.1) (2020-10-13)
 
 
