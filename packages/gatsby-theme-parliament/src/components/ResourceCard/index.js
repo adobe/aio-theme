@@ -125,7 +125,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
-              overflow: auto;
+              overflow: hidden;
             `}>
             <div
               className="spectrum-Card-header"
@@ -227,7 +227,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
-              overflow: auto;
+              overflow: hidden;
             `}>
             <div
               className="spectrum-Card-header"
@@ -245,7 +245,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+                    margin-bottom: 0 !important;
                   `}>
                   {heading && heading.props.children}
                 </h3>
