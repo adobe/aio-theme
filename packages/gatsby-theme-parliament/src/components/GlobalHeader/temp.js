@@ -94,15 +94,15 @@ export const GlobalHeaderTemp = () => (
                 css={css`
                   display: flex;
                   align-items: center;
-                  padding: 0 20px;
 
-                  ${!isButton &&
-                  `
-                &:hover {
-                  background-color: hsla(0, 0%, 89%, .8);
-                  cursor: pointer;
-                }
-              `}
+                  ${isButton
+                    ? 'padding: 0 20px;'
+                    : `
+                    &:hover {
+                      background-color: hsla(0, 0%, 89%, .8);
+                      cursor: pointer;
+                    }
+                  `}
                 `}>
                 {isButton ? (
                   <a className="spectrum-Button spectrum-Button--cta" href={path}>
@@ -112,6 +112,10 @@ export const GlobalHeaderTemp = () => (
                   <a
                     href={path}
                     css={css`
+                      display: flex;
+                      height: 100%;
+                      align-items: center;
+                      padding: 0 20px;
                       font-size: 14px;
                       font-weight: 700;
                       color: black;
