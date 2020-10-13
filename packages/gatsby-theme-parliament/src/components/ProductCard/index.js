@@ -17,7 +17,11 @@ import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
 
-let counter = 0;
+const counter = {
+  2: 0,
+  3: 0,
+  4: 0
+};
 const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
@@ -28,17 +32,22 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
     columns = 3;
   }
 
-  if (columns > 1) {
-    counter++;
-  }
-
   useEffect(() => {
     return () => {
-      if (columns > 1) {
-        counter--;
+      if (typeof counter[columns] !== 'undefined') {
+        counter[columns]--;
       }
     };
   });
+
+  if (typeof counter[columns] !== 'undefined') {
+    counter[columns]++;
+  }
+
+  let alignment = 'center';
+  if (columns === 2 || columns === 3) {
+    alignment = alignMapping[counter[columns] % columns] || 'center';
+  }
 
   return (
     <section
@@ -46,7 +55,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
       css={css`
         display: inline-flex;
         flex-direction: column;
-        align-items: ${columns === 3 ? alignMapping[counter % 3] || 'center' : 'center'};
+        align-items: ${alignment};
         width: ${width};
         padding: var(--spectrum-global-dimension-size-400) 0;
         background: var(--spectrum-global-color-gray-100);
@@ -56,6 +65,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         tabIndex="0"
         className="spectrum-Card"
         css={css`
+          margin: 0 var(--spectrum-global-dimension-size-300);
           width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
           height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
         `}>
@@ -127,7 +137,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
 
 ProductCard.propTypes = {
   theme: PropTypes.string,
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%', '33%', '25%']),
   icon: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,
