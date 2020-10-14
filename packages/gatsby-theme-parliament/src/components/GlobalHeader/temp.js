@@ -25,7 +25,7 @@ const links = [
   },
   {
     title: 'Blog',
-    path: '/blog'
+    path: 'https://medium.com/adobetech'
   },
   {
     title: 'Console',
