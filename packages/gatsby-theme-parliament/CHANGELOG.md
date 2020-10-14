@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.2...@adobe/gatsby-theme-parliament@2.7.0) (2020-10-14)
+
+
+### Bug Fixes
+
+* Update 404 page with homepage link and temp GlobalHeader ([10b4111](https://github.com/adobe/gatsby-theme-parliament/commit/10b411154a805d27e2fa0d4a590debfd857f8441))
+
+
+### Features
+
+* Update ProductCardFilter for general use ([fa0a42a](https://github.com/adobe/gatsby-theme-parliament/commit/fa0a42ad27116f2d073c569c10b32a4da22d06e0))
+
+
+
+
+
 ## [2.6.2](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.1...@adobe/gatsby-theme-parliament@2.6.2) (2020-10-13)
 
 
