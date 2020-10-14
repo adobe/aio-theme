@@ -245,7 +245,7 @@ export default ({ children, pageContext, query }) => {
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
-    const isSupport = heroChild && hasSideNav !== null;
+
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
@@ -263,16 +263,6 @@ export default ({ children, pageContext, query }) => {
                 : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
                 margin: 0 var(--spectrum-global-dimension-size-800);'
-                `}
-                ${isSupport === true &&
-                `
-                  max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                  width: 100%;
-
-                  article {
-                    text-align: left;
-                    width: calc(9 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns));
-                  }
                 `}
             `}>
             <Flex>

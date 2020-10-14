@@ -106,27 +106,54 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
           height: var(--spectrum-global-dimension-size-3400);
           margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
-          position: relative;
           width: 100%;
-          justify-content: center;
-          display: flex;
+          display: inline-flex;
+          flex-direction: row-reverse;
         `}>
-        <div
-          css={css`
-            margin-left: var(--spectrum-global-dimension-size-800);
-            width: calc(5 * 100% / 12);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: center;
-            text-align: left;
-          `}>
-          <HeroHeading heading={heading} variant={variant} />
+          <div
+            css={css`
+              margin: auto;
+              display: flex;
+              position: relative;
+              height: 100%;
+              max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+              flex-direction: row;
+              width: 100%;
+              align-items: center;
 
-          <HeroTexts texts={props} />
+                & > p {
+                  margin-top: 0 !important;
+
+                  & > img {
+                    border-radius: 0;
+                  }
+                }
+              }
+            `}>
+
+              <HeroImage image={image}/>
+
+            <div
+              css={css`
+                width: calc(5 * 100% / 12);
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+
+                & > h1 {
+                  margin-bottom: 0 !important;
+                }
+
+                & > p {
+                  margin-top: var(--spectrum-global-dimension-size-225) !important;
+                  margin-bottom: 0 !important;
+                }
+              `}>
+            <HeroHeading heading={heading} variant={variant} />
+
+            <HeroTexts texts={props}/>
+
+          </div>
         </div>
       </section>
     );
@@ -162,15 +189,8 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
                 justify-content: center;
                 text-align: left;
                 `}>
-              {heading &&
-                React.cloneElement(heading, {
-                  className: 'spectrum-Heading--XL'
-                })}
-
-              {text &&
-                React.cloneElement(text, {
-                  className: 'spectrum-Body--L',
-                  className: 'margin-bottom-0'
+                <HeroHeading heading={heading} variant={variant} />
+                <HeroTexts texts={props} />
                 })}
               </div>
             </div>

@@ -51,7 +51,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     font-size: var(--spectrum-global-dimension-size-450);
 
     & + p {
-      margin-top: var(--spectrum-global-dimension-size-350) !important;
+      margin-top: var(--spectrum-global-dimension-size-350);
       font-size: var(--spectrum-global-dimension-size-225);
       color: var(--spectrum-global-color-gray-800) !important;
       margin-bottom: var(--spectrum-global-dimension-size-800);
