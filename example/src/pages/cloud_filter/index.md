@@ -3,7 +3,7 @@ title: Index
 description: This is the index page
 GlobalHeaderTemp: true  
 ---
-import products from './products/_index.js'
+import products from '../../products'
 
 <Hero slots="image, heading, text" variant="fullwidth" background="rgb(51, 51, 51)" />
 
@@ -13,4 +13,4 @@ import products from './products/_index.js'
 
 Explore the APIs offered by products and view documentation
 
-<ProductCardFilter products={products} />
+<ProductCardGrid products={products} interaction={true} />

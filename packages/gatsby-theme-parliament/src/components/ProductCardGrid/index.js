@@ -25,6 +25,7 @@ import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import { getExternalLinkProps } from '../utils';
 import nextId from 'react-id-generator';
+import PropTypes from 'prop-types';
 
 const flattenProducts = (clouds) => clouds.map(({ products }) => products).flat();
 
@@ -63,10 +64,18 @@ const additionalFilters = [
   }
 ];
 
-const ProductCardFilter = ({ products: clouds }) => {
-  const [filteredProducts, setFilteredProducts] = useState(filterByLastUpdated(flattenProducts(clouds)));
-  const [cloudFilter, setCloudFilter] = useState([]);
-  const [additionalFilter, setAdditionalFilter] = useState('last_updated');
+const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [], orderBy = 'last_updated' }) => {
+  // Remove first product by default which is the cloud item
+  if (!interaction && filterBy.length) {
+    clouds.forEach((cloud) => {
+      cloud.products = cloud.products.slice(1);
+    });
+  }
+  const filter = orderBy === 'last_updated' ? filterByLastUpdated : filterByName;
+
+  const [additionalFilter, setAdditionalFilter] = useState(orderBy);
+  const [filteredProducts, setFilteredProducts] = useState(filter(flattenProducts(clouds)));
+  const [cloudFilter, setCloudFilter] = useState(filterBy);
 
   useEffect(() => {
     filterByClouds(clouds, cloudFilter, additionalFilter, setFilteredProducts);
@@ -83,40 +92,44 @@ const ProductCardFilter = ({ products: clouds }) => {
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
         margin: var(--spectrum-global-dimension-size-400) auto;
       `}>
-      <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-400">
-        <Flex alignItems="center" justifyContent="center">
-          <Picker
-            isQuiet
-            items={additionalFilters}
-            onSelectionChange={(selected) => setAdditionalFilter(selected)}
-            defaultSelectedKey="last_updated"
-            aria-label="Filter by name or last updated product"
-            marginStart="size-100">
-            {(item) => <Item key={item.value}>{item.name}</Item>}
-          </Picker>
-        </Flex>
-      </Flex>
-      <Flex>
-        <Flex alignItems="end" width="size-3000" direction="column">
-          <Flex alignItems="start" direction="column">
-            <h4 id={headingId} className="spectrum-Heading--XXS">
-              Filter by Platform
-            </h4>
-            <CheckboxGroup
-              isEmphasized
-              aria-labelledby={headingId}
-              marginTop="size-100"
-              onChange={(values) => {
-                setCloudFilter(values);
-              }}>
-              {clouds.map(({ name }, i) => (
-                <Checkbox key={i} value={name}>
-                  {name}
-                </Checkbox>
-              ))}
-            </CheckboxGroup>
+      {interaction && (
+        <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-400">
+          <Flex alignItems="center" justifyContent="center">
+            <Picker
+              isQuiet
+              items={additionalFilters}
+              onSelectionChange={(selected) => setAdditionalFilter(selected)}
+              defaultSelectedKey="last_updated"
+              aria-label="Filter by name or last updated product"
+              marginStart="size-100">
+              {(item) => <Item key={item.value}>{item.name}</Item>}
+            </Picker>
           </Flex>
         </Flex>
+      )}
+      <Flex>
+        {interaction && (
+          <Flex alignItems="end" width="size-3000" direction="column">
+            <Flex alignItems="start" direction="column">
+              <h4 id={headingId} className="spectrum-Heading--XXS">
+                Filter by Platform
+              </h4>
+              <CheckboxGroup
+                isEmphasized
+                aria-labelledby={headingId}
+                marginTop="size-100"
+                onChange={(values) => {
+                  setCloudFilter(values);
+                }}>
+                {clouds.map(({ name }, i) => (
+                  <Checkbox key={i} value={name}>
+                    {name}
+                  </Checkbox>
+                ))}
+              </CheckboxGroup>
+            </Flex>
+          </Flex>
+        )}
         <View flex="1">
           <div
             css={css`
@@ -219,4 +232,11 @@ const ProductCardFilter = ({ products: clouds }) => {
   );
 };
 
-export { ProductCardFilter };
+ProductCardGrid.propTypes = {
+  products: PropTypes.array,
+  orderBy: PropTypes.string,
+  filterBy: PropTypes.string,
+  interaction: PropTypes.bool
+};
+
+export { ProductCardGrid };
