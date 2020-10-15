@@ -245,6 +245,7 @@ export default ({ children, pageContext, query }) => {
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
+    const isSupport = heroChild && hasSideNav !== null;
 
 
     return (
@@ -273,7 +274,7 @@ export default ({ children, pageContext, query }) => {
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                    : layoutColumns(isDocs ? 9 : 12)};
+                    : layoutColumns(isDocs ? 9 : isSupport ? 10 : 12)};
                 `}>
                 {isDocs && (
                   <Flex marginTop="size-500"
