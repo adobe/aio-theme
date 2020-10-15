@@ -17,7 +17,7 @@ import '@spectrum-css/typography';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 
-const headingSizes = ['L', 'M', 'S', 'XS', 'XXS', 'XXS'];
+const headingSizes = ['XL', 'M', 'S', 'XS', 'XXS', 'XXS'];
 
 // Use the Anchor to allow scrolling to heading position minus GlobalNav height
 const Anchor = ({ id }) => (
@@ -48,7 +48,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     }
   `;
   const heading1Overrides = `
-    font-size: var(--spectrum-global-dimension-size-450);
+
 
     & + p {
       margin-top: var(--spectrum-global-dimension-size-350);
@@ -69,9 +69,6 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     color: var(--spectrum-global-color-gray-800);
     margin-top: var(--spectrum-global-dimension-size-500);
 
-    &:first-of-type {
-      margin-top: 0;
-    }
   `;
 
   return (

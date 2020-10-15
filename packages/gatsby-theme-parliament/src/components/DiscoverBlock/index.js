@@ -38,6 +38,7 @@ const DiscoverBlock = ({
           ? `
         position: relative;
         margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-size-400));
+        width: ${layoutColumns(2.5)} !important;
         `
           : ''}
         display: inline-flex;
@@ -55,7 +56,7 @@ const DiscoverBlock = ({
         React.cloneElement(image, {
           css: css`
             position: absolute;
-            top: calc(-1 * var(--spectrum-global-dimension-size-350));
+            top: calc(-1 * var(--spectrum-global-dimension-size-450));
             left: calc(-1 * (${imageWidth} + var(--spectrum-global-dimension-size-400)));
             display: flex;
             align-items: flex-start;

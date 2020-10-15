@@ -167,7 +167,7 @@
   ],
   "footer": {
     "allAPIs": {
-      "title": "View All",
+      "title": "View all",
       "path": "/apis"
     },
     "APIs": [
@@ -189,10 +189,6 @@
       }
     ],
     "services": [
-      {
-        "title": "",
-        "path": ""
-      },
       {
         "title": "Adobe XD",
         "path": "/apis/creativecloud/xd"
@@ -244,10 +240,6 @@
       {
         "title": "Adobe Product support",
         "path": "https://helpx.adobe.com/contact/enterprise-support.html"
-      },
-      {
-        "title": "Release notes",
-        "path": "/releasenotes"
       }
     ],
     "developer": [

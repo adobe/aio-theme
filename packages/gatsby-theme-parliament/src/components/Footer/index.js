@@ -35,6 +35,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
         padding-top: var(--spectrum-global-dimension-size-600);
         background-color: var(--spectrum-global-color-gray-75);
         width: 100%;
+        ${hasSideNav && 'max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);'}
         ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
         ${hasSideNav && 'background-color: white;'}
     `}>
@@ -44,7 +45,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
           max-width: ${layoutColumns(12)};
           margin: 0 auto;
           ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800)'};
-          padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-size-800)'};
+          padding: 0;
 
           ul {
             list-style: none;
@@ -57,7 +58,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
           }
 
           ul.spectrum-Body--S {
-            padding-top: var(--spectrum-global-dimension-size-400);
+            padding-top: var(--spectrum-global-dimension-size-500);
 
             & > li {
               margin-top: 16px;
@@ -68,7 +69,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             }
           }
         `}>
-        <Grid areas={['apis blogs support developer']} columns={['31%', '23%', '19%', '23%']} gap="size-400">
+        <Grid areas={['apis blogs support developer']} columns={['30%', '22%', '19%']} gap="size-400">
           <View gridArea="apis" position="relative">
             <Flex>
               <View>
