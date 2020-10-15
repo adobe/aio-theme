@@ -6,7 +6,7 @@
     "@adobe/gatsby-theme-parliament": "*",
     "gatsby": "^2.23.11",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.14.0"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",
