@@ -18,11 +18,12 @@ const paragraphOverrides = `
   margin-top: var(--spectrum-global-dimension-size-300);
 `;
 
-export const Paragraph = ({ children, className, ...props }) => (
+export const Paragraph = ({ children, className, css: cssOverrides, ...props }) => (
   <p {...props}
   className={className || 'spectrum-Body--M'}
   css={css`
     ${paragraphOverrides}
+    ${cssOverrides}
   `}>
     {children}
   </p>

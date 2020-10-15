@@ -57,6 +57,7 @@ const HeroImage = ({ image }) =>
           align-items: center;
           justify-content: center;
           height: 100%;
+          margin-top: 0;
 
           & > img {
             width: 100%;
@@ -91,8 +92,13 @@ const HeroHeading = ({ heading, variant }) =>
     ? React.cloneElement(heading, {
         className: variant === 'default' ? 'spectrum-Heading--XL' : 'spectrum-Heading--XXL spectrum-Heading--serif',
         css: css`
-          margin-top: 0 !important;
-          margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+          margin-top: 0;
+          margin-bottom: var(--spectrum-global-dimension-size-200);
+          font-size: var(--spectrum-global-dimension-size-550);
+
+          & + p {
+            margin-bottom: var(--spectrum-global-dimension-size-200);
+          }
         `
       })
     : null;
@@ -123,10 +129,6 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
 
                 & > p {
                   margin-top: 0 !important;
-
-                  & > img {
-                    border-radius: 0;
-                  }
                 }
               }
             `}>
@@ -217,6 +219,7 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
                   css: css`
                     height: var(--spectrum-global-dimension-size-600);
                     width: var(--spectrum-global-dimension-size-600);
+                    margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-300) !important;
 
                     img {
