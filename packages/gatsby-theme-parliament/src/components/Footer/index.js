@@ -36,7 +36,6 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
         background-color: var(--spectrum-global-color-gray-75);
         width: 100%;
         ${hasSideNav && 'max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);'}
-        ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
         ${hasSideNav && 'background-color: white;'}
     `}>
       <div
@@ -44,7 +43,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
           box-sizing: border-box;
           max-width: ${layoutColumns(12)};
           margin: 0 auto;
-          ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800)'};
+          ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
           padding: 0;
 
           ul {

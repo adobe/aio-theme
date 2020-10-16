@@ -21,7 +21,7 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
     className={`spectrum--${theme}`}
     css={css`
       background: var(--spectrum-global-color-gray-100);
-      padding: var(--spectrum-global-dimension-size-600) 0;
+      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
       text-align: center;
     `}>
     <div

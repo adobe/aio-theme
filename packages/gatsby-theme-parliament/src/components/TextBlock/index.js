@@ -172,7 +172,7 @@ const TextBlock = ({
             display: table-cell;
             width: ${width.replace('%', 'vw')};
             background: var(--spectrum-global-color-gray-100);
-            padding: var(--spectrum-global-dimension-size-400) 0;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
           `}>
           <div
             css={css`
@@ -186,7 +186,7 @@ const TextBlock = ({
             {image &&
               React.cloneElement(image, {
                 css: css`
-                  height: var(--spectrum-global-dimension-size-1250);
+                  height: var(--spectrum-global-dimension-size-1000);
                   margin-top: 0;
                   margin-bottom: var(--spectrum-global-dimension-size-300);
 
@@ -246,7 +246,8 @@ const TextBlock = ({
           css={css`
             width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
             box-sizing: border-box;
-            margin: var(--spectrum-global-dimension-size-800) auto;
+            margin: auto;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
           `}>
           <Flex alignItems="center" direction={isReversed ? 'row-reverse' : 'row'}>
             {image &&
@@ -258,7 +259,7 @@ const TextBlock = ({
                   width: 50%;
                   height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
                   box-sizing: border-box;
-                  padding: 0 var(--spectrum-global-dimension-size-400);
+                  padding: 0 var(--spectrum-global-dimension-size-100);
                   margin-top: 0;
 
                   & img {
