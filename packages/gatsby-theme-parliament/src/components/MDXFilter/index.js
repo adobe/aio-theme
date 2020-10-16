@@ -245,10 +245,17 @@ export default ({ children, pageContext, query }) => {
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
+    const isSupport = heroChild && hasSideNav !== null;
+
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
-        <main className="spectrum-Typography">
+        <main css={css`
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+        `}>
           {heroChild && heroChild}
           <div
             css={css`
@@ -256,7 +263,7 @@ export default ({ children, pageContext, query }) => {
                 ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
                 : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                margin: 0 var(--spectrum-global-dimension-size-800);
+                margin: 0 var(--spectrum-global-dimension-size-800);'
                 `}
             `}>
             <Flex>
@@ -267,10 +274,11 @@ export default ({ children, pageContext, query }) => {
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                    : layoutColumns(isDocs ? 7 : 9)};
+                    : layoutColumns(isDocs ? 9 : isSupport ? 10 : 12)};
                 `}>
                 {isDocs && (
-                  <Flex marginTop="size-400">
+                  <Flex marginTop="size-500"
+                        marginBottom="size-500">
                     <View marginEnd="size-400">
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                     </View>
@@ -309,11 +317,10 @@ export default ({ children, pageContext, query }) => {
                   </Flex>
                 )}
               </div>
-
+              {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
               {resourcesChild && resourcesChild}
             </Flex>
           </div>
-          {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
           <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
         </main>
       </MDXProvider>

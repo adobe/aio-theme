@@ -64,6 +64,7 @@ const SummaryBlock = ({
           css: css`
             margin-bottom: var(--spectrum-global-dimension-size-300) !important;
             color: var(--spectrum-global-color-gray-900);
+            margin-top: 0;
           `
         })}
 

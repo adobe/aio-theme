@@ -68,6 +68,10 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
           margin: 0 var(--spectrum-global-dimension-size-300);
           width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
           height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+
+          &:hover {
+            border-color: var(--spectrum-card-border-color, var(--spectrum-global-color-gray-200));
+          }
         `}>
         <div
           className="spectrum-Card-body"
@@ -87,6 +91,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                 css: css`
                   height: var(--spectrum-global-dimension-size-600);
                   width: var(--spectrum-global-dimension-size-600);
+                  margin-top: 0;
 
                   img {
                     display: block;
@@ -109,7 +114,10 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                 margin-top: 0 !important;
                 margin-bottom: var(--spectrum-global-dimension-size-100) !important;
               `}>
-              <div className="spectrum-Card-title">
+              <div className="spectrum-Card-title"
+                    css={css`
+                    font-size: var(--spectrum-global-dimension-size-200);
+                `}>
                 <strong>{heading && heading.props.children}</strong>
               </div>
             </div>

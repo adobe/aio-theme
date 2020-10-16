@@ -20,7 +20,7 @@ import '@spectrum-css/typography';
 import { layoutColumns, getExternalLinkProps } from '../utils';
 import PropTypes from 'prop-types';
 
-const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
+const Heading = ({ children }) => <h3 className="spectrum-Heading--XS">{children}</h3>;
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
@@ -31,32 +31,33 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
     <footer
       css={css`
         position: relative;
-        box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-400);
-        padding-top: var(--spectrum-global-dimension-size-700);
-        overflow: hidden;
+        padding-top: var(--spectrum-global-dimension-size-600);
         background-color: var(--spectrum-global-color-gray-75);
-        ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
-      `}>
+        width: 100%;
+        ${hasSideNav && 'max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);'}
+        ${hasSideNav && 'background-color: white;'}
+    `}>
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
-          ${isCentered && 'margin: auto;'}
-          padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-size-800)'};
+          max-width: ${layoutColumns(12)};
+          margin: 0 auto;
+          ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
+          padding: 0;
 
           ul {
             list-style: none;
             padding: 0;
           }
 
-          .spectrum-Heading--S {
+          .spectrum-Heading--XS {
             position: absolute;
             white-space: nowrap;
           }
 
           ul.spectrum-Body--S {
-            padding-top: var(--spectrum-global-dimension-size-1000);
+            padding-top: var(--spectrum-global-dimension-size-500);
 
             & > li {
               margin-top: 16px;
@@ -67,7 +68,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             }
           }
         `}>
-        <Grid areas={['apis blogs support developer']} columns={['31%', '23%', '23%', '23%']} gap="size-400">
+        <Grid areas={['apis blogs support developer']} columns={['30%', '22%', '19%']} gap="size-400">
           <View gridArea="apis" position="relative">
             <Flex>
               <View>
@@ -110,7 +111,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             </View>
           </View>
           <View gridArea="blogs" position="relative">
-            <Heading>Blogs & Community</Heading>
+            <Heading>Community</Heading>
             <List>
               {community.map(({ title, path }, i) => (
                 <li key={i}>

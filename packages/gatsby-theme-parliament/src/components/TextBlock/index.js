@@ -66,7 +66,7 @@ const Links = ({ links, isCentered }) =>
           padding: 0;
           display: flex;
           justify-content: ${isCentered ? 'center' : 'left'};
-          margin-top: var(--spectrum-global-dimension-size-150) !important;
+          margin-top: ${isCentered ? 'var(--spectrum-global-dimension-size-200) !important;' : 'var(--spectrum-global-dimension-size-600) !important;'};
 
           & li {
             display: flex;
@@ -172,7 +172,7 @@ const TextBlock = ({
             display: table-cell;
             width: ${width.replace('%', 'vw')};
             background: var(--spectrum-global-color-gray-100);
-            padding: var(--spectrum-global-dimension-size-400) 0;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
           `}>
           <div
             css={css`
@@ -186,12 +186,15 @@ const TextBlock = ({
             {image &&
               React.cloneElement(image, {
                 css: css`
-                  height: var(--spectrum-global-dimension-size-1600);
+                  height: var(--spectrum-global-dimension-size-1000);
+                  margin-top: 0;
+                  margin-bottom: var(--spectrum-global-dimension-size-300);
 
                   & img {
                     height: 100%;
                     border-radius: 0;
                     object-fit: contain;
+
                   }
                 `
               })}
@@ -203,6 +206,7 @@ const TextBlock = ({
                   margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
                   & ~ p {
+                    margin-top: 0;
                     margin-bottom: 0 !important;
                   }
                 `}>
@@ -242,8 +246,8 @@ const TextBlock = ({
           css={css`
             width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
             box-sizing: border-box;
-            padding: var(--spectrum-global-dimension-size-400);
             margin: auto;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
           `}>
           <Flex alignItems="center" direction={isReversed ? 'row-reverse' : 'row'}>
             {image &&
@@ -255,7 +259,8 @@ const TextBlock = ({
                   width: 50%;
                   height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
                   box-sizing: border-box;
-                  padding: 0 var(--spectrum-global-dimension-size-400);
+                  padding: 0 var(--spectrum-global-dimension-size-100);
+                  margin-top: 0;
 
                   & img {
                     height: 100%;
@@ -285,6 +290,11 @@ const TextBlock = ({
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+
+                    & + p {
+                      margin-top: 0 !important;
+                    }
+
                   `}>
                   {heading.props.children}
                 </h3>
@@ -292,7 +302,7 @@ const TextBlock = ({
 
               <Texts texts={props} />
 
-              <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
+              <HeroButtons buttons={buttons} marginTop="size-400"/>
 
               <Links links={links} isCentered={isCentered} />
             </div>

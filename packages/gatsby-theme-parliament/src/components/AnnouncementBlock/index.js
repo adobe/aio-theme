@@ -28,9 +28,12 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
         display: flex;
         background: var(--spectrum-global-color-gray-100);
         box-sizing: border-box;
-        padding: var(--spectrum-global-dimension-size-400) 0;
         text-align: center;
         height: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
+
+        p {
+          margin-top: 0;
+        }
       `}>
       <div
         css={css`

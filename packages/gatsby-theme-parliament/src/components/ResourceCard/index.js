@@ -108,6 +108,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   align-items: center;
                   justify-content: center;
                   height: 100%;
+                  margin-top: 0;
                   margin-bottom: 0 !important;
 
                   & > img {
@@ -151,11 +152,13 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
                 <p
-                  className="spectrum-Detail spectrum-Detail--L"
+                  className="spectrum-Body spectrum-Body-S"
                   css={css`
                     text-align: left;
+                    color: var(--spectrum-global-color-gray-700);
+                    margin-top: 0;
                   `}>
-                  <strong>{text && text.props.children}</strong>
+                  {text && text.props.children}
                 </p>
               </div>
             </div>
@@ -211,6 +214,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   justify-content: center;
                   height: 100%;
                   margin-bottom: 0 !important;
+                  margin-top: 0;
 
                   & > img {
                     width: 100%;
@@ -254,11 +258,13 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
                 <p
-                  className="spectrum-Detail spectrum-Detail--L"
+                  className="spectrum-Body spectrum-Body-S"
                   css={css`
                     text-align: left;
+                    color: var(--spectrum-global-color-gray-700);
+                    margin-top: 0;
                   `}>
-                  <strong>{text && text.props.children}</strong>
+                  {text && text.props.children}
                 </p>
               </div>
             </div>

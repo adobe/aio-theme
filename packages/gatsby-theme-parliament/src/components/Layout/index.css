@@ -63,4 +63,11 @@
 html, body {
   margin: 0;
   text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* i'm sorry this is gross :( )*/
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
 }

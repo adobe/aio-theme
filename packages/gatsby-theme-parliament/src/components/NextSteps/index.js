@@ -13,17 +13,20 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
-import { Heading4 } from '../Heading';
 import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import '@spectrum-css/link';
-import Document from '@spectrum-icons/workflow/Document';
+import FileTxt from '@spectrum-icons/workflow/FileTxt';
 import PropTypes from 'prop-types';
 
 const NextSteps = ({ pages }) => {
   return pages.length > 0 ? (
     <View marginTop="size-800">
-      <Heading4>Next steps</Heading4>
+    <h3 className="spectrum-Heading--S"
+        css={css`
+          margin-bottom: var(--spectrum-global-dimension-size-200);
+    `}>
+    Next steps</h3>
       <ul
         className="spectrum-Body--M"
         css={css`
@@ -34,10 +37,16 @@ const NextSteps = ({ pages }) => {
           <li
             key={index}
             css={css`
-              margin-top: var(--spectrum-global-dimension-size-150);
+              display: block;
+              height: 40px;
+              line-height: 40px;
+
+              a svg {
+                vertical-align: text-top;
+              }
             `}>
             <GatsbyLink to={page.path} className="spectrum-Link spectrum-Link--quiet">
-              <Document size="XS" />
+              <FileTxt size="S" />
               <View elementType="span" marginStart="size-100">
                 {page.title}
               </View>

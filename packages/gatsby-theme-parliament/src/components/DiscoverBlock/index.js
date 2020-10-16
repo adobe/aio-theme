@@ -38,19 +38,25 @@ const DiscoverBlock = ({
           ? `
         position: relative;
         margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-size-400));
+        width: ${layoutColumns(2.5)} !important;
         `
           : ''}
         display: inline-flex;
         flex-direction: column;
         margin-right: var(--spectrum-global-dimension-size-400);
-        margin-bottom: var(--spectrum-global-dimension-size-100);
+        margin-top: var(--spectrum-global-dimension-size-200);
         width: ${width};
+
+        p {
+          margin-top: 0;
+        }
+
       `}>
       {image &&
         React.cloneElement(image, {
           css: css`
             position: absolute;
-            top: calc(-1 * var(--spectrum-global-dimension-size-350));
+            top: calc(-1 * var(--spectrum-global-dimension-size-450));
             left: calc(-1 * (${imageWidth} + var(--spectrum-global-dimension-size-400)));
             display: flex;
             align-items: flex-start;

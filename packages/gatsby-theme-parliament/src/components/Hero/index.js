@@ -19,6 +19,7 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { getElementChild, getExternalLinkProps } from '../utils';
 
+
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
     <ButtonGroup {...props}>
@@ -57,6 +58,7 @@ const HeroImage = ({ image }) =>
           align-items: center;
           justify-content: center;
           height: 100%;
+          margin-top: 0;
 
           & > img {
             width: 100%;
@@ -91,8 +93,12 @@ const HeroHeading = ({ heading, variant }) =>
     ? React.cloneElement(heading, {
         className: variant === 'default' ? 'spectrum-Heading--XL' : 'spectrum-Heading--XXL spectrum-Heading--serif',
         css: css`
-          margin-top: 0 !important;
-          margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+          margin-top: 0;
+          margin-bottom: var(--spectrum-global-dimension-size-200);
+
+          & + p {
+            margin-bottom: var(--spectrum-global-dimension-size-200);
+          }
         `
       })
     : null;
@@ -106,26 +112,47 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
           height: var(--spectrum-global-dimension-size-3400);
           margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
-          position: relative;
+          width: 100%;
+          display: inline-flex;
+          flex-direction: row-reverse;
+
         `}>
-        <HeroImage image={image} />
+          <div
+            css={css`
+              margin: auto;
+              display: flex;
+              position: relative;
+              height: 100%;
+              max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+              flex-direction: row;
+              width: 100%;
+              align-items: center;
 
-        <div
-          css={css`
-            margin-left: var(--spectrum-global-dimension-size-800);
-            width: calc(5 * 100% / 12);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: center;
-            text-align: left;
-          `}>
-          <HeroHeading heading={heading} variant={variant} />
+                & > p {
+                  margin-top: 0 !important;
+                }
+              }
+            `}>
 
-          <HeroTexts texts={props} />
+              <HeroImage image={image}/>
+
+            <div
+              css={css`
+                width: calc(5 * 100% / 12);
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+
+                & > p {
+                  margin-top: var(--spectrum-global-dimension-size-225) !important;
+                  margin-bottom: 0 !important;
+                }
+              `}>
+            <HeroHeading heading={heading} variant={variant} />
+
+            <HeroTexts texts={props}/>
+
+          </div>
         </div>
       </section>
     );
@@ -189,6 +216,7 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
                   css: css`
                     height: var(--spectrum-global-dimension-size-600);
                     width: var(--spectrum-global-dimension-size-600);
+                    margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-300) !important;
 
                     img {

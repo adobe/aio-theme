@@ -167,7 +167,7 @@
   ],
   "footer": {
     "allAPIs": {
-      "title": "View All",
+      "title": "View all",
       "path": "/apis"
     },
     "APIs": [
@@ -240,10 +240,6 @@
       {
         "title": "Adobe Product support",
         "path": "https://helpx.adobe.com/contact/enterprise-support.html"
-      },
-      {
-        "title": "Release notes",
-        "path": "/releasenotes"
       }
     ],
     "developer": [
@@ -258,6 +254,10 @@
       {
         "title": "Download SDKs",
         "path": "https://console.adobe.io/downloads"
+      },
+      {
+        "title": "Authentication",
+        "path": "https://www.adobe.io/authentication.html"
       },
       {
         "title": "Careers",

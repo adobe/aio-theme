@@ -21,7 +21,7 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
     className={`spectrum--${theme}`}
     css={css`
       background: var(--spectrum-global-color-gray-100);
-      padding: var(--spectrum-global-dimension-size-400) 0;
+      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
       text-align: center;
     `}>
     <div
@@ -39,6 +39,10 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
           className="spectrum-Heading--L"
           css={css`
             margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+
+            & + p {
+              margin-top: 0;
+            }
           `}>
           {heading.props.children}
         </h2>
