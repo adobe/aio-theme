@@ -102,7 +102,17 @@ const HeroHeading = ({ heading, variant }) =>
       })
     : null;
 
-const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, variant = 'default', ...props }) => {
+const Hero = ({
+  background,
+  theme = 'dark',
+  heading,
+  image,
+  icon,
+  buttons,
+  variant = 'default',
+  width = 'var(--spectrum-global-dimension-static-grid-fixed-max-width)',
+  ...props
+}) => {
   if (!variant || variant === 'default') {
     return (
       <section
@@ -117,20 +127,19 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
         `}>
         <div
           css={css`
-              margin: auto;
-              display: flex;
-              position: relative;
-              height: 100%;
-              max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-              flex-direction: row;
-              width: 100%;
-              align-items: center;
+            margin: auto;
+            display: flex;
+            position: relative;
+            height: 100%;
+            max-width: ${width};
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
 
-                & > p {
-                  margin-top: 0 !important;
-                }
-              }
-            `}>
+            & > p {
+              margin-top: 0 !important;
+            }
+          `}>
           <HeroImage image={image} />
 
           <div
@@ -249,6 +258,7 @@ Hero.propTypes = {
   icon: PropTypes.element,
   buttons: PropTypes.element,
   variant: PropTypes.string,
+  width: PropTypes.string,
   theme: PropTypes.string
 };
 

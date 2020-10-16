@@ -201,27 +201,26 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  const showTableOfContents =
-    tableOfContentsItems &&
-    (tableOfContentsItems.length > 1 ||
-      (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
-      tableOfContentsItems[0]?.title);
-
-  return showTableOfContents ? (
+  return (
     <aside
       css={css`
         position: sticky;
         bottom: 0;
-        top: 189px;
+        top: calc(var(--spectrum-global-dimension-size-2400) - var(--spectrum-global-dimension-size-40));
         left: ${layoutColumns(12)};
         width: ${layoutColumns(2)};
         margin-left: var(--spectrum-global-dimension-size-400);
         transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-        height: 50%;
+        height: calc(
+          100vh - calc(var(--spectrum-global-dimension-size-2400) - var(--spectrum-global-dimension-size-40))
+        );
+        overflow: auto;
+        box-sizing: border-box;
+        padding-bottom: var(--spectrum-global-dimension-size-200);
       `}>
       <Outline />
     </aside>
-  ) : null;
+  );
 };
 
 OnThisPage.propTypes = {

@@ -24,7 +24,7 @@ const Heading = ({ children }) => <h3 className="spectrum-Heading--XS">{children
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
-const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
+const Footer = ({ hasSideNav = false, links = {} }) => {
   const { APIs = [], services = [], community = [], support = [], developer = [], legal = [], allAPIs } = links;
 
   return (
@@ -200,8 +200,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
 };
 
 Footer.propTypes = {
-  hasSideNav: PropTypes.bool,
-  isCentered: PropTypes.bool
+  hasSideNav: PropTypes.bool
 };
 
 export { Footer };

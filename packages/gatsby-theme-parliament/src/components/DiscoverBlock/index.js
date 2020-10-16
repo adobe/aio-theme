@@ -38,14 +38,13 @@ const DiscoverBlock = ({
           ? `
         position: relative;
         margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-size-400));
-        width: ${layoutColumns(2.5)} !important;
+        width: ${layoutColumns(2)};
         `
-          : ''}
+          : `width: ${width};`}
         display: inline-flex;
         flex-direction: column;
         margin-right: var(--spectrum-global-dimension-size-400);
         margin-top: var(--spectrum-global-dimension-size-200);
-        width: ${width};
 
         p {
           margin-top: 0;

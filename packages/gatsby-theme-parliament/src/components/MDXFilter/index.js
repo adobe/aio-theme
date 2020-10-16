@@ -42,7 +42,7 @@ import { MDXComponents } from './MDXComponents';
 import { MDXBlocks } from './MDXBlocks';
 
 // Filters custom MDX components out of the markdown
-const filterChildren = ({ childrenArray, query }) => {
+const filterChildren = ({ childrenArray, query, hasSideNav }) => {
   const filteredChildren = [];
 
   let heroChild = null;
@@ -83,6 +83,10 @@ const filterChildren = ({ childrenArray, query }) => {
             props.query = query;
           }
 
+          if (child.props.mdxType === 'Hero' && hasSideNav) {
+            props.width = 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) - 256px);';
+          }
+
           const childClone = React.cloneElement(child, {
             ...props
           });
@@ -119,17 +123,16 @@ const filterChildren = ({ childrenArray, query }) => {
 };
 
 export default ({ children, pageContext, query }) => {
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
+    Context
+  );
   let childrenArray = React.Children.toArray(children);
 
-  if (query || typeof pageContext === 'undefined') {
-    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query });
+  if (typeof pageContext === 'undefined') {
+    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query, hasSideNav });
     // No layout for transclusions
     return <MDXProvider>{filteredChildren}</MDXProvider>;
   } else {
-    const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
-      Context
-    );
-
     // Footer
     const { footer: footerLinks } = siteMetadata.globalNav;
 
@@ -177,12 +180,29 @@ export default ({ children, pageContext, query }) => {
     }
 
     // Custom MDX components
-    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray });
+    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray, hasSideNav });
 
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
+
+    const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
+    const hasOnThisPage =
+      !heroChild &&
+      (hasSideNav || isJsDoc) &&
+      tableOfContentsItems &&
+      (tableOfContentsItems.length > 1 ||
+        (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
+        tableOfContentsItems[0]?.title);
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
-    const isSupport = heroChild && hasSideNav !== null;
+
+    const columns = 12;
+    const diff = [];
+    if (hasOnThisPage) {
+      diff.push(`${layoutColumns(2)} - var(--spectrum-global-dimension-size-400)`);
+    }
+    if (hasSideNav) {
+      diff.push('256px');
+    }
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
@@ -211,7 +231,7 @@ export default ({ children, pageContext, query }) => {
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                    : layoutColumns(isDocs ? 9 : isSupport ? 10 : 12)};
+                    : layoutColumns(columns, diff)};
                 `}>
                 {isDocs && (
                   <Flex marginTop="size-500" marginBottom="size-500">
@@ -253,7 +273,9 @@ export default ({ children, pageContext, query }) => {
                   </Flex>
                 )}
               </div>
-              {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
+
+              {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
+
               {resourcesChild && resourcesChild}
             </Flex>
           </div>
