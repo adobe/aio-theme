@@ -14,12 +14,12 @@ import React from 'react';
 import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { layoutColumns } from '../utils';
+import { layoutColumns } from '../../utils';
 import { Link } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Flex } from '@adobe/react-spectrum';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
-import { getElementChild, isExternalLink, getExternalLinkProps } from '../utils';
+import { getElementChild, isExternalLink, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const Resources = ({ heading, links }) => {
   return (
@@ -28,6 +28,10 @@ const Resources = ({ heading, links }) => {
         width: ${layoutColumns(3)};
         margin-left: var(--spectrum-global-dimension-size-400);
         margin-top: var(--spectrum-global-dimension-size-400);
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: none;
+        }
       `}>
       {heading}
       <ul

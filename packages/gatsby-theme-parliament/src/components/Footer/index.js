@@ -17,7 +17,7 @@ import { View } from '@adobe/react-spectrum';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps } from '../utils';
+import { layoutColumns, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading--XS">{children}</h3>;
@@ -35,8 +35,37 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
         padding-top: var(--spectrum-global-dimension-size-600);
         background-color: var(--spectrum-global-color-gray-75);
         width: 100%;
-        ${hasSideNav && 'max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);'}
-        ${hasSideNav && 'background-color: white;'}
+        ${hasSideNav &&
+        `
+          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+          background-color: var(--spectrum-global-color-static-white);
+        `}
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          max-width: none;
+
+          #Footer-grid {
+            display: flex !important;
+            flex-direction: column !important;
+          }
+
+          #Footer-grid-apis {
+            flex-direction: column !important;
+
+            & > div {
+              margin: 0 !important;
+            }
+          }
+
+          #Footer-copyright {
+            flex-direction: column;
+            align-items: flex-start !important;
+          }
+
+          [role='separator'][aria-orientation='vertical'] {
+            display: none;
+          }
+        }
       `}>
       <div
         css={css`
@@ -46,6 +75,11 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
           ${hasSideNav &&
           'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
           padding: 0;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            padding: var(--spectrum-global-dimension-size-200);
+            margin: 0 auto;
+          }
 
           ul {
             list-style: none;
@@ -61,7 +95,7 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
             padding-top: var(--spectrum-global-dimension-size-500);
 
             & > li {
-              margin-top: 16px;
+              margin-top: var(--spectrum-global-dimension-size-200);
 
               &:first-of-type {
                 margin-top: 0;
@@ -69,9 +103,9 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
             }
           }
         `}>
-        <Grid areas={['apis blogs support developer']} columns={['30%', '22%', '19%']} gap="size-400">
+        <Grid id="Footer-grid" areas={['apis blogs support developer']} columns={['30%', '22%', '19%']} gap="size-400">
           <View gridArea="apis" position="relative">
-            <Flex>
+            <Flex id="Footer-grid-apis">
               <View>
                 <Heading>APIs and Services</Heading>
                 <List>
@@ -161,7 +195,7 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
           </View>
         </Grid>
         <Divider size="M" marginTop="size-700" />
-        <Flex justifyContent="space-between" alignItems="center" marginTop="size-100">
+        <Flex id="Footer-copyright" justifyContent="space-between" alignItems="center" marginTop="size-100">
           <View>
             <ul
               className="spectrum-Body--XS"
@@ -186,9 +220,15 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
           </View>
           <View>
             <span
+              id="Footer-copyright-text"
               className="spectrum-Body--XS"
               css={css`
                 color: var(--spectrum-global-color-gray-700);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  display: block;
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                }
               `}>
               Copyright © {new Date().getFullYear()} Adobe. All rights reserved.
             </span>

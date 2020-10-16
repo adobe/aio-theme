@@ -26,6 +26,7 @@ export const SEO = ({
       <html lang={locale} dir={direction} />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       <link rel="icon" href={favIcon} type="image/x-icon" />
       <link rel="shortcut icon" href={favIcon} type="image/x-icon" />
     </Helmet>

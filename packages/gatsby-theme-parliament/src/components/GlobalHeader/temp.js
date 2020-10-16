@@ -12,6 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/button';
 
 const links = [
@@ -53,10 +54,11 @@ export const GlobalHeaderTemp = () => (
           position: absolute;
           left: 0;
           height: 100%;
-          padding: 0 20px;
+          box-sizing: border-box;
           text-decoration: none;
           z-index: 1;
           outline: none;
+          width: var(--spectrum-global-dimension-size-1600);
 
           &:hover,
           &:focus {
@@ -78,12 +80,33 @@ export const GlobalHeaderTemp = () => (
           display: flex;
           justify-content: center;
           height: 100%;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            justify-content: flex-end;
+            margin-left: var(--spectrum-global-dimension-size-1600);
+            width: calc(100vw - var(--spectrum-global-dimension-size-1600));
+            white-space: nowrap;
+
+            overflow-x: auto;
+            overflow-x: overlay;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar {
+              width: 0;
+              background: transparent;
+            }
+          }
         `}>
         <ul
           css={css`
             display: flex;
             margin: 0;
+            padding: 0;
             list-style: none;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+            }
           `}>
           {links.map(({ title, path, variant }, i) => {
             const isButton = variant === 'button';

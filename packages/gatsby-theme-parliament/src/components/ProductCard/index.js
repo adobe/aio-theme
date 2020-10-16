@@ -15,6 +15,7 @@ import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const counter = {
@@ -59,6 +60,12 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         width: ${width};
         padding: var(--spectrum-global-dimension-size-400) 0;
         background: var(--spectrum-global-color-gray-100);
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: flex;
+          width: 100%;
+          align-items: center;
+        }
       `}>
       <div
         role="figure"
@@ -71,6 +78,11 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
 
           &:hover {
             border-color: var(--spectrum-card-border-color, var(--spectrum-global-color-gray-200));
+          }
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            width: 0;
+            margin: 0;
           }
         `}>
         <div

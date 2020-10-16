@@ -13,11 +13,11 @@
 import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
-import { Flex, View } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
-import { getElementChild, layoutColumns } from '../utils';
+import { getElementChild, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const counter = {
   2: 0,
@@ -70,6 +70,15 @@ const Links = ({ links, isCentered }) =>
             ? 'var(--spectrum-global-dimension-size-200) !important;'
             : 'var(--spectrum-global-dimension-size-600) !important;'};
 
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            flex-direction: column;
+            align-items: ${isCentered ? 'center' : 'left'};
+
+            li {
+              margin-top: var(--spectrum-global-dimension-size-100);
+            }
+          }
+
           & li {
             display: flex;
             align-items: center;
@@ -115,6 +124,11 @@ const YouTubeVideo = ({ video }) => {
           box-sizing: border-box;
           padding: 0 var(--spectrum-global-dimension-size-400);
           margin: auto;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            display: block;
+            width: 100%;
+          }
         }
       `}>
       <YouTube youTubeId={youTubeId} />
@@ -175,6 +189,11 @@ const TextBlock = ({
             width: ${width.replace('%', 'vw')};
             background: var(--spectrum-global-color-gray-100);
             padding: var(--spectrum-global-dimension-size-1000) 0;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              display: block;
+              width: 100%;
+            }
           `}>
           <div
             css={css`
@@ -182,6 +201,11 @@ const TextBlock = ({
               padding: 0 var(--spectrum-global-dimension-size-400);
               margin: auto;
               ${extraMargin}
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                max-width: none;
+                margin: auto;
+              }
             `}>
             <Icons icons={icons} isCentered={isCentered} />
 
@@ -249,8 +273,25 @@ const TextBlock = ({
             box-sizing: border-box;
             margin: auto;
             padding: var(--spectrum-global-dimension-size-1000) 0;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+
+              & > div {
+                flex-direction: column !important;
+              }
+            }
           `}>
-          <Flex alignItems="center" direction={isReversed ? 'row-reverse' : 'row'}>
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              flex-direction: ${isReversed ? 'row-reverse' : 'row'};
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                flex-direction: column;
+              }
+            `}>
             {image &&
               React.cloneElement(image, {
                 css: css`
@@ -262,6 +303,10 @@ const TextBlock = ({
                   box-sizing: border-box;
                   padding: 0 var(--spectrum-global-dimension-size-100);
                   margin-top: 0;
+
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    width: 100%;
+                  }
 
                   & img {
                     height: 100%;
@@ -282,6 +327,11 @@ const TextBlock = ({
                 text-align: left;
                 box-sizing: border-box;
                 padding: 0 var(--spectrum-global-dimension-size-400);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  width: 100%;
+                  margin: var(--spectrum-global-dimension-size-400) 0;
+                }
               `}>
               <Icons icons={icons} isCentered={isCentered} />
 
@@ -306,7 +356,7 @@ const TextBlock = ({
 
               <Links links={links} isCentered={isCentered} />
             </div>
-          </Flex>
+          </div>
         </div>
       </section>
     );

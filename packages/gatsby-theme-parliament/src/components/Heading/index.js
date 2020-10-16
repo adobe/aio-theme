@@ -48,8 +48,6 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     }
   `;
   const heading1Overrides = `
-
-
     & + p {
       margin-top: var(--spectrum-global-dimension-size-350);
       font-size: var(--spectrum-global-dimension-size-225);
@@ -68,7 +66,6 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const heading3Overrides = `
     color: var(--spectrum-global-color-gray-800);
     margin-top: var(--spectrum-global-dimension-size-500);
-
   `;
 
   return (

@@ -14,7 +14,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Flex } from '@adobe/react-spectrum';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
 

@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
-import { layoutColumns } from '../utils';
+import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const imageWidth = 'var(--spectrum-global-dimension-size-1250)';
@@ -29,6 +29,10 @@ const DiscoverBlock = ({
       ? React.cloneElement(heading, {
           css: css`
             margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-size-400));
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              margin-left: 0;
+            }
           `
         })
       : heading}
@@ -49,6 +53,12 @@ const DiscoverBlock = ({
         p {
           margin-top: 0;
         }
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: flex;
+          width: 100%;
+          margin: var(--spectrum-global-dimension-size-200) 0;
+        }
       `}>
       {image &&
         React.cloneElement(image, {
@@ -60,6 +70,11 @@ const DiscoverBlock = ({
             align-items: flex-start;
             height: 100%;
             width: ${imageWidth};
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              position: static;
+              margin: var(--spectrum-global-dimension-size-200) 0;
+            }
           `
         })}
       {link}

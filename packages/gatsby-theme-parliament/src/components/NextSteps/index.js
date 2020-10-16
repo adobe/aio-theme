@@ -40,8 +40,8 @@ const NextSteps = ({ pages }) => {
             key={index}
             css={css`
               display: block;
-              height: 40px;
-              line-height: 40px;
+              height: var(--spectrum-global-dimension-size-500);
+              line-height: var(--spectrum-global-dimension-size-500);
 
               a svg {
                 vertical-align: text-top;

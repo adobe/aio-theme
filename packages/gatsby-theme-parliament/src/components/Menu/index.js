@@ -17,7 +17,7 @@ import classNames from 'classnames';
 import nextId from 'react-id-generator';
 import '@spectrum-css/menu';
 import { CheckMarkMedium } from '../Icons';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps } from '../../utils';
 
 const Menu = ({ children }) => {
   return (

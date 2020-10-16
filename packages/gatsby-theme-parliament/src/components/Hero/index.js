@@ -17,7 +17,7 @@ import { Button } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { getElementChild, getExternalLinkProps } from '../utils';
+import { getElementChild, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
@@ -153,6 +153,11 @@ const Hero = ({
                 margin-top: var(--spectrum-global-dimension-size-225) !important;
                 margin-bottom: 0 !important;
               }
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                width: auto;
+                margin-left: var(--spectrum-global-dimension-size-400);
+              }
             `}>
             <HeroHeading heading={heading} variant={variant} />
 
@@ -172,6 +177,12 @@ const Hero = ({
             position: relative;
             height: ${height};
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              overflow: auto;
+              padding: var(--spectrum-global-dimension-size-800) 0;
+              height: 100vh;
+            }
           `}>
           <HeroImage image={image} />
 
@@ -188,6 +199,10 @@ const Hero = ({
               align-items: center;
               justify-content: center;
               text-align: center;
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                padding: 0 var(--spectrum-global-dimension-size-400);
+              }
             `}>
             <HeroHeading heading={heading} variant={variant} />
 
@@ -205,6 +220,11 @@ const Hero = ({
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
             height: ${height};
             overflow: hidden;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-400);
+            }
           `}>
           <Flex justifyContent="center" height="100%">
             <div
@@ -215,6 +235,11 @@ const Hero = ({
                 width: calc(5 * 100% / 12);
                 margin-left: var(--spectrum-global-dimension-size-800);
                 margin-right: var(--spectrum-global-dimension-size-400);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  width: 100%;
+                  margin: 0;
+                }
               `}>
               {icon &&
                 React.cloneElement(icon, {
@@ -240,6 +265,10 @@ const Hero = ({
             <div
               css={css`
                 flex: 1;
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  display: none;
+                }
               `}>
               <HeroImage image={image} />
             </div>

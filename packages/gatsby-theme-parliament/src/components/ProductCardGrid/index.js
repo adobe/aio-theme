@@ -23,7 +23,7 @@ import { Checkbox } from '@adobe/react-spectrum';
 import { Picker, Item } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import nextId from 'react-id-generator';
 import PropTypes from 'prop-types';
 
@@ -90,7 +90,14 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
       className={`spectrum--light`}
       css={css`
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-        margin: var(--spectrum-global-dimension-size-400) auto;
+        margin: var(--spectrum-global-dimension-size-400) 0;
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          #ProductCardGrid-main {
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+        }
       `}>
       {interaction && (
         <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-400">
@@ -107,7 +114,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
           </Flex>
         </Flex>
       )}
-      <Flex>
+      <Flex id="ProductCardGrid-main">
         {interaction && (
           <Flex alignItems="end" width="size-3000" direction="column">
             <Flex alignItems="start" direction="column">
@@ -143,6 +150,12 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
               grid-auto-rows: ${height};
               justify-content: center;
               gap: var(--spectrum-global-dimension-size-400);
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                margin-top: var(--spectrum-global-dimension-size-400);
+                display: flex;
+                flex-direction: column;
+              }
             `}>
             {filteredProducts.map((product, i) => (
               <div
@@ -156,6 +169,10 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
 
                   &:hover {
                     border-color: var(--spectrum-global-color-gray-200);
+                  }
+
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    width: 0;
                   }
                 `}>
                 <div

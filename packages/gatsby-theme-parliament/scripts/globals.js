@@ -10,24 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
-import classNames from 'classnames';
-import '@spectrum-css/typography';
-import '@spectrum-css/well';
-
-export const InlineCode = ({ children, className, ...props }) => (
-  <code
-    {...props}
-    className={classNames(className, 'spectrum-Code4', 'spectrum-Well')}
-    css={css`
-      background-color: var(--spectrum-global-color-gray-100);
-      padding: 0 var(--spectrum-global-dimension-size-50);
-      margin: 0;
-      display: inline-block;
-      min-width: auto;
-      word-break: break-all;
-    `}>
-    {children}
-  </code>
-);
+module.exports = {
+  SIDENAV_WIDTH: '256px',
+  LARGE_SCREEN_WIDTH: '1280px',
+  // See https://github.com/adobe/react-spectrum/blob/dac6d273a9843694a652d7513ff88f6a9c773887/packages/%40react-spectrum/utils/src/useIsMobileDevice.ts#L15
+  MOBILE_SCREEN_WIDTH: '700px'
+};

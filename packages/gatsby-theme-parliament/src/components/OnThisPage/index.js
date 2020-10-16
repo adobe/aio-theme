@@ -16,7 +16,7 @@ import { View } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { layoutColumns } from '../utils';
+import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 
 // Builds a ToC based on the current rendered document
@@ -217,6 +217,10 @@ const OnThisPage = ({ tableOfContents }) => {
         overflow: auto;
         box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-200);
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: none;
+        }
       `}>
       <Outline />
     </aside>

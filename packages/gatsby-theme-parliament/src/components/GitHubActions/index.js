@@ -16,7 +16,7 @@ import { Flex } from '@adobe/react-spectrum';
 import { ActionButton, Text } from '../ActionButton';
 import { Bug, Edit } from '../Icons';
 import { css } from '@emotion/core';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
 

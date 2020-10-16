@@ -13,6 +13,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { HeroImage, HeroButtons } from '../Hero';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
@@ -30,6 +31,10 @@ const SummaryBlock = ({
       height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
       background: ${background};
       position: relative;
+
+      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        height: 100vh;
+      }
     `}>
     <HeroImage image={image} />
 
@@ -41,11 +46,17 @@ const SummaryBlock = ({
         height: 100%;
         position: absolute;
         top: 0;
+        left: 0;
         display: flex;
         flex-direction: column;
         align-items: left;
         justify-content: center;
         text-align: left;
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          width: auto;
+          padding: var(--spectrum-global-dimension-size-400);
+        }
       `}>
       {heading && (
         <h2

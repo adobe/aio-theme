@@ -14,7 +14,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { layoutColumns } from '../utils';
+import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
   <section
@@ -23,6 +23,10 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
       background: var(--spectrum-global-color-gray-100);
       padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
       text-align: center;
+
+      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        padding: var(--spectrum-global-dimension-size-400);
+      }
     `}>
     <div
       css={css`

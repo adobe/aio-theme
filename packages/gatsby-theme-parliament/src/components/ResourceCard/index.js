@@ -12,7 +12,7 @@
 
 import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
-import { getElementChild, getExternalLinkProps, layoutColumns } from '../utils';
+import { getElementChild, getExternalLinkProps, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
@@ -86,6 +86,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           padding: var(--spectrum-global-dimension-size-300);
           ${extraMargin}
           background: var(--spectrum-global-color-gray-100);
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            position: static;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin: 0;
+          }
         `}>
         <a
           className={`spectrum-Card spectrum-Card--${variant}`}
@@ -94,12 +102,24 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           css={css`
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-2000) - var(--spectrum-global-dimension-size-50));
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+              height: auto;
+              min-width: 0;
+              margin: 0;
+              flex-direction: column;
+            }
           `}>
           <div
             className="spectrum-Card-preview"
             css={css`
               width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
               padding: 0 !important;
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                width: 100%;
+              }
             `}>
             {image &&
               React.cloneElement(image, {
@@ -191,6 +211,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           padding: var(--spectrum-global-dimension-size-300);
           ${extraPadding}
           background: var(--spectrum-global-color-gray-100);
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin: 0;
+            padding: var(--spectrum-global-dimension-size-300);
+          }
         `}>
         <a
           className={`spectrum-Card spectrum-Card--${variant}`}
@@ -198,6 +226,13 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           css={css`
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-100));
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+              height: auto;
+              min-width: 0;
+              margin: 0;
+            }
           `}>
           <div
             className="spectrum-Card-preview"

@@ -21,8 +21,9 @@ import {
   findSelectedPageSiblings,
   findSelectedPageNextPrev,
   findSelectedTopPage,
-  findSelectedPages
-} from '../utils';
+  findSelectedPages,
+  LARGE_SCREEN_WIDTH
+} from '../../utils';
 
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
@@ -212,9 +213,39 @@ export default ({ children, pageContext, query }) => {
             justify-content: center;
             display: flex;
             flex-direction: column;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              #Layout-main {
+                max-width: none;
+                margin: 0 var(--spectrum-global-dimension-size-400);
+              }
+
+              #Layout-main-content {
+                width: 100%;
+              }
+
+              #Layout-actions {
+                flex-direction: column;
+              }
+
+              #Layout-actions-github {
+                margin-left: 0 !important;
+                margin-top: var(--spectrum-global-dimension-size-200);
+              }
+
+              #Layout-help {
+                flex-direction: column;
+                align-items: flex-start !important;
+              }
+
+              #Layout-feedback {
+                margin-top: var(--spectrum-global-dimension-size-200);
+              }
+            }
           `}>
           {heroChild && heroChild}
           <div
+            id="Layout-main"
             css={css`
               ${isDiscovery
                 ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
@@ -225,6 +256,7 @@ export default ({ children, pageContext, query }) => {
             `}>
             <Flex>
               <div
+                id="Layout-main-content"
                 css={css`
                   width: ${isDiscovery
                     ? `
@@ -234,11 +266,11 @@ export default ({ children, pageContext, query }) => {
                     : layoutColumns(columns, diff)};
                 `}>
                 {isDocs && (
-                  <Flex marginTop="size-500" marginBottom="size-500">
+                  <Flex id="Layout-actions" marginTop="size-500" marginBottom="size-500">
                     <View marginEnd="size-400">
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                     </View>
-                    <View marginStart="auto">
+                    <View id="Layout-actions-github" marginStart="auto">
                       <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
                     </View>
                   </Flex>
@@ -251,7 +283,12 @@ export default ({ children, pageContext, query }) => {
                 {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
 
                 {!isDiscovery && (
-                  <Flex alignItems="center" justifyContent="space-between" marginTop="size-800" marginBottom="size-400">
+                  <Flex
+                    id="Layout-help"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    marginTop="size-800"
+                    marginBottom="size-400">
                     <View>
                       <Contributors
                         repository={repository}
@@ -267,7 +304,7 @@ export default ({ children, pageContext, query }) => {
                         }
                       />
                     </View>
-                    <View>
+                    <View id="Layout-feedback">
                       <Feedback />
                     </View>
                   </Flex>
