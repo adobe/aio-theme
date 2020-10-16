@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.7.0...@adobe/gatsby-theme-parliament@2.8.0) (2020-10-16)
+
+
+### Bug Fixes
+
+* Design QA (closes [#27](https://github.com/adobe/gatsby-theme-parliament/issues/27)) ([#72](https://github.com/adobe/gatsby-theme-parliament/issues/72)) ([664ef19](https://github.com/adobe/gatsby-theme-parliament/commit/664ef190c4e5a16c23f1fa4ee9e8b78f719c1302))
+* Formatting and fix ProductCard filterBy prop type ([12e25c4](https://github.com/adobe/gatsby-theme-parliament/commit/12e25c4167827763f601e240d26f4d82b0fea6e7))
+* Move JsDocFilter func to JsDoc component ([fc3a05b](https://github.com/adobe/gatsby-theme-parliament/commit/fc3a05b9ef4f08edbd7f78b38b270d037a2fbb7b))
+* Remove horizontal scrollbar with SideNav layout and restore scrollbar for OnThisPage ([3bcb277](https://github.com/adobe/gatsby-theme-parliament/commit/3bcb2771a8fa56dba61365fa4b3ce833265609ba))
+* Update blog path in temp GlobalHeader ([39b5c06](https://github.com/adobe/gatsby-theme-parliament/commit/39b5c06ec6995bc8c2976993ed63a6645e0f3ef2))
+
+
+### Features
+
+* Add mobile best effort ([077bb64](https://github.com/adobe/gatsby-theme-parliament/commit/077bb64bbd630859cc981c0c2eda96a5313287a9))
+
+
+
+
+
 # [2.7.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.6.2...@adobe/gatsby-theme-parliament@2.7.0) (2020-10-14)
 
 
