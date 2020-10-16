@@ -87,7 +87,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
 
   return (
     <section
-      className={`spectrum--lightest`}
+      className={`spectrum--light`}
       css={css`
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
         margin: var(--spectrum-global-dimension-size-400) auto;
@@ -111,8 +111,11 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
         {interaction && (
           <Flex alignItems="end" width="size-3000" direction="column">
             <Flex alignItems="start" direction="column">
-              <h4 id={headingId} className="spectrum-Heading--XXS">
-                Filter by Platform
+              <h4 id={headingId} className="spectrum-Heading--XS"
+              css={css`
+                margin-bottom: var(--spectrum-global-dimension-size-100);
+                `}>
+                Filter by
               </h4>
               <CheckboxGroup
                 isEmphasized
@@ -122,7 +125,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                   setCloudFilter(values);
                 }}>
                 {clouds.map(({ name }, i) => (
-                  <Checkbox key={i} value={name}>
+                  <Checkbox key={i} value={name} marginBottom="size-100">
                     {name}
                   </Checkbox>
                 ))}
@@ -148,6 +151,10 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                 css={css`
                   width: ${width};
                   height: ${height};
+
+                  &:hover {
+                    border-color: var(--spectrum-global-color-gray-200);
+                  }
                 `}>
                 <div
                   className="spectrum-Card-body"
@@ -183,7 +190,10 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                       margin-top: 0 !important;
                       margin-bottom: var(--spectrum-global-dimension-size-100) !important;
                     `}>
-                    <div className="spectrum-Card-title">
+                    <div className="spectrum-Card-title"
+                      css={css`
+                        font-size: var(--spectrum-global-dimension-size-200);
+                        `}>
                       <strong>{product.name}</strong>
                     </div>
                   </div>
