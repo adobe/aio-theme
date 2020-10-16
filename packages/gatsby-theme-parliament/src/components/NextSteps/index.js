@@ -22,11 +22,13 @@ import PropTypes from 'prop-types';
 const NextSteps = ({ pages }) => {
   return pages.length > 0 ? (
     <View marginTop="size-800">
-    <h3 className="spectrum-Heading--S"
+      <h3
+        className="spectrum-Heading--S"
         css={css`
           margin-bottom: var(--spectrum-global-dimension-size-200);
-    `}>
-    Next steps</h3>
+        `}>
+        Next steps
+      </h3>
       <ul
         className="spectrum-Body--M"
         css={css`

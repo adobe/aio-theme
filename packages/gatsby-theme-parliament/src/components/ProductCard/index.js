@@ -114,9 +114,10 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                 margin-top: 0 !important;
                 margin-bottom: var(--spectrum-global-dimension-size-100) !important;
               `}>
-              <div className="spectrum-Card-title"
-                    css={css`
-                    font-size: var(--spectrum-global-dimension-size-200);
+              <div
+                className="spectrum-Card-title"
+                css={css`
+                  font-size: var(--spectrum-global-dimension-size-200);
                 `}>
                 <strong>{heading && heading.props.children}</strong>
               </div>

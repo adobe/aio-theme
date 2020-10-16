@@ -66,7 +66,9 @@ const Links = ({ links, isCentered }) =>
           padding: 0;
           display: flex;
           justify-content: ${isCentered ? 'center' : 'left'};
-          margin-top: ${isCentered ? 'var(--spectrum-global-dimension-size-200) !important;' : 'var(--spectrum-global-dimension-size-600) !important;'};
+          margin-top: ${isCentered
+            ? 'var(--spectrum-global-dimension-size-200) !important;'
+            : 'var(--spectrum-global-dimension-size-600) !important;'};
 
           & li {
             display: flex;
@@ -194,7 +196,6 @@ const TextBlock = ({
                     height: 100%;
                     border-radius: 0;
                     object-fit: contain;
-
                   }
                 `
               })}
@@ -294,7 +295,6 @@ const TextBlock = ({
                     & + p {
                       margin-top: 0 !important;
                     }
-
                   `}>
                   {heading.props.children}
                 </h3>
@@ -302,7 +302,7 @@ const TextBlock = ({
 
               <Texts texts={props} />
 
-              <HeroButtons buttons={buttons} marginTop="size-400"/>
+              <HeroButtons buttons={buttons} marginTop="size-400" />
 
               <Links links={links} isCentered={isCentered} />
             </div>

@@ -37,13 +37,14 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
         width: 100%;
         ${hasSideNav && 'max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);'}
         ${hasSideNav && 'background-color: white;'}
-    `}>
+      `}>
       <div
         css={css`
           box-sizing: border-box;
           max-width: ${layoutColumns(12)};
           margin: 0 auto;
-          ${hasSideNav && 'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
+          ${hasSideNav &&
+          'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
           padding: 0;
 
           ul {

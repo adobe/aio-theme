@@ -247,15 +247,15 @@ export default ({ children, pageContext, query }) => {
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
     const isSupport = heroChild && hasSideNav !== null;
 
-
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
-        <main css={css`
-          align-items: center;
-          justify-content: center;
-          display: flex;
-          flex-direction: column;
-        `}>
+        <main
+          css={css`
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+          `}>
           {heroChild && heroChild}
           <div
             css={css`
@@ -277,8 +277,7 @@ export default ({ children, pageContext, query }) => {
                     : layoutColumns(isDocs ? 9 : isSupport ? 10 : 12)};
                 `}>
                 {isDocs && (
-                  <Flex marginTop="size-500"
-                        marginBottom="size-500">
+                  <Flex marginTop="size-500" marginBottom="size-500">
                     <View marginEnd="size-400">
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
                     </View>

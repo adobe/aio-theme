@@ -19,7 +19,6 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { getElementChild, getExternalLinkProps } from '../utils';
 
-
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
     <ButtonGroup {...props}>
@@ -115,10 +114,9 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
           width: 100%;
           display: inline-flex;
           flex-direction: row-reverse;
-
         `}>
-          <div
-            css={css`
+        <div
+          css={css`
               margin: auto;
               display: flex;
               position: relative;
@@ -133,25 +131,23 @@ const Hero = ({ background, theme = 'dark', heading, image, icon, buttons, varia
                 }
               }
             `}>
+          <HeroImage image={image} />
 
-              <HeroImage image={image}/>
+          <div
+            css={css`
+              width: calc(5 * 100% / 12);
+              position: absolute;
+              display: flex;
+              flex-direction: column;
 
-            <div
-              css={css`
-                width: calc(5 * 100% / 12);
-                position: absolute;
-                display: flex;
-                flex-direction: column;
-
-                & > p {
-                  margin-top: var(--spectrum-global-dimension-size-225) !important;
-                  margin-bottom: 0 !important;
-                }
-              `}>
+              & > p {
+                margin-top: var(--spectrum-global-dimension-size-225) !important;
+                margin-bottom: 0 !important;
+              }
+            `}>
             <HeroHeading heading={heading} variant={variant} />
 
-            <HeroTexts texts={props}/>
-
+            <HeroTexts texts={props} />
           </div>
         </div>
       </section>

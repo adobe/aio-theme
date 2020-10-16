@@ -111,9 +111,11 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
         {interaction && (
           <Flex alignItems="end" width="size-3000" direction="column">
             <Flex alignItems="start" direction="column">
-              <h4 id={headingId} className="spectrum-Heading--XS"
-              css={css`
-                margin-bottom: var(--spectrum-global-dimension-size-100);
+              <h4
+                id={headingId}
+                className="spectrum-Heading--XS"
+                css={css`
+                  margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
                 Filter by
               </h4>
@@ -190,10 +192,11 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                       margin-top: 0 !important;
                       margin-bottom: var(--spectrum-global-dimension-size-100) !important;
                     `}>
-                    <div className="spectrum-Card-title"
+                    <div
+                      className="spectrum-Card-title"
                       css={css`
                         font-size: var(--spectrum-global-dimension-size-200);
-                        `}>
+                      `}>
                       <strong>{product.name}</strong>
                     </div>
                   </div>
@@ -245,7 +248,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
 ProductCardGrid.propTypes = {
   products: PropTypes.array,
   orderBy: PropTypes.string,
-  filterBy: PropTypes.string,
+  filterBy: PropTypes.array,
   interaction: PropTypes.bool
 };
 

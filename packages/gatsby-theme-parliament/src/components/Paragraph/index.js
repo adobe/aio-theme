@@ -19,12 +19,13 @@ const paragraphOverrides = `
 `;
 
 export const Paragraph = ({ children, className, css: cssOverrides, ...props }) => (
-  <p {...props}
-  className={className || 'spectrum-Body--M'}
-  css={css`
-    ${paragraphOverrides}
-    ${cssOverrides}
-  `}>
+  <p
+    {...props}
+    className={className || 'spectrum-Body--M'}
+    css={css`
+      ${paragraphOverrides}
+      ${cssOverrides}
+    `}>
     {children}
   </p>
 );
