@@ -131,6 +131,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
               margin-top: var(--spectrum-global-dimension-size-400);
             }
 
+            .spectrum-Tabs-item:first-of-type {
+              margin-right: var(--spectrum-global-dimension-size-300);
+            }
+
             .spectrum-Tabs-selectionIndicator {
               bottom: calc(
                 var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
@@ -374,9 +378,18 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
                 setIsAnimated(true);
               }}>
               {discoverMenu && (
-                <TabsItem elementType="a" href={discoverMenu.path}>
-                  {discoverMenu.title}
-                </TabsItem>
+                <div
+                  css={css`
+                    display: none;
+
+                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      display: block;
+                    }
+                  `}>
+                  <TabsItem elementType="a" href={discoverMenu.path}>
+                    {discoverMenu.title}
+                  </TabsItem>
+                </div>
               )}
               {pages.map((page, i) => {
                 const { title, path } = page;
@@ -396,10 +409,6 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
 
                           @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                             display: none;
-
-                            & + .spectrum-Tabs-item {
-                              margin-left: var(--spectrum-global-dimension-size-300);
-                            }
                           }
                         `}>
                         <PickerButton
