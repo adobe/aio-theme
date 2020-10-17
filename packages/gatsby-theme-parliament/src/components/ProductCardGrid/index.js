@@ -90,7 +90,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
       className={`spectrum--light`}
       css={css`
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-        margin: var(--spectrum-global-dimension-size-400) 0;
+        margin: var(--spectrum-global-dimension-size-400) auto;
 
         @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
           #ProductCardGrid-main {
