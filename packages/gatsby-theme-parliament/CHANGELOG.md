@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.8.1...@adobe/gatsby-theme-parliament@2.9.0) (2020-10-17)
+
+
+### Bug Fixes
+
+* Duplicated Discover menu links on desktop ([cc04b3e](https://github.com/adobe/gatsby-theme-parliament/commit/cc04b3efef7fe197d3530684584886d8256cd429))
+
+
+### Features
+
+* Support lazy loading images by default ([b7cf30d](https://github.com/adobe/gatsby-theme-parliament/commit/b7cf30d49985ce4611b78768725c67475d97e84f))
+
+
+
+
+
 ## [2.8.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.8.0...@adobe/gatsby-theme-parliament@2.8.1) (2020-10-17)
 
 
