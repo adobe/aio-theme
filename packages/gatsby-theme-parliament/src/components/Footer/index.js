@@ -220,7 +220,6 @@ const Footer = ({ hasSideNav = false, links = {} }) => {
           </View>
           <View>
             <span
-              id="Footer-copyright-text"
               className="spectrum-Body--XS"
               css={css`
                 color: var(--spectrum-global-color-gray-700);

@@ -215,15 +215,6 @@ export default ({ children, pageContext, query }) => {
             flex-direction: column;
 
             @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-              #Layout-main {
-                max-width: none;
-                margin: 0 var(--spectrum-global-dimension-size-400);
-              }
-
-              #Layout-main-content {
-                width: 100%;
-              }
-
               #Layout-actions {
                 flex-direction: column;
               }
@@ -245,7 +236,6 @@ export default ({ children, pageContext, query }) => {
           `}>
           {heroChild && heroChild}
           <div
-            id="Layout-main"
             css={css`
               ${isDiscovery
                 ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
@@ -253,10 +243,14 @@ export default ({ children, pageContext, query }) => {
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
                 margin: 0 var(--spectrum-global-dimension-size-800);'
                 `}
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                max-width: none;
+                margin: 0 var(--spectrum-global-dimension-size-400);
+              }
             `}>
             <Flex>
               <div
-                id="Layout-main-content"
                 css={css`
                   width: ${isDiscovery
                     ? `
@@ -264,6 +258,10 @@ export default ({ children, pageContext, query }) => {
                       text-align: center;
                       `
                     : layoutColumns(columns, diff)};
+
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    width: 100%;
+                  }
                 `}>
                 {isDocs && (
                   <Flex id="Layout-actions" marginTop="size-500" marginBottom="size-500">

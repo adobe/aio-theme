@@ -49,6 +49,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
   const [openVersionMenu, setOpenVersionMenu] = useState(false);
 
+  const discoverMenu = globalNav.menus.find((menu) => menu.path);
+
   const getSelectedTabIndex = () => {
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(pages);
@@ -120,6 +122,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
           }
 
           #GlobalHeader-grid-navigation {
+            overflow-x: auto;
             overflow-x: overlay;
             overflow-y: hidden;
 
@@ -132,10 +135,6 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
               bottom: calc(
                 var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
               ) !important;
-            }
-
-            .spectrum-Tabs-item:first-of-type {
-              margin-right: var(--spectrum-global-dimension-size-300);
             }
           }
 
@@ -374,6 +373,11 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
                 positionSelectedTabIndicator();
                 setIsAnimated(true);
               }}>
+              {discoverMenu && (
+                <TabsItem elementType="a" href={discoverMenu.path}>
+                  {discoverMenu.title}
+                </TabsItem>
+              )}
               {pages.map((page, i) => {
                 const { title, path } = page;
                 const ref = createRef();
@@ -392,6 +396,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
 
                           @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                             display: none;
+
+                            & + .spectrum-Tabs-item {
+                              margin-left: var(--spectrum-global-dimension-size-300);
+                            }
                           }
                         `}>
                         <PickerButton

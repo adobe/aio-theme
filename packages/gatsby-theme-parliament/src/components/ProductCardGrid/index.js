@@ -94,7 +94,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
 
         @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
           #ProductCardGrid-main {
-            flex-direction: column !important;
+            flex-direction: column;
             align-items: center !important;
           }
         }
