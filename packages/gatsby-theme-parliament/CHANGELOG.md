@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.8.0...@adobe/gatsby-theme-parliament@2.8.1) (2020-10-17)
+
+
+### Bug Fixes
+
+* Center ProductCardGrid ([7cb4b52](https://github.com/adobe/gatsby-theme-parliament/commit/7cb4b5254ff5afb9be9c64ec713afc2576708dba))
+* Show Discover menu link on mobile ([20daa03](https://github.com/adobe/gatsby-theme-parliament/commit/20daa031c0eb4c403a843a7275322aa45d971faa))
+
+
+
+
+
 # [2.8.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.7.0...@adobe/gatsby-theme-parliament@2.8.0) (2020-10-16)
 
 
