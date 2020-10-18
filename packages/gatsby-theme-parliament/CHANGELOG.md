@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.3](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.2...@adobe/gatsby-theme-parliament@2.9.3) (2020-10-18)
+
+
+### Bug Fixes
+
+* Support SideNav paths with special characters ([af3ee52](https://github.com/adobe/gatsby-theme-parliament/commit/af3ee523cbe5d3ef33652832e427a5c9e78dfca2))
+
+
+
+
+
 ## [2.9.2](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.1...@adobe/gatsby-theme-parliament@2.9.2) (2020-10-18)
 
 
