@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.4](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.3...@adobe/gatsby-theme-parliament@2.9.4) (2020-10-18)
+
+
+### Bug Fixes
+
+* Design Q&A follow-up issues ([6956080](https://github.com/adobe/gatsby-theme-parliament/commit/6956080a1ef7334670efebfdfe944445475d00c2))
+
+
+
+
+
 ## [2.9.3](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.2...@adobe/gatsby-theme-parliament@2.9.3) (2020-10-18)
 
 
