@@ -43,6 +43,8 @@ const toggleSideNav = (setShowSideNav) => {
 };
 
 export default ({ children, pageContext, location }) => {
+  location.pathname = decodeURIComponent(location.pathname);
+
   const { locale, direction } = useLocale();
 
   // Load all data once and pass it to the Provider
