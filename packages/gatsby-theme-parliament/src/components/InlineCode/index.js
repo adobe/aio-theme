@@ -26,7 +26,6 @@ export const InlineCode = ({ children, className, ...props }) => (
       margin: 0;
       display: inline-block;
       min-width: auto;
-      word-break: break-all;
     `}>
     {children}
   </code>

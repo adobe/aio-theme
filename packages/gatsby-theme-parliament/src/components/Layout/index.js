@@ -231,7 +231,7 @@ export default ({ children, pageContext, location }) => {
 
                 @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                   #Layout-grid {
-                    grid-template-columns: auto !important;
+                    grid-template-columns: 0px auto !important;
                   }
 
                   #Layout-sidenav {

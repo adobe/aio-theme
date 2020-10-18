@@ -241,7 +241,7 @@ export default ({ children, pageContext, query }) => {
                 ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
                 : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
-                margin: 0 var(--spectrum-global-dimension-size-800);'
+                margin: 0 var(--spectrum-global-dimension-size-800);
                 `}
 
               @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {

@@ -49,7 +49,7 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
     </ButtonGroup>
   ) : null;
 
-const HeroImage = ({ image }) =>
+const HeroImage = ({ image, styles }) =>
   image
     ? React.cloneElement(image, {
         css: css`
@@ -58,6 +58,7 @@ const HeroImage = ({ image }) =>
           justify-content: center;
           height: 100%;
           margin-top: 0;
+          ${styles}
 
           & > img {
             width: 100%;
@@ -118,13 +119,23 @@ const Hero = ({
       <section
         className={`spectrum--${theme}`}
         css={css`
+          position: relative;
           height: var(--spectrum-global-dimension-size-3400);
           margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
           width: 100%;
-          display: inline-flex;
-          flex-direction: row-reverse;
+          display: flex;
+
+          & + div h2:first-of-type {
+            margin-top: 0 !important;
+          }
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            overflow: auto;
+            height: 100vh;
+          }
         `}>
+        <HeroImage image={image} styles={`position: absolute;`} />
         <div
           css={css`
             margin: auto;
@@ -140,8 +151,6 @@ const Hero = ({
               margin-top: 0 !important;
             }
           `}>
-          <HeroImage image={image} />
-
           <div
             css={css`
               width: calc(5 * 100% / 12);
@@ -156,7 +165,7 @@ const Hero = ({
 
               @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                 width: auto;
-                margin-left: var(--spectrum-global-dimension-size-400);
+                padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
             <HeroHeading heading={heading} variant={variant} />
