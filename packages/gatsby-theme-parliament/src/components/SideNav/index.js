@@ -59,11 +59,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
                 {page.title}
               </a>
             ) : (
-              <GatsbyLink
-                to={page.path.endsWith('/') ? page.path : `${page.path}/`}
-                className="spectrum-SideNav-itemLink"
-                role="treeitem"
-                aria-level={level}>
+              <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
                 {page.title}
               </GatsbyLink>
             )}
