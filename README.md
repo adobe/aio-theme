@@ -163,6 +163,7 @@ root
 
 Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, Gatsby will transform the `md` files into `index.html` files.
 The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information. 
+
 Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
 ```
@@ -193,7 +194,7 @@ root
 
 ### Internal links
 
-You can use absolute links or relative links to link between markdown pages e.g. with the example folder structure above you can add a link from `/guides/index.md` to `/api/index.md` with:
+You can use absolute links or relative links to link between markdown pages e.g. with the example folder structure from [Content Structure](#content-structure) you can add a link from `/guides/index.md` to `/api/index.md` with:
 
 *Relative link*
 ```
@@ -309,6 +310,8 @@ Otherwise, the first defined tab is set as active by default.
 
 **At least one defined page is required. It's recommended to define the first page `path` as the root path `/`.**
 
+**Please ensure to end every `path` value with a trailing slash `/`.**
+
 *The order in which the pages are defined is respected in the Global Navigation.*
 
 A common shared configuration at `@adobe/gatsby-theme-parliament/globalNav.json` defines the Global Navigation logo, title, menus etc.
@@ -364,6 +367,8 @@ subPages: [
   }
 ]
 ```
+
+**Please ensure to end every `path` value with a trailing slash `/`.**
 
 *Notice that all sub pages paths have to be children of the top-level navigation path.*
 
