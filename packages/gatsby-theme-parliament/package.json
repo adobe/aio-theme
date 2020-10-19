@@ -42,7 +42,7 @@
     "@adobe/focus-ring-polyfill": "^0.1.5",
     "@adobe/gatsby-add-launch-script": "^0.0.4",
     "@adobe/gatsby-remark-afm": "^0.8.3",
-    "@adobe/gatsby-source-github-file-contributors": "^0.2.0",
+    "@adobe/gatsby-source-github-file-contributors": "^0.2.2",
     "@adobe/parliament-site-search-index": "^0.0.4",
     "@adobe/parliament-ui-components": "^2.6.5",
     "@adobe/prism-adobe": "^1.0.0",
