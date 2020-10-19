@@ -161,13 +161,51 @@ root
 
 **Folder names should be unique.**
 
-### Internal links
-
-Use relative links between markdown pages e.g. with the example folder structure you can add a link from `/guides/index.md` to `/api/index.md` with:
+Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, Gatsby will transform the `md` files into `index.html` files.
+The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information. 
+Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
 ```
-[Link to API](../api/) 
+root
+├- src/pages [/]
+│  ├- index.md 
+│  ├- i_follow_recommendation [/i_follow_recommendation/]
+│  │  └- index.md   
+│  └- i_dont_follow_recommendation [/i_dont_follow_recommendation/]
+├- .env
+├─ gatsby-config.js
+└─ package.json 
+```
+
+will output: 
+
+```
+root
+└- public
+   ├- index.html
+   ├- i_follow_recommendation
+   │  └- index.html
+   ├- i_dont_follow_recommendation 
+   │  └- index.html 
+   └- Minified JS, CSS files  
+```
+    
+
+### Internal links
+
+You can use absolute links or relative links to link between markdown pages e.g. with the example folder structure above you can add a link from `/guides/index.md` to `/api/index.md` with:
+
+*Relative link*
+```
+[Link to API](../api/)  
 ```    
+
+*Absolute link*
+```
+[Link to API](/api/)  
+```    
+
+**Please note that currently only absolute links will work with transcluded content.**
 
 ## Configuration
 
