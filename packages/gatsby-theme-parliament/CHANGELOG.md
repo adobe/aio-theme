@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.6](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.5...@adobe/gatsby-theme-parliament@2.9.6) (2020-10-19)
+
+
+### Bug Fixes
+
+* Add space gap between Next / Prev links ([5725312](https://github.com/adobe/gatsby-theme-parliament/commit/5725312de4c274b330b60d6230c796cbe58dfa60))
+
+
+
+
+
 ## [2.9.5](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.4...@adobe/gatsby-theme-parliament@2.9.5) (2020-10-19)
 
 
