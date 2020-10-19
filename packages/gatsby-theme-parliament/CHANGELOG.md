@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.5](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.4...@adobe/gatsby-theme-parliament@2.9.5) (2020-10-19)
+
+
+### Bug Fixes
+
+* Anchor OnThisPage at the top for scrollable pages ([bed0087](https://github.com/adobe/gatsby-theme-parliament/commit/bed0087a6f7b8810cc87afe23fd8900ea44fa93a))
+
+
+
+
+
 ## [2.9.4](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.3...@adobe/gatsby-theme-parliament@2.9.4) (2020-10-18)
 
 
