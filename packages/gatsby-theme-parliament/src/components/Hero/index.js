@@ -184,6 +184,7 @@ const Hero = ({
           className={`spectrum--${theme}`}
           css={css`
             position: relative;
+            width: 100%;
             height: ${height};
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
 
