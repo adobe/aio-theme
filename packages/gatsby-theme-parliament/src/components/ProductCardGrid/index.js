@@ -191,6 +191,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                           margin-bottom: var(--spectrum-global-dimension-size-200);
                         `}>
                         <img
+                          key={Date.now()}
                           css={css`
                             display: block;
                             height: 100%;
