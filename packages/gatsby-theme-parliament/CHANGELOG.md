@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.8](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.7...@adobe/gatsby-theme-parliament@2.9.8) (2020-10-20)
+
+
+### Bug Fixes
+
+* Stretch the fullwidth Hero without image ([197c81e](https://github.com/adobe/gatsby-theme-parliament/commit/197c81e954546a673726eabf671f357683081f04))
+
+
+
+
+
 ## [2.9.7](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.6...@adobe/gatsby-theme-parliament@2.9.7) (2020-10-20)
 
 
