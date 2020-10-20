@@ -25,22 +25,22 @@ Using a theme, all of your default configuration lives in an npm package.
 <details>
   <summary>Documentation template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-documentation/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-documentation/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-documentation-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-documentation-template/">Repository</a></li>
   </ul>
 </details>
 <details>
   <summary>Platform template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-platform/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-platform/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-platform-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-platform-template/">Repository</a></li>
   </ul>
 </details>
 <details>
   <summary>Product template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-product/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-product/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-product-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-product-template/">Repository</a></li>
   </ul>
 </details>
 
@@ -122,7 +122,7 @@ Now you can create your site by running
 aio doc init path/to/site/folder
 ```
 
-which will use by default the [Documentation site template](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation). 
+which will use by default the [Documentation site template](https://github.com/AdobeDocs/dev-site-documentation-template). 
 
 You can specify another template with 
 
@@ -1367,13 +1367,13 @@ Lorem ipsum
 
 Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents. 
 
-**You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/package.json#L3) to be able to include it
+**You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
 
-You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/
-as a dependency in another site, you can run the command `yarn add adobedocs/gatsby-theme-parliament-documentation`;
+You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/dev-site-documentation-template/
+as a dependency in another site, you can run the command `yarn add adobedocs/dev-site-documentation-template`;
 
-Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/gatsby-theme-parliament-documentation`.   
+Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.   
 
 See full example below using a Variant block. 
 
@@ -1517,7 +1517,7 @@ This will also update the lock file `yarn.lock` or `package-lock.json`.
 ### Automated
 
 We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository. 
-Simply copy the [dependabot](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/.github/dependabot.yml) file in your `.github` folder.
+Simply copy the [dependabot](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/.github/dependabot.yml) file in your `.github` folder.
 
 The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-parliament` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-parliament": "^2.1.5"`.   
 
