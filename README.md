@@ -652,9 +652,9 @@ On every commit to the `main` branch, the site will be built to GitHub Pages aut
 ### Publishing to Azure Storage Static Websites (Production)
 
 A site is published via a Pull Request:
-1. The Pull Request must be `approved`
-2. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
-3. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
+1. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
+2. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
+3. Lastly, the Pull Request must be `approved` to start deploying
 
 **Pre-requisites:**
 1. Create a GitHub label called `deploy` if it does not exist
