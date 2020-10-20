@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.7](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.6...@adobe/gatsby-theme-parliament@2.9.7) (2020-10-20)
+
+
+### Bug Fixes
+
+* Ensure ProductCard image is updated in the DOM on filtering ([c10fcf0](https://github.com/adobe/gatsby-theme-parliament/commit/c10fcf060482faabec738e1615dad1caf1f425dd))
+
+
+
+
+
 ## [2.9.6](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.5...@adobe/gatsby-theme-parliament@2.9.6) (2020-10-19)
 
 
