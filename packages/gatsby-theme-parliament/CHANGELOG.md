@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.9](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.8...@adobe/gatsby-theme-parliament@2.9.9) (2020-10-21)
+
+
+### Bug Fixes
+
+* Rename Github to GitHub ([1f6770c](https://github.com/adobe/gatsby-theme-parliament/commit/1f6770c8c6bd1bcb00a9b2a4b29b5aee47bda42b))
+* Use default branch for GitHub interactions ([55f340d](https://github.com/adobe/gatsby-theme-parliament/commit/55f340d2408002f6616dbe13b6e885b1f6269c6b))
+
+
+
+
+
 ## [2.9.8](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.7...@adobe/gatsby-theme-parliament@2.9.8) (2020-10-20)
 
 
