@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.10](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.9...@adobe/gatsby-theme-parliament@2.9.10) (2020-10-21)
+
+
+### Bug Fixes
+
+* Remove dead code ([e27cea8](https://github.com/adobe/gatsby-theme-parliament/commit/e27cea82ca71f7309851091c87c153224475e0d0))
+* Remove GlobalHeader unnecessary spacing on mobile ([a1dd3ef](https://github.com/adobe/gatsby-theme-parliament/commit/a1dd3efd0ea997604a6c4ac8bc5a8268bd718514))
+
+
+
+
+
 ## [2.9.9](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.8...@adobe/gatsby-theme-parliament@2.9.9) (2020-10-21)
 
 
