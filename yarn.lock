@@ -3976,10 +3976,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-2.3.0.tgz#0ce716fb5ee65f4af9e2d2a7aaae55e8ba4d4c8f"
   integrity sha512-k4YwFbv9+7QzBrc3ezvGuHxI3nDTG/6qJsAmhYS1vEyxpxjKmRfiz59P+fqT12PQNjxeNYHyVz1kRgaLA6gw2w==
 
-"@spectrum-css/well@^3.0.0-beta.2":
-  version "3.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/well/-/well-3.0.0-beta.3.tgz#01afd6f0fcab009dbc09fbbb56406d5e189ee9c0"
-  integrity sha512-86X730CHPTQKSu+DMSdriL8fEGmZwtNf+pcTYxSWiLWoYaTGba7sn3aMjj++KhlmfacXros6Ga4J3Nm9jakbfg==
+"@spectrum-css/well@^3.0.0-beta.4":
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/well/-/well-3.0.0-beta.4.tgz#ae958749a12d02da39c25da09c3c5634175e7dad"
+  integrity sha512-QEvdZjZgt6LY6s+DzOvBEAarC8d8+x3JOZk9ZtLLyPKuWtJdk4oLUn9YPFH8ipNOy9tuSK9rAPnedzlgb+rfjQ==
 
 "@spectrum-icons/ui@^3.2.0":
   version "3.2.0"
