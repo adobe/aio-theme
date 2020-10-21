@@ -60,7 +60,8 @@ module.exports = {
           token: process.env.REPO_GITHUB_TOKEN,
           owner: process.env.REPO_OWNER,
           name: process.env.REPO_NAME,
-          branch: process.env.REPO_BRANCH
+          branch: process.env.REPO_BRANCH,
+          default_branch: process.env.REPO_DEFAULT_BRANCH
         }
       }
     },

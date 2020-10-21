@@ -149,7 +149,7 @@ export default ({ children, pageContext, query }) => {
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
-    const { repository, branch, root } = allGithub.nodes[0];
+    const { repository, default_branch: branch, root } = allGithub.nodes[0];
     const contributorsObj = allGithubContributors.nodes.find(
       ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
     );
