@@ -165,4 +165,3 @@ export const getElementChild = (element) => React.Children.toArray(element.props
 
 export const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
 export const LARGE_SCREEN_WIDTH = globals.LARGE_SCREEN_WIDTH;
-export const LARGE_SCREEN_WIDTH = globals.LARGE_SCREEN_WIDTH;
