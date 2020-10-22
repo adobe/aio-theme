@@ -3906,10 +3906,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0-beta.4.tgz#31000c0158d6a399654df94be4d792ff07dddf7b"
   integrity sha512-Yr/PZxhqOLe94cZkv9UowjrVVcIEWXAYUwnAZMQvYbFrYK8hRlM5vOF8WV7IRF8k2UspXTZAPd28PBn5tv0ltg==
 
-"@spectrum-css/card@^3.0.0-beta.3":
-  version "3.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/card/-/card-3.0.0-beta.4.tgz#bce111fefc21bb3433aec407aa1898492e391d4c"
-  integrity sha512-xAqRO372xiAFz5N9KR35yTNKv6z3PZFdvZawRkOtipueuJbyVVFyWlAXNzNQLLx+zIhD0Eg1r2lr9igFP5EyGQ==
+"@spectrum-css/card@^3.0.0-beta.5":
+  version "3.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/card/-/card-3.0.0-beta.5.tgz#08766077a0a63b7e22274667a26e64495a9d168c"
+  integrity sha512-A0jx8/ZLem3q5NR44MUHscKPChpje1SSQ2jp0czMwcDqaPCc3QP0h+AeQXQ+tdUjZOUgzwyG9aeGKqj0uUEjgQ==
 
 "@spectrum-css/dropdown@^3.0.0-beta.3":
   version "3.0.0-beta.3"
