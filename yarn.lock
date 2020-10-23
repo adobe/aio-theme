@@ -3896,10 +3896,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.0-beta.4.tgz#d35d4e40a816e7102b9835bd201c6ed40a65e1af"
   integrity sha512-Wd6s0p5TXpDtqXwL+pzewKX3DDmx+b+XsY35DPbGZC3K8OJze4guLvuRVUYRZVjq4pPWO/bC9GzNsFfcTRvjng==
 
-"@spectrum-css/breadcrumb@^3.0.0-beta.3":
-  version "3.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/breadcrumb/-/breadcrumb-3.0.0-beta.4.tgz#25066c6816210c53401e8a9d9296454a52858161"
-  integrity sha512-H91pozYzSFS7a7P2lcV7knTQ5BOFVBL3z+TpEJO4RG30/vpaeqpV1uk489s7MZBihYTETE1APMtQt8r/LmVO0g==
+"@spectrum-css/breadcrumb@^3.0.0-beta.3", "@spectrum-css/breadcrumb@^3.0.0-beta.5":
+  version "3.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/breadcrumb/-/breadcrumb-3.0.0-beta.5.tgz#72ec5ee0bd2ff3d1cb9963b3d6ca7ad89a048c72"
+  integrity sha512-sVX/xsd4EhOmGr1r5coDuOs3Vt2WNMZoMpLnSyKrm29gUvVFs9TPE8qC0D9YJl/SPU0RQKV/unrx+RNo9gioJA==
 
 "@spectrum-css/button@^3.0.0-beta.3":
   version "3.0.0-beta.4"
