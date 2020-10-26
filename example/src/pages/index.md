@@ -2,16 +2,16 @@
 title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics
 contributors:
-  - https://github.com/simonwex 
+  - https://github.com/simonwex
 ---
 
 import Overview from './overview.md'
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
-![Hero image](analytics-hero.png) 
+![Hero image](analytics-hero.png)
 
-# Adobe Analytics 
+# Adobe Analytics
 
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
 
@@ -24,27 +24,27 @@ Adobe Product API offers limitless ways to integrate your most important custome
 
 <Overview />
 
-## Discover 
+## Discover
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+<DiscoverBlock slots="heading, link, text"/>
 
 ### Get Started
 
 [Quickstart Guide](guides/)
-    
+
 Get started with the Adobe Analytics APIs.
 
-<DiscoverBlock slots="heading, link, text"/> 
+<DiscoverBlock slots="heading, link, text"/>
 
 ### Guides
 
-[Calculated Metrics API](guides/calculated_metrics_api/) 
-     
+[Calculated Metrics API](guides/calculated_metrics_api/)
+
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
 <DiscoverBlock slots="link, text"/>
 
-[Segments API](guides/segments_api/) 
+[Segments API](guides/segments_api/)
 
 Provides configuration guidance and best practices for the /segments endpoint.
 
@@ -60,18 +60,18 @@ Provides configuration guidance and best practices for the /reports endpoint.
 
 For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+<DiscoverBlock slots="heading, link, text"/>
 
 ### API References
 
-[Try the API](api/) 
+[Try the API](api/)
 
 Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint descriptions.
 
-## Contributing 
+## Contributing
 
-We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions 
-or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull 
+We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions
+or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull
 request with your contribution. For more information, refer to the [contributing page](support/contribute/).
 
 ## API Requests & Rate Limits

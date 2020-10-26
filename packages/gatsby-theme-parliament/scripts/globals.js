@@ -10,22 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
-import '@spectrum-css/typography';
-
-const paragraphOverrides = `
-  margin-top: var(--spectrum-global-dimension-size-300);
-`;
-
-export const Paragraph = ({ children, className, css: cssOverrides, ...props }) => (
-  <p
-    {...props}
-    className={className || 'spectrum-Body--M'}
-    css={css`
-      ${paragraphOverrides}
-      ${cssOverrides}
-    `}>
-    {children}
-  </p>
-);
+module.exports = {
+  SIDENAV_WIDTH: '256px',
+  LARGE_SCREEN_WIDTH: '1280px',
+  // See https://github.com/adobe/react-spectrum/blob/dac6d273a9843694a652d7513ff88f6a9c773887/packages/%40react-spectrum/utils/src/useIsMobileDevice.ts#L15
+  MOBILE_SCREEN_WIDTH: '700px'
+};

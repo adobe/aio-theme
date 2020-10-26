@@ -17,50 +17,85 @@ import { View } from '@adobe/react-spectrum';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps } from '../utils';
+import { layoutColumns, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
-const Heading = ({ children }) => <h3 className="spectrum-Heading--S">{children}</h3>;
+const Heading = ({ children }) => <h3 className="spectrum-Heading--XS">{children}</h3>;
 
 const List = ({ children }) => <ul className="spectrum-Body--S">{children}</ul>;
 
-const externalLinkProps = getExternalLinkProps();
-
-const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
-  const { APIs = [], services = [], community = [], support = [], developer = [], legal = [] } = links;
+const Footer = ({ hasSideNav = false, links = {} }) => {
+  const { APIs = [], services = [], community = [], support = [], developer = [], legal = [], allAPIs } = links;
 
   return (
     <footer
       css={css`
         position: relative;
-        box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-400);
-        padding-top: var(--spectrum-global-dimension-size-700);
+        padding-top: var(--spectrum-global-dimension-size-600);
         background-color: var(--spectrum-global-color-gray-75);
-        ${hasSideNav && 'padding-left: var(--spectrum-global-dimension-size-800);'}
+        width: 100%;
+        ${hasSideNav &&
+        `
+          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+          background-color: var(--spectrum-global-color-static-white);
+        `}
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          max-width: none;
+
+          #Footer-grid {
+            display: flex !important;
+            flex-direction: column !important;
+          }
+
+          #Footer-grid-apis {
+            flex-direction: column !important;
+
+            & > div {
+              margin: 0 !important;
+            }
+          }
+
+          #Footer-copyright {
+            flex-direction: column;
+            align-items: flex-start !important;
+          }
+
+          [role='separator'][aria-orientation='vertical'] {
+            display: none;
+          }
+        }
       `}>
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${layoutColumns(12, hasSideNav && ['256px'])};
-          ${isCentered && 'margin: auto;'}
-          padding: ${hasSideNav ? '0' : '0 var(--spectrum-global-dimension-size-800)'};
+          max-width: ${layoutColumns(12)};
+          margin: 0 auto;
+          ${hasSideNav &&
+          'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
+          padding: 0;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            padding: var(--spectrum-global-dimension-size-200);
+            margin: 0 auto;
+          }
 
           ul {
             list-style: none;
             padding: 0;
           }
 
-          .spectrum-Heading--S {
+          .spectrum-Heading--XS {
             position: absolute;
             white-space: nowrap;
           }
 
           ul.spectrum-Body--S {
-            padding-top: var(--spectrum-global-dimension-size-1000);
+            padding-top: var(--spectrum-global-dimension-size-500);
 
             & > li {
-              margin-top: 16px;
+              margin-top: var(--spectrum-global-dimension-size-200);
 
               &:first-of-type {
                 margin-top: 0;
@@ -68,16 +103,16 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             }
           }
         `}>
-        <Grid areas={['apis blogs support developer']} columns={['31%', '23%', '23%', '23%']} gap="size-400">
+        <Grid id="Footer-grid" areas={['apis blogs support developer']} columns={['30%', '22%', '19%']} gap="size-400">
           <View gridArea="apis" position="relative">
-            <Flex>
+            <Flex id="Footer-grid-apis">
               <View>
                 <Heading>APIs and Services</Heading>
                 <List>
                   {APIs.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...externalLinkProps} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path}>
                           {title}
                         </a>
                       </Link>
@@ -85,8 +120,8 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
                   ))}
                   <li>
                     <Link isQuiet={true}>
-                      <a {...externalLinkProps} href="https://www.adobe.io/apis.html">
-                        <strong>View All</strong>
+                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path}>
+                        <strong>{allAPIs.title}</strong>
                       </a>
                     </Link>
                   </li>
@@ -97,7 +132,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
                   {services.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...externalLinkProps} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path}>
                           {title}
                         </a>
                       </Link>
@@ -111,12 +146,12 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
             </View>
           </View>
           <View gridArea="blogs" position="relative">
-            <Heading>Blogs & Community</Heading>
+            <Heading>Community</Heading>
             <List>
               {community.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -133,7 +168,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {support.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -144,13 +179,13 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               <Divider height="100%" orientation="vertical" size="M" />
             </View>
           </View>
-          <View gridArea="developer">
+          <View gridArea="developer" position="relative">
             <Heading>Adobe Developer</Heading>
             <List>
               {developer.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -160,7 +195,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
           </View>
         </Grid>
         <Divider size="M" marginTop="size-700" />
-        <Flex justifyContent="space-between" alignItems="center" marginTop="size-100">
+        <Flex id="Footer-copyright" justifyContent="space-between" alignItems="center" marginTop="size-100">
           <View>
             <ul
               className="spectrum-Body--XS"
@@ -175,7 +210,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               {legal.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...externalLinkProps} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path}>
                       {title}
                     </a>
                   </Link>
@@ -188,6 +223,11 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
               className="spectrum-Body--XS"
               css={css`
                 color: var(--spectrum-global-color-gray-700);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  display: block;
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                }
               `}>
               Copyright © {new Date().getFullYear()} Adobe. All rights reserved.
             </span>
@@ -199,8 +239,7 @@ const Footer = ({ hasSideNav = false, isCentered = false, links = {} }) => {
 };
 
 Footer.propTypes = {
-  hasSideNav: PropTypes.bool,
-  isCentered: PropTypes.bool
+  hasSideNav: PropTypes.bool
 };
 
 export { Footer };

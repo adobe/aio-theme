@@ -12,20 +12,21 @@
 
 import React from 'react';
 import { css } from '@emotion/core';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/button';
 
 const links = [
   {
     title: 'Discover',
-    path: 'https://www.adobe.io/apis.html'
+    path: '/apis'
   },
   {
     title: 'Open Source',
-    path: 'https://www.adobe.io/open.html'
+    path: '/open'
   },
   {
     title: 'Blog',
-    path: 'https://www.adobe.io/blog.html'
+    path: 'https://medium.com/adobetech'
   },
   {
     title: 'Console',
@@ -47,17 +48,20 @@ export const GlobalHeaderTemp = () => (
         height: 100%;
       `}>
       <a
-        href="https://adobe.io"
+        href="/"
         css={css`
           display: flex;
           position: absolute;
           left: 0;
           height: 100%;
-          padding: 0 20px;
+          box-sizing: border-box;
           text-decoration: none;
           z-index: 1;
+          outline: none;
+          width: var(--spectrum-global-dimension-size-1600);
 
-          &:hover {
+          &:hover,
+          &:focus {
             text-decoration: underline;
           }
         `}>
@@ -76,12 +80,33 @@ export const GlobalHeaderTemp = () => (
           display: flex;
           justify-content: center;
           height: 100%;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            justify-content: flex-end;
+            margin-left: var(--spectrum-global-dimension-size-1600);
+            width: calc(100vw - var(--spectrum-global-dimension-size-1600));
+            white-space: nowrap;
+
+            overflow-x: auto;
+            overflow-x: overlay;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar {
+              width: 0;
+              background: transparent;
+            }
+          }
         `}>
         <ul
           css={css`
             display: flex;
             margin: 0;
+            padding: 0;
             list-style: none;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+            }
           `}>
           {links.map(({ title, path, variant }, i) => {
             const isButton = variant === 'button';
@@ -92,15 +117,15 @@ export const GlobalHeaderTemp = () => (
                 css={css`
                   display: flex;
                   align-items: center;
-                  padding: 0 20px;
 
-                  ${!isButton &&
-                  `
-                &:hover {
-                  background-color: hsla(0, 0%, 89%, .8);
-                  cursor: pointer;
-                }
-              `}
+                  ${isButton
+                    ? 'padding: 0 20px;'
+                    : `
+                    &:hover {
+                      background-color: hsla(0, 0%, 89%, .8);
+                      cursor: pointer;
+                    }
+                  `}
                 `}>
                 {isButton ? (
                   <a className="spectrum-Button spectrum-Button--cta" href={path}>
@@ -110,11 +135,14 @@ export const GlobalHeaderTemp = () => (
                   <a
                     href={path}
                     css={css`
+                      display: flex;
+                      height: 100%;
+                      align-items: center;
+                      padding: 0 20px;
                       font-size: 14px;
                       font-weight: 700;
                       color: black;
                       text-decoration: none;
-                      outline: none;
                     `}>
                     {title}
                   </a>

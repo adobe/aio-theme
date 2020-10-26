@@ -16,7 +16,7 @@ import { View } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
-import { layoutColumns } from '../utils';
+import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 
 // Builds a ToC based on the current rendered document
@@ -201,30 +201,29 @@ const OnThisPage = ({ tableOfContents }) => {
     </View>
   );
 
-  const showTableOfContents =
-    tableOfContentsItems &&
-    (tableOfContentsItems.length > 1 ||
-      (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
-      tableOfContentsItems[0]?.title);
-
-  return showTableOfContents ? (
+  return (
     <aside
       css={css`
-        position: fixed;
-        overflow: auto;
+        position: sticky;
         bottom: 0;
-        top: calc(
-          var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400) +
-            var(--spectrum-global-dimension-size-85)
-        );
-        left: ${layoutColumns(10)};
-        width: ${layoutColumns(3)};
+        margin-top: var(--spectrum-global-dimension-size-1600);
+        top: calc(var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400));
+        left: ${layoutColumns(12)};
+        width: ${layoutColumns(2)};
         margin-left: var(--spectrum-global-dimension-size-400);
         transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+        height: calc(100vh - var(--spectrum-global-dimension-size-1600));
+        overflow: auto;
+        box-sizing: border-box;
+        padding-bottom: var(--spectrum-global-dimension-size-200);
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: none;
+        }
       `}>
       <Outline />
     </aside>
-  ) : null;
+  );
 };
 
 OnThisPage.propTypes = {

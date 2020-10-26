@@ -17,7 +17,7 @@ import { Button } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { getElementChild, getExternalLinkProps } from '../utils';
+import { getElementChild, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
@@ -49,7 +49,7 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
     </ButtonGroup>
   ) : null;
 
-const HeroImage = ({ image }) =>
+const HeroImage = ({ image, styles }) =>
   image
     ? React.cloneElement(image, {
         css: css`
@@ -57,6 +57,8 @@ const HeroImage = ({ image }) =>
           align-items: center;
           justify-content: center;
           height: 100%;
+          margin-top: 0;
+          ${styles}
 
           & > img {
             width: 100%;
@@ -68,41 +70,108 @@ const HeroImage = ({ image }) =>
       })
     : null;
 
-const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons, variant = 'default' }) => {
+const HeroTexts = ({ texts }) => {
+  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
+  return textKeys.map((textKey) =>
+    React.cloneElement(texts[textKey], {
+      className: 'spectrum-Body--L',
+      css: css`
+        &.spectrum-Body--L {
+          margin-top: 0 !important;
+
+          &:last-of-type {
+            margin-bottom: 0 !important;
+          }
+        }
+      `
+    })
+  );
+};
+
+const HeroHeading = ({ heading, variant }) =>
+  heading
+    ? React.cloneElement(heading, {
+        className: variant === 'default' ? 'spectrum-Heading--XL' : 'spectrum-Heading--XXL spectrum-Heading--serif',
+        css: css`
+          margin-top: 0;
+          margin-bottom: var(--spectrum-global-dimension-size-200);
+
+          & + p {
+            margin-bottom: var(--spectrum-global-dimension-size-200);
+          }
+        `
+      })
+    : null;
+
+const Hero = ({
+  background,
+  theme = 'dark',
+  heading,
+  image,
+  icon,
+  buttons,
+  variant = 'default',
+  width = 'var(--spectrum-global-dimension-static-grid-fixed-max-width)',
+  ...props
+}) => {
   if (!variant || variant === 'default') {
     return (
       <section
         className={`spectrum--${theme}`}
         css={css`
+          position: relative;
           height: var(--spectrum-global-dimension-size-3400);
           margin-bottom: var(--spectrum-global-dimension-size-400);
           background: ${background ?? 'rgb( 29, 125, 238)'};
-          position: relative;
-        `}>
-        <HeroImage image={image} />
+          width: 100%;
+          display: flex;
 
+          & + div h2:first-of-type {
+            margin-top: 0 !important;
+          }
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            overflow: auto;
+            height: 100vh;
+          }
+        `}>
+        <HeroImage image={image} styles={`position: absolute;`} />
         <div
           css={css`
-            margin-left: var(--spectrum-global-dimension-size-800);
-            width: calc(5 * 100% / 12);
-            height: 100%;
-            position: absolute;
-            top: 0;
+            margin: auto;
             display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: center;
-            text-align: left;
-          `}>
-          {heading &&
-            React.cloneElement(heading, {
-              className: 'spectrum-Heading--XL'
-            })}
+            position: relative;
+            height: 100%;
+            max-width: ${width};
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
 
-          {text &&
-            React.cloneElement(text, {
-              className: 'spectrum-Body--L'
-            })}
+            & > p {
+              margin-top: 0 !important;
+            }
+          `}>
+          <div
+            css={css`
+              width: calc(5 * 100% / 12);
+              position: absolute;
+              display: flex;
+              flex-direction: column;
+
+              & > p {
+                margin-top: var(--spectrum-global-dimension-size-225) !important;
+                margin-bottom: 0 !important;
+              }
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                width: auto;
+                padding: 0 var(--spectrum-global-dimension-size-400);
+              }
+            `}>
+            <HeroHeading heading={heading} variant={variant} />
+
+            <HeroTexts texts={props} />
+          </div>
         </div>
       </section>
     );
@@ -115,8 +184,15 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
           className={`spectrum--${theme}`}
           css={css`
             position: relative;
+            width: 100%;
             height: ${height};
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              overflow: auto;
+              padding: var(--spectrum-global-dimension-size-800) 0;
+              height: 100vh;
+            }
           `}>
           <HeroImage image={image} />
 
@@ -133,26 +209,16 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
               align-items: center;
               justify-content: center;
               text-align: center;
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                padding: 0 var(--spectrum-global-dimension-size-400);
+              }
             `}>
-            {heading &&
-              React.cloneElement(heading, {
-                className: 'spectrum-Heading--XXL spectrum-Heading--serif',
-                css: css`
-                  margin-bottom: 0 !important;
+            <HeroHeading heading={heading} variant={variant} />
 
-                  & + p {
-                    margin-top: var(--spectrum-global-dimension-size-200) !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
-                  }
-                `
-              })}
+            <HeroTexts texts={props} />
 
-            {text &&
-              React.cloneElement(text, {
-                className: 'spectrum-Body--L'
-              })}
-
-            <HeroButtons buttons={buttons} variants={['cta', 'overBackground']} />
+            <HeroButtons buttons={buttons} variants={['cta', 'overBackground']} marginTop="size-400" />
           </div>
         </section>
       );
@@ -164,6 +230,11 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
             height: ${height};
             overflow: hidden;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-400);
+            }
           `}>
           <Flex justifyContent="center" height="100%">
             <div
@@ -174,12 +245,18 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                 width: calc(5 * 100% / 12);
                 margin-left: var(--spectrum-global-dimension-size-800);
                 margin-right: var(--spectrum-global-dimension-size-400);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  width: 100%;
+                  margin: 0;
+                }
               `}>
               {icon &&
                 React.cloneElement(icon, {
                   css: css`
                     height: var(--spectrum-global-dimension-size-600);
                     width: var(--spectrum-global-dimension-size-600);
+                    margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-300) !important;
 
                     img {
@@ -189,30 +266,19 @@ const Hero = ({ background, theme = 'dark', heading, text, image, icon, buttons,
                   `
                 })}
 
-              {heading &&
-                React.cloneElement(heading, {
-                  className: 'spectrum-Heading--XXL spectrum-Heading--serif',
-                  css: css`
-                    margin-top: 0 !important;
-                    margin-bottom: 0 !important;
+              <HeroHeading heading={heading} isVariant />
 
-                    & + p {
-                      margin-top: var(--spectrum-global-dimension-size-200) !important;
-                      margin-bottom: var(--spectrum-global-dimension-size-300) !important;
-                    }
-                  `
-                })}
+              <HeroTexts texts={props} />
 
-              {text &&
-                React.cloneElement(text, {
-                  className: 'spectrum-Body--L'
-                })}
-
-              <HeroButtons buttons={buttons} />
+              <HeroButtons buttons={buttons} marginTop="size-300" />
             </div>
             <div
               css={css`
                 flex: 1;
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  display: none;
+                }
               `}>
               <HeroImage image={image} />
             </div>
@@ -231,6 +297,7 @@ Hero.propTypes = {
   icon: PropTypes.element,
   buttons: PropTypes.element,
   variant: PropTypes.string,
+  width: PropTypes.string,
   theme: PropTypes.string
 };
 

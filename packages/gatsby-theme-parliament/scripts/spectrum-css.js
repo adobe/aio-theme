@@ -11,9 +11,9 @@
  */
 
 const fs = require('fs');
-const medium = require.resolve('@spectrum-css/vars/dist/spectrum-medium.css');
 const large = require.resolve('@spectrum-css/vars/dist/spectrum-large.css');
 const icon = require.resolve('@spectrum-css/icon/dist/index-vars.css');
+const MOBILE_SCREEN_WIDTH = require('./globals').MOBILE_SCREEN_WIDTH;
 
 const wrap = (file, identifier, wrapper) => {
   try {
@@ -45,7 +45,5 @@ const wrap = (file, identifier, wrapper) => {
   } catch (e) {}
 };
 
-wrap(medium, '.spectrum--medium {', (content) => `@media (any-pointer: fine) {${content}}`);
-wrap(large, '.spectrum--large {', (content) => `@media (any-pointer: coarse) {${content}}`);
-wrap(icon, '.spectrum--medium', (content) => `@media (any-pointer: fine) {${content}`);
-wrap(icon, '.spectrum--large', (content) => `@media (any-pointer: coarse) {${content}`);
+wrap(large, '.spectrum--large {', (content) => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}}`);
+wrap(icon, '.spectrum--large', (content) => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}`);

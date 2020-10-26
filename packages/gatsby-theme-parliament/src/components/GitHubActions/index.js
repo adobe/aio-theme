@@ -16,7 +16,7 @@ import { Flex } from '@adobe/react-spectrum';
 import { ActionButton, Text } from '../ActionButton';
 import { Bug, Edit } from '../Icons';
 import { css } from '@emotion/core';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
 
@@ -35,7 +35,7 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
         {...commonsProps}
         href={`https://github.com/${repository}/edit/${branch}${rootFolder}/src/pages/${pagePath}`}>
         <Edit />
-        <Text>Edit in Github</Text>
+        <Text>Edit in GitHub</Text>
       </ActionButton>
 
       <ActionButton

@@ -21,8 +21,9 @@ import {
   findSelectedPageSiblings,
   findSelectedPageNextPrev,
   findSelectedTopPage,
-  findSelectedPages
-} from '../utils';
+  findSelectedPages,
+  LARGE_SCREEN_WIDTH
+} from '../../utils';
 
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
@@ -35,13 +36,14 @@ import { Breadcrumbs } from '../Breadcrumbs';
 import { OnThisPage } from '../OnThisPage';
 import { NextSteps } from '../NextSteps';
 import { NextPrev } from '../NextPrev';
-import { OpenAPIBlock } from '@adobe/parliament-ui-components';
+
+import { jsDocFilter } from '../JsDocParameters';
 
 import { MDXComponents } from './MDXComponents';
 import { MDXBlocks } from './MDXBlocks';
 
-// Filters custom MDX components out of the markdown and applies magic rules
-const filterChildren = ({ childrenArray, query }) => {
+// Filters custom MDX components out of the markdown
+const filterChildren = ({ childrenArray, query, hasSideNav }) => {
   const filteredChildren = [];
 
   let heroChild = null;
@@ -82,6 +84,10 @@ const filterChildren = ({ childrenArray, query }) => {
             props.query = query;
           }
 
+          if (child.props.mdxType === 'Hero' && hasSideNav) {
+            props.width = 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) - 256px);';
+          }
+
           const childClone = React.cloneElement(child, {
             ...props
           });
@@ -117,82 +123,17 @@ const filterChildren = ({ childrenArray, query }) => {
   };
 };
 
-const jsDocFilter = (childrenArray) => {
-  const filteredArray = [];
-  let jsDoc = null;
-  let jsDocItems = [];
-  let headingLevel = -1;
-
-  for (let i = 0; i < childrenArray.length; i++) {
-    let type = childrenArray[i]?.props?.mdxType;
-    if (!jsDoc && type !== 'JsDocParameters') {
-      // We are not in a JS Doc block so return the current element
-      filteredArray.push(childrenArray[i]);
-    } else if (type === 'JsDocParameters') {
-      // We found a JS Doc block so save a pointer to it
-      jsDoc = childrenArray[i];
-    } else if (jsDoc) {
-      // We are inside a JS Doc Block so we need to add children to it.
-      if (type.match(/h\d/)) {
-        // We found a header, so we need to check it's level (1-6)
-        let level = parseInt(type.charAt(1), 10);
-        if (level >= headingLevel) {
-          // The heading is >= the current level so we are still in a JS Block
-          headingLevel = level;
-          jsDocItems.push(childrenArray[i]);
-        } else {
-          // The heading is less than current level so we are out of the JS Doc Block
-          // Pop the previous child, the anchor, off the JS Doc block and onto the page
-          filteredArray.push(jsDocItems.pop());
-
-          // Finish the JS Doc Block
-          filteredArray.push(
-            React.cloneElement(jsDoc, {
-              items: jsDocItems
-            })
-          );
-
-          // Reset for the next loop
-          jsDoc = null;
-          jsDocItems = [];
-          headingLevel = -1;
-
-          // Push the header onto the page
-          filteredArray.push(childrenArray[i]);
-        }
-      } else {
-        // We are in a JS Doc block and the element is not a header
-        // so add it to the JS Doc Block
-        jsDocItems.push(childrenArray[i]);
-      }
-    }
-  }
-
-  // If we finished parsing all the elements but there is a
-  // open JS Doc Block, finish it off
-  if (jsDoc) {
-    filteredArray.push(
-      React.cloneElement(jsDoc, {
-        items: jsDocItems
-      })
-    );
-  }
-
-  return filteredArray;
-};
-
 export default ({ children, pageContext, query }) => {
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
+    Context
+  );
   let childrenArray = React.Children.toArray(children);
 
-  if (query || typeof pageContext === 'undefined') {
-    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query });
+  if (typeof pageContext === 'undefined') {
+    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query, hasSideNav });
     // No layout for transclusions
     return <MDXProvider>{filteredChildren}</MDXProvider>;
   } else {
-    const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
-      Context
-    );
-
     // Footer
     const { footer: footerLinks } = siteMetadata.globalNav;
 
@@ -208,7 +149,7 @@ export default ({ children, pageContext, query }) => {
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
-    const { repository, branch, root } = allGithub.nodes[0];
+    const { repository, default_branch: branch, root } = allGithub.nodes[0];
     const contributorsObj = allGithubContributors.nodes.find(
       ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
     );
@@ -240,90 +181,141 @@ export default ({ children, pageContext, query }) => {
     }
 
     // Custom MDX components
-    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray });
+    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray, hasSideNav });
 
     const isDocs = hasSideNav && heroChild === null;
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
+
+    const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
+    const hasOnThisPage =
+      !heroChild &&
+      (hasSideNav || isJsDoc) &&
+      tableOfContentsItems &&
+      (tableOfContentsItems.length > 1 ||
+        (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
+        tableOfContentsItems[0]?.title);
     const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
+
+    const columns = 12;
+    const diff = [];
+    if (hasOnThisPage) {
+      diff.push(`${layoutColumns(2)} - var(--spectrum-global-dimension-size-400)`);
+    }
+    if (hasSideNav) {
+      diff.push('256px');
+    }
 
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
-        {pageContext?.frontmatter?.openAPISpec ? (
-          <OpenAPIBlock specUrl={pageContext.frontmatter.openAPISpec} />
-        ) : (
-          <>
-            {heroChild && heroChild}
-            <section
-              css={css`
-                ${isDiscovery
-                  ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
-                  : `
+        <main
+          css={css`
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              #Layout-actions {
+                flex-direction: column;
+              }
+
+              #Layout-actions-github {
+                margin-left: 0 !important;
+                margin-top: var(--spectrum-global-dimension-size-200);
+              }
+
+              #Layout-help {
+                flex-direction: column;
+                align-items: flex-start !important;
+              }
+
+              #Layout-feedback {
+                margin-top: var(--spectrum-global-dimension-size-200);
+              }
+            }
+          `}>
+          {heroChild && heroChild}
+          <div
+            css={css`
+              ${isDiscovery
+                ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
+                : `
                 max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
                 margin: 0 var(--spectrum-global-dimension-size-800);
                 `}
-              `}>
-              <Flex>
-                <article
-                  css={css`
-                    width: ${isDiscovery
-                      ? `
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                max-width: none;
+                margin: 0 var(--spectrum-global-dimension-size-400);
+              }
+            `}>
+            <Flex>
+              <div
+                css={css`
+                  width: ${isDiscovery
+                    ? `
                       var(--spectrum-global-dimension-static-grid-fluid-width);
                       text-align: center;
                       `
-                      : layoutColumns(isDocs ? 7 : 9)};
-                  `}>
-                  {isDocs && (
-                    <Flex marginTop="size-400">
-                      <View marginEnd="size-400">
-                        <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
-                      </View>
-                      <View marginStart="auto">
-                        <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
-                      </View>
-                    </Flex>
-                  )}
+                    : layoutColumns(columns, diff)};
 
-                  {filteredChildren}
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    width: 100%;
+                  }
+                `}>
+                {isDocs && (
+                  <Flex id="Layout-actions" marginTop="size-500" marginBottom="size-500">
+                    <View marginEnd="size-400">
+                      <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+                    </View>
+                    <View id="Layout-actions-github" marginStart="auto">
+                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
+                    </View>
+                  </Flex>
+                )}
 
-                  {isDocs && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
+                {filteredChildren}
 
-                  {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
+                {isDocs && isFirstSubPage && <NextSteps pages={selectedPageSiblings} />}
 
-                  {!isDiscovery && (
-                    <Flex
-                      alignItems="center"
-                      justifyContent="space-between"
-                      marginTop="size-800"
-                      marginBottom="size-400">
-                      <View>
-                        <Contributors
-                          repository={repository}
-                          branch={branch}
-                          root={root}
-                          pagePath={pagePath}
-                          contributors={contributors}
-                          externalContributors={pageContext?.frontmatter?.contributors}
-                          date={
-                            contributors[0]
-                              ? new Date(contributors[0].date).toLocaleDateString()
-                              : new Date().toLocaleDateString()
-                          }
-                        />
-                      </View>
-                      <View>
-                        <Feedback />
-                      </View>
-                    </Flex>
-                  )}
-                </article>
+                {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
 
-                {resourcesChild && resourcesChild}
-              </Flex>
-            </section>
-            {!heroChild && (hasSideNav || isJsDoc) && <OnThisPage tableOfContents={tableOfContents} />}
-            <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
-          </>
-        )}
+                {!isDiscovery && (
+                  <Flex
+                    id="Layout-help"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    marginTop="size-800"
+                    marginBottom="size-400">
+                    <View>
+                      <Contributors
+                        repository={repository}
+                        branch={branch}
+                        root={root}
+                        pagePath={pagePath}
+                        contributors={contributors}
+                        externalContributors={pageContext?.frontmatter?.contributors}
+                        date={
+                          contributors[0]
+                            ? new Date(contributors[0].date).toLocaleDateString()
+                            : new Date().toLocaleDateString()
+                        }
+                      />
+                    </View>
+                    <View id="Layout-feedback">
+                      <Feedback />
+                    </View>
+                  </Flex>
+                )}
+              </div>
+
+              {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
+
+              {resourcesChild && resourcesChild}
+            </Flex>
+          </div>
+          <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
+        </main>
       </MDXProvider>
     );
   }
