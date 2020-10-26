@@ -17,7 +17,7 @@ import '@spectrum-css/typography';
 import { Divider } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 
-const headingSizes = ['XL', 'L', 'M', 'S', 'XS', 'XXS'];
+const headingSizes = ['XL', 'M', 'S', 'XS', 'XXS', 'XXS'];
 
 // Use the Anchor to allow scrolling to heading position minus GlobalNav height
 const Anchor = ({ id }) => (
@@ -35,7 +35,35 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const HeadingTag = `h${level}`;
   const isHeading1 = level === 1;
   const isHeading2 = level === 2;
+  const isHeading3 = level === 3;
   const marginLink = `margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
+  const animateAnchor = `
+    & span a {
+      opacity: 0;
+      transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+    }
+
+    &:hover span a {
+      opacity: 1;
+    }
+  `;
+  const heading1Overrides = `
+    margin-bottom: var(--spectrum-global-dimension-size-350);
+  
+    & + p {
+      font-size: var(--spectrum-global-dimension-size-225);
+      color: var(--spectrum-global-color-gray-800) !important;
+      margin-bottom: var(--spectrum-global-dimension-size-800);
+    }
+  `;
+  const heading2Overrides = `
+    margin-top: var(--spectrum-global-dimension-size-800);
+    margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+  `;
+  const heading3Overrides = `
+    color: var(--spectrum-global-color-gray-800);
+    margin-top: var(--spectrum-global-dimension-size-500);
+  `;
 
   return (
     <>
@@ -49,21 +77,10 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
           })
         }
         css={css`
-          ${isHeading1
-            ? `& + p {
-              margin-top: var(--spectrum-global-dimension-size-300) !important;
-              font-size: var(--spectrum-global-dimension-size-225);
-            }`
-            : `
-            & span a {
-              opacity: 0;
-              transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-            }
-    
-            &:hover span a {
-              opacity: 1;
-            }`}
-
+          ${!isHeading1 && animateAnchor}
+          ${isHeading1 && heading1Overrides}
+          ${isHeading2 && heading2Overrides}
+          ${isHeading3 && heading3Overrides}
           ${styles}
         `}>
         {children}

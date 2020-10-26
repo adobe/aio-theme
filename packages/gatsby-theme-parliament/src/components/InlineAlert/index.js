@@ -35,7 +35,10 @@ const InlineAlert = ({ variant = 'info', text }) => {
       role="alert"
       className={`spectrum-Alert spectrum-Alert--${variant}`}
       css={css`
+        display: block !important;
+        min-width: 0 !important;
         width: 100%;
+        margin-top: var(--spectrum-global-dimension-size-300);
       `}>
       <Icon className="spectrum-Alert-icon" />
       <div
@@ -43,6 +46,10 @@ const InlineAlert = ({ variant = 'info', text }) => {
         css={css`
           margin-top: 0;
           margin-right: var(--spectrum-global-dimension-size-400);
+
+          p {
+            margin: 0;
+          }
         `}>
         {React.cloneElement(text, {
           className: ' ',

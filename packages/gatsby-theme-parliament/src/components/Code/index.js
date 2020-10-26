@@ -117,7 +117,11 @@ const Code = ({ children, className = '', theme }) => {
                         {i + 1}
                       </span>
                     )}
-                    <span {...lineProps}>
+                    <span
+                      {...lineProps}
+                      css={css`
+                        margin-right: var(--spectrum-global-dimension-size-1000);
+                      `}>
                       {line.map((token, key) => {
                         const { style: tokenStyles, ...tokenProps } = getTokenProps({ token, key });
                         return <span key={key} {...tokenProps} />;

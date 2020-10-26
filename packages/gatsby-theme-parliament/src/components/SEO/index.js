@@ -14,12 +14,21 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // TODO Define additional meta properties
-export const SEO = ({ title, description, locale, direction }) => (
+export const SEO = ({
+  title = 'Adobe I/O',
+  description = 'Adobe I/O Site',
+  locale = 'en-US',
+  direction = 'ltr',
+  favIcon = 'https://www.adobe.com/favicon.ico'
+}) => (
   <HelmetProvider>
     <Helmet>
       <html lang={locale} dir={direction} />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+      <link rel="icon" href={favIcon} type="image/x-icon" />
+      <link rel="shortcut icon" href={favIcon} type="image/x-icon" />
     </Helmet>
   </HelmetProvider>
 );

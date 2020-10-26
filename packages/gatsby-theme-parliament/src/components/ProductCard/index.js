@@ -15,29 +15,40 @@ import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
-let counter = 0;
+const counter = {
+  2: 0,
+  3: 0,
+  4: 0
+};
 const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
+  let columns = 100 / parseFloat(width);
+
   if (width === '33%') {
-    width = `${100 / 3}%`;
-  }
-
-  const columns = 100 / parseFloat(width);
-
-  if (columns > 1) {
-    counter++;
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
   }
 
   useEffect(() => {
     return () => {
-      if (columns > 1) {
-        counter--;
+      if (typeof counter[columns] !== 'undefined') {
+        counter[columns]--;
       }
     };
   });
+
+  if (typeof counter[columns] !== 'undefined') {
+    counter[columns]++;
+  }
+
+  let alignment = 'center';
+  if (columns === 2 || columns === 3) {
+    alignment = alignMapping[counter[columns] % columns] || 'center';
+  }
 
   return (
     <section
@@ -45,29 +56,54 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
       css={css`
         display: inline-flex;
         flex-direction: column;
-        align-items: ${columns === 3 ? alignMapping[counter % 3] || 'center' : 'center'};
+        align-items: ${alignment};
         width: ${width};
         padding: var(--spectrum-global-dimension-size-400) 0;
         background: var(--spectrum-global-color-gray-100);
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          display: flex;
+          width: 100%;
+          align-items: center;
+        }
       `}>
       <div
         role="figure"
         tabIndex="0"
         className="spectrum-Card"
         css={css`
-          width: var(--spectrum-global-dimension-size-3600);
+          margin: 0 var(--spectrum-global-dimension-size-300);
+          width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
           height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+
+          &:hover {
+            border-color: var(--spectrum-card-border-color, var(--spectrum-global-color-gray-200));
+          }
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            width: 0;
+            margin: 0;
+          }
         `}>
-        <div className="spectrum-Card-body">
+        <div
+          className="spectrum-Card-body"
+          css={css`
+            height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+            overflow: auto;
+            text-align: left;
+          `}>
           <div
             css={css`
+              position: absolute;
               height: var(--spectrum-global-dimension-size-800);
+              z-index: 1;
             `}>
             {icon &&
               React.cloneElement(icon, {
                 css: css`
                   height: var(--spectrum-global-dimension-size-600);
                   width: var(--spectrum-global-dimension-size-600);
+                  margin-top: 0;
 
                   img {
                     display: block;
@@ -77,17 +113,35 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                 `
               })}
           </div>
-          <div className="spectrum-Card-header">
-            <div className="spectrum-Card-title">{heading && <strong>{heading.props.children}</strong>}</div>
-          </div>
           <div
-            className="spectrum-Card-content"
             css={css`
-              text-align: left;
-              height: var(--spectrum-global-dimension-size-1700);
-              overflow: auto;
+              position: relative;
+              z-index: 1;
+              background-color: var(--spectrum-global-color-gray-50);
+              ${icon ? 'top: 64px;' : ''}
             `}>
-            {text && text.props.children}
+            <div
+              className="spectrum-Card-header spectrum-Heading--XXS"
+              css={css`
+                margin-top: 0 !important;
+                margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+              `}>
+              <div
+                className="spectrum-Card-title"
+                css={css`
+                  font-size: var(--spectrum-global-dimension-size-200);
+                `}>
+                <strong>{heading && heading.props.children}</strong>
+              </div>
+            </div>
+            <div
+              className="spectrum-Card-content spectrum-Body--S"
+              css={css`
+                height: auto;
+                margin-bottom: 0 !important;
+              `}>
+              {text && text.props.children}
+            </div>
           </div>
         </div>
         <div
@@ -104,7 +158,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
 
 ProductCard.propTypes = {
   theme: PropTypes.string,
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%', '33%', '25%']),
   icon: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,

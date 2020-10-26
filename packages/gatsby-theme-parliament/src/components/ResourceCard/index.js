@@ -12,7 +12,7 @@
 
 import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
-import { getElementChild, getExternalLinkProps, layoutColumns } from '../utils';
+import { getElementChild, getExternalLinkProps, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
@@ -23,12 +23,12 @@ let verticalCounter = 0;
 const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizontal', link, heading, text, image }) => {
   const href = getElementChild(link).props.href;
   const externalProps = getExternalLinkProps(href);
+  let columns = 100 / parseFloat(width);
 
   if (width === '33%') {
-    width = `${100 / 3}%`;
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
   }
-
-  const columns = 100 / parseFloat(width);
 
   const is2Columns = columns === 2;
   if (is2Columns) {
@@ -86,6 +86,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           padding: var(--spectrum-global-dimension-size-300);
           ${extraMargin}
           background: var(--spectrum-global-color-gray-100);
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            position: static;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin: 0;
+          }
         `}>
         <a
           className={`spectrum-Card spectrum-Card--${variant}`}
@@ -94,12 +102,24 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           css={css`
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-2000) - var(--spectrum-global-dimension-size-50));
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+              height: auto;
+              min-width: 0;
+              margin: 0;
+              flex-direction: column;
+            }
           `}>
           <div
             className="spectrum-Card-preview"
             css={css`
               width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
               padding: 0 !important;
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                width: 100%;
+              }
             `}>
             {image &&
               React.cloneElement(image, {
@@ -108,6 +128,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   align-items: center;
                   justify-content: center;
                   height: 100%;
+                  margin-top: 0;
                   margin-bottom: 0 !important;
 
                   & > img {
@@ -125,6 +146,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
+              overflow: hidden;
             `}>
             <div
               className="spectrum-Card-header"
@@ -141,7 +163,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
+                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
                   `}>
                   {heading && heading.props.children}
                 </h3>
@@ -149,8 +171,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             </div>
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
-                <p className="spectrum-Detail spectrum-Detail--L">
-                  <strong>{text && text.props.children}</strong>
+                <p
+                  className="spectrum-Body spectrum-Body-S"
+                  css={css`
+                    text-align: left;
+                    color: var(--spectrum-global-color-gray-700);
+                    margin-top: 0;
+                  `}>
+                  {text && text.props.children}
                 </p>
               </div>
             </div>
@@ -183,6 +211,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           padding: var(--spectrum-global-dimension-size-300);
           ${extraPadding}
           background: var(--spectrum-global-color-gray-100);
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin: 0;
+            padding: var(--spectrum-global-dimension-size-300);
+          }
         `}>
         <a
           className={`spectrum-Card spectrum-Card--${variant}`}
@@ -190,6 +226,13 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           css={css`
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-100));
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+              height: auto;
+              min-width: 0;
+              margin: 0;
+            }
           `}>
           <div
             className="spectrum-Card-preview"
@@ -206,6 +249,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   justify-content: center;
                   height: 100%;
                   margin-bottom: 0 !important;
+                  margin-top: 0;
 
                   & > img {
                     width: 100%;
@@ -222,6 +266,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               flex: 1;
               padding: var(--spectrum-global-dimension-size-300) !important;
               justify-content: flex-start !important;
+              overflow: hidden;
             `}>
             <div
               className="spectrum-Card-header"
@@ -239,7 +284,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   className="spectrum-Heading--M"
                   css={css`
                     margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-400) !important;
+                    margin-bottom: 0 !important;
                   `}>
                   {heading && heading.props.children}
                 </h3>
@@ -247,8 +292,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             </div>
             <div className="spectrum-Card-content">
               <div className="spectrum-Card-subtitle">
-                <p className="spectrum-Detail spectrum-Detail--L">
-                  <strong>{text && text.props.children}</strong>
+                <p
+                  className="spectrum-Body spectrum-Body-S"
+                  css={css`
+                    text-align: left;
+                    color: var(--spectrum-global-color-gray-700);
+                    margin-top: 0;
+                  `}>
+                  {text && text.props.children}
                 </p>
               </div>
             </div>
@@ -262,7 +313,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
 ResourceCard.propTypes = {
   theme: PropTypes.string,
   variant: PropTypes.oneOf(['horizontal', 'vertical']),
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%']),
   link: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,

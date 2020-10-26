@@ -19,6 +19,7 @@ export const Image = ({ alt, src, className, ...props }) => {
       {...props}
       alt={alt}
       src={src}
+      loading="lazy"
       css={css`
         max-width: 100%;
         border-radius: var(--spectrum-global-dimension-size-50);

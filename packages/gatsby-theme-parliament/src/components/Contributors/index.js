@@ -14,7 +14,9 @@ import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Flex } from '@adobe/react-spectrum';
-import { getExternalLinkProps } from '../utils';
+import { getExternalLinkProps } from '../../utils';
+
+const externalLinkProps = getExternalLinkProps();
 
 const Contributors = ({ repository, branch, root, pagePath, contributors = [], externalContributors = [], date }) => {
   externalContributors = externalContributors.map((contributor) => ({
@@ -23,8 +25,6 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
 
   // Adding external contributors first
   contributors = [...externalContributors, ...contributors];
-
-  const externalLinkProps = getExternalLinkProps();
 
   return (
     <a

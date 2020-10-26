@@ -14,7 +14,7 @@ import React, { useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps } from '../utils';
+import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/core';
 import { Grid, Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
@@ -22,7 +22,7 @@ import { Divider } from '@adobe/react-spectrum';
 import { Button } from '@adobe/react-spectrum';
 import { Link } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
-import { Adobe } from '../Icons';
+import { Adobe, TripleGripper } from '../Icons';
 import { ActionButton, Text } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
@@ -35,7 +35,7 @@ const stretched = css`
   height: 100%;
 `;
 
-const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
+const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
   const nav = useRef(null);
   const selectedTabIndicator = useRef(null);
   // Don't animate the tab indicator by default
@@ -48,6 +48,8 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
   const [openPrimaryMenu, setOpenPrimaryMenu] = useState(false);
   const [openSecondaryMenu, setOpenSecondaryMenu] = useState(false);
   const [openVersionMenu, setOpenVersionMenu] = useState(false);
+
+  const discoverMenu = globalNav.menus.find((menu) => menu.path);
 
   const getSelectedTabIndex = () => {
     const pathWithRootFix = rootFix(location.pathname);
@@ -102,8 +104,6 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
     return () => document.removeEventListener('click', onClick);
   }, []);
 
-  const externalLinkProps = getExternalLinkProps();
-
   return (
     <header
       role="banner"
@@ -111,9 +111,58 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
         ${stretched}
         border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
         box-sizing: border-box;
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          #GlobalHeader-grid {
+            grid-template-columns: minmax(auto, min-content) auto 0 0 !important;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+            height: calc(100% + var(--spectrum-global-dimension-size-10)) !important;
+            overflow: hidden;
+          }
+
+          #GlobalHeader-grid-navigation {
+            overflow-x: auto;
+            overflow-x: overlay;
+            overflow-y: hidden;
+
+            .spectrum-Tabs {
+              padding-bottom: var(--spectrum-global-dimension-size-400);
+              margin-top: var(--spectrum-global-dimension-size-400);
+
+              ${versions?.length > 0 &&
+              `
+                & > .spectrum-Tabs-item:first-of-type {
+                  margin-right: var(--spectrum-global-dimension-size-300);
+                }
+              `}
+            }
+
+            .spectrum-Tabs-selectionIndicator {
+              bottom: calc(
+                var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
+              ) !important;
+            }
+          }
+
+          #GlobalHeader-title {
+            svg {
+              margin-right: var(--spectrum-global-dimension-size-100);
+            }
+
+            strong {
+              display: none;
+            }
+          }
+
+          #GlobalHeader-grid-optional {
+            display: none;
+          }
+        }
       `}>
       <nav css={stretched} role="navigation" aria-label="Global">
         <Grid
+          id="GlobalHeader-grid"
           areas={['title navigation optional']}
           columns={['minmax(auto, min-content)', 'auto', 'size-2400']}
           alignItems="center"
@@ -121,20 +170,38 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
           height="100%">
           <View gridArea="title" height="100%">
             <Flex height="100%" alignItems="center">
-              <View>
+              <Flex alignItems="center">
+                <div
+                  css={css`
+                    margin-right: var(--spectrum-global-dimension-size-50);
+                    display: none;
+
+                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      display: block;
+                      visibility: ${hasSideNav ? 'visible' : 'hidden'};
+                    }
+                  `}>
+                  <ActionButton
+                    isQuiet
+                    onClick={() => {
+                      toggleSideNav && toggleSideNav();
+                    }}>
+                    <TripleGripper />
+                  </ActionButton>
+                </div>
                 <a
                   href={globalNav.home.path}
                   css={css`
                     text-decoration: none;
                   `}>
-                  <Flex alignItems="center">
+                  <Flex alignItems="center" id="GlobalHeader-title">
                     {globalNav.home.logo === 'adobe' ? (
                       <Adobe
                         css={css`
                           width: var(--spectrum-global-dimension-size-300);
                           height: var(--spectrum-global-dimension-size-250);
                           display: block;
-                          margin-right: var(--spectrum-global-dimension-size-200);
+                          margin-right: var(--spectrum-global-dimension-size-100);
                         `}
                       />
                     ) : (
@@ -143,7 +210,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                     <strong className="spectrum-Heading--XXS">{globalNav.home.title}</strong>
                   </Flex>
                 </a>
-              </View>
+              </Flex>
               {globalNav.menus.map((menu, index) => {
                 const isPrimary = index === 0;
                 const id = nextId();
@@ -155,7 +222,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                       box-sizing: border-box;
                       padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-300) 0
                         var(--spectrum-global-dimension-size-300);
-                      height: calc(100% + 1px);
+                      height: calc(100% + var(--spectrum-global-dimension-size-10));
                       border-left: 1px solid transparent;
                       border-right: 1px solid transparent;
                       ${isPrimary
@@ -168,9 +235,13 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                           border-color: var(--spectrum-global-color-gray-200);
                         `
                         : ''}
+                        
+                        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        display: none;
+                      }
                     `}>
                     {menu.path ? (
-                      <ActionButton elementType="a" isQuiet href={menu.path} {...externalLinkProps}>
+                      <ActionButton elementType="a" isQuiet href={menu.path} {...getExternalLinkProps(menu.path)}>
                         <Text>{menu.title}</Text>
                       </ActionButton>
                     ) : (
@@ -299,13 +370,31 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               })}
             </Flex>
           </View>
-          <View gridArea="navigation" marginStart={globalNav.menus.length === 1 ? 'size-200' : 'size-0'}>
+          <View
+            id="GlobalHeader-grid-navigation"
+            gridArea="navigation"
+            marginStart={globalNav.menus.length === 1 ? 'size-200' : 'size-0'}>
             <Tabs
               ref={nav}
               onFontsReady={() => {
                 positionSelectedTabIndicator();
                 setIsAnimated(true);
               }}>
+              {discoverMenu && (
+                <div
+                  css={css`
+                    display: none;
+                    margin-right: var(--spectrum-global-dimension-size-300);
+
+                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      display: block;
+                    }
+                  `}>
+                  <TabsItem elementType="a" href={discoverMenu.path}>
+                    {discoverMenu.title}
+                  </TabsItem>
+                </div>
+              )}
               {pages.map((page, i) => {
                 const { title, path } = page;
                 const ref = createRef();
@@ -321,6 +410,10 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
                         css={css`
                           margin-left: var(--spectrum-global-dimension-size-100) !important;
                           margin-right: var(--spectrum-global-dimension-size-300);
+
+                          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                            display: none;
+                          }
                         `}>
                         <PickerButton
                           isQuiet
@@ -362,7 +455,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               <TabsIndicator
                 ref={selectedTabIndicator}
                 css={css`
-                  bottom: -10px !important;
+                  bottom: calc(-1 * var(--spectrum-global-dimension-size-125)) !important;
                 `}
               />
               <View marginStart="size-400">
@@ -374,16 +467,25 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location }) => {
               </View>
             </Tabs>
           </View>
-          <View gridArea="optional" justifySelf="flex-end">
+          <View id="GlobalHeader-grid-optional" gridArea="optional" justifySelf="flex-end">
             {(globalNav.console || globalNav.signIn) && (
               <ButtonGroup>
                 {globalNav.console && (
-                  <Button variant="primary" elementType="a" href="https://console.adobe.io" {...externalLinkProps}>
+                  <Button
+                    variant="primary"
+                    elementType="a"
+                    href="https://console.adobe.io"
+                    {...getExternalLinkProps('https://console.adobe.io')}>
                     Console
                   </Button>
                 )}
                 {globalNav.signIn && (
-                  <Button isQuiet variant="primary" elementType="a" href="https://adobe.io" {...externalLinkProps}>
+                  <Button
+                    isQuiet
+                    variant="primary"
+                    elementType="a"
+                    href="https://adobe.io"
+                    {...getExternalLinkProps('https://adobe.io')}>
                     Sign in
                   </Button>
                 )}
@@ -400,7 +502,9 @@ GlobalHeader.propTypes = {
   globalNav: PropTypes.object,
   pages: PropTypes.array,
   docs: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  toggleSideNav: PropTypes.func,
+  hasSideNav: PropTypes.bool
 };
 
 export { GlobalHeader };

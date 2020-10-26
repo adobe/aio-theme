@@ -27,7 +27,7 @@ import { SummaryBlock } from '../SummaryBlock';
 import { ProductCard } from '../ProductCard';
 import { ResourceCard } from '../ResourceCard';
 import { JsDocParameters } from '../JsDocParameters';
-import { ProductCardFilter } from '../ProductCardFilter';
+import { ProductCardGrid } from '../ProductCardGrid';
 
 export const MDXBlocks = {
   Hero,
@@ -43,5 +43,5 @@ export const MDXBlocks = {
   ProductCard,
   ResourceCard,
   JsDocParameters,
-  ProductCardFilter
+  ProductCardGrid
 };

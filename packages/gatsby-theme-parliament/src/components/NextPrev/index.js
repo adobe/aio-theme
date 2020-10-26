@@ -22,13 +22,13 @@ import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
 const NextPrev = ({ nextPage, previousPage }) =>
   nextPage || previousPage ? (
     <div className="spectrum-Body--M">
-      <Flex marginBottom="size-800" marginTop="size-800">
+      <Flex marginBottom="size-800" marginTop="size-800" gap="size-200">
         <View>
           {previousPage && (
             <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={previousPage.path} rel="prev">
               <Flex alignItems="center">
                 <ChevronLeft size="S" />
-                <View marginStart="size-100">{previousPage.title}</View>
+                <View marginStart="size-50">{previousPage.title}</View>
               </Flex>
             </GatsbyLink>
           )}
@@ -37,7 +37,7 @@ const NextPrev = ({ nextPage, previousPage }) =>
           {nextPage && (
             <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={nextPage.path} rel="next">
               <Flex alignItems="center">
-                <View marginEnd="size-100">{nextPage.title}</View>
+                <View marginEnd="size-50">{nextPage.title}</View>
                 <ChevronRight size="S" />
               </Flex>
             </GatsbyLink>

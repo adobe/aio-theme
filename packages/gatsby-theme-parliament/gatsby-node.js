@@ -101,6 +101,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     
     type Footer {
+      allAPIs: Link
       APIs: [Link]
       services: [Link]
       community: [Link]

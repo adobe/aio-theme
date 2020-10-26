@@ -137,6 +137,7 @@ const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
       `}
       {...props}>
       <SearchField
+        width="100%"
         aria-label="Search"
         placeholder={placeholder}
         onClear={() => {

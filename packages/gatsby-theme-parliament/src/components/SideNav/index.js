@@ -13,7 +13,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { isExternalLink, getExternalLinkProps } from '../utils';
+import { isExternalLink, getExternalLinkProps } from '../../utils';
 import { css } from '@emotion/core';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
@@ -64,7 +64,18 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
               </GatsbyLink>
             )}
             {page.pages && (
-              <ul className="spectrum-SideNav" {...(page.heading ? { 'aria-labelledby': id } : {})}>
+              <ul
+                className="spectrum-SideNav"
+                css={css`
+                  ${level > 1
+                    ? `
+                    & > li > a {
+                      padding-left: calc(${level + 1} * var(--spectrum-global-dimension-size-150)) !important;
+                    }
+                  `
+                    : ''}
+                `}
+                {...(page.heading ? { 'aria-labelledby': id } : {})}>
                 {renderSubtree(page.pages, level + 1)}
               </ul>
             )}
@@ -84,6 +95,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
         css={css`
           padding-top: var(--spectrum-global-dimension-size-400);
           margin-left: var(--spectrum-global-dimension-size-400);
+          margin-right: var(--spectrum-global-dimension-size-400);
           margin-bottom: var(--spectrum-global-dimension-size-200);
         `}
       />

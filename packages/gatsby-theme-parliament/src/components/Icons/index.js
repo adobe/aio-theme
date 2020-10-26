@@ -22,7 +22,7 @@ const commonProps = {
 
 // Used by GlobalNav
 export const Adobe = (props) => (
-  <svg {...props} {...commonProps} viewBox="0 0 30 26" fill="#E1251B" aria-label="Adobe">
+  <svg {...props} {...commonProps} viewBox="0 0 30 26" fill="#FA0F00" aria-label="Adobe">
     <polygon points="19,0 30,0 30,26"></polygon>
     <polygon points="11.1,0 0,0 0,26"></polygon>
     <polygon points="15,9.6 22.1,26 17.5,26 15.4,20.8 10.2,20.8"></polygon>
@@ -129,5 +129,13 @@ export const CheckMarkMedium = ({ className, ...props }) => (
     <path
       d="M4.5 10a1.022 1.022 0 01-.799-.384l-2.488-3a1 1 0 011.576-1.233L4.5 7.376l4.712-5.991a1 1 0 111.576 1.23l-5.51 7A.978.978 0 014.5 10z"
       className="spectrum-UIIcon--medium"></path>
+  </svg>
+);
+
+export const TripleGripper = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS">
+    <rect height="4" rx="1" ry="1" width="28" x="4" y="16"></rect>
+    <rect height="4" rx="1" ry="1" width="28" x="4" y="6"></rect>
+    <rect height="4" rx="1" ry="1" width="28" x="4" y="26"></rect>
   </svg>
 );

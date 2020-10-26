@@ -19,7 +19,7 @@ import '@spectrum-css/breadcrumb';
 const Breadcrumbs = ({ selectedTopPage, selectedSubPages }) => (
   <nav aria-label="Breadcrumb" role="navigation">
     <ul
-      className="spectrum-Breadcrumbs"
+      className="spectrum-Breadcrumbs spectrum-Breadcrumbs--compact"
       css={css`
         display: block;
       `}>

@@ -13,13 +13,17 @@
 import React, { useEffect } from 'react';
 import { css } from '@emotion/core';
 import { HeroButtons } from '../Hero';
-import { Flex, View } from '@adobe/react-spectrum';
+import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
-import { getElementChild, layoutColumns } from '../utils';
+import { getElementChild, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 
-let counter = 0;
+const counter = {
+  2: 0,
+  3: 0,
+  4: 0
+};
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
 const Icons = ({ icons, isCentered }) =>
@@ -62,7 +66,18 @@ const Links = ({ links, isCentered }) =>
           padding: 0;
           display: flex;
           justify-content: ${isCentered ? 'center' : 'left'};
-          margin-top: var(--spectrum-global-dimension-size-150) !important;
+          margin-top: ${isCentered
+            ? 'var(--spectrum-global-dimension-size-200) !important;'
+            : 'var(--spectrum-global-dimension-size-600) !important;'};
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            flex-direction: column;
+            align-items: ${isCentered ? 'center' : 'left'};
+
+            li {
+              margin-top: var(--spectrum-global-dimension-size-100);
+            }
+          }
 
           & li {
             display: flex;
@@ -91,10 +106,12 @@ const YouTubeVideo = ({ video }) => {
   let youTubeId = null;
   if (video) {
     const link = getElementChild(video);
-    const url = new URL(link.props.href);
+    let url = new URL(link.props.href);
     if (url.hostname.startsWith('youtube.com') || url.hostname.startsWith('www.youtube.com')) {
       const queryParams = new URLSearchParams(url.search);
       youTubeId = queryParams.get('v');
+    } else if (url.hostname.startsWith('youtu.be')) {
+      youTubeId = url.pathname.slice(1);
     }
   }
 
@@ -107,6 +124,11 @@ const YouTubeVideo = ({ video }) => {
           box-sizing: border-box;
           padding: 0 var(--spectrum-global-dimension-size-400);
           margin: auto;
+
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            display: block;
+            width: 100%;
+          }
         }
       `}>
       <YouTube youTubeId={youTubeId} />
@@ -126,16 +148,17 @@ const TextBlock = ({
   isCentered = false,
   ...props
 }) => {
-  if (width === '33%') {
-    width = `${100 / 3}%`;
-  }
+  let columns = 100 / parseFloat(width);
 
-  const columns = 100 / parseFloat(width);
+  if (width === '33%') {
+    width = `${(100 / 3).toFixed(2)}%`;
+    columns = 3;
+  }
 
   useEffect(() => {
     return () => {
-      if (isCentered && columns > 1) {
-        counter--;
+      if (typeof counter[columns] !== 'undefined') {
+        counter[columns]--;
       }
     };
   });
@@ -144,15 +167,17 @@ const TextBlock = ({
     let blockWidth = '';
     let extraMargin = '';
 
+    if (typeof counter[columns] !== 'undefined') {
+      counter[columns]++;
+    }
+
     if (columns === 1) {
       blockWidth = `max-width: ${layoutColumns(6)};`;
     } else if (columns > 3) {
-      counter++;
       blockWidth = 'max-width: var(--spectrum-global-dimension-size-3600);';
     } else {
-      counter++;
       blockWidth = 'max-width: var(--spectrum-global-dimension-size-4600);';
-      extraMargin = alignMapping[counter % columns];
+      extraMargin = alignMapping[counter[columns] % columns];
     }
 
     return (
@@ -163,7 +188,12 @@ const TextBlock = ({
             display: table-cell;
             width: ${width.replace('%', 'vw')};
             background: var(--spectrum-global-color-gray-100);
-            padding: var(--spectrum-global-dimension-size-400) 0;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              display: block;
+              width: 100%;
+            }
           `}>
           <div
             css={css`
@@ -171,13 +201,20 @@ const TextBlock = ({
               padding: 0 var(--spectrum-global-dimension-size-400);
               margin: auto;
               ${extraMargin}
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                max-width: none;
+                margin: auto;
+              }
             `}>
             <Icons icons={icons} isCentered={isCentered} />
 
             {image &&
               React.cloneElement(image, {
                 css: css`
-                  height: var(--spectrum-global-dimension-size-1600);
+                  height: var(--spectrum-global-dimension-size-1000);
+                  margin-top: 0;
+                  margin-bottom: var(--spectrum-global-dimension-size-300);
 
                   & img {
                     height: 100%;
@@ -191,11 +228,10 @@ const TextBlock = ({
               <h3
                 className="spectrum-Heading--M"
                 css={css`
-                  white-space: nowrap;
-                  overflow: auto;
                   margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
                   & ~ p {
+                    margin-top: 0;
                     margin-bottom: 0 !important;
                   }
                 `}>
@@ -216,7 +252,9 @@ const TextBlock = ({
             )}
           </div>
         </section>
-        {counter % columns === 0 ? <div aria-hidden="true" /> : null}
+        {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? (
+          <div aria-hidden="true" />
+        ) : null}
       </>
     );
   } else {
@@ -228,15 +266,32 @@ const TextBlock = ({
         css={css`
           width: 100%;
           background: var(--spectrum-global-color-gray-100);
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-400);
         `}>
         <div
           css={css`
             width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+            box-sizing: border-box;
             margin: auto;
+            padding: var(--spectrum-global-dimension-size-1000) 0;
+
+            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              width: 100%;
+
+              & > div {
+                flex-direction: column !important;
+              }
+            }
           `}>
-          <Flex alignItems="center" direction={isReversed ? 'row-reverse' : 'row'}>
+          <div
+            css={css`
+              display: flex;
+              align-items: center;
+              flex-direction: ${isReversed ? 'row-reverse' : 'row'};
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                flex-direction: column;
+              }
+            `}>
             {image &&
               React.cloneElement(image, {
                 css: css`
@@ -246,7 +301,12 @@ const TextBlock = ({
                   width: 50%;
                   height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
                   box-sizing: border-box;
-                  padding: 0 var(--spectrum-global-dimension-size-400);
+                  padding: 0 var(--spectrum-global-dimension-size-100);
+                  margin-top: 0;
+
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    width: 100%;
+                  }
 
                   & img {
                     height: 100%;
@@ -267,6 +327,11 @@ const TextBlock = ({
                 text-align: left;
                 box-sizing: border-box;
                 padding: 0 var(--spectrum-global-dimension-size-400);
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  width: 100%;
+                  margin: var(--spectrum-global-dimension-size-400) 0;
+                }
               `}>
               <Icons icons={icons} isCentered={isCentered} />
 
@@ -276,6 +341,10 @@ const TextBlock = ({
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-200) !important;
+
+                    & + p {
+                      margin-top: 0 !important;
+                    }
                   `}>
                   {heading.props.children}
                 </h3>
@@ -283,11 +352,11 @@ const TextBlock = ({
 
               <Texts texts={props} />
 
-              <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
+              <HeroButtons buttons={buttons} marginTop="size-400" />
 
               <Links links={links} isCentered={isCentered} />
             </div>
-          </Flex>
+          </div>
         </div>
       </section>
     );
@@ -302,7 +371,7 @@ TextBlock.propTypes = {
   image: PropTypes.element,
   video: PropTypes.element,
   theme: PropTypes.string,
-  width: PropTypes.string,
+  width: PropTypes.oneOf(['100%', '50%', '33%', '25%']),
   isCentered: PropTypes.bool
 };
 

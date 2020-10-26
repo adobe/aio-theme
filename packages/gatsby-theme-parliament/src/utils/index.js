@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { withPrefix } from 'gatsby';
-import globals from '../../../scripts/globals';
+import globals from '../../scripts/globals';
 
 export const rootFix = (pathname) => {
   if (pathname === withPrefix('/')) {
@@ -164,4 +164,5 @@ export const getExternalLinkProps = (url = null) =>
 export const getElementChild = (element) => React.Children.toArray(element.props.children)[0];
 
 export const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
+export const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
 export const LARGE_SCREEN_WIDTH = globals.LARGE_SCREEN_WIDTH;

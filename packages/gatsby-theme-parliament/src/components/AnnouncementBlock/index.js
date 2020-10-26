@@ -15,7 +15,7 @@ import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import { Button, View } from '@adobe/react-spectrum';
 import PropTypes from 'prop-types';
-import { getElementChild, getExternalLinkProps } from '../utils';
+import { getElementChild, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
   const link = getElementChild(button);
@@ -28,9 +28,17 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
         display: flex;
         background: var(--spectrum-global-color-gray-100);
         box-sizing: border-box;
-        padding: var(--spectrum-global-dimension-size-400) 0;
         text-align: center;
         height: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
+
+        p {
+          margin-top: 0;
+        }
+
+        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          padding: var(--spectrum-global-dimension-size-400);
+          height: auto;
+        }
       `}>
       <div
         css={css`
