@@ -287,7 +287,18 @@ export default ({ children, pageContext, location }) => {
                   />
                 </View>
                 <View gridArea="main">
-                  <View isHidden={!hasOpenAPISpec}>{openAPISpec && <OpenAPIBlock specUrl={openAPISpec} />}</View>
+                  <View isHidden={!hasOpenAPISpec}>
+                    {openAPISpec && (
+                      <main
+                        css={css`
+                          [role='navigation'] [role='menuitem'] + ul {
+                            display: block;
+                          }
+                        `}>
+                        <OpenAPIBlock specUrl={openAPISpec} />
+                      </main>
+                    )}
+                  </View>
                   {!hasOpenAPISpec && children}
                 </View>
               </Grid>
