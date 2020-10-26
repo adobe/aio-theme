@@ -206,14 +206,13 @@ const OnThisPage = ({ tableOfContents }) => {
       css={css`
         position: sticky;
         bottom: 0;
-        top: calc(var(--spectrum-global-dimension-size-2400) - var(--spectrum-global-dimension-size-40));
+        margin-top: var(--spectrum-global-dimension-size-1600);
+        top: calc(var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400));
         left: ${layoutColumns(12)};
         width: ${layoutColumns(2)};
         margin-left: var(--spectrum-global-dimension-size-400);
         transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-        height: calc(
-          100vh - calc(var(--spectrum-global-dimension-size-2400) - var(--spectrum-global-dimension-size-40))
-        );
+        height: calc(100vh - var(--spectrum-global-dimension-size-1600));
         overflow: auto;
         box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-200);

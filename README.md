@@ -25,22 +25,22 @@ Using a theme, all of your default configuration lives in an npm package.
 <details>
   <summary>Documentation template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-documentation/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-documentation/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-documentation-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-documentation-template/">Repository</a></li>
   </ul>
 </details>
 <details>
   <summary>Platform template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-platform/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-platform/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-platform-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-platform-template/">Repository</a></li>
   </ul>
 </details>
 <details>
   <summary>Product template</summary>
   <ul>
-    <li><a href="https://adobedocs.github.io/gatsby-theme-parliament-product/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/gatsby-theme-parliament-product/">Repository</a></li>
+    <li><a href="https://adobedocs.github.io/dev-site-product-template/">Demo</a></li>
+    <li><a href="https://github.com/adobedocs/dev-site-product-template/">Repository</a></li>
   </ul>
 </details>
 
@@ -122,7 +122,7 @@ Now you can create your site by running
 aio doc init path/to/site/folder
 ```
 
-which will use by default the [Documentation site template](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation). 
+which will use by default the [Documentation site template](https://github.com/AdobeDocs/dev-site-documentation-template). 
 
 You can specify another template with 
 
@@ -161,13 +161,52 @@ root
 
 **Folder names should be unique.**
 
-### Internal links
+Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, Gatsby will transform the `md` files into `index.html` files.
+The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information. 
 
-Use relative links between markdown pages e.g. with the example folder structure you can add a link from `/guides/index.md` to `/api/index.md` with:
+Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
 ```
-[Link to API](../api/) 
+root
+├- src/pages [/]
+│  ├- index.md 
+│  ├- i_follow_recommendation [/i_follow_recommendation/]
+│  │  └- index.md   
+│  └- i_dont_follow_recommendation [/i_dont_follow_recommendation/]
+├- .env
+├─ gatsby-config.js
+└─ package.json 
+```
+
+will output: 
+
+```
+root
+└- public
+   ├- index.html
+   ├- i_follow_recommendation
+   │  └- index.html
+   ├- i_dont_follow_recommendation 
+   │  └- index.html 
+   └- Minified JS, CSS files  
+```
+    
+
+### Internal links
+
+You can use absolute links or relative links to link between markdown pages e.g. with the example folder structure from [Content Structure](#content-structure) you can add a link from `/guides/index.md` to `/api/index.md` with:
+
+*Relative link*
+```
+[Link to API](../api/)  
 ```    
+
+*Absolute link*
+```
+[Link to API](/api/)  
+```    
+
+**Please note that currently only absolute links will work with transcluded content.**
 
 ## Configuration
 
@@ -271,6 +310,8 @@ Otherwise, the first defined tab is set as active by default.
 
 **At least one defined page is required. It's recommended to define the first page `path` as the root path `/`.**
 
+**Please ensure to end every `path` value with a trailing slash `/`.**
+
 *The order in which the pages are defined is respected in the Global Navigation.*
 
 A common shared configuration at `@adobe/gatsby-theme-parliament/globalNav.json` defines the Global Navigation logo, title, menus etc.
@@ -326,6 +367,8 @@ subPages: [
   }
 ]
 ```
+
+**Please ensure to end every `path` value with a trailing slash `/`.**
 
 *Notice that all sub pages paths have to be children of the top-level navigation path.*
 
@@ -609,9 +652,9 @@ On every commit to the `main` branch, the site will be built to GitHub Pages aut
 ### Publishing to Azure Storage Static Websites (Production)
 
 A site is published via a Pull Request:
-1. The Pull Request must be `approved`
-2. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
-3. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
+1. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
+2. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
+3. Lastly, the Pull Request must be `approved` to start deploying
 
 **Pre-requisites:**
 1. Create a GitHub label called `deploy` if it does not exist
@@ -1324,13 +1367,13 @@ Lorem ipsum
 
 Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents. 
 
-**You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/package.json#L3) to be able to include it
+**You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
 
-You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/
-as a dependency in another site, you can run the command `yarn add adobedocs/gatsby-theme-parliament-documentation`;
+You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/dev-site-documentation-template/
+as a dependency in another site, you can run the command `yarn add adobedocs/dev-site-documentation-template`;
 
-Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/gatsby-theme-parliament-documentation`.   
+Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.   
 
 See full example below using a Variant block. 
 
@@ -1474,7 +1517,7 @@ This will also update the lock file `yarn.lock` or `package-lock.json`.
 ### Automated
 
 We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository. 
-Simply copy the [dependabot](https://github.com/AdobeDocs/gatsby-theme-parliament-documentation/blob/main/.github/dependabot.yml) file in your `.github` folder.
+Simply copy the [dependabot](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/.github/dependabot.yml) file in your `.github` folder.
 
 The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-parliament` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-parliament": "^2.1.5"`.   
 

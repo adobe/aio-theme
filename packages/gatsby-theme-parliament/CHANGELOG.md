@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.10...@adobe/gatsby-theme-parliament@2.10.0) (2020-10-22)
+
+
+### Features
+
+* Support ProductCardGrid filterById ([a208326](https://github.com/adobe/gatsby-theme-parliament/commit/a2083264e53034a451421af79a77b8319c45dcb7))
+
+
+
+
+
+## [2.9.10](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.9...@adobe/gatsby-theme-parliament@2.9.10) (2020-10-21)
+
+
+### Bug Fixes
+
+* Remove dead code ([e27cea8](https://github.com/adobe/gatsby-theme-parliament/commit/e27cea82ca71f7309851091c87c153224475e0d0))
+* Remove GlobalHeader unnecessary spacing on mobile ([a1dd3ef](https://github.com/adobe/gatsby-theme-parliament/commit/a1dd3efd0ea997604a6c4ac8bc5a8268bd718514))
+
+
+
+
+
+## [2.9.9](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.8...@adobe/gatsby-theme-parliament@2.9.9) (2020-10-21)
+
+
+### Bug Fixes
+
+* Rename Github to GitHub ([1f6770c](https://github.com/adobe/gatsby-theme-parliament/commit/1f6770c8c6bd1bcb00a9b2a4b29b5aee47bda42b))
+* Use default branch for GitHub interactions ([55f340d](https://github.com/adobe/gatsby-theme-parliament/commit/55f340d2408002f6616dbe13b6e885b1f6269c6b))
+
+
+
+
+
+## [2.9.8](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.7...@adobe/gatsby-theme-parliament@2.9.8) (2020-10-20)
+
+
+### Bug Fixes
+
+* Stretch the fullwidth Hero without image ([197c81e](https://github.com/adobe/gatsby-theme-parliament/commit/197c81e954546a673726eabf671f357683081f04))
+
+
+
+
+
+## [2.9.7](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.6...@adobe/gatsby-theme-parliament@2.9.7) (2020-10-20)
+
+
+### Bug Fixes
+
+* Ensure ProductCard image is updated in the DOM on filtering ([c10fcf0](https://github.com/adobe/gatsby-theme-parliament/commit/c10fcf060482faabec738e1615dad1caf1f425dd))
+
+
+
+
+
+## [2.9.6](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.5...@adobe/gatsby-theme-parliament@2.9.6) (2020-10-19)
+
+
+### Bug Fixes
+
+* Add space gap between Next / Prev links ([5725312](https://github.com/adobe/gatsby-theme-parliament/commit/5725312de4c274b330b60d6230c796cbe58dfa60))
+
+
+
+
+
+## [2.9.5](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.4...@adobe/gatsby-theme-parliament@2.9.5) (2020-10-19)
+
+
+### Bug Fixes
+
+* Anchor OnThisPage at the top for scrollable pages ([bed0087](https://github.com/adobe/gatsby-theme-parliament/commit/bed0087a6f7b8810cc87afe23fd8900ea44fa93a))
+
+
+
+
+
 ## [2.9.4](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.3...@adobe/gatsby-theme-parliament@2.9.4) (2020-10-18)
 
 

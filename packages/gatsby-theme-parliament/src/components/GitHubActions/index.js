@@ -35,7 +35,7 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
         {...commonsProps}
         href={`https://github.com/${repository}/edit/${branch}${rootFolder}/src/pages/${pagePath}`}>
         <Edit />
-        <Text>Edit in Github</Text>
+        <Text>Edit in GitHub</Text>
       </ActionButton>
 
       <ActionButton
