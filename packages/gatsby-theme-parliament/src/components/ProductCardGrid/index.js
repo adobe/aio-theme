@@ -28,11 +28,7 @@ import nextId from 'react-id-generator';
 import PropTypes from 'prop-types';
 
 const filterByClouds = (products, cloudFilter, additionalFilter, setFilteredProducts) => {
-  let filteredProducts = products;
-  if (cloudFilter.length) {
-    filteredProducts = products.filter(({ cloud }) => cloudFilter.some((selectedCloud) => cloud === selectedCloud));
-  }
-
+  const filteredProducts = products.filter(({ cloud }) => cloudFilter.some((selectedCloud) => cloud === selectedCloud));
   const selectedFilter = additionalFilters.find(({ value }) => value === additionalFilter);
 
   setFilteredProducts(selectedFilter.filter(filteredProducts, selectedFilter.ids));
@@ -83,7 +79,7 @@ const ProductCardGrid = ({ clouds = [], products = [], interaction = false, filt
   const [cloudFilter, setCloudFilter] = useState(filterByCloud);
 
   useEffect(() => {
-    filterByClouds(products, cloudFilter, additionalFilter, setFilteredProducts);
+    filterByClouds(products, cloudFilter.length ? cloudFilter : clouds, additionalFilter, setFilteredProducts);
   }, [cloudFilter, additionalFilter]);
 
   const headingId = nextId();
@@ -164,7 +160,7 @@ const ProductCardGrid = ({ clouds = [], products = [], interaction = false, filt
             `}>
             {filteredProducts.map((product) => (
               <div
-                key={product.name}
+                key={product.id}
                 role="figure"
                 tabIndex="0"
                 className="spectrum-Card"
