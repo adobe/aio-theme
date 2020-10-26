@@ -129,10 +129,13 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
             .spectrum-Tabs {
               padding-bottom: var(--spectrum-global-dimension-size-400);
               margin-top: var(--spectrum-global-dimension-size-400);
-            }
 
-            .spectrum-Tabs-item:first-of-type {
-              margin-right: var(--spectrum-global-dimension-size-300);
+              ${versions?.length > 0 &&
+              `
+                & > .spectrum-Tabs-item:first-of-type {
+                  margin-right: var(--spectrum-global-dimension-size-300);
+                }
+              `}
             }
 
             .spectrum-Tabs-selectionIndicator {
@@ -381,6 +384,7 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
                 <div
                   css={css`
                     display: none;
+                    margin-right: var(--spectrum-global-dimension-size-300);
 
                     @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                       display: block;

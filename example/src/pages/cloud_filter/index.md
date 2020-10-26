@@ -3,7 +3,7 @@ title: Index
 description: This is the index page
 GlobalHeaderTemp: true  
 ---
-import products from '../../products'
+import {clouds, products} from '../../products'
 
 <Hero slots="image, heading, text" variant="fullwidth" background="rgb(51, 51, 51)" />
 
@@ -13,4 +13,18 @@ import products from '../../products'
 
 Explore the APIs offered by products and view documentation
 
-<ProductCardGrid products={products} interaction={true} />
+
+
+<ProductCardGrid clouds={clouds} products={products} interaction={true} />
+
+
+
+<TitleBlock slots="heading, text" theme="light" />
+
+### Collaborate better with Content Cloud APIs
+
+
+
+
+<ProductCardGrid products={products} filterByIds={[2,3,4,40]} />
+
