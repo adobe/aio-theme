@@ -60,19 +60,26 @@ const additionalFilters = [
     filter: filterByName
   },
   {
+    name: 'Custom',
     value: 'id',
-    filter: filterById,
-    ids: []
+    filter: filterById
   }
 ];
 
-const ProductCardGrid = ({ clouds = [], products = [], interaction = false, filterByCloud = [], filterByIds = [] }) => {
-  let defaultFilter = additionalFilters[0];
-
+const ProductCardGrid = ({
+  clouds = [],
+  products = [],
+  interaction = false,
+  orderBy = 'last_updated',
+  filterByCloud = [],
+  filterByIds = []
+}) => {
   if (filterByIds.length) {
-    defaultFilter = additionalFilters.find(({ value }) => value === 'id');
-    defaultFilter.ids = filterByIds;
+    orderBy = 'id';
   }
+
+  const defaultFilter = additionalFilters.find(({ value }) => value === orderBy);
+  defaultFilter.ids = filterByIds;
 
   const [additionalFilter, setAdditionalFilter] = useState(defaultFilter.value);
   const [filteredProducts, setFilteredProducts] = useState(defaultFilter.filter(products, defaultFilter.ids));
@@ -107,7 +114,7 @@ const ProductCardGrid = ({ clouds = [], products = [], interaction = false, filt
               isQuiet
               items={additionalFilters.slice(0, 2)}
               onSelectionChange={(selected) => setAdditionalFilter(selected)}
-              defaultSelectedKey="last_updated"
+              defaultSelectedKey={orderBy}
               aria-label="Filter by name or last updated product"
               marginStart="size-100">
               {(item) => <Item key={item.value}>{item.name}</Item>}
