@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.10...@adobe/gatsby-theme-parliament@2.10.0) (2020-10-22)
+
+
+### Features
+
+* Support ProductCardGrid filterById ([a208326](https://github.com/adobe/gatsby-theme-parliament/commit/a2083264e53034a451421af79a77b8319c45dcb7))
+
+
+
+
+
 ## [2.9.10](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.9...@adobe/gatsby-theme-parliament@2.9.10) (2020-10-21)
 
 
