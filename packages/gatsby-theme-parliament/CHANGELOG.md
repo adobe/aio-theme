@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.10.0...@adobe/gatsby-theme-parliament@2.11.0) (2020-10-26)
+
+
+### Bug Fixes
+
+* API SideNav is not collapsed ([9470fd4](https://github.com/adobe/gatsby-theme-parliament/commit/9470fd4dbb353b5d049125fa5b2f57fd0a2b0252))
+* ProductCardGrid sort by name regression ([59b6662](https://github.com/adobe/gatsby-theme-parliament/commit/59b6662aaec0f559d5cf6eaa09350491e8ab7c24))
+
+
+### Features
+
+* Restore ProductCardGrid orderBy ([64c9b4b](https://github.com/adobe/gatsby-theme-parliament/commit/64c9b4be834b33e49f53931021b283d611306bd2))
+
+
+
+
+
 # [2.10.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.9.10...@adobe/gatsby-theme-parliament@2.10.0) (2020-10-22)
 
 
