@@ -27,29 +27,30 @@ import { getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import nextId from 'react-id-generator';
 import PropTypes from 'prop-types';
 
-const flattenProducts = (clouds) => clouds.map(({ products }) => products).flat();
-
-const filterByClouds = (clouds, cloudFilter, additionalFilter, setFilteredProducts) => {
-  if (!cloudFilter.length) {
-    cloudFilter = clouds.map(({ name }) => name);
+const filterByClouds = (products, cloudFilter, additionalFilter, setFilteredProducts) => {
+  let filteredProducts = products;
+  if (cloudFilter.length) {
+    filteredProducts = products.filter(({ cloud }) => cloudFilter.some((selectedCloud) => cloud === selectedCloud));
   }
 
-  let selectedClouds = clouds.filter(({ name }) => cloudFilter.some((cloud) => name === cloud));
-  let selectedProducts = selectedClouds.map(({ products }) => products).flat();
-  if (!selectedProducts.length) {
-    selectedProducts = flattenProducts(clouds);
-  }
+  const selectedFilter = additionalFilters.find(({ value }) => value === additionalFilter);
 
-  const { filter } = additionalFilters.find(({ value }) => value === additionalFilter);
-  setFilteredProducts(filter(selectedProducts));
+  setFilteredProducts(selectedFilter.filter(filteredProducts, selectedFilter.ids));
 };
 
 const filterByName = (products) => products.sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB));
 
 const filterByLastUpdated = (products) =>
-  products.sort(
-    ({ lastUpdated: lastUpdatedA }, { lastUpdated: lastUpdatedB }) => new Date(lastUpdatedB) - new Date(lastUpdatedA)
-  );
+  products.sort(({ lastUpdated: lastUpdatedA }, { lastUpdated: lastUpdatedB }) => {
+    if (new Date(lastUpdatedB) > new Date(lastUpdatedA)) {
+      return 1;
+    } else if (new Date(lastUpdatedB) < new Date(lastUpdatedA)) {
+      return -1;
+    }
+    return 0;
+  });
+
+const filterById = (products, ids = []) => products.filter((product) => ids.includes(product.id));
 
 const additionalFilters = [
   {
@@ -61,24 +62,28 @@ const additionalFilters = [
     name: 'Name',
     value: 'name',
     filter: filterByName
+  },
+  {
+    value: 'id',
+    filter: filterById,
+    ids: []
   }
 ];
 
-const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [], orderBy = 'last_updated' }) => {
-  // Remove first product by default which is the cloud item
-  if (!interaction && filterBy.length) {
-    clouds.forEach((cloud) => {
-      cloud.products = cloud.products.slice(1);
-    });
-  }
-  const filter = orderBy === 'last_updated' ? filterByLastUpdated : filterByName;
+const ProductCardGrid = ({ clouds = [], products = [], interaction = false, filterByCloud = [], filterByIds = [] }) => {
+  let defaultFilter = additionalFilters[0];
 
-  const [additionalFilter, setAdditionalFilter] = useState(orderBy);
-  const [filteredProducts, setFilteredProducts] = useState(filter(flattenProducts(clouds)));
-  const [cloudFilter, setCloudFilter] = useState(filterBy);
+  if (filterByIds.length) {
+    defaultFilter = additionalFilters.find(({ value }) => value === 'id');
+    defaultFilter.ids = filterByIds;
+  }
+
+  const [additionalFilter, setAdditionalFilter] = useState(defaultFilter.value);
+  const [filteredProducts, setFilteredProducts] = useState(defaultFilter.filter(products, defaultFilter.ids));
+  const [cloudFilter, setCloudFilter] = useState(filterByCloud);
 
   useEffect(() => {
-    filterByClouds(clouds, cloudFilter, additionalFilter, setFilteredProducts);
+    filterByClouds(products, cloudFilter, additionalFilter, setFilteredProducts);
   }, [cloudFilter, additionalFilter]);
 
   const headingId = nextId();
@@ -104,7 +109,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
           <Flex alignItems="center" justifyContent="center">
             <Picker
               isQuiet
-              items={additionalFilters}
+              items={additionalFilters.slice(0, 2)}
               onSelectionChange={(selected) => setAdditionalFilter(selected)}
               defaultSelectedKey="last_updated"
               aria-label="Filter by name or last updated product"
@@ -133,9 +138,9 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                 onChange={(values) => {
                   setCloudFilter(values);
                 }}>
-                {clouds.map(({ name }, i) => (
-                  <Checkbox key={i} value={name} marginBottom="size-100">
-                    {name}
+                {clouds.map((cloud, i) => (
+                  <Checkbox key={i} value={cloud} marginBottom="size-100">
+                    {cloud}
                   </Checkbox>
                 ))}
               </CheckboxGroup>
@@ -157,9 +162,9 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                 flex-direction: column;
               }
             `}>
-            {filteredProducts.map((product, i) => (
+            {filteredProducts.map((product) => (
               <div
-                key={i}
+                key={product.name}
                 role="figure"
                 tabIndex="0"
                 className="spectrum-Card"
@@ -191,7 +196,6 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
                           margin-bottom: var(--spectrum-global-dimension-size-200);
                         `}>
                         <img
-                          key={Date.now()}
                           css={css`
                             display: block;
                             height: 100%;
@@ -264,6 +268,7 @@ const ProductCardGrid = ({ products: clouds, interaction = false, filterBy = [],
 };
 
 ProductCardGrid.propTypes = {
+  clouds: PropTypes.array,
   products: PropTypes.array,
   orderBy: PropTypes.string,
   filterBy: PropTypes.array,

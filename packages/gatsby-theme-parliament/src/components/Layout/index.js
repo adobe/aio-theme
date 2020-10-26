@@ -54,7 +54,7 @@ export default ({ children, pageContext, location }) => {
         allGithub {
           nodes {
             repository
-            branch
+            default_branch
             root
           }
         }
