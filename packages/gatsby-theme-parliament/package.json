@@ -76,7 +76,7 @@
     "gatsby-plugin-layout": "^1.3.12",
     "gatsby-plugin-mdx": "^1.2.42",
     "gatsby-plugin-react-helmet-async": "^1.0.17-0",
-    "gatsby-source-filesystem": "^2.3.31",
+    "gatsby-source-filesystem": "^2.3.37",
     "mobx": "^6.0.1",
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
