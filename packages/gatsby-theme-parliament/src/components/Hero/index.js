@@ -126,10 +126,6 @@ const Hero = ({
           width: 100%;
           display: flex;
 
-          & + div h2:first-of-type {
-            margin-top: 0 !important;
-          }
-
           @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
             overflow: auto;
             height: 100vh;
