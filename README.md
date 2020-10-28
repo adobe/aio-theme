@@ -74,6 +74,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Title Block](#title-block)
   + [Text Block](#text-block)
   + [Product Card](#product-card)
+  + [Product Card Grid](#product-card-grid)
   + [Resource Card](#resource-card)
   + [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
@@ -1260,6 +1261,26 @@ Use `slots` to identify the markdown content:
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
+
+### Product Card Grid
+
+Use Product Card Grid to display Product Cards with filter and sort options based on meta data.
+
+![product card grid](docs/images/product-card-grid.png)
+
+Set `interaction` to `true` to display the filter and sort options.
+
+See the [data example](https://github.com/adobe/gatsby-theme-parliament/blob/main/example/src/products/index.js) to provide for `clouds` and `products`. 
+
+```
+<ProductCardGrid clouds={clouds} products={products} interaction={true} /> 
+``` 
+
+Use `orderBy` to define the default ordering. Choose between `last_updated` and `name`.
+
+Use `filterByCloud` to define the default cloud filter. You can define multiple clouds by default `filterByCloud={[cloud1, cloud2]}`.  
+
+Use `filterByIds` to define a custom filter e.g. `filterByIds=[1, 3, 4]` to display products with ids `1`, `3` and `4` in that order. 
 
 ### Resource Card
 
