@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.11.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.11.0...@adobe/gatsby-theme-parliament@2.11.1) (2020-10-28)
+
+
+### Bug Fixes
+
+* Jumping SSR heading 2 on docs overview page ([ddb3c9e](https://github.com/adobe/gatsby-theme-parliament/commit/ddb3c9e8e67b840af55cb72ac582362fca59e2ea))
+
+
+
+
+
 # [2.11.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.10.0...@adobe/gatsby-theme-parliament@2.11.0) (2020-10-26)
 
 
