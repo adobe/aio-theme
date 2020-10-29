@@ -82,7 +82,7 @@
     "prop-types": "^15.7.2",
     "react-helmet-async": "^1.0.6",
     "react-id-generator": "^3.0.1",
-    "redoc": "^2.0.0-rc.36",
+    "redoc": "^2.0.0-rc.45",
     "rehype-slug": "^3.0.0",
     "remark-docz": "^2.1.0",
     "remark-external-links": "^7.0.1",
