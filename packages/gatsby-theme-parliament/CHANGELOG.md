@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.11.1...@adobe/gatsby-theme-parliament@2.12.0) (2020-11-02)
+
+
+### Bug Fixes
+
+* Remove dead code ([ab3d54f](https://github.com/adobe/gatsby-theme-parliament/commit/ab3d54f3cdc8c0ba2bc2a0a795dbf3eda74f53d2))
+
+
+### Features
+
+* Support Gatsby Link in MDX buttons and anchor links ([aaa0b0e](https://github.com/adobe/gatsby-theme-parliament/commit/aaa0b0ed2c1126d2569e3e65265ae3f274771c67))
+
+
+
+
+
 ## [2.11.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.11.0...@adobe/gatsby-theme-parliament@2.11.1) (2020-10-28)
 
 
