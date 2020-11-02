@@ -3941,10 +3941,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/search/-/search-3.0.0-beta.5.tgz#ccad410b64b021a38a954e4fc7ee637dbd219300"
   integrity sha512-gNN8h22gVg3gB538a6tMo9EiDe8RZXL/m3DadpbmzlVR/+DvKMChtMAZTImWyQ5wBdDvlFN2A456AB7xT1L6UQ==
 
-"@spectrum-css/sidenav@^3.0.0-beta.2":
-  version "3.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/sidenav/-/sidenav-3.0.0-beta.3.tgz#88fc9dfc0d02517f00fcf7ab891f51a679aba9c5"
-  integrity sha512-YL78vrMg9wSiVjzgFF27Vrxo9XulQmHonoHddhDOmzGqq/ordo/La5bHdMhTe8i4V8ZcfpjJkWl+furRc+EvbQ==
+"@spectrum-css/sidenav@^3.0.0-beta.2", "@spectrum-css/sidenav@^3.0.0-beta.4":
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/sidenav/-/sidenav-3.0.0-beta.4.tgz#445e5a7187154e93b6b42308c7e645eb8df6653a"
+  integrity sha512-yFS//rqqCSLC7wZC8M3+AAuP64fR6l6ABmHlXSLZfeNw1ceQCLGf2gTd2Ecyahm5afbtn9cHhCfL1qmf3Mx6Tg==
 
 "@spectrum-css/table@^3.0.0-beta.3":
   version "3.0.0-beta.4"
