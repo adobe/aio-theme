@@ -13,15 +13,14 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import { Flex } from '@adobe/react-spectrum';
-import { Button } from '@adobe/react-spectrum';
-import { ButtonGroup } from '@adobe/react-spectrum';
+import { AnchorButton } from '../AnchorButton';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { getElementChild, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
   buttons ? (
-    <ButtonGroup {...props}>
+    <Flex gap="size-200" wrap="wrap" {...props}>
       {React.Children.map(buttons.props.children, (item, i) => {
         let variant = variants[0];
         let quiet = quiets[0];
@@ -32,21 +31,14 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
         }
 
         const link = getElementChild(item);
-        const externalLinkProps = getExternalLinkProps(link.props.href);
 
         return (
-          <Button
-            key={i}
-            elementType="a"
-            isQuiet={quiet}
-            href={link.props.href}
-            {...externalLinkProps}
-            variant={variant}>
+          <AnchorButton key={i} isQuiet={quiet} href={link.props.href} variant={variant}>
             {link.props.children}
-          </Button>
+          </AnchorButton>
         );
       })}
-    </ButtonGroup>
+    </Flex>
   ) : null;
 
 const HeroImage = ({ image, styles }) =>

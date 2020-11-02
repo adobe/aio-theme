@@ -14,12 +14,20 @@ import React from 'react';
 import { withPrefix } from 'gatsby';
 import globals from '../../scripts/globals';
 
+export const trailingSlashFix = (pathname) => {
+  if (!pathname.endsWith('/')) {
+    return `${pathname}/`;
+  }
+
+  return pathname;
+};
+
 export const rootFix = (pathname) => {
   if (pathname === withPrefix('/')) {
     return withPrefix('/_ROOT_/');
   }
 
-  return pathname;
+  return trailingSlashFix(pathname);
 };
 
 export const rootFixPages = (pages) => {
@@ -29,6 +37,8 @@ export const rootFixPages = (pages) => {
         title: page.title,
         path: '/_ROOT_/'
       };
+    } else if (page.path) {
+      page.path = trailingSlashFix(page.path);
     }
 
     return page;
@@ -41,10 +51,13 @@ export const layoutColumns = (columns, gutters = []) =>
   })`;
 
 export const findSelectedTopPage = (pathname, pages) => {
+  pathname = trailingSlashFix(pathname);
   return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
 };
 
 export const findSubPages = (pathname, pages, subPages) => {
+  pathname = trailingSlashFix(pathname);
+
   if (subPages === null) {
     return [];
   }
@@ -54,6 +67,8 @@ export const findSubPages = (pathname, pages, subPages) => {
 };
 
 export const findSelectedPage = (pathname, pages) => {
+  pathname = trailingSlashFix(pathname);
+
   if (pages === null) {
     return [];
   }
@@ -62,6 +77,8 @@ export const findSelectedPage = (pathname, pages) => {
 };
 
 export const findSelectedPages = (pathname, pages) => {
+  pathname = trailingSlashFix(pathname);
+
   if (pages === null) {
     return [];
   }
@@ -117,6 +134,8 @@ export const flattenPages = (pages) => {
 };
 
 export const findSelectedPageNextPrev = (pathname, pages) => {
+  pathname = trailingSlashFix(pathname);
+
   const flat = flattenPages(pages);
   const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
 
@@ -127,6 +146,8 @@ export const findSelectedPageNextPrev = (pathname, pages) => {
 };
 
 export const findSelectedPageSiblings = (pathname, pages) => {
+  pathname = trailingSlashFix(pathname);
+
   let siblings = [];
 
   if (pages === null) {
@@ -151,7 +172,18 @@ export const findSelectedPageSiblings = (pathname, pages) => {
   return siblings;
 };
 
-export const isExternalLink = (url) => url.startsWith('https://') || url.startsWith('http://');
+export const isExternalLink = (url) => {
+  url = String(url).replace('#', '');
+
+  let isExternal = true;
+  try {
+    new URL(url);
+  } catch (e) {
+    isExternal = false;
+  }
+
+  return isExternal;
+};
 
 export const getExternalLinkProps = (url = null) =>
   url === null || isExternalLink(url)

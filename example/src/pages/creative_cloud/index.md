@@ -15,7 +15,7 @@ Start building.
 
 Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size
 
-* [Get started](https://adobe.io)
+* [Get started](/guides/oauth_using_curl/)
 * [Sign up for the newsletter](https://adobe.io)
 
 
@@ -128,7 +128,7 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to
 world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
 
-* [Learn more](https://adobe.io)
+* [Learn more](../guides)
 * [Sign up for partner program](https://adobe.io)
 
 

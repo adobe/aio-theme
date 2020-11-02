@@ -16,6 +16,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import '@spectrum-css/typography';
 import { View } from '@adobe/react-spectrum';
 import { Flex } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
 import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
 
@@ -25,22 +26,26 @@ const NextPrev = ({ nextPage, previousPage }) =>
       <Flex marginBottom="size-800" marginTop="size-800" gap="size-200">
         <View>
           {previousPage && (
-            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={previousPage.path} rel="prev">
-              <Flex alignItems="center">
-                <ChevronLeft size="S" />
-                <View marginStart="size-50">{previousPage.title}</View>
-              </Flex>
-            </GatsbyLink>
+            <Link isQuiet={true}>
+              <GatsbyLink to={previousPage.path} rel="prev">
+                <Flex alignItems="center">
+                  <ChevronLeft size="S" />
+                  <View marginStart="size-50">{previousPage.title}</View>
+                </Flex>
+              </GatsbyLink>
+            </Link>
           )}
         </View>
         <View marginStart="auto">
           {nextPage && (
-            <GatsbyLink className="spectrum-Link spectrum-Link--quiet" to={nextPage.path} rel="next">
-              <Flex alignItems="center">
-                <View marginEnd="size-50">{nextPage.title}</View>
-                <ChevronRight size="S" />
-              </Flex>
-            </GatsbyLink>
+            <Link isQuiet={true}>
+              <GatsbyLink to={nextPage.path} rel="next">
+                <Flex alignItems="center">
+                  <View marginEnd="size-50">{nextPage.title}</View>
+                  <ChevronRight size="S" />
+                </Flex>
+              </GatsbyLink>
+            </Link>
           )}
         </View>
       </Flex>

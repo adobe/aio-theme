@@ -16,14 +16,13 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/core';
 import { Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
-import { Button } from '@adobe/react-spectrum';
-import { ButtonGroup } from '@adobe/react-spectrum';
+import { AnchorButton } from '../AnchorButton';
 import { CheckboxGroup } from '@adobe/react-spectrum';
 import { Checkbox } from '@adobe/react-spectrum';
 import { Picker, Item } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
-import { getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { LARGE_SCREEN_WIDTH } from '../../utils';
 import nextId from 'react-id-generator';
 import PropTypes from 'prop-types';
 
@@ -239,27 +238,18 @@ const ProductCardGrid = ({
                   css={css`
                     text-align: right;
                   `}>
-                  <ButtonGroup align="end">
+                  <Flex justifyContent="end" gap="size-200" wrap="wrap">
                     {product.discover && (
-                      <Button
-                        elementType="a"
-                        isQuiet
-                        href={product.discover}
-                        {...getExternalLinkProps(product.discover)}
-                        variant="secondary">
+                      <AnchorButton isQuiet href={product.discover} variant="secondary">
                         Learn more
-                      </Button>
+                      </AnchorButton>
                     )}
                     {product.docs && (
-                      <Button
-                        elementType="a"
-                        href={product.docs}
-                        {...getExternalLinkProps(product.docs)}
-                        variant="primary">
+                      <AnchorButton href={product.docs} variant="primary">
                         View docs
-                      </Button>
+                      </AnchorButton>
                     )}
-                  </ButtonGroup>
+                  </Flex>
                 </div>
               </div>
             ))}

@@ -12,7 +12,7 @@ description: This is the Project Firefly homepage
 Adobe products and technologies power them
 
 * [Explore our APIs](https://adobe.io)
-* [Subscribe](https://adobe.io)
+* [Subscribe](../guides)
 
 
 

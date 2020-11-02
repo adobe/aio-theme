@@ -19,7 +19,7 @@ import { css } from '@emotion/core';
 import { Grid, Flex } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Divider } from '@adobe/react-spectrum';
-import { Button } from '@adobe/react-spectrum';
+import { AnchorButton } from '../AnchorButton';
 import { Link } from '@adobe/react-spectrum';
 import { ButtonGroup } from '@adobe/react-spectrum';
 import { Adobe, TripleGripper } from '../Icons';
@@ -460,9 +460,9 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
               />
               <View marginStart="size-400">
                 {docs && (
-                  <Button variant="primary" elementType="a" href={docs.path} {...getExternalLinkProps(docs.path)}>
+                  <AnchorButton variant="primary" href={docs.path}>
                     View Docs
-                  </Button>
+                  </AnchorButton>
                 )}
               </View>
             </Tabs>
@@ -471,23 +471,14 @@ const GlobalHeader = ({ globalNav, versions, pages, docs, location, toggleSideNa
             {(globalNav.console || globalNav.signIn) && (
               <ButtonGroup>
                 {globalNav.console && (
-                  <Button
-                    variant="primary"
-                    elementType="a"
-                    href="https://console.adobe.io"
-                    {...getExternalLinkProps('https://console.adobe.io')}>
+                  <AnchorButton variant="primary" href="https://console.adobe.io">
                     Console
-                  </Button>
+                  </AnchorButton>
                 )}
                 {globalNav.signIn && (
-                  <Button
-                    isQuiet
-                    variant="primary"
-                    elementType="a"
-                    href="https://adobe.io"
-                    {...getExternalLinkProps('https://adobe.io')}>
+                  <AnchorButton isQuiet variant="primary" href="https://adobe.io">
                     Sign in
-                  </Button>
+                  </AnchorButton>
                 )}
               </ButtonGroup>
             )}

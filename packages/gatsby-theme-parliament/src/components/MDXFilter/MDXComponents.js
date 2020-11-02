@@ -14,7 +14,7 @@ import React from 'react';
 
 import globalTheme from '../../theme';
 
-import { Link } from '@adobe/react-spectrum';
+import { AnchorLink } from '../AnchorLink';
 import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import { List } from '../List';
@@ -43,11 +43,7 @@ export const MDXComponents = {
     </Code>
   ),
   inlineCode: InlineCode,
-  a: ({ children, ...props }) => (
-    <Link isQuiet={true}>
-      <a {...props}>{children}</a>
-    </Link>
-  ),
+  a: AnchorLink,
   img: Image,
   table: Table,
   tbody: TBody,

@@ -14,8 +14,8 @@ import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/core';
 import { View } from '@adobe/react-spectrum';
+import { Link } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
-import '@spectrum-css/link';
 import FileTxt from '@spectrum-icons/workflow/FileTxt';
 import PropTypes from 'prop-types';
 
@@ -47,12 +47,14 @@ const NextSteps = ({ pages }) => {
                 vertical-align: text-top;
               }
             `}>
-            <GatsbyLink to={page.path} className="spectrum-Link spectrum-Link--quiet">
-              <FileTxt size="S" />
-              <View elementType="span" marginStart="size-100">
-                {page.title}
-              </View>
-            </GatsbyLink>
+            <Link isQuiet={true}>
+              <GatsbyLink to={page.path}>
+                <FileTxt size="S" />
+                <View elementType="span" marginStart="size-100">
+                  {page.title}
+                </View>
+              </GatsbyLink>
+            </Link>
           </li>
         ))}
       </ul>

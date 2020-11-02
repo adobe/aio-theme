@@ -15,11 +15,10 @@ import { css } from '@emotion/core';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../../utils';
-import { Link } from '@adobe/react-spectrum';
 import { View } from '@adobe/react-spectrum';
 import { Flex } from '@adobe/react-spectrum';
 import LinkOut from '@spectrum-icons/workflow/LinkOut';
-import { getElementChild, isExternalLink, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, isExternalLink, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const Resources = ({ heading, links }) => {
   return (
@@ -51,11 +50,7 @@ const Resources = ({ heading, links }) => {
                 margin-top: var(--spectrum-global-dimension-size-200);
               `}>
               <Flex>
-                <Link isQuiet={true}>
-                  <a href={link.props.href} {...getExternalLinkProps(href)}>
-                    {link.props.children}
-                  </a>
-                </Link>
+                {link}
                 <View marginStart="size-100">{isExternalLink(href) && <LinkOut size="XS" />}</View>
               </Flex>
             </li>

@@ -13,13 +13,13 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import '@spectrum-css/typography';
-import { Button, View } from '@adobe/react-spectrum';
+import { AnchorButton } from '../AnchorButton';
+import { View } from '@adobe/react-spectrum';
 import PropTypes from 'prop-types';
-import { getElementChild, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
   const link = getElementChild(button);
-  const externalLinkProps = getExternalLinkProps(link.props.href);
 
   return (
     <section
@@ -62,9 +62,9 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
 
         {link && (
           <View marginTop="size-200">
-            <Button elementType="a" href={link.props.href} {...externalLinkProps} variant="primary">
+            <AnchorButton href={link.props.href} variant="primary">
               {link.props.children}
-            </Button>
+            </AnchorButton>
           </View>
         )}
       </div>
