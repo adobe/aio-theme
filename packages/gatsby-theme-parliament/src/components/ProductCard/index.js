@@ -144,12 +144,13 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
             </div>
           </div>
         </div>
-        <div
-          className="spectrum-Card-footer"
-          css={css`
-            text-align: right;
-          `}>
-          <HeroButtons buttons={buttons} quiets={[true, false]} variants={['secondary', 'primary']} />
+        <div className="spectrum-Card-footer">
+          <HeroButtons
+            buttons={buttons}
+            quiets={[true, false]}
+            variants={['secondary', 'primary']}
+            justifyContent="end"
+          />
         </div>
       </div>
     </section>

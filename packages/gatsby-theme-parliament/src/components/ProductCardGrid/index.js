@@ -233,11 +233,7 @@ const ProductCardGrid = ({
                     {product.description}
                   </div>
                 </div>
-                <div
-                  className="spectrum-Card-footer"
-                  css={css`
-                    text-align: right;
-                  `}>
+                <div className="spectrum-Card-footer">
                   <Flex justifyContent="end" gap="size-200" wrap="wrap">
                     {product.discover && (
                       <AnchorButton isQuiet href={product.discover} variant="secondary">

@@ -241,7 +241,7 @@ const TextBlock = ({
 
             <Texts texts={props} />
 
-            <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" />
+            <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" justifyContent="center" />
 
             <Links links={links} isCentered={isCentered} />
 
