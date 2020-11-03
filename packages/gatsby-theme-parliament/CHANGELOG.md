@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.12.0...@adobe/gatsby-theme-parliament@2.12.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* ButtonGroup alignment ([8f88000](https://github.com/adobe/gatsby-theme-parliament/commit/8f8800029501c81bbe959719add278a5bbfe30a0))
+* Gatsby Link duplicated path prefix ([8a1a0f7](https://github.com/adobe/gatsby-theme-parliament/commit/8a1a0f74df3cc42d86a1d4e111658958bc98ab92))
+
+
+
+
+
 # [2.12.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.11.1...@adobe/gatsby-theme-parliament@2.12.0) (2020-11-02)
 
 
