@@ -10,18 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import { getExternalLinkProps, isExternalLink } from '../../utils';
+import { getExternalLinkProps, isExternalLink, fixPathPrefix } from '../../utils';
 import PropTypes from 'prop-types';
 import { Button } from '@adobe/react-spectrum';
 import '@spectrum-css/button';
 import classNames from 'classnames';
-import Context from '../Context';
 
 const AnchorButton = ({ href, variant, isQuiet, link, ...props }) => {
-  const { pathPrefix } = useContext(Context);
-
   if (isExternalLink(href)) {
     return (
       <Button
@@ -35,15 +32,13 @@ const AnchorButton = ({ href, variant, isQuiet, link, ...props }) => {
     );
   }
 
-  const internalLink = String(href).replace(pathPrefix, '');
-
   return (
     <GatsbyLink
       role="button"
       className={classNames('spectrum-Button', `spectrum-Button--${variant}`, {
         'spectrum-Button--quiet': isQuiet
       })}
-      to={internalLink}
+      to={fixPathPrefix(href)}
       {...props}
     />
   );

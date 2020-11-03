@@ -11,13 +11,13 @@ description: This is the Project Firefly homepage
 
 Adobe products and technologies power them
 
-* [Explore our APIs](https://adobe.io)
+* [Explore our APIs](../guides)
 * [Subscribe](../guides)
 
 
 
 
-<TextBlock slots="image, heading, text" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
 
 ![icon 1](images/icon1.png)
 
@@ -25,10 +25,10 @@ Adobe products and technologies power them
 
 Build secure, scalable apps with easy integrations and we'll take care of the storage and hosting.
 
+* [Explore our APIs](../guides)
 
 
-
-<TextBlock slots="image, heading, text" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
 
 ![icon 2](images/icon2.png)
 
@@ -36,10 +36,10 @@ Build secure, scalable apps with easy integrations and we'll take care of the st
 
 UI design is made easy with [Spectrum components](https://spectrum.adobe.com) that match the look and feel of Adobe's products.  
 
+* [Explore our APIs](../guides)
 
 
-
-<TextBlock slots="image, heading, text" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
 
 ![icon 3](images/icon3.png)
 
@@ -47,7 +47,7 @@ UI design is made easy with [Spectrum components](https://spectrum.adobe.com) th
 
 Get API authorization and user access control out of the box.
 
-
+* [Explore our APIs](https://adobe.io)
 
 
 <TextBlock slots="heading, text, video" isCentered />

@@ -15,7 +15,7 @@ import { SSRProvider, Provider as RSProvider, defaultTheme } from '@adobe/react-
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
-import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH } from '../../utils';
+import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH, setPathPrefix } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -204,13 +204,14 @@ export default ({ children, pageContext, location }) => {
     }
   }
 
+  setPathPrefix(pathPrefix);
+
   return (
     <Provider
       value={{
         location,
         pageContext,
         hasSideNav,
-        pathPrefix,
         siteMetadata,
         allSitePage,
         allMdx,

@@ -14,9 +14,26 @@ import React from 'react';
 import { withPrefix } from 'gatsby';
 import globals from '../../scripts/globals';
 
+let _pathPrefix = '';
+
+export const setPathPrefix = (value) => {
+  _pathPrefix = value;
+};
+
 export const trailingSlashFix = (pathname) => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;
+  }
+
+  return pathname;
+};
+
+export const fixPathPrefix = (pathname) => {
+  if (_pathPrefix) {
+    const pathPrefix = trailingSlashFix(_pathPrefix);
+    if (pathname?.startsWith(pathPrefix)) {
+      pathname = `/${pathname.replace(pathPrefix, '')}`;
+    }
   }
 
   return pathname;

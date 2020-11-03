@@ -15,8 +15,8 @@ Start building.
 
 Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size
 
-* [Get started](/guides/oauth_using_curl/)
-* [Sign up for the newsletter](https://adobe.io)
+* [Get started](../../example/guides/)
+* [Sign up for the newsletter](/guides/)
 
 
 
@@ -58,8 +58,8 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 Create plugins for Adobe XD that push the boundaries of experience design by adding new features to the app, automating workflows, connecting XD to external services, and more—all on a quick, modern JavaScript engine with native UI components.
 When you’re ready, you can ship your plugin to XD users right from within the app.
 
-* [Get started](https://adobe.io)
-* [Sign up for the newsletter](https://adobe.io)
+* [Get started](../guides)
+* [Sign up for the newsletter](../guides)
 
 - [No Icon Product](https://www.adobe.com/products/premiere.html)
 
@@ -129,7 +129,7 @@ Connect your users to Creative Cloud right from within your mobile or web apps w
 world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
 
 * [Learn more](../guides)
-* [Sign up for partner program](https://adobe.io)
+* [Sign up for partner program](../guides)
 
 
 
@@ -145,7 +145,7 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 
 <ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 3](images/resource3.png)
 
@@ -157,7 +157,7 @@ Rob Kleiman, July 8th 2020
 
 <ResourceCard slots="link, image, heading, text" width="50%" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 1](images/resource1.png)
 
@@ -169,7 +169,7 @@ Nihil Gupta, July 24th 2020
 
 <ResourceCard slots="link, image, heading, text" width="50%" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 1](images/resource2.png)
 
@@ -181,7 +181,7 @@ Ash Ryan Arnwine, March 12th 2020
 
 <ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 3](images/resource3.png)
 
@@ -193,7 +193,7 @@ Rob Kleiman, July 8th 2020
 
 <ResourceCard slots="link, image, heading, text" width="50%" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 1](images/resource1.png)
 
@@ -205,7 +205,7 @@ Nihil Gupta, July 24th 2020
 
 <ResourceCard slots="link, image, heading, text" width="50%" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 1](images/resource2.png)
 
@@ -216,7 +216,7 @@ Ash Ryan Arnwine, March 12th 2020
 
 <ResourceCard slots="link, image, heading, text" variant="vertical" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 3](images/resource3.png)
 
@@ -228,7 +228,7 @@ Rob Kleiman, July 8th 2020
 
 <ResourceCard slots="link, image, heading, text" variant="horizontal" />
 
-[Adobe I/O](https://adobe.io)
+[Adobe I/O](../guides)
 
 ![Resource 3](images/resource3.png)
 
@@ -253,8 +253,8 @@ Rob Kleiman, July 8th 2020
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -266,8 +266,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -279,8 +279,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
@@ -291,8 +291,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -303,8 +303,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 Gives your users access to the perfect Adobe Stock asset to enhance their creative projects.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -317,8 +317,8 @@ Gives your users access to the perfect Adobe Stock asset to enhance their creati
 
 Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -330,8 +330,8 @@ Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Ado
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -343,8 +343,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -356,8 +356,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -369,8 +369,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 
@@ -383,5 +383,5 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 A monthly newsletter featuring news for anyone who creates, develops, or build plugins, extensions, or integrations for the
 Creative Cloud family of products.
 
-* [Subscribe to the newsletter](https://adobe.io)
-* [Learn more](https://adobe.io)
+* [Subscribe to the newsletter](../guides)
+* [Learn more](../guides)
