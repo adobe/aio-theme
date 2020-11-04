@@ -11,8 +11,8 @@
  */
 
 import React from 'react';
-import { Link as GatsbyLink } from 'gatsby';
-import { getExternalLinkProps, isExternalLink, fixPathPrefix } from '../../utils';
+import { GatsbyLink } from '../GatsbyLink';
+import { getExternalLinkProps, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 import { Button } from '@adobe/react-spectrum';
 import '@spectrum-css/button';
@@ -38,7 +38,7 @@ const AnchorButton = ({ href, variant, isQuiet, link, ...props }) => {
       className={classNames('spectrum-Button', `spectrum-Button--${variant}`, {
         'spectrum-Button--quiet': isQuiet
       })}
-      to={fixPathPrefix(href)}
+      to={href}
       {...props}
     />
   );

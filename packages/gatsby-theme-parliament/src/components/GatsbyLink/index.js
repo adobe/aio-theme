@@ -10,24 +10,25 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink } from '../../utils';
-import { Link } from '@adobe/react-spectrum';
+import React, { forwardRef, useContext } from 'react';
+import { Link, withPrefix } from 'gatsby';
+import { isInternalLink } from '../../utils';
 import PropTypes from 'prop-types';
+import Context from '../Context';
 
-const AnchorLink = ({ href, ...props }) => (
-  <Link isQuiet={true}>
-    {isExternalLink(href) ? (
-      <a href={href} {...getExternalLinkProps(href)} {...props} />
-    ) : (
-      <GatsbyLink to={href} {...props} />
-    )}
-  </Link>
-);
+const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
+  const { location, allSitePage } = useContext(Context);
+  const pages = allSitePage.nodes.map((page) => withPrefix(page.path));
 
-AnchorLink.propTypes = {
-  href: PropTypes.string
+  if (isInternalLink(to, location, pages)) {
+    return <Link to={to} ref={ref} {...props} />;
+  }
+
+  return <a href={to} ref={ref} {...props} />;
+});
+
+GatsbyLink.propTypes = {
+  to: PropTypes.string
 };
 
-export { AnchorLink };
+export { GatsbyLink };

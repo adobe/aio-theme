@@ -15,7 +15,7 @@ import { SSRProvider, Provider as RSProvider, defaultTheme } from '@adobe/react-
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
-import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH, setPathPrefix } from '../../utils';
+import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -81,7 +81,6 @@ export default ({ children, pageContext, location }) => {
           }
         }
         site {
-          pathPrefix
           siteMetadata {
             globalNav {
               home {
@@ -183,7 +182,7 @@ export default ({ children, pageContext, location }) => {
   );
 
   const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
-  const { siteMetadata, pathPrefix } = site;
+  const { siteMetadata } = site;
   const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSideNav, setShowSideNav] = useState(false);
@@ -203,8 +202,6 @@ export default ({ children, pageContext, location }) => {
       openAPISpec = hasOpenAPISpec;
     }
   }
-
-  setPathPrefix(pathPrefix);
 
   return (
     <Provider

@@ -15,8 +15,8 @@ Start building.
 
 Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size
 
-* [Get started](../../example/guides/)
-* [Sign up for the newsletter](/guides/)
+* [Get started](../../example/plop/)
+* [Sign up for the newsletter](/plop/)
 
 
 
@@ -59,9 +59,9 @@ Create plugins for Adobe XD that push the boundaries of experience design by add
 When you’re ready, you can ship your plugin to XD users right from within the app.
 
 * [Get started](../guides)
-* [Sign up for the newsletter](../guides)
+* [Sign up for the newsletter](/guides/)
 
-- [No Icon Product](https://www.adobe.com/products/premiere.html)
+- [No Icon Product](/guides)
 
 ![Screenshot 2](images/intro2.png)
 
@@ -128,8 +128,8 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to
 world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
 
-* [Learn more](../guides)
-* [Sign up for partner program](../guides)
+* [Learn more](https://adobe.io)
+* [Sign up for partner program](https://adobe.io)
 
 
 
@@ -266,7 +266,7 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](../guides)
+* [Learn more](https://adobe.io)
 * [View docs](../guides)
 
 
@@ -279,8 +279,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](../guides)
-* [View docs](../guides)
+* [Learn more](https://adobe.io)
+* [View docs](https://adobe.io)
 
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
@@ -291,8 +291,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](../guides)
-* [View docs](../guides)
+* [Learn more](https://adobe.io)
+* [View docs](../plop)
 
 
 
