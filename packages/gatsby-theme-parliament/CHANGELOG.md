@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.12.1...@adobe/gatsby-theme-parliament@2.13.0) (2020-11-04)
+
+
+### Features
+
+* Support external Gatsby links ([c723072](https://github.com/adobe/gatsby-theme-parliament/commit/c7230727d1dc5a380621ed6565d50aeb4c72c400))
+
+
+
+
+
 ## [2.12.1](https://github.com/adobe/gatsby-theme-parliament/compare/@adobe/gatsby-theme-parliament@2.12.0...@adobe/gatsby-theme-parliament@2.12.1) (2020-11-03)
 
 
