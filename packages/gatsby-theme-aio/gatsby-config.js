@@ -22,7 +22,6 @@ module.exports = {
         component: require.resolve(`./src/components/Layout/index.js`)
       }
     },
-    `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
     {
@@ -40,7 +39,7 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        remarkPlugins: [require(`remark-external-links`), require(`remark-docz`)],
+        remarkPlugins: [require(`remark-docz`)],
         gatsbyRemarkPlugins: [
           {
             resolve: `@adobe/gatsby-remark-afm`,

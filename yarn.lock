@@ -8970,14 +8970,6 @@ gatsby-page-utils@^0.2.30:
     lodash "^4.17.20"
     micromatch "^4.0.2"
 
-gatsby-plugin-catch-links@^2.3.15:
-  version "2.3.15"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.3.15.tgz#d5e0a945d193aee2261e995e8c6f07d322bd42ab"
-  integrity sha512-U8ilBTFKxj5NMj2Cw4Xvawxpe+Rlxd+o11m3gF8fEboqdqcCS6Gh1zG45JkJ3Du6G27nF4DbTI1JRpwi96vFYA==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    escape-string-regexp "^1.0.5"
-
 gatsby-plugin-emotion@^4.3.15:
   version "4.3.15"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-4.3.15.tgz#2ef83b8e390ccb62585fe1d6483e234ee29032ce"
@@ -12150,13 +12142,6 @@ mdast-util-definitions@^3.0.0:
   dependencies:
     unist-util-visit "^2.0.0"
 
-mdast-util-definitions@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-4.0.0.tgz#c5c1a84db799173b4dcf7643cda999e440c24db2"
-  integrity sha512-k8AJ6aNnUkB7IE+5azR9h81O5EQ/cTDXtWdMq9Kk5KcEW/8ritU5CeLg/9HhOC++nALHBlaogJ5jz0Ybk3kPMQ==
-  dependencies:
-    unist-util-visit "^2.0.0"
-
 mdast-util-to-hast@9.1.1:
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/mdast-util-to-hast/-/mdast-util-to-hast-9.1.1.tgz#953ff12aed57464b11d7e5549a45913e561909fa"
@@ -15211,17 +15196,6 @@ remark-docz@^2.1.0:
     "@babel/types" "^7.5.5"
     unist-util-remove "^1.0.3"
     unist-util-visit "^1.4.1"
-
-remark-external-links@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/remark-external-links/-/remark-external-links-8.0.0.tgz#308de69482958b5d1cd3692bc9b725ce0240f345"
-  integrity sha512-5vPSX0kHoSsqtdftSHhIYofVINC8qmp0nctkeU9YoJwV3YfiBRiI6cbFRJ0oI/1F9xS+bopXG0m2KS8VFscuKA==
-  dependencies:
-    extend "^3.0.0"
-    is-absolute-url "^3.0.0"
-    mdast-util-definitions "^4.0.0"
-    space-separated-tokens "^1.0.0"
-    unist-util-visit "^2.0.0"
 
 remark-footnotes@2.0.0:
   version "2.0.0"
