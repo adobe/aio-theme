@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.1...@adobe/gatsby-theme-aio@2.13.2) (2020-11-06)
+
+
+### Bug Fixes
+
+* Handle internal and external links in the code ([1c64308](https://github.com/adobe/gatsby-theme-aio/commit/1c64308af2e988841a39dc20610a27df3407b565))
+* Remove dead code ([c2ef35b](https://github.com/adobe/gatsby-theme-aio/commit/c2ef35bbfba48d449690770c6d53c7226aade8a9))
+
+
+
+
+
 ## 2.13.1 (2020-11-06)
 
 
