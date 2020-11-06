@@ -322,7 +322,7 @@ export default ({ children, pageContext, query }) => {
               {resourcesChild && resourcesChild}
             </Flex>
           </div>
-          <Footer hasSideNav={hasSideNav} isCentered={isDiscovery} links={footerLinks} />
+          <Footer hasSideNav={hasSideNav} links={footerLinks} />
         </main>
       </MDXProvider>
     );
