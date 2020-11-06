@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 
-const globalNavFilePath = require.resolve('@adobe/gatsby-theme-parliament/globalNav.json');
+const globalNavFilePath = require.resolve('@adobe/gatsby-theme-aio/globalNav.json');
 const globalNav = JSON.parse(fs.readFileSync(globalNavFilePath, 'utf8'));
 
 globalNav.menus = [globalNav.menus[2]];
@@ -195,7 +195,7 @@ module.exports = {
     ]
   },
   plugins: [
-    `@adobe/gatsby-theme-parliament`
+    `@adobe/gatsby-theme-aio`
   ],
   pathPrefix: '/example'
 };

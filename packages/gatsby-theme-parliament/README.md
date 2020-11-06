@@ -1,1 +1,0 @@
-See the repo https://github.com/adobe/gatsby-theme-parliament for more details.

@@ -16,7 +16,7 @@ import { HeroButtons } from '../Hero';
 import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
+import { YouTube } from 'mdx-embed';
 import { getElementChild, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const counter = {
