@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.3...@adobe/gatsby-theme-aio@2.13.4) (2020-11-07)
+
+
+### Bug Fixes
+
+* Remove duplicated Gatsby link path prefix for absolute paths ([24b5ddf](https://github.com/adobe/gatsby-theme-aio/commit/24b5ddf2635f44d712761d6f99aaddb2aa3ab335))
+
+
+
+
+
 ## [2.13.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.2...@adobe/gatsby-theme-aio@2.13.3) (2020-11-07)
 
 
