@@ -81,6 +81,7 @@ export default ({ children, pageContext, location }) => {
           }
         }
         site {
+          pathPrefix
           siteMetadata {
             globalNav {
               home {
@@ -182,7 +183,7 @@ export default ({ children, pageContext, location }) => {
   );
 
   const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
-  const { siteMetadata } = site;
+  const { siteMetadata, pathPrefix } = site;
   const { globalNav, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSideNav, setShowSideNav] = useState(false);
@@ -210,6 +211,7 @@ export default ({ children, pageContext, location }) => {
         pageContext,
         hasSideNav,
         siteMetadata,
+        pathPrefix,
         allSitePage,
         allMdx,
         allGithub,
