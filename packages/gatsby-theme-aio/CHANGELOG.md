@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.4...@adobe/gatsby-theme-aio@2.13.5) (2020-11-07)
+
+
+### Bug Fixes
+
+* Support Gatsby Link in Menus ([7711ccb](https://github.com/adobe/gatsby-theme-aio/commit/7711ccb4cd3b435fd851793dd08df0dee447c8b6))
+
+
+
+
+
 ## [2.13.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.3...@adobe/gatsby-theme-aio@2.13.4) (2020-11-07)
 
 
