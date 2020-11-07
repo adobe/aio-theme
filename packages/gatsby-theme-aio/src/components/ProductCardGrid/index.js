@@ -45,7 +45,16 @@ const filterByLastUpdated = (products) =>
     return 0;
   });
 
-const filterById = (products, ids = []) => products.filter((product) => ids.includes(product.id));
+const filterById = (products, ids = []) => {
+  const filteredProducts = [];
+  ids.forEach((productId) => {
+    const product = products.find(({ id }) => id === productId);
+    if (product) {
+      filteredProducts.push(product);
+    }
+  });
+  return filteredProducts;
+};
 
 const additionalFilters = [
   {
