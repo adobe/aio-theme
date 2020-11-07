@@ -15,6 +15,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import nextId from 'react-id-generator';
+import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/menu';
 import { CheckMarkMedium } from '../Icons';
 import { getExternalLinkProps } from '../../utils';
@@ -33,16 +34,15 @@ const Menu = ({ children }) => {
 };
 
 const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '', ...props }) => {
-  const Element = href ? 'a' : 'li';
-  const externalLinkProps = getExternalLinkProps(href);
+  const Element = href ? GatsbyLink : 'li';
 
   return isDivider ? (
     <li className="spectrum-Menu-divider" role="separator" />
   ) : (
     <Element
       className={classNames('spectrum-Menu-item', { 'is-open': isHighlighted }, { 'is-selected': isSelected })}
-      href={href}
-      {...externalLinkProps}
+      to={href}
+      {...getExternalLinkProps(href)}
       role="menuitem"
       tabIndex="0"
       {...props}>
