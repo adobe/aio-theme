@@ -80,7 +80,7 @@
     "prop-types": "^15.7.2",
     "react-helmet-async": "^1.0.7",
     "react-id-generator": "^3.0.1",
-    "rehype-slug": "^3.0.0",
+    "rehype-slug": "^4.0.0",
     "remark-docz": "^2.1.0"
   }
 }
