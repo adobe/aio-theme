@@ -8978,10 +8978,10 @@ gatsby-plugin-emotion@^4.3.15:
     "@babel/runtime" "^7.11.2"
     "@emotion/babel-preset-css-prop" "^10.0.27"
 
-gatsby-plugin-layout@^1.3.13:
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.3.13.tgz#3b43d279578391ee3ce64dff2d32e2dcb0a0ae37"
-  integrity sha512-bNQYp/GKECa0EF1GAFuRriAs6LslshHt86q0S5IWtFpnGDRkY8+90KbZM3/EoEPuBPYd8QDgxsqJHB/Jyhdr5A==
+gatsby-plugin-layout@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.4.0.tgz#800b194fb4a26b38023b16791573c13d19120209"
+  integrity sha512-TFd4+V96YpokQVoyn7k9uTCV8EcKxdMXtIAIPFLr8nK8vCsj1cgOlQTHuWRoHi8OvrKFgq104BQT/IDx54gnCQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
 
