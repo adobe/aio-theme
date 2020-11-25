@@ -8985,10 +8985,10 @@ gatsby-plugin-layout@^1.3.13:
   dependencies:
     "@babel/runtime" "^7.11.2"
 
-gatsby-plugin-mdx-embed@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx-embed/-/gatsby-plugin-mdx-embed-0.0.14.tgz#24ef5c49f2015e3e71cc03b84f0dc305a6b4df3d"
-  integrity sha512-cmtvqpn0Xte48+xDlzxgSx6MrzCUDg0pj+xguw4WZPF0hXVx+EnTrA6sxnBrePAYdR69qV1YZn1ye6iKASPLCQ==
+gatsby-plugin-mdx-embed@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx-embed/-/gatsby-plugin-mdx-embed-0.0.15.tgz#3a70c1820e586585a1b09c95572174a8ee55291b"
+  integrity sha512-arS0P4Nsth9/qZBM/7gx4/Pu5ldV2H9yuJxpdFBQXx1eGiXV7dQYNKTNgeN74v431SSzi6jrjQR2dzI6MeeREA==
 
 gatsby-plugin-mdx@^1.3.1:
   version "1.3.1"
