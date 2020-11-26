@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@testing-library/cypress": "^7.0.1",
+    "@testing-library/cypress": "^7.0.2",
     "axe-core": "^4.0.1",
     "cypress": "^5.0.0",
     "cypress-axe": "^0.10.0",
