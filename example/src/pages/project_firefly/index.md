@@ -25,7 +25,7 @@ Adobe products and technologies power them
 
 Build secure, scalable apps with easy integrations and we'll take care of the storage and hosting.
 
-* [Explore our APIs](../guides)
+* [Explore our APIs](../index.md#discover)
 
 
 <TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
@@ -36,7 +36,7 @@ Build secure, scalable apps with easy integrations and we'll take care of the st
 
 UI design is made easy with [Spectrum components](https://spectrum.adobe.com) that match the look and feel of Adobe's products.  
 
-* [Explore our APIs](../guides)
+* [Explore our APIs](/src/pages/overview.md)
 
 
 <TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />

@@ -12,7 +12,7 @@
 
 import React, { forwardRef, useContext } from 'react';
 import { Link, withPrefix } from 'gatsby';
-import { isInternalLink } from '../../utils';
+import { isInternalLink, fixInternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 import Context from '../Context';
 
@@ -21,7 +21,7 @@ const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
   const pages = allSitePage.nodes.map((page) => withPrefix(page.path));
 
   if (isInternalLink(to, location, pages)) {
-    return <Link to={to.replace(pathPrefix, '')} ref={ref} {...props} />;
+    return <Link to={fixInternalLink(to, pathPrefix)} ref={ref} {...props} />;
   }
 
   return <a href={to} ref={ref} {...props} />;

@@ -14,6 +14,10 @@ import React from 'react';
 import { withPrefix } from 'gatsby';
 import globals from '../../scripts/globals';
 
+const cleanMarkdownExtension = (pathname) => {
+  return pathname.replace('/src/pages/', '/').replace('/index.md', '').replace('index.md', '').replace('.md', '');
+};
+
 export const trailingSlashFix = (pathname) => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;
@@ -180,9 +184,13 @@ export const isInternalLink = (pathname, location, pages) => {
   const base = 'https://example.com';
   const href = new URL(encodeURI(location.pathname), base);
 
-  pathname = trailingSlashFix(new URL(pathname, href).pathname);
+  pathname = trailingSlashFix(cleanMarkdownExtension(new URL(pathname, href).pathname));
 
   return pages.some((path) => path === pathname);
+};
+
+export const fixInternalLink = (pathname, pathPrefix) => {
+  return cleanMarkdownExtension(pathname.replace(pathPrefix, ''));
 };
 
 export const isExternalLink = (url) => {
