@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.5...@adobe/gatsby-theme-aio@2.14.0) (2020-11-26)
+
+
+### Features
+
+* Support internal md links ([d8388c5](https://github.com/adobe/gatsby-theme-aio/commit/d8388c55a0c8d26420f4cf9b9ac8d4de23462f5d))
+
+
+
+
+
 ## [2.13.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.4...@adobe/gatsby-theme-aio@2.13.5) (2020-11-07)
 
 
