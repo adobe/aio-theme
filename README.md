@@ -207,6 +207,24 @@ You can use absolute links or relative links to link between markdown pages e.g.
 [Link to API](/api/)  
 ```    
 
+Linking to internal markdown pages using the markdown filename is also supported e.g. : 
+
+*Relative link*
+```
+[Link to mypage](../mypage.md)  
+```  
+
+*Absolute link*
+```
+[Link to mypage](/src/pages/mypage.md)  
+```   
+
+Add the suffix `#` to a link to jump to a section of the page for example if your page has a heading named `Join the future`, you can link to it:
+
+```
+[Link to mypage](../mypage.md#join-the-future)  
+```  
+
 **Please note that currently only absolute links will work with transcluded content.**
 
 ## Configuration
