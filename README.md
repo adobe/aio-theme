@@ -1579,4 +1579,4 @@ You can check the latest released version of `@adobe/gatsby-theme-aio` at https:
 
 This repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
-Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna publish --create-release github --conventional-commits --no-private` for publishing `@adobe/gatsby-theme-aio` on npm.
+Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna version --create-release github --conventional-commits --no-private` for publishing `@adobe/gatsby-theme-aio` on npm.
