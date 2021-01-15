@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.14.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.14.0...@adobe/gatsby-theme-aio@2.14.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* Update @adobe/gatsby-source-github-file-contributors to fix Windows issue ([cc9e727](https://github.com/adobe/gatsby-theme-aio/commit/cc9e7279cddadbbdba387bf08172bf8f8d802ffd))
+
+
+
+
+
 # [2.14.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.13.5...@adobe/gatsby-theme-aio@2.14.0) (2020-11-26)
 
 
