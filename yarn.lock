@@ -1143,7 +1143,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.11.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
@@ -8978,12 +8978,12 @@ gatsby-plugin-emotion@^4.3.15:
     "@babel/runtime" "^7.11.2"
     "@emotion/babel-preset-css-prop" "^10.0.27"
 
-gatsby-plugin-layout@^1.3.13:
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.3.13.tgz#3b43d279578391ee3ce64dff2d32e2dcb0a0ae37"
-  integrity sha512-bNQYp/GKECa0EF1GAFuRriAs6LslshHt86q0S5IWtFpnGDRkY8+90KbZM3/EoEPuBPYd8QDgxsqJHB/Jyhdr5A==
+gatsby-plugin-layout@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.9.0.tgz#c48ecf745cb1b936b0875609fff9955cac3b8cef"
+  integrity sha512-M2eRSDI5rrMlLhUFS3Z7wO7lMdxMgMX5GGff4+lOcXnmoPiQNM4W2paMQFeibCu7Hu9fYLPiJNbUenOLIIrDFw==
   dependencies:
-    "@babel/runtime" "^7.11.2"
+    "@babel/runtime" "^7.12.5"
 
 gatsby-plugin-mdx-embed@^0.0.14:
   version "0.0.14"
