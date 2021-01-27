@@ -30,12 +30,12 @@
   },
   "devDependencies": {
     "gatsby": "^2.23.11",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-dom": "^16.13.1"
   },
   "peerDependencies": {
     "gatsby": "^2.23.11",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-dom": "^16.13.1"
   },
   "dependencies": {
