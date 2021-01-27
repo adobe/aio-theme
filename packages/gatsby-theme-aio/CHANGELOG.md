@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.14.1...@adobe/gatsby-theme-aio@2.15.0) (2021-01-27)
+
+
+### Features
+
+* Support "no layout" pages for advanced customizations ([b01db3f](https://github.com/adobe/gatsby-theme-aio/commit/b01db3fb602afc44e1ebeed76838b4d1332f238a))
+
+
+
+
+
 ## [2.14.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.14.0...@adobe/gatsby-theme-aio@2.14.1) (2021-01-15)
 
 
