@@ -1533,6 +1533,23 @@ You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/com
 
 *Notice omitting the `src` directory in the shadow folder.*    
 
+### Custom layout
+
+You can build pages without the default layout (e.g. header, side navigation etc.) by setting `layout` to `none` within the page frontmatter.
+This can be useful if for example you want to build pages to be embedded in other systems.
+
+The following markdown page disables the layout: 
+
+<pre>
+---
+layout: none  
+---
+
+# Heading 1
+
+Some text
+</pre>
+
 ### Theming
 
 Currently, you can only define a light or dark theme for Code blocks. By default, Code blocks are displayed in `dark` theme.
