@@ -197,6 +197,7 @@ export default ({ children, pageContext, location }) => {
   const frontmatter = pageContext?.frontmatter;
   const hasGlobalHeaderTemp = frontmatter?.GlobalHeaderTemp;
   const hasOpenAPISpec = frontmatter?.openAPISpec;
+  const hasLayout = pageContext?.frontmatter?.layout !== 'none';
 
   if (typeof hasOpenAPISpec !== 'undefined') {
     if (openAPISpec !== hasOpenAPISpec) {
@@ -233,7 +234,8 @@ export default ({ children, pageContext, location }) => {
                 min-height: 100vh;
                 background-color: var(--spectrum-global-color-gray-50);
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                ${hasLayout &&
+                `@media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                   #Layout-grid {
                     grid-template-columns: 0px auto !important;
                   }
@@ -242,96 +244,102 @@ export default ({ children, pageContext, location }) => {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
                     transform: translateX(${showSideNav ? '0' : '-100%'});
                   }
-                }
+                }`}
               `}>
-              <Grid
-                id="Layout-grid"
-                areas={['header header', 'sidenav main']}
-                rows={['size-800']}
-                columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
-                <View
-                  gridArea="header"
-                  position="fixed"
-                  height={hasGlobalHeaderTemp ? 'size-1000' : 'size-800'}
-                  left="size-0"
-                  right="size-0"
-                  backgroundColor="gray-50"
-                  zIndex="2">
-                  {hasGlobalHeaderTemp ? (
-                    <GlobalHeaderTemp />
-                  ) : (
-                    <GlobalHeader
-                      globalNav={globalNav}
-                      versions={versions}
-                      pages={pages}
-                      docs={docs}
-                      location={location}
-                      hasSideNav={hasSideNav}
-                      toggleSideNav={() => {
-                        toggleSideNav(setShowSideNav);
-                      }}
-                    />
-                  )}
-                </View>
-                <View
-                  id="Layout-sidenav"
-                  backgroundColor="gray-75"
-                  gridArea="sidenav"
-                  isHidden={!hasSideNav}
-                  position="fixed"
-                  zIndex="1"
-                  width="256px"
-                  height="100%">
-                  <SideNav
-                    selectedPages={selectedPages}
-                    selectedSubPages={selectedSubPages}
-                    searchIndex={ParliamentSearchIndex}
-                  />
-                </View>
-                <View gridArea="main">
-                  <View isHidden={!hasOpenAPISpec}>
-                    {openAPISpec && (
-                      <main
-                        css={css`
-                          [role='navigation'] [role='menuitem'] + ul {
-                            display: block;
-                          }
-                        `}>
-                        <OpenAPIBlock specUrl={openAPISpec} />
-                      </main>
+              {hasLayout ? (
+                <Grid
+                  id="Layout-grid"
+                  areas={['header header', 'sidenav main']}
+                  rows={['size-800']}
+                  columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
+                  <View
+                    gridArea="header"
+                    position="fixed"
+                    height={hasGlobalHeaderTemp ? 'size-1000' : 'size-800'}
+                    left="size-0"
+                    right="size-0"
+                    backgroundColor="gray-50"
+                    zIndex="2">
+                    {hasGlobalHeaderTemp ? (
+                      <GlobalHeaderTemp />
+                    ) : (
+                      <GlobalHeader
+                        globalNav={globalNav}
+                        versions={versions}
+                        pages={pages}
+                        docs={docs}
+                        location={location}
+                        hasSideNav={hasSideNav}
+                        toggleSideNav={() => {
+                          toggleSideNav(setShowSideNav);
+                        }}
+                      />
                     )}
                   </View>
-                  {!hasOpenAPISpec && children}
-                </View>
-              </Grid>
+                  <View
+                    id="Layout-sidenav"
+                    backgroundColor="gray-75"
+                    gridArea="sidenav"
+                    isHidden={!hasSideNav}
+                    position="fixed"
+                    zIndex="1"
+                    width="256px"
+                    height="100%">
+                    <SideNav
+                      selectedPages={selectedPages}
+                      selectedSubPages={selectedSubPages}
+                      searchIndex={ParliamentSearchIndex}
+                    />
+                  </View>
+                  <View gridArea="main">
+                    <View isHidden={!hasOpenAPISpec}>
+                      {openAPISpec && (
+                        <main
+                          css={css`
+                            [role='navigation'] [role='menuitem'] + ul {
+                              display: block;
+                            }
+                          `}>
+                          <OpenAPIBlock specUrl={openAPISpec} />
+                        </main>
+                      )}
+                    </View>
+                    {!hasOpenAPISpec && children}
+                  </View>
+                </Grid>
+              ) : (
+                children
+              )}
             </div>
-            <div
-              css={css`
-                display: none;
+            {hasLayout && (
+              <div
+                css={css`
+                  display: none;
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                  display: block;
-                  transition: opacity 160ms ease-in;
-                  background-color: rgba(0, 0, 0, 0.4);
-                  pointer-events: none;
-                  opacity: 0;
-                  position: fixed;
-                  top: 0;
-                  left: 0;
-                  height: 100%;
-                  width: 100%;
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    display: block;
+                    transition: opacity 160ms ease-in;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    pointer-events: none;
+                    opacity: 0;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
 
-                  ${showSideNav &&
-                  `
+                    ${showSideNav &&
+                    `
                   pointer-events: auto;
                   opacity: 1;
                 `}
-                }
-              `}
-              onClick={() => {
-                toggleSideNav(setShowSideNav);
-              }}
-            />
+                  }
+                `}
+                onClick={() => {
+                  toggleSideNav(setShowSideNav);
+                }}
+              />
+            )}
           </RSProvider>
         </I18nProvider>
       </SSRProvider>

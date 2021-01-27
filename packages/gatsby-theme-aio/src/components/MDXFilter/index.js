@@ -127,12 +127,16 @@ export default ({ children, pageContext, query }) => {
   const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
     Context
   );
+  const isTranscludedContent = typeof pageContext === 'undefined';
   let childrenArray = React.Children.toArray(children);
 
-  if (typeof pageContext === 'undefined') {
+  if (isTranscludedContent || pageContext?.frontmatter?.layout === 'none') {
     const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query, hasSideNav });
-    // No layout for transclusions
-    return <MDXProvider>{filteredChildren}</MDXProvider>;
+    return isTranscludedContent ? (
+      <MDXProvider>{filteredChildren}</MDXProvider>
+    ) : (
+      <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>{filteredChildren}</MDXProvider>
+    );
   } else {
     // Footer
     const { footer: footerLinks } = siteMetadata.globalNav;

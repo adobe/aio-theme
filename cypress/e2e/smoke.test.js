@@ -33,4 +33,9 @@ describe('Smoke Test', () => {
     cy.visit(`/cloud_filter/`).assertRoute(`/cloud_filter/`);
     cy.contains('Adobe I/O');
   });
+
+  it('No layout loads', () => {
+    cy.visit(`/no_layout/`).assertRoute(`/no_layout/`);
+    cy.contains('No layout');
+  });
 });

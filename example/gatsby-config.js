@@ -61,6 +61,10 @@ module.exports = {
       {
         title: 'Cloud filter',
         path: '/cloud_filter/'
+      },
+      {
+        title: 'No layout',
+        path: '/no_layout/'
       }
     ],
     subPages: [
