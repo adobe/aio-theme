@@ -3926,10 +3926,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/menu/-/menu-3.0.0-beta.4.tgz#6802be2edd64eb168b001cf90c447920b1b2dd7a"
   integrity sha512-f5aBUlk/8FRtf0JS9SuwE7KIhIFVTFLpWxlFKdtWIK+qzz7frNQBcXQUCpd7+t7vNQ46lGmCEDUohhQVMe8h5Q==
 
-"@spectrum-css/popover@3.0.0-beta.5", "@spectrum-css/popover@^3.0.0-beta.3":
-  version "3.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/popover/-/popover-3.0.0-beta.5.tgz#fb5f0b399b8a8cd55a38b8308d48d9129dd8b996"
-  integrity sha512-WoKM2oY7O6UOTfb8hpjT8LzEW8mOrHSt79WNMLKlTB+yKHf62QOIT/zuXqSq4neBraBnxdHsCLbKGJw0yVW8Xg==
+"@spectrum-css/popover@3.0.0", "@spectrum-css/popover@^3.0.0-beta.3":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/popover/-/popover-3.0.0.tgz#ec1ab86a66cc59bd522d3de2b7febe41e2a9fe46"
+  integrity sha512-Lr2FZSJbDbDMp3bOlLtvDjOw6AwzRu3g0BbQ7NGK1l5MB06AhnqJX+TPB2iEDTfPdNyaDc5SCp55lBHP3RzHuw==
 
 "@spectrum-css/search@^3.0.0-beta.4":
   version "3.0.0-beta.6"
