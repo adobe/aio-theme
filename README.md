@@ -13,7 +13,7 @@ For many reasons :
 * Huge ecosystem of plugins
 * Open source
 
-and more ... see https://www.gatsbyjs.com/why-gatsby/.    
+and more ... see [Why Gatsby](https://www.gatsbyjs.com/why-gatsby/).    
 
 **Why Gatsby theme ?**
 
@@ -50,6 +50,9 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Using GitHub repository templates](#using-github-repository-templates)
   + [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
 * [Content structure](#content-structure)
+  + [Markdown pages](#markdown-pages)
+  + [Links](#links)
+  + [Assets](#assets)
 * [Configuration](#configuration)
   + [.env file](#env-file)
   + [Global Navigation](#global-navigation)
@@ -138,6 +141,8 @@ The content of the site is written in [Markdown](https://daringfireball.net/proj
 As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs. 
 Additionally, Adobe extended Markdown in a few ways to support certain features see [Writing Enhanced Markdown](#writing-enhanced-markdown). 
 
+### Markdown pages
+
 Make sure the markdown content is located  under `src/pages` and please follow below guidelines for writing content.
 
 Use a folder structure to define your site pages e.g. :
@@ -191,9 +196,10 @@ root
    │  └- index.html 
    └- Minified JS, CSS files  
 ```
-    
 
-### Internal links
+### Links    
+
+#### Internal links
 
 You can use absolute links or relative links to link between markdown pages e.g. with the example folder structure from [Content Structure](#content-structure) you can add a link from `/guides/index.md` to `/api/index.md` with:
 
@@ -226,6 +232,49 @@ Add the suffix `#` to a link to jump to a section of the page for example if you
 ```  
 
 **Please note that currently only absolute links will work with transcluded content.**
+
+#### External links
+
+External links will automatically open in a new tab or window.
+
+```
+[Link to example.com](https://example.com)  
+```  
+
+### Assets
+
+Images can be placed next to markdown pages inside `src/pages` and referenced using relative links. In this case, they'll be optimized during the build process and resulting file names are hashed to resolve potential caching issues.
+ 
+Other asset types (e.g. PDFs etc.) can be placed inside a `static` folder at the root. Those assets are not being processed but simply copied into the `public` folder.
+
+Here's a simple example of a content structure with a markdown page file and 2 different asset types:  
+
+```
+root
+├- src/pages [/]
+│  ├- index.md 
+│  └- image.png
+├- static [/]
+│  └- document.pdf 
+├─ gatsby-config.js
+└─ package.json 
+```
+
+where `image.png` is referenced in `index.md` as an image: 
+
+```
+![alt image](./image.png) 
+```
+
+and `document.pdf` is referenced in `index.md` as a link:
+
+```
+[document](/document.pdf) 
+```
+
+You'll find more information about the `static` folder at [Using the Static Folder](https://www.gatsbyjs.com/docs/how-to/images-and-media/static-folder/).
+    
+**Please note that empty image alt descriptions are not supported.**
 
 ## Configuration
 
