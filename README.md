@@ -197,6 +197,8 @@ root
    └- Minified JS, CSS files  
 ```
 
+**Please note that empty markdown pages are not supported.**
+
 ### Links    
 
 #### Internal links
