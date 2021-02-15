@@ -3886,10 +3886,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/alert/-/alert-3.0.0-beta.3.tgz#8cb1aba75a1ed55a6ebc81b432c2657d2ba42ecc"
   integrity sha512-diHF2w/A8TgNoxVGRTzKneFiT9mHWBz5djEmqC2/8r65xHbKi5CBnfMjTFpIMGw/wkWEzXyC9wZh8Q+HL5cjZg==
 
-"@spectrum-css/assetlist@3.0.0-beta.5", "@spectrum-css/assetlist@^3.0.0-beta.3":
-  version "3.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.0-beta.5.tgz#9d1639b9e6c6885338cb4d4f8a2ee3023e364eb9"
-  integrity sha512-01yeYuM0hox2ecIQ34YjbmjxwRuXZZyxsXJ3JvzZnxdL/gkAVlZOQAQ2791dQWYjTYPwXIEmRpukPYt2m+Lijg==
+"@spectrum-css/assetlist@3.0.0", "@spectrum-css/assetlist@^3.0.0-beta.3":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.0.tgz#148d32b95e003e9cefcfaed9477e264379a86d11"
+  integrity sha512-0dyfnh9iHQNjS2srKU4Y+OfcBgGXUkJRsmwJW5xzCLkmGvXVMQ/A+7DcwVK18NVNFmmKw0098MHWYY5JHUx/Pw==
 
 "@spectrum-css/breadcrumb@3.0.0-beta.5", "@spectrum-css/breadcrumb@^3.0.0-beta.3":
   version "3.0.0-beta.5"
