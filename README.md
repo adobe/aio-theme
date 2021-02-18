@@ -59,7 +59,10 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Side Navigation](#side-navigation)
   + [Versions](#versions)
 * [Building the Gatsby site](#building-the-gatsby-site)
+  + [Adding a Path Prefix](#adding-a-path-prefix)
 * [Publishing the Gatsby site](#publishing-the-gatsby-site)
+  + [Publishing to GitHub Pages (Dev)](#publishing-to-github-pages-dev)
+  + [Publishing to Azure Storage Static Websites (Production)](#publishing-to-azure-storage-static-websites-production) 
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
   + [Front matter](#front-matter)
   + [OpenAPI](#openapi)
@@ -712,6 +715,8 @@ pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX'
 ## Publishing the Gatsby site
 
 ### Publishing to GitHub Pages (Dev)
+
+To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at https://ORG_NAME.github.io/REPO_NAME. 
 
 On every commit to the `main` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default branch for new repos in GitHub.
 
