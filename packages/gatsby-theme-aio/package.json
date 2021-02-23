@@ -46,7 +46,7 @@
     "@adobe/parliament-site-search-index": "^0.0.4",
     "@adobe/parliament-ui-components": "^2.6.10",
     "@adobe/prism-adobe": "^1.0.3",
-    "@adobe/react-spectrum": "3.5.0",
+    "@adobe/react-spectrum": "3.8.0",
     "@emotion/core": "^10.1.1",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
