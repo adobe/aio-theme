@@ -3245,10 +3245,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-3.0.0.tgz#a822c901ca049f487420053dfeaaf71c0850c848"
   integrity sha512-0VVx34WECxe+acSZsB+zk8T+AG8YimlCfUothuqLzcUgY6MnBESHJKOEuKKihxnihEm6EJiMc2NYA7+09kPv/A==
 
-"@spectrum-css/link@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.1.0.tgz#4be0debb2ba92ce8ecd6f13df7de356c4d657d54"
-  integrity sha512-cVRgm1uJ6d0o4P4PovkZS/jLwzUB5j6+dUB9hqVvG1/LToABeclN2Fzo20Ykvb8ul4YVefttMNSu0bxv7+ruxw==
+"@spectrum-css/link@3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.1.1.tgz#cb526a2e10b50ef5a7ae29cca7272e2610d597eb"
+  integrity sha512-Bi88lRhTY7g6nM/ryW1yY4Cji211ZYNtRxkxbV7n2lPvwMAAQtyx0qVD3ru4kTGj/FFVvmPR3XiOE10K13HSNA==
 
 "@spectrum-css/menu@3.0.0":
   version "3.0.0"
