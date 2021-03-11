@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.0...@adobe/gatsby-theme-aio@3.0.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* Add PostCSS 8.x dependency ([846fdd9](https://github.com/adobe/gatsby-theme-aio/commit/846fdd9626d7d7e009f0765e88b0b235d88a8925))
+
+
+
+
+
 # [3.0.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.15.0...@adobe/gatsby-theme-aio@3.0.0) (2021-03-11)
 
 
