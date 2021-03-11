@@ -13,7 +13,7 @@
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
 import { getExternalLinkProps, isExternalLink } from '../../utils';
-import { Link } from '@adobe/react-spectrum';
+import { Link } from '../Link';
 import PropTypes from 'prop-types';
 
 const AnchorLink = ({ href, ...props }) => (

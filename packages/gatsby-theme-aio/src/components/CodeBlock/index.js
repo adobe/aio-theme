@@ -11,7 +11,7 @@
  */
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator } from '../Tabs';
 import { Picker } from '../Picker';

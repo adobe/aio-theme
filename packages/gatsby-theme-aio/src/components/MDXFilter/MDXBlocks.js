@@ -11,7 +11,6 @@
  */
 
 import React from 'react';
-
 import globalTheme from '../../theme';
 
 import { Hero } from '../Hero';

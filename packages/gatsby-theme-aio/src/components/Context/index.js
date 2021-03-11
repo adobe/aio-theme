@@ -10,9 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import { createContext } from 'react';
 
-const Context = React.createContext({});
+const Context = createContext({});
 
 export const Provider = Context.Provider;
 

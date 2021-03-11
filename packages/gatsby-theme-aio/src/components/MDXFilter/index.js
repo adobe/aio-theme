@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext } from 'react';
+import React, { Children, cloneElement, useContext } from 'react';
 import { withPrefix } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Context from '../Context';
 import {
   layoutColumns,
@@ -24,9 +24,6 @@ import {
   findSelectedPages,
   LARGE_SCREEN_WIDTH
 } from '../../utils';
-
-import { Flex } from '@adobe/react-spectrum';
-import { View } from '@adobe/react-spectrum';
 
 import { Footer } from '../Footer';
 import { Contributors } from '../Contributors';
@@ -88,7 +85,7 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
             props.width = 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) - 256px);';
           }
 
-          const childClone = React.cloneElement(child, {
+          const childClone = cloneElement(child, {
             ...props
           });
 
@@ -128,7 +125,7 @@ export default ({ children, pageContext, query }) => {
     Context
   );
   const isTranscludedContent = typeof pageContext === 'undefined';
-  let childrenArray = React.Children.toArray(children);
+  let childrenArray = Children.toArray(children);
 
   if (isTranscludedContent || pageContext?.frontmatter?.layout === 'none') {
     const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query, hasSideNav });
@@ -138,9 +135,6 @@ export default ({ children, pageContext, query }) => {
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>{filteredChildren}</MDXProvider>
     );
   } else {
-    // Footer
-    const { footer: footerLinks } = siteMetadata.globalNav;
-
     // PrevNext
     const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
     const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
@@ -218,26 +212,6 @@ export default ({ children, pageContext, query }) => {
             justify-content: center;
             display: flex;
             flex-direction: column;
-
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-              #Layout-actions {
-                flex-direction: column;
-              }
-
-              #Layout-actions-github {
-                margin-left: 0 !important;
-                margin-top: var(--spectrum-global-dimension-size-200);
-              }
-
-              #Layout-help {
-                flex-direction: column;
-                align-items: flex-start !important;
-              }
-
-              #Layout-feedback {
-                margin-top: var(--spectrum-global-dimension-size-200);
-              }
-            }
           `}>
           {heroChild && heroChild}
           <div
@@ -261,7 +235,10 @@ export default ({ children, pageContext, query }) => {
                 margin: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            <Flex>
+            <div
+              css={css`
+                display: flex;
+              `}>
               <div
                 css={css`
                   width: ${isDiscovery
@@ -276,14 +253,34 @@ export default ({ children, pageContext, query }) => {
                   }
                 `}>
                 {isDocs && (
-                  <Flex id="Layout-actions" marginTop="size-500" marginBottom="size-500">
-                    <View marginEnd="size-400">
+                  <div
+                    css={css`
+                      display: flex;
+                      margin-top: var(--spectrum-global-dimension-size-500);
+                      margin-bottom: var(--spectrum-global-dimension-size-500);
+
+                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        flex-direction: column;
+                      }
+                    `}>
+                    <div
+                      css={css`
+                        margin-right: var(--spectrum-global-dimension-size-400);
+                      `}>
                       <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
-                    </View>
-                    <View id="Layout-actions-github" marginStart="auto">
+                    </div>
+                    <div
+                      css={css`
+                        margin-left: auto;
+
+                        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                          margin-left: 0;
+                          margin-top: var(--spectrum-global-dimension-size-200);
+                        }
+                      `}>
                       <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
-                    </View>
-                  </Flex>
+                    </div>
+                  </div>
                 )}
 
                 {filteredChildren}
@@ -293,13 +290,20 @@ export default ({ children, pageContext, query }) => {
                 {isDocs && <NextPrev nextPage={nextPage} previousPage={previousPage} />}
 
                 {!isDiscovery && (
-                  <Flex
-                    id="Layout-help"
-                    alignItems="center"
-                    justifyContent="space-between"
-                    marginTop="size-800"
-                    marginBottom="size-400">
-                    <View>
+                  <div
+                    css={css`
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      margin-top: var(--spectrum-global-dimension-size-800);
+                      margin-bottom: var(--spectrum-global-dimension-size-400);
+
+                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                      }
+                    `}>
+                    <div>
                       <Contributors
                         repository={repository}
                         branch={branch}
@@ -313,20 +317,25 @@ export default ({ children, pageContext, query }) => {
                             : new Date().toLocaleDateString()
                         }
                       />
-                    </View>
-                    <View id="Layout-feedback">
+                    </div>
+                    <div
+                      css={css`
+                        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                          margin-top: var(--spectrum-global-dimension-size-200);
+                        }
+                      `}>
                       <Feedback />
-                    </View>
-                  </Flex>
+                    </div>
+                  </div>
                 )}
               </div>
 
               {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
 
               {resourcesChild && resourcesChild}
-            </Flex>
+            </div>
           </div>
-          <Footer hasSideNav={hasSideNav} links={footerLinks} />
+          <Footer hasSideNav={hasSideNav} />
         </main>
       </MDXProvider>
     );

@@ -11,14 +11,14 @@
  */
 
 import React, { createRef, useState } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import nextId from 'react-id-generator';
 import classNames from 'classnames';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import '@spectrum-css/typography';
 import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
-import { ActionButton } from '@adobe/react-spectrum';
+import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
 
 const openTooltip = (setIsTooltipOpen) => {
@@ -72,7 +72,7 @@ const Code = ({ children, className = '', theme }) => {
               />
               <ActionButton
                 aria-describedby={tooltipId}
-                onPress={() => {
+                onClick={() => {
                   copy(textarea, document, setIsTooltipOpen);
                 }}>
                 Copy
@@ -95,7 +95,7 @@ const Code = ({ children, className = '', theme }) => {
                 <span className="spectrum-Tooltip-tip" />
               </span>
             </div>
-            <pre className={classNames(className, 'spectrum-Code4')}>
+            <pre className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
               {tokens.slice(0, -1).map((line, i) => {
                 const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 

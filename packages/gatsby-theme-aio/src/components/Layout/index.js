@@ -11,9 +11,8 @@
  */
 
 import React, { useState } from 'react';
-import { SSRProvider, Provider as RSProvider, defaultTheme } from '@adobe/react-spectrum';
-import { I18nProvider, useLocale } from '@react-aria/i18n';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 import { useStaticQuery, graphql } from 'gatsby';
 import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
@@ -25,18 +24,16 @@ import '@spectrum-css/vars/dist/spectrum-lightest.css';
 import '@spectrum-css/vars/dist/spectrum-darkest.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
-import './index.css';
-import { Grid } from '@adobe/react-spectrum';
-import { View } from '@adobe/react-spectrum';
 import { Provider } from '../Context';
 import { GlobalHeader } from '../GlobalHeader';
-import { GlobalHeaderTemp } from '../GlobalHeader/temp';
 import { SEO } from '../SEO';
-import { SideNav } from '../SideNav';
-import { OpenAPIBlock } from '@adobe/parliament-ui-components';
+import { ProgressCircle } from '../ProgressCircle';
 
 // Cache spec
 let openAPISpec;
+
+let OpenAPIBlock;
+let SideNav;
 
 const toggleSideNav = (setShowSideNav) => {
   setShowSideNav((showSideNav) => !showSideNav);
@@ -44,8 +41,6 @@ const toggleSideNav = (setShowSideNav) => {
 
 export default ({ children, pageContext, location }) => {
   location.pathname = decodeURIComponent(location.pathname);
-
-  const { locale, direction } = useLocale();
 
   // Load all data once and pass it to the Provider
   const data = useStaticQuery(
@@ -83,62 +78,7 @@ export default ({ children, pageContext, location }) => {
         site {
           pathPrefix
           siteMetadata {
-            globalNav {
-              home {
-                title
-                path
-                logo
-              }
-              menus {
-                title
-                path
-                sections {
-                  heading
-                  divider
-                  viewAll {
-                    title
-                    path
-                  }
-                  pages {
-                    title
-                    path
-                    description
-                  }
-                }
-              }
-              signIn
-              console
-              footer {
-                allAPIs {
-                  title
-                  path
-                }
-                APIs {
-                  title
-                  path
-                }
-                services {
-                  title
-                  path
-                }
-                community {
-                  title
-                  path
-                }
-                support {
-                  title
-                  path
-                }
-                developer {
-                  title
-                  path
-                }
-                legal {
-                  title
-                  path
-                }
-              }
-            }
+            menu
             docs {
               path
             }
@@ -184,9 +124,10 @@ export default ({ children, pageContext, location }) => {
 
   const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
   const { siteMetadata, pathPrefix } = site;
-  const { globalNav, versions, pages, subPages, docs } = siteMetadata;
+  const { menu, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSideNav, setShowSideNav] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
@@ -194,15 +135,27 @@ export default ({ children, pageContext, location }) => {
   const selectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
   const hasSideNav = selectedSubPages.length > 0;
 
-  const frontmatter = pageContext?.frontmatter;
-  const hasGlobalHeaderTemp = frontmatter?.GlobalHeaderTemp;
-  const hasOpenAPISpec = frontmatter?.openAPISpec;
+  if (hasSideNav && !SideNav) {
+    SideNav = loadable(() => import('../SideNav'));
+  }
+
+  const frontMatter = pageContext?.frontmatter;
   const hasLayout = pageContext?.frontmatter?.layout !== 'none';
 
+  const hasOpenAPISpec = frontMatter?.openAPISpec;
   if (typeof hasOpenAPISpec !== 'undefined') {
     if (openAPISpec !== hasOpenAPISpec) {
       openAPISpec = hasOpenAPISpec;
     }
+  }
+
+  if (openAPISpec && !OpenAPIBlock) {
+    setIsLoading(true);
+    OpenAPIBlock = loadable(() => import('../OpenAPIBlock'));
+
+    OpenAPIBlock.load().then(() => {
+      setIsLoading(false);
+    });
   }
 
   return (
@@ -218,131 +171,140 @@ export default ({ children, pageContext, location }) => {
         allGithub,
         allGithubContributors
       }}>
-      <SEO
-        title={frontmatter?.title}
-        description={frontmatter?.description}
-        favIcon={frontmatter?.favIcon}
-        locale={locale}
-        direction={direction}
-      />
-      <SSRProvider>
-        <I18nProvider locale={locale}>
-          <RSProvider theme={defaultTheme} colorScheme="light">
+      <SEO title={frontMatter?.title} description={frontMatter?.description} />
+      <div
+        dir="ltr"
+        className="spectrum spectrum--medium spectrum--large spectrum--light"
+        color-scheme="light"
+        css={css`
+          min-height: 100vh;
+          background-color: var(--spectrum-global-color-gray-50);
+        `}>
+        {hasLayout ? (
+          <>
             <div
-              className="spectrum--medium spectrum--large"
               css={css`
-                min-height: 100vh;
-                background-color: var(--spectrum-global-color-gray-50);
+                display: grid;
+                grid-template-areas: 'header header' 'sidenav main';
+                grid-template-rows: var(--spectrum-global-dimension-size-800);
+                grid-template-columns: ${hasSideNav ? '256px auto' : '0 auto'};
 
                 ${hasLayout &&
                 `@media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                  #Layout-grid {
-                    grid-template-columns: 0px auto !important;
-                  }
-
-                  #Layout-sidenav {
-                    transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
-                    transform: translateX(${showSideNav ? '0' : '-100%'});
-                  }
+                  grid-template-columns: 0px auto;
                 }`}
               `}>
-              {hasLayout ? (
-                <Grid
-                  id="Layout-grid"
-                  areas={['header header', 'sidenav main']}
-                  rows={['size-800']}
-                  columns={hasSideNav ? ['256px', 'auto'] : ['0px', 'auto']}>
-                  <View
-                    gridArea="header"
-                    position="fixed"
-                    height={hasGlobalHeaderTemp ? 'size-1000' : 'size-800'}
-                    left="size-0"
-                    right="size-0"
-                    backgroundColor="gray-50"
-                    zIndex="2">
-                    {hasGlobalHeaderTemp ? (
-                      <GlobalHeaderTemp />
-                    ) : (
-                      <GlobalHeader
-                        globalNav={globalNav}
-                        versions={versions}
-                        pages={pages}
-                        docs={docs}
-                        location={location}
-                        hasSideNav={hasSideNav}
-                        toggleSideNav={() => {
-                          toggleSideNav(setShowSideNav);
-                        }}
-                      />
-                    )}
-                  </View>
-                  <View
-                    id="Layout-sidenav"
-                    backgroundColor="gray-75"
-                    gridArea="sidenav"
-                    isHidden={!hasSideNav}
-                    position="fixed"
-                    zIndex="1"
-                    width="256px"
-                    height="100%">
-                    <SideNav
-                      selectedPages={selectedPages}
-                      selectedSubPages={selectedSubPages}
-                      searchIndex={ParliamentSearchIndex}
-                    />
-                  </View>
-                  <View gridArea="main">
-                    <View isHidden={!hasOpenAPISpec}>
-                      {openAPISpec && (
-                        <main
-                          css={css`
-                            [role='navigation'] [role='menuitem'] + ul {
-                              display: block;
-                            }
-                          `}>
-                          <OpenAPIBlock specUrl={openAPISpec} />
-                        </main>
-                      )}
-                    </View>
-                    {!hasOpenAPISpec && children}
-                  </View>
-                </Grid>
-              ) : (
-                children
-              )}
-            </div>
-            {hasLayout && (
               <div
                 css={css`
-                  display: none;
+                  grid-area: header;
+                  position: fixed;
+                  height: var(--spectrum-global-dimension-size-800);
+                  left: 0;
+                  right: 0;
+                  background-color: var(--spectrum-global-color-gray-50);
+                  z-index: 2;
+                `}>
+                <GlobalHeader
+                  menu={menu}
+                  versions={versions}
+                  pages={pages}
+                  docs={docs}
+                  location={location}
+                  hasSideNav={hasSideNav}
+                  toggleSideNav={() => {
+                    toggleSideNav(setShowSideNav);
+                  }}
+                />
+              </div>
+              <div
+                hidden={!hasSideNav}
+                css={css`
+                  grid-area: sidenav;
+                  position: fixed;
+                  z-index: 1;
+                  width: 256px;
+                  height: 100%;
+                  background-color: var(--spectrum-global-color-gray-75);
 
-                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                    display: block;
-                    transition: opacity 160ms ease-in;
-                    background-color: rgba(0, 0, 0, 0.4);
-                    pointer-events: none;
-                    opacity: 0;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
-                    width: 100%;
+                  ${hasLayout &&
+                  `@media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
+                    transform: translateX(${showSideNav ? '0' : '-100%'});
+                  }`}
+                `}>
+                {SideNav && (
+                  <SideNav
+                    selectedPages={selectedPages}
+                    selectedSubPages={selectedSubPages}
+                    searchIndex={ParliamentSearchIndex}
+                  />
+                )}
+              </div>
+              <div
+                css={css`
+                  grid-area: main;
+                `}>
+                <div hidden={!hasOpenAPISpec}>
+                  {openAPISpec && (
+                    <main
+                      css={css`
+                        [role='navigation'] [role='menuitem'] + ul {
+                          display: block;
+                        }
+                      `}>
+                      {OpenAPIBlock && <OpenAPIBlock specUrl={openAPISpec} />}
+                    </main>
+                  )}
+                </div>
+                {!hasOpenAPISpec && children}
+              </div>
+            </div>
 
-                    ${showSideNav &&
-                    `
-                  pointer-events: auto;
-                  opacity: 1;
-                `}
-                  }
-                `}
-                onClick={() => {
-                  toggleSideNav(setShowSideNav);
-                }}
-              />
-            )}
-          </RSProvider>
-        </I18nProvider>
-      </SSRProvider>
+            <div
+              css={css`
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: ${isLoading ? 'grid' : 'none'};
+                place-items: center center;
+              `}>
+              <ProgressCircle />
+            </div>
+
+            <div
+              css={css`
+                display: none;
+
+                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  display: block;
+                  transition: opacity 160ms ease-in;
+                  background-color: rgba(0, 0, 0, 0.4);
+                  pointer-events: none;
+                  opacity: 0;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+
+                  ${showSideNav &&
+                  `
+                    pointer-events: auto;
+                    opacity: 1;
+                  `}
+                }
+              `}
+              onClick={() => {
+                toggleSideNav(setShowSideNav);
+              }}
+            />
+          </>
+        ) : (
+          children
+        )}
+      </div>
     </Provider>
   );
 };

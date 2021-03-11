@@ -13,7 +13,7 @@
 import React, { useEffect, forwardRef } from 'react';
 import classNames from 'classnames';
 import '@spectrum-css/tabs';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const positionIndicator = (indicator, selectedTab) => {
   indicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;

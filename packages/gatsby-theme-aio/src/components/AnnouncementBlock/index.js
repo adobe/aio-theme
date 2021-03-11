@@ -10,11 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import { AnchorButton } from '../AnchorButton';
-import { View } from '@adobe/react-spectrum';
 import PropTypes from 'prop-types';
 import { getElementChild, LARGE_SCREEN_WIDTH } from '../../utils';
 
@@ -46,7 +45,7 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
         `}>
         {heading && (
           <h3
-            className="spectrum-Heading--M"
+            className="spectrum-Heading spectrum-Heading--sizeM"
             css={css`
               margin-top: 0 !important;
               margin-bottom: var(--spectrum-global-dimension-size-100) !important;
@@ -56,16 +55,19 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
         )}
 
         {text &&
-          React.cloneElement(text, {
-            className: 'spectrum-Body--M'
+          cloneElement(text, {
+            className: 'spectrum-Body spectrum-Body--sizeM'
           })}
 
         {link && (
-          <View marginTop="size-200">
+          <div
+            css={css`
+              margin-top: var(--spectrum-global-dimension-size-200);
+            `}>
             <AnchorButton href={link.props.href} variant="primary">
               {link.props.children}
             </AnchorButton>
-          </View>
+          </div>
         )}
       </div>
     </section>

@@ -11,7 +11,6 @@
  */
 
 import React from 'react';
-
 import globalTheme from '../../theme';
 
 import { AnchorLink } from '../AnchorLink';
@@ -20,8 +19,7 @@ import { Paragraph } from '../Paragraph';
 import { List } from '../List';
 import { Code } from '../Code';
 import { InlineCode } from '../InlineCode';
-import { Image } from '../Image';
-import { Table, TBody, Td, Th, THead, Tr } from '@adobe/parliament-ui-components';
+import { Table, TBody, Td, Th, THead, Tr } from '../Table';
 
 export const MDXComponents = {
   h1: Heading1,
@@ -44,7 +42,6 @@ export const MDXComponents = {
   ),
   inlineCode: InlineCode,
   a: AnchorLink,
-  img: Image,
   table: Table,
   tbody: TBody,
   th: Th,

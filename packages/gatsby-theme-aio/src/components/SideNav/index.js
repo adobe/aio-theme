@@ -14,7 +14,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { isExternalLink, getExternalLinkProps } from '../../utils';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import { Search } from '../Search';
@@ -126,4 +126,4 @@ SideNav.propTypes = {
   searchIndex: PropTypes.object
 };
 
-export { SideNav };
+export default SideNav;

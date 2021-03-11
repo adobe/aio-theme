@@ -11,9 +11,8 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { Flex } from '@adobe/react-spectrum';
 import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
@@ -34,7 +33,11 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
         text-decoration: none;
         color: inherit;
       `}>
-      <Flex alignItems="center">
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+        `}>
         <div
           css={css`
             display: inline-flex;
@@ -74,7 +77,7 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
           `}>
           {date && `Last updated ${date}`}
         </span>
-      </Flex>
+      </div>
     </a>
   );
 };

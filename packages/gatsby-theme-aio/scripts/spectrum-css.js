@@ -13,7 +13,7 @@
 const fs = require('fs');
 const large = require.resolve('@spectrum-css/vars/dist/spectrum-large.css');
 const icon = require.resolve('@spectrum-css/icon/dist/index-vars.css');
-const MOBILE_SCREEN_WIDTH = require('./globals').MOBILE_SCREEN_WIDTH;
+const MOBILE_SCREEN_WIDTH = require('../conf/globals').MOBILE_SCREEN_WIDTH;
 
 const wrap = (file, identifier, wrapper) => {
   try {

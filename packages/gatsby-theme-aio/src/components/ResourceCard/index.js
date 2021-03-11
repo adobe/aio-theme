@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect } from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement, useEffect } from 'react';
+import { css } from '@emotion/react';
 import { getElementChild, getExternalLinkProps, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
@@ -122,20 +122,24 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               }
             `}>
             {image &&
-              React.cloneElement(image, {
+              cloneElement(image, {
                 css: css`
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   height: 100%;
+                  width: 100%;
                   margin-top: 0;
                   margin-bottom: 0 !important;
 
-                  & > img {
-                    width: 100%;
-                    height: 100%;
+                  .gatsby-resp-image-wrapper {
+                    max-width: none !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                  }
+
+                  .gatsby-resp-image-image {
                     object-fit: cover;
-                    border-radius: 0;
                   }
                 `
               })}
@@ -160,7 +164,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   text-align: left;
                 `}>
                 <h3
-                  className="spectrum-Heading--M"
+                  className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-200) !important;
@@ -242,20 +246,24 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               padding: 0 !important;
             `}>
             {image &&
-              React.cloneElement(image, {
+              cloneElement(image, {
                 css: css`
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   height: 100%;
+                  width: 100%;
                   margin-bottom: 0 !important;
                   margin-top: 0;
 
-                  & > img {
-                    width: 100%;
-                    height: 100%;
+                  .gatsby-resp-image-wrapper {
+                    max-width: none !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                  }
+
+                  .gatsby-resp-image-image {
                     object-fit: cover;
-                    border-radius: 0;
                   }
                 `
               })}
@@ -281,7 +289,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                   text-align: left;
                 `}>
                 <h3
-                  className="spectrum-Heading--M"
+                  className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: 0 !important;

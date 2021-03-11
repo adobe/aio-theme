@@ -11,44 +11,69 @@
  */
 
 import React from 'react';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import '@spectrum-css/typography';
-import { View } from '@adobe/react-spectrum';
-import { Flex } from '@adobe/react-spectrum';
-import { Link } from '@adobe/react-spectrum';
-import ChevronLeft from '@spectrum-icons/workflow/ChevronLeft';
-import ChevronRight from '@spectrum-icons/workflow/ChevronRight';
+import { Link } from '../Link';
+import { ChevronLeft } from '../WorkflowIcons';
+import { ChevronRight } from '../WorkflowIcons';
 
 const NextPrev = ({ nextPage, previousPage }) =>
   nextPage || previousPage ? (
-    <div className="spectrum-Body--M">
-      <Flex marginBottom="size-800" marginTop="size-800" gap="size-200">
-        <View>
+    <div className="spectrum-Body spectrum-Body--sizeM">
+      <div
+        css={css`
+          display: flex;
+          margin-bottom: var(--spectrum-global-dimension-size-800);
+          margin-top: var(--spectrum-global-dimension-size-800);
+        `}>
+        <div>
           {previousPage && (
             <Link isQuiet={true}>
               <GatsbyLink to={previousPage.path} rel="prev">
-                <Flex alignItems="center">
-                  <ChevronLeft size="S" />
-                  <View marginStart="size-50">{previousPage.title}</View>
-                </Flex>
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                  `}>
+                  <ChevronLeft />
+                  <div
+                    css={css`
+                      margin-left: var(--spectrum-global-dimension-size-50);
+                    `}>
+                    {previousPage.title}
+                  </div>
+                </div>
               </GatsbyLink>
             </Link>
           )}
-        </View>
-        <View marginStart="auto">
+        </div>
+        <div
+          css={css`
+            margin-left: var(--spectrum-global-dimension-size-200);
+          `}>
           {nextPage && (
             <Link isQuiet={true}>
               <GatsbyLink to={nextPage.path} rel="next">
-                <Flex alignItems="center">
-                  <View marginEnd="size-50">{nextPage.title}</View>
-                  <ChevronRight size="S" />
-                </Flex>
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                  `}>
+                  <div
+                    css={css`
+                      margin-right: var(--spectrum-global-dimension-size-50);
+                    `}>
+                    {nextPage.title}
+                  </div>
+                  <ChevronRight />
+                </div>
               </GatsbyLink>
             </Link>
           )}
-        </View>
-      </Flex>
+        </div>
+      </div>
     </div>
   ) : null;
 

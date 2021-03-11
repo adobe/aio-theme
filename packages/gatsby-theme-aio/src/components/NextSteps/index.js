@@ -12,25 +12,27 @@
 
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import { css } from '@emotion/core';
-import { View } from '@adobe/react-spectrum';
-import { Link } from '@adobe/react-spectrum';
+import { css } from '@emotion/react';
+import { Link } from '../Link';
 import '@spectrum-css/typography';
-import FileTxt from '@spectrum-icons/workflow/FileTxt';
+import { FileTxt } from '../WorkflowIcons';
 import PropTypes from 'prop-types';
 
 const NextSteps = ({ pages }) => {
   return pages.length > 0 ? (
-    <View marginTop="size-800">
+    <div
+      css={css`
+        margin-top: var(--spectrum-global-dimension-size-800);
+      `}>
       <h3
-        className="spectrum-Heading--S"
+        className="spectrum-Heading--S spectrum-Heading--sizeS"
         css={css`
           margin-bottom: var(--spectrum-global-dimension-size-200);
         `}>
         Next steps
       </h3>
       <ul
-        className="spectrum-Body--M"
+        className="spectrum-Body spectrum-Body--sizeM"
         css={css`
           list-style: none;
           padding: 0;
@@ -41,24 +43,28 @@ const NextSteps = ({ pages }) => {
             css={css`
               display: block;
               height: var(--spectrum-global-dimension-size-500);
-              line-height: var(--spectrum-global-dimension-size-500);
-
-              a svg {
-                vertical-align: text-top;
-              }
             `}>
             <Link isQuiet={true}>
               <GatsbyLink to={page.path}>
-                <FileTxt size="S" />
-                <View elementType="span" marginStart="size-100">
-                  {page.title}
-                </View>
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                  `}>
+                  <FileTxt />
+                  <span
+                    css={css`
+                      margin-left: var(--spectrum-global-dimension-size-100);
+                    `}>
+                    {page.title}
+                  </span>
+                </div>
               </GatsbyLink>
             </Link>
           </li>
         ))}
       </ul>
-    </View>
+    </div>
   ) : null;
 };
 

@@ -1,7 +1,6 @@
 ---
 title: Index
 description: This is the index page
-GlobalHeaderTemp: true  
 ---
 import {clouds, products} from '../../products'
 
@@ -26,5 +25,5 @@ Explore the APIs offered by products and view documentation
 
 
 
-<ProductCardGrid products={products} filterByIds={[2,3,4,40]} />
+<ProductCardGrid products={products} clouds={clouds} filterByIds={[2,3,4,40]} />
 

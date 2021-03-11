@@ -10,13 +10,22 @@
  * governing permissions and limitations under the License.
  */
 
-// https://github.com/gatsbyjs/gatsby/issues/24815#issuecomment-645512683
+const webpack = require('webpack');
+
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    optimization: {
-      // Else react-spectrum css is discarded
-      sideEffects: false
-    }
+    resolve: {
+      fallback: {
+        https: require.resolve('https-browserify'),
+        http: require.resolve('stream-http')
+      }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer']
+      })
+    ]
   });
 };
 
@@ -29,11 +38,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     
     type SiteSiteMetadata {
-      globalNav: GlobalNav
       pages: [Link]
       subPages: [SubPage]
       versions: [Link],
       docs: Link
+      menu: Boolean
     }
     
     type GlobalNav {

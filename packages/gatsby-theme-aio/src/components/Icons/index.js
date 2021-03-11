@@ -12,6 +12,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { css } from '@emotion/react';
 import '@spectrum-css/icon';
 
 const commonProps = {
@@ -31,22 +32,53 @@ export const Adobe = (props) => (
 
 // Used by Picker
 export const ChevronDown = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronDown100')}>
+    <path
+      d="M4.5 13.25a1.094 1.094 0 01-.773-1.868L8.109 7 3.727 2.618A1.094 1.094 0 015.273 1.07l5.157 5.156a1.094 1.094 0 010 1.546L5.273 12.93a1.091 1.091 0 01-.773.321z"
+      className="spectrum-UIIcon--large"></path>
+    <path
+      d="M3 9.95a.875.875 0 01-.615-1.498L5.88 5 2.385 1.547A.875.875 0 013.615.302L7.74 4.377a.876.876 0 010 1.246L3.615 9.698A.872.872 0 013 9.95z"
+      className="spectrum-UIIcon--medium"></path>
+  </svg>
+);
+
+// Used by Breadcrumbs
+export const ChevronRightSmall = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronRight75')}>
+    <path
+      d="M3.833 11.578a1.05 1.05 0 01-.742-1.793L6.876 6 3.091 2.215A1.05 1.05 0 114.575.73l4.529 4.527a1.05 1.05 0 010 1.486L4.575 11.27a1.047 1.047 0 01-.742.308z"
+      className="spectrum-UIIcon--large"></path>
+    <path
+      d="M7.482 4.406l-.001-.001L3.86.783a.84.84 0 00-1.188 1.188L5.702 5l-3.03 3.03A.84.84 0 003.86 9.216l3.621-3.622h.001a.84.84 0 000-1.19z"
+      className="spectrum-UIIcon--medium"></path>
+  </svg>
+);
+
+// Used by Accordion
+export const ChevronRight = ({ className, ...props }) => (
   <svg
     {...props}
     {...commonProps}
-    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronDownMedium')}>
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronRight100')}>
     <path
-      d="M11.99 1.51a1 1 0 00-1.707-.707L6 5.086 1.717.803A1 1 0 10.303 2.217l4.99 4.99a1 1 0 001.414 0l4.99-4.99a.997.997 0 00.293-.707z"
+      d="M4.5 13.25a1.094 1.094 0 01-.773-1.868L8.109 7 3.727 2.618A1.094 1.094 0 015.273 1.07l5.157 5.156a1.094 1.094 0 010 1.546L5.273 12.93a1.091 1.091 0 01-.773.321z"
       className="spectrum-UIIcon--large"></path>
     <path
-      d="M9.99 1.01A1 1 0 008.283.303L5 3.586 1.717.303A1 1 0 10.303 1.717l3.99 3.98a1 1 0 001.414 0l3.99-3.98a.997.997 0 00.293-.707z"
+      d="M3 9.95a.875.875 0 01-.615-1.498L5.88 5 2.385 1.547A.875.875 0 013.615.302L7.74 4.377a.876.876 0 010 1.246L3.615 9.698A.872.872 0 013 9.95z"
       className="spectrum-UIIcon--medium"></path>
   </svg>
 );
 
 // Used by InlineAlert
 export const InfoMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-InfoMedium')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-InfoMedium')}
+    css={css`
+      width: var(--spectrum-icon-info-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-info-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
     <path
       d="M11 2a9 9 0 109 9 9 9 0 00-9-9zm-.15 2.65a1.359 1.359 0 011.431 1.283q.004.064.001.129a1.332 1.332 0 01-1.432 1.432 1.353 1.353 0 01-1.432-1.433 1.359 1.359 0 011.304-1.412q.064-.002.128.001zM13.5 16a.5.5 0 01-.5.5H9a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h1v-4H9a.5.5 0 01-.5-.5V9a.5.5 0 01.5-.5h2.5a.5.5 0 01.5.5v5.5h1a.5.5 0 01.5.5z"
       className="spectrum-UIIcon--large"></path>
@@ -58,7 +90,14 @@ export const InfoMedium = ({ className, ...props }) => (
 
 // Used by InlineAlert
 export const SuccessMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-SuccessMedium')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-SuccessMedium')}
+    css={css`
+      width: var(--spectrum-icon-success-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-success-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
     <path
       d="M11 2a9 9 0 109 9 9 9 0 00-9-9zm5.638 5.609L10.1 15.652a.5.5 0 01-.742.038L5.086 11.5a.5.5 0 010-.707l.707-.707a.5.5 0 01.707 0L9.6 13.1l5.486-6.751a.5.5 0 01.7-.073l.776.631a.5.5 0 01.076.702z"
       className="spectrum-UIIcon--large"></path>
@@ -70,7 +109,14 @@ export const SuccessMedium = ({ className, ...props }) => (
 
 // Used by InlineAlert
 export const WarningMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}
+    css={css`
+      width: var(--spectrum-icon-warning-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-warning-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
     <path
       d="M10.563 2.206l-9.249 16.55a.5.5 0 00.436.744h18.5a.5.5 0 00.436-.744l-9.251-16.55a.5.5 0 00-.872 0zm1.436 15.044a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3.5a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
       className="spectrum-UIIcon--large"></path>
@@ -82,7 +128,14 @@ export const WarningMedium = ({ className, ...props }) => (
 
 // Used by InlineAlert
 export const HelpMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}
+    css={css`
+      width: var(--spectrum-icon-help-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-help-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
     <path
       d="M11 2a9 9 0 109 9 9 9 0 00-9-9zm-.007 14.681a1.145 1.145 0 01-1.227-1.215 1.159 1.159 0 011.115-1.201q.056-.002.112.001a1.159 1.159 0 011.226 1.088q.003.056.001.112a1.127 1.127 0 01-1.227 1.215zm1.981-6.63c-.684.642-1.344 1.215-1.333 1.736a2.275 2.275 0 00.176.732.25.25 0 01-.232.343h-1.26a.3.3 0 01-.228-.069 1.886 1.886 0 01-.421-1.2c0-.816.508-1.336 1.35-2.17.578-.573.911-.937.911-1.475 0-.625-.421-1.059-1.49-1.059a5.337 5.337 0 00-2 .473.249.249 0 01-.347-.23v-1.24a.5.5 0 01.3-.459 6.413 6.413 0 012.434-.5c2.1.006 3.261 1.2 3.261 2.725a3.053 3.053 0 01-1.121 2.393z"
       className="spectrum-UIIcon--large"></path>
@@ -94,7 +147,14 @@ export const HelpMedium = ({ className, ...props }) => (
 
 // Used by InlineAlert
 export const AlertMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-AlertMedium')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-AlertMedium')}
+    css={css`
+      width: var(--spectrum-icon-alert-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-alert-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
     <path
       d="M10.563 2.206l-9.249 16.55a.5.5 0 00.436.744h18.5a.5.5 0 00.436-.744l-9.251-16.55a.5.5 0 00-.872 0zm1.436 15.044a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3.5a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
       className="spectrum-UIIcon--large"></path>
@@ -118,16 +178,13 @@ export const Bug = ({ ...props }) => (
   </svg>
 );
 
-export const CheckMarkMedium = ({ className, ...props }) => (
-  <svg
-    {...props}
-    {...commonProps}
-    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-CheckmarkMedium')}>
+export const CheckMark = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-Checkmark100')}>
     <path
-      d="M6 14a1 1 0 01-.789-.385l-4-5a1 1 0 111.577-1.23L6 11.376l7.213-8.99a1 1 0 111.576 1.23l-8 10a1 1 0 01-.789.384z"
+      d="M5.125 12.625a1.25 1.25 0 01-.96-.45L1.04 8.425a1.25 1.25 0 011.92-1.6l2.136 2.563 5.922-7.536a1.25 1.25 0 111.964 1.545l-6.874 8.75a1.25 1.25 0 01-.965.478z"
       className="spectrum-UIIcon--large"></path>
     <path
-      d="M4.5 10a1.022 1.022 0 01-.799-.384l-2.488-3a1 1 0 011.576-1.233L4.5 7.376l4.712-5.991a1 1 0 111.576 1.23l-5.51 7A.978.978 0 014.5 10z"
+      d="M3.5 9.5a.999.999 0 01-.774-.368l-2.45-3a1 1 0 111.548-1.264l1.657 2.028 4.68-6.01A1 1 0 019.74 2.114l-5.45 7a1 1 0 01-.777.386z"
       className="spectrum-UIIcon--medium"></path>
   </svg>
 );
@@ -137,5 +194,28 @@ export const TripleGripper = ({ className, ...props }) => (
     <rect height="4" rx="1" ry="1" width="28" x="4" y="16"></rect>
     <rect height="4" rx="1" ry="1" width="28" x="4" y="6"></rect>
     <rect height="4" rx="1" ry="1" width="28" x="4" y="26"></rect>
+  </svg>
+);
+
+// Used by SearchField
+export const Magnify = ({ className, ...props }) => (
+  <svg
+    {...props}
+    {...commonProps}
+    viewBox="0 0 36 36"
+    className={classNames(className, 'spectrum-Icon', 'spectrum-Icon--sizeM')}>
+    <path d="M33.173 30.215L25.4 22.443a12.826 12.826 0 10-2.957 2.957l7.772 7.772a2.1 2.1 0 002.958-2.958zM6 15a9 9 0 119 9 9 9 0 01-9-9z"></path>
+  </svg>
+);
+
+// Used by SearchField
+export const Cross = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} className="spectrum-Icon spectrum-UIIcon-Cross75">
+    <path
+      d="M6.485 5l2.674-2.674A1.05 1.05 0 107.674.84L5 3.515 2.326.84A1.05 1.05 0 00.84 2.326L3.515 5 .84 7.674A1.05 1.05 0 002.326 9.16L5 6.485 7.674 9.16A1.05 1.05 0 109.16 7.674z"
+      className="spectrum-UIIcon--large"></path>
+    <path
+      d="M5.188 4l2.14-2.14A.84.84 0 106.141.672L4 2.812 1.86.672A.84.84 0 00.672 1.86L2.812 4 .672 6.14A.84.84 0 101.86 7.328L4 5.188l2.14 2.14A.84.84 0 107.328 6.14z"
+      className="spectrum-UIIcon--medium"></path>
   </svg>
 );

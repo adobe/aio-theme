@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
@@ -40,7 +40,7 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
       `}>
       {heading && (
         <h2
-          className="spectrum-Heading--L"
+          className="spectrum-Heading spectrum-Heading--sizeL"
           css={css`
             margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
@@ -53,8 +53,8 @@ const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
       )}
 
       {text &&
-        React.cloneElement(text, {
-          className: 'spectrum-Body--L'
+        cloneElement(text, {
+          className: 'spectrum-Body spectrum-Body--sizeL'
         })}
     </div>
   </section>

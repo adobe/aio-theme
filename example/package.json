@@ -4,9 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@adobe/gatsby-theme-aio": "*",
-    "gatsby": "^2.23.11",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "gatsby": "^3.0.0"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",

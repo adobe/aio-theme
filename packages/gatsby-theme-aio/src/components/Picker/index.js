@@ -17,7 +17,7 @@ import classNames from 'classnames';
 import { ChevronDown } from '../Icons';
 import { Popover } from '../Popover';
 import { Menu, Item } from '../Menu';
-import '@spectrum-css/dropdown';
+import '@spectrum-css/picker';
 
 const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
@@ -45,18 +45,14 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   }, [options]);
 
   return (
-    <div
-      {...props}
-      className={classNames('spectrum-Dropdown', {
-        'is-open': openMenu,
-        'spectrum-Dropdown--quiet': isQuiet
-      })}>
+    <div>
       <button
+        {...props}
         className={classNames(
-          'spectrum-FieldButton',
-          'spectrum-Dropdown-trigger',
-          { 'is-selected': openMenu },
-          { 'spectrum-FieldButton--quiet': isQuiet }
+          'spectrum-Picker',
+          'spectrum-Picker--sizeM',
+          { 'is-open': openMenu },
+          { 'spectrum-Picker--quiet': isQuiet }
         )}
         aria-haspopup="listbox"
         aria-expanded={openMenu}
@@ -66,10 +62,10 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
           event.nativeEvent.stopImmediatePropagation();
           setOpenMenu((openMenu) => !openMenu);
         }}>
-        <span className={classNames('spectrum-Dropdown-label', { 'is-placeholder': label })}>
+        <span className={classNames('spectrum-Picker-label', { 'is-placeholder': label })}>
           {label || options.find((option) => option.selected)?.title || options[0].title}
         </span>
-        <ChevronDown className="spectrum-Dropdown-icon" />
+        <ChevronDown className="spectrum-Picker-menuIcon" />
       </button>
       <Popover variant="picker" isQuiet={isQuiet} isOpen={openMenu} ref={popover}>
         <Menu>
@@ -102,23 +98,20 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
 };
 
 const PickerButton = ({ children, isOpen, isQuiet, ariaControls, ...props }) => (
-  <div
+  <button
     {...props}
-    className={classNames('spectrum-Dropdown', { 'spectrum-Dropdown--quiet': isQuiet }, { 'is-open': isOpen })}>
-    <button
-      className={classNames(
-        'spectrum-FieldButton',
-        'spectrum-Dropdown-trigger',
-        { 'spectrum-FieldButton--quiet': isQuiet },
-        { 'is-selected': isOpen }
-      )}
-      aria-haspopup="listbox"
-      aria-expanded={isOpen}
-      aria-controls={ariaControls}>
-      <span className="spectrum-Dropdown-label">{children}</span>
-      <ChevronDown className="spectrum-Dropdown-icon" />
-    </button>
-  </div>
+    className={classNames(
+      'spectrum-Picker',
+      'spectrum-Picker--sizeM',
+      { 'spectrum-Picker--quiet': isQuiet },
+      { 'is-open': isOpen }
+    )}
+    aria-haspopup="listbox"
+    aria-expanded={isOpen}
+    aria-controls={ariaControls}>
+    <span className="spectrum-Picker-label">{children}</span>
+    <ChevronDown className="spectrum-Picker-menuIcon" />
+  </button>
 );
 
 Picker.propTypes = {

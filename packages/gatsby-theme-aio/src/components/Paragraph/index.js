@@ -11,7 +11,7 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 
 const paragraphOverrides = `
@@ -21,7 +21,7 @@ const paragraphOverrides = `
 export const Paragraph = ({ children, className, css: cssOverrides, ...props }) => (
   <p
     {...props}
-    className={className || 'spectrum-Body--M'}
+    className={className || 'spectrum-Body spectrum-Body--sizeM'}
     css={css`
       ${paragraphOverrides}
       ${cssOverrides}

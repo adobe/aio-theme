@@ -12,9 +12,8 @@
 
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { View } from '@adobe/react-spectrum';
-import { Link } from '@adobe/react-spectrum';
-import { css } from '@emotion/core';
+import { Link } from '../Link';
+import { css } from '@emotion/react';
 import classNames from 'classnames';
 import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
@@ -147,9 +146,9 @@ const OnThisPage = ({ tableOfContents }) => {
   }, []);
 
   const Outline = () => (
-    <View elementType="nav" role="navigation" aria-label="Article Outline">
+    <nav role="navigation" aria-label="Article Outline">
       <h4
-        className="spectrum-Detail--L"
+        className="spectrum-Detail spectrum-Detail--sizeL"
         css={css`
           color: var(--spectrum-global-color-gray-600);
           margin-bottom: var(--spectrum-global-dimension-size-250);
@@ -157,7 +156,7 @@ const OnThisPage = ({ tableOfContents }) => {
         On this page
       </h4>
       <ol
-        className="spectrum-Body--M"
+        className="spectrum-Body spectrum-Body--sizeM"
         css={css`
           list-style: none;
           padding: 0;
@@ -198,7 +197,7 @@ const OnThisPage = ({ tableOfContents }) => {
           </li>
         ))}
       </ol>
-    </View>
+    </nav>
   );
 
   return (

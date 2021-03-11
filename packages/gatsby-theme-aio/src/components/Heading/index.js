@@ -11,11 +11,11 @@
  */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
-import { Divider } from '@adobe/react-spectrum';
-import { Link } from '@adobe/react-spectrum';
+import { Divider } from '../Divider';
+import { Link } from '../Link';
 
 const headingSizes = ['XL', 'M', 'S', 'XS', 'XXS', 'XXS'];
 
@@ -41,6 +41,10 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     & span a {
       opacity: 0;
       transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
+      
+      &:focus {
+        opacity: 1;
+      }
     }
 
     &:hover span a {
@@ -72,7 +76,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         {...props}
         className={
           className ||
-          classNames(className, `spectrum-Heading--${headingSizes[level - 1]}`, {
+          classNames(className, `spectrum-Heading spectrum-Heading--size${headingSizes[level - 1]}`, {
             'spectrum-Heading--light': isHeading1
           })
         }
@@ -95,7 +99,14 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
           </span>
         )}
       </HeadingTag>
-      {isHeading2 && <Divider marginBottom="size-300" />}
+      {isHeading2 && (
+        <Divider
+          size="L"
+          css={css`
+            margin-bottom: var(--spectrum-global-dimension-size-300);
+          `}
+        />
+      )}
     </>
   );
 };

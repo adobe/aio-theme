@@ -13,7 +13,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import '@spectrum-css/popover';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classNames from 'classnames';
 
 const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, ref) => (
@@ -33,8 +33,8 @@ const Popover = forwardRef(({ isOpen, children, variant, isQuiet, className }, r
       'spectrum-Popover',
       'spectrum-Popover--bottom',
       { 'is-open': isOpen },
-      { 'spectrum-Dropdown-popover': variant === 'picker' },
-      { 'spectrum-Dropdown-popover--quiet': variant === 'picker' && isQuiet }
+      { 'spectrum-Picker-popover': variant === 'picker' },
+      { 'spectrum-Picker-popover--quiet': variant === 'picker' && isQuiet }
     )}>
     {children}
   </div>

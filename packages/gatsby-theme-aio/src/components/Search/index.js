@@ -10,13 +10,13 @@
  *  governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { navigate, withPrefix } from 'gatsby';
 import { Index } from 'elasticlunr';
-import { SearchField, View, Flex } from '@adobe/react-spectrum';
+import { SearchField } from '../SearchField';
 import { Item, Menu, Section } from '../Menu';
 import { Popover } from '../Popover';
 
@@ -56,7 +56,7 @@ const SearchResults = ({ results, setIsOpen }) => {
       <Menu>
         {hasDocResults && (
           <Section title="docs">
-            {React.cloneElement(docsResultMenuItems[0], {
+            {cloneElement(docsResultMenuItems[0], {
               isHighlighted: true
             })}
 
@@ -72,7 +72,7 @@ const SearchResults = ({ results, setIsOpen }) => {
               apiResultMenuItems
             ) : (
               <>
-                {React.cloneElement(apiResultMenuItems[0], {
+                {cloneElement(apiResultMenuItems[0], {
                   isHighlighted: true
                 })}
 
@@ -86,22 +86,32 @@ const SearchResults = ({ results, setIsOpen }) => {
   }
 
   return (
-    <View marginTop="size-800" marginBottom="size-800">
-      <Flex direction="column" alignItems="center" justifyContent="center">
+    <div
+      css={css`
+        margin-top: var(--spectrum-global-dimension-size-800);
+        margin-bottom: var(--spectrum-global-dimension-size-800);
+      `}>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        `}>
         <h4
-          className="spectrum-Heading--S"
+          className="spectrum-Heading spectrum-Heading--sizeS"
           css={css`
             margin-bottom: var(--spectrum-global-dimension-size-100);
           `}>
           No Results Found
         </h4>
         <em>Try another search term</em>
-      </Flex>
-    </View>
+      </div>
+    </div>
   );
 };
 
-const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
+const Search = ({ searchIndex = {}, ...props }) => {
   const searchRef = useRef(null);
   const [index] = useState(Index.load(searchIndex));
   const [results, setResults] = useState([]);
@@ -137,9 +147,9 @@ const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
       `}
       {...props}>
       <SearchField
-        width="100%"
-        aria-label="Search"
-        placeholder={placeholder}
+        css={css`
+          width: 100%;
+        `}
         onClear={() => {
           setIsOpen(false);
         }}
@@ -152,7 +162,6 @@ const Search = ({ searchIndex = {}, placeholder = 'Search', ...props }) => {
             setIsOpen(false);
           }
         }}
-        autoComplete="off"
       />
       <Popover
         isOpen={isOpen}

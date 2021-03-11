@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect } from 'react';
-import { css } from '@emotion/core';
+import React, { useEffect, cloneElement } from 'react';
+import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
@@ -99,7 +99,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
               z-index: 1;
             `}>
             {icon &&
-              React.cloneElement(icon, {
+              cloneElement(icon, {
                 css: css`
                   height: var(--spectrum-global-dimension-size-600);
                   width: var(--spectrum-global-dimension-size-600);
@@ -118,10 +118,10 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
               position: relative;
               z-index: 1;
               background-color: var(--spectrum-global-color-gray-50);
-              ${icon ? 'top: 64px;' : ''}
+              ${icon ? 'top: var(--spectrum-global-dimension-size-800);' : ''}
             `}>
             <div
-              className="spectrum-Card-header spectrum-Heading--XXS"
+              className="spectrum-Card-header spectrum-Heading spectrum-Heading--sizeXXS"
               css={css`
                 margin-top: 0 !important;
                 margin-bottom: var(--spectrum-global-dimension-size-100) !important;
@@ -135,7 +135,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
               </div>
             </div>
             <div
-              className="spectrum-Card-content spectrum-Body--S"
+              className="spectrum-Card-content spectrum-Body spectrum-Body--sizeS"
               css={css`
                 height: auto;
                 margin-bottom: 0 !important;
@@ -149,7 +149,13 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
             buttons={buttons}
             quiets={[true, false]}
             variants={['secondary', 'primary']}
-            justifyContent="end"
+            css={css`
+              justify-content: flex-end;
+
+              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                justify-content: center;
+              }
+            `}
           />
         </div>
       </div>

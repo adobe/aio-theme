@@ -10,14 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { Children } from 'react';
+import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../../utils';
-import { View } from '@adobe/react-spectrum';
-import { Flex } from '@adobe/react-spectrum';
-import LinkOut from '@spectrum-icons/workflow/LinkOut';
+import { LinkOut } from '../WorkflowIcons';
 import { getElementChild, isExternalLink, LARGE_SCREEN_WIDTH } from '../../utils';
 
 const Resources = ({ heading, links }) => {
@@ -34,12 +32,12 @@ const Resources = ({ heading, links }) => {
       `}>
       {heading}
       <ul
-        className="spectrum-Body--M"
+        className="spectrum-Body spectrum-Body--sizeM"
         css={css`
           list-style: none;
           padding: 0;
         `}>
-        {React.Children.map(links.props.children, (item, i) => {
+        {Children.map(links.props.children, (item, i) => {
           const link = getElementChild(item);
           const href = link.props.href;
 
@@ -49,10 +47,20 @@ const Resources = ({ heading, links }) => {
               css={css`
                 margin-top: var(--spectrum-global-dimension-size-200);
               `}>
-              <Flex>
+              <div
+                css={css`
+                  display: flex;
+                `}>
                 {link}
-                <View marginStart="size-100">{isExternalLink(href) && <LinkOut size="XS" />}</View>
-              </Flex>
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                    margin-left: var(--spectrum-global-dimension-size-100);
+                  `}>
+                  {isExternalLink(href) && <LinkOut size="XS" />}
+                </div>
+              </div>
             </li>
           );
         })}

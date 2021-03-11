@@ -13,17 +13,13 @@
 // TODO reuse ProductCard
 
 import React, { useState, useEffect } from 'react';
-import { css } from '@emotion/core';
-import { Flex } from '@adobe/react-spectrum';
-import { View } from '@adobe/react-spectrum';
+import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
-import { CheckboxGroup } from '@adobe/react-spectrum';
-import { Checkbox } from '@adobe/react-spectrum';
-import { Picker, Item } from '@adobe/react-spectrum';
+import { Checkbox } from '../Checkbox';
+import { Picker } from '../Picker';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import { LARGE_SCREEN_WIDTH } from '../../utils';
-import nextId from 'react-id-generator';
 import PropTypes from 'prop-types';
 
 const filterByClouds = (products, cloudFilter, additionalFilter, setFilteredProducts) => {
@@ -58,17 +54,17 @@ const filterById = (products, ids = []) => {
 
 const additionalFilters = [
   {
-    name: 'Last updated',
+    title: 'Last updated',
     value: 'last_updated',
     filter: filterByLastUpdated
   },
   {
-    name: 'Name',
+    title: 'Name',
     value: 'name',
     filter: filterByName
   },
   {
-    name: 'Custom',
+    title: 'Custom',
     value: 'id',
     filter: filterById
   }
@@ -97,7 +93,6 @@ const ProductCardGrid = ({
     filterByClouds(products, cloudFilter.length ? cloudFilter : clouds, additionalFilter, setFilteredProducts);
   }, [cloudFilter, additionalFilter]);
 
-  const headingId = nextId();
   const height = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500))';
   const width = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800))';
 
@@ -107,58 +102,94 @@ const ProductCardGrid = ({
       css={css`
         max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
         margin: var(--spectrum-global-dimension-size-400) auto;
-
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-          #ProductCardGrid-main {
-            flex-direction: column;
-            align-items: center !important;
-          }
-        }
       `}>
       {interaction && (
-        <Flex alignItems="right" height="size-800" justifyContent="end" marginEnd="size-400">
-          <Flex alignItems="center" justifyContent="center">
-            <Picker
-              isQuiet
-              items={additionalFilters.slice(0, 2)}
-              onSelectionChange={(selected) => setAdditionalFilter(selected)}
-              defaultSelectedKey={orderBy}
-              aria-label="Filter by name or last updated product"
-              marginStart="size-100">
-              {(item) => <Item key={item.value}>{item.name}</Item>}
-            </Picker>
-          </Flex>
-        </Flex>
+        <div
+          css={css`
+            display: flex;
+            align-items: right;
+            height: var(--spectrum-global-dimension-size-800);
+            justify-content: flex-end;
+            margin-right: var(--spectrum-global-dimension-size-400);
+          `}>
+          <Picker
+            isQuiet
+            items={additionalFilters.slice(0, 2).map((filter) => {
+              return filter.value === orderBy
+                ? {
+                    selected: true,
+                    ...filter
+                  }
+                : filter;
+            })}
+            aria-label="Filter by name or last updated product"
+            onChange={(index) => {
+              setAdditionalFilter(additionalFilters[index].value);
+            }}
+          />
+        </div>
       )}
-      <Flex id="ProductCardGrid-main">
+      <div
+        css={css`
+          display: flex;
+          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            flex-direction: column;
+            align-items: center;
+          }
+        `}>
         {interaction && (
-          <Flex alignItems="end" width="size-3000" direction="column">
-            <Flex alignItems="start" direction="column">
+          <div
+            css={css`
+              display: flex;
+              align-items: end;
+              width: var(--spectrum-global-dimension-size-3000);
+              flex-direction: column;
+            `}>
+            <div
+              css={css`
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+              `}>
               <h4
-                id={headingId}
-                className="spectrum-Heading--XS"
+                className="spectrum-Heading spectrum-Heading--sizeXS"
                 css={css`
                   margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
                 Filter by
               </h4>
-              <CheckboxGroup
-                isEmphasized
-                aria-labelledby={headingId}
-                marginTop="size-100"
-                onChange={(values) => {
-                  setCloudFilter(values);
-                }}>
+
+              <div
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-100);
+                  display: flex;
+                  flex-direction: column;
+                `}>
                 {clouds.map((cloud, i) => (
-                  <Checkbox key={i} value={cloud} marginBottom="size-100">
+                  <Checkbox
+                    key={i}
+                    value={cloud}
+                    onChange={(checked) => {
+                      if (checked) {
+                        setCloudFilter([...cloudFilter, cloud]);
+                      } else {
+                        setCloudFilter(cloudFilter.filter((filter) => filter !== cloud));
+                      }
+                    }}
+                    css={css`
+                      margin-bottom: var(--spectrum-global-dimension-size-100);
+                    `}>
                     {cloud}
                   </Checkbox>
                 ))}
-              </CheckboxGroup>
-            </Flex>
-          </Flex>
+              </div>
+            </div>
+          </div>
         )}
-        <View flex="1">
+        <div
+          css={css`
+            flex: 1;
+          `}>
           <div
             css={css`
               display: grid;
@@ -220,7 +251,7 @@ const ProductCardGrid = ({
                     )}
                   </div>
                   <div
-                    className="spectrum-Card-header spectrum-Heading--XXS"
+                    className="spectrum-Card-header spectrum-Heading spectrum-Heading--sizeXXS"
                     css={css`
                       margin-top: 0 !important;
                       margin-bottom: var(--spectrum-global-dimension-size-100) !important;
@@ -234,7 +265,7 @@ const ProductCardGrid = ({
                     </div>
                   </div>
                   <div
-                    className="spectrum-Card-content spectrum-Body--S"
+                    className="spectrum-Card-content spectrum-Body spectrum-Body--sizeS"
                     css={css`
                       height: auto;
                       margin-bottom: 0 !important;
@@ -243,24 +274,47 @@ const ProductCardGrid = ({
                   </div>
                 </div>
                 <div className="spectrum-Card-footer">
-                  <Flex justifyContent="end" gap="size-200" wrap="wrap">
+                  <div
+                    css={css`
+                      display: flex;
+                      justify-content: flex-end;
+                      flex-wrap: wrap;
+                      --gap: var(--spectrum-global-dimension-size-200);
+                      margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+                      width: calc(100% + var(--gap));
+
+                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        justify-content: center;
+                      }
+                    `}>
                     {product.discover && (
-                      <AnchorButton isQuiet href={product.discover} variant="secondary">
-                        Learn more
-                      </AnchorButton>
+                      <div
+                        css={css`
+                          margin: var(--gap) 0 0 var(--gap);
+                        `}>
+                        <AnchorButton isQuiet href={product.discover} variant="secondary">
+                          Learn more
+                        </AnchorButton>
+                      </div>
                     )}
+
                     {product.docs && (
-                      <AnchorButton href={product.docs} variant="primary">
-                        View docs
-                      </AnchorButton>
+                      <div
+                        css={css`
+                          margin: var(--gap) 0 0 var(--gap);
+                        `}>
+                        <AnchorButton href={product.docs} variant="primary">
+                          View docs
+                        </AnchorButton>
+                      </div>
                     )}
-                  </Flex>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </View>
-      </Flex>
+        </div>
+      </div>
     </section>
   );
 };

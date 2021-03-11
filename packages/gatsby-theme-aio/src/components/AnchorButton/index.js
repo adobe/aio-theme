@@ -14,11 +14,11 @@ import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
 import { getExternalLinkProps, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
-import { Button } from '@adobe/react-spectrum';
+import { Button } from '../Button';
 import '@spectrum-css/button';
 import classNames from 'classnames';
 
-const AnchorButton = ({ href, variant, isQuiet, link, ...props }) => {
+const AnchorButton = ({ href, variant, isQuiet, ...props }) => {
   if (isExternalLink(href)) {
     return (
       <Button
@@ -35,7 +35,7 @@ const AnchorButton = ({ href, variant, isQuiet, link, ...props }) => {
   return (
     <GatsbyLink
       role="button"
-      className={classNames('spectrum-Button', `spectrum-Button--${variant}`, {
+      className={classNames('spectrum-Button', 'spectrum-Button--sizeM', `spectrum-Button--${variant}`, {
         'spectrum-Button--quiet': isQuiet
       })}
       to={href}

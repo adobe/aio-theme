@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import * as Icons from '../Icons';
 import PropTypes from 'prop-types';
 
@@ -51,7 +51,7 @@ const InlineAlert = ({ variant = 'info', text }) => {
             margin: 0;
           }
         `}>
-        {React.cloneElement(text, {
+        {cloneElement(text, {
           className: ' ',
           css: css`
             margin: 0 !important;

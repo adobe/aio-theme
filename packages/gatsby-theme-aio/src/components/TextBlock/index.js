@@ -10,10 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect } from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement, useEffect } from 'react';
+import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
-import { View } from '@adobe/react-spectrum';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from 'mdx-embed';
@@ -28,26 +27,32 @@ const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
 const Icons = ({ icons, isCentered }) =>
   icons
-    ? React.cloneElement(icons, {
+    ? cloneElement(icons, {
         css: css`
           list-style: none;
           padding: 0;
           margin-bottom: var(--spectrum-global-dimension-size-400) !important;
           display: flex;
-          justify-content: ${isCentered ? 'center' : 'left'};
+          justify-content: ${isCentered ? 'center' : 'flex-start'};
 
           & li {
             display: flex;
             border-right: 1px solid var(--spectrum-global-color-gray-300);
-          }
-
-          & img {
             height: var(--spectrum-global-dimension-size-600);
+            margin-right: var(--spectrum-global-dimension-size-150);
           }
 
           & li:last-of-type {
             padding-right: 0;
             border-right: none;
+          }
+
+          .gatsby-resp-image-wrapper {
+            width: var(--spectrum-global-dimension-size-800) !important;
+          }
+
+          .gatsby-resp-image-image {
+            object-fit: contain;
           }
         `
       })
@@ -60,12 +65,12 @@ const Texts = ({ texts }) => {
 
 const Links = ({ links, isCentered }) =>
   links
-    ? React.cloneElement(links, {
+    ? cloneElement(links, {
         css: css`
           list-style: none;
           padding: 0;
           display: flex;
-          justify-content: ${isCentered ? 'center' : 'left'};
+          justify-content: ${isCentered ? 'center' : 'flex-start'};
           margin-top: ${isCentered
             ? 'var(--spectrum-global-dimension-size-200) !important;'
             : 'var(--spectrum-global-dimension-size-600) !important;'};
@@ -82,6 +87,7 @@ const Links = ({ links, isCentered }) =>
           & li {
             display: flex;
             align-items: center;
+            height: var(--spectrum-global-dimension-size-400);
           }
 
           & li a {
@@ -93,10 +99,20 @@ const Links = ({ links, isCentered }) =>
             margin-right: 0;
           }
 
-          & img {
-            max-height: var(--spectrum-global-dimension-size-400);
-            margin-right: var(--spectrum-global-dimension-size-150);
-            border-radius: 0;
+          .gatsby-resp-image-wrapper {
+            max-width: none !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+
+          .gatsby-resp-image-wrapper {
+            width: var(--spectrum-global-dimension-size-400) !important;
+            margin-left: 0 !important;
+            margin-right: var(--spectrum-global-dimension-size-150) !important;
+          }
+
+          .gatsby-resp-image-image {
+            object-fit: contain;
           }
         `
       })
@@ -210,15 +226,19 @@ const TextBlock = ({
             <Icons icons={icons} isCentered={isCentered} />
 
             {image &&
-              React.cloneElement(image, {
+              cloneElement(image, {
                 css: css`
                   height: var(--spectrum-global-dimension-size-1000);
                   margin-top: 0;
                   margin-bottom: var(--spectrum-global-dimension-size-300);
 
-                  & img {
-                    height: 100%;
-                    border-radius: 0;
+                  .gatsby-resp-image-wrapper {
+                    max-width: none !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                  }
+
+                  .gatsby-resp-image-image {
                     object-fit: contain;
                   }
                 `
@@ -226,7 +246,7 @@ const TextBlock = ({
 
             {heading && (
               <h3
-                className="spectrum-Heading--M"
+                className="spectrum-Heading spectrum-Heading--sizeM"
                 css={css`
                   margin-bottom: var(--spectrum-global-dimension-size-200) !important;
 
@@ -241,14 +261,24 @@ const TextBlock = ({
 
             <Texts texts={props} />
 
-            <HeroButtons buttons={buttons} marginTop="size-150" marginBottom="size-150" justifyContent="center" />
+            <HeroButtons
+              buttons={buttons}
+              css={css`
+                margin-top: var(--spectrum-global-dimension-size-150);
+                margin-bottom: var(--spectrum-global-dimension-size-150);
+                justify-content: center;
+              `}
+            />
 
             <Links links={links} isCentered={isCentered} />
 
             {video && (
-              <View marginTop="size-400">
+              <div
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-400);
+                `}>
                 <YouTubeVideo video={video} />
-              </View>
+              </div>
             )}
           </div>
         </section>
@@ -293,7 +323,7 @@ const TextBlock = ({
               }
             `}>
             {image &&
-              React.cloneElement(image, {
+              cloneElement(image, {
                 css: css`
                   display: flex;
                   align-items: center;
@@ -308,9 +338,13 @@ const TextBlock = ({
                     width: 100%;
                   }
 
-                  & img {
-                    height: 100%;
-                    border-radius: 0;
+                  .gatsby-resp-image-wrapper {
+                    max-width: none !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                  }
+
+                  .gatsby-resp-image-image {
                     object-fit: contain;
                   }
                 `
@@ -337,7 +371,7 @@ const TextBlock = ({
 
               {heading && (
                 <h3
-                  className="spectrum-Heading--M"
+                  className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-200) !important;
@@ -352,7 +386,12 @@ const TextBlock = ({
 
               <Texts texts={props} />
 
-              <HeroButtons buttons={buttons} marginTop="size-400" />
+              <HeroButtons
+                buttons={buttons}
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                `}
+              />
 
               <Links links={links} isCentered={isCentered} />
             </div>

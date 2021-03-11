@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
@@ -26,7 +26,7 @@ const DiscoverBlock = ({
 }) => (
   <>
     {image
-      ? React.cloneElement(heading, {
+      ? cloneElement(heading, {
           css: css`
             margin-left: calc(${imageWidth} + var(--spectrum-global-dimension-size-400));
 
@@ -61,7 +61,7 @@ const DiscoverBlock = ({
         }
       `}>
       {image &&
-        React.cloneElement(image, {
+        cloneElement(image, {
           css: css`
             position: absolute;
             top: calc(-1 * var(--spectrum-global-dimension-size-450));
@@ -70,6 +70,16 @@ const DiscoverBlock = ({
             align-items: flex-start;
             height: 100%;
             width: ${imageWidth};
+
+            .gatsby-resp-image-wrapper {
+              max-width: none !important;
+              width: 100% !important;
+              height: 100% !important;
+            }
+
+            .gatsby-resp-image-image {
+              object-fit: contain;
+            }
 
             @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
               position: static;

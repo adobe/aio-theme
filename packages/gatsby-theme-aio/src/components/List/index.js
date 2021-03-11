@@ -19,7 +19,7 @@ const List = ({ children, elementType = 'ul', className, ...props }) => {
   const Element = elementType;
 
   return (
-    <Element {...props} className={classNames(className, 'spectrum-Body--M')}>
+    <Element {...props} className={classNames(className, 'spectrum-Body spectrum-Body--sizeM')}>
       {children}
     </Element>
   );

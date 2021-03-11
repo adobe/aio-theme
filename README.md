@@ -385,10 +385,7 @@ Otherwise, the first defined tab is set as active by default.
 
 **Please ensure to end every `path` value with a trailing slash `/`.**
 
-*The order in which the pages are defined is respected in the Global Navigation.*
-
-A common shared configuration at `@adobe/gatsby-theme-aio/globalNav.json` defines the Global Navigation logo, title, menus etc.
-It's pre-configured and used in the templates inside the `gatsby-config.js` file by default.   
+*The order in which the pages are defined is respected in the Global Navigation.*   
 
 ### Side Navigation
 

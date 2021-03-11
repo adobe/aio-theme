@@ -10,11 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect } from 'react';
-import { css } from '@emotion/core';
+import React, { useEffect, cloneElement } from 'react';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-
-import { Accordion, AccordionItem } from '@adobe/parliament-ui-components';
+import { Accordion, AccordionItem } from '../Accordion';
 
 const ANCHOR = 'a';
 
@@ -48,7 +47,7 @@ const jsDocFilter = (childrenArray) => {
 
           // Finish the JS Doc Block
           filteredArray.push(
-            React.cloneElement(jsDoc, {
+            cloneElement(jsDoc, {
               items: jsDocItems
             })
           );
@@ -73,7 +72,7 @@ const jsDocFilter = (childrenArray) => {
   // open JS Doc Block, finish it off
   if (jsDoc) {
     filteredArray.push(
-      React.cloneElement(jsDoc, {
+      cloneElement(jsDoc, {
         items: jsDocItems
       })
     );

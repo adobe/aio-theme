@@ -13,7 +13,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import '@spectrum-css/button';
+import '@spectrum-css/actionbutton';
 
 const ActionButton = ({ children, elementType = 'button', isQuiet, className, ...props }) => {
   const Element = elementType;
@@ -24,7 +24,9 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, ..
   return (
     <Element
       {...props}
-      className={classNames(className, 'spectrum-ActionButton', { 'spectrum-ActionButton--quiet': isQuiet })}>
+      className={classNames(className, 'spectrum-ActionButton', 'spectrum-ActionButton--sizeM', {
+        'spectrum-ActionButton--quiet': isQuiet
+      })}>
       {children}
     </Element>
   );

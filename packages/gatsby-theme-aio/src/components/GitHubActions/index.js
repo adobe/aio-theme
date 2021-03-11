@@ -12,10 +12,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex } from '@adobe/react-spectrum';
 import { ActionButton, Text } from '../ActionButton';
 import { Bug, Edit } from '../Icons';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
@@ -30,7 +29,10 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
   const rootFolder = root ? `/${root}` : '';
 
   return (
-    <Flex>
+    <div
+      css={css`
+        display: flex;
+      `}>
       <ActionButton
         {...commonsProps}
         href={`https://github.com/${repository}/edit/${branch}${rootFolder}/src/pages/${pagePath}`}>
@@ -47,7 +49,7 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
         <Bug />
         <Text>Log an issue</Text>
       </ActionButton>
-    </Flex>
+    </div>
   );
 };
 

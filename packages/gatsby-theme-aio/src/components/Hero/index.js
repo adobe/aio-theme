@@ -10,53 +10,83 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
-import { Flex } from '@adobe/react-spectrum';
+import React, { cloneElement, Children } from 'react';
+import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { getElementChild, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, cloneChildren, LARGE_SCREEN_WIDTH } from '../../utils';
 
-const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], ...props }) =>
+const setImageLoading = (child) => {
+  if (child?.props?.mdxType === 'img') {
+    return cloneElement(child, {
+      loading: 'eager'
+    });
+  }
+
+  return child;
+};
+
+const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], className }) =>
   buttons ? (
-    <Flex gap="size-200" wrap="wrap" {...props}>
-      {React.Children.map(buttons.props.children, (item, i) => {
-        let variant = variants[0];
-        let quiet = quiets[0];
+    <div>
+      <div
+        className={className}
+        css={css`
+          display: flex;
+          --gap: var(--spectrum-global-dimension-size-200);
+          flex-wrap: wrap;
+          margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+          width: calc(100% + var(--gap));
+        `}>
+        {Children.map(buttons.props.children, (item, i) => {
+          let variant = variants[0];
+          let quiet = quiets[0];
 
-        if (i > 0) {
-          variant = variants[1];
-          quiet = quiets[1];
-        }
+          if (i > 0) {
+            variant = variants[1];
+            quiet = quiets[1];
+          }
 
-        const link = getElementChild(item);
+          const link = getElementChild(item);
 
-        return (
-          <AnchorButton key={i} isQuiet={quiet} href={link.props.href} variant={variant}>
-            {link.props.children}
-          </AnchorButton>
-        );
-      })}
-    </Flex>
+          return (
+            <div
+              key={i}
+              css={css`
+                margin: var(--gap) 0 0 var(--gap);
+              `}>
+              <AnchorButton isQuiet={quiet} href={link.props.href} variant={variant}>
+                {link.props.children}
+              </AnchorButton>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   ) : null;
 
 const HeroImage = ({ image, styles }) =>
   image
-    ? React.cloneElement(image, {
+    ? cloneElement(image, {
+        children: cloneChildren(image.props.children, setImageLoading),
         css: css`
           display: flex;
           align-items: center;
           justify-content: center;
           height: 100%;
+          width: 100%;
           margin-top: 0;
           ${styles}
 
-          & > img {
-            width: 100%;
-            height: 100%;
+          .gatsby-resp-image-wrapper {
+            max-width: none !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+
+          .gatsby-resp-image-image {
             object-fit: cover;
-            border-radius: 0;
           }
         `
       })
@@ -65,10 +95,10 @@ const HeroImage = ({ image, styles }) =>
 const HeroTexts = ({ texts }) => {
   const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
   return textKeys.map((textKey) =>
-    React.cloneElement(texts[textKey], {
-      className: 'spectrum-Body--L',
+    cloneElement(texts[textKey], {
+      className: 'spectrum-Body spectrum-Body--sizeL',
       css: css`
-        &.spectrum-Body--L {
+        &.spectrum-Body--sizeL {
           margin-top: 0 !important;
 
           &:last-of-type {
@@ -82,8 +112,9 @@ const HeroTexts = ({ texts }) => {
 
 const HeroHeading = ({ heading, variant }) =>
   heading
-    ? React.cloneElement(heading, {
-        className: variant === 'default' ? 'spectrum-Heading--XL' : 'spectrum-Heading--XXL spectrum-Heading--serif',
+    ? cloneElement(heading, {
+        className:
+          variant === 'default' ? 'spectrum-Heading--sizeXL' : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
         css: css`
           margin-top: 0;
           margin-bottom: var(--spectrum-global-dimension-size-200);
@@ -114,7 +145,7 @@ const Hero = ({
           position: relative;
           height: var(--spectrum-global-dimension-size-3400);
           margin-bottom: var(--spectrum-global-dimension-size-400);
-          background: ${background ?? 'rgb( 29, 125, 238)'};
+          background-color: ${background ?? 'rgb( 29, 125, 238)'};
           width: 100%;
           display: flex;
 
@@ -178,8 +209,11 @@ const Hero = ({
 
             @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
               overflow: auto;
-              padding: var(--spectrum-global-dimension-size-800) 0;
               height: 100vh;
+
+              .spectrum-Heading--sizeXXL {
+                font-size: var(--spectrum-alias-heading-xl-text-size);
+              }
             }
           `}>
           <HeroImage image={image} />
@@ -206,7 +240,13 @@ const Hero = ({
 
             <HeroTexts texts={props} />
 
-            <HeroButtons buttons={buttons} variants={['cta', 'overBackground']} marginTop="size-400" />
+            <HeroButtons
+              buttons={buttons}
+              variants={['cta', 'overBackground']}
+              css={css`
+                margin-top: var(--spectrum-global-dimension-size-400);
+              `}
+            />
           </div>
         </section>
       );
@@ -216,15 +256,22 @@ const Hero = ({
           className={`spectrum--lightest`}
           css={css`
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
+            width: 100%;
             height: ${height};
             overflow: hidden;
 
             @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
               height: auto;
               padding: var(--spectrum-global-dimension-size-400);
+              box-sizing: border-box;
             }
           `}>
-          <Flex justifyContent="center" height="100%">
+          <div
+            css={css`
+              display: flex;
+              height: 100%;
+              justify-content: center;
+            `}>
             <div
               css={css`
                 display: flex;
@@ -240,14 +287,21 @@ const Hero = ({
                 }
               `}>
               {icon &&
-                React.cloneElement(icon, {
+                cloneElement(icon, {
+                  children: cloneChildren(icon.props.children, setImageLoading),
                   css: css`
                     height: var(--spectrum-global-dimension-size-600);
                     width: var(--spectrum-global-dimension-size-600);
                     margin-top: 0 !important;
                     margin-bottom: var(--spectrum-global-dimension-size-300) !important;
 
-                    img {
+                    .gatsby-resp-image-wrapper {
+                      max-width: none !important;
+                      width: 100% !important;
+                      height: 100% !important;
+                    }
+
+                    .gatsby-resp-image-image {
                       height: 100%;
                       object-fit: contain;
                     }
@@ -258,7 +312,12 @@ const Hero = ({
 
               <HeroTexts texts={props} />
 
-              <HeroButtons buttons={buttons} marginTop="size-300" />
+              <HeroButtons
+                buttons={buttons}
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-400);
+                `}
+              />
             </div>
             <div
               css={css`
@@ -270,7 +329,7 @@ const Hero = ({
               `}>
               <HeroImage image={image} />
             </div>
-          </Flex>
+          </div>
         </section>
       );
     }

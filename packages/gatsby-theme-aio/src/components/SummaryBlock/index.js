@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { css } from '@emotion/core';
+import React, { cloneElement } from 'react';
+import { css } from '@emotion/react';
 import { HeroImage, HeroButtons } from '../Hero';
 import { LARGE_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
@@ -29,7 +29,7 @@ const SummaryBlock = ({
     className={`spectrum--${theme}`}
     css={css`
       height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
-      background: ${background};
+      background-color: ${background};
       position: relative;
 
       @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
@@ -60,7 +60,7 @@ const SummaryBlock = ({
       `}>
       {heading && (
         <h2
-          className="spectrum-Heading--L"
+          className="spectrum-Heading spectrum-Heading--sizeL"
           css={css`
             margin-top: 0 !important;
             margin-bottom: var(--spectrum-global-dimension-size-200) !important;
@@ -70,8 +70,8 @@ const SummaryBlock = ({
       )}
 
       {text &&
-        React.cloneElement(text, {
-          className: 'spectrum-Body--L',
+        cloneElement(text, {
+          className: 'spectrum-Body spectrum-Body--sizeL',
           css: css`
             margin-bottom: var(--spectrum-global-dimension-size-300) !important;
             color: var(--spectrum-global-color-gray-900);

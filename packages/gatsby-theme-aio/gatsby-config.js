@@ -14,16 +14,22 @@ require('dotenv').config({
   path: `.env`
 });
 
+const LARGE_SCREEN_WIDTH = require('./conf/globals').LARGE_SCREEN_WIDTH;
+
 module.exports = {
   plugins: [
+    `gatsby-plugin-preact`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-mdx-embed`,
+    `@adobe/parliament-site-search-index`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/Layout/index.js`)
       }
     },
-    `gatsby-plugin-react-helmet-async`,
-    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,18 +45,21 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        remarkPlugins: [require(`remark-docz`)],
+        plugins: [`gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `@adobe/gatsby-remark-afm`,
+            resolve: `gatsby-remark-images`,
             options: {
-              directory: `src/pages`
+              maxWidth: LARGE_SCREEN_WIDTH,
+              linkImagesToOriginal: false,
+              withWebp: { quality: 80 },
+              disableBgImage: true,
+              backgroundColor: 'none'
             }
           }
         ]
       }
     },
-    `gatsby-plugin-mdx-embed`,
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
       options: {
@@ -70,7 +79,6 @@ module.exports = {
         scriptUrl: process.env.GATSBY_LAUNCH_SRC,
         includeInDevelopment: process.env.GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
       }
-    },
-    `@adobe/parliament-site-search-index`
+    }
   ]
 };

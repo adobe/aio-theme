@@ -11,13 +11,13 @@ governing permissions and limitations under the License.
 */
 
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import nextId from 'react-id-generator';
 import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/menu';
-import { CheckMarkMedium } from '../Icons';
+import { CheckMark } from '../Icons';
 import { getExternalLinkProps } from '../../utils';
 
 const Menu = ({ children }) => {
@@ -45,9 +45,12 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
       {...getExternalLinkProps(href)}
       role="menuitem"
       tabIndex="0"
+      css={css`
+        text-align: left;
+      `}
       {...props}>
       <span className="spectrum-Menu-itemLabel">{children}</span>
-      <CheckMarkMedium className="spectrum-Icon spectrum-Menu-checkmark spectrum-Menu-itemIcon" />
+      <CheckMark className="spectrum-Menu-checkmark spectrum-Menu-itemIcon" />
     </Element>
   );
 };
