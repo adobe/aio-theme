@@ -3218,10 +3218,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/button/-/button-3.0.0.tgz#eebdd7a05eac9a40f297f802aca3efeb95931e83"
   integrity sha512-CUGkuHOhqgfIRYTEceybcW1YsUN61F9BgDhqymhVd1yJFsuh1xkwnmv3IIodukgS+1e3L0JY6ifU86IWX/Dx5w==
 
-"@spectrum-css/card@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/card/-/card-3.0.0.tgz#2e589d530ead17f0fc19864f46dc70ddaac33368"
-  integrity sha512-ZzHNB9CrUMY6plzxqKB43Wca0zzhEZxH9q7Q95lR7jbGGCLAVjzEs1xXC6lFmvX0NX58b9GRPYso4U//fjHBLQ==
+"@spectrum-css/card@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/card/-/card-3.0.1.tgz#d81166e00ee5db825d340d18101b64bfdcdd70d4"
+  integrity sha512-Jjormvn5Ejv++iWf0jSaxfnEwCkJTlwpY42s5ec4FngJnJIrVzng8Ij17w9j9KsGuwVlQwULlbMPJ/0QpO1+jg==
 
 "@spectrum-css/checkbox@3.0.0":
   version "3.0.0"
