@@ -88,6 +88,7 @@
     "https-browserify": "^1.0.0",
     "mdx-embed": "^0.0.14",
     "mobx": "^5.15.7",
+    "postcss": "^8.2.8",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.12",
     "prism-react-renderer": "^1.1.1",
