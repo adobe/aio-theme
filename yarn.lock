@@ -14520,10 +14520,10 @@ potrace@^2.1.8:
   dependencies:
     jimp "^0.14.0"
 
-preact-render-to-string@^5.1.12:
-  version "5.1.12"
-  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.1.12.tgz#3d258a177ef8947f768dd0f2c56629e7fda2dc39"
-  integrity sha512-nXVCOpvepSk9AfPwqS08rf9NDOCs8eeYYlG+7tE85iP5jVyjz+aYb1BYaP5SPdfVWVrzI9L5NzxozUvKaD96tA==
+preact-render-to-string@^5.1.15:
+  version "5.1.15"
+  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.1.15.tgz#9d1dadcd5d7b403015b11a5a1fdb4885c3649a30"
+  integrity sha512-xjtHq/RQGUISoptT24qFiEUp+lJJ+QlxeO69i9nJShPWQm8RY5syqi8sycY68MhfV8oGBx/rRq8LQ8rPp2ESZA==
   dependencies:
     pretty-format "^3.8.0"
 
