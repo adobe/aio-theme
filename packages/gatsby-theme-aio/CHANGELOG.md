@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.1...@adobe/gatsby-theme-aio@3.0.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* Add GlobalHeader spacing and remove dead code ([656c10f](https://github.com/adobe/gatsby-theme-aio/commit/656c10f237efa097bed4ee50de5dcbec2a7a3750))
+
+
+
+
+
 ## [3.0.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.0...@adobe/gatsby-theme-aio@3.0.1) (2021-03-11)
 
 
