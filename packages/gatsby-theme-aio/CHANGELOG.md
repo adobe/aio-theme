@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.15.0...@adobe/gatsby-theme-aio@3.0.0) (2021-03-11)
+
+
+### Performance Improvements
+
+* Update to Gatsby v3.x ([308cbc1](https://github.com/adobe/gatsby-theme-aio/commit/308cbc15c042a2a61820cfe64c512e29af1e0999))
+
+
+### BREAKING CHANGES
+
+* Gatsby v3 includes breaking changes see official Gatsby docs
+
+
+
+
+
 # [2.15.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@2.14.1...@adobe/gatsby-theme-aio@2.15.0) (2021-01-27)
 
 
