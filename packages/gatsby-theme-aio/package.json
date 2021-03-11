@@ -70,7 +70,7 @@
     "@spectrum-css/typography": "3.0.0",
     "@spectrum-css/underlay": "2.0.8",
     "@spectrum-css/vars": "3.0.0",
-    "@spectrum-css/well": "3.0.0",
+    "@spectrum-css/well": "3.0.1",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
     "elasticlunr": "^0.9.5",
