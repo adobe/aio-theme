@@ -43,7 +43,7 @@
     "@emotion/react": "^11.1.5",
     "@loadable/component": "^5.14.1",
     "@mdx-js/mdx": "^1.6.19",
-    "@mdx-js/react": "^1.6.19",
+    "@mdx-js/react": "^1.6.22",
     "@spectrum-css/accordion": "3.0.0",
     "@spectrum-css/actionbutton": "1.0.0",
     "@spectrum-css/alert": "3.0.0-beta.3",
