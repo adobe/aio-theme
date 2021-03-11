@@ -200,7 +200,9 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
           <div
             css={css`
               grid-area: navigation;
-              ${hasMenu && 'margin-left: var(--spectrum-global-dimension-size-200);'}
+              margin-left: ${hasMenu
+                ? 'var(--spectrum-global-dimension-size-200)'
+                : 'var(--spectrum-global-dimension-size-300)'};
 
               @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
                 overflow-x: auto;
@@ -308,16 +310,17 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
                   bottom: calc(-1 * var(--spectrum-global-dimension-size-125)) !important;
                 `}
               />
-              <div
-                css={css`
-                  margin-left: var(--spectrum-global-dimension-size-400);
-                `}>
-                {docs && (
+              {docs && (
+                <div
+                  css={css`
+                    margin-left: var(--spectrum-global-dimension-size-400);
+                    white-space: nowrap;
+                  `}>
                   <AnchorButton variant="primary" href={docs.path}>
-                    View Docs
+                    {docs.title ?? 'View Docs'}
                   </AnchorButton>
-                )}
-              </div>
+                </div>
+              )}
             </Tabs>
           </div>
           <div

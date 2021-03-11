@@ -45,33 +45,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       menu: Boolean
     }
     
-    type GlobalNav {
-      home: Link
-      menus: [Menu]
-      console: Boolean
-      signIn: Boolean
-      footer: Footer
-    }
-    
-    type Menu {
-      title: String,
-      path: String,
-      sections: [Section]
-    }
-    
-    type Section {
-      heading: String,
-      viewAll: Link,
-      divider: Boolean,
-      pages: [SectionPage]
-    }
-    
-    type SectionPage {
-      title: String,
-      path: String,
-      description: String
-    }
-    
     type SubPage {
       title: String,
       path: String,
@@ -107,16 +80,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String,
       path: String,
       pages: [Link]
-    }
-    
-    type Footer {
-      allAPIs: Link
-      APIs: [Link]
-      services: [Link]
-      community: [Link]
-      support: [Link]
-      developer: [Link]
-      legal: [Link]
     }
   `;
 

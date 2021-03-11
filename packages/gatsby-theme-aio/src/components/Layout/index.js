@@ -80,6 +80,7 @@ export default ({ children, pageContext, location }) => {
           siteMetadata {
             menu
             docs {
+              title
               path
             }
             versions {
