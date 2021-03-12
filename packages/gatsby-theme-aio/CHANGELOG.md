@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.2...@adobe/gatsby-theme-aio@3.0.3) (2021-03-12)
+
+
+### Bug Fixes
+
+* Restore spacing between next/prev links ([e464dc6](https://github.com/adobe/gatsby-theme-aio/commit/e464dc666731264a9d791b55a5ecf2249b0cf8fd))
+* Update dependencies and remove dead code ([d76b7cb](https://github.com/adobe/gatsby-theme-aio/commit/d76b7cb03743e857e00e19e9a1a478e507eb56e4))
+
+
+
+
+
 ## [3.0.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.1...@adobe/gatsby-theme-aio@3.0.2) (2021-03-11)
 
 
