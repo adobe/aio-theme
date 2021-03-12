@@ -19,6 +19,7 @@ import { Paragraph } from '../Paragraph';
 import { List } from '../List';
 import { Code } from '../Code';
 import { InlineCode } from '../InlineCode';
+import { Image } from '../Image';
 import { Table, TBody, Td, Th, THead, Tr } from '../Table';
 
 export const MDXComponents = {
@@ -42,6 +43,7 @@ export const MDXComponents = {
   ),
   inlineCode: InlineCode,
   a: AnchorLink,
+  img: Image,
   table: Table,
   tbody: TBody,
   th: Th,

@@ -19,6 +19,7 @@ import { Checkbox } from '../Checkbox';
 import { Picker } from '../Picker';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
+import { Image } from '../Image';
 import { LARGE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
@@ -237,16 +238,7 @@ const ProductCardGrid = ({
                           width: var(--spectrum-global-dimension-size-600);
                           margin-bottom: var(--spectrum-global-dimension-size-200);
                         `}>
-                        <img
-                          css={css`
-                            display: block;
-                            height: 100%;
-                            object-fit: contain;
-                          `}
-                          src={product.icon}
-                          alt=""
-                          aria-hidden="true"
-                        />
+                        <Image src={product.icon} aria-hidden="true" alt="" />
                       </div>
                     )}
                   </div>

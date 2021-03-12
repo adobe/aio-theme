@@ -12,6 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/react';
+import { Image } from '../Image';
 import PropTypes from 'prop-types';
 import { getExternalLinkProps } from '../../utils';
 
@@ -58,15 +59,11 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
                   height: var(--spectrum-global-dimension-size-400);
                   border-radius: var(--spectrum-global-dimension-static-percent-50);
                   background: var(--spectrum-global-color-gray-50);
+                  overflow: hidden;
                 `}>
-                <img
+                <Image
                   alt={contributor.name || contributor.login}
                   src={`https://github.com/${contributor.login}.png`}
-                  css={css`
-                    width: var(--spectrum-global-dimension-size-400);
-                    height: var(--spectrum-global-dimension-size-400);
-                    border-radius: var(--spectrum-global-dimension-static-percent-50);
-                  `}
                 />
               </span>
             ))}

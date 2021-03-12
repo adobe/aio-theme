@@ -44,7 +44,7 @@ const products = [
     id: 0,
     name: 'Adobe Creative Cloud',
     description: 'Adobe Creative Cloud APIs and SDKs enable developers to impact creative work for millions of users worldwide. Build and distribute inspiring, productivity-driving plugins and integrations—all with Adobe Creative Cloud.',
-    icon: CC,
+    icon: 'https://adobe.io/shared/icons/cc_appicon_64.svg',
     discover: '/creative-cloud',
     docs: false,
     lastUpdated: '2020',

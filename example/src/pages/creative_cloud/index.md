@@ -7,7 +7,7 @@ description: This is the home page of Creative Cloud
 
 ![Creative Cloud banner](images/cc-hero.png)
 
-![Creative Cloud icon](images/cc-icon.png)
+![Creative Cloud icon](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
 # Creativity for all
 
@@ -44,7 +44,7 @@ Be sure to check out [Common Extensibility Platform (CEP)](https://www.adobe.io/
 When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users.
 And be sure to join the [Exchange Program for Creative Cloud](https://partners.adobe.com/exchangeprogram/creativecloud) to unlock more benefits, including streamlined publishing and promotional opportunities.
 
-* ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
+* ![Adobe Premiere Pro](https://adobe.io/shared/icons/pr_appicon_64.svg) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
 * ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
 * ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)   
 
@@ -79,7 +79,7 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
 
-![MSFT Teams logo](images/msfteams.png)
+![CC logo](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
 ### Microsoft teams
 
@@ -121,7 +121,7 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 [Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
 
 * ![Adobe](images/adobe.png)
-* ![Microsoft](images/msft.png)
+* ![CC](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
 ### Partner Success Story
 
@@ -247,7 +247,7 @@ Rob Kleiman, July 8th 2020
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" />
 
-![CC icon](images/cc-icon.png)
+![CC icon](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
 #### CC Storage API
 
