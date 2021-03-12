@@ -51,7 +51,8 @@ const NextPrev = ({ nextPage, previousPage }) =>
         </div>
         <div
           css={css`
-            margin-left: var(--spectrum-global-dimension-size-200);
+            margin-left: auto;
+            padding-left: var(--spectrum-global-dimension-size-200);
           `}>
           {nextPage && (
             <Link isQuiet={true}>
