@@ -278,8 +278,6 @@ and `document.pdf` is referenced in `index.md` as a link:
 ```
 
 You'll find more information about the `static` folder at [Using the Static Folder](https://www.gatsbyjs.com/docs/how-to/images-and-media/static-folder/).
-    
-**Please note that empty image alt descriptions are not supported.**
 
 ## Configuration
 

@@ -45,10 +45,10 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        plugins: [`gatsby-remark-images`],
+        plugins: [`gatsby-remark-images-remote`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-remote`,
             options: {
               maxWidth: LARGE_SCREEN_WIDTH,
               linkImagesToOriginal: false,
