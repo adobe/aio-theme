@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.4...@adobe/gatsby-theme-aio@3.0.5) (2021-03-12)
+
+
+### Bug Fixes
+
+* Restore Image component for svg and gif support ([fc4a41d](https://github.com/adobe/gatsby-theme-aio/commit/fc4a41db512839576d090907758edd785aa05bd4))
+
+
+
+
+
 ## [3.0.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.3...@adobe/gatsby-theme-aio@3.0.4) (2021-03-12)
 
 
