@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.3...@adobe/gatsby-theme-aio@3.0.4) (2021-03-12)
+
+
+### Bug Fixes
+
+* Remove GlobalHeaderTemp leftover in 404 page ([35e9da9](https://github.com/adobe/gatsby-theme-aio/commit/35e9da9070de6f57ea9a631a9ab178f78200706e))
+* Restore remote images support ([31cb29c](https://github.com/adobe/gatsby-theme-aio/commit/31cb29c959d098d2b8bae3023add50d9dfdbba6f))
+
+
+
+
+
 ## [3.0.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.2...@adobe/gatsby-theme-aio@3.0.3) (2021-03-12)
 
 
