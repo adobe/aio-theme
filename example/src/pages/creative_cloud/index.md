@@ -105,7 +105,7 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
 
-![Slack logo](images/slack.png)
+![Slack logo](images/trello-mark-blue.svg)
 
 ### Slack
 

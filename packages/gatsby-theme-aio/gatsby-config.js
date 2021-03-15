@@ -45,8 +45,11 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        plugins: [`gatsby-remark-images-remote`],
+        plugins: [`gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
         gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-copy-linked-files`
+          },
           {
             resolve: `gatsby-remark-images-remote`,
             options: {
