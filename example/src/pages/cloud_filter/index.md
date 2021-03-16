@@ -1,6 +1,7 @@
 ---
 title: Index
 description: This is the index page
+GlobalHeaderTemp: true
 ---
 import {clouds, products} from '../../products'
 

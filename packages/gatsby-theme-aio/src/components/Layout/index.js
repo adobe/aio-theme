@@ -26,6 +26,7 @@ import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import { Provider } from '../Context';
 import { GlobalHeader } from '../GlobalHeader';
+import { GlobalHeaderTemp } from '../GlobalHeader/temp';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 
@@ -141,6 +142,7 @@ export default ({ children, pageContext, location }) => {
   }
 
   const frontMatter = pageContext?.frontmatter;
+  const hasGlobalHeaderTemp = frontMatter?.GlobalHeaderTemp;
   const hasLayout = pageContext?.frontmatter?.layout !== 'none';
 
   const hasOpenAPISpec = frontMatter?.openAPISpec;
@@ -199,23 +201,29 @@ export default ({ children, pageContext, location }) => {
                 css={css`
                   grid-area: header;
                   position: fixed;
-                  height: var(--spectrum-global-dimension-size-800);
+                  height: ${hasGlobalHeaderTemp
+                    ? 'var(--spectrum-global-dimension-size-1000)'
+                    : 'var(--spectrum-global-dimension-size-800)'};
                   left: 0;
                   right: 0;
                   background-color: var(--spectrum-global-color-gray-50);
                   z-index: 2;
                 `}>
-                <GlobalHeader
-                  menu={menu}
-                  versions={versions}
-                  pages={pages}
-                  docs={docs}
-                  location={location}
-                  hasSideNav={hasSideNav}
-                  toggleSideNav={() => {
-                    toggleSideNav(setShowSideNav);
-                  }}
-                />
+                {hasGlobalHeaderTemp ? (
+                  <GlobalHeaderTemp />
+                ) : (
+                  <GlobalHeader
+                    menu={menu}
+                    versions={versions}
+                    pages={pages}
+                    docs={docs}
+                    location={location}
+                    hasSideNav={hasSideNav}
+                    toggleSideNav={() => {
+                      toggleSideNav(setShowSideNav);
+                    }}
+                  />
+                )}
               </div>
               <div
                 hidden={!hasSideNav}
