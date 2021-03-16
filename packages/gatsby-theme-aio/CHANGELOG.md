@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.6...@adobe/gatsby-theme-aio@3.0.7) (2021-03-16)
+
+
+### Bug Fixes
+
+* Image loading animation not working with SSR ([af3d1fc](https://github.com/adobe/gatsby-theme-aio/commit/af3d1fcbb2c28aa9ed2cc689e1d595371d871820))
+* Restore temp GlobalHeader ([b257a42](https://github.com/adobe/gatsby-theme-aio/commit/b257a42a76d18d22408ee486fc5964efa98af4c1))
+
+
+
+
+
 ## [3.0.6](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.5...@adobe/gatsby-theme-aio@3.0.6) (2021-03-15)
 
 
