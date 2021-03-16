@@ -53,7 +53,7 @@ export const Image = (props) => {
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 0.5s ease 0s;
+            transition: opacity 0.5s;
           `}
         />
       </span>
