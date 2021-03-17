@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.8](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.7...@adobe/gatsby-theme-aio@3.0.8) (2021-03-17)
+
+
+### Bug Fixes
+
+* Image wrapper overlapping with sibling content ([0f2f1cd](https://github.com/adobe/gatsby-theme-aio/commit/0f2f1cd1914014dccdf8deaafca6fb3742100d64))
+
+
+
+
+
 ## [3.0.7](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.6...@adobe/gatsby-theme-aio@3.0.7) (2021-03-16)
 
 
