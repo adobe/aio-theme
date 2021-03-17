@@ -39,6 +39,7 @@ export const Image = (props) => {
             bottom: 0;
             left: 0;
             padding-bottom: 100%;
+            pointer-events: none;
           `}
         />
         <img

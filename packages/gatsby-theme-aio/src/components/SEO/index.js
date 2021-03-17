@@ -74,10 +74,6 @@ const SEO = ({ title = 'Adobe I/O', description = 'Adobe I/O Site' }) => (
         *[hidden] {
           display: none !important;
         }
-        
-        .gatsby-resp-image-image {
-          box-shadow: none !important;
-        }
       `}</style>
   </Helmet>
 );
