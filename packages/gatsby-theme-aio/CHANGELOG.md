@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.9](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.8...@adobe/gatsby-theme-aio@3.0.9) (2021-03-19)
+
+
+### Bug Fixes
+
+* Images and layout are broken when JS is disabled ([8732009](https://github.com/adobe/gatsby-theme-aio/commit/873200905e78895d5b39a2c82192e6df16d33a77))
+* Replace Alert with InlineAlert ([db4f671](https://github.com/adobe/gatsby-theme-aio/commit/db4f67157af5ae04a2e71afc1958d604bda26edd))
+
+
+
+
+
 ## [3.0.8](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.7...@adobe/gatsby-theme-aio@3.0.8) (2021-03-17)
 
 
