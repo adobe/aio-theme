@@ -279,6 +279,8 @@ and `document.pdf` is referenced in `index.md` as a link:
 
 You'll find more information about the `static` folder at [Using the Static Folder](https://www.gatsbyjs.com/docs/how-to/images-and-media/static-folder/).
 
+Please find guidance on ideal illustration sizes in this [document](docs/documents/MCS_Media_+_Image_Recommendations.pdf).
+
 ## Configuration
 
 To make sure you don't run into troubles during the site build process, please follow the below configuration steps.
