@@ -2844,11 +2844,6 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/actionbutton/-/actionbutton-1.0.1.tgz#9c75da37ea6915919fb574c74bd60dacc03b6577"
   integrity sha512-AUqtyNabHF451Aj9i3xz82TxS5Z6k1dttA68/1hMeU9kbPCSS4P6Viw3vaRGs9CSspuR8xnnhDgrq+F+zMy2Hw==
 
-"@spectrum-css/alert@3.0.0-beta.3":
-  version "3.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/alert/-/alert-3.0.0-beta.3.tgz#8cb1aba75a1ed55a6ebc81b432c2657d2ba42ecc"
-  integrity sha512-diHF2w/A8TgNoxVGRTzKneFiT9mHWBz5djEmqC2/8r65xHbKi5CBnfMjTFpIMGw/wkWEzXyC9wZh8Q+HL5cjZg==
-
 "@spectrum-css/assetlist@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.1.tgz#192f9ec29769600f1ab2c94f664ee5bb255bfb85"
@@ -2890,6 +2885,11 @@
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-3.0.1.tgz#e300a6fc353c85c6b5d6e7a364408a940c31b177"
   integrity sha512-cGFtIrcQ/7tthdkHK1npuEFiCdYVHLqwmLxghUYQw8Tb8KgJaw3OBO1tpjgsUizexNgu26BjVRIbGxNWuBXIHQ==
+
+"@spectrum-css/inlinealert@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/inlinealert/-/inlinealert-1.0.0.tgz#cc37a459340460b78fa6f5d4ae97300d19b63ce3"
+  integrity sha512-wF+ELOI77zsa1ctc/RybNcA1DaKkS8eHBV894jHhxw8y79esAYxEZjiCaK0uPAC/WbNuVCVfAYHmwcuvO6ke2w==
 
 "@spectrum-css/link@3.1.1":
   version "3.1.1"

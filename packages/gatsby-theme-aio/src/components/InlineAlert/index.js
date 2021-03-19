@@ -14,8 +14,7 @@ import React, { cloneElement } from 'react';
 import { css } from '@emotion/react';
 import * as Icons from '../Icons';
 import PropTypes from 'prop-types';
-
-import '@spectrum-css/alert';
+import '@spectrum-css/inlinealert';
 
 const getIconName = (variant) => {
   let icon = variant;
@@ -33,16 +32,16 @@ const InlineAlert = ({ variant = 'info', text }) => {
   return (
     <div
       role="alert"
-      className={`spectrum-Alert spectrum-Alert--${variant}`}
+      className={`spectrum-InLineAlert spectrum-InLineAlert--${variant}`}
       css={css`
         display: block !important;
         min-width: 0 !important;
         width: 100%;
         margin-top: var(--spectrum-global-dimension-size-300);
       `}>
-      <Icon className="spectrum-Alert-icon" />
+      <Icon className="spectrum-InLineAlert-icon" />
       <div
-        className="spectrum-Alert-content"
+        className="spectrum-InLineAlert-content"
         css={css`
           margin-top: 0;
           margin-right: var(--spectrum-global-dimension-size-400);
