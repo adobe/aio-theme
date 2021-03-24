@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.9...@adobe/gatsby-theme-aio@3.1.0) (2021-03-24)
+
+
+### Features
+
+* Add Google Docs support ([228d4dd](https://github.com/adobe/gatsby-theme-aio/commit/228d4ddb969e42c9dec19dc2c825baf027913e75))
+
+
+
+
+
 ## [3.0.9](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.8...@adobe/gatsby-theme-aio@3.0.9) (2021-03-19)
 
 
