@@ -113,6 +113,9 @@ const HeroTexts = ({ texts }) => {
 const HeroHeading = ({ heading, variant }) =>
   heading
     ? cloneElement(heading, {
+        // force h1 to support gdocs
+        mdxType: 'h1',
+        originalType: 'h1',
         className:
           variant === 'default' ? 'spectrum-Heading--sizeXL' : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
         css: css`

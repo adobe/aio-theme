@@ -31,6 +31,12 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-gdocs2md`,
+      options: {
+        folder: process.env.GOOGLE_DOCS_FOLDER_ID
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
