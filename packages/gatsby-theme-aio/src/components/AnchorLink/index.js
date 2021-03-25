@@ -12,15 +12,12 @@
 
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink } from '../../utils';
+import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../../utils';
 import { Link } from '../Link';
 import PropTypes from 'prop-types';
 
 const AnchorLink = ({ href, ...props }) => {
-  // Support gdoc relative links
-  if (href && href.startsWith('#!')) {
-    href = href.substr(2);
-  }
+  href = gdocsRelativeLinkFix(href);
 
   return (
     <Link isQuiet={true}>

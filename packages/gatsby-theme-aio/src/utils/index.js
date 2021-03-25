@@ -18,6 +18,15 @@ const cleanMarkdownExtension = (pathname) => {
   return pathname.replace('/src/pages/', '/').replace('/index.md', '').replace('index.md', '').replace('.md', '');
 };
 
+export const gdocsRelativeLinkFix = (href) => {
+  // Support gdoc relative links
+  if (href && href.startsWith('#!')) {
+    href = href.substr(2);
+  }
+
+  return href;
+};
+
 export const trailingSlashFix = (pathname) => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;

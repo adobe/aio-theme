@@ -12,13 +12,15 @@
 
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink } from '../../utils';
+import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../../utils';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import '@spectrum-css/button';
 import classNames from 'classnames';
 
 const AnchorButton = ({ href, variant, isQuiet, ...props }) => {
+  href = gdocsRelativeLinkFix(href);
+
   if (isExternalLink(href)) {
     return (
       <Button
