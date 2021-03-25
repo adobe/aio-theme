@@ -16,15 +16,22 @@ import { getExternalLinkProps, isExternalLink } from '../../utils';
 import { Link } from '../Link';
 import PropTypes from 'prop-types';
 
-const AnchorLink = ({ href, ...props }) => (
-  <Link isQuiet={true}>
-    {isExternalLink(href) ? (
-      <a href={href} {...getExternalLinkProps(href)} {...props} />
-    ) : (
-      <GatsbyLink to={href} {...props} />
-    )}
-  </Link>
-);
+const AnchorLink = ({ href, ...props }) => {
+  // Support gdoc relative links
+  if (href && href.startsWith('#!')) {
+    href = href.substr(2);
+  }
+
+  return (
+    <Link isQuiet={true}>
+      {isExternalLink(href) ? (
+        <a href={href} {...getExternalLinkProps(href)} {...props} />
+      ) : (
+        <GatsbyLink to={href} {...props} />
+      )}
+    </Link>
+  );
+};
 
 AnchorLink.propTypes = {
   href: PropTypes.string
