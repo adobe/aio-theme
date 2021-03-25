@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.0...@adobe/gatsby-theme-aio@3.1.1) (2021-03-25)
+
+
+### Bug Fixes
+
+* Support relative links in Google Docs ([65abcb7](https://github.com/adobe/gatsby-theme-aio/commit/65abcb751dedd6f7a8a3876a177e07eebf8966f1))
+
+
+
+
+
 # [3.1.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.0.9...@adobe/gatsby-theme-aio@3.1.0) (2021-03-24)
 
 
