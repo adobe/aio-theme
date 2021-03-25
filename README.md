@@ -297,7 +297,7 @@ GOOGLE_DOCS_FOLDER_ID=1GHc4k.....8E5OyzuAT0Fy9
 To generate the first 3 variables, open the terminal at the root of your project and run the command: 
 
 ```bash
-gatsby-source-gdocs2md-token
+gatsby-source-gdocs2md
 ```
 
 Then simply follow the instructions.
