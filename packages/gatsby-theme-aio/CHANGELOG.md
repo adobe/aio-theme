@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.2...@adobe/gatsby-theme-aio@3.1.3) (2021-03-26)
+
+
+### Bug Fixes
+
+* Add more spacing for headings 4, 5 and 6 ([5d379c0](https://github.com/adobe/gatsby-theme-aio/commit/5d379c0665dd6b9bbb7668bf5c0d45531953f572))
+
+
+
+
+
 ## [3.1.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.1...@adobe/gatsby-theme-aio@3.1.2) (2021-03-25)
 
 
