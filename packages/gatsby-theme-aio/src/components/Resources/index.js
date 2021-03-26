@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Children } from 'react';
+import React, { cloneElement, Children } from 'react';
 import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
@@ -30,7 +30,12 @@ const Resources = ({ heading, links }) => {
           display: none;
         }
       `}>
-      {heading}
+      {heading &&
+        cloneElement(heading, {
+          css: css`
+            margin-top: 0;
+          `
+        })}
       <ul
         className="spectrum-Body spectrum-Body--sizeM"
         css={css`

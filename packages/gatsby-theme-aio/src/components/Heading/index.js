@@ -36,6 +36,9 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const isHeading1 = level === 1;
   const isHeading2 = level === 2;
   const isHeading3 = level === 3;
+  const isHeading4 = level === 4;
+  const isHeading5 = level === 5;
+  const isHeading6 = level === 6;
   const marginLink = `margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
   const animateAnchor = `
     & span a {
@@ -67,6 +70,19 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const heading3Overrides = `
     color: var(--spectrum-global-color-gray-800);
     margin-top: var(--spectrum-global-dimension-size-500);
+    
+    & + ul,
+    & + ol {
+      margin-top: var(--spectrum-global-dimension-size-250);
+    }
+  `;
+  const heading456Overrides = `
+    margin-top: var(--spectrum-global-dimension-size-400);
+    
+    & + ul,
+    & + ol {
+      margin-top: var(--spectrum-global-dimension-size-200);
+    }
   `;
 
   return (
@@ -85,6 +101,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
           ${isHeading1 && heading1Overrides}
           ${isHeading2 && heading2Overrides}
           ${isHeading3 && heading3Overrides}
+          ${(isHeading4 || isHeading5 || isHeading6) && heading456Overrides}
           ${styles}
         `}>
         {children}
