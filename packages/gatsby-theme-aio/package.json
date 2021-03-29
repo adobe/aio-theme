@@ -90,7 +90,7 @@
     "mobx": "^5.15.7",
     "postcss": "^8.2.8",
     "preact": "^10.5.12",
-    "preact-render-to-string": "^5.1.16",
+    "preact-render-to-string": "^5.1.17",
     "prism-react-renderer": "^1.2.0",
     "prop-types": "^15.7.2",
     "react-helmet": "^6.1.0",
