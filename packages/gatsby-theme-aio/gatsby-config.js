@@ -54,7 +54,10 @@ module.exports = {
         plugins: [`gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-copy-linked-files`
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`]
+            }
           },
           {
             resolve: `gatsby-remark-images-remote`,
