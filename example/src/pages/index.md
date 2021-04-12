@@ -30,7 +30,7 @@ Adobe Product API offers limitless ways to integrate your most important custome
 
 ### Get Started
 
-[Quickstart Guide](guides/)
+[Quickstart Guide](guides/index.md)
 
 Get started with the Adobe Analytics APIs.
 
@@ -38,7 +38,7 @@ Get started with the Adobe Analytics APIs.
 
 ### Guides
 
-[Calculated Metrics API](guides/calculated_metrics_api/)
+[Calculated Metrics API](/src/pages/guides/calculated_metrics_api/index.md)
 
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
