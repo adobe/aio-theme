@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.3...@adobe/gatsby-theme-aio@3.1.4) (2021-04-12)
+
+
+### Bug Fixes
+
+* Build is broken without React dependencies ([d0f99ea](https://github.com/adobe/gatsby-theme-aio/commit/d0f99eaf4c00056ed7d5c6b8253b5d805ff200f0))
+* Links to markdown files are broken ([e34a233](https://github.com/adobe/gatsby-theme-aio/commit/e34a233cd82debcea9ec7cada8411f242147c96a))
+* Some images are stretched vertically ([c7930ab](https://github.com/adobe/gatsby-theme-aio/commit/c7930aba591438e62c182b0bd0f4d5427dff7103))
+
+
+
+
+
 ## [3.1.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.2...@adobe/gatsby-theme-aio@3.1.3) (2021-03-26)
 
 
