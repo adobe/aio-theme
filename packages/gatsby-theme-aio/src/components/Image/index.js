@@ -25,34 +25,17 @@ export const Image = (props) => {
       <span
         className="gatsby-resp-image-wrapper"
         css={css`
-          position: relative;
           display: block;
           margin-left: auto;
           margin-right: auto;
           max-width: ${LARGE_SCREEN_WIDTH};
         `}>
-        <span
-          className="gatsby-resp-image-background-image"
-          css={css`
-            display: block;
-            position: relative;
-            bottom: 0;
-            left: 0;
-            padding-bottom: 100%;
-            pointer-events: none;
-          `}
-        />
+        <span className="gatsby-resp-image-background-image" />
         <img
           {...props}
           className="gatsby-resp-image-image"
           css={css`
             width: 100%;
-            height: 100%;
-            margin: 0;
-            vertical-align: middle;
-            position: absolute;
-            top: 0;
-            left: 0;
             opacity: 0;
             transition: opacity 0.5s;
           `}

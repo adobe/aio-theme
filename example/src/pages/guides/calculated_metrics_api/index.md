@@ -28,3 +28,7 @@ The refresh token grant type is automatically added to OAuth clients created aft
 <InlineAlert variant="alert" slots="text"/>
 
 The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
+
+![](sample.gif)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare purus, vel dapibus augue suscipit in. Nam blandit vitae ante et auctor. Donec placerat egestas posuere. Aliquam erat volutpat. In condimentum massa eu pharetra porta. Nunc tempus massa sit amet nisl posuere sagittis. Mauris sit amet rhoncus neque. Phasellus ut vulputate est, vel auctor metus.

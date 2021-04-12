@@ -48,10 +48,15 @@ const Icons = ({ icons, isCentered }) =>
           }
 
           .gatsby-resp-image-wrapper {
+            position: relative;
             width: var(--spectrum-global-dimension-size-800) !important;
           }
 
           .gatsby-resp-image-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
             object-fit: contain;
           }
         `
@@ -233,12 +238,17 @@ const TextBlock = ({
                   margin-bottom: var(--spectrum-global-dimension-size-300);
 
                   .gatsby-resp-image-wrapper {
+                    position: relative;
                     max-width: none !important;
                     width: 100% !important;
                     height: 100% !important;
                   }
 
                   .gatsby-resp-image-image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
                     object-fit: contain;
                   }
                 `
