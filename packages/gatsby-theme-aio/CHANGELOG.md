@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.4...@adobe/gatsby-theme-aio@3.1.5) (2021-04-12)
+
+
+### Bug Fixes
+
+* Better support for internal markdown links ([96717a6](https://github.com/adobe/gatsby-theme-aio/commit/96717a68d94972583b59d433ca7a7bea24a0d22e))
+
+
+
+
+
 ## [3.1.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.3...@adobe/gatsby-theme-aio@3.1.4) (2021-04-12)
 
 
