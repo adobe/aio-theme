@@ -193,7 +193,7 @@ export const isInternalLink = (pathname, location, pages) => {
   const base = 'https://example.com';
   const href = new URL(encodeURI(location.pathname), base);
 
-  pathname = trailingSlashFix(cleanMarkdownExtension(new URL(pathname, href).pathname));
+  pathname = decodeURI(trailingSlashFix(cleanMarkdownExtension(new URL(pathname, href).pathname)));
 
   return pages.some((path) => path === pathname);
 };

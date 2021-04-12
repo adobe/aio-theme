@@ -132,7 +132,7 @@ module.exports = {
       },
       {
         title: 'Calculated Metrics API',
-        path: '/guides/calculated_metrics_api/'
+        path: '/guides/Calculated Metrics API/'
       },
       {
         title: 'Overview',
