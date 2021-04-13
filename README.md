@@ -771,7 +771,7 @@ You can manually trigger the deploy workflow by pressing the **Run workflow** bu
 
 **Pre-requisites:**
 
-1. Add a [Github Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) named `PATH_PREFIX`. This is the sub-folder to deploy this micro-site to.
+1. Setting your `PATH_PREFIX` as explained [here](#adding-a-path-prefix). This is the sub-folder to deploy this micro-site to.
   * For example, if you want to deploy to `https://example.com/foo/bar`, you must set `PATH_PREFIX` to `/foo/bar/`
   * For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
 2. The person initiating the deploy workflow must have `write` access to the repository.
