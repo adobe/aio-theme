@@ -374,12 +374,12 @@ By default, you can omit the `ROOT` env var, and it should use the root folder a
   2. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon
   3. Copy the url displayed in the `script` tag
 
-This last value will be the value you put in `AIO_ADOBE_LAUNCH_SRC`.
+This last value will be the value you put in `ADOBE_LAUNCH_SRC`.
 `ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT` is a boolean value, set to `true` if you want to enable the script to run in development.
 
 Example:
 ```properties
-AIO_ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
+ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
 ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ```
 
