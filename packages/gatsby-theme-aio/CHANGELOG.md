@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.7](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.6...@adobe/gatsby-theme-aio@3.1.7) (2021-04-13)
+
+
+### Bug Fixes
+
+* Rename launch var ([7949673](https://github.com/adobe/gatsby-theme-aio/commit/794967328fc8307317ed2399e9d8b605c0c86332))
+
+
+
+
+
 ## [3.1.6](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.5...@adobe/gatsby-theme-aio@3.1.6) (2021-04-13)
 
 
