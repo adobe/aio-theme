@@ -61,9 +61,9 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Versions](#versions)
 * [Building the Gatsby site](#building-the-gatsby-site)
   + [Adding a Path Prefix](#adding-a-path-prefix)
-* [Publishing the Gatsby site](#publishing-the-gatsby-site)
-  + [Publishing to GitHub Pages (Dev)](#publishing-to-github-pages-dev)
-  + [Publishing to Azure Storage Static Websites (Production)](#publishing-to-azure-storage-static-websites-production) 
+* [Deploying the Gatsby site](#deploying-the-gatsby-site)
+  + [Preview on GitHub Pages](#preview-on-github-pages)
+  + [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites) 
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
   + [Front matter](#front-matter)
   + [OpenAPI](#openapi)
@@ -374,13 +374,13 @@ By default, you can omit the `ROOT` env var, and it should use the root folder a
   2. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon
   3. Copy the url displayed in the `script` tag
 
-This last value will be the value you put in `GATSBY_LAUNCH_SRC`.
-`GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT` is a boolean value, set to `true` if you want to enable the script to run in development.
+This last value will be the value you put in `ADOBE_LAUNCH_SRC`.
+`ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT` is a boolean value, set to `true` if you want to enable the script to run in development.
 
 Example:
 ```properties
-GATSBY_LAUNCH_SRC=https://your.adobe.launch.url.here
-GATSBY_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
+ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
+ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ```
 
 ### Global Navigation
@@ -746,12 +746,12 @@ For example, a Gatsby blog could live at `example.com/blog/`, or a site could be
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
 ```
-pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX' 
+pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/' 
 ```
 
-## Publishing the Gatsby site
+## Deploying the Gatsby site
 
-### Publishing to GitHub Pages (Dev)
+### Preview on GitHub Pages
 
 To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at https://ORG_NAME.github.io/REPO_NAME. 
 
@@ -761,33 +761,9 @@ On every commit to the `main` branch, the site will be built to GitHub Pages aut
 
 `Feedback component`: no environmental variable should be set since GitHub Pages should only be for development purposes
 
-### Publishing to Azure Storage Static Websites (Production)
+### Deploy to Azure Storage Static Websites
 
-A site can be published using a Pull Request or using GitHub's interactive deploy workflow.  
-
-#### Using Pull Request
-  
-If you're not familiar with GitHub's Pull Request feature, please read the [documentation|https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests] first.  
-  
-1. The Pull Request should be tagged with the `deploy` label (Production deploy) AND/OR
-2. The Pull Request should be tagged with the `deploy:dev` label (Dev deploy)
-3. Lastly, the Pull Request must be `approved` to start deploying
-
-**Pre-requisites:**
-1. Create a GitHub label called `deploy` if it does not exist
-2. Create a GitHub label called `deploy:dev` if it does not exist
-3. Add a Azure Blob Storage connection string GitHub Secret for `production` called `AZURE_PROD_CONNECTION_STRING`
-4. Add a Azure Blob Storage connection string GitHub Secret for `development` called `AZURE_DEV_CONNECTION_STRING`
-5. Add a Github Secret for `production` called `PATH_PREFIX`. This is the sub-folder to deploy this micro-site to.
-  * For example, if you want to deploy to https://example.com/foo/bar you must set `PATH_PREFIX` to `foo/bar`
-  * For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
-6. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
-7. The Pull Request must be on a `branch in the same repo` (this is a GitHub Actions security restriction for secrets access)
-8. The person initiating the Pull Request must have a `Contributor` role to the repo (because of the previous requirement)
- 
-#### Using interactive workflow
-
-You can manually trigger a deploy workflow by pressing the **Run workflow** button:
+You can manually trigger the deploy workflow by pressing the **Run workflow** button:
 
 1. Go to your repository actions overview page i.e. https://github.com/ORG/REPOSITORY/actions
 2. Click on the "Deploy" workflow  
@@ -795,13 +771,10 @@ You can manually trigger a deploy workflow by pressing the **Run workflow** butt
 
 **Pre-requisites:**
 
-1. Add a Azure Blob Storage connection string GitHub Secret for `production` called `AZURE_PROD_CONNECTION_STRING`
-2. Add a Azure Blob Storage connection string GitHub Secret for `development` called `AZURE_DEV_CONNECTION_STRING`
-3. Add a Github Secret for `production` called `PATH_PREFIX`. This is the sub-folder to deploy this micro-site to.
-  * For example, if you want to deploy to https://example.com/foo/bar you must set `PATH_PREFIX` to `foo/bar`
+1. Add a [Github Secret](https://docs.github.com/en/actions/reference/encrypted-secrets) named `PATH_PREFIX`. This is the sub-folder to deploy this micro-site to.
+  * For example, if you want to deploy to `https://example.com/foo/bar`, you must set `PATH_PREFIX` to `/foo/bar/`
   * For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
-4. Add a Adobe Launch URL GitHub Secret called `GATSBY_LAUNCH_URL` (see section above for the Feedback component)
-5. The person initiating the deploy workflow must have `write` access to the repository.
+2. The person initiating the deploy workflow must have `write` access to the repository.
  
 ## Writing Enhanced Markdown 
 
