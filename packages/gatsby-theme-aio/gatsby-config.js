@@ -88,7 +88,7 @@ module.exports = {
     {
       resolve: `@adobe/gatsby-add-launch-script`,
       options: {
-        scriptUrl: process.env.ADOBE_LAUNCH_SRC,
+        scriptUrl: process.env.AIO_ADOBE_LAUNCH_SRC,
         includeInDevelopment: process.env.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
       }
     }
