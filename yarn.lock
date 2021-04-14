@@ -8401,10 +8401,10 @@ gatsby-recipes@^0.12.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-remark-copy-linked-files@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-3.1.0.tgz#64c116c4be8e379e767168ce6b40c825a385db6f"
-  integrity sha512-VFpORuDUYEB/Q24NPpt1NDCTLzpGaFHb0sUj0lKAOqfdM8WJKiZhoGVfgnKZP5yAeaf70KeawUXJipj75ucmmA==
+gatsby-remark-copy-linked-files@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-4.0.0.tgz#826e07d5f0baf9702142e29fad181d803a391ce3"
+  integrity sha512-HRTizO9vrdHCMd/Pep9Dr4dJ07WrBULvg5P2mpEzctLFhkpgKxUKqy/fPTrIh9ZjcPcxaBsry4xIS+JxKsHgCA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     cheerio "^1.0.0-rc.3"
@@ -8413,7 +8413,7 @@ gatsby-remark-copy-linked-files@^3.0.0:
     lodash "^4.17.21"
     path-is-inside "^1.0.2"
     probe-image-size "^6.0.0"
-    unist-util-visit "^1.4.1"
+    unist-util-visit "^2.0.3"
 
 gatsby-remark-images-remote@^1.0.2:
   version "1.0.2"
@@ -17307,7 +17307,7 @@ unist-util-visit-parents@^3.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
 
-unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.2:
+unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.2, unist-util-visit@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.3.tgz#c3703893146df47203bb8a9795af47d7b971208c"
   integrity sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==
