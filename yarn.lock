@@ -8201,10 +8201,10 @@ gatsby-plugin-emotion@^6.0.0:
     "@babel/runtime" "^7.11.2"
     "@emotion/babel-preset-css-prop" "^11.2.0"
 
-gatsby-plugin-layout@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-2.1.0.tgz#993672d09a98fc6098108c8a2561d00a29b51e4f"
-  integrity sha512-5WZ6tRM5B79lEiMWEBWCacUctmrHGgNOHGYklSxYZQaYsXTxtfhGJ4dHf10TUif2bttQ6IRi+4Elm5Lm6AJucg==
+gatsby-plugin-layout@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-2.4.0.tgz#48a3898db0377360ded062900dc267039eb0914b"
+  integrity sha512-NXX+bMDWmsb8r/GE5GHG1rSpypYCi7wUEuWf1ceDRafpEO8Bo4jI2Sx777vunTUgWLq6SN92EgUBm6d8D5AcfQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
