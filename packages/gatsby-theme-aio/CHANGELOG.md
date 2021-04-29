@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.9](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.8...@adobe/gatsby-theme-aio@3.1.9) (2021-04-29)
+
+
+### Bug Fixes
+
+* Transcluded images from external repositories are ignored (fixes [#313](https://github.com/adobe/gatsby-theme-aio/issues/313)) ([1346c83](https://github.com/adobe/gatsby-theme-aio/commit/1346c83fcb96b80ee7cd2d8e41c44aa3fba6286e))
+
+
+
+
+
 ## [3.1.8](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.7...@adobe/gatsby-theme-aio@3.1.8) (2021-04-13)
 
 
