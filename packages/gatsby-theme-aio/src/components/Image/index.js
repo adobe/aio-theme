@@ -16,9 +16,13 @@ import { LARGE_SCREEN_WIDTH } from '../../utils';
 
 export const Image = (props) => {
   // Check if gatsby-remark-images-remote processing was skipped
-  if (!props.src || props.src.endsWith('.svg') || props.src.endsWith('.gif') || !props.loading) {
+  if (!props.src || props.src.default || props.src.endsWith('.svg') || props.src.endsWith('.gif') || !props.loading) {
     // Defaults to same as gatsby-remark-images-remote loading config
     props.loading = props.loading || 'lazy';
+
+    if (props.src.default) {
+      props.src = props.src.default;
+    }
 
     // Recreate gatsby-remark-images-remote styles and classes
     return (
