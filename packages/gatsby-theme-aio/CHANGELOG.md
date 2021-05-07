@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.9...@adobe/gatsby-theme-aio@3.2.0) (2021-05-07)
+
+
+### Features
+
+* Add Frame and IMS support ([f73371a](https://github.com/adobe/gatsby-theme-aio/commit/f73371ad9b41c7bb9721a3838641c3875e9712f8))
+
+
+
+
+
 ## [3.1.9](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.8...@adobe/gatsby-theme-aio@3.1.9) (2021-04-29)
 
 
