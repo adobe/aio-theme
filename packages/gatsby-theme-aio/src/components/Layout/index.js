@@ -90,13 +90,13 @@ export default ({ children, pageContext, location }) => {
   // Load and initialize IMS
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
-    const AIO_IMS = process.env.GATSBY_AIO_IMS;
+    const IMS_CONFIG = process.env.GATSBY_IMS_CONFIG;
 
-    if (IMS_SRC && AIO_IMS) {
+    if (IMS_SRC && IMS_CONFIG) {
       (async () => {
         try {
           await addScript(`${IMS_SRC}`);
-          window.adobeImsFactory.createIMSLib(JSON.parse(AIO_IMS));
+          window.adobeImsFactory.createIMSLib(JSON.parse(IMS_CONFIG));
           window.adobeIMS.initialize();
         } catch (e) {
           console.error(`AIO: IMS error.`);

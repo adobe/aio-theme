@@ -38,7 +38,7 @@ describe('Smoke Test', () => {
     cy.visit(`/no_layout/`).assertRoute(`/no_layout/`);
     cy.contains('No layout');
   });
-  
+
   it('Frame loads', () => {
     cy.visit(`/frame/`).assertRoute(`/frame/`);
     cy.contains('Adobe I/O');
