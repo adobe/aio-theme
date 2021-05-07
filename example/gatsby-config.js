@@ -57,6 +57,10 @@ module.exports = {
       {
         title: 'No layout',
         path: '/no_layout/'
+      },
+      {
+        title: 'Frame',
+        path: '/frame/'
       }
     ],
     subPages: [

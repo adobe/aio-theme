@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Child</title>
+  <script src="https://unpkg.com/penpal@^5/dist/penpal.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    button, pre {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <button id="signIn" disabled>Sign in</button>
+  <button id="signOut" disabled>Sign out</button>
+  <pre id="token"></pre>
+  <pre id="profile"></pre>
+
+  <script>
+    const log = (el, info) => el.textContent = JSON.stringify(info, null, 4);
+
+    // Child needs to connect after parent
+    window.onload = () => {
+      const connection = Penpal.connectToParent({timeout: 5000, debug: true});
+
+      // Enable buttons once connected
+      connection.promise.then((parent) => {
+        signIn.onclick = () => parent.signIn();
+        signOut.onclick = () => parent.signOut();
+        signIn.disabled = false;
+        signOut.disabled = false;
+
+        // Access IMS info
+        Promise.all([
+          parent.getIMSAccessToken(),
+          parent.getIMSProfile()
+        ]).then((data) => {
+          // Log info
+          log(token, data[0]);
+          log(profile, data[1]);
+
+          // Update parent height to avoid duplicated scrollbar issue
+          parent.setHeight(`${document.body.scrollHeight}px`);
+        });
+      });
+    };
+  </script>
+</body>
+</html>

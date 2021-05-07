@@ -132,7 +132,10 @@ export default ({ children, pageContext, query }) => {
     return isTranscludedContent ? (
       <MDXProvider>{filteredChildren}</MDXProvider>
     ) : (
-      <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>{filteredChildren}</MDXProvider>
+      <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
+        {filteredChildren}
+        <Footer hasSideNav={hasSideNav} />
+      </MDXProvider>
     );
   } else {
     // PrevNext

@@ -2,9 +2,11 @@
 layout: none  
 ---
 
-import Footer from '../../components/Footer.js'
+import Custom from '../../components/Custom.js'
 
-# No layout
+![](../hero-illustration.png)
 
-<Footer />
+<Custom color={'red'}>Custom red text</Custom>
+<Custom color={'green'}>Custom blue text</Custom>
+<Custom color={'blue'}>Custom green text</Custom>
 

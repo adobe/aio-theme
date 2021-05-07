@@ -85,6 +85,9 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Resource Card](#resource-card)
   + [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
+  + [Custom Layout](#custom-layout)
+  + [Frame](#frame)
+  + [Theming](#theming)
 * [Upgrading](#upgrading)
 * [Issue tracker](#issue-tracker)
 * [Contributing](#contributing)
@@ -1624,20 +1627,17 @@ You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/com
 
 ### Custom layout
 
-You can build pages without the default layout (e.g. header, side navigation etc.) by setting `layout` to `none` within the page frontmatter.
-This can be useful if for example you want to build pages to be embedded in other systems.
+You can build pages without the default layout (e.g. header, side navigation etc.) by setting `layout` to `none` within the page front matter.
+The Global Header and Footer are always shown but anything in between can be customized. 
 
-The following markdown page disables the layout: 
+See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/no_layout/index.md).
 
-<pre>
----
-layout: none  
----
+### Frame
 
-# Heading 1
+This can be useful if you want to embed pages from another system. The embedded page will be framed between the Global Header and Footer.
+Simply set `frameSrc` to the `url` of the external page within the front matter.
 
-Some text
-</pre>
+See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/frame/index.md).   
 
 ### Theming
 
