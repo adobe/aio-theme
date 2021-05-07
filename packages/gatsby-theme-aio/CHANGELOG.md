@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.2.0...@adobe/gatsby-theme-aio@3.2.1) (2021-05-07)
+
+
+### Bug Fixes
+
+* Update IMS env naming ([4ebfe3e](https://github.com/adobe/gatsby-theme-aio/commit/4ebfe3e24090158be7edecce3083fc83e70f10f9))
+
+
+
+
+
 # [3.2.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.1.9...@adobe/gatsby-theme-aio@3.2.0) (2021-05-07)
 
 
