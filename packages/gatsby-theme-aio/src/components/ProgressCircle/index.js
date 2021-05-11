@@ -11,24 +11,40 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import '@spectrum-css/progresscircle';
 
-export const ProgressCircle = () => (
-  <div
-    aria-label="Loading"
-    className="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--large">
-    <div className="spectrum-ProgressCircle-track"></div>
-    <div className="spectrum-ProgressCircle-fills">
-      <div className="spectrum-ProgressCircle-fillMask1">
-        <div className="spectrum-ProgressCircle-fillSubMask1">
-          <div className="spectrum-ProgressCircle-fill"></div>
+const sizeMap = {
+  S: 'small',
+  M: 'medium',
+  L: 'large'
+};
+
+const ProgressCircle = ({ size = 'M', ...props }) => {
+  return (
+    <div
+      {...props}
+      aria-label="Loading"
+      className={`spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--${sizeMap[size]}`}>
+      <div className="spectrum-ProgressCircle-track"></div>
+      <div className="spectrum-ProgressCircle-fills">
+        <div className="spectrum-ProgressCircle-fillMask1">
+          <div className="spectrum-ProgressCircle-fillSubMask1">
+            <div className="spectrum-ProgressCircle-fill"></div>
+          </div>
         </div>
-      </div>
-      <div className="spectrum-ProgressCircle-fillMask2">
-        <div className="spectrum-ProgressCircle-fillSubMask2">
-          <div className="spectrum-ProgressCircle-fill"></div>
+        <div className="spectrum-ProgressCircle-fillMask2">
+          <div className="spectrum-ProgressCircle-fillSubMask2">
+            <div className="spectrum-ProgressCircle-fill"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+ProgressCircle.propTypes = {
+  size: PropTypes.oneOf(['S', 'M', 'L'])
+};
+
+export { ProgressCircle };

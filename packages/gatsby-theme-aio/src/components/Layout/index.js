@@ -87,6 +87,9 @@ const updatePageSrc = (type, frontMatter, setIsLoading) => {
 };
 
 export default ({ children, pageContext, location }) => {
+  const [ims, setIms] = useState(null);
+  const [isLoadingIms, setIsLoadingIms] = useState(true);
+
   // Load and initialize IMS
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
@@ -98,16 +101,18 @@ export default ({ children, pageContext, location }) => {
           await addScript(`${IMS_SRC}`);
           window.adobeImsFactory.createIMSLib(JSON.parse(IMS_CONFIG));
           window.adobeIMS.initialize();
+          setIms(window.adobeIMS);
         } catch (e) {
           console.error(`AIO: IMS error.`);
+        } finally {
+          setIsLoadingIms(false);
         }
       })();
     } else {
       console.warn('AIO: IMS config missing.');
+      setIsLoadingIms(false);
     }
   }, []);
-
-  location.pathname = decodeURIComponent(location.pathname);
 
   // Load all data once and pass it to the Provider
   const data = useStaticQuery(
@@ -196,6 +201,8 @@ export default ({ children, pageContext, location }) => {
 
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  location.pathname = decodeURIComponent(location.pathname);
 
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
@@ -320,6 +327,7 @@ export default ({ children, pageContext, location }) => {
       />
       <Provider
         value={{
+          ims,
           location,
           pageContext,
           hasSideNav,
@@ -369,6 +377,8 @@ export default ({ children, pageContext, location }) => {
                   <GlobalHeaderTemp />
                 ) : (
                   <GlobalHeader
+                    ims={ims}
+                    isLoadingIms={isLoadingIms}
                     menu={menu}
                     versions={versions}
                     pages={pages}
@@ -436,7 +446,7 @@ export default ({ children, pageContext, location }) => {
                 display: ${isLoading ? 'grid' : 'none'};
                 place-items: center center;
               `}>
-              <ProgressCircle />
+              <ProgressCircle size="L" />
             </div>
 
             <div

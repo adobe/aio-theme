@@ -10,16 +10,18 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { connectToChild } from 'penpal';
 import { Footer } from '../Footer';
 import PropTypes from 'prop-types';
 import { ProgressCircle } from '../ProgressCircle';
+import Context from '../Context';
 
 const Frame = ({ src }) => {
   const [showProgress, setShowProgress] = useState(true);
   const iframe = useRef(null);
+  const { ims } = useContext(Context);
 
   return (
     <>
@@ -33,7 +35,7 @@ const Frame = ({ src }) => {
           display: ${showProgress ? 'grid' : 'none'};
           place-items: center center;
         `}>
-        <ProgressCircle />
+        <ProgressCircle size="L" />
       </div>
 
       <iframe
@@ -51,19 +53,27 @@ const Frame = ({ src }) => {
                 iframe.current.style.height = height;
               },
               getIMSAccessToken() {
-                return window.adobeIMS.isSignedInUser() ? window.adobeIMS.getAccessToken() : null;
+                if (ims?.isSignedInUser()) {
+                  return ims.getAccessToken();
+                }
+
+                return null;
               },
               getIMSProfile() {
-                return window.adobeIMS.isSignedInUser() ? window.adobeIMS.getProfile() : null;
+                if (ims?.isSignedInUser()) {
+                  return ims.getProfile();
+                }
+
+                return null;
               },
               signIn() {
-                if (!window.adobeIMS.isSignedInUser()) {
-                  window.adobeIMS.signIn();
+                if (ims && !ims.isSignedInUser()) {
+                  ims.signIn();
                 }
               },
               signOut() {
-                if (window.adobeIMS.isSignedInUser()) {
-                  window.adobeIMS.signOut();
+                if (ims && ims.isSignedInUser()) {
+                  ims.signOut();
                 }
               }
             }

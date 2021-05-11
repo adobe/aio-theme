@@ -33,7 +33,7 @@ const OpenAPIBlock = ({ specUrl, spec }) => {
           display: ${showProgress ? 'grid' : 'none'};
           place-items: center center;
         `}>
-        <ProgressCircle />
+        <ProgressCircle size="L" />
       </div>
 
       <div

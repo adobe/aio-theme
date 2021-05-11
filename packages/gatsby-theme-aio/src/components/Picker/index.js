@@ -97,7 +97,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   );
 };
 
-const PickerButton = ({ children, isOpen, isQuiet, ariaControls, ...props }) => (
+const PickerButton = ({ children, isOpen, isQuiet, ...props }) => (
   <button
     {...props}
     className={classNames(
@@ -107,8 +107,7 @@ const PickerButton = ({ children, isOpen, isQuiet, ariaControls, ...props }) => 
       { 'is-open': isOpen }
     )}
     aria-haspopup="listbox"
-    aria-expanded={isOpen}
-    aria-controls={ariaControls}>
+    aria-expanded={isOpen}>
     <span className="spectrum-Picker-label">{children}</span>
     <ChevronDown className="spectrum-Picker-menuIcon" />
   </button>

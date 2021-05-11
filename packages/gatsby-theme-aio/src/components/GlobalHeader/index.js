@@ -17,24 +17,35 @@ import { Link as GatsbyLink } from 'gatsby';
 import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
+import { Button } from '../Button';
+import { ProgressCircle } from '../ProgressCircle';
 import { Adobe, TripleGripper } from '../Icons';
-import { ActionButton, Text } from '../ActionButton';
+import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
+import { Image } from '../Image';
 import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
+import { Divider } from '../Divider';
 
-const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
+const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
   const nav = useRef(null);
+  const tabsContainerRef = useRef(null);
   const selectedTabIndicator = useRef(null);
   // Don't animate the tab indicator by default
   const [isAnimated, setIsAnimated] = useState(false);
   const [tabs] = useState([]);
   const versionPopover = useRef(null);
+  const profilePopover = useRef(null);
+  const [openVersion, setOpenVersion] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [profile, setProfile] = useState(null);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+
   const versionPopoverId = nextId();
-  const [openVersionMenu, setOpenVersionMenu] = useState(false);
+  const profilePopoverId = nextId();
   const hasMenu = menu || menu === null;
 
   const getSelectedTabIndex = () => {
@@ -64,16 +75,59 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
   }, [location.pathname]);
 
   useEffect(() => {
+    (async () => {
+      if (ims && ims.isSignedInUser()) {
+        const profile = await ims.getProfile();
+        setProfile(profile);
+        setIsLoadingProfile(false);
+      } else if (!isLoadingIms) {
+        setIsLoadingProfile(false);
+      }
+    })();
+  }, [ims]);
+
+  useEffect(() => {
+    if (versionPopover.current) {
+      if (openVersion) {
+        const { top, left } = versionPopover.current.getBoundingClientRect();
+
+        versionPopover.current.style.left = `${left + 13}px`;
+        versionPopover.current.style.top = `${top}px`;
+        versionPopover.current.style.position = 'fixed';
+      } else {
+        // Wait for animation to finish
+        setTimeout(() => {
+          versionPopover.current.style = '';
+        }, 200);
+      }
+    }
+  }, [openVersion]);
+
+  useEffect(() => {
     // Clicking outside of menu should close menu
     const onClick = (event) => {
       if (versions?.length && !versionPopover.current.contains(event.target)) {
-        setOpenVersionMenu(false);
+        setOpenVersion(false);
+      }
+
+      if (!profilePopover.current.contains(event.target)) {
+        setOpenProfile(false);
       }
     };
 
     document.addEventListener('click', onClick);
 
     return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setOpenVersion(false);
+    };
+
+    tabsContainerRef.current.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => tabsContainerRef.current.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
@@ -191,13 +245,14 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
                     }
                   `}>
                   <ActionButton elementType="a" isQuiet href="/apis" {...getExternalLinkProps()}>
-                    <Text>Discover</Text>
+                    <ActionButtonLabel>Discover</ActionButtonLabel>
                   </ActionButton>
                 </div>
               )}
             </div>
           </div>
           <div
+            ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
               margin-left: ${hasMenu
@@ -208,17 +263,11 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
                 overflow-x: auto;
                 overflow-x: overlay;
                 overflow-y: hidden;
+                margin-right: var(--spectrum-global-dimension-size-2400);
 
                 .spectrum-Tabs {
                   padding-bottom: var(--spectrum-global-dimension-size-400);
                   margin-top: var(--spectrum-global-dimension-size-400);
-
-                  ${versions?.length > 0 &&
-                  `
-                    & > .spectrum-Tabs-item:first-of-type {
-                      margin-right: var(--spectrum-global-dimension-size-300);
-                    }
-                  `}
                 }
 
                 .spectrum-Tabs-selectionIndicator {
@@ -264,20 +313,16 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
                         css={css`
                           margin-left: var(--spectrum-global-dimension-size-100) !important;
                           margin-right: var(--spectrum-global-dimension-size-300);
-
-                          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                            display: none;
-                          }
                         `}>
                         <PickerButton
                           isQuiet
-                          isOpen={openVersionMenu}
-                          ariaControls={versionPopoverId}
+                          isOpen={openVersion}
+                          aria-controls={versionPopoverId}
                           onClick={(event) => {
                             event.stopPropagation();
                             event.nativeEvent.stopImmediatePropagation();
 
-                            setOpenVersionMenu((openVersionMenu) => !openVersionMenu);
+                            setOpenVersion((open) => !open);
                           }}>
                           {versions[0].title}
                         </PickerButton>
@@ -286,7 +331,7 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
                           id={versionPopoverId}
                           variant="picker"
                           isQuiet
-                          isOpen={openVersionMenu}>
+                          isOpen={openVersion}>
                           <Menu>
                             {versions.map((version, i) => {
                               const isFirst = i === 0;
@@ -327,10 +372,6 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
             css={css`
               grid-area: optional;
               justify-self: flex-end;
-
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                display: none;
-              }
             `}>
             <div
               css={css`
@@ -339,6 +380,114 @@ const GlobalHeader = ({ menu, versions, pages, docs, location, toggleSideNav, ha
               <AnchorButton variant="primary" href="https://console.adobe.io">
                 Console
               </AnchorButton>
+
+              {process.env.GATSBY_IMS_SRC && process.env.GATSBY_IMS_CONFIG && (
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: var(--spectrum-global-dimension-size-200);
+                    width: var(--spectrum-global-dimension-size-800);
+                  `}>
+                  <ProgressCircle size="S" hidden={!isLoadingIms} />
+
+                  <ActionButton
+                    hidden={isLoadingIms || isLoadingProfile || profile}
+                    variant="primary"
+                    isQuiet
+                    onClick={() => {
+                      ims.signIn();
+                    }}>
+                    <ActionButtonLabel>Sign in</ActionButtonLabel>
+                  </ActionButton>
+
+                  <div hidden={!profile}>
+                    <div
+                      aria-controls={profilePopoverId}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        event.nativeEvent.stopImmediatePropagation();
+
+                        setOpenProfile((open) => !open);
+                      }}
+                      css={css`
+                        width: var(--spectrum-global-dimension-size-400);
+                        height: var(--spectrum-global-dimension-size-400);
+                        border-radius: var(--spectrum-global-dimension-static-percent-50);
+                        background: var(--spectrum-global-color-gray-50);
+                        overflow: hidden;
+                        cursor: pointer;
+                      `}>
+                      <Image alt="Avatar" src={profile ? ims.avatarUrl(profile.userId) : ''} />
+                    </div>
+                    <Popover
+                      id={profilePopoverId}
+                      ref={profilePopover}
+                      isOpen={openProfile}
+                      css={css`
+                        width: var(--spectrum-global-dimension-size-3400);
+                        max-height: var(--spectrum-global-dimension-size-4600);
+                        margin-left: calc(-1 * var(--spectrum-global-dimension-size-3000));
+                      `}>
+                      <div
+                        css={css`
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          flex-direction: column;
+                        `}>
+                        <div
+                          css={css`
+                            width: var(--spectrum-global-dimension-size-800);
+                            height: var(--spectrum-global-dimension-size-800);
+                            border-radius: var(--spectrum-global-dimension-static-percent-50);
+                            background: var(--spectrum-global-color-gray-50);
+                            overflow: hidden;
+                            margin-top: var(--spectrum-global-dimension-size-400);
+                            margin-bottom: var(--spectrum-global-dimension-size-200);
+                          `}>
+                          <Image alt="Avatar" src={profile ? ims.avatarUrl(profile.userId) : ''} />
+                        </div>
+
+                        <div
+                          className="spectrum-Heading spectrum-Heading--sizeL spectrum-Heading--light"
+                          css={css`
+                            padding: 0 var(--spectrum-global-dimension-size-200);
+                            text-align: center;
+                          `}>
+                          {profile && profile.displayName}
+                        </div>
+
+                        <div
+                          css={css`
+                            margin: var(--spectrum-global-dimension-size-200) 0;
+                            padding: 0 var(--spectrum-global-dimension-size-200);
+                            box-sizing: border-box;
+                            width: 100%;
+                          `}>
+                          <Divider size="S" />
+                        </div>
+
+                        <AnchorButton href="https://account.adobe.com/" variant="primary" isQuiet>
+                          Edit Profile
+                        </AnchorButton>
+
+                        <Button
+                          variant="primary"
+                          css={css`
+                            margin: var(--spectrum-global-dimension-size-200) 0;
+                          `}
+                          onClick={() => {
+                            ims.signOut();
+                          }}>
+                          Sign out
+                        </Button>
+                      </div>
+                    </Popover>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
