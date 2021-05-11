@@ -429,7 +429,10 @@ export default ({ children, pageContext, location }) => {
                 <main hidden={!pageSrc['frame'].has}>
                   {pageSrc['frame'].src &&
                     pageSrc['frame'].block &&
-                    createElement(pageSrc['frame'].block, { src: pageSrc['frame'].src })}
+                    createElement(pageSrc['frame'].block, {
+                      src: pageSrc['frame'].src,
+                      height: frontMatter?.frameHeight
+                    })}
                 </main>
 
                 {!pageSrc['openAPI'].has && !pageSrc['frame'].has && children}

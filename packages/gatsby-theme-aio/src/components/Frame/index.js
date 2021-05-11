@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 import { ProgressCircle } from '../ProgressCircle';
 import Context from '../Context';
 
-const Frame = ({ src }) => {
+const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))' }) => {
   const [showProgress, setShowProgress] = useState(true);
   const iframe = useRef(null);
   const { ims } = useContext(Context);
@@ -80,7 +80,7 @@ const Frame = ({ src }) => {
           });
         }}
         css={css`
-          height: calc(100vh - var(--spectrum-global-dimension-size-800));
+          height: ${height};
           width: 100%;
           border: none;
         `}
@@ -92,7 +92,8 @@ const Frame = ({ src }) => {
 };
 
 Frame.propTypes = {
-  src: PropTypes.string
+  src: PropTypes.string,
+  height: PropTypes.string
 };
 
 export default Frame;
