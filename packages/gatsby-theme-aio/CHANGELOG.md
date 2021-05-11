@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.2.1...@adobe/gatsby-theme-aio@3.3.0) (2021-05-11)
+
+
+### Features
+
+* Add IMS Profile viewer ([52e80ad](https://github.com/adobe/gatsby-theme-aio/commit/52e80ad80a176550eb338a6ae371baf59a971381))
+* Support setting initial frame height ([6510ed8](https://github.com/adobe/gatsby-theme-aio/commit/6510ed89544aaec3632a2fa4981a31a60bfb72d1))
+
+
+
+
+
 ## [3.2.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.2.0...@adobe/gatsby-theme-aio@3.2.1) (2021-05-07)
 
 
