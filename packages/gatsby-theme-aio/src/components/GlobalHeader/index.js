@@ -31,9 +31,9 @@ import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 
 const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
-  const nav = useRef(null);
+  const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
-  const selectedTabIndicator = useRef(null);
+  const selectedTabIndicatorRef = useRef(null);
   // Don't animate the tab indicator by default
   const [isAnimated, setIsAnimated] = useState(false);
   const [tabs] = useState([]);
@@ -66,11 +66,12 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
     const selectedTabIndex = getSelectedTabIndex();
     const selectedTab = tabs.filter((tab) => tab.current)[selectedTabIndex];
 
-    positionIndicator(selectedTabIndicator, selectedTab);
+    tabsContainerRef.current.scrollLeft = selectedTab.current.offsetLeft;
+    positionIndicator(selectedTabIndicatorRef, selectedTab);
   };
 
   useEffect(() => {
-    animateIndicator(selectedTabIndicator, isAnimated);
+    animateIndicator(selectedTabIndicatorRef, isAnimated);
     positionSelectedTabIndicator();
   }, [location.pathname]);
 
@@ -263,7 +264,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                 overflow-x: auto;
                 overflow-x: overlay;
                 overflow-y: hidden;
-                margin-right: var(--spectrum-global-dimension-size-2400);
+                margin-right: var(--spectrum-global-dimension-size-800);
 
                 .spectrum-Tabs {
                   padding-bottom: var(--spectrum-global-dimension-size-400);
@@ -278,7 +279,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
               }
             `}>
             <Tabs
-              ref={nav}
+              ref={tabsRef}
               onFontsReady={() => {
                 positionSelectedTabIndicator();
                 setIsAnimated(true);
@@ -350,7 +351,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                 );
               })}
               <TabsIndicator
-                ref={selectedTabIndicator}
+                ref={selectedTabIndicatorRef}
                 css={css`
                   bottom: calc(-1 * var(--spectrum-global-dimension-size-125)) !important;
                 `}
@@ -377,7 +378,14 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
-              <AnchorButton variant="primary" href="https://console.adobe.io">
+              <AnchorButton
+                variant="primary"
+                href="https://console.adobe.io"
+                css={css`
+                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    display: none;
+                  }
+                `}>
                 Console
               </AnchorButton>
 
@@ -393,6 +401,9 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                   <ProgressCircle size="S" hidden={!isLoadingIms} />
 
                   <ActionButton
+                    css={css`
+                      margin-top: calc(-1 * var(--spectrum-global-dimension-size-25));
+                    `}
                     hidden={isLoadingIms || isLoadingProfile || profile}
                     variant="primary"
                     isQuiet
