@@ -16,7 +16,7 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns } from '../../utils';
 import { LinkOut } from '../WorkflowIcons';
-import { getElementChild, isExternalLink, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, isExternalLink, TABLET_SCREEN_WIDTH } from '../../utils';
 
 const Resources = ({ heading, links }) => {
   return (
@@ -26,7 +26,7 @@ const Resources = ({ heading, links }) => {
         margin-left: var(--spectrum-global-dimension-size-400);
         margin-top: var(--spectrum-global-dimension-size-400);
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
           display: none;
         }
       `}>

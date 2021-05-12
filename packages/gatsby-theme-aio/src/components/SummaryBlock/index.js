@@ -13,7 +13,7 @@
 import React, { cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { HeroImage, HeroButtons } from '../Hero';
-import { LARGE_SCREEN_WIDTH } from '../../utils';
+import { TABLET_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 
@@ -32,7 +32,7 @@ const SummaryBlock = ({
       background-color: ${background};
       position: relative;
 
-      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+      @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
         height: 100vh;
       }
     `}>
@@ -53,7 +53,7 @@ const SummaryBlock = ({
         justify-content: center;
         text-align: left;
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
           width: auto;
           padding: var(--spectrum-global-dimension-size-400);
         }

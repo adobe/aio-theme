@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import { AnchorButton } from '../AnchorButton';
 import PropTypes from 'prop-types';
-import { getElementChild, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, TABLET_SCREEN_WIDTH } from '../../utils';
 
 const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
   const link = getElementChild(button);
@@ -34,7 +34,7 @@ const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
           margin-top: 0;
         }
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
           padding: var(--spectrum-global-dimension-size-400);
           height: auto;
         }

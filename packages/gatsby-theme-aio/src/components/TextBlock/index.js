@@ -16,7 +16,7 @@ import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from 'mdx-embed';
-import { getElementChild, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, layoutColumns, DESKTOP_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../../utils';
 
 const counter = {
   2: 0,
@@ -80,7 +80,7 @@ const Links = ({ links, isCentered }) =>
             ? 'var(--spectrum-global-dimension-size-200) !important;'
             : 'var(--spectrum-global-dimension-size-600) !important;'};
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
             flex-direction: column;
             align-items: ${isCentered ? 'center' : 'left'};
 
@@ -143,10 +143,9 @@ const YouTubeVideo = ({ video }) => {
           display: inline;
           width: ${layoutColumns(6)};
           box-sizing: border-box;
-          padding: 0 var(--spectrum-global-dimension-size-400);
-          margin: auto;
+          padding: var(--spectrum-global-dimension-size-200);
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
             display: block;
             width: 100%;
           }
@@ -211,7 +210,7 @@ const TextBlock = ({
             background: var(--spectrum-global-color-gray-100);
             padding: var(--spectrum-global-dimension-size-1000) 0;
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
               display: block;
               width: 100%;
             }
@@ -223,7 +222,7 @@ const TextBlock = ({
               margin: auto;
               ${extraMargin}
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                 max-width: none;
                 margin: auto;
               }
@@ -309,12 +308,12 @@ const TextBlock = ({
         `}>
         <div
           css={css`
-            width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+            width: ${DESKTOP_SCREEN_WIDTH};
             box-sizing: border-box;
             margin: auto;
             padding: var(--spectrum-global-dimension-size-1000) 0;
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
               width: 100%;
 
               & > div {
@@ -328,7 +327,7 @@ const TextBlock = ({
               align-items: center;
               flex-direction: ${isReversed ? 'row-reverse' : 'row'};
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                 flex-direction: column;
               }
             `}>
@@ -341,10 +340,10 @@ const TextBlock = ({
                   width: 50%;
                   height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
                   box-sizing: border-box;
-                  padding: 0 var(--spectrum-global-dimension-size-100);
+                  padding: var(--spectrum-global-dimension-size-200);
                   margin-top: 0;
 
-                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                     width: 100%;
                   }
 
@@ -372,7 +371,7 @@ const TextBlock = ({
                 box-sizing: border-box;
                 padding: 0 var(--spectrum-global-dimension-size-400);
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                   width: 100%;
                   margin: var(--spectrum-global-dimension-size-400) 0;
                 }

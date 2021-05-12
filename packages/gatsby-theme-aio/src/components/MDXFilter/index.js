@@ -22,7 +22,8 @@ import {
   findSelectedPageNextPrev,
   findSelectedTopPage,
   findSelectedPages,
-  LARGE_SCREEN_WIDTH
+  DESKTOP_SCREEN_WIDTH,
+  SIDENAV_WIDTH
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -82,7 +83,7 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
           }
 
           if (child.props.mdxType === 'Hero' && hasSideNav) {
-            props.width = 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) - 256px);';
+            props.width = `calc(${DESKTOP_SCREEN_WIDTH} - ${SIDENAV_WIDTH});`;
           }
 
           const childClone = cloneElement(child, {
@@ -204,7 +205,7 @@ export default ({ children, pageContext, query }) => {
       diff.push(`${layoutColumns(2)} - var(--spectrum-global-dimension-size-400)`);
     }
     if (hasSideNav) {
-      diff.push('256px');
+      diff.push(SIDENAV_WIDTH);
     }
 
     return (
@@ -222,7 +223,7 @@ export default ({ children, pageContext, query }) => {
               ${isDiscovery
                 ? 'width: var(--spectrum-global-dimension-static-grid-fluid-width);'
                 : `
-                max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+                max-width: ${DESKTOP_SCREEN_WIDTH};
                 margin: 0 var(--spectrum-global-dimension-size-800);
                 `}
 
@@ -233,7 +234,7 @@ export default ({ children, pageContext, query }) => {
                 }
               `}
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 max-width: none;
                 margin: 0 var(--spectrum-global-dimension-size-400);
               }
@@ -251,7 +252,7 @@ export default ({ children, pageContext, query }) => {
                       `
                     : layoutColumns(columns, diff)};
 
-                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     width: 100%;
                   }
                 `}>
@@ -262,7 +263,7 @@ export default ({ children, pageContext, query }) => {
                       margin-top: var(--spectrum-global-dimension-size-500);
                       margin-bottom: var(--spectrum-global-dimension-size-500);
 
-                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                         flex-direction: column;
                       }
                     `}>
@@ -276,7 +277,7 @@ export default ({ children, pageContext, query }) => {
                       css={css`
                         margin-left: auto;
 
-                        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                           margin-left: 0;
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
@@ -296,15 +297,11 @@ export default ({ children, pageContext, query }) => {
                   <div
                     css={css`
                       display: flex;
+                      flex-wrap: wrap;
                       align-items: center;
                       justify-content: space-between;
                       margin-top: var(--spectrum-global-dimension-size-800);
                       margin-bottom: var(--spectrum-global-dimension-size-400);
-
-                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-                        flex-direction: column;
-                        align-items: flex-start;
-                      }
                     `}>
                     <div>
                       <Contributors
@@ -323,7 +320,7 @@ export default ({ children, pageContext, query }) => {
                     </div>
                     <div
                       css={css`
-                        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>

@@ -14,7 +14,7 @@ import React, { Fragment, useRef, useEffect, useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps, DESKTOP_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
@@ -155,7 +155,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
             margin-right: var(--spectrum-global-dimension-size-400);
             height: 100%;
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
               grid-template-columns: minmax(auto, min-content) auto 0 0;
               margin-right: 0;
               margin-left: 0;
@@ -184,7 +184,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                     margin-right: var(--spectrum-global-dimension-size-50);
                     display: none;
 
-                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                       display: block;
                       visibility: ${hasSideNav ? 'visible' : 'hidden'};
                     }
@@ -207,7 +207,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                       display: flex;
                       align-items: center;
 
-                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                         svg {
                           margin-right: var(--spectrum-global-dimension-size-100);
                         }
@@ -241,7 +241,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                     border-left: 1px solid var(--spectrum-global-color-gray-200);
                     border-right: 1px solid var(--spectrum-global-color-gray-200);
 
-                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                       display: none;
                     }
                   `}>
@@ -260,7 +260,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                 ? 'var(--spectrum-global-dimension-size-200)'
                 : 'var(--spectrum-global-dimension-size-300)'};
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 overflow-x: auto;
                 overflow-x: overlay;
                 overflow-y: hidden;
@@ -290,7 +290,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                     display: none;
                     margin-right: var(--spectrum-global-dimension-size-300);
 
-                    @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                    @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                       display: block;
                     }
                   `}>
@@ -382,7 +382,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                 variant="primary"
                 href="https://console.adobe.io"
                 css={css`
-                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     display: none;
                   }
                 `}>

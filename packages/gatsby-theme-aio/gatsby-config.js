@@ -14,7 +14,7 @@ require('dotenv').config({
   path: `.env`
 });
 
-const LARGE_SCREEN_WIDTH = require('./conf/globals').LARGE_SCREEN_WIDTH;
+const DESKTOP_SCREEN_WIDTH = require('./conf/globals').DESKTOP_SCREEN_WIDTH;
 
 module.exports = {
   plugins: [
@@ -62,7 +62,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-remote`,
             options: {
-              maxWidth: LARGE_SCREEN_WIDTH,
+              maxWidth: DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,
               withWebp: { quality: 80 },
               disableBgImage: true,

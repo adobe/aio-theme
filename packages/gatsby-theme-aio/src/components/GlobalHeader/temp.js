@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/react';
-import { LARGE_SCREEN_WIDTH } from '../../utils';
+import { MOBILE_SCREEN_WIDTH } from '../../utils';
 import { AnchorButton } from '../AnchorButton';
 
 const links = [
@@ -79,7 +79,7 @@ export const GlobalHeaderTemp = () => (
           display: flex;
           justify-content: center;
           height: 100%;
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
             justify-content: flex-end;
             margin-left: var(--spectrum-global-dimension-size-1600);
             width: calc(100vw - var(--spectrum-global-dimension-size-1600));
@@ -99,7 +99,7 @@ export const GlobalHeaderTemp = () => (
             margin: 0;
             padding: 0;
             list-style: none;
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               width: 100%;
             }
           `}>

@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import { Link } from '../Link';
 import { css } from '@emotion/react';
 import classNames from 'classnames';
-import { layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
+import { layoutColumns, DESKTOP_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 
 // Builds a ToC based on the current rendered document
@@ -216,7 +216,7 @@ const OnThisPage = ({ tableOfContents }) => {
         box-sizing: border-box;
         padding-bottom: var(--spectrum-global-dimension-size-200);
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
           display: none;
         }
       `}>

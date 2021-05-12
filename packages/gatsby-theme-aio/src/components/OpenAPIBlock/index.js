@@ -15,6 +15,7 @@ import { css } from '@emotion/react';
 import { ProgressCircle } from '../ProgressCircle';
 import { RedocStandalone } from 'redoc';
 import { Footer } from '../Footer';
+import { SIDENAV_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const OpenAPIBlock = ({ specUrl, spec }) => {
@@ -794,7 +795,7 @@ const OpenAPIBlock = ({ specUrl, spec }) => {
               menuToggle: true,
               theme: {
                 sidebar: {
-                  width: '256px'
+                  width: SIDENAV_WIDTH
                 },
                 rightPanel: {
                   backgroundColor: 'rgb(37, 37, 37)'

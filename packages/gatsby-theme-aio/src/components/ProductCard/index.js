@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
-import { LARGE_SCREEN_WIDTH } from '../../utils';
+import { DESKTOP_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const counter = {
@@ -61,7 +61,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         padding: var(--spectrum-global-dimension-size-400) 0;
         background: var(--spectrum-global-color-gray-100);
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
           display: flex;
           width: 100%;
           align-items: center;
@@ -80,7 +80,11 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
             border-color: var(--spectrum-card-border-color, var(--spectrum-global-color-gray-200));
           }
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+            width: calc(var(--spectrum-global-dimension-size-3600) - var(--spectrum-global-dimension-size-800));
+          }
+
+          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
             width: 0;
             margin: 0;
           }
@@ -152,7 +156,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
             css={css`
               justify-content: flex-end;
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                 justify-content: center;
               }
             `}

@@ -20,7 +20,7 @@ import { Picker } from '../Picker';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import { Image } from '../Image';
-import { LARGE_SCREEN_WIDTH } from '../../utils';
+import { DESKTOP_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const filterByClouds = (products, cloudFilter, additionalFilter, setFilteredProducts) => {
@@ -101,14 +101,14 @@ const ProductCardGrid = ({
     <section
       className={`spectrum--light`}
       css={css`
-        max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+        max-width: ${DESKTOP_SCREEN_WIDTH};
         margin: var(--spectrum-global-dimension-size-400) auto;
       `}>
       {interaction && (
         <div
           css={css`
             display: flex;
-            align-items: right;
+            align-items: center;
             height: var(--spectrum-global-dimension-size-800);
             justify-content: flex-end;
             margin-right: var(--spectrum-global-dimension-size-400);
@@ -133,23 +133,23 @@ const ProductCardGrid = ({
       <div
         css={css`
           display: flex;
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
-            flex-direction: column;
-            align-items: center;
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+            align-items: flex-start;
+            flex-wrap: wrap;
           }
         `}>
         {interaction && (
           <div
             css={css`
               display: flex;
-              align-items: end;
+              align-items: flex-end;
               width: var(--spectrum-global-dimension-size-3000);
               flex-direction: column;
             `}>
             <div
               css={css`
                 display: flex;
-                align-items: start;
+                align-items: flex-start;
                 flex-direction: column;
               `}>
               <h4
@@ -199,10 +199,10 @@ const ProductCardGrid = ({
               justify-content: center;
               gap: var(--spectrum-global-dimension-size-400);
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 margin-top: var(--spectrum-global-dimension-size-400);
                 display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
               }
             `}>
             {filteredProducts.map((product) => (
@@ -219,7 +219,7 @@ const ProductCardGrid = ({
                     border-color: var(--spectrum-global-color-gray-200);
                   }
 
-                  @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     width: 0;
                   }
                 `}>
@@ -275,7 +275,7 @@ const ProductCardGrid = ({
                       margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
                       width: calc(100% + var(--gap));
 
-                      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                         justify-content: center;
                       }
                     `}>

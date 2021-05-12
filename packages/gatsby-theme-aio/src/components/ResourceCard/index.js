@@ -12,7 +12,7 @@
 
 import React, { cloneElement, useEffect } from 'react';
 import { css } from '@emotion/react';
-import { getElementChild, getExternalLinkProps, layoutColumns, LARGE_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, getExternalLinkProps, layoutColumns, DESKTOP_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
@@ -87,7 +87,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           ${extraMargin}
           background: var(--spectrum-global-color-gray-100);
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             position: static;
             display: flex;
             width: 100%;
@@ -103,8 +103,9 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-2000) - var(--spectrum-global-dimension-size-50));
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
               width: 100%;
+              max-width: var(--spectrum-global-dimension-size-6000);
               height: auto;
               min-width: 0;
               margin: 0;
@@ -117,7 +118,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
               width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
               padding: 0 !important;
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 width: 100%;
               }
             `}>
@@ -216,7 +217,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           ${extraPadding}
           background: var(--spectrum-global-color-gray-100);
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             display: flex;
             width: 100%;
             align-items: center;
@@ -231,7 +232,8 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
             width: ${layoutColumns(6)};
             height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-100));
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+              max-width: var(--spectrum-global-dimension-size-6000);
               width: 100%;
               height: auto;
               min-width: 0;

@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { css } from '@emotion/react';
-import { LARGE_SCREEN_WIDTH } from '../../utils';
+import { DESKTOP_SCREEN_WIDTH } from '../../utils';
 
 export const Image = (props) => {
   // Check if gatsby-remark-images-remote processing was skipped
@@ -32,7 +32,7 @@ export const Image = (props) => {
           display: block;
           margin-left: auto;
           margin-right: auto;
-          max-width: ${LARGE_SCREEN_WIDTH};
+          max-width: ${DESKTOP_SCREEN_WIDTH};
         `}>
         <span className="gatsby-resp-image-background-image" />
         <img

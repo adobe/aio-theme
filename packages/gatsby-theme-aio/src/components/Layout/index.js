@@ -15,7 +15,14 @@ import { Helmet } from 'react-helmet';
 import { Global, css } from '@emotion/react';
 import loadable from '@loadable/component';
 import { useStaticQuery, graphql } from 'gatsby';
-import { rootFix, rootFixPages, findSelectedPages, findSubPages, LARGE_SCREEN_WIDTH } from '../../utils';
+import {
+  rootFix,
+  rootFixPages,
+  findSelectedPages,
+  findSubPages,
+  DESKTOP_SCREEN_WIDTH,
+  SIDENAV_WIDTH
+} from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -316,6 +323,7 @@ export default ({ children, pageContext, location }) => {
           body {
             margin: 0;
             text-size-adjust: none;
+            overscroll-behavior: auto contain;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
           }
@@ -354,10 +362,10 @@ export default ({ children, pageContext, location }) => {
                 display: grid;
                 grid-template-areas: 'header header' 'sidenav main';
                 grid-template-rows: var(--spectrum-global-dimension-size-800);
-                grid-template-columns: ${hasSideNav ? '256px auto' : '0 auto'};
+                grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 ${hasLayout &&
-                `@media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                `@media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     grid-template-columns: 0px auto;
                   }`}
               `}>
@@ -398,12 +406,12 @@ export default ({ children, pageContext, location }) => {
                   grid-area: sidenav;
                   position: fixed;
                   z-index: 1;
-                  width: 256px;
+                  width: ${SIDENAV_WIDTH};
                   height: 100%;
                   background-color: var(--spectrum-global-color-gray-75);
 
                   ${hasLayout &&
-                  `@media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                  `@media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                       transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
                       transform: translateX(${showSideNav ? '0' : '-100%'});
                     }`}
@@ -456,7 +464,7 @@ export default ({ children, pageContext, location }) => {
               css={css`
                 display: none;
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                   display: block;
                   transition: opacity 160ms ease-in;
                   background-color: rgba(0, 0, 0, 0.4);

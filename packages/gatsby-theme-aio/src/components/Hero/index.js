@@ -15,7 +15,13 @@ import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { getElementChild, cloneChildren, LARGE_SCREEN_WIDTH } from '../../utils';
+import {
+  getElementChild,
+  cloneChildren,
+  DESKTOP_SCREEN_WIDTH,
+  TABLET_SCREEN_WIDTH,
+  MOBILE_SCREEN_WIDTH
+} from '../../utils';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -137,7 +143,7 @@ const Hero = ({
   icon,
   buttons,
   variant = 'default',
-  width = 'var(--spectrum-global-dimension-static-grid-fixed-max-width)',
+  width = DESKTOP_SCREEN_WIDTH,
   ...props
 }) => {
   if (!variant || variant === 'default') {
@@ -152,8 +158,11 @@ const Hero = ({
           width: 100%;
           display: flex;
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             overflow: auto;
+          }
+
+          @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
             height: 100vh;
           }
         `}>
@@ -185,7 +194,7 @@ const Hero = ({
                 margin-bottom: 0 !important;
               }
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 width: auto;
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
@@ -210,8 +219,11 @@ const Hero = ({
             height: ${height};
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
               overflow: auto;
+            }
+
+            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               height: 100vh;
 
               .spectrum-Heading--sizeXXL {
@@ -235,7 +247,7 @@ const Hero = ({
               justify-content: center;
               text-align: center;
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
@@ -263,7 +275,7 @@ const Hero = ({
             height: ${height};
             overflow: hidden;
 
-            @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
               height: auto;
               padding: var(--spectrum-global-dimension-size-400);
               box-sizing: border-box;
@@ -284,7 +296,7 @@ const Hero = ({
                 margin-left: var(--spectrum-global-dimension-size-800);
                 margin-right: var(--spectrum-global-dimension-size-400);
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                   width: 100%;
                   margin: 0;
                 }
@@ -326,7 +338,7 @@ const Hero = ({
               css={css`
                 flex: 1;
 
-                @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
                   display: none;
                 }
               `}>

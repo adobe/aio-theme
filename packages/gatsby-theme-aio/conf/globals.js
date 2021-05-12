@@ -11,8 +11,10 @@
  */
 
 module.exports = {
-  SIDENAV_WIDTH: '256px',
-  LARGE_SCREEN_WIDTH: '1280px',
-  // See https://github.com/adobe/react-spectrum/blob/dac6d273a9843694a652d7513ff88f6a9c773887/packages/%40react-spectrum/utils/src/useIsMobileDevice.ts#L15
-  MOBILE_SCREEN_WIDTH: '700px'
+  SIDENAV_WIDTH: 'var(--spectrum-global-dimension-static-size-3200)',
+  // --spectrum-global-dimension-static-grid-fixed-max-width
+  DESKTOP_SCREEN_WIDTH: '1280px',
+  TABLET_SCREEN_WIDTH: '1024px',
+  // --spectrum-global-dimension-static-breakpoint-small
+  MOBILE_SCREEN_WIDTH: '768px'
 };

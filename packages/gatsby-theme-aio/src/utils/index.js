@@ -239,4 +239,5 @@ export const cloneChildren = (children, changeProps) => {
 
 export const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
 export const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
-export const LARGE_SCREEN_WIDTH = globals.LARGE_SCREEN_WIDTH;
+export const TABLET_SCREEN_WIDTH = globals.TABLET_SCREEN_WIDTH;
+export const DESKTOP_SCREEN_WIDTH = globals.DESKTOP_SCREEN_WIDTH;

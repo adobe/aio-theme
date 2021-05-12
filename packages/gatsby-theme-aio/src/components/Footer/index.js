@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps, LARGE_SCREEN_WIDTH } from '../../utils';
+import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
@@ -147,15 +147,18 @@ const Footer = ({ hasSideNav = false }) => (
       position: relative;
       padding-bottom: var(--spectrum-global-dimension-size-400);
       padding-top: var(--spectrum-global-dimension-size-600);
+      padding-left: var(--spectrum-global-dimension-size-400);
+      padding-right: var(--spectrum-global-dimension-size-400);
+      box-sizing: border-box;
       background-color: var(--spectrum-global-color-gray-75);
       width: 100%;
       ${hasSideNav &&
       `
-          max-width: var(--spectrum-global-dimension-static-grid-fixed-max-width);
+          max-width: ${DESKTOP_SCREEN_WIDTH};
           background-color: var(--spectrum-global-color-static-white);
         `}
 
-      @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
         max-width: none;
 
         [role='separator'][aria-orientation='vertical'] {
@@ -172,7 +175,7 @@ const Footer = ({ hasSideNav = false }) => (
         'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
         padding: 0;
 
-        @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
           padding: var(--spectrum-global-dimension-size-200);
           margin: 0 auto;
         }
@@ -206,9 +209,9 @@ const Footer = ({ hasSideNav = false }) => (
           grid-template-columns: 30% 22% 19%;
           gap: var(--spectrum-global-dimension-size-400);
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
           }
         `}>
         <div
@@ -220,7 +223,7 @@ const Footer = ({ hasSideNav = false }) => (
             css={css`
               display: flex;
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 flex-direction: column;
 
                 & > div {
@@ -362,7 +365,7 @@ const Footer = ({ hasSideNav = false }) => (
           justify-content: space-between;
           margin-top: var(--spectrum-global-dimension-size-100);
 
-          @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             flex-direction: column;
             align-items: flex-start;
           }
@@ -395,7 +398,7 @@ const Footer = ({ hasSideNav = false }) => (
             css={css`
               color: var(--spectrum-global-color-gray-700);
 
-              @media screen and (max-width: ${LARGE_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 display: block;
                 margin-top: var(--spectrum-global-dimension-size-200);
               }
