@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.3.0...@adobe/gatsby-theme-aio@3.3.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* Add new breakpoint between desktop and mobile ([6be95db](https://github.com/adobe/gatsby-theme-aio/commit/6be95db953f7ebf4132b6940eef29545da355778))
+* Tabs navigation hidden by console button on mobile ([7fdbad8](https://github.com/adobe/gatsby-theme-aio/commit/7fdbad8bbf761b7173e99ffa7d80b428567e32fa))
+
+
+
+
+
 # [3.3.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.2.1...@adobe/gatsby-theme-aio@3.3.0) (2021-05-11)
 
 
