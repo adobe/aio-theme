@@ -49,6 +49,9 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
             iframe: iframe.current,
             // Methods the parent is exposing to the child
             methods: {
+              getURL() {
+                return location.href;
+              },
               setHeight(height) {
                 iframe.current.style.height = height;
               },
