@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.3.1...@adobe/gatsby-theme-aio@3.4.0) (2021-05-17)
+
+
+### Features
+
+* Enable reference style links ([#340](https://github.com/adobe/gatsby-theme-aio/issues/340)) ([6c926b7](https://github.com/adobe/gatsby-theme-aio/commit/6c926b7221e9a3a29de90253acefeb1e1c66fc48))
+* Support Frame getURL() ([956d97e](https://github.com/adobe/gatsby-theme-aio/commit/956d97e45176adb46edcbb16c84c29a23e1f4ff4))
+
+
+
+
+
 ## [3.3.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.3.0...@adobe/gatsby-theme-aio@3.3.1) (2021-05-12)
 
 
