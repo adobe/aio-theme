@@ -83,6 +83,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
           });
         }}
         css={css`
+          display: block;
           height: ${height};
           width: 100%;
           border: none;
