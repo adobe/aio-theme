@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH } from '../../utils';
+import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, MOBILE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
@@ -376,6 +376,10 @@ const Footer = ({ hasSideNav = false }) => (
             css={css`
               display: inline-flex;
               color: var(--spectrum-global-color-gray-700);
+
+              @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                flex-direction: column;
+              }
 
               & > li {
                 margin-right: var(--spectrum-global-dimension-size-400);
