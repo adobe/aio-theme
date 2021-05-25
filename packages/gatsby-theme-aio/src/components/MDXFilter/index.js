@@ -122,9 +122,8 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
 };
 
 export default ({ children, pageContext, query }) => {
-  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } = useContext(
-    Context
-  );
+  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } =
+    useContext(Context);
   const isTranscludedContent = typeof pageContext === 'undefined';
   let childrenArray = Children.toArray(children);
 
@@ -146,7 +145,7 @@ export default ({ children, pageContext, query }) => {
 
     // OnThisPage
     const componentPathObj = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
-    const componentPath = componentPathObj?.componentPath ?? '';
+    const componentPath = componentPathObj?.component ?? '';
     const tableOfContentsObj = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 

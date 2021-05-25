@@ -149,7 +149,7 @@ export default ({ children, pageContext, location }) => {
         }
         allSitePage {
           nodes {
-            componentPath
+            component
             path
           }
         }
@@ -217,6 +217,9 @@ export default ({ children, pageContext, location }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   location.pathname = decodeURIComponent(location.pathname);
+  if (!location.pathname.endsWith('/')) {
+    location.pathname += '/';
+  }
 
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
