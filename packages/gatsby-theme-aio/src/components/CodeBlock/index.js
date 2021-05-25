@@ -13,7 +13,7 @@
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator } from '../Tabs';
+import { Tabs, Item as TabsItem, Label as TabsItemLabel, TabsIndicator, positionIndicator } from '../Tabs';
 import { Picker } from '../Picker';
 
 const CodeBlock = (props) => {
@@ -113,7 +113,7 @@ const CodeBlock = (props) => {
                   });
                   positionSelectedTabIndicator(index);
                 }}>
-                {props[block.heading].props.children}
+                <TabsItemLabel>{props[block.heading].props.children}</TabsItemLabel>
               </TabsItem>
             );
           })}

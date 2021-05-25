@@ -10,7 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement, Children } from 'react';
+import React, { cloneElement, Children, useContext } from 'react';
+import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import '@spectrum-css/typography';
@@ -20,8 +21,14 @@ import {
   cloneChildren,
   DESKTOP_SCREEN_WIDTH,
   TABLET_SCREEN_WIDTH,
-  MOBILE_SCREEN_WIDTH
+  MOBILE_SCREEN_WIDTH,
+  DEFAULT_HOME,
+  findSelectedTopPage,
+  rootFixPages,
+  rootFix
 } from '../../utils';
+import Context from '../Context';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -146,7 +153,14 @@ const Hero = ({
   width = DESKTOP_SCREEN_WIDTH,
   ...props
 }) => {
+  const { siteMetadata, location } = useContext(Context);
+
   if (!variant || variant === 'default') {
+    const { home, pages } = siteMetadata;
+    const pathWithRootFix = rootFix(location.pathname);
+    const pagesWithRootFix = rootFixPages(pages);
+    const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
+
     return (
       <section
         className={`spectrum--${theme}`}
@@ -199,6 +213,16 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
+            {home && selectedTopPage && (
+              <Breadcrumbs
+                selectedTopPage={DEFAULT_HOME}
+                selectedSubPages={[
+                  { ...home, path: withPrefix(home.path) },
+                  { ...selectedTopPage, path: withPrefix(selectedTopPage.path.replace('/_ROOT_/', '/')) }
+                ]}
+              />
+            )}
+
             <HeroHeading heading={heading} variant={variant} />
 
             <HeroTexts texts={props} />

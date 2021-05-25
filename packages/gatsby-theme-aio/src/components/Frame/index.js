@@ -10,40 +10,25 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
+import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import { connectToChild } from 'penpal';
 import { Footer } from '../Footer';
 import PropTypes from 'prop-types';
-import { ProgressCircle } from '../ProgressCircle';
 import Context from '../Context';
+import { isExternalLink } from '../../utils';
 
 const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))' }) => {
-  const [showProgress, setShowProgress] = useState(true);
   const iframe = useRef(null);
   const { ims } = useContext(Context);
 
   return (
     <>
-      <div
-        css={css`
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          display: ${showProgress ? 'grid' : 'none'};
-          place-items: center center;
-        `}>
-        <ProgressCircle size="L" />
-      </div>
-
       <iframe
         ref={iframe}
-        src={src}
+        src={isExternalLink(src) ? src : withPrefix(src)}
         onLoad={() => {
-          setShowProgress(false);
-
           connectToChild({
             // The iframe to which a connection should be made
             iframe: iframe.current,

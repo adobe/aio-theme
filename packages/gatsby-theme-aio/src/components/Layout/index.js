@@ -34,7 +34,6 @@ import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import { Provider } from '../Context';
 import { GlobalHeader } from '../GlobalHeader';
-import { GlobalHeaderTemp } from '../GlobalHeader/temp';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
@@ -157,7 +156,10 @@ export default ({ children, pageContext, location }) => {
         site {
           pathPrefix
           siteMetadata {
-            menu
+            home {
+              title
+              path
+            }
             docs {
               title
               path
@@ -169,6 +171,11 @@ export default ({ children, pageContext, location }) => {
             pages {
               title
               path
+              menu {
+                title
+                description
+                path
+              }
             }
             subPages {
               title
@@ -204,7 +211,7 @@ export default ({ children, pageContext, location }) => {
 
   const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
   const { siteMetadata, pathPrefix } = site;
-  const { menu, versions, pages, subPages, docs } = siteMetadata;
+  const { home, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -213,22 +220,21 @@ export default ({ children, pageContext, location }) => {
 
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
-  const selectedPages = findSelectedPages(pathWithRootFix, subPages);
-  const selectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
-  const hasSideNav = selectedSubPages.length > 0;
+  const sideNavSelectedPages = findSelectedPages(pathWithRootFix, subPages);
+  const sideNavSelectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
+  const hasSideNav = sideNavSelectedSubPages.length > 0;
 
   if (hasSideNav && !SideNav) {
     SideNav = loadable(() => import('../SideNav'));
   }
 
   const frontMatter = pageContext?.frontmatter;
-  const hasGlobalHeaderTemp = frontMatter?.GlobalHeaderTemp;
   const hasLayout = pageContext?.frontmatter?.layout !== 'none';
 
   const layoutId = nextId();
   const sideNavId = nextId();
 
-  // Update OpenAPI spec
+  // Update OpenAPI spec and Frame src
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
 
@@ -373,31 +379,25 @@ export default ({ children, pageContext, location }) => {
                 css={css`
                   grid-area: header;
                   position: fixed;
-                  height: ${hasGlobalHeaderTemp
-                    ? 'var(--spectrum-global-dimension-size-1000)'
-                    : 'var(--spectrum-global-dimension-size-800)'};
+                  height: var(--spectrum-global-dimension-size-800);
                   left: 0;
                   right: 0;
                   background-color: var(--spectrum-global-color-gray-50);
                   z-index: 2;
                 `}>
-                {hasGlobalHeaderTemp ? (
-                  <GlobalHeaderTemp />
-                ) : (
-                  <GlobalHeader
-                    ims={ims}
-                    isLoadingIms={isLoadingIms}
-                    menu={menu}
-                    versions={versions}
-                    pages={pages}
-                    docs={docs}
-                    location={location}
-                    hasSideNav={hasSideNav}
-                    toggleSideNav={() => {
-                      toggleSideNav(setShowSideNav);
-                    }}
-                  />
-                )}
+                <GlobalHeader
+                  ims={ims}
+                  isLoadingIms={isLoadingIms}
+                  home={home}
+                  versions={versions}
+                  pages={pages}
+                  docs={docs}
+                  location={location}
+                  hasSideNav={hasSideNav}
+                  toggleSideNav={() => {
+                    toggleSideNav(setShowSideNav);
+                  }}
+                />
               </div>
               <div
                 id={sideNavId}
@@ -418,8 +418,8 @@ export default ({ children, pageContext, location }) => {
                 `}>
                 {SideNav && (
                   <SideNav
-                    selectedPages={selectedPages}
-                    selectedSubPages={selectedSubPages}
+                    selectedPages={sideNavSelectedPages}
+                    selectedSubPages={sideNavSelectedSubPages}
                     searchIndex={ParliamentSearchIndex}
                   />
                 )}
@@ -431,7 +431,7 @@ export default ({ children, pageContext, location }) => {
                 <main hidden={!pageSrc['openAPI'].has}>
                   {pageSrc['openAPI'].src &&
                     pageSrc['openAPI'].block &&
-                    createElement(pageSrc['openAPI'].block, { specUrl: pageSrc['openAPI'].src })}
+                    createElement(pageSrc['openAPI'].block, { src: pageSrc['openAPI'].src })}
                 </main>
 
                 <main hidden={!pageSrc['frame'].has}>

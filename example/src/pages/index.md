@@ -5,7 +5,7 @@ contributors:
   - https://github.com/simonwex
 ---
 
-import Overview from './overview.md'
+import Overview from '../transclusions/overview.md'
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 

@@ -33,52 +33,64 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type Link {
-      title: String,
+      title: String
       path: String
     }
     
+    type Menu {
+      title: String
+      description: String
+      path: String
+    }
+    
+    type TopPage {
+      title: String
+      path: String
+      menu: [Menu]
+    }
+    
     type SiteSiteMetadata {
-      pages: [Link]
+      home: Link
+      pages: [TopPage]
       subPages: [SubPage]
-      versions: [Link],
+      versions: [Link]
       docs: Link
-      menu: Boolean
     }
     
     type SubPage {
-      title: String,
-      path: String,
-      header: Boolean,
+      title: String
+      path: String
+      header: Boolean
       pages: [NestedSubPage1]
     }
     
     type NestedSubPage1 {
-      title: String,
-      path: String,
+      title: String
+      path: String
       pages: [NestedSubPage2]
     }
     
     type NestedSubPage2 {
-      title: String,
-      path: String,
+      title: String
+      path: String
       pages: [NestedSubPage3]
     }
     
     type NestedSubPage3 {
-      title: String,
-      path: String,
+      title: String
+      path: String
       pages: [NestedSubPage4]
     }
     
     type NestedSubPage4 {
-      title: String,
-      path: String,
+      title: String
+      path: String
       pages: [NestedSubPage5]
     }
     
     type NestedSubPage5 {
-      title: String,
-      path: String,
+      title: String
+      path: String
       pages: [Link]
     }
   `;

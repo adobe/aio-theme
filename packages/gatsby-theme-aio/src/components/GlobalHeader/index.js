@@ -10,49 +10,66 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Fragment, useRef, useEffect, useState, createRef } from 'react';
+import React, { Fragment, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
-import { Link as GatsbyLink } from 'gatsby';
-import { findSelectedTopPage, rootFix, rootFixPages, getExternalLinkProps, DESKTOP_SCREEN_WIDTH } from '../../utils';
+import { withPrefix } from 'gatsby';
+import { GatsbyLink } from '../GatsbyLink';
+import {
+  findSelectedTopPage,
+  rootFix,
+  rootFixPages,
+  getExternalLinkProps,
+  DESKTOP_SCREEN_WIDTH,
+  DEFAULT_HOME
+} from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, TripleGripper } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
 import { Image } from '../Image';
-import { Tabs, Item as TabsItem, TabsIndicator, positionIndicator, animateIndicator } from '../Tabs';
+import {
+  Tabs,
+  Item as TabsItem,
+  Label as TabsItemLabel,
+  TabsIndicator,
+  positionIndicator,
+  animateIndicator
+} from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 
-const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
+const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
   const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
   const selectedTabIndicatorRef = useRef(null);
   // Don't animate the tab indicator by default
   const [isAnimated, setIsAnimated] = useState(false);
-  const [tabs] = useState([]);
-  const versionPopover = useRef(null);
-  const profilePopover = useRef(null);
+  const versionPopoverRef = useRef(null);
+  const profilePopoverRef = useRef(null);
   const [openVersion, setOpenVersion] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
+  const [openMenuIndex, setOpenMenuIndex] = useState(-1);
   const [profile, setProfile] = useState(null);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
 
+  const POPOVER_ANIMATION_DELAY = 200;
   const versionPopoverId = nextId();
   const profilePopoverId = nextId();
-  const hasMenu = menu || menu === null;
+  const hasHome = home !== false;
 
   const getSelectedTabIndex = () => {
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(pages);
 
-    let selectedTabIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+    const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
+    let selectedTabIndex = pagesWithRootFix.indexOf(selectedTopPage);
 
     // Assume first tab is selected
     if (selectedTabIndex === -1) {
@@ -64,10 +81,12 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
 
   const positionSelectedTabIndicator = () => {
     const selectedTabIndex = getSelectedTabIndex();
-    const selectedTab = tabs.filter((tab) => tab.current)[selectedTabIndex];
+    const selectedTab = pages[selectedTabIndex].tabRef;
 
-    tabsContainerRef.current.scrollLeft = selectedTab.current.offsetLeft;
-    positionIndicator(selectedTabIndicatorRef, selectedTab);
+    if (selectedTab) {
+      tabsContainerRef.current.scrollLeft = selectedTab.current.offsetLeft;
+      positionIndicator(selectedTabIndicatorRef, selectedTab);
+    }
   };
 
   useEffect(() => {
@@ -88,32 +107,60 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
   }, [ims]);
 
   useEffect(() => {
-    if (versionPopover.current) {
+    if (versionPopoverRef.current) {
       if (openVersion) {
-        const { top, left } = versionPopover.current.getBoundingClientRect();
+        const { top, left } = versionPopoverRef.current.getBoundingClientRect();
 
-        versionPopover.current.style.left = `${left + 13}px`;
-        versionPopover.current.style.top = `${top}px`;
-        versionPopover.current.style.position = 'fixed';
+        versionPopoverRef.current.style.left = `calc(${left}px + var(--spectrum-global-dimension-size-160));`;
+        versionPopoverRef.current.style.top = `${top}px`;
+        versionPopoverRef.current.style.position = 'fixed';
       } else {
         // Wait for animation to finish
         setTimeout(() => {
-          versionPopover.current.style = '';
-        }, 200);
+          versionPopoverRef.current.style = '';
+        }, POPOVER_ANIMATION_DELAY);
       }
     }
   }, [openVersion]);
 
   useEffect(() => {
+    if (openMenuIndex !== -1) {
+      const menuRef = pages[openMenuIndex].menuRef;
+
+      const { top, left } = menuRef.current.getBoundingClientRect();
+
+      menuRef.current.style.left = `${left}px`;
+      menuRef.current.style.top = `${top}px`;
+      menuRef.current.style.position = 'fixed';
+    } else {
+      pages.forEach((page) => {
+        const menuRef = page.menuRef;
+        if (menuRef) {
+          // Wait for animation to finish
+          setTimeout(() => {
+            menuRef.current.style = '';
+          }, POPOVER_ANIMATION_DELAY);
+        }
+      });
+    }
+  }, [openMenuIndex]);
+
+  useEffect(() => {
     // Clicking outside of menu should close menu
     const onClick = (event) => {
-      if (versions?.length && !versionPopover.current.contains(event.target)) {
+      if (versions?.length && !versionPopoverRef.current.contains(event.target)) {
         setOpenVersion(false);
       }
 
-      if (!profilePopover.current.contains(event.target)) {
+      if (!profilePopoverRef.current.contains(event.target)) {
         setOpenProfile(false);
       }
+
+      pages.some((page) => {
+        if (page.menuRef && !page.menuRef.current.contains(event.target)) {
+          setOpenMenuIndex(-1);
+        }
+      });
     };
 
     document.addEventListener('click', onClick);
@@ -124,6 +171,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
   useEffect(() => {
     const onScroll = () => {
       setOpenVersion(false);
+      setOpenMenuIndex(-1);
     };
 
     tabsContainerRef.current.addEventListener('scroll', onScroll, { passive: true });
@@ -219,18 +267,27 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                     `}>
                     <Adobe
                       css={css`
-                        width: var(--spectrum-global-dimension-size-300);
-                        height: var(--spectrum-global-dimension-size-250);
+                        width: 22px;
+                        height: 18px;
                         display: block;
                         margin-right: var(--spectrum-global-dimension-size-100);
                       `}
                     />
-                    <strong className="spectrum-Heading spectrum-Heading--sizeXXS">Developer</strong>
+                    <strong
+                      className="spectrum-Heading spectrum-Heading--sizeXXS"
+                      css={css`
+                        color: #fa0f00;
+                        font-size: 15px;
+                        font-weight: 700;
+                        white-space: nowrap;
+                      `}>
+                      Adobe Developers
+                    </strong>
                   </div>
                 </a>
               </div>
 
-              {hasMenu && (
+              {hasHome && (
                 <div
                   css={css`
                     margin-left: var(--spectrum-global-dimension-size-300);
@@ -245,8 +302,12 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                       display: none;
                     }
                   `}>
-                  <ActionButton elementType="a" isQuiet href="/apis" {...getExternalLinkProps()}>
-                    <ActionButtonLabel>Discover</ActionButtonLabel>
+                  <ActionButton
+                    elementType="a"
+                    isQuiet
+                    href={(home?.path && withPrefix(home.path)) || DEFAULT_HOME.path}
+                    {...getExternalLinkProps(home?.path || DEFAULT_HOME.path)}>
+                    <ActionButtonLabel>{home?.title || DEFAULT_HOME.title}</ActionButtonLabel>
                   </ActionButton>
                 </div>
               )}
@@ -256,7 +317,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
             ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
-              margin-left: ${hasMenu
+              margin-left: ${hasHome
                 ? 'var(--spectrum-global-dimension-size-200)'
                 : 'var(--spectrum-global-dimension-size-300)'};
 
@@ -284,7 +345,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                 positionSelectedTabIndicator();
                 setIsAnimated(true);
               }}>
-              {hasMenu && (
+              {hasHome && (
                 <div
                   css={css`
                     display: none;
@@ -294,21 +355,120 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                       display: block;
                     }
                   `}>
-                  <TabsItem elementType="a" href="/apis">
-                    Discover
+                  <TabsItem
+                    elementType={GatsbyLink}
+                    to={(home?.path && withPrefix(home.path)) || DEFAULT_HOME.path}
+                    {...getExternalLinkProps(home?.path || DEFAULT_HOME.path)}>
+                    <TabsItemLabel>{home?.title || DEFAULT_HOME.title}</TabsItemLabel>
                   </TabsItem>
                 </div>
               )}
               {pages.map((page, i) => {
                 const { title, path } = page;
-                const ref = createRef();
-                tabs.push(ref);
+                const selectedTabIndex = getSelectedTabIndex();
+                const isSelectedTab = selectedTabIndex === i;
+                const menuPopoverId = nextId();
+
+                const setTabRef = (element) => {
+                  page.tabRef = { current: element };
+                };
+
+                const setTabMenuRef = (element) => {
+                  page.menuRef = { current: element };
+                };
 
                 return (
                   <Fragment key={i}>
-                    <TabsItem elementType={GatsbyLink} ref={ref} to={path} selected={getSelectedTabIndex() === i}>
-                      {title}
-                    </TabsItem>
+                    {path ? (
+                      <TabsItem
+                        elementType={GatsbyLink}
+                        {...getExternalLinkProps(path)}
+                        ref={setTabRef}
+                        to={withPrefix(path)}
+                        selected={isSelectedTab}>
+                        <TabsItemLabel>{title}</TabsItemLabel>
+                      </TabsItem>
+                    ) : (
+                      <TabsItem
+                        css={css`
+                          ${openMenuIndex === i &&
+                          `
+                          &:after {
+                            content: '';
+                            position: absolute;
+                            z-index: -1;
+                            height: var(--spectrum-global-dimension-size-800);
+                            width: calc(100% + var(--spectrum-global-dimension-size-250));
+                            left: calc(-1 * var(--spectrum-global-dimension-size-125));
+                            top: calc(-1 * var(--spectrum-global-dimension-size-100));
+                            background-color: var(--spectrum-global-color-gray-100);
+                          }
+                        `}
+                        `}
+                        ref={setTabRef}
+                        selected={isSelectedTab}
+                        aria-controls={menuPopoverId}
+                        onClick={(event) => {
+                          event.stopImmediatePropagation();
+
+                          setOpenVersion(false);
+                          setOpenProfile(false);
+                          setOpenMenuIndex(openMenuIndex === i ? -1 : i);
+                        }}>
+                        <TabsItemLabel>{title}</TabsItemLabel>
+                        <ChevronDown
+                          css={css`
+                            width: var(--spectrum-global-dimension-size-125) !important;
+                            height: var(--spectrum-global-dimension-size-125) !important;
+                            margin-left: var(--spectrum-global-dimension-size-100);
+                            transition: transform var(--spectrum-global-animation-duration-100) ease-in-out;
+                            ${openMenuIndex === i && `transform: rotate(-90deg);`}
+                          `}
+                        />
+                        <Popover
+                          ref={setTabMenuRef}
+                          id={menuPopoverId}
+                          css={css`
+                            margin-left: calc(-1 * var(--spectrum-global-dimension-size-65));
+                            margin-top: var(--spectrum-global-dimension-size-25);
+                            border-top-left-radius: 0;
+                            border-top-right-radius: 0;
+                            ${page.menu.some((menu) => menu.description) &&
+                            `width: var(--spectrum-global-dimension-size-2400);`}
+                          `}
+                          isOpen={openMenuIndex === i}>
+                          <Menu>
+                            {page.menu.map((menu, k) => (
+                              <MenuItem key={k} href={withPrefix(menu.path)}>
+                                {menu.description ? (
+                                  <div
+                                    css={css`
+                                      margin: var(--spectrum-global-dimension-size-100) 0;
+                                    `}>
+                                    <div
+                                      css={css`
+                                        color: var(--spectrum-global-color-gray-900);
+                                      `}>
+                                      {menu.title}
+                                    </div>
+                                    <div
+                                      className="spectrum-Body spectrum-Body--sizeXS"
+                                      css={css`
+                                        white-space: normal;
+                                        margin-top: var(--spectrum-global-dimension-size-50);
+                                      `}>
+                                      {menu.description}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <span>{menu.title}</span>
+                                )}
+                              </MenuItem>
+                            ))}
+                          </Menu>
+                        </Popover>
+                      </TabsItem>
+                    )}
                     {i === 0 && versions?.length > 0 && (
                       <div
                         css={css`
@@ -320,25 +480,30 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                           isOpen={openVersion}
                           aria-controls={versionPopoverId}
                           onClick={(event) => {
-                            event.stopPropagation();
-                            event.nativeEvent.stopImmediatePropagation();
+                            event.stopImmediatePropagation();
 
+                            setOpenMenuIndex(-1);
+                            setOpenProfile(false);
                             setOpenVersion((open) => !open);
                           }}>
                           {versions[0].title}
                         </PickerButton>
                         <Popover
-                          ref={versionPopover}
+                          ref={versionPopoverRef}
                           id={versionPopoverId}
                           variant="picker"
                           isQuiet
                           isOpen={openVersion}>
                           <Menu>
-                            {versions.map((version, i) => {
-                              const isFirst = i === 0;
+                            {versions.map((version, k) => {
+                              const isFirst = k === 0;
 
                               return (
-                                <MenuItem key={i} isSelected={isFirst} isHighlighted={isFirst} href={version.path}>
+                                <MenuItem
+                                  key={k}
+                                  isSelected={isFirst}
+                                  isHighlighted={isFirst}
+                                  href={withPrefix(version.path)}>
                                   {version.title}
                                 </MenuItem>
                               );
@@ -362,7 +527,7 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                     margin-left: var(--spectrum-global-dimension-size-400);
                     white-space: nowrap;
                   `}>
-                  <AnchorButton variant="primary" href={docs.path}>
+                  <AnchorButton variant="primary" href={withPrefix(docs.path)}>
                     {docs.title ?? 'View Docs'}
                   </AnchorButton>
                 </div>
@@ -414,15 +579,20 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                   </ActionButton>
 
                   <div hidden={!profile}>
-                    <div
+                    <button
+                      aria-label="Profile"
                       aria-controls={profilePopoverId}
                       onClick={(event) => {
-                        event.stopPropagation();
-                        event.nativeEvent.stopImmediatePropagation();
+                        event.stopImmediatePropagation();
 
+                        setOpenVersion(false);
+                        setOpenMenuIndex(-1);
                         setOpenProfile((open) => !open);
                       }}
                       css={css`
+                        display: block;
+                        padding: 0;
+                        border: none;
                         width: var(--spectrum-global-dimension-size-400);
                         height: var(--spectrum-global-dimension-size-400);
                         border-radius: var(--spectrum-global-dimension-static-percent-50);
@@ -431,10 +601,10 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
                         cursor: pointer;
                       `}>
                       <Image alt="Avatar" src={profile ? ims.avatarUrl(profile.userId) : ''} />
-                    </div>
+                    </button>
                     <Popover
                       id={profilePopoverId}
-                      ref={profilePopover}
+                      ref={profilePopoverRef}
                       isOpen={openProfile}
                       css={css`
                         width: var(--spectrum-global-dimension-size-3400);
@@ -508,7 +678,10 @@ const GlobalHeader = ({ ims, isLoadingIms, menu, versions, pages, docs, location
 };
 
 GlobalHeader.propTypes = {
-  menu: PropTypes.bool,
+  ims: PropTypes.object,
+  isLoadingIms: PropTypes.bool,
+  home: PropTypes.object,
+  versions: PropTypes.array,
   pages: PropTypes.array,
   docs: PropTypes.object,
   location: PropTypes.object,

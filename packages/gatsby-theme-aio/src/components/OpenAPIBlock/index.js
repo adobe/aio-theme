@@ -10,17 +10,30 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
+import { withPrefix } from 'gatsby';
 import { ProgressCircle } from '../ProgressCircle';
 import { RedocStandalone } from 'redoc';
 import { Footer } from '../Footer';
-import { SIDENAV_WIDTH } from '../../utils';
+import { SIDENAV_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
-const OpenAPIBlock = ({ specUrl, spec }) => {
+const OpenAPIBlock = ({ src }) => {
   const [showProgress, setShowProgress] = useState(true);
-  const input = specUrl ? { specUrl } : { spec };
+
+  let input = {};
+  if (isExternalLink(src)) {
+    input.specUrl = src;
+  } else {
+    input.spec = withPrefix(src);
+  }
+
+  useEffect(() => {
+    if (!showProgress) {
+      setShowProgress(true);
+    }
+  }, [src]);
 
   return (
     <>
@@ -821,8 +834,7 @@ const OpenAPIBlock = ({ specUrl, spec }) => {
 };
 
 OpenAPIBlock.propTypes = {
-  spec: PropTypes.string,
-  specUrl: PropTypes.string
+  src: PropTypes.string
 };
 
 export default OpenAPIBlock;

@@ -271,7 +271,10 @@ export default ({ children, pageContext, query }) => {
                       css={css`
                         margin-right: var(--spectrum-global-dimension-size-400);
                       `}>
-                      <Breadcrumbs selectedTopPage={selectedTopPage} selectedSubPages={selectedSubPages} />
+                      <Breadcrumbs
+                        selectedTopPage={{ ...selectedTopPage, path: withPrefix(selectedTopPage.path) }}
+                        selectedSubPages={selectedSubPages.map((page) => ({ ...page, path: withPrefix(page.path) }))}
+                      />
                     </div>
                     <div
                       css={css`

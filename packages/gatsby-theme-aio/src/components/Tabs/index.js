@@ -55,7 +55,7 @@ const TabsIndicator = forwardRef(({ className, ...props }, ref) => {
   );
 });
 
-const Item = forwardRef(({ elementType = 'div', selected, children, ...props }, ref) => {
+const Item = forwardRef(({ elementType = 'div', selected, className, children, ...props }, ref) => {
   const Element = elementType;
 
   return (
@@ -64,10 +64,12 @@ const Item = forwardRef(({ elementType = 'div', selected, children, ...props }, 
       ref={ref}
       role="tab"
       aria-selected={selected ? 'true' : 'false'}
-      className={classNames('spectrum-Tabs-item', { 'is-selected': selected })}>
-      <span className="spectrum-Tabs-itemLabel">{children}</span>
+      className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': selected })}>
+      {children}
     </Element>
   );
 });
 
-export { Tabs, Item, TabsIndicator, positionIndicator, animateIndicator };
+const Label = ({ children }) => <span className="spectrum-Tabs-itemLabel">{children}</span>;
+
+export { Tabs, Item, Label, TabsIndicator, positionIndicator, animateIndicator };

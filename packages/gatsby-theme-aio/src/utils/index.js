@@ -44,14 +44,15 @@ export const rootFix = (pathname) => {
 };
 
 export const rootFixPages = (pages) => {
-  return pages.map((page) => {
+  const rootFixedPages = JSON.parse(JSON.stringify(pages));
+
+  return rootFixedPages.map((page) => {
     if (page.path === '/') {
-      return {
-        title: page.title,
-        path: '/_ROOT_/'
-      };
+      page.path = '/_ROOT_/';
     } else if (page.path) {
       page.path = trailingSlashFix(page.path);
+    } else if (page.menu) {
+      page.menu = rootFixPages(page.menu);
     }
 
     return page;
@@ -65,7 +66,11 @@ export const layoutColumns = (columns, gutters = []) =>
 
 export const findSelectedTopPage = (pathname, pages) => {
   pathname = trailingSlashFix(pathname);
-  return pages.find((page) => pathname.startsWith(withPrefix(page.path)));
+  return pages.find(
+    (page) =>
+      pathname.startsWith(withPrefix(page.path)) ||
+      (page.menu && page.menu.some((menuPage) => pathname.startsWith(withPrefix(menuPage.path))))
+  );
 };
 
 export const findSubPages = (pathname, pages, subPages) => {
@@ -237,6 +242,10 @@ export const cloneChildren = (children, changeProps) => {
   });
 };
 
+export const DEFAULT_HOME = {
+  title: 'Products',
+  path: '/apis/'
+};
 export const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
 export const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
 export const TABLET_SCREEN_WIDTH = globals.TABLET_SCREEN_WIDTH;

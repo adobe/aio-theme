@@ -13,7 +13,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Link as GatsbyLink } from 'gatsby';
+import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/breadcrumb';
 import { ChevronRightSmall } from '../Icons';
 

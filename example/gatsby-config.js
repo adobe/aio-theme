@@ -12,13 +12,17 @@
 
 module.exports = {
   siteMetadata: {
+    home: {
+      title: 'Home',
+      path: '/../home/'
+    },
     versions: [
       {
         title: 'v2.0'
       },
       {
         title: 'v1.4',
-        path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
+        path: '/1.4/'
       }
     ],
     pages: [
@@ -31,8 +35,24 @@ module.exports = {
         path: '/guides/'
       },
       {
-        title: 'API Reference',
-        path: '/api/'
+        title: 'APIs',
+        menu: [
+          {
+            title: 'Analytics API',
+            description: 'This is the OpenAPI page of Adobe Analytics',
+            path: '/api/'
+          },
+          // {
+          //   title: 'Petstore API',
+          //   description: 'This is the OpenAPI page of the swagger Petstore API stored in static files',
+          //   path: '/api/petstore/'
+          // },
+          {
+            title: 'Analytics Swagger file',
+            description: 'External link',
+            path: 'https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json'
+          }
+        ]
       },
       {
         title: 'JS Doc',
@@ -43,7 +63,16 @@ module.exports = {
         path: '/support/'
       },
       {
-        title: 'Adobe Creative Cloud',
+        title: 'Frame',
+        menu: [
+          {
+            title: 'Frame communication with Penpal',
+            path: '/frame/'
+          }
+        ]
+      },
+      {
+        title: 'CC',
         path: '/creative_cloud/'
       },
       {
@@ -57,10 +86,6 @@ module.exports = {
       {
         title: 'No layout',
         path: '/no_layout/'
-      },
-      {
-        title: 'Frame',
-        path: '/frame/'
       }
     ],
     subPages: [
