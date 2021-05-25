@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.4.0...@adobe/gatsby-theme-aio@3.5.0) (2021-05-25)
+
+
+### Bug Fixes
+
+* Footer is taking too much space on mobile screen ([f1bf1ba](https://github.com/adobe/gatsby-theme-aio/commit/f1bf1ba5a0f9332e82e0c6d37bd05cbde694a779))
+* Remove Frame default margin ([c59013a](https://github.com/adobe/gatsby-theme-aio/commit/c59013abbcc89dfabc1f8d87b7ac51bf8f045ea5))
+
+
+### Features
+
+* Refresh Global Navigation Header ([f7526ec](https://github.com/adobe/gatsby-theme-aio/commit/f7526ec6776e4c11a3b9c30082eb997b2f232a11))
+
+
+
+
+
 # [3.4.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.3.1...@adobe/gatsby-theme-aio@3.4.0) (2021-05-17)
 
 
