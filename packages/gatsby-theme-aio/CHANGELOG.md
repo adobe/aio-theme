@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.0...@adobe/gatsby-theme-aio@3.5.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* Cannot query field "componentPath" on type "SitePage" ([a4565d3](https://github.com/adobe/gatsby-theme-aio/commit/a4565d3dfabd196aed63b0a19f960db58a6aeb29))
+
+
+
+
+
 # [3.5.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.4.0...@adobe/gatsby-theme-aio@3.5.0) (2021-05-25)
 
 
