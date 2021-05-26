@@ -152,7 +152,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
         setOpenVersion(false);
       }
 
-      if (!profilePopoverRef.current.contains(event.target)) {
+      if (ims && !profilePopoverRef.current.contains(event.target)) {
         setOpenProfile(false);
       }
 
