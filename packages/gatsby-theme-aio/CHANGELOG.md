@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.1...@adobe/gatsby-theme-aio@3.5.2) (2021-05-26)
+
+
+### Bug Fixes
+
+* Menu popover not closing when IMS is missing ([1c256ed](https://github.com/adobe/gatsby-theme-aio/commit/1c256edf7644c210e746b2cd506391b8b828495e))
+
+
+
+
+
 ## [3.5.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.0...@adobe/gatsby-theme-aio@3.5.1) (2021-05-25)
 
 
