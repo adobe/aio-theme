@@ -310,13 +310,12 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                         box-sizing: border-box;
                         padding: 0 var(--spectrum-global-dimension-size-300);
                         white-space: nowrap;
+                        color: var(--spectrum-global-color-gray-700);
 
                         &:hover {
                           background-color: var(--spectrum-global-color-gray-75);
-                        }
-
-                        &:active {
-                          background-color: var(--spectrum-global-color-gray-100);
+                          color: var(--spectrum-global-color-gray-900);
+                          text-decoration: none;
                         }
                       `}
                       href={home?.href || DEFAULT_HOME.path}
