@@ -196,7 +196,7 @@ export default ({ children, pageContext, query }) => {
       (tableOfContentsItems.length > 1 ||
         (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
         tableOfContentsItems[0]?.title);
-    const isFirstSubPage = selectedPage?.path === selectedPageSiblings?.[0]?.path;
+    const isFirstSubPage = selectedPage?.pathname === selectedPageSiblings?.[0]?.pathname;
 
     const columns = 12;
     const diff = [];
@@ -271,8 +271,8 @@ export default ({ children, pageContext, query }) => {
                         margin-right: var(--spectrum-global-dimension-size-400);
                       `}>
                       <Breadcrumbs
-                        selectedTopPage={{ ...selectedTopPage, path: withPrefix(selectedTopPage.path) }}
-                        selectedSubPages={selectedSubPages.map((page) => ({ ...page, path: withPrefix(page.path) }))}
+                        selectedTopPage={{ ...selectedTopPage, href: withPrefix(selectedTopPage.href) }}
+                        selectedSubPages={selectedSubPages.map((page) => ({ ...page, href: withPrefix(page.href) }))}
                       />
                     </div>
                     <div

@@ -14,7 +14,7 @@ module.exports = {
   siteMetadata: {
     home: {
       title: 'Home',
-      path: '/../home/'
+      path: '/home/?plop=plip#foo'
     },
     versions: [
       {
@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         title: 'v1.4',
-        path: '/1.4/'
+        path: '/src/pages/1.4.md?plop=plip#foo'
       }
     ],
     pages: [
@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         title: 'Guides',
-        path: '/guides/'
+        path: '/guides/index.md'
       },
       {
         title: 'APIs',
@@ -40,7 +40,7 @@ module.exports = {
           {
             title: 'Analytics API',
             description: 'This is the OpenAPI page of Adobe Analytics',
-            path: '/api/'
+            path: '/api/index.md/'
           },
           // {
           //   title: 'Petstore API',
@@ -60,14 +60,14 @@ module.exports = {
       },
       {
         title: 'Support',
-        path: '/support/'
+        path: '/support/?plop=plip#foo'
       },
       {
         title: 'Frame',
         menu: [
           {
             title: 'Frame communication with Penpal',
-            path: '/frame/'
+            path: '/frame.md/?plop=plip#foo'
           }
         ]
       },
@@ -91,15 +91,15 @@ module.exports = {
     subPages: [
       {
         title: 'Get Started',
-        path: '/guides/',
+        path: '/guides/?plop=plip#foo',
         pages: [
           {
             title: 'Overview',
-            path: '/guides/'
+            path: '/guides/index.md/?plop=plip#foo'
           },
           {
             title: 'Creating an OAuth Client',
-            path: '/guides/creating_oauth_client/'
+            path: '/guides/creating_oauth_client/index.md'
           }
         ]
       },

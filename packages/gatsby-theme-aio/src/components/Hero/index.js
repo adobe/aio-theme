@@ -217,8 +217,8 @@ const Hero = ({
               <Breadcrumbs
                 selectedTopPage={DEFAULT_HOME}
                 selectedSubPages={[
-                  { ...home, path: withPrefix(home.path) },
-                  { ...selectedTopPage, path: withPrefix(selectedTopPage.path.replace('/_ROOT_/', '/')) }
+                  { ...home, href: home.href },
+                  { ...selectedTopPage, href: withPrefix(selectedTopPage.href.replace('/_ROOT_/', '/')) }
                 ]}
               />
             )}

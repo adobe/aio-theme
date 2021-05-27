@@ -305,8 +305,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   <ActionButton
                     elementType="a"
                     isQuiet
-                    href={(home?.path && withPrefix(home.path)) || DEFAULT_HOME.path}
-                    {...getExternalLinkProps(home?.path || DEFAULT_HOME.path)}>
+                    href={home?.href || DEFAULT_HOME.path}
+                    {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
                     <ActionButtonLabel>{home?.title || DEFAULT_HOME.title}</ActionButtonLabel>
                   </ActionButton>
                 </div>
@@ -357,14 +357,13 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   `}>
                   <TabsItem
                     elementType={GatsbyLink}
-                    to={(home?.path && withPrefix(home.path)) || DEFAULT_HOME.path}
-                    {...getExternalLinkProps(home?.path || DEFAULT_HOME.path)}>
+                    to={home?.href || DEFAULT_HOME.path}
+                    {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
                     <TabsItemLabel>{home?.title || DEFAULT_HOME.title}</TabsItemLabel>
                   </TabsItem>
                 </div>
               )}
               {pages.map((page, i) => {
-                const { title, path } = page;
                 const selectedTabIndex = getSelectedTabIndex();
                 const isSelectedTab = selectedTabIndex === i;
                 const menuPopoverId = nextId();
@@ -379,14 +378,14 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
 
                 return (
                   <Fragment key={i}>
-                    {path ? (
+                    {page.href ? (
                       <TabsItem
                         elementType={GatsbyLink}
-                        {...getExternalLinkProps(path)}
+                        {...getExternalLinkProps(page.href)}
                         ref={setTabRef}
-                        to={withPrefix(path)}
+                        to={withPrefix(page.href)}
                         selected={isSelectedTab}>
-                        <TabsItemLabel>{title}</TabsItemLabel>
+                        <TabsItemLabel>{page.title}</TabsItemLabel>
                       </TabsItem>
                     ) : (
                       <TabsItem
@@ -415,7 +414,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                           setOpenProfile(false);
                           setOpenMenuIndex(openMenuIndex === i ? -1 : i);
                         }}>
-                        <TabsItemLabel>{title}</TabsItemLabel>
+                        <TabsItemLabel>{page.title}</TabsItemLabel>
                         <ChevronDown
                           css={css`
                             width: var(--spectrum-global-dimension-size-125) !important;
@@ -439,7 +438,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                           isOpen={openMenuIndex === i}>
                           <Menu>
                             {page.menu.map((menu, k) => (
-                              <MenuItem key={k} href={withPrefix(menu.path)}>
+                              <MenuItem key={k} href={withPrefix(menu.href)}>
                                 {menu.description ? (
                                   <div
                                     css={css`
@@ -503,7 +502,10 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                                   key={k}
                                   isSelected={isFirst}
                                   isHighlighted={isFirst}
-                                  href={withPrefix(version.path)}>
+                                  onClick={() => {
+                                    setOpenVersion(false);
+                                  }}
+                                  href={withPrefix(version.href)}>
                                   {version.title}
                                 </MenuItem>
                               );
@@ -527,7 +529,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                     margin-left: var(--spectrum-global-dimension-size-400);
                     white-space: nowrap;
                   `}>
-                  <AnchorButton variant="primary" href={withPrefix(docs.path)}>
+                  <AnchorButton variant="primary" href={withPrefix(docs.href)}>
                     {docs.title ?? 'View Docs'}
                   </AnchorButton>
                 </div>

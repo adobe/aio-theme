@@ -31,7 +31,7 @@ const NextPrev = ({ nextPage, previousPage }) =>
         <div>
           {previousPage && (
             <Link isQuiet={true}>
-              <GatsbyLink to={previousPage.path} rel="prev">
+              <GatsbyLink to={previousPage.href} rel="prev">
                 <div
                   css={css`
                     display: flex;
@@ -56,7 +56,7 @@ const NextPrev = ({ nextPage, previousPage }) =>
           `}>
           {nextPage && (
             <Link isQuiet={true}>
-              <GatsbyLink to={nextPage.path} rel="next">
+              <GatsbyLink to={nextPage.href} rel="next">
                 <div
                   css={css`
                     display: flex;

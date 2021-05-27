@@ -27,7 +27,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
 
   const renderSubtree = (pages, level) =>
     pages
-      .filter((page) => page.title && page.path)
+      .filter((page) => page.title && page.href)
       .map((page, index) => {
         const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
         const id = nextId();
@@ -49,17 +49,17 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
               <h2 className="spectrum-SideNav-heading" id={id}>
                 {page.title}
               </h2>
-            ) : isExternalLink(page.path) ? (
+            ) : isExternalLink(page.href) ? (
               <a
-                {...getExternalLinkProps(page.path)}
-                href={page.path}
+                {...getExternalLinkProps(page.href)}
+                href={page.href}
                 className="spectrum-SideNav-itemLink"
                 role="treeitem"
                 aria-level={level}>
                 {page.title}
               </a>
             ) : (
-              <GatsbyLink to={page.path} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
+              <GatsbyLink to={page.href} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
                 {page.title}
               </GatsbyLink>
             )}

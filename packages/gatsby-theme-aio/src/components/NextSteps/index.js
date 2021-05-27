@@ -45,7 +45,7 @@ const NextSteps = ({ pages }) => {
               height: var(--spectrum-global-dimension-size-500);
             `}>
             <Link isQuiet={true}>
-              <GatsbyLink to={page.path}>
+              <GatsbyLink to={page.href}>
                 <div
                   css={css`
                     display: flex;

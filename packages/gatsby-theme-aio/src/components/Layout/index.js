@@ -20,6 +20,8 @@ import {
   rootFixPages,
   findSelectedPages,
   findSubPages,
+  trailingSlashFix,
+  normalizePagePath,
   DESKTOP_SCREEN_WIDTH,
   SIDENAV_WIDTH
 } from '../../utils';
@@ -216,9 +218,42 @@ export default ({ children, pageContext, location }) => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  location.pathname = decodeURIComponent(location.pathname);
-  if (!location.pathname.endsWith('/')) {
-    location.pathname += '/';
+  // Unify all paths
+  location.pathname = trailingSlashFix(decodeURIComponent(location.pathname));
+
+  pages.forEach((page) => {
+    normalizePagePath(page);
+
+    if (page.menu) {
+      page.menu.forEach((menu) => {
+        normalizePagePath(menu);
+      });
+    }
+  });
+
+  if (versions) {
+    versions.forEach((version) => {
+      normalizePagePath(version);
+    });
+  }
+
+  normalizePagePath(home);
+  normalizePagePath(docs);
+
+  const normalizeSubPages = (page) => {
+    normalizePagePath(page);
+
+    if (page.pages) {
+      page.pages.forEach((subPage) => {
+        normalizeSubPages(subPage);
+      });
+    }
+  };
+
+  if (subPages) {
+    subPages.forEach((subPage) => {
+      normalizeSubPages(subPage);
+    });
   }
 
   const pathWithRootFix = rootFix(location.pathname);

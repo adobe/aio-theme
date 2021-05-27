@@ -15,10 +15,16 @@ import { withPrefix } from 'gatsby';
 import globals from '../../conf/globals';
 
 const cleanMarkdownExtension = (pathname) => {
-  return pathname.replace('/src/pages/', '/').replace('/index.md', '').replace('index.md', '').replace('.md', '');
+  return pathname
+    .replace('/src/pages/', '/')
+    .replace('/index.md/', '')
+    .replace('/index.md', '')
+    .replace('index.md', '')
+    .replace('.md/', '')
+    .replace('.md', '');
 };
 
-export const gdocsRelativeLinkFix = (href) => {
+const gdocsRelativeLinkFix = (href) => {
   // Support gdoc relative links
   if (href && href.startsWith('#!')) {
     href = href.substr(2);
@@ -27,7 +33,7 @@ export const gdocsRelativeLinkFix = (href) => {
   return href;
 };
 
-export const trailingSlashFix = (pathname) => {
+const trailingSlashFix = (pathname) => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;
   }
@@ -35,22 +41,31 @@ export const trailingSlashFix = (pathname) => {
   return pathname;
 };
 
-export const rootFix = (pathname) => {
+const normalizePagePath = (page) => {
+  if (page?.path && !isExternalLink(page.path)) {
+    const { pathname, search, hash } = new URL(page.path, 'https://example.com');
+    const normalizedPath = trailingSlashFix(cleanMarkdownExtension(pathname));
+
+    page.pathname = decodeURIComponent(normalizedPath);
+    page.href = `${normalizedPath}${search}${hash}`;
+  }
+};
+
+const rootFix = (pathname) => {
   if (pathname === withPrefix('/')) {
     return withPrefix('/_ROOT_/');
   }
 
-  return trailingSlashFix(pathname);
+  return pathname;
 };
 
-export const rootFixPages = (pages) => {
+const rootFixPages = (pages) => {
   const rootFixedPages = JSON.parse(JSON.stringify(pages));
 
   return rootFixedPages.map((page) => {
-    if (page.path === '/') {
-      page.path = '/_ROOT_/';
-    } else if (page.path) {
-      page.path = trailingSlashFix(page.path);
+    if (page.pathname === '/') {
+      page.pathname = '/_ROOT_/';
+      page.href = `/_ROOT_/${page.href.slice(1)}`;
     } else if (page.menu) {
       page.menu = rootFixPages(page.menu);
     }
@@ -59,21 +74,22 @@ export const rootFixPages = (pages) => {
   });
 };
 
-export const layoutColumns = (columns, gutters = []) =>
+const layoutColumns = (columns, gutters = []) =>
   `calc(${columns} * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)${
     gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''
   })`;
 
-export const findSelectedTopPage = (pathname, pages) => {
+const findSelectedTopPage = (pathname, pages) => {
   pathname = trailingSlashFix(pathname);
+
   return pages.find(
     (page) =>
-      pathname.startsWith(withPrefix(page.path)) ||
-      (page.menu && page.menu.some((menuPage) => pathname.startsWith(withPrefix(menuPage.path))))
+      pathname.startsWith(withPrefix(page.pathname)) ||
+      (page.menu && page.menu.some((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname))))
   );
 };
 
-export const findSubPages = (pathname, pages, subPages) => {
+const findSubPages = (pathname, pages, subPages) => {
   pathname = trailingSlashFix(pathname);
 
   if (subPages === null) {
@@ -81,22 +97,20 @@ export const findSubPages = (pathname, pages, subPages) => {
   }
 
   const selectedTopPage = findSelectedTopPage(pathname, pages);
-  return subPages.filter((page) => withPrefix(page.path).startsWith(withPrefix(selectedTopPage?.path)));
+  return subPages.filter((page) => withPrefix(page.pathname).startsWith(withPrefix(selectedTopPage?.pathname)));
 };
 
-export const findSelectedPage = (pathname, pages) => {
+const findSelectedPage = (pathname, pages) => {
   pathname = trailingSlashFix(pathname);
 
   if (pages === null) {
     return [];
   }
 
-  return pages.find((page) => pathname === withPrefix(page.path));
+  return pages.find((page) => pathname === withPrefix(page.pathname));
 };
 
-export const findSelectedPages = (pathname, pages) => {
-  pathname = trailingSlashFix(pathname);
-
+const findSelectedPages = (pathname, pages) => {
   if (pages === null) {
     return [];
   }
@@ -106,7 +120,7 @@ export const findSelectedPages = (pathname, pages) => {
 
   const find = (page) => {
     let subPages = [];
-    if (page.path && pathname.startsWith(withPrefix(page.path))) {
+    if (page.pathname && pathname.startsWith(withPrefix(page.pathname))) {
       page.level = level;
       subPages.push(page);
     }
@@ -131,7 +145,7 @@ export const findSelectedPages = (pathname, pages) => {
   return selectedPages.length ? selectedPages.pop() : [];
 };
 
-export const flattenPages = (pages) => {
+const flattenPages = (pages) => {
   if (pages === null) {
     return [];
   }
@@ -148,14 +162,14 @@ export const flattenPages = (pages) => {
   pages.forEach(find);
 
   flat = flat.flat();
-  return flat.filter((page, index) => page.path && page.path !== flat[index + 1]?.path);
+  return flat.filter((page, index) => page.pathname && page.pathname !== flat[index + 1]?.pathname);
 };
 
-export const findSelectedPageNextPrev = (pathname, pages) => {
+const findSelectedPageNextPrev = (pathname, pages) => {
   pathname = trailingSlashFix(pathname);
 
   const flat = flattenPages(pages);
-  const selectedPage = flat.find((page) => withPrefix(page.path) === pathname);
+  const selectedPage = flat.find((page) => withPrefix(page.pathname) === pathname);
 
   return {
     nextPage: flat[flat.indexOf(selectedPage) + 1],
@@ -163,7 +177,7 @@ export const findSelectedPageNextPrev = (pathname, pages) => {
   };
 };
 
-export const findSelectedPageSiblings = (pathname, pages) => {
+const findSelectedPageSiblings = (pathname, pages) => {
   pathname = trailingSlashFix(pathname);
 
   let siblings = [];
@@ -174,7 +188,7 @@ export const findSelectedPageSiblings = (pathname, pages) => {
 
   const find = (page) => {
     if (page.pages) {
-      const selectedPage = page.pages.find((subPage) => withPrefix(subPage.path) === pathname);
+      const selectedPage = page.pages.find((subPage) => withPrefix(subPage.pathname) === pathname);
       if (selectedPage) {
         siblings = [...page.pages];
       } else {
@@ -190,24 +204,25 @@ export const findSelectedPageSiblings = (pathname, pages) => {
   return siblings;
 };
 
-export const isInternalLink = (pathname, location, pages) => {
+const isInternalLink = (pathname, location, allPaths) => {
   if (!pathname) {
     return false;
   }
 
-  const base = 'https://example.com';
-  const href = new URL(encodeURI(location.pathname), base);
+  const base = new URL(location.pathname, 'https://example.com');
+  const requestedPath = decodeURI(trailingSlashFix(cleanMarkdownExtension(new URL(pathname, base).pathname)));
 
-  pathname = decodeURI(trailingSlashFix(cleanMarkdownExtension(new URL(pathname, href).pathname)));
-
-  return pages.some((path) => path === pathname);
+  return allPaths.some((path) => path === requestedPath);
 };
 
-export const fixInternalLink = (pathname, pathPrefix) => {
-  return cleanMarkdownExtension(pathname.replace(pathPrefix, ''));
+const fixInternalLink = (pathname, location, pathPrefix) => {
+  const base = new URL(location.pathname, 'https://example.com');
+  const url = new URL(pathname, base);
+
+  return `${trailingSlashFix(cleanMarkdownExtension(url.pathname.replace(pathPrefix, '')))}${url.search}${url.hash}`;
 };
 
-export const isExternalLink = (url) => {
+const isExternalLink = (url) => {
   url = String(url).replace('#', '');
 
   let isExternal = true;
@@ -220,7 +235,7 @@ export const isExternalLink = (url) => {
   return isExternal;
 };
 
-export const getExternalLinkProps = (url = null) =>
+const getExternalLinkProps = (url = null) =>
   url === null || isExternalLink(url)
     ? {
         target: '_blank',
@@ -228,9 +243,9 @@ export const getExternalLinkProps = (url = null) =>
       }
     : {};
 
-export const getElementChild = (element) => React.Children.toArray(element.props.children)[0];
+const getElementChild = (element) => React.Children.toArray(element.props.children)[0];
 
-export const cloneChildren = (children, changeProps) => {
+const cloneChildren = (children, changeProps) => {
   return Children.map(children, (child) => {
     if (child?.props?.children) {
       child = cloneElement(child, {
@@ -242,11 +257,39 @@ export const cloneChildren = (children, changeProps) => {
   });
 };
 
-export const DEFAULT_HOME = {
+const DEFAULT_HOME = {
   title: 'Products',
-  path: '/apis/'
+  href: '/apis/'
 };
-export const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
-export const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
-export const TABLET_SCREEN_WIDTH = globals.TABLET_SCREEN_WIDTH;
-export const DESKTOP_SCREEN_WIDTH = globals.DESKTOP_SCREEN_WIDTH;
+const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
+const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
+const TABLET_SCREEN_WIDTH = globals.TABLET_SCREEN_WIDTH;
+const DESKTOP_SCREEN_WIDTH = globals.DESKTOP_SCREEN_WIDTH;
+
+export {
+  normalizePagePath,
+  cleanMarkdownExtension,
+  gdocsRelativeLinkFix,
+  trailingSlashFix,
+  rootFix,
+  rootFixPages,
+  layoutColumns,
+  findSelectedTopPage,
+  findSubPages,
+  findSelectedPage,
+  findSelectedPages,
+  flattenPages,
+  findSelectedPageNextPrev,
+  findSelectedPageSiblings,
+  isInternalLink,
+  fixInternalLink,
+  isExternalLink,
+  getExternalLinkProps,
+  getElementChild,
+  cloneChildren,
+  DEFAULT_HOME,
+  SIDENAV_WIDTH,
+  MOBILE_SCREEN_WIDTH,
+  TABLET_SCREEN_WIDTH,
+  DESKTOP_SCREEN_WIDTH
+};

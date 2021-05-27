@@ -25,14 +25,14 @@ const Breadcrumbs = ({ selectedTopPage, selectedSubPages }) => (
         display: block;
       `}>
       <li className="spectrum-Breadcrumbs-item">
-        <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={selectedTopPage.path}>
+        <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={selectedTopPage.href}>
           {selectedTopPage.title}
         </GatsbyLink>
         <ChevronRightSmall className="spectrum-Breadcrumbs-itemSeparator" />
       </li>
       {selectedSubPages.map((page, index) => (
         <li className="spectrum-Breadcrumbs-item" key={index}>
-          <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.path}>
+          <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
             {page.title}
           </GatsbyLink>
           <ChevronRightSmall className="spectrum-Breadcrumbs-itemSeparator" />

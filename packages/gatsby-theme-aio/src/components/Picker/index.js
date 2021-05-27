@@ -86,7 +86,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
                 }}
                 isHighlighted={(!hasSelection && i === 0) || option.selected}
                 isSelected={option.selected}
-                href={option.path}>
+                href={option.href}>
                 {option.title}
               </Item>
             );
