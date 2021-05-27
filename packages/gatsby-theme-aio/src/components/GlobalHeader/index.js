@@ -33,6 +33,7 @@ import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
 import { Image } from '../Image';
+import { Link } from '../Link';
 import {
   Tabs,
   Item as TabsItem,
@@ -291,9 +292,6 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 <div
                   css={css`
                     margin-left: var(--spectrum-global-dimension-size-300);
-                    box-sizing: border-box;
-                    padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-300) 0
-                      var(--spectrum-global-dimension-size-300);
                     height: calc(100% + var(--spectrum-global-dimension-size-10));
                     border-left: 1px solid var(--spectrum-global-color-gray-200);
                     border-right: 1px solid var(--spectrum-global-color-gray-200);
@@ -302,13 +300,29 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                       display: none;
                     }
                   `}>
-                  <ActionButton
-                    elementType="a"
-                    isQuiet
-                    href={home?.href || DEFAULT_HOME.path}
-                    {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
-                    <ActionButtonLabel>{home?.title || DEFAULT_HOME.title}</ActionButtonLabel>
-                  </ActionButton>
+                  <Link isQuiet variant="secondary">
+                    <a
+                      css={css`
+                        display: flex;
+                        height: calc(100% - var(--spectrum-global-dimension-size-10));
+                        align-items: center;
+                        justify-content: center;
+                        box-sizing: border-box;
+                        padding: 0 var(--spectrum-global-dimension-size-300);
+
+                        &:hover {
+                          background-color: var(--spectrum-global-color-gray-75);
+                        }
+
+                        &:active {
+                          background-color: var(--spectrum-global-color-gray-100);
+                        }
+                      `}
+                      href={home?.href || DEFAULT_HOME.path}
+                      {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
+                      {home?.title || DEFAULT_HOME.title}
+                    </a>
+                  </Link>
                 </div>
               )}
             </div>

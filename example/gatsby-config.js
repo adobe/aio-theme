@@ -28,7 +28,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Analytics',
-        path: '/'
+        path: 'index.md'
       },
       {
         title: 'Guides',
