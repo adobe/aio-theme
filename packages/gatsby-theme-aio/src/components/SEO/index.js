@@ -15,10 +15,10 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
 // TODO Define additional meta properties
-const SEO = ({ title = 'Adobe I/O', description = 'Adobe I/O Site' }) => (
+const SEO = ({ title, description }) => (
   <Helmet>
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    {title && <title>{title}</title>}
+    {description && <meta name="description" content={description} />}
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
     <link rel="icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
