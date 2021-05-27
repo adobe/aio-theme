@@ -42,12 +42,16 @@ const trailingSlashFix = (pathname) => {
 };
 
 const normalizePagePath = (page) => {
-  if (page?.path && !isExternalLink(page.path)) {
-    const { pathname, search, hash } = new URL(page.path, 'https://example.com');
-    const normalizedPath = trailingSlashFix(cleanMarkdownExtension(pathname));
+  if (page?.path) {
+    if (isExternalLink(page.path)) {
+      page.href = page.path;
+    } else {
+      const { pathname, search, hash } = new URL(page.path, 'https://example.com');
+      const normalizedPath = trailingSlashFix(cleanMarkdownExtension(pathname));
 
-    page.pathname = decodeURIComponent(normalizedPath);
-    page.href = `${normalizedPath}${search}${hash}`;
+      page.pathname = decodeURIComponent(normalizedPath);
+      page.href = `${normalizedPath}${search}${hash}`;
+    }
   }
 };
 

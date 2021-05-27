@@ -76,6 +76,10 @@ module.exports = {
         path: '/creative_cloud/'
       },
       {
+        title: 'Ext',
+        path: 'https://adobe.io'
+      },
+      {
         title: 'Project Firefly',
         path: '/project_firefly/'
       },
@@ -190,6 +194,10 @@ module.exports = {
           {
             title: 'Information',
             path: '/support/community/'
+          },
+          {
+            title: 'External',
+            path: 'https://adobe.io'
           }
         ]
       }

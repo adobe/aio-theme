@@ -12,11 +12,15 @@
 
 import React, { forwardRef, useContext } from 'react';
 import { Link, withPrefix } from 'gatsby';
-import { isInternalLink, fixInternalLink, trailingSlashFix } from '../../utils';
+import { isInternalLink, isExternalLink, fixInternalLink, trailingSlashFix } from '../../utils';
 import PropTypes from 'prop-types';
 import Context from '../Context';
 
 const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
+  if (isExternalLink(to)) {
+    return <a href={to} ref={ref} {...props} />;
+  }
+
   const { location, allSitePage, pathPrefix } = useContext(Context);
   const pages = allSitePage.nodes.map((page) => withPrefix(page.path));
 
