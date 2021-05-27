@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.2...@adobe/gatsby-theme-aio@3.6.3) (2021-05-27)
+
+
+### Bug Fixes
+
+* Home link styles update ([db7d2c8](https://github.com/adobe/gatsby-theme-aio/commit/db7d2c81ace9f1e4ad024c946c08e0c7993613da))
+
+
+
+
+
 ## [3.6.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.1...@adobe/gatsby-theme-aio@3.6.2) (2021-05-27)
 
 
