@@ -309,6 +309,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                         justify-content: center;
                         box-sizing: border-box;
                         padding: 0 var(--spectrum-global-dimension-size-300);
+                        white-space: nowrap;
 
                         &:hover {
                           background-color: var(--spectrum-global-color-gray-75);
