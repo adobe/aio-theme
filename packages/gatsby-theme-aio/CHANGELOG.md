@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.2...@adobe/gatsby-theme-aio@3.6.0) (2021-05-27)
+
+
+### Bug Fixes
+
+* Update home to link instead of button ([19d9390](https://github.com/adobe/gatsby-theme-aio/commit/19d93909b5d9f7357b9709d55cc3d3b13e47c6ac))
+
+
+### Features
+
+* Support custom paths in gatsby-config ([805cd6d](https://github.com/adobe/gatsby-theme-aio/commit/805cd6d09a3dc40d4b2cd56200e40b089a35997d))
+
+
+
+
+
 ## [3.5.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.1...@adobe/gatsby-theme-aio@3.5.2) (2021-05-26)
 
 
