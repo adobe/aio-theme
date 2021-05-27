@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.0...@adobe/gatsby-theme-aio@3.6.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* Remove fallback title and description ([ae2192b](https://github.com/adobe/gatsby-theme-aio/commit/ae2192bd66469158eebc2226cf2c1d75130a069d))
+* Support external links defined in gatsby-config ([dca90aa](https://github.com/adobe/gatsby-theme-aio/commit/dca90aa25215a6e9c267ee3b40085b50e8f950a0))
+
+
+
+
+
 # [3.6.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.5.2...@adobe/gatsby-theme-aio@3.6.0) (2021-05-27)
 
 
