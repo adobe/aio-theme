@@ -268,7 +268,7 @@ export default ({ children, pageContext, location }) => {
   }
 
   const frontMatter = pageContext?.frontmatter;
-  
+
   const layoutId = nextId();
   const sideNavId = nextId();
 

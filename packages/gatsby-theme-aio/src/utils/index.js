@@ -83,19 +83,14 @@ const layoutColumns = (columns, gutters = []) =>
     gutters.length > 0 ? ` - ${gutters.join(' - ')}` : ''
   })`;
 
-const findSelectedTopPage = (pathname, pages) => {
-  pathname = trailingSlashFix(pathname);
-
-  return pages.find(
+const findSelectedTopPage = (pathname, pages) =>
+  pages.find(
     (page) =>
       pathname.startsWith(withPrefix(page.pathname)) ||
       (page.menu && page.menu.some((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname))))
   );
-};
 
 const findSubPages = (pathname, pages, subPages) => {
-  pathname = trailingSlashFix(pathname);
-
   if (subPages === null) {
     return [];
   }
@@ -105,8 +100,6 @@ const findSubPages = (pathname, pages, subPages) => {
 };
 
 const findSelectedPage = (pathname, pages) => {
-  pathname = trailingSlashFix(pathname);
-
   if (pages === null) {
     return [];
   }
@@ -170,8 +163,6 @@ const flattenPages = (pages) => {
 };
 
 const findSelectedPageNextPrev = (pathname, pages) => {
-  pathname = trailingSlashFix(pathname);
-
   const flat = flattenPages(pages);
   const selectedPage = flat.find((page) => withPrefix(page.pathname) === pathname);
 
@@ -182,8 +173,6 @@ const findSelectedPageNextPrev = (pathname, pages) => {
 };
 
 const findSelectedPageSiblings = (pathname, pages) => {
-  pathname = trailingSlashFix(pathname);
-
   let siblings = [];
 
   if (pages === null) {
