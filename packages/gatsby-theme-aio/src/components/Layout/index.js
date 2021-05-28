@@ -268,8 +268,7 @@ export default ({ children, pageContext, location }) => {
   }
 
   const frontMatter = pageContext?.frontmatter;
-  const hasLayout = pageContext?.frontmatter?.layout !== 'none';
-
+  
   const layoutId = nextId();
   const sideNavId = nextId();
 
@@ -409,10 +408,9 @@ export default ({ children, pageContext, location }) => {
                 grid-template-rows: var(--spectrum-global-dimension-size-800);
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
-                ${hasLayout &&
-                `@media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                    grid-template-columns: 0px auto;
-                  }`}
+                @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                  grid-template-columns: 0px auto;
+                }
               `}>
               <div
                 css={css`
@@ -449,11 +447,10 @@ export default ({ children, pageContext, location }) => {
                   height: 100%;
                   background-color: var(--spectrum-global-color-gray-75);
 
-                  ${hasLayout &&
-                  `@media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                      transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
-                      transform: translateX(${showSideNav ? '0' : '-100%'});
-                    }`}
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                    transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
+                    transform: translateX(${showSideNav ? '0' : '-100%'});
+                  }
                 `}>
                 {SideNav && (
                   <SideNav
