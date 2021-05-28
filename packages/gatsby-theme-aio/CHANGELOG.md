@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.3...@adobe/gatsby-theme-aio@3.7.0) (2021-05-28)
+
+
+### Bug Fixes
+
+* Remove duplicated function calls ([d4c9d33](https://github.com/adobe/gatsby-theme-aio/commit/d4c9d337164c876c4f44c1d88aa0c926beb87cb2))
+
+
+### Features
+
+* Support no layout SideNav ([6f13335](https://github.com/adobe/gatsby-theme-aio/commit/6f133354e77b38495b9ee8fc7f5f1ef0fa0a60dd))
+* Support selected version ([af25568](https://github.com/adobe/gatsby-theme-aio/commit/af25568d546600ff2f3e1f92dec85bb7704e42fb))
+
+
+
+
+
 ## [3.6.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.2...@adobe/gatsby-theme-aio@3.6.3) (2021-05-27)
 
 
