@@ -46,7 +46,22 @@ import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 
+const getSelectedTabIndex = (location, pages) => {
+  const pathWithRootFix = rootFix(location.pathname);
+  const pagesWithRootFix = rootFixPages(pages);
+
+  let selectedIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+
+  // Assume first item is selected
+  if (selectedIndex === -1) {
+    selectedIndex = 0;
+  }
+
+  return selectedIndex;
+};
+
 const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
   const selectedTabIndicatorRef = useRef(null);
@@ -65,24 +80,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
   const profilePopoverId = nextId();
   const hasHome = home !== false;
 
-  const getSelectedTabIndex = () => {
-    const pathWithRootFix = rootFix(location.pathname);
-    const pagesWithRootFix = rootFixPages(pages);
-
-    const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
-    let selectedTabIndex = pagesWithRootFix.indexOf(selectedTopPage);
-
-    // Assume first tab is selected
-    if (selectedTabIndex === -1) {
-      selectedTabIndex = 0;
-    }
-
-    return selectedTabIndex;
-  };
-
-  const positionSelectedTabIndicator = () => {
-    const selectedTabIndex = getSelectedTabIndex();
-    const selectedTab = pages[selectedTabIndex].tabRef;
+  const positionSelectedTabIndicator = (index) => {
+    const selectedTab = pages[index].tabRef;
 
     if (selectedTab) {
       tabsContainerRef.current.scrollLeft = selectedTab.current.offsetLeft;
@@ -91,8 +90,11 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
   };
 
   useEffect(() => {
+    const index = getSelectedTabIndex(location, pages);
+    setSelectedTabIndex(index);
+
     animateIndicator(selectedTabIndicatorRef, isAnimated);
-    positionSelectedTabIndicator();
+    positionSelectedTabIndicator(index);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -112,7 +114,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
       if (openVersion) {
         const { top, left } = versionPopoverRef.current.getBoundingClientRect();
 
-        versionPopoverRef.current.style.left = `calc(${left}px + var(--spectrum-global-dimension-size-160));`;
+        versionPopoverRef.current.style.left = `calc(${left}px + var(--spectrum-global-dimension-size-160))`;
         versionPopoverRef.current.style.top = `${top}px`;
         versionPopoverRef.current.style.position = 'fixed';
       } else {
@@ -356,7 +358,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
             <Tabs
               ref={tabsRef}
               onFontsReady={() => {
-                positionSelectedTabIndicator();
+                positionSelectedTabIndicator(selectedTabIndex);
                 setIsAnimated(true);
               }}>
               {hasHome && (
@@ -378,7 +380,6 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 </div>
               )}
               {pages.map((page, i) => {
-                const selectedTabIndex = getSelectedTabIndex();
                 const isSelectedTab = selectedTabIndex === i;
                 const menuPopoverId = nextId();
 
@@ -499,7 +500,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                             setOpenProfile(false);
                             setOpenVersion((open) => !open);
                           }}>
-                          {versions[0].title}
+                          {versions.find(({ selected }) => selected)?.title}
                         </PickerButton>
                         <Popover
                           ref={versionPopoverRef}
@@ -508,22 +509,18 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                           isQuiet
                           isOpen={openVersion}>
                           <Menu>
-                            {versions.map((version, k) => {
-                              const isFirst = k === 0;
-
-                              return (
-                                <MenuItem
-                                  key={k}
-                                  isSelected={isFirst}
-                                  isHighlighted={isFirst}
-                                  onClick={() => {
-                                    setOpenVersion(false);
-                                  }}
-                                  href={withPrefix(version.href)}>
-                                  {version.title}
-                                </MenuItem>
-                              );
-                            })}
+                            {versions.map((version, k) => (
+                              <MenuItem
+                                key={k}
+                                isSelected={version.selected}
+                                isHighlighted={version.selected}
+                                onClick={() => {
+                                  setOpenVersion(false);
+                                }}
+                                href={version.href}>
+                                {version.title}
+                              </MenuItem>
+                            ))}
                           </Menu>
                         </Popover>
                       </div>

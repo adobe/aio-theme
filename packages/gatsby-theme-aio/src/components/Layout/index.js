@@ -169,6 +169,7 @@ export default ({ children, pageContext, location }) => {
             versions {
               title
               path
+              selected
             }
             pages {
               title

@@ -49,11 +49,17 @@ exports.createSchemaCustomization = ({ actions }) => {
       menu: [Menu]
     }
     
+    type Version {
+      title: String
+      path: String
+      selected: Boolean
+    }
+    
     type SiteSiteMetadata {
       home: Link
       pages: [TopPage]
       subPages: [SubPage]
-      versions: [Link]
+      versions: [Version]
       docs: Link
     }
     

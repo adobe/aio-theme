@@ -18,11 +18,12 @@ module.exports = {
     },
     versions: [
       {
-        title: 'v2.0'
+        title: 'v2.0',
+        selected: true
       },
       {
         title: 'v1.4',
-        path: '/src/pages/1.4.md?plop=plip#foo'
+        path: 'https://adobe.io'
       }
     ],
     pages: [
