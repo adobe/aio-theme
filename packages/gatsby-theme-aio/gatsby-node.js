@@ -55,8 +55,14 @@ exports.createSchemaCustomization = ({ actions }) => {
       selected: Boolean
     }
     
+    type Home {
+      title: String
+      path: String
+      hidden: Boolean
+    }
+    
     type SiteSiteMetadata {
-      home: Link
+      home: Home
       pages: [TopPage]
       subPages: [SubPage]
       versions: [Version]

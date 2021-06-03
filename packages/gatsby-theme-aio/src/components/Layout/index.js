@@ -162,6 +162,7 @@ export default ({ children, pageContext, location }) => {
             home {
               title
               path
+              hidden
             }
             docs {
               title

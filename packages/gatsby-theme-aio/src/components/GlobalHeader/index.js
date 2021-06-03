@@ -79,7 +79,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
   const POPOVER_ANIMATION_DELAY = 200;
   const versionPopoverId = nextId();
   const profilePopoverId = nextId();
-  const hasHome = home !== false;
+  const hasHome = home?.hidden !== true;
 
   const positionSelectedTabIndicator = (index) => {
     const selectedTab = pages[index].tabRef;
