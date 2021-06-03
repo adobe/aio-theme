@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.1...@adobe/gatsby-theme-aio@3.7.2) (2021-06-03)
+
+
+### Bug Fixes
+
+* Remove Safari flex gap workaround ([74b741d](https://github.com/adobe/gatsby-theme-aio/commit/74b741d50cf4095aadc8ba1747e904bc15ed992e))
+
+
+
+
+
 ## [3.7.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.0...@adobe/gatsby-theme-aio@3.7.1) (2021-06-03)
 
 
