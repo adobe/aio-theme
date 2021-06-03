@@ -207,7 +207,7 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            {home?.hidden !== true && selectedTopPage && (
+            {home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
               <Breadcrumbs
                 selectedTopPage={DEFAULT_HOME}
                 selectedSubPages={[
