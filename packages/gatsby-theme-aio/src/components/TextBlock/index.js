@@ -80,15 +80,6 @@ const Links = ({ links, isCentered }) =>
             ? 'var(--spectrum-global-dimension-size-200) !important;'
             : 'var(--spectrum-global-dimension-size-600) !important;'};
 
-          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-            flex-direction: column;
-            align-items: ${isCentered ? 'center' : 'left'};
-
-            li {
-              margin-top: var(--spectrum-global-dimension-size-100);
-            }
-          }
-
           & li {
             display: flex;
             align-items: center;
@@ -118,6 +109,19 @@ const Links = ({ links, isCentered }) =>
 
           .gatsby-resp-image-image {
             object-fit: contain;
+          }
+
+          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+            flex-direction: column;
+            align-items: ${isCentered ? 'center' : 'left'};
+
+            li {
+              margin-top: var(--spectrum-global-dimension-size-100);
+            }
+
+            li a {
+              margin-right: 0;
+            }
           }
         `
       })
@@ -343,10 +347,6 @@ const TextBlock = ({
                   padding: var(--spectrum-global-dimension-size-200);
                   margin-top: 0;
 
-                  @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                    width: 100%;
-                  }
-
                   .gatsby-resp-image-wrapper {
                     max-width: none !important;
                     width: 100% !important;
@@ -355,6 +355,11 @@ const TextBlock = ({
 
                   .gatsby-resp-image-image {
                     object-fit: contain;
+                  }
+
+                  @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                    height: auto;
+                    width: 100%;
                   }
                 `
               })}

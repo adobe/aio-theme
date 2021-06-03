@@ -51,6 +51,7 @@ const Code = ({ children, className = '', theme }) => {
             className={`spectrum--${theme}`}
             css={css`
               position: relative;
+              max-width: calc(100vw - var(--spectrum-global-dimension-size-800));
             `}>
             <div
               css={css`

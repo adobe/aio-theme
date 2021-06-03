@@ -13,14 +13,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { isExternalLink, getExternalLinkProps } from '../../utils';
+import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import { Search } from '../Search';
 import nextId from 'react-id-generator';
 
-const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
+const SideNav = ({ selectedPages, selectedSubPages, searchIndex, setShowSideNav }) => {
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
   const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
@@ -55,11 +55,21 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
                 href={page.href}
                 className="spectrum-SideNav-itemLink"
                 role="treeitem"
-                aria-level={level}>
+                aria-level={level}
+                onClick={() => {
+                  setShowSideNav(false);
+                }}>
                 {page.title}
               </a>
             ) : (
-              <GatsbyLink to={page.href} className="spectrum-SideNav-itemLink" role="treeitem" aria-level={level}>
+              <GatsbyLink
+                onClick={() => {
+                  setShowSideNav(false);
+                }}
+                to={page.href}
+                className="spectrum-SideNav-itemLink"
+                role="treeitem"
+                aria-level={level}>
                 {page.title}
               </GatsbyLink>
             )}
@@ -89,6 +99,10 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
       aria-label="Primary"
       css={css`
         margin-top: var(--spectrum-global-dimension-size-800);
+
+        @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+          margin-top: var(--spectrum-global-dimension-size-1200);
+        }
       `}>
       <Search
         searchIndex={searchIndex}
@@ -123,7 +137,8 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex }) => {
 SideNav.propTypes = {
   selectedPages: PropTypes.array,
   selectedSubPages: PropTypes.array,
-  searchIndex: PropTypes.object
+  searchIndex: PropTypes.object,
+  setShowSideNav: PropTypes.func
 };
 
 export default SideNav;

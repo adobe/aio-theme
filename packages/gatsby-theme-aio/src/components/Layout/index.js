@@ -23,6 +23,7 @@ import {
   trailingSlashFix,
   normalizePagePath,
   DESKTOP_SCREEN_WIDTH,
+  MOBILE_SCREEN_WIDTH,
   SIDENAV_WIDTH
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
@@ -411,6 +412,10 @@ export default ({ children, pageContext, location }) => {
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                   grid-template-columns: 0px auto;
                 }
+
+                @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                  grid-template-rows: var(--spectrum-global-dimension-size-1200);
+                }
               `}>
               <div
                 css={css`
@@ -421,6 +426,10 @@ export default ({ children, pageContext, location }) => {
                   right: 0;
                   background-color: var(--spectrum-global-color-gray-50);
                   z-index: 2;
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    height: var(--spectrum-global-dimension-size-600);
+                  }
                 `}>
                 <GlobalHeader
                   ims={ims}
@@ -457,6 +466,7 @@ export default ({ children, pageContext, location }) => {
                     selectedPages={sideNavSelectedPages}
                     selectedSubPages={sideNavSelectedSubPages}
                     searchIndex={ParliamentSearchIndex}
+                    setShowSideNav={setShowSideNav}
                   />
                 )}
               </div>

@@ -177,7 +177,7 @@ const Hero = ({
           }
 
           @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-            height: 100vh;
+            height: calc(100vh - var(--spectrum-global-dimension-size-1200));
           }
         `}>
         <HeroImage image={image} styles={`position: absolute;`} />

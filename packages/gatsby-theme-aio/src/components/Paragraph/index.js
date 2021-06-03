@@ -25,6 +25,10 @@ export const Paragraph = ({ children, className, css: cssOverrides, ...props }) 
     css={css`
       ${paragraphOverrides}
       ${cssOverrides}
+      
+      code {
+        word-break: break-word;
+      }
     `}>
     {children}
   </p>
