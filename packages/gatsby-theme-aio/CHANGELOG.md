@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.0...@adobe/gatsby-theme-aio@3.7.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* Remove overflowing content on mobile screen size ([549f695](https://github.com/adobe/gatsby-theme-aio/commit/549f695426fb12947e3b8e0a4b7181d011870974))
+
+
+
+
+
 # [3.7.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.6.3...@adobe/gatsby-theme-aio@3.7.0) (2021-05-28)
 
 
