@@ -47,10 +47,8 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
         className={className}
         css={css`
           display: flex;
-          --gap: var(--spectrum-global-dimension-size-200);
           flex-wrap: wrap;
-          margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
-          width: calc(100% + var(--gap));
+          gap: var(--spectrum-global-dimension-size-200);
         `}>
         {Children.map(buttons.props.children, (item, i) => {
           let variant = variants[0];
@@ -64,11 +62,7 @@ const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, t
           const link = getElementChild(item);
 
           return (
-            <div
-              key={i}
-              css={css`
-                margin: var(--gap) 0 0 var(--gap);
-              `}>
+            <div key={i}>
               <AnchorButton isQuiet={quiet} href={link.props.href} variant={variant}>
                 {link.props.children}
               </AnchorButton>

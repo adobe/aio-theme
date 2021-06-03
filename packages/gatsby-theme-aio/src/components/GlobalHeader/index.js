@@ -391,7 +391,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   pointer-events: none;
                   position: fixed;
                   top: var(--spectrum-global-dimension-size-600);
-                  height: var(--spectrum-global-dimension-size-600);
+                  height: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-global-dimension-size-25));
                   right: 0;
                   width: var(--spectrum-global-dimension-size-300);
                   background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0), white);
