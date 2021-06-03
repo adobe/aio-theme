@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.8.0...@adobe/gatsby-theme-aio@3.8.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* Hero breaks if home is empty ([896a92b](https://github.com/adobe/gatsby-theme-aio/commit/896a92b0ac402683e71bf280d2658eff5a52fb84))
+
+
+
+
+
 # [3.8.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.2...@adobe/gatsby-theme-aio@3.8.0) (2021-06-03)
 
 
