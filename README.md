@@ -482,7 +482,7 @@ pages: [
 
 ### Home link
 
-The home link is optional and should be used to inform the user about a parent or sibling site external to the current one. 
+The home link should be used to inform the user about a parent or sibling site external to the current one. 
 Breadcrumbs will be displayed automatically to help the user understand its current location. 
 
 You can define a home link in `gatsby-config.js` for instance:
@@ -493,6 +493,14 @@ home: {
   path: 'https://www.adobe.com/products/photoshop.html'
 } 
 ```
+
+A default home link is displayed if none provided. If you don't want to display any home link, set `hidden` to `true`:
+
+```
+home: {
+  hidden: true
+} 
+``` 
 
 ### Side Navigation
 
