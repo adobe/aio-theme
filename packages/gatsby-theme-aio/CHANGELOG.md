@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.2...@adobe/gatsby-theme-aio@3.8.0) (2021-06-03)
+
+
+### Features
+
+* Support home hidden config ([73f1ca5](https://github.com/adobe/gatsby-theme-aio/commit/73f1ca5c283d531a53f37214203f9860b0e9a9e2))
+
+
+
+
+
 ## [3.7.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.7.1...@adobe/gatsby-theme-aio@3.7.2) (2021-06-03)
 
 
