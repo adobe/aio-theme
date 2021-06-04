@@ -312,6 +312,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                         padding: 0 var(--spectrum-global-dimension-size-300);
                         white-space: nowrap;
                         color: var(--spectrum-global-color-gray-700);
+                        transition: background-color var(--spectrum-global-animation-duration-100) ease-out,
+                          color var(--spectrum-global-animation-duration-100) ease-out;
 
                         &:hover {
                           background-color: var(--spectrum-global-color-gray-75);
