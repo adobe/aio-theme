@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.8.1...@adobe/gatsby-theme-aio@3.9.0) (2021-06-04)
+
+
+### Bug Fixes
+
+* Add CSS transitions to home link ([fcf7efe](https://github.com/adobe/gatsby-theme-aio/commit/fcf7efe3a3abad05b2634216a9483121705d876c))
+
+
+### Features
+
+* Support Frame onShow() and onHide() ([776029e](https://github.com/adobe/gatsby-theme-aio/commit/776029ec2b7b86e9129f62d4d72e7847b28de182))
+
+
+
+
+
 ## [3.8.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.8.0...@adobe/gatsby-theme-aio@3.8.1) (2021-06-03)
 
 
