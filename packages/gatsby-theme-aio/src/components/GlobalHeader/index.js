@@ -350,17 +350,6 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 }
 
                 margin-right: var(--spectrum-global-dimension-size-800);
-
-                .spectrum-Tabs {
-                  padding-bottom: var(--spectrum-global-dimension-size-400);
-                  margin-top: var(--spectrum-global-dimension-size-400);
-                }
-
-                .spectrum-Tabs-selectionIndicator {
-                  bottom: calc(
-                    var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
-                  ) !important;
-                }
               }
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -371,17 +360,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 right: 0;
                 margin-left: 0;
                 margin-right: 0;
-
-                .spectrum-Tabs {
-                  padding-bottom: 0;
-                  margin-top: 0;
-                  background-color: var(--spectrum-global-color-gray-50);
-                  border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
-                }
-
-                .spectrum-Tabs-selectionIndicator {
-                  bottom: calc(-1 * var(--spectrum-tabs-rule-size)) !important;
-                }
+                background-color: var(--spectrum-global-color-gray-50);
+                border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
               }
             `}>
             <div
@@ -403,6 +383,17 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
             />
 
             <Tabs
+              css={css`
+                @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                  padding-bottom: var(--spectrum-global-dimension-size-400);
+                  margin-top: var(--spectrum-global-dimension-size-400);
+                }
+
+                @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                  padding-bottom: 0;
+                  margin-top: 0;
+                }
+              `}
               ref={tabsRef}
               onFontsReady={() => {
                 positionSelectedTabIndicator(selectedTabIndex);
@@ -583,6 +574,16 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 ref={selectedTabIndicatorRef}
                 css={css`
                   bottom: calc(-1 * var(--spectrum-global-dimension-size-125)) !important;
+
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                    bottom: calc(
+                      var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
+                    ) !important;
+                  }
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    bottom: calc(-1 * var(--spectrum-tabs-rule-size)) !important;
+                  }
                 `}
               />
               {docs && (
