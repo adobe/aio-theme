@@ -486,7 +486,8 @@ export default ({ children, pageContext, location }) => {
                     pageSrc['frame'].block &&
                     createElement(pageSrc['frame'].block, {
                       src: pageSrc['frame'].src,
-                      height: frontMatter?.frameHeight
+                      height: frontMatter?.frameHeight,
+                      location
                     })}
                 </main>
 

@@ -28,7 +28,18 @@
 
     // Child needs to connect after parent
     window.onload = () => {
-      const connection = Penpal.connectToParent({timeout: 5000, debug: true});
+      const connection = Penpal.connectToParent({
+        methods: {
+          onShow: () => {
+            console.log('Im visible');
+          },
+          onHide: () => {
+            console.log('Im hidden');
+          }
+        },
+        timeout: 5000,
+        debug: true
+      });
 
       // Enable buttons once connected
       connection.promise.then((parent) => {

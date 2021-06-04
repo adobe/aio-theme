@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import { connectToChild } from 'penpal';
@@ -19,9 +19,20 @@ import PropTypes from 'prop-types';
 import Context from '../Context';
 import { isExternalLink } from '../../utils';
 
-const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))' }) => {
+const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))', location }) => {
   const iframe = useRef(null);
   const { ims } = useContext(Context);
+  const [child, setChild] = useState(null);
+
+  useEffect(() => {
+    if (child) {
+      if (iframe.current.clientHeight === 0) {
+        child.onHide();
+      } else {
+        child.onShow();
+      }
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -29,7 +40,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
         ref={iframe}
         src={isExternalLink(src) ? src : withPrefix(src)}
         onLoad={() => {
-          connectToChild({
+          const connection = connectToChild({
             // The iframe to which a connection should be made
             iframe: iframe.current,
             // Methods the parent is exposing to the child
@@ -66,6 +77,16 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
               }
             }
           });
+
+          connection.promise.then((child) => {
+            if (iframe.current.clientHeight === 0) {
+              child.onHide();
+            } else {
+              child.onShow();
+            }
+
+            setChild(child);
+          });
         }}
         css={css`
           display: block;
@@ -82,7 +103,8 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
 
 Frame.propTypes = {
   src: PropTypes.string,
-  height: PropTypes.string
+  height: PropTypes.string,
+  location: PropTypes.object
 };
 
 export default Frame;
