@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.0...@adobe/gatsby-theme-aio@3.9.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* Frame getURL() is not returning the current location ([f88faca](https://github.com/adobe/gatsby-theme-aio/commit/f88faca05a8f7b71faed73783b28aa81dc252799))
+
+
+
+
+
 # [3.9.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.8.1...@adobe/gatsby-theme-aio@3.9.0) (2021-06-04)
 
 
