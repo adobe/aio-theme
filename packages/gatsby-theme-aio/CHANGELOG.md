@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.1...@adobe/gatsby-theme-aio@3.9.2) (2021-06-04)
+
+
+### Bug Fixes
+
+* GlobalHeader mobile space hole ([bd0dadf](https://github.com/adobe/gatsby-theme-aio/commit/bd0dadf21c22e25f8d37f4211ae02d15152443f2))
+
+
+
+
+
 ## [3.9.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.0...@adobe/gatsby-theme-aio@3.9.1) (2021-06-04)
 
 
