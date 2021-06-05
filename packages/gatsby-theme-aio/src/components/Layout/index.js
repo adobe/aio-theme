@@ -108,9 +108,15 @@ export default ({ children, pageContext, location }) => {
       (async () => {
         try {
           await addScript(`${IMS_SRC}`);
-          window.adobeImsFactory.createIMSLib(JSON.parse(IMS_CONFIG));
+          let IMS_CONFIG_JSON = JSON.parse(IMS_CONFIG);
+
+          IMS_CONFIG_JSON.onReady = function() {
+            setIms(window.adobeIMS);
+          };
+
+          window.adobeImsFactory.createIMSLib(IMS_CONFIG_JSON);
           window.adobeIMS.initialize();
-          setIms(window.adobeIMS);
+
         } catch (e) {
           console.error(`AIO: IMS error.`);
         } finally {
