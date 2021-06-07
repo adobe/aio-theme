@@ -335,8 +335,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                           text-decoration: none;
                         }
                       `}
-                      href={home?.href || DEFAULT_HOME.path}
-                      {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
+                      href={home?.href || DEFAULT_HOME.href}
+                      {...getExternalLinkProps(home?.href || DEFAULT_HOME.href)}>
                       {home?.title || DEFAULT_HOME.title}
                     </a>
                   </Link>
@@ -425,8 +425,8 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   `}>
                   <TabsItem
                     elementType={GatsbyLink}
-                    to={home?.href || DEFAULT_HOME.path}
-                    {...getExternalLinkProps(home?.href || DEFAULT_HOME.path)}>
+                    to={home?.href || DEFAULT_HOME.href}
+                    {...getExternalLinkProps(home?.href || DEFAULT_HOME.href)}>
                     <TabsItemLabel>{home?.title || DEFAULT_HOME.title}</TabsItemLabel>
                   </TabsItem>
                 </div>
