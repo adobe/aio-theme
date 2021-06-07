@@ -46,6 +46,7 @@ import {
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
+import DEFAULT_AVATAR from './avatar.svg';
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -61,6 +62,17 @@ const getSelectedTabIndex = (location, pages) => {
   return selectedIndex;
 };
 
+const getAvatar = async (userId) => {
+  try {
+    const req = await fetch(`https://cc-api-behance.adobe.io/v2/users/${userId}?api_key=SUSI2`);
+    const res = await req.json();
+    return res?.user?.images?.['138'] ?? DEFAULT_AVATAR;
+  } catch (e) {
+    console.warn(e);
+    return DEFAULT_AVATAR;
+  }
+};
+
 const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
@@ -74,6 +86,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
   const [openProfile, setOpenProfile] = useState(false);
   const [openMenuIndex, setOpenMenuIndex] = useState(-1);
   const [profile, setProfile] = useState(null);
+  const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
 
   const POPOVER_ANIMATION_DELAY = 200;
@@ -102,6 +115,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
       if (ims && ims.isSignedInUser()) {
         const profile = await ims.getProfile();
         setProfile(profile);
+        setAvatar(await getAvatar(profile.userId));
         setIsLoadingProfile(false);
       } else if (!isLoadingIms) {
         setIsLoadingProfile(false);
@@ -665,7 +679,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                         overflow: hidden;
                         cursor: pointer;
                       `}>
-                      <Image alt="Avatar" src={profile ? ims.avatarUrl(profile.userId) : ''} />
+                      <Image alt="Avatar" src={avatar} />
                     </button>
                     <Popover
                       id={profilePopoverId}
@@ -693,7 +707,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                             margin-top: var(--spectrum-global-dimension-size-400);
                             margin-bottom: var(--spectrum-global-dimension-size-200);
                           `}>
-                          <Image alt="Avatar" src={profile ? ims.avatarUrl(profile.userId) : ''} />
+                          <Image alt="Avatar" src={avatar} />
                         </div>
 
                         <div
