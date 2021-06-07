@@ -363,7 +363,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   display: none;
                 }
 
-                margin-right: var(--spectrum-global-dimension-size-800);
+                margin-right: var(--spectrum-global-dimension-size-2000);
               }
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -622,14 +622,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
-              <AnchorButton
-                variant="primary"
-                href="https://console.adobe.io"
-                css={css`
-                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                    display: none;
-                  }
-                `}>
+              <AnchorButton variant="primary" href="https://console.adobe.io">
                 Console
               </AnchorButton>
 
