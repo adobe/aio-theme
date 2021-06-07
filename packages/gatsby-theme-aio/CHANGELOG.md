@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.4...@adobe/gatsby-theme-aio@3.9.5) (2021-06-07)
+
+
+### Bug Fixes
+
+* Default home path is empty ([2089f5c](https://github.com/adobe/gatsby-theme-aio/commit/2089f5c447098d07060fea36736ab3796f3d4bfd))
+
+
+
+
+
 ## [3.9.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.3...@adobe/gatsby-theme-aio@3.9.4) (2021-06-07)
 
 
