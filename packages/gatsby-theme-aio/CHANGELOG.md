@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.3...@adobe/gatsby-theme-aio@3.9.4) (2021-06-07)
+
+
+### Bug Fixes
+
+* Always show console link ([4f53536](https://github.com/adobe/gatsby-theme-aio/commit/4f535362fd76cc12187ae197189d2745e7187efd))
+
+
+
+
+
 ## [3.9.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.2...@adobe/gatsby-theme-aio@3.9.3) (2021-06-07)
 
 
