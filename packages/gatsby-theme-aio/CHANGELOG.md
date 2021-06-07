@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.2...@adobe/gatsby-theme-aio@3.9.3) (2021-06-07)
+
+
+### Bug Fixes
+
+* Show correct IMS avatar ([06d1ee0](https://github.com/adobe/gatsby-theme-aio/commit/06d1ee02a5da939eadf73bc3d7432f1ce9eb5df9))
+
+
+
+
+
 ## [3.9.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.1...@adobe/gatsby-theme-aio@3.9.2) (2021-06-04)
 
 
