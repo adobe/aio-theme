@@ -45,6 +45,11 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
             iframe: iframe.current,
             // Methods the parent is exposing to the child
             methods: {
+              scrollTop(position = 0) {
+                if (document?.scrollingElement) {
+                  document.scrollingElement.scrollTop = position;
+                }
+              },
               getURL() {
                 return window?.location?.href;
               },

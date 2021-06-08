@@ -19,6 +19,7 @@
 <body>
   <button id="signIn" disabled>Sign in</button>
   <button id="signOut" disabled>Sign out</button>
+  <button id="scrollTop" disabled>Scroll to top</button>
   <pre id="url"></pre>
   <pre id="token"></pre>
   <pre id="profile"></pre>
@@ -45,8 +46,11 @@
       connection.promise.then((parent) => {
         signIn.onclick = () => parent.signIn();
         signOut.onclick = () => parent.signOut();
+        scrollTop.onclick = () => parent.scrollTop();
+
         signIn.disabled = false;
         signOut.disabled = false;
+        scrollTop.disabled = false;
 
         // Access parent info
         Promise.all([
