@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.5...@adobe/gatsby-theme-aio@3.10.0) (2021-06-08)
+
+
+### Features
+
+* Support custom classname for certain blocks ([b93967b](https://github.com/adobe/gatsby-theme-aio/commit/b93967b52d6fc930e5d5f25f4add78b27733e184))
+* Support external link opening in same tab ([9389357](https://github.com/adobe/gatsby-theme-aio/commit/9389357fa7eb08986a0ba4b1ee24031d1d19f481))
+* Support Frame scrollTop() ([03b804f](https://github.com/adobe/gatsby-theme-aio/commit/03b804f5eb29e5c98913bf4abf2367be14d51efc))
+
+
+
+
+
 ## [3.9.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.9.4...@adobe/gatsby-theme-aio@3.9.5) (2021-06-07)
 
 
