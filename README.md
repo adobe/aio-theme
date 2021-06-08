@@ -250,6 +250,8 @@ External links will automatically open in a new tab or window.
 [Link to example.com](https://example.com)  
 ```  
 
+You can prevent this behavior by adding the search parameter `?aio_internal` to the link.
+
 ### Assets
 
 Images can be placed next to markdown pages inside `src/pages` and referenced using relative links. In this case, they'll be optimized during the build process and resulting file names are hashed to resolve potential caching issues.

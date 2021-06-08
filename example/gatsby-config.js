@@ -78,7 +78,7 @@ module.exports = {
       },
       {
         title: 'Ext',
-        path: 'https://adobe.io'
+        path: 'https://adobe.io?aio_internal'
       },
       {
         title: 'Project Firefly',

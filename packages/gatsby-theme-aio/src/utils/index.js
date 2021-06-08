@@ -229,7 +229,7 @@ const isExternalLink = (url) => {
 };
 
 const getExternalLinkProps = (url = null) =>
-  url === null || isExternalLink(url)
+  url === null || (isExternalLink(url) && !new URL(url).searchParams.has('aio_internal'))
     ? {
         target: '_blank',
         rel: 'noopener noreferrer nofollow'

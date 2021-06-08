@@ -19,7 +19,7 @@ Adobe Product API offers limitless ways to integrate your most important custome
 
 #### Resources
 
-* [Quickstart Guide](https://www.adobe.io/apis/experiencecloud/analytics/docs.html)
+* [Quickstart Guide](https://adobe.io?aio_internal)
 * [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
 
 <Overview />

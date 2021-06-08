@@ -47,7 +47,7 @@ UI design is made easy with [Spectrum components](https://spectrum.adobe.com) th
 
 Get API authorization and user access control out of the box.
 
-* [Explore our APIs](https://adobe.io)
+* [Explore our APIs](https://adobe.io?aio_internal)
 
 
 <TextBlock slots="heading, text, video" isCentered />
