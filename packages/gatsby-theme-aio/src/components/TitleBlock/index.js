@@ -15,10 +15,11 @@ import { css } from '@emotion/react';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { layoutColumns, TABLET_SCREEN_WIDTH } from '../../utils';
+import classNames from 'classnames';
 
-const TitleBlock = ({ heading, text, theme = 'lightest' }) => (
+const TitleBlock = ({ className, heading, text, theme = 'lightest' }) => (
   <section
-    className={`spectrum--${theme}`}
+    className={classNames(className, `spectrum--${theme}`)}
     css={css`
       background: var(--spectrum-global-color-gray-100);
       padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;

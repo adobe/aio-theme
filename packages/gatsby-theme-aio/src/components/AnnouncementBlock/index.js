@@ -16,13 +16,14 @@ import '@spectrum-css/typography';
 import { AnchorButton } from '../AnchorButton';
 import PropTypes from 'prop-types';
 import { getElementChild, TABLET_SCREEN_WIDTH } from '../../utils';
+import classNames from 'classnames';
 
-const AnnouncementBlock = ({ heading, text, button, theme = 'light' }) => {
+const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }) => {
   const link = getElementChild(button);
 
   return (
     <section
-      className={`spectrum--${theme}`}
+      className={classNames(className, `spectrum--${theme}`)}
       css={css`
         display: flex;
         background: var(--spectrum-global-color-gray-100);

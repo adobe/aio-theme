@@ -29,6 +29,7 @@ import {
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
+import classNames from 'classnames';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -137,6 +138,7 @@ const HeroHeading = ({ heading, variant }) =>
     : null;
 
 const Hero = ({
+  className,
   background,
   theme = 'dark',
   heading,
@@ -157,7 +159,7 @@ const Hero = ({
 
     return (
       <section
-        className={`spectrum--${theme}`}
+        className={classNames(className, `spectrum--${theme}`)}
         css={css`
           position: relative;
           height: var(--spectrum-global-dimension-size-3400);
@@ -230,7 +232,7 @@ const Hero = ({
     if (variant === 'fullwidth') {
       return (
         <section
-          className={`spectrum--${theme}`}
+          className={classNames(className, `spectrum--${theme}`)}
           css={css`
             position: relative;
             width: 100%;
@@ -286,7 +288,7 @@ const Hero = ({
     } else if (variant === 'halfwidth') {
       return (
         <section
-          className={`spectrum--lightest`}
+          className={classNames(className, `spectrum--lightest`)}
           css={css`
             background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
             width: 100%;

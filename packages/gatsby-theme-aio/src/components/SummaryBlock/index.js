@@ -16,8 +16,10 @@ import { HeroImage, HeroButtons } from '../Hero';
 import { TABLET_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const SummaryBlock = ({
+  className,
   background = 'var(--spectrum-global-color-gray-100)',
   theme = 'dark',
   heading,
@@ -26,7 +28,7 @@ const SummaryBlock = ({
   buttons
 }) => (
   <section
-    className={`spectrum--${theme}`}
+    className={classNames(className, `spectrum--${theme}`)}
     css={css`
       height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
       background-color: ${background};

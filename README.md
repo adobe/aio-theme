@@ -815,9 +815,9 @@ aio doc generate
 
 Or run following commands: 
 
-* To build and preview a production version of the site: `yarn start`.
-* To build and preview a production version of the site with path prefix: `yarn start:prefix`.
-* To build and preview a development version of the site with hot reloading: `yarn dev`.  
+* To build and preview a production version of the site: `npm run start`.
+* To build and preview a production version of the site with path prefix: `npm run start:prefix`.
+* To build and preview a development version of the site with hot reloading: `npm run dev`.  
 
 ### Adding a Path Prefix
 
@@ -1236,6 +1236,8 @@ Use `slots` to identify the markdown content:
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
 
+Use `className` to customize the component **at your own risk.**
+
 ### Summary Block
 
 The Summary Block acts as an anchor at the end of the page. It's a change for Products to give users another call to action, and encourage them to interact after they have gotten to the bottom of the page.
@@ -1267,6 +1269,8 @@ Use `background` to set a custom background color matching your color scheme.
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
+Use `className` to customize the component **at your own risk.**
+
 ### Title Block
 
 A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.
@@ -1287,6 +1291,8 @@ Use `slots` to identify the markdown content:
 * `text` (optional) 
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+
+Use `className` to customize the component **at your own risk.**
 
 ### Text Block
 
@@ -1392,7 +1398,7 @@ Use `width` to define the size of the block. Supported values are `100%`, `50%`,
   
 Use `isCentered` to center the text.   
   
-Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
+Use `className` to customize the component **at your own risk.**
 
 ### Product Card
 
@@ -1580,7 +1586,7 @@ Gatsby sites are using `npm` to define dependencies so we can also include exter
 as a dependency in another site.**
 
 You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/dev-site-documentation-template/
-as a dependency in another site, you can run the command `yarn add adobedocs/dev-site-documentation-template`;
+as a dependency in another site, you can run the command `npm install --save adobedocs/dev-site-documentation-template`;
 
 Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.   
 
@@ -1623,7 +1629,7 @@ First launch the Photoshop console, by clicking Developer > Console
 
 *Use `repeat` to define how many elements are part of the Variant Block. Use any `key=value` property to mark your Variant Block.*
 
-2) repo2 added repo1 as dependency with `yarn add adobedocs/repo1` to be able to reference its markdown content.
+2) repo2 added repo1 as dependency with `npm install --save adobedocs/repo1` to be able to reference its markdown content.
 
 3) repo2 embeds repo1 content by using the `import` statement and inserts the content in its own markdown together with a `query` filter to only display what is needed.
 
@@ -1705,8 +1711,8 @@ You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/com
 
 ### Custom layout
 
-You can build pages without the default layout (e.g. header, side navigation etc.) by setting `layout` to `none` within the page front matter.
-The Global Header and Footer are always shown but anything in between can be customized. 
+You can build pages without the default layout by setting `layout` to `none` within the page front matter.
+The Global Header, Footer, Side Navigation etc. are always shown but anything in between can be customized. 
 
 See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/no_layout/index.md).
 
@@ -1733,10 +1739,10 @@ export default {
 
 ### Locally
 
-To upgrade to the latest version of `@adobe/gatsby-theme-aio`, simply run `yarn upgrade` or `npm update` if you have defined the dependency with a version range selector.
-If not, update the version of the dependency by setting the version manually in the `package.json` and run `yarn install` or `npm install`. 
+To upgrade to the latest version of `@adobe/gatsby-theme-aio`, simply run `npm update` if you have defined the dependency with a version range selector.
+If not, update the version of the dependency by setting the version manually in the `package.json` and run `npm install`. 
 
-This will also update the lock file `yarn.lock` or `package-lock.json`. 
+This will also update the lock file `package-lock.json`. 
 
 ### Automated
 

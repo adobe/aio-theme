@@ -3,7 +3,7 @@ title: Home - Creative Cloud
 description: This is the home page of Creative Cloud
 ---
 
-<Hero slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
+<Hero className="custom" slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
 ![Creative Cloud banner](images/cc-hero.png)
 
@@ -21,7 +21,7 @@ Creative Cloud services include tools and capabilities to streamline your workfl
 
 
 
-<AnnouncementBlock slots="heading, text, button" />
+<AnnouncementBlock className="custom" slots="heading, text, button" />
 
 ### Try out the magic of Photoshop
 
@@ -32,7 +32,7 @@ Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time 
 
 
 
-<TextBlock slots="image, heading, text1, text2, links" />
+<TextBlock className="custom" slots="image, heading, text1, text2, links" />
 
 ![Screenshot 1](images/intro1.png)
 
@@ -68,7 +68,7 @@ When you’re ready, you can ship your plugin to XD users right from within the 
 
 
 
-<TitleBlock slots="heading, text" theme="light" />
+<TitleBlock className="custom" slots="heading, text" theme="light" />
 
 ### Collaborate better with Content Cloud APIs
 
@@ -374,7 +374,7 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 
 
-<SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
+<SummaryBlock className="custom" slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
 
 ![CC banner](images/cc-banner.png)
 

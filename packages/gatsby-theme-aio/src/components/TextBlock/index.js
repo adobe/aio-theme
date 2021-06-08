@@ -17,6 +17,7 @@ import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import { YouTube } from 'mdx-embed';
 import { getElementChild, layoutColumns, DESKTOP_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../../utils';
+import classNames from 'classnames';
 
 const counter = {
   2: 0,
@@ -161,6 +162,7 @@ const YouTubeVideo = ({ video }) => {
 };
 
 const TextBlock = ({
+  className,
   heading,
   links,
   buttons,
@@ -207,7 +209,7 @@ const TextBlock = ({
     return (
       <>
         <section
-          className={`spectrum--${theme}`}
+          className={classNames(className, `spectrum--${theme}`)}
           css={css`
             display: table-cell;
             width: ${width.replace('%', 'vw')};
@@ -305,7 +307,7 @@ const TextBlock = ({
 
     return (
       <section
-        className={`spectrum--${theme}`}
+        className={classNames(className, `spectrum--${theme}`)}
         css={css`
           width: 100%;
           background: var(--spectrum-global-color-gray-100);
