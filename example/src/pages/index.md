@@ -15,6 +15,33 @@ import Overview from '../transclusions/overview.md'
 
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
 
+```xml
+<additional_data>
+    <item name="uploaderConfig" xsi:type="array">
+        <item name="maxFileSize" xsi:type="object">ImageMaxFileSizeDesktop</item>
+        <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
+        <item name="component" xsi:type="string">Magento_PageBuilder/js/form/element/image-uploader</item>
+        <item name="componentType" xsi:type="string">imageUploader</item>
+        <item name="dataScope" xsi:type="string">image</item>
+        <item name="formElement" xsi:type="string">imageUploader</item>
+        <item name="uploaderConfig" xsi:type="array">
+            <item name="url" xsi:type="object">Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Uploader\SaveUrl</item>
+        </item>
+        <item name="previewTmpl" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview</item>
+        <item name="template" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview/image</item>
+        <item name="mediaGallery" xsi:type="array">
+            <item name="openDialogUrl" xsi:type="object">Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Uploader\OpenDialogUrl</item>
+            <item name="openDialogTitle" xsi:type="string" translate="true">Insert Images...</item>
+            <item name="initialOpenSubpath" xsi:type="string">wysiwyg</item>
+            <item name="storeId" xsi:type="object">\Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\StoreId</item>
+        </item>
+        <item name="validation" xsi:type="array">
+            <item name="required-entry" xsi:type="boolean">true</item>
+        </item>
+    </item>
+</additional_data>
+```
+
 <Resources slots="heading, links"/>
 
 #### Resources
@@ -59,6 +86,30 @@ Provides configuration guidance and best practices for the /reports endpoint.
 [Migrating from 1.4 to 2.0](guides/migrating/)
 
 For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
+```html
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+declare(strict_types=1);
+
+namespace Magento\PageBuilder\Model\Config\ContentType\AdditionalData;
+
+/**
+ * Provides runtime-specific data for additional data content types configuration
+ */
+interface ProviderInterface
+{
+    /**
+    * Get data from the provider
+    * @param string $itemName - the name of the item to use as key in returned array
+    * @return array
+    */
+    public function getData(string $itemName) : array;
+}
+```
 
 <DiscoverBlock slots="heading, link, text"/>
 

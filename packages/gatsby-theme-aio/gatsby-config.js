@@ -14,9 +14,52 @@ require('dotenv').config({
   path: `.env`
 });
 
+if (!process.env.ALGOLIA_APP_ID) {
+  console.error('Missed required parameter: ALGOLIA_APP_ID');
+}
+if (!process.env.ALGOLIA_WRITE_API_KEY) {
+  console.error('Missed required parameter: ALGOLIA_WRITE_API_KEY');
+}
+if (!process.env.REPO_NAME) {
+  console.error('Missed required parameter: REPO_NAME');
+}
+
+
 const DESKTOP_SCREEN_WIDTH = require('./conf/globals').DESKTOP_SCREEN_WIDTH;
+const queries = require('./algolia/algolia');
+
+const algoliaIndexName =
+  process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
+    ? process.env.REPO_NAME
+    : process.env.REPO_NAME + '-' + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
+
+// By default DO NOT push data to real index
+let algoliaSkipIndexing = false;
+let algoliaDryRun = false;
+
+if (process.env.ALGOLIA_INDEXATION_MODE !== undefined) {
+  switch (process.env.ALGOLIA_INDEXATION_MODE) {
+    case 'skip':
+      algoliaSkipIndexing = true;
+      algoliaDryRun = false;
+      break;
+    case 'console':
+      algoliaSkipIndexing = false;
+      algoliaDryRun = true;
+      break;
+    case 'index':
+      algoliaSkipIndexing = false;
+      algoliaDryRun = false;
+      break;
+    default:
+      algoliaSkipIndexing = false;
+      algoliaDryRun = true;
+      // throw new Error('Wrong value for ALGOLIA_INDEXATION_MODE. Should be [skip | console | index]');
+  }
+}
 
 module.exports = {
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
@@ -24,6 +67,12 @@ module.exports = {
     `gatsby-plugin-mdx-embed`,
     `@adobe/parliament-site-search-index`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.adobe.io`
+      }
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -51,22 +100,29 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        plugins: [`gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
+        plugins: [`gatsby-transformer-remark`, `gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-copy-linked-files`,
+            resolve: `gatsby-transformer-remark`,
             options: {
-              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`]
-            }
-          },
-          {
-            resolve: `gatsby-remark-images-remote`,
-            options: {
-              maxWidth: DESKTOP_SCREEN_WIDTH,
-              linkImagesToOriginal: false,
-              withWebp: { quality: 80 },
-              disableBgImage: true,
-              backgroundColor: 'none'
+              plugins: [
+                {
+                  resolve: `gatsby-remark-copy-linked-files`,
+                  options: {
+                    ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`]
+                  }
+                },
+                {
+                  resolve: `gatsby-remark-images-remote`,
+                  options: {
+                    maxWidth: DESKTOP_SCREEN_WIDTH,
+                    linkImagesToOriginal: false,
+                    withWebp: { quality: 80 },
+                    disableBgImage: true,
+                    backgroundColor: 'none'
+                  }
+                }
+              ]
             }
           }
         ]
@@ -90,6 +146,26 @@ module.exports = {
       options: {
         scriptUrl: process.env.ADOBE_LAUNCH_SRC,
         includeInDevelopment: process.env.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
+      }
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
+        indexName: algoliaIndexName, // for all queries
+        queries,
+        chunkSize: 1000, // default: 1000
+        settings: {
+          // optional, any index settings
+          // Note: by supplying settings, you will overwrite all existing settings on the index
+        },
+        enablePartialUpdates: false, // default: false
+        matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+        concurrentQueries: false, // default: true
+        skipIndexing: algoliaSkipIndexing, // default: false, useful for e.g. preview deploys or local development
+        dryRun: algoliaDryRun, // default: true, generates index but does not publish it to Algolia
+        continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
       }
     }
   ]

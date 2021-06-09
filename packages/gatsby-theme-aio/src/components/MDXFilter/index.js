@@ -139,27 +139,27 @@ export default ({ children, pageContext, query }) => {
     );
   } else {
     // PrevNext
-    const selectedPage = findSelectedPage(location.pathname, siteMetadata.subPages);
-    const selectedPageSiblings = findSelectedPageSiblings(location.pathname, siteMetadata.subPages);
-    const { nextPage, previousPage } = findSelectedPageNextPrev(location.pathname, siteMetadata.subPages);
+    const selectedPage = findSelectedPage(location?.pathname, siteMetadata?.subPages);
+    const selectedPageSiblings = findSelectedPageSiblings(location?.pathname, siteMetadata?.subPages);
+    const { nextPage, previousPage } = findSelectedPageNextPrev(location?.pathname, siteMetadata?.subPages);
 
     // OnThisPage
-    const componentPathObj = allSitePage.nodes.find(({ path }) => withPrefix(path) === location.pathname);
+    const componentPathObj = allSitePage?.nodes.find(({ path }) => withPrefix(path) === location?.pathname);
     const componentPath = componentPathObj?.component ?? '';
-    const tableOfContentsObj = allMdx.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+    const tableOfContentsObj = allMdx?.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
-    const { repository, default_branch: branch, root } = allGithub.nodes[0];
-    const contributorsObj = allGithubContributors.nodes.find(
+    const { repository, default_branch: branch, root } = allGithub?.nodes[0];
+    const contributorsObj = allGithubContributors?.nodes.find(
       ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
     );
     const contributors = contributorsObj?.contributors ?? [];
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
-    const selectedTopPage = findSelectedTopPage(location.pathname, siteMetadata.pages);
-    const selectedPages = findSelectedPages(location.pathname, siteMetadata.subPages);
+    const selectedTopPage = findSelectedTopPage(location?.pathname, siteMetadata?.pages);
+    const selectedPages = findSelectedPages(location?.pathname, siteMetadata?.subPages);
 
     // Remove duplicated levels
     let selectedSubPages = [];

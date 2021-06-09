@@ -1,5 +1,11 @@
 .editorconfig
 
+# OS filesystem
+.DS_Store
+
+# IDEs
+.idea/
+
 # npm yarn
 node_modules
 package.lock
@@ -9,6 +15,7 @@ yarn-error.log
 .env
 .cache
 public
+algolia-config.js
 
 # cypress
 cypress/videos

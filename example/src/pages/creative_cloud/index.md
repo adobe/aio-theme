@@ -1,6 +1,9 @@
 ---
 title: Home - Creative Cloud
 description: This is the home page of Creative Cloud
+keywords:
+  - Creative Cloud
+  - Cloud API
 ---
 
 <Hero className="custom" slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />

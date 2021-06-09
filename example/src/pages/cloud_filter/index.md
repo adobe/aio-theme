@@ -1,6 +1,9 @@
 ---
 title: Index
 description: This is the index page
+keywords:
+    - Cloud
+    - Cloud API
 ---
 import {clouds, products} from '../../products'
 
