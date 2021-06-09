@@ -8,7 +8,7 @@ const MIN_TEXT_LENGTH = 20;
 const mdxQuery = `
 {
   allMdx(
-    filter: {fileAbsolutePath: {regex: "/src/pages/"}, wordCount: {words: {gte: 10}}}
+    filter: {fileAbsolutePath: {regex: "/src/pages/"}, headings: {elemMatch: {depth: {gte: 1}}}, wordCount: {words: {gte: 10}}}
   ) {
     edges {
       node {
@@ -57,10 +57,10 @@ const createRecords = (node) => {
       objectID: uuidv4(record.value.toString()),
       title: title === '' ? headings[0]?.value : title,
       ...rest,
-      headings: headings.map((heading) => heading.value), //headingForNode.pop()?.value,
+      //heading: headingForNode.pop()?.value,
       content: record.value,
       slug: slug,
-      pageID: objectID
+      gatsbyObjectID: objectID
     };
   });
 
@@ -73,7 +73,7 @@ const queries = [
   {
     query: mdxQuery,
     settings: {
-      attributeForDistinct: 'id',
+      attributeForDistinct: 'gatsbyObjectID',
       distinct: true
     },
     transformer: ({ data }) => {

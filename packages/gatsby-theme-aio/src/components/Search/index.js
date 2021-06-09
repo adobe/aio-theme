@@ -10,8 +10,6 @@
  *  governing permissions and limitations under the License.
  */
 
-
-
 import React, { cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { useEffect, useRef, useState } from 'react';

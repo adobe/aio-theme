@@ -31,7 +31,7 @@ const queries = require('./algolia/algolia');
 const algoliaIndexName =
   process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
     ? process.env.REPO_NAME
-    : process.env.REPO_NAME + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
+    : process.env.REPO_NAME + '-' + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
 
 // By default DO NOT push data to real index
 let algoliaSkipIndexing = false;

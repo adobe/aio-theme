@@ -150,7 +150,7 @@ export default ({ children, pageContext, query }) => {
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
-    const github = allGithub?.nodes[0];
+    const { repository, default_branch: branch, root } = allGithub?.nodes[0];
     const contributorsObj = allGithubContributors?.nodes.find(
       ({ path: fileAbsolutePath }) => fileAbsolutePath === componentPath
     );
@@ -284,7 +284,7 @@ export default ({ children, pageContext, query }) => {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>
-                      <GitHubActions repository={github?.repository} branch={github?.default_branch} root={github?.root} pagePath={pagePath} />
+                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
                     </div>
                   </div>
                 )}
@@ -307,9 +307,9 @@ export default ({ children, pageContext, query }) => {
                     `}>
                     <div>
                       <Contributors
-                        repository={github.repository}
-                        branch={github.default_branch}
-                        root={github.root}
+                        repository={repository}
+                        branch={branch}
+                        root={root}
                         pagePath={pagePath}
                         contributors={contributors}
                         externalContributors={pageContext?.frontmatter?.contributors}
