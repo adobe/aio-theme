@@ -3116,10 +3116,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.2.tgz#ea9062c3c98dfc6ba59e5df14a03025ad8969999"
   integrity sha512-vzS9KqYXot4J3AEER/u618MXWAS+IoMvYMNrOoscKiLLKYQWenaueakUWulFonToPd/9vIpqtdbwxznqrK5qDw==
 
-"@spectrum-css/well@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/well/-/well-3.0.1.tgz#1700c254986db146c86cf3d8bcd314ae5c9da417"
-  integrity sha512-r2FcQOH59xmNJsTlV/E6c0868S4V4sHFzLNAu5N9FhnniQusI7f8jn5fCxUyJ0FvD47oF88ODIdimx4KWAGWjw==
+"@spectrum-css/well@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/well/-/well-3.0.2.tgz#c006e0ccde690ffc85ab22bafe3dec13b91204c1"
+  integrity sha512-KvzKCab/XHcF07Gd+vscOMaOQDB09YwOmujCY8os85i7d4FDjJW5S9lqHBfRajHxf2GwwA/Bd4sYJyvjVuoIEg==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
