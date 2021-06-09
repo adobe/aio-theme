@@ -110,9 +110,14 @@ export default ({ children, pageContext, location }) => {
           await addScript(`${IMS_SRC}`);
           let IMS_CONFIG_JSON = JSON.parse(IMS_CONFIG);
 
-          IMS_CONFIG_JSON.onReady = function() {
+          if (IMS_CONFIG_JSON.onReady !== undefined)   {
+            IMS_CONFIG_JSON.onReady = function() {
+              setIms(window.adobeIMS);
+            };
+          } else {
             setIms(window.adobeIMS);
-          };
+            IMS_CONFIG_JSON.onReady();
+          }
 
           window.adobeImsFactory.createIMSLib(IMS_CONFIG_JSON);
           window.adobeIMS.initialize();
