@@ -1,4 +1,4 @@
-# MDX Only Configuration Example
+# MDX-Only Configuration Example
 
 1. Run `yarn`.
 2. Run `yarn dev` to play with mdx queries in GraphiQL editor.
