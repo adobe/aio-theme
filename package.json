@@ -18,6 +18,7 @@
     "start-server-and-test": "^1.12.0"
   },
   "scripts": {
+    "prepare": "husky install",
     "start": "yarn workspace example start",
     "start:prefix": "yarn workspace example start:prefix",
     "dev": "yarn workspace example develop",
