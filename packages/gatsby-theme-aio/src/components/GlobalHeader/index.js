@@ -368,7 +368,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                 position: fixed;
-                top: var(--spectrum-global-dimension-size-600);
+                top: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-global-dimension-size-10));
                 height: var(--spectrum-global-dimension-size-600);
                 left: 0;
                 right: 0;

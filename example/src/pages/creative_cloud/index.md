@@ -143,7 +143,24 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 
 
 
-<ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
+<ResourceCard slots="link, image, heading, text" />
+
+[Adobe I/O](../guides)
+
+![Resource 3](images/resource3.png)
+
+### Creating a Great Adobe XD Plugin Listing Creating a Great Adobe XD Plugin Listing
+
+Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020
+
+
+
+
+
+
+
+
+<ResourceCard slots="link, image, heading, text" width="50%" />
 
 [Adobe I/O](../guides)
 
@@ -159,27 +176,18 @@ Rob Kleiman, July 8th 2020
 
 [Adobe I/O](../guides)
 
-![Resource 1](images/resource1.png)
+![Resource 3](images/resource3.png)
 
-### Pattern Builder: A Behind the Scenes Look at Adobe Capture
+### Creating a Great Adobe XD Plugin Listing Creating a Great Adobe XD Plugin Listing
 
-Nihil Gupta, July 24th 2020
-
-
-
-<ResourceCard slots="link, image, heading, text" width="50%" />
-
-[Adobe I/O](../guides)
-
-![Resource 1](images/resource2.png)
-
-### Photoshop Extensibility Enters a New Era Soon: How to get Involved Early
-
-Ash Ryan Arnwine, March 12th 2020
+Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020
 
 
 
-<ResourceCard slots="link, image, heading, text" width="50%" variant="vertical" />
+
+
+
+<ResourceCard slots="link, image, heading, text" width="33%" />
 
 [Adobe I/O](../guides)
 
@@ -191,30 +199,18 @@ Rob Kleiman, July 8th 2020
 
 
 
-<ResourceCard slots="link, image, heading, text" width="50%" />
+<ResourceCard slots="link, image, heading, text" width="33%" />
 
 [Adobe I/O](../guides)
 
-![Resource 1](images/resource1.png)
+![Resource 3](images/resource3.png)
 
-### Pattern Builder: A Behind the Scenes Look at Adobe Capture
+### Creating a Great Adobe XD Plugin Listing Creating a Great Adobe XD Plugin Listing
 
-Nihil Gupta, July 24th 2020
-
-
-
-<ResourceCard slots="link, image, heading, text" width="50%" />
-
-[Adobe I/O](../guides)
-
-![Resource 1](images/resource2.png)
-
-### Photoshop Extensibility Enters a New Era Soon: How to get Involved Early
-
-Ash Ryan Arnwine, March 12th 2020
+Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020
 
 
-<ResourceCard slots="link, image, heading, text" variant="vertical" />
+<ResourceCard slots="link, image, heading, text" width="33%" />
 
 [Adobe I/O](../guides)
 
@@ -224,17 +220,6 @@ Ash Ryan Arnwine, March 12th 2020
 
 Rob Kleiman, July 8th 2020
 
-
-
-<ResourceCard slots="link, image, heading, text" variant="horizontal" />
-
-[Adobe I/O](../guides)
-
-![Resource 3](images/resource3.png)
-
-### Creating a Great Adobe XD Plugin Listing
-
-Rob Kleiman, July 8th 2020
 
 
 
@@ -371,6 +356,23 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 * [Learn more](../guides)
 * [View docs](../guides)
+
+
+
+
+<TextBlock slots="heading, text" width="50%" theme="light" isCentered />
+
+### Heading
+
+Text
+
+
+<TextBlock slots="heading, text" width="50%" theme="light" isCentered />
+
+### Heading
+
+Text
+
 
 
 

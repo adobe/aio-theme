@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect, cloneElement } from 'react';
+import React, { useEffect, useState, cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
@@ -26,12 +26,14 @@ const counter = {
 const alignMapping = ['flex-start', 'flex-end'];
 
 const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, buttons }) => {
-  let columns = 100 / parseFloat(width);
+  let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
     width = `${(100 / 3).toFixed(2)}%`;
-    columns = 3;
+    initColumns = 3;
   }
+
+  const [columns] = useState(initColumns);
 
   useEffect(() => {
     return () => {
@@ -39,7 +41,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         counter[columns]--;
       }
     };
-  });
+  }, [columns]);
 
   if (typeof counter[columns] !== 'undefined') {
     counter[columns]++;

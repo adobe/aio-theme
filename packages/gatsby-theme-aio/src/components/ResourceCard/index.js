@@ -10,234 +10,84 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement, useEffect } from 'react';
+import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { getElementChild, getExternalLinkProps, layoutColumns, DESKTOP_SCREEN_WIDTH } from '../../utils';
+import { getElementChild, layoutColumns, TABLET_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
 
-let horizontalCounter = 0;
-let verticalCounter = 0;
+const counter = {
+  2: 0,
+  3: 0
+};
+const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
-const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizontal', link, heading, text, image }) => {
-  const href = getElementChild(link).props.href;
-  const externalProps = getExternalLinkProps(href);
-  let columns = 100 / parseFloat(width);
+const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, image }) => {
+  let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
     width = `${(100 / 3).toFixed(2)}%`;
-    columns = 3;
+    initColumns = 3;
   }
 
-  const is2Columns = columns === 2;
-  if (is2Columns) {
-    if (variant === 'horizontal') {
-      horizontalCounter++;
-    } else {
-      verticalCounter++;
-    }
-  }
+  const [columns] = useState(initColumns);
 
   useEffect(() => {
     return () => {
-      if (is2Columns) {
-        if (variant === 'horizontal') {
-          horizontalCounter--;
-        } else {
-          verticalCounter--;
-        }
+      if (typeof counter[columns] !== 'undefined') {
+        counter[columns]--;
       }
     };
-  });
+  }, [columns]);
 
-  if (variant === 'horizontal') {
-    let extraMargin = '';
-    let position = '';
-    let alignment = 'align-items: center;';
+  if (typeof counter[columns] !== 'undefined') {
+    counter[columns]++;
+  }
 
-    if (is2Columns) {
-      if (horizontalCounter % 3 === 0 || horizontalCounter % 4 === 0) {
-        position = 'position: absolute; left: 0;';
-        alignment = 'align-items: flex-end;';
-      } else {
-        position = 'position: absolute; right: 0;';
-        alignment = 'align-items: flex-start;';
-      }
+  const href = getElementChild(link).props.href;
+  let blockWidth = '';
+  let extraMargin = '';
 
-      if (horizontalCounter % 2 === 0) {
-        extraMargin =
-          'margin-top: calc(var(--spectrum-global-dimension-size-2400) + var(--spectrum-global-dimension-size-150));';
-      } else {
-        extraMargin = '';
-      }
-    }
-
-    return (
-      <section
-        className={`spectrum--${theme}`}
-        css={css`
-          ${position}
-          display: inline-flex;
-          flex-direction: column;
-          ${alignment}
-          width: ${width};
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-300);
-          ${extraMargin}
-          background: var(--spectrum-global-color-gray-100);
-
-          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-            position: static;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            margin: 0;
-          }
-        `}>
-        <a
-          className={`spectrum-Card spectrum-Card--${variant}`}
-          href={href}
-          {...externalProps}
-          css={css`
-            width: ${layoutColumns(6)};
-            height: calc(var(--spectrum-global-dimension-size-2000) - var(--spectrum-global-dimension-size-50));
-
-            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-              width: 100%;
-              max-width: var(--spectrum-global-dimension-size-6000);
-              height: auto;
-              min-width: 0;
-              margin: 0;
-              flex-direction: column;
-            }
-          `}>
-          <div
-            className="spectrum-Card-preview"
-            css={css`
-              width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
-              padding: 0 !important;
-
-              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                width: 100%;
-              }
-            `}>
-            {image &&
-              cloneElement(image, {
-                css: css`
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  height: 100%;
-                  width: 100%;
-                  margin-top: 0;
-                  margin-bottom: 0 !important;
-
-                  .gatsby-resp-image-wrapper {
-                    max-width: none !important;
-                    width: 100% !important;
-                    height: 100% !important;
-                  }
-
-                  .gatsby-resp-image-image {
-                    object-fit: cover;
-                  }
-                `
-              })}
-          </div>
-          <div
-            className="spectrum-Card-body"
-            css={css`
-              flex: 1;
-              padding: var(--spectrum-global-dimension-size-300) !important;
-              justify-content: flex-start !important;
-              overflow: hidden;
-            `}>
-            <div
-              className="spectrum-Card-header"
-              css={css`
-                width: 100%;
-              `}>
-              <div
-                className="spectrum-Card-title"
-                css={css`
-                  white-space: normal;
-                  text-align: left;
-                `}>
-                <h3
-                  className="spectrum-Heading spectrum-Heading--sizeM"
-                  css={css`
-                    margin-top: 0 !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-200) !important;
-                  `}>
-                  {heading && heading.props.children}
-                </h3>
-              </div>
-            </div>
-            <div className="spectrum-Card-content">
-              <div className="spectrum-Card-subtitle">
-                <p
-                  className="spectrum-Body spectrum-Body-S"
-                  css={css`
-                    text-align: left;
-                    color: var(--spectrum-global-color-gray-700);
-                    margin-top: 0;
-                  `}>
-                  {text && text.props.children}
-                </p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </section>
-    );
+  if (columns === 1) {
+    blockWidth = `max-width: ${layoutColumns(6)};`;
+  } else if (columns > 3) {
+    blockWidth = 'max-width: var(--spectrum-global-dimension-size-3600);';
   } else {
-    let alignment = 'align-items: center;';
-    let extraPadding = '';
-    if (is2Columns) {
-      if (verticalCounter % 2 === 0) {
-        extraPadding = 'padding-left: calc(50% + var(--spectrum-global-dimension-size-300));';
-        alignment = 'align-items: flex-start;';
-      } else {
-        extraPadding = 'padding-right: calc(50% + var(--spectrum-global-dimension-size-300));';
-        alignment = 'align-items: flex-end;';
-      }
-    }
+    blockWidth = 'max-width: var(--spectrum-global-dimension-size-4600);';
+    extraMargin = alignMapping[counter[columns] % columns];
+  }
 
-    return (
+  return (
+    <>
       <section
         className={`spectrum--${theme}`}
         css={css`
-          display: inline-flex;
-          flex-direction: column;
-          ${alignment}
-          width: ${is2Columns ? '100%' : width};
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-300);
-          ${extraPadding}
+          display: ${width === '100%' ? 'block' : 'table-cell'};
+          width: ${width.replace('%', 'vw')};
           background: var(--spectrum-global-color-gray-100);
+          padding: var(--spectrum-global-dimension-size-1000) var(--spectrum-global-dimension-size-400);
+          box-sizing: border-box;
 
-          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-            display: flex;
+          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+            display: block;
             width: 100%;
-            align-items: center;
-            margin: 0;
-            padding: var(--spectrum-global-dimension-size-300);
           }
         `}>
         <a
-          className={`spectrum-Card spectrum-Card--${variant}`}
+          className={`spectrum-Card spectrum-Card--vertical`}
           href={href}
           css={css`
-            width: ${layoutColumns(6)};
-            height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-100));
-
+            display: block;
+            margin: auto;
+            ${blockWidth}
+            ${extraMargin}
+  
             @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-              max-width: var(--spectrum-global-dimension-size-6000);
               width: 100%;
-              height: auto;
               min-width: 0;
-              margin: 0;
+              margin: auto;
+              max-width: ${layoutColumns(6)};
             }
           `}>
           <div
@@ -300,7 +150,11 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
                 </h3>
               </div>
             </div>
-            <div className="spectrum-Card-content">
+            <div
+              className="spectrum-Card-content"
+              css={css`
+                height: auto;
+              `}>
               <div className="spectrum-Card-subtitle">
                 <p
                   className="spectrum-Body spectrum-Body-S"
@@ -316,14 +170,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', variant = 'horizonta
           </div>
         </a>
       </section>
-    );
-  }
+      {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? <div aria-hidden="true" /> : null}
+    </>
+  );
 };
 
 ResourceCard.propTypes = {
   theme: PropTypes.string,
-  variant: PropTypes.oneOf(['horizontal', 'vertical']),
-  width: PropTypes.oneOf(['100%', '50%']),
+  width: PropTypes.oneOf(['100%', '50%', '33%']),
   link: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,

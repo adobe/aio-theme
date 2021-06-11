@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement, useEffect } from 'react';
+import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
@@ -174,12 +174,14 @@ const TextBlock = ({
   isCentered = false,
   ...props
 }) => {
-  let columns = 100 / parseFloat(width);
+  let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
     width = `${(100 / 3).toFixed(2)}%`;
-    columns = 3;
+    initColumns = 3;
   }
+
+  const [columns] = useState(initColumns);
 
   useEffect(() => {
     return () => {
@@ -187,7 +189,7 @@ const TextBlock = ({
         counter[columns]--;
       }
     };
-  });
+  }, [columns]);
 
   if (isCentered) {
     let blockWidth = '';
