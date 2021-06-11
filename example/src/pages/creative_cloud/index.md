@@ -201,7 +201,7 @@ Rob Kleiman, July 8th 2020
 
 <ResourceCard slots="link, image, heading, text" width="33%" />
 
-[Adobe I/O](../guides)
+[Adobe I/O](../guides/index.md)
 
 ![Resource 3](images/resource3.png)
 
@@ -212,7 +212,7 @@ Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020
 
 <ResourceCard slots="link, image, heading, text" width="33%" />
 
-[Adobe I/O](../guides)
+[Adobe I/O](https://adobe.io)
 
 ![Resource 3](images/resource3.png)
 

@@ -12,7 +12,14 @@
 
 import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { getElementChild, layoutColumns, TABLET_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH } from '../../utils';
+import { GatsbyLink } from '../GatsbyLink';
+import {
+  getElementChild,
+  layoutColumns,
+  getExternalLinkProps,
+  TABLET_SCREEN_WIDTH,
+  DESKTOP_SCREEN_WIDTH
+} from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
@@ -74,9 +81,10 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
             width: 100%;
           }
         `}>
-        <a
+        <GatsbyLink
           className={`spectrum-Card spectrum-Card--vertical`}
-          href={href}
+          to={href}
+          {...getExternalLinkProps(href)}
           css={css`
             display: block;
             margin: auto;
@@ -168,7 +176,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
               </div>
             </div>
           </div>
-        </a>
+        </GatsbyLink>
       </section>
       {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? <div aria-hidden="true" /> : null}
     </>
