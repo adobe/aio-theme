@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.10.1...@adobe/gatsby-theme-aio@3.11.0) (2021-06-11)
+
+
+### Features
+
+* support column layout Resource Cards ([0994b90](https://github.com/adobe/gatsby-theme-aio/commit/0994b9075168fb2de4a6f1d8bf089beba2979a1d))
+
+
+
+
+
 ## [3.10.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.10.0...@adobe/gatsby-theme-aio@3.10.1) (2021-06-10)
 
 
