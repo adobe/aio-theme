@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.0...@adobe/gatsby-theme-aio@3.11.1) (2021-06-11)
+
+
+### Bug Fixes
+
+* use GatsbyLink for ResourceCard link ([9e16a68](https://github.com/adobe/gatsby-theme-aio/commit/9e16a6854c557781e9e28e8be867774d26083a6b))
+
+
+
+
+
 # [3.11.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.10.1...@adobe/gatsby-theme-aio@3.11.0) (2021-06-11)
 
 
