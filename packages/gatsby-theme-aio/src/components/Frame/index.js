@@ -37,6 +37,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
   return (
     <>
       <iframe
+        title="Main content"
         ref={iframe}
         src={isExternalLink(src) ? src : withPrefix(src)}
         onLoad={() => {
