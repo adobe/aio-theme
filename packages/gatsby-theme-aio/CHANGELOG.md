@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.1...@adobe/gatsby-theme-aio@3.11.2) (2021-06-14)
+
+
+### Bug Fixes
+
+* ensure HTML document has a lang attribute ([28404e2](https://github.com/adobe/gatsby-theme-aio/commit/28404e26bf6bf28db7ef3f38e1f8e6711b00d808))
+* ensure iframe contain a non empty title attribute ([ffc135d](https://github.com/adobe/gatsby-theme-aio/commit/ffc135de448f0863cb7f11b928e3d85ee39ee345))
+
+
+
+
+
 ## [3.11.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.0...@adobe/gatsby-theme-aio@3.11.1) (2021-06-11)
 
 
