@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 // TODO Define additional meta properties
 const SEO = ({ title, description }) => (
   <Helmet>
+    <html lang="en" />
     {title && <title>{title}</title>}
     {description && <meta name="description" content={description} />}
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
