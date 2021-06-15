@@ -388,6 +388,27 @@ ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
 ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 ```
 
+### .env settings for Algolia indexing
+
+Algolia indexing requires a set of API index keys to send new search records and query existing search records from specific applications and search indexes on Algolia's servers. These keys must be defined in the `.env` file and never published to GitHub. You need to define the following `.env` variables in order to make the content of your site searchable:
+- `ALGOLIA_APP_ID` — `(string)` required to identify the Algolia application for your site's search index.
+- `ALGOLIA_SEARCH_API_KEY` — `(string)` required to query your search index from the search UI.
+- `ALGOLIA_WRITE_API_KEY` — `(string)` required to write your search records to the Algolia index.
+- `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
+   - `skip` mode - skip running of search indexation;
+   - `console` mode - index data will be published to console, but not pushed to real search index;
+   - `index` mode - index data will be pushed to real search index.
+- `ALGOLIA_INDEX_NAME_SUFFIX` - Optional. The name search index is composed of two parameters `REPO_NAME + ALGOLIA_INDEX_SUFFIX_NAME`
+
+Example values:
+```properties
+ALGOLIA_APP_ID=E258SEDTHT
+ALGOLIA_SEARCH_API_KEY==a266571b5cf91b1e728066a13c96d5f5
+ALGOLIA_WRITE_API_KEY=f2620671b5cf91b1e728066a13c96d5a
+ALGOLIA_INDEXATION_MODE=console # debug mode. The data will pushed to console but not to real index.
+ALGOLIA_INDEX_SUFFIX_NAME=-DEVSITE-47
+```
+
 ### Global Navigation
 
 The Global navigation links are configurable in `gatsby-config.js` under `pages`. 
