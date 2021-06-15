@@ -19,9 +19,9 @@ const algoliaQueryBuilder = new AlgoliaQueryBuilder();
 const queries = algoliaQueryBuilder.build();
 
 const algoliaIndexName =
-  process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
-    ? process.env.REPO_NAME
-    : process.env.REPO_NAME + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
+    process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
+        ? process.env.REPO_NAME
+        : process.env.REPO_NAME + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
 
 // By default: skip indexation (no push data to real index)
 let algoliaSkipIndexing = true;
