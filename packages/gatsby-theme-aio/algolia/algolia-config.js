@@ -14,7 +14,11 @@ require('dotenv').config();
 
 class AlgoliaConfig {
   constructor() {
-    this.config = require('../algolia-config');
+    try {
+      this.config = require('../algolia-config');
+    } catch (ex) {
+      this.config = require('../algolia-config.sample');
+    }
 
     // indexation mode and index name suffix can be override by site .env variables
     if (process.env.ALGOLIA_INDEXATION_MODE) {
@@ -24,10 +28,10 @@ class AlgoliaConfig {
       this.config.ALGOLIA_INDEX_NAME_SUFFIX = process.env.ALGOLIA_INDEX_NAME_SUFFIX;
     }
 
-    // By default: skip indexation (no push data to real index)
+    // by default: skip indexation (no run indexation, no push data to real index)
     this.config.ALGOLIA_SKIP_INDEXING = true;
     this.config.ALGOLIA_DRY_RUN = false;
-    if (this.config.ALGOLIA_INDEXATION_MODE !== undefined) {
+    if (this.config.ALGOLIA_INDEXATION_MODE) {
       switch (this.config.ALGOLIA_INDEXATION_MODE) {
         case 'skip':
           this.config.ALGOLIA_SKIP_INDEXING = true;
