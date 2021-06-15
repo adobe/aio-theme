@@ -16,3 +16,6 @@ cypress/screenshots
 
 # lerna
 lerna-debug.log
+
+# algolia data
+packages/gatsby-theme-aio/algolia-config.json
