@@ -1,5 +1,4 @@
 .editorconfig
-.DS_STORE
 
 # npm yarn
 node_modules
@@ -17,6 +16,3 @@ cypress/screenshots
 
 # lerna
 lerna-debug.log
-
-# algolia data
-packages/gatsby-theme-aio/algolia-config.json

@@ -14,14 +14,23 @@ require('dotenv').config({
   path: `.env`
 });
 
-const AlgoliaConfig = require('./algolia/algolia-config');
-const algoliaConfig = new AlgoliaConfig();
-
+const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
+const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
 const AlgoliaQueryBuilder = require('./algolia/query-builder');
-const algoliaQueryBuilder = new AlgoliaQueryBuilder();
-const queries = algoliaQueryBuilder.build();
 
-const DESKTOP_SCREEN_WIDTH = require('./conf/globals').DESKTOP_SCREEN_WIDTH;
+const algoliaQueries = new AlgoliaQueryBuilder().build();
+let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
+
+if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
+  algoliaIndexingMode = ALGOLIA_DEFAULT_INDEXING_MODE;
+  console.warn(
+    `Algolia: Wrong value for ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(ALGOLIA_INDEXING_MODES).join(
+      ' | '
+    )}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
+  );
+}
+
+console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
   plugins: [
@@ -105,10 +114,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: algoliaConfig.getAppId(),
-        apiKey: algoliaConfig.getWriteApiKey(),
-        indexName: algoliaConfig.getIndexName(), // for all queries
-        queries,
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
+        // for all queries
+        indexName: process.env.ALGOLIA_INDEX_NAME_SUFFIX
+          ? `${process.env.REPO_NAME}${process.env.ALGOLIA_INDEX_NAME_SUFFIX}`
+          : process.env.REPO_NAME,
+        queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
         settings: {
           // optional, any index settings
@@ -117,8 +129,8 @@ module.exports = {
         enablePartialUpdates: false, // default: false
         matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
-        skipIndexing: algoliaConfig.getSkipIndexing(), // default: false, useful for e.g. preview deploys or local development
-        dryRun: algoliaConfig.getDryRun(), // default: true, generates index but does not publish it to Algolia
+        skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
+        dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
         continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
       }
     }

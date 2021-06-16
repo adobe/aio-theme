@@ -43,33 +43,33 @@ class QueryBuilder {
         };
 
     const graphqlQuery = `
-{
-  allMdx(
-    filter: {
-      fileAbsolutePath: {regex: "/${this.indexationFromCacheOptions.sourceDir}/"},
-      wordCount: {words: {gt: ${this.indexationOptions.minWordsCountPerPage}}}
-    }
-  ) {
-    edges {
-      node {
-        objectID: id
-        headings {
-          value
+      {
+        allMdx(
+          filter: {
+            fileAbsolutePath: {regex: "/${this.indexationFromCacheOptions.sourceDir}/"},
+            wordCount: {words: {gt: ${this.indexationOptions.minWordsCountPerPage}}}
+          }
+        ) {
+          edges {
+            node {
+              objectID: id
+              headings {
+                value
+              }
+              frontmatter {
+                title
+                description
+                contributors
+                keywords
+              }
+              slug
+              fileAbsolutePath
+              mdxAST
+            }
+          }
         }
-        frontmatter {
-          title
-          description
-          contributors
-          keywords
-        }
-        slug
-        fileAbsolutePath
-        mdxAST
       }
-    }
-  }
-}
-`;
+    `;
 
     return [
       {

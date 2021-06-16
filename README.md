@@ -392,9 +392,9 @@ ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 
 Algolia indexing requires a set of API index keys to send new search records and query existing search records from specific applications and search indexes on Algolia's servers. These keys must be defined in the `.env` file and never published to GitHub. You need to define the following `.env` variables in order to make the content of your site searchable:
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
-   - `skip` mode - skip running of search indexation;
-   - `console` mode - index data will be published to console, but not pushed to real search index;
-   - `index` mode - index data will be pushed to real search index.
+   - `skip` mode - skip running of search indexation (default)
+   - `console` mode - index data will be published to console, but not pushed to real search index
+   - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_INDEX_NAME_SUFFIX` - Optional. The name search index is composed of two parameters `REPO_NAME + ALGOLIA_INDEX_SUFFIX_NAME`
 
 Example values:

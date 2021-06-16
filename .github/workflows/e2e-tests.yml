@@ -19,8 +19,6 @@ on:
 jobs:
   smoke_tests:
     runs-on: ubuntu-latest
-    env:
-      ALGOLIA_INDEXATION_MODE: skip
     steps:
       - name: Checkout
         uses: actions/checkout@v2
