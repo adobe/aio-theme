@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
+ * Copyright 2021 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -11,127 +11,174 @@
  */
 
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
+const fs = require('fs');
+const normalizePath = require('normalize-path');
+const { selectAll } = require('unist-util-select');
+const { v4: uuidv4 } = require('uuid');
 
 class QueryBuilder {
-  constructor() {
-    this.htmlExtractor = new AlgoliaHTMLExtractor();
-  }
+    constructor() {
+        this.htmlExtractor = new AlgoliaHTMLExtractor();
+    }
 
-  /**
-   * @return {Array}
-   */
-  build = (options = {}) => {
-    this.htmlTagsToIndex = options.htmlTagsToIndex
-        ? options.htmlTagsToIndex
-        : ['p', 'li', 'td', { tag: 'code', minLength: 6 }];
+    /**
+     * @return {Array}
+     */
+    build = (options = {}) => {
+        this.indexationFromCacheOptions = options.indexationFromCacheOptions
+            ? options.indexationFromCacheOptions
+            : {
+                publicDir: 'public',
+                sourceDir: 'src/pages',
+                cacheFileExtension: 'html',
+                sourceFileExtension: 'md'
+            };
 
-    const graphqlQuery = options.graphqlQuery
-        ? options.graphqlQuery
-        : `
+        this.indexationOptions = options.indexationOptions
+            ? options.indexationOptions
+            : {
+                tagsToIndex: 'p, li, td, code',
+                minCharsLengthPerTag: 20,
+                minWordsCountPerPage: 10
+            };
+
+        const graphqlQuery = `
 {
-  allMarkdownRemark {
-    nodes {
-      objectID: id
-      frontmatter {
-        description
-        title
+  allMdx(
+    filter: {
+      fileAbsolutePath: {regex: "/${this.indexationFromCacheOptions.sourceDir}/"}, 
+      wordCount: {words: {gt: ${this.indexationOptions.minWordsCountPerPage}}}
+    }
+  ) {
+    edges {
+      node {
+        objectID: id
+        frontmatter {
+          title
+          description
+        }
+        slug
+        fileAbsolutePath
+        mdxAST
       }
-      html
     }
   }
 }
 `;
 
-    return [
-      {
-        query: graphqlQuery,
-        settings: {
-          attributeForDistinct: 'id',
-          distinct: true
-        },
-        transformer: ({ data }) => {
-          return data.allMarkdownRemark.nodes
-              .map((node) => node)
-              .map(this.flattenNodes)
-              .map(this.createRecords.bind(this))
-              .reduce((accumulator, currentValue) => {
-                return [...accumulator, ...currentValue];
-              }, []);
-        }
-      }
-    ];
-  };
-
-  /**
-   * @private
-   * @param {Object} node
-   * @return {Object}
-   */
-  flattenNodes = (node) => {
-    const { frontmatter, ...rest } = node;
-
-    return {
-      ...frontmatter,
-      ...rest
+        return [
+            {
+                query: graphqlQuery,
+                settings: {
+                    attributeForDistinct: 'id',
+                    distinct: true
+                },
+                transformer: ({ data }) => {
+                    return data.allMdx.edges
+                        .map((edge) => edge.node)
+                        .map(this.flattenNode)
+                        .map(this.createRecords.bind(this))
+                        .reduce((accumulator, currentValue) => {
+                            return [...accumulator, ...currentValue];
+                        }, []);
+                }
+            }
+        ];
     };
-  };
 
-  /**
-   * @private
-   * @param {Object} htmlTagsToIndex
-   * @return {Object}
-   */
-  getHtmlExtractorOptions(htmlTagsToIndex) {
-    let cssSelector = '';
-    let tagsLengthLimitation = {};
+    /**
+     * @private
+     * @param {Object} node
+     * @return {Object}
+     */
+    flattenNode = (node) => {
+        const { frontmatter, ...rest } = node;
 
-    htmlTagsToIndex.forEach((element) => {
-      if (typeof element === 'string' || element instanceof String) {
-        cssSelector += ',' + element.toLowerCase();
-      } else if (element.tag !== undefined) {
-        cssSelector += ',' + element.tag.toLowerCase();
-
-        if (element.minLength !== undefined) {
-          tagsLengthLimitation[element.tag.toLowerCase()] = element.minLength;
-        }
-      }
-    });
-    cssSelector = cssSelector.substring(1);
-
-    return {
-      cssSelector: cssSelector,
-      tagsLengthLimitation: tagsLengthLimitation
+        return {
+            ...frontmatter,
+            ...rest
+        };
     };
-  }
 
-  /**
-   * @private
-   * @param {Object} node
-   * @return {Object}
-   */
-  createRecords = (node) => {
-    const { html, ...rest } = node;
-    const { cssSelector, tagsLengthLimitation } = this.getHtmlExtractorOptions(this.htmlTagsToIndex);
+    /**
+     * @private
+     * @param {Object} node
+     * @return {Object}
+     */
+    createRecords = (node) => {
+        const transclusions = selectAll('import', node.mdxAST);
 
-    const extractedData = this.htmlExtractor
-        .run(html, { cssSelector: cssSelector })
-        .filter(
-            (htmlTag) =>
-                tagsLengthLimitation[htmlTag.node.tagName.toLowerCase()] === undefined ||
-                htmlTag.content.length >= tagsLengthLimitation[htmlTag.node.tagName.toLowerCase()]
+        const records =
+            transclusions.length > 0 ? this.createRecordsBasedOnCache(node) : this.createRecordsBasedOnAST(node);
+
+        console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+        return records;
+    };
+
+    /**
+     * @private
+     * @param {Object} node
+     * @return {Array}
+     */
+    createRecordsBasedOnAST(node) {
+        const { mdxAST, ...restNodeFields } = node;
+
+        // https://mdxjs.com/table-of-components TODO: create map
+        const parsedData = selectAll('paragraph text, code, tableCell text, heading text, listItem text', mdxAST).filter(
+            (record) => {
+                return record.value.length >= this.indexationOptions.minCharsLengthPerTag;
+            }
         );
 
-    const records = extractedData.map((htmlTag) => ({
-      ...rest,
-      objectID: htmlTag.objectID,
-      content: htmlTag.content,
-      headings: htmlTag.headings,
-      custom_ranking: htmlTag.customRanking,
-      internalObjectID: node.objectID
-    }));
+        delete restNodeFields.mdxAST;
+        delete restNodeFields.fileAbsolutePath;
+        return parsedData.map((record) => {
+            return {
+                ...restNodeFields,
+                objectID: uuidv4(record.value),
+                content: record.value,
+                internalObjectID: node.objectID
+            };
+        });
+    }
 
-    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
-    return records;
-  };
+    /**
+     * @param {Object} node
+     * @return {Array}
+     */
+    createRecordsBasedOnCache(node) {
+        const { fileAbsolutePath, ...restNodeFields } = node;
+
+        const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
+            this.indexationFromCacheOptions.sourceDir
+        );
+
+        const cacheFileAbsolutePath =
+            `${siteDirAbsolutePath}${this.indexationFromCacheOptions.publicDir}${sourceFileRelativePath}`.replace(
+                new RegExp(`\.${this.indexationFromCacheOptions.sourceFileExtension}$`),
+                `.${this.indexationFromCacheOptions.cacheFileExtension}`
+            );
+
+        if (!fs.existsSync(cacheFileAbsolutePath)) {
+            throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
+        }
+
+        const fileContent = fs.readFileSync(cacheFileAbsolutePath, 'utf8');
+
+        const extractedData = this.htmlExtractor
+            .run(fileContent, { cssSelector: this.indexationOptions.tagsToIndex })
+            .filter((htmlTag) => htmlTag.content.length >= this.indexationOptions.minCharsLengthPerTag);
+
+        delete restNodeFields.mdxAST;
+        delete restNodeFields.fileAbsolutePath;
+        return extractedData.map((htmlTag) => ({
+            ...restNodeFields,
+            objectID: htmlTag.objectID,
+            content: htmlTag.content,
+            headings: htmlTag.headings,
+            customRanking: htmlTag.customRanking,
+            internalObjectID: node.objectID
+        }));
+    }
 }
 module.exports = QueryBuilder;

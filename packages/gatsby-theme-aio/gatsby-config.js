@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
+ * Copyright 2021 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -14,27 +14,17 @@ require('dotenv').config({
   path: `.env`
 });
 
-if (!process.env.ALGOLIA_APP_ID) {
-  console.error('Missed required parameter: ALGOLIA_APP_ID');
-}
-if (!process.env.ALGOLIA_WRITE_API_KEY) {
-  console.error('Missed required parameter: ALGOLIA_WRITE_API_KEY');
-}
-if (!process.env.REPO_NAME) {
-  console.error('Missed required parameter: REPO_NAME');
-}
-
 const AlgoliaQueryBuilder = require('./algolia/query-builder');
 const algoliaQueryBuilder = new AlgoliaQueryBuilder();
-const queries = algoliaQueryBuilder.build({ htmlTagsToIndex: ['p', 'li', 'td', { tag: 'code', minLength: 6 }] });
+const queries = algoliaQueryBuilder.build();
 
 const algoliaIndexName =
-  process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
-    ? process.env.REPO_NAME
-    : process.env.REPO_NAME + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
+    process.env.ALGOLIA_INDEX_NAME_SUFFIX === undefined
+        ? process.env.REPO_NAME
+        : process.env.REPO_NAME + process.env.ALGOLIA_INDEX_NAME_SUFFIX;
 
-// By default push data to real index
-let algoliaSkipIndexing = false;
+// By default: skip indexation (no push data to real index)
+let algoliaSkipIndexing = true;
 let algoliaDryRun = false;
 if (process.env.ALGOLIA_INDEXATION_MODE !== undefined) {
   switch (process.env.ALGOLIA_INDEXATION_MODE) {
