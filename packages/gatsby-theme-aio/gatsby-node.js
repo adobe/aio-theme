@@ -105,14 +105,33 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       pages: [Link]
     }
-
-    type MdxFrontmatter {
-      title: String
-      description: String
-      contributors: [String]
-      keywords: [String]
-    }
   `;
 
   createTypes(typeDefs);
+};
+
+exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
+  const resolvers = {
+    MdxFrontmatter: {
+      keywords: {
+        type: '[String]',
+        resolve: addFrontmatterType
+      },
+      description: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      contributors: {
+        type: '[String]',
+        resolve: addFrontmatterType
+      }
+    }
+  };
+
+  addFrontmatterType = (source, context) =>
+    context.nodeModel.getNodeById({
+      id: source.MdxFrontmatter
+    });
+
+  createResolvers(resolvers);
 };
