@@ -31,6 +31,7 @@ class AlgoliaConfig {
     // by default: skip indexation (no run indexation, no push data to real index)
     this.config.ALGOLIA_SKIP_INDEXING = true;
     this.config.ALGOLIA_DRY_RUN = false;
+
     if (this.config.ALGOLIA_INDEXATION_MODE) {
       switch (this.config.ALGOLIA_INDEXATION_MODE) {
         case 'skip':
