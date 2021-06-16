@@ -91,7 +91,7 @@ const findSelectedTopPage = (pathname, pages) =>
   );
 
 const findSubPages = (pathname, pages, subPages) => {
-  if (subPages === null) {
+  if (subPages == null) {
     return [];
   }
 
@@ -100,15 +100,15 @@ const findSubPages = (pathname, pages, subPages) => {
 };
 
 const findSelectedPage = (pathname, pages) => {
-  if (pages === null) {
+  if (pages == null) {
     return [];
   }
 
-  return pages.find((page) => pathname === withPrefix(page.pathname));
+  return pages?.find((page) => pathname === withPrefix(page.pathname));
 };
 
 const findSelectedPages = (pathname, pages) => {
-  if (pages === null) {
+  if (pages == null) {
     return [];
   }
 
@@ -143,7 +143,7 @@ const findSelectedPages = (pathname, pages) => {
 };
 
 const flattenPages = (pages) => {
-  if (pages === null) {
+  if (pages == null) {
     return [];
   }
 
@@ -175,7 +175,7 @@ const findSelectedPageNextPrev = (pathname, pages) => {
 const findSelectedPageSiblings = (pathname, pages) => {
   let siblings = [];
 
-  if (pages === null) {
+  if (pages == null) {
     return siblings;
   }
 
