@@ -26,8 +26,8 @@ class QueryBuilder {
    */
   build = (options = {}) => {
     this.indexationFromCacheOptions = options.indexationFromCacheOptions
-      ? options.indexationFromCacheOptions
-      : {
+        ? options.indexationFromCacheOptions
+        : {
           publicDir: 'public',
           sourceDir: 'src/pages',
           cacheFileExtension: 'html',
@@ -35,8 +35,8 @@ class QueryBuilder {
         };
 
     this.indexationOptions = options.indexationOptions
-      ? options.indexationOptions
-      : {
+        ? options.indexationOptions
+        : {
           tagsToIndex: 'p, li, td, code',
           minCharsLengthPerTag: 20,
           minWordsCountPerPage: 10
@@ -80,12 +80,12 @@ class QueryBuilder {
         },
         transformer: ({ data }) => {
           return data.allMdx.edges
-            .map((edge) => edge.node)
-            .map(this.flattenNode)
-            .map(this.createRecords.bind(this))
-            .reduce((accumulator, currentValue) => {
-              return [...accumulator, ...currentValue];
-            }, []);
+              .map((edge) => edge.node)
+              .map(this.flattenNode)
+              .map(this.createRecords.bind(this))
+              .reduce((accumulator, currentValue) => {
+                return [...accumulator, ...currentValue];
+              }, []);
         }
       }
     ];
@@ -114,7 +114,7 @@ class QueryBuilder {
     const transclusions = selectAll('import', node.mdxAST);
 
     const records =
-      transclusions.length > 0 ? this.createRecordsBasedOnCache(node) : this.createRecordsBasedOnAST(node);
+        transclusions.length > 0 ? this.createRecordsBasedOnCache(node) : this.createRecordsBasedOnAST(node);
 
     console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
 
@@ -159,14 +159,14 @@ class QueryBuilder {
     const { fileAbsolutePath, ...restNodeFields } = node;
 
     const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
-      this.indexationFromCacheOptions.sourceDir
+        this.indexationFromCacheOptions.sourceDir
     );
 
     const cacheFileAbsolutePath =
-      `${siteDirAbsolutePath}${this.indexationFromCacheOptions.publicDir}${sourceFileRelativePath}`.replace(
-        new RegExp(`\.${this.indexationFromCacheOptions.sourceFileExtension}$`),
-        `.${this.indexationFromCacheOptions.cacheFileExtension}`
-      );
+        `${siteDirAbsolutePath}${this.indexationFromCacheOptions.publicDir}${sourceFileRelativePath}`.replace(
+            new RegExp(`\.${this.indexationFromCacheOptions.sourceFileExtension}$`),
+            `.${this.indexationFromCacheOptions.cacheFileExtension}`
+        );
 
     if (!fs.existsSync(cacheFileAbsolutePath)) {
       throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
@@ -175,8 +175,8 @@ class QueryBuilder {
     const fileContent = fs.readFileSync(cacheFileAbsolutePath, 'utf8');
 
     const extractedData = this.htmlExtractor
-      .run(fileContent, { cssSelector: this.indexationOptions.tagsToIndex })
-      .filter((htmlTag) => htmlTag.content.length >= this.indexationOptions.minCharsLengthPerTag);
+        .run(fileContent, { cssSelector: this.indexationOptions.tagsToIndex })
+        .filter((htmlTag) => htmlTag.content.length >= this.indexationOptions.minCharsLengthPerTag);
 
     delete restNodeFields.mdxAST;
     delete restNodeFields.fileAbsolutePath;
