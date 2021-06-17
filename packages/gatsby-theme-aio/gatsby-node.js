@@ -124,6 +124,26 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
       contributors: {
         type: '[String]',
         resolve: addFrontmatterType
+      },
+      openAPISpec: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      frameSrc: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      frameHeight: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      layout: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      jsDoc: {
+        type: 'Boolean',
+        resolve: addFrontmatterType
       }
     }
   };

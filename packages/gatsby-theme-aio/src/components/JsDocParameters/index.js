@@ -87,7 +87,7 @@ const JsDocParameters = ({ items }) => {
     let header = '';
     let body = [];
     let id = '';
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items?.length; i++) {
       let item = items[i];
       let type = item.props.mdxType;
       if (type === ANCHOR) {
