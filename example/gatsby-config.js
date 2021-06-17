@@ -209,3 +209,5 @@ module.exports = {
   ],
   pathPrefix: '/example'
 };
+// Workaround till fix of https://github.com/gatsbyjs/gatsby/issues/26048
+global.__BASE_PATH__ = '/example';

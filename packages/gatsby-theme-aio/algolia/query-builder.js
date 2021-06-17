@@ -15,6 +15,7 @@ const fs = require('fs');
 const normalizePath = require('normalize-path');
 const { selectAll } = require('unist-util-select');
 const { v4: uuidv4 } = require('uuid');
+const { withPrefix } = require('gatsby');
 
 class QueryBuilder {
   constructor() {
@@ -145,7 +146,7 @@ class QueryBuilder {
         ...restNodeFields,
         headings: headings.map((heading) => heading.value),
         content: record.value,
-        slug: slug,
+        slug: withPrefix(slug),
         pageID: pageID
       };
     });
@@ -156,7 +157,7 @@ class QueryBuilder {
    * @return {Array}
    */
   createRecordsBasedOnCache(node) {
-    const { fileAbsolutePath, ...restNodeFields } = node;
+    const { fileAbsolutePath, slug, ...restNodeFields } = node;
 
     const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
       this.indexationFromCacheOptions.sourceDir
@@ -186,7 +187,8 @@ class QueryBuilder {
       content: htmlTag.content,
       headings: htmlTag.headings,
       customRanking: htmlTag.customRanking,
-      internalObjectID: node.objectID
+      pageID: node.objectID,
+      slug: withPrefix(slug),
     }));
   }
 }
