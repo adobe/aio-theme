@@ -11,6 +11,7 @@
  */
 
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
+const LoadContentByUrl = require('./load-content-by-url');
 const fs = require('fs');
 const normalizePath = require('normalize-path');
 
@@ -20,6 +21,7 @@ const normalizePath = require('normalize-path');
  */
 class CreateRecordsForFrame {
   constructor(options = {}) {
+    this.loadContentByUrl = new LoadContentByUrl();
     this.htmlExtractor = new AlgoliaHTMLExtractor();
   }
 
@@ -29,15 +31,8 @@ class CreateRecordsForFrame {
    * @return {Array}
    */
   execute(node, options) {
-    const { fileAbsolutePath, ...restNodeFields } = node;
-    const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
-    const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`;
-
-    if (!fs.existsSync(staticFileAbsolutePath)) {
-      throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`);
-    }
-
-    const fileContent = fs.readFileSync(staticFileAbsolutePath, 'utf8');
+    const { ...restNodeFields } = node;
+    const fileContent = this.loadContentFromCache(node, options);
 
     const extractedData = this.htmlExtractor
       .run(fileContent, { cssSelector: options.tagsToIndex })
@@ -54,6 +49,23 @@ class CreateRecordsForFrame {
       customRanking: htmlTag.customRanking,
       internalObjectID: node.objectID
     }));
+  }
+
+  /**
+   * @param {Object} node
+   * @param {Object} options
+   * @return {String}
+   */
+  loadContentFromCache(node, options) {
+    const { fileAbsolutePath } = node;
+    const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
+    const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`;
+
+    if (!fs.existsSync(staticFileAbsolutePath)) {
+      throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`);
+    }
+
+    return fs.readFileSync(staticFileAbsolutePath, 'utf8');
   }
 }
 module.exports = CreateRecordsForFrame;

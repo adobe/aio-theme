@@ -11,26 +11,34 @@
  */
 
 const { v4: uuidv4 } = require('uuid');
-const fetch = require("node-fetch");
+const request = require('request');
+const LoadContentByUrl = require('./load-content-by-url');
 
 /**
  * Support of "openAPISpec" directive:
  * https://github.com/adobe/gatsby-theme-aio#openapi
  */
 class CreateRecordsForOpenApi {
+  constructor() {
+    this.loadContentByUrl = new LoadContentByUrl();
+  }
+
   /**
    * @param {Object} node
    * @param {Object} options
    * @return {Array}
    */
-  async execute(node, options) {
-    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
+  execute(node, options) {
+    const promise = this.loadContentByUrl.execute(node.openAPISpec);
+    promise.then(function (value) {
+      console.log('=========================================', node.openAPISpec, value);
+      return [];
+    });
 
-    const response = await fetch(node.openAPISpec);
-    const text = response.text();
-    console.log('=========================================', node.openAPISpec, text);
     return [];
     // const object = JSON5.parse(text);
+
+    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
 
     delete restNodeFields.mdxAST;
     delete restNodeFields.fileAbsolutePath;

@@ -90,7 +90,7 @@ class QueryBuilder {
    * @param {Object} node
    * @return {Object}
    */
-  async createRecords (node) {
+  createRecords(node) {
     const embeddedContent = selectAll('import', node.mdxAST);
 
     let records = [];
@@ -113,8 +113,8 @@ class QueryBuilder {
       };
       records = this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
-       const options = {};
-       records = await this.createRecordsForOpenApi.execute(node, options);
+      const options = {};
+      records = this.createRecordsForOpenApi.execute(node, options);
     } else {
       const options = {
         tagsToIndex: 'paragraph text, code, tableCell text',
@@ -125,7 +125,7 @@ class QueryBuilder {
 
     console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
     return records;
-  };
+  }
 }
 
 module.exports = QueryBuilder;
