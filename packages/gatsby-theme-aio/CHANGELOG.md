@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.0...@adobe/gatsby-theme-aio@3.12.1) (2021-06-24)
+
+
+### Bug Fixes
+
+* missing line break for single centered TextBlock ([d339189](https://github.com/adobe/gatsby-theme-aio/commit/d33918972581b43f06cd43c2c55b2b933b8224b3))
+
+
+
+
+
 # [3.12.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.2...@adobe/gatsby-theme-aio@3.12.0) (2021-06-24)
 
 
