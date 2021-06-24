@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.2...@adobe/gatsby-theme-aio@3.12.0) (2021-06-24)
+
+
+### Bug Fixes
+
+* added resolvers to extend MdxFrontmatter fields properly ([#403](https://github.com/adobe/gatsby-theme-aio/issues/403)) ([20a0f8b](https://github.com/adobe/gatsby-theme-aio/commit/20a0f8bd3e726d765300d817cec368cd6a1f231f))
+* adjust ResourceCard width, gap and layout ([edf92f9](https://github.com/adobe/gatsby-theme-aio/commit/edf92f90cce7d02f9ecf0782a1ed4166f421fa01))
+* refactor algolia env params ([53475ba](https://github.com/adobe/gatsby-theme-aio/commit/53475ba7532025aa715b6b4d54b52afdb274020c))
+* update Breadcrumbs to display all paths ([06671db](https://github.com/adobe/gatsby-theme-aio/commit/06671dba06efa63f9d5f8a663b9b2c4b82186eba))
+* update Gatsby peer dependency to ^3.6.0 ([f58b7a7](https://github.com/adobe/gatsby-theme-aio/commit/f58b7a76eda4d310cf6c65ebbc8ad64eca1df008))
+* update header title to Adobe Developer ([397b955](https://github.com/adobe/gatsby-theme-aio/commit/397b955b65e45ace1f18718655c782fd6f647e47))
+
+
+### Features
+
+* **DEVSITE-47:** implementation of Algolia plugin ([#366](https://github.com/adobe/gatsby-theme-aio/issues/366)) ([2965d4f](https://github.com/adobe/gatsby-theme-aio/commit/2965d4f9f7f48367ed2370683524f6e804b46812))
+* **DEVSITE-84:** add support of "transcluded content" indexing ([#368](https://github.com/adobe/gatsby-theme-aio/issues/368)) ([3d9773a](https://github.com/adobe/gatsby-theme-aio/commit/3d9773a6a8b2cd3d6dc35cca993304a037c5a976))
+* **DEVSITE-91:** move algolia variables from "site" level to "theme" ([#400](https://github.com/adobe/gatsby-theme-aio/issues/400)) ([daccfd9](https://github.com/adobe/gatsby-theme-aio/commit/daccfd9f12440ffc8c33877316c20a9a7cceac47))
+
+
+
+
+
 ## [3.11.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.11.1...@adobe/gatsby-theme-aio@3.11.2) (2021-06-14)
 
 
