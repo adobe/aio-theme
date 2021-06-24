@@ -27,8 +27,9 @@ class QueryBuilder {
   /**
    * @return {Array}
    */
-  build = (options = {}) => {
+  build (options = {}) {
     const sourceDir = 'src/pages';
+    const self = this;
 
     return [
       {
@@ -65,21 +66,21 @@ class QueryBuilder {
           attributeForDistinct: 'id',
           distinct: true
         },
-        transformer: ({ data }) => {
+        transformer: async ({ data }) => {
           return data.allMdx.edges
-            .map((edge) => edge.node)
-            .map((node) => {
-              const { frontmatter, ...rest } = node;
+              .map((edge) => edge.node)
+              .map((node) => {
+                const { frontmatter, ...rest } = node;
 
-              return {
-                ...frontmatter,
-                ...rest
-              };
-            })
-            .map(this.createRecords.bind(this))
-            .reduce((accumulator, currentValue) => {
-              return [...accumulator, ...currentValue];
-            }, []);
+                return {
+                  ...frontmatter,
+                  ...rest
+                };
+              })
+              .map(this.createRecords.bind(this))
+              .reduce((accumulator, currentValue) => {
+                return [...accumulator, ...currentValue];
+              }, []);
         }
       }
     ];
@@ -90,7 +91,7 @@ class QueryBuilder {
    * @param {Object} node
    * @return {Object}
    */
-  createRecords(node) {
+  async createRecords(node) {
     const embeddedContent = selectAll('import', node.mdxAST);
 
     let records = [];
@@ -111,10 +112,10 @@ class QueryBuilder {
         tagsToIndex: 'p, li, td, code',
         minCharsLengthPerTag: 20
       };
-      records = this.createRecordsForFrame.execute(node, options);
+      records = await this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
       const options = {};
-      records = this.createRecordsForOpenApi.execute(node, options);
+      records = await this.createRecordsForOpenApi.execute(node, options);
     } else {
       const options = {
         tagsToIndex: 'paragraph text, code, tableCell text',

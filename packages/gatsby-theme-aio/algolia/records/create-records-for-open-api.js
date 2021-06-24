@@ -28,13 +28,8 @@ class CreateRecordsForOpenApi {
    * @param {Object} options
    * @return {Array}
    */
-  execute(node, options) {
-    const promise = this.loadContentByUrl.execute(node.openAPISpec);
-    promise.then(function (value) {
-      console.log('=========================================', node.openAPISpec, value);
-      return [];
-    });
-
+  async execute(node, options) {
+    const content = await this.loadContentByUrl.execute(node.openAPISpec);
     return [];
     // const object = JSON5.parse(text);
 
