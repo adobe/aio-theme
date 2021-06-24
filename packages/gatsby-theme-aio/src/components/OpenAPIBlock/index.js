@@ -34,6 +34,12 @@ const OpenAPIBlock = ({ src }) => {
       setShowProgress(true);
     }
   }, [src]);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setShowProgress(false);
+    }, 2000);
+  }, [])
 
   return (
     <>
@@ -57,7 +63,7 @@ const OpenAPIBlock = ({ src }) => {
         `}>
         <div
           css={css`
-            & {
+            & plop {
               * {
                 font-smoothing: auto !important;
                 -webkit-font-smoothing: auto !important;

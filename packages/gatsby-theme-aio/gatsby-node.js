@@ -16,6 +16,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       fallback: {
+        fs: false,
+        path: require.resolve('path-browserify'),
         https: require.resolve('https-browserify'),
         http: require.resolve('stream-http')
       }
