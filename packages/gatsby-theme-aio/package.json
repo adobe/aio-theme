@@ -29,12 +29,12 @@
     "postinstall": "node scripts/spectrum-css.js"
   },
   "devDependencies": {
-    "gatsby": "^3.0.0",
+    "gatsby": "^3.6.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^3.0.0",
+    "gatsby": "^3.6.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
