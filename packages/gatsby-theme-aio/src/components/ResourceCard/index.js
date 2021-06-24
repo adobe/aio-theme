@@ -53,16 +53,15 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
   }
 
   const href = getElementChild(link).props.href;
-  let blockWidth = '';
   let extraMargin = '';
 
-  if (columns === 1) {
-    blockWidth = `max-width: ${layoutColumns(6)};`;
-  } else if (columns > 3) {
-    blockWidth = 'max-width: var(--spectrum-global-dimension-size-3600);';
-  } else {
-    blockWidth = 'max-width: var(--spectrum-global-dimension-size-4600);';
+  if (columns === 2) {
     extraMargin = alignMapping[counter[columns] % columns];
+  } else if (columns === 3) {
+    const align = counter[columns] % columns;
+    if (align === 0 || align === 1) {
+      extraMargin = alignMapping[align];
+    }
   }
 
   return (
@@ -73,10 +72,10 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           display: ${width === '100%' ? 'block' : 'table-cell'};
           width: ${width.replace('%', 'vw')};
           background: var(--spectrum-global-color-gray-100);
-          padding: var(--spectrum-global-dimension-size-1000) var(--spectrum-global-dimension-size-400);
+          padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-200);
           box-sizing: border-box;
 
-          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+          @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             display: block;
             width: 100%;
           }
@@ -88,14 +87,13 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           css={css`
             display: block;
             margin: auto;
-            ${blockWidth}
+            max-width: ${layoutColumns(4)};
             ${extraMargin}
-  
+
             @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
               width: 100%;
               min-width: 0;
               margin: auto;
-              max-width: ${layoutColumns(6)};
             }
           `}>
           <div
