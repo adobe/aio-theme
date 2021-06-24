@@ -299,7 +299,7 @@ const TextBlock = ({
             )}
           </div>
         </section>
-        {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? (
+        {width === '100%' || (typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0) ? (
           <div aria-hidden="true" />
         ) : null}
       </>

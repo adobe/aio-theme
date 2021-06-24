@@ -75,6 +75,14 @@ When you’re ready, you can ship your plugin to XD users right from within the 
 With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
 
 
+<TextBlock slots="heading, text, buttons" theme="light" isCentered />
+
+### Collaborate better with Content Cloud APIs
+
+With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
+
+* [Learn more](https://adobe.io?aio_internal)
+* [View docs](https://adobe.io)
 
 
 <TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
