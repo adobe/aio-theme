@@ -17,20 +17,14 @@ import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/breadcrumb';
 import { ChevronRightSmall } from '../Icons';
 
-const Breadcrumbs = ({ selectedTopPage, selectedSubPages }) => (
+const Breadcrumbs = ({ pages }) => (
   <nav aria-label="Breadcrumb" role="navigation">
     <ul
       className="spectrum-Breadcrumbs spectrum-Breadcrumbs--compact"
       css={css`
         display: block;
       `}>
-      <li className="spectrum-Breadcrumbs-item">
-        <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={selectedTopPage.href}>
-          {selectedTopPage.title}
-        </GatsbyLink>
-        <ChevronRightSmall className="spectrum-Breadcrumbs-itemSeparator" />
-      </li>
-      {selectedSubPages.map((page, index) => (
+      {pages.map((page, index) => (
         <li className="spectrum-Breadcrumbs-item" key={index}>
           <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
             {page.title}
@@ -43,8 +37,7 @@ const Breadcrumbs = ({ selectedTopPage, selectedSubPages }) => (
 );
 
 Breadcrumbs.propTypes = {
-  selectedTopPage: PropTypes.object,
-  selectedSubPages: PropTypes.array
+  pages: PropTypes.array
 };
 
 export { Breadcrumbs };

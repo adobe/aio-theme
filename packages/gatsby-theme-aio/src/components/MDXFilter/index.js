@@ -23,7 +23,10 @@ import {
   findSelectedTopPage,
   findSelectedPages,
   DESKTOP_SCREEN_WIDTH,
-  SIDENAV_WIDTH
+  SIDENAV_WIDTH,
+  DEFAULT_HOME,
+  rootFix,
+  rootFixPages
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -158,7 +161,10 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
-    const selectedTopPage = findSelectedTopPage(location?.pathname, siteMetadata?.pages);
+    const { home } = siteMetadata;
+    const pathWithRootFix = rootFix(location.pathname);
+    const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
+    const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedPages = findSelectedPages(location?.pathname, siteMetadata?.subPages);
 
     // Remove duplicated levels
@@ -270,10 +276,31 @@ export default ({ children, pageContext, query }) => {
                       css={css`
                         margin-right: var(--spectrum-global-dimension-size-400);
                       `}>
-                      <Breadcrumbs
-                        selectedTopPage={{ ...selectedTopPage, href: withPrefix(selectedTopPage.href) }}
-                        selectedSubPages={selectedSubPages.map((page) => ({ ...page, href: withPrefix(page.href) }))}
-                      />
+                      {home?.hidden !== true && home?.title && home?.href ? (
+                        <Breadcrumbs
+                          pages={[
+                            DEFAULT_HOME,
+                            home,
+                            { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                            ...selectedSubPages.map((page) => ({
+                              ...page,
+                              href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                            }))
+                          ]}
+                        />
+                      ) : (
+                        <Breadcrumbs
+                          pages={[
+                            DEFAULT_HOME,
+                            { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
+                            { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                            ...selectedSubPages.map((page) => ({
+                              ...page,
+                              href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                            }))
+                          ]}
+                        />
+                      )}
                     </div>
                     <div
                       css={css`
