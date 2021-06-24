@@ -220,7 +220,6 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
             grid-template-areas: 'title navigation optional';
             grid-template-columns: minmax(auto, min-content) auto minmax(auto, min-content);
             align-items: center;
-            margin-left: var(--spectrum-global-dimension-size-400);
             margin-right: var(--spectrum-global-dimension-size-200);
             height: 100%;
 
@@ -250,6 +249,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               <div
                 css={css`
                   display: flex;
+                  height: 100%;
                   align-items: center;
                 `}>
                 <div
@@ -272,7 +272,17 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 <a
                   href="/"
                   css={css`
+                    display: flex;
+                    height: 100%;
                     text-decoration: none;
+                    padding-left: var(--spectrum-global-dimension-size-400);
+                    padding-right: var(--spectrum-global-dimension-size-300);
+                    padding-bottom: var(--spectrum-global-dimension-size-25);
+
+                    @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                      padding-left: 0;
+                      padding-right: 0;
+                    }
                   `}>
                   <div
                     css={css`
@@ -292,12 +302,22 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                     <strong
                       className="spectrum-Heading spectrum-Heading--sizeXXS"
                       css={css`
-                        color: black;
-                        font-size: var(--spectrum-global-dimension-size-200);
+                        color: #fa0f00;
+                        font-size: calc(
+                          var(--spectrum-global-dimension-size-200) - var(--spectrum-global-dimension-size-10)
+                        );
                         font-weight: 700;
                         white-space: nowrap;
                       `}>
-                      Adobe I/O
+                      <span
+                        css={css`
+                          @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                            display: none;
+                          }
+                        `}>
+                        Adobe&nbsp;
+                      </span>
+                      Developer
                     </strong>
                   </div>
                 </a>
@@ -306,7 +326,6 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               {hasHome && (
                 <div
                   css={css`
-                    margin-left: var(--spectrum-global-dimension-size-300);
                     height: calc(100% + var(--spectrum-global-dimension-size-10));
                     border-left: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
                     border-right: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
