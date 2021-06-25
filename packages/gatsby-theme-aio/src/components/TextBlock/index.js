@@ -191,6 +191,10 @@ const TextBlock = ({
     };
   }, [columns]);
 
+  if (width !== '100%') {
+    isCentered = true;
+  }
+
   if (isCentered) {
     let blockWidth = '';
     let extraMargin = '';

@@ -1336,12 +1336,12 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 * ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html) 
 ```
 
-**Multiple centered Text Blocks in a row**
+**Multiple Text Blocks in a row**
 
 ![centered text blocks](docs/images/text-block-centered.png)
 
 ```
-<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" />
 
 ![MSFT Teams logo](images/msfteams.png)
 
@@ -1353,7 +1353,7 @@ Easily share Creative Cloud assets and files, and get comment notifications on y
 
 
 
-<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" />
 
 ![JIRA Cloud logo](images/jira.png)
 
@@ -1365,7 +1365,7 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 
 
-<TextBlock slots="image, heading, text, links" width="33%" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" />
 
 ![Slack logo](images/slack.png)
 

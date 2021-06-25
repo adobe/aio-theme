@@ -17,7 +17,7 @@ Adobe products and technologies power them
 
 
 
-<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" />
 
 ![icon 1](images/icon1.png)
 
@@ -28,7 +28,7 @@ Build secure, scalable apps with easy integrations and we'll take care of the st
 * [Explore our APIs](../index.md#discover)
 
 
-<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" />
 
 ![icon 2](images/icon2.png)
 
@@ -39,7 +39,7 @@ UI design is made easy with [Spectrum components](https://spectrum.adobe.com) th
 * [Explore our APIs](/src/pages/index.md)
 
 
-<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, buttons" width="33%" theme="light" />
 
 ![icon 3](images/icon3.png)
 
@@ -98,28 +98,28 @@ Submit your custom app for review. Admins can view, test and approve, and publis
 * ![Adobe Experience Cloud](images/adobe-experiencecloud.png) [Adobe Experience Cloud](https://experiencecloud.adobe.com/)  
 
 
-<TextBlock slots="heading, text" width="25%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="25%" theme="light" />
 
 ### Heading
 
 Text
 
 
-<TextBlock slots="heading, text" width="25%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="25%" theme="light" />
 
 ### Heading
 
 Text
 
 
-<TextBlock slots="heading, text" width="25%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="25%" theme="light" />
 
 ### Heading
 
 Text
 
 
-<TextBlock slots="heading, text" width="25%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="25%" theme="light" />
 
 ### Heading
 

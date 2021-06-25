@@ -85,7 +85,7 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 * [View docs](https://adobe.io)
 
 
-<TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" theme="light" />
 
 ![CC logo](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
@@ -98,7 +98,7 @@ Easily share Creative Cloud assets and files, and get comment notifications on y
 
 
 
-<TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" theme="light" />
 
 ![JIRA Cloud logo](images/jira.png)
 
@@ -111,7 +111,7 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 
 
-<TextBlock slots="image, heading, text, links" width="33%" theme="light" isCentered />
+<TextBlock slots="image, heading, text, links" width="33%" theme="light" />
 
 ![Slack logo](images/trello-mark-blue.svg)
 
@@ -368,14 +368,14 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 
 
-<TextBlock slots="heading, text" width="50%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="50%" theme="light" />
 
 ### Heading
 
 Text
 
 
-<TextBlock slots="heading, text" width="50%" theme="light" isCentered />
+<TextBlock slots="heading, text" width="50%" theme="light" />
 
 ### Heading
 
