@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.1...@adobe/gatsby-theme-aio@3.12.2) (2021-06-25)
+
+
+### Bug Fixes
+
+* center multi TextBlock by default ([4106d12](https://github.com/adobe/gatsby-theme-aio/commit/4106d1256ed8476dd818278184ec5b23c8989246))
+
+
+
+
+
 ## [3.12.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.0...@adobe/gatsby-theme-aio@3.12.1) (2021-06-24)
 
 
