@@ -27,7 +27,7 @@ class QueryBuilder {
   /**
    * @return {Array}
    */
-  build (options = {}) {
+  build(options = {}) {
     const sourceDir = 'src/pages';
     const self = this;
 
@@ -67,24 +67,26 @@ class QueryBuilder {
           distinct: true
         },
         transformer: async ({ data }) => {
-          return data.allMdx.edges
-              .map((edge) => edge.node)
-              .map((node) => {
-                const { frontmatter, ...rest } = node;
+          const nodes = data.allMdx.edges
+            .map((edge) => edge.node)
+            .map((node) => {
+              const { frontmatter, ...rest } = node;
 
-                return {
-                  ...frontmatter,
-                  ...rest
-                };
-              })
-              .map(this.createRecords.bind(this))
-              .reduce((accumulator, currentValue) => {
-                return [...accumulator, ...currentValue];
-              }, []);
+              return {
+                ...frontmatter,
+                ...rest
+              };
+            });
+
+          let records = [];
+          for (const node of nodes) {
+            records = [...records, ...(await self.createRecords(node))];
+          }
+          return records;
         }
       }
     ];
-  };
+  }
 
   /**
    * @private

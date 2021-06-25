@@ -33,8 +33,9 @@ class CreateRecordsForFrame {
   async execute(node, options) {
     const { ...restNodeFields } = node;
 
-    const fileContent = (/^https?:\/\//i.test(node.frameSrc))
-        ? await this.loadContentByUrl.execute(node.frameSrc) : this.loadContentFromCache(node, options);
+    const fileContent = /^https?:\/\//i.test(node.frameSrc)
+      ? await this.loadContentByUrl.execute(node.frameSrc)
+      : this.loadContentFromCache(node, options);
 
     const extractedData = this.htmlExtractor
       .run(fileContent, { cssSelector: options.tagsToIndex })
