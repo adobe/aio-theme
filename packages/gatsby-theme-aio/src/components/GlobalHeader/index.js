@@ -622,7 +622,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               {docs && (
                 <div
                   css={css`
-                    margin-left: var(--spectrum-global-dimension-size-400);
+                    margin-left: var(--spectrum-global-dimension-size-200);
                     white-space: nowrap;
                   `}>
                   <AnchorButton variant="primary" href={withPrefix(docs.href)}>
@@ -630,6 +630,19 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   </AnchorButton>
                 </div>
               )}
+              <div
+                css={css`
+                  display: none;
+                  margin-left: var(--spectrum-global-dimension-size-200);
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    display: block;
+                  }
+                `}>
+                <AnchorButton variant="primary" href="https://console.adobe.io">
+                  Console
+                </AnchorButton>
+              </div>
             </Tabs>
           </div>
           <div
@@ -641,7 +654,14 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
-              <AnchorButton variant="primary" href="https://console.adobe.io">
+              <AnchorButton
+                css={css`
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    display: none;
+                  }
+                `}
+                variant="primary"
+                href="https://console.adobe.io">
                 Console
               </AnchorButton>
 
