@@ -10,44 +10,34 @@
  * governing permissions and limitations under the License.
  */
 
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
-const fs = require('fs');
-const normalizePath = require('normalize-path');
+const CreateRecordsForEmbeddedContent = require('./records/create-records-for-embedded-content');
+const CreateRecordsForFrame = require('./records/create-records-for-frame');
+const CreateRecordsForOpenApi = require('./records/create-records-for-open-api');
+const CreateRecordsForRegularContent = require('./records/create-records-for-regular-content');
 const { selectAll } = require('unist-util-select');
-const { v4: uuidv4 } = require('uuid');
 
 class QueryBuilder {
   constructor() {
-    this.htmlExtractor = new AlgoliaHTMLExtractor();
+    this.createRecordsForRegularContent = new CreateRecordsForRegularContent();
+    this.createRecordsForEmbeddedContent = new CreateRecordsForEmbeddedContent();
+    this.createRecordsForFrame = new CreateRecordsForFrame();
+    this.createRecordsForOpenApi = new CreateRecordsForOpenApi();
   }
 
   /**
    * @return {Array}
    */
-  build = (options = {}) => {
-    this.indexationFromCacheOptions = options.indexationFromCacheOptions
-      ? options.indexationFromCacheOptions
-      : {
-          publicDir: 'public',
-          sourceDir: 'src/pages',
-          cacheFileExtension: 'html',
-          sourceFileExtension: 'md'
-        };
+  build(options = {}) {
+    const sourceDir = 'src/pages';
+    const self = this;
 
-    this.indexationOptions = options.indexationOptions
-      ? options.indexationOptions
-      : {
-          tagsToIndex: 'p, li, td, code',
-          minCharsLengthPerTag: 20,
-          minWordsCountPerPage: 10
-        };
-
-    const graphqlQuery = `
+    return [
+      {
+        query: `
       {
         allMdx(
           filter: {
-            fileAbsolutePath: {regex: "/${this.indexationFromCacheOptions.sourceDir}/"},
-            wordCount: {words: {gt: ${this.indexationOptions.minWordsCountPerPage}}}
+            fileAbsolutePath: {regex: "/${sourceDir}/"}
           }
         ) {
           edges {
@@ -61,6 +51,8 @@ class QueryBuilder {
                 description
                 contributors
                 keywords
+                frameSrc
+                openAPISpec
               }
               slug
               fileAbsolutePath
@@ -69,125 +61,73 @@ class QueryBuilder {
           }
         }
       }
-    `;
-
-    return [
-      {
-        query: graphqlQuery,
+    `,
         settings: {
           attributeForDistinct: 'id',
           distinct: true
         },
-        transformer: ({ data }) => {
-          return data.allMdx.edges
+        transformer: async ({ data }) => {
+          const nodes = data.allMdx.edges
             .map((edge) => edge.node)
-            .map(this.flattenNode)
-            .map(this.createRecords.bind(this))
-            .reduce((accumulator, currentValue) => {
-              return [...accumulator, ...currentValue];
-            }, []);
+            .map((node) => {
+              const { frontmatter, ...rest } = node;
+
+              return {
+                ...frontmatter,
+                ...rest
+              };
+            });
+
+          let records = [];
+          for (const node of nodes) {
+            records = [...records, ...(await self.createRecords(node))];
+          }
+          return records;
         }
       }
     ];
-  };
-
-  /**
-   * @private
-   * @param {Object} node
-   * @return {Object}
-   */
-  flattenNode = (node) => {
-    const { frontmatter, ...rest } = node;
-
-    return {
-      ...frontmatter,
-      ...rest
-    };
-  };
-
-  /**
-   * @private
-   * @param {Object} node
-   * @return {Object}
-   */
-  createRecords = (node) => {
-    const transclusions = selectAll('import', node.mdxAST);
-
-    const records =
-      transclusions.length > 0 ? this.createRecordsBasedOnCache(node) : this.createRecordsBasedOnAST(node);
-
-    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
-
-    return records;
-  };
-
-  /**
-   * @private
-   * @param {Object} node
-   * @return {Array}
-   */
-  createRecordsBasedOnAST(node) {
-    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
-
-    const pageID = objectID;
-
-    // https://mdxjs.com/table-of-components TODO: create map
-    const parsedData = selectAll('paragraph text, code, tableCell text', mdxAST).filter((record) => {
-      return record.value.length >= this.indexationOptions.minCharsLengthPerTag;
-    });
-
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
-    return parsedData.map((record) => {
-      return {
-        objectID: uuidv4(record.value.toString()),
-        title: title === '' ? headings[0]?.value : title,
-        ...restNodeFields,
-        headings: headings.map((heading) => heading.value),
-        content: record.value,
-        slug: slug,
-        pageID: pageID
-      };
-    });
   }
 
   /**
+   * @private
    * @param {Object} node
-   * @return {Array}
+   * @return {Object}
    */
-  createRecordsBasedOnCache(node) {
-    const { fileAbsolutePath, ...restNodeFields } = node;
+  async createRecords(node) {
+    const embeddedContent = selectAll('import', node.mdxAST);
 
-    const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
-      this.indexationFromCacheOptions.sourceDir
-    );
-
-    const cacheFileAbsolutePath =
-      `${siteDirAbsolutePath}${this.indexationFromCacheOptions.publicDir}${sourceFileRelativePath}`.replace(
-        new RegExp(`\.${this.indexationFromCacheOptions.sourceFileExtension}$`),
-        `.${this.indexationFromCacheOptions.cacheFileExtension}`
-      );
-
-    if (!fs.existsSync(cacheFileAbsolutePath)) {
-      throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
+    let records = [];
+    if (embeddedContent.length > 0) {
+      const options = {
+        publicDir: 'public',
+        pagesSourceDir: 'src/pages',
+        cacheFileExtension: 'html',
+        sourceFileExtension: 'md',
+        tagsToIndex: 'p, li, td, code',
+        minCharsLengthPerTag: 20
+      };
+      records = this.createRecordsForEmbeddedContent.execute(node, options);
+    } else if (node.frameSrc) {
+      const options = {
+        pagesSourceDir: 'src/pages',
+        staticSourceDir: 'static',
+        tagsToIndex: 'p, li, td, code',
+        minCharsLengthPerTag: 20
+      };
+      records = await this.createRecordsForFrame.execute(node, options);
+    } else if (node.openAPISpec) {
+      const options = {};
+      records = await this.createRecordsForOpenApi.execute(node, options);
+    } else {
+      const options = {
+        tagsToIndex: 'paragraph text, code, tableCell text',
+        minCharsLengthPerTag: 20
+      };
+      records = this.createRecordsForRegularContent.execute(node, options);
     }
 
-    const fileContent = fs.readFileSync(cacheFileAbsolutePath, 'utf8');
-
-    const extractedData = this.htmlExtractor
-      .run(fileContent, { cssSelector: this.indexationOptions.tagsToIndex })
-      .filter((htmlTag) => htmlTag.content.length >= this.indexationOptions.minCharsLengthPerTag);
-
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
-    return extractedData.map((htmlTag) => ({
-      ...restNodeFields,
-      objectID: htmlTag.objectID,
-      content: htmlTag.content,
-      headings: htmlTag.headings,
-      customRanking: htmlTag.customRanking,
-      internalObjectID: node.objectID
-    }));
+    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+    return records;
   }
 }
 
