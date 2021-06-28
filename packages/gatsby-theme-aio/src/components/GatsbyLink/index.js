@@ -28,9 +28,14 @@ const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
     return <Link to={fixInternalLink(to, location, pathPrefix)} ref={ref} {...props} />;
   }
 
+  // Support external relative links and linked files
   return (
     <a
-      href={pathPrefix && to && to.startsWith(trailingSlashFix(pathPrefix)) ? to.replace(pathPrefix, '') : to}
+      href={
+        to && !to.split('.')[1] && pathPrefix && to.startsWith(trailingSlashFix(pathPrefix))
+          ? to.replace(pathPrefix, '')
+          : to
+      }
       ref={ref}
       {...props}
     />
