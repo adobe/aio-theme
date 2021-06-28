@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.2...@adobe/gatsby-theme-aio@3.13.0) (2021-06-28)
+
+
+### Bug Fixes
+
+* linked files missing path prefix ([5def1fc](https://github.com/adobe/gatsby-theme-aio/commit/5def1fc11b0ee88c74598ab6432bf1545543130c))
+* move console button for mobile layouts ([75a3e09](https://github.com/adobe/gatsby-theme-aio/commit/75a3e09bd30063289cbc162795676a1b433814ae))
+* support internal non folder structured links ([ae492da](https://github.com/adobe/gatsby-theme-aio/commit/ae492da19d3fa9e6481e32a6a8eca8216327f334))
+
+
+### Features
+
+* **DEVSITE-91, DEVSITE-93:** add support of "frame" and "OpenAPI" directive ([#415](https://github.com/adobe/gatsby-theme-aio/issues/415)) ([f3e4f98](https://github.com/adobe/gatsby-theme-aio/commit/f3e4f98b20d690d15eb5c9e157e95793497af8ab))
+
+
+
+
+
 ## [3.12.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.1...@adobe/gatsby-theme-aio@3.12.2) (2021-06-25)
 
 
