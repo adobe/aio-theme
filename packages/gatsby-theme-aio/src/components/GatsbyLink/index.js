@@ -26,6 +26,13 @@ const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
 
   if (isInternalLink(to, location, pages)) {
     return <Link to={fixInternalLink(to, location, pathPrefix)} ref={ref} {...props} />;
+  } else {
+    // Support non folder structured links
+    const fixedTo = `../${to}`;
+
+    if (isInternalLink(fixedTo, location, pages)) {
+      return <Link to={fixInternalLink(fixedTo, location, pathPrefix)} ref={ref} {...props} />;
+    }
   }
 
   // Support external relative links and linked files

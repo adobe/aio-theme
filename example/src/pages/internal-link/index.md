@@ -1,0 +1,1 @@
+[Internal link 2](../internal-link2.md)
