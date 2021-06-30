@@ -108,6 +108,7 @@
     "sharp": "^0.27.2",
     "stream-http": "^3.1.1",
     "styled-components": "^5.2.1",
+    "swagger-ui-react": "^3.51.0",
     "to-arraybuffer": "^1.0.1",
     "unist-util-select": "2.0.0",
     "uuid": "^8.3.2"

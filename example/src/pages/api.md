@@ -1,5 +1,8 @@
 ---
-title: OpenAPI - Adobe Analytics
-description: This is the OpenAPI page of Adobe Analytics
-openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json  
+title: Custom Swagger UI 
+layout: none
 --- 
+
+import Swagger from '../components/Swagger'
+
+<Swagger url="https://raw.githubusercontent.com/AdobeDocs/cis-photoshop-api-docs/main/static/swagger.json"/>
