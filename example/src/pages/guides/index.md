@@ -5,12 +5,14 @@ contributors:
   - https://github.com/simonwex
 ---
 
-# Get Started
+Get Started
+===
 
 To get started with Analytics 2.0 APIs you must first decide whether your application will need
 an OAuth client or a JWT client.
 
-## Authentication
+Authentication
+---
 
 There are multiple type of authentication for authenticating with the analytics APIs. General information
 about authenticating with Adobe's APIs is located here. Specific information related to authenticating

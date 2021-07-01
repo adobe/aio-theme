@@ -47,8 +47,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend ornare pu
 
 <https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4>
 
-Heading 2
----
+#### Lorem ipsum dolor sit amet
 
 <Media slots="video"/>
 
