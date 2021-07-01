@@ -56,8 +56,17 @@ Get API authorization and user access control out of the box.
 
 Everything you need to build a custom cloud app to meet your business needs
 
-[Firefly video introduction](https://www.youtube.com/watch?v=mkgpeWbHrjA)
+<https://www.youtube.com/watch?v=mkgpeWbHrjA>
 
+
+
+<TextBlock slots="video, heading, text" />
+
+<https://images-tv.adobe.com/mpcv3/5158/aa393134-7cf7-4ebb-bfd0-1ced95237d20_1615916599.854x480at800_h264.mp4>
+
+### Introducing Project Firefly
+
+Everything you need to build a custom cloud app to meet your business needs
 
 
 

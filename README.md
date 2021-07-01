@@ -78,6 +78,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Discover Block](#discover-block)
   + [Code Block](#code-block)
   + [Inline Alert Block](#inline-alert-block)
+  + [Media Block](#media-block)
   + [Announcement Block](#announcement-block)
   + [Summary Block](#summary-block)
   + [Title Block](#title-block)
@@ -1226,6 +1227,22 @@ Use `slots` to identify the markdown content:
 
 Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
 
+### Media Block
+
+The Media Block is used to display interactive medias like videos.
+
+![media](docs/images/media-block.png) 
+
+```
+<Media slots="video"/>
+
+<https://www.youtube.com/watch?v=mkgpeWbHrjA> 
+```
+
+Use `slots` to identify the markdown content: 
+
+* `video` (required)  
+
 ### Announcement Block
 
 The Announcement Block goes directly underneath the Hero Block for Product/Platform pages. 
@@ -1405,7 +1422,7 @@ Use `slots` to identify the markdown content:
 * `buttons` (optional)
 * `icons` (optional)
 * `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.      
-* `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`. Supports youtube videos only.
+* `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`.
   
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 

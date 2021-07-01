@@ -13,10 +13,10 @@
 import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
+import { Media } from '../Media';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
-import { YouTube } from 'mdx-embed';
-import { getElementChild, layoutColumns, DESKTOP_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../../utils';
+import { layoutColumns, DESKTOP_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../../utils';
 import classNames from 'classnames';
 
 const counter = {
@@ -25,6 +25,20 @@ const counter = {
   4: 0
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
+
+const mediaCSS = css`
+  & {
+    display: inline;
+    width: ${layoutColumns(6)};
+    box-sizing: border-box;
+    padding: var(--spectrum-global-dimension-size-200);
+
+    @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+      display: block;
+      width: 100%;
+    }
+  }
+`;
 
 const Icons = ({ icons, isCentered }) =>
   icons
@@ -127,39 +141,6 @@ const Links = ({ links, isCentered }) =>
         `
       })
     : null;
-
-const YouTubeVideo = ({ video }) => {
-  let youTubeId = null;
-  if (video) {
-    const link = getElementChild(video);
-    let url = new URL(link.props.href);
-    if (url.hostname.startsWith('youtube.com') || url.hostname.startsWith('www.youtube.com')) {
-      const queryParams = new URLSearchParams(url.search);
-      youTubeId = queryParams.get('v');
-    } else if (url.hostname.startsWith('youtu.be')) {
-      youTubeId = url.pathname.slice(1);
-    }
-  }
-
-  return youTubeId ? (
-    <div
-      css={css`
-        & {
-          display: inline;
-          width: ${layoutColumns(6)};
-          box-sizing: border-box;
-          padding: var(--spectrum-global-dimension-size-200);
-
-          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-            display: block;
-            width: 100%;
-          }
-        }
-      `}>
-      <YouTube youTubeId={youTubeId} />
-    </div>
-  ) : null;
-};
 
 const TextBlock = ({
   className,
@@ -293,14 +274,7 @@ const TextBlock = ({
 
             <Links links={links} isCentered={isCentered} />
 
-            {video && (
-              <div
-                css={css`
-                  margin-top: var(--spectrum-global-dimension-size-400);
-                `}>
-                <YouTubeVideo video={video} />
-              </div>
-            )}
+            <Media css={mediaCSS} video={video} />
           </div>
         </section>
         {width === '100%' || (typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0) ? (
@@ -372,7 +346,7 @@ const TextBlock = ({
                 `
               })}
 
-            <YouTubeVideo video={video} />
+            <Media css={mediaCSS} video={video} />
 
             <div
               css={css`
