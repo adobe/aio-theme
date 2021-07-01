@@ -32,8 +32,13 @@ module.exports = {
         path: 'index.md'
       },
       {
-        title: 'Guides',
-        path: '/guides/index.md'
+        title: 'Docs',
+        menu: [
+          {
+            title: 'Guides',
+            path: '/guides/index.md'
+          }
+        ]
       },
       {
         title: 'APIs',
