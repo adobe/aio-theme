@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.14.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.13.0...@adobe/gatsby-theme-aio@3.14.0) (2021-07-01)
+
+
+### Features
+
+* add Media Block ([f4f6217](https://github.com/adobe/gatsby-theme-aio/commit/f4f6217c55798e5465aa612b448433801cbc711a))
+
+
+
+
+
 # [3.13.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.12.2...@adobe/gatsby-theme-aio@3.13.0) (2021-06-28)
 
 
