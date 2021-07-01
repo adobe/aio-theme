@@ -76,6 +76,8 @@
     "@spectrum-css/vars": "3.0.1",
     "@spectrum-css/well": "3.0.1",
     "algolia-html-extractor": "^0.0.1",
+    "bootprint": "^4.0.4",
+    "bootprint-openapi": "^4.0.4",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
     "elasticlunr": "^0.9.5",
