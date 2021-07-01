@@ -200,7 +200,7 @@ export default ({ children, pageContext, query }) => {
       (hasSideNav || isJsDoc) &&
       tableOfContentsItems &&
       (tableOfContentsItems.length > 1 ||
-        (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 0) ||
+        (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 1) ||
         tableOfContentsItems[0]?.title);
     const isFirstSubPage = selectedPage?.pathname === selectedPageSiblings?.[0]?.pathname;
 

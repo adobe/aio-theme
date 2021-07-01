@@ -96,7 +96,12 @@ const findSubPages = (pathname, pages, subPages) => {
   }
 
   const selectedTopPage = findSelectedTopPage(pathname, pages);
-  return subPages.filter((page) => withPrefix(page.pathname).startsWith(withPrefix(selectedTopPage?.pathname)));
+  return subPages.filter(
+    (page) =>
+      withPrefix(page.pathname).startsWith(withPrefix(selectedTopPage?.pathname)) ||
+      (selectedTopPage?.menu &&
+        selectedTopPage.menu.some((menuPage) => withPrefix(page.pathname).startsWith(withPrefix(menuPage.pathname))))
+  );
 };
 
 const findSelectedPage = (pathname, pages) => {

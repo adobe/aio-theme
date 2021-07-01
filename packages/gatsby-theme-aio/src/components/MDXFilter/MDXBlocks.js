@@ -25,6 +25,7 @@ import { AnnouncementBlock } from '../AnnouncementBlock';
 import { SummaryBlock } from '../SummaryBlock';
 import { ProductCard } from '../ProductCard';
 import { ResourceCard } from '../ResourceCard';
+import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
 
@@ -41,6 +42,7 @@ export const MDXBlocks = {
   SummaryBlock,
   ProductCard,
   ResourceCard,
+  Media,
   JsDocParameters,
   ProductCardGrid
 };
