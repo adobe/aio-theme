@@ -30,17 +30,26 @@ class CreateRecordsForRegularContent {
       return record.value.length >= options.minCharsLengthPerTag;
     });
 
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
     return parsedData.map((record) => {
+      const previousHeadings = selectAll('heading text', mdxAST).filter(
+        (heading) => heading.position.start.line < record.position.end.line
+      );
+      const headings = previousHeadings.map(({ value }) => value);
       return {
         objectID: uuidv4(record.value.toString()),
         title: title === '' ? headings[0]?.value : title,
         ...restNodeFields,
-        headings: headings.map((heading) => heading.value),
+        previousHeadings: headings,
+        heading: headings.slice(-1)[0],
         content: record.value,
         slug: slug,
-        pageID: objectID
+        pageID: objectID,
+        anchor: `#${headings
+          .slice(-1)
+          .toString()
+          ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+          ?.map((s) => s.toLowerCase())
+          .join('-')}`
       };
     });
   }

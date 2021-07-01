@@ -35,46 +35,85 @@ class QueryBuilder {
       {
         query: `
       {
-        allMdx(
-          filter: {
-            fileAbsolutePath: {regex: "/${sourceDir}/"}
-          }
+        allFile(
+          filter: {absolutePath: {regex: "/${sourceDir}/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown", "text/html"]}}}
         ) {
           edges {
             node {
-              objectID: id
-              headings {
-                value
+              ctimeMs
+              modifiedTime(fromNow: true)
+              size
+              prettySize
+              extension
+              childMdx {
+                objectID: id
+                fileAbsolutePath
+                frontmatter {
+                  title
+                  description
+                  contributors
+                  keywords
+                  openAPISpec
+                  frameSrc
+                }
+                headings {
+                  value
+                }
+                wordCount {
+                  words
+                }
+                slug
+                mdxAST
               }
-              frontmatter {
-                title
-                description
-                contributors
-                keywords
-                frameSrc
-                openAPISpec
-              }
-              slug
-              fileAbsolutePath
-              mdxAST
             }
           }
         }
       }
     `,
         settings: {
-          attributeForDistinct: 'id',
-          distinct: true
+          searchableAttributes: [
+            'keywords',
+            'unordered(title)',
+            'unordered(description)',
+            'unordered(headings)',
+            'unordered(content)'
+          ],
+          ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
+          customRanking: ['desc(ctimeMs)', 'desc(size)'],
+          attributesForFaceting: ['keywords'],
+          attributeForDistinct: 'pageID',
+          distinct: true,
+          highlightPreTag: '<mark>',
+          highlightPostTag: '</mark>',
+          hitsPerPage: 20,
+          attributesToSnippet: ['*:80'],
+          attributesToHighlight: ['*'],
+          snippetEllipsisText: '…',
+          restrictHighlightAndSnippetArrays: true,
+          minWordSizefor1Typo: 4,
+          minWordSizefor2Typos: 6,
+          typoTolerance: true,
+          allowTyposOnNumericTokens: false,
+          separatorsToIndex: '+#()[]{}*+-_一,:;<>?@/^|%&~"',
+          minProximity: 2,
+          responseFields: ['*'],
+          maxFacetHits: 10,
         },
-        transformer: async ({ data }) => {
-          const nodes = data.allMdx.edges
+        transformer: async function ({
+          data: {
+            allFile: { edges }
+          }
+        }) {
+          const nodes = edges
             .map((edge) => edge.node)
             .map((node) => {
-              const { frontmatter, ...rest } = node;
+              const { childMdx, ...restFileFields } = node;
+              const { frontmatter, ...restMdxFields } = childMdx;
 
               return {
-                ...frontmatter,
-                ...rest
+                ...restFileFields,
+                ...childMdx.frontmatter,
+                ...restMdxFields
               };
             });
 
@@ -102,7 +141,7 @@ class QueryBuilder {
         publicDir: 'public',
         pagesSourceDir: 'src/pages',
         cacheFileExtension: 'html',
-        sourceFileExtension: 'md',
+        sourceFileExtension: node.extension,
         tagsToIndex: 'p, li, td, code',
         minCharsLengthPerTag: 20
       };
@@ -126,7 +165,8 @@ class QueryBuilder {
       records = this.createRecordsForRegularContent.execute(node, options);
     }
 
-    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+    // console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+    console.log(records);
     return records;
   }
 }

@@ -17,5 +17,5 @@ module.exports = {
     console: [false, true],
     index: [false, false]
   },
-  ALGOLIA_DEFAULT_INDEXING_MODE: 'skip'
+  ALGOLIA_DEFAULT_INDEXING_MODE: 'index'
 };
