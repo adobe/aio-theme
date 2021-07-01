@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.0...@adobe/gatsby-theme-aio@3.14.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* hide empty OnThisPage ([3fa0838](https://github.com/adobe/gatsby-theme-aio/commit/3fa08383431f1078900f49f5e12caff29682993e))
+* show sidenav for selected menus ([8da3af7](https://github.com/adobe/gatsby-theme-aio/commit/8da3af73372186a5ded105534b445944aa59603e))
+
+
+
+
+
 # [3.14.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.13.0...@adobe/gatsby-theme-aio@3.14.0) (2021-07-01)
 
 
