@@ -101,7 +101,7 @@ class QueryBuilder {
       const options = {
         publicDir: 'public',
         pagesSourceDir: 'src/pages',
-        cacheFileExtension: 'html',
+        publicFileExtension: 'html',
         sourceFileExtension: 'md',
         tagsToIndex: 'p, li, td, code',
         minCharsLengthPerTag: 20
