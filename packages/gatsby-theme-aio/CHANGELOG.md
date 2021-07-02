@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.2...@adobe/gatsby-theme-aio@3.14.3) (2021-07-02)
+
+
+### Bug Fixes
+
+* increase space between docs and console buttons ([8f94111](https://github.com/adobe/gatsby-theme-aio/commit/8f94111fd77c48ab441ad98bd36c984acc16a83d))
+* support non md internal links with hash or search params ([80a99d3](https://github.com/adobe/gatsby-theme-aio/commit/80a99d324d52eeff88cef74e115ae03626972b29))
+
+
+
+
+
 ## [3.14.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.1...@adobe/gatsby-theme-aio@3.14.2) (2021-07-02)
 
 
