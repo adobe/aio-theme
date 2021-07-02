@@ -39,7 +39,10 @@ const GatsbyLink = forwardRef(({ to, ...props }, ref) => {
   return (
     <a
       href={
-        to && !to.split('.')[1] && pathPrefix && to.startsWith(trailingSlashFix(pathPrefix))
+        to &&
+        !new URL(to, 'https://example.com').pathname.split('.')[1] &&
+        pathPrefix &&
+        to.startsWith(trailingSlashFix(pathPrefix))
           ? to.replace(pathPrefix, '')
           : to
       }

@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-aio",
-  "version": "3.14.1",
+  "version": "3.14.3",
   "description": "Gatsby theme for building markdown/gdocs powered Adobe I/O sites",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -76,6 +76,8 @@
     "@spectrum-css/vars": "3.0.1",
     "@spectrum-css/well": "3.0.1",
     "algolia-html-extractor": "^0.0.1",
+    "bootprint": "^4.0.4",
+    "bootprint-openapi": "^4.0.4",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
     "elasticlunr": "^0.9.5",

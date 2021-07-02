@@ -11,8 +11,11 @@
  */
 
 const { v4: uuidv4 } = require('uuid');
-const request = require('request');
 const LoadContentByUrl = require('./load-content-by-url');
+const { Bootprint } = require('bootprint');
+const bootprintOpenApi = require('bootprint-openapi');
+const AlgoliaHTMLExtractor = require('algolia-html-extractor');
+const fs = require('fs');
 
 /**
  * Support of "openAPISpec" directive:
@@ -21,6 +24,7 @@ const LoadContentByUrl = require('./load-content-by-url');
 class CreateRecordsForOpenApi {
   constructor() {
     this.loadContentByUrl = new LoadContentByUrl();
+    this.htmlExtractor = new AlgoliaHTMLExtractor();
   }
 
   /**
@@ -29,25 +33,30 @@ class CreateRecordsForOpenApi {
    * @return {Array}
    */
   async execute(node, options) {
-    const content = await this.loadContentByUrl.execute(node.openAPISpec);
-    return [];
-    // const object = JSON5.parse(text);
+    const bootprint = new Bootprint(bootprintOpenApi);
+    await bootprint.run(node.openAPISpec, options.tempDir);
 
-    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
+    const staticFileAbsolutePath = options.tempDir + '/index.html';
+    if (!fs.existsSync(staticFileAbsolutePath)) {
+      throw Error(`Bootprint file resolving error: no such file "${staticFileAbsolutePath}"`);
+    }
 
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
-    return parsedData.map((record) => {
-      return {
-        objectID: uuidv4(record.value.toString()),
-        title: title === '' ? headings[0]?.value : title,
-        ...restNodeFields,
-        headings: headings.map((heading) => heading.value),
-        content: record.value,
-        slug: slug,
-        pageID: objectID
-      };
-    });
+    const fileContent = fs.readFileSync(staticFileAbsolutePath, 'utf8');
+
+    const extractedData = this.htmlExtractor
+      .run(fileContent, { cssSelector: options.tagsToIndex })
+      .filter((htmlTag) => htmlTag.content.length >= options.minCharsLengthPerTag);
+
+    const { ...restNodeFields } = node;
+
+    return extractedData.map((htmlTag) => ({
+      ...restNodeFields,
+      objectID: htmlTag.objectID,
+      content: htmlTag.content,
+      headings: htmlTag.headings,
+      customRanking: htmlTag.customRanking,
+      internalObjectID: node.objectID
+    }));
   }
 }
 module.exports = CreateRecordsForOpenApi;

@@ -24,14 +24,16 @@ const Breadcrumbs = ({ pages }) => (
       css={css`
         display: block;
       `}>
-      {pages.map((page, index) => (
-        <li className="spectrum-Breadcrumbs-item" key={index}>
-          <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
-            {page.title}
-          </GatsbyLink>
-          <ChevronRightSmall className="spectrum-Breadcrumbs-itemSeparator" />
-        </li>
-      ))}
+      {pages.map((page, index) =>
+        page ? (
+          <li className="spectrum-Breadcrumbs-item" key={index}>
+            <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
+              {page.title}
+            </GatsbyLink>
+            <ChevronRightSmall className="spectrum-Breadcrumbs-itemSeparator" />
+          </li>
+        ) : null
+      )}
     </ul>
   </nav>
 );

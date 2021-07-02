@@ -41,9 +41,6 @@ class CreateRecordsForFrame {
       .run(fileContent, { cssSelector: options.tagsToIndex })
       .filter((htmlTag) => htmlTag.content.length >= options.minCharsLengthPerTag);
 
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
-    delete restNodeFields.frameSrc;
     return extractedData.map((htmlTag) => ({
       ...restNodeFields,
       objectID: htmlTag.objectID,
