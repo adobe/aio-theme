@@ -30,8 +30,6 @@ class CreateRecordsForRegularContent {
       return record.value.length >= options.minCharsLengthPerTag;
     });
 
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
     return parsedData.map((record) => {
       return {
         objectID: uuidv4(record.value.toString()),

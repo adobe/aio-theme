@@ -101,7 +101,7 @@ class QueryBuilder {
       const options = {
         publicDir: 'public',
         pagesSourceDir: 'src/pages',
-        cacheFileExtension: 'html',
+        publicFileExtension: 'html',
         sourceFileExtension: 'md',
         tagsToIndex: 'p, li, td, code',
         minCharsLengthPerTag: 20
@@ -116,7 +116,11 @@ class QueryBuilder {
       };
       records = await this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
-      const options = {};
+      const options = {
+        tempDir: './public/bootprint',
+        tagsToIndex: 'p, li, td, code',
+        minCharsLengthPerTag: 20
+      };
       records = await this.createRecordsForOpenApi.execute(node, options);
     } else {
       const options = {
@@ -125,6 +129,8 @@ class QueryBuilder {
       };
       records = this.createRecordsForRegularContent.execute(node, options);
     }
+
+    records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
 
     console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
     return records;

@@ -25,20 +25,22 @@ class CreateRecordsForEmbeddedContent {
     this.htmlExtractor = new AlgoliaHTMLExtractor();
   }
 
-  /**
-   * @param {Object} node
-   * @param {Object} options
-   * @return {Array}
-   */
   execute(node, options) {
     const { fileAbsolutePath, ...restNodeFields } = node;
-
     const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
 
-    const cacheFileAbsolutePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`.replace(
-      new RegExp(`\.${options.sourceFileExtension}$`),
-      `.${options.cacheFileExtension}`
-    );
+    const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
+    const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
+    const publicFileExtension = `.${options.publicFileExtension}`;
+
+    let cacheFileAbsolutePath;
+    const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
+
+    if (isIndexFile) {
+      cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, publicFileExtension);
+    } else {
+      cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
+    }
 
     if (!fs.existsSync(cacheFileAbsolutePath)) {
       throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
@@ -50,8 +52,6 @@ class CreateRecordsForEmbeddedContent {
       .run(fileContent, { cssSelector: options.tagsToIndex })
       .filter((htmlTag) => htmlTag.content.length >= options.minCharsLengthPerTag);
 
-    delete restNodeFields.mdxAST;
-    delete restNodeFields.fileAbsolutePath;
     return extractedData.map((htmlTag) => ({
       ...restNodeFields,
       objectID: htmlTag.objectID,
