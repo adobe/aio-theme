@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.1...@adobe/gatsby-theme-aio@3.14.2) (2021-07-02)
+
+
+### Bug Fixes
+
+* show selected menu in Breadcrumbs ([9b55fc1](https://github.com/adobe/gatsby-theme-aio/commit/9b55fc1d56e37f26769ed72bce9e6d6eb92503a3))
+* show selected menu in GlobalHeader ([b4d8482](https://github.com/adobe/gatsby-theme-aio/commit/b4d84829f20c9319c90e0b609ef3370c2c081f32))
+
+
+
+
+
 ## [3.14.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.0...@adobe/gatsby-theme-aio@3.14.1) (2021-07-01)
 
 
