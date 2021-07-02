@@ -628,7 +628,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               {docs && (
                 <div
                   css={css`
-                    margin-left: var(--spectrum-global-dimension-size-200);
+                    margin-left: var(--spectrum-global-dimension-size-300);
                     white-space: nowrap;
                   `}>
                   <AnchorButton variant="primary" href={withPrefix(docs.href)}>
@@ -639,7 +639,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               <div
                 css={css`
                   display: none;
-                  margin-left: var(--spectrum-global-dimension-size-200);
+                  margin-left: var(--spectrum-global-dimension-size-300);
 
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     display: block;
