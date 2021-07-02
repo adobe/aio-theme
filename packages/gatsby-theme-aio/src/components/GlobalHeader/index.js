@@ -17,6 +17,7 @@ import { withPrefix } from 'gatsby';
 import { GatsbyLink } from '../GatsbyLink';
 import {
   findSelectedTopPage,
+  findSelectedTopPageMenu,
   rootFix,
   rootFixPages,
   getExternalLinkProps,
@@ -527,33 +528,38 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                           `}
                           isOpen={openMenuIndex === i}>
                           <Menu>
-                            {page.menu.map((menu, k) => (
-                              <MenuItem key={k} href={withPrefix(menu.href)}>
-                                {menu.description ? (
-                                  <div
-                                    css={css`
-                                      margin: var(--spectrum-global-dimension-size-100) 0;
-                                    `}>
+                            {page.menu.map((menu, k) => {
+                              const pathWithRootFix = rootFix(location.pathname);
+                              const selectedMenu = findSelectedTopPageMenu(pathWithRootFix, page);
+
+                              return (
+                                <MenuItem key={k} href={withPrefix(menu.href)} isHighlighted={menu === selectedMenu}>
+                                  {menu.description ? (
                                     <div
                                       css={css`
-                                        color: var(--spectrum-global-color-gray-900);
+                                        margin: var(--spectrum-global-dimension-size-100) 0;
                                       `}>
-                                      {menu.title}
+                                      <div
+                                        css={css`
+                                          color: var(--spectrum-global-color-gray-900);
+                                        `}>
+                                        {menu.title}
+                                      </div>
+                                      <div
+                                        className="spectrum-Body spectrum-Body--sizeXS"
+                                        css={css`
+                                          white-space: normal;
+                                          margin-top: var(--spectrum-global-dimension-size-50);
+                                        `}>
+                                        {menu.description}
+                                      </div>
                                     </div>
-                                    <div
-                                      className="spectrum-Body spectrum-Body--sizeXS"
-                                      css={css`
-                                        white-space: normal;
-                                        margin-top: var(--spectrum-global-dimension-size-50);
-                                      `}>
-                                      {menu.description}
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <span>{menu.title}</span>
-                                )}
-                              </MenuItem>
-                            ))}
+                                  ) : (
+                                    <span>{menu.title}</span>
+                                  )}
+                                </MenuItem>
+                              );
+                            })}
                           </Menu>
                         </Popover>
                       </TabsItem>
