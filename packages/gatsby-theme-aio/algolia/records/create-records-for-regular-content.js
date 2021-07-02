@@ -40,16 +40,16 @@ class CreateRecordsForRegularContent {
         title: title === '' ? headings[0]?.value : title,
         ...restNodeFields,
         previousHeadings: headings,
-        heading: headings.slice(-1)[0],
+        contentHeading: headings.slice(-1)[0],
         content: record.value,
         slug: slug,
-        pageID: objectID,
         anchor: `#${headings
           .slice(-1)
           .toString()
           ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
           ?.map((s) => s.toLowerCase())
-          .join('-')}`
+          .join('-')}`,
+        pageID: objectID,
       };
     });
   }

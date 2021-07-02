@@ -34,42 +34,42 @@ class QueryBuilder {
     return [
       {
         query: `
-      {
-        allFile(
-          filter: {absolutePath: {regex: "/${sourceDir}/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown", "text/html"]}}}
-        ) {
-          edges {
-            node {
-              ctimeMs
-              modifiedTime(fromNow: true)
-              size
-              prettySize
-              extension
-              childMdx {
-                objectID: id
-                fileAbsolutePath
-                frontmatter {
-                  title
-                  description
-                  contributors
-                  keywords
-                  openAPISpec
-                  frameSrc
+        {
+          allFile(
+            filter: {absolutePath: {regex: "/${sourceDir}/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown"]}}}
+          ) {
+            edges {
+              node {
+                ctimeMs
+                modifiedTime(fromNow: true)
+                size
+                prettySize
+                extension
+                childMdx {
+                  objectID: id
+                  fileAbsolutePath
+                  frontmatter {
+                    title
+                    description
+                    contributors
+                    keywords
+                    openAPISpec
+                    frameSrc
+                  }
+                  headings {
+                    value
+                  }
+                  wordCount {
+                    words
+                  }
+                  slug
+                  mdxAST
                 }
-                headings {
-                  value
-                }
-                wordCount {
-                  words
-                }
-                slug
-                mdxAST
               }
             }
           }
         }
-      }
-    `,
+      `,
         settings: {
           searchableAttributes: [
             'keywords',
