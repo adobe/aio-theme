@@ -31,14 +31,25 @@ class CreateRecordsForRegularContent {
     });
 
     return parsedData.map((record) => {
+      const previousHeadings = selectAll('heading text', mdxAST).filter(
+        (heading) => heading.position.start.line < record.position.end.line
+      );
+      const headings = previousHeadings.map(({ value }) => value);
       return {
         objectID: uuidv4(record.value.toString()),
         title: title === '' ? headings[0]?.value : title,
         ...restNodeFields,
-        headings: headings.map((heading) => heading.value),
+        previousHeadings: headings,
+        contentHeading: headings.slice(-1)[0],
         content: record.value,
         slug: slug,
-        pageID: objectID
+        anchor: `#${headings
+          .slice(-1)
+          .toString()
+          ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+          ?.map((s) => s.toLowerCase())
+          .join('-')}`,
+        pageID: objectID,
       };
     });
   }
