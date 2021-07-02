@@ -25,7 +25,8 @@ import {
   DEFAULT_HOME,
   findSelectedTopPage,
   rootFixPages,
-  rootFix
+  rootFix,
+  findSelectedTopPageMenu
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -156,6 +157,7 @@ const Hero = ({
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
+    const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
 
     return (
       <section
@@ -214,7 +216,8 @@ const Hero = ({
                 pages={[
                   DEFAULT_HOME,
                   home,
-                  { ...selectedTopPage, href: withPrefix(selectedTopPage.href.replace('/_ROOT_/', '/')) }
+                  { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                  selectedTopPageMenu && { ...selectedTopPageMenu, href: withPrefix(selectedTopPageMenu.href) }
                 ]}
               />
             )}

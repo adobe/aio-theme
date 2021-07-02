@@ -21,6 +21,7 @@ import {
   findSelectedPageSiblings,
   findSelectedPageNextPrev,
   findSelectedTopPage,
+  findSelectedTopPageMenu,
   findSelectedPages,
   DESKTOP_SCREEN_WIDTH,
   SIDENAV_WIDTH,
@@ -165,6 +166,7 @@ export default ({ children, pageContext, query }) => {
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
+    const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
     const selectedPages = findSelectedPages(location?.pathname, siteMetadata?.subPages);
 
     // Remove duplicated levels
@@ -282,6 +284,10 @@ export default ({ children, pageContext, query }) => {
                             DEFAULT_HOME,
                             home,
                             { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                            selectedTopPageMenu && {
+                              ...selectedTopPageMenu,
+                              href: withPrefix(selectedTopPageMenu.href)
+                            },
                             ...selectedSubPages.map((page) => ({
                               ...page,
                               href: withPrefix(page.href.replace('/_ROOT_/', '/'))
@@ -294,6 +300,10 @@ export default ({ children, pageContext, query }) => {
                             DEFAULT_HOME,
                             { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
                             { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                            selectedTopPageMenu && {
+                              ...selectedTopPageMenu,
+                              href: withPrefix(selectedTopPageMenu.href)
+                            },
                             ...selectedSubPages.map((page) => ({
                               ...page,
                               href: withPrefix(page.href.replace('/_ROOT_/', '/'))

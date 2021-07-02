@@ -84,11 +84,10 @@ const layoutColumns = (columns, gutters = []) =>
   })`;
 
 const findSelectedTopPage = (pathname, pages) =>
-  pages.find(
-    (page) =>
-      pathname.startsWith(withPrefix(page.pathname)) ||
-      (page.menu && page.menu.some((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname))))
-  );
+  pages.find((page) => pathname.startsWith(withPrefix(page.pathname)) || findSelectedTopPageMenu(pathname, page));
+
+const findSelectedTopPageMenu = (pathname, page) =>
+  page?.menu && page.menu.find((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname)));
 
 const findSubPages = (pathname, pages, subPages) => {
   if (subPages == null) {
@@ -100,7 +99,9 @@ const findSubPages = (pathname, pages, subPages) => {
     (page) =>
       withPrefix(page.pathname).startsWith(withPrefix(selectedTopPage?.pathname)) ||
       (selectedTopPage?.menu &&
-        selectedTopPage.menu.some((menuPage) => withPrefix(page.pathname).startsWith(withPrefix(menuPage.pathname))))
+        selectedTopPage.menu
+          .filter((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname)))
+          .find((menuPage) => withPrefix(page.pathname).startsWith(withPrefix(menuPage.pathname))))
   );
 };
 
@@ -273,6 +274,7 @@ export {
   rootFixPages,
   layoutColumns,
   findSelectedTopPage,
+  findSelectedTopPageMenu,
   findSubPages,
   findSelectedPage,
   findSelectedPages,
