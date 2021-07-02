@@ -51,7 +51,7 @@ Provides configuration guidance and best practices for the /segments endpoint.
 
 <DiscoverBlock slots="link, text"/>
 
-[Reporting Guide API](guides/reporting_api/)
+[Reporting Guide API](/apis/experiencecloud/analytics/docs#!AdobeDocs/analytics-2.0-apis/master/migration-guide.md)
 
 Provides configuration guidance and best practices for the /reports endpoint.
 
