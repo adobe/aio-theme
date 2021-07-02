@@ -86,7 +86,7 @@ class QueryBuilder {
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
-          attributesToSnippet: ['*:80'],
+          //attributesToSnippet: ['description:80'],
           attributesToHighlight: ['*'],
           snippetEllipsisText: '…',
           restrictHighlightAndSnippetArrays: true,
