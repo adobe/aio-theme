@@ -37,7 +37,7 @@ class CreateRecordsForRegularContent {
       const headings = previousHeadings.map(({ value }) => value);
       return {
         objectID: uuidv4(record.value.toString()),
-        title: title === '' || title == null ? headings[0]?.value : title,
+        title: (title === '' || title == null) ? headings[0]?.value : title,
         ...restNodeFields,
         previousHeadings: headings,
         contentHeading: headings.slice(-1)[0],

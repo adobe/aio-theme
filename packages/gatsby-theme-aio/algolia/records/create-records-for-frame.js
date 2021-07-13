@@ -43,7 +43,7 @@ class CreateRecordsForFrame {
 
     return extractedData.map((htmlTag) => ({
       objectID: htmlTag.objectID,
-      title: title === '' || title == null ? htmlTag.headings[0]?.value : title,
+      title: (title === '' || title == null) ? headings[0]?.value : title,
       ...restNodeFields,
       previousHeadings: htmlTag.headings,
       contentHeading: htmlTag.headings.slice(-1)[0],
