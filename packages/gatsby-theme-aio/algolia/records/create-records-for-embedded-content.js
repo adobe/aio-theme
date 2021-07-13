@@ -58,7 +58,7 @@ class CreateRecordsForEmbeddedContent {
       content: htmlTag.content,
       headings: htmlTag.headings,
       customRanking: htmlTag.customRanking,
-      internalObjectID: node.objectID
+      pageID: node.objectID
     }));
   }
 }
