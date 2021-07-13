@@ -23,7 +23,7 @@ class CreateRecordsForRegularContent {
    * @return {Array}
    */
   execute(node, options) {
-    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
+    const { mdxAST, objectID, title, slug, headings, ...restNodeFields } = node;
 
     // https://mdxjs.com/table-of-components
     const parsedData = selectAll(options.tagsToIndex, mdxAST).filter((record) => {
@@ -37,7 +37,7 @@ class CreateRecordsForRegularContent {
       const headings = previousHeadings.map(({ value }) => value);
       return {
         objectID: uuidv4(record.value.toString()),
-        title: title === '' ? headings[0]?.value : title,
+        title: title === '' || title == null ? headings[0]?.value : title,
         ...restNodeFields,
         previousHeadings: headings,
         contentHeading: headings.slice(-1)[0],
@@ -49,7 +49,7 @@ class CreateRecordsForRegularContent {
           ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
           ?.map((s) => s.toLowerCase())
           .join('-')}`,
-        pageID: objectID,
+        pageID: objectID
       };
     });
   }

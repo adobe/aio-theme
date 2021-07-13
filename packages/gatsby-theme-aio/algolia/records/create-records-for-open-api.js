@@ -47,15 +47,24 @@ class CreateRecordsForOpenApi {
       .run(fileContent, { cssSelector: options.tagsToIndex })
       .filter((htmlTag) => htmlTag.content.length >= options.minCharsLengthPerTag);
 
-    const { ...restNodeFields } = node;
+    const { objectID, title, slug, headings, ...restNodeFields } = node;
 
     return extractedData.map((htmlTag) => ({
-      ...restNodeFields,
       objectID: htmlTag.objectID,
+      title: title === '' || title == null ? htmlTag.headings[0]?.value : title,
+      ...restNodeFields,
+      previousHeadings: htmlTag.headings,
+      contentHeading: htmlTag.headings.slice(-1)[0],
       content: htmlTag.content,
-      headings: htmlTag.headings,
+      slug: slug,
+      anchor: `#${headings
+        .slice(-1)
+        .toString()
+        ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+        ?.map((s) => s.toLowerCase())
+        .join('-')}`,
       customRanking: htmlTag.customRanking,
-      pageID: node.objectID
+      pageID: objectID
     }));
   }
 }
