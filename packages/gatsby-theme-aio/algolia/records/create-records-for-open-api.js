@@ -57,7 +57,7 @@ class CreateRecordsForOpenApi {
       contentHeading: htmlTag.headings.slice(-1)[0],
       content: htmlTag.content,
       slug: slug,
-      anchor: `#${headings
+      anchor: `#${htmlTag.headings
         .slice(-1)
         .toString()
         ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
