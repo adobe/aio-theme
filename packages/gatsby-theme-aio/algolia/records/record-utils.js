@@ -7,11 +7,11 @@ const createRawRecords = (node, options, fileContent = null) => {
   if (fileContent != null) {
     return htmlExtractor
       .run(fileContent, { cssSelector: options.tagsToIndex })
-      .filter(record => record.content.length >= options.minCharsLengthPerTag);
+      .filter((record) => record.content.length >= options.minCharsLengthPerTag);
   } else {
     // https://mdxjs.com/table-of-components
     return selectAll(options.tagsToIndex, node.mdxAST).filter(
-      record => record.value.length >= options.minCharsLengthPerTag
+      (record) => record.value.length >= options.minCharsLengthPerTag
     );
   }
 };
@@ -19,11 +19,11 @@ const createRawRecords = (node, options, fileContent = null) => {
 const createAlgoliaRecords = (node, records) => {
   let { mdxAST, objectID, title, slug, headings, wordCount, ...restNodeFields } = node;
 
-  return records.map(record => ({
+  return records.map((record) => ({
     objectID: record.objectID ?? uuidv4(record.value.toString()),
     title: getTitle(node),
     ...restNodeFields,
-    // headings: headings.map((heading) => heading.value),
+    // TODO: Rethinking getHeadings() and use node.headings instead
     previousHeadings: record.html ? record.headings : getHeadings(node, record),
     contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
     content: record.content ?? record.value,
@@ -37,19 +37,19 @@ const createAlgoliaRecords = (node, records) => {
 
 const getHeadings = (node, record) => {
   let filteredHeadings = selectAll('heading text', node.mdxAST)
-    .filter(heading => heading.position.start.line < record.position.end.line)
-    .filter(heading => heading.value !== 'Request' && heading.value !== 'Response'); // Removes jsdoc code tabs
+    .filter((heading) => heading.position.start.line < record.position.end.line)
+    .filter((heading) => heading.value !== 'Request' && heading.value !== 'Response'); // Removes jsdoc code tabs
   return filteredHeadings.map(({ value }) => value);
 };
 
-const getAnchorLink = linkHeadings =>
-    `#${linkHeadings
-        .slice(-1)
-        .toString()
-        ?.match(/[a-zA-Z]\w+/g)
-        ?.map((s) => s.toLowerCase())
-        .join('-')}`;
+const getAnchorLink = (linkHeadings) =>
+  `#${linkHeadings
+    .slice(-1)
+    .toString()
+    ?.match(/[a-zA-Z]\w+/g)
+    ?.map((s) => s.toLowerCase())
+    .join('-')}`;
 
-const getTitle = node => node.title === '' || node.title == null ? node.headings[0]?.value : node.title;
+const getTitle = (node) => (node.title === '' || node.title == null ? node.headings[0]?.value : node.title);
 
 module.exports = { createAlgoliaRecords, createRawRecords };
