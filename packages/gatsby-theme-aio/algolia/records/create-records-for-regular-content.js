@@ -10,48 +10,18 @@
  * governing permissions and limitations under the License.
  */
 
-const { selectAll } = require('unist-util-select');
-const { v4: uuidv4 } = require('uuid');
+const { createAlgoliaRecords, createRawRecords } = require('./record-utils');
 
 /**
  * Parse records from mdxAST
  */
 class CreateRecordsForRegularContent {
-  /**
-   * @param {Object} node
-   * @param {Object} options
-   * @return {Array}
-   */
   execute(node, options) {
-    const { mdxAST, objectID, slug, title, headings, ...restNodeFields } = node;
+    const mdxRecords = createRawRecords(node, options);
+    const algoliaRecords = createAlgoliaRecords(node, mdxRecords);
 
-    // https://mdxjs.com/table-of-components
-    const parsedData = selectAll(options.tagsToIndex, mdxAST).filter((record) => {
-      return record.value.length >= options.minCharsLengthPerTag;
-    });
-
-    return parsedData.map((record) => {
-      const previousHeadings = selectAll('heading text', mdxAST).filter(
-        (heading) => heading.position.start.line < record.position.end.line
-      );
-      const headings = previousHeadings.map(({ value }) => value);
-      return {
-        objectID: uuidv4(record.value.toString()),
-        title: title === '' ? headings[0]?.value : title,
-        ...restNodeFields,
-        previousHeadings: headings,
-        contentHeading: headings.slice(-1)[0],
-        content: record.value,
-        slug: slug,
-        anchor: `#${headings
-          .slice(-1)
-          .toString()
-          ?.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-          ?.map((s) => s.toLowerCase())
-          .join('-')}`,
-        pageID: objectID,
-      };
-    });
+    return algoliaRecords;
   }
 }
+
 module.exports = CreateRecordsForRegularContent;

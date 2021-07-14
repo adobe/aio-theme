@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const LoadContentByUrl = require('./load-content-by-url');
 const fs = require('fs');
 const normalizePath = require('normalize-path');
+const { createRawRecords, createAlgoliaRecords } = require('./record-utils');
 
 /**
  * Support of "frameSrc" directive:
@@ -22,40 +22,18 @@ const normalizePath = require('normalize-path');
 class CreateRecordsForFrame {
   constructor(options = {}) {
     this.loadContentByUrl = new LoadContentByUrl();
-    this.htmlExtractor = new AlgoliaHTMLExtractor();
   }
 
-  /**
-   * @param {Object} node
-   * @param {Object} options
-   * @return {Array}
-   */
   async execute(node, options) {
-    const { ...restNodeFields } = node;
-
     const fileContent = /^https?:\/\//i.test(node.frameSrc)
       ? await this.loadContentByUrl.execute(node.frameSrc)
       : this.loadContentFromCache(node, options);
+    const htmlRecords = createRawRecords(node, options, fileContent);
+    const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
 
-    const extractedData = this.htmlExtractor
-      .run(fileContent, { cssSelector: options.tagsToIndex })
-      .filter((htmlTag) => htmlTag.content.length >= options.minCharsLengthPerTag);
-
-    return extractedData.map((htmlTag) => ({
-      ...restNodeFields,
-      objectID: htmlTag.objectID,
-      content: htmlTag.content,
-      headings: htmlTag.headings,
-      customRanking: htmlTag.customRanking,
-      internalObjectID: node.objectID
-    }));
+    return algoliaRecords;
   }
 
-  /**
-   * @param {Object} node
-   * @param {Object} options
-   * @return {String}
-   */
   loadContentFromCache(node, options) {
     const { fileAbsolutePath } = node;
     const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
@@ -68,4 +46,5 @@ class CreateRecordsForFrame {
     return fs.readFileSync(staticFileAbsolutePath, 'utf8');
   }
 }
+
 module.exports = CreateRecordsForFrame;
