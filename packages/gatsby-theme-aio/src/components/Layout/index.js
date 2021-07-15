@@ -212,12 +212,11 @@ export default ({ children, pageContext, location }) => {
             }
           }
         }
-        ParliamentSearchIndex
       }
     `
   );
 
-  const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
+  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
   const { siteMetadata, pathPrefix } = site;
   const { home, versions, pages, subPages, docs } = siteMetadata;
 
@@ -469,7 +468,6 @@ export default ({ children, pageContext, location }) => {
                   <SideNav
                     selectedPages={sideNavSelectedPages}
                     selectedSubPages={sideNavSelectedSubPages}
-                    searchIndex={ParliamentSearchIndex}
                     setShowSideNav={setShowSideNav}
                   />
                 )}
