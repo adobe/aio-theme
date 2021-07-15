@@ -32,7 +32,8 @@ export const SearchField = ({ className, onClear, onChange, onSubmit }) => {
       <div
         className={classNames('spectrum-Textfield', { 'is-focused': isFocused })}
         css={css`
-          min-width: auto;
+          margin: 0 auto;
+          min-width: 540px;
           width: 100%;
         `}>
         <Magnify className="spectrum-Textfield-icon" />
@@ -51,7 +52,7 @@ export const SearchField = ({ className, onClear, onChange, onSubmit }) => {
           type="search"
           placeholder="Search"
           className="spectrum-Textfield-input spectrum-Search-input"
-          autoComplete="off"
+          autoComplete="on"
         />
       </div>
       {showClear && (

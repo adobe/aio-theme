@@ -23,7 +23,7 @@ const createAlgoliaRecords = (node, records) => {
     objectID: record.objectID ?? uuidv4(record.value.toString()),
     title: getTitle(node),
     ...restNodeFields,
-    // TODO: Rethinking getHeadings() and use node.headings instead
+    // TODO: Rethink getHeadings() and use node.headings instead
     previousHeadings: record.html ? record.headings : getHeadings(node, record),
     contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
     content: record.content ?? record.value,

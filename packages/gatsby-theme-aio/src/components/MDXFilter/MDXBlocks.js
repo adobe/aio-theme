@@ -28,6 +28,8 @@ import { ResourceCard } from '../ResourceCard';
 import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
+import { SearchField } from '../SearchField';
+import { SearchPage } from '../SearchPage';
 
 export const MDXBlocks = {
   Hero,
@@ -44,5 +46,7 @@ export const MDXBlocks = {
   ResourceCard,
   Media,
   JsDocParameters,
-  ProductCardGrid
+  ProductCardGrid,
+  SearchField,
+  SearchPage
 };
