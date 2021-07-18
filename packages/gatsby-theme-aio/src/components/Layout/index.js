@@ -159,9 +159,16 @@ export default ({ children, pageContext, location }) => {
             path
           }
         }
+        github {
+          repository
+          root
+          branch
+        }
         site {
           pathPrefix
           siteMetadata {
+            title
+            description
             home {
               title
               path
@@ -216,7 +223,7 @@ export default ({ children, pageContext, location }) => {
     `
   );
 
-  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
+  const { allMdx, allSitePage, site, github, allGithub, allGithubContributors } = data;
   const { siteMetadata, pathPrefix } = site;
   const { home, versions, pages, subPages, docs } = siteMetadata;
 
@@ -288,11 +295,11 @@ export default ({ children, pageContext, location }) => {
             #${layoutId} {
               grid-template-columns: 0 auto;
             }
-            
+
             #${sideNavId} {
               display: none !important;
             }
-            
+
             .gatsby-resp-image-image {
               opacity: 1 !important;
             }
@@ -392,7 +399,8 @@ export default ({ children, pageContext, location }) => {
           allSitePage,
           allMdx,
           allGithub,
-          allGithubContributors
+          allGithubContributors,
+          github
         }}>
         <SEO title={frontMatter?.title} description={frontMatter?.description} />
         <div
@@ -446,6 +454,7 @@ export default ({ children, pageContext, location }) => {
                   toggleSideNav={() => {
                     toggleSideNav(setShowSideNav);
                   }}
+                  github={github}
                 />
               </div>
               <div

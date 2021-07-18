@@ -12,6 +12,8 @@
 
 module.exports = {
   siteMetadata: {
+    title: "Example Site",
+    description: "This is an example site for basic testing of the gatsby-theme-aio.",
     home: {
       title: 'Home',
       path: '/home/?plop=plip#foo'

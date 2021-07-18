@@ -27,6 +27,7 @@ import {
 } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
+import { SearchButton } from '../SearchButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
 import { Adobe, ChevronDown, TripleGripper } from '../Icons';
@@ -74,7 +75,18 @@ const getAvatar = async (userId) => {
   }
 };
 
-const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
+const GlobalHeader = ({
+  ims,
+  isLoadingIms,
+  home,
+  versions,
+  pages,
+  docs,
+  location,
+  toggleSideNav,
+  hasSideNav,
+  github
+}) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
@@ -660,6 +672,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
+              <SearchButton href="/search/" github={github} />
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -803,7 +816,8 @@ GlobalHeader.propTypes = {
   docs: PropTypes.object,
   location: PropTypes.object,
   toggleSideNav: PropTypes.func,
-  hasSideNav: PropTypes.bool
+  hasSideNav: PropTypes.bool,
+  github: PropTypes.object
 };
 
 export { GlobalHeader };

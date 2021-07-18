@@ -1,2 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { SearchPage } from '../components/SearchPage/index';
+
+export default function Search() {
+  return <SearchPage />;
+}
