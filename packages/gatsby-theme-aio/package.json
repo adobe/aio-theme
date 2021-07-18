@@ -28,13 +28,6 @@
   "scripts": {
     "postinstall": "node scripts/spectrum-css.js"
   },
-  "devDependencies": {
-    "dotenv": "^10.0.0",
-    "gatsby": "^3.6.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "prettier": "1.19.1"
-  },
   "peerDependencies": {
     "gatsby": "^3.6.0",
     "react": "^17.0.0",
@@ -89,6 +82,7 @@
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
     "dotenv": "^10.0.0",
+    "gatsby": "^3.6.0",
     "gatsby-plugin-algolia": "^0.22.0",
     "gatsby-plugin-emotion": "^6.9.0",
     "gatsby-plugin-layout": "^2.9.0",
@@ -111,10 +105,12 @@
     "preact-render-to-string": "^5.1.19",
     "prism-react-renderer": "^1.2.1",
     "prop-types": "^15.7.2",
+    "qs": "^6.10.1",
+    "react": "^17.0.0",
     "react-autosuggest": "10.1.0",
+    "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-id-generator": "^3.0.1",
-    "react-dom": "17.0.2",
     "react-instantsearch-dom": "6.12.0",
     "react-scripts": "4.0.3",
     "redoc": "2.0.0-rc.38",
