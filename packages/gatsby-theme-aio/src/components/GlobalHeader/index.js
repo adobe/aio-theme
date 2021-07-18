@@ -64,7 +64,7 @@ const getSelectedTabIndex = (location, pages) => {
   return selectedIndex;
 };
 
-const getAvatar = async (userId) => {
+const getAvatar = async userId => {
   try {
     const req = await fetch(`https://cc-api-behance.adobe.io/v2/users/${userId}?api_key=SUSI2`);
     const res = await req.json();
@@ -107,7 +107,7 @@ const GlobalHeader = ({
   const profilePopoverId = nextId();
   const hasHome = home?.hidden !== true;
 
-  const positionSelectedTabIndicator = (index) => {
+  const positionSelectedTabIndicator = index => {
     const selectedTab = pages[index].tabRef;
 
     if (selectedTab) {
@@ -163,7 +163,7 @@ const GlobalHeader = ({
       menuRef.current.style.top = `${top}px`;
       menuRef.current.style.position = 'fixed';
     } else {
-      pages.forEach((page) => {
+      pages.forEach(page => {
         const menuRef = page.menuRef;
         if (menuRef) {
           // Wait for animation to finish
@@ -177,7 +177,7 @@ const GlobalHeader = ({
 
   useEffect(() => {
     // Clicking outside of menu should close menu
-    const onClick = (event) => {
+    const onClick = event => {
       if (versionPopoverRef.current && !versionPopoverRef.current.contains(event.target)) {
         setOpenVersion(false);
       }
@@ -186,7 +186,7 @@ const GlobalHeader = ({
         setOpenProfile(false);
       }
 
-      pages.some((page) => {
+      pages.some(page => {
         if (page?.menuRef?.current && !page.menuRef.current.contains(event.target)) {
           setOpenMenuIndex(-1);
         }
@@ -467,11 +467,11 @@ const GlobalHeader = ({
                 const isSelectedTab = selectedTabIndex === i;
                 const menuPopoverId = nextId();
 
-                const setTabRef = (element) => {
+                const setTabRef = element => {
                   page.tabRef = { current: element };
                 };
 
-                const setTabMenuRef = (element) => {
+                const setTabMenuRef = element => {
                   page.menuRef = { current: element };
                 };
 
@@ -490,7 +490,7 @@ const GlobalHeader = ({
                       <TabsItem
                         css={css`
                           ${openMenuIndex === i &&
-                          `
+                            `
                           &:after {
                             content: '';
                             position: absolute;
@@ -506,7 +506,7 @@ const GlobalHeader = ({
                         ref={setTabRef}
                         selected={isSelectedTab}
                         aria-controls={menuPopoverId}
-                        onClick={(event) => {
+                        onClick={event => {
                           event.stopImmediatePropagation();
 
                           setOpenVersion(false);
@@ -531,8 +531,8 @@ const GlobalHeader = ({
                             margin-top: var(--spectrum-global-dimension-size-25);
                             border-top-left-radius: 0;
                             border-top-right-radius: 0;
-                            ${page.menu.some((menu) => menu.description) &&
-                            `width: var(--spectrum-global-dimension-size-2400);`}
+                            ${page.menu.some(menu => menu.description) &&
+                              `width: var(--spectrum-global-dimension-size-2400);`}
 
                             @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                               margin-top: calc(-1 * var(--spectrum-global-dimension-size-40));
@@ -586,12 +586,12 @@ const GlobalHeader = ({
                           isQuiet
                           isOpen={openVersion}
                           aria-controls={versionPopoverId}
-                          onClick={(event) => {
+                          onClick={event => {
                             event.stopImmediatePropagation();
 
                             setOpenMenuIndex(-1);
                             setOpenProfile(false);
-                            setOpenVersion((open) => !open);
+                            setOpenVersion(open => !open);
                           }}>
                           {versions.find(({ selected }) => selected)?.title}
                         </PickerButton>
@@ -672,7 +672,7 @@ const GlobalHeader = ({
               css={css`
                 display: flex;
               `}>
-              <SearchButton href="/search/" github={github} />
+              <SearchButton href={withPrefix('/search/')} github={github} />
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -712,12 +712,12 @@ const GlobalHeader = ({
                     <button
                       aria-label="Profile"
                       aria-controls={profilePopoverId}
-                      onClick={(event) => {
+                      onClick={event => {
                         event.stopImmediatePropagation();
 
                         setOpenVersion(false);
                         setOpenMenuIndex(-1);
-                        setOpenProfile((open) => !open);
+                        setOpenProfile(open => !open);
                       }}
                       css={css`
                         display: block;
