@@ -19,7 +19,6 @@ import { Magnify } from '../Icons';
 import { css } from '@emotion/react';
 
 const SearchButton = ({ href, github, ...props }) => {
-  console.log('Repository', github.repository);
   return (
     <div
       css={css`
