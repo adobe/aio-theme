@@ -4,23 +4,23 @@ A [Gatsby Theme](https://gatsbyjs.org/docs/themes) for building markdown/gdocs p
 
 **Why Gatsby ?**
 
-For many reasons : 
-* Static site 
-* Single Page Application  
+For many reasons :
+* Static site
+* Single Page Application
 * React Server Side Rendered at build time
 * Blazing fast
 * Large and active community
 * Huge ecosystem of plugins
 * Open source
 
-and more ... see [Why Gatsby](https://www.gatsbyjs.com/why-gatsby/).    
+and more ... see [Why Gatsby](https://www.gatsbyjs.com/why-gatsby/).
 
 **Why Gatsby theme ?**
 
 [Gatsby themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow Gatsby site functionality to be packaged as a standalone product for others to easily reuse.
 Using a theme, all of your default configuration lives in an npm package.
 
-**View the Gatsby site templates using the Adobe I/O Gatsby Theme:** 
+**View the Gatsby site templates using the Adobe I/O Gatsby Theme:**
 
 <details>
   <summary>Documentation template</summary>
@@ -65,7 +65,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Adding a Path Prefix](#adding-a-path-prefix)
 * [Deploying the Gatsby site](#deploying-the-gatsby-site)
   + [Preview on GitHub Pages](#preview-on-github-pages)
-  + [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites) 
+  + [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
   + [Metadata with Front matter](#metadata-with-front-matter)
   + [OpenAPI](#openapi)
@@ -103,7 +103,7 @@ This section will help you get started building a Gatsby site with the Adobe I/O
 **Pre-requisites**
 
 * Install [Node.js LTS](https://nodejs.org/en/download/)
-* Install a package manager like [npm](https://docs.npmjs.com/cli/npm) 
+* Install a package manager like [npm](https://docs.npmjs.com/cli/npm)
 
 ### Using GitHub repository templates
 
@@ -120,7 +120,7 @@ First install the Adobe I/O CLI via the Terminal
 npm install -g @adobe/aio-cli
 ```
 
-Then install the Doc Plugin by running.  
+Then install the Doc Plugin by running.
 
 ```bash
 aio discover -i
@@ -130,15 +130,15 @@ Select the `@adobe/aio-cli-plugin-doc` plugin by pressing the *Spacebar* and fin
 
 For more information about the Doc plugin, see https://github.com/adobe/aio-cli-plugin-doc.
 
-Now you can create your site by running 
+Now you can create your site by running
 
 ```bash
 aio doc init path/to/site/folder
 ```
 
-which will use by default the [Documentation site template](https://github.com/AdobeDocs/dev-site-documentation-template). 
+which will use by default the [Documentation site template](https://github.com/AdobeDocs/dev-site-documentation-template).
 
-You can specify another template with 
+You can specify another template with
 
 ```bash
 aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
@@ -148,51 +148,51 @@ aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
 
 The content of the site is written in [Markdown](https://daringfireball.net/projects/markdown/) which is both easy to read and easy to learn.
 
-As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs. 
-Additionally, Adobe extended Markdown in a few ways to support certain features see [Writing Enhanced Markdown](#writing-enhanced-markdown). 
+As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs.
+Additionally, Adobe extended Markdown in a few ways to support certain features see [Writing Enhanced Markdown](#writing-enhanced-markdown).
 
 ### Markdown pages
 
-Make sure the markdown content is located  under `src/pages`. 
+Make sure the markdown content is located  under `src/pages`.
 
 It is recommended to use a folder structure to define your site pages e.g. :
- 
+
 ```
 root
 ├- src/pages [/]
-│  ├- index.md 
+│  ├- index.md
 │  ├- hero.png
 │  ├- api [/api/]
-│  │  └- index.md   
+│  │  └- index.md
 │  └- guides [/guides/]
-│      ├─ index.md 
+│      ├─ index.md
 │      └- get_started [/guides/get_started/]
 │        ├- index.md
 │        └- debugging [/guides/get_started/debugging/]
 │           └- index.md
 ├- .env
 ├─ gatsby-config.js
-└─ package.json 
-```   
+└─ package.json
+```
 
 Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, Gatsby will transform the `md` files into `index.html` files.
-The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information. 
+The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information.
 
 Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
 ```
 root
 ├- src/pages [/]
-│  ├- index.md 
+│  ├- index.md
 │  ├- i_follow_recommendation [/i_follow_recommendation/]
-│  │  └- index.md   
+│  │  └- index.md
 │  └- i_dont_follow_recommendation.md [/i_dont_follow_recommendation/]
 ├- .env
 ├─ gatsby-config.js
-└─ package.json 
+└─ package.json
 ```
 
-will output: 
+will output:
 
 ```
 root
@@ -200,45 +200,45 @@ root
    ├- index.html
    ├- i_follow_recommendation
    │  └- index.html
-   ├- i_dont_follow_recommendation 
-   │  └- index.html 
-   └- Minified JS, CSS files  
+   ├- i_dont_follow_recommendation
+   │  └- index.html
+   └- Minified JS, CSS files
 ```
 
 You can exclude pages from the build by either moving them out of `src/pages` or by prefixing the filename with `_`.
 
-### Links    
+### Links
 
-#### Internal links    
+#### Internal links
 
-Using markdown links to link to pages e.g. : 
+Using markdown links to link to pages e.g. :
 
 *Relative link*
 ```
-[Link to mypage](../mypage.md)  
-```  
+[Link to mypage](../mypage.md)
+```
 
 *Absolute link*
 ```
-[Link to mypage](/src/pages/mypage.md)  
-```   
+[Link to mypage](/src/pages/mypage.md)
+```
 
 Add the suffix `#` to a link to jump to a section of the page for example if your page has a heading named `Join the future`, you can link to it:
 
 ```
-[Link to mypage](../mypage.md#join-the-future)  
-```  
+[Link to mypage](../mypage.md#join-the-future)
+```
 
 You can also use absolute links or relative links to link between markdown pages e.g. with the example folder structure from [Content Structure](#content-structure) you can add a link from `/guides/index.md` to `/api/index.md` with:
 
 *Relative link*
 ```
-[Link to API](../api/)  
-```    
+[Link to API](../api/)
+```
 
 *Absolute link*
 ```
-[Link to API](/api/)  
+[Link to API](/api/)
 ```
 
 **Please note that currently only absolute links will work with transcluded content.**
@@ -248,40 +248,40 @@ You can also use absolute links or relative links to link between markdown pages
 External links will automatically open in a new tab or window.
 
 ```
-[Link to example.com](https://example.com)  
-```  
+[Link to example.com](https://example.com)
+```
 
 You can prevent this behavior by adding the search parameter `?aio_internal` to the link.
 
 ### Assets
 
 Images can be placed next to markdown pages inside `src/pages` and referenced using relative links. In this case, they'll be optimized during the build process and resulting file names are hashed to resolve potential caching issues.
- 
+
 Other asset types (e.g. PDFs etc.) can be placed inside a `static` folder at the root. Those assets are not being processed but simply copied into the `public` folder.
 
-Here's a simple example of a content structure with a markdown page file and 2 different asset types:  
+Here's a simple example of a content structure with a markdown page file and 2 different asset types:
 
 ```
 root
 ├- src/pages [/]
-│  ├- index.md 
+│  ├- index.md
 │  └- image.png
 ├- static [/]
-│  └- document.pdf 
+│  └- document.pdf
 ├─ gatsby-config.js
-└─ package.json 
+└─ package.json
 ```
 
-where `image.png` is referenced in `index.md` as an image: 
+where `image.png` is referenced in `index.md` as an image:
 
 ```
-![alt image](./image.png) 
+![alt image](./image.png)
 ```
 
 and `document.pdf` is referenced in `index.md` as a link:
 
 ```
-[document](/document.pdf) 
+[document](/document.pdf)
 ```
 
 You'll find more information about the `static` folder at [Using the Static Folder](https://www.gatsbyjs.com/docs/how-to/images-and-media/static-folder/).
@@ -291,16 +291,16 @@ Please find guidance on ideal illustration sizes in this [document](docs/documen
 ### Google Docs support
 
 Instead of writing markdown pages, you can use Google Docs as external content source. Google Docs documents will be transformed into markdown pages under the hood and placed by default into `src/pages`.
-To connect to Google Docs, you'll need to setup 4 `.env` variables in your Gatsby project : 
+To connect to Google Docs, you'll need to setup 4 `.env` variables in your Gatsby project :
 
 ```
 GOOGLE_OAUTH_CLIENT_ID=2...m.apps.googleusercontent.com
 GOOGLE_OAUTH_CLIENT_SECRET=Q...axL
 GOOGLE_DOCS_TOKEN={"access_token":"ya...J0","refresh_token":"1..mE","scope":"https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/documents.readonly","token_type":"Bearer","expiry_date":1598284554759}
-GOOGLE_DOCS_FOLDER_ID=1GHc4k.....8E5OyzuAT0Fy9 
-```  
+GOOGLE_DOCS_FOLDER_ID=1GHc4k.....8E5OyzuAT0Fy9
+```
 
-To generate the first 3 variables, open the terminal at the root of your project and run the command: 
+To generate the first 3 variables, open the terminal at the root of your project and run the command:
 
 ```bash
 gatsby-source-gdocs2md
@@ -321,7 +321,7 @@ Fill the document description field in Google Drive with a YAML object:
 ```yaml
 title: Page title
 description: Page description
-```    
+```
 
 #### Exclude folders or documents
 
@@ -331,14 +331,14 @@ Exclude folders/documents by adding `exclude: true` in the description field of 
 
 To make sure you don't run into troubles during the site build process, please follow the below configuration steps.
 
-### .env file   
+### .env file
 
-Follow these steps to configure your `.env` file. 
+Follow these steps to configure your `.env` file.
 
 1. Copy `.env.example` to `.env`
 2. Add the appropriate values in the `.env` file
 
-**The .env should not be committed.** 
+**The .env should not be committed.**
 
 GitHub's API is being called during the site build phase to retrieve the authors of every markdown page under `src/pages`.
 If the GitHub Token information is missing, the build will just print a warning, and no contributor information will be retrieved (just the contributor information in a page's front matter, if any, will be used).
@@ -391,34 +391,34 @@ ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 
 ### .env settings for Algolia indexing
 
-Algolia indexing requires a set of API index keys to send new search records and query existing search records from specific applications and search indexes on Algolia's servers. These keys must be defined in the `.env` file and never published to GitHub. You need to define the following `.env` variables in order to make the content of your site searchable:
+Algolia indexing requires a set of API index keys to publish new search records and query existing search records for your site. To make your site searchable, Add the following variable's to your site's `.env` file:
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
    - `skip` mode - skip running of search indexation (default)
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
-- `ALGOLIA_INDEX_NAME_SUFFIX` - Optional. The name search index is composed of two parameters `REPO_NAME + ALGOLIA_INDEX_SUFFIX_NAME`
+- `ALGOLIA_INDEX_NAME` - Optional. Use this variable to publish this site's search records to a different, existing Algolia index.
 
 Example values:
 ```properties
 ALGOLIA_INDEXATION_MODE=console # debug mode. The data will pushed to console but not to real index.
-ALGOLIA_INDEX_SUFFIX_NAME=-DEVSITE-47
+ALGOLIA_INDEX_NAME=DEVSITE-47
 ```
 
 ### Global Navigation
 
-The Global navigation links are configurable in `gatsby-config.js` under `pages`. 
+The Global navigation links are configurable in `gatsby-config.js` under `pages`.
 If you follow the recommended [content structure](#content-structure), you can define the `path` value using the folder names.
 
 For example, the following folder structure maps to the URL defined in brackets:
 
 ```
 src/pages [/]
-├- index.md 
+├- index.md
 ├- api [/api/]
-│  └- index.md   
+│  └- index.md
 └- guides [/guides/]
-   └─ index.md 
-```     
+   └─ index.md
+```
 
 then define your Global Navigation using `pages` in `gatsby-config.js`:
 
@@ -437,9 +437,9 @@ pages: [
     path: '/api/'
   }
 ]
-```   
+```
 
-You can also define it by pointing to the markdown files: 
+You can also define it by pointing to the markdown files:
 
 ```
 pages: [
@@ -456,21 +456,21 @@ pages: [
     path: 'api.md'
   }
 ]
-```   
+```
 
 Search `?foo=bar` and hash `#foo` values are also supported.
 
 The order in which the pages are defined is respected in the Global Navigation.
 
-If the current location corresponds to a `path` defined under `pages`, the correspond tab in the Global Navigation is set as active. 
-Otherwise, the first defined tab is set as active by default. 
+If the current location corresponds to a `path` defined under `pages`, the correspond tab in the Global Navigation is set as active.
+Otherwise, the first defined tab is set as active by default.
 
 **At least one defined page is required. It's recommended to define the first page `path` as the root path `/`.**
 
 ### Menus
 
-You can group links inside a dropdown menu in the Global Navigation with the `menu` field. 
-Optionally, you can set a description to better differentiate grouped links e.g. based on the previous example:  
+You can group links inside a dropdown menu in the Global Navigation with the `menu` field.
+Optionally, you can set a description to better differentiate grouped links e.g. based on the previous example:
 
 ```
 pages: [
@@ -487,21 +487,21 @@ pages: [
     menu: [{
       title: 'v2.0'
       description: 'Version 2.0 of API' // optional,
-      path: '2.0/api.index' 
+      path: '2.0/api.index'
     }, {
      title: 'v1.4'
      description: 'Version 2.0 of API' // optional,
-     path: '1.4/api.index' 
+     path: '1.4/api.index'
    }]
   }
-] 
+]
 ```
-     
+
 
 ### Home link
 
-The home link should be used to inform the user about a parent or sibling site external to the current one. 
-Breadcrumbs will be displayed automatically to help the user understand its current location. 
+The home link should be used to inform the user about a parent or sibling site external to the current one.
+Breadcrumbs will be displayed automatically to help the user understand its current location.
 
 You can define a home link in `gatsby-config.js` for instance:
 
@@ -509,7 +509,7 @@ You can define a home link in `gatsby-config.js` for instance:
 home: {
   title: 'Photoshop',
   path: 'https://www.adobe.com/products/photoshop.html'
-} 
+}
 ```
 
 A default home link is displayed if none provided. If you don't want to display any home link, set `hidden` to `true`:
@@ -517,28 +517,28 @@ A default home link is displayed if none provided. If you don't want to display 
 ```
 home: {
   hidden: true
-} 
-``` 
+}
+```
 
 ### Side Navigation
 
 The Side navigation links are configurable in `gatsby-config.js` under `subPages`.
-You have to create a directory hierarchy which will be represented literally in the URL so that any sub page `path` starts with a `path` from `pages`.  
+You have to create a directory hierarchy which will be represented literally in the URL so that any sub page `path` starts with a `path` from `pages`.
 
 For example, the following folder structure maps to the URL defined in brackets:
 
 ```
 src/pages [/]
-├- index.md 
+├- index.md
 ├- api [/api/]
-│  └- index.md   
+│  └- index.md
 └- guides [/guides/]
-   ├─ index.md 
+   ├─ index.md
    └- get_started [/guides/get_started/]
       ├- index.md
       └- debugging [/guides/get_started/debugging/]
          └- index.md
-```     
+```
 
 then define your Side Navigation for `/guides/` using `subPages` in `gatsby-config.js`:
 
@@ -571,7 +571,7 @@ subPages: [
 ]
 ```
 
-Similarly to the Global Navigation:  
+Similarly to the Global Navigation:
 * The order in which the sub pages are defined is respected in the Side Navigation.
 * Setting search and hash values in the path is supported
 * Linking markdown files is supported
@@ -580,7 +580,7 @@ Similarly to the Global Navigation:
 
 #### Variations
 
-There are 3 variations of the Side Navigation: 
+There are 3 variations of the Side Navigation:
 
 1. Single-level side navigation
 2. Categorical single-level side navigation
@@ -591,10 +591,10 @@ Please refer to the section [use the right variation](#use-the-right-variation) 
 #### Single-level side navigation
 
 To create a single-level side navigation, you shouldn't specify `pages` for `subPages` for example:
-  
+
 ![single-level side navigation](docs/images/single-level-sidenav.png)
 
-is matching to the following config: 
+is matching to the following config:
 
 ```
 pages: [
@@ -620,18 +620,18 @@ subPages: [
     title: 'Community',
     path: '/support/community/'
   }
-] 
-```    
+]
+```
 
 #### Single-level side navigation with headers
 
-To create a single-level side navigation with headers, you should set `header: true` on top-level `subPages` and follow the [auto-collapsing](#auto-collapsing-of-multi-level-side-navigation) rules for example: 
+To create a single-level side navigation with headers, you should set `header: true` on top-level `subPages` and follow the [auto-collapsing](#auto-collapsing-of-multi-level-side-navigation) rules for example:
 
 ![single-level side navigation with headers](docs/images/single-level-sidenav-with-header.png)
 
 is matching the following config:
 
-``` 
+```
 pages: [
   {
     title: 'Support',
@@ -715,18 +715,18 @@ subPages: [
         path: '/support/community/'
       }
     ]
-  } 
+  }
 ]
 ```
 
-#### Auto-collapsing of multi-level side navigation 
- 
-In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because `Overview` and `Help` paths both matches the current location `/support/`. 
+#### Auto-collapsing of multi-level side navigation
 
-It also means that if you don't want the auto-collapsing behavior, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`, 
+In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because `Overview` and `Help` paths both matches the current location `/support/`.
+
+It also means that if you don't want the auto-collapsing behavior, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`,
 you would have to define a different path for `Overview` and `Help`:
 
-``` 
+```
 pages: [
   {
     title: 'Support',
@@ -761,19 +761,19 @@ subPages: [
         path: '/support/community/'
       }
     ]
-  } 
+  }
 ]
-```      
+```
 
-which will render: 
+which will render:
 
 ![multi level sidenav without auto collapsing](docs/images/multi-level-sidenav-no-auto-collapsing.png)
 
 #### Use descriptive titles
 
-Navigation should be helpful. Choose titles for navigation items that clearly represent the surfaces where they'll go. Avoid using titles that are arbitrary or un-useful, since this can pose usability issues for your product. 
+Navigation should be helpful. Choose titles for navigation items that clearly represent the surfaces where they'll go. Avoid using titles that are arbitrary or un-useful, since this can pose usability issues for your product.
 
-#### Be concise 
+#### Be concise
 
 Along with being descriptive, navigation items should be succinct. Reduce any unnecessary words in order to ensure simplicity. Navigation items should never be so long that they require truncation, except in instances where navigation is user-generated.
 
@@ -801,8 +801,8 @@ Side navigation can use either of these behaviors, but should never mix behavior
 
 ### Versions
 
-You can specify multiple versions for your site in `gatsby-config.js` under `versions`. 
-The first entry is the selected version by default. 
+You can specify multiple versions for your site in `gatsby-config.js` under `versions`.
+The first entry is the selected version by default.
 
 ```
 versions: [
@@ -814,7 +814,7 @@ versions: [
     title: 'v1.4',
     path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
   }
-], 
+],
 ```
 
 **Important: managing multiple versions inside a single repository is not supported.**
@@ -829,11 +829,11 @@ With the CLI:
 aio doc generate
 ```
 
-Or run following commands: 
+Or run following commands:
 
 * To build and preview a production version of the site: `npm run start`.
 * To build and preview a production version of the site with path prefix: `npm run start:prefix`.
-* To build and preview a development version of the site with hot reloading: `npm run dev`.  
+* To build and preview a development version of the site with hot reloading: `npm run dev`.
 
 ### Adding a Path Prefix
 
@@ -843,14 +843,14 @@ For example, a Gatsby blog could live at `example.com/blog/`, or a site could be
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
 ```
-pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/' 
+pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
 ```
 
 ## Deploying the Gatsby site
 
 ### Preview on GitHub Pages
 
-To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at https://ORG_NAME.github.io/REPO_NAME. 
+To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at https://ORG_NAME.github.io/REPO_NAME.
 
 On every commit to the `main` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default branch for new repos in GitHub.
 
@@ -863,8 +863,8 @@ On every commit to the `main` branch, the site will be built to GitHub Pages aut
 You can manually trigger the deploy workflow by pressing the **Run workflow** button:
 
 1. Go to your repository actions overview page i.e. https://github.com/ORG/REPOSITORY/actions
-2. Click on the "Deploy" workflow  
-3. Press **Run workflow**. You can choose which branch the workflow is run on and specify the deployment type (`dev` for development or/and `prod` for production).    
+2. Click on the "Deploy" workflow
+3. Press **Run workflow**. You can choose which branch the workflow is run on and specify the deployment type (`dev` for development or/and `prod` for production).
 
 **Pre-requisites:**
 
@@ -872,17 +872,17 @@ You can manually trigger the deploy workflow by pressing the **Run workflow** bu
   * For example, if you want to deploy to `https://example.com/foo/bar`, you must set `PATH_PREFIX` to `/foo/bar/`
   * For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
 2. The person initiating the deploy workflow must have `write` access to the repository.
- 
-## Writing Enhanced Markdown 
+
+## Writing Enhanced Markdown
 
 ### Metadata with Front matter
 
-Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file: 
+Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
 <pre>
 ---
 title: Guides - Adobe Analytics
-description: This is the guides overview page of Adobe Analytics 
+description: This is the guides overview page of Adobe Analytics
 ---
 </pre>
 
@@ -892,7 +892,7 @@ They'll show up first before the GitHub contributors.
 <pre>
 ---
 contributors:
-  - https://github.com/simonwex 
+  - https://github.com/simonwex
 ---
 </pre>
 
@@ -918,16 +918,16 @@ jsDoc: true
 ---
 </pre>
 
-Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/jsdoc/index.md).   
+Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/jsdoc/index.md).
 
-### MDX 
+### MDX
 
 [MDX](https://mdxjs.com/) is supported out of the box. MDX enables writing [JSX React components](https://reactjs.org/docs/introducing-jsx.html) in markdown giving authors new powers.
 Despite the markdown files having all an `md` extension, they are actually treated as MDX files. You can use `md` and `mdx` extensions interchangeably.
 
 As we try to limit the use of MDX in favor of pure markdown, we have come up with a way to couple the use of basic markdown syntax with JSX.
 
-**Always make sure to close JSX blocks and use line breaks between JSX blocks and markdown content to avoid MDX parser issues.**  
+**Always make sure to close JSX blocks and use line breaks between JSX blocks and markdown content to avoid MDX parser issues.**
 
 ### Modular Content System
 
@@ -944,46 +944,46 @@ The modular content system is a set of content blocks with variants and composit
 **A variant can go into a *content block*. Multiple *content blocks* make up a *composition*.**
 
 ### JSX Blocks
- 
-**The Content Blocks are defined as JSX Blocks.** They use a `slots` property to identify which markdown elements to ingest using only string properties. 
+
+**The Content Blocks are defined as JSX Blocks.** They use a `slots` property to identify which markdown elements to ingest using only string properties.
 This helps maintain better readability when rendered on https://github.com.
 
-Common slots are: `heading`, `image` and `text`. See below examples for full details.   
+Common slots are: `heading`, `image` and `text`. See below examples for full details.
 
 ### Hero Block
 
 A Hero Block should be used on every home page. **Only 1 Hero Block per page is allowed**.
 They are used to set up the tone of the page and optionally add call to actions and intentions for users.
 
-There are 3 different variants: 
+There are 3 different variants:
 
-* The default variant for Documentation pages.  
-* The half width variant for Product/Platform authored pages. 
-* The full width variant for Index home pages. 
+* The default variant for Documentation pages.
+* The half width variant for Product/Platform authored pages.
+* The full width variant for Index home pages.
 
-**Default variant:** 
+**Default variant:**
 
 ![hero default](docs/images/hero-default.png)
 
 ```
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
-![Hero image](./illustration.png) 
+![Hero image](./illustration.png)
 
-# Adobe Analytics 
+# Adobe Analytics
 
-Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways. 
-``` 
+Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
 * `text` (required)
 * `image` (optional)
 
-Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`; 
+Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`;
 
-Use `theme` to match the text color to your color scheme. Defaults to `dark`.   
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 **Half width variant**
 
@@ -1000,22 +1000,22 @@ Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 Start building.
 
-Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size 
+Creative Cloud services include tools and capabilities to streamline your workflows so that you, your team, and your stakeholders stay perfectly in sync across projects of any size
 
 * [Get started](https://adobe.io)
-* [Sign up for the newsletter](https://adobe.io) 
+* [Sign up for the newsletter](https://adobe.io)
 ```
 
-Use `variant="halfwidth""` to set the half width variant.  
+Use `variant="halfwidth""` to set the half width variant.
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
 * `text` (required)
 * `image` (required)
 * `background` (optional)
 * `icon` (optional)
-* `buttons` (optional)  
+* `buttons` (optional)
 
 **Full width variant**
 
@@ -1034,21 +1034,21 @@ Adobe products and technologies power them
 * [Subscribe](https://adobe.io)
 ```
 
-Use `variant="fullwidth""` to set the full width variant.  
+Use `variant="fullwidth""` to set the full width variant.
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
 * `text` (required)
 * `image` (required)
 * `background` (optional)
-* `buttons` (optional)  
+* `buttons` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 ### Resources Block
 
-Each Documentation overview page has a Resources Block with to display a list of links. 
+Each Documentation overview page has a Resources Block with to display a list of links.
 They can point to internal or external documents or pages.
 
 **Only 1 Resource Block per page is allowed**.
@@ -1061,18 +1061,18 @@ They can point to internal or external documents or pages.
 #### Resources
 
 * [Quickstart Guide](https://www.adobe.io/apis/experiencecloud/analytics/docs.html)
-* [Adobe Analytics GitHub Repo](https://github.com/AdobeDocs/analytics-2.0-apis) 
+* [Adobe Analytics GitHub Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
 ```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
-* `links` (required)  
+* `links` (required)
 
 ### Discover Block
- 
-A Discover Block is a section of content that can be used to highlight certain areas of a Documentation overview page. There can be multiple Discover Blocks in a row. 
-Discover Blocks can be illustrated but only one illustration per row is allowed.  
+
+A Discover Block is a section of content that can be used to highlight certain areas of a Documentation overview page. There can be multiple Discover Blocks in a row.
+Discover Blocks can be illustrated but only one illustration per row is allowed.
 
 **Single Discover Block**
 
@@ -1084,7 +1084,7 @@ Discover Blocks can be illustrated but only one illustration per row is allowed.
 ### Get Started
 
 [Quickstart Guide](guides/)
-    
+
 Get started with the Adobe Analytics APIs.
 ```
 
@@ -1093,19 +1093,19 @@ Get started with the Adobe Analytics APIs.
 ![multiple discover blocks](docs/images/discover-block-multiple.png)
 
 ```
-<DiscoverBlock slots="heading, link, text"/> 
+<DiscoverBlock slots="heading, link, text"/>
 
 ### Guides
 
-[Calculated Metrics API](guides/calculated_metrics_api/) 
-     
+[Calculated Metrics API](guides/calculated_metrics_api/)
+
 Returns information on the user's company that is necessary for making other Adobe Analytics API calls.
 
 
 
 <DiscoverBlock slots="link, text"/>
 
-[Segments API](guides/segments_api/) 
+[Segments API](guides/segments_api/)
 
 Provides configuration guidance and best practices for the /segments endpoint.
 
@@ -1117,7 +1117,7 @@ Provides configuration guidance and best practices for the /segments endpoint.
 
 Provides configuration guidance and best practices for the /reports endpoint.
 
-<DiscoverBlock slots="link, text"/> 
+<DiscoverBlock slots="link, text"/>
 ```
 
 **Discover Block with illustrations**
@@ -1137,19 +1137,19 @@ Open discussion and support with community experts and Adobe staff.
 
 <DiscoverBlock slots="link, text"/>
 
-[Experience league](https://adobe.io) 
+[Experience league](https://adobe.io)
 
 Tutorials and videos for the community.
 ```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (1 required per row)
 * `text` (required)
-* `link` (required) 
-* `image` (optional) 
+* `link` (required)
+* `image` (optional)
 
-Use `width` to define the size of the block.  
+Use `width` to define the size of the block.
 
 ### Code Block
 
@@ -1158,7 +1158,7 @@ A Code Block is an enhanced code section which supports additional features like
 ![code block](docs/images/code-block.png)
 
 ```
-<CodeBlock slots="heading, code" repeat="3" languages="JSON, CURL, JSON" /> 
+<CodeBlock slots="heading, code" repeat="3" languages="JSON, CURL, JSON" />
 ```
 <pre>
 #### Request
@@ -1198,32 +1198,32 @@ curl -X POST \
   "totalElements":7
 }
 ```
-</pre>     
+</pre>
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
-* `code` (required)  
+* `code` (required)
 
 Use `repeat` to define how many code sections are part of the Code Block.
- 
+
 Use `languages` to define a language name for each code section. Code sections with the same heading are automatically grouped together.
 
 ### Inline Alert Block
 
 The Inline Alert Block is used to highlight information.
 
-![inline alert](docs/images/inline-alert.png) 
+![inline alert](docs/images/inline-alert.png)
 
 ```
 <InlineAlert variant="help" slots="text"/>
 
-The refresh token grant type is automatically added to OAuth clients created after September 18, 2019 
+The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
 ```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
-* `text` (required)  
+* `text` (required)
 
 Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
 
@@ -1231,21 +1231,21 @@ Use `variant` to define the indicator type: `info` (default), `help`, `error`, `
 
 The Media Block is used to display interactive medias like videos.
 
-![media](docs/images/media-block.png) 
+![media](docs/images/media-block.png)
 
 ```
 <Media slots="video"/>
 
-<https://www.youtube.com/watch?v=mkgpeWbHrjA> 
+<https://www.youtube.com/watch?v=mkgpeWbHrjA>
 ```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
-* `video` (required)  
+* `video` (required)
 
 ### Announcement Block
 
-The Announcement Block goes directly underneath the Hero Block for Product/Platform pages. 
+The Announcement Block goes directly underneath the Hero Block for Product/Platform pages.
 It's used to call out new features, blog posts, news etc. anything that needs that needs to be surfaced above the fold.
 
 ![announcement block](docs/images/announcement-block.png)
@@ -1257,14 +1257,14 @@ It's used to call out new features, blog posts, news etc. anything that needs th
 
 Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time spent in each app, freeing you up for more creative time.
 
-[Demo](https://www.adobe.io/apis/creativecloud/photo-imaging-api/api-demo.html) 
-``` 
+[Demo](https://www.adobe.io/apis/creativecloud/photo-imaging-api/api-demo.html)
+```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
-* `button` (required)  
-* `text` (optional)  
+* `button` (required)
+* `text` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
 
@@ -1281,23 +1281,23 @@ The Summary Block acts as an anchor at the end of the page. It's a change for Pr
 
 ![CC banner](images/cc-banner.png)
 
-## Subscribe to the Creative Cloud developers newsletter 
+## Subscribe to the Creative Cloud developers newsletter
 
 A monthly newsletter featuring news for anyone who creates, develops, or build plugins, extensions, or integrations for the
 Creative Cloud family of products.
 
 * [Subscribe to the newsletter](https://adobe.io)
-* [Learn more](https://adobe.io) 
-``` 
+* [Learn more](https://adobe.io)
+```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
 * `heading` (required)
-* `buttons` (1 button required at least)  
-* `text` (optional) 
+* `buttons` (1 button required at least)
+* `text` (optional)
 * `image` (optional)
 
-Use `background` to set a custom background color matching your color scheme. 
+Use `background` to set a custom background color matching your color scheme.
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
@@ -1307,7 +1307,7 @@ Use `className` to customize the component **at your own risk.**
 
 A Title Block is used at the beginning of sections, or to frame compositions on Product/Platform pages.
 
-![title block](docs/images/title-block.png)  
+![title block](docs/images/title-block.png)
 
 ```
 <TitleBlock slots="heading, text" theme="light" />
@@ -1315,12 +1315,12 @@ A Title Block is used at the beginning of sections, or to frame compositions on 
 ### Collaborate better with Content Cloud APIs
 
 With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
-``` 
+```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
-* `heading` (required)  
-* `text` (optional) 
+* `heading` (required)
+* `text` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
@@ -1328,10 +1328,10 @@ Use `className` to customize the component **at your own risk.**
 
 ### Text Block
 
-Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages. 
+Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages.
 They are coupled with images or videos.
 
-![text block with image](docs/images/text-block-image.png)   
+![text block with image](docs/images/text-block-image.png)
 
 **With an image, texts and links**
 
@@ -1342,15 +1342,15 @@ They are coupled with images or videos.
 
 ### Extend Adobe CC Flagship Apps
 
-Extend Creative Cloud desktop apps like [Photoshop](https://www.adobe.com/products/photoshop.html), [Premiere Pro](https://www.adobe.com/products/premiere.html), and [InDesign](https://www.adobe.com/products/indesign.html) through our APIs and SDKs. 
+Extend Creative Cloud desktop apps like [Photoshop](https://www.adobe.com/products/photoshop.html), [Premiere Pro](https://www.adobe.com/products/premiere.html), and [InDesign](https://www.adobe.com/products/indesign.html) through our APIs and SDKs.
 Be sure to check out [Common Extensibility Platform (CEP)](https://www.adobe.io/apis/creativecloud/cep.html), which lets you build custom UI panels for multiple CC apps at once.
 
-When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users. 
+When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users.
 And be sure to join the [Exchange Program for Creative Cloud](https://partners.adobe.com/exchangeprogram/creativecloud) to unlock more benefits, including streamlined publishing and promotional opportunities.
 
 * ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
 * ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
-* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html) 
+* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)
 ```
 
 **Multiple Text Blocks in a row**
@@ -1390,7 +1390,7 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 Instantly share Creative Cloud files, designs, specs, and notifications all in real time.
 
-* [Learn more](https://slack.com/enterprise) 
+* [Learn more](https://slack.com/enterprise)
 ```
 
 **With a video, icons, buttons dark themed**
@@ -1407,29 +1407,29 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 
 ### Partner Success Story
 
-Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to 
+Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to
 world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
 
 * [Learn more](https://adobe.io)
-* [Sign up for partner program](https://adobe.io) 
+* [Sign up for partner program](https://adobe.io)
 ```
 
-Use `slots` to identify the markdown content: 
+Use `slots` to identify the markdown content:
 
-* `heading` (required)  
-* `text` (required). Support multiple texts e.g `text1, text2` etc. 
-* `links` (optional). Supports 1 optional image per link. 
+* `heading` (required)
+* `text` (required). Support multiple texts e.g `text1, text2` etc.
+* `links` (optional). Supports 1 optional image per link.
 * `buttons` (optional)
 * `icons` (optional)
-* `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.      
+* `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.
 * `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`.
-  
+
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%`, `33%` and `25%`;
-  
-Use `isCentered` to center the text.   
-  
+
+Use `isCentered` to center the text.
+
 Use `className` to customize the component **at your own risk.**
 
 ### Product Card
@@ -1445,7 +1445,7 @@ Product Cards group information that allow to browse a collection of related con
 
 #### CC Storage API
 
-CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform. 
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
 * [Learn more](https://adobe.io)
 * [View docs](https://adobe.io)
@@ -1458,7 +1458,7 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 #### Adobe Stock
 
-Gives your users access to the perfect Adobe Stock asset to enhance their creative projects. 
+Gives your users access to the perfect Adobe Stock asset to enhance their creative projects.
 
 * [Learn more](https://adobe.io)
 * [View docs](https://adobe.io)
@@ -1471,16 +1471,16 @@ Gives your users access to the perfect Adobe Stock asset to enhance their creati
 
 #### Common Extensibility Platform
 
-Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps. 
+Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps.
 
 * [Learn more](https://adobe.io)
-* [View docs](https://adobe.io) 
-``` 
+* [View docs](https://adobe.io)
+```
 
-Use `slots` to identify the markdown content: 
-  
-* `heading` (required) 
-* `text` (required) 
+Use `slots` to identify the markdown content:
+
+* `heading` (required)
+* `text` (required)
 * `buttons` (1 button required at least)
 * `icon` (optional)
 
@@ -1496,17 +1496,17 @@ Use Product Card Grid to display Product Cards with filter and sort options base
 
 Set `interaction` to `true` to display the filter and sort options.
 
-See the [data example](https://github.com/adobe/gatsby-theme-aio/blob/main/example/src/products/index.js) to provide for `clouds` and `products`. 
+See the [data example](https://github.com/adobe/gatsby-theme-aio/blob/main/example/src/products/index.js) to provide for `clouds` and `products`.
 
 ```
-<ProductCardGrid clouds={clouds} products={products} interaction={true} /> 
-``` 
+<ProductCardGrid clouds={clouds} products={products} interaction={true} />
+```
 
 Use `orderBy` to define the default ordering. Choose between `last_updated` and `name`.
 
-Use `filterByCloud` to define the default cloud filter. You can define multiple clouds by default `filterByCloud={[cloud1, cloud2]}`.  
+Use `filterByCloud` to define the default cloud filter. You can define multiple clouds by default `filterByCloud={[cloud1, cloud2]}`.
 
-Use `filterByIds` to define a custom filter e.g. `filterByIds=[1, 3, 4]` to display products with ids `1`, `3` and `4` in that order. 
+Use `filterByIds` to define a custom filter e.g. `filterByIds=[1, 3, 4]` to display products with ids `1`, `3` and `4` in that order.
 
 ### Resource Card
 
@@ -1514,7 +1514,7 @@ Resource Cards are used on Product/Platform pages for external cross-promotion o
 
 There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resource Cards with different variants to create a Resource composition.
 
-![resource card](docs/images/resource-card.png)  
+![resource card](docs/images/resource-card.png)
 
 ```
 <ResourceCard slots="link, image, heading, text" width="33%"/>
@@ -1523,7 +1523,7 @@ There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resou
 
 ![Resource 3](images/resource3.png)
 
-### Creating a Great Adobe XD Plugin Listing 
+### Creating a Great Adobe XD Plugin Listing
 
 Rob Kleiman, July 8th 2020
 
@@ -1549,13 +1549,13 @@ Nihil Gupta, July 24th 2020
 
 ### Photoshop Extensibility Enters a New Era Soon: How to get Involved Early
 
-Ash Ryan Arnwine, March 12th 2020 
+Ash Ryan Arnwine, March 12th 2020
 ```
 
-Use `slots` to identify the markdown content: 
-  
-* `link` (required) 
-* `heading` (required) 
+Use `slots` to identify the markdown content:
+
+* `link` (required)
+* `heading` (required)
 * `image` (required)
 * `text` (optional)
 
@@ -1569,9 +1569,9 @@ You can use MDX transclusion to embed markdown documents into other markdown doc
 
 #### Embedding local markdown files
 
-For example, if you want to include the content of `overview.md` into `index.md`: 
+For example, if you want to include the content of `overview.md` into `index.md`:
 
-`index.md` content: 
+`index.md` content:
 ```
 import Overview from './overview.md'
 
@@ -1579,12 +1579,12 @@ import Overview from './overview.md'
 
 Lorem ipsum
 
-<Overview/> 
+<Overview/>
 
 ## Questions
 
 Lorem ipsum
-``` 
+```
 
 `overview.md` content:
 
@@ -1596,7 +1596,7 @@ Lorem ipsum
 
 `index.md` will be rendered as:
 
-``` 
+```
 # Welcome
 
 Lorem ipsum
@@ -1612,7 +1612,7 @@ Lorem ipsum
 
 #### Embedding external markdown files
 
-Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents. 
+Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents.
 
 **You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
@@ -1620,20 +1620,20 @@ as a dependency in another site.**
 You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/dev-site-documentation-template/
 as a dependency in another site, you can run the command `npm install --save adobedocs/dev-site-documentation-template`;
 
-Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.   
+Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.
 
-See full example below using a Variant block. 
+See full example below using a Variant block.
 
 #### Filtering content with Variant Blocks
 
 Together with Variant Blocks, the author can query what should be rendered from external sources.
- 
+
 **This allows to write content once, and reuse it everywhere.**
 
-For example, let's say there are 2 repositories named http://github.com/adobedocs/repo1 and http://github.com/adobedocs/repo2. 
+For example, let's say there are 2 repositories named http://github.com/adobedocs/repo1 and http://github.com/adobedocs/repo2.
 Both are Gatsby sites using the theme `@adobe/gatsby-theme-aio` and have markdown content defined under `src/pages`.
 
-1) repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`: 
+1) repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
 
 ```
 ## How to Debug Your Plugin
@@ -1656,7 +1656,7 @@ First launch the Photoshop console, by clicking Developer > Console
 
 #### Image
 
-![image](../test/image.png) 
+![image](../test/image.png)
 ```
 
 *Use `repeat` to define how many elements are part of the Variant Block. Use any `key=value` property to mark your Variant Block.*
@@ -1673,11 +1673,11 @@ import Debugging from 'repo1/src/pages/debugging/index.md'
 <Debugging query="product=Photoshop" />
 
 More content
-``` 
-  
+```
+
 will be rendered as:
 
-``` 
+```
 # Debugging
 
 ## How to Debug Your Plugin
@@ -1689,13 +1689,13 @@ First launch the Photoshop console, by clicking Developer > Console
 [Photoshop link](https://adobe.io)
 
 More content
-```  
+```
 
 You can query multiple elements, for example you can add the section with the image by adding it to the `query`.
 
 ```
  <Debugging query="product=Photoshop&image=test" />
-``` 
+```
 
 ## Customizations
 
@@ -1713,11 +1713,11 @@ root
 │   └- etc.
 ├- .env
 ├─ gatsby-config.js
-└─ package.json 
+└─ package.json
 ```
 
-To enable shadowing, you need to add a folder called `@adobe/gatsby-theme-aio`. 
-Any file placed in that directory with a path that matches the path of a file from the theme will completely shadow the file.  
+To enable shadowing, you need to add a folder called `@adobe/gatsby-theme-aio`.
+Any file placed in that directory with a path that matches the path of a file from the theme will completely shadow the file.
 
 So the new folder structure with shadowing enabled will look like following:
 
@@ -1731,20 +1731,20 @@ root
 │     └- gatsby-theme-aio
 │        └- components
 │           └- Code
-│              └- index.js        
+│              └- index.js
 ├- .env
 ├─ gatsby-config.js
-└─ package.json 
+└─ package.json
 ```
 
 You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/components/Code/index.js`.
 
-*Notice omitting the `src` directory in the shadow folder.*    
+*Notice omitting the `src` directory in the shadow folder.*
 
 ### Custom layout
 
 You can build pages without the default layout by setting `layout` to `none` within the page front matter.
-The Global Header, Footer, Side Navigation etc. are always shown but anything in between can be customized. 
+The Global Header, Footer, Side Navigation etc. are always shown but anything in between can be customized.
 
 See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/no_layout/index.md).
 
@@ -1753,8 +1753,8 @@ See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-t
 This can be useful if you want to embed pages from another system. The embedded page will be framed between the Global Header and Footer.
 Simply set `frameSrc` to the `url` of the external page within the front matter.
 
-See the [example parent page](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/frame/index.md) and [child page](https://github.com/adobe/gatsby-theme-aio/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal) 
-library to create a communication channel to exchange information.    
+See the [example parent page](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/frame/index.md) and [child page](https://github.com/adobe/gatsby-theme-aio/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal)
+library to create a communication channel to exchange information.
 
 ### Theming
 
@@ -1764,30 +1764,30 @@ To change Code blocks from `dark` to `light` theme, you have to shadow the `them
 ```
 export default {
   code: 'light'
-}; 
-```     
+};
+```
 
 ## Upgrading
 
 ### Locally
 
 To upgrade to the latest version of `@adobe/gatsby-theme-aio`, simply run `npm update` if you have defined the dependency with a version range selector.
-If not, update the version of the dependency by setting the version manually in the `package.json` and run `npm install`. 
+If not, update the version of the dependency by setting the version manually in the `package.json` and run `npm install`.
 
-This will also update the lock file `package-lock.json`. 
+This will also update the lock file `package-lock.json`.
 
 ### Automated
 
-We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository. 
+We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository.
 Simply copy the [dependabot](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/.github/dependabot.yml) file in your `.github` folder.
 
-The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-aio` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-aio": "^2.1.5"`.   
+The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-aio` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-aio": "^2.1.5"`.
 
 ## Issue tracker
 
 Use the [GitHub issue tracker](https://github.com/adobe/gatsby-theme-aio/issues) to report issues, ask questions or log feature requests.
 Any feedback is welcome !
-   
+
 Please check existing issues before filing anything new.
 
 ## Contributing
