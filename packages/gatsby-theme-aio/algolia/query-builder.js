@@ -71,33 +71,27 @@ class QueryBuilder {
         }
       `,
         settings: {
-          searchableAttributes: [
-            'keywords',
-            'unordered(title)',
-            'unordered(description)',
-            'unordered(headings)',
-            'unordered(content)'
-          ],
+          searchableAttributes: ['keywords', 'title', 'headings', 'unordered(content)', 'unordered(description)'],
           ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
           customRanking: ['desc(ctimeMs)', 'desc(size)'],
           attributesForFaceting: ['keywords'],
           attributeForDistinct: 'pageID',
           distinct: true,
-          highlightPreTag: '<mark>',
+          highlightPreTag: '<mark class="hit-highlight">',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
-          //attributesToSnippet: ['description:80'],
+          ignorePlurals: true,
+          attributesToSnippet: ['content:55'],
           attributesToHighlight: ['*'],
           snippetEllipsisText: '…',
           restrictHighlightAndSnippetArrays: true,
           minWordSizefor1Typo: 4,
-          minWordSizefor2Typos: 6,
+          minWordSizefor2Typos: 8,
           typoTolerance: true,
-          allowTyposOnNumericTokens: false,
-          separatorsToIndex: '+#()[]{}*+-_一,:;<>?@/^|%&~"',
-          minProximity: 2,
-          responseFields: ['*'],
-          maxFacetHits: 10
+          allowTyposOnNumericTokens: true,
+          separatorsToIndex: '+#',
+          minProximity: 1,
+          responseFields: ['*']
         },
         transformer: async function ({
           data: {

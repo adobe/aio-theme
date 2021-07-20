@@ -1,4 +1,4 @@
-import React from 'react';
+import { withPrefix } from 'gatsby';
 import { Tabs, Item as TabsItem, Label as TabsItemLabel } from '../Tabs';
 
 import {
@@ -31,9 +31,9 @@ const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af0
 const Hit = ({ hit }) => {
   return (
     <div>
-      <div className="hit-title">
+      <a className="hit-title" href={withPrefix(hit.slug)}>
         <Highlight attribute="title" hit={hit} />
-      </div>
+      </a>
       <p className="hit-description">
         <Highlight attribute="content" hit={hit} />
       </p>
