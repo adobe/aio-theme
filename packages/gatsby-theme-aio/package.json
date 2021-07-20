@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-aio",
-  "version": "3.14.3",
+  "version": "3.15.0",
   "description": "Gatsby theme for building markdown/gdocs powered Adobe I/O sites",
   "main": "index.js",
   "license": "Apache-2.0",

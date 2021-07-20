@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.3...@adobe/gatsby-theme-aio@3.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* **env-variables:** renamed algolia suffix variable and simplified logic ([#436](https://github.com/adobe/gatsby-theme-aio/issues/436)) ([800a22e](https://github.com/adobe/gatsby-theme-aio/commit/800a22e4edf3835132f1ab6c4cf89b08db52fd74))
+
+
+### Features
+
+* **DEVSITE-93:** add support of "OpenAPI" directive ([#417](https://github.com/adobe/gatsby-theme-aio/issues/417)) ([3bfac27](https://github.com/adobe/gatsby-theme-aio/commit/3bfac279c79ee35a94f058a2cfdb6ccec88a60cb))
+* record consistency ([#431](https://github.com/adobe/gatsby-theme-aio/issues/431)) ([3e38b92](https://github.com/adobe/gatsby-theme-aio/commit/3e38b92f0c26959d26d4d60dfe4232435f7dae33)), closes [#418](https://github.com/adobe/gatsby-theme-aio/issues/418)
+* update search settings ([#418](https://github.com/adobe/gatsby-theme-aio/issues/418)) ([5ff6b27](https://github.com/adobe/gatsby-theme-aio/commit/5ff6b275c7fdd9e7dbb0f420262215d80f0fc035))
+
+
+
+
+
 ## [3.14.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.2...@adobe/gatsby-theme-aio@3.14.3) (2021-07-02)
 
 
