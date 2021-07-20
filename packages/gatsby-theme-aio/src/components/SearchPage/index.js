@@ -118,7 +118,6 @@ const SearchIndexes = () => (
         <TabsItemLabel>Area for index tabs</TabsItemLabel>
       </TabsItem>
     </Tabs>
-    <div>Area for showing/selecting common indexes</div>
   </section>
 );
 
