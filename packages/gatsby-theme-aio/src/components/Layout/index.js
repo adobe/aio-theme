@@ -169,6 +169,7 @@ export default ({ children, pageContext, location }) => {
           siteMetadata {
             title
             description
+            searchIndex
             home {
               title
               path

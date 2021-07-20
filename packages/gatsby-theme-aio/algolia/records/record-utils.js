@@ -30,6 +30,7 @@ const createAlgoliaRecords = (node, records) => {
     slug: slug,
     words: wordCount.words,
     anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
+    url: getAbsoluteUrl(slug, node, record),
     customRanking: record.customRanking ?? '',
     pageID: objectID
   }));
@@ -51,5 +52,10 @@ const getAnchorLink = (linkHeadings) =>
     .join('-')}`;
 
 const getTitle = (node) => (node.title === '' || node.title == null ? node.headings[0]?.value : node.title);
+
+const getAbsoluteUrl = (slug, node, record) => {
+  let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
+  return `https://www.adobe.io${pathPrefix}${slug}${anchor}`;
+};
 
 module.exports = { createAlgoliaRecords, createRawRecords };

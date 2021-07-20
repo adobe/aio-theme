@@ -214,5 +214,5 @@ module.exports = {
   plugins: [
     `@adobe/gatsby-theme-aio`
   ],
-  pathPrefix: '/example'
+  pathPrefix: '/example/'
 };

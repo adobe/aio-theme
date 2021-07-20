@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { withPrefix } from 'gatsby';
 import { Tabs, Item as TabsItem, Label as TabsItemLabel } from '../Tabs';
+import Context from '../Context';
 
 import {
   InstantSearch,
@@ -21,7 +23,6 @@ import algoliasearch from 'algoliasearch/lite';
 import { NoResults } from '../SearchWidgets';
 
 import { css } from '@emotion/react';
-import PropTypes from 'prop-types';
 
 import 'instantsearch.css/themes/satellite.css';
 import './index.css';
@@ -31,9 +32,10 @@ const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af0
 const Hit = ({ hit }) => {
   return (
     <div>
-      <a className="hit-title" href={withPrefix(hit.slug)}>
+      <a className="hit-title" href={withPrefix(hit.slug + hit.anchor)}>
         <Highlight attribute="title" hit={hit} />
       </a>
+      <p className="hit-full-path">{hit.url}</p>
       <p className="hit-description">
         <Highlight attribute="content" hit={hit} />
       </p>
@@ -41,31 +43,39 @@ const Hit = ({ hit }) => {
   );
 };
 
-export const SearchPage = (props) => (
-  <InstantSearch
-    css={css`
-      min-height: 100%;
-    `}
-    searchClient={searchClient}
-    indexName="uxp-photoshop"
-    searchState={props.searchState}
-    createURL={props.createURL}
-    onSearchStateChange={props.onSearchStateChange}>
-    <Configure attributesToSnippet={['description:10']} snippetEllipsisText="…" removeWordsIfNoResults="allOptional" />
-    <SearchHeader />
-    <div className="search-results-main">
-      <SearchIndexes />
-      <hr className="horizontal-line" />
-      <SearchStats />
-      <div className="search-results">
-        <SearchResults />
-        <hr className="vertical-line" />
-        <SearchFilters />
+export const SearchPage = (props) => {
+  const { siteMetadata } = useContext(Context);
+
+  return (
+    <InstantSearch
+      css={css`
+        min-height: 100%;
+      `}
+      searchClient={searchClient}
+      indexName={siteMetadata.searchIndex}
+      searchState={props.searchState}
+      createURL={props.createURL}
+      onSearchStateChange={props.onSearchStateChange}>
+      <Configure
+        attributesToSnippet={['description:10']}
+        snippetEllipsisText="…"
+        removeWordsIfNoResults="allOptional"
+      />
+      <SearchHeader />
+      <div className="search-results-main">
+        <SearchIndexes />
+        <hr className="horizontal-line" />
+        <SearchStats />
+        <div className="search-results">
+          <SearchResults />
+          <hr className="vertical-line" />
+          <SearchFilters />
+        </div>
+        <SearchFooter />
       </div>
-      <SearchFooter />
-    </div>
-  </InstantSearch>
-);
+    </InstantSearch>
+  );
+};
 
 const SearchHeader = () => (
   <header className="search-header ">
@@ -74,19 +84,19 @@ const SearchHeader = () => (
       <HitsPerPage
         items={[
           {
-            label: '16 hits per page',
-            value: 16
+            label: '20 hits per page',
+            value: 20
           },
           {
             label: '32 hits per page',
-            value: 32
+            value: 40
           },
           {
             label: '64 hits per page',
-            value: 64
+            value: 60
           }
         ]}
-        defaultRefinement={16}
+        defaultRefinement={20}
       />
     </div>
   </header>
@@ -105,12 +115,10 @@ const SearchIndexes = () => (
         </TabsItemLabel>
       </TabsItem>
       <TabsItem>
-        <TabsItemLabel>Illustrator</TabsItemLabel>
-      </TabsItem>
-      <TabsItem>
-        <TabsItemLabel>InDesign</TabsItemLabel>
+        <TabsItemLabel>Area for index tabs</TabsItemLabel>
       </TabsItem>
     </Tabs>
+    <div>Area for showing/selecting common indexes</div>
   </section>
 );
 

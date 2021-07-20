@@ -100,9 +100,16 @@ mark {
  */
 
 .hit-title {
-  font-size: 18px;
+  font-size: 17px;
   color: #0066cc;
   margin-bottom: 0;
+}
+
+.hit-full-path {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 3px;
 }
 
 .hit-description {
@@ -197,4 +204,13 @@ mark {
 .search-main {
   display: flex;
   justify-content: space-between;
+}
+
+.ais-Highlight-highlighted {
+  background: rgba(247, 231, 17, 0.5);
+  color: #333;
+}
+
+a {
+  text-decoration: none;
 }

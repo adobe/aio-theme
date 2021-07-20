@@ -15,6 +15,7 @@ const CreateRecordsForFrame = require('./records/create-records-for-frame');
 const CreateRecordsForOpenApi = require('./records/create-records-for-open-api');
 const CreateRecordsForRegularContent = require('./records/create-records-for-regular-content');
 const { selectAll } = require('unist-util-select');
+const url = require('url');
 
 class QueryBuilder {
   constructor() {
@@ -77,7 +78,7 @@ class QueryBuilder {
           attributesForFaceting: ['keywords'],
           attributeForDistinct: 'pageID',
           distinct: true,
-          highlightPreTag: '<mark class="hit-highlight">',
+          highlightPreTag: '<mark class="ais-Highlight">',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
           ignorePlurals: true,
