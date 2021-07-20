@@ -391,7 +391,7 @@ ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
 
 ### .env settings for Algolia indexing
 
-Algolia indexing requires a set of API index keys to publish new search records and query existing search records for your site. To make your site searchable, Add the following variable's to your site's `.env` file:
+Algolia indexing requires a set of API index keys to publish new search records and query existing search records for your site. To make your site searchable, add the following variable's to your site's `.env` file:
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
    - `skip` mode - skip running of search indexation (default)
    - `console` mode - index data will be published to console, but not pushed to real search index
