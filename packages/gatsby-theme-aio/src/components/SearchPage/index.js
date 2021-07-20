@@ -32,7 +32,7 @@ const Hit = ({ hit }) => {
   return (
     <div>
       <div className="hit-title">
-        <Highlight attribute="contentHeading" hit={hit} />
+        <Highlight attribute="title" hit={hit} />
       </div>
       <p className="hit-description">
         <Highlight attribute="content" hit={hit} />
