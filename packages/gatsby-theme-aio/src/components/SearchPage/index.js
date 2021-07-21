@@ -53,7 +53,22 @@ export const SearchPage = (props) => {
       `}
       searchClient={searchClient}
       indexName={siteMetadata.searchIndex}
-      searchState={props.searchState}
+      searchState={{
+        query: '',
+        refinementList: {
+          keywords: [
+            'Creative Cloud',
+            'API Documentation',
+            'UXP',
+            'Plugins',
+            'JavaScript',
+            'ExtendScript',
+            'SDK',
+            'C++',
+            'Scripting'
+          ]
+        }
+      }}
       createURL={props.createURL}
       onSearchStateChange={props.onSearchStateChange}>
       <Configure
@@ -80,7 +95,20 @@ export const SearchPage = (props) => {
 const SearchHeader = () => (
   <header className="search-header ">
     <div className="search-header-inner">
-      <SearchBox />
+      <SearchBox
+        autoFocus
+        searchAsYouType
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log(event.currentTarget);
+        }}
+        onReset={(event) => {
+          console.log(event.currentTarget);
+        }}
+        onClick={(event) => {
+          console.log(event.currentTarget);
+        }}
+      />
       <HitsPerPage
         items={[
           {
