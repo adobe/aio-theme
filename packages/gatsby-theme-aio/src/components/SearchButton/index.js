@@ -32,7 +32,6 @@ const SearchButton = ({ href, github, ...props }) => {
           `spectrum-ActionButton--quiet`,
           'spectrum-Button--quiet'
         )}
-        to={href}
         {...props}>
         <Magnify />
       </GatsbyLink>

@@ -696,15 +696,18 @@ const GlobalHeader = ({
                 display: flex;
               `}>
               <SearchButton onClick={(event) => {
-                        event.stopImmediatePropagation();
-                        setOpenSearchModal(true);
-                        setOpenMenuIndex(-1);
-                        setOpenProfile((open) => !open);
-                      }} 
+                  event.stopImmediatePropagation();
+                  setOpenSearchModal(true);
+                  setOpenMenuIndex(-1);
+                  setOpenProfile((open) => !open);
+                }}
                 href={withPrefix('/search/')} 
                 github={github} />
               <Modal
                 ref={searchModalRef}
+                style={css`
+                  top: 64px;
+                `}
                 isOpen={openSearchModal}
                 onRequestClose={closeSearchModal}
                 contentLabel="Search"
