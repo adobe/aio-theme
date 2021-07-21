@@ -67,6 +67,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       subPages: [SubPage]
       versions: [Version]
       docs: Link
+      searchIndex: String
     }
 
     type SubPage {

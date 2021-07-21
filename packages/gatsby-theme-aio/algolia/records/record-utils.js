@@ -55,7 +55,7 @@ const getTitle = (node) => (node.title === '' || node.title == null ? node.headi
 
 const getAbsoluteUrl = (slug, node, record) => {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `https://www.adobe.io${pathPrefix}${slug}${anchor}`;
+  return `https://www.adobe.io${process.env.PATH_PREFIX}${slug}${anchor}`;
 };
 
 module.exports = { createAlgoliaRecords, createRawRecords };
