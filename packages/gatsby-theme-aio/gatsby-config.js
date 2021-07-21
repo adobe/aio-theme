@@ -17,7 +17,6 @@ require('dotenv').config({
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
 const AlgoliaQueryBuilder = require('./algolia/query-builder');
-const { pathPrefix } = require('../../example/gatsby-config');
 
 const algoliaQueries = new AlgoliaQueryBuilder().build();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
@@ -36,7 +35,6 @@ console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 module.exports = {
   siteMetadata: {
     searchIndex: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
-    pathPrefix: pathPrefix
   },
   plugins: [
     `gatsby-plugin-preact`,
