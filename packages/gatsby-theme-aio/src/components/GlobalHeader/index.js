@@ -49,6 +49,7 @@ import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
+import Modal from 'react-modal';
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -95,9 +96,12 @@ const GlobalHeader = ({
   const [isAnimated, setIsAnimated] = useState(false);
   const versionPopoverRef = useRef(null);
   const profilePopoverRef = useRef(null);
+  const searchModalRef = useRef(null);
   const [openVersion, setOpenVersion] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const [openMenuIndex, setOpenMenuIndex] = useState(-1);
+  const [openSearchModal, setOpenSearchModal] = useState(false);
+
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
@@ -113,6 +117,10 @@ const GlobalHeader = ({
     if (selectedTab) {
       positionIndicator(selectedTabIndicatorRef, selectedTab);
     }
+  };
+
+  const closeSearchModal = () => {
+    setOpenSearchModal(false);
   };
 
   useEffect(() => {
@@ -191,6 +199,21 @@ const GlobalHeader = ({
           setOpenMenuIndex(-1);
         }
       });
+    };
+
+    document.addEventListener('click', onClick);
+
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  useEffect(() => {
+    // Clicking outside of modal
+    const onClick = (event) => {
+
+      if (profilePopoverRef?.current && !profilePopoverRef.current.contains(event.target)) {
+        setOpenSearchModal(false);
+      }
+
     };
 
     document.addEventListener('click', onClick);
@@ -672,7 +695,22 @@ const GlobalHeader = ({
               css={css`
                 display: flex;
               `}>
-              <SearchButton href={withPrefix('/search/')} github={github} />
+              <SearchButton onClick={(event) => {
+                        event.stopImmediatePropagation();
+                        setOpenSearchModal(true);
+                        setOpenMenuIndex(-1);
+                        setOpenProfile((open) => !open);
+                      }} 
+                href={withPrefix('/search/')} 
+                github={github} />
+              <Modal
+                ref={searchModalRef}
+                isOpen={openSearchModal}
+                onRequestClose={closeSearchModal}
+                contentLabel="Search"
+              >
+
+              </Modal>
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
