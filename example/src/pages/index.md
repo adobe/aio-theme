@@ -1,6 +1,16 @@
 ---
 title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics
+keywords:
+  - Creative Cloud
+  - API Documentation
+  - UXP
+  - Plugins
+  - JavaScript
+  - ExtendScript
+  - SDK
+  - C++
+  - Scripting
 contributors:
   - https://github.com/simonwex
 ---
@@ -59,7 +69,7 @@ Provides configuration guidance and best practices for the /reports endpoint.
 
 [Migrating from 1.4 to 2.0](guides/migrating/)
 
-For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
+For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.
 
 <DiscoverBlock slots="heading, link, text"/>
 
@@ -82,4 +92,4 @@ request with your contribution. For more information, refer to the [contributing
 The timeout for API requests through adobe.io is currently *60 seconds*.
 
 The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`    
+When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`

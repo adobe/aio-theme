@@ -5,6 +5,7 @@ import Context from '../Context';
 
 import {
   InstantSearch,
+  Index,
   Panel,
   Hits,
   HitsPerPage,
@@ -43,32 +44,30 @@ const Hit = ({ hit }) => {
   );
 };
 
+const SearchState = {
+  refinementList: {
+    keywords: [
+      'Creative Cloud',
+      'API Documentation',
+      'UXP',
+      'Plugins',
+      'JavaScript',
+      'ExtendScript',
+      'SDK',
+      'C++',
+      'Scripting'
+    ]
+  }
+};
+
 export const SearchPage = (props) => {
   const { siteMetadata } = useContext(Context);
 
   return (
     <InstantSearch
-      css={css`
-        min-height: 100%;
-      `}
+      indexName="uxp-photoshop"
       searchClient={searchClient}
-      indexName={siteMetadata.searchIndex}
-      searchState={{
-        query: '',
-        refinementList: {
-          keywords: [
-            'Creative Cloud',
-            'API Documentation',
-            'UXP',
-            'Plugins',
-            'JavaScript',
-            'ExtendScript',
-            'SDK',
-            'C++',
-            'Scripting'
-          ]
-        }
-      }}
+      searchState={SearchState}
       createURL={props.createURL}
       onSearchStateChange={props.onSearchStateChange}>
       <Configure
@@ -76,6 +75,7 @@ export const SearchPage = (props) => {
         snippetEllipsisText="…"
         removeWordsIfNoResults="allOptional"
       />
+      <Index indexName="uxp-photoshop" />
       <SearchHeader />
       <div className="search-results-main">
         <SearchIndexes />
@@ -96,15 +96,7 @@ const SearchHeader = () => (
   <header className="search-header ">
     <div className="search-header-inner">
       <SearchBox
-        autoFocus
         searchAsYouType
-        onSubmit={(event) => {
-          event.preventDefault();
-          console.log(event.currentTarget);
-        }}
-        onReset={(event) => {
-          console.log(event.currentTarget);
-        }}
         onClick={(event) => {
           console.log(event.currentTarget);
         }}
@@ -166,7 +158,7 @@ const SearchFilters = () => (
   <aside className="search-filters">
     <Panel header="Filters">
       <ClearRefinements translations={{ reset: 'Clear all filters' }} />
-      <RefinementList attribute="keywords" />
+      <RefinementList attribute="keywords" operator="and" limit={20} showMore />
     </Panel>
   </aside>
 );

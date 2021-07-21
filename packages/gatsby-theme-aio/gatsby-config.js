@@ -34,7 +34,7 @@ console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
   siteMetadata: {
-    searchIndex: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
+    searchIndex: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME
   },
   plugins: [
     `gatsby-plugin-preact`,
