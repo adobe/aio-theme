@@ -15,7 +15,7 @@ const CreateRecordsForFrame = require('./records/create-records-for-frame');
 const CreateRecordsForOpenApi = require('./records/create-records-for-open-api');
 const CreateRecordsForRegularContent = require('./records/create-records-for-regular-content');
 const { selectAll } = require('unist-util-select');
-const url = require('url');
+const { removeDuplicateRecords } = require('./records/record-utils');
 
 class QueryBuilder {
   constructor() {
@@ -167,6 +167,7 @@ class QueryBuilder {
     }
 
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
+    records = removeDuplicateRecords(records);
 
     console.log(records.length + ' records for "' + (node.title?.length ? node.title : node.objectID) + '"');
     return records;
