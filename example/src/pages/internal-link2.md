@@ -1,1 +1,1 @@
-[Internal link 3](internal-link3.md)
+[Internal link 2](internal-link3.md)

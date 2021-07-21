@@ -197,7 +197,7 @@ export const TripleGripper = ({ className, ...props }) => (
   </svg>
 );
 
-// Used by SearchField
+// Used by AutoComplete
 export const Magnify = ({ className, ...props }) => (
   <svg
     {...props}
@@ -208,7 +208,7 @@ export const Magnify = ({ className, ...props }) => (
   </svg>
 );
 
-// Used by SearchField
+// Used by AutoComplete
 export const Cross = ({ className, ...props }) => (
   <svg {...props} {...commonProps} className="spectrum-Icon spectrum-UIIcon-Cross75">
     <path

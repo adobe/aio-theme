@@ -10,15 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { GatsbyLink } from '../GatsbyLink';
+import { GatsbyLink } from '../../GatsbyLink';
 import '@spectrum-css/actionbutton';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Magnify } from '../Icons';
+import { Magnify } from '../../Icons';
 import { css } from '@emotion/react';
 
-const SearchButton = ({ href, github, ...props }) => {
+const SearchButton = ({ href, ...props }) => {
   return (
     <div
       css={css`
@@ -32,7 +31,6 @@ const SearchButton = ({ href, github, ...props }) => {
           `spectrum-ActionButton--quiet`,
           'spectrum-Button--quiet'
         )}
-        to={href}
         {...props}>
         <Magnify />
       </GatsbyLink>

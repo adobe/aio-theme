@@ -53,6 +53,7 @@ class QueryBuilder {
                     title
                     description
                     contributors
+                    product
                     keywords
                     openAPISpec
                     frameSrc
@@ -72,27 +73,28 @@ class QueryBuilder {
         }
       `,
         settings: {
-          searchableAttributes: ['keywords', 'title', 'headings', 'unordered(content)', 'unordered(description)'],
-          ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
-          customRanking: ['desc(ctimeMs)', 'desc(size)'],
-          attributesForFaceting: ['keywords'],
-          attributeForDistinct: 'pageID',
+          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          // TODO: Comment out the ranking override to let Algolia's default determine it. Investigate more.
+          // ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
+          customRanking: ['desc(ctimeMs)'],
+          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesToSnippet: ['content:55', 'description:55'],
+          snippetEllipsisText: '…',
+          attributesToHighlight: ['*'],
           distinct: true,
+          attributeForDistinct: 'pageID',
           highlightPreTag: '<mark class="ais-Highlight">',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
           ignorePlurals: true,
-          attributesToSnippet: ['content:55'],
-          attributesToHighlight: ['*'],
-          snippetEllipsisText: '…',
-          restrictHighlightAndSnippetArrays: true,
+          restrictHighlightAndSnippetArrays: false,
           minWordSizefor1Typo: 4,
           minWordSizefor2Typos: 8,
           typoTolerance: true,
           allowTyposOnNumericTokens: true,
-          separatorsToIndex: '+#',
           minProximity: 1,
-          responseFields: ['*']
+          responseFields: ['*'],
+          advancedSyntax: true
         },
         transformer: async function ({
           data: {
@@ -166,7 +168,7 @@ class QueryBuilder {
 
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
 
-    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+    console.log(records.length + ' records for "' + (node.title?.length ? node.title : node.objectID) + '"');
     return records;
   }
 }

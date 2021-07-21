@@ -27,7 +27,7 @@ import {
 } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
-import { SearchButton } from '../SearchButton';
+import { SearchButton } from '../SearchWidgets/SearchButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
 import { Adobe, ChevronDown, TripleGripper } from '../Icons';
@@ -49,6 +49,7 @@ import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
+import Modal from 'react-modal';
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -75,18 +76,7 @@ const getAvatar = async (userId) => {
   }
 };
 
-const GlobalHeader = ({
-  ims,
-  isLoadingIms,
-  home,
-  versions,
-  pages,
-  docs,
-  location,
-  toggleSideNav,
-  hasSideNav,
-  github
-}) => {
+const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
@@ -95,9 +85,12 @@ const GlobalHeader = ({
   const [isAnimated, setIsAnimated] = useState(false);
   const versionPopoverRef = useRef(null);
   const profilePopoverRef = useRef(null);
+  const searchModalRef = useRef(null);
   const [openVersion, setOpenVersion] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const [openMenuIndex, setOpenMenuIndex] = useState(-1);
+  const [openSearchModal, setOpenSearchModal] = useState(false);
+
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
@@ -113,6 +106,10 @@ const GlobalHeader = ({
     if (selectedTab) {
       positionIndicator(selectedTabIndicatorRef, selectedTab);
     }
+  };
+
+  const closeSearchModal = () => {
+    setOpenSearchModal(false);
   };
 
   useEffect(() => {
@@ -191,6 +188,19 @@ const GlobalHeader = ({
           setOpenMenuIndex(-1);
         }
       });
+    };
+
+    document.addEventListener('click', onClick);
+
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  useEffect(() => {
+    // Clicking outside of modal
+    const onClick = (event) => {
+      if (profilePopoverRef?.current && !profilePopoverRef.current.contains(event.target)) {
+        setOpenSearchModal(false);
+      }
     };
 
     document.addEventListener('click', onClick);
@@ -672,7 +682,23 @@ const GlobalHeader = ({
               css={css`
                 display: flex;
               `}>
-              <SearchButton href={withPrefix('/search/')} github={github} />
+              <SearchButton
+                onClick={(event) => {
+                  event.stopImmediatePropagation();
+                  setOpenSearchModal(true);
+                  setOpenMenuIndex(-1);
+                  setOpenProfile((open) => !open);
+                }}
+                // href={withPrefix('/search/')}
+              />
+              <Modal
+                ref={searchModalRef}
+                style={css`
+                  top: var(--spectrum-global-dimension-size-800);
+                `}
+                isOpen={openSearchModal}
+                onRequestClose={closeSearchModal}
+                contentLabel="Search"></Modal>
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -816,8 +842,7 @@ GlobalHeader.propTypes = {
   docs: PropTypes.object,
   location: PropTypes.object,
   toggleSideNav: PropTypes.func,
-  hasSideNav: PropTypes.bool,
-  github: PropTypes.object
+  hasSideNav: PropTypes.bool
 };
 
 export { GlobalHeader };

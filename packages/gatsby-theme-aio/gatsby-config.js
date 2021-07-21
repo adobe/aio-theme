@@ -35,13 +35,13 @@ console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 module.exports = {
   siteMetadata: {
     searchIndex: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
+    pathPrefix: process.env.PATH_PREFIX || '/'
   },
   plugins: [
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-mdx-embed`,
-    `@adobe/parliament-site-search-index`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
@@ -105,6 +105,34 @@ module.exports = {
           branch: process.env.REPO_BRANCH,
           default_branch: process.env.REPO_DEFAULT_BRANCH
         }
+      },
+      {
+        resolve: `@adobe/gatsby-add-launch-script`,
+        options: {
+          scriptUrl: process.env.ADOBE_LAUNCH_SRC,
+          includeInDevelopment: process.env.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
+        }
+      },
+      {
+        resolve: `gatsby-plugin-algolia`,
+        options: {
+          appId: process.env.ALGOLIA_APP_ID,
+          apiKey: process.env.ALGOLIA_WRITE_API_KEY,
+          // for all queries
+          indexName: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
+          queries: algoliaQueries,
+          chunkSize: 1000, // default: 1000
+          settings: {
+            // optional, any index settings
+            // Note: by supplying settings, you will overwrite all existing settings on the index
+          },
+          enablePartialUpdates: false, // default: false
+          matchFields: ['cTimeMs'], // Array<String> default: ['modified']
+          concurrentQueries: false, // default: true
+          skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
+          dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
+          continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
+        }
       }
     },
     {
@@ -119,7 +147,6 @@ module.exports = {
       options: {
         appId: process.env.ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        // for all queries
         indexName: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
@@ -127,8 +154,8 @@ module.exports = {
           // optional, any index settings
           // Note: by supplying settings, you will overwrite all existing settings on the index
         },
-        enablePartialUpdates: true, // default: false
-        matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+        enablePartialUpdates: false, // default: false
+        matchFields: ['cTimeMs'], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false

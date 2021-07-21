@@ -159,11 +159,6 @@ export default ({ children, pageContext, location }) => {
             path
           }
         }
-        github {
-          repository
-          root
-          branch
-        }
         site {
           pathPrefix
           siteMetadata {
@@ -224,8 +219,8 @@ export default ({ children, pageContext, location }) => {
     `
   );
 
-  const { allMdx, allSitePage, site, github, allGithub, allGithubContributors } = data;
-  const { siteMetadata, pathPrefix } = site;
+  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
+  const { siteMetadata, pathPrefix, host, port } = site;
   const { home, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSideNav, setShowSideNav] = useState(false);
@@ -396,12 +391,13 @@ export default ({ children, pageContext, location }) => {
           pageContext,
           hasSideNav,
           siteMetadata,
+          host,
+          port,
           pathPrefix,
           allSitePage,
           allMdx,
           allGithub,
-          allGithubContributors,
-          github
+          allGithubContributors
         }}>
         <SEO title={frontMatter?.title} description={frontMatter?.description} />
         <div
@@ -455,7 +451,6 @@ export default ({ children, pageContext, location }) => {
                   toggleSideNav={() => {
                     toggleSideNav(setShowSideNav);
                   }}
-                  github={github}
                 />
               </div>
               <div
