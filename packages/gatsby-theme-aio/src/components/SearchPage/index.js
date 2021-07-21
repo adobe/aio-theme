@@ -9,13 +9,14 @@ import {
   Panel,
   Hits,
   HitsPerPage,
-  RefinementList,
+  // RefinementList,
   SearchBox,
   Stats,
   Pagination,
   ClearRefinements,
   Highlight,
   Configure,
+  connectRefinementList,
   connectStateResults
 } from 'react-instantsearch-dom';
 
@@ -29,6 +30,26 @@ import 'instantsearch.css/themes/satellite.css';
 import './index.css';
 
 const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af00f');
+
+const myRefinementList = ({ items, isFromSearch, refine, searchForItems, createURL }) => (
+  <ul>
+    {items.map((item) => (
+      <li key={item.label}>
+        <a
+          href={createURL(item.value)}
+          style={{ fontWeight: item.isRefined ? 'bold' : '' }}
+          onClick={(event) => {
+            event.preventDefault();
+            refine(item.value);
+          }}>
+          {isFromSearch ? <Highlight attribute="label" hit={item} /> : item.label} ({item.count})
+        </a>
+      </li>
+    ))}
+  </ul>
+);
+
+const CustomRefinementList = connectRefinementList(myRefinementList);
 
 const Hit = ({ hit }) => {
   return (
@@ -44,7 +65,7 @@ const Hit = ({ hit }) => {
   );
 };
 
-const SearchState = {
+const searchState = {
   refinementList: {
     keywords: [
       'Creative Cloud',
@@ -67,7 +88,7 @@ export const SearchPage = (props) => {
     <InstantSearch
       indexName="uxp-photoshop"
       searchClient={searchClient}
-      searchState={SearchState}
+      searchState={props.searchState}
       createURL={props.createURL}
       onSearchStateChange={props.onSearchStateChange}>
       <Configure
@@ -158,7 +179,7 @@ const SearchFilters = () => (
   <aside className="search-filters">
     <Panel header="Filters">
       <ClearRefinements translations={{ reset: 'Clear all filters' }} />
-      <RefinementList attribute="keywords" operator="and" limit={20} showMore />
+      <CustomRefinementList attribute="keywords" operator="and" />
     </Panel>
   </aside>
 );
