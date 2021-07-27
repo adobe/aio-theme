@@ -14,16 +14,15 @@ const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 const { selectAll } = require('unist-util-select');
 const { v4: uuidv4 } = require('uuid');
-const config = require('../../gatsby-config');
 
-const createRawRecords = (node, options, fileContent = null) => {
+const createRawRecords = ({mdxAST}, options, fileContent = null) => {
   if (fileContent != null) {
     return htmlExtractor
       .run(fileContent, { cssSelector: options.tagsToIndex })
       .filter((record) => record.content.length >= options.minCharsLengthPerTag);
   } else {
     // https://mdxjs.com/table-of-components
-    return selectAll(options.tagsToIndex, node.mdxAST).filter(
+    return selectAll(options.tagsToIndex, mdxAST).filter(
       (record) => record.value.length >= options.minCharsLengthPerTag
     );
   }
@@ -45,7 +44,7 @@ const createAlgoliaRecords = (node, records) => {
     words: wordCount.words,
     anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
     url: getUrl(slug, node, record),
-    absoluteUrl: getFullUrl(slug, node, record),
+    absoluteUrl: getAbsoluteUrl(slug, node, record),
     customRanking: record.customRanking ?? '',
     pageID: objectID
   }));
@@ -71,8 +70,8 @@ function getDescription(description, record) {
   return description;
 }
 
-function getHeadings(node, record) {
-  let filteredHeadings = selectAll('heading text', node.mdxAST)
+function getHeadings({mdxAST}, record) {
+  let filteredHeadings = selectAll('heading text', mdxAST)
     .filter((heading) => heading.position.start.line < record.position.end.line)
     .filter((heading) => heading.value !== 'Request' && heading.value !== 'Response'); // Removes jsdoc code tabs
   return filteredHeadings.map((heading) => heading.value);
@@ -92,12 +91,12 @@ function getUrl(slug, node, record) {
   return `${slug}${anchor}`;
 }
 
-function getFullUrl(slug, node, record) {
+function getAbsoluteUrl(slug, node, record) {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `${process.env.PATH_PREFIX}${slug}${anchor}`;
+  return `${process.env.AIO_FASTLY_DEV_URL}${process.env.PATH_PREFIX}${slug}${anchor}`;
 }
 
-const removeDuplicateRecords = (records, title) => {
+const removeDuplicateRecords = (records) => {
   let uniqueContents = [];
 
   records = records.filter((record) => {
@@ -109,6 +108,6 @@ const removeDuplicateRecords = (records, title) => {
     return !contentExist;
   });
   return records;
-}
+};
 
 module.exports = { createAlgoliaRecords, createRawRecords, removeDuplicateRecords };
