@@ -81,6 +81,7 @@ mark {
 }
 
 .search-results {
+  width: 100%;
   display: flex;
 }
 
