@@ -111,18 +111,4 @@ function removeDuplicateRecords(records, title) {
   return records;
 }
 
-const removeDuplicateRecords = (records, title) => {
-  let uniqueContents = [];
-
-  records = records.filter((record) => {
-    let contentExist = true;
-    if (!uniqueContents.includes(record.content)) {
-      uniqueContents.push(record.content);
-      contentExist = false;
-    }
-    return !contentExist;
-  });
-  return records;
-};
-
 module.exports = { createAlgoliaRecords, createRawRecords, removeDuplicateRecords };
