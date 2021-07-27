@@ -97,7 +97,7 @@ function getFullUrl(slug, node, record) {
   return `${process.env.PATH_PREFIX}${slug}${anchor}`;
 }
 
-function removeDuplicateRecords(records, title) {
+const removeDuplicateRecords = (records, title) => {
   let uniqueContents = [];
 
   records = records.filter((record) => {
