@@ -680,15 +680,16 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
-              <SearchButton
-                onClick={(event) => {
-                  event.stopImmediatePropagation();
-                  setOpenSearchModal(true);
-                  setOpenMenuIndex(-1);
-                  setOpenProfile((open) => !open);
-                }}
-                href={withPrefix('/search/')}
-              />
+              <SearchButton href={withPrefix('/search/')} />
+              {/*<SearchButton*/}
+              {/*  onClick={(event) => {*/}
+              {/*    event.stopImmediatePropagation();*/}
+              {/*    setOpenSearchModal(true);*/}
+              {/*    setOpenMenuIndex(-1);*/}
+              {/*    setOpenProfile((open) => !open);*/}
+              {/*  }}*/}
+              {/*  href={withPrefix('/search/')}*/}
+              {/*/>*/}
               {/*<Modal*/}
               {/*  ref={searchModalRef}*/}
               {/*  style={css`*/}
