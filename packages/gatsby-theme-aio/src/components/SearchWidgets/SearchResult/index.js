@@ -2,7 +2,7 @@
 import '@algolia/autocomplete-theme-classic';
 import { withPrefix } from 'gatsby';
 import 'instantsearch.css/themes/satellite.css';
-import '../../SearchPage/index.css';
+import '../index.css';
 
 const SearchResult = ({ hit, components }) => {
   return (

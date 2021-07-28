@@ -3,7 +3,7 @@ import { ClearRefinements } from 'react-instantsearch-dom';
 
 // TODO: Remove these stylesheets when styling everything with Spectrum
 import 'instantsearch.css/themes/satellite.css';
-import '../../SearchPage/index.css';
+import '../index.css';
 
 const NoResults = ({ searchResults }) => {
   if (!searchResults || searchResults.nbHits > 0) {

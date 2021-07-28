@@ -10,32 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext } from 'react';
 import Context from '../Context';
-
-import {
-  InstantSearch,
-  Panel,
-  Hits,
-  HitsPerPage,
-  RefinementList,
-  SearchBox,
-  Stats,
-  Pagination,
-  ClearRefinements,
-  Highlight,
-  Configure,
-  connectStateResults,
-  Index
-} from 'react-instantsearch-dom';
-
+import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
-
 import { css } from '@emotion/react';
-
 import 'instantsearch.css/themes/satellite.css';
-import './index.css';
 import SearchIndexes from '../SearchWidgets/SearchIndexes';
+import SearchHeader from '../SearchWidgets/SearchHeader';
 
 const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af00f');
 
@@ -45,18 +27,14 @@ const SearchPage = (props) => {
   return (
     <InstantSearch
       css={css`
-        min-height: 100%;
+        min-height: 80%;
       `}
       searchClient={searchClient}
       indexName={siteMetadata.searchIndex}
       searchState={props.searchState}
       createURL={props.createURL}
       onSearchStateChange={props.onSearchStateChange}>
-      <Configure
-        attributesToSnippet={['description:10']}
-        snippetEllipsisText="…"
-        removeWordsIfNoResults="allOptional"
-      />
+      <Configure attributesToSnippet={['content:20']} snippetEllipsisText="…" removeWordsIfNoResults="allOptional" />
       <SearchHeader />
       <div className="search-results-main">
         <SearchIndexes indexName={siteMetadata.searchIndex} />
@@ -64,30 +42,5 @@ const SearchPage = (props) => {
     </InstantSearch>
   );
 };
-
-const SearchHeader = () => (
-  <header className="search-header ">
-    <div className="search-header-inner">
-      <SearchBox />
-      <HitsPerPage
-        items={[
-          {
-            label: '20 hits per page',
-            value: 20
-          },
-          {
-            label: '32 hits per page',
-            value: 40
-          },
-          {
-            label: '64 hits per page',
-            value: 60
-          }
-        ]}
-        defaultRefinement={20}
-      />
-    </div>
-  </header>
-);
 
 export default SearchPage;

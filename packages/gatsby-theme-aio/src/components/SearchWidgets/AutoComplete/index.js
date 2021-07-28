@@ -10,15 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
-import {autocomplete, getAlgoliaResults} from '@algolia/autocomplete-js';
-import React, {createElement, Fragment, useEffect, useRef} from 'react';
-import {render} from 'react-dom';
-import {connectAutoComplete} from 'react-instantsearch-dom';
+import { autocomplete, getAlgoliaResults } from '@algolia/autocomplete-js';
+import React, { createElement, Fragment, useEffect, useRef } from 'react';
+import { render } from 'react-dom';
+import { connectAutoComplete } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
-import {createLocalStorageRecentSearchesPlugin} from '@algolia/autocomplete-plugin-recent-searches';
-import {withPrefix} from 'gatsby';
+import { createLocalStorageRecentSearchesPlugin } from '@algolia/autocomplete-plugin-recent-searches';
+import { withPrefix } from 'gatsby';
 import '@algolia/autocomplete-theme-classic';
-import './index.css';
+import '../index.css';
 
 const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af00f');
 
@@ -52,6 +52,15 @@ const AutoComplete = (props) => {
               return getAlgoliaResults({
                 searchClient,
                 queries: [
+                  {
+                    indexName: 'photoshop',
+                    query,
+                    params: {
+                      hitsPerPage: 5,
+                      attributesToHighlight: ['title:10', 'content:20'],
+                      snippetEllipsisText: '…'
+                    }
+                  },
                   {
                     indexName: 'photoshop',
                     query,

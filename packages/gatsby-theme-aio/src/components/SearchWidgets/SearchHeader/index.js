@@ -1,7 +1,8 @@
-import { connectHitsPerPage } from 'react-instantsearch-dom';
-import { Picker } from '../../Picker';
-import { AdobeAutoComplete } from '../AutoComplete';
 import React from 'react';
+import { connectHitsPerPage, SearchBox } from 'react-instantsearch-dom';
+import { Picker } from '../../Picker';
+import 'instantsearch.css/themes/satellite.css';
+import '../index.css';
 
 const HitsPerPageSpectrum = ({ items, refine }) => (
   <Picker
@@ -22,7 +23,7 @@ const SearchHeader = () => {
   return (
     <header className="search-header ">
       <div className="search-header-inner">
-        <AdobeAutoComplete />
+        <SearchBox />
         <CustomHitsPerPage
           items={[
             {

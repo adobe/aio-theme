@@ -30,7 +30,7 @@ import {
 import { withPrefix } from 'gatsby';
 
 import 'instantsearch.css/themes/satellite.css';
-import './index.css';
+import '../index.css';
 
 const SearchIndexes = (props) => {
   const [tabs] = useState([]);
