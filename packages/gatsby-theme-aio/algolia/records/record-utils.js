@@ -33,7 +33,7 @@ const createAlgoliaRecords = (node, records) => {
   return records.map((record) => ({
     objectID: record.objectID ?? uuidv4(record.value.toString()),
     title: getTitle(title, node, record),
-    description: getDescription(description, record),
+    description: getDescription(description, node, record),
     ...restNodeFields,
     // TODO: Rethink getHeadings() and use node.headings instead
     previousHeadings: record.html ? record.headings : getHeadings(node, record),
@@ -54,17 +54,17 @@ function getTitle(title, node, record) {
     return node.headings[0]?.value;
   }
   if (title === null) {
-    record.title = node.headings[0]?.value;
+    node.title = node.headings[0]?.value;
   }
   return title;
 }
 
-function getDescription(description, record) {
+function getDescription(description, node, record) {
   if (description === '') {
     return record.content ?? record.value;
   }
   if (description == null) {
-    record.description = record.content ?? record.value;
+    node.description = record.content ?? record.value;
   }
   return description;
 }

@@ -80,7 +80,6 @@ class QueryBuilder {
           attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
           attributesToSnippet: ['content:55', 'description:55'],
           snippetEllipsisText: '…',
-          attributesToHighlight: ['*'],
           distinct: true,
           attributeForDistinct: 'pageID',
           highlightPreTag: '<mark class="ais-Highlight">',
