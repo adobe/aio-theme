@@ -53,7 +53,7 @@ function getTitle(title, node, record) {
   if (title === '') {
     return node.headings[0]?.value ?? '';
   }
-  if (title === null) {
+  if (title == null) {
     title = node.title = node.headings[0]?.value ?? '';
     return title;
   }
