@@ -64,6 +64,6 @@ const removeDuplicateRecords = (records, title) => {
     return !contentExist;
   });
   return records;
-}
+};
 
 module.exports = { createAlgoliaRecords, createRawRecords, removeDuplicateRecords };
