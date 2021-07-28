@@ -9,13 +9,12 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 const { selectAll } = require('unist-util-select');
 const { v4: uuidv4 } = require('uuid');
 
-const createRawRecords = ({mdxAST}, options, fileContent = null) => {
+const createRawRecords = ({ mdxAST }, options, fileContent = null) => {
   if (fileContent != null) {
     return htmlExtractor
       .run(fileContent, { cssSelector: options.tagsToIndex })
@@ -70,7 +69,7 @@ function getDescription(description, record) {
   return description;
 }
 
-function getHeadings({mdxAST}, record) {
+function getHeadings({ mdxAST }, record) {
   let filteredHeadings = selectAll('heading text', mdxAST)
     .filter((heading) => heading.position.start.line < record.position.end.line)
     .filter((heading) => heading.value !== 'Request' && heading.value !== 'Response'); // Removes jsdoc code tabs
@@ -88,7 +87,7 @@ function getAnchorLink(linkHeadings) {
 
 function getUrl(slug, node, record) {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `${slug}${anchor}`;
+  return `${process.env.PATH_PREFIX}${slug}${anchor}`;
 }
 
 function getAbsoluteUrl(slug, node, record) {

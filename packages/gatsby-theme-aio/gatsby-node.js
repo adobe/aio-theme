@@ -49,11 +49,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       menu: [Menu]
     }
 
-    type Site {
-      host: String
-      port: String
-    }
-
     type Version {
       title: String
       path: String

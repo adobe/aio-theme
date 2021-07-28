@@ -10,41 +10,40 @@
  * governing permissions and limitations under the License.
  */
 
-import { useContext } from 'react';
+import {useContext} from 'react';
 import algoliasearch from 'algoliasearch/lite';
 
-import { Tabs, Item as TabsItem, Label as TabsItemLabel } from '../Tabs';
+import {Item as TabsItem, Label as TabsItemLabel, Tabs} from '../Tabs';
 import Context from '../Context';
-import { Checkbox } from '../Checkbox';
+import {Checkbox} from '../Checkbox';
 
 import {
-  InstantSearch,
-  Index,
-  Panel,
-  Hits,
-  Highlight,
-  Snippet,
-  RefinementList,
-  Stats,
-  Pagination,
-  ClearRefinements,
   Configure,
   connectCurrentRefinements,
   connectRefinementList,
-  connectPagination
+  Highlight,
+  Hits,
+  Index,
+  InstantSearch,
+  Pagination,
+  Panel,
+  Snippet,
+  Stats
 } from 'react-instantsearch-dom';
 
-import { NoResults } from '../SearchWidgets/NoResults';
-import { css } from '@emotion/react';
+import {NoResults} from '../SearchWidgets/NoResults';
+import {css} from '@emotion/react';
 
 // TODO: Remove these stylesheets when styling everything with Spectrum
 import './index.css';
+import '@algolia/autocomplete-theme-classic';
+
 import '@spectrum-css/textfield';
 import '@spectrum-css/search';
 import '@spectrum-css/button';
 
 import SearchHeader from '../SearchWidgets/SearchHeader';
-import { withPrefix } from 'gatsby';
+import {withPrefix} from 'gatsby';
 
 // TODO: Replace these with .env variables
 const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af00f');
@@ -52,16 +51,18 @@ const searchClient = algoliasearch('E642SEDTHL', '36561fc0f6d8f1ecf996bc7bf41af0
 // This is the same as SearchResults, but richer for page.
 const Hit = ({ hit }) => {
   return (
-    <a className="aa-ItemLink" href={withPrefix(hit.resultUrl)}>
+    <a className="aa-ItemLink" href={withPrefix(hit.url)}>
       <div className="aa-ItemContent">
         <div className="aa-ItemContentBody">
           <div className="hit-title">
-            <h3 className="spectrum-Heading spectrum-Heading--sizeM"><Highlight attribute="title" hit={hit} /></h3>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS">
+              <Highlight attribute="contentHeading" hit={hit} />
+            </h3>
           </div>
-          <div className="hit-full-path">
-            <p className="spectrum-Body spectrum-Body--sizeS"><Highlight attribute="resultUrl" hit={hit} /></p>
+          <div className="hit-full-path spectrum-Body spectrum-Body--sizeXXS">
+            <Highlight attribute="absoluteUrl" hit={hit} />
           </div>
-          <div className="hit-description">
+          <div className="hit-description spectrum-Body spectrum-Body--sizeXXS">
             <Snippet hit={hit} attribute="content" />
           </div>
         </div>
@@ -78,32 +79,31 @@ const Hit = ({ hit }) => {
 };
 
 const ClearRefinementsSpectrum = ({ items, refine }) => {
-  return(
+  return (
     <button
       className="spectrum-Button spectrum-Button--cta spectrum-Button--sizeS"
       onClick={() => {
         document.querySelectorAll('.ais-RefinementList-list input').forEach((box) => {
           box.checked = false;
-       })
-       refine(items);
+        });
+        refine(items);
       }}
       disabled={!items.length}>
       <span className="spectrum-Button-label">Clear all refinements</span>
     </button>
-  )
-}
+  );
+};
 
 const CustomClearRefinements = connectCurrentRefinements(ClearRefinementsSpectrum);
 
 const RefinementListSpectrum = ({ items, refine }) => (
   <ul className="ais-RefinementList-list">
-    {items.map((item,i) => (
+    {items.map((item, i) => (
       <li className="ais-RefinementList-item" key={item.label}>
-        <Checkbox 
+        <Checkbox
           onChange={(checked) => {
             refine(item.value);
-          }}
-        >
+          }}>
           {item.label} {item.count.toLocaleString()}
         </Checkbox>
       </li>
@@ -118,7 +118,7 @@ const Search = (props) => {
 
   return (
     <InstantSearch
-      indexName={siteMetadata.searchIndex}
+      indexName={'photoshop'}
       searchClient={searchClient}
       searchState={props.searchState}
       createURL={props.createURL}

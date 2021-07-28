@@ -1,13 +1,12 @@
-import { AutoComplete } from '../AutoComplete';
-import { getAlgoliaResults } from '@algolia/autocomplete-js';
+import {AutoComplete} from '../AutoComplete';
+import {getAlgoliaResults} from '@algolia/autocomplete-js';
 import SearchResult from '../SearchResult';
-import { createLocalStorageRecentSearchesPlugin } from '@algolia/autocomplete-plugin-recent-searches';
+import {createLocalStorageRecentSearchesPlugin} from '@algolia/autocomplete-plugin-recent-searches';
 import algoliasearch from 'algoliasearch/lite';
-import { HitsPerPage, connectHitsPerPage } from 'react-instantsearch-dom';
+import {connectHitsPerPage} from 'react-instantsearch-dom';
 import Context from '../../Context';
-import { useContext } from 'react';
-import { Picker } from '../../Picker';
-
+import {useContext} from 'react';
+import {Picker} from '../../Picker';
 import '../../SearchPage/index.css';
 
 // TODO: Replace these with .env variables
@@ -53,7 +52,7 @@ const SearchHeader = () => {
                   searchClient,
                   queries: [
                     {
-                      indexName: siteMetadata.searchIndex,
+                      indexName: 'photoshop',
                       query,
                       params: {
                         hitsPerPage: 5

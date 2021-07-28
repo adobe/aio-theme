@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectStateResults, ClearRefinements } from 'react-instantsearch-dom';
+import { ClearRefinements } from 'react-instantsearch-dom';
 
 // TODO: Remove these stylesheets when styling everything with Spectrum
 import 'instantsearch.css/themes/satellite.css';
@@ -119,4 +119,4 @@ const NoResults = ({ searchResults }) => {
   );
 };
 
-export default connectStateResults(NoResults);
+export default NoResults;

@@ -10,9 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import { autocomplete } from '@algolia/autocomplete-js';
-import React, { createElement, Fragment, useEffect, useRef } from 'react';
-import { render } from 'react-dom';
+import {autocomplete} from '@algolia/autocomplete-js';
+import React, {createElement, Fragment, useEffect, useRef} from 'react';
+import {render} from 'react-dom';
 
 export function AutoComplete(props) {
   const containerRef = useRef(null);

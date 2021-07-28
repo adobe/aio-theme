@@ -1,19 +1,16 @@
 // import { withPrefix } from 'gatsby';
 import '@algolia/autocomplete-theme-classic';
 import { withPrefix } from 'gatsby';
-
-// TODO: Remove these stylesheets when styling everything with Spectrum
 import 'instantsearch.css/themes/satellite.css';
 import '../../SearchPage/index.css';
 
 const SearchResult = ({ hit, components }) => {
   return (
-    // <a className="aa-ItemLink" href={withPrefix(hit.resultUrl)}>
-    <a className="aa-ItemLink" href={withPrefix(hit.resultUrl)}>
+    <a className="aa-ItemLink" href={withPrefix(hit.url)}>
       <div className="aa-ItemContent">
         <div className="aa-ItemContentBody">
           <div className="aa-ItemContentTitle">
-            <components.Highlight hit={hit} attribute="title" />
+            <components.Highlight hit={hit} attribute="contentHeading" />
           </div>
           <div className="aa-ItemContentDescription">
             <components.Snippet hit={hit} attribute="content" />

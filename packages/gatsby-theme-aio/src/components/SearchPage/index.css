@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-em,
 mark {
   background: rgba(226, 164, 0, 0.4);
 }
@@ -12,6 +11,7 @@ mark {
 .horizontal-line {
   border-top: 1px solid #ccc;
 }
+
 .vertical-line {
   border-left: 1px solid #ddd;
   height: 100vh;
@@ -44,7 +44,6 @@ mark {
   display: flex;
   width: 100%;
   height: 50px;
-  width: 400px;
 }
 
 .ais-HitsPerPage {
@@ -91,9 +90,9 @@ mark {
 }
 
 .ais-Stats {
-  padding-left: 5px;
   padding: 0.7rem 0;
 }
+
 .ais-Stats-text {
   font-size: 1rem;
 }
@@ -114,7 +113,7 @@ mark {
   margin-bottom: 0;
 }
 
-.hit-title  > h3 {
+.hit-title > h3 {
   color: rgb(20, 115, 230);
   margin-bottom: 0;
 }
