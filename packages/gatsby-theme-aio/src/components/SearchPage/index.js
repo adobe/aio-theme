@@ -56,7 +56,7 @@ const Hit = ({ hit }) => {
         <div className="aa-ItemContentBody">
           <div className="hit-title">
             <h3 className="spectrum-Heading spectrum-Heading--sizeS">
-              <Highlight attribute="contentHeading" hit={hit} />
+              <Highlight attribute="title" hit={hit} />
             </h3>
           </div>
           <div className="hit-full-path spectrum-Body spectrum-Body--sizeXXS">

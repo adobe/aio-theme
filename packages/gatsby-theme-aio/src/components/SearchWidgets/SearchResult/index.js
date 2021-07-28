@@ -10,7 +10,7 @@ const SearchResult = ({ hit, components }) => {
       <div className="aa-ItemContent">
         <div className="aa-ItemContentBody">
           <div className="aa-ItemContentTitle">
-            <components.Highlight hit={hit} attribute="contentHeading" />
+            <components.Highlight hit={hit} attribute="title" />
           </div>
           <div className="aa-ItemContentDescription">
             <components.Snippet hit={hit} attribute="content" />
