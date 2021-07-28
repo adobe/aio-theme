@@ -51,7 +51,7 @@ const createAlgoliaRecords = (node, records) => {
 
 function getTitle(title, node, record) {
   if (title === '') {
-    return node.headings[0]?.value;
+    return node.headings[0]?.value ?? '';
   }
   if (title === null) {
     node.title = node.headings[0]?.value;
@@ -64,7 +64,8 @@ function getDescription(description, node, record) {
     return record.content ?? record.value;
   }
   if (description == null) {
-    node.description = record.content ?? record.value;
+    description = node.description = record.content ?? record.value;
+    return description;
   }
   return description;
 }
