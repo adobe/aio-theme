@@ -542,9 +542,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                             border-top-left-radius: 0;
                             border-top-right-radius: 0;
                             ${page.menu.some((menu) => menu.description) &&
-                            `width: var(--spectrum-global-dimension-size-2400);`}
-
-                            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                            `width: var(--spectrum-global-dimension-size-2400);`} @media screen and(max-width: ${MOBILE_SCREEN_WIDTH}) {
                               margin-top: calc(-1 * var(--spectrum-global-dimension-size-40));
                             }
                           `}
@@ -689,16 +687,16 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   setOpenMenuIndex(-1);
                   setOpenProfile((open) => !open);
                 }}
-                // href={withPrefix('/search/')}
+                href={withPrefix('/search/')}
               />
-              <Modal
-                ref={searchModalRef}
-                style={css`
-                  top: var(--spectrum-global-dimension-size-800);
-                `}
-                isOpen={openSearchModal}
-                onRequestClose={closeSearchModal}
-                contentLabel="Search"></Modal>
+              {/*<Modal*/}
+              {/*  ref={searchModalRef}*/}
+              {/*  style={css`*/}
+              {/*    top: var(--spectrum-global-dimension-size-800);*/}
+              {/*  `}*/}
+              {/*  isOpen={openSearchModal}*/}
+              {/*  onRequestClose={closeSearchModal}*/}
+              {/*  contentLabel="Search"></Modal>*/}
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
