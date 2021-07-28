@@ -54,17 +54,18 @@ function getTitle(title, node, record) {
     return node.headings[0]?.value ?? '';
   }
   if (title === null) {
-    node.title = node.headings[0]?.value;
+    title = node.title = node.headings[0]?.value ?? '';
+    return title;
   }
   return title;
 }
 
 function getDescription(description, node, record) {
   if (description === '') {
-    return record.content ?? record.value;
+    return record.content ?? record.value ?? '';
   }
   if (description == null) {
-    description = node.description = record.content ?? record.value;
+    description = node.description = record.content ?? record.value ?? '';
     return description;
   }
   return description;
