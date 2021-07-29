@@ -681,6 +681,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 display: flex;
               `}>
               <SearchButton href={withPrefix('/search/')} />
+              {/* <SearchButton href={withPrefix('/search/')} /> */}
               {/*<SearchButton*/}
               {/*  onClick={(event) => {*/}
               {/*    event.stopImmediatePropagation();*/}
