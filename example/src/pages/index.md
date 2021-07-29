@@ -3,6 +3,16 @@ title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics
 contributors:
   - https://github.com/simonwex
+keywords:
+  - Creative Cloud
+  - API Documentation
+  - UXP
+  - Plugins
+  - JavaScript
+  - ExtendScript
+  - SDK
+  - C++
+  - Scripting
 ---
 
 import Overview from '../transclusions/overview.md'

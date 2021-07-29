@@ -36,6 +36,7 @@ import '@spectrum-css/vars/dist/spectrum-darkest.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import { Provider } from '../Context';
+import { SideNav } from '../SideNav';
 import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
@@ -54,8 +55,6 @@ const pageSrc = {
     frontMatter: 'frameSrc'
   }
 };
-
-let SideNav;
 
 const toggleSideNav = (setShowSideNav) => {
   setShowSideNav((showSideNav) => !showSideNav);
@@ -212,12 +211,11 @@ export default ({ children, pageContext, location }) => {
             }
           }
         }
-        ParliamentSearchIndex
       }
     `
   );
 
-  const { allMdx, allSitePage, site, allGithub, allGithubContributors, ParliamentSearchIndex } = data;
+  const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
   const { siteMetadata, pathPrefix } = site;
   const { home, versions, pages, subPages, docs } = siteMetadata;
 
@@ -267,10 +265,6 @@ export default ({ children, pageContext, location }) => {
   const sideNavSelectedPages = findSelectedPages(pathWithRootFix, subPages);
   const sideNavSelectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
   const hasSideNav = sideNavSelectedSubPages.length > 0;
-
-  if (hasSideNav && !SideNav) {
-    SideNav = loadable(() => import('../SideNav'));
-  }
 
   const frontMatter = pageContext?.frontmatter;
 
@@ -465,11 +459,10 @@ export default ({ children, pageContext, location }) => {
                     transform: translateX(${showSideNav ? '0' : '-100%'});
                   }
                 `}>
-                {SideNav && (
+                {hasSideNav && (
                   <SideNav
                     selectedPages={sideNavSelectedPages}
                     selectedSubPages={sideNavSelectedSubPages}
-                    searchIndex={ParliamentSearchIndex}
                     setShowSideNav={setShowSideNav}
                   />
                 )}

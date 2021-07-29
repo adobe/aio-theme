@@ -17,10 +17,9 @@ import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../..
 import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
-import { Search } from '../Search';
 import nextId from 'react-id-generator';
 
-const SideNav = ({ selectedPages, selectedSubPages, searchIndex, setShowSideNav }) => {
+const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
   const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
@@ -38,6 +37,10 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex, setShowSideNav 
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
                 display: none;
+              }
+
+              &:first-child .spectrum-SideNav-heading {
+                margin-top: 0;
               }
             `}
             className={classNames([
@@ -104,25 +107,13 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex, setShowSideNav 
           margin-top: var(--spectrum-global-dimension-size-1200);
         }
       `}>
-      <Search
-        searchIndex={searchIndex}
-        css={css`
-          padding-top: var(--spectrum-global-dimension-size-400);
-          margin-left: var(--spectrum-global-dimension-size-400);
-          margin-right: var(--spectrum-global-dimension-size-400);
-          margin-bottom: var(--spectrum-global-dimension-size-200);
-        `}
-      />
       <div
         role="tree"
         css={css`
           box-sizing: border-box;
-          padding: 0 var(--spectrum-global-dimension-size-400) var(--spectrum-global-dimension-size-400);
+          padding: var(--spectrum-global-dimension-size-400);
           overflow: auto;
-          height: calc(
-            100vh - var(--spectrum-global-dimension-size-800) - var(--spectrum-global-dimension-size-400) -
-              var(--spectrum-global-dimension-size-400)
-          );
+          height: calc(100vh - var(--spectrum-global-dimension-size-800));
         `}>
         <ul
           aria-label="Table of contents"
@@ -137,8 +128,7 @@ const SideNav = ({ selectedPages, selectedSubPages, searchIndex, setShowSideNav 
 SideNav.propTypes = {
   selectedPages: PropTypes.array,
   selectedSubPages: PropTypes.array,
-  searchIndex: PropTypes.object,
   setShowSideNav: PropTypes.func
 };
 
-export default SideNav;
+export { SideNav };
