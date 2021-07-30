@@ -89,13 +89,23 @@ const SearchIndexes = (props) => {
     </footer>
   );
 
-  let docIndexes = [
-    { indexName: 'creative-cloud' },
-    { indexName: 'photoshop' },
-    { indexName: 'project-firefly' },
-    { indexName: 'props.indexName' },
-    { indexName: 'xd' }
-  ];
+  let docIndexes = [];
+
+  docIndexes.push({
+    indexName: props.indexName
+  });
+  docIndexes.push({
+    indexName: 'creative-cloud'
+  });
+  docIndexes.push({
+    indexName: 'photoshop'
+  });
+  docIndexes.push({
+    indexName: 'project-firefly'
+  });
+  docIndexes.push({
+    indexName: 'xd'
+  });
 
   return (
     <div
