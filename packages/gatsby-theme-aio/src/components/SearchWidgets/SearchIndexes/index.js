@@ -12,7 +12,7 @@
 
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/react';
-import PropTypes from 'prop-types';
+import { ADOBEIO_ALGOLGIA_INDEXES } from '../../../../conf/globals';
 import { Tabs, Item as TabsItem, Label as TabsItemLabel, TabsIndicator, positionIndicator } from '../../Tabs';
 import {
   Configure,
@@ -91,20 +91,13 @@ const SearchIndexes = (props) => {
 
   let docIndexes = [];
 
-  docIndexes.push({
-    indexName: props.indexName
-  });
-  docIndexes.push({
-    indexName: 'creative-cloud'
-  });
-  docIndexes.push({
-    indexName: 'photoshop'
-  });
-  docIndexes.push({
-    indexName: 'project-firefly'
-  });
-  docIndexes.push({
-    indexName: 'xd'
+  // Add current site's index as default, followed by sibling indexes
+  docIndexes = ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
+    if (index === props.indexName) {
+      docIndexes.unshift({ indexName: props.indexName });
+    } else {
+      docIndexes.push({ indexName: index });
+    }
   });
 
   return (

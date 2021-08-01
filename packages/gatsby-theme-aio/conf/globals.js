@@ -16,5 +16,27 @@ module.exports = {
   DESKTOP_SCREEN_WIDTH: '1280px',
   TABLET_SCREEN_WIDTH: '1024px',
   // --spectrum-global-dimension-static-breakpoint-small
-  MOBILE_SCREEN_WIDTH: '768px'
+  MOBILE_SCREEN_WIDTH: '768px',
+  ADOBEIO_ALGOLGIA_INDEXES: [
+    'after-effects',
+    'animate',
+    'audition',
+    'bridge',
+    'camera-raw',
+    'creative-cloud',
+    'cja-apis',
+    'dreamweaver',
+    'fonts',
+    'illustrator',
+    'indesign',
+    'lightroom-classic',
+    'lightroom',
+    'photoshop',
+    'premiere-pro',
+    'project-firefly',
+    'search-test',
+    'stock',
+    'xd',
+    'xmp'
+  ]
 };
