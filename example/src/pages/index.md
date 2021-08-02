@@ -1,28 +1,13 @@
----
-keywords:
-  - Creative Cloud
-  - API Documentation
-  - UXP
-  - Plugins
-  - JavaScript
-  - ExtendScript
-  - SDK
-  - C++
-  - Scripting
-
-contributors:
-  - https://github.com/simonwex
----
-
 import Overview from '../transclusions/overview.md';
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](hero-illustration.png)
 
-# Adobe Analytics
+## Adobe Analytics
 
-Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+Adobe Product API offers so many ways to integrate your most important customer data into key business processes. Adobe
+Product API offer limitless ways.
 
 <Resources slots="heading, links"/>
 
@@ -80,9 +65,10 @@ Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint d
 
 ## Contributing
 
-We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions
-or deletions for this documentation, check out the source from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull
-request with your contribution. For more information, refer to the [contributing page][].
+We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions or
+deletions for this documentation, check out the source
+from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull request with your
+contribution. For more information, refer to the [contributing page][].
 
 [contributing page]: /support/contribute
 
@@ -90,5 +76,6 @@ request with your contribution. For more information, refer to the [contributing
 
 The timeout for API requests through adobe.io is currently *60 seconds*.
 
-The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`
+The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12
+requests every 6 seconds*). When rate limiting is being enforced you will get `429` HTTP response codes with the
+following response body: `{"error_code":"429050","message":"Too many requests"}`

@@ -126,35 +126,8 @@ module.exports = {
           // optional, any index settings
           // Note: by supplying settings, you will overwrite all existing settings on the index
         },
-        enablePartialUpdates: false, // default: false
-        matchFields: ['cTimeMs'], // Array<String> default: ['modified']
-        concurrentQueries: false, // default: true
-        skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
-        dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
-        continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
-      }
-    },
-    {
-      resolve: `@adobe/gatsby-add-launch-script`,
-      options: {
-        scriptUrl: process.env.ADOBE_LAUNCH_SRC,
-        includeInDevelopment: process.env.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
-        queries: algoliaQueries,
-        chunkSize: 1000, // default: 1000
-        settings: {
-          // optional, any index settings
-          // Note: by supplying settings, you will overwrite all existing settings on the index
-        },
-        enablePartialUpdates: false, // default: false
-        matchFields: ['cTimeMs'], // Array<String> default: ['modified']
+        enablePartialUpdates: true, // default: false
+        matchFields: ['contentDigest'], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false

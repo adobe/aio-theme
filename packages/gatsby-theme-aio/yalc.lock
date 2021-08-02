@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "packages": {
+    "gatsby-plugin-algolia": {
+      "version": "0.22.0",
+      "signature": "fb3b0c6ad64dc339f739513b62ea6a0a",
+      "file": true,
+      "replaced": "^0.22.0"
+    }
+  }
+}

@@ -49,6 +49,9 @@ class QueryBuilder {
                 childMdx {
                   objectID: id
                   fileAbsolutePath
+                  internal {
+                    contentDigest
+                  }
                   frontmatter {
                     title
                     description
@@ -104,10 +107,11 @@ class QueryBuilder {
             .map((edge) => edge.node)
             .map((node) => {
               const { childMdx, ...restFileFields } = node;
-              const { frontmatter, ...restMdxFields } = childMdx;
+              const { internal, frontmatter, ...restMdxFields } = childMdx;
 
               return {
                 ...restFileFields,
+                ...childMdx.internal,
                 ...childMdx.frontmatter,
                 ...restMdxFields
               };
@@ -167,8 +171,8 @@ class QueryBuilder {
 
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
     records = removeDuplicateRecords(records);
+    console.log(`${records.length} records for ${records[0]?.title === '' ? node.pageID : records[0]?.title}`);
 
-    console.log(records.length + ' records for "' + (node.title?.length ? node.title : node.objectID) + '"');
     return records;
   }
 }

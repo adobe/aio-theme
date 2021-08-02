@@ -28,16 +28,10 @@
   "scripts": {
     "postinstall": "node scripts/spectrum-css.js"
   },
-  "devDependencies": {
-    "dotenv": "^10.0.0",
-    "gatsby": "^3.6.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  },
   "peerDependencies": {
     "gatsby": "^3.6.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "dependencies": {
     "@adobe/focus-ring-polyfill": "^0.1.5",
@@ -85,7 +79,8 @@
     "bootprint-openapi": "^4.0.4",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
-    "gatsby-plugin-algolia": "^0.20.1",
+    "gatsby": "^3.6.0",
+    "gatsby-plugin-algolia": "file:.yalc/gatsby-plugin-algolia",
     "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-layout": "^2.0.0",
     "gatsby-plugin-mdx": "^2.5.0",

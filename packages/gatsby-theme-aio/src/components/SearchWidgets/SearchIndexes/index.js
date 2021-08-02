@@ -92,7 +92,7 @@ const SearchIndexes = (props) => {
   let docIndexes = [];
 
   // Add current site's index as default, followed by sibling indexes
-  docIndexes = ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
+  ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
     if (index === props.indexName) {
       docIndexes.unshift({ indexName: props.indexName });
     } else {
@@ -137,8 +137,9 @@ const SearchIndexes = (props) => {
                     tab: index
                   });
                   positionSelectedTabIndicator(index);
+                  console.log(docIndex);
                 }}>
-                <TabsItemLabel>{docIndex.indexName.toUpperCase()}</TabsItemLabel>
+                <TabsItemLabel>{docIndex.indexName}</TabsItemLabel>
               </TabsItem>
             );
           })}
