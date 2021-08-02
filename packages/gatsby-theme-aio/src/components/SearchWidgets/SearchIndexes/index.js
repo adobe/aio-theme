@@ -91,9 +91,12 @@ const SearchIndexes = (props) => {
 
   let docIndexes = [];
 
-  docIndexes.push({
-    indexName: props.indexName
-  });
+  if(props?.indexName) {
+    docIndexes.push({
+      indexName: props.indexName
+    });
+  }
+
   docIndexes.push({
     indexName: 'creative-cloud'
   });
