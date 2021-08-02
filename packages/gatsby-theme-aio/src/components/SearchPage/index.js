@@ -95,6 +95,27 @@ const ClearRefinementsSpectrum = ({ items, refine }) => {
 
 const CustomClearRefinements = connectCurrentRefinements(ClearRefinementsSpectrum);
 
+const PaginationSpectrum = () => {
+  return(
+    <nav class="spectrum-Pagination spectrum-Pagination--explicit">
+      <a href="#" class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet spectrum-Pagination-prevButton">
+        <svg class="spectrum-Icon spectrum-UIIcon-ChevronLeft100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
+          <use xlink:href="#spectrum-css-icon-Chevron100"></use>
+        </svg>
+      </a>
+      <div class="spectrum-Textfield spectrum-Pagination-textfield">
+        <input type="text" name="field" value="2" class="spectrum-Textfield-input">
+      </div>
+      <span class="spectrum-Body--secondary spectrum-Pagination-counter">of 89 pages</span>
+      <a href="#" class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet spectrum-Pagination-nextButton">
+        <svg class="spectrum-Icon spectrum-UIIcon-ChevronRight100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
+          <use xlink:href="#spectrum-css-icon-Chevron100"></use>
+        </svg>
+      </a>
+    </nav>
+  )
+}
+
 const RefinementListSpectrum = ({ items, refine }) => (
   <ul className="ais-RefinementList-list">
     {items.map((item,i) => (

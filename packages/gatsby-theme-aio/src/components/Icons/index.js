@@ -69,6 +69,21 @@ export const ChevronRight = ({ className, ...props }) => (
   </svg>
 );
 
+// Used by Accordion
+export const ChevronLeft = ({ className, ...props }) => (
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronLeft100')}>
+    <path
+      d="M4.5 13.25a1.094 1.094 0 01-.773-1.868L8.109 7 3.727 2.618A1.094 1.094 0 015.273 1.07l5.157 5.156a1.094 1.094 0 010 1.546L5.273 12.93a1.091 1.091 0 01-.773.321z"
+      className="spectrum-UIIcon--large"></path>
+    <path
+      d="M3 9.95a.875.875 0 01-.615-1.498L5.88 5 2.385 1.547A.875.875 0 013.615.302L7.74 4.377a.876.876 0 010 1.246L3.615 9.698A.872.872 0 013 9.95z"
+      className="spectrum-UIIcon--medium"></path>
+  </svg>
+);
+
 // Used by InlineAlert
 export const InfoMedium = ({ className, ...props }) => (
   <svg
