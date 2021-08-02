@@ -51,7 +51,7 @@ const SearchIndexes = (props) => {
   const Hit = ({ hit }) => {
     return (
       <div>
-        <a className="hit-title" href={withPrefix(hit.slug + hit.anchor)}>
+        <a className="hit-title" href={hit.absoluteUrl}>
           <Highlight attribute="title" hit={hit} />
         </a>
         <p className="hit-full-path">{hit.url}</p>
