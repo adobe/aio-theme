@@ -59,8 +59,13 @@ const OpenAPIBlock = ({ src }) => {
           css={css`
             & {
               * {
-                font-smoothing: auto !important;
-                -webkit-font-smoothing: auto !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                -webkit-font-smoothing: antialiased !important;
+              }
+
+              em,
+              mark {
+                background: transparent;
               }
 
               [role='navigation'] {
@@ -790,11 +795,6 @@ const OpenAPIBlock = ({ src }) => {
                     text-decoration: underline;
                   }
                 }
-
-                a[download] {
-                  margin: 0;
-                  border: none;
-                }
               }
             }
           `}>
@@ -806,6 +806,7 @@ const OpenAPIBlock = ({ src }) => {
               hideLoading: true,
               scrollYOffset: 64,
               menuToggle: true,
+              hideDownloadButton: true,
               theme: {
                 sidebar: {
                   width: SIDENAV_WIDTH
