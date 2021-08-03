@@ -92,8 +92,8 @@ const SearchIndexes = (props) => {
   let docIndexes = [];
 
   // Add current site's index as default, followed by sibling indexes
-  ADOBEIO_ALGOLGIA_INDEXES.map((indexName, i) => {
-    if (indexName === props?.indexName) {
+  ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
+    if (index === props?.indexName) {
       docIndexes.unshift({ indexName: props.indexName });
     } else {
       if (props?.indexName) {
