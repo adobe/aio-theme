@@ -32,11 +32,11 @@ const SearchHeader = () => {
             },
             {
               label: '32 hits per page',
-              value: 40
+              value: 32
             },
             {
               label: '64 hits per page',
-              value: 60
+              value: 64
             }
           ]}
           defaultRefinement={20}
