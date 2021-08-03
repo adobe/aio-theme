@@ -32,7 +32,7 @@ import { withPrefix } from 'gatsby';
 import 'instantsearch.css/themes/satellite.css';
 import '../index.css';
 
-const SearchIndexes = (props) => {
+const SearchIndexes = ({ indexName }) => {
   const [tabs] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState({
     tab: 0
@@ -90,17 +90,12 @@ const SearchIndexes = (props) => {
   );
 
   let docIndexes = [];
-
-  // Add current site's index as default, followed by sibling indexes
+  // Add current site's index as first tab, followed by sibling index tabs
   ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
-    if (index === props?.indexName) {
-      docIndexes.unshift({ indexName: props.indexName });
+    if (index === indexName) {
+      docIndexes.unshift({ indexName });
     } else {
-      if (props?.indexName) {
-        docIndexes.push({
-          indexName: props.indexName
-        });
-      }
+      docIndexes.push({ indexName: index });
     }
   });
 
@@ -123,7 +118,7 @@ const SearchIndexes = (props) => {
             box-sizing: border-box;
           `}
           onFontsReady={positionSelectedTabIndicator}>
-          {docIndexes.map((docIndex, index) => {
+          {docIndexes.map(({ indexName }, index) => {
             const ref = createRef();
             tabs.push(ref);
 
@@ -141,9 +136,8 @@ const SearchIndexes = (props) => {
                     tab: index
                   });
                   positionSelectedTabIndicator(index);
-                  console.log(docIndex);
                 }}>
-                <TabsItemLabel>{docIndex.indexName}</TabsItemLabel>
+                <TabsItemLabel>{indexName}</TabsItemLabel>
               </TabsItem>
             );
           })}
