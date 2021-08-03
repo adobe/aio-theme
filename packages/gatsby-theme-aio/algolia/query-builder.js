@@ -41,7 +41,6 @@ class QueryBuilder {
           ) {
             edges {
               node {
-                ctimeMs
                 modifiedTime(fromNow: true)
                 size
                 prettySize
@@ -49,9 +48,6 @@ class QueryBuilder {
                 childMdx {
                   objectID: id
                   fileAbsolutePath
-                  internal {
-                    contentDigest
-                  }
                   frontmatter {
                     title
                     description
@@ -69,6 +65,9 @@ class QueryBuilder {
                   }
                   slug
                   mdxAST
+                  internal {
+                    contentDigest
+                  }
                 }
               }
             }
@@ -79,7 +78,6 @@ class QueryBuilder {
           searchableAttributes: ['title', 'contentHeading', 'description,content'],
           // TODO: Comment out the ranking override to let Algolia's default determine it. Investigate more.
           // ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
-          customRanking: ['desc(ctimeMs)'],
           attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
           attributesToSnippet: ['content:55', 'description:55'],
           snippetEllipsisText: '…',
@@ -107,12 +105,12 @@ class QueryBuilder {
             .map((edge) => edge.node)
             .map((node) => {
               const { childMdx, ...restFileFields } = node;
-              const { internal, frontmatter, ...restMdxFields } = childMdx;
+              const { frontmatter, internal, ...restMdxFields } = childMdx;
 
               return {
                 ...restFileFields,
-                ...childMdx.internal,
                 ...childMdx.frontmatter,
+                ...childMdx.internal,
                 ...restMdxFields
               };
             });

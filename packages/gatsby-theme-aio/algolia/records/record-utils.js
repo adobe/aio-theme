@@ -28,29 +28,30 @@ const createRawRecords = (node, options, fileContent = null) => {
 };
 
 const createAlgoliaRecords = (node, records) => {
-  let { mdxAST, objectID, contentDigest, slug, wordCount, title, description, headings, ...restNodeFields } = node;
+  let { mdxAST, slug, objectID, contentDigest, wordCount, title, description, headings, ...restNodeFields } = node;
 
-  return records.map((record) => ({
-    objectID: record.objectID ?? uuidv4(record.value.toString()),
-    contentDigest: record.objectID ?? node.contentDigest,
-    title: getTitle(title, node, record),
-    description: getDescription(description, node, record),
-    ...restNodeFields,
-    // TODO: Rethink getHeadings() and use node.headings instead
-    previousHeadings: record.html ? record.headings : getHeadings(node, record),
-    contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
-    content: record.content ?? record.value,
-    slug: slug,
-    words: wordCount.words,
-    anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
-    url: getUrl(slug, node, record),
-    absoluteUrl: getAbsoluteUrl(slug, node, record),
-    customRanking: record.customRanking ?? '',
-    pageID: objectID
-  }));
+  return records.map((record) => {
+    return {
+      objectID: record.objectID ?? objectID,
+      contentDigest: record.objectID ?? contentDigest,
+      title: getTitle(title, node, record),
+      description: getDescription(description, node, record),
+      ...restNodeFields,
+      // TODO: Rethink getHeadings() and use node.headings instead
+      previousHeadings: record.html ? record.headings : getHeadings(node, record),
+      contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
+      content: record.content ?? record.value,
+      slug: slug,
+      words: wordCount.words,
+      anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
+      url: getUrl(slug, node, record),
+      absoluteUrl: getAbsoluteUrl(slug, node, record),
+      customRanking: record.customRanking ?? ''
+    };
+  });
 };
 
-function getTitle(title, node, record) {
+function getTitle(title, node) {
   if (title === '') {
     return node.headings[0]?.value ?? '';
   }

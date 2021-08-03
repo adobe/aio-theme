@@ -10,10 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import React, {useRef, useEffect, useState, createRef} from 'react';
-import {css} from '@emotion/react';
-import {ADOBEIO_ALGOLGIA_INDEXES} from '../../../../conf/globals';
-import {Tabs, Item as TabsItem, Label as TabsItemLabel, TabsIndicator, positionIndicator} from '../../Tabs';
+import React, { useRef, useEffect, useState, createRef } from 'react';
+import { css } from '@emotion/react';
+import { ADOBEIO_ALGOLGIA_INDEXES } from '../../../../conf/globals';
+import { Tabs, Item as TabsItem, Label as TabsItemLabel, TabsIndicator, positionIndicator } from '../../Tabs';
 import {
   Configure,
   Highlight,
@@ -27,7 +27,7 @@ import {
   RefinementList,
   Pagination
 } from 'react-instantsearch-dom';
-import {withPrefix} from 'gatsby';
+import { withPrefix } from 'gatsby';
 
 import 'instantsearch.css/themes/satellite.css';
 import '../index.css';
@@ -48,15 +48,15 @@ const SearchIndexes = (props) => {
     positionSelectedTabIndicator();
   }, [tabs]);
 
-  const Hit = ({hit}) => {
+  const Hit = ({ hit }) => {
     return (
       <div>
         <a className="hit-title" href={hit.absoluteUrl}>
-          <Highlight attribute="title" hit={hit}/>
+          <Highlight attribute="title" hit={hit} />
         </a>
         <p className="hit-full-path">{hit.url}</p>
         <p className="hit-description">
-          <Highlight attribute="content" hit={hit}/>
+          <Highlight attribute="content" hit={hit} />
         </p>
       </div>
     );
@@ -64,39 +64,43 @@ const SearchIndexes = (props) => {
 
   const SearchStats = () => (
     <section className="search-stats">
-      <Stats/>
+      <Stats />
     </section>
   );
 
   const SearchResults = () => (
     <section className="search-results">
-      <Hits hitComponent={Hit}/>
+      <Hits hitComponent={Hit} />
     </section>
   );
 
   const SearchFilters = () => (
     <aside className="search-filters">
       <Panel header="Filters">
-        <ClearRefinements translations={{reset: 'Clear all filters'}}/>
-        <RefinementList attribute="keywords"/>
+        <ClearRefinements translations={{ reset: 'Clear all filters' }} />
+        <RefinementList attribute="keywords" />
       </Panel>
     </aside>
   );
 
   const SearchFooter = () => (
     <footer className="search-footer">
-      <Pagination showLast={true}/>
+      <Pagination showLast={true} />
     </footer>
   );
 
   let docIndexes = [];
 
   // Add current site's index as default, followed by sibling indexes
-  ADOBEIO_ALGOLGIA_INDEXES.map((index, i) => {
-    if (index === props.indexName) {
-      docIndexes.unshift({indexName: props.indexName});
+  ADOBEIO_ALGOLGIA_INDEXES.map((indexName, i) => {
+    if (indexName === props?.indexName) {
+      docIndexes.unshift({ indexName: props.indexName });
     } else {
-      docIndexes.push({indexName: index});
+      if (props?.indexName) {
+        docIndexes.push({
+          indexName: props.indexName
+        });
+      }
     }
   });
 
@@ -143,22 +147,22 @@ const SearchIndexes = (props) => {
               </TabsItem>
             );
           })}
-          <TabsIndicator ref={selectedTabIndicator}/>
+          <TabsIndicator ref={selectedTabIndicator} />
         </Tabs>
       </div>
-      <hr className="horizontal-line"/>
+      <hr className="horizontal-line" />
       <div className="search-results-main">
         {docIndexes.map((docIndex, index) => (
           <div css={css``} hidden={!(selectedIndex.tab === index)}>
             <Index indexName={docIndex.indexName}>
-              <Configure hitsPerPage={10}/>
-              <SearchStats/>
+              <Configure hitsPerPage={10} />
+              <SearchStats />
               <div className="search-results">
-                <SearchResults/>
-                <hr className="vertical-line"/>
-                <SearchFilters/>
+                <SearchResults />
+                <hr className="vertical-line" />
+                <SearchFilters />
               </div>
-              <SearchFooter/>
+              <SearchFooter />
             </Index>
           </div>
         ))}

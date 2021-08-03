@@ -126,7 +126,7 @@ module.exports = {
           // optional, any index settings
           // Note: by supplying settings, you will overwrite all existing settings on the index
         },
-        enablePartialUpdates: true, // default: false
+        enablePartialUpdates: false, // default: false
         matchFields: ['contentDigest'], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
