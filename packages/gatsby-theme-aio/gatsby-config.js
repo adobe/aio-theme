@@ -131,7 +131,46 @@ module.exports = {
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
-        continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
+        continueOnFailure: false, // default: false, don't fail the build if algolia indexing fails
+        settings: {
+          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesToSnippet: ['content:55', 'description:55'],
+          distinct: true,
+          attributeForDistinct: 'url',
+          snippetEllipsisText: '…',
+          attributesToRetrieve: [
+            pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
+            'title',
+            'contentHeading',
+            'description',
+            'content',
+            'product',
+            'keywords',
+            'modifiedTime',
+            'size',
+            'prettySize',
+            'extension',
+            'contributors',
+            'slug',
+            'words',
+            'anchor',
+            'url',
+            'absoluteUrl'
+          ],
+          highlightPreTag: '<mark class="ais-Highlight">',
+          highlightPostTag: '</mark>',
+          hitsPerPage: 20,
+          ignorePlurals: true,
+          restrictHighlightAndSnippetArrays: false,
+          minWordSizefor1Typo: 4,
+          minWordSizefor2Typos: 8,
+          typoTolerance: true,
+          allowTyposOnNumericTokens: true,
+          minProximity: 1,
+          responseFields: ['*'],
+          advancedSyntax: true
+        }
       }
     }
   ]
