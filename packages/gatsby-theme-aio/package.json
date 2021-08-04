@@ -79,7 +79,7 @@
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
     "gatsby": "^3.6.0",
-    "gatsby-plugin-algolia": "file:.yalc/gatsby-plugin-algolia",
+    "gatsby-plugin-algolia": "^0.22.0",
     "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-layout": "^2.0.0",
     "gatsby-plugin-mdx": "^2.5.0",

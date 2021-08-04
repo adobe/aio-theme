@@ -169,7 +169,7 @@ class QueryBuilder {
 
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
     records = removeDuplicateRecords(records);
-    console.log(`${records.length} records for ${records[0]?.title === '' ? node.pageID : records[0]?.title}`);
+    console.log(`${records.length} records for ${records[0]?.title === '' ? node.url : records[0]?.title}`);
 
     return records;
   }
