@@ -30,9 +30,12 @@ const createAlgoliaRecords = (node, records) => {
   let { mdxAST, slug, objectID, contentDigest, wordCount, title, description, headings, ...restNodeFields } = node;
 
   return records.map((record) => {
+    const regex = /\//g;
+    const pathPrefixAttribute = `repo-${process.env.PATH_PREFIX.replace(regex, '')}`;
+
     return {
       objectID: record.objectID ?? objectID,
-      contentDigest: record.objectID ?? contentDigest,
+      [pathPrefixAttribute]: record.objectID ?? contentDigest,
       title: getTitle(title, node, record),
       description: getDescription(description, node, record),
       ...restNodeFields,

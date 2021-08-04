@@ -18,6 +18,7 @@ const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
 const AlgoliaQueryBuilder = require('./algolia/query-builder');
 const algoliasearch = require('algoliasearch');
+const metadata = require('example/gatsby-config');
 
 const algoliaQueries = new AlgoliaQueryBuilder().build();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
@@ -44,6 +45,10 @@ index.exists().then((indexExists) => {
     });
   }
 });
+
+// Retrieve repo's PATH_PREFIX to use for matchField.
+const regex = /\//g;
+const pathPrefixAttribute = process.env.PATH_PREFIX.replace(regex, '');
 
 module.exports = {
   siteMetadata: {
@@ -136,12 +141,11 @@ module.exports = {
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
         settings: {
-          snippetEllipsisText: '…'
           // optional, any index settings
           // Note: by supplying settings, you will overwrite all existing settings on the index
         },
-        enablePartialUpdates: true, // default: false
-        matchFields: ['contentDigest'], // Array<String> default: ['modified']
+        enablePartialUpdates: false, // default: false
+        matchFields: [pathPrefixAttribute], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
