@@ -31,8 +31,6 @@ const Tabs = forwardRef(({ children, className, onFontsReady, isVertical, ...pro
       onFontsReady && onFontsReady();
     });
   }, []);
-  console.log('hi')
-  console.log(isVertical)
   if(!isVertical){
     return (
       <div
