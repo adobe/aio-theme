@@ -24,23 +24,35 @@ const animateIndicator = (indicator, animate) => {
   indicator.current.style.transition = animate ? '' : 'none';
 };
 
-const Tabs = forwardRef(({ children, className, onFontsReady, ...props }, ref) => {
+const Tabs = forwardRef(({ children, className, onFontsReady, isVertical, ...props }, ref) => {
   useEffect(() => {
     // Font affects positioning of the Tab indicator
     document.fonts.ready.then(() => {
       onFontsReady && onFontsReady();
     });
   }, []);
+  if(!isVertical){
+    return (
+      <div
+        ref={ref}
+        {...props}
+        className={classNames('spectrum-Tabs', 'spectrum-Tabs--horizontal', 'spectrum-Tabs--quiet', className)}
+        role="tablist">
+        {children}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        ref={ref}
+        {...props}
+        className={classNames('spectrum-Tabs', 'spectrum-Tabs--vertical', 'spectrum-Tabs--quiet', className)}
+        role="tablist">
+        {children}
+      </div>
+    );
+  }
 
-  return (
-    <div
-      ref={ref}
-      {...props}
-      className={classNames('spectrum-Tabs', 'spectrum-Tabs--horizontal', 'spectrum-Tabs--quiet', className)}
-      role="tablist">
-      {children}
-    </div>
-  );
 });
 
 const TabsIndicator = forwardRef(({ className, ...props }, ref) => {
