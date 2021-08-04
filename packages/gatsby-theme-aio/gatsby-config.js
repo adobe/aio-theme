@@ -17,7 +17,6 @@ require('dotenv').config({
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
 const AlgoliaQueryBuilder = require('./algolia/query-builder');
-const algoliasearch = require('algoliasearch');
 
 const algoliaQueries = new AlgoliaQueryBuilder().build();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
@@ -32,18 +31,6 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
 }
 
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
-
-// Makes Algolia auto-create this index if it does not exist
-const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_WRITE_API_KEY);
-const index = searchClient.initIndex(process.env.ALGOLIA_INDEX_NAME);
-index.exists().then((indexExists) => {
-  if (!indexExists) {
-    console.log(`${process.env.ALGOLIA_INDEX_NAME} doesn't exist`);
-    index.setSettings({ snippetEllipsisText: '...' }).then(() => {
-      console.log('setSettings was called to have Algolia auto-create this index.');
-    });
-  }
-});
 
 // Retrieve repo's PATH_PREFIX to use for matchField.
 const regex = /\//g;
