@@ -32,6 +32,10 @@ class QueryBuilder {
     const sourceDir = 'src/pages';
     const self = this;
 
+    // Retrieve repo's PATH_PREFIX to use for matchField.
+    const regex = /\//g;
+    const pathPrefixAttribute = process.env.PATH_PREFIX.replace(regex, '');
+
     return [
       {
         query: `
@@ -81,8 +85,27 @@ class QueryBuilder {
           attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
           attributesToSnippet: ['content:55', 'description:55'],
           distinct: true,
+          attributeForDistinct: 'url',
           snippetEllipsisText: '…',
-          attributeForDistinct: 'pageID',
+          attributesToRetrieve: [
+            pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
+            'title',
+            'contentHeading',
+            'description',
+            'content',
+            'product',
+            'keywords',
+            'modifiedTime',
+            'size',
+            'prettySize',
+            'extension',
+            'contributors',
+            'slug',
+            'words',
+            'anchor',
+            'url',
+            'absoluteUrl'
+          ],
           highlightPreTag: '<mark class="ais-Highlight">',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
