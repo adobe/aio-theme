@@ -5,16 +5,17 @@ const deepEqual = require('deep-equal');
 /**
  * Fetches all records for the current index from Algolia
  *
- * @param {AlgoliaIndex} index eg. client.initIndex('your_index_name');
+ * @param {SearchIndex & {readonly search: <TObject>(query: string, requestOptions?: (RequestOptions & SearchOptions)) => Readonly<Promise<SearchResponse<TObject>>>; readonly searchForFacetValues: (facetName: string, facetQuery: string, requestOptions?: (RequestOptions & SearchOptions)) => Readonly<Promise<SearchForFacetValuesResponse>>; readonly findAnswers: <TObject>(query: string, queryLanguages: readonly string[], requestOptions?: (RequestOptions & FindAnswersOptions)) => Readonly<Promise<FindAnswersResponse<TObject>>>; readonly batch: (requests: readonly BatchRequest[], requestOptions?: RequestOptions) => Readonly<WaitablePromise<BatchResponse>>; readonly delete: (requestOptions?: RequestOptions) => Readonly<WaitablePromise<DeleteResponse>>; readonly getObject: <TObject>(objectID: string, requestOptions?: (RequestOptions & GetObjectOptions)) => Readonly<Promise<TObject & ObjectWithObjectID>>; readonly getObjects: <TObject>(objectIDs: readonly string[], requestOptions?: (RequestOptions & GetObjectsOptions)) => Readonly<Promise<GetObjectsResponse<TObject>>>; readonly saveObject: (object: Readonly<Record<string, any>>, requestOptions?: (RequestOptions & ChunkOptions & SaveObjectsOptions)) => Readonly<WaitablePromise<SaveObjectResponse>>; readonly saveObjects: (objects: ReadonlyArray<Readonly<Record<string, any>>>, requestOptions?: (RequestOptions & ChunkOptions & SaveObjectsOptions)) => Readonly<WaitablePromise<ChunkedBatchResponse>>; readonly waitTask: (taskID: number, requestOptions?: RequestOptions) => Readonly<Promise<void>>; readonly setSettings: (settings: Settings, requestOptions?: RequestOptions) => Readonly<WaitablePromise<SetSettingsResponse>>; readonly getSettings: (requestOptions?: RequestOptions) => Readonly<Promise<Settings>>; readonly partialUpdateObject: (object: Record<string, any>, requestOptions?: (RequestOptions & ChunkOptions & PartialUpdateObjectsOptions)) => Readonly<WaitablePromise<PartialUpdateObjectResponse>>; readonly partialUpdateObjects: (objects: ReadonlyArray<Record<string, any>>, requestOptions?: (RequestOptions & ChunkOptions & PartialUpdateObjectsOptions)) => Readonly<WaitablePromise<ChunkedBatchResponse>>; readonly deleteObject: (objectID: string, requestOptions?: RequestOptions) => Readonly<WaitablePromise<DeleteResponse>>; readonly deleteObjects: (objectIDs: readonly string[], requestOptions?: (RequestOptions & ChunkOptions)) => Readonly<WaitablePromise<ChunkedBatchResponse>>; readonly deleteBy: (filters: DeleteByFiltersOptions, requestOptions?: RequestOptions) => Readonly<WaitablePromise<DeleteResponse>>; readonly clearObjects: (requestOptions?: RequestOptions) => Readonly<WaitablePromise<DeleteResponse>>; readonly browseObjects: <TObject>(requestOptions?: (SearchOptions & BrowseOptions<TObject> & RequestOptions)) => Readonly<Promise<void>>; readonly getObjectPosition: (searchResponse: SearchResponse<{}>, objectID: string) => number; readonly findObject: <TObject>(callback: (object: (TObject & ObjectWithObjectID)) => boolean, requestOptions?: (FindObjectOptions & RequestOptions)) => Readonly<Promise<FindObjectResponse<TObject>>>; readonly exists: (requestOptions?: RequestOptions) => Readonly<Promise<boolean>>; readonly saveSynonym: (synonym: Synonym, requestOptions?: (RequestOptions & SaveSynonymsOptions)) => Readonly<WaitablePromise<SaveSynonymResponse>>; readonly saveSynonyms: (synonyms: readonly Synonym[], requestOptions?: (SaveSynonymsOptions & RequestOptions)) => Readonly<WaitablePromise<SaveSynonymsResponse>>; readonly getSynonym: (objectID: string, requestOptions?: RequestOptions) => Readonly<Promise<Synonym>>; readonly searchSynonyms: (query: string, requestOptions?: (SearchSynonymsOptions & RequestOptions)) => Readonly<Promise<SearchSynonymsResponse>>; readonly browseSynonyms: (requestOptions?: (SearchSynonymsOptions & BrowseOptions<Synonym> & RequestOptions)) => Readonly<Promise<void>>; readonly deleteSynonym: (objectID: string, requestOptions?: (DeleteSynonymOptions & RequestOptions)) => Readonly<WaitablePromise<DeleteResponse>>; readonly clearSynonyms: (requestOptions?: (ClearSynonymsOptions & RequestOptions)) => Readonly<WaitablePromise<DeleteResponse>>; readonly replaceAllObjects: (objects: ReadonlyArray<Readonly<Record<string, any>>>, requestOptions?: (ReplaceAllObjectsOptions & ChunkOptions & SaveObjectsOptions & RequestOptions)) => Readonly<WaitablePromise<ChunkedBatchResponse>>; readonly replaceAllSynonyms: (synonyms: readonly Synonym[], requestOptions?: (RequestOptions & Pick<SaveSynonymsOptions, Exclude<keyof SaveSynonymsOptions, "clearExistingSynonyms" | "replaceExistingSynonyms">>)) => Readonly<WaitablePromise<SaveSynonymsResponse>>; readonly searchRules: (query: string, requestOptions?: (RequestOptions & SearchRulesOptions)) => Readonly<Promise<SearchResponse<Rule>>>; readonly getRule: (objectID: string, requestOptions?: RequestOptions) => Readonly<Promise<Rule>>; readonly deleteRule: (objectID: string, requestOptions?: RequestOptions) => Readonly<WaitablePromise<DeleteResponse>>; readonly saveRule: (rule: Rule, requestOptions?: (RequestOptions & SaveRulesOptions)) => Readonly<WaitablePromise<SaveRuleResponse>>; readonly saveRules: (rules: readonly Rule[], requestOptions?: (RequestOptions & SaveRulesOptions)) => Readonly<WaitablePromise<SaveRulesResponse>>; readonly replaceAllRules: (rules: readonly Rule[], requestOptions?: (RequestOptions & SaveRulesOptions)) => Readonly<WaitablePromise<SaveRulesResponse>>; readonly browseRules: (requestOptions?: (SearchRulesOptions & BrowseOptions<Rule> & RequestOptions)) => Readonly<Promise<void>>; readonly clearRules: (requestOptions?: (RequestOptions & ClearRulesOptions)) => Readonly<WaitablePromise<DeleteResponse>>}} index eg. client.initIndex('your_index_name');
  * @param {Array<String>} attributesToRetrieve eg. ['modified', 'slug']
  */
-function fetchAlgoliaObjects(index, attributesToRetrieve, reporter) {
+function fetchAlgoliaObjects(
+  index,
+  attributesToRetrieve,
+  reporter
+) {
   const hits = {};
 
-  console.log(
-    `9 Get records based on attributeToRetrieve: `,
-    attributesToRetrieve
-  );
+  console.log("-----------attributesToRetrieve: ", attributesToRetrieve);
 
   return index
     .browseObjects({
@@ -38,9 +39,7 @@ exports.onPostBuild = async function ({ graphql, reporter }, config) {
     appId,
     apiKey,
     queries,
-    concurrentQueries,
-    enablePartialUpdates,
-    matchFields,
+    concurrentQueries = true,
     skipIndexing = false,
     dryRun = false,
     continueOnFailure = false,
@@ -65,9 +64,7 @@ exports.onPostBuild = async function ({ graphql, reporter }, config) {
   }
 
   if (continueOnFailure === true && !(appId && apiKey)) {
-    activity.setStatus(
-      `options.continueOnFailure is true and api key or appId are missing; skipping indexing`
-    );
+    activity.setStatus(`options.continueOnFailure is true and api key or appId are missing; skipping indexing`);
     activity.end();
     return;
   }
@@ -75,8 +72,8 @@ exports.onPostBuild = async function ({ graphql, reporter }, config) {
   const client = algoliasearch(appId, apiKey, {
     timeouts: {
       connect: 1,
-      read: 60,
-      write: 60,
+      read: 30,
+      write: 30,
     },
   });
 
@@ -94,8 +91,6 @@ exports.onPostBuild = async function ({ graphql, reporter }, config) {
         graphql,
         config,
         reporter,
-        enablePartialUpdates,
-        matchFields,
         dryRun,
       });
 
@@ -154,21 +149,13 @@ function groupQueriesByIndex(queries = [], config) {
 async function runIndexQueries(
   indexName,
   queries = [],
-  {
-    client,
-    activity,
-    graphql,
-    reporter,
-    enablePartialUpdates,
-    matchFields,
-    config,
-    dryRun,
-  }
+  { client, activity, graphql, reporter, config, dryRun }
 ) {
   const {
     settings: mainSettings,
     chunkSize = 1000,
-    matchFields: mainMatchFields = matchFields,
+    enablePartialUpdates = false,
+    matchFields: mainMatchFields = ['modified'],
   } = config;
 
   activity.setStatus(
@@ -207,22 +194,19 @@ async function runIndexQueries(
   let toIndex = {}; // used to track objects that should be added / updated
   const toRemove = {}; // used to track objects that are stale and should be removed
 
-  if (enablePartialUpdates !== true) {
-    console.log(
-      '🚀 ~ 6. Add or update this number of objects: ',
-      { ...allObjectsMap }.length
-    );
+  if (!enablePartialUpdates) {
     // enablePartialUpdates isn't true, so index all objects
+    console.log(
+      `🚀 ~ enablePartialUpdates = false; Add : ${{ ...allObjectsMap }.length} to Algolia index`
+    );
     toIndex = { ...allObjectsMap };
   } else {
     // iterate over each query to determine which data are fresh
-    console.log('🚀 ~ 6. Start Partial Updates.');
-
-    activity.setStatus(`Starting Partial updates...`);
+    activity.setStatus(`Starting Partial updates...`)
 
     // get all match fields for all queries to minimize calls to the api
-    const allMatchFields = getAllMatchFields(queries, mainMatchFields);
-    console.log('🚀 ~ 7. Get allMatchFields: ', allMatchFields);
+    let allMatchFields = getAllMatchFields(queries, mainMatchFields);
+    console.log('🚀 ~ 7. Index records with the following matchField will be pulled from index: ', allMatchFields);
 
     // get all indexed objects matching all matched fields
     const indexedObjects = await fetchAlgoliaObjects(
@@ -232,7 +216,7 @@ async function runIndexQueries(
     );
     console.log(
       '🚀 ~ 8. Get all currently indexed records from Algolia that have fields specified by matchFields = ',
-      indexToUse.indexName.toUpperCase(),
+      allMatchFields,
       Object.keys(indexedObjects).length
     );
 
@@ -242,16 +226,16 @@ async function runIndexQueries(
       console.log('');
       console.log(
         '9. Assign matching Algolia records to queryResultsMap. No. matching records =',
-        Object.keys(queryResultsMap).length
+        Object.keys(objectMapsByQuery[i]).length
       );
 
       // iterate over existing objects and compare to fresh data
-      for (const [id, existingObj] of Object.entries(indexedObjects)) {
-        console.log('Existing objectID = ', id);
+      for (const [objectID, existingObj] of Object.entries(indexedObjects)) {
+        console.log('Existing objectID = ', objectID);
 
-        if (queryResultsMap.hasOwnProperty(id)) {
+        if (queryResultsMap.hasOwnProperty(objectID)) {
           // key matches fresh objects, so compare match fields
-          const newObj = queryResultsMap[id];
+          const newObj = queryResultsMap[objectID];
           if (
             matchFields.every(field => newObj.hasOwnProperty(field) === false)
           ) {
@@ -278,7 +262,7 @@ async function runIndexQueries(
           ) {
             // one or more fields differ, so index new object
             console.log(`${newObj.contentDigest} ADDED to toIndex`);
-            toIndex[id] = newObj.contentDigest;
+            toIndex[objectID] = newObj.contentDigest;
           } else {
             console.log(
               `${newObj.contentDigest} NOT ADDED to toIndex. They are the same.`
@@ -286,19 +270,19 @@ async function runIndexQueries(
           }
 
           // remove from queryResultsMap, since it is already accounted for
-          delete queryResultsMap[id];
+          delete queryResultsMap[objectID];
         } else {
           console.log('');
           console.log(
             '11. Existing objectID = ',
-            id,
+            objectID,
             'does not exist in allObjectsMap, so remove it.'
           );
           // check if existing object exists in any new query
-          if (!allObjectsMap.hasOwnProperty(id)) {
+          if (!allObjectsMap.hasOwnProperty(objectID)) {
             // existing object not in new queries; remove
-            console.log(`${id} to be REMOVED`);
-            toRemove[id] = true;
+            console.log(`${objectID} to be REMOVED`);
+            toRemove[objectID] = true;
           }
         }
       }
@@ -449,7 +433,6 @@ async function getIndexToUse({ index, tempIndex, enablePartialUpdates }) {
 
   console.log('enablePartialUpdates', enablePartialUpdates);
 
-  //TODO: Fix so that index is created without enablePartialUpdates set to true.
   if (enablePartialUpdates && !mainIndexExists) {
     return createIndex(index);
   }
@@ -552,11 +535,7 @@ async function getObjectsMapByQuery({ query, transformer }, graphql, reporter) {
 
   console.log('🚀 ~ 3. Create objectMap.');
   // return a map by id for later use
-  const objectMap = Object.fromEntries(
-    objects.map(object => [object.objectID, object])
-  );
-
-  return objectMap;
+  return Object.fromEntries(objects.map(object => [object.objectID, object]));
 }
 
 // get all match fields for all queries to minimize calls to the api

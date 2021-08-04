@@ -2,6 +2,7 @@
 title: Index
 description: This is the index page
 ---
+
 import {clouds, products} from '../../products'
 
 <Hero slots="image, heading, text" variant="fullwidth" background="rgb(51, 51, 51)" />
@@ -26,4 +27,3 @@ Explore the APIs offered by products and view documentation
 
 
 <ProductCardGrid products={products} clouds={clouds} filterByIds={[2,3,4,40]} />
-

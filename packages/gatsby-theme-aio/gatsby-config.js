@@ -147,6 +147,7 @@ module.exports = {
           attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
           attributesToSnippet: ['content:55', 'description:55'],
           distinct: true,
+          attributeForDistinct: 'url',
           snippetEllipsisText: '…',
           attributesToRetrieve: [
             pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
@@ -167,7 +168,6 @@ module.exports = {
             'url',
             'absoluteUrl'
           ],
-          attributeForDistinct: 'pageID',
           highlightPreTag: '<mark class="ais-Highlight">',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
