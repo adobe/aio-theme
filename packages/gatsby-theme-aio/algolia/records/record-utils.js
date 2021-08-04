@@ -90,12 +90,12 @@ function getAnchorLink(linkHeadings) {
 
 function getUrl(slug, node, record) {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `${process.env.PATH_PREFIX}${slug}${anchor}`;
+  return `${slug}${anchor}`;
 }
 
 function getAbsoluteUrl(slug, node, record) {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `${process.env.ORIGIN}${process.env.PATH_PREFIX}${slug}${anchor}`;
+  return `${process.env.PATH_PREFIX}${slug}${anchor}`;
 }
 
 const removeDuplicateRecords = (records) => {

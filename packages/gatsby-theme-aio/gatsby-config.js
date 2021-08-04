@@ -115,7 +115,7 @@ module.exports = {
       options: {
         appId: process.env.GASTBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
         settings: {

@@ -260,6 +260,11 @@ const DEFAULT_HOME = {
   title: 'Products',
   href: '/apis/'
 };
+const SEARCH_PARAMS = {
+  query: 'query',
+  keywords: 'keywords',
+  index: 'index'
+};
 const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
 const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
 const TABLET_SCREEN_WIDTH = globals.TABLET_SCREEN_WIDTH;
@@ -288,6 +293,7 @@ export {
   getElementChild,
   cloneChildren,
   DEFAULT_HOME,
+  SEARCH_PARAMS,
   SIDENAV_WIDTH,
   MOBILE_SCREEN_WIDTH,
   TABLET_SCREEN_WIDTH,

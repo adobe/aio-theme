@@ -39,7 +39,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 display: none;
               }
 
-              &:first-child .spectrum-SideNav-heading {
+              &:first-of-type .spectrum-SideNav-heading {
                 margin-top: 0;
               }
             `}

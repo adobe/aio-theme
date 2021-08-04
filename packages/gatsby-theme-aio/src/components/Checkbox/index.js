@@ -15,9 +15,10 @@ import PropTypes from 'prop-types';
 import '@spectrum-css/checkbox';
 import { CheckMark } from '../Icons';
 
-const Checkbox = ({ onChange, children, ...props }) => (
+const Checkbox = ({ onChange, isSelected, children, ...props }) => (
   <label {...props} className="spectrum-Checkbox spectrum-Checkbox--emphasized spectrum-Checkbox--sizeM">
     <input
+      checked={isSelected}
       onChange={(e) => {
         onChange && onChange(e.target.checked);
       }}
@@ -32,7 +33,8 @@ const Checkbox = ({ onChange, children, ...props }) => (
 );
 
 Checkbox.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  isSelected: PropTypes.bool
 };
 
 export { Checkbox };

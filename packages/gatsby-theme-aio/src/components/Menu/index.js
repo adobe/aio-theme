@@ -50,7 +50,12 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
       `}
       {...props}>
       <span className="spectrum-Menu-itemLabel">{children}</span>
-      <CheckMark className="spectrum-Menu-checkmark spectrum-Menu-itemIcon" />
+      <CheckMark
+        className="spectrum-Menu-checkmark spectrum-Menu-itemIcon"
+        css={css`
+          display: none;
+        `}
+      />
     </Element>
   );
 };

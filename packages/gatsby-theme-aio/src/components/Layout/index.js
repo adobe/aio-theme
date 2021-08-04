@@ -14,6 +14,7 @@ import React, { useState, useEffect, createElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { Global, css } from '@emotion/react';
 import loadable from '@loadable/component';
+import algoliaSearch from 'algoliasearch/lite';
 import { useStaticQuery, graphql } from 'gatsby';
 import {
   rootFix,
@@ -22,6 +23,7 @@ import {
   findSubPages,
   trailingSlashFix,
   normalizePagePath,
+  SEARCH_PARAMS,
   DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
   SIDENAV_WIDTH
@@ -36,11 +38,36 @@ import '@spectrum-css/vars/dist/spectrum-darkest.css';
 import '@spectrum-css/sidenav';
 import '@adobe/focus-ring-polyfill';
 import { Provider } from '../Context';
+import { Search } from '../Search';
 import { SideNav } from '../SideNav';
 import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
+
+// GATSBY_ALGOLIA_APP_ID=...
+// GATSBY_ALGOLIA_API_KEY=...
+// GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
+// GATSBY_ALGOLIA_SEARCH_KEYWORDS=["keyword1", "keyword2", ...]
+// GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
+const hasSearch = !!(
+  process.env.GATSBY_ALGOLIA_APP_ID &&
+  process.env.GATSBY_ALGOLIA_API_KEY &&
+  process.env.GATSBY_ALGOLIA_INDEX_ALL &&
+  process.env.GATSBY_ALGOLIA_SEARCH_INDEX &&
+  process.env.GATSBY_ALGOLIA_SEARCH_KEYWORDS
+);
+
+let algolia = null;
+if (hasSearch) {
+  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY);
+} else {
+  console.warn('AIO: Algolia config missing.');
+}
+
+// GATSBY_IMS_CONFIG={"client_id": "...","scope": "..."}
+// GATSBY_IMS_SRC=https://.../imslib.js
+const hasIMS = !!(process.env.GATSBY_IMS_SRC && process.env.GATSBY_IMS_CONFIG);
 
 // Page source can come from OpenAPI or Iframe
 const pageSrc = {
@@ -219,8 +246,28 @@ export default ({ children, pageContext, location }) => {
   const { siteMetadata, pathPrefix } = site;
   const { home, versions, pages, subPages, docs } = siteMetadata;
 
+  const [showSearch, setShowSearch] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Show search if search param is set
+  useEffect(() => {
+    const searchParams = new URL(window.location).searchParams;
+    if (searchParams.get(SEARCH_PARAMS.query)) {
+      setShowSearch(true);
+    }
+  }, [setShowSearch]);
+
+  useEffect(() => {
+    window.onpopstate = () => {
+      const searchParams = new URL(window.location).searchParams;
+      if (searchParams.get(SEARCH_PARAMS.query)) {
+        setShowSearch(true);
+      } else {
+        setShowSearch(false);
+      }
+    };
+  }, []);
 
   // Unify all paths
   location.pathname = trailingSlashFix(decodeURIComponent(location.pathname));
@@ -270,6 +317,7 @@ export default ({ children, pageContext, location }) => {
 
   const layoutId = nextId();
   const sideNavId = nextId();
+  const searchButtonId = nextId();
 
   // Update OpenAPI spec and Frame src
   updatePageSrc('openAPI', frontMatter, setIsLoading);
@@ -369,6 +417,8 @@ export default ({ children, pageContext, location }) => {
             overscroll-behavior: auto contain;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+
+            ${showSearch && 'overflow: hidden;'}
           }
 
           *[hidden] {
@@ -430,6 +480,7 @@ export default ({ children, pageContext, location }) => {
                   }
                 `}>
                 <GlobalHeader
+                  hasIMS={hasIMS}
                   ims={ims}
                   isLoadingIms={isLoadingIms}
                   home={home}
@@ -441,6 +492,10 @@ export default ({ children, pageContext, location }) => {
                   toggleSideNav={() => {
                     toggleSideNav(setShowSideNav);
                   }}
+                  hasSearch={hasSearch}
+                  showSearch={showSearch}
+                  setShowSearch={setShowSearch}
+                  searchButtonId={searchButtonId}
                 />
               </div>
               <div
@@ -490,6 +545,18 @@ export default ({ children, pageContext, location }) => {
                 {!pageSrc['openAPI'].has && !pageSrc['frame'].has && children}
               </div>
             </div>
+
+            {hasSearch && showSearch && (
+              <Search
+                algolia={algolia}
+                searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+                searchKeywords={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_KEYWORDS)}
+                indexAll={JSON.parse(process.env.GATSBY_ALGOLIA_INDEX_ALL)}
+                showSearch={showSearch}
+                setShowSearch={setShowSearch}
+                searchButtonId={searchButtonId}
+              />
+            )}
 
             <div
               css={css`

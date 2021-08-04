@@ -82,7 +82,7 @@ class QueryBuilder {
           snippetEllipsisText: '…',
           distinct: true,
           attributeForDistinct: 'pageID',
-          highlightPreTag: '<mark class="spectrum-Highlight">',
+          highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
           ignorePlurals: true,
