@@ -102,6 +102,7 @@ const SearchIndexes = ({ indexName }) => {
   return (
     <div
       css={css`
+        display: flex;
         margin: var(--spectrum-global-dimension-size-400) 0;
         border-top-left-radius: var(--spectrum-global-dimension-size-50);
         border-top-right-radius: var(--spectrum-global-dimension-size-50);
@@ -109,15 +110,14 @@ const SearchIndexes = ({ indexName }) => {
       <div
         css={css`
           display: flex;
-          width: 100%;
-          height: var(--spectrum-global-dimension-size-600);
-          overflow: scroll;
+          height: 100%;
         `}>
         <Tabs
           css={css`
             padding-left: var(--spectrum-global-dimension-size-200);
             box-sizing: border-box;
           `}
+          isVertical={true}
           onFontsReady={positionSelectedTabIndicator}>
           {docIndexes.map(({ indexName }, index) => {
             const ref = createRef();
@@ -145,7 +145,6 @@ const SearchIndexes = ({ indexName }) => {
           <TabsIndicator ref={selectedTabIndicator} />
         </Tabs>
       </div>
-      <hr className="horizontal-line" />
       <div className="search-results-main">
         {docIndexes.map((docIndex, index) => (
           <div css={css``} hidden={!(selectedIndex.tab === index)}>
