@@ -139,9 +139,47 @@ module.exports = {
         indexName: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
+        // Note: by supplying settings, you will overwrite all existing settings on the index
         settings: {
-          // optional, any index settings
-          // Note: by supplying settings, you will overwrite all existing settings on the index
+          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          // TODO: Comment out the ranking override to let Algolia's default determine it. Investigate more.
+          // ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
+          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesToSnippet: ['content:55', 'description:55'],
+          distinct: true,
+          snippetEllipsisText: '…',
+          attributesToRetrieve: [
+            pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
+            'title',
+            'contentHeading',
+            'description',
+            'content',
+            'product',
+            'keywords',
+            'modifiedTime',
+            'size',
+            'prettySize',
+            'extension',
+            'contributors',
+            'slug',
+            'words',
+            'anchor',
+            'url',
+            'absoluteUrl'
+          ],
+          attributeForDistinct: 'pageID',
+          highlightPreTag: '<mark class="ais-Highlight">',
+          highlightPostTag: '</mark>',
+          hitsPerPage: 20,
+          ignorePlurals: true,
+          restrictHighlightAndSnippetArrays: false,
+          minWordSizefor1Typo: 4,
+          minWordSizefor2Typos: 8,
+          typoTolerance: true,
+          allowTyposOnNumericTokens: true,
+          minProximity: 1,
+          responseFields: ['*'],
+          advancedSyntax: true
         },
         enablePartialUpdates: true, // default: false
         matchFields: [pathPrefixAttribute], // Array<String> default: ['modified']
