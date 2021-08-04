@@ -111,6 +111,7 @@ const SearchIndexes = ({ indexName }) => {
           display: flex;
           width: 100%;
           height: var(--spectrum-global-dimension-size-600);
+          overflow: scroll;
         `}>
         <Tabs
           css={css`
