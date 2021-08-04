@@ -3,7 +3,7 @@
   "packages": {
     "gatsby-plugin-algolia": {
       "version": "0.22.0",
-      "signature": "1b462a57518f284de0796f07aa7af55c",
+      "signature": "13fe4a685be4d99debb4f0e0d03dda42",
       "file": true,
       "replaced": "^0.22.0"
     }

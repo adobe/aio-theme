@@ -80,7 +80,6 @@ class QueryBuilder {
           // ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
           attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
           attributesToSnippet: ['content:55', 'description:55'],
-          snippetEllipsisText: '…',
           distinct: true,
           attributeForDistinct: 'pageID',
           highlightPreTag: '<mark class="ais-Highlight">',

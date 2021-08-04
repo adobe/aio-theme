@@ -149,7 +149,6 @@ const SearchIndexes = ({ indexName }) => {
         {docIndexes.map((docIndex, index) => (
           <div css={css``} hidden={!(selectedIndex.tab === index)}>
             <Index indexName={docIndex.indexName}>
-              <Configure />
               <SearchStats />
               <div className="search-results">
                 <SearchResults />

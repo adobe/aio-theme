@@ -12,7 +12,6 @@
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 const { selectAll } = require('unist-util-select');
-const { v4: uuidv4 } = require('uuid');
 
 const createRawRecords = (node, options, fileContent = null) => {
   if (fileContent != null) {

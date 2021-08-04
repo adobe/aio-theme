@@ -263,9 +263,7 @@ async function runIndexQueries(
           if (
             matchFields.some(field => {
               console.log('');
-              console.log(
-                '10. Compare newObj to Algolia existingObject.'
-              );
+              console.log('10. Compare newObj to Algolia existingObject.');
               console.log('Algolia Object = ', existingObj[field]);
               console.log('New Object = ', newObj[field]);
 
@@ -333,7 +331,7 @@ async function runIndexQueries(
       if (dryRun === true) {
         reporter.info(`Records to add: ${objectsToIndex.length}`);
       } else {
-        console.log("-------- SAVE RECORDS ------------")
+        console.log('-------- SAVE RECORDS ------------');
         console.log(
           `Saving ${chunked.length} objects to ${indexToUse.indexName}`
         );
@@ -443,7 +441,7 @@ function indexExists(index) {
 async function getIndexToUse({ index, tempIndex, enablePartialUpdates }) {
   const mainIndexExists = await indexExists(index);
 
-  console.log("enablePartialUpdates", enablePartialUpdates )
+  console.log('enablePartialUpdates', enablePartialUpdates);
 
   if (enablePartialUpdates && !mainIndexExists) {
     return createIndex(index);
