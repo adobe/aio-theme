@@ -1,5 +1,3 @@
-import Overview from '../transclusions/overview.md';
-
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](hero-illustration.png)
@@ -67,14 +65,14 @@ Try the Analytics API with Swagger UI. Explore, make calls, with full endpoint d
 
 We encourage you to participate in our open documentation initiative, if you have suggestions, corrections, additions or
 deletions for this documentation, check out the source
-from [this github repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull request with your
+from [this repo](https://github.com/adobe/gatsby-theme-spectrum-example), and submit a pull request with your
 contribution. For more information, refer to the [contributing page][].
 
 [contributing page]: /support/contribute
 
 ## API Requests & Rate Limits
 
-The timeout for API requests through adobe.io is currently *60 seconds*.
+The timeout for API requests through adobeio is currently *60 seconds*.
 
 The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12
 requests every 6 seconds*). When rate limiting is being enforced you will get `429` HTTP response codes with the
