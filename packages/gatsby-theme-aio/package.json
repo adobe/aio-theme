@@ -43,7 +43,6 @@
     "@adobe/focus-ring-polyfill": "^0.1.5",
     "@adobe/gatsby-add-launch-script": "^0.0.4",
     "@adobe/gatsby-source-github-file-contributors": "^0.3.1",
-    "@adobe/parliament-site-search-index": "^0.0.4",
     "@adobe/prism-adobe": "^1.0.3",
     "@algolia/autocomplete-js": "^1.2.2",
     "@algolia/autocomplete-plugin-recent-searches": "^1.2.2",
