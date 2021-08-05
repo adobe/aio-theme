@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.16.0...@adobe/gatsby-theme-aio@3.16.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* keywords filter should scroll ([2f1d103](https://github.com/adobe/gatsby-theme-aio/commit/2f1d103fbf7255cdfd9be57f6cbca616b010bf31))
+
+
+
+
+
 # [3.16.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.15.0...@adobe/gatsby-theme-aio@3.16.0) (2021-08-05)
 
 
