@@ -30,6 +30,10 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
   );
 }
 
+// TODO: Consolidate wtih the one in query-builder
+const regex = /\//g;
+const pathPrefixAttribute = process.env.PATH_PREFIX != null ? process.env.PATH_PREFIX.replace(regex, '') : '';
+
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
@@ -118,16 +122,51 @@ module.exports = {
         indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
-        settings: {
-          // optional, any index settings
-          // Note: by supplying settings, you will overwrite all existing settings on the index
-        },
-        enablePartialUpdates: false, // default: false
-        matchFields: ['cTimeMs'], // Array<String> default: ['modified']
+        enablePartialUpdates: true, // default: false
+        matchFields: [pathPrefixAttribute], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
-        continueOnFailure: false // default: false, don't fail the build if algolia indexing fails
+        continueOnFailure: false, // default: false, don't fail the build if algolia indexing fails
+        settings: {
+          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesToSnippet: ['content:55', 'description:55'],
+          distinct: true,
+          attributeForDistinct: 'url',
+          snippetEllipsisText: '…',
+          attributesToRetrieve: [
+            pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
+            'title',
+            'contentHeading',
+            'description',
+            'content',
+            'product',
+            'keywords',
+            'modifiedTime',
+            'size',
+            'prettySize',
+            'extension',
+            'contributors',
+            'slug',
+            'words',
+            'anchor',
+            'url',
+            'absoluteUrl'
+          ],
+          highlightPreTag: '<mark>',
+          highlightPostTag: '</mark>',
+          hitsPerPage: 20,
+          ignorePlurals: true,
+          restrictHighlightAndSnippetArrays: false,
+          minWordSizefor1Typo: 4,
+          minWordSizefor2Typos: 8,
+          typoTolerance: true,
+          allowTyposOnNumericTokens: true,
+          minProximity: 1,
+          responseFields: ['*'],
+          advancedSyntax: true
+        }
       }
     }
   ]
