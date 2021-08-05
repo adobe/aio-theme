@@ -38,7 +38,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-mdx-embed`,
-    `@adobe/parliament-site-search-index`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
@@ -114,9 +113,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.ALGOLIA_APP_ID,
+        appId: process.env.GASTBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME || process.env.REPO_NAME,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
         settings: {
@@ -124,7 +123,7 @@ module.exports = {
           // Note: by supplying settings, you will overwrite all existing settings on the index
         },
         enablePartialUpdates: false, // default: false
-        matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+        matchFields: ['cTimeMs'], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false

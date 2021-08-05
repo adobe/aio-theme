@@ -113,6 +113,14 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
   const resolvers = {
     MdxFrontmatter: {
+      title: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      product: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
       keywords: {
         type: '[String]',
         resolve: addFrontmatterType

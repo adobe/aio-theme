@@ -53,6 +53,7 @@ class QueryBuilder {
                     title
                     description
                     contributors
+                    product
                     keywords
                     openAPISpec
                     frameSrc
@@ -72,33 +73,27 @@ class QueryBuilder {
         }
       `,
         settings: {
-          searchableAttributes: [
-            'keywords',
-            'unordered(title)',
-            'unordered(description)',
-            'unordered(headings)',
-            'unordered(content)'
-          ],
-          ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
-          customRanking: ['desc(ctimeMs)', 'desc(size)'],
-          attributesForFaceting: ['keywords'],
-          attributeForDistinct: 'pageID',
+          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          // TODO: Comment out the ranking override to let Algolia's default determine it. Investigate more.
+          // ranking: ['words', 'typo', 'proximity', 'attribute', 'exact', 'geo', 'filters'],
+          customRanking: ['desc(ctimeMs)'],
+          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesToSnippet: ['content:55', 'description:55'],
+          snippetEllipsisText: '…',
           distinct: true,
+          attributeForDistinct: 'pageID',
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
           hitsPerPage: 20,
-          //attributesToSnippet: ['description:80'],
-          attributesToHighlight: ['*'],
-          snippetEllipsisText: '…',
-          restrictHighlightAndSnippetArrays: true,
+          ignorePlurals: true,
+          restrictHighlightAndSnippetArrays: false,
           minWordSizefor1Typo: 4,
-          minWordSizefor2Typos: 6,
+          minWordSizefor2Typos: 8,
           typoTolerance: true,
-          allowTyposOnNumericTokens: false,
-          separatorsToIndex: '+#()[]{}*+-_一,:;<>?@/^|%&~"',
-          minProximity: 2,
+          allowTyposOnNumericTokens: true,
+          minProximity: 1,
           responseFields: ['*'],
-          maxFacetHits: 10
+          advancedSyntax: true
         },
         transformer: async function ({
           data: {
@@ -173,7 +168,7 @@ class QueryBuilder {
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
     records = removeDuplicateRecords(records);
 
-    console.log(records.length + ' records for "' + (node.title.length ? node.title : node.objectID) + '"');
+    console.log(records.length + ' records for "' + (node.title?.length ? node.title : node.objectID) + '"');
     return records;
   }
 }

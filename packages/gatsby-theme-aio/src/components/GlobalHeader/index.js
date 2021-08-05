@@ -29,7 +29,7 @@ import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, ChevronDown, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, Magnify, Close, TripleGripper } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
@@ -74,7 +74,22 @@ const getAvatar = async (userId) => {
   }
 };
 
-const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location, toggleSideNav, hasSideNav }) => {
+const GlobalHeader = ({
+  hasIMS,
+  ims,
+  isLoadingIms,
+  home,
+  versions,
+  pages,
+  docs,
+  location,
+  toggleSideNav,
+  hasSideNav,
+  hasSearch,
+  showSearch,
+  setShowSearch,
+  searchButtonId
+}) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
   const tabsContainerRef = useRef(null);
@@ -98,7 +113,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
   const positionSelectedTabIndicator = (index) => {
     const selectedTab = pages[index].tabRef;
 
-    if (selectedTab) {
+    if (selectedTab?.current) {
       positionIndicator(selectedTabIndicatorRef, selectedTab);
     }
   };
@@ -383,7 +398,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                   display: none;
                 }
 
-                margin-right: var(--spectrum-global-dimension-size-2000);
+                margin-right: var(--spectrum-global-dimension-size-3000);
               }
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -660,6 +675,24 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
               css={css`
                 display: flex;
               `}>
+              {hasSearch && (
+                <ActionButton
+                  id={searchButtonId}
+                  onClick={() => {
+                    setShowSearch((show) => !show);
+                  }}
+                  isQuiet
+                  css={css`
+                    margin-right: var(--spectrum-global-dimension-size-200);
+
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      margin-right: 0;
+                    }
+                  `}>
+                  {showSearch ? <Close /> : <Magnify />}
+                </ActionButton>
+              )}
+
               <AnchorButton
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -671,7 +704,7 @@ const GlobalHeader = ({ ims, isLoadingIms, home, versions, pages, docs, location
                 Console
               </AnchorButton>
 
-              {process.env.GATSBY_IMS_SRC && process.env.GATSBY_IMS_CONFIG && (
+              {hasIMS && (
                 <div
                   css={css`
                     display: flex;
@@ -803,7 +836,11 @@ GlobalHeader.propTypes = {
   docs: PropTypes.object,
   location: PropTypes.object,
   toggleSideNav: PropTypes.func,
-  hasSideNav: PropTypes.bool
+  hasSideNav: PropTypes.bool,
+  setShowSearch: PropTypes.func,
+  hasSearch: PropTypes.bool,
+  showSearch: PropTypes.bool,
+  searchButtonId: PropTypes.string
 };
 
 export { GlobalHeader };

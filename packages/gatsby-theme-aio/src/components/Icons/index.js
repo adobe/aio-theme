@@ -197,7 +197,7 @@ export const TripleGripper = ({ className, ...props }) => (
   </svg>
 );
 
-// Used by SearchField
+// Used by Search Button
 export const Magnify = ({ className, ...props }) => (
   <svg
     {...props}
@@ -205,6 +205,17 @@ export const Magnify = ({ className, ...props }) => (
     viewBox="0 0 36 36"
     className={classNames(className, 'spectrum-Icon', 'spectrum-Icon--sizeM')}>
     <path d="M33.173 30.215L25.4 22.443a12.826 12.826 0 10-2.957 2.957l7.772 7.772a2.1 2.1 0 002.958-2.958zM6 15a9 9 0 119 9 9 9 0 01-9-9z"></path>
+  </svg>
+);
+
+// Used by Search Button
+export const Close = ({ className, ...props }) => (
+  <svg
+    {...props}
+    {...commonProps}
+    viewBox="0 0 36 36"
+    className={classNames(className, 'spectrum-Icon', 'spectrum-Icon--sizeM')}>
+    <path d="M26.485 6.686L18 15.172 9.515 6.686a1 1 0 0 0-1.414 0L6.686 8.1a1 1 0 0 0 0 1.414L15.172 18l-8.486 8.485a1 1 0 0 0 0 1.414L8.1 29.314a1 1 0 0 0 1.414 0L18 20.828l8.485 8.486a1 1 0 0 0 1.414 0l1.415-1.414a1 1 0 0 0 0-1.414L20.828 18l8.486-8.485a1 1 0 0 0 0-1.414L27.9 6.686a1 1 0 0 0-1.415 0z"></path>
   </svg>
 );
 
