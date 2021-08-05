@@ -162,8 +162,6 @@ export default ({ children, pageContext, location }) => {
         site {
           pathPrefix
           siteMetadata {
-            title
-            description
             home {
               title
               path
