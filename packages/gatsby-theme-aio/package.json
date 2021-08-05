@@ -81,7 +81,7 @@
     "bootprint-openapi": "^4.0.4",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
-    "gatsby-plugin-algolia": "^0.20.1",
+    "gatsby-plugin-algolia": "^0.22.0",
     "gatsby-plugin-emotion": "^6.0.0",
     "gatsby-plugin-layout": "^2.0.0",
     "gatsby-plugin-mdx": "^2.5.0",
