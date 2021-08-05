@@ -82,7 +82,7 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
     const index = algolia.initIndex(selectedIndex);
 
     return await index.search(query, {
-      attributesToRetrieve: ['objectID', 'url', 'absoluteUrl'],
+      attributesToRetrieve: ['objectID', 'url'],
       hitsPerPage: SEARCH_MAX_RESULTS,
       filters: keywords.map((keyword) => `keywords:"${keyword}"`).join(' AND ')
     });
@@ -95,7 +95,7 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
         indexName,
         query,
         params: {
-          attributesToRetrieve: ['objectID', 'url', 'absoluteUrl'],
+          attributesToRetrieve: ['objectID', 'url'],
           hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
           filters: keywords.map((keyword) => `keywords:"${keyword}"`).join(' AND ')
         }
@@ -107,11 +107,10 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
 };
 
 const mapSearchResults = (hits, results) => {
-  hits.forEach(({ objectID, url, absoluteUrl, _highlightResult }) => {
+  hits.forEach(({ objectID, url, _highlightResult }) => {
     results.push({
       objectID,
       url,
-      absoluteUrl,
       _highlightResult
     });
   });
@@ -545,7 +544,7 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
                           <span dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.title.value }} />
                         </AnchorLink>
                       </div>
-                      <AnchorLink to={searchResult.url}>{searchResult.absoluteUrl}</AnchorLink>
+                      <AnchorLink to={searchResult.url}>{`${location.origin}${searchResult.url}`}</AnchorLink>
                       <div
                         className="spectrum-Body spectrum-Body--sizeS"
                         css={css`
