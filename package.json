@@ -29,6 +29,5 @@
     "format": "npx prettier --write '**/*.{js,json}'",
     "cy:open": "cypress open",
     "test:e2e": "start-server-and-test dev http://localhost:8000 cy:open"
-  },
-  "dependencies": {}
+  }
 }
