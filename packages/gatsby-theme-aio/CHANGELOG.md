@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.16.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.15.0...@adobe/gatsby-theme-aio@3.16.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* **DEVSITE-107:** remove duplicated index records ([#437](https://github.com/adobe/gatsby-theme-aio/issues/437)) ([5a9a6b9](https://github.com/adobe/gatsby-theme-aio/commit/5a9a6b9e57dbd48bdcd8e3034081b8718c43ed16))
+* hide OpenAPI download button ([e8b0696](https://github.com/adobe/gatsby-theme-aio/commit/e8b06962222c6b810f9e919cb8bcacaf89fc84e8))
+
+
+### Features
+
+* **DEVSITE-43:** add Search UI ([#449](https://github.com/adobe/gatsby-theme-aio/issues/449)) ([44110b3](https://github.com/adobe/gatsby-theme-aio/commit/44110b3eedbde7c50e7ed2b33e062e31a5d32619))
+* enable Algola partial updates ([#456](https://github.com/adobe/gatsby-theme-aio/issues/456)) ([0918f8e](https://github.com/adobe/gatsby-theme-aio/commit/0918f8e86b98f0620a6790c4919041092f970884))
+
+
+
+
+
 # [3.15.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.14.3...@adobe/gatsby-theme-aio@3.15.0) (2021-07-20)
 
 
