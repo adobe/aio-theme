@@ -13,7 +13,6 @@
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 const { selectAll } = require('unist-util-select');
-const { v4: uuidv4 } = require('uuid');
 
 const createRawRecords = ({ mdxAST }, options, fileContent = null) => {
   if (fileContent != null) {
@@ -29,25 +28,40 @@ const createRawRecords = ({ mdxAST }, options, fileContent = null) => {
 };
 
 const createAlgoliaRecords = (node, records) => {
-  let { mdxAST, objectID, slug, wordCount, title, description, headings, ...restNodeFields } = node;
+  let { mdxAST, slug, objectID, contentDigest, wordCount, title, description, headings, ...restNodeFields } = node;
 
-  return records.map((record) => ({
-    objectID: record.objectID ?? uuidv4(record.value.toString()),
-    title: getTitle(title, node, record),
-    description: getDescription(description, node, record),
-    ...restNodeFields,
-    // TODO: Rethink getHeadings() and use node.headings instead
-    previousHeadings: record.html ? record.headings : getHeadings(node, record),
-    contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
-    content: record.content ?? record.value,
-    slug: slug,
-    words: wordCount.words,
-    anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
-    url: getUrl(slug, node, record),
-    absoluteUrl: getAbsoluteUrl(slug, node, record),
-    customRanking: record.customRanking ?? '',
-    pageID: objectID
-  }));
+  return records.map((record) => {
+    const algoliaRecord = {
+      objectID: record.objectID ?? objectID,
+      title: getTitle(title, node, record),
+      description: getDescription(description, node, record),
+      ...restNodeFields,
+      // TODO: Rethink getHeadings() and use node.headings instead
+      previousHeadings: record.html ? record.headings : getHeadings(node, record),
+      contentHeading: record.html ? record.headings.slice(-1)[0] : getHeadings(node, record).slice(-1)[0],
+      content: record.content ?? record.value,
+      slug: slug,
+      words: wordCount.words,
+      anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
+      url: getUrl(slug, node, record),
+      absoluteUrl: getAbsoluteUrl(slug, node, record),
+      customRanking: record.customRanking ?? ''
+    };
+
+    const regex = /\//g;
+    const pathPrefixAttribute = process.env.PATH_PREFIX.replace(regex, '');
+
+    // record[pathPrefixAttribute] = record.objectID ?? contentDigest;
+
+    Object.defineProperty(algoliaRecord, pathPrefixAttribute, {
+      value: record.objectID ?? contentDigest,
+      writable: true,
+      enumerable: true,
+      configurable: true
+    });
+
+    return algoliaRecord;
+  });
 };
 
 function getTitle(title, node) {
@@ -99,14 +113,13 @@ function getAbsoluteUrl(slug, node, record) {
 
 const removeDuplicateRecords = (records) => {
   let uniqueContents = [];
-
   records = records.filter((record) => {
-    let contentExist = true;
-    if (!uniqueContents.includes(record.content)) {
+    if (uniqueContents.includes(record.content)) {
+      return false;
+    } else {
       uniqueContents.push(record.content);
-      contentExist = false;
+      return true;
     }
-    return !contentExist;
   });
   return records;
 };
