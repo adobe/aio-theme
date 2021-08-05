@@ -32,7 +32,7 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
 
 // TODO: Consolidate wtih the one in query-builder
 const regex = /\//g;
-const pathPrefixAttribute = process.env.PATH_PREFIX?.replace(regex, '');
+const pathPrefixAttribute = process.env.PATH_PREFIX != null ? process.env.PATH_PREFIX.replace(regex, '') : '';
 
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
