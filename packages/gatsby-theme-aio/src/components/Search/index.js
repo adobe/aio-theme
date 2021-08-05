@@ -453,8 +453,14 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
               <div
                 css={css`
                   margin-top: var(--spectrum-global-dimension-size-100);
+                  margin-bottom: var(--spectrum-global-dimension-size-1200);
                   display: flex;
                   flex-direction: column;
+                  overflow: auto;
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    margin-bottom: 0;
+                  }
                 `}>
                 {searchKeywords.map((keyword, i) => (
                   <Checkbox
