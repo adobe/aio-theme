@@ -16,11 +16,11 @@ import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../.
 import { Link } from '../Link';
 import PropTypes from 'prop-types';
 
-const AnchorLink = ({ href, ...props }) => {
+const AnchorLink = ({ href, variant = 'primary', ...props }) => {
   href = gdocsRelativeLinkFix(href);
 
   return (
-    <Link isQuiet={true}>
+    <Link isQuiet={true} variant={variant}>
       {isExternalLink(href) ? (
         <a href={href} {...getExternalLinkProps(href)} {...props} />
       ) : (
@@ -31,7 +31,8 @@ const AnchorLink = ({ href, ...props }) => {
 };
 
 AnchorLink.propTypes = {
-  href: PropTypes.string
+  href: PropTypes.string,
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 export { AnchorLink };

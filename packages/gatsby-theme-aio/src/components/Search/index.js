@@ -35,6 +35,7 @@ import { Checkbox } from '../Checkbox';
 
 const SEARCH_INPUT_WIDTH = '688px';
 const SEARCH_INDEX_ALL = 'all';
+const SEARCH_KEYWORDS = 'keywords';
 const SUGGESTION_MAX_RESULTS = 10;
 const SEARCH_MAX_RESULTS = 100;
 
@@ -82,9 +83,10 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
     const index = algolia.initIndex(selectedIndex);
 
     return await index.search(query, {
+      facets: [SEARCH_KEYWORDS],
       attributesToRetrieve: ['objectID', 'url'],
       hitsPerPage: SEARCH_MAX_RESULTS,
-      filters: keywords.map((keyword) => `keywords:"${keyword}"`).join(' AND ')
+      filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
     });
   }
   // Multi index search
@@ -95,9 +97,10 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
         indexName,
         query,
         params: {
+          facets: [SEARCH_KEYWORDS],
           attributesToRetrieve: ['objectID', 'url'],
           hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
-          filters: keywords.map((keyword) => `keywords:"${keyword}"`).join(' AND ')
+          filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
         }
       });
     });
@@ -116,7 +119,13 @@ const mapSearchResults = (hits, results) => {
   });
 };
 
-const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, setShowSearch, searchButtonId }) => {
+const mapKeywordResults = (facets, results) => {
+  if (facets[SEARCH_KEYWORDS]) {
+    Object.keys(facets[SEARCH_KEYWORDS]).forEach((keyword) => results.add(keyword));
+  }
+};
+
+const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
   const [selectedKeywords, setSelectedKeyWords] = useState([]);
@@ -128,6 +137,7 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
   const searchResultsRef = useRef(null);
   const [searchSuggestionResults, setSearchSuggestionResults] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [keywordResults, setKeywordResults] = useState([]);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
   const selectedTabIndicator = useRef(null);
@@ -154,17 +164,23 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
       setShowSearchResults(true);
 
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
-      const results = [];
+
+      const mappedSearchResults = [];
+      // Use Set to avoid duplicated keywords
+      const mappedKeywordResults = new Set();
 
       if (search?.results?.length) {
-        search.results.forEach(({ hits }) => {
-          mapSearchResults(hits, results);
+        search.results.forEach(({ hits, facets }) => {
+          mapSearchResults(hits, mappedSearchResults);
+          mapKeywordResults(facets, mappedKeywordResults);
         });
       } else if (search?.hits?.length) {
-        mapSearchResults(search.hits, results);
+        mapSearchResults(search.hits, mappedSearchResults);
+        mapKeywordResults(search.facets, mappedKeywordResults);
       }
 
-      setSearchResults(results);
+      setSearchResults(mappedSearchResults);
+      setKeywordResults(Array.from(mappedKeywordResults));
     }
   };
 
@@ -462,21 +478,27 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
                     margin-bottom: 0;
                   }
                 `}>
-                {searchKeywords.map((keyword, i) => (
-                  <Checkbox
-                    key={i}
-                    isSelected={selectedKeywords.includes(keyword)}
-                    value={keyword}
-                    onChange={(checked) => {
-                      if (checked) {
-                        setSelectedKeyWords((selectedKeywords) => [...selectedKeywords, keyword]);
-                      } else {
-                        setSelectedKeyWords(selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword));
-                      }
-                    }}>
-                    {keyword}
-                  </Checkbox>
-                ))}
+                {keywordResults.length > 0 ? (
+                  keywordResults.map((keyword, i) => (
+                    <Checkbox
+                      key={i}
+                      isSelected={selectedKeywords.includes(keyword)}
+                      value={keyword}
+                      onChange={(checked) => {
+                        if (checked) {
+                          setSelectedKeyWords((selectedKeywords) => [...selectedKeywords, keyword]);
+                        } else {
+                          setSelectedKeyWords(
+                            selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
+                          );
+                        }
+                      }}>
+                      {keyword}
+                    </Checkbox>
+                  ))
+                ) : (
+                  <div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>
+                )}
               </div>
             </div>
 
@@ -550,11 +572,18 @@ const Search = ({ algolia, searchIndex, searchKeywords, indexAll, showSearch, se
                           <span dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.title.value }} />
                         </AnchorLink>
                       </div>
-                      <AnchorLink to={searchResult.url}>{`${location.origin}${searchResult.url}`}</AnchorLink>
+                      <div
+                        css={css`
+                          font-style: italic;
+                        `}>
+                        <AnchorLink
+                          variant="secondary"
+                          to={searchResult.url}>{`${location.origin}${searchResult.url}`}</AnchorLink>
+                      </div>
                       <div
                         className="spectrum-Body spectrum-Body--sizeS"
                         css={css`
-                          margin: var(--spectrum-global-dimension-size-50) 0;
+                          margin: var(--spectrum-global-dimension-size-100) 0;
                         `}
                         dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.description.value }}
                       />

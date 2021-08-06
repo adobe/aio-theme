@@ -48,14 +48,12 @@ import nextId from 'react-id-generator';
 // GATSBY_ALGOLIA_APP_ID=...
 // GATSBY_ALGOLIA_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
-// GATSBY_ALGOLIA_SEARCH_KEYWORDS=["keyword1", "keyword2", ...]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
 const hasSearch = !!(
   process.env.GATSBY_ALGOLIA_APP_ID &&
   process.env.GATSBY_ALGOLIA_API_KEY &&
   process.env.GATSBY_ALGOLIA_INDEX_ALL &&
-  process.env.GATSBY_ALGOLIA_SEARCH_INDEX &&
-  process.env.GATSBY_ALGOLIA_SEARCH_KEYWORDS
+  process.env.GATSBY_ALGOLIA_SEARCH_INDEX
 );
 
 let algolia = null;
@@ -550,7 +548,6 @@ export default ({ children, pageContext, location }) => {
               <Search
                 algolia={algolia}
                 searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
-                searchKeywords={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_KEYWORDS)}
                 indexAll={JSON.parse(process.env.GATSBY_ALGOLIA_INDEX_ALL)}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}
