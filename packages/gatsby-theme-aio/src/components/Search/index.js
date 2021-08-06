@@ -245,12 +245,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     const onClick = ({ target }) => {
       setIsSuggestionsOpen(false);
 
-      if (
-        !showSearchResults &&
-        searchRef.current &&
-        !searchRef.current.contains(target) &&
-        target.id !== searchButtonId
-      ) {
+      if (searchRef.current && !searchRef.current.contains(target) && target.id !== searchButtonId) {
         setShowSearch(false);
       }
     };
@@ -550,45 +545,49 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       overflow: inherit;
                     }
                   `}>
-                  {searchResults.map((searchResult) => (
-                    <div
-                      css={css`
-                        margin: var(--spectrum-global-dimension-size-300);
+                  {searchResults.map((searchResult) => {
+                    const to = `${location.origin}${searchResult.url}`;
 
-                        mark,
-                        em {
-                          background-color: transparent;
-                          color: inherit;
-                          font-weight: 700;
-                          font-style: inherit;
-                        }
-                      `}>
+                    return (
                       <div
-                        className="spectrum-Body spectrum-Body--sizeM"
                         css={css`
-                          margin-bottom: var(--spectrum-global-dimension-size-100);
+                          margin: var(--spectrum-global-dimension-size-300);
+
+                          mark,
+                          em {
+                            background-color: transparent;
+                            color: inherit;
+                            font-weight: 700;
+                            font-style: inherit;
+                          }
                         `}>
-                        <AnchorLink to={searchResult.url}>
-                          <span dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.title.value }} />
-                        </AnchorLink>
+                        <div
+                          className="spectrum-Body spectrum-Body--sizeM"
+                          css={css`
+                            margin-bottom: var(--spectrum-global-dimension-size-100);
+                          `}>
+                          <AnchorLink to={to}>
+                            <span dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.title.value }} />
+                          </AnchorLink>
+                        </div>
+                        <div
+                          css={css`
+                            font-style: italic;
+                          `}>
+                          <AnchorLink variant="secondary" to={to}>
+                            {to}
+                          </AnchorLink>
+                        </div>
+                        <div
+                          className="spectrum-Body spectrum-Body--sizeS"
+                          css={css`
+                            margin: var(--spectrum-global-dimension-size-100) 0;
+                          `}
+                          dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.description.value }}
+                        />
                       </div>
-                      <div
-                        css={css`
-                          font-style: italic;
-                        `}>
-                        <AnchorLink
-                          variant="secondary"
-                          to={searchResult.url}>{`${location.origin}${searchResult.url}`}</AnchorLink>
-                      </div>
-                      <div
-                        className="spectrum-Body spectrum-Body--sizeS"
-                        css={css`
-                          margin: var(--spectrum-global-dimension-size-100) 0;
-                        `}
-                        dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.description.value }}
-                      />
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : (
                 <div
