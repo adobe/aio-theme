@@ -13,18 +13,24 @@
 const AlgoliaHTMLExtractor = require('algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 const { selectAll } = require('unist-util-select');
+const { v4: uuidv4 } = require('uuid');
 
-const createRawRecords = ({ mdxAST }, options, fileContent = null) => {
-  if (fileContent != null) {
-    return htmlExtractor
-      .run(fileContent, { cssSelector: options.tagsToIndex })
-      .filter((record) => record.content.length >= options.minCharsLengthPerTag);
-  } else {
-    // https://mdxjs.com/table-of-components
-    return selectAll(options.tagsToIndex, mdxAST).filter(
-      (record) => record.value.length >= options.minCharsLengthPerTag
+const createRawRecordsBasedOnAST = (mdxAST, options) => {
+  // https://mdxjs.com/table-of-components
+  return selectAll(options.tagsToIndex, mdxAST).filter(
+    (record) =>
+      record.value.length >= options.minCharsLengthPerTag && record.value.split(' ').length >= options.minWordsCount
+  );
+};
+
+const createRawRecordsBasedOnHtml = (fileContent, options) => {
+  return htmlExtractor
+    .run(fileContent, { cssSelector: options.tagsToIndex })
+    .filter(
+      (record) =>
+        record.content.length >= options.minCharsLengthPerTag &&
+        record.content.split(' ').length >= options.minWordsCount
     );
-  }
 };
 
 const createAlgoliaRecords = (node, records) => {
@@ -32,7 +38,7 @@ const createAlgoliaRecords = (node, records) => {
 
   return records.map((record) => {
     const algoliaRecord = {
-      objectID: record.objectID ?? objectID,
+      objectID: record.objectID ?? uuidv4(record.value.toString()),
       title: getTitle(title, node, record),
       description: getDescription(description, node, record),
       ...restNodeFields,
@@ -45,21 +51,10 @@ const createAlgoliaRecords = (node, records) => {
       anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
       url: getUrl(slug, node, record),
       absoluteUrl: getAbsoluteUrl(slug, node, record),
-      customRanking: record.customRanking ?? ''
+      customRanking: record.customRanking ?? '',
+      // TODO: model should not have dependencies on env vars (should be wrapped in config object)
+      [process.env.REPO_NAME]: contentDigest
     };
-
-    const regex = /\//g;
-    const pathPrefixAttribute = process.env.PATH_PREFIX.replace(regex, '');
-
-    // record[pathPrefixAttribute] = record.objectID ?? contentDigest;
-
-    Object.defineProperty(algoliaRecord, pathPrefixAttribute, {
-      value: record.objectID ?? contentDigest,
-      writable: true,
-      enumerable: true,
-      configurable: true
-    });
-
     return algoliaRecord;
   });
 };
@@ -124,4 +119,9 @@ const removeDuplicateRecords = (records) => {
   return records;
 };
 
-module.exports = { createAlgoliaRecords, createRawRecords, removeDuplicateRecords };
+module.exports = {
+  createAlgoliaRecords,
+  createRawRecordsBasedOnAST,
+  createRawRecordsBasedOnHtml,
+  removeDuplicateRecords
+};

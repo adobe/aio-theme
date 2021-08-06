@@ -14,7 +14,7 @@ const LoadContentByUrl = require('./load-content-by-url');
 const { Bootprint } = require('bootprint');
 const bootprintOpenApi = require('bootprint-openapi');
 const fs = require('fs');
-const { createRawRecords, createAlgoliaRecords } = require('./record-utils');
+const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
 
 /**
  * Support of "openAPISpec" directive:
@@ -35,7 +35,7 @@ class CreateRecordsForOpenApi {
     }
 
     const fileContent = fs.readFileSync(staticFileAbsolutePath, 'utf8');
-    const htmlRecords = createRawRecords(node, options, fileContent);
+    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
     const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
 
     return algoliaRecords;

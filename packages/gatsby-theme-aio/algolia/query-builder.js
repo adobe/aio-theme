@@ -119,7 +119,8 @@ class QueryBuilder {
         publicFileExtension: 'html',
         sourceFileExtension: 'md',
         tagsToIndex: 'p, li, td, code',
-        minCharsLengthPerTag: 20
+        minCharsLengthPerTag: 20,
+        minWordsCount: 5
       };
       records = this.createRecordsForEmbeddedContent.execute(node, options);
     } else if (node.frameSrc) {
@@ -127,27 +128,30 @@ class QueryBuilder {
         pagesSourceDir: 'src/pages',
         staticSourceDir: 'static',
         tagsToIndex: 'p, li, td, code',
-        minCharsLengthPerTag: 20
+        minCharsLengthPerTag: 20,
+        minWordsCount: 5
       };
       records = await this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
       const options = {
         tempDir: './public/bootprint',
         tagsToIndex: 'p, li, td, code',
-        minCharsLengthPerTag: 20
+        minCharsLengthPerTag: 20,
+        minWordsCount: 5
       };
       records = await this.createRecordsForOpenApi.execute(node, options);
     } else {
       const options = {
         tagsToIndex: 'paragraph text, code, tableCell text',
-        minCharsLengthPerTag: 20
+        minCharsLengthPerTag: 20,
+        minWordsCount: 5
       };
       records = this.createRecordsForRegularContent.execute(node, options);
     }
 
     records = records.map(({ mdxAST, fileAbsolutePath, frameSrc, openAPISpec, ...keepAttrs }) => keepAttrs);
     records = removeDuplicateRecords(records);
-    console.log(`${records.length} records for ${records[0]?.title === '' ? node.url : records[0]?.title}`);
+    console.log(`${records.length} records for "${node?.title === '' ? node.slug : node?.title}"`);
     return records;
   }
 }

@@ -13,7 +13,7 @@
 const LoadContentByUrl = require('./load-content-by-url');
 const fs = require('fs');
 const normalizePath = require('normalize-path');
-const { createRawRecords, createAlgoliaRecords } = require('./record-utils');
+const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
 
 /**
  * Support of "frameSrc" directive:
@@ -28,7 +28,7 @@ class CreateRecordsForFrame {
     const fileContent = /^https?:\/\//i.test(node.frameSrc)
       ? await this.loadContentByUrl.execute(node.frameSrc)
       : this.loadContentFromCache(node, options);
-    const htmlRecords = createRawRecords(node, options, fileContent);
+    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
     const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
 
     return algoliaRecords;
