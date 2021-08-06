@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const normalizePath = require('normalize-path');
-const { createRawRecords, createAlgoliaRecords } = require('./record-utils');
+const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
 
 /**
  * Support of "import" directive:
@@ -45,7 +45,7 @@ class CreateRecordsForEmbeddedContent {
     }
 
     const fileContent = fs.readFileSync(cacheFileAbsolutePath, 'utf8');
-    const htmlRecords = createRawRecords(node, options, fileContent);
+    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
     const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
 
     return algoliaRecords;

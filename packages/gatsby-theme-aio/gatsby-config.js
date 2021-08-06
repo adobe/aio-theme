@@ -30,10 +30,6 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
   );
 }
 
-// TODO: Consolidate wtih the one in query-builder
-const regex = /\//g;
-const pathPrefixAttribute = process.env.PATH_PREFIX != null ? process.env.PATH_PREFIX.replace(regex, '') : '';
-
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
@@ -123,7 +119,7 @@ module.exports = {
         queries: algoliaQueries,
         chunkSize: 1000, // default: 1000
         enablePartialUpdates: true, // default: false
-        matchFields: [pathPrefixAttribute], // Array<String> default: ['modified']
+        matchFields: [process.env.REPO_NAME], // Array<String> default: ['modified']
         concurrentQueries: false, // default: true
         skipIndexing: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][0], // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
@@ -136,7 +132,7 @@ module.exports = {
           attributeForDistinct: 'url',
           snippetEllipsisText: '…',
           attributesToRetrieve: [
-            pathPrefixAttribute, // Only retreive the current repo's pathPrefixAttribute. Prevents deletion of other repo records.
+            process.env.REPO_NAME, // Only retrieve the current repo's records. Prevents deletion of other repo records.
             'title',
             'contentHeading',
             'description',
