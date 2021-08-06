@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.17.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.16.1...@adobe/gatsby-theme-aio@3.17.0) (2021-08-06)
+
+
+### Bug Fixes
+
+* algolia indexation ([#458](https://github.com/adobe/gatsby-theme-aio/issues/458)) ([957aec8](https://github.com/adobe/gatsby-theme-aio/commit/957aec82ac22fc558d4f7c47460d3d0b0e20f78d))
+
+
+### Features
+
+* dynamic keywords filter ([cbbd5ed](https://github.com/adobe/gatsby-theme-aio/commit/cbbd5ed72238bc0767900d4d9ccc5915cb4efd75))
+
+
+
+
+
 ## [3.16.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.16.0...@adobe/gatsby-theme-aio@3.16.1) (2021-08-05)
 
 
