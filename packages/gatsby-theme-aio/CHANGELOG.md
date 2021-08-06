@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.0...@adobe/gatsby-theme-aio@3.17.1) (2021-08-06)
+
+
+### Bug Fixes
+
+* use absolute url links for search results ([f8f69eb](https://github.com/adobe/gatsby-theme-aio/commit/f8f69eb06a86d16eb12c30386c50f813972aaca6))
+
+
+
+
+
 # [3.17.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.16.1...@adobe/gatsby-theme-aio@3.17.0) (2021-08-06)
 
 
