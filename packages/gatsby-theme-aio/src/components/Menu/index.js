@@ -18,7 +18,6 @@ import nextId from 'react-id-generator';
 import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/menu';
 import { CheckMark } from '../Icons';
-import { getExternalLinkProps } from '../../utils';
 
 const Menu = ({ children }) => {
   return (
@@ -42,7 +41,6 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
     <Element
       className={classNames('spectrum-Menu-item', { 'is-open': isHighlighted }, { 'is-selected': isSelected })}
       to={href}
-      {...getExternalLinkProps(href)}
       role="menuitem"
       tabIndex="0"
       css={css`

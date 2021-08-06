@@ -18,6 +18,7 @@ import { ChevronDown } from '../Icons';
 import { Popover } from '../Popover';
 import { Menu, Item } from '../Menu';
 import '@spectrum-css/picker';
+import { getExternalLinkProps } from '../../utils';
 
 const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
@@ -86,7 +87,8 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
                 }}
                 isHighlighted={(!hasSelection && i === 0) || option.selected}
                 isSelected={option.selected}
-                href={option.href}>
+                href={option.href}
+                {...getExternalLinkProps(option.href)}>
                 {option.title}
               </Item>
             );

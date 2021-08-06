@@ -546,9 +546,14 @@ const GlobalHeader = ({
                             {page.menu.map((menu, k) => {
                               const pathWithRootFix = rootFix(location.pathname);
                               const selectedMenu = findSelectedTopPageMenu(pathWithRootFix, page);
+                              const menuHref = withPrefix(menu.href);
 
                               return (
-                                <MenuItem key={k} href={withPrefix(menu.href)} isHighlighted={menu === selectedMenu}>
+                                <MenuItem
+                                  key={k}
+                                  href={menuHref}
+                                  {...getExternalLinkProps(menuHref)}
+                                  isHighlighted={menu === selectedMenu}>
                                   {menu.description ? (
                                     <div
                                       css={css`
@@ -613,7 +618,8 @@ const GlobalHeader = ({
                                 onClick={() => {
                                   setOpenVersion(false);
                                 }}
-                                href={version.href}>
+                                href={version.href}
+                                {...getExternalLinkProps(version.href)}>
                                 {version.title}
                               </MenuItem>
                             ))}
