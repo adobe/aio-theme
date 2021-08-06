@@ -392,7 +392,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             {searchSuggestionResults.length > 0 ? (
               <Menu>
                 {searchSuggestionResults.map((searchSuggestion, i) => (
-                  <MenuItem isHighlighted={i === 0} key={searchSuggestion.objectID} href={searchSuggestion.url}>
+                  <MenuItem
+                    isHighlighted={i === 0}
+                    key={searchSuggestion.objectID}
+                    href={`${location.origin}${searchSuggestion.url}`}>
                     <div
                       css={css`
                         white-space: nowrap;
