@@ -114,7 +114,7 @@ const mapSearchResults = (hits, results) => {
 const mapKeywordResults = (facets, results) => {
   if (facets[SEARCH_KEYWORDS]) {
     Object.keys(facets[SEARCH_KEYWORDS]).forEach((keyword) => {
-      const found = results.find((result) => result.keyword === keyword);
+      const found = results.find((result) => Object.keys(result)[0] === keyword);
       if (found) {
         // Increase keyword count
         found[keyword] += facets[SEARCH_KEYWORDS][keyword];
