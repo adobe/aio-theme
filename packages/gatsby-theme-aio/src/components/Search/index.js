@@ -76,46 +76,37 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
 const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) => {
   if (selectedIndex === 'all') {
     selectedIndex = indexAll;
+  } else {
+    selectedIndex = [selectedIndex];
   }
 
-  // Single index search
-  if (!Array.isArray(selectedIndex)) {
-    const index = algolia.initIndex(selectedIndex);
-
-    return await index.search(query, {
-      facets: [SEARCH_KEYWORDS],
-      attributesToRetrieve: ['objectID', 'url'],
-      hitsPerPage: SEARCH_MAX_RESULTS,
-      filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
+  const queries = [];
+  selectedIndex.forEach((indexName) => {
+    queries.push({
+      indexName,
+      query,
+      params: {
+        facets: [SEARCH_KEYWORDS],
+        attributesToRetrieve: ['objectID', 'url'],
+        hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
+        filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
+      }
     });
-  }
-  // Multi index search
-  else {
-    const queries = [];
-    selectedIndex.forEach((indexName) => {
-      queries.push({
-        indexName,
-        query,
-        params: {
-          facets: [SEARCH_KEYWORDS],
-          attributesToRetrieve: ['objectID', 'url'],
-          hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
-          filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
-        }
-      });
-    });
+  });
 
-    return await algolia.multipleQueries(queries);
-  }
+  return await algolia.multipleQueries(queries);
 };
 
 const mapSearchResults = (hits, results) => {
   hits.forEach(({ objectID, url, _highlightResult }) => {
-    results.push({
-      objectID,
-      url,
-      _highlightResult
-    });
+    // Verify url is unique
+    if (!results.find((result) => result.url === url)) {
+      results.push({
+        objectID,
+        url,
+        _highlightResult
+      });
+    }
   });
 };
 
@@ -175,9 +166,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           mapSearchResults(hits, mappedSearchResults);
           mapKeywordResults(facets, mappedKeywordResults);
         });
-      } else if (search?.hits?.length) {
-        mapSearchResults(search.hits, mappedSearchResults);
-        mapKeywordResults(search.facets, mappedKeywordResults);
       }
 
       setSearchResults(mappedSearchResults);
@@ -344,16 +332,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     if (suggestions?.results?.length) {
                       const results = [];
                       suggestions.results.forEach(({ hits }) => {
-                        hits.forEach(({ objectID, url, title, description }) => {
-                          results.push({
-                            objectID,
-                            url,
-                            title,
-                            description
-                          });
-                        });
+                        mapSearchResults(hits, results);
                       });
                       setSearchSuggestionResults(results);
+
+                      if (!searchSuggestionResults.length) {
+                        setShowSearchResults(false);
+                      }
                     } else {
                       setSearchSuggestionResults([]);
                     }
@@ -426,11 +411,17 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   <MenuItem key={searchSuggestion.objectID} href={`${location.origin}${searchSuggestion.url}`}>
                     <div
                       css={css`
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
+                        mark,
+                        em {
+                          background-color: transparent;
+                          color: inherit;
+                          font-weight: inherit;
+                          font-style: inherit;
+                          text-decoration: underline;
+                        }
                       `}>
-                      <strong>{searchSuggestion.title}</strong> - {searchSuggestion.description}
+                      <strong dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.title.value }} /> -
+                      <span dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.content.value }} />
                     </div>
                   </MenuItem>
                 ))}
