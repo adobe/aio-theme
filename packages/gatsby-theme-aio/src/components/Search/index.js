@@ -112,7 +112,15 @@ const mapSearchResults = (hits, results) => {
 
 const mapKeywordResults = (facets, results) => {
   if (facets[SEARCH_KEYWORDS]) {
-    Object.keys(facets[SEARCH_KEYWORDS]).forEach((keyword) => results.add(keyword));
+    Object.keys(facets[SEARCH_KEYWORDS]).forEach((keyword) => {
+      const found = results.find((result) => result.keyword === keyword);
+      if (found) {
+        // Increase keyword count
+        found[keyword] += facets[SEARCH_KEYWORDS][keyword];
+      } else {
+        results.push({ [keyword]: facets[SEARCH_KEYWORDS][keyword] });
+      }
+    });
   }
 };
 
@@ -158,8 +166,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
 
       const mappedSearchResults = [];
-      // Use Set to avoid duplicated keywords
-      const mappedKeywordResults = new Set();
+      const mappedKeywordResults = [];
 
       if (search?.results?.length) {
         search.results.forEach(({ hits, facets }) => {
@@ -169,7 +176,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       }
 
       setSearchResults(mappedSearchResults);
-      setKeywordResults(Array.from(mappedKeywordResults));
+      setKeywordResults(mappedKeywordResults);
     }
   };
 
@@ -496,23 +503,29 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   }
                 `}>
                 {keywordResults.length > 0 ? (
-                  keywordResults.map((keyword, i) => (
-                    <Checkbox
-                      key={i}
-                      isSelected={selectedKeywords.includes(keyword)}
-                      value={keyword}
-                      onChange={(checked) => {
-                        if (checked) {
-                          setSelectedKeyWords((selectedKeywords) => [...selectedKeywords, keyword]);
-                        } else {
-                          setSelectedKeyWords(
-                            selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
-                          );
-                        }
-                      }}>
-                      {keyword}
-                    </Checkbox>
-                  ))
+                  keywordResults.map((keywordResult, i) => {
+                    console.log(keywordResult);
+                    const keyword = Object.keys(keywordResult)[0];
+
+                    return (
+                      <Checkbox
+                        key={i}
+                        isSelected={selectedKeywords.includes(keyword)}
+                        value={keyword}
+                        onChange={(checked) => {
+                          if (checked) {
+                            setSelectedKeyWords((selectedKeywords) => [...selectedKeywords, keyword]);
+                          } else {
+                            setSelectedKeyWords(
+                              selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
+                            );
+                          }
+                        }}>
+                        <span>{keyword}</span>
+                        <em>&nbsp;({keywordResult[keyword]})</em>
+                      </Checkbox>
+                    );
+                  })
                 ) : (
                   <div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>
                 )}
