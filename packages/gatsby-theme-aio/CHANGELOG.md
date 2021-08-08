@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.3...@adobe/gatsby-theme-aio@3.17.4) (2021-08-08)
+
+
+### Bug Fixes
+
+* highlight search suggestion results ([ae08942](https://github.com/adobe/gatsby-theme-aio/commit/ae0894223b534960026b7494bd5ad3888db7fc02))
+* keyboard navigation for search suggestions ([9a8532f](https://github.com/adobe/gatsby-theme-aio/commit/9a8532f1508de847c427cf8b759e60ac634da863))
+* keywords showed in filter should be unique ([504b79d](https://github.com/adobe/gatsby-theme-aio/commit/504b79d274ff535554797d2b80e1f7e3e95f9581))
+* show keyword facet count ([d257755](https://github.com/adobe/gatsby-theme-aio/commit/d257755ba3333a757f13566fd2a5e47cd049def7))
+* use all indexes for search suggestions but prioritize results ([64cabcf](https://github.com/adobe/gatsby-theme-aio/commit/64cabcf07a8f08f12b7b01e838c0c7b269cb2cca))
+
+
+
+
+
 ## [3.17.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.2...@adobe/gatsby-theme-aio@3.17.3) (2021-08-06)
 
 
