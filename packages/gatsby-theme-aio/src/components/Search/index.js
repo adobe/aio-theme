@@ -54,9 +54,10 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   if (Object.keys(searchIndex[0])[0] === SEARCH_INDEX_ALL) {
     searchIndex = indexAll;
   }
-  // Or use specific indexes without "all" index
+  // Or prioritize searchIndex
   else {
-    searchIndex = mapToIndexName(searchIndex).filter((index) => index !== SEARCH_INDEX_ALL);
+    const searchIndexNames = mapToIndexName(searchIndex).filter((index) => index !== SEARCH_INDEX_ALL);
+    searchIndex = [...searchIndexNames, ...indexAll.filter((index) => !searchIndexNames.includes(index))];
   }
 
   searchIndex.forEach((indexName) => {
@@ -504,7 +505,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 `}>
                 {keywordResults.length > 0 ? (
                   keywordResults.map((keywordResult, i) => {
-                    console.log(keywordResult);
                     const keyword = Object.keys(keywordResult)[0];
 
                     return (
