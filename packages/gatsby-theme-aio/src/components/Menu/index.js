@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -19,18 +19,20 @@ import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/menu';
 import { CheckMark } from '../Icons';
 
-const Menu = ({ children }) => {
+const Menu = forwardRef(({ children, ...props }, ref) => {
   return (
     <ul
+      ref={ref}
       className="spectrum-Menu"
       role="menu"
       css={css`
         display: block;
-      `}>
+      `}
+      {...props}>
       {children}
     </ul>
   );
-};
+});
 
 const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '', ...props }) => {
   const Element = href ? GatsbyLink : 'li';

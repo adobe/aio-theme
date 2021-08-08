@@ -133,6 +133,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const [isFocused, setIsFocused] = useState(false);
   const [showClear, setShowClear] = useState(false);
   const searchRef = useRef(null);
+  const suggestionsRef = useRef(null);
   const inputRef = useRef(null);
   const searchResultsRef = useRef(null);
   const [searchSuggestionResults, setSearchSuggestionResults] = useState([]);
@@ -322,6 +323,15 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 onBlur={() => {
                   setIsFocused(false);
                 }}
+                onKeyDown={({ key }) => {
+                  if (suggestionsRef?.current) {
+                    if (key === 'ArrowDown') {
+                      suggestionsRef.current.querySelector('[tabindex="0"]').focus();
+                    } else if (key === 'ArrowUp') {
+                      suggestionsRef.current.querySelector('[tabindex="0"]:last-of-type').focus();
+                    }
+                  }
+                }}
                 onChange={async (e) => {
                   const query = e.target.value;
                   setSearchQuery(query);
@@ -366,6 +376,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 css={css`
                   position: absolute;
                 `}
+                tabIndex="-1"
                 aria-label="Clear Search"
                 type="reset"
                 className="spectrum-ClearButton spectrum-Search-clearButton"
@@ -390,12 +401,29 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               }
             `}>
             {searchSuggestionResults.length > 0 ? (
-              <Menu>
-                {searchSuggestionResults.map((searchSuggestion, i) => (
-                  <MenuItem
-                    isHighlighted={i === 0}
-                    key={searchSuggestion.objectID}
-                    href={`${location.origin}${searchSuggestion.url}`}>
+              <Menu
+                ref={suggestionsRef}
+                onKeyDown={({ key }) => {
+                  if (suggestionsRef?.current && suggestionsRef.current.contains(document.activeElement)) {
+                    if (key === 'ArrowDown') {
+                      const nextSibling = document.activeElement.nextElementSibling;
+                      if (nextSibling) {
+                        nextSibling.focus();
+                      } else {
+                        suggestionsRef.current.querySelector('[tabindex="0"]').focus();
+                      }
+                    } else if (key === 'ArrowUp') {
+                      const previousSibling = document.activeElement.previousElementSibling;
+                      if (previousSibling) {
+                        previousSibling.focus();
+                      } else {
+                        suggestionsRef.current.querySelector('[tabindex="0"]:last-of-type').focus();
+                      }
+                    }
+                  }
+                }}>
+                {searchSuggestionResults.map((searchSuggestion) => (
+                  <MenuItem key={searchSuggestion.objectID} href={`${location.origin}${searchSuggestion.url}`}>
                     <div
                       css={css`
                         white-space: nowrap;
@@ -586,7 +614,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           css={css`
                             margin: var(--spectrum-global-dimension-size-100) 0;
                           `}
-                          dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.description.value }}
+                          dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.content.value }}
                         />
                       </div>
                     );
