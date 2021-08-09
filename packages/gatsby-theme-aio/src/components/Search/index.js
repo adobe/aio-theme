@@ -24,7 +24,7 @@ import {
 import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import PropTypes from 'prop-types';
-import { MOBILE_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH, SIDENAV_WIDTH, SEARCH_PARAMS } from '../../utils';
+import { MOBILE_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH, SIDENAV_WIDTH, SEARCH_PARAMS, isExternalLink } from '../../utils';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/textfield';
@@ -100,13 +100,16 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
 
 const mapSearchResults = (hits, results) => {
   hits.forEach(({ objectID, url, _highlightResult }) => {
-    // Verify url is unique
-    if (!results.find((result) => result.url === url)) {
-      results.push({
-        objectID,
-        url,
-        _highlightResult
-      });
+    // TODO corrupted record url check
+    if (!isExternalLink(url)) {
+      // Verify url is unique
+      if (!results.find((result) => result.url === url)) {
+        results.push({
+          objectID,
+          url,
+          _highlightResult
+        });
+      }
     }
   });
 };
