@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.8](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.7...@adobe/gatsby-theme-aio@3.17.8) (2021-08-09)
+
+
+### Bug Fixes
+
+* separate quick search from main search ([d65a838](https://github.com/adobe/gatsby-theme-aio/commit/d65a838f7ccfabd139c60abc1a929b225ecc952a))
+
+
+
+
+
 ## [3.17.7](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.6...@adobe/gatsby-theme-aio@3.17.7) (2021-08-09)
 
 
