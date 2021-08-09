@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.4...@adobe/gatsby-theme-aio@3.17.5) (2021-08-09)
+
+
+### Bug Fixes
+
+* add linebreak between title and content search suggestion ([4bbf689](https://github.com/adobe/gatsby-theme-aio/commit/4bbf68944dc25cd775a3274e8aed61ca2fab033b))
+
+
+
+
+
 ## [3.17.4](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.3...@adobe/gatsby-theme-aio@3.17.4) (2021-08-08)
 
 
