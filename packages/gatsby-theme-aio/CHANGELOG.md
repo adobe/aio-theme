@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.6](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.5...@adobe/gatsby-theme-aio@3.17.6) (2021-08-09)
+
+
+### Bug Fixes
+
+* increase search suggestion result max limit ([19b1b75](https://github.com/adobe/gatsby-theme-aio/commit/19b1b7563866cd1d013257c43ace5b24d4427677))
+
+
+
+
+
 ## [3.17.5](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.4...@adobe/gatsby-theme-aio@3.17.5) (2021-08-09)
 
 
