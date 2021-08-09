@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.7](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.6...@adobe/gatsby-theme-aio@3.17.7) (2021-08-09)
+
+
+### Bug Fixes
+
+* add corrupted record url check ([a2f724f](https://github.com/adobe/gatsby-theme-aio/commit/a2f724fb3b0cd26db8773856b1dedca911336307))
+
+
+
+
+
 ## [3.17.6](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.5...@adobe/gatsby-theme-aio@3.17.6) (2021-08-09)
 
 
