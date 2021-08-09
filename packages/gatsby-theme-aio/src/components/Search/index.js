@@ -428,7 +428,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           text-decoration: underline;
                         }
                       `}>
-                      <strong dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.title.value }} /> -
+                      <strong dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.title.value }} />
+                      <br />
                       <span dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.content.value }} />
                     </div>
                   </MenuItem>
