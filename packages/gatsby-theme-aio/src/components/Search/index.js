@@ -36,7 +36,7 @@ import { Checkbox } from '../Checkbox';
 const SEARCH_INPUT_WIDTH = '688px';
 const SEARCH_INDEX_ALL = 'all';
 const SEARCH_KEYWORDS = 'keywords';
-const SUGGESTION_MAX_RESULTS = 10;
+const SUGGESTION_MAX_RESULTS = 50;
 const SEARCH_MAX_RESULTS = 100;
 
 // Used to update the url in the browser
