@@ -131,7 +131,7 @@ const mapKeywordResults = (facets, results) => {
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
-  const [selectedKeywords, setSelectedKeyWords] = useState([]);
+  const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [showClear, setShowClear] = useState(false);
@@ -197,7 +197,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       }
 
       if (keywords) {
-        setSelectedKeyWords(keywords.split(','));
+        setSelectedKeywords(keywords.split(','));
       }
 
       if (query?.length) {
@@ -335,7 +335,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   const query = e.target.value;
                   setSearchQuery(query);
 
-                  if (query.length) {
+                  if (query.length && !searchResults.length) {
                     setShowClear(true);
 
                     const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll);
@@ -347,7 +347,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       });
                       setSearchSuggestionResults(results);
 
-                      if (!searchSuggestionResults.length) {
+                      if (!searchResults.length) {
                         setShowSearchResults(false);
                       }
                     } else {
@@ -518,9 +518,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                         value={keyword}
                         onChange={(checked) => {
                           if (checked) {
-                            setSelectedKeyWords((selectedKeywords) => [...selectedKeywords, keyword]);
+                            setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
                           } else {
-                            setSelectedKeyWords(
+                            setSelectedKeywords(
                               selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
                             );
                           }
@@ -559,6 +559,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       selected={selectedIndex === indexName}
                       tabIndex={0}
                       onClick={async () => {
+                        setSelectedKeywords([]);
                         setSelectedIndex(indexName);
                       }}>
                       <TabsItemLabel>{indexLabel}</TabsItemLabel>
