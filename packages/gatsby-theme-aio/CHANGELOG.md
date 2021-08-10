@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.18.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.8...@adobe/gatsby-theme-aio@3.18.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* update env variable GATSBY_ADOBE_LAUNCH_SRC ([2935eef](https://github.com/adobe/gatsby-theme-aio/commit/2935eeff6d3f556f1fad59e95b1ee1e1d55e93be))
+
+
+### Features
+
+* add Frame method setURL() ([133ff4f](https://github.com/adobe/gatsby-theme-aio/commit/133ff4f43dfc24df6c6f194653cc2d77c808e698))
+
+
+
+
+
 ## [3.17.8](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.7...@adobe/gatsby-theme-aio@3.17.8) (2021-08-09)
 
 
