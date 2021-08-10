@@ -52,7 +52,6 @@ class QueryBuilder {
                     title
                     description
                     contributors
-                    product
                     keywords
                     openAPISpec
                     frameSrc

@@ -119,7 +119,7 @@ module.exports = {
         continueOnFailure: false, // default: false, don't fail the build if algolia indexing fails
         settings: {
           searchableAttributes: ['title', 'contentHeading', 'description,content'],
-          attributesForFaceting: ['searchable(keywords)', 'filterOnly(product)'],
+          attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:55', 'description:55'],
           distinct: true,
           attributeForDistinct: 'url',
@@ -130,7 +130,6 @@ module.exports = {
             'contentHeading',
             'description',
             'content',
-            'product',
             'keywords',
             'modifiedTime',
             'size',

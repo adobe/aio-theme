@@ -117,10 +117,6 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         type: 'String',
         resolve: addFrontmatterType
       },
-      product: {
-        type: 'String',
-        resolve: addFrontmatterType
-      },
       keywords: {
         type: '[String]',
         resolve: addFrontmatterType
