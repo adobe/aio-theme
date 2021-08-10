@@ -14,21 +14,23 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-// TODO Define additional meta properties
-const SEO = ({ title, description }) => (
+const SEO = ({ title, description, keywords }) => (
   <Helmet>
     <html lang="en" />
     {title && <title>{title}</title>}
     {description && <meta name="description" content={description} />}
+    {keywords && <meta name="keywords" content={keywords.join(', ')} />}
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
     <link rel="icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
+    {process.env.GATSBY_ADOBE_LAUNCH_SRC && <script src={process.env.GATSBY_ADOBE_LAUNCH_SRC} async />}
   </Helmet>
 );
 
 SEO.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  keywords: PropTypes.array
 };
 
 export { SEO };

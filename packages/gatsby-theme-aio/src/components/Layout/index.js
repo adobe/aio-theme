@@ -437,7 +437,7 @@ export default ({ children, pageContext, location }) => {
           allGithub,
           allGithubContributors
         }}>
-        <SEO title={frontMatter?.title} description={frontMatter?.description} />
+        <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"

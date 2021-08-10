@@ -104,13 +104,6 @@ module.exports = {
       }
     },
     {
-      resolve: `@adobe/gatsby-add-launch-script`,
-      options: {
-        scriptUrl: process.env.ADOBE_LAUNCH_SRC,
-        includeInDevelopment: process.env.ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT || false
-      }
-    },
-    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GASTBY_ALGOLIA_APP_ID,
