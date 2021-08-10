@@ -55,7 +55,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Assets](#assets)
   + [Google Docs support](#google-docs-support)
 * [Configuration](#configuration)
-  + [.env file](#env-file)
+  + [Environment variables](#environment-variables)
   + [Global Navigation](#global-navigation)
   + [Menus](#menus)
   + [Home link](#home-link)
@@ -331,7 +331,7 @@ Exclude folders/documents by adding `exclude: true` in the description field of 
 
 To make sure you don't run into troubles during the site build process, please follow the below configuration steps.
 
-### .env file
+### Environment variables
 
 Follow these steps to configure your `.env` file.
 
@@ -340,14 +340,13 @@ Follow these steps to configure your `.env` file.
 
 **The .env should not be committed.**
 
+#### GitHub Contributors
+
 GitHub's API is being called during the site build phase to retrieve the authors of every markdown page under `src/pages`.
 If the GitHub Token information is missing, the build will just print a warning, and no contributor information will be retrieved (just the contributor information in a page's front matter, if any, will be used).
 
 To retrieve your GitHub personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 Only `READ` permissions on repositories are required for the token.
-
-### .env settings for GitHub Contributors
-
 For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-aio using the `main` branch, this would be what your `.env` would look like:
 
 ```properties
@@ -360,7 +359,7 @@ REPO_ROOT=example
 
 By default, you can omit the `ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `ROOT`.
 
-### .env settings for the Feedback Component and Analytics
+#### Analytics and Feedback component
 
 - You need to set up [Adobe Launch](https://launch.adobe.com), with an Adobe Analytics Reporting Suite
 - In Adobe Analytics, add a custom eVar (Text String type) to capture the feedback. This eVar will contain either "yes" or "no".
@@ -380,29 +379,36 @@ By default, you can omit the `ROOT` env var, and it should use the root folder a
   2. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon
   3. Copy the url displayed in the `script` tag
 
-This last value will be the value you put in `ADOBE_LAUNCH_SRC`.
-`ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT` is a boolean value, set to `true` if you want to enable the script to run in development.
+This last value will be the value you put in `GATSBY_ADOBE_LAUNCH_SRC`.
 
-Example:
 ```properties
-ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
-ADOBE_LAUNCH_SRC_INCLUDE_IN_DEVELOPMENT=true
+GATSBY_ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
 ```
 
-### .env settings for Algolia indexing
+#### Identity Management Services
+
+To enable IMS on the browser side, you'll need to set following env variables:
+
+- `GATSBY_IMS_CONFIG` - Map of `client_id` and `scopes` etc.
+- `GATSBY_IMS_SRC` - URL source of IMS library
+
+#### Algolia indexing and search
 
 Algolia indexing requires a set of API index keys to publish new search records and query existing search records for your site. To make your site searchable, add the following variable's to your site's `.env` file:
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
    - `skip` mode - skip running of search indexation (default)
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
+- `ALGOLIA_WRITE_API_KEY` - Algolia API key to perform indexing operations
+- `GASTBY_ALGOLIA_APP_ID` - Algolia App ID  
 - `ALGOLIA_INDEX_NAME` - Optional. Use this variable to publish this site's search records to a different, existing Algolia index.
 
-Example values:
-```properties
-ALGOLIA_INDEXATION_MODE=console # debug mode. The data will pushed to console but not to real index.
-ALGOLIA_INDEX_NAME=DEVSITE-47
-```
+To enable search on the browser side, you'll need to set following env variables: 
+
+- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID 
+- `GATSBY_ALGOLIA_API_KEY` - Algolia API key to perform search operations
+- `GATSBY_ALGOLIA_INDEX_ALL` -  List of all indexes to search e.g. `["index1", "index2"]`
+- `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
 ### Global Navigation
 
