@@ -54,6 +54,11 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
               getURL() {
                 return window?.location?.href;
               },
+              setURL(url) {
+                if (window?.location) {
+                  window.location = url;
+                }
+              },
               setHeight(height) {
                 iframe.current.style.height = height;
               },
