@@ -39,7 +39,7 @@ const createAlgoliaRecords = (node, records) => {
   return records.map((record) => {
     const algoliaRecord = {
       objectID: record.objectID ?? uuidv4(record.value.toString()),
-      title: getTitle(title, node, record),
+      title: getTitle(title, node),
       description: getDescription(description, node, record),
       ...restNodeFields,
       // TODO: Rethink getHeadings() and use node.headings instead
@@ -60,10 +60,7 @@ const createAlgoliaRecords = (node, records) => {
 };
 
 function getTitle(title, node) {
-  if (title === '') {
-    return node.headings[0]?.value ?? '';
-  }
-  if (title == null) {
+  if (title === null || title === '') {
     title = node.title = node.headings[0]?.value ?? '';
     return title;
   }
