@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.18.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.0...@adobe/gatsby-theme-aio@3.18.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* **DEVSITE-124:** search-Broken Titles ([#459](https://github.com/adobe/gatsby-theme-aio/issues/459)) ([f23003f](https://github.com/adobe/gatsby-theme-aio/commit/f23003f93d8aeca7d35bc2bc4838fe97f8f9125c))
+
+
+
+
+
 # [3.18.0](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.17.8...@adobe/gatsby-theme-aio@3.18.0) (2021-08-10)
 
 
