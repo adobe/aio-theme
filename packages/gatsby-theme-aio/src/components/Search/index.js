@@ -455,9 +455,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                             font-style: italic;
                             margin: var(--spectrum-global-dimension-size-50) 0;
                           `}>
-                          <AnchorLink variant="secondary" to={to}>
-                            {to}
-                          </AnchorLink>
+                          {to}
                         </div>
 
                         <div
