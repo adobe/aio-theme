@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.18.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.2...@adobe/gatsby-theme-aio@3.18.3) (2021-08-12)
+
+
+### Bug Fixes
+
+* global header tabs margin for hidden home ([664245f](https://github.com/adobe/gatsby-theme-aio/commit/664245fa7244280cafc030875a694fab3978e55c))
+
+
+
+
+
 ## [3.18.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.1...@adobe/gatsby-theme-aio@3.18.2) (2021-08-12)
 
 
