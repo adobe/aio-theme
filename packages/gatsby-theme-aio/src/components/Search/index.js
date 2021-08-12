@@ -428,31 +428,47 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     }
                   }
                 }}>
-                {searchSuggestionResults.map((searchSuggestion) => (
-                  <MenuItem key={searchSuggestion.objectID} href={`${location.origin}${searchSuggestion.url}`}>
-                    <div
-                      css={css`
-                        mark,
-                        em {
-                          background-color: transparent;
-                          color: inherit;
-                          font-weight: inherit;
-                          font-style: inherit;
-                          text-decoration: underline;
-                        }
-                      `}>
-                      <strong
-                        dangerouslySetInnerHTML={{ __html: encodeHTML(searchSuggestion._highlightResult.title.value) }}
-                      />
-                      <br />
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: encodeHTML(searchSuggestion._highlightResult.content.value)
-                        }}
-                      />
-                    </div>
-                  </MenuItem>
-                ))}
+                {searchSuggestionResults.map((searchSuggestion) => {
+                  const to = `${location.origin}${searchSuggestion.url}`;
+
+                  return (
+                    <MenuItem key={searchSuggestion.objectID} href={to}>
+                      <div
+                        css={css`
+                          mark,
+                          em {
+                            background-color: transparent;
+                            color: inherit;
+                            font-weight: inherit;
+                            font-style: inherit;
+                            text-decoration: underline;
+                          }
+                        `}>
+                        <strong
+                          dangerouslySetInnerHTML={{
+                            __html: encodeHTML(searchSuggestion._highlightResult.title.value)
+                          }}
+                        />
+
+                        <div
+                          css={css`
+                            font-style: italic;
+                            margin: var(--spectrum-global-dimension-size-50) 0;
+                          `}>
+                          <AnchorLink variant="secondary" to={to}>
+                            {to}
+                          </AnchorLink>
+                        </div>
+
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: encodeHTML(searchSuggestion._highlightResult.content.value)
+                          }}
+                        />
+                      </div>
+                    </MenuItem>
+                  );
+                })}
               </Menu>
             ) : (
               <div
