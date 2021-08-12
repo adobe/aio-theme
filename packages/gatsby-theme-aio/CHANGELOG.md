@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.18.2](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.1...@adobe/gatsby-theme-aio@3.18.2) (2021-08-12)
+
+
+### Bug Fixes
+
+* display url information in search suggestions ([1efe38a](https://github.com/adobe/gatsby-theme-aio/commit/1efe38a30ea2957fd793a21359730bbdc9aeee55))
+* double click to close search overlay in some case ([95354bf](https://github.com/adobe/gatsby-theme-aio/commit/95354bf20841f8051d2e1238906abd446b5f0381))
+* encode html entities in search results ([e85dedd](https://github.com/adobe/gatsby-theme-aio/commit/e85deddbaced0a17259e2623070b502202d496c0))
+* nested links in search suggestions ([5d66daa](https://github.com/adobe/gatsby-theme-aio/commit/5d66daa869a9df1261a0fc0e4e4ce965ad628698))
+* update console.adobe.io urls ([98bc2cd](https://github.com/adobe/gatsby-theme-aio/commit/98bc2cdc5fe2aec64247a7db5c67a422565c562d))
+
+
+
+
+
 ## [3.18.1](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.0...@adobe/gatsby-theme-aio@3.18.1) (2021-08-11)
 
 
