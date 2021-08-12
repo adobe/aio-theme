@@ -98,7 +98,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   developer: [
     {
       title: 'Adobe I/O console',
-      path: 'https://console.adobe.io/'
+      path: '/console'
     },
     {
       title: 'Open source at Adobe',
@@ -106,11 +106,11 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     },
     {
       title: 'Download SDKs',
-      path: 'https://console.adobe.io/downloads'
+      path: '/console/servicesandapis'
     },
     {
       title: 'Authentication',
-      path: 'https://www.adobe.io/authentication.html'
+      path: '/authentication'
     },
     {
       title: 'Careers',

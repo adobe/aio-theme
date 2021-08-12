@@ -18,12 +18,13 @@ import { Button } from '../Button';
 import '@spectrum-css/button';
 import classNames from 'classnames';
 
-const AnchorButton = ({ href, variant, isQuiet, ...props }) => {
+const AnchorButton = ({ className, href, variant, isQuiet, ...props }) => {
   href = gdocsRelativeLinkFix(href);
 
   if (isExternalLink(href)) {
     return (
       <Button
+        className={className}
         elementType="a"
         variant={variant}
         isQuiet={isQuiet}
@@ -37,7 +38,7 @@ const AnchorButton = ({ href, variant, isQuiet, ...props }) => {
   return (
     <GatsbyLink
       role="button"
-      className={classNames('spectrum-Button', 'spectrum-Button--sizeM', `spectrum-Button--${variant}`, {
+      className={classNames(className, 'spectrum-Button', 'spectrum-Button--sizeM', `spectrum-Button--${variant}`, {
         'spectrum-Button--quiet': isQuiet
       })}
       to={href}

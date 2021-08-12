@@ -666,7 +666,7 @@ const GlobalHeader = ({
                     display: block;
                   }
                 `}>
-                <AnchorButton variant="primary" href="https://console.adobe.io">
+                <AnchorButton variant="primary" href="/console">
                   Console
                 </AnchorButton>
               </div>
@@ -700,13 +700,13 @@ const GlobalHeader = ({
               )}
 
               <AnchorButton
+                variant="primary"
+                href="/console"
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     display: none;
                   }
-                `}
-                variant="primary"
-                href="https://console.adobe.io">
+                `}>
                 Console
               </AnchorButton>
 
