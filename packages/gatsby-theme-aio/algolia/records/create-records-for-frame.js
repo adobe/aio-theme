@@ -17,7 +17,7 @@ const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-
 
 /**
  * Support of "frameSrc" directive:
- * https://github.com/adobe/gatsby-theme-aio#frame
+ * https://github.com/adobe/aio-theme#frame
  */
 class CreateRecordsForFrame {
   constructor(options = {}) {

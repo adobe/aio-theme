@@ -16,7 +16,7 @@ const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-
 
 /**
  * Support of "import" directive:
- * https://github.com/adobe/gatsby-theme-aio#embedding-markdown-documents-and-filtering-content
+ * https://github.com/adobe/aio-theme#embedding-markdown-documents-and-filtering-content
  *
  * Parse index records from cache files.
  */

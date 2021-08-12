@@ -1,26 +1,11 @@
-# Adobe I/O Gatsby Theme
+# Adobe I/O Theme
 
-A [Gatsby Theme](https://gatsbyjs.org/docs/themes) for building markdown/gdocs powered Adobe I/O sites.
+The Adobe I/O Theme for building markdown/gdocs powered sites.
 
-**Why Gatsby ?**
-
-For many reasons :
-* Static site
-* Single Page Application
-* React Server Side Rendered at build time
-* Blazing fast
-* Large and active community
-* Huge ecosystem of plugins
-* Open source
-
-and more ... see [Why Gatsby](https://www.gatsbyjs.com/why-gatsby/).
-
-**Why Gatsby theme ?**
-
-[Gatsby themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow Gatsby site functionality to be packaged as a standalone product for others to easily reuse.
+[Themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow site functionality to be packaged as a standalone product for others to easily reuse.
 Using a theme, all of your default configuration lives in an npm package.
 
-**View the Gatsby site templates using the Adobe I/O Gatsby Theme:**
+**View the site templates using the Adobe I/O Theme:**
 
 <details>
   <summary>Documentation template</summary>
@@ -61,9 +46,9 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Home link](#home-link)
   + [Side Navigation](#side-navigation)
   + [Versions](#versions)
-* [Building the Gatsby site](#building-the-gatsby-site)
+* [Building the site](#building-the-site)
   + [Adding a Path Prefix](#adding-a-path-prefix)
-* [Deploying the Gatsby site](#deploying-the-gatsby-site)
+* [Deploying the site](#deploying-the-site)
   + [Preview on GitHub Pages](#preview-on-github-pages)
   + [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
 * [Writing Enhanced Markdown](#writing-enhanced-markdown)
@@ -98,7 +83,7 @@ Using a theme, all of your default configuration lives in an npm package.
 
 ## Getting started
 
-This section will help you get started building a Gatsby site with the Adobe I/O Gatsby Theme.
+This section will help you get started building a site with the Adobe I/O Theme.
 
 **Pre-requisites**
 
@@ -107,7 +92,7 @@ This section will help you get started building a Gatsby site with the Adobe I/O
 
 ### Using GitHub repository templates
 
-To initialize a site repository, you can use one of the available Gatsby site templates mentioned above.
+To initialize a site repository, you can use one of the available site templates mentioned above.
 Simply click on the “Use this template” button to create a new GitHub repository of the template.
 
 *The templates are pre-configured with example pages.*
@@ -175,8 +160,8 @@ root
 └─ package.json
 ```
 
-Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, Gatsby will transform the `md` files into `index.html` files.
-The build files can be found in the `public` folder. Please read the [Overview of the Gatsby Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information.
+Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, `md` files will be transformed into `index.html` files.
+The build files can be found in the `public` folder. Please read the [Overview of the Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information.
 
 Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
@@ -291,7 +276,7 @@ Please find guidance on ideal illustration sizes in this [document](docs/documen
 ### Google Docs support
 
 Instead of writing markdown pages, you can use Google Docs as external content source. Google Docs documents will be transformed into markdown pages under the hood and placed by default into `src/pages`.
-To connect to Google Docs, you'll need to setup 4 `.env` variables in your Gatsby project :
+To connect to Google Docs, you'll need to setup 4 `.env` variables in your project :
 
 ```
 GOOGLE_OAUTH_CLIENT_ID=2...m.apps.googleusercontent.com
@@ -347,12 +332,12 @@ If the GitHub Token information is missing, the build will just print a warning,
 
 To retrieve your GitHub personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 Only `READ` permissions on repositories are required for the token.
-For example, if your doc site repo was at https://github.com/adobe/gatsby-theme-aio using the `main` branch, this would be what your `.env` would look like:
+For example, if your doc site repo was at https://github.com/adobe/aio-theme using the `main` branch, this would be what your `.env` would look like:
 
 ```properties
 REPO_GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
 REPO_OWNER=adobe
-REPO_NAME=gatsby-theme-aio
+REPO_NAME=aio-theme
 REPO_BRANCH=main
 REPO_ROOT=example
 ```
@@ -825,7 +810,7 @@ versions: [
 
 **Important: managing multiple versions inside a single repository is not supported.**
 
-## Building the Gatsby site
+## Building the site
 
 You can generate a production version of the site using following commands:
 
@@ -844,7 +829,7 @@ Or run following commands:
 ### Adding a Path Prefix
 
 Many applications are hosted at something other than the root (`/`) of their domain.
-For example, a Gatsby blog could live at `example.com/blog/`, or a site could be hosted on GitHub Pages at `example.github.io/my-gatsby-site/`.
+For example, a blog could live at `example.com/blog/`, or a site could be hosted on GitHub Pages at `example.github.io/my-site/`.
 
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
@@ -852,7 +837,7 @@ To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix 
 pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
 ```
 
-## Deploying the Gatsby site
+## Deploying the site
 
 ### Preview on GitHub Pages
 
@@ -924,7 +909,7 @@ jsDoc: true
 ---
 </pre>
 
-Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/jsdoc/index.md).
+Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/jsdoc/index.md).
 
 ### MDX
 
@@ -1502,7 +1487,7 @@ Use Product Card Grid to display Product Cards with filter and sort options base
 
 Set `interaction` to `true` to display the filter and sort options.
 
-See the [data example](https://github.com/adobe/gatsby-theme-aio/blob/main/example/src/products/index.js) to provide for `clouds` and `products`.
+See the [data example](https://github.com/adobe/aio-theme/blob/main/example/src/products/index.js) to provide for `clouds` and `products`.
 
 ```
 <ProductCardGrid clouds={clouds} products={products} interaction={true} />
@@ -1618,7 +1603,7 @@ Lorem ipsum
 
 #### Embedding external markdown files
 
-Gatsby sites are using `npm` to define dependencies so we can also include external markdown documents.
+Sites are using `npm` to define dependencies so we can also include external markdown documents.
 
 **You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
@@ -1637,7 +1622,7 @@ Together with Variant Blocks, the author can query what should be rendered from 
 **This allows to write content once, and reuse it everywhere.**
 
 For example, let's say there are 2 repositories named http://github.com/adobedocs/repo1 and http://github.com/adobedocs/repo2.
-Both are Gatsby sites using the theme `@adobe/gatsby-theme-aio` and have markdown content defined under `src/pages`.
+Both are sites using the theme and have markdown content defined under `src/pages`.
 
 1) repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
 
@@ -1705,9 +1690,9 @@ You can query multiple elements, for example you can add the section with the im
 
 ## Customizations
 
-When using Gatsby themes, you can take advantage of something called [Gatsby shadowing](https://www.gatsbyjs.com/docs/themes/shadowing/). This allows you to override the default component included in the theme with a custom one you’ve created.
+When using themes, you can take advantage of something called [shadowing](https://www.gatsbyjs.com/docs/themes/shadowing/). This allows you to override the default component included in the theme with a custom one you’ve created.
 
-The Adobe I/O Gatsby Theme package has a component to render code using the [Prism syntax highlighter](https://prismjs.com/).
+The Adobe I/O Theme package has a component to render code using the [Prism syntax highlighter](https://prismjs.com/).
 With shadowing, you can override the component to provide your own.
 
 If you look at the file tree of your site, you’ll see it looks something like this:
@@ -1752,14 +1737,14 @@ You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/com
 You can build pages without the default layout by setting `layout` to `none` within the page front matter.
 The Global Header, Footer, Side Navigation etc. are always shown but anything in between can be customized.
 
-See the [example markdown file](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/no_layout/index.md).
+See the [example markdown file](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/no_layout/index.md).
 
 ### Frame
 
 This can be useful if you want to embed pages from another system. The embedded page will be framed between the Global Header and Footer.
 Simply set `frameSrc` to the `url` of the external page within the front matter.
 
-See the [example parent page](https://raw.githubusercontent.com/adobe/gatsby-theme-aio/main/example/src/pages/frame/index.md) and [child page](https://github.com/adobe/gatsby-theme-aio/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal)
+See the [example parent page](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/frame/index.md) and [child page](https://github.com/adobe/aio-theme/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal)
 library to create a communication channel to exchange information.
 
 ### Theming
@@ -1777,21 +1762,21 @@ export default {
 
 ### Locally
 
-To upgrade to the latest version of `@adobe/gatsby-theme-aio`, simply run `npm update` if you have defined the dependency with a version range selector.
+To upgrade to the latest version of the theme, simply run `npm update` if you have defined the dependency with a version range selector.
 If not, update the version of the dependency by setting the version manually in the `package.json` and run `npm install`.
 
 This will also update the lock file `package-lock.json`.
 
 ### Automated
 
-We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your Gatsby site repository.
+We recommend to setup [GitHub dependabot](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically) in your site repository.
 Simply copy the [dependabot](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/.github/dependabot.yml) file in your `.github` folder.
 
-The bot will automatically submit pull requests to keep your version of `@adobe/gatsby-theme-aio` up to date. Please make sure to use a version range selector for your dependencies in your `package.json `e.g `"@adobe/gatsby-theme-aio": "^2.1.5"`.
+The bot will automatically submit pull requests to keep your version of the theme up to date. Please make sure to use a version range selector for your dependencies in your `package.json`.
 
 ## Issue tracker
 
-Use the [GitHub issue tracker](https://github.com/adobe/gatsby-theme-aio/issues) to report issues, ask questions or log feature requests.
+Use the [GitHub issue tracker](https://github.com/adobe/aio-theme/issues) to report issues, ask questions or log feature requests.
 Any feedback is welcome !
 
 Please check existing issues before filing anything new.
@@ -1804,8 +1789,8 @@ See [Conventional Commits](https://conventionalcommits.org/) for commit guidelin
 
 ## Releases
 
-You can check the latest released version of `@adobe/gatsby-theme-aio` at https://github.com/adobe/gatsby-theme-aio/releases.
+You can check the latest released version of the theme at https://github.com/adobe/aio-theme/releases.
 
 This repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
-Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna version --create-release github --conventional-commits --no-private -m "chore(release): publish"` for publishing `@adobe/gatsby-theme-aio` on npm.
+Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna version --create-release github --conventional-commits --no-private -m "chore(release): publish"` for publishing the theme on npm.

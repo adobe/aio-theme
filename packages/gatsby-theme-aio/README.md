@@ -1,1 +1,1 @@
-See the repo https://github.com/adobe/gatsby-theme-aio for more details.
+See the repo https://github.com/adobe/aio-theme for more details.

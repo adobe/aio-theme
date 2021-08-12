@@ -18,7 +18,7 @@ const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-
 
 /**
  * Support of "openAPISpec" directive:
- * https://github.com/adobe/gatsby-theme-aio#openapi
+ * https://github.com/adobe/aio-theme#openapi
  */
 class CreateRecordsForOpenApi {
   constructor() {

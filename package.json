@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "gatsby-theme-aio-monorepo",
+  "name": "aio-theme-monorepo",
   "workspaces": [
     "example",
     "packages/*"
