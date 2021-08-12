@@ -383,11 +383,11 @@ const GlobalHeader = ({
             ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
-              margin-left: ${hasHome
-                ? 'var(--spectrum-global-dimension-size-200)'
-                : 'var(--spectrum-global-dimension-size-300)'};
+              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-200);'}
 
               @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                ${!hasHome && 'margin-left: var(--spectrum-global-dimension-size-300);'}
+
                 overflow-x: auto;
                 overflow-x: overlay;
                 overflow-y: hidden;
