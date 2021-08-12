@@ -39,6 +39,16 @@ const SEARCH_KEYWORDS = 'keywords';
 const SUGGESTION_MAX_RESULTS = 50;
 const SEARCH_MAX_RESULTS = 100;
 
+// Replace any character in a given unicode range with its html entity equivalent
+// Source: https://stackoverflow.com/a/18750001
+const encodeHTML = (html) =>
+  html
+    .replace(/[\u00A0-\u9999<>\&]/g, (i) => '&#' + i.charCodeAt(0) + ';')
+    .replace(/&#60;mark&#62;/g, '<mark>')
+    .replace(/&#60;em&#62;/g, '<em>')
+    .replace(/&#60;\/mark&#62;/g, '</mark>')
+    .replace(/&#60;\/em&#62;/g, '</em>');
+
 // Used to update the url in the browser
 const setQueryStringParameter = (name, value) => {
   const params = new URLSearchParams(window.location.search);
@@ -431,9 +441,15 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           text-decoration: underline;
                         }
                       `}>
-                      <strong dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.title.value }} />
+                      <strong
+                        dangerouslySetInnerHTML={{ __html: encodeHTML(searchSuggestion._highlightResult.title.value) }}
+                      />
                       <br />
-                      <span dangerouslySetInnerHTML={{ __html: searchSuggestion._highlightResult.content.value }} />
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: encodeHTML(searchSuggestion._highlightResult.content.value)
+                        }}
+                      />
                     </div>
                   </MenuItem>
                 ))}
@@ -607,7 +623,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                             margin-bottom: var(--spectrum-global-dimension-size-100);
                           `}>
                           <AnchorLink to={to}>
-                            <span dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.title.value }} />
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: encodeHTML(searchResult._highlightResult.title.value)
+                              }}
+                            />
                           </AnchorLink>
                         </div>
                         <div
@@ -623,7 +643,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           css={css`
                             margin: var(--spectrum-global-dimension-size-100) 0;
                           `}
-                          dangerouslySetInnerHTML={{ __html: searchResult._highlightResult.content.value }}
+                          dangerouslySetInnerHTML={{ __html: encodeHTML(searchResult._highlightResult.content.value) }}
                         />
                       </div>
                     );
