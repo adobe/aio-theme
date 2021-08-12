@@ -315,7 +315,7 @@ export default ({ children, pageContext, location }) => {
 
   const layoutId = nextId();
   const sideNavId = nextId();
-  const searchButtonId = nextId();
+  const searchButtonId = 'aio-Search-close';
 
   // Update OpenAPI spec and Frame src
   updatePageSrc('openAPI', frontMatter, setIsLoading);
