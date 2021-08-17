@@ -51,7 +51,7 @@ const createAlgoliaRecords = (node, records) => {
       anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
       url: getUrl(slug, node, record),
       absoluteUrl: getAbsoluteUrl(slug, node, record),
-      customRanking: record.customRanking ?? '',
+      customRanking: record.customRanking ?? getCustomRanking(node, record),
       // TODO: model should not have dependencies on env vars (should be wrapped in config object)
       [process.env.REPO_NAME]: contentDigest
     };
@@ -89,7 +89,7 @@ function getAnchorLink(linkHeadings) {
   return `#${linkHeadings
     .slice(-1)
     .toString()
-    ?.match(/[a-zA-Z]\w+/g)
+    ?.match(/[a-zA-Z0-9]\w+/g)
     ?.map((s) => s.toLowerCase())
     .join('-')}`;
 }
@@ -101,6 +101,11 @@ function getUrl(slug, node, record) {
 
 function getAbsoluteUrl(slug, node, record) {
   return `${process.env.AIO_FASTLY_PROD_URL}${getUrl(slug, node, record)}`;
+}
+
+function getCustomRanking(node, record) {
+  console.log(node);
+  return record.customRanking;
 }
 
 const removeDuplicateRecords = (records) => {
