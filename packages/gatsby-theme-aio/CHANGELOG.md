@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.18.3...@adobe/gatsby-theme-aio@3.19.0) (2021-08-24)
+
+
+### Bug Fixes
+
+* duplicated contributors (closes [#468](https://github.com/adobe/aio-theme/issues/468)) ([89ce80c](https://github.com/adobe/aio-theme/commit/89ce80cc1db44c300d2e2dec351482cf445c0c90))
+* wrong font family on OpenAPIBlock headings (closes [#470](https://github.com/adobe/aio-theme/issues/470)) ([17873e7](https://github.com/adobe/aio-theme/commit/17873e72edc9c875504df48e413f4becc9a711d2))
+
+
+### Features
+
+* set docs layout by default ([85b1b4e](https://github.com/adobe/aio-theme/commit/85b1b4e3382dc49adfe4df046d135223a88f91ee))
+* support dynamic Algolia indexes ([6d307c2](https://github.com/adobe/aio-theme/commit/6d307c2d9b1da61d79847ecdeb6a73525d83f3ce))
+* update to latest redoc version ([7c880c0](https://github.com/adobe/aio-theme/commit/7c880c0af5fa7aef8e7e9dbeefc04a629a76f3cd))
+
+
+
+
+
 ## [3.18.3](https://github.com/adobe/gatsby-theme-aio/compare/@adobe/gatsby-theme-aio@3.18.2...@adobe/gatsby-theme-aio@3.18.3) (2021-08-12)
 
 
