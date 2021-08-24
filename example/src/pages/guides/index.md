@@ -2,7 +2,7 @@
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
 contributors:
-  - https://github.com/simonwex
+  - https://github.com/icaraps
 ---
 
 Get Started

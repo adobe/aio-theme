@@ -23,8 +23,13 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
     login: contributor.replace('https://github.com/', '')
   }));
 
-  // Adding external contributors first
-  contributors = [...externalContributors, ...contributors];
+  externalContributors.forEach((externalContributor) => {
+    // Verify no duplicates
+    if (!contributors.find(({ login }) => externalContributor.login === login)) {
+      // Adding external contributors first
+      contributors.unshift(externalContributor);
+    }
+  });
 
   return (
     <a
