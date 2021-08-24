@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.19.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.19.0...@adobe/gatsby-theme-aio@3.19.1) (2021-08-24)
+
+
+### Bug Fixes
+
+* avoid fetching Algolia index src if none is set ([290ac8b](https://github.com/adobe/aio-theme/commit/290ac8bee86cace593d03e76a44e2723c3874026))
+
+
+
+
+
 # [3.19.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.18.3...@adobe/gatsby-theme-aio@3.19.0) (2021-08-24)
 
 
