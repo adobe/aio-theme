@@ -155,12 +155,7 @@ const OpenAPIBlock = ({ src }) => {
               .api-info {
                 h1 {
                   font-weight: var(--spectrum-global-font-weight-light) !important;
-                  font-size: var(--spectrum-alias-heading-xl-text-size) !important;
-                  line-height: var(--spectrum-alias-heading-text-line-height) !important;
-                  font-style: var(--spectrum-global-font-style-regular) !important;
-                  letter-spacing: var(--spectrum-global-font-letter-spacing-none) !important;
-                  color: var(--spectrum-alias-heading-text-color) !important;
-                  margin-bottom: var(--spectrum-global-dimension-size-350) !important;
+                  margin-bottom: var(--spectrum-global-dimension-size-350);
 
                   span {
                     font-size: var(--spectrum-alias-font-size-default) !important;
@@ -212,6 +207,7 @@ const OpenAPIBlock = ({ src }) => {
                   letter-spacing: var(--spectrum-global-font-letter-spacing-none);
                   text-transform: none;
                   color: var(--spectrum-alias-heading-text-color);
+                  font-family: var(--spectrum-alias-body-text-font-family);
                 }
 
                 .redoc-markdown {
@@ -335,20 +331,26 @@ const OpenAPIBlock = ({ src }) => {
                 text-decoration: none;
 
                 &:before {
+                  display: inline-block;
+                  vertical-align: baseline;
                   content: '#';
                   background: none;
                   height: auto;
                   width: auto;
-                  opacity: 1;
+                  opacity: 0;
                   transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
                 }
 
-                &:hover {
+                &:hover:before {
+                  opacity: 1;
                   text-decoration: underline;
+                }
+              }
 
-                  &:before {
-                    opacity: 1;
-                  }
+              h1,
+              h2 {
+                &:hover a[href^='#']:before {
+                  opacity: 1;
                 }
               }
 
