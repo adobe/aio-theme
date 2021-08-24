@@ -52,7 +52,7 @@ import nextId from 'react-id-generator';
 const hasSearch = !!(
   process.env.GATSBY_ALGOLIA_APP_ID &&
   process.env.GATSBY_ALGOLIA_API_KEY &&
-  process.env.GATSBY_ALGOLIA_INDEX_ALL &&
+  (process.env.GATSBY_ALGOLIA_INDEX_ALL || process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC) &&
   process.env.GATSBY_ALGOLIA_SEARCH_INDEX
 );
 
@@ -122,6 +122,8 @@ const updatePageSrc = (type, frontMatter, setIsLoading) => {
 export default ({ children, pageContext, location }) => {
   const [ims, setIms] = useState(null);
   const [isLoadingIms, setIsLoadingIms] = useState(true);
+  // ["index1", "index2", ...]
+  const [indexAll, setIndexAll] = useState(null);
 
   // Load and initialize IMS
   useEffect(() => {
@@ -148,6 +150,21 @@ export default ({ children, pageContext, location }) => {
       console.warn('AIO: IMS config missing.');
       setIsLoadingIms(false);
     }
+  }, []);
+
+  // Set Search indexAll
+  useEffect(() => {
+    (async () => {
+      const ALGOLIA_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
+      const ALGOLIA_INDEX_ALL = process.env.GATSBY_ALGOLIA_INDEX_ALL;
+
+      try {
+        await addScript(`${ALGOLIA_SRC}`);
+        setIndexAll(window.AIO_ALGOLIA_INDEX_ALL || JSON.parse(ALGOLIA_INDEX_ALL));
+      } catch (e) {
+        console.error(`AIO: Failed setting search index.`);
+      }
+    })();
   }, []);
 
   // Load all data once and pass it to the Provider
@@ -490,7 +507,7 @@ export default ({ children, pageContext, location }) => {
                   toggleSideNav={() => {
                     toggleSideNav(setShowSideNav);
                   }}
-                  hasSearch={hasSearch}
+                  hasSearch={hasSearch && indexAll !== null}
                   showSearch={showSearch}
                   setShowSearch={setShowSearch}
                   searchButtonId={searchButtonId}
@@ -544,11 +561,11 @@ export default ({ children, pageContext, location }) => {
               </div>
             </div>
 
-            {hasSearch && showSearch && (
+            {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
                 searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
-                indexAll={JSON.parse(process.env.GATSBY_ALGOLIA_INDEX_ALL)}
+                indexAll={indexAll}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}
                 searchButtonId={searchButtonId}
