@@ -192,7 +192,7 @@ export default ({ children, pageContext, query }) => {
     // Custom MDX components
     const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray, hasSideNav });
 
-    const isDocs = hasSideNav && heroChild === null;
+    const isDocs = heroChild === null;
     const isDocsOverview = heroChild !== null && (!heroChild.props.variant || heroChild.props.variant === 'default');
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
 
@@ -274,44 +274,46 @@ export default ({ children, pageContext, query }) => {
                         flex-direction: column;
                       }
                     `}>
-                    <div
-                      css={css`
-                        margin-right: var(--spectrum-global-dimension-size-400);
-                      `}>
-                      {home?.hidden !== true && home?.title && home?.href ? (
-                        <Breadcrumbs
-                          pages={[
-                            DEFAULT_HOME,
-                            home,
-                            { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
-                            selectedTopPageMenu && {
-                              ...selectedTopPageMenu,
-                              href: withPrefix(selectedTopPageMenu.href)
-                            },
-                            ...selectedSubPages.map((page) => ({
-                              ...page,
-                              href: withPrefix(page.href.replace('/_ROOT_/', '/'))
-                            }))
-                          ]}
-                        />
-                      ) : (
-                        <Breadcrumbs
-                          pages={[
-                            DEFAULT_HOME,
-                            { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
-                            { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
-                            selectedTopPageMenu && {
-                              ...selectedTopPageMenu,
-                              href: withPrefix(selectedTopPageMenu.href)
-                            },
-                            ...selectedSubPages.map((page) => ({
-                              ...page,
-                              href: withPrefix(page.href.replace('/_ROOT_/', '/'))
-                            }))
-                          ]}
-                        />
-                      )}
-                    </div>
+                    {selectedTopPage && (
+                      <div
+                        css={css`
+                          margin-right: var(--spectrum-global-dimension-size-400);
+                        `}>
+                        {home?.hidden !== true && home?.title && home?.href ? (
+                          <Breadcrumbs
+                            pages={[
+                              DEFAULT_HOME,
+                              home,
+                              { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                              selectedTopPageMenu && {
+                                ...selectedTopPageMenu,
+                                href: withPrefix(selectedTopPageMenu.href)
+                              },
+                              ...selectedSubPages.map((page) => ({
+                                ...page,
+                                href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                              }))
+                            ]}
+                          />
+                        ) : (
+                          <Breadcrumbs
+                            pages={[
+                              DEFAULT_HOME,
+                              { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
+                              { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                              selectedTopPageMenu && {
+                                ...selectedTopPageMenu,
+                                href: withPrefix(selectedTopPageMenu.href)
+                              },
+                              ...selectedSubPages.map((page) => ({
+                                ...page,
+                                href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                              }))
+                            ]}
+                          />
+                        )}
+                      </div>
+                    )}
                     <div
                       css={css`
                         margin-left: auto;
