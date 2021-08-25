@@ -3101,7 +3101,7 @@
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-1.1.1.tgz#ffe7f2e6bd48a0633631a3d92c0ee4bdeb0ac330"
   integrity sha512-MUhT5m2XNN5NsZl4GnpuvlzLo6VSTa/+wBfBd3fiWUvHGhv0GF9hnA1pd//v0uJaKwUnVRQ1hYElxCV7DtYsCQ==
 
-"@prefresh/webpack@^3.2.2":
+"@prefresh/webpack@^3.3.2":
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-3.3.2.tgz#058c4d61d733a4a8c111486f8aa1ae9b89820d9c"
   integrity sha512-1cX0t5G7IXWO2164sl2O32G02BzDl6C4UUZWfDb0x1CQM1g3It9PSLWd+rIlHfSg4MEU9YHM8e6/OK8uavRJhA==
@@ -8784,14 +8784,14 @@ gatsby-plugin-page-creator@^3.9.0:
     globby "^11.0.3"
     lodash "^4.17.21"
 
-gatsby-plugin-preact@^5.0.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-5.9.0.tgz#8bccc6d128d2877961e32aeb10f40a382133c268"
-  integrity sha512-4gp9EqmnkEB0sVCLps1xK8UXUvG2rcz78ocOZ6BPd+o7ikgjsTfOFZNqUDdtLgudaxRcIYaeUjoPecR9ZioaWQ==
+gatsby-plugin-preact@^5.12.0:
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-5.12.0.tgz#76f664833f3a8c2c7a49e80b1421e428519d15b4"
+  integrity sha512-5GEH52Dh5bsMHUkXjWPlXEPEJ8iU1ONwwS4djL/vzcZTNKXpq+EsvbA7mMwuJs6yaKCIi5//5c7SRg2kgGvrew==
   dependencies:
     "@gatsbyjs/webpack-hot-middleware" "^2.25.2"
     "@prefresh/babel-plugin" "^0.4.1"
-    "@prefresh/webpack" "^3.2.2"
+    "@prefresh/webpack" "^3.3.2"
 
 gatsby-plugin-react-helmet@^4.12.0:
   version "4.12.0"
