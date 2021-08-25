@@ -97,7 +97,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   ],
   developer: [
     {
-      title: 'Adobe I/O console',
+      title: 'Adobe Developer Console',
       path: '/console'
     },
     {
