@@ -589,33 +589,35 @@ export default ({ children, pageContext, location }) => {
               <ProgressCircle size="L" />
             </div>
 
-            <div
-              css={css`
-                display: none;
+            {hasSideNav && (
+              <div
+                css={css`
+                  display: none;
 
-                @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  display: block;
-                  transition: opacity 160ms ease-in;
-                  background-color: rgba(0, 0, 0, 0.4);
-                  pointer-events: none;
-                  opacity: 0;
-                  position: fixed;
-                  top: 0;
-                  left: 0;
-                  height: 100%;
-                  width: 100%;
+                  @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                    display: block;
+                    transition: opacity 160ms ease-in;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    pointer-events: none;
+                    opacity: 0;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
 
-                  ${showSideNav &&
-                  `
+                    ${showSideNav &&
+                    `
                     pointer-events: auto;
                     opacity: 1;
                   `}
-                }
-              `}
-              onClick={() => {
-                toggleSideNav(setShowSideNav);
-              }}
-            />
+                  }
+                `}
+                onClick={() => {
+                  toggleSideNav(setShowSideNav);
+                }}
+              />
+            )}
           </>
         </div>
       </Provider>
