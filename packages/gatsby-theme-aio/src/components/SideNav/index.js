@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
@@ -20,6 +20,8 @@ import '@spectrum-css/sidenav';
 import nextId from 'react-id-generator';
 
 const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
+  const [expandedPages, setExpandedPages] = useState([]);
+
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
   const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
@@ -30,6 +32,10 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
       .map((page, index) => {
         const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
         const id = nextId();
+
+        if (isSelected && !expandedPages.includes(page.href)) {
+          setExpandedPages((pages) => [...pages, page.href]);
+        }
 
         return (
           <li
@@ -45,7 +51,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
             `}
             className={classNames([
               'spectrum-SideNav-item',
-              { 'is-expanded': isSelected || page.header },
+              { 'is-expanded': page.header || expandedPages.includes(page.href) },
               { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
             ])}>
             {page.header ? (
@@ -66,8 +72,18 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
               </a>
             ) : (
               <GatsbyLink
-                onClick={() => {
+                onClick={(event) => {
                   setShowSideNav(false);
+
+                  if (page?.pages?.length && !page.header && page.pages.find((subPage) => subPage.href === page.href)) {
+                    event.preventDefault();
+
+                    if (expandedPages.includes(page.href)) {
+                      setExpandedPages((pages) => pages.filter((href) => href !== page.href));
+                    } else {
+                      setExpandedPages([...expandedPages, page.href]);
+                    }
+                  }
                 }}
                 to={page.href}
                 className="spectrum-SideNav-itemLink"

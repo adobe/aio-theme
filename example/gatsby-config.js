@@ -48,11 +48,6 @@ module.exports = {
             description: 'This is the OpenAPI page of Adobe Analytics',
             path: '/api/index.md/'
           },
-          // {
-          //   title: 'Petstore API',
-          //   description: 'This is the OpenAPI page of the swagger Petstore API stored in static files',
-          //   path: '/api/petstore/'
-          // },
           {
             title: 'Analytics Swagger file',
             description: 'External link',
@@ -119,7 +114,7 @@ module.exports = {
         pages: [
           {
             title: 'Overview',
-            path: '/guides/reporting_api/'
+            path: '/guides/reporting_api/overview.md'
           },
           {
             title: 'Reporting with breakdowns',
@@ -171,7 +166,13 @@ module.exports = {
       },
       {
         title: 'Calculated Metrics API',
-        path: '/guides/Calculated Metrics API/'
+        path: '/guides/Calculated Metrics API/',
+        pages: [
+          {
+            title: 'External',
+            path: 'https://adobe.io'
+          }
+        ]
       },
       {
         title: 'Overview',
