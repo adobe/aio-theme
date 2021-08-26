@@ -31,16 +31,16 @@ describe('Smoke Test', () => {
 
   it('Cloud Filter loads', () => {
     cy.visit(`/cloud_filter/`).assertRoute(`/cloud_filter/`);
-    cy.contains('Adobe I/O');
+    cy.contains('Developer');
   });
 
   it('No layout loads', () => {
     cy.visit(`/no_layout/`).assertRoute(`/no_layout/`);
-    cy.contains('No layout');
+    cy.contains('Developer');
   });
 
   it('Frame loads', () => {
     cy.visit(`/frame/`).assertRoute(`/frame/`);
-    cy.contains('Adobe I/O');
+    cy.contains('Developer');
   });
 });
