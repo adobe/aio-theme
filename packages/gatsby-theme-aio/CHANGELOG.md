@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.20.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.19.1...@adobe/gatsby-theme-aio@3.20.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* only render SideNav overlay if there is a SideNav ([729fe0d](https://github.com/adobe/aio-theme/commit/729fe0d5eb0d1b7fbd13f7d7503b31f101389cda))
+* replace I/O console with Adobe Developer Console ([417a25c](https://github.com/adobe/aio-theme/commit/417a25cbcb716c59b37772cfa788be36909953cf))
+
+
+### Features
+
+* expand SideNav links without loading the actual page ([5aed64a](https://github.com/adobe/aio-theme/commit/5aed64a03db942ef4222b27c264dc83707afe29e))
+
+
+
+
+
 ## [3.19.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.19.0...@adobe/gatsby-theme-aio@3.19.1) (2021-08-24)
 
 
