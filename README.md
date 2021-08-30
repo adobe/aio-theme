@@ -385,7 +385,7 @@ Algolia indexing requires a set of API index keys to publish new search records 
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_WRITE_API_KEY` - Algolia API key to perform indexing operations
-- `GASTBY_ALGOLIA_APP_ID` - Algolia App ID  
+- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID  
 - `ALGOLIA_INDEX_NAME` - Optional. Use this variable to publish this site's search records to a different, existing Algolia index.
 
 To enable search on the browser side, you'll need to set following env variables: 
