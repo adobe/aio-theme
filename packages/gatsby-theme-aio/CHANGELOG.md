@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.20.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.0...@adobe/gatsby-theme-aio@3.20.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* typo in GATSBY_ALGOLIA_APP_ID ([27ec5da](https://github.com/adobe/aio-theme/commit/27ec5da2ee785d17d082f7d1186b276279662faf))
+
+
+
+
+
 # [3.20.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.19.1...@adobe/gatsby-theme-aio@3.20.0) (2021-08-26)
 
 
