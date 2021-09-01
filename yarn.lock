@@ -8643,10 +8643,10 @@ gatsby-plugin-algolia@^0.22.1:
     deep-equal "^2.0.5"
     lodash.chunk "^4.2.0"
 
-gatsby-plugin-emotion@^6.12.0:
-  version "6.12.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-6.12.0.tgz#9a3c492f25d011635419b5028e71255aca97b0e3"
-  integrity sha512-UryB9hmUU+MRyLVJS9/C2G1d8RlNAlzDSBZxCt/TqvesfXz9ObcutJ8LFvALrAGn5mxfuPIuJBCJY4Al4dbMxA==
+gatsby-plugin-emotion@^6.13.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-6.13.0.tgz#ae5ea36bc97a92f7079551eb17f693b97e1fe8cd"
+  integrity sha512-sYN5UbarZn72TaKWMPz3EFtU1uqi7KqmJfG59o8DRhacfL5fnzMu7OTKwZq3f58p29wg2v5OQ9zpWZFTy7dSog==
   dependencies:
     "@babel/runtime" "^7.14.8"
     "@emotion/babel-preset-css-prop" "^11.2.0"
