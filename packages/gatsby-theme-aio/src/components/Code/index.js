@@ -42,7 +42,8 @@ const Code = ({ children, className = '', theme }) => {
   return (
     <Highlight {...defaultProps} code={children} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
-        const lines = tokens.slice(0, -1);
+        const isEmptyItem = (token) => token && (token.length === 1 && token[0].empty);
+        const lines = isEmptyItem(tokens[tokens.length - 1]) ? tokens.slice(0, -1) : tokens;
         const isMultiLine = lines.length > 1;
         const textarea = createRef();
 
@@ -97,7 +98,7 @@ const Code = ({ children, className = '', theme }) => {
               </span>
             </div>
             <pre className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
-              {tokens.slice(0, -1).map((line, i) => {
+              {lines.map((line, i) => {
                 const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 
                 return (
