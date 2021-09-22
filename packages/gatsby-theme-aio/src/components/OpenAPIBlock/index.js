@@ -266,7 +266,7 @@ const OpenAPIBlock = ({ src }) => {
                 }
 
                 a[href] {
-                  color: var(--spectrum-global-color-blue-600);
+                  color: var(--spectrum-global-color-blue-600) !important;
 
                   &:hover {
                     text-decoration: underline;
