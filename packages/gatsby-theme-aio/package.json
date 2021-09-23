@@ -111,6 +111,7 @@
     "sharp": "^0.29.0",
     "stream-http": "^3.1.1",
     "styled-components": "^5.3.1",
+    "swiper": "^7.0.6",
     "to-arraybuffer": "^1.0.1",
     "unist-util-select": "2.0.0",
     "uuid": "^8.3.2"

@@ -28,6 +28,7 @@ import { ResourceCard } from '../ResourceCard';
 import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
+import { Carousel } from '../Carousel';
 
 export const MDXBlocks = {
   Hero,
@@ -44,5 +45,6 @@ export const MDXBlocks = {
   ResourceCard,
   Media,
   JsDocParameters,
-  ProductCardGrid
+  ProductCardGrid,
+  Carousel
 };
