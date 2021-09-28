@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.20.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.2...@adobe/gatsby-theme-aio@3.20.3) (2021-09-28)
+
+
+### Bug Fixes
+
+* code format ([d0835bc](https://github.com/adobe/aio-theme/commit/d0835bc3f3cf6daf322cf0ca7f6245ad2f9f4f39))
+* keep sidenav open while navigating ([4f2aba7](https://github.com/adobe/aio-theme/commit/4f2aba7d52c80a8bbf33454c27a23526183fbbdd))
+
+
+
+
+
 ## [3.20.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.1...@adobe/gatsby-theme-aio@3.20.2) (2021-09-28)
 
 
