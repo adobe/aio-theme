@@ -382,6 +382,27 @@ Text
 Text
 
 
+<Carousel slots="image,heading, text, buttons" repeat="2"  theme="light"  />
+
+![Resource 3](images/resource3.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
+
+* [Learn more](../guides)
+* [View docs](../guides)
+
+
+
+![Resource 3](images/resource3.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
+ 
+* [Learn more](../guides)
+* [View docs](../guides)
 
 
 <SummaryBlock className="custom" slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
