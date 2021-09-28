@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
@@ -64,17 +64,12 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 href={page.href}
                 className="spectrum-SideNav-itemLink"
                 role="treeitem"
-                aria-level={level}
-                onClick={() => {
-                  setShowSideNav(false);
-                }}>
+                aria-level={level}>
                 {page.title}
               </a>
             ) : (
               <GatsbyLink
                 onClick={(event) => {
-                  setShowSideNav(false);
-
                   if (page?.pages?.length && !page.header && page.pages.find((subPage) => subPage.href === page.href)) {
                     event.preventDefault();
 
@@ -83,6 +78,8 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                     } else {
                       setExpandedPages([...expandedPages, page.href]);
                     }
+                  } else {
+                    setShowSideNav(false);
                   }
                 }}
                 to={page.href}
