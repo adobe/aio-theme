@@ -3,6 +3,10 @@ title: Home - Creative Cloud
 description: This is the home page of Creative Cloud
 ---
 
+import CreatePdfFromUrl from './create-pdf-from-url.md';
+import DynamicPdfDocumentGeneration from './dynamic-pdf-document-generation.md';
+import ExtractPdfContentStructure from './pdf-content-structure.md';
+
 <Hero className="custom" slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
 ![Creative Cloud banner](images/cc-hero.png)
@@ -46,7 +50,7 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 
 * ![Adobe Premiere Pro](https://adobe.io/shared/icons/pr_appicon_64.svg) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
 * ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
-* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)   
+* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)
 
 
 
@@ -381,6 +385,26 @@ Text
 
 Text
 
+
+<TabsBlock orientation="vertical" slots="heading, image, tabViewContent" repeat="3" theme="light"  />
+
+### Create PDF from URL
+
+![](images/s_createpdf_color_24.svg)
+
+<CreatePdfFromUrl/>
+
+### Dynamic PDF Document Generation
+
+![](images/ic-dynamic-pdf-gen-40.svg)
+
+<DynamicPdfDocumentGeneration/>
+
+### Extract PDF Content & Structure
+
+![](images/ic-extract-40.svg)
+
+<ExtractPdfContentStructure/>
 
 
 
