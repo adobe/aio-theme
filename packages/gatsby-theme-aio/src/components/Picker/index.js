@@ -46,8 +46,8 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   }, [options]);
 
   useEffect(() => {
-    setOptions(items)
-  }, [items])
+    setOptions(items);
+  }, [items]);
 
   return (
     <div>

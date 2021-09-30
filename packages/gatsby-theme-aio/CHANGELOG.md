@@ -3,14 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.20.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.1...@adobe/gatsby-theme-aio@3.20.2) (2021-09-21)
+## [3.20.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.2...@adobe/gatsby-theme-aio@3.20.3) (2021-09-28)
 
 
 ### Bug Fixes
 
-* fix link color for api description ([bf03c24]https://github.com/adobe/aio-theme/commit/bf03c245cb7d42760810a3bab50a92f5a9292abf)
-* only remove last token when the last token is blank in code component ([4c4ed17]https://github.com/adobe/aio-theme/commit/4c4ed17a314a2c50d4056240435dd5820a846e5a)
-* update picker options array when items changes ([242daf90]https://github.com/adobe/aio-theme/commit/242daf902136fa39a675b4172bd81e88aa60d91a)
+* code format ([d0835bc](https://github.com/adobe/aio-theme/commit/d0835bc3f3cf6daf322cf0ca7f6245ad2f9f4f39))
+* keep sidenav open while navigating ([4f2aba7](https://github.com/adobe/aio-theme/commit/4f2aba7d52c80a8bbf33454c27a23526183fbbdd))
+
+
+
+
+
+## [3.20.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.1...@adobe/gatsby-theme-aio@3.20.2) (2021-09-28)
+
+
+### Bug Fixes
+
+* **code:** only remove last token when the last token is blank. fixes [#505](https://github.com/adobe/aio-theme/issues/505) ([#506](https://github.com/adobe/aio-theme/issues/506)) ([4c4ed17](https://github.com/adobe/aio-theme/commit/4c4ed17a314a2c50d4056240435dd5820a846e5a))
+* make sure link in api description has the right color ([bf03c24](https://github.com/adobe/aio-theme/commit/bf03c245cb7d42760810a3bab50a92f5a9292abf))
+* **picker:** update picker options array when items changes. fixes [#503](https://github.com/adobe/aio-theme/issues/503) ([#504](https://github.com/adobe/aio-theme/issues/504)) ([242daf9](https://github.com/adobe/aio-theme/commit/242daf902136fa39a675b4172bd81e88aa60d91a))
+
+
+
 
 
 ## [3.20.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.0...@adobe/gatsby-theme-aio@3.20.1) (2021-08-30)

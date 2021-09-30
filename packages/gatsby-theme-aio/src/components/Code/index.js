@@ -42,7 +42,7 @@ const Code = ({ children, className = '', theme }) => {
   return (
     <Highlight {...defaultProps} code={children} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
-        const isEmptyItem = (token) => token && (token.length === 1 && token[0].empty);
+        const isEmptyItem = (token) => token && token.length === 1 && token[0].empty;
         const lines = isEmptyItem(tokens[tokens.length - 1]) ? tokens.slice(0, -1) : tokens;
         const isMultiLine = lines.length > 1;
         const textarea = createRef();
