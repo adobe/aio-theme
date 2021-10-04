@@ -386,7 +386,7 @@ Text
 Text
 
 
-<TabsBlock orientation="vertical" slots="heading, image, tabViewContent" repeat="3" theme="light"  />
+<TabsBlock orientation="vertical" slots="heading, image, content" repeat="3" theme="light"  />
 
 ### Create PDF from URL
 

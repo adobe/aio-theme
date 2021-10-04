@@ -12,11 +12,18 @@
 
 import React, { useEffect, useState, useRef, createRef, forwardRef, cloneElement } from 'react';
 import classNames from 'classnames';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import '@spectrum-css/tabs';
+import nextId from 'react-id-generator';
 
-import { cloneChildren, MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH, layoutColumns } from '../../utils';
+import {
+  cloneChildren,
+  MOBILE_SCREEN_WIDTH,
+  DESKTOP_SCREEN_WIDTH,
+  TABLET_SCREEN_WIDTH,
+  layoutColumns
+} from '../../utils';
 
 const positionIndicator = (indicator, selectedTab) => {
   indicator.current.style.transform = `translate(${selectedTab.current.offsetLeft}px, 0px)`;
@@ -28,23 +35,27 @@ const animateIndicator = (indicator, animate) => {
 };
 
 const setTabItemIcon = (child, className, iconSize) => {
-  if ( child?.props?.children?.props?.mdxType === "img") {
-    return <IconImage image={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)}/>;
+  if (child?.props?.children?.props?.mdxType === 'img') {
+    return (
+      <IconImage image={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />
+    );
   }
-  return <Icons icon={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)}/>;
+  return <Icons icon={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />;
 };
 
+const mobileMinWidth = '480px';
+
 const setImageLoading = (child) => {
-  if (child?.props?.mdxType === "img") {
+  if (child?.props?.mdxType === 'img') {
     return cloneElement(child, {
-      loading: "eager"
+      loading: 'eager'
     });
   }
   return child;
 };
 
-const IconImage = ({ image = '', styles=''}) => {
-  return (image
+const IconImage = ({ image = '', styles = '' }) => {
+  return image
     ? cloneElement(image, {
         children: cloneChildren(image.props.children, setImageLoading),
         css: css`
@@ -60,15 +71,15 @@ const IconImage = ({ image = '', styles=''}) => {
             object-fit: contain;
           }
           ${styles}
-        `,
+        `
       })
-    : null);
-  }
+    : null;
+};
 
 const Icons = ({ icon, styles }) => {
-  return(
-    icon
-      ? cloneElement(icon, {
+  return icon
+    ? cloneElement(icon, {
+        alt: '',
         css: css`
           height: var(--spectrum-global-dimension-size-600);
           width: var(--spectrum-global-dimension-size-600);
@@ -81,89 +92,92 @@ const Icons = ({ icon, styles }) => {
           ${styles}
         `
       })
-      : null
-  )
-}
+    : null;
+};
 
-const Tabs = forwardRef(({
-  orientation='horizontal',
-  density='regular',
-  isQuiet = true,
-  children,
-  className,
-  onFontsReady,
-  ...props },
-  ref) => {
+const Tabs = forwardRef(
+  (
+    { orientation = 'horizontal', density = 'regular', isQuiet = true, children, className, onFontsReady, ...props },
+    ref
+  ) => {
+    useEffect(() => {
+      // Font affects positioning of the Tab indicator
+      document.fonts.ready.then(() => {
+        onFontsReady && onFontsReady();
+      });
+    }, [onFontsReady]);
 
-  useEffect(() => {
-    // Font affects positioning of the Tab indicator
-    document.fonts.ready.then(() => {
-      onFontsReady && onFontsReady();
-    });
-  }, [onFontsReady]);
+    return (
+      <div
+        ref={ref}
+        {...props}
+        role="tablist"
+        aria-orientation={orientation}
+        className={classNames(
+          className,
+          'spectrum-Tabs',
+          `spectrum-Tabs--${orientation}`,
+          { 'spectrum-Tabs--quiet': isQuiet },
+          { 'spectrum-Tabs--compact': density === 'compact' }
+        )}>
+        {children}
+      </div>
+    );
+  }
+);
 
-  return (
-    <div
-      ref={ref}
-      {...props}
-      className={classNames(className, 'spectrum-Tabs', `spectrum-Tabs--${orientation}`, { 'spectrum-Tabs--quiet' : isQuiet }, { 'spectrum-Tabs--compact': density === 'compact' })}
-    >
-      {children}
-    </div>
-  );
-});
+const Item = forwardRef(
+  (
+    { elementType = 'div', isDisabled = false, isSelected = false, className, children, icon, label, ...props },
+    ref
+  ) => {
+    const Element = elementType;
+    const id = nextId();
+    return (
+      <Element
+        {...props}
+        ref={ref}
+        role="tab"
+        aria-selected={isSelected}
+        disabled={isDisabled}
+        aria-controls={id}
+        className={classNames(
+          className,
+          'spectrum-Tabs-item',
+          { 'is-selected': isSelected },
+          { 'is-disabled': isDisabled }
+        )}>
+        {icon ? <TabItemIcon icon={icon} isSelected={isSelected} isDisabled={isDisabled}></TabItemIcon> : null}
+        {label ? <Label> {label} </Label> : null}
+        {children}
+      </Element>
+    );
+  }
+);
 
-const Item = forwardRef(({
-  elementType = 'div',
-  isDisabled=false,
-  isSelected=false,
-  className,
-  children,
-  icon,
-  label,
-  ...props }, ref
-) => {
-  const Element = elementType;
-  return (
-    <Element
-      {...props}
-      ref={ref}
-      role="tab"
-      aria-selected={isSelected ? true : false}
-      disabled={isDisabled ? true : false}
-      className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': isSelected }, { 'is-disabled': isDisabled })}>
-      {icon ? <TabItemIcon icon={icon} isSelected={isSelected} isDisabled={isDisabled}></TabItemIcon> : null }
-      {label ? <Label> {label} </Label>: null}
-      {children}
-    </Element>
-  );
-});
-
-const TabItemIcon = forwardRef(({
-  elementType = 'div',
-  icon,
-  isSelected,
-  isDisabled,
-  className,
-  children,
-  iconSize='xl',
-  ...props }, ref) => {
-  const Element = elementType;
-  return (
-    <Element
-      {...props}
-      ref={ref}
-      className={classNames(className, 'spectrum-Icon', { 'is-selected': isSelected }, { 'is-disabled ': isDisabled })}
-      css={css`
-        height: var(--spectrum-global-dimension-size-600);
-        width: var(--spectrum-global-dimension-size-550);
-        z-index: 1;
-      `}
-      >
-      {icon ? setTabItemIcon(icon, className, iconSize) : null}
-    </Element>
-  );
-});
+const TabItemIcon = forwardRef(
+  ({ elementType = 'div', icon, isSelected, isDisabled, className, children, iconSize = 'xl', ...props }, ref) => {
+    const Element = elementType;
+    return (
+      <Element
+        {...props}
+        ref={ref}
+        className={classNames(
+          className,
+          'spectrum-Icon',
+          { 'is-selected': isSelected },
+          { 'is-disabled ': isDisabled }
+        )}
+        css={css`
+          height: var(--spectrum-global-dimension-size-600);
+          width: var(--spectrum-global-dimension-size-550);
+          z-index: 1;
+        `}>
+        {icon ? setTabItemIcon(icon, className, iconSize) : null}
+      </Element>
+    );
+  }
+);
 
 const TabsIndicator = forwardRef(({ className, ...props }, ref) => {
   return (
@@ -172,8 +186,8 @@ const TabsIndicator = forwardRef(({ className, ...props }, ref) => {
       ref={ref}
       className={classNames(className, 'spectrum-Tabs-selectionIndicator')}
       css={css`
-      transition-property: transform, width;
-    `}></div>
+        transition-property: transform, width;
+      `}></div>
   );
 });
 
@@ -182,37 +196,26 @@ const Label = ({ children }) => <span className="spectrum-Tabs-itemLabel">{child
 const TabView = forwardRef(({ elementType = 'div', isHidden, className, children, ...props }, ref) => {
   const Element = elementType;
   return (
-    <Element
-      {...props}
-      ref={ref}
-      role="tabview"
-      hidden={isHidden}
-      className={classNames(className)}>
+    <Element {...props} ref={ref} hidden={isHidden} className={classNames(className)}>
       {children}
     </Element>
   );
 });
 
-const TabsBlock = ({
-  theme='light',
-  orientation='horizontal',
-  className,
-  ...props
-}) => {
-
+const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...props }) => {
   const [tabs] = useState([]);
   const selectedTabIndicator = useRef(null);
-   const [selectedIndex, setSelectedIndex] = useState({
-    tab: 0,
+  const [selectedIndex, setSelectedIndex] = useState({
+    tab: 0
   });
 
   const propKeys = Object.keys(props);
-  let filteredMenuProps = propKeys.filter((key) => key.startsWith("heading")).map(menu=>menu);
+  let filteredMenuProps = propKeys.filter((key) => key.startsWith('heading')).map((menu) => menu);
 
   let menuItems = filteredMenuProps.map((_, index) => {
     return {
       heading: props?.[`heading${index}`]?.props?.children || props?.[`heading`],
-      tabViewContent: props?.[`tabViewContent${index}`] ||  props?.[`tabViewContent`],
+      content: props?.[`content${index}`] || props?.[`content`],
       image: props?.[`image${index}`] || props?.[`image`]
     };
   });
@@ -224,150 +227,148 @@ const TabsBlock = ({
 
   return (
     <section
-      className={classNames(className, `spectrum--${theme}`)}
+      className={classNames(className, `tabsBlock spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        width: 100%;
-        padding: var(--spectrum-global-dimension-size-600) 0
-        var(--spectrum-global-dimension-size-200) 0;
-      `}
-      >
+        max-width: 100%;
+        margin: 0;
+        padding-bottom: 7.5rem;
+      `}>
       <div
         css={css`
-          display: ${orientation === 'vertical' ? 'inline-flex': ''};
-          @media only screen and (max-width: 480px) {
+          display: ${orientation === 'vertical' ? 'inline-flex' : ''};
+          @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
+            max-width: ${DESKTOP_SCREEN_WIDTH};
+            margin: 0 auto !important;
+          }
+          @media only screen and (max-width: ${mobileMinWidth}) {
             flex-direction: column;
           }
-        `}
-      >
-        {menuItems?.length > 0 ?
-          <Tabs
-            orientation={orientation}
-            isQuiet={true}
-            onFontsReady={positionSelectedTabIndicator}
-          >
-            {menuItems.map((data, index) => {
-              const ref = createRef();
-              tabs.push(ref);
-              const isSelected = selectedIndex.tab === index;
-              return (
-                <Item
-                  className={"tabItem"}
-                  key={`tabItem_${index}`}
-                  tabIndex={0}
-                  ref={ref}
-                  isSelected={isSelected}
-                  label={<b>{data['heading']}</b>}
-                  icon={data['image']}
-                  onClick={() => {
-                    setSelectedIndex({
-                      tab: index,
-                    });
-                    positionSelectedTabIndicator(index);
-                  }}
-                  css={css`
-                    text-align: left;
-                    white-space: normal;
-                    display: flex !important;
-                    height: auto !important;
-                    padding: var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-250) !important;
-                    margin-bottom: var(--spectrum-global-dimension-size-350) !important;
-                    width:${layoutColumns(3)} !important;
-                    .spectrum-Tabs-itemLabel{
-                      font-size:var(--spectrum-global-dimension-size-185);
-                      font-weight:bold;
-                      margin-left: var(--spectrum-global-dimension-size-200);
+        `}>
+        <div
+          css={css`
+            display: ${orientation === 'vertical' ? 'grid' : 'initial'};
+            position: relative;
+            grid-template-columns: 300px calc(100% - 300px);
+            margin-top: 1.5rem;
+            width: ${layoutColumns(12)} !important;
+            @media only screen and (max-width: ${mobileMinWidth}) {
+              display: initial !important;
+              width: ${layoutColumns(2.5)} !important;
+            }
+            @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
+              width: ${layoutColumns(6.4)} !important;
+            }
+            @media only screen and (device-width: ${TABLET_SCREEN_WIDTH}) {
+              width: ${layoutColumns(8)} !important;
+            }
+          `}>
+          {menuItems?.length > 0 ? (
+            <Tabs orientation={orientation} isQuiet={true} onFontsReady={positionSelectedTabIndicator}>
+              {menuItems.map((data, index) => {
+                const ref = createRef();
+                tabs.push(ref);
+                const isSelected = selectedIndex.tab === index;
+                const itemPopoverId = nextId();
+                return (
+                  <Item
+                    className={'tabItem'}
+                    key={`tabItem_${index}`}
+                    tabIndex={0}
+                    ref={ref}
+                    isSelected={isSelected}
+                    aria-controls={itemPopoverId}
+                    label={<b>{data['heading']}</b>}
+                    icon={data['image']}
+                    onClick={() => {
+                      setSelectedIndex({
+                        tab: index
+                      });
+                      positionSelectedTabIndicator(index);
+                    }}
+                    css={css`
+                      text-align: left;
+                      white-space: normal;
+                      width: 260px !important;
+                      font-size: 1rem;
+                      margin-bottom: ${orientation === 'vertical' ? '2.4rem !important' : '0rem'};
+                      display: flex !important;
+                      padding: 0.625rem !important;
+                      height: auto !important;
                       line-height: initial;
-                      margin-top:var(--spectrum-global-dimension-size-100);
-                    }
 
-                    .spectrum-Icon{
-                      width: 40px;
-                      height: 40px;
-                    }
-
-                    @media only screen and (max-width: 480px) {
-                      max-width: ${layoutColumns(2.5)} !important;
-                      justify-content: left;
-                      margin-bottom: var(--spectrum-global-dimension-size-150) !important;
-
-                      .spectrum-Tabs-itemLabel{
-                        margin-top:var(--spectrum-global-dimension-size-50) !important;
+                      .spectrum-Tabs-itemLabel {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
                       }
-                    }
+                      .spectrum-Icon {
+                        background-size: 18px 21px;
+                        width: var(--spectrum-global-dimension-size-500);
+                        height: var(--spectrum-global-dimension-size-400);
+                      }
 
-                    @media only screen and (device-width: ${TABLET_SCREEN_WIDTH}) {
-                      max-width: ${layoutColumns(2)} !important;
-                    }
-                    @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
-                      max-width: ${layoutColumns(2)} !important;
-                    }
-                    &.is-disabled {
-                      pointer-events:none;
-                    }
-                    &:hover, &.is-selected {
-                        background-color: var(--spectrum-alias-background-color-gray-50, var(--spectrum-global-color-gray-50, var(--spectrum-semantic-gray-50-color-background)));
-                        color: var(--spectrum-global-color-gray-900);
-                        box-shadow: 0 3px 16px #46303029;
-                        border-radius: var(--spectrum-global-dimension-size-50);
-                    }
-                    img {
-                      max-width: var(--spectrum-global-dimension-size-500);
-                      max-height: var(--spectrum-global-dimension-size-500);
-                    }
-                  `}
-                />
-              )
-            })}
-            <TabsIndicator ref={selectedTabIndicator} />
-          </Tabs>
-        : null}
-        {menuItems?.length > 0 ?
-          menuItems.map((data, index) => {
-            const isHidden = selectedIndex.tab === index;
-            return(
-              <TabView
-                key={`tabView_${index}`}
-                className={"tabView"}
-                isHidden={!isHidden}
-                css={css`
-                  text-align: left;
-                  width:${layoutColumns(8)};
-                  padding-left:var(--spectrum-global-dimension-size-700);
-                  padding-right:var(--spectrum-global-dimension-size-200);
+                      &.is-disabled {
+                        pointer-events: none;
+                      }
+                      &::before {
+                        left: 0px !important;
+                        right: 0px !important;
+                      }
+                      @media only screen and (max-width: ${mobileMinWidth}) {
+                        margin-top: 2px !important;
+                        margin-bottom: 2px !important;
+                      }
+                      @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
+                        left: var(--spectrum-global-dimension-size-250) !important;
+                      }
+                    `}
+                  />
+                );
+              })}
+              <TabsIndicator ref={selectedTabIndicator} />
+            </Tabs>
+          ) : null}
+          {menuItems?.length > 0
+            ? menuItems.map((data, index) => {
+                const isHidden = selectedIndex.tab === index;
+                return (
+                  <TabView
+                    key={`tabView_${index}`}
+                    className={'tabView'}
+                    isHidden={!isHidden}
+                    css={css`
+                      text-align: left;
+                      padding: 0 0 var(--spectrum-global-dimension-size-100) 0 !important;
+                      max-width: ${layoutColumns(8.5)} !important;
+                      @media only screen and (max-width: ${mobileMinWidth}) {
+                        padding-left: inherit !important;
+                        max-width: ${layoutColumns(3)} !important;
+                      }
 
-                  @media only screen and (max-width: 480px) {
-                    padding-left: inherit !important;
-                    max-width: ${layoutColumns(3)} !important;
-                  }
-
-                  @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
-                    max-width: ${layoutColumns(3.5)} !important;
-                  }
-                  @media only screen and (device-width: ${TABLET_SCREEN_WIDTH}) {
-                    max-width: ${layoutColumns(6.5)} !important;
-                    padding-left:var(--spectrum-global-dimension-size-500);
-                  }
-
-                `}
-
-              >
-                {data['tabViewContent'] ? data['tabViewContent'] : null}
-              </TabView>
-            )
-          })
-        : null}
+                      @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
+                        max-width: ${layoutColumns(3.5)} !important;
+                      }
+                      @media only screen and (device-width: ${TABLET_SCREEN_WIDTH}) {
+                        max-width: ${layoutColumns(6.5)} !important;
+                        padding-left: var(--spectrum-global-dimension-size-500);
+                      }
+                    `}>
+                    {data['content'] ? data['content'] : null}
+                  </TabView>
+                );
+              })
+            : null}
+        </div>
       </div>
     </section>
-  )
-}
-
+  );
+};
 
 Tabs.propTypes = {
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
-  density: PropTypes.oneOf(["regular", "compact"]),
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+  density: PropTypes.oneOf(['regular', 'compact']),
   isQuiet: PropTypes.boolean,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Item.propTypes = {
@@ -393,13 +394,12 @@ TabView.propTypes = {
 };
 
 TabsBlock.propTypes = {
-  theme: PropTypes.oneOf(["light", "dark", "lightest"]),
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
+  theme: PropTypes.oneOf(['light', 'dark', 'lightest']),
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   heading: PropTypes.string,
-  tabViewContent: PropTypes.string,
+  content: PropTypes.string,
   image: PropTypes.string,
   className: PropTypes.string
 };
-
 
 export { Tabs, Item, TabView, TabItemIcon, Label, TabsIndicator, positionIndicator, animateIndicator, TabsBlock };

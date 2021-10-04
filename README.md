@@ -68,6 +68,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Summary Block](#summary-block)
   + [Title Block](#title-block)
   + [Text Block](#text-block)
+  + [Tabs Block](#tabs-block)
   + [Product Card](#product-card)
   + [Product Card Grid](#product-card-grid)
   + [Resource Card](#resource-card)
@@ -385,12 +386,12 @@ Algolia indexing requires a set of API index keys to publish new search records 
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_WRITE_API_KEY` - Algolia API key to perform indexing operations
-- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID  
+- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID
 - `ALGOLIA_INDEX_NAME` - Optional. Use this variable to publish this site's search records to a different, existing Algolia index.
 
-To enable search on the browser side, you'll need to set following env variables: 
+To enable search on the browser side, you'll need to set following env variables:
 
-- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID 
+- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID
 - `GATSBY_ALGOLIA_API_KEY` - Algolia API key to perform search operations
 - `GATSBY_ALGOLIA_INDEX_ALL` -  List of all indexes to search e.g. `["index1", "index2"]`
 - `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
@@ -1423,6 +1424,40 @@ Use `isCentered` to center the text.
 
 Use `className` to customize the component **at your own risk.**
 
+### Tabs Block
+
+Tabs block is a custom block component that allows for tabbed content that can be displayed either vertically or horizontally.
+
+![Carousel](docs/images/tabsBlock.png)
+
+```
+
+<TabsBlock orientation="vertical" slots="heading, image, content" theme="light" />
+### Create PDF from URL
+
+![Create PDF](images/createpdf.svg)
+
+<Overview/>
+
+<TabsBlock orientation="vertical" slots="heading, content" theme="light" />
+
+### Dynamic PDF Document Generation
+
+<Overview/>
+
+```
+
+Use `slots` to identify the markdown content:
+
+* `heading` (1 required per row)
+* `image` (optional)
+* `content` (1 required per row)
+
+Use `theme` to match the text color to your color scheme. Defaults to `light`.
+
+Use `repeat` to define how many tab items sections are part of the tabs Block.
+
+
 ### Product Card
 
 Product Cards group information that allow to browse a collection of related content.
@@ -1687,7 +1722,6 @@ You can query multiple elements, for example you can add the section with the im
 ```
  <Debugging query="product=Photoshop&image=test" />
 ```
-
 ## Customizations
 
 When using themes, you can take advantage of something called [shadowing](https://www.gatsbyjs.com/docs/themes/shadowing/). This allows you to override the default component included in the theme with a custom one you’ve created.
