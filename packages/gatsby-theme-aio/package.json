@@ -80,7 +80,7 @@
     "bootprint-openapi": "^4.0.4",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.2.6",
-    "core-js": "^3.16.3",
+    "core-js": "^3.18.2",
     "gatsby-plugin-algolia": "^0.22.1",
     "gatsby-plugin-emotion": "^6.12.0",
     "gatsby-plugin-layout": "^2.12.0",
