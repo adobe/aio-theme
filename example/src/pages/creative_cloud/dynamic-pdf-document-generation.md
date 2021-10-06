@@ -4,7 +4,7 @@ description: Own the end-to-end customer experience. Our SDK Developer kits are 
 ---
 
 
-<TextBlock slots="heading, buttons, text" theme="light"/>
+<TextBlock slots="heading, buttons, text" theme="lightest"/>
 
 ##### Dynamic PDF Document Generation
 

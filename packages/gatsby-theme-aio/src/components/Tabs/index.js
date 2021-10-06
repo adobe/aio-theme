@@ -64,7 +64,7 @@ const IconImage = ({ image = '', styles = '' }) => {
           justify-content: center;
           height: 100%;
           width: 100%;
-          margin-top: 0;
+          margin-top: var(--spectrum-global-dimension-size-0);
 
           img {
             display: block;
@@ -83,7 +83,7 @@ const Icons = ({ icon, styles }) => {
         css: css`
           height: var(--spectrum-global-dimension-size-600);
           width: var(--spectrum-global-dimension-size-600);
-          margin-top: 0;
+          margin-top: var(--spectrum-global-dimension-size-0);
 
           img {
             display: block;
@@ -224,7 +224,6 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
     const selectedTab = tabs.filter((tab) => tab?.current)[index];
     positionIndicator(selectedTabIndicator, selectedTab);
   };
-
   return (
     <section
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
@@ -232,7 +231,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
         background: var(--spectrum-global-color-gray-100);
         max-width: 100%;
         margin: 0;
-        padding-bottom: 7.5rem;
+        padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
       `}>
       <div
         css={css`
@@ -250,7 +249,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
             display: ${orientation === 'vertical' ? 'grid' : 'initial'};
             position: relative;
             grid-template-columns: 300px calc(100% - 300px);
-            margin-top: 1.5rem;
+            margin-top: var(--spectrum-global-dimension-size-300);
             width: ${layoutColumns(12)} !important;
             @media only screen and (max-width: ${mobileMinWidth}) {
               display: initial !important;
@@ -289,11 +288,13 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     css={css`
                       text-align: left;
                       white-space: normal;
-                      width: 260px !important;
-                      font-size: 1rem;
+                      width: calc(
+                        var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-600)
+                      ) !important;
+                      font-size: var(--spectrum-global-dimension-size-200);
                       margin-bottom: ${orientation === 'vertical' ? '2.4rem !important' : '0rem'};
                       display: flex !important;
-                      padding: 0.625rem !important;
+                      padding: var(--spectrum-global-dimension-size-125) !important;
                       height: auto !important;
                       line-height: initial;
 
@@ -302,7 +303,8 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                         margin-bottom: 5px;
                       }
                       .spectrum-Icon {
-                        background-size: 18px 21px;
+                        background-size: var(--spectrum-global-dimension-size-225)
+                          var(--spectrum-global-dimension-size-275);
                         width: var(--spectrum-global-dimension-size-500);
                         height: var(--spectrum-global-dimension-size-400);
                       }
@@ -311,14 +313,17 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                         pointer-events: none;
                       }
                       &::before {
-                        left: 0px !important;
-                        right: 0px !important;
+                        left: var(--spectrum-global-dimension-size-0) !important;
+                        right: var(--spectrum-global-dimension-size-0) !important;
                       }
                       @media only screen and (max-width: ${mobileMinWidth}) {
-                        margin-top: 2px !important;
-                        margin-bottom: 2px !important;
+                        margin-top: var(--spectrum-global-dimension-size-25) !important;
+                        margin-bottom: var(--spectrum-global-dimension-size-25) !important;
                       }
                       @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
+                        width: calc(
+                          var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-750)
+                        ) !important;
                         left: var(--spectrum-global-dimension-size-250) !important;
                       }
                     `}

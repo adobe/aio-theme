@@ -1428,11 +1428,12 @@ Use `className` to customize the component **at your own risk.**
 
 Tabs block is a custom block component that allows for tabbed content that can be displayed either vertically or horizontally.
 
-![Carousel](docs/images/tabsBlock.png)
+![tabsBlock](docs/images/tabsBlock.png)
 
 ```
 
 <TabsBlock orientation="vertical" slots="heading, image, content" theme="light" />
+
 ### Create PDF from URL
 
 ![Create PDF](images/createpdf.svg)
@@ -1447,6 +1448,24 @@ Tabs block is a custom block component that allows for tabbed content that can b
 
 ```
 
+```
+
+<TabsBlock orientation="horizontal" slots="heading, image, content" theme="light" />
+
+### Create PDF from URL
+
+![Create PDF](images/createpdf.svg)
+
+<Overview/>
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" />
+
+### Dynamic PDF Document Generation
+
+<Overview/>
+
+```
+
 Use `slots` to identify the markdown content:
 
 * `heading` (1 required per row)
@@ -1454,6 +1473,8 @@ Use `slots` to identify the markdown content:
 * `content` (1 required per row)
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
+
+Use `orientation` to tabs can be either horizontal or vertical. Defaults to `horizontal`.
 
 Use `repeat` to define how many tab items sections are part of the tabs Block.
 

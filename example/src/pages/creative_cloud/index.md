@@ -385,8 +385,38 @@ Text
 
 Text
 
+<TitleBlock slots="heading" theme="lightest" />
 
-<TabsBlock orientation="vertical" slots="heading, image, content" repeat="3" theme="light"  />
+### Vertical Tabs Block
+
+
+<TabsBlock orientation="vertical" slots="heading, image, content" repeat="3" theme="lightest"  />
+
+### Create PDF from URL
+
+![](images/s_createpdf_color_24.svg)
+
+<CreatePdfFromUrl/>
+
+### Dynamic PDF Document Generation
+
+![](images/ic-dynamic-pdf-gen-40.svg)
+
+<DynamicPdfDocumentGeneration/>
+
+### Extract PDF Content & Structure
+
+![](images/ic-extract-40.svg)
+
+<ExtractPdfContentStructure/>
+
+
+<TitleBlock slots="heading" theme="lightest" />
+
+### Horizontal Tabs Block
+
+
+<TabsBlock orientation="horizontal" slots="heading, image, content" repeat="3" theme="lightest"  />
 
 ### Create PDF from URL
 
