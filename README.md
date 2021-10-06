@@ -1592,6 +1592,10 @@ Use `slots` to identify the markdown content:
 * `text` (required)
 * `buttons`(optional)
 
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+Use `repeat` to define how many code sections are part of the carousel.
+
 
 ### Embedding markdown documents and filtering content
 
