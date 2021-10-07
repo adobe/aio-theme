@@ -96,10 +96,7 @@ const Icons = ({ icon, styles }) => {
 };
 
 const Tabs = forwardRef(
-  (
-    { orientation = 'horizontal', density = 'regular', isQuiet = true, children, className, onFontsReady, ...props },
-    ref
-  ) => {
+  ({ orientation = 'horizontal', isQuiet = true, children, className, onFontsReady, ...props }, ref) => {
     useEffect(() => {
       // Font affects positioning of the Tab indicator
       document.fonts.ready.then(() => {
@@ -113,13 +110,9 @@ const Tabs = forwardRef(
         {...props}
         role="tablist"
         aria-orientation={orientation}
-        className={classNames(
-          className,
-          'spectrum-Tabs',
-          `spectrum-Tabs--${orientation}`,
-          { 'spectrum-Tabs--quiet': isQuiet },
-          { 'spectrum-Tabs--compact': density === 'compact' }
-        )}>
+        className={classNames(className, 'spectrum-Tabs', `spectrum-Tabs--${orientation}`, {
+          'spectrum-Tabs--quiet': isQuiet
+        })}>
         {children}
       </div>
     );
@@ -127,10 +120,7 @@ const Tabs = forwardRef(
 );
 
 const Item = forwardRef(
-  (
-    { elementType = 'div', isDisabled = false, isSelected = false, className, children, icon, label, ...props },
-    ref
-  ) => {
+  ({ elementType = 'div', isSelected = false, className, children, icon, label, ...props }, ref) => {
     const Element = elementType;
     const id = nextId();
     return (
@@ -139,15 +129,9 @@ const Item = forwardRef(
         ref={ref}
         role="tab"
         aria-selected={isSelected}
-        disabled={isDisabled}
         aria-controls={id}
-        className={classNames(
-          className,
-          'spectrum-Tabs-item',
-          { 'is-selected': isSelected },
-          { 'is-disabled': isDisabled }
-        )}>
-        {icon ? <TabItemIcon icon={icon} isSelected={isSelected} isDisabled={isDisabled}></TabItemIcon> : null}
+        className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': isSelected })}>
+        {icon ? <TabItemIcon icon={icon} isSelected={isSelected}></TabItemIcon> : null}
         {label ? <Label> {label} </Label> : null}
         {children}
       </Element>
@@ -156,18 +140,13 @@ const Item = forwardRef(
 );
 
 const TabItemIcon = forwardRef(
-  ({ elementType = 'div', icon, isSelected, isDisabled, className, children, iconSize = 'xl', ...props }, ref) => {
+  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'xl', ...props }, ref) => {
     const Element = elementType;
     return (
       <Element
         {...props}
         ref={ref}
-        className={classNames(
-          className,
-          'spectrum-Icon',
-          { 'is-selected': isSelected },
-          { 'is-disabled ': isDisabled }
-        )}
+        className={classNames(className, 'spectrum-Icon', { 'is-selected': isSelected })}
         css={css`
           height: var(--spectrum-global-dimension-size-600);
           width: var(--spectrum-global-dimension-size-550);
@@ -371,14 +350,12 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
 
 Tabs.propTypes = {
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-  density: PropTypes.oneOf(['regular', 'compact']),
   isQuiet: PropTypes.boolean,
   className: PropTypes.string
 };
 
 Item.propTypes = {
   isSelected: PropTypes.boolean,
-  isDisabled: PropTypes.boolean,
   className: PropTypes.string,
   icon: PropTypes.element,
   label: PropTypes.object
@@ -388,7 +365,6 @@ TabItemIcon.propTypes = {
   elementType: PropTypes.string,
   icon: PropTypes.element,
   isSelected: PropTypes.boolean,
-  isDisabled: PropTypes.boolean,
   iconSize: PropTypes.string,
   className: PropTypes.string
 };
