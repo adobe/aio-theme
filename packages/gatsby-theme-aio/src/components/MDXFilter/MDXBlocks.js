@@ -28,6 +28,7 @@ import { ResourceCard } from '../ResourceCard';
 import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
+import { TabsBlock } from '../Tabs';
 import { Carousel } from '../Carousel';
 
 export const MDXBlocks = {
@@ -46,5 +47,6 @@ export const MDXBlocks = {
   Media,
   JsDocParameters,
   ProductCardGrid,
+  TabsBlock,
   Carousel
 };
