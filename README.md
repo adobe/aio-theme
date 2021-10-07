@@ -71,6 +71,7 @@ Using a theme, all of your default configuration lives in an npm package.
   + [Product Card](#product-card)
   + [Product Card Grid](#product-card-grid)
   + [Resource Card](#resource-card)
+  + [Carousel](#carousel)
   + [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
 * [Customizations](#customizations)
   + [Custom Layout](#custom-layout)
@@ -1553,6 +1554,48 @@ Use `slots` to identify the markdown content:
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%` and `33%`.
+
+### Carousel 
+
+Carousel is used to show the information along with images and buttons. 
+
+![Carousel](docs/images/carousel.png)
+
+```
+<Carousel slots="image,heading, text, buttons" repeat="2"  theme="light"  />
+
+![Resource 3](images/resource3.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
+
+* [Learn more](../guides)
+* [View docs](../guides)
+
+
+
+![Resource 3](images/resource3.png)
+
+#### CC Storage API
+
+CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
+ 
+* [Learn more](../guides)
+* [View docs](../guides)
+```
+
+Use `slots` to identify the markdown content:
+
+* `image` (required)
+* `heading` (optional)
+* `text` (required)
+* `buttons`(optional)
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+Use `repeat` to define how many code sections are part of the carousel.
+
 
 ### Embedding markdown documents and filtering content
 
