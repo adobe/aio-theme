@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.21.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.3...@adobe/gatsby-theme-aio@3.21.0) (2021-10-08)
+
+
+### Bug Fixes
+
+* improve search relevance to provide better search results ([00bb241](https://github.com/adobe/aio-theme/commit/00bb2411b5a66e8b014d6c92b763b3284073cbb7)), closes [#461](https://github.com/adobe/aio-theme/issues/461)
+* move swiper code into separate component ([0122a58](https://github.com/adobe/aio-theme/commit/0122a588da0fe44ba5c93cac0ae76626e13728f0))
+
+
+### Features
+
+* implemented Carousel component ([#515](https://github.com/adobe/aio-theme/issues/515)) ([bd61315](https://github.com/adobe/aio-theme/commit/bd613154509dc07843bb0bac240c80dfebeca38b))
+* updated Tabs and implemented TabsBlock component ([#518](https://github.com/adobe/aio-theme/issues/518)) ([54b99a4](https://github.com/adobe/aio-theme/commit/54b99a4314e46000c96335071698aba0b1bc8321))
+
+
+
+
+
 ## [3.20.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.2...@adobe/gatsby-theme-aio@3.20.3) (2021-09-28)
 
 
