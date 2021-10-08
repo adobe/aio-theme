@@ -118,9 +118,9 @@ module.exports = {
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode][1], // default: false
         continueOnFailure: false, // default: false, don't fail the build if algolia indexing fails
         settings: {
-          searchableAttributes: ['title', 'contentHeading', 'description,content'],
+          searchableAttributes: ['contentHeading', 'title', 'description,content'],
           attributesForFaceting: ['searchable(keywords)'],
-          attributesToSnippet: ['content:55', 'description:55'],
+          attributesToSnippet: ['content:40', 'description:40'],
           distinct: true,
           attributeForDistinct: 'url',
           snippetEllipsisText: '…',

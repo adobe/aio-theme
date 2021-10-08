@@ -89,7 +89,7 @@ function getAnchorLink(linkHeadings) {
   return `#${linkHeadings
     .slice(-1)
     .toString()
-    ?.match(/[a-zA-Z]\w+/g)
+    ?.match(/[a-zA-Z0-9]\w+/g)
     ?.map((s) => s.toLowerCase())
     .join('-')}`;
 }
