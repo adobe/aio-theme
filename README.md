@@ -379,25 +379,36 @@ To enable IMS on the browser side, you'll need to set following env variables:
 - `GATSBY_IMS_CONFIG` - Map of `client_id` and `scopes` etc.
 - `GATSBY_IMS_SRC` - URL source of IMS library
 
-#### Algolia indexing and search
+## Algolia indexing and search
 
-Algolia indexing requires a set of API index keys to publish new search records and query existing search records for your site. To make your site searchable, add the following variable's to your site's `.env` file:
+Sites hosted on the `developer.adobe.com` domain can now add Algolia search to help users find content fast.
+There are two parts to adding the Algolia search feature to your site:
+
+1. Add server-side environment variables to create and publish your site's content to Algolia's servers. This is an admin-only feature. Consult your site administrator for more details.
+2. Add client-side environment variables to search your content on Algolia's servers and return content matches (with links) to users. 
+
+### Server-side environment variables
+
+**Admin Only.** To publish your site's content to Algolia so that it is searchable, add the following variables to your site's `.env` file:
+
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
    - `skip` mode - skip running of search indexation (default)
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
-- `ALGOLIA_WRITE_API_KEY` - Algolia API key to perform indexing operations
-- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID
-- `ALGOLIA_INDEX_NAME` - Optional. Use this variable to publish this site's search records to a different, existing Algolia index.
+- `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. Should never be published to GitHub.  
+- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes. 
+- `ALGOLIA_INDEX_NAME` - Name of the Algoila index to publish to and update.
 
-To enable search on the browser side, you'll need to set following env variables:
+### Client-side (browser) environment variables
 
-- `GATSBY_ALGOLIA_APP_ID` - Algolia App ID
-- `GATSBY_ALGOLIA_API_KEY` - Algolia API key to perform search operations
+To enable search on the browser side, you'll need to set the following variables in your site's `.env` file:
+
+- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `GATSBY_ALGOLIA_API_KEY` -  Alpha-numeric string required to search indexes on Algolia servers.
 - `GATSBY_ALGOLIA_INDEX_ALL` -  List of all indexes to search e.g. `["index1", "index2"]`
 - `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
-### Global Navigation
+## Global Navigation
 
 The Global navigation links are configurable in `gatsby-config.js` under `pages`.
 If you follow the recommended [content structure](#content-structure), you can define the `path` value using the folder names.
@@ -460,7 +471,7 @@ Otherwise, the first defined tab is set as active by default.
 
 **At least one defined page is required. It's recommended to define the first page `path` as the root path `/`.**
 
-### Menus
+## Menus
 
 You can group links inside a dropdown menu in the Global Navigation with the `menu` field.
 Optionally, you can set a description to better differentiate grouped links e.g. based on the previous example:
@@ -491,7 +502,7 @@ pages: [
 ```
 
 
-### Home link
+## Home link
 
 The home link should be used to inform the user about a parent or sibling site external to the current one.
 Breadcrumbs will be displayed automatically to help the user understand its current location.
@@ -513,7 +524,7 @@ home: {
 }
 ```
 
-### Side Navigation
+## Side Navigation
 
 The Side navigation links are configurable in `gatsby-config.js` under `subPages`.
 You have to create a directory hierarchy which will be represented literally in the URL so that any sub page `path` starts with a `path` from `pages`.
@@ -571,7 +582,7 @@ Similarly to the Global Navigation:
 
 **Important: All sub pages paths have to be children of a top-level navigation path.**
 
-#### Variations
+### Variations
 
 There are 3 variations of the Side Navigation:
 
@@ -792,7 +803,7 @@ If top-level navigation items have a location associated with them, send the use
 
 Side navigation can use either of these behaviors, but should never mix behaviors in the same experience.
 
-### Versions
+## Versions
 
 You can specify multiple versions for your site in `gatsby-config.js` under `versions`.
 The first entry is the selected version by default.
