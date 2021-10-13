@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.21.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.21.0...@adobe/gatsby-theme-aio@3.21.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* algolia indexer crashing on local open api path ([1d57228](https://github.com/adobe/aio-theme/commit/1d57228ff73228c913d7ea37214886275d1e5ddd))
+
+
+
+
+
 # [3.21.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.20.3...@adobe/gatsby-theme-aio@3.21.0) (2021-10-08)
 
 
