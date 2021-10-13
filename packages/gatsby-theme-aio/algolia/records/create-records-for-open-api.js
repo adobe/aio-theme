@@ -14,6 +14,7 @@ const LoadContentByUrl = require('./load-content-by-url');
 const { Bootprint } = require('bootprint');
 const bootprintOpenApi = require('bootprint-openapi');
 const fs = require('fs');
+const path = require('path');
 const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
 
 /**
@@ -27,7 +28,10 @@ class CreateRecordsForOpenApi {
 
   async execute(node, options) {
     const bootprint = new Bootprint(bootprintOpenApi);
-    await bootprint.run(node.openAPISpec, options.tempDir);
+    await bootprint.run(
+      node.openAPISpec.startsWith('/') ? path.join('static', node.openAPISpec) : node.openAPISpec,
+      options.tempDir
+    );
 
     const staticFileAbsolutePath = options.tempDir + '/index.html';
     if (!fs.existsSync(staticFileAbsolutePath)) {
