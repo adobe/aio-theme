@@ -385,19 +385,19 @@ Sites hosted on the `developer.adobe.com` domain can now add Algolia search to h
 There are two parts to adding the Algolia search feature to your site:
 
 1. Add server-side environment variables to create and publish your site's content to Algolia's servers. This is an admin-only feature. Consult your site administrator for more details.
-2. Add client-side environment variables to search your content on Algolia's servers and return content matches (with links) to users. 
+2. Add client-side environment variables to search your content on Algolia's servers and return content matches (with links) to users.
 
 ### Server-side environment variables
 
-**Admin Only.** To publish your site's content to Algolia so that it is searchable, add the following variables to your site's `.env` file:
+**Admin Only.** To publish your site's content to Algolia so it's searchable, add the following variables to your site's `.env` file:
 
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
    - `skip` mode - skip running of search indexation (default)
    - `console` mode - index data will be published to console, but not pushed to real search index
    - `index` mode - index data will be pushed to real search index
-- `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. Should never be published to GitHub.  
-- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes. 
-- `ALGOLIA_INDEX_NAME` - Name of the Algoila index to publish to and update.
+- `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. You should never commit this key to GitHub.
+- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
 
 ### Client-side (browser) environment variables
 
@@ -1622,9 +1622,9 @@ Use `theme` to match the text color to your color scheme. Defaults to `lightest`
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%` and `33%`.
 
-### Carousel 
+### Carousel
 
-Carousel is used to show the information along with images and buttons. 
+Carousel is used to show the information along with images and buttons.
 
 ![Carousel](docs/images/carousel.png)
 
@@ -1647,7 +1647,7 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 #### CC Storage API
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
- 
+
 * [Learn more](../guides)
 * [View docs](../guides)
 ```
