@@ -55,8 +55,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       path: '/apis/experiencecloud/analytics'
     },
     {
-      title: 'Project Firefly',
-      path: '/apis/experienceplatform/project-firefly'
+      title: 'App Builder',
+      path: '/app-builder'
     }
   ],
   community: [
