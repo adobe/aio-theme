@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.21.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.21.1...@adobe/gatsby-theme-aio@3.21.2) (2021-10-19)
+
+
+### Bug Fixes
+
+* update footer to point to App Builder ([8fbbfb7](https://github.com/adobe/aio-theme/commit/8fbbfb77ee58ef77d060517437c5339b4a6749b3))
+
+
+
+
+
 ## [3.21.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.21.0...@adobe/gatsby-theme-aio@3.21.1) (2021-10-13)
 
 
