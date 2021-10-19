@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.22.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.21.2...@adobe/gatsby-theme-aio@3.22.0) (2021-10-19)
+
+
+### Features
+
+* update Footer with feds privacy ([a56c71e](https://github.com/adobe/aio-theme/commit/a56c71ed8bedeba2bbe8b852444f82492c8d6c99))
+
+
+
+
+
 ## [3.21.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.21.1...@adobe/gatsby-theme-aio@3.21.2) (2021-10-19)
 
 
