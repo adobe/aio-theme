@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
+const fs = require('fs');
 const CreateRecordsForEmbeddedContent = require('./records/create-records-for-embedded-content');
 const CreateRecordsForFrame = require('./records/create-records-for-frame');
 const CreateRecordsForOpenApi = require('./records/create-records-for-open-api');
@@ -132,13 +133,17 @@ class QueryBuilder {
       };
       records = await this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
+      const tempDir = './public/redoc';
       const options = {
-        tempDir: './public/bootprint',
+        tempDir,
         tagsToIndex: 'p, li, td, code',
         minCharsLengthPerTag: 20,
         minWordsCount: 5
       };
       records = await this.createRecordsForOpenApi.execute(node, options);
+
+      // Clean up
+      fs.rmSync(tempDir, { recursive: true, force: true });
     } else {
       const options = {
         tagsToIndex: 'paragraph text, code, tableCell text',

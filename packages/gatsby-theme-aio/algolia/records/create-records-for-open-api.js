@@ -10,39 +10,35 @@
  * governing permissions and limitations under the License.
  */
 
-const LoadContentByUrl = require('./load-content-by-url');
-const { Bootprint } = require('bootprint');
-const bootprintOpenApi = require('bootprint-openapi');
 const fs = require('fs');
 const path = require('path');
 const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
+const exec = require('await-exec');
 
 /**
  * Support of "openAPISpec" directive:
  * https://github.com/adobe/aio-theme#openapi
  */
 class CreateRecordsForOpenApi {
-  constructor() {
-    this.loadContentByUrl = new LoadContentByUrl();
-  }
-
   async execute(node, options) {
-    const bootprint = new Bootprint(bootprintOpenApi);
-    await bootprint.run(
-      node.openAPISpec.startsWith('/') ? path.join('static', node.openAPISpec) : node.openAPISpec,
-      options.tempDir
-    );
+    const redoc = require.resolve('redoc-cli');
+    const spec = node.openAPISpec.startsWith('/') ? path.join('static', node.openAPISpec) : node.openAPISpec;
+    const target = path.join(options.tempDir, 'index.html');
 
-    const staticFileAbsolutePath = options.tempDir + '/index.html';
-    if (!fs.existsSync(staticFileAbsolutePath)) {
-      throw Error(`Bootprint file resolving error: no such file "${staticFileAbsolutePath}"`);
+    try {
+      await exec(`${redoc} bundle -o ${target} ${spec}`);
+    } catch (e) {
+      console.error(e);
     }
 
-    const fileContent = fs.readFileSync(staticFileAbsolutePath, 'utf8');
-    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
-    const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
+    if (!fs.existsSync(target)) {
+      throw Error(`Redoc file resolving error: no such file "${target}"`);
+    }
 
-    return algoliaRecords;
+    const fileContent = fs.readFileSync(target, 'utf8');
+    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
+
+    return createAlgoliaRecords(node, htmlRecords);
   }
 }
 
