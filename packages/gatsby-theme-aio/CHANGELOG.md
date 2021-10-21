@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.23.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.22.1...@adobe/gatsby-theme-aio@3.23.0) (2021-10-21)
+
+
+### Features
+
+* use redoc-cli to render open api as html for algolia indexing ([#534](https://github.com/adobe/aio-theme/issues/534)) ([abbd479](https://github.com/adobe/aio-theme/commit/abbd479c22d6fb485d7e2a75bc2181b63b959b07))
+
+
+
+
+
 ## [3.22.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.22.0...@adobe/gatsby-theme-aio@3.22.1) (2021-10-20)
 
 
