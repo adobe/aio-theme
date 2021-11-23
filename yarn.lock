@@ -4446,6 +4446,11 @@ async-retry-ng@^2.0.1:
   resolved "https://registry.yarnpkg.com/async-retry-ng/-/async-retry-ng-2.0.1.tgz#f5285ec1c52654a2ba6a505d0c18b1eadfaebd41"
   integrity sha512-iitlc2murdQ3/A5Re3CcplQBEf7vOmFrFQ6RFn3+/+zZUyIHYkZnnEziMSa6YIb2Bs2EJEPZWReTxjHqvQbDbw==
 
+async@:
+  version "3.2.2"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
+  integrity sha1-LrdnEDS7IZTUXTDjHiTsfn+WcM0=
+
 async@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -5706,6 +5711,11 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
+coffee-script@:
+  version "1.12.7"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+  integrity sha1-wF2uDLeVkdBbMHCoQzqYyaiczFM=
+
 collapse-white-space@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/collapse-white-space/-/collapse-white-space-1.0.6.tgz#e63629c0016665792060dbbeb79c42239d2c5287"
@@ -6917,6 +6927,16 @@ depd@^1.1.2, depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
+dependency@^0.0.1:
+  version "0.0.1"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/dependency/-/dependency-0.0.1.tgz#9ee1f5baaae9a9045bf3b22e25281505875f371a"
+  integrity sha1-nuH1uqrpqQRb87IuJSgVBYdfNxo=
+  dependencies:
+    async ""
+    coffee-script ""
+    js2coffee ""
+    underscore ""
+
 deprecation@^2.0.0, deprecation@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-2.3.1.tgz#6368cbdb40abf3373b525ac87e4a260c3a700919"
@@ -7598,7 +7618,7 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-escodegen@^1.9.1:
+escodegen@^1.6.0, escodegen@^1.9.1:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.14.3.tgz#4e7b81fba61581dc97582ed78cab7f0e8d63f503"
   integrity sha512-qFcX0XJkdg+PB3xjZZG/wKSuT1PnQWx57+TVSjIMmILd2yC/6ByYElPwJnslDsuWuSAp4AwJGumarAAmJch5Kw==
@@ -7810,6 +7830,11 @@ espree@^7.3.0, espree@^7.3.1:
     acorn "^7.4.0"
     acorn-jsx "^5.3.1"
     eslint-visitor-keys "^1.3.0"
+
+esprima@^2.5.0:
+  version "2.7.3"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
+  integrity sha1-luO3DVd59q1JzQMmc9HDEnZ7pYE=
 
 esprima@^4.0.0, esprima@^4.0.1:
   version "4.0.1"
@@ -11353,6 +11378,18 @@ js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
+js2coffee@:
+  version "2.2.0"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/js2coffee/-/js2coffee-2.2.0.tgz#821aaef62bbee35a29ea8c0475e20fe9f10043c5"
+  integrity sha1-ghqu9iu+41op6owEdeIP6fEAQ8U=
+  dependencies:
+    escodegen "^1.6.0"
+    esprima "^2.5.0"
+    estraverse "^4.1.1"
+    minimist "^1.1.0"
+    read-input "^0.3.1"
+    source-map "^0.5.2"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -13855,7 +13892,7 @@ original@^1.0.0:
 
 os-browserify@^0.3.0:
   version "0.3.0"
-  resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
   integrity sha1-hUNzx/XCMVkU/Jv8a9gjj92h7Cc=
 
 os-filter-obj@^2.0.0:
@@ -15438,6 +15475,11 @@ read-cmd-shim@^2.0.0:
   resolved "https://registry.yarnpkg.com/read-cmd-shim/-/read-cmd-shim-2.0.0.tgz#4a50a71d6f0965364938e9038476f7eede3928d9"
   integrity sha512-HJpV9bQpkl6KwjxlJcBoqu9Ba0PQg8TqSNIOrulGt54a0uup0HtevreFHzYzkm0lpnleRdNBzXznKrgxglEHQw==
 
+read-input@^0.3.1:
+  version "0.3.1"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/read-input/-/read-input-0.3.1.tgz#5b3169308013464ffda6ec92e58d2d3cea948df1"
+  integrity sha1-WzFpMIATRk/9puyS5Y0tPOqUjfE=
+
 read-package-json-fast@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/read-package-json-fast/-/read-package-json-fast-2.0.2.tgz#2dcb24d9e8dd50fb322042c8c35a954e6cc7ac9e"
@@ -16939,7 +16981,7 @@ source-map@0.7.3, source-map@^0.7.3, source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.3:
+source-map@^0.5.0, source-map@^0.5.2, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.3:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
@@ -18076,6 +18118,11 @@ tty-browserify@0.0.0:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
+tty-browserify@^0.0.1:
+  version "0.0.1"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/tty-browserify/-/tty-browserify-0.0.1.tgz#3f05251ee17904dfd0677546670db9651682b811"
+  integrity sha1-PwUlHuF5BN/QZ3VGZw25ZRaCuBE=
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -18232,6 +18279,11 @@ underscore.string@^3.3.5:
   dependencies:
     sprintf-js "^1.0.3"
     util-deprecate "^1.0.2"
+
+underscore@:
+  version "1.13.1"
+  resolved "https://artifactory.corp.adobe.com/artifactory/api/npm/npm-adobe-release/underscore/-/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha1-DBxr0t9UtrafIxQGbWW2zeb8+dE=
 
 unherit@^1.0.4:
   version "1.1.3"

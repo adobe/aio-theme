@@ -21,7 +21,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         https: require.resolve('https-browserify'),
         http: require.resolve('stream-http'),
         tty: require.resolve('tty-browserify'),
-        os: require.resolve('os-browserify/browser'),
+        os: require.resolve('os-browserify/browser')
       }
     },
     plugins: [
