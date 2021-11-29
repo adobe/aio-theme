@@ -95,7 +95,7 @@
     "gatsby-transformer-remark": "^4.9.0",
     "https-browserify": "^1.0.0",
     "mdx-embed": "^0.0.19",
-    "mobx": "^6.3.2",
+    "mobx": "^6.3.8",
     "path-browserify": "^1.0.1",
     "penpal": "^6.1.0",
     "postcss": "^8.3.6",
