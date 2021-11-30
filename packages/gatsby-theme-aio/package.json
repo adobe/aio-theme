@@ -65,7 +65,7 @@
     "@spectrum-css/popover": "3.0.1",
     "@spectrum-css/progresscircle": "1.0.1",
     "@spectrum-css/search": "3.0.1",
-    "@spectrum-css/sidenav": "3.0.1",
+    "@spectrum-css/sidenav": "3.0.9",
     "@spectrum-css/table": "3.0.1",
     "@spectrum-css/tabs": "3.0.1",
     "@spectrum-css/textfield": "3.0.1",
@@ -96,6 +96,7 @@
     "https-browserify": "^1.0.0",
     "mdx-embed": "^0.0.19",
     "mobx": "^6.3.2",
+    "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "penpal": "^6.1.0",
     "postcss": "^8.3.6",
@@ -113,6 +114,7 @@
     "styled-components": "^5.3.1",
     "swiper": "^7.0.6",
     "to-arraybuffer": "^1.0.1",
+    "tty-browserify": "^0.0.1",
     "unist-util-select": "2.0.0",
     "uuid": "^8.3.2"
   }
