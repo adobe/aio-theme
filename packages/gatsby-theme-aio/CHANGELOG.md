@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.0...@adobe/gatsby-theme-aio@3.23.1) (2021-11-30)
+
+
+### Bug Fixes
+
+* heading querySelector error in OnThisPage component ([649943e](https://github.com/adobe/aio-theme/commit/649943e86a19900618003e03dc78ec289e00dfe3))
+* webpack polyfill error ([#609](https://github.com/adobe/aio-theme/issues/609)) ([c5794f8](https://github.com/adobe/aio-theme/commit/c5794f84ef9f578adb9f665c6b0bd933a3a422ae))
+
+
+
+
+
 # [3.23.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.22.1...@adobe/gatsby-theme-aio@3.23.0) (2021-10-21)
 
 
