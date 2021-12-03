@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.1...@adobe/gatsby-theme-aio@3.23.2) (2021-12-03)
+
+
+### Features
+
+* switch over to use adobe global analytics ([e6f360c](https://github.com/adobe/aio-theme/commit/e6f360c181d6788e6e882781735b48ca08df035f))
+
+
+
+
+
 ## [3.23.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.0...@adobe/gatsby-theme-aio@3.23.1) (2021-11-30)
 
 
