@@ -3218,12 +3218,12 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.1.tgz#33aae036282159f6aa998848b8c0828640a9620a"
   integrity sha512-hUFbRR6RGT63MNuP7wP+k9KU+uRuICsduMihskh700e+jiQ+Gsv53fBFDlB843FoZYlIXzFQXgtjMUC5a4Qibw==
 
-"@spectrum-css/divider@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.1.tgz#9d2b8d0b6bc05f08249608297e0e179f6510458c"
-  integrity sha512-IjANehC0qwPIrJ4w9zJGMlhtTXW5n7X3yI7ZhjVMgehXE2dbm50QXLOrEOkq5rjTO0T4lQW6OnHSsE3F8Pnv4w==
+"@spectrum-css/divider@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.11.tgz#e0e22083e574cf706c92b5346967f9d4927cc2fa"
+  integrity sha512-8Koy4ayOv7gndMzFfyYwRcvcCwWXuj1kHOJ6IszEDk97tjTZfJiEB/q6FREgczP4UmRcpMEGkAXtdkv1xL30bQ==
   dependencies:
-    "@spectrum-css/vars" "^3.0.1"
+    "@spectrum-css/vars" "^4.3.1"
 
 "@spectrum-css/icon@3.0.1":
   version "3.0.1"
@@ -3310,10 +3310,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.1.tgz#561fd69098f896a647242dd8d6108af603bfa31e"
   integrity sha512-l4oRcCOqInChYXZN6OQhpe3isk6l4OE6Ys8cgdlsiKp53suNoQxyyd9p/eGRbCjZgH3xQ8nK0t4DHa7QYC0S6w==
 
-"@spectrum-css/vars@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.2.tgz#ea9062c3c98dfc6ba59e5df14a03025ad8969999"
-  integrity sha512-vzS9KqYXot4J3AEER/u618MXWAS+IoMvYMNrOoscKiLLKYQWenaueakUWulFonToPd/9vIpqtdbwxznqrK5qDw==
+"@spectrum-css/vars@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-4.3.1.tgz#d333fa41909f691c8750b5c15ad9ba029df2248e"
+  integrity sha512-rX6Iasu9BsFMVgEN0vGRPm9dmSxva+IK/uqQAa9HM0lliwqUiFrJxrFXHHpiAgNuux/U4srEJwbSpGzfF+CegQ==
 
 "@spectrum-css/well@3.0.1":
   version "3.0.1"
