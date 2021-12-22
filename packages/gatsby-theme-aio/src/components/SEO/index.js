@@ -24,20 +24,23 @@ const SEO = ({ title, description, keywords }) => (
     <link rel="icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
     {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
-      <script type="text/javascript">{`
-        window.marketingtech = {
-          'adobe': {
-            'launch': {
-              'property': 'global',
-              'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV || 'dev'}'
-            },
-            'analytics': {
-              'additionalAccounts': '${process.env.GATSBY_ADDITIONAL_ADOBE_ANALYTICS_ACCOUNTS || ''}'
+      <React.Fragment>
+        <script type="text/javascript">{`
+          window.marketingtech = {
+            'adobe': {
+              'launch': {
+                'property': 'global',
+                'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV || 'dev'}'
+              },
+              'analytics': {
+                'additionalAccounts': '${process.env.GATSBY_ADDITIONAL_ADOBE_ANALYTICS_ACCOUNTS || ''}'
+              }
             }
-          }
-        };
-      `}</script>
-      <script src="https://www.adobe.com/marketingtech/main.min.js"></script>
+          };
+        `}</script>
+
+        <script src="https://www.adobe.com/marketingtech/main.min.js"></script>
+      </React.Fragment>
     )}
   </Helmet>
 );
