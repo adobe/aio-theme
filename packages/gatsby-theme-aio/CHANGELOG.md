@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.2...@adobe/gatsby-theme-aio@3.23.3) (2022-01-05)
+
+
+### Bug Fixes
+
+* Fix logic for injecting analytics bootstrap script ([d17a592](https://github.com/adobe/aio-theme/commit/d17a592380807f2e8e370449030d1dc1eba19bd4))
+
+
+
 ## [3.23.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.1...@adobe/gatsby-theme-aio@3.23.2) (2021-12-03)
 
 
