@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.3...@adobe/gatsby-theme-aio@3.23.4) (2022-01-06)
+
+
+### Bug Fixes
+
+* Fix logic again for analytics ([50d5e8d](https://github.com/adobe/aio-theme/commit/50d5e8d451859e03748cf749ec978d1af785ca14))
+
+
+
 ## [3.23.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.2...@adobe/gatsby-theme-aio@3.23.3) (2022-01-05)
 
 
