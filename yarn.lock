@@ -3280,10 +3280,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/table/-/table-3.0.1.tgz#753e0e2498082c0c36b9600828516aff3ac338cd"
   integrity sha512-XQ+srMTv9hK1H0nctWUtqyzitmvyb5TNR+7mjAmKRdkBRSTQQSipDhenxZp72ekzMtMoSYZVZ77kgo0Iw3Fpug==
 
-"@spectrum-css/tabs@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/tabs/-/tabs-3.0.1.tgz#81cebae7a0db0056834c2b8fdf0df3e71aaaa812"
-  integrity sha512-uyWGiSuv+rKY57RVnNkYe0+8fQxgXtQl09JAmqyqUnvlX5b9sHG/R5TP7ExZ8C7BgE8hzVjPVAMH3RMEQERGUQ==
+"@spectrum-css/tabs@3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/tabs/-/tabs-3.2.2.tgz#a847daeec41f6272c567639b56d41b10f5bb67e6"
+  integrity sha512-5W6ET+JJcloMMeNjluycrm0Cq5f/p+n55V+MZsaSlJKDpApvOu6sZf9SKTiISmpysuKRHFx5LiE+2EjviSi6Bg==
 
 "@spectrum-css/textfield@3.0.1":
   version "3.0.1"
