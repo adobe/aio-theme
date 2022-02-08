@@ -102,7 +102,7 @@
     "postcss": "^8.3.6",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.16",
-    "prism-react-renderer": "^1.2.0",
+    "prism-react-renderer": "1.2.1",
     "prop-types": "^15.7.2",
     "react-helmet": "^6.1.0",
     "react-id-generator": "^3.0.1",
