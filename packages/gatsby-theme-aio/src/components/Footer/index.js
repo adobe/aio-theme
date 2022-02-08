@@ -27,33 +27,25 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   APIs: [
     {
       title: 'Adobe Creative Cloud',
-      path: '/apis/creativecloud'
+      path: '/creative-cloud'
     },
     {
       title: 'Adobe Experience Platform',
-      path: '/apis/experienceplatform/home'
+      path: '/experience-platform-apis'
     },
     {
       title: 'Adobe Document Cloud',
-      path: '/apis/documentcloud'
-    },
-    {
-      title: 'Adobe Experience Cloud',
-      path: '/apis/experiencecloud'
+      path: '/document-services/homepage'
     }
   ],
   services: [
     {
-      title: 'Adobe XD',
-      path: '/apis/creativecloud/xd'
-    },
-    {
-      title: 'Adobe Target',
-      path: '/apis/experiencecloud/target'
+      title: 'Adobe Cloud Manager',
+      path: '/experience-cloud/cloud-manager'
     },
     {
       title: 'Adobe Analytics',
-      path: '/apis/experiencecloud/analytics'
+      path: '/analytics-apis/docs/2.0'
     },
     {
       title: 'App Builder',
@@ -84,12 +76,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   ],
   support: [
     {
-      title: 'Contact us',
-      path: '/contactus'
-    },
-    {
       title: 'Adobe Developer support',
-      path: '/support'
+      path: '/developer-support'
     },
     {
       title: 'Adobe Product support',
@@ -99,7 +87,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   developer: [
     {
       title: 'Adobe Developer Console',
-      path: '/console'
+      path: '/developer-console'
     },
     {
       title: 'Open source at Adobe',
@@ -107,11 +95,11 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     },
     {
       title: 'Download SDKs',
-      path: '/console/servicesandapis'
+      path: '/console/downloads'
     },
     {
       title: 'Authentication',
-      path: '/authentication'
+      path: '/developer-co0nsole/docs/guides/authentication'
     },
     {
       title: 'Careers',
