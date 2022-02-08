@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.7...@adobe/gatsby-theme-aio@3.23.8) (2022-02-08)
+
+
+### Bug Fixes
+
+* Pin prism-react-rendered to 1.2.1 as 1.3.0 is broken ([c4432d2](https://github.com/adobe/aio-theme/commit/c4432d24d77ae9f916f382be6ec2454eac678737))
+
+
 ## [3.23.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.6...@adobe/gatsby-theme-aio@3.23.7) (2022-02-08)
 
 
