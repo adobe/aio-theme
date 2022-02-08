@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.6...@adobe/gatsby-theme-aio@3.23.7) (2022-02-08)
+
+
+### Bug Fixes
+
+* Update footer typo links ([9f067c7](https://github.com/adobe/aio-theme/commit/9f067c742ca40b70f602f5e9e1d35cedbdd713ce))
+
+
+
 ## [3.23.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.5...@adobe/gatsby-theme-aio@3.23.6) (2022-02-08)
 
 
