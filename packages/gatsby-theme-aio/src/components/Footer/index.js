@@ -99,7 +99,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     },
     {
       title: 'Authentication',
-      path: '/developer-co0nsole/docs/guides/authentication'
+      path: '/developer-console/docs/guides/authentication'
     },
     {
       title: 'Careers',
