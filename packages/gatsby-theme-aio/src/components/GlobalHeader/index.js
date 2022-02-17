@@ -402,7 +402,7 @@ const GlobalHeader = ({
               }
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                position: fixed;
+                position: absolute;
                 top: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-global-dimension-size-10));
                 height: var(--spectrum-global-dimension-size-600);
                 left: 0;
