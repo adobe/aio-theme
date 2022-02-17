@@ -38,9 +38,7 @@ const SEO = ({ title, description, keywords }) => (
         };
       `}</script>
     )}
-    {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
-      <script src="https://www.adobe.com/marketingtech/main.min.js"></script>
-    )}
+    {process.env.GATSBY_ADOBE_ANALYTICS_ENV && <script src="https://www.adobe.com/marketingtech/main.min.js"></script>}
   </Helmet>
 );
 

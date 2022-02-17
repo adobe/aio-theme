@@ -26,6 +26,7 @@ import {
   findSelectedTopPage,
   rootFixPages,
   rootFix,
+  cleanRootFix,
   findSelectedTopPageMenu
 } from '../../utils';
 import Context from '../Context';
@@ -216,7 +217,7 @@ const Hero = ({
                 pages={[
                   DEFAULT_HOME,
                   home,
-                  { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
+                  { ...selectedTopPage, href: withPrefix(cleanRootFix(selectedTopPage.href)) },
                   selectedTopPageMenu && { ...selectedTopPageMenu, href: withPrefix(selectedTopPageMenu.href) }
                 ]}
               />

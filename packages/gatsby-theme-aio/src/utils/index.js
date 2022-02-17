@@ -14,6 +14,8 @@ import React, { Children, cloneElement } from 'react';
 import { withPrefix } from 'gatsby';
 import globals from '../../conf/globals';
 
+const ROOT_FIX = '/_ROOT_/';
+
 const cleanMarkdownExtension = (pathname) => {
   return pathname
     .replace('/src/pages/', '/')
@@ -57,19 +59,21 @@ const normalizePagePath = (page) => {
 
 const rootFix = (pathname) => {
   if (pathname === withPrefix('/')) {
-    return withPrefix('/_ROOT_/');
+    return withPrefix(ROOT_FIX);
   }
 
   return pathname;
 };
+
+const cleanRootFix = (url) => url.replace(ROOT_FIX, '/');
 
 const rootFixPages = (pages) => {
   const rootFixedPages = JSON.parse(JSON.stringify(pages));
 
   return rootFixedPages.map((page) => {
     if (page.pathname === '/') {
-      page.pathname = '/_ROOT_/';
-      page.href = `/_ROOT_/${page.href.slice(1)}`;
+      page.pathname = ROOT_FIX;
+      page.href = `${ROOT_FIX}${page.href.slice(1)}`;
     } else if (page.menu) {
       page.menu = rootFixPages(page.menu);
     }
@@ -277,6 +281,7 @@ export {
   trailingSlashFix,
   rootFix,
   rootFixPages,
+  cleanRootFix,
   layoutColumns,
   findSelectedTopPage,
   findSelectedTopPageMenu,

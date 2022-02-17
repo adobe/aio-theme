@@ -27,7 +27,8 @@ import {
   SIDENAV_WIDTH,
   DEFAULT_HOME,
   rootFix,
-  rootFixPages
+  rootFixPages,
+  cleanRootFix
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -291,7 +292,7 @@ export default ({ children, pageContext, query }) => {
                               },
                               ...selectedSubPages.map((page) => ({
                                 ...page,
-                                href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                                href: withPrefix(cleanRootFix(page.href))
                               }))
                             ]}
                           />
@@ -307,7 +308,7 @@ export default ({ children, pageContext, query }) => {
                               },
                               ...selectedSubPages.map((page) => ({
                                 ...page,
-                                href: withPrefix(page.href.replace('/_ROOT_/', '/'))
+                                href: withPrefix(cleanRootFix(page.href))
                               }))
                             ]}
                           />
