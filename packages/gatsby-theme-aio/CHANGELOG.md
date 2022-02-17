@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.23.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.8...@adobe/gatsby-theme-aio@3.23.9) (2022-02-17)
+
+
+### Bug Fixes
+
+* clean root fix in Hero's breadcrumb ([3f0a6fa](https://github.com/adobe/aio-theme/commit/3f0a6fa59ae62314d9c72ff04044d9ad9fda56b6))
+
+
+
+
+
 ## [3.23.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.7...@adobe/gatsby-theme-aio@3.23.8) (2022-02-08)
 
 
