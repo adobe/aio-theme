@@ -3285,10 +3285,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/tabs/-/tabs-3.0.1.tgz#81cebae7a0db0056834c2b8fdf0df3e71aaaa812"
   integrity sha512-uyWGiSuv+rKY57RVnNkYe0+8fQxgXtQl09JAmqyqUnvlX5b9sHG/R5TP7ExZ8C7BgE8hzVjPVAMH3RMEQERGUQ==
 
-"@spectrum-css/textfield@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/textfield/-/textfield-3.0.1.tgz#e875b8e37817378ad08fc4af7d53026df38911e5"
-  integrity sha512-MUV5q87CVxbkNdSNoxGrFbgyKc51ft/WWf3aVEoPdPw5yBnXqFe1w1YmAit5zYDOOhhs58sCLAlUcCMlOpkgrA==
+"@spectrum-css/textfield@3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/textfield/-/textfield-3.1.6.tgz#a4a3fed01c67e8f0ac42fee29927255514759700"
+  integrity sha512-7aCyAfnq83I4uXji7EE17jKoKC5ID0vwnYz8cvklWqYTkoNlPiiWAIKY0ymzJhBkv+WfbUrO1dytfEEuwOE5aA==
 
 "@spectrum-css/tooltip@3.0.1":
   version "3.0.1"
@@ -15017,7 +15017,7 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
-prism-react-renderer@^1.2.0:
+prism-react-renderer@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.1.tgz#392460acf63540960e5e3caa699d851264e99b89"
   integrity sha512-w23ch4f75V1Tnz8DajsYKvY5lF7H1+WvzvLUcF0paFxkTHSp42RS0H5CttdN2Q8RR3DRGZ9v5xD/h3n8C8kGmg==
