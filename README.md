@@ -1853,7 +1853,7 @@ See the [example markdown file](https://raw.githubusercontent.com/adobe/aio-them
 This can be useful if you want to embed pages from another system. The embedded page will be framed between the Global Header and Footer.
 Simply set `frameSrc` to the `url` of the external page within the front matter.
 
-See the [example parent page](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/frame/index.md) and [child page](https://github.com/adobe/aio-theme/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal)
+See the [example parent page](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/frame.md) and [child page](https://github.com/adobe/aio-theme/blob/main/example/static/child.html) which leverages the [Penpal](https://github.com/Aaronius/penpal)
 library to create a communication channel to exchange information.
 
 ### Theming
