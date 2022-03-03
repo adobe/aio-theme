@@ -85,6 +85,34 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
                 if (ims && ims.isSignedInUser()) {
                   ims.signOut();
                 }
+              },
+              getOrgs() {
+                // return an org dictionay:
+                // key: org name
+                // value: org id
+
+                // TODO:
+                // We just assume that user could not have two or more orgs with same name.
+                if (ims?.isSignedInUser()) {
+                  var client_id = ims.adobeIdData.client_id;
+                  var token = ims.getAccessToken().token;
+                  var resp = await fetch(`https://ims-na1.adobelogin.com/ims/organizations/v5?client_id=${client_id}`, {headers: {Authorization: `Bearer ${token}`}});
+                  var orgs = await resp.json();
+
+                  var profile = await ims.getProfile();
+                  var productContext = profile.projectedProductContext;
+                  var dmaTartanOrgs =  productContext.filter(pc => pc.prodCtx.serviceCode === 'dma_tartan').map(pc => pc.prodCtx.owningEntity.split('@')[0]); 
+
+                  var orgDict = {};
+                  for (const org of orgs) {
+                    if (dmaTartanOrgs.includes(org.orgRef.ident)) {
+                      orgDict[org.orgName] = org.orgRef.ident;
+                    }
+                  }
+                  return orgDict;
+                } else {
+                  return null;
+                }
               }
             }
           });
