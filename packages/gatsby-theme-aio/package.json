@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-aio",
-  "version": "3.23.11",
+  "version": "3.24.0",
   "description": "The Adobe I/O theme for building markdown/gdocs powered sites",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -92,7 +92,7 @@
     "gatsby-remark-images-remote": "^1.1.0",
     "gatsby-source-filesystem": "^3.12.0",
     "gatsby-source-gdocs2md": "^1.0.0",
-    "gatsby-transformer-remark": "^4.9.0",
+    "gatsby-transformer-remark": "^5.9.1",
     "https-browserify": "^1.0.0",
     "mdx-embed": "^0.0.19",
     "mobx": "^6.3.2",
