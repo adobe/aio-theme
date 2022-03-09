@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.24.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.11...@adobe/gatsby-theme-aio@3.24.0) (2022-03-09)
+
+
+### Features
+
+* **SITES-5061:** enable adobe io parent frame to return client id ([#739](https://github.com/adobe/aio-theme/issues/739)) ([682c27a](https://github.com/adobe/aio-theme/commit/682c27a719734c147099b3bcd8d54089165bdad0))
+
+
+
+
+
 ## [3.23.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.10...@adobe/gatsby-theme-aio@3.23.11) (2022-03-07)
 
 
