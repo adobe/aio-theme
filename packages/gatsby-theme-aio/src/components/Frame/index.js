@@ -85,6 +85,13 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
                 if (ims && ims.isSignedInUser()) {
                   ims.signOut();
                 }
+              },
+              getIMSClientId() {
+                if (ims) {
+                  return ims.adobeIdData.client_id;
+                } else {
+                  return null;
+                }
               }
             }
           });
