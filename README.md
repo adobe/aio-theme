@@ -870,6 +870,10 @@ You can manually trigger the deploy workflow by pressing the **Run workflow** bu
 2. Click on the "Deploy" workflow
 3. Press **Run workflow**. You can choose which branch the workflow is run on and specify the deployment type (`dev` for development or/and `prod` for production).
 
+Using the `Clean cache`: typically you won't have to set this to `yes`. The most common scenario of when to use is when you do a deploy and a particular resource isn't updating to the most recent change. eg, a static image is still on the old version. Try setting this to `yes` and redeploy the site. 
+
+Using the `Exclude a subfolder from deletion`: folders listed here separated out by commas will exclude them from being overwritten when doing a deploy. This is useful if you have multiple sites deploying to the same path. eg, one repo deploys to `/photoshop/` and another repo deploys to `/photoshop/docs/`. You can set the the repo that deploys to `/photoshop/` option as `Exclude a subfolder from deletion`: `'docs`. Then whenever that `/photoshop/` repo deploys, the subfolder `docs` will not get deleted. You can also list out multiple subfolders separated by commas like so: `api, photoshop-api-docs, uxp, another-path` etc. 
+
 **Pre-requisites:**
 
 1. Setting your `PATH_PREFIX` as explained [here](#adding-a-path-prefix). This is the sub-folder to deploy this micro-site to.
