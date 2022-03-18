@@ -3218,12 +3218,12 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.1.tgz#33aae036282159f6aa998848b8c0828640a9620a"
   integrity sha512-hUFbRR6RGT63MNuP7wP+k9KU+uRuICsduMihskh700e+jiQ+Gsv53fBFDlB843FoZYlIXzFQXgtjMUC5a4Qibw==
 
-"@spectrum-css/divider@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.1.tgz#9d2b8d0b6bc05f08249608297e0e179f6510458c"
-  integrity sha512-IjANehC0qwPIrJ4w9zJGMlhtTXW5n7X3yI7ZhjVMgehXE2dbm50QXLOrEOkq5rjTO0T4lQW6OnHSsE3F8Pnv4w==
+"@spectrum-css/divider@1.0.20":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.20.tgz#40515e0ec96272802da170972fbcbfeba351f2f7"
+  integrity sha512-qBsMTzObIXvP08xy4VGkWonQj6VikHTr4mNDuRgGFimv4fY/8/yA6UoCUDiFqXSmPVMMi943mtoQil//yWwfuA==
   dependencies:
-    "@spectrum-css/vars" "^3.0.1"
+    "@spectrum-css/vars" "^7.1.1"
 
 "@spectrum-css/icon@3.0.1":
   version "3.0.1"
@@ -3310,10 +3310,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.1.tgz#561fd69098f896a647242dd8d6108af603bfa31e"
   integrity sha512-l4oRcCOqInChYXZN6OQhpe3isk6l4OE6Ys8cgdlsiKp53suNoQxyyd9p/eGRbCjZgH3xQ8nK0t4DHa7QYC0S6w==
 
-"@spectrum-css/vars@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-3.0.2.tgz#ea9062c3c98dfc6ba59e5df14a03025ad8969999"
-  integrity sha512-vzS9KqYXot4J3AEER/u618MXWAS+IoMvYMNrOoscKiLLKYQWenaueakUWulFonToPd/9vIpqtdbwxznqrK5qDw==
+"@spectrum-css/vars@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/vars/-/vars-7.1.1.tgz#ee427ea5600afe4225a013020a5c00b116ab9b72"
+  integrity sha512-j2RwCYR51G1yeRhduf5LGZifE6S7WGk7HbjCthk/OOR+4SuYB3Ib4qgkTEQ2JTEY1Ao8j+hn4aPjeiqgWd1bsw==
 
 "@spectrum-css/well@3.0.1":
   version "3.0.1"
@@ -15017,7 +15017,7 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
-prism-react-renderer@^1.2.0:
+prism-react-renderer@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.1.tgz#392460acf63540960e5e3caa699d851264e99b89"
   integrity sha512-w23ch4f75V1Tnz8DajsYKvY5lF7H1+WvzvLUcF0paFxkTHSp42RS0H5CttdN2Q8RR3DRGZ9v5xD/h3n8C8kGmg==
