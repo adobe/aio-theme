@@ -3230,10 +3230,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-3.0.1.tgz#e300a6fc353c85c6b5d6e7a364408a940c31b177"
   integrity sha512-cGFtIrcQ/7tthdkHK1npuEFiCdYVHLqwmLxghUYQw8Tb8KgJaw3OBO1tpjgsUizexNgu26BjVRIbGxNWuBXIHQ==
 
-"@spectrum-css/inlinealert@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/inlinealert/-/inlinealert-1.0.0.tgz#cc37a459340460b78fa6f5d4ae97300d19b63ce3"
-  integrity sha512-wF+ELOI77zsa1ctc/RybNcA1DaKkS8eHBV894jHhxw8y79esAYxEZjiCaK0uPAC/WbNuVCVfAYHmwcuvO6ke2w==
+"@spectrum-css/inlinealert@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/inlinealert/-/inlinealert-4.0.8.tgz#23bc942611fea65276d8baac95cc0b0a64008b32"
+  integrity sha512-MNR2Okstiv6VXlJB+ycfZ5/cv4fdDGdAsXVZ9wprz9rYicmerHs6AOp4+2JiFC5mHtuBLLdKSvTbrZHJNFBfig==
 
 "@spectrum-css/link@3.1.1":
   version "3.1.1"
@@ -15017,7 +15017,7 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
-prism-react-renderer@^1.2.0:
+prism-react-renderer@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.1.tgz#392460acf63540960e5e3caa699d851264e99b89"
   integrity sha512-w23ch4f75V1Tnz8DajsYKvY5lF7H1+WvzvLUcF0paFxkTHSp42RS0H5CttdN2Q8RR3DRGZ9v5xD/h3n8C8kGmg==
