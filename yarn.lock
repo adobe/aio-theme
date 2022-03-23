@@ -3183,10 +3183,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/accordion/-/accordion-3.0.1.tgz#c82bd3cef913a67b52f34ad78e4c3f1451edad93"
   integrity sha512-ffhQLF1zZhXVTuae7/oFOldRPdI2eq/tiTDKwCP/YkxZ7/GBD+14/DkTaw3QenxViXhRkzB5PJHVNdtln4xhEg==
 
-"@spectrum-css/actionbutton@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/actionbutton/-/actionbutton-1.0.1.tgz#9c75da37ea6915919fb574c74bd60dacc03b6577"
-  integrity sha512-AUqtyNabHF451Aj9i3xz82TxS5Z6k1dttA68/1hMeU9kbPCSS4P6Viw3vaRGs9CSspuR8xnnhDgrq+F+zMy2Hw==
+"@spectrum-css/actionbutton@1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/actionbutton/-/actionbutton-1.1.10.tgz#7cf6e880a8f531b439ed6cbea9f5c4be09289040"
+  integrity sha512-szdXDm6YKrqmDF7k0jEAuPcFDqpNzMVzCweQKs2pMjFjDy0VR2uzEq/hYhfe4wN7soAjOOSDSPUrAh5L5TXuBQ==
 
 "@spectrum-css/assetlist@3.0.1":
   version "3.0.1"
@@ -15017,7 +15017,7 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
-prism-react-renderer@^1.2.0:
+prism-react-renderer@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.1.tgz#392460acf63540960e5e3caa699d851264e99b89"
   integrity sha512-w23ch4f75V1Tnz8DajsYKvY5lF7H1+WvzvLUcF0paFxkTHSp42RS0H5CttdN2Q8RR3DRGZ9v5xD/h3n8C8kGmg==
