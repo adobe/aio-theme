@@ -3213,10 +3213,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/checkbox/-/checkbox-3.0.1.tgz#6f36377d8bd556989ddd1dec2506dc295c5fcda8"
   integrity sha512-fI0q2Cp6yU4ORyE6JWUSMYNgEtGf6AjYViZ2Weg3UPTYBQuWdQd8J0ZTcH38pDMyARFPRdiXgQ3KnyX5Hk5huw==
 
-"@spectrum-css/dialog@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.1.tgz#33aae036282159f6aa998848b8c0828640a9620a"
-  integrity sha512-hUFbRR6RGT63MNuP7wP+k9KU+uRuICsduMihskh700e+jiQ+Gsv53fBFDlB843FoZYlIXzFQXgtjMUC5a4Qibw==
+"@spectrum-css/dialog@6.0.8":
+  version "6.0.8"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-6.0.8.tgz#370eca53f744dfa0662026e0ff408d70a3728e86"
+  integrity sha512-/UuMoNcM0tRU2Er1Hkx7Pv8WkhWbJxVTYCYjGvp4yS2V+pnlJSkBtA7MniVuPWE7FK4rmI7Q686v1iZPLv4eMw==
 
 "@spectrum-css/divider@1.0.1":
   version "1.0.1"
@@ -15017,7 +15017,7 @@ pretty-format@^3.8.0:
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
-prism-react-renderer@^1.2.0:
+prism-react-renderer@1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.1.tgz#392460acf63540960e5e3caa699d851264e99b89"
   integrity sha512-w23ch4f75V1Tnz8DajsYKvY5lF7H1+WvzvLUcF0paFxkTHSp42RS0H5CttdN2Q8RR3DRGZ9v5xD/h3n8C8kGmg==
