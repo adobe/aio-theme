@@ -30,12 +30,12 @@
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
-    "gatsby": "^3.6.0",
+    "gatsby": "^4.12.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^3.6.0",
+    "gatsby": "^4.12.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
@@ -99,7 +99,7 @@
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "penpal": "^6.1.0",
-    "postcss": "^8.3.6",
+    "postcss": "^8.4.12",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.16",
     "prism-react-renderer": "1.2.1",
