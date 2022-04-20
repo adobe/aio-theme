@@ -137,12 +137,12 @@ export default ({ children, pageContext, location }) => {
           let IMS_CONFIG_JSON = JSON.parse(IMS_CONFIG);
           IMS_CONFIG_JSON.onReady = () => {
             setIms(window.adobeIMS);
+            setIsLoadingIms(false);
           };
           window.adobeImsFactory.createIMSLib(IMS_CONFIG_JSON);
           window.adobeIMS.initialize();
         } catch (e) {
           console.error(`AIO: IMS error.`);
-        } finally {
           setIsLoadingIms(false);
         }
       })();
@@ -448,6 +448,7 @@ export default ({ children, pageContext, location }) => {
       <Provider
         value={{
           ims,
+          isLoadingIms,
           location,
           pageContext,
           hasSideNav,
