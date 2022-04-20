@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.24.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.24.0...@adobe/gatsby-theme-aio@3.24.1) (2022-04-20)
+
+
+### Features
+
+* **DEVSITE-378:** Fix penpal timeout in iFrame ([651398d](https://github.com/adobe/aio-theme/commit/651398dce38b03037e35dba2d08d43823608d206))
+
+
+
 # [3.24.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.23.11...@adobe/gatsby-theme-aio@3.24.0) (2022-03-09)
 
 
