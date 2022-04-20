@@ -16,14 +16,20 @@ keywords:
 ---
 
 import Overview from '../transclusions/overview.md'
+import AddAnalyticsIos from './add-analytics/ios.md'
+import AddAnalyticsAndroid from './add-analytics/android.md'
+import AddAnalyticsCordova from './add-analytics/cordova.md'
+import AddAnalyticsFlutter from './add-analytics/flutter.md'
+import AddAnalyticsUnity from './add-analytics/unity.md'
+import AddAnalyticsReactNative from './add-analytics/react-native.md'
+import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
 
 ![Hero image](hero-illustration.png)
-
 # Adobe Analytics
 
-Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways. -->
 
 <Resources slots="heading, links"/>
 
@@ -93,3 +99,66 @@ The timeout for API requests through adobe.io is currently *60 seconds*.
 
 The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
 When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`    
+
+
+<TabsBlock orientation="horizontal" slots="heading, content" repeat="7" theme="light" className='bgBlue code-block-0' />
+
+### Android
+
+<UpdateAndroid/>
+
+### iOS
+
+<UpdateIos/>
+
+### React Native
+
+<UpdateReactNative/>
+
+### Flutter
+
+<UpdateFlutter/>
+
+### Cordova
+
+<UpdateCordova/>
+
+### Unity
+
+<UpdateUnity/>
+
+### Xamarin
+
+<UpdateXamarin/>
+
+## Add Analytics to your application
+
+<TabsBlock orientation="horizontal" slots="heading, content" repeat="7"className="showMobileView"/>
+
+### Java
+
+<AddAnalyticsAndroid/>
+
+### iOS
+
+<AddAnalyticsIos/>
+
+### React Native
+
+<AddAnalyticsReactNative/>
+
+### Flutter
+
+<AddAnalyticsFlutter/>
+
+### Cordova
+
+<AddAnalyticsCordova/>
+
+### Unity
+
+<AddAnalyticsUnity/>
+
+### Xamarin
+
+<AddAnalyticsXamarin/>

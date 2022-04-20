@@ -208,7 +208,8 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        max-width: 100%;
+        width: 100%;
+        overflow: hidden !important;
         margin: 0;
         padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
       `}>
@@ -216,7 +217,6 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
         css={css`
           display: ${orientation === 'vertical' ? 'inline-flex' : ''};
           @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
-            max-width: ${DESKTOP_SCREEN_WIDTH};
             margin: 0 auto !important;
           }
           @media only screen and (max-width: ${mobileMinWidth}) {
@@ -225,13 +225,13 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
         `}>
         <div
           css={css`
-            display: ${orientation === 'vertical' ? 'grid' : 'initial'};
+            display: ${orientation === 'vertical' ? 'grid' : 'block'};
             position: relative;
             grid-template-columns: 300px calc(100% - 300px);
-            margin-top: var(--spectrum-global-dimension-size-300);
-            width: ${layoutColumns(12)} !important;
+            margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
+            width: inherit;
             @media only screen and (max-width: ${mobileMinWidth}) {
-              display: initial !important;
+              display: block !important;
               width: ${layoutColumns(2.5)} !important;
             }
             @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -267,9 +267,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     css={css`
                       text-align: left;
                       white-space: normal;
-                      width: calc(
-                        var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-600)
-                      ) !important;
+                      width: ${orientation === 'vertical'
+                        ? 'calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-600))'
+                        : 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))'} !important;
                       font-size: var(--spectrum-global-dimension-size-200);
                       margin-bottom: ${orientation === 'vertical' ? '2.4rem !important' : '0rem'};
                       display: flex !important;
@@ -300,9 +300,6 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                         margin-bottom: var(--spectrum-global-dimension-size-25) !important;
                       }
                       @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
-                        width: calc(
-                          var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-750)
-                        ) !important;
                         left: var(--spectrum-global-dimension-size-250) !important;
                       }
                     `}
@@ -322,8 +319,8 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     isHidden={!isHidden}
                     css={css`
                       text-align: left;
-                      padding: 0 0 var(--spectrum-global-dimension-size-100) 0 !important;
-                      max-width: ${layoutColumns(8.5)} !important;
+                      max-width: 100% !important;
+                      padding: ${orientation === 'vertical' ? "" : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
                       @media only screen and (max-width: ${mobileMinWidth}) {
                         padding-left: inherit !important;
                         max-width: ${layoutColumns(3)} !important;
