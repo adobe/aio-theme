@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.24.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.24.2...@adobe/gatsby-theme-aio@3.24.1) (2022-04-20)
+
+
+### Features & Bug Fixes
+
+* Fixed tab width issue for documentation layout and enhanced horizontal variant's design ([789d292](https://github.com/adobe/aio-theme/commit/789d2929c3ede36af9c7d21897848246b73d4788))
+
+
+
 # [3.24.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.24.0...@adobe/gatsby-theme-aio@3.24.1) (2022-04-20)
 
 
