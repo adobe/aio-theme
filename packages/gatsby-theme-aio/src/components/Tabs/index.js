@@ -229,9 +229,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
             position: relative;
             grid-template-columns: 300px calc(100% - 300px);
             margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
-            width: ${layoutColumns(12)} !important;
+            width: inherit;
             @media only screen and (max-width: ${mobileMinWidth}) {
-              display: initial !important;
+              display: block !important;
               width: ${layoutColumns(2.5)} !important;
             }
             @media only screen and (device-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -319,7 +319,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     isHidden={!isHidden}
                     css={css`
                       text-align: left;
-                      width: ${orientation === 'vertical' ? layoutColumns(8.5) : layoutColumns(11.5)} !important;
+                      max-width: 100% !important;
                       padding: ${orientation === 'vertical' ? "" : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
                       @media only screen and (max-width: ${mobileMinWidth}) {
                         padding-left: inherit !important;
