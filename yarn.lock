@@ -3805,10 +3805,10 @@
   dependencies:
     "@spectrum-css/vars" "^3.0.1"
 
-"@spectrum-css/icon@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-3.0.1.tgz#e300a6fc353c85c6b5d6e7a364408a940c31b177"
-  integrity sha512-cGFtIrcQ/7tthdkHK1npuEFiCdYVHLqwmLxghUYQw8Tb8KgJaw3OBO1tpjgsUizexNgu26BjVRIbGxNWuBXIHQ==
+"@spectrum-css/icon@3.0.20":
+  version "3.0.20"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/icon/-/icon-3.0.20.tgz#f6580518aa7f54cf0b113718a20f9205ace2c87d"
+  integrity sha512-M4cYDCKm2apt9R/w2DCtdg7oKSRTbWrpi0aBswh8bDzVGIwJqln76MwlKb/0+Dm7lmbT9cvj1v15ZUHqWT7aGw==
 
 "@spectrum-css/inlinealert@1.0.0":
   version "1.0.0"
