@@ -9341,10 +9341,10 @@ gatsby-recipes@^0.25.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-remark-copy-linked-files@^4.9.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-4.11.0.tgz#3596b218d4c025931989a4629ec005443cb42dd1"
-  integrity sha512-24VI4ZM7767b+2x/J5Ww7yzeTJhVtGCJOQGjH2NZgEAw4ryBoZLJ2WwHiVwBD03+JSMPKGutQxus95jkLmMD4w==
+gatsby-remark-copy-linked-files@^5.12.1:
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-5.12.1.tgz#288b6dad0497cf6efa5075346e4f7f52bb68bf90"
+  integrity sha512-Xurm1LuEOhti3FP/mAwnK82bkUGXqm/3WnGTy7NIOjn9XjT3gqY1ffJzvMYGQK4v3AE3pj7KTR3XZgEpVHF0Kw==
   dependencies:
     "@babel/runtime" "^7.15.4"
     cheerio "^1.0.0-rc.10"
@@ -9352,7 +9352,7 @@ gatsby-remark-copy-linked-files@^4.9.0:
     is-relative-url "^3.0.0"
     lodash "^4.17.21"
     path-is-inside "^1.0.2"
-    probe-image-size "^6.0.0"
+    probe-image-size "^7.2.3"
     unist-util-visit "^2.0.3"
 
 gatsby-remark-images-remote@^1.1.0:
@@ -15492,6 +15492,15 @@ probe-image-size@^6.0.0:
   integrity sha512-99PZ5+RU4gqiTfK5ZDMDkZtn6eL4WlKfFyVJV7lFQvH3iGmQ85DqMTOdxorERO26LHkevR2qsxnHp0x/2UDJPA==
   dependencies:
     deepmerge "^4.0.0"
+    needle "^2.5.2"
+    stream-parser "~0.3.1"
+
+probe-image-size@^7.2.3:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-7.2.3.tgz#d49c64be540ec8edea538f6f585f65a9b3ab4309"
+  integrity sha512-HubhG4Rb2UH8YtV4ba0Vp5bQ7L78RTONYu/ujmCu5nBI8wGv24s4E9xSKBi0N1MowRpxk76pFCpJtW0KPzOK0w==
+  dependencies:
+    lodash.merge "^4.6.2"
     needle "^2.5.2"
     stream-parser "~0.3.1"
 
