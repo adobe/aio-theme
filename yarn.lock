@@ -1677,7 +1677,7 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@gatsbyjs/webpack-hot-middleware@^2.25.2":
+"@gatsbyjs/webpack-hot-middleware@^2.25.2", "@gatsbyjs/webpack-hot-middleware@^2.25.3":
   version "2.25.3"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/webpack-hot-middleware/-/webpack-hot-middleware-2.25.3.tgz#a00c5f526cbe178330b967f7ed6a487751ffd795"
   integrity sha512-ul17OZ8Dlw+ATRbnuU+kwxuAlq9lKbYz/2uBS1FLCdgoPTF1H2heP7HbUbgfMZbfRQNcCG2rMscMnr32ritCDw==
@@ -3661,7 +3661,7 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@prefresh/babel-plugin@^0.4.1":
+"@prefresh/babel-plugin@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.4.3.tgz#175ecf6f7a038d06a83d1806503283c98c7d9865"
   integrity sha512-fYAWbU1WDSLn108kKY4eDaaeUcnszFqXjgaGKYXNZ5NLulpRTpsrY+Sbfo9q8LDpWrBpqIgzjrwNnvglWI1xNQ==
@@ -3676,7 +3676,7 @@
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-1.1.3.tgz#c764c6c8f0917f0a72ae14ec57ed8befde3f9bac"
   integrity sha512-Mb9abhJTOV4yCfkXrMrcgFiFT7MfNOw8sDa+XyZBdq/Ai2p4Zyxqsb3EgHLOEdHpMj6J9aiZ54W8H6FTam1u+A==
 
-"@prefresh/webpack@^3.3.2":
+"@prefresh/webpack@^3.3.3":
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-3.3.3.tgz#6090d5b7081ad39e926efaae4c344441949b7d0b"
   integrity sha512-uT+A7ZuA7fuuUPNEde6Gmzr4oFnzreW9xw6iqw01nPpDiv46o6YWq1j0oGCbdffzHl3fBpcgkPuY07vIfmZ9Lg==
@@ -9172,15 +9172,15 @@ gatsby-plugin-page-creator@^4.12.1:
     globby "^11.1.0"
     lodash "^4.17.21"
 
-gatsby-plugin-preact@^5.12.0:
-  version "5.14.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-5.14.0.tgz#48641446645f4a2fa276b11b08d73c3f96a90bcf"
-  integrity sha512-wopLSjlcODojNZbBZk5nT6E6saHKOuQyGJ32yJ5V8wq8HheN3qq+WbAdo5QRLR7HJ9fiq3Mz9MDVhfG72qzllg==
+gatsby-plugin-preact@^6.12.1:
+  version "6.12.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-6.12.1.tgz#7b0ad9d029e13fd63d08c498e1230b6a37bd3689"
+  integrity sha512-WOTakT4z29+3j9oeQAJi63jwCBK2Gr7YKK7AGVd02xRCBXOsr1HjjCEW1EkC1dUjFb3May98b4A1mvzLxE+zGA==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    "@gatsbyjs/webpack-hot-middleware" "^2.25.2"
-    "@prefresh/babel-plugin" "^0.4.1"
-    "@prefresh/webpack" "^3.3.2"
+    "@gatsbyjs/webpack-hot-middleware" "^2.25.3"
+    "@prefresh/babel-plugin" "^0.4.3"
+    "@prefresh/webpack" "^3.3.3"
 
 gatsby-plugin-react-helmet@^4.12.0:
   version "4.14.0"
