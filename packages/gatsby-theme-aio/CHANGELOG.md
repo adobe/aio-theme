@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.0.0...@adobe/gatsby-theme-aio@3.24.2) (2022-04-21)
+
+
+### Features 
+
+* Upgrade to gatsby@4.12.1 ([3fef098](https://github.com/adobe/aio-theme/commit/3fef098226959b6ff87d6106983e48541effcd3))
+
+
 # [3.24.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@3.24.2...@adobe/gatsby-theme-aio@3.24.1) (2022-04-20)
 
 
