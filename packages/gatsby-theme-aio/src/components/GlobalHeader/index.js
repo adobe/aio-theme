@@ -684,6 +684,7 @@ const GlobalHeader = ({
               {hasSearch && (
                 <ActionButton
                   id={searchButtonId}
+                  aria-label="search"
                   onClick={() => {
                     setShowSearch((show) => !show);
                   }}
