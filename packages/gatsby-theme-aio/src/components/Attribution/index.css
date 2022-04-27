@@ -1,0 +1,26 @@
+.attribution {
+  position: relative;
+  padding: 6px 12px 12px 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: #fff1f1;
+  border-radius: 3px;
+}
+
+.attribution a {
+  color: #eb1000;
+  text-decoration: none;
+}
+.attribution a:hover {
+  color: #ffc0c0;
+}
+.attribution:after {
+  display: block;
+  content: '';
+  background: url(star.svg) center center no-repeat;
+  position: absolute;
+  width: 16px;
+  height: 17px;
+  top: 5px;
+  left: 4px;
+}

@@ -383,7 +383,6 @@ export default ({ children, pageContext, query }) => {
               </div>
 
               {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
-
               {resourcesChild && resourcesChild}
             </div>
           </div>
