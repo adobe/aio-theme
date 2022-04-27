@@ -33,12 +33,16 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
+  flags: {
+    PARALLEL_QUERY_RUNNING: true
+  },
   plugins: [
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-mdx-embed`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
