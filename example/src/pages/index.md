@@ -24,7 +24,7 @@ import AddAnalyticsUnity from './add-analytics/unity.md'
 import AddAnalyticsReactNative from './add-analytics/react-native.md'
 import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" showBreadcrumbNav="true"/>
 
 ![Hero image](hero-illustration.png)
 # Adobe Analytics
