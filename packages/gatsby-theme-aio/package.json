@@ -107,7 +107,7 @@
     "prop-types": "^15.7.2",
     "react-helmet": "^6.1.0",
     "react-id-generator": "^3.0.1",
-    "redoc": "2.0.0-rc.56",
+    "redoc": "2.0.0-rc.66",
     "redoc-cli": "^0.13.0",
     "rehype-slug": "^4.0.1",
     "sharp": "^0.29.0",
