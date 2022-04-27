@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.0.0) (2022-04-27)
+
+
+### Bug Fixes 
+
+* Upgrade gatsby plugins to work with gatsby@4.13.0. Removed support for gatsby-source-gdocs2md since it was unused and uncompatible with gatsby 4 ([803fa62](https://github.com/adobe/aio-theme/commit/803fa6279df1294170468cbdc21537606b40303b))
+
+
+
 # [4.0.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.0.0...@adobe/gatsby-theme-aio@3.24.2) (2022-04-21)
 
 
