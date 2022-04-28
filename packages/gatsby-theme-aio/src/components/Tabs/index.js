@@ -320,7 +320,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     css={css`
                       text-align: left;
                       max-width: 100% !important;
-                      padding: ${orientation === 'vertical' ? "" : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
+                      padding: ${orientation === 'vertical' ? '' : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
                       @media only screen and (max-width: ${mobileMinWidth}) {
                         padding-left: inherit !important;
                         max-width: ${layoutColumns(3)} !important;

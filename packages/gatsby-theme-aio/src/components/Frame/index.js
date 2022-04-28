@@ -41,8 +41,8 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
     if (iframe != null && !isLoadingIms) {
       const connection = createConnection();
       return () => {
-        connection.destroy()
-      }
+        connection.destroy();
+      };
     }
   }, [iframe, isLoadingIms]);
 
@@ -119,14 +119,14 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
     setConnectionReady(true);
 
     return connection;
-  }
+  };
 
   return (
     <>
       <iframe
         title="Main content"
         ref={iframe}
-        src={connectionReady ? iframeSrc : ""}
+        src={connectionReady ? iframeSrc : ''}
         css={css`
           display: block;
           height: ${height};
