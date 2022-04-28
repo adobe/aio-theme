@@ -26,15 +26,6 @@ const cleanMarkdownExtension = (pathname) => {
     .replace('.md', '');
 };
 
-const gdocsRelativeLinkFix = (href) => {
-  // Support gdoc relative links
-  if (href && href.startsWith('#!')) {
-    href = href.substr(2);
-  }
-
-  return href;
-};
-
 const trailingSlashFix = (pathname) => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;
@@ -277,7 +268,6 @@ const DESKTOP_SCREEN_WIDTH = globals.DESKTOP_SCREEN_WIDTH;
 export {
   normalizePagePath,
   cleanMarkdownExtension,
-  gdocsRelativeLinkFix,
   trailingSlashFix,
   rootFix,
   rootFixPages,

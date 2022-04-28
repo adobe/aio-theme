@@ -1,7 +1,7 @@
 {
   "name": "@adobe/gatsby-theme-aio",
   "version": "4.1.0",
-  "description": "The Adobe I/O theme for building markdown/gdocs powered sites",
+  "description": "The Adobe I/O theme for building markdown powered sites",
   "main": "index.js",
   "license": "Apache-2.0",
   "repository": {
@@ -13,6 +13,10 @@
     "url": "https://github.com/icaraps"
   },
   "contributors": [
+    {
+      "name": "Tim Kim",
+      "url": "https://github.com/timkim"
+    },
     {
       "name": "Simon Mac Donald",
       "url": "https://github.com/macdonst"
