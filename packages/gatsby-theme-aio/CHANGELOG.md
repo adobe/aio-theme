@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.1.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* add prettier option bracketSameLine and format code ([c8ece66](https://github.com/adobe/aio-theme/commit/c8ece665fd35b87e43bc900cb897853b83d24639))
+* clean up gdocs leftovers and add CODEOWNERS ([cc9c576](https://github.com/adobe/aio-theme/commit/cc9c576408d4706aecc8da09e10b5a1f71263499))
+* header search button aria label ([#835](https://github.com/adobe/aio-theme/issues/835)) ([8b8d9fb](https://github.com/adobe/aio-theme/commit/8b8d9fbd0e67a6a788917015bac8a48d8aa33053))
+
+
+
+
+
 # [4.1.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.0.0) (2022-04-27)
 
 
