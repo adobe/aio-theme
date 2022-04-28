@@ -260,6 +260,20 @@ const cloneChildren = (children, changeProps) => {
   });
 };
 
+const getCleanBoolean = (value) => { 
+  switch(value) { 
+    case true: 
+    case "true": 
+    case 1: 
+    case "1": 
+    case "on": 
+    case "yes": 
+      return true; 
+    default: 
+      return false; 
+  } 
+};
+
 const DEFAULT_HOME = {
   title: 'Products',
   href: '/apis/'
@@ -297,6 +311,7 @@ export {
   getExternalLinkProps,
   getElementChild,
   cloneChildren,
+  getCleanBoolean,
   DEFAULT_HOME,
   SEARCH_PARAMS,
   SIDENAV_WIDTH,

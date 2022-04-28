@@ -27,11 +27,13 @@ import {
   rootFixPages,
   rootFix,
   cleanRootFix,
-  findSelectedTopPageMenu
+  findSelectedTopPageMenu,
+  getCleanBoolean
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
 import classNames from 'classnames';
+import { utils } from 'axe-core';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -160,8 +162,7 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    
-    console.log(showBreadcrumbNav);
+    showBreadcrumbNav = getCleanBoolean(showBreadcrumbNav); // this will cast it to a boolean if its a 0 1 or true false string
 
     return (
       <section
@@ -215,8 +216,7 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            showBreadcrumbNav = {showBreadcrumbNav.toString()}
-            {(home?.hidden !== true && home?.title && home?.href && selectedTopPage) && (showBreadcrumbNav === true) && (
+            {showBreadcrumbNav === true && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
               <Breadcrumbs
                 pages={[
                   DEFAULT_HOME,

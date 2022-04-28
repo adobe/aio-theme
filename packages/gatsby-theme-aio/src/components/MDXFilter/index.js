@@ -28,7 +28,8 @@ import {
   DEFAULT_HOME,
   rootFix,
   rootFixPages,
-  cleanRootFix
+  cleanRootFix,
+  getCleanBoolean
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -163,6 +164,8 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
+    const fmShowBreadcrumbNav = pageContext?.frontmatter?.showBreadcrumbNav !== undefined ? pageContext.frontmatter.showBreadcrumbNav : true;
+    const showBreadcrumbNav = getCleanBoolean(fmShowBreadcrumbNav);
     const { home } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
@@ -275,7 +278,7 @@ export default ({ children, pageContext, query }) => {
                         flex-direction: column;
                       }
                     `}>
-                    {selectedTopPage && (
+                    {showBreadcrumbNav && selectedTopPage && (
                       <div
                         css={css`
                           margin-right: var(--spectrum-global-dimension-size-400);

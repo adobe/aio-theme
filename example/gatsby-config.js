@@ -37,6 +37,10 @@ module.exports = {
           {
             title: 'Guides',
             path: '/guides/index.md'
+          },
+          {
+            title: 'Guides without breadcrumbs',
+            path: '/guides/no-breadcrumbs.md'
           }
         ]
       },
@@ -105,6 +109,10 @@ module.exports = {
           {
             title: 'Creating an OAuth Client',
             path: '/guides/creating_oauth_client/index.md'
+          },
+          {
+            title: 'Guide with no breadcrumbs',
+            path: '/guides/no-breadcrumbs.md'
           }
         ]
       },
