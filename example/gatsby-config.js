@@ -41,6 +41,10 @@ module.exports = {
           {
             title: 'Guides without breadcrumbs',
             path: '/guides/no-breadcrumbs.md'
+          },
+          {
+            title: 'Guides without hero breadcrumbs',
+            path: '/guides/no-hero-breadcrumb.md'
           }
         ]
       },
