@@ -36,6 +36,8 @@ import { Contributors } from '../Contributors';
 import { Feedback } from '../Feedback';
 import { GitHubActions } from '../GitHubActions';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { Attribution } from '../Attribution';
+import { Edition } from '../Edition';
 import { OnThisPage } from '../OnThisPage';
 import { NextSteps } from '../NextSteps';
 import { NextPrev } from '../NextPrev';
@@ -147,6 +149,13 @@ export default ({ children, pageContext, query }) => {
     const selectedPage = findSelectedPage(location?.pathname, siteMetadata?.subPages);
     const selectedPageSiblings = findSelectedPageSiblings(location?.pathname, siteMetadata?.subPages);
     const { nextPage, previousPage } = findSelectedPageNextPrev(location?.pathname, siteMetadata?.subPages);
+
+    // Attribution
+    const contributorName = pageContext?.frontmatter?.contributor_name;
+    const contributorLink = pageContext?.frontmatter?.contributor_link;
+
+    // Edition
+    const edition = pageContext?.frontmatter?.edition;
 
     // OnThisPage
     const componentPathObj = allSitePage?.nodes.find(({ path }) => withPrefix(path) === location?.pathname);
@@ -328,6 +337,8 @@ export default ({ children, pageContext, query }) => {
                     </div>
                   </div>
                 )}
+                {contributorLink && <Attribution name={contributorName} link={contributorLink} />}
+                {edition && <Edition name={edition} />}
 
                 {filteredChildren}
 
@@ -338,13 +349,12 @@ export default ({ children, pageContext, query }) => {
                 {!isDiscovery && (
                   <div
                     css={css`
-                      display: flex;
-                      flex-wrap: wrap;
-                      align-items: center;
-                      justify-content: space-between;
-                      margin-top: var(--spectrum-global-dimension-size-800);
-                      margin-bottom: var(--spectrum-global-dimension-size-400);
-                    `}>
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: var(--spectrum-global-dimension-size-200);
+                  `}>
                     <div>
                       <Contributors
                         repository={repository}
@@ -362,10 +372,10 @@ export default ({ children, pageContext, query }) => {
                     </div>
                     <div
                       css={css`
-                        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                          margin-top: var(--spectrum-global-dimension-size-200);
-                        }
-                      `}>
+                      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                        margin-top: var(--spectrum-global-dimension-size-200);
+                      }
+                    `}>
                       <Feedback />
                     </div>
                   </div>

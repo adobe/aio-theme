@@ -52,6 +52,9 @@ class QueryBuilder {
                   frontmatter {
                     title
                     description
+                    edition
+                    contributor_name
+                    contributor_link
                     contributors
                     keywords
                     openAPISpec

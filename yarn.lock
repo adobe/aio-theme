@@ -3994,6 +3994,11 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.1.tgz#192f9ec29769600f1ab2c94f664ee5bb255bfb85"
   integrity sha512-Ay/5dYWp9mb/EwqiI6ZLGpk7oybuohkd1DwC+aCnoathJ2QJrG5HOF0Db43j9EvxqFMXBROvKIRNMP1EVx2bLA==
 
+"@spectrum-css/badge@1.0.18":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/badge/-/badge-1.0.18.tgz#19333f648287ea552bd81a1c99e9f417a0c311a5"
+  integrity sha512-cyKbWe9j4cEWS/OWlhl5Zi6+Pcb9jj/iZbT5U60v67DPTLVYY1J8NspR0b2n2PvAthYiQe+i8bIprARHS5YTLw==
+
 "@spectrum-css/breadcrumb@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@spectrum-css/breadcrumb/-/breadcrumb-3.0.1.tgz#b797a347d8069732efd947732d4266ce71c3a8b2"

@@ -1,0 +1,21 @@
+.edition {
+  position: relative;
+  padding: 6px 12px 12px 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: #ffc0c0;
+  border-radius: 3px;
+}
+.edition a {
+  color: #eb1000;
+  text-decoration: none;
+}
+.edition:after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 17px;
+  top: 5px;
+  left: 4px;
+}
