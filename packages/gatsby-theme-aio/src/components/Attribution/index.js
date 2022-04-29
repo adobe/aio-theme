@@ -12,13 +12,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
+import '@spectrum-css/badge';
+import '@spectrum-css/link';
 
 const Attribution = ({ ...props }) => {
   return (
-    <div className="attribution">
-      <a href={`${props.link}`} target="_blank">{`Thanks to ${props.name} for contributing this topic`}</a>
-    </div>
+    <span class={`spectrum-Badge spectrum-Badge--sizeS spectrum-Badge--neutral spectrum-Badge--quiet`} style='padding-bottom:4px'>
+      <a href={`${props.link}`} class="spectrum-Link spectrum-Link--overBackground spectrum-Link--quiet" target="_blank">{`Thanks to ${props.name} for contributing this topic!`}</a>
+    </span>
   );
 };
 

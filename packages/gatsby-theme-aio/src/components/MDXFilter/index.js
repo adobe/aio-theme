@@ -14,6 +14,8 @@ import React, { Children, cloneElement, useContext } from 'react';
 import { withPrefix } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/react';
+import '@spectrum-css/divider';
+import '@spectrum-css/actiongroup';
 import Context from '../Context';
 import {
   layoutColumns,
@@ -337,8 +339,11 @@ export default ({ children, pageContext, query }) => {
                     </div>
                   </div>
                 )}
-                {contributorLink && <Attribution name={contributorName} link={contributorLink} />}
-                {edition && <Edition name={edition} />}
+                <div class="spectrum-ActionGroup spectrum-ActionGroup--horizontal">
+                  {edition && <Edition name={edition} />}
+                  {/* {contributorLink && <div class="spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" style="height: auto; align-self: stretch;"></div>} */}
+                  {contributorLink && <Attribution name={contributorName} link={contributorLink} />}
+                </div>
 
                 {filteredChildren}
 
@@ -381,7 +386,6 @@ export default ({ children, pageContext, query }) => {
                   </div>
                 )}
               </div>
-
               {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
               {resourcesChild && resourcesChild}
             </div>

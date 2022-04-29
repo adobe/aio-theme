@@ -12,14 +12,33 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './index.css';
+import '@spectrum-css/badge';
+import '@spectrum-css/link';
 
+let editionText = '';
+let editionColor = '';
 const EDITIONS_LINK = "https://docs.magento.com/user-guide/getting-started.html#product-editions"
+
 const Edition = ({ ...props }) => {
+  switch (props.name) {
+    case 'ee_only':
+      editionText = 'Adobe Commerce only';
+      editionColor = 'spectrum-Badge--negative';
+      break;
+    case 'b2b_only':
+      editionText = 'B2B feature';
+      editionColor = 'spectrum-Badge--positive';
+      break;
+    default:
+      editionText = 'PWA Studio only';
+      editionColor = 'spectrum-Badge--informative';
+      break;
+  }
+
   return (
-      <span class="spectrum-Badge spectrum-Badge--sizeM spectrum-Badge--negative">{props.name}.&nbsp;
-        <a href={`${EDITIONS_LINK}`} target="_blank">Learn more.</a>
-      </span>
+    <span class={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} style='padding-bottom:4px'>{editionText}.&nbsp;
+      <a href={`${EDITIONS_LINK}`} class="spectrum-Link spectrum-Link--overBackground" target="_blank">Learn more</a>
+    </span>
   );
 };
 
