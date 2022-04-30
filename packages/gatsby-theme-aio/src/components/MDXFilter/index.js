@@ -164,8 +164,8 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
-    const fmShowBreadcrumbNav = pageContext?.frontmatter?.showBreadcrumbNav !== undefined ? pageContext.frontmatter.showBreadcrumbNav : true;
-    const showBreadcrumbNav = getCleanBoolean(fmShowBreadcrumbNav);
+    const fmHideBreadcrumbNav = pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
+    const hideBreadcrumbNav = getCleanBoolean(fmHideBreadcrumbNav);
     const { home } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
@@ -278,7 +278,7 @@ export default ({ children, pageContext, query }) => {
                         flex-direction: column;
                       }
                     `}>
-                    {showBreadcrumbNav && selectedTopPage && (
+                    {!hideBreadcrumbNav && selectedTopPage && (
                       <div
                         css={css`
                           margin-right: var(--spectrum-global-dimension-size-400);

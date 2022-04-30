@@ -6,7 +6,7 @@ contributors:
   - https://github.com/davidbenge
 ---
 
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)" showBreadcrumbNav="false"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={true}/>
 
 ![Hero image Guides](../hero-illustration.png)
 # Get Started With NO Breadcrumbs

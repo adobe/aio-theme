@@ -4,7 +4,7 @@ description: This is the guides overview page of Adobe Analytics
 contributors:
   - https://github.com/icaraps
   - https://github.com/davidbenge
-showBreadcrumbNav: false
+hideBreadcrumbNav: true
 ---
 
 Get Started - no breadcrumb nav

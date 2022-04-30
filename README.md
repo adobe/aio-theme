@@ -82,7 +82,7 @@ Using a theme, all of your default configuration lives in an npm package.
   - [<pre>](#pre-1)
   - [- https://github.com/simonwex](#--httpsgithubcomsimonwex)
   - [<pre>](#pre-2)
-  - [showBreadcrumbNav: false](#showbreadcrumbnav-false)
+  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
   - [<pre>](#pre-3)
   - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
@@ -945,8 +945,8 @@ contributors:
   - https://github.com/simonwex
 ---
 </pre>
-
-You can also specify whether or not to show breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag that option on the Hero component if needed. 
+  
+You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag that option on the Hero component if needed.
 <pre>
 ---
 title: Guides - Adobe Analytics
@@ -954,7 +954,7 @@ description: This is the guides overview page of Adobe Analytics without a bread
 contributors:
   - https://github.com/simonwex
   - https://github.com/davidbenge
-showBreadcrumbNav: false
+hideBreadcrumbNav: false
 ---
 </pre>
 
@@ -1028,7 +1028,7 @@ There are 3 different variants:
 ![hero default](docs/images/hero-default.png)
 
 ```
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
 ![Hero image](./illustration.png)
 
@@ -1047,7 +1047,7 @@ Use `background` to set a custom background color matching your color scheme. De
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-Use `showBreadcrumbNav` to control whether or not to show the breadcrumb navigation on this variant.  Defaults to `showBreadcrumbNav="true"`
+Use `hideBreadcrumbNav` to control whether to not show the breadcrumb navigation on this variant.  Defaults to false.
 
 **Half width variant**
 

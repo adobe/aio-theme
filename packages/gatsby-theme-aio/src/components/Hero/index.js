@@ -151,7 +151,7 @@ const Hero = ({
   buttons,
   variant = 'default',
   width = DESKTOP_SCREEN_WIDTH,
-  showBreadcrumbNav = true,
+  hideBreadcrumbNav = false,
   ...props
 }) => {
   const { siteMetadata, location } = useContext(Context);
@@ -162,7 +162,7 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    showBreadcrumbNav = getCleanBoolean(showBreadcrumbNav); // this will cast it to a boolean if its a 0 1 or true false string
+    hideBreadcrumbNav = getCleanBoolean(hideBreadcrumbNav); // this will cast it to a boolean if its a 0 1 or true false string
 
     return (
       <section
@@ -216,7 +216,7 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            {showBreadcrumbNav === true && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
+            {!hideBreadcrumbNav && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
               <Breadcrumbs
                 pages={[
                   DEFAULT_HOME,
