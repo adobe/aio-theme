@@ -33,7 +33,6 @@ import {
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
 import classNames from 'classnames';
-import { utils } from 'axe-core';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
