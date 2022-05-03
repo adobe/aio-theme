@@ -28,8 +28,7 @@ import {
   DEFAULT_HOME,
   rootFix,
   rootFixPages,
-  cleanRootFix,
-  getCleanBoolean
+  cleanRootFix
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -164,8 +163,8 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
-    const fmHideBreadcrumbNav = pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
-    const hideBreadcrumbNav = getCleanBoolean(fmHideBreadcrumbNav);
+    const hideBreadcrumbNav = pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true"); }
     const { home } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);

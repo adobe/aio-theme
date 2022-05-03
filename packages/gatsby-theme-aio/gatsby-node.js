@@ -154,7 +154,7 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         resolve: addFrontmatterType
       },
       hideBreadcrumbNav: {
-        type: 'String',
+        type: 'Boolean',
         resolve: addFrontmatterType
       }
     }

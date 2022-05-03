@@ -27,8 +27,7 @@ import {
   rootFixPages,
   rootFix,
   cleanRootFix,
-  findSelectedTopPageMenu,
-  getCleanBoolean
+  findSelectedTopPageMenu
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -161,7 +160,7 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    hideBreadcrumbNav = getCleanBoolean(hideBreadcrumbNav); // this will cast it to a boolean if its a 0 1 or true false string
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}"); }
 
     return (
       <section
