@@ -3,6 +3,7 @@ title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics
 contributors:
   - https://github.com/simonwex
+  - https://github.com/davidbenge
 keywords:
   - Creative Cloud
   - API Documentation
@@ -24,7 +25,7 @@ import AddAnalyticsUnity from './add-analytics/unity.md'
 import AddAnalyticsReactNative from './add-analytics/react-native.md'
 import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
 ![Hero image](hero-illustration.png)
 # Adobe Analytics

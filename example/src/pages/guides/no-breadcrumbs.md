@@ -1,12 +1,13 @@
 ---
-title: Guides - Adobe Analytics
+title: Guides - Adobe Analytics no breadcrumb nav
 description: This is the guides overview page of Adobe Analytics
 contributors:
   - https://github.com/icaraps
   - https://github.com/davidbenge
+hideBreadcrumbNav: true
 ---
 
-Get Started
+Get Started - no breadcrumb nav
 ===
 
 To get started with Analytics 2.0 APIs you must first decide whether your application will need

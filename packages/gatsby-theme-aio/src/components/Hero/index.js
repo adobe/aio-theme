@@ -146,6 +146,7 @@ const Hero = ({
   buttons,
   variant = 'default',
   width = DESKTOP_SCREEN_WIDTH,
+  hideBreadcrumbNav = false,
   ...props
 }) => {
   const { siteMetadata, location } = useContext(Context);
@@ -156,6 +157,7 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}"); }
 
     return (
       <section
@@ -209,7 +211,7 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            {home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
+            {!hideBreadcrumbNav && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
               <Breadcrumbs
                 pages={[
                   DEFAULT_HOME,
@@ -252,6 +254,7 @@ const Hero = ({
               }
             }
           `}>
+
           <HeroImage image={image} />
 
           <div
@@ -381,7 +384,8 @@ Hero.propTypes = {
   buttons: PropTypes.element,
   variant: PropTypes.string,
   width: PropTypes.string,
-  theme: PropTypes.string
+  theme: PropTypes.string,
+  showBreadcrumbNav: PropTypes.bool
 };
 
 HeroButtons.propTypes = {

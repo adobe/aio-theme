@@ -863,6 +863,18 @@ contributors:
   - https://github.com/simonwex
 ---
 </pre>
+  
+You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
+<pre>
+---
+title: Guides - Adobe Analytics
+description: This is the guides overview page of Adobe Analytics without a breadcrumb
+contributors:
+  - https://github.com/simonwex
+  - https://github.com/davidbenge
+hideBreadcrumbNav: false 
+---
+</pre>
 
 ### OpenAPI
 
@@ -934,7 +946,7 @@ There are 3 different variants:
 ![hero default](docs/images/hero-default.png)
 
 ```
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
 ![Hero image](./illustration.png)
 
@@ -952,6 +964,8 @@ Use `slots` to identify the markdown content:
 Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`;
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant.  Defaults to false.
 
 **Half width variant**
 
