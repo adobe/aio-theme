@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)
+
+
+### Features
+
+* Add feature to hide bread crumbs. ([d6e56aa](https://github.com/adobe/aio-theme/commit/d6e56aa9ff58a7f1d40b4ff3d96afce6a2d5b029))
+
+
+
 ## [4.1.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.1.1) (2022-04-28)
 
 
