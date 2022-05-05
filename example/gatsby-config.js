@@ -99,6 +99,10 @@ module.exports = {
       {
         title: 'No layout',
         path: '/no_layout/'
+      },
+      {
+        title: 'Search Frame',
+        path: '/search-frame/'
       }
     ],
     subPages: [
