@@ -442,7 +442,7 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID} href="#"></a>
+                        <a id={OPEN_PRIVACY_ID} href="#" aria-hidden="true" focusable="false" tabindex="-1"></a>
                       </Link>
                     </li>
                   );

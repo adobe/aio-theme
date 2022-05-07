@@ -41,6 +41,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
           <li
             key={index}
             role="treeitem"
+            aria-level={level}
             aria-expanded={page.header || expandedPages.includes(page.href)}
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
@@ -61,11 +62,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 {page.title}
               </h2>
             ) : isExternalLink(page.href) ? (
-              <a
-                {...getExternalLinkProps(page.href)}
-                href={page.href}
-                className="spectrum-SideNav-itemLink"
-                aria-level={level}>
+              <a {...getExternalLinkProps(page.href)} href={page.href} className="spectrum-SideNav-itemLink">
                 {page.title}
               </a>
             ) : (
@@ -84,9 +81,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                   }
                 }}
                 to={page.href}
-                className="spectrum-SideNav-itemLink"
-                role="treeitem"
-                aria-level={level}>
+                className="spectrum-SideNav-itemLink">
                 {page.title}
               </GatsbyLink>
             )}
@@ -113,6 +108,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 
   return (
     <nav
+      id='side-menu'
       role="navigation"
       aria-label="Primary"
       css={css`
