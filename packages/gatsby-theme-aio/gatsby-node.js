@@ -152,6 +152,10 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
       jsDoc: {
         type: 'Boolean',
         resolve: addFrontmatterType
+      },
+      hideBreadcrumbNav: {
+        type: 'Boolean',
+        resolve: addFrontmatterType
       }
     }
   };

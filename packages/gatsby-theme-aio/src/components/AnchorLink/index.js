@@ -12,13 +12,11 @@
 
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../../utils';
+import { getExternalLinkProps, isExternalLink } from '../../utils';
 import { Link } from '../Link';
 import PropTypes from 'prop-types';
 
 const AnchorLink = ({ href, variant = 'primary', ...props }) => {
-  href = gdocsRelativeLinkFix(href);
-
   return (
     <Link isQuiet={true} variant={variant}>
       {isExternalLink(href) ? (

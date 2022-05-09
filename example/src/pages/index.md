@@ -3,6 +3,7 @@ title: Overview - Adobe Analytics
 description: This is the overview page of Adobe Analytics
 contributors:
   - https://github.com/simonwex
+  - https://github.com/davidbenge
 keywords:
   - Creative Cloud
   - API Documentation
@@ -24,7 +25,7 @@ import AddAnalyticsUnity from './add-analytics/unity.md'
 import AddAnalyticsReactNative from './add-analytics/react-native.md'
 import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 
-<Hero slots="image, heading, text" background="rgb(64, 34, 138)"/>
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
 ![Hero image](hero-illustration.png)
 # Adobe Analytics
@@ -99,66 +100,3 @@ The timeout for API requests through adobe.io is currently *60 seconds*.
 
 The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
 When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`    
-
-
-<TabsBlock orientation="horizontal" slots="heading, content" repeat="7" theme="light" className='bgBlue code-block-0' />
-
-### Android
-
-<UpdateAndroid/>
-
-### iOS
-
-<UpdateIos/>
-
-### React Native
-
-<UpdateReactNative/>
-
-### Flutter
-
-<UpdateFlutter/>
-
-### Cordova
-
-<UpdateCordova/>
-
-### Unity
-
-<UpdateUnity/>
-
-### Xamarin
-
-<UpdateXamarin/>
-
-## Add Analytics to your application
-
-<TabsBlock orientation="horizontal" slots="heading, content" repeat="7"className="showMobileView"/>
-
-### Java
-
-<AddAnalyticsAndroid/>
-
-### iOS
-
-<AddAnalyticsIos/>
-
-### React Native
-
-<AddAnalyticsReactNative/>
-
-### Flutter
-
-<AddAnalyticsFlutter/>
-
-### Cordova
-
-<AddAnalyticsCordova/>
-
-### Unity
-
-<AddAnalyticsUnity/>
-
-### Xamarin
-
-<AddAnalyticsXamarin/>

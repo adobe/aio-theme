@@ -33,22 +33,20 @@ if (!ALGOLIA_INDEXING_MODES[algoliaIndexingMode]) {
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
+  flags: {
+    PARALLEL_QUERY_RUNNING: true
+  },
   plugins: [
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-mdx-embed`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/Layout/index.js`)
-      }
-    },
-    {
-      resolve: `gatsby-source-gdocs2md`,
-      options: {
-        folder: process.env.GOOGLE_DOCS_FOLDER_ID
       }
     },
     {
@@ -74,7 +72,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
-              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`]
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`, 'svg']
             }
           },
           {

@@ -163,6 +163,8 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
+    const hideBreadcrumbNav = pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true"); }
     const { home } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
@@ -275,7 +277,7 @@ export default ({ children, pageContext, query }) => {
                         flex-direction: column;
                       }
                     `}>
-                    {selectedTopPage && (
+                    {!hideBreadcrumbNav && selectedTopPage && (
                       <div
                         css={css`
                           margin-right: var(--spectrum-global-dimension-size-400);

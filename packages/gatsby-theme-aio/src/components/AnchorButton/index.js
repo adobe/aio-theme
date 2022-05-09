@@ -19,8 +19,6 @@ import '@spectrum-css/button';
 import classNames from 'classnames';
 
 const AnchorButton = ({ className, href, variant, isQuiet, ...props }) => {
-  href = gdocsRelativeLinkFix(href);
-
   if (isExternalLink(href)) {
     return (
       <Button

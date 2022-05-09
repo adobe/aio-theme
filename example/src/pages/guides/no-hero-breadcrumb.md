@@ -1,16 +1,18 @@
 ---
-title: Guides - Adobe Analytics
+title: Guides - Adobe Analytics no hero breadcrumb nav
 description: This is the guides overview page of Adobe Analytics
 contributors:
   - https://github.com/icaraps
   - https://github.com/davidbenge
 ---
 
-Get Started
-===
+<Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={true}/>
 
-To get started with Analytics 2.0 APIs you must first decide whether your application will need
-an OAuth client or a JWT client.
+![Hero image Guides](../hero-illustration.png)
+# Get Started With NO Breadcrumbs
+
+Get Started quick no breadcrumb nav
+
 
 Authentication
 ---

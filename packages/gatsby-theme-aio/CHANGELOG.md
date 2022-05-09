@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)
+
+
+### Features
+
+* Add feature to hide bread crumbs. ([d6e56aa](https://github.com/adobe/aio-theme/commit/d6e56aa9ff58a7f1d40b4ff3d96afce6a2d5b029))
+
+
+
+## [4.1.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.1.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* add prettier option bracketSameLine and format code ([c8ece66](https://github.com/adobe/aio-theme/commit/c8ece665fd35b87e43bc900cb897853b83d24639))
+* clean up gdocs leftovers and add CODEOWNERS ([cc9c576](https://github.com/adobe/aio-theme/commit/cc9c576408d4706aecc8da09e10b5a1f71263499))
+* header search button aria label ([#835](https://github.com/adobe/aio-theme/issues/835)) ([8b8d9fb](https://github.com/adobe/aio-theme/commit/8b8d9fbd0e67a6a788917015bac8a48d8aa33053))
+
+
+
+
+
+# [4.1.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.0...@adobe/gatsby-theme-aio@4.0.0) (2022-04-27)
+
+
+### Bug Fixes 
+
+* Upgrade gatsby plugins to work with gatsby@4.13.0. Removed support for gatsby-source-gdocs2md since it was unused and uncompatible with gatsby 4 ([803fa62](https://github.com/adobe/aio-theme/commit/803fa6279df1294170468cbdc21537606b40303b))
+
+
+
 # [4.0.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.0.0...@adobe/gatsby-theme-aio@3.24.2) (2022-04-21)
 
 
