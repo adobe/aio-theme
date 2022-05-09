@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.0...@adobe/gatsby-theme-aio@4.3.0-rc0) (2022-05-09)
+
+
+### Features
+
+* Add search widget into its own page via special path ([8dc75c8](https://github.com/adobe/aio-theme/commit/8dc75c8f926e307c4475ba13b9fd654022ceb414))
+
+
 ## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)
 
 
