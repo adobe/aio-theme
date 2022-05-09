@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 import '@spectrum-css/badge';
 import '@spectrum-css/link';
 import { Star } from '../Icons';
-import { css } from '@emotion/react';
 
 const Attribution = ({ ...props }) => {
   return (
