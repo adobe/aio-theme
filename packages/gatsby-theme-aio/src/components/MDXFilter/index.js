@@ -339,9 +339,11 @@ export default ({ children, pageContext, query }) => {
                     </div>
                   </div>
                 )}
-                <div class="spectrum-ActionGroup spectrum-ActionGroup--horizontal">
+                <div
+                  css={css`
+                    display: block;
+                `}>
                   {edition && <Edition name={edition} />}
-                  {/* {contributorLink && <div class="spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" style="height: auto; align-self: stretch;"></div>} */}
                   {contributorLink && <Attribution name={contributorName} link={contributorLink} />}
                 </div>
 
@@ -392,7 +394,7 @@ export default ({ children, pageContext, query }) => {
           </div>
           <Footer hasSideNav={hasSideNav} />
         </main>
-      </MDXProvider>
+      </MDXProvider >
     );
   }
 };

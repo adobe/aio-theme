@@ -17,22 +17,25 @@ import '@spectrum-css/link';
 
 let editionText = '';
 let editionColor = '';
-const EDITIONS_LINK = "https://docs.magento.com/user-guide/getting-started.html#product-editions"
+const EDITIONS_LINK = "https://docs.magento.com/user-guide/getting-started.html#product-editions";
 
 const Edition = ({ ...props }) => {
   switch (props.name) {
-    case 'ee_only':
+    case 'ee':
       editionText = 'Adobe Commerce only';
       editionColor = 'spectrum-Badge--negative';
       break;
-    case 'b2b_only':
+    case 'b2b':
       editionText = 'B2B feature';
       editionColor = 'spectrum-Badge--positive';
       break;
-    default:
+    case 'pwa':
       editionText = 'PWA Studio only';
       editionColor = 'spectrum-Badge--informative';
       break;
+    default:
+      editionText = 'Create an Edition tag';
+      editionColor = 'spectrum-Badge--yellow';
   }
 
   return (
