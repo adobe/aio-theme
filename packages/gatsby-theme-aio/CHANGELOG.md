@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.0...@adobe/gatsby-theme-aio@4.2.1) (2022-05-11)
+
+### Features
+
+* Attribution and Edition features ([495f298](https://github.com/adobe/aio-theme/commit/495f2987f8d0963775105d229aae5f74ef491e30))
+* Accessibility fixes in theme components and layout ([6e58d76](https://github.com/adobe/aio-theme/commit/6e58d765f9f5c539c7b93a6ee58963ae2a1b3afb))
+
+
 ## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)
 
 
