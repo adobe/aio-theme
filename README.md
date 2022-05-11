@@ -31,56 +31,59 @@ Using a theme, all of your default configuration lives in an npm package.
 
 ## Contents
 
-* [Getting started](#getting-started)
-  + [Using GitHub repository templates](#using-github-repository-templates)
-  + [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
-* [Content structure](#content-structure)
-  + [Markdown pages](#markdown-pages)
-  + [Links](#links)
-  + [Assets](#assets)
-* [Configuration](#configuration)
-  + [Environment variables](#environment-variables)
-  + [Global Navigation](#global-navigation)
-  + [Menus](#menus)
-  + [Home link](#home-link)
-  + [Side Navigation](#side-navigation)
-  + [Versions](#versions)
-* [Building the site](#building-the-site)
-  + [Adding a Path Prefix](#adding-a-path-prefix)
-* [Deploying the site](#deploying-the-site)
-  + [Preview on GitHub Pages](#preview-on-github-pages)
-  + [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
-* [Writing Enhanced Markdown](#writing-enhanced-markdown)
-  + [Metadata with Front matter](#metadata-with-front-matter)
-  + [OpenAPI](#openapi)
-  + [JSDoc](#jsdoc)
-  + [MDX](#mdx)
-  + [Modular Content System](#modular-content-system)
-  + [JSX Blocks](#jsx-blocks)
-  + [Hero Block](#hero-block)
-  + [Resources Block](#resources-block)
-  + [Discover Block](#discover-block)
-  + [Code Block](#code-block)
-  + [Inline Alert Block](#inline-alert-block)
-  + [Media Block](#media-block)
-  + [Announcement Block](#announcement-block)
-  + [Summary Block](#summary-block)
-  + [Title Block](#title-block)
-  + [Text Block](#text-block)
-  + [Tabs Block](#tabs-block)
-  + [Product Card](#product-card)
-  + [Product Card Grid](#product-card-grid)
-  + [Resource Card](#resource-card)
-  + [Carousel](#carousel)
-  + [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
-* [Customizations](#customizations)
-  + [Custom Layout](#custom-layout)
-  + [Frame](#frame)
-  + [Theming](#theming)
-* [Upgrading](#upgrading)
-* [Issue tracker](#issue-tracker)
-* [Contributing](#contributing)
-* [Releases](#releases)
+- [Getting started](#getting-started)
+  - [Using GitHub repository templates](#using-github-repository-templates)
+  - [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
+- [Content structure](#content-structure)
+  - [Frontmatter](#frontmatter)
+  - [Markdown pages](#markdown-pages)
+  - [Links](#links)
+  - [Assets](#assets)
+- [Configuration](#configuration)
+  - [Environment variables](#environment-variables)
+  - [Global Navigation](#global-navigation)
+  - [Menus](#menus)
+  - [Home link](#home-link)
+  - [Side Navigation](#side-navigation)
+  - [Versions](#versions)
+- [Building the site](#building-the-site)
+  - [Adding a Path Prefix](#adding-a-path-prefix)
+- [Deploying the site](#deploying-the-site)
+  - [Preview on GitHub Pages](#preview-on-github-pages)
+  - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
+- [Writing Enhanced Markdown](#writing-enhanced-markdown)
+  - [Metadata with Front matter](#metadata-with-front-matter)
+  - [OpenAPI](#openapi)
+  - [JSDoc](#jsdoc)
+  - [MDX](#mdx)
+  - [Modular Content System](#modular-content-system)
+  - [JSX Blocks](#jsx-blocks)
+  - [Hero Block](#hero-block)
+  - [Resources Block](#resources-block)
+  - [Discover Block](#discover-block)
+  - [Code Block](#code-block)
+  - [Inline Alert Block](#inline-alert-block)
+  - [Media Block](#media-block)
+  - [Announcement Block](#announcement-block)
+  - [Summary Block](#summary-block)
+  - [Title Block](#title-block)
+  - [Text Block](#text-block)
+  - [Tabs Block](#tabs-block)
+  - [Product Card](#product-card)
+  - [Product Card Grid](#product-card-grid)
+  - [Resource Card](#resource-card)
+  - [Carousel](#carousel)
+  - [Edition](#edition)
+  - [Attribution](#attribution)
+  - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
+- [Customizations](#customizations)
+  - [Custom Layout](#custom-layout)
+  - [Frame](#frame)
+  - [Theming](#theming)
+- [Upgrading](#upgrading)
+- [Issue tracker](#issue-tracker)
+- [Contributing](#contributing)
+- [Releases](#releases)
 
 ## Getting started
 
@@ -88,15 +91,15 @@ This section will help you get started building a site with the Adobe I/O Theme.
 
 **Pre-requisites**
 
-* Install [Node.js LTS](https://nodejs.org/en/download/)
-* Install a package manager like [npm](https://docs.npmjs.com/cli/npm)
+- Install [Node.js LTS](https://nodejs.org/en/download/)
+- Install a package manager like [npm](https://docs.npmjs.com/cli/npm)
 
 ### Using GitHub repository templates
 
 To initialize a site repository, you can use one of the available site templates mentioned above.
 Simply click on the “Use this template” button to create a new GitHub repository of the template.
 
-*The templates are pre-configured with example pages.*
+_The templates are pre-configured with example pages._
 
 ### Using the Adobe I/O CLI
 
@@ -112,7 +115,7 @@ Then install the Doc Plugin by running.
 aio discover -i
 ```
 
-Select the `@adobe/aio-cli-plugin-doc` plugin by pressing the *Spacebar* and finally press *Enter* to install it.
+Select the `@adobe/aio-cli-plugin-doc` plugin by pressing the _Spacebar_ and finally press _Enter_ to install it.
 
 For more information about the Doc plugin, see https://github.com/adobe/aio-cli-plugin-doc.
 
@@ -137,9 +140,59 @@ The content of the site is written in [Markdown](https://daringfireball.net/proj
 As in most cases, the markdown content is stored in GitHub, we support [GitHub Flavored Markdown (GFM)](https://help.github.com/categories/writing-on-github/), which provides additional functionality for common formatting needs.
 Additionally, Adobe extended Markdown in a few ways to support certain features see [Writing Enhanced Markdown](#writing-enhanced-markdown).
 
+### Frontmatter
+
+Frontmatter is metadata — at the top of a markdown file — that looks like this:
+
+```yaml
+---
+title: FAQ—Frequently Asked Questions
+description: The FAQ page provides answers to common questions about the configuration and usage of Adobe Analytics in your site.
+keywords:
+  - Creative Cloud
+  - API Documentation
+  - UXP
+edition: ee
+contributor_name: Kalpesh Mehta from Corra
+contributor_link: https://partners.magento.com/portal/details/partner/id/70/
+layout: none
+---
+# First heading
+```
+
+The `key:value` entries shown in the preceeding example provide your topic with features that include:
+
+- Edition-specific pages for products (such as Commerce vs Open Source)
+- Contributor attributions for partners and community members (contributor_name, contributor_link)
+- Better search results (title, description, keywords)
+- Customizable layouts for pages
+- Topic maintainer names and links, and more.
+
+More keywords and value options can be added in future versions as needed.
+
+#### Edition keyword
+
+Adding an `edition` keyword to the frontmatter adds a badge to the top of the page, indicating that the page applies to that product edition. Current values for the `edition` keyword are:
+
+- `ee`: Adobe Commerce only
+- `b2b`: B2B feature
+- `pwa`: PWA Studio only
+
+For example, adding the `edition` keyword to the frontmatter generates a badge above the page title, as shown here using the `ee` value:
+
+![edition frontmatter keyword](docs/images/edition_keyword_screenshot.png)
+
+#### Contributor name and link keywords
+
+Adding `contributor_name` and `contributor_link` keywords adds a badge to the top of the page, indicating the partner agency or community contributor name with a link to their business or GitHub profile.
+
+For example, adding the `contributor_name` and `contributor_link` keywords to the frontmatter adds an additional badge above the page title:
+
+![attribution frontmatter keyword](docs/images/attribution_keyword_screenshot.png)
+
 ### Markdown pages
 
-Make sure the markdown content is located  under `src/pages`.
+Make sure the markdown content is located under `src/pages`.
 
 It is recommended to use a folder structure to define your site pages e.g. :
 
@@ -199,12 +252,14 @@ You can exclude pages from the build by either moving them out of `src/pages` or
 
 Using markdown links to link to pages e.g. :
 
-*Relative link*
+_Relative link_
+
 ```
 [Link to mypage](../mypage.md)
 ```
 
-*Absolute link*
+_Absolute link_
+
 ```
 [Link to mypage](/src/pages/mypage.md)
 ```
@@ -217,12 +272,14 @@ Add the suffix `#` to a link to jump to a section of the page for example if you
 
 You can also use absolute links or relative links to link between markdown pages e.g. with the example folder structure from [Content Structure](#content-structure) you can add a link from `/guides/index.md` to `/api/index.md` with:
 
-*Relative link*
+_Relative link_
+
 ```
 [Link to API](../api/)
 ```
 
-*Absolute link*
+_Absolute link_
+
 ```
 [Link to API](/api/)
 ```
@@ -352,9 +409,9 @@ There are two parts to adding the Algolia search feature to your site:
 **Admin Only.** To publish your site's content to Algolia so it's searchable, add the following variables to your site's `.env` file:
 
 - `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
-   - `skip` mode - skip running of search indexation (default)
-   - `console` mode - index data will be published to console, but not pushed to real search index
-   - `index` mode - index data will be pushed to real search index
+  - `skip` mode - skip running of search indexation (default)
+  - `console` mode - index data will be published to console, but not pushed to real search index
+  - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. You should never commit this key to GitHub.
 - `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
 - `ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
@@ -364,8 +421,8 @@ There are two parts to adding the Algolia search feature to your site:
 To enable search on the browser side, you'll need to set the following variables in your site's `.env` file:
 
 - `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `GATSBY_ALGOLIA_API_KEY` -  Alpha-numeric string required to search indexes on Algolia servers.
-- `GATSBY_ALGOLIA_INDEX_ALL` -  List of all indexes to search e.g. `["index1", "index2"]`
+- `GATSBY_ALGOLIA_API_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
+- `GATSBY_ALGOLIA_INDEX_ALL` - List of all indexes to search e.g. `["index1", "index2"]`
 - `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
 ## Global Navigation
@@ -461,7 +518,6 @@ pages: [
 ]
 ```
 
-
 ## Home link
 
 The home link should be used to inform the user about a parent or sibling site external to the current one.
@@ -536,9 +592,10 @@ subPages: [
 ```
 
 Similarly to the Global Navigation:
-* The order in which the sub pages are defined is respected in the Side Navigation.
-* Setting search and hash values in the path is supported
-* Linking markdown files is supported
+
+- The order in which the sub pages are defined is respected in the Side Navigation.
+- Setting search and hash values in the path is supported
+- Linking markdown files is supported
 
 **Important: All sub pages paths have to be children of a top-level navigation path.**
 
@@ -685,7 +742,7 @@ subPages: [
 
 #### Auto-collapsing of multi-level side navigation
 
-In the previous multi-level side navigation example, if the current location is `/support/`,  `Overview` auto-collapses and selects `Help` by default because `Overview` and `Help` paths both matches the current location `/support/`.
+In the previous multi-level side navigation example, if the current location is `/support/`, `Overview` auto-collapses and selects `Help` by default because `Overview` and `Help` paths both matches the current location `/support/`.
 
 It also means that if you don't want the auto-collapsing behavior, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`,
 you would have to define a different path for `Overview` and `Help`:
@@ -749,9 +806,9 @@ Navigation items should be written in sentence case.
 
 Make sure that you are using the right variation for your products’ context and users’ needs. Don’t mix behavior, styles, or variations together in a single navigation menu:
 
-* When navigation is simple, use the single-level side navigation.
-* When navigation is simple but categorical, use the single-level side navigation with headers.
-* When navigation is expansive, hierarchical, and/or you need progressive disclosure in your menu behavior, use the multi-level side navigation.
+- When navigation is simple, use the single-level side navigation.
+- When navigation is simple but categorical, use the single-level side navigation with headers.
+- When navigation is expansive, hierarchical, and/or you need progressive disclosure in your menu behavior, use the multi-level side navigation.
 
 #### Avoid deep nested menus
 
@@ -795,9 +852,9 @@ aio doc generate
 
 Or run following commands:
 
-* To build and preview a production version of the site: `npm run start`.
-* To build and preview a production version of the site with path prefix: `npm run start:prefix`.
-* To build and preview a development version of the site with hot reloading: `npm run dev`.
+- To build and preview a production version of the site: `npm run start`.
+- To build and preview a production version of the site with path prefix: `npm run start:prefix`.
+- To build and preview a development version of the site with hot reloading: `npm run dev`.
 
 ### Adding a Path Prefix
 
@@ -830,15 +887,17 @@ You can manually trigger the deploy workflow by pressing the **Run workflow** bu
 2. Click on the "Deploy" workflow
 3. Press **Run workflow**. You can choose which branch the workflow is run on and specify the deployment type (`dev` for development or/and `prod` for production).
 
-Using the `Clean cache`: typically you won't have to set this to `yes`. The most common scenario of when to use is when you do a deploy and a particular resource isn't updating to the most recent change. eg, a static image is still on the old version. Try setting this to `yes` and redeploy the site. 
+Using the `Clean cache`: typically you won't have to set this to `yes`. The most common scenario of when to use is when you do a deploy and a particular resource isn't updating to the most recent change. eg, a static image is still on the old version. Try setting this to `yes` and redeploy the site.
 
-Using the `Exclude a subfolder from deletion`: folders listed here separated out by commas will exclude them from being overwritten when doing a deploy. This is useful if you have multiple sites deploying to the same path. eg, one repo deploys to `/photoshop/` and another repo deploys to `/photoshop/docs/`. You can set the the repo that deploys to `/photoshop/` option as `Exclude a subfolder from deletion`: `docs`. Then whenever that `/photoshop/` repo deploys, the subfolder `docs` will not get deleted. You can also list out multiple subfolders separated by commas like so: `api, photoshop-api-docs, uxp, another-path` etc. 
+Using the `Exclude a subfolder from deletion`: folders listed here separated out by commas will exclude them from being overwritten when doing a deploy. This is useful if you have multiple sites deploying to the same path. eg, one repo deploys to `/photoshop/` and another repo deploys to `/photoshop/docs/`. You can set the the repo that deploys to `/photoshop/` option as `Exclude a subfolder from deletion`: `docs`. Then whenever that `/photoshop/` repo deploys, the subfolder `docs` will not get deleted. You can also list out multiple subfolders separated by commas like so: `api, photoshop-api-docs, uxp, another-path` etc.
 
 **Pre-requisites:**
 
 1. Setting your `PATH_PREFIX` as explained [here](#adding-a-path-prefix). This is the sub-folder to deploy this micro-site to.
-  * For example, if you want to deploy to `https://example.com/foo/bar`, you must set `PATH_PREFIX` to `/foo/bar/`
-  * For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
+
+- For example, if you want to deploy to `https://example.com/foo/bar`, you must set `PATH_PREFIX` to `/foo/bar/`
+- For sites deployed to the `root`, use `/` as the `PATH_PREFIX`
+
 2. The person initiating the deploy workflow must have `write` access to the repository.
 
 ## Writing Enhanced Markdown
@@ -847,21 +906,26 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
-<pre>
----
+## <pre>
+
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
+
 ---
+
 </pre>
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
-<pre>
----
+## <pre>
+
 contributors:
-  - https://github.com/simonwex
+
+- https://github.com/simonwex
+
 ---
+
 </pre>
   
 You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
@@ -880,10 +944,10 @@ hideBreadcrumbNav: false
 
 We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply use front matter to define the spec URL.
 
-<pre>
----
-openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json
----
+## <pre>
+
+## openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json
+
 </pre>
 
 ### JSDoc
@@ -892,10 +956,10 @@ We currently recommend to use the [JSDoc to markdown](https://github.com/jsdoc2m
 
 Use front matter to specify a JSDoc markdown document.
 
-<pre>
----
-jsDoc: true
----
+## <pre>
+
+## jsDoc: true
+
 </pre>
 
 Then annotate your JS parameters with `<JsDocParameters/>` to render them nicely see the [example markdown file](https://raw.githubusercontent.com/adobe/aio-theme/main/example/src/pages/jsdoc/index.md).
@@ -913,15 +977,15 @@ As we try to limit the use of MDX in favor of pure markdown, we have come up wit
 
 The modular content system is a set of content blocks with variants and compositions that can be used to create pages.
 
-* **Content Blocks are goal-focused.** A group of content that has a specific goal or intention, to structure and support the overall narrative.
-*Examples are groupings of text, groupings of buttons, and hero content.*
+- **Content Blocks are goal-focused.** A group of content that has a specific goal or intention, to structure and support the overall narrative.
+  _Examples are groupings of text, groupings of buttons, and hero content._
 
-* **Variants are messaging-focused.** The messaging points/content (this includes both written and visual content/images) that makes the goal of the content block happen.
-*Examples are text content blocks with icons vs no icons.*
+- **Variants are messaging-focused.** The messaging points/content (this includes both written and visual content/images) that makes the goal of the content block happen.
+  _Examples are text content blocks with icons vs no icons._
 
-* **Compositions are layout-focused.** The overall narrative for the page.
+- **Compositions are layout-focused.** The overall narrative for the page.
 
-**A variant can go into a *content block*. Multiple *content blocks* make up a *composition*.**
+**A variant can go into a _content block_. Multiple _content blocks_ make up a _composition_.**
 
 ### JSX Blocks
 
@@ -937,9 +1001,9 @@ They are used to set up the tone of the page and optionally add call to actions 
 
 There are 3 different variants:
 
-* The default variant for Documentation pages.
-* The half width variant for Product/Platform authored pages.
-* The full width variant for Index home pages.
+- The default variant for Documentation pages.
+- The half width variant for Product/Platform authored pages.
+- The full width variant for Index home pages.
 
 **Default variant:**
 
@@ -957,9 +1021,9 @@ Adobe Product API offers limitless ways to integrate your most important custome
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (required)
-* `image` (optional)
+- `heading` (required)
+- `text` (required)
+- `image` (optional)
 
 Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`;
 
@@ -992,12 +1056,12 @@ Use `variant="halfwidth""` to set the half width variant.
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (required)
-* `image` (required)
-* `background` (optional)
-* `icon` (optional)
-* `buttons` (optional)
+- `heading` (required)
+- `text` (required)
+- `image` (required)
+- `background` (optional)
+- `icon` (optional)
+- `buttons` (optional)
 
 **Full width variant**
 
@@ -1020,11 +1084,11 @@ Use `variant="fullwidth""` to set the full width variant.
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (required)
-* `image` (required)
-* `background` (optional)
-* `buttons` (optional)
+- `heading` (required)
+- `text` (required)
+- `image` (required)
+- `background` (optional)
+- `buttons` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
@@ -1048,8 +1112,8 @@ They can point to internal or external documents or pages.
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `links` (required)
+- `heading` (required)
+- `links` (required)
 
 ### Discover Block
 
@@ -1126,10 +1190,10 @@ Tutorials and videos for the community.
 
 Use `slots` to identify the markdown content:
 
-* `heading` (1 required per row)
-* `text` (required)
-* `link` (required)
-* `image` (optional)
+- `heading` (1 required per row)
+- `text` (required)
+- `link` (required)
+- `image` (optional)
 
 Use `width` to define the size of the block.
 
@@ -1142,6 +1206,7 @@ A Code Block is an enhanced code section which supports additional features like
 ```
 <CodeBlock slots="heading, code" repeat="3" languages="JSON, CURL, JSON" />
 ```
+
 <pre>
 #### Request
 
@@ -1184,8 +1249,8 @@ curl -X POST \
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `code` (required)
+- `heading` (required)
+- `code` (required)
 
 Use `repeat` to define how many code sections are part of the Code Block.
 
@@ -1205,7 +1270,7 @@ The refresh token grant type is automatically added to OAuth clients created aft
 
 Use `slots` to identify the markdown content:
 
-* `text` (required)
+- `text` (required)
 
 Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
 
@@ -1223,7 +1288,7 @@ The Media Block is used to display interactive medias like videos.
 
 Use `slots` to identify the markdown content:
 
-* `video` (required)
+- `video` (required)
 
 ### Announcement Block
 
@@ -1244,9 +1309,9 @@ Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time 
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `button` (required)
-* `text` (optional)
+- `heading` (required)
+- `button` (required)
+- `text` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
 
@@ -1274,10 +1339,10 @@ Creative Cloud family of products.
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `buttons` (1 button required at least)
-* `text` (optional)
-* `image` (optional)
+- `heading` (required)
+- `buttons` (1 button required at least)
+- `text` (optional)
+- `image` (optional)
 
 Use `background` to set a custom background color matching your color scheme.
 
@@ -1301,8 +1366,8 @@ With the Cloud Content APIs, you can bring design work created in XD directly to
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (optional)
+- `heading` (required)
+- `text` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
@@ -1398,13 +1463,13 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (required). Support multiple texts e.g `text1, text2` etc.
-* `links` (optional). Supports 1 optional image per link.
-* `buttons` (optional)
-* `icons` (optional)
-* `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.
-* `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`.
+- `heading` (required)
+- `text` (required). Support multiple texts e.g `text1, text2` etc.
+- `links` (optional). Supports 1 optional image per link.
+- `buttons` (optional)
+- `icons` (optional)
+- `image` (optional). `image` should only be defined as first or last slot to define the layout. `image` excludes `video`.
+- `video` (optional). `video` should only be defined as first or last slot to define the layout. `video` excludes `image`.
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
@@ -1458,16 +1523,15 @@ Tabs block is a custom block component that allows for tabbed content that can b
 
 Use `slots` to identify the markdown content:
 
-* `heading` (1 required per row)
-* `image` (optional)
-* `content` (1 required per row)
+- `heading` (1 required per row)
+- `image` (optional)
+- `content` (1 required per row)
 
 Use `theme` to match the text color to your color scheme. Defaults to `light`.
 
 Use `orientation` to tabs can be either horizontal or vertical. Defaults to `horizontal`.
 
 Use `repeat` to define how many tab items sections are part of the tabs Block.
-
 
 ### Product Card
 
@@ -1516,10 +1580,10 @@ Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Ado
 
 Use `slots` to identify the markdown content:
 
-* `heading` (required)
-* `text` (required)
-* `buttons` (1 button required at least)
-* `icon` (optional)
+- `heading` (required)
+- `text` (required)
+- `buttons` (1 button required at least)
+- `icon` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
@@ -1591,10 +1655,10 @@ Ash Ryan Arnwine, March 12th 2020
 
 Use `slots` to identify the markdown content:
 
-* `link` (required)
-* `heading` (required)
-* `image` (required)
-* `text` (optional)
+- `link` (required)
+- `heading` (required)
+- `image` (required)
+- `text` (optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
@@ -1618,8 +1682,6 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 * [Learn more](../guides)
 * [View docs](../guides)
 
-
-
 ![Resource 3](images/resource3.png)
 
 #### CC Storage API
@@ -1632,15 +1694,18 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 Use `slots` to identify the markdown content:
 
-* `image` (required)
-* `heading` (optional)
-* `text` (required)
-* `buttons`(optional)
+- `image` (required)
+- `heading` (optional)
+- `text` (required)
+- `buttons`(optional)
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 Use `repeat` to define how many code sections are part of the carousel.
 
+### Edition
+
+The Edition component is used to display the edition of the product.
 
 ### Embedding markdown documents and filtering content
 
@@ -1651,6 +1716,7 @@ You can use MDX transclusion to embed markdown documents into other markdown doc
 For example, if you want to include the content of `overview.md` into `index.md`:
 
 `index.md` content:
+
 ```
 import Overview from './overview.md'
 
@@ -1712,7 +1778,7 @@ Together with Variant Blocks, the author can query what should be rendered from 
 For example, let's say there are 2 repositories named http://github.com/adobedocs/repo1 and http://github.com/adobedocs/repo2.
 Both are sites using the theme and have markdown content defined under `src/pages`.
 
-1) repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
+1. repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
 
 ```
 ## How to Debug Your Plugin
@@ -1738,11 +1804,11 @@ First launch the Photoshop console, by clicking Developer > Console
 ![image](../test/image.png)
 ```
 
-*Use `repeat` to define how many elements are part of the Variant Block. Use any `key=value` property to mark your Variant Block.*
+_Use `repeat` to define how many elements are part of the Variant Block. Use any `key=value` property to mark your Variant Block._
 
-2) repo2 added repo1 as dependency with `npm install --save adobedocs/repo1` to be able to reference its markdown content.
+2. repo2 added repo1 as dependency with `npm install --save adobedocs/repo1` to be able to reference its markdown content.
 
-3) repo2 embeds repo1 content by using the `import` statement and inserts the content in its own markdown together with a `query` filter to only display what is needed.
+3. repo2 embeds repo1 content by using the `import` statement and inserts the content in its own markdown together with a `query` filter to only display what is needed.
 
 ```
 import Debugging from 'repo1/src/pages/debugging/index.md'
@@ -1775,6 +1841,7 @@ You can query multiple elements, for example you can add the section with the im
 ```
  <Debugging query="product=Photoshop&image=test" />
 ```
+
 ## Customizations
 
 When using themes, you can take advantage of something called [shadowing](https://www.gatsbyjs.com/docs/themes/shadowing/). This allows you to override the default component included in the theme with a custom one you’ve created.
@@ -1817,7 +1884,7 @@ root
 
 You can define your own `Code` components under `src/@adobe/gatsby-theme-aio/components/Code/index.js`.
 
-*Notice omitting the `src` directory in the shadow folder.*
+_Notice omitting the `src` directory in the shadow folder._
 
 ### Custom layout
 

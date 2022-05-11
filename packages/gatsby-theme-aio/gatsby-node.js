@@ -133,6 +133,10 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         type: '[String]',
         resolve: addFrontmatterType
       },
+      edition: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
       openAPISpec: {
         type: 'String',
         resolve: addFrontmatterType

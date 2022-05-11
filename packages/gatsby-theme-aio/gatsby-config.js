@@ -129,6 +129,7 @@ module.exports = {
             'description',
             'content',
             'keywords',
+            'edition',
             'modifiedTime',
             'size',
             'prettySize',
