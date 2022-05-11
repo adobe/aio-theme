@@ -4024,10 +4024,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/checkbox/-/checkbox-3.0.1.tgz#6f36377d8bd556989ddd1dec2506dc295c5fcda8"
   integrity sha512-fI0q2Cp6yU4ORyE6JWUSMYNgEtGf6AjYViZ2Weg3UPTYBQuWdQd8J0ZTcH38pDMyARFPRdiXgQ3KnyX5Hk5huw==
 
-"@spectrum-css/dialog@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.1.tgz#33aae036282159f6aa998848b8c0828640a9620a"
-  integrity sha512-hUFbRR6RGT63MNuP7wP+k9KU+uRuICsduMihskh700e+jiQ+Gsv53fBFDlB843FoZYlIXzFQXgtjMUC5a4Qibw==
+"@spectrum-css/dialog@6.0.11":
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-6.0.11.tgz#3d276ac14cc2eaeb2653558103f4f732f94e8654"
+  integrity sha512-yQyUwAVzIhuxSCTw4rdbj3116IqOFsE4CncgQxaifOitcoMDBQ7vD4WAYS6qwAW0Sy9CvzHZqwT9vDooIw2Syg==
 
 "@spectrum-css/divider@1.0.24":
   version "1.0.24"
