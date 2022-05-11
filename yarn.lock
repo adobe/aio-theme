@@ -4029,10 +4029,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/dialog/-/dialog-3.0.1.tgz#33aae036282159f6aa998848b8c0828640a9620a"
   integrity sha512-hUFbRR6RGT63MNuP7wP+k9KU+uRuICsduMihskh700e+jiQ+Gsv53fBFDlB843FoZYlIXzFQXgtjMUC5a4Qibw==
 
-"@spectrum-css/divider@1.0.24":
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.24.tgz#743ab3f02a4b44c8eb02f971394609f9034ae4d9"
-  integrity sha512-1di+RgsCNm+HsQl20lAwXh23RPMZxLInlz8A0w+r4s9WRrwInEbTC3xHmfN6rSfBPJKQSQ5J78ipOH8qDSB0Jg==
+"@spectrum-css/divider@1.0.25":
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/divider/-/divider-1.0.25.tgz#7d541a14b403ff572ce62a03845d8ca47cfb3f9d"
+  integrity sha512-TQgvR32TTx2mCoA2JIODHCctcqL9hpJDene+RjbSRXbWNn0umk84NAgZ5/6Y9UZcexreAiM5uHDXO8Dv/M0eug==
   dependencies:
     "@spectrum-css/vars" "^8.0.0"
 
