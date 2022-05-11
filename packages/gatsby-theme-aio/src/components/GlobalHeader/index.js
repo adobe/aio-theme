@@ -74,6 +74,10 @@ const getAvatar = async (userId) => {
   }
 };
 
+const toggleSideNavExpanded = (setSideNavExpanded) => {
+  setSideNavExpanded((sideNavExpanded) => !sideNavExpanded);
+};
+
 const GlobalHeader = ({
   hasIMS,
   ims,
@@ -104,6 +108,7 @@ const GlobalHeader = ({
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [sideNavExpanded, setSideNavExpanded] = useState(false);
 
   const POPOVER_ANIMATION_DELAY = 200;
   const versionPopoverId = nextId();
@@ -279,10 +284,14 @@ const GlobalHeader = ({
                   `}>
                   <ActionButton
                     isQuiet
+                    aria-expanded={sideNavExpanded}
+                    aria-controls="side-menu"
+                    aria-label="Open side menu"
                     onClick={() => {
                       toggleSideNav && toggleSideNav();
+                      toggleSideNavExpanded();
                     }}>
-                    <TripleGripper />
+                    <TripleGripper aria-hidden="true" focusable="false" />
                   </ActionButton>
                 </div>
                 <a
