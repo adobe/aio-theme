@@ -3994,10 +3994,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/actiongroup/-/actiongroup-1.0.24.tgz#5d16a8225d6aff319c220c01b056667d511c5541"
   integrity sha512-+XQXraDU1Kjb42kDZw/TWe40/uYLYP+f2jwITpR5YRVLMhbgC5q+CVz37g/Yfy1+uhuTeOCmCPn+pMSGw1PvVQ==
 
-"@spectrum-css/assetlist@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.1.tgz#192f9ec29769600f1ab2c94f664ee5bb255bfb85"
-  integrity sha512-Ay/5dYWp9mb/EwqiI6ZLGpk7oybuohkd1DwC+aCnoathJ2QJrG5HOF0Db43j9EvxqFMXBROvKIRNMP1EVx2bLA==
+"@spectrum-css/assetlist@3.0.22":
+  version "3.0.22"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/assetlist/-/assetlist-3.0.22.tgz#9a252cdf582bef7802a4c73561fac27edbde168f"
+  integrity sha512-Nw33rTOnYTCtmoPUYBdug5UEJ4e44dm++wuMy/1Q2xJLuiLAPnD7Re5ClgMrORuujx1cKp8aagvxXyhlayMQKA==
 
 "@spectrum-css/badge@^1.0.18":
   version "1.0.18"
