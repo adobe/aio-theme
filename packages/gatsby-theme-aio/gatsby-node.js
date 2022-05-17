@@ -167,11 +167,3 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
 
   createResolvers(resolvers);
 };
-
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage } = actions
-  if (page.path.match(/search-frame/)) {
-    page.context.layout = "search-frame"
-    createPage(page)
-  }
-}

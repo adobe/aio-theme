@@ -342,7 +342,7 @@ export default ({ children, pageContext, location }) => {
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
 
-  if (pageContext.layout === "search-frame") {
+  if (pathPrefix === "/search-frame") {
     return (
       <>
       <Helmet>
