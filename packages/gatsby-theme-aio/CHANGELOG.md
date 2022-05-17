@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc0...@adobe/gatsby-theme-aio@4.3.0-rc1) (2022-05-17)
+
+
+### Fix
+
+* Check by path prefix instead and remove package-lock ([e3d7e30](https://github.com/adobe/aio-theme/commit/e3d7e30dcd6374845864a2f76c54ec96f861ea26))
+
+
 ## [4.3.0-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.0...@adobe/gatsby-theme-aio@4.3.0-rc0) (2022-05-09)
 
 
