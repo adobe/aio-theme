@@ -133,6 +133,14 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         type: '[String]',
         resolve: addFrontmatterType
       },
+      contributor_name: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
+      contributor_link: {
+        type: 'String',
+        resolve: addFrontmatterType
+      },
       edition: {
         type: 'String',
         resolve: addFrontmatterType

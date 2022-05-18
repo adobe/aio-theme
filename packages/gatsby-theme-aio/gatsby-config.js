@@ -134,6 +134,8 @@ module.exports = {
             'size',
             'prettySize',
             'extension',
+            'contributor_name',
+            'contributor_link',
             'contributors',
             'slug',
             'words',
