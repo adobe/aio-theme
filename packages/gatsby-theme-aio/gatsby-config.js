@@ -136,6 +136,7 @@ module.exports = {
             'extension',
             'contributor_name',
             'contributor_link',
+            'contributors',
             'slug',
             'words',
             'anchor',
