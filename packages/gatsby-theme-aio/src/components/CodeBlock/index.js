@@ -30,6 +30,13 @@ const CodeBlock = (props) => {
   };
 
   useEffect(() => {
+    const codePres = [...document.querySelectorAll('pre.prism-code')];
+    codePres.map((codePre) => {
+      codePre.tabIndex = 0;
+    });
+  }, []);
+
+  useEffect(() => {
     positionSelectedTabIndicator();
   }, [tabs]);
 

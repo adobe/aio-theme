@@ -203,6 +203,14 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
     const selectedTab = tabs.filter((tab) => tab?.current)[index];
     positionIndicator(selectedTabIndicator, selectedTab);
   };
+
+  const handleOnChange = (index) => {
+    setSelectedIndex({
+      tab: index
+    });
+    positionSelectedTabIndicator(index);
+  };
+
   return (
     <section
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
@@ -247,22 +255,38 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                 const ref = createRef();
                 tabs.push(ref);
                 const isSelected = selectedIndex.tab === index;
-                const itemPopoverId = nextId();
                 return (
                   <Item
                     className={'tabItem'}
                     key={`tabItem_${index}`}
-                    tabIndex={0}
+                    id={`tabItem_${index}`}
                     ref={ref}
                     isSelected={isSelected}
-                    aria-controls={itemPopoverId}
+                    aria-controls={`tabView${index}`}
+                    tabIndex={index === selectedIndex.tab ? 0 : -1}
+                    aria-label={data['heading']}
+                    aria-selected={index === selectedIndex.tab}
                     label={<b>{data['heading']}</b>}
                     icon={data['image']}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+                        e.preventDefault();
+                        if (menuItems.length === index + 1 && APIReference !== '') {
+                          document.getElementById('apiReference')?.setAttribute('tabIndex', 0);
+                          document.getElementById('apiReference').focus();
+                        }
+                        e.currentTarget.nextSibling && e.currentTarget.nextSibling.nextSibling.focus();
+                      }
+                      if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        e.currentTarget.previousSibling && e.currentTarget.previousSibling.previousSibling.focus();
+                      }
+                    }}
+                    onFocus={() => {
+                      handleOnChange(index);
+                    }}
                     onClick={() => {
-                      setSelectedIndex({
-                        tab: index
-                      });
-                      positionSelectedTabIndicator(index);
+                      handleOnChange(index);
                     }}
                     css={css`
                       text-align: left;
