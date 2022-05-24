@@ -178,6 +178,9 @@ const CodeBlock = (props) => {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
               }
+              & pre.prism-code span:first-child {
+                color: #ffffff;
+              }
             `}
             key={k}
             hidden={!(selectedIndex.tab === i && selectedIndex.language === k)}>
