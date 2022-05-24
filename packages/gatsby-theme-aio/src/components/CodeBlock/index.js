@@ -76,6 +76,16 @@ const CodeBlock = (props) => {
     }
   });
 
+  const handleOnChange = (ref) => {
+    const index = tabs.filter((tab) => tab.current).indexOf(ref);
+    setSelectedIndex({
+      tab: index,
+      // Set language index to 0 when switching between tabs
+      language: 0
+    });
+    positionSelectedTabIndicator(index);
+  };
+
   const backgroundColor = `background-color: var(--spectrum-global-color-gray-${theme === 'light' ? '200' : '50'});`;
 
   return (
@@ -111,14 +121,19 @@ const CodeBlock = (props) => {
                 ref={ref}
                 selected={isSelected}
                 tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight') {
+                    e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
+                  }
+                  if (e.key === 'ArrowLeft') {
+                    e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
+                  }
+                }}
                 onClick={() => {
-                  const index = tabs.filter((tab) => tab.current).indexOf(ref);
-                  setSelectedIndex({
-                    tab: index,
-                    // Set language index to 0 when switching between tabs
-                    language: 0
-                  });
-                  positionSelectedTabIndicator(index);
+                  handleOnChange(ref);
+                }}
+                onFocus={() => {
+                  handleOnChange(ref);
                 }}>
                 <TabsItemLabel>{props[block.heading].props.children}</TabsItemLabel>
               </TabsItem>
