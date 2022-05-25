@@ -14,7 +14,7 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { withPrefix } from 'gatsby';
 import { ProgressCircle } from '../ProgressCircle';
-import { RedocStandalone } from 'redoc';
+import { RedocStandalone } from '@redocly/reference-docs';
 import { Footer } from '../Footer';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
@@ -674,6 +674,7 @@ const OpenAPIBlock = ({ src }) => {
           `}>
           <RedocStandalone
             {...input}
+            licenseKey={process.env.GATSBY_REDOCLY_LICENSE_KEY}
             options={{
               nativeScrollbars: true,
               disableSearch: true,
