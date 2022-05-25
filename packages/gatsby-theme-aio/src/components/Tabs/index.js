@@ -269,17 +269,11 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     label={<b>{data['heading']}</b>}
                     icon={data['image']}
                     onKeyDown={(e) => {
-                      if (e.key === 'ArrowDown' || e.key === 'Enter') {
-                        e.preventDefault();
-                        if (menuItems.length === index + 1 && APIReference !== '') {
-                          document.getElementById('apiReference')?.setAttribute('tabIndex', 0);
-                          document.getElementById('apiReference').focus();
-                        }
-                        e.currentTarget.nextSibling && e.currentTarget.nextSibling.nextSibling.focus();
+                      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter') {
+                        e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
                       }
-                      if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        e.currentTarget.previousSibling && e.currentTarget.previousSibling.previousSibling.focus();
+                      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
                       }
                     }}
                     onFocus={() => {
