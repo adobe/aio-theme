@@ -64,7 +64,7 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
-        plugins: [`gatsby-transformer-remark`, `gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
+        plugins: [`gatsby-transformer-remark`, `gatsby-remark-copy-linked-files`, `gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-transformer-remark`
@@ -76,7 +76,7 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-images-remote`,
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,
