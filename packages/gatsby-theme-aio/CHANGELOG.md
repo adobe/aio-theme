@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.2...@adobe/gatsby-theme-aio@4.2.3) (2022-06-06)
+
+### Fix
+
+* Fix Tabs block keyboard support ([5f3b22e](https://github.com/adobe/aio-theme/commit/5f3b22e3cd0c9270d1da3b93f4d17986d0cd06a4))
+* Fix CodeBlock block keyboard support and line # colour ([414fb83](https://github.com/adobe/aio-theme/commit/414fb831521c8d2d5335c4a9bbaee32615114b03))
+
+
 ## [4.2.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.1...@adobe/gatsby-theme-aio@4.2.2) (2022-05-18)
 
 ### Fix
