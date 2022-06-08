@@ -4046,10 +4046,10 @@
   resolved "https://registry.yarnpkg.com/@spectrum-css/inlinealert/-/inlinealert-1.0.0.tgz#cc37a459340460b78fa6f5d4ae97300d19b63ce3"
   integrity sha512-wF+ELOI77zsa1ctc/RybNcA1DaKkS8eHBV894jHhxw8y79esAYxEZjiCaK0uPAC/WbNuVCVfAYHmwcuvO6ke2w==
 
-"@spectrum-css/link@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.1.1.tgz#cb526a2e10b50ef5a7ae29cca7272e2610d597eb"
-  integrity sha512-Bi88lRhTY7g6nM/ryW1yY4Cji211ZYNtRxkxbV7n2lPvwMAAQtyx0qVD3ru4kTGj/FFVvmPR3XiOE10K13HSNA==
+"@spectrum-css/link@3.1.22":
+  version "3.1.22"
+  resolved "https://registry.yarnpkg.com/@spectrum-css/link/-/link-3.1.22.tgz#1e061d674789c5b3be5b0680f9f6eae3e695e1c1"
+  integrity sha512-Zf8bfy+rtq07l4qoR6chNxefmatLZQZjudIm96v+lsCXBkjVbiMpjkW9oOcNwTqKB08koMONHHhOf1wk2Faqiw==
 
 "@spectrum-css/menu@3.0.1":
   version "3.0.1"
