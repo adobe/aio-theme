@@ -31,59 +31,96 @@ Using a theme, all of your default configuration lives in an npm package.
 
 ## Contents
 
-- [Getting started](#getting-started)
-  - [Using GitHub repository templates](#using-github-repository-templates)
-  - [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
-- [Content structure](#content-structure)
-  - [Frontmatter](#frontmatter)
-  - [Markdown pages](#markdown-pages)
-  - [Links](#links)
-  - [Assets](#assets)
-- [Configuration](#configuration)
-  - [Environment variables](#environment-variables)
+- [Adobe I/O Theme](#adobe-io-theme)
+  - [Contents](#contents)
+  - [Getting started](#getting-started)
+    - [Using GitHub repository templates](#using-github-repository-templates)
+    - [Using the Adobe I/O CLI](#using-the-adobe-io-cli)
+  - [Content structure](#content-structure)
+    - [Frontmatter](#frontmatter)
+      - [Edition keyword](#edition-keyword)
+      - [Contributor name and link keywords](#contributor-name-and-link-keywords)
+    - [Markdown pages](#markdown-pages)
+    - [Links](#links)
+      - [Internal links](#internal-links)
+      - [External links](#external-links)
+    - [Assets](#assets)
+  - [Configuration](#configuration)
+    - [Environment variables](#environment-variables)
+      - [GitHub Contributors](#github-contributors)
+      - [Analytics and Feedback component](#analytics-and-feedback-component)
+      - [Identity Management Services](#identity-management-services)
+  - [Algolia indexing and search](#algolia-indexing-and-search)
+    - [Server-side environment variables](#server-side-environment-variables)
+    - [Client-side (browser) environment variables](#client-side-browser-environment-variables)
   - [Global Navigation](#global-navigation)
   - [Menus](#menus)
   - [Home link](#home-link)
   - [Side Navigation](#side-navigation)
+    - [Variations](#variations)
+      - [Single-level side navigation](#single-level-side-navigation)
+      - [Single-level side navigation with headers](#single-level-side-navigation-with-headers)
+      - [Multi-level side navigation](#multi-level-side-navigation)
+      - [Auto-collapsing of multi-level side navigation](#auto-collapsing-of-multi-level-side-navigation)
+      - [Use descriptive titles](#use-descriptive-titles)
+      - [Be concise](#be-concise)
+      - [Use sentence case](#use-sentence-case)
+      - [Use the right variation](#use-the-right-variation)
+      - [Avoid deep nested menus](#avoid-deep-nested-menus)
+      - [Use consistent multi-level behavior](#use-consistent-multi-level-behavior)
   - [Versions](#versions)
-- [Building the site](#building-the-site)
-  - [Adding a Path Prefix](#adding-a-path-prefix)
-- [Deploying the site](#deploying-the-site)
-  - [Preview on GitHub Pages](#preview-on-github-pages)
-  - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
-- [Writing Enhanced Markdown](#writing-enhanced-markdown)
-  - [Metadata with Front matter](#metadata-with-front-matter)
-  - [OpenAPI](#openapi)
-  - [JSDoc](#jsdoc)
-  - [MDX](#mdx)
-  - [Modular Content System](#modular-content-system)
-  - [JSX Blocks](#jsx-blocks)
-  - [Hero Block](#hero-block)
-  - [Resources Block](#resources-block)
-  - [Discover Block](#discover-block)
-  - [Code Block](#code-block)
-  - [Inline Alert Block](#inline-alert-block)
-  - [Media Block](#media-block)
-  - [Announcement Block](#announcement-block)
-  - [Summary Block](#summary-block)
-  - [Title Block](#title-block)
-  - [Text Block](#text-block)
-  - [Tabs Block](#tabs-block)
-  - [Product Card](#product-card)
-  - [Product Card Grid](#product-card-grid)
-  - [Resource Card](#resource-card)
-  - [Carousel](#carousel)
-  - [Edition](#edition)
-  - [Attribution](#attribution)
-  - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
-- [Customizations](#customizations)
-  - [Custom Layout](#custom-layout)
-  - [Frame](#frame)
-  - [Theming](#theming)
-- [Upgrading](#upgrading)
-- [Issue tracker](#issue-tracker)
-- [Contributing](#contributing)
-- [Releases](#releases)
+  - [Building the site](#building-the-site)
+    - [Adding a Path Prefix](#adding-a-path-prefix)
+  - [Deploying the site](#deploying-the-site)
+    - [Preview on GitHub Pages](#preview-on-github-pages)
+    - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
+  - [Writing Enhanced Markdown](#writing-enhanced-markdown)
+    - [Metadata with Front matter](#metadata-with-front-matter)
+  - [<pre>](#pre)
+  - [<pre>](#pre-1)
+  - [<pre>](#pre-2)
+    - [OpenAPI](#openapi)
+  - [<pre>](#pre-3)
+  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
+    - [JSDoc](#jsdoc)
+  - [<pre>](#pre-4)
+  - [jsDoc: true](#jsdoc-true)
+    - [MDX](#mdx)
+    - [Modular Content System](#modular-content-system)
+    - [JSX Blocks](#jsx-blocks)
+    - [Hero Block](#hero-block)
+    - [Resources Block](#resources-block)
+    - [Discover Block](#discover-block)
+    - [Code Block](#code-block)
+      - [Request](#request)
+      - [Request](#request-1)
+      - [Response](#response)
+    - [Inline Alert Block](#inline-alert-block)
+    - [Media Block](#media-block)
+    - [Announcement Block](#announcement-block)
+    - [Summary Block](#summary-block)
+    - [Title Block](#title-block)
+    - [Text Block](#text-block)
+    - [Tabs Block](#tabs-block)
+    - [Product Card](#product-card)
+    - [Product Card Grid](#product-card-grid)
+    - [Resource Card](#resource-card)
+    - [Carousel](#carousel)
+    - [Edition](#edition)
+    - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
+      - [Embedding local markdown files](#embedding-local-markdown-files)
+      - [Embedding external markdown files](#embedding-external-markdown-files)
+      - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
+  - [Customizations](#customizations)
+    - [Custom layout](#custom-layout)
+    - [Frame](#frame)
+    - [Theming](#theming)
+  - [Upgrading](#upgrading)
+    - [Locally](#locally)
+    - [Automated](#automated)
+  - [Issue tracker](#issue-tracker)
+  - [Contributing](#contributing)
+  - [Releases](#releases)
 
 ## Getting started
 
@@ -413,15 +450,15 @@ There are two parts to adding the Algolia search feature to your site:
   - `console` mode - index data will be published to console, but not pushed to real search index
   - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. You should never commit this key to GitHub.
-- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
 - `ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
 
 ### Client-side (browser) environment variables
 
 To enable search on the browser side, you'll need to set the following variables in your site's `.env` file:
 
-- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `GATSBY_ALGOLIA_API_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
+- `ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `ALGOLIA_SEARCH_API_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
 - `GATSBY_ALGOLIA_INDEX_ALL` - List of all indexes to search e.g. `["index1", "index2"]`
 - `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
@@ -927,17 +964,21 @@ contributors:
 ---
 
 </pre>
-  
-You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
-<pre>
----
+
+You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top. Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
+
+## <pre>
+
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics without a breadcrumb
 contributors:
-  - https://github.com/simonwex
-  - https://github.com/davidbenge
-hideBreadcrumbNav: false 
+
+- https://github.com/simonwex
+- https://github.com/davidbenge
+  hideBreadcrumbNav: false
+
 ---
+
 </pre>
 
 ### OpenAPI
@@ -1029,7 +1070,7 @@ Use `background` to set a custom background color matching your color scheme. De
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant.  Defaults to false.
+Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant. Defaults to false.
 
 **Half width variant**
 
@@ -1263,16 +1304,19 @@ The Inline Alert Block is used to highlight information.
 ![inline alert](docs/images/inline-alert.png)
 
 ```
-<InlineAlert variant="help" slots="text"/>
+<InlineAlert variant="help" slots="header, text"/>
 
-The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
+This is the optional header/title for the InlineAlert
+
+This is the text/content of the InlineAlert: The refresh token grant type is automatically added to OAuth clients created after September 18, 2019.
 ```
 
 Use `slots` to identify the markdown content:
 
+- `header` (optional)
 - `text` (required)
 
-Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
+Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`. Specify `neutral` to remove the icon and create a simple alert with a black border around the text.
 
 ### Media Block
 

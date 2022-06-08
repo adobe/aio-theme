@@ -19,9 +19,12 @@ import { Star } from '../Icons';
 const Attribution = ({ ...props }) => {
   return (
     <div>
-      <span className={`spectrum-Badge spectrum-Badge--sizeS spectrum-Badge--neutral`} style='padding-bottom:4px'>
+      <span className={`spectrum-Badge spectrum-Badge--sizeS spectrum-Badge--neutral`} style="padding-bottom:4px">
         <Star />
-        <a href={`${props.link}`} class="spectrum-Link spectrum-Link--overBackground spectrum-Link--quiet" target="_blank">{`Thanks to ${props.name} for contributing this topic!`}</a>
+        <a
+          href={`${props.link}`}
+          class="spectrum-Link spectrum-Link--overBackground spectrum-Link--quiet"
+          target="_blank">{`Thanks to ${props.name} for contributing this topic!`}</a>
       </span>
     </div>
   );
@@ -29,7 +32,7 @@ const Attribution = ({ ...props }) => {
 
 Attribution.propTypes = {
   name: PropTypes.element,
-  link: PropTypes.string,
+  link: PropTypes.string
 };
 
 export { Attribution };

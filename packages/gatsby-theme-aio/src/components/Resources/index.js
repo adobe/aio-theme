@@ -24,7 +24,6 @@ const Resources = ({ heading, links }) => {
       css={css`
         width: ${layoutColumns(3)};
         margin-left: var(--spectrum-global-dimension-size-400);
-        margin-top: var(--spectrum-global-dimension-size-400);
 
         @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
           display: none;

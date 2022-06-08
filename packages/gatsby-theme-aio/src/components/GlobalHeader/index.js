@@ -392,7 +392,7 @@ const GlobalHeader = ({
             ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
-              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-200);'}
+              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-350);'}
 
               @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 ${!hasHome && 'margin-left: var(--spectrum-global-dimension-size-300);'}

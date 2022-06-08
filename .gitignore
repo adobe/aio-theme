@@ -1,6 +1,7 @@
 .editorconfig
 .idea
 .DS_Store
+.vscode/*
 
 # npm yarn
 node_modules
@@ -8,6 +9,11 @@ package.lock
 yarn-error.log
 .pnp.*
 .yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # keep in repo
 !.gitignore

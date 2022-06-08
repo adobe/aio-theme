@@ -19,13 +19,17 @@ import '@spectrum-css/well';
 export const InlineCode = ({ children, className, ...props }) => (
   <code
     {...props}
-    className={classNames(className, 'spectrum-Code', 'spectrum-Code--sizeS', 'spectrum-Well')}
+    className={classNames(className, 'spectrum-Code')}
     css={css`
+      font-family: Courier, monospace;
+      font-size: 0.98rem;
       background-color: var(--spectrum-global-color-gray-100);
-      padding: 0 var(--spectrum-global-dimension-size-50);
+      padding: 0 var(--spectrum-global-dimension-static-size-25);
       margin: 0;
       display: inline-block;
       min-width: auto;
+      border: 0.8px solid var(--spectrum-global-color-gray-300);
+      border-radius: 3px;
     `}>
     {children}
   </code>
