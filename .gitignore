@@ -8,6 +8,13 @@ package.lock
 yarn-error.log
 .pnp.*
 .yarn/*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # keep in repo
 !.gitignore
