@@ -105,46 +105,81 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 
 These are the five types of inline alerts you can use.
 
+<InlineAlert variant="neutral" slots="text" />
+
+This is an inline alert with the variant `neutral`. As per Spectrum specifications, neutral alerts do not display an icon. If the entered variant is not recognized, the theme will default to the `neutral` variant.
+
 <InlineAlert variant="info" slots="text" />
 
-This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`.
-
-This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+This is an inline alert with the variant `info`.
 
 <InlineAlert variant="help" slots="text" />
 
-This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`.
+This is an inline alert with the variant `help`.
 
-This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+<InlineAlert variant="success" slots="text" />
 
-<InlineAlert variant="success" slots="header, text" />
-
-This is a success alert!!
-
-This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`.
-
-This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+This is an inline alert with the variant `success`.
 
 <InlineAlert variant="warning" slots="text" />
 
-This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`.
+This is an inline alert with the variant `warning`.
 
-This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+<InlineAlert variant="error" slots="text" />
 
-- This is a list item.
-- This is a list item.
+This is an inline alert with the variant `error`.
 
-  <InlineAlert variant="neutral" slots="text" />
+<InlineAlert variant="success" slots="header, text" />
 
-  This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`.
+InlineAlert components can have header text.
 
-This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+And InlineAlert components can have body text like this. InlineAlert components can have body text like this.InlineAlert components can have body text like this.InlineAlert components can have body text like this.InlineAlert components can have body text like this.InlineAlert components can have body text like this.
 
-<InlineAlert variant="error" slots="header, text" />
+<InlineAlert variant="help" slots="header, text1, text2, text3, text4" />
+
+Multiple paragraphs!!
+
+The number of paragraphs is technically unlimited for flexibility.
+
+But you know the drill. *Discretion is key.*
+
+This is your **third paragraph**.
+
+This is your ~~last~~ fourth paragraph. You can make each paragraph as long as you want.
+As long as you don't create an empty line in between your text blocks.
+
+<InlineAlert variant="warning" slots="header, text-10, text-1, text-doesnt-matter-just-start-with-text-and-make-it-unique" />
+
+Important text slot details
+
+This is the first text slot, but its slot name is `text-10`.
+
+This is the second text slot, but its slot name is `text-1`. 
+
+So the only requirements for naming your text slots — **only within the InlineAlert component for now** — is to start them with `text` and make them unique from the other text slots in the alert. For example, this is a valid slot name: `text-doesnt-matter-just-start-with-text-and-make-it-unique`.
+
+<InlineAlert variant="help" slots="header, text1, text2, text3, text4" />
+
+Alternative steps to follow:
+
+**Step 1:** This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`.
+
+**Step 2:** This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box.
+
+**Step 3:** This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box. This is another paragraph for the Alert box. This is another paragraph for the `InlineAlert` box.
+
+**Step 4:** This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box. This is another paragraph for the `InlineAlert` box. This is another paragraph
+
+<InlineAlert variant="error" slots="header, text, text2, text1" />
 
 This is an error!
 
 This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`.
+
+**This is currently the best way to add a code block to an InlineAlert:**
+
+`warn Warning: Event "xstate.after(200)#waitingMachine.aggregatingFileChanges" was sent to stopped service "waitingMachine". This service has already reached its final state, and will not transition.
+Event: {"type":"xstate.after(200)#waitingMachine.aggregatingFileChanges"}`
 
 ## Inline Code
 

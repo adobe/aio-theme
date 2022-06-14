@@ -1,6 +1,7 @@
 .editorconfig
 .idea
 .DS_Store
+.vscode/*
 
 # npm yarn
 node_modules

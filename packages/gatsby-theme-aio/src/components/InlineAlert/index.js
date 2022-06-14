@@ -27,7 +27,31 @@ const getIconName = (variant) => {
   return `${icon.charAt(0).toUpperCase()}${icon.slice(1)}Medium`;
 };
 
-const InlineAlert = ({ variant = 'info', header, text }) => {
+const InlineAlertTexts = ({ texts }) => {
+  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
+  return textKeys.map((textKey, index) =>
+    index === 0
+      ? cloneElement(texts[textKey], {
+          className: 'spectrum-InLineAlert-content',
+          css: css`
+            margin-top: 0;
+            font-size: 1rem;
+            line-height: 1.3rem;
+          `
+        })
+      : cloneElement(texts[textKey], {
+          className: 'spectrum-InLineAlert-content',
+          css: css`
+            margin-top: var(--spectrum-global-dimension-size-150);
+            font-size: 1rem;
+            line-height: 1.3rem;
+          `
+        })
+  );
+};
+
+const InlineAlert = ({ variant = 'info', header, ...props }) => {
+  console.log(props);
   const Icon = Icons[getIconName(variant)] ? Icons[getIconName(variant)] : Icons.NeutralMedium;
   variant = variant === 'warning' ? 'negative' : variant;
 
@@ -35,9 +59,18 @@ const InlineAlert = ({ variant = 'info', header, text }) => {
     <div role="alert" className={`spectrum-InLineAlert spectrum-InLineAlert--${variant}`}>
       <Icon className="spectrum-Icon spectrum-Icon--sizeM spectrum-InLineAlert-icon" />
       <div>
-        {header && (cloneElement(header, { className: 'spectrum-InLineAlert-header', css: css` margin-top: 0; font-size: 1rem; line-height: 1.3rem` }))}
+        {header &&
+          cloneElement(header, {
+            className: 'spectrum-InLineAlert-header',
+            css: css`
+              margin-top: 0;
+              margin-bottom: 0.5rem;
+              font-size: 1rem;
+              line-height: 1.3rem;
+            `
+          })}
       </div>
-      {cloneElement(text, { className: 'spectrum-InLineAlert-content', css: css` margin-top: 0; font-size: 1rem; line-height: 1.3rem` })}
+      <InlineAlertTexts texts={props} />
     </div>
   );
 };
