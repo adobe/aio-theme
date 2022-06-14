@@ -79,7 +79,6 @@ Using a theme, all of your default configuration lives in an npm package.
   - [<pre>](#pre)
   - [<pre>](#pre-1)
   - [<pre>](#pre-2)
-  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
   - [<pre>](#pre-3)
   - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
@@ -965,17 +964,21 @@ contributors:
 ---
 
 </pre>
-  
-You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
-<pre>
----
+
+You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top. Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
+
+## <pre>
+
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics without a breadcrumb
 contributors:
-  - https://github.com/simonwex
-  - https://github.com/davidbenge
-hideBreadcrumbNav: false 
+
+- https://github.com/simonwex
+- https://github.com/davidbenge
+  hideBreadcrumbNav: false
+
 ---
+
 </pre>
 
 ### OpenAPI
@@ -1067,7 +1070,7 @@ Use `background` to set a custom background color matching your color scheme. De
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant.  Defaults to false.
+Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant. Defaults to false.
 
 **Half width variant**
 
@@ -1301,16 +1304,19 @@ The Inline Alert Block is used to highlight information.
 ![inline alert](docs/images/inline-alert.png)
 
 ```
-<InlineAlert variant="help" slots="text"/>
+<InlineAlert variant="help" slots="header, text"/>
 
-The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
+This is the optional header/title for the InlineAlert
+
+This is the text/content of the InlineAlert: The refresh token grant type is automatically added to OAuth clients created after September 18, 2019.
 ```
 
 Use `slots` to identify the markdown content:
 
+- `header` (optional)
 - `text` (required)
 
-Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
+Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`. Specify `neutral` to remove the icon and create a simple alert with a black border around the text.
 
 ### Media Block
 

@@ -76,7 +76,7 @@ Provides configuration guidance and best practices for the /reports endpoint.
 
 [Migrating from 1.4 to 2.0](guides/migrating/)
 
-For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.   
+For help migrating from the 1.4 versions of the Analytics API to the newer and more capable /reports API.
 
 <DiscoverBlock slots="heading, link, text"/>
 
@@ -99,4 +99,68 @@ request with your contribution. For more information, refer to the [contributing
 The timeout for API requests through adobe.io is currently *60 seconds*.
 
 The default rate limit for an Adobe Analytics Company is *120 requests per minute*. (The limit is enforced as *12 requests every 6 seconds*).
-When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`    
+When rate limiting is being enforced you will get `429` HTTP response codes with the following response body: `{"error_code":"429050","message":"Too many requests"}`
+
+## Inline Alerts
+
+These are the five types of inline alerts you can use.
+
+<InlineAlert variant="info" slots="text" />
+
+This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`. This is an inline alert with the variant `info`.
+
+This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+
+<InlineAlert variant="help" slots="text" />
+
+This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`. This is an inline alert with the variant `help`.
+
+This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+
+<InlineAlert variant="success" slots="header, text" />
+
+This is a success alert!!
+
+This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`. This is an inline alert with the variant `success`.
+
+This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+
+<InlineAlert variant="warning" slots="text" />
+
+This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`. This is an inline alert with the variant `warning`.
+
+This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+
+<InlineAlert variant="neutral" slots="text" />
+
+This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`.
+
+This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
+
+<InlineAlert variant="error" slots="header, text" />
+
+This is an error!
+
+This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`. This is an inline alert with the variant `error`.
+
+## Inline Code
+
+This is an example of `inline code` written with the standard markdown backticks.
+
+## Tables
+
+Some tables here for testing.
+
+| | |
+|-----------------|----------------------------|
+| **Class name:** | `InstallSchema`            |
+| **Interface:**  | [`InstallSchemaInterface`] |
+| **Method:**     | `install()`                |
+
+Here's a table with some column headers and bigger rows.
+
+Element | Description
+--- | ---
+`name` | A fully-qualified component name, in the format `<vendor-name>/<component-name>`. All letters must be in lowercase. Use dashes in the `<component-name>` to separate words. Themes must use the format `<vendor-name>/theme-<area>-<theme-name>`.
+`type` | For modules, this value must be set to `magento2-module`. Other possible types are `metapackage`, `magento2-theme`, and `magento2-language`.
+`autoload` | Specify necessary information to be loaded, such as [registration.php](../build/component-registration.md). For more information, see [Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) from Composer.

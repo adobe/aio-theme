@@ -107,24 +107,10 @@ export const SuccessMedium = ({ className, ...props }) => (
   </svg>
 );
 
-// Used by InlineAlert
-export const WarningMedium = ({ className, ...props }) => (
-  <svg
-    {...props}
-    {...commonProps}
-    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}
-    css={css`
-      width: var(--spectrum-icon-warning-medium-width, var(--spectrum-global-dimension-size-225));
-      height: var(--spectrum-icon-warning-medium-height, var(--spectrum-global-dimension-size-225));
-    `}>
-    <path
-      d="M10.563 2.206l-9.249 16.55a.5.5 0 00.436.744h18.5a.5.5 0 00.436-.744l-9.251-16.55a.5.5 0 00-.872 0zm1.436 15.044a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3.5a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
-      className="spectrum-UIIcon--large"></path>
-    <path
-      d="M8.564 1.289L.2 16.256A.5.5 0 00.636 17h16.728a.5.5 0 00.436-.744L9.436 1.289a.5.5 0 00-.872 0zM10 14.75a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
-      className="spectrum-UIIcon--medium"></path>
-  </svg>
-);
+// Used by InlineAlert for no image
+export const NeutralMedium = ({ className, ...props }) => (
+  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon')}></svg>
+); // No image
 
 // Used by InlineAlert
 export const HelpMedium = ({ className, ...props }) => (

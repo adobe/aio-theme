@@ -15,54 +15,36 @@ import { css } from '@emotion/react';
 import * as Icons from '../Icons';
 import PropTypes from 'prop-types';
 import '@spectrum-css/inlinealert';
+import './index.css';
 
 const getIconName = (variant) => {
   let icon = variant;
 
-  if (variant === 'error') {
+  if (variant === 'error' || variant === 'negative' || variant === 'warning') {
     icon = 'alert';
   }
 
   return `${icon.charAt(0).toUpperCase()}${icon.slice(1)}Medium`;
 };
 
-const InlineAlert = ({ variant = 'info', text }) => {
-  const Icon = Icons[getIconName(variant)];
+const InlineAlert = ({ variant = 'info', header, text }) => {
+  const Icon = Icons[getIconName(variant)] ? Icons[getIconName(variant)] : Icons.NeutralMedium;
+  variant = variant === 'warning' ? 'negative' : variant;
 
   return (
-    <div
-      role="alert"
-      className={`spectrum-InLineAlert spectrum-InLineAlert--${variant}`}
-      css={css`
-        display: block !important;
-        min-width: 0 !important;
-        width: 100%;
-        margin-top: var(--spectrum-global-dimension-size-300);
-      `}>
-      <Icon className="spectrum-InLineAlert-icon" />
-      <div
-        className="spectrum-InLineAlert-content"
-        css={css`
-          margin-top: 0;
-          margin-right: var(--spectrum-global-dimension-size-400);
-
-          p {
-            margin: 0;
-          }
-        `}>
-        {cloneElement(text, {
-          className: ' ',
-          css: css`
-            margin: 0 !important;
-          `
-        })}
+    <div role="alert" className={`spectrum-InLineAlert spectrum-InLineAlert--${variant}`}>
+      <Icon className="spectrum-Icon spectrum-Icon--sizeM spectrum-InLineAlert-icon" />
+      <div>
+        {header && (cloneElement(header, { className: 'spectrum-InLineAlert-header', css: css` margin-top: 0; font-size: 1rem; line-height: 1.3rem` }))}
       </div>
+      {cloneElement(text, { className: 'spectrum-InLineAlert-content', css: css` margin-top: 0; font-size: 1rem; line-height: 1.3rem` })}
     </div>
   );
 };
 
 InlineAlert.propTypes = {
   variant: PropTypes.string,
+  header: PropTypes.element,
   text: PropTypes.element
 };
 

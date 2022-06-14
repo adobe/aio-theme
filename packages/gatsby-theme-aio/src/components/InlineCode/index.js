@@ -15,17 +15,20 @@ import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/well';
+import './index.css';
 
 export const InlineCode = ({ children, className, ...props }) => (
   <code
     {...props}
-    className={classNames(className, 'spectrum-Code', 'spectrum-Code--sizeS', 'spectrum-Well')}
+    className={classNames(className, 'spectrum-Code')}
     css={css`
       background-color: var(--spectrum-global-color-gray-100);
-      padding: 0 var(--spectrum-global-dimension-size-50);
+      padding: 0 var(--spectrum-global-dimension-static-size-25);
       margin: 0;
       display: inline-block;
       min-width: auto;
+      border: 0.8px solid var(--spectrum-global-color-gray-400);
+      border-radius: 3px;
     `}>
     {children}
   </code>

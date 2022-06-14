@@ -1,0 +1,11 @@
+[dir='ltr'] .spectrum-InLineAlert-content {
+  padding-right: 30px;
+}
+
+[dir='rtl'] .spectrum-InLineAlert-content {
+  padding-left: 30px;
+}
+
+.spectrum-InLineAlert {
+  min-width: 100%;
+}
