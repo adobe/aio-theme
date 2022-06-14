@@ -27,7 +27,7 @@ export const InlineCode = ({ children, className, ...props }) => (
       margin: 0;
       display: inline-block;
       min-width: auto;
-      border: 0.8px solid var(--spectrum-global-color-gray-400);
+      border: 0.8px solid var(--spectrum-global-color-gray-300);
       border-radius: 3px;
     `}>
     {children}

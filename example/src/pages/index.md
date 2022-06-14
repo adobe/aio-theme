@@ -131,9 +131,12 @@ This is an inline alert with the variant `warning`. This is an inline alert with
 
 This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
 
-<InlineAlert variant="neutral" slots="text" />
+- This is a list item.
+- This is a list item.
 
-This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`.
+  <InlineAlert variant="neutral" slots="text" />
+
+  This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`. This is an inline alert with the variant `neutral`.
 
 This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between. This is some text in between.
 
