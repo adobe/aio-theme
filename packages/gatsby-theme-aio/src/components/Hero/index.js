@@ -95,6 +95,10 @@ const HeroImage = ({ image, styles }) =>
             height: 100% !important;
           }
 
+          .gatsby-resp-image-background-image {
+            padding-bottom: unset !important;
+          }
+
           .gatsby-resp-image-image {
             object-fit: cover;
           }
@@ -157,7 +161,9 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}"); }
+    if (typeof hideBreadcrumbNav != 'boolean') {
+      throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}');
+    }
 
     return (
       <section
@@ -254,7 +260,6 @@ const Hero = ({
               }
             }
           `}>
-
           <HeroImage image={image} />
 
           <div
@@ -338,7 +343,8 @@ const Hero = ({
                       max-width: none !important;
                       width: 100% !important;
                       height: 100% !important;
-                    }
+                    }import { useContext } from 'react';
+
 
                     .gatsby-resp-image-image {
                       height: 100%;
