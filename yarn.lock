@@ -5427,7 +5427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/cypress@npm:^8.0.3":
+"@testing-library/cypress@npm:^8.0.2":
   version: 8.0.3
   resolution: "@testing-library/cypress@npm:8.0.3"
   dependencies:
@@ -6455,11 +6455,11 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.0.2
     "@commitlint/config-conventional": ^17.0.2
-    "@testing-library/cypress": ^8.0.3
-    axe-core: ^4.4.2
-    cypress: ^10.1.0
-    cypress-axe: ^1.0.0
-    gatsby-cypress: ^2.16.0
+    "@testing-library/cypress": ^8.0.2
+    axe-core: ^4.3.3
+    cypress: ^9.7.0
+    cypress-axe: ^0.14.0
+    gatsby-cypress: ^0.11.0
     husky: ^8.0.1
     lerna: ^5.1.4
     start-server-and-test: ^1.14.0
@@ -7006,7 +7006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.3.5, axe-core@npm:^4.4.2":
+"axe-core@npm:^4.3.3, axe-core@npm:^4.3.5":
   version: 4.4.2
   resolution: "axe-core@npm:4.4.2"
   checksum: 93fbb36c5ac8ab5e67e49678a6f7be0dc799a9f560edd95cca1f0a8183def8c50205972366b9941a3ea2b20224a1fe230e6d87ef38cb6db70472ed1b694febd1
@@ -9442,19 +9442,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-axe@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "cypress-axe@npm:1.0.0"
+"cypress-axe@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "cypress-axe@npm:0.14.0"
   peerDependencies:
     axe-core: ^3 || ^4
-    cypress: ^10
-  checksum: 02b5d8ac11b659772fc11e587c61c75b86fdbd1dda7930ec76e02ed4f7e774d01a087bd21681460d9664d469f1bc778a8402825e9c7fd95e0aa2688264a381c2
+    cypress: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
+  checksum: 72c639502e2c2ed0f084453b9fa6c77bf5af736e8904600887b7c64e7edbd833e7d2de2b290d6149cc7805b5e08ce2fcc4206d0ee85b31ae7b4cfd02d582ed3c
   languageName: node
   linkType: hard
 
-"cypress@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "cypress@npm:10.1.0"
+"cypress@npm:^9.7.0":
+  version: 9.7.0
+  resolution: "cypress@npm:9.7.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -9500,7 +9500,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 5c93db957f70eba2299896754b43cc56274fe4f13df9569622924f5d98a61b464bb619b641baeb60244b5d95ee4483d1903930ce631efa55fdd35e33cf951f28
+  checksum: 45df7c85bc7ec2e187153ff2b98bf5106d2313d70e2367a5742b5269a9e82d3fdd730d5bbc32ac8da72aeb120a52f9384c2ba4e2fc86b532f68440f22d700fc9
   languageName: node
   linkType: hard
 
@@ -11949,15 +11949,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cypress@npm:^2.16.0":
-  version: 2.16.0
-  resolution: "gatsby-cypress@npm:2.16.0"
+"gatsby-cypress@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "gatsby-cypress@npm:0.11.0"
   dependencies:
-    "@babel/runtime": ^7.15.4
+    "@babel/runtime": ^7.12.5
   peerDependencies:
     cypress: ^3.1.0
-    gatsby: ^4.0.0-next
-  checksum: dc60a4839012487ebe598e85009ccd9744cc8cbb96e1dae02bbbabc3e863f480e906c43c94de46afa041e8c93a2fa83cbcfb3445f93b7e1d32a724422a5d2aaa
+    gatsby: ^2.0.0-rc.13
+  checksum: 6d2cf92802e711937a4a101f6f61b41714f15afff8d2bce480ec6b4b10464c98b0635ac73d5c26c8e4e144372779f4309d4be68d3387c3f71e13410e2b801b53
   languageName: node
   linkType: hard
 
