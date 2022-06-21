@@ -127,7 +127,10 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Request](#request)
       - [Request](#request-1)
       - [Response](#response)
-    - [Inline Alert Block](#inline-alert-block)
+    - [InlineAlert block (Updated: 2022-06-08)](#inlinealert-block-updated-2022-06-08)
+      - [Anatomy of an InlineAlert block](#anatomy-of-an-inlinealert-block)
+      - [Simple InlineAlert](#simple-inlinealert)
+      - [Richer InlineAlert](#richer-inlinealert)
     - [Media Block](#media-block)
     - [Announcement Block](#announcement-block)
     - [Summary Block](#summary-block)
@@ -1318,25 +1321,85 @@ Use `slots` to identify the markdown content:
 
 Use `repeat` to define how many code sections are part of the Code Block.
 
-Use `languages` to define a language name for each code section. Code sections with the same heading are automatically grouped together.
+Use `languages` to define a language name for each code section. Code sections with the same heading are automatically
+grouped together.
 
-### Inline Alert Block
+### InlineAlert block (Updated: 2022-06-08)
 
-The Inline Alert Block is used to highlight information.
+The Inline Alert block provides ways to highlight various types of information, using an optional title, text blocks,
+and variants.
+
+#### Anatomy of an InlineAlert block
+
+```markdown
+<InlineAlert variant="[value]" slots="title, text1, text2, text[n]" />
+```
+
+**Variant values**
+
+As shown above, the first property of an InlineAlert is the `variant` property. The value of this property determines
+the icon and border color of the alert. The `variant` values you can use are described here:
+
+- `info` (default) — use to add helpful information.
+- `help` — use to add brief steps from or links to other help topics.
+- `error` — use to highlight errors that may result from an action.
+- `success` — use to highlight success messages that may be displayed after an action.
+- `warning` — use to focus attention on a potential problem that could occur.
+- `neutral` — use as an all-purpose callout that displays a black border and no icon.
+
+![inline alert](docs/images/inline-alert-variants.png)
+
+The slots and variants of an InlineAlert block are as follows.
+
+**Slot values**
+
+Use the following slots to style your markdown text within the InlineAlert block:
+
+- `title` (optional) — Use plain markdown text. The slot will bold the title and space it above your text appropriately.
+  You can only use one title per alert block.
+- `text` (required). Use plain markdown text.
+- `text2`...`text[n]` (optional) - You can use additional text slots to display multiple paragraphs. Just make sure each
+  additional text block starts with the word `text` followed by numbers or letters that make each text slot unique.
+
+#### Simple InlineAlert
+
+The simplest `InlineAlert` you can create uses a single `text` slot, as shown here:
+
+```markdown
+<InlineAlert slots="text" />
+
+This is the text that displays within the default alert variant — info.
+```
 
 ![inline alert](docs/images/inline-alert.png)
 
+#### Richer InlineAlert
+
+To add an InlineAlert with a different variant, a title, and multiple paragraphs, you can specify all the optional
+properties, as shown here:
+
+```markdown
+<InlineAlert variant="help" slots="header, text1, text2, text3, text4" />
+
+Alternative steps:
+
+**Step 1:** This is faux step text for the `text1` slot.
+This is faux step text for the `text1` slot.
+This is faux step text for the `text1` slot.
+This is faux step text for the `text1` slot.
+This is faux step text for the `text1` slot.
+
+**Step 2:** This is faux step text for the `text2` slot.
+This is faux step text for the `text2` slot.
+This is faux step text for the `text2` slot.
+
+**Step 3:** This is faux step text for the `text3` slot.
+
+**Step 4:** This is faux step text for the `text4` slot.
+This is faux step text for the `text3` slot.
 ```
-<InlineAlert variant="help" slots="text"/>
 
-The refresh token grant type is automatically added to OAuth clients created after September 18, 2019
-```
-
-Use `slots` to identify the markdown content:
-
-- `text` (required)
-
-Use `variant` to define the indicator type: `info` (default), `help`, `error`, `success`, `warning`.
+![inline alert](docs/images/inline-alert-more.png)
 
 ### Media Block
 
@@ -1345,9 +1408,11 @@ The Media Block is used to display interactive medias like videos.
 ![media](docs/images/media-block.png)
 
 ```
+
 <Media slots="video"/>
 
 <https://www.youtube.com/watch?v=mkgpeWbHrjA>
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1362,6 +1427,7 @@ It's used to call out new features, blog posts, news etc. anything that needs th
 ![announcement block](docs/images/announcement-block.png)
 
 ```
+
 <AnnouncementBlock slots="heading, text, button" />
 
 ### Try out the magic of Photoshop
@@ -1369,6 +1435,7 @@ It's used to call out new features, blog posts, news etc. anything that needs th
 Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time spent in each app, freeing you up for more creative time.
 
 [Demo](https://www.adobe.io/apis/creativecloud/photo-imaging-api/api-demo.html)
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1388,6 +1455,7 @@ The Summary Block acts as an anchor at the end of the page. It's a change for Pr
 ![summary block](docs/images/summary-block.png)
 
 ```
+
 <SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
 
 ![CC banner](images/cc-banner.png)
@@ -1397,8 +1465,9 @@ The Summary Block acts as an anchor at the end of the page. It's a change for Pr
 A monthly newsletter featuring news for anyone who creates, develops, or build plugins, extensions, or integrations for the
 Creative Cloud family of products.
 
-* [Subscribe to the newsletter](https://adobe.io)
-* [Learn more](https://adobe.io)
+- [Subscribe to the newsletter](https://adobe.io)
+- [Learn more](https://adobe.io)
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1421,11 +1490,13 @@ A Title Block is used at the beginning of sections, or to frame compositions on 
 ![title block](docs/images/title-block.png)
 
 ```
+
 <TitleBlock slots="heading, text" theme="light" />
 
 ### Collaborate better with Content Cloud APIs
 
 With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1447,6 +1518,7 @@ They are coupled with images or videos.
 **With an image, texts and links**
 
 ```
+
 <TextBlock slots="image, heading, text1, text2, links" />
 
 ![Screenshot 1](images/intro1.png)
@@ -1459,9 +1531,10 @@ Be sure to check out [Common Extensibility Platform (CEP)](https://www.adobe.io/
 When you're ready to ship, distribute your work on [Adobe Exchange](https://exchange.adobe.com/), the preferred marketplace for Adobe Creative Cloud users.
 And be sure to join the [Exchange Program for Creative Cloud](https://partners.adobe.com/exchangeprogram/creativecloud) to unlock more benefits, including streamlined publishing and promotional opportunities.
 
-* ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
-* ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
-* ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)
+- ![Adobe Premiere Pro](images/pr-icon.png) [Adobe Premiere Pro](https://www.adobe.com/products/premiere.html)
+- ![Adobe InDesign](images/ai-icon.png) [Adobe InDesign](https://www.adobe.com/products/indesign.html)
+- ![Adobe After Effect](images/ae-icon.png) [Adobe After Effect](https://www.adobe.com/products/aftereffects.html)
+
 ```
 
 **Multiple Text Blocks in a row**
@@ -1469,6 +1542,7 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 ![centered text blocks](docs/images/text-block-centered.png)
 
 ```
+
 <TextBlock slots="image, heading, text, links" width="33%" />
 
 ![MSFT Teams logo](images/msfteams.png)
@@ -1477,9 +1551,7 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 
 Easily share Creative Cloud assets and files, and get comment notifications on your prototypes.
 
-* [Learn more](https://www.microsoft.com/microsoft-365/microsoft-teams/group-chat-software)
-
-
+- [Learn more](https://www.microsoft.com/microsoft-365/microsoft-teams/group-chat-software)
 
 <TextBlock slots="image, heading, text, links" width="33%" />
 
@@ -1489,9 +1561,7 @@ Easily share Creative Cloud assets and files, and get comment notifications on y
 
 Make designer to developer handoffs easy. Find the latest designs and specs and get thumbnail previews and asset info.
 
-* [Learn more](https://www.atlassian.com/enterprise/cloud)
-
-
+- [Learn more](https://www.atlassian.com/enterprise/cloud)
 
 <TextBlock slots="image, heading, text, links" width="33%" />
 
@@ -1501,7 +1571,8 @@ Make designer to developer handoffs easy. Find the latest designs and specs and 
 
 Instantly share Creative Cloud files, designs, specs, and notifications all in real time.
 
-* [Learn more](https://slack.com/enterprise)
+- [Learn more](https://slack.com/enterprise)
+
 ```
 
 **With a video, icons, buttons dark themed**
@@ -1509,20 +1580,22 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 ![text block with a video](docs/images/text-block-video.png)
 
 ```
+
 <TextBlock slots="video, icons, heading, text, buttons" theme="dark" />
 
 [Creative Cloud for a new era](https://www.youtube.com/watch?v=JemJbNJ4ZtU&ab_channel=AdobeCreativeCloud)
 
-* ![Adobe](images/adobe.png)
-* ![Microsoft](images/msft.png)
+- ![Adobe](images/adobe.png)
+- ![Microsoft](images/msft.png)
 
 ### Partner Success Story
 
 Connect your users to Creative Cloud right from within your mobile or web apps with our service APIs. Give users access to
 world-class creative assets with the Adobe Stock API, or sign up for early information on our upcoming CC Storage API.
 
-* [Learn more](https://adobe.io)
-* [Sign up for partner program](https://adobe.io)
+- [Learn more](https://adobe.io)
+- [Sign up for partner program](https://adobe.io)
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1604,6 +1677,7 @@ Product Cards group information that allow to browse a collection of related con
 ![product card](docs/images/product-card.png)
 
 ```
+
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
 
 ![CC icon](images/cc-icon.png)
@@ -1612,10 +1686,8 @@ Product Cards group information that allow to browse a collection of related con
 
 CC Storage API lets you access and modify assets stored in the Creative Cloud, the world's most popular creative platform.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
+- [Learn more](https://adobe.io)
+- [View docs](https://adobe.io)
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
 
@@ -1625,10 +1697,8 @@ CC Storage API lets you access and modify assets stored in the Creative Cloud, t
 
 Gives your users access to the perfect Adobe Stock asset to enhance their creative projects.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
-
-
+- [Learn more](https://adobe.io)
+- [View docs](https://adobe.io)
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
 
@@ -1638,8 +1708,9 @@ Gives your users access to the perfect Adobe Stock asset to enhance their creati
 
 Build extensions with HTML, CSS, Javascript and Node. Deploy across multiple Adobe apps.
 
-* [Learn more](https://adobe.io)
-* [View docs](https://adobe.io)
+- [Learn more](https://adobe.io)
+- [View docs](https://adobe.io)
+
 ```
 
 Use `slots` to identify the markdown content:
@@ -1664,6 +1735,7 @@ Set `interaction` to `true` to display the filter and sort options.
 See the [data example](https://github.com/adobe/aio-theme/blob/main/example/src/products/index.js) to provide for `clouds` and `products`.
 
 ```
+
 <ProductCardGrid clouds={clouds} products={products} interaction={true} />
 ```
 

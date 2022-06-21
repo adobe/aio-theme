@@ -12,7 +12,7 @@
 
 import React, { cloneElement } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation } from 'swiper';
+import { Autoplay, Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
@@ -62,7 +62,7 @@ const SwiperContent = ({
     className={classNames(`spectrum--${slideTheme ? slideTheme : theme}`)}
     css={css`
       display: flex;
-      ${backgroundColor}
+      ${backgroundColor};
       flex-direction: row;
       @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
         flex-direction: column;
@@ -110,7 +110,6 @@ const SwiperContent = ({
               margin-bottom: var(--spectrum-global-dimension-size-200) !important;
               overflow: hidden;
               white-space: nowrap;
-              overflow: hidden;
               text-overflow: ellipsis;
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                 max-width: calc(${layoutColumns(2)});
@@ -130,7 +129,7 @@ const SwiperContent = ({
             css={css`
               margin-top: var(--spectrum-global-dimension-size-200);
             `}>
-            <HeroButtons buttons={buttons} />
+            <HeroButtons buttons={buttons} styles={['outline', 'outline']} variants={['secondary', 'accent']} />
           </div>
         ) : null}
       </div>
@@ -159,7 +158,7 @@ const SwiperBlock = ({
 
   const textKeys = props.slots.split(',').filter((key) => key.trim().startsWith('text'));
 
-  const backgroundColor = `background-color: var(--spectrum-global-color-gray-${slideTheme === 'light' ? '50' : ''});`;
+  const backgroundColor = `background-color: var(--spectrum-global-color-gray-${slideTheme === 'light' ? '50' : ''})`;
 
   return (
     <Swiper

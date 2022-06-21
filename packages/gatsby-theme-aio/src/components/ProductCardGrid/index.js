@@ -12,7 +12,7 @@
 
 // TODO reuse ProductCard
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Checkbox } from '../Checkbox';
@@ -284,8 +284,8 @@ const ProductCardGrid = ({
                         css={css`
                           margin: var(--gap) 0 0 var(--gap);
                         `}>
-                        <AnchorButton isQuiet href={product.discover} variant="secondary">
-                          Learn more
+                        <AnchorButton href={product.discover} variant="secondary" style="outline">
+                          <span class="spectrum-Button-label">Learn more</span>
                         </AnchorButton>
                       </div>
                     )}
@@ -295,8 +295,8 @@ const ProductCardGrid = ({
                         css={css`
                           margin: var(--gap) 0 0 var(--gap);
                         `}>
-                        <AnchorButton href={product.docs} variant="primary">
-                          View docs
+                        <AnchorButton href={product.docs} variant="primary" style="outline">
+                          <span class="spectrum-Button-label">View docs</span>
                         </AnchorButton>
                       </div>
                     )}

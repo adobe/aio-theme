@@ -10,39 +10,39 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Fragment, useRef, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { withPrefix } from 'gatsby';
 import { GatsbyLink } from '../GatsbyLink';
 import {
+  DEFAULT_HOME,
+  DESKTOP_SCREEN_WIDTH,
   findSelectedTopPage,
   findSelectedTopPageMenu,
-  rootFix,
-  rootFixPages,
   getExternalLinkProps,
-  DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-  DEFAULT_HOME
+  rootFix,
+  rootFixPages
 } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, ChevronDown, Magnify, Close, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, Close, Magnify, TripleGripper } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
-import { Menu, Item as MenuItem } from '../Menu';
+import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import { Image } from '../Image';
 import { Link } from '../Link';
 import {
-  Tabs,
+  animateIndicator,
   Item as TabsItem,
   Label as TabsItemLabel,
-  TabsIndicator,
   positionIndicator,
-  animateIndicator
+  Tabs,
+  TabsIndicator
 } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
@@ -392,7 +392,7 @@ const GlobalHeader = ({
             ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
-              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-200);'}
+              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-350);'}
 
               @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 ${!hasHome && 'margin-left: var(--spectrum-global-dimension-size-300);'}
@@ -661,8 +661,8 @@ const GlobalHeader = ({
                     margin-left: var(--spectrum-global-dimension-size-300);
                     white-space: nowrap;
                   `}>
-                  <AnchorButton variant="primary" href={withPrefix(docs.href)}>
-                    {docs.title ?? 'View Docs'}
+                  <AnchorButton variant="primary" style="outline" href={withPrefix(docs.href)}>
+                    <span class="spectrum-Button-label">{docs.title ?? 'View Docs'}</span>
                   </AnchorButton>
                 </div>
               )}
@@ -675,8 +675,8 @@ const GlobalHeader = ({
                     display: block;
                   }
                 `}>
-                <AnchorButton variant="primary" href="/console">
-                  Console
+                <AnchorButton variant="primary" style="outline" href="/console">
+                  <span class="spectrum-Button-label">Console</span>
                 </AnchorButton>
               </div>
             </Tabs>
@@ -711,6 +711,7 @@ const GlobalHeader = ({
 
               <AnchorButton
                 variant="primary"
+                style="outline"
                 href="/console"
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -816,12 +817,13 @@ const GlobalHeader = ({
                           <Divider size="S" />
                         </div>
 
-                        <AnchorButton href="https://account.adobe.com/" variant="primary" isQuiet>
+                        <AnchorButton href="https://account.adobe.com/" variant="secondary" style="outline">
                           Edit Profile
                         </AnchorButton>
 
                         <Button
                           variant="primary"
+                          style="outline"
                           css={css`
                             margin: var(--spectrum-global-dimension-size-200) 0;
                           `}

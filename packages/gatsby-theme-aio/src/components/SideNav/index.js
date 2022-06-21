@@ -108,7 +108,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 
   return (
     <nav
-      id='side-menu'
+      id="side-menu"
       role="navigation"
       aria-label="Primary"
       css={css`
