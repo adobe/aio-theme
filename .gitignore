@@ -1,10 +1,18 @@
 .editorconfig
 .idea
+.DS_Store
 
 # npm yarn
 node_modules
 package.lock
 yarn-error.log
+.pnp.*
+.yarn/*
+
+# keep in repo
+!.gitignore
+!.yarn.lock
+!.yarnrc.yml
 
 # gatsby files
 .env
