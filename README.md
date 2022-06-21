@@ -1,8 +1,37 @@
 # Adobe I/O Theme
 
-The Adobe I/O Theme for building markdown powered sites.
+The Adobe I/O Theme powers all the Adobe `developer.adobe.com` sites to ensure that content is consistent across all the sites.
 
-[Themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow site functionality to be packaged as a standalone product for others to easily reuse.
+## Prerequisites
+
+This project uses Yarn 3 to manage package dependencies. If you do not have Yarn 3 installed, follow these instructions:
+
+1. Install [Node.js LTS](https://nodejs.org/en/download/). At the time of writing, the latest LTS version is `v16.15.1`.
+2. Install Yarn 3 by running the following command:
+
+   ```bash
+   corepack enable
+   ```
+
+Corepack is a binary shipped with all Node.js releases starting from 16.10.
+
+3. Update Yarn to the latest version by running the following command:
+
+   ```bash
+   yarn set version stable
+   ```
+
+4. Make sure you are now using version 3.2.1 of Yarn:.
+
+   ```bash
+   yarn --version
+   ```
+
+That's it. For more information on Yarn 3 usage, see [Yarn usage](https://yarnpkg.com/getting-started/usage).
+
+## Theme usage
+
+[Gatsby Themes](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/) allow site functionality to be packaged as a standalone product for others to easily reuse.
 Using a theme, all of your default configuration lives in an npm package.
 
 **View the site templates using the Adobe I/O Theme:**
@@ -31,68 +60,103 @@ Using a theme, all of your default configuration lives in an npm package.
 
 ## Contents
 
-- [Getting started](#getting-started)
-  - [Using GitHub repository templates](#using-github-repository-templates)
-  - [Using the Adobe I/O CLI](#using-the-adobe-i-o-cli)
-- [Content structure](#content-structure)
-  - [Frontmatter](#frontmatter)
-  - [Markdown pages](#markdown-pages)
-  - [Links](#links)
-  - [Assets](#assets)
-- [Configuration](#configuration)
-  - [Environment variables](#environment-variables)
+- [Adobe I/O Theme](#adobe-io-theme)
+  - [Prerequisites](#prerequisites)
+  - [Theme usage](#theme-usage)
+  - [Contents](#contents)
+  - [Getting started](#getting-started)
+    - [Using GitHub repository templates](#using-github-repository-templates)
+    - [Using the Adobe I/O CLI](#using-the-adobe-io-cli)
+  - [Content structure](#content-structure)
+    - [Frontmatter](#frontmatter)
+      - [Edition keyword](#edition-keyword)
+      - [Contributor name and link keywords](#contributor-name-and-link-keywords)
+    - [Markdown pages](#markdown-pages)
+    - [Links](#links)
+      - [Internal links](#internal-links)
+      - [External links](#external-links)
+    - [Assets](#assets)
+  - [Configuration](#configuration)
+    - [Environment variables](#environment-variables)
+      - [GitHub Contributors](#github-contributors)
+      - [Analytics and Feedback component](#analytics-and-feedback-component)
+      - [Identity Management Services](#identity-management-services)
+  - [Algolia indexing and search](#algolia-indexing-and-search)
+    - [Server-side environment variables](#server-side-environment-variables)
+    - [Client-side (browser) environment variables](#client-side-browser-environment-variables)
   - [Global Navigation](#global-navigation)
   - [Menus](#menus)
   - [Home link](#home-link)
   - [Side Navigation](#side-navigation)
+    - [Variations](#variations)
+      - [Single-level side navigation](#single-level-side-navigation)
+      - [Single-level side navigation with headers](#single-level-side-navigation-with-headers)
+      - [Multi-level side navigation](#multi-level-side-navigation)
+      - [Auto-collapsing of multi-level side navigation](#auto-collapsing-of-multi-level-side-navigation)
+      - [Use descriptive titles](#use-descriptive-titles)
+      - [Be concise](#be-concise)
+      - [Use sentence case](#use-sentence-case)
+      - [Use the right variation](#use-the-right-variation)
+      - [Avoid deep nested menus](#avoid-deep-nested-menus)
+      - [Use consistent multi-level behavior](#use-consistent-multi-level-behavior)
   - [Versions](#versions)
-- [Building the site](#building-the-site)
-  - [Adding a Path Prefix](#adding-a-path-prefix)
-- [Deploying the site](#deploying-the-site)
-  - [Preview on GitHub Pages](#preview-on-github-pages)
-  - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
-- [Writing Enhanced Markdown](#writing-enhanced-markdown)
-  - [Metadata with Front matter](#metadata-with-front-matter)
-  - [OpenAPI](#openapi)
-  - [JSDoc](#jsdoc)
-  - [MDX](#mdx)
-  - [Modular Content System](#modular-content-system)
-  - [JSX Blocks](#jsx-blocks)
-  - [Hero Block](#hero-block)
-  - [Resources Block](#resources-block)
-  - [Discover Block](#discover-block)
-  - [Code Block](#code-block)
-  - [Inline Alert Block](#inline-alert-block)
-  - [Media Block](#media-block)
-  - [Announcement Block](#announcement-block)
-  - [Summary Block](#summary-block)
-  - [Title Block](#title-block)
-  - [Text Block](#text-block)
-  - [Tabs Block](#tabs-block)
-  - [Product Card](#product-card)
-  - [Product Card Grid](#product-card-grid)
-  - [Resource Card](#resource-card)
-  - [Carousel](#carousel)
-  - [Edition](#edition)
-  - [Attribution](#attribution)
-  - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
-- [Customizations](#customizations)
-  - [Custom Layout](#custom-layout)
-  - [Frame](#frame)
-  - [Theming](#theming)
-- [Upgrading](#upgrading)
-- [Issue tracker](#issue-tracker)
-- [Contributing](#contributing)
-- [Releases](#releases)
+  - [Building the site](#building-the-site)
+    - [Adding a Path Prefix](#adding-a-path-prefix)
+  - [Deploying the site](#deploying-the-site)
+    - [Preview on GitHub Pages](#preview-on-github-pages)
+    - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
+  - [Writing Enhanced Markdown](#writing-enhanced-markdown)
+    - [Metadata with Front matter](#metadata-with-front-matter)
+  - [<pre>](#pre)
+  - [<pre>](#pre-1)
+  - [<pre>](#pre-2)
+  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
+    - [OpenAPI](#openapi)
+  - [<pre>](#pre-3)
+  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
+    - [JSDoc](#jsdoc)
+  - [<pre>](#pre-4)
+  - [jsDoc: true](#jsdoc-true)
+    - [MDX](#mdx)
+    - [Modular Content System](#modular-content-system)
+    - [JSX Blocks](#jsx-blocks)
+    - [Hero Block](#hero-block)
+    - [Resources Block](#resources-block)
+    - [Discover Block](#discover-block)
+    - [Code Block](#code-block)
+      - [Request](#request)
+      - [Request](#request-1)
+      - [Response](#response)
+    - [Inline Alert Block](#inline-alert-block)
+    - [Media Block](#media-block)
+    - [Announcement Block](#announcement-block)
+    - [Summary Block](#summary-block)
+    - [Title Block](#title-block)
+    - [Text Block](#text-block)
+    - [Tabs Block](#tabs-block)
+    - [Product Card](#product-card)
+    - [Product Card Grid](#product-card-grid)
+    - [Resource Card](#resource-card)
+    - [Carousel](#carousel)
+    - [Edition](#edition)
+    - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
+      - [Embedding local markdown files](#embedding-local-markdown-files)
+      - [Embedding external markdown files](#embedding-external-markdown-files)
+      - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
+  - [Customizations](#customizations)
+    - [Custom layout](#custom-layout)
+    - [Frame](#frame)
+    - [Theming](#theming)
+  - [Upgrading](#upgrading)
+    - [Locally](#locally)
+    - [Automated](#automated)
+  - [Issue tracker](#issue-tracker)
+  - [Contributing](#contributing)
+  - [Releases](#releases)
 
 ## Getting started
 
 This section will help you get started building a site with the Adobe I/O Theme.
-
-**Pre-requisites**
-
-- Install [Node.js LTS](https://nodejs.org/en/download/)
-- Install a package manager like [npm](https://docs.npmjs.com/cli/npm)
 
 ### Using GitHub repository templates
 
@@ -1029,7 +1093,7 @@ Use `background` to set a custom background color matching your color scheme. De
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant.  Defaults to false.
+Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant. Defaults to false.
 
 **Half width variant**
 
