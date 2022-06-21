@@ -8,16 +8,16 @@ package.lock
 yarn-error.log
 .pnp.*
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
 
 # keep in repo
 !.gitignore
 !.yarn.lock
 !.yarnrc.yml
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # gatsby files
 .env
