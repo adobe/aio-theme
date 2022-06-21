@@ -23,7 +23,9 @@ const FeedbackButton = ({ variant, setIsOpen }) => (
     variant="primary"
     onClick={() => {
       setIsOpen(true);
-    }}>
+    }}
+    da-ll={`${variant}`}
+    >
     {variant}
   </Button>
 );
