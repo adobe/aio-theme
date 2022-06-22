@@ -437,6 +437,7 @@ export default ({ children, pageContext, location }) => {
             overscroll-behavior: auto contain;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            background-color: transparent;
 
             ${showSearch && 'overflow: hidden;'}
           }
@@ -446,23 +447,23 @@ export default ({ children, pageContext, location }) => {
           }
         `}
       />
-              <div
-          dir="ltr"
-          className="spectrum spectrum--medium spectrum--large spectrum--light"
-          color-scheme="light"
-          css={css`
-            min-height: 100vh;
-            background-color: var(--spectrum-global-color-gray-50);
-          `}>
-        
-        <Search
-          algolia={algolia}
-          searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
-          indexAll={indexAll}
-          showSearch={showSearch}
-          setShowSearch={setShowSearch}
-          searchButtonId={searchButtonId}
-        />
+        <div
+        dir="ltr"
+        className="spectrum spectrum--medium spectrum--large spectrum--light"
+        color-scheme="light"
+        css={css`
+          min-height: 100vh;
+          background-color: transparent;
+        `}>
+          <Search
+            algolia={algolia}
+            searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+            indexAll={indexAll}
+            showSearch={showSearch}
+            setShowSearch={setShowSearch}
+            searchButtonId={searchButtonId}
+            target="_top"
+          />
         </div>
       </>
     );
