@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc1...@adobe/gatsby-theme-aio@4.3.0-rc2) (2022-06-22)
+
+### Features
+
+* Add top level access to search result links and styles ready for iframe ([63f2538](https://github.com/adobe/aio-theme/commit/63f25384400a30a0a2035780dbc335b72bb4a545))
+
+
 ## [4.3.0-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc0...@adobe/gatsby-theme-aio@4.3.0-rc1) (2022-05-17)
 
 
