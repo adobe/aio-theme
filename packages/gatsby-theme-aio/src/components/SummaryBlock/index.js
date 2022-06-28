@@ -81,7 +81,7 @@ const SummaryBlock = ({
           `
         })}
 
-      <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['primary', 'accent']} />
+      <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['primary', 'primary']} />
     </div>
   </section>
 );
