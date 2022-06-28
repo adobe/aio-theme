@@ -65,7 +65,7 @@ const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }
             css={css`
               margin-top: var(--spectrum-global-dimension-size-200);
             `}>
-            <AnchorButton href={link.props.href} variant="primary" style="outline">
+            <AnchorButton href={link.props.href} variant="accent" style="fill">
               <span class="spectrum-Button-label">{link.props.children}</span>
             </AnchorButton>
           </div>

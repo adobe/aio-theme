@@ -295,7 +295,7 @@ const ProductCardGrid = ({
                         css={css`
                           margin: var(--gap) 0 0 var(--gap);
                         `}>
-                        <AnchorButton href={product.docs} variant="primary" style="outline">
+                        <AnchorButton href={product.docs} variant="accent" style="outline">
                           <span class="spectrum-Button-label">View docs</span>
                         </AnchorButton>
                       </div>

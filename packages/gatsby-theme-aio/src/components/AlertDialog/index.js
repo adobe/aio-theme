@@ -42,7 +42,7 @@ const AlertDialog = ({ isOpen, setIsOpen, title, children }) => (
             <Divider size="M" className="spectrum-Dialog-divider" />
             <section className="spectrum-Dialog-content">{children}</section>
             <div className="spectrum-ButtonGroup spectrum-Dialog-buttonGroup spectrum-Dialog-buttonGroup--noFooter">
-              <Button elementType="button" variant="primary" style="outline" onClick={() => setIsOpen(false)}>
+              <Button elementType="button" variant="accent" style="fill" onClick={() => setIsOpen(false)}>
                 Close
               </Button>
             </div>

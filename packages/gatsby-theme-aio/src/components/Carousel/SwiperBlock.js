@@ -129,7 +129,7 @@ const SwiperContent = ({
             css={css`
               margin-top: var(--spectrum-global-dimension-size-200);
             `}>
-            <HeroButtons buttons={buttons} styles={['outline', 'outline']} variants={['secondary', 'accent']} />
+            <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['secondary', 'accent']} />
           </div>
         ) : null}
       </div>
