@@ -966,25 +966,20 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
 <pre>
-
+---
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
-
 ---
-
 </pre>
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
 <pre>
-
-contributors:
-
-- https://github.com/simonwex
-
 ---
-
+contributors:
+- https://github.com/simonwex
+---
 </pre>
   
 You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
