@@ -17,7 +17,7 @@ import '@spectrum-css/link';
 
 let editionText = '';
 let editionColor = '';
-const EDITIONS_LINK = "https://docs.magento.com/user-guide/getting-started.html#product-editions";
+const EDITIONS_LINK = 'https://docs.magento.com/user-guide/getting-started.html#product-editions';
 
 const Edition = ({ ...props }) => {
   switch (props.name) {
@@ -39,14 +39,17 @@ const Edition = ({ ...props }) => {
   }
 
   return (
-    <span class={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} style='padding-bottom:4px'>{editionText}.&nbsp;
-      <a href={`${EDITIONS_LINK}`} class="spectrum-Link spectrum-Link--overBackground" target="_blank">Learn more</a>
+    <span class={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} style="padding-bottom:4px">
+      {editionText}.&nbsp;
+      <a href={`${EDITIONS_LINK}`} class="spectrum-Link spectrum-Link--overBackground" target="_blank">
+        Learn more
+      </a>
     </span>
   );
 };
 
 Edition.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string
 };
 
 export { Edition };

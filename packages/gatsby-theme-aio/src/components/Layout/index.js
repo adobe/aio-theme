@@ -10,23 +10,23 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect, createElement } from 'react';
+import React, { createElement, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Global, css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
 import algoliaSearch from 'algoliasearch/lite';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import {
-  rootFix,
-  rootFixPages,
+  DESKTOP_SCREEN_WIDTH,
   findSelectedPages,
   findSubPages,
-  trailingSlashFix,
-  normalizePagePath,
-  SEARCH_PARAMS,
-  DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-  SIDENAV_WIDTH
+  normalizePagePath,
+  rootFix,
+  rootFixPages,
+  SEARCH_PARAMS,
+  SIDENAV_WIDTH,
+  trailingSlashFix
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
@@ -45,20 +45,15 @@ import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
 
-// GATSBY_ALGOLIA_APP_ID=...
-// GATSBY_ALGOLIA_API_KEY=...
+// ALGOLIA_APP_ID=...
+// ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(
-  process.env.GATSBY_ALGOLIA_APP_ID &&
-  process.env.GATSBY_ALGOLIA_API_KEY &&
-  (process.env.GATSBY_ALGOLIA_INDEX_ALL || process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC) &&
-  process.env.GATSBY_ALGOLIA_SEARCH_INDEX
-);
+const hasSearch = !!(process.env.ALGOLIA_APP_ID && process.env.ALGOLIA_SEARCH_API_KEY);
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY);
+  algolia = algoliaSearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_API_KEY);
 } else {
   console.warn('AIO: Algolia config missing.');
 }
@@ -478,7 +473,7 @@ export default ({ children, pageContext, location }) => {
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0px auto;
+                  grid-template-columns: 0 auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -527,7 +522,7 @@ export default ({ children, pageContext, location }) => {
                   z-index: 1;
                   width: ${SIDENAV_WIDTH};
                   height: 100%;
-                  background-color: var(--spectrum-global-color-gray-75);
+                  background-color: var(--spectrum-global-color-gray-100);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;

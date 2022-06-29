@@ -110,7 +110,7 @@ const Tabs = forwardRef(
         {...props}
         role="tablist"
         aria-orientation={orientation}
-        className={classNames(className, 'spectrum-Tabs', `spectrum-Tabs--${orientation}`, {
+        className={classNames(className, 'spectrum-Tabs', 'spectrum-Tabs--sizeM', `spectrum-Tabs--${orientation}`, {
           'spectrum-Tabs--quiet': isQuiet
         })}>
         {children}

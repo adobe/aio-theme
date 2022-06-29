@@ -12,7 +12,7 @@
 
 import React, { cloneElement } from 'react';
 import { css } from '@emotion/react';
-import { HeroImage, HeroButtons } from '../Hero';
+import { HeroButtons, HeroImage } from '../Hero';
 import { TABLET_SCREEN_WIDTH } from '../../utils';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
@@ -51,7 +51,7 @@ const SummaryBlock = ({
         left: 0;
         display: flex;
         flex-direction: column;
-        align-items: left;
+        align-items: flex-start;
         justify-content: center;
         text-align: left;
 
@@ -81,7 +81,7 @@ const SummaryBlock = ({
           `
         })}
 
-      <HeroButtons buttons={buttons} quiets={[false, true]} variants={['overBackground', 'overBackground']} />
+      <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['primary', 'primary']} />
     </div>
   </section>
 );

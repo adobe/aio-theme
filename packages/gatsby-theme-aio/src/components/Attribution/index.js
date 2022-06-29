@@ -15,21 +15,31 @@ import PropTypes from 'prop-types';
 import '@spectrum-css/badge';
 import '@spectrum-css/link';
 import { Star } from '../Icons';
+import { css } from '@emotion/react';
+import classNames from 'classnames';
 
 const Attribution = ({ ...props }) => {
   return (
     <div>
-      <span className={`spectrum-Badge spectrum-Badge--sizeS spectrum-Badge--neutral`} style='padding-bottom:4px'>
+      <span
+        className={classNames('spectrum-Badge', 'spectrum-Badge--sizeS', 'spectrum-Badge--neutral')}
+        css={css`
+          display: inline-flex;
+          align-items: center;
+        `}>
         <Star />
-        <a href={`${props.link}`} class="spectrum-Link spectrum-Link--overBackground spectrum-Link--quiet" target="_blank">{`Thanks to ${props.name} for contributing this topic!`}</a>
+        <a
+          href={`${props.link}`}
+          className={classNames('spectrum-Link', 'spectrum-Link--overBackground', 'spectrum-Link--quiet')}
+          target="_blank">{`Thanks to ${props.name} for contributing this topic!`}</a>
       </span>
     </div>
   );
 };
 
 Attribution.propTypes = {
-  name: PropTypes.element,
-  link: PropTypes.string,
+  name: PropTypes.string,
+  link: PropTypes.string
 };
 
 export { Attribution };
