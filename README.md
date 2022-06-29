@@ -107,15 +107,10 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
-  - [<pre>](#pre)
-  - [<pre>](#pre-1)
-  - [<pre>](#pre-2)
   - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
-  - [<pre>](#pre-3)
   - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
     - [JSDoc](#jsdoc)
-  - [<pre>](#pre-4)
   - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -970,26 +965,21 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
-## <pre>
-
+<pre>
+---
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
-
 ---
-
 </pre>
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
-## <pre>
-
-contributors:
-
-- https://github.com/simonwex
-
+<pre>
 ---
-
+contributors:
+- https://github.com/simonwex
+---
 </pre>
   
 You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
@@ -1008,7 +998,7 @@ hideBreadcrumbNav: false
 
 We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply use front matter to define the spec URL.
 
-## <pre>
+<pre>
 
 ## openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json
 
@@ -1020,7 +1010,7 @@ We currently recommend to use the [JSDoc to markdown](https://github.com/jsdoc2m
 
 Use front matter to specify a JSDoc markdown document.
 
-## <pre>
+<pre>
 
 ## jsDoc: true
 
