@@ -965,7 +965,7 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
-## <pre>
+<pre>
 
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
@@ -977,7 +977,7 @@ description: This is the guides overview page of Adobe Analytics
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
-## <pre>
+<pre>
 
 contributors:
 
@@ -1003,7 +1003,7 @@ hideBreadcrumbNav: false
 
 We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply use front matter to define the spec URL.
 
-## <pre>
+<pre>
 
 ## openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json
 
@@ -1015,7 +1015,7 @@ We currently recommend to use the [JSDoc to markdown](https://github.com/jsdoc2m
 
 Use front matter to specify a JSDoc markdown document.
 
-## <pre>
+<pre>
 
 ## jsDoc: true
 
