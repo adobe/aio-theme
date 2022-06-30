@@ -30,7 +30,7 @@ import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 ![Hero image](hero-illustration.png)
 # Adobe Analytics
 
-Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways. -->
+Adobe Product API offers "limitless" ways to integrate your most "important" customer data into key business processes. Adobe Product API offer limitless ways. -->
 
 <Resources slots="heading, links"/>
 
@@ -160,7 +160,7 @@ As long as you don't create an empty line in between your text blocks.
 
 <InlineAlert variant="warning" slots="header, text-10, text-1, text-doesnt-matter-just-start-with-text-and-make-it-unique" />
 
-Important text slot details
+Important "text slot" details
 
 This is the first text slot, but its slot name is `text-10`.
 
