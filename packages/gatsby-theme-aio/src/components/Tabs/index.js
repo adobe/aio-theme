@@ -37,10 +37,10 @@ const animateIndicator = (indicator, animate) => {
 const setTabItemIcon = (child, className, iconSize) => {
   if (child?.props?.children?.props?.mdxType === 'img') {
     return (
-      <IconImage image={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />
+      <IconImage image={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />
     );
   }
-  return <Icons icon={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />;
+  return <Icons icon={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />;
 };
 
 const mobileMinWidth = '480px';
@@ -120,7 +120,7 @@ const Tabs = forwardRef(
 );
 
 const Item = forwardRef(
-  ({ elementType = 'div', isSelected = false, className, children, icon, label, ...props }, ref) => {
+  ({ elementType = 'div', isSelected = false, className, children, icon, orientation, label, ...props }, ref) => {
     const Element = elementType;
     const id = nextId();
     return (
@@ -131,7 +131,7 @@ const Item = forwardRef(
         aria-selected={isSelected}
         aria-controls={id}
         className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': isSelected })}>
-        {icon ? <TabItemIcon icon={icon} isSelected={isSelected}></TabItemIcon> : null}
+        {icon ? <TabItemIcon icon={icon} isSelected={isSelected} css={orientation === 'horizontal' ? css`width:inherit !important; align-self:flex-start;` : css`align-self: flex-start;`}></TabItemIcon> : null}
         {label ? <Label> {label} </Label> : null}
         {children}
       </Element>
@@ -140,7 +140,7 @@ const Item = forwardRef(
 );
 
 const TabItemIcon = forwardRef(
-  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'xl', ...props }, ref) => {
+  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'M', ...props }, ref) => {
     const Element = elementType;
     return (
       <Element
@@ -268,6 +268,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     aria-selected={index === selectedIndex.tab}
                     label={<b>{data['heading']}</b>}
                     icon={data['image']}
+                    orientation={orientation}
                     onKeyDown={(e) => {
                       if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter') {
                         e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
@@ -291,9 +292,8 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                       font-size: var(--spectrum-global-dimension-size-200);
                       margin-bottom: ${orientation === 'vertical' ? '2.4rem !important' : '0rem'};
                       display: flex !important;
-                      padding: var(--spectrum-global-dimension-size-125) !important;
                       height: auto !important;
-                      line-height: initial;
+                      line-height: ${orientation === 'vertical' ? 'initial !important' : 'initial'};
 
                       .spectrum-Tabs-itemLabel {
                         margin-top: 5px;

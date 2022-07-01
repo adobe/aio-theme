@@ -9,6 +9,7 @@ edition: pwa
 # Contribute
 
 This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page.
+
 ## How to contribute ?
 
 This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. This is some text for this page. Lorem ipsum

@@ -9,10 +9,10 @@ contributors:
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={true}/>
 
 ![Hero image Guides](../hero-illustration.png)
+
 # Get Started With NO Breadcrumbs
 
 Get Started quick no breadcrumb nav
-
 
 Authentication
 ---
