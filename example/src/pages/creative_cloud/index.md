@@ -361,11 +361,11 @@ Text
 
 Text
 
-<TitleBlock slots="heading" theme="lightest" />
+<TitleBlock slots="heading" theme="light" />
 
 ### Vertical Tabs Block
 
-<TabsBlock orientation="vertical" slots="heading, image, content" repeat="3" theme="lightest"  />
+<TabsBlock orientation="vertical" slots="heading, image, content" repeat="3" theme="light"  />
 
 ### Create PDF from URL
 
@@ -386,11 +386,11 @@ Text
 <ExtractPdfContentStructure/>
 
 
-<TitleBlock slots="heading" theme="lightest" />
+<TitleBlock slots="heading" theme="light" />
 
 ### Horizontal Tabs Block
 
-<TabsBlock orientation="horizontal" slots="heading, image, content" repeat="3" theme="lightest"  />
+<TabsBlock orientation="horizontal" slots="heading, image, content" repeat="3" theme="light"  />
 
 ### Create PDF from URL
 
