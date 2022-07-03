@@ -33,9 +33,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@*, @adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio":
-  version: 0.0.0-use.local
-  resolution: "@adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio"
+"@adobe/gatsby-theme-aio@npm:*":
+  version: 4.3.0
+  resolution: "@adobe/gatsby-theme-aio@npm:4.3.0"
   dependencies:
     "@adobe/focus-ring-polyfill": ^0.1.5
     "@adobe/gatsby-source-github-file-contributors": ^0.3.1
