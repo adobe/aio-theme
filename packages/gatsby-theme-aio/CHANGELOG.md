@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc3...@adobe/gatsby-theme-aio@4.3.0-rc4) (2022-07-11)
+
+### Features
+
+* Fixed wrong origin for postMessage ([bde3cde](https://github.com/adobe/aio-theme/commit/bde3cde5a978c97e8127699534e85878df0c79e8))
+
 ## [4.3.0-rc3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc2...@adobe/gatsby-theme-aio@4.3.0-rc3) (2022-07-11)
 
 ### Features
