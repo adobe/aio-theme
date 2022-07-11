@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc2...@adobe/gatsby-theme-aio@4.3.0-rc3) (2022-07-11)
+
+### Features
+
+* Added communication of query string parameters to parent from search when iframed ([cdb0504](https://github.com/adobe/aio-theme/commit/cdb0504b56ce85bb781aa3a9d1bcf2947c1395e7))
+
+
 ## [4.3.0-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc1...@adobe/gatsby-theme-aio@4.3.0-rc2) (2022-06-22)
 
 ### Features
