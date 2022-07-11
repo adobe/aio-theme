@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc4...@adobe/gatsby-theme-aio@4.3.0-rc5) (2022-07-11)
+
+### Features
+
+* Fixed context switching for dev, stage, and prod ([2c654ab](https://github.com/adobe/aio-theme/commit/2c654ab9626b14593f3f72ebb430e650da9feedf))
+
 ## [4.3.0-rc4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc3...@adobe/gatsby-theme-aio@4.3.0-rc4) (2022-07-11)
 
 ### Features
