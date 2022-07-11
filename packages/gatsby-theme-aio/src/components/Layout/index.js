@@ -462,7 +462,7 @@ export default ({ children, pageContext, location }) => {
             showSearch={showSearch}
             setShowSearch={setShowSearch}
             searchButtonId={searchButtonId}
-            target="_top"
+            isIFramed
           />
         </div>
       </>
