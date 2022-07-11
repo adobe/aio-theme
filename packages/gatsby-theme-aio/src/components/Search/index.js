@@ -174,7 +174,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setQueryStringParameter(SEARCH_PARAMS.keywords, selectedKeywords);
       setQueryStringParameter(SEARCH_PARAMS.index, selectedIndex);
 
-      isIFramed ? parent.postMessage(JSON.stringify({'query':searchQuery, 'keywords':selectedKeywords, 'index':selectedIndex}), window.location.pathname) : '';
+      isIFramed ? parent.postMessage(JSON.stringify({'query':searchQuery, 'keywords':selectedKeywords, 'index':selectedIndex}), window.location.origin + window.location.pathname) : '';
 
       positionSelectedTabIndicator();
       setShowSearchResults(true);
