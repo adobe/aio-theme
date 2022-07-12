@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc5...@adobe/gatsby-theme-aio@4.3.0-rc6) (2022-07-11)
+
+### Features
+
+* Fixed stage target origin to be * since helix stage origins are dynamic([d45df7b](https://github.com/adobe/aio-theme/commit/d45df7b7fbcc63f1cd95fcf30e4f2b0a3a108253))
+
+
 ## [4.3.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc4...@adobe/gatsby-theme-aio@4.3.0-rc5) (2022-07-11)
 
 ### Features
