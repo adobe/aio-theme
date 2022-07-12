@@ -40,6 +40,9 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
         return (
           <li
             key={index}
+            role="treeitem"
+            aria-level={level}
+            aria-expanded={page.header || expandedPages.includes(page.href)}
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
                 display: none;
@@ -59,12 +62,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 {page.title}
               </h2>
             ) : isExternalLink(page.href) ? (
-              <a
-                {...getExternalLinkProps(page.href)}
-                href={page.href}
-                className="spectrum-SideNav-itemLink"
-                role="treeitem"
-                aria-level={level}>
+              <a {...getExternalLinkProps(page.href)} href={page.href} className="spectrum-SideNav-itemLink">
                 {page.title}
               </a>
             ) : (
@@ -83,15 +81,14 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                   }
                 }}
                 to={page.href}
-                className="spectrum-SideNav-itemLink"
-                role="treeitem"
-                aria-level={level}>
+                className="spectrum-SideNav-itemLink">
                 {page.title}
               </GatsbyLink>
             )}
             {page.pages && (
               <ul
                 className="spectrum-SideNav"
+                role="group"
                 css={css`
                   ${level > 1
                     ? `
@@ -111,6 +108,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 
   return (
     <nav
+      id="side-menu"
       role="navigation"
       aria-label="Primary"
       css={css`
@@ -121,7 +119,6 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
         }
       `}>
       <div
-        role="tree"
         css={css`
           box-sizing: border-box;
           padding: var(--spectrum-global-dimension-size-400);
@@ -129,6 +126,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
           height: calc(100vh - var(--spectrum-global-dimension-size-800));
         `}>
         <ul
+          role="tree"
           aria-label="Table of contents"
           className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader })}>
           {renderSubtree(selectedSubPages, 1)}

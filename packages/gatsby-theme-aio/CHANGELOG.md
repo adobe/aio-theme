@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
 ## [4.3.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc5...@adobe/gatsby-theme-aio@4.3.0-rc6) (2022-07-11)
 
 ### Features
@@ -50,6 +51,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * Add search widget into its own page via special path ([8dc75c8](https://github.com/adobe/aio-theme/commit/8dc75c8f926e307c4475ba13b9fd654022ceb414))
+
+## [4.3.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.2...@adobe/gatsby-theme-aio@4.3.0) (2022-06-29)
+
+### Features
+
+* Update theme to use yarn version 3.2.1 ([4215464](https://github.com/adobe/aio-theme/commit/4215464eab10227b01253b0a7e12538ff802d211))
+
+* Update to new version of spectrum css ([4879eff](https://github.com/adobe/aio-theme/commit/4879eff321e4ba849461899e163a69a47cd943b8))
+
+### Fix
+
+* attach analytics to feedback ([ef1e08c](https://github.com/adobe/aio-theme/commit/ef1e08c205d353b7693d42e829962a782c786fa9))
+
+
+## [4.2.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.1...@adobe/gatsby-theme-aio@4.2.2) (2022-05-18)
+
+### Fix
+
+* Fix attributes ([128535d](https://github.com/adobe/aio-theme/commit/128535db5f233f1f38da5f14957fb235dff1f52c))
+
+
+## [4.2.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.0...@adobe/gatsby-theme-aio@4.2.1) (2022-05-11)
+
+### Features
+
+* Attribution and Edition features ([495f298](https://github.com/adobe/aio-theme/commit/495f2987f8d0963775105d229aae5f74ef491e30))
+* Accessibility fixes in theme components and layout ([6e58d76](https://github.com/adobe/aio-theme/commit/6e58d765f9f5c539c7b93a6ee58963ae2a1b3afb))
+
 
 
 ## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)

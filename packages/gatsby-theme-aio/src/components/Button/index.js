@@ -17,7 +17,7 @@ import '@spectrum-css/button';
 
 const Text = ({ children }) => <span className="spectrum-Button-label">{children}</span>;
 
-const Button = ({ className, elementType = 'a', variant, isQuiet, children, ...props }) => {
+const Button = ({ className, elementType = 'a', variant = 'primary', style = 'outline', children, ...props }) => {
   const Element = elementType;
   if (elementType === 'a') {
     props.role = 'button';
@@ -29,9 +29,9 @@ const Button = ({ className, elementType = 'a', variant, isQuiet, children, ...p
       className={classNames([
         className,
         'spectrum-Button',
-        `spectrum-Button--${variant}`,
         'spectrum-Button--sizeM',
-        { 'spectrum-Button--quiet': isQuiet }
+        `spectrum-Button--${style}`,
+        `spectrum-Button--${variant}`
       ])}>
       <Text>{children}</Text>
     </Element>
@@ -41,8 +41,8 @@ const Button = ({ className, elementType = 'a', variant, isQuiet, children, ...p
 Button.propTypes = {
   elementType: PropTypes.string,
   href: PropTypes.string,
-  variant: PropTypes.oneOf(['cta', 'overBackground', 'primary', 'secondary', 'negative']),
-  isQuiet: PropTypes.bool
+  style: PropTypes.oneOf(['fill', 'outline']),
+  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative'])
 };
 
 export { Button, Text };

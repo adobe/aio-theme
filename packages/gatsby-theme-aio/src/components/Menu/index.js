@@ -21,14 +21,7 @@ import { CheckMark } from '../Icons';
 
 const Menu = forwardRef(({ children, ...props }, ref) => {
   return (
-    <ul
-      ref={ref}
-      className="spectrum-Menu"
-      role="menu"
-      css={css`
-        display: block;
-      `}
-      {...props}>
+    <ul ref={ref} className="spectrum-Menu" role="menu" {...props}>
       {children}
     </ul>
   );

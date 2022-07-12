@@ -37,10 +37,10 @@ const animateIndicator = (indicator, animate) => {
 const setTabItemIcon = (child, className, iconSize) => {
   if (child?.props?.children?.props?.mdxType === 'img') {
     return (
-      <IconImage image={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />
+      <IconImage image={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />
     );
   }
-  return <Icons icon={child} className={classNames(className, `spectrum-Icon--spectrum-icon-size-${iconSize}`)} />;
+  return <Icons icon={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />;
 };
 
 const mobileMinWidth = '480px';
@@ -110,7 +110,7 @@ const Tabs = forwardRef(
         {...props}
         role="tablist"
         aria-orientation={orientation}
-        className={classNames(className, 'spectrum-Tabs', `spectrum-Tabs--${orientation}`, {
+        className={classNames(className, 'spectrum-Tabs', 'spectrum-Tabs--sizeM', `spectrum-Tabs--${orientation}`, {
           'spectrum-Tabs--quiet': isQuiet
         })}>
         {children}
@@ -120,7 +120,7 @@ const Tabs = forwardRef(
 );
 
 const Item = forwardRef(
-  ({ elementType = 'div', isSelected = false, className, children, icon, label, ...props }, ref) => {
+  ({ elementType = 'div', isSelected = false, className, children, icon, orientation, label, ...props }, ref) => {
     const Element = elementType;
     const id = nextId();
     return (
@@ -131,7 +131,7 @@ const Item = forwardRef(
         aria-selected={isSelected}
         aria-controls={id}
         className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': isSelected })}>
-        {icon ? <TabItemIcon icon={icon} isSelected={isSelected}></TabItemIcon> : null}
+        {icon ? <TabItemIcon icon={icon} isSelected={isSelected} css={orientation === 'horizontal' ? css`width:inherit !important; align-self:flex-start;` : css`align-self: flex-start;`}></TabItemIcon> : null}
         {label ? <Label> {label} </Label> : null}
         {children}
       </Element>
@@ -140,7 +140,7 @@ const Item = forwardRef(
 );
 
 const TabItemIcon = forwardRef(
-  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'xl', ...props }, ref) => {
+  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'M', ...props }, ref) => {
     const Element = elementType;
     return (
       <Element
@@ -203,6 +203,14 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
     const selectedTab = tabs.filter((tab) => tab?.current)[index];
     positionIndicator(selectedTabIndicator, selectedTab);
   };
+
+  const handleOnChange = (index) => {
+    setSelectedIndex({
+      tab: index
+    });
+    positionSelectedTabIndicator(index);
+  };
+
   return (
     <section
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
@@ -247,22 +255,33 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                 const ref = createRef();
                 tabs.push(ref);
                 const isSelected = selectedIndex.tab === index;
-                const itemPopoverId = nextId();
                 return (
                   <Item
                     className={'tabItem'}
                     key={`tabItem_${index}`}
-                    tabIndex={0}
+                    id={`tabItem_${index}`}
                     ref={ref}
                     isSelected={isSelected}
-                    aria-controls={itemPopoverId}
+                    aria-controls={`tabView${index}`}
+                    tabIndex={index === selectedIndex.tab ? 0 : -1}
+                    aria-label={data['heading']}
+                    aria-selected={index === selectedIndex.tab}
                     label={<b>{data['heading']}</b>}
                     icon={data['image']}
+                    orientation={orientation}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter') {
+                        e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
+                      }
+                      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
+                      }
+                    }}
+                    onFocus={() => {
+                      handleOnChange(index);
+                    }}
                     onClick={() => {
-                      setSelectedIndex({
-                        tab: index
-                      });
-                      positionSelectedTabIndicator(index);
+                      handleOnChange(index);
                     }}
                     css={css`
                       text-align: left;
@@ -273,9 +292,8 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                       font-size: var(--spectrum-global-dimension-size-200);
                       margin-bottom: ${orientation === 'vertical' ? '2.4rem !important' : '0rem'};
                       display: flex !important;
-                      padding: var(--spectrum-global-dimension-size-125) !important;
                       height: auto !important;
-                      line-height: initial;
+                      line-height: ${orientation === 'vertical' ? 'initial !important' : 'initial'};
 
                       .spectrum-Tabs-itemLabel {
                         margin-top: 5px;

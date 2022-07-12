@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Button } from '../Button';
 import loadable from '@loadable/component';
@@ -21,9 +21,12 @@ const FeedbackButton = ({ variant, setIsOpen }) => (
   <Button
     className={`feedback-${variant.toLowerCase()}`}
     variant="primary"
+    style="outline"
     onClick={() => {
       setIsOpen(true);
-    }}>
+    }}
+    da-ll={`${variant}`}
+    >
     {variant}
   </Button>
 );

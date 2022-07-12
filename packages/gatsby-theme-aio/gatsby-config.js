@@ -59,32 +59,38 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        mediaTypes: [`text/markdown`, `text/x-markdown`],
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
-        rehypePlugins: [require(`rehype-slug`)],
-        plugins: [`gatsby-transformer-remark`, `gatsby-remark-copy-linked-files`, `gatsby-remark-images-remote`],
+        rehypePlugins: [
+          require(`rehype-slug`),
+        ],
+        // plugins: [`gatsby-transformer-remark`, `gatsby-remark-copy-linked-files`, `gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-transformer-remark`
+            resolve: `gatsby-transformer-remark`,
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
-              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`, 'svg']
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`],
+              destinationDir: `assets`,
             }
           },
           {
-            resolve: `gatsby-remark-images-remote`,
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,
-              withWebp: { quality: 80 },
+              showCaptions: false,
+              quality: 100,
+              withWebp: { quality: 100 },
               disableBgImage: true,
               backgroundColor: 'none'
             }
-          }
+          },
         ]
       }
     },
@@ -129,10 +135,13 @@ module.exports = {
             'description',
             'content',
             'keywords',
+            'edition',
             'modifiedTime',
             'size',
             'prettySize',
             'extension',
+            'contributor_name',
+            'contributor_link',
             'contributors',
             'slug',
             'words',
