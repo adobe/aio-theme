@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [4.3.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc5...@adobe/gatsby-theme-aio@4.3.0-rc6) (2022-07-11)
+
+### Features
+
+* Fixed stage target origin to be * since helix stage origins are dynamic([d45df7b](https://github.com/adobe/aio-theme/commit/d45df7b7fbcc63f1cd95fcf30e4f2b0a3a108253))
+
+
+## [4.3.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc4...@adobe/gatsby-theme-aio@4.3.0-rc5) (2022-07-11)
+
+### Features
+
+* Fixed context switching for dev, stage, and prod ([2c654ab](https://github.com/adobe/aio-theme/commit/2c654ab9626b14593f3f72ebb430e650da9feedf))
+
+## [4.3.0-rc4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc3...@adobe/gatsby-theme-aio@4.3.0-rc4) (2022-07-11)
+
+### Features
+
+* Fixed wrong origin for postMessage ([bde3cde](https://github.com/adobe/aio-theme/commit/bde3cde5a978c97e8127699534e85878df0c79e8))
+
+## [4.3.0-rc3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc2...@adobe/gatsby-theme-aio@4.3.0-rc3) (2022-07-11)
+
+### Features
+
+* Added communication of query string parameters to parent from search when iframed ([cdb0504](https://github.com/adobe/aio-theme/commit/cdb0504b56ce85bb781aa3a9d1bcf2947c1395e7))
+
+
+## [4.3.0-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc1...@adobe/gatsby-theme-aio@4.3.0-rc2) (2022-06-22)
+
+### Features
+
+* Add top level access to search result links and styles ready for iframe ([63f2538](https://github.com/adobe/aio-theme/commit/63f25384400a30a0a2035780dbc335b72bb4a545))
+
+
+## [4.3.0-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc0...@adobe/gatsby-theme-aio@4.3.0-rc1) (2022-05-17)
+
+
+### Fix
+
+* Check by path prefix instead and remove package-lock ([e3d7e30](https://github.com/adobe/aio-theme/commit/e3d7e30dcd6374845864a2f76c54ec96f861ea26))
+
+
+## [4.3.0-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.0...@adobe/gatsby-theme-aio@4.3.0-rc0) (2022-05-09)
+
+
+### Features
+
+* Add search widget into its own page via special path ([8dc75c8](https://github.com/adobe/aio-theme/commit/8dc75c8f926e307c4475ba13b9fd654022ceb414))
+
 ## [4.3.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.2.2...@adobe/gatsby-theme-aio@4.3.0) (2022-06-29)
 
 ### Features
@@ -29,6 +78,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * Attribution and Edition features ([495f298](https://github.com/adobe/aio-theme/commit/495f2987f8d0963775105d229aae5f74ef491e30))
 * Accessibility fixes in theme components and layout ([6e58d76](https://github.com/adobe/aio-theme/commit/6e58d765f9f5c539c7b93a6ee58963ae2a1b3afb))
+
 
 
 ## [4.2.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.1.1...@adobe/gatsby-theme-aio@4.2.0) (2022-05-03)

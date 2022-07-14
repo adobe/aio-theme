@@ -138,7 +138,7 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
-const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId }) => {
+const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
@@ -167,12 +167,30 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     }
   };
 
+  const setTargetOrigin = () => {
+    const parentURL = document.referrer;
+
+    if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
+      return parentURL;
+    } else {
+      return false;
+    }
+  };
+
   const search = async () => {
     if (searchQuery.length) {
       setIsSuggestionsOpen(false);
       setQueryStringParameter(SEARCH_PARAMS.query, searchQuery);
       setQueryStringParameter(SEARCH_PARAMS.keywords, selectedKeywords);
       setQueryStringParameter(SEARCH_PARAMS.index, selectedIndex);
+
+      if (isIFramed) {
+        const message = JSON.stringify({ 'query': searchQuery, 'keywords': selectedKeywords, 'index': selectedIndex });
+        const targetOrigin = setTargetOrigin();
+        if (targetOrigin) {
+          parent.postMessage(message, targetOrigin);
+        }
+      }
 
       positionSelectedTabIndicator();
       setShowSearchResults(true);
@@ -192,6 +210,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
     }
+
   };
 
   useEffect(() => {
@@ -279,13 +298,35 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     };
   }, [setShowSearch]);
 
+  if (isIFramed) {
+    useEffect(() => {
+      if (suggestionsRef) {
+        if (searchSuggestionResults.length > 0) {
+          suggestionsRef.current.querySelectorAll("a").forEach(link => {
+            link.target = "_top";
+          });
+        }
+      }
+    }, [searchSuggestionResults])
+
+    useEffect(() => {
+      if (searchResultsRef) {
+        if (searchResults.length > 0) {
+          searchResultsRef.current.querySelectorAll("a").forEach(link => {
+            link.target = "_top";
+          });
+        }
+      }
+    }, [searchResults])
+  }
+
   return (
     <>
       <div
         ref={searchRef}
         css={css`
           position: fixed;
-          top: var(--spectrum-global-dimension-size-800);
+          top: ${isIFramed ? "0" : "var(--spectrum-global-dimension-size-800)"};
           left: 0;
           right: 0;
           ${showSearchResults && 'bottom: 0;'}
@@ -721,7 +762,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           css={css`
             position: fixed;
             z-index: 1;
-            top: calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800));
+            top: ${isIFramed ? "var(--spectrum-global-dimension-size-800)" : "calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800))"};
             bottom: 0;
             left: 0;
             right: 0;

@@ -22,6 +22,7 @@
     "start": "yarn workspace example start",
     "start:prefix": "yarn workspace example start:prefix",
     "dev": "yarn workspace example develop",
+    "dev:clean": "yarn workspace example clean && yarn workspace example develop",
     "dev:https": "yarn workspace example develop:https",
     "build": "yarn workspace example build",
     "serve": "yarn workspace example serve",
