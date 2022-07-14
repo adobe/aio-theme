@@ -167,6 +167,16 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     }
   };
 
+  const setTargetOrigin = () => {
+    const parentURL = document.referrer;
+
+    if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
+      return parentURL;
+    } else {
+      return false;
+    }
+  };
+
   const search = async () => {
     if (searchQuery.length) {
       setIsSuggestionsOpen(false);
@@ -174,7 +184,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setQueryStringParameter(SEARCH_PARAMS.keywords, selectedKeywords);
       setQueryStringParameter(SEARCH_PARAMS.index, selectedIndex);
 
-      isIFramed ? parent.postMessage(JSON.stringify({ 'query': searchQuery, 'keywords': selectedKeywords, 'index': selectedIndex }), window.location.hostname === 'localhost' ? 'http://localhost:3000' : window.location.hostname === 'developer.adobe.com' ? 'https://developer.adobe.com' : '*') : '';
+      if (isIFramed) {
+        const message = JSON.stringify({ 'query': searchQuery, 'keywords': selectedKeywords, 'index': selectedIndex });
+        const targetOrigin = setTargetOrigin();
+        if (targetOrigin) {
+          parent.postMessage(message, targetOrigin);
+        }
+      }
 
       positionSelectedTabIndicator();
       setShowSearchResults(true);
@@ -194,6 +210,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
     }
+
   };
 
   useEffect(() => {
