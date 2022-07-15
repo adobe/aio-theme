@@ -13,7 +13,7 @@
     "cypress": "^8.7.0",
     "cypress-axe": "^0.14.0",
     "gatsby-cypress": "^1.14.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "lerna": "^4.0.0",
     "start-server-and-test": "^1.14.0"
   },
