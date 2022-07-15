@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^13.2.1",
+    "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^13.2.0",
     "@testing-library/cypress": "^8.0.3",
     "axe-core": "^4.4.2",
