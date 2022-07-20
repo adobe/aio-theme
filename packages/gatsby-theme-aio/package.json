@@ -104,7 +104,7 @@
     "core-js": "^3.23.3",
     "gatsby-plugin-algolia": "^0.22.2",
     "gatsby-plugin-emotion": "^7.17.0",
-    "gatsby-plugin-layout": "^3.17.0",
+    "gatsby-plugin-layout": "^3.19.0",
     "gatsby-plugin-mdx": "^3.17.0",
     "gatsby-plugin-mdx-embed": "^1.0.0",
     "gatsby-plugin-preact": "^6.17.0",
