@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@adobe/gatsby-theme-aio": "*",
-    "gatsby": "^4.17.2"
+    "gatsby": "^4.19.1"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",

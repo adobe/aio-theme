@@ -11,6 +11,7 @@
  */
 
 module.exports = {
+  pathPrefix: process.env.PATH_PREFIX || '/example/',
   siteMetadata: {
     home: {
       title: 'Home',
@@ -225,5 +226,4 @@ module.exports = {
   plugins: [
     `@adobe/gatsby-theme-aio`
   ],
-  pathPrefix: '/example/'
 };

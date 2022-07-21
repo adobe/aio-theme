@@ -11,11 +11,10 @@
  */
 
 module.exports = {
-  // mode: [ALGOLIA_SKIP_INDEXING, ALGOLIA_DRY_RUN]
   ALGOLIA_INDEXING_MODES: {
-    skip: [true, false],
-    console: [false, true],
-    index: [false, false]
+    skip: true, // deprecated: removed from plugin. Now functions the same as dry run.
+    console: true,
+    index: false
   },
-  ALGOLIA_DEFAULT_INDEXING_MODE: 'skip'
+  ALGOLIA_DEFAULT_INDEXING_MODE: 'console'
 };

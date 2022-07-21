@@ -1,6 +1,10 @@
-.editorconfig
-.idea
+
+# OS and IDE generated files #
+##############################
 .DS_Store
+.vscode
+.history
+.idea
 
 # npm yarn
 node_modules
