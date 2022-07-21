@@ -121,7 +121,7 @@ module.exports = {
           searchableAttributes: ['contentHeading', 'title', 'description,content'],
           attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:40', 'description:40'],
-          distinct: true,
+          distinct: 1,
           attributeForDistinct: 'url',
           snippetEllipsisText: '…',
           attributesToRetrieve: [
@@ -142,7 +142,6 @@ module.exports = {
             'words',
             'anchor',
             'url',
-            'absoluteUrl'
           ],
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
