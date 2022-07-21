@@ -184,7 +184,6 @@ __metadata:
     gatsby-remark-copy-linked-files: ^5.19.0
     gatsby-remark-images: ^6.19.0
     gatsby-source-filesystem: ^4.19.0
-    gatsby-source-github-api: ^1.0.0
     gatsby-transformer-remark: ^5.19.0
     gatsby-transformer-sharp: ^4.19.0
     https-browserify: ^1.0.0
@@ -13117,16 +13116,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-github-api@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "gatsby-source-github-api@npm:1.0.0"
-  dependencies:
-    graphql-fetch: ^1.0.1
-    uuid: ^3.1.0
-  checksum: 2d669875ad731159dcbcfca3e02d9f53419956295f94dbcf0d7a7c7674270fb6ab03420819f13b89c00e76c632366389641858f3fc664c83b67915acbe723105
-  languageName: node
-  linkType: hard
-
 "gatsby-telemetry@npm:^3.19.0":
   version: 3.19.0
   resolution: "gatsby-telemetry@npm:3.19.0"
@@ -24324,7 +24313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^3.1.0, uuid@npm:^3.3.2":
+"uuid@npm:^3.3.2":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
   bin:
