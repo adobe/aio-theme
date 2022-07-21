@@ -47,7 +47,7 @@ class QueryBuilder {
                 prettySize
                 extension
                 childMdx {
-                  objectID: id
+                  id: id
                   fileAbsolutePath
                   frontmatter {
                     title
@@ -55,7 +55,6 @@ class QueryBuilder {
                     edition
                     contributor_name
                     contributor_link
-                    contributors
                     keywords
                     openAPISpec
                     frameSrc
