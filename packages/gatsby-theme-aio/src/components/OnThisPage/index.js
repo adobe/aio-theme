@@ -29,7 +29,7 @@ const readTableOfContents = (headings, setTableOfContentsItems) => {
   headings.forEach((heading, index) => {
     const anchor = heading.querySelector('a');
     if (anchor && heading.previousElementSibling && heading.previousElementSibling.id) {
-      const title = heading.textContent.trim().slice(0, -1);
+      const title = heading.textContent;
       const url = anchor.getAttribute('href');
 
       if (heading.tagName === 'H2') {

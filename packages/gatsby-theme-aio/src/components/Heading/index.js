@@ -56,12 +56,11 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     }
   `;
   const heading1Overrides = `
-    margin-bottom: var(--spectrum-global-dimension-size-350);
-
     & + p {
-      font-size: var(--spectrum-global-dimension-size-225);
-      color: var(--spectrum-global-color-gray-800) !important;
-      margin-bottom: var(--spectrum-global-dimension-size-800);
+      font-size: var(--spectrum-global-dimension-size-250);
+      color: var(--spectrum-global-color-gray-600);
+      margin-bottom: var(--spectrum-global-dimension-size-500);
+      line-height: 2rem;
     }
   `;
   const heading2Overrides = `
