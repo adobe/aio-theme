@@ -73,6 +73,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Contributor name and link keywords](#contributor-name-and-link-keywords)
     - [Markdown pages](#markdown-pages)
     - [Links](#links)
+      - [Anchor links for headings](#anchor-links-for-headings)
       - [Internal links](#internal-links)
       - [External links](#external-links)
     - [Assets](#assets)
@@ -107,6 +108,11 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
+  - [<pre>](#pre)
+  - [description: This is the guides overview page of Adobe Analytics](#description-this-is-the-guides-overview-page-of-adobe-analytics)
+  - [<pre>](#pre-1)
+  - [- https://github.com/simonwex](#--httpsgithubcomsimonwex)
+  - [<pre>](#pre-2)
   - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
   - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
@@ -309,6 +315,19 @@ root
 You can exclude pages from the build by either moving them out of `src/pages` or by prefixing the filename with `_`.
 
 ### Links
+
+#### Anchor links for headings
+
+By default, the theme automatically generates an anchor link for headings h2 – h6, using the kabab-case (lowercase words separated by hyphens).
+For example, if the heading name is **Inline code example**, the theme creates the following anchor link: `#inline-code-example`.
+
+You can customize the anchor link for a heading using the following syntax:
+
+```markdown
+## Inline code example {#my-custom-anchor-link}
+```
+
+This will override the auto-link behavior and create a custom anchor link.
 
 #### Internal links
 
