@@ -101,7 +101,7 @@
     "await-exec": "^0.1.2",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.3.1",
-    "core-js": "^3.23.5",
+    "core-js": "^3.24.0",
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-emotion": "^7.19.0",
     "gatsby-plugin-layout": "^3.19.0",
