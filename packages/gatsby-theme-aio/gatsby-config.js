@@ -65,9 +65,25 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
         rehypePlugins: [require(`rehype-slug`)],
+        plugins: [
+          `gatsby-transformer-remark`,
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-images`
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-transformer-remark`
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: false,
+              maintainCase: false,
+              removeAccents: true,
+              enableCustomId: true,
+              elements: [`h2`, `h3`, `h4`, `h5`]
+            }
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
@@ -96,13 +112,13 @@ module.exports = {
       options: {
         root: process.env.REPO_ROOT,
         repo: {
-        token: process.env.REPO_GITHUB_TOKEN,
+          token: process.env.REPO_GITHUB_TOKEN,
           owner: process.env.REPO_OWNER,
           name: process.env.REPO_NAME,
           branch: process.env.REPO_BRANCH,
           default_branch: process.env.REPO_DEFAULT_BRANCH
-              }
-            }
+        }
+      }
     },
     {
       resolve: `gatsby-plugin-algolia`,
@@ -141,7 +157,7 @@ module.exports = {
             'slug',
             'words',
             'anchor',
-            'url',
+            'url'
           ],
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
