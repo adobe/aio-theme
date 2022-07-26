@@ -324,10 +324,10 @@ For example, if the heading name is **Inline code example**, the theme creates t
 You can customize the anchor link for a heading using the following syntax:
 
 ```markdown
-## Inline code example {#my-custom-anchor-link}
+## Inline code example {#myCustomAnchorLink}
 ```
 
-This will override the auto-link behavior and create a custom anchor link.
+This will override the auto-link behavior and create a custom anchor link. Your custom anchor link can be any case format you want, as long as you don't use any spaces.
 
 #### Internal links
 
