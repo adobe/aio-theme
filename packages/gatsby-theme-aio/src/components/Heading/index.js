@@ -39,12 +39,13 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   const isHeading4 = level === 4;
   const isHeading5 = level === 5;
   const isHeading6 = level === 6;
-  const marginLink = `margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
+  const marginLink = `
+  margin-left: var(--spectrum-global-dimension-size-${isHeading2 ? '100' : '50'});`;
   const animateAnchor = `
     & span a {
       opacity: 0;
       transition: opacity var(--spectrum-global-animation-duration-100) ease-in-out;
-      
+
       &:focus {
         opacity: 1;
       }
@@ -55,22 +56,21 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
     }
   `;
   const heading1Overrides = `
-    margin-bottom: var(--spectrum-global-dimension-size-350);
-  
     & + p {
-      font-size: var(--spectrum-global-dimension-size-225);
-      color: var(--spectrum-global-color-gray-800) !important;
-      margin-bottom: var(--spectrum-global-dimension-size-800);
+      font-size: var(--spectrum-global-dimension-size-250);
+      color: var(--spectrum-global-color-gray-600);
+      margin-bottom: var(--spectrum-global-dimension-size-500);
+      line-height: 2rem;
     }
   `;
   const heading2Overrides = `
-    margin-top: var(--spectrum-global-dimension-size-800);
-    margin-bottom: var(--spectrum-global-dimension-size-100) !important;
+    margin-top: var(--spectrum-global-dimension-size-500);
   `;
   const heading3Overrides = `
     color: var(--spectrum-global-color-gray-800);
-    margin-top: var(--spectrum-global-dimension-size-500);
-    
+    margin-top: var(--spectrum-global-dimension-size-350);
+    margin-bottom: calc(-1 * var(--spectrum-global-dimension-size-50));;
+
     & + ul,
     & + ol {
       margin-top: var(--spectrum-global-dimension-size-250);
@@ -78,7 +78,7 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   `;
   const heading456Overrides = `
     margin-top: var(--spectrum-global-dimension-size-400);
-    
+
     & + ul,
     & + ol {
       margin-top: var(--spectrum-global-dimension-size-200);
@@ -111,16 +111,20 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
               ${marginLink}
             `}>
             <Link isQuiet={true}>
-              <a href={`#${id}`}>#</a>
+              <a href={`#${id}`}>
+                <svg aria-hidden="true" height="18" viewBox="0 0 16 16" width="18">
+                  <path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                </svg>
+              </a>
             </Link>
           </span>
         )}
       </HeadingTag>
       {isHeading2 && (
         <Divider
-          size="L"
+          size="S"
           css={css`
-            margin-bottom: var(--spectrum-global-dimension-size-300);
+            margin-bottom: calc(-1 * var(--spectrum-global-dimension-size-75));
           `}
         />
       )}

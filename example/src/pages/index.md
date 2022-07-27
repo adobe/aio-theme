@@ -107,7 +107,7 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 
 ![Jenkinator](./diagram.svg "Diagram")
 
-## Inline Alerts
+## Inline Alerts {#Categories}
 
 These are the five types of inline alerts you can use.
 
@@ -195,11 +195,11 @@ This is an inline alert with the variant `error`. This is an inline alert with t
 `warn Warning: Event "xstate.after(200)#waitingMachine.aggregatingFileChanges" was sent to stopped service "waitingMachine". This service has already reached its final state, and will not transition.
 Event: {"type":"xstate.after(200)#waitingMachine.aggregatingFileChanges"}`
 
-## Inline Code
+## Inline Code {#Sweet_inline-CODE}
 
 This is an example of `inline code` written with the standard markdown backticks.
 
-## Tables
+## Tables {#Kick-Ass-Tables}
 
 Some tables here for testing.
 
