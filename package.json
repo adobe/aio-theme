@@ -14,7 +14,7 @@
     "cypress-axe": "^0.14.0",
     "gatsby-cypress": "^1.14.0",
     "husky": "^8.0.1",
-    "lerna": "^5.1.8",
+    "lerna": "^5.2.0",
     "start-server-and-test": "^1.14.0"
   },
   "scripts": {
