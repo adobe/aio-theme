@@ -7280,7 +7280,7 @@ __metadata:
     cypress-axe: ^0.14.0
     gatsby-cypress: ^1.14.0
     husky: ^8.0.1
-    lerna: ^5.1.8
+    lerna: ^5.2.0
     start-server-and-test: ^1.14.0
   languageName: unknown
   linkType: soft
@@ -11092,9 +11092,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.188":
-  version: 1.4.200
-  resolution: "electron-to-chromium@npm:1.4.200"
-  checksum: 25dc817f1e4a76c08fc41dc0df1d934a5e88c7d8f87539eb0048650657bcb108b3321b3034e8f3d16b63d5bef0bd5c9dd74ad9c46394735d7106e270cc7d3825
+  version: 1.4.202
+  resolution: "electron-to-chromium@npm:1.4.202"
+  checksum: f6210322a16eb67c3743a5fd18c0e99fc71720132a6da61d93f26a96a4b6fc30b1b1f44e0b1f8eb91358b859f687f745d405515ad5482ded6ee69e5117907aa7
   languageName: node
   linkType: hard
 
@@ -16040,7 +16040,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lerna@npm:^5.1.8":
+"lerna@npm:^5.2.0":
   version: 5.2.0
   resolution: "lerna@npm:5.2.0"
   dependencies:
