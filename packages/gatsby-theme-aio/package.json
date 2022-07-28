@@ -97,7 +97,7 @@
     "@spectrum-css/vars": "8.0.0",
     "@spectrum-css/well": "3.0.22",
     "algolia-html-extractor": "^0.0.1",
-    "algoliasearch": "4.14.1",
+    "algoliasearch": "4.14.2",
     "await-exec": "^0.1.2",
     "builtin-status-codes": "^3.0.0",
     "classnames": "^2.3.1",
