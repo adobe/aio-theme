@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## [4.4.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0...@adobe/gatsby-theme-aio@4.4.0) (2022-07-28)
+
+### Features
+
+* Added option to create custom anchor links for markdown headings ([110a9bf](https://github.com/adobe/aio-theme/commit/110a9bf1ab0e9998b7a58ab03ee1760ad4c76821)). See [Anchor links for headings](https://github.com/adobe/aio-theme/blob/main/README.md#anchor-links-for-headings) for instructions on how to customize a heading's default anchor link.
+
+* Updated Gatsby to version 4.19 in preparation for the release of MDX v2 ([1daa35e](https://github.com/adobe/aio-theme/commit/1daa35e5e0ec6d23f1231f4918e2a6c7ab26492f)).
+
+### Fixed
+
+* Prevented search indexing from duplicating records in the Algolia indexes ([1daa35e](https://github.com/adobe/aio-theme/commit/1daa35e5e0ec6d23f1231f4918e2a6c7ab26492f)). We updated the Algolia plugin to the latest version and adapted our search code to remove old stale records before adding new records to a repo's index.
+
 ## [4.3.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0-rc5...@adobe/gatsby-theme-aio@4.3.0-rc6) (2022-07-11)
 
 ### Features
