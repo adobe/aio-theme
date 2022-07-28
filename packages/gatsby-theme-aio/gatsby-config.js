@@ -64,7 +64,6 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve(`./src/components/MDXFilter/index.js`)
         },
-        rehypePlugins: [require(`rehype-slug`)],
         plugins: [
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
