@@ -45,15 +45,15 @@ import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
 
-// ALGOLIA_APP_ID=...
-// ALGOLIA_SEARCH_API_KEY=...
+// GATSBY_ALGOLIA_APP_ID=...
+// GATSBY_ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(process.env.ALGOLIA_APP_ID && process.env.ALGOLIA_SEARCH_API_KEY);
+const hasSearch = !!(process.env.GATSBY_ALGOLIA_APP_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_API_KEY);
+  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
 } else {
   console.warn('AIO: Algolia config missing.');
 }
