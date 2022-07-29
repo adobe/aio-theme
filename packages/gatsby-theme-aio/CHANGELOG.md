@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.0...@adobe/gatsby-theme-aio@4.4.1) (2022-07-29)
+
+### Features
+
+* Fixed missing parameter in search results error. aka the 'photoshop' query bug([03d1c57](https://github.com/adobe/aio-theme/commit/03d1c576fc8b68823ade66f8aa14e545e99c5c2f))
+
+* Fixed search bar and search button not showing in example site ([bc7a655](https://github.com/adobe/aio-theme/commit/bc7a65521affba21b6d8408f7c800d2cefe3bae7))
 
 ## [4.4.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.3.0...@adobe/gatsby-theme-aio@4.4.0) (2022-07-28)
 
