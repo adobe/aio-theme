@@ -471,6 +471,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 }}>
                 {searchSuggestionResults.map((searchSuggestion) => {
                   const to = `${location.origin}${searchSuggestion.url}`;
+                  const title = searchSuggestion._highlightResult.title?.value ? searchSuggestion._highlightResult.title.value : "";
+                  const content = searchSuggestion._highlightResult.content?.value ? searchSuggestion._highlightResult.content.value : "";
 
                   return (
                     <MenuItem key={searchSuggestion.objectID} href={to}>
@@ -487,7 +489,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                         `}>
                         <strong
                           dangerouslySetInnerHTML={{
-                            __html: encodeHTML(searchSuggestion._highlightResult.title.value)
+                            __html: encodeHTML(title)
                           }}
                         />
 
@@ -501,7 +503,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: encodeHTML(searchSuggestion._highlightResult.content.value)
+                            __html: encodeHTML(content)
                           }}
                         />
                       </div>
@@ -658,7 +660,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   `}>
                   {searchResults.map((searchResult) => {
                     const to = `${location.origin}${searchResult.url}`;
-
+                    const title = searchResult._highlightResult.title?.value ? searchResult._highlightResult.title.value : "";
+                    const content = searchResult._highlightResult.content?.value ? searchResult._highlightResult.content.value : "";
+  
                     return (
                       <div
                         css={css`
@@ -680,7 +684,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           <AnchorLink to={to}>
                             <span
                               dangerouslySetInnerHTML={{
-                                __html: encodeHTML(searchResult._highlightResult.title.value)
+                                __html: encodeHTML(title)
                               }}
                             />
                           </AnchorLink>
