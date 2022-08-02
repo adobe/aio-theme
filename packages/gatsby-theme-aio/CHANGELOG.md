@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.1...@adobe/gatsby-theme-aio@4.4.2) (2022-08-02)
+
+### Features
+
+* Fixed wrong env variable in layout for search([7fc0092](https://github.com/adobe/aio-theme/commit/7fc00927b131e0688633acd56b0c5f189d4809dc))
+
 ## [4.4.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.0...@adobe/gatsby-theme-aio@4.4.1) (2022-07-29)
 
 ### Features
