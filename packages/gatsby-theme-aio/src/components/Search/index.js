@@ -32,6 +32,7 @@ import '@spectrum-css/search';
 import '@spectrum-css/button';
 import { Cross, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
+import { Accordion, AccordionItem } from '../Accordion';
 
 const SEARCH_INPUT_WIDTH = '688px';
 const SEARCH_INDEX_ALL = 'all';
@@ -176,6 +177,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       return false;
     }
   };
+
+  const checkShowFilters = (indexName) => {
+    if (keywordResults.length > 0 && selectedIndex === indexName) {
+      return true;
+    }
+    return false;
+  }
 
   const search = async () => {
     if (searchQuery.length) {
@@ -354,7 +362,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             className="spectrum-Search"
             onSubmit={async (event) => {
               event.preventDefault();
-
+              setSelectedKeywords([]);
               await search();
             }}>
             <div
@@ -567,82 +575,74 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 `}>
                 Filter by
               </h4>
+              <Accordion>
+                {searchIndex.map((index, i) => {
+                  const indexName = Object.keys(index)[0];
+                  const indexLabel = index[indexName];
 
-              <div
-                css={css`
-                  margin-top: var(--spectrum-global-dimension-size-100);
-                  margin-bottom: var(--spectrum-global-dimension-size-1200);
-                  display: flex;
-                  flex-direction: column;
-                  overflow: auto;
+                  return (
+                    <AccordionItem
+                      id={i}
+                      key={i}
+                      header={indexLabel}
+                      isOpen={indexName === selectedIndex}
+                      onClick={() => {
+                        if (!(indexName === selectedIndex)) {
+                          setSelectedKeywords([]);
+                          setSelectedIndex(indexName);
+                        }
+                      }}
+                    >
+                      <div
+                        css={css`
+                    margin-top: var(--spectrum-global-dimension-size-100);
+                    margin-bottom: var(--spectrum-global-dimension-size-1200);
+                    display: flex;
+                    flex-direction: column;
+                    overflow: auto;
+  
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      margin-bottom: 0;
+                    }
+                  `}>
+                        {checkShowFilters(indexName) ?
+                          (keywordResults.map((keywordResult, i) => {
+                            const keyword = Object.keys(keywordResult)[0];
 
-                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                    margin-bottom: 0;
-                  }
-                `}>
-                {keywordResults.length > 0 ? (
-                  keywordResults.map((keywordResult, i) => {
-                    const keyword = Object.keys(keywordResult)[0];
-
-                    return (
-                      <Checkbox
-                        key={i}
-                        isSelected={selectedKeywords.includes(keyword)}
-                        value={keyword}
-                        onChange={(checked) => {
-                          if (checked) {
-                            setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
-                          } else {
-                            setSelectedKeywords(
-                              selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
+                            return (
+                              <Checkbox
+                                key={i}
+                                isSelected={selectedKeywords.includes(keyword)}
+                                value={keyword}
+                                onChange={(checked) => {
+                                  if (!selectedIndex === indexName) {
+                                    setSelectedKeywords([]);
+                                  } else if (checked) {
+                                    setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
+                                  } else {
+                                    setSelectedKeywords(
+                                      selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
+                                    );
+                                  }
+                                }}>
+                                <span>{keyword}</span>
+                                <em>&nbsp;({keywordResult[keyword]})</em>
+                              </Checkbox>
                             );
-                          }
-                        }}>
-                        <span>{keyword}</span>
-                        <em>&nbsp;({keywordResult[keyword]})</em>
-                      </Checkbox>
-                    );
-                  })
-                ) : (
-                  <div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>
-                )}
-              </div>
+                          }))
+                          :
+                          (<div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>)}
+                      </div>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
             </div>
 
             <div
               css={css`
                 height: 100%;
               `}>
-              <Tabs
-                onFontsReady={() => {
-                  positionSelectedTabIndicator();
-                }}>
-                {searchIndex.map((index, i) => {
-                  const indexName = Object.keys(index)[0];
-                  const indexLabel = index[indexName];
-
-                  const setTabRef = (element) => {
-                    index.tabRef = { current: element };
-                  };
-
-                  return (
-                    <TabsItem
-                      key={i}
-                      ref={setTabRef}
-                      selected={selectedIndex === indexName}
-                      tabIndex={0}
-                      onClick={async () => {
-                        setSelectedKeywords([]);
-                        setSelectedIndex(indexName);
-                      }}>
-                      <TabsItemLabel>{indexLabel}</TabsItemLabel>
-                    </TabsItem>
-                  );
-                })}
-
-                <TabsIndicator ref={selectedTabIndicator} />
-              </Tabs>
-
               {searchResults.length > 0 ? (
                 <div
                   ref={searchResultsRef}
