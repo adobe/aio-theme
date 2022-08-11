@@ -131,7 +131,7 @@
     "react-helmet": "^6.1.0",
     "react-id-generator": "^3.0.2",
     "redoc": "2.0.0-rc.73",
-    "redoc-cli": "^0.13.16",
+    "redoc-cli": "^0.13.18",
     "sharp": "^0.30.7",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.5",
