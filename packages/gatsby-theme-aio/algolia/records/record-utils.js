@@ -94,7 +94,7 @@ function getAnchorLink(linkHeadings) {
 
 function getUrl(slug, node, record) {
   let anchor = record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record));
-  return `${process.env.AIO_FASTLY_PROD_URL}${process.env.PATH_PREFIX}${slug == null ? '': slug}${anchor}`;
+  return `${process.env.GATSBY_ALGOLIA_RECORD_URL_DOMAIN}${process.env.PATH_PREFIX}${slug == null ? '': slug}${anchor}`;
 }
 
 const removeDuplicateRecords = (records) => {
