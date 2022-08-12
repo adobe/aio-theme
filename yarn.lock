@@ -11540,7 +11540,7 @@ __metadata:
   resolution: "example@workspace:example"
   dependencies:
     "@adobe/gatsby-theme-aio": "*"
-    gatsby: ^4.19.1
+    gatsby: ^4.20.0
   languageName: unknown
   linkType: soft
 
