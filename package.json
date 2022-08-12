@@ -6,15 +6,16 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.1.1",
+    "@commitlint/config-conventional": "^17.1.0",
     "@testing-library/cypress": "^8.0.3",
     "axe-core": "^4.4.3",
-    "cypress": "^8.7.0",
-    "cypress-axe": "^0.14.0",
-    "gatsby-cypress": "^1.14.0",
+    "cypress": "^10.6.0",
+    "cypress-axe": "^1.0.0",
+    "gatsby-cypress": "^2.21.0",
     "husky": "^8.0.1",
-    "lerna": "^5.2.0",
+    "lerna": "^5.4.3",
+    "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0"
   },
   "scripts": {
@@ -25,11 +26,12 @@
     "dev:clean": "yarn workspace example clean && yarn workspace example develop",
     "dev:https": "yarn workspace example develop:https",
     "build": "yarn workspace example build",
+    "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn workspace example build --log-pages",
     "serve": "yarn workspace example serve",
     "clean": "yarn workspace example clean",
     "format": "npx prettier --write '**/*.{js,json}'",
     "cy:open": "cypress open",
-    "test:e2e": "start-server-and-test dev http://localhost:8000 cy:open"
+    "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.3"
 }

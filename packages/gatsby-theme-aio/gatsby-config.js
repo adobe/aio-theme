@@ -15,10 +15,11 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
-const AlgoliaQueryBuilder = require('./algolia/query-builder');
+const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/indexing-modes');
+const { ALGOLIA_INDEX_SETTINGS } = require('./algolia-search-settings');
+const queryFileData = require('./algolia/query-file-data');
 
-const algoliaQueries = new AlgoliaQueryBuilder().build();
+const algoliaQueries = queryFileData();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
 
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
@@ -68,7 +69,7 @@ module.exports = {
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-images`
+          `gatsby-remark-images-remote`
         ],
         gatsbyRemarkPlugins: [
           {
@@ -92,7 +93,7 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-remote`,
             options: {
               maxWidth: DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,
@@ -122,55 +123,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: algoliaQueries,
+        settings: ALGOLIA_INDEX_SETTINGS,
         enablePartialUpdates: true,
         matchFields: ['contentDigest'],
+        queries: algoliaQueries,
+        mergeSettings: false,
         chunkSize: 10000, // default: 1000
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
-        continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-        settings: {
-          searchableAttributes: ['contentHeading', 'title', 'description,content'],
-          attributesForFaceting: ['searchable(keywords)'],
-          attributesToSnippet: ['content:40', 'description:40'],
-          distinct: 1,
-          attributeForDistinct: 'url',
-          snippetEllipsisText: '…',
-          attributesToRetrieve: [
-            'title',
-            'contentHeading',
-            'description',
-            'content',
-            'keywords',
-            'edition',
-            'modifiedTime',
-            'size',
-            'prettySize',
-            'extension',
-            'contributor_name',
-            'contributor_link',
-            'contributors',
-            'slug',
-            'words',
-            'anchor',
-            'url'
-          ],
-          highlightPreTag: '<mark>',
-          highlightPostTag: '</mark>',
-          hitsPerPage: 20,
-          ignorePlurals: true,
-          restrictHighlightAndSnippetArrays: false,
-          minWordSizefor1Typo: 4,
-          minWordSizefor2Typos: 8,
-          typoTolerance: true,
-          allowTyposOnNumericTokens: true,
-          minProximity: 1,
-          responseFields: ['*'],
-          advancedSyntax: true
-        }
+        continueOnFailure: true // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
       }
     }
   ]
