@@ -48,11 +48,6 @@ jobs:
         with:
           cmd: build
 
-      - name: Serve site
-        uses: borales/actions-yarn@v3
-        with:
-          cmd: serve
-
       - name: Run Tests
         uses: cypress-io/github-action@v4
         with:
