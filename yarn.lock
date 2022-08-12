@@ -4496,23 +4496,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:14.5.4":
-  version: 14.5.4
-  resolution: "@nrwl/cli@npm:14.5.4"
+"@nrwl/cli@npm:14.5.5":
+  version: 14.5.5
+  resolution: "@nrwl/cli@npm:14.5.5"
   dependencies:
-    nx: 14.5.4
-  checksum: 13ec59473c0b40e1c314c7103b2790b0d9d12187fbe1c0e22e8a882273a620bf9ab8c95da4de0b8a98e10bb090628f0250b77ec91270c0cd59b7e999a14ed0b9
+    nx: 14.5.5
+  checksum: 18ef141ecae09e2132930397f2a96288ee1eb7db19adf2489b9bb59f000858e5457a5372bb94057197ac06a702176849e327f4430ec224aba0f46bebbf90aba1
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:14.5.4":
-  version: 14.5.4
-  resolution: "@nrwl/tao@npm:14.5.4"
+"@nrwl/tao@npm:14.5.5":
+  version: 14.5.5
+  resolution: "@nrwl/tao@npm:14.5.5"
   dependencies:
-    nx: 14.5.4
+    nx: 14.5.5
   bin:
     tao: index.js
-  checksum: 53d75b6c354fe0fafe1e766ece828af94f0fc620acca58d52624d55099e24178dae3fe661e1c55a45f2ed4e2d5a709f388db2d2cb68e9b4eee6073fa30056be1
+  checksum: a581881e2efdd46c53a993c68e33e1eabbee302a546ffae484e9469f0c075f5b89d75a5f2df634ea48782541460f9f62fd4b669ae7f254df8823464cb899ea2b
   languageName: node
   linkType: hard
 
@@ -11127,7 +11127,7 @@ __metadata:
   resolution: "example@workspace:example"
   dependencies:
     "@adobe/gatsby-theme-aio": "*"
-    gatsby: ^4.19.1
+    gatsby: ^4.20.0
   languageName: unknown
   linkType: soft
 
@@ -12465,7 +12465,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^4.19.1, gatsby@npm:^4.20.0":
+"gatsby@npm:^4.20.0":
   version: 4.20.0
   resolution: "gatsby@npm:4.20.0"
   dependencies:
@@ -17430,12 +17430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:14.5.4, nx@npm:>=14.5.4 < 16":
-  version: 14.5.4
-  resolution: "nx@npm:14.5.4"
+"nx@npm:14.5.5, nx@npm:>=14.5.4 < 16":
+  version: 14.5.5
+  resolution: "nx@npm:14.5.5"
   dependencies:
-    "@nrwl/cli": 14.5.4
-    "@nrwl/tao": 14.5.4
+    "@nrwl/cli": 14.5.5
+    "@nrwl/tao": 14.5.5
     "@parcel/watcher": 2.0.4
     chalk: 4.1.0
     chokidar: ^3.5.1
@@ -17474,7 +17474,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: 769636e609b8ed7da601c534a377cc00a5ecce96f9e0819e5c47cf0615795c0199fd85bcc00d99c39e4fa4fdc08fb683624237f6b5a5ea937614ca83286f2ebc
+  checksum: 070c5a483a4e2bfe1493b1365250d72764d053b272325bfd4a4a90c3c8d618ea1c75c2a10944c7d2637b8f3c87fa843a6ea99013f2e1be2174dc07ea95730009
   languageName: node
   linkType: hard
 
