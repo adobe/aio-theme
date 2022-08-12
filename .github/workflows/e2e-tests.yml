@@ -56,5 +56,6 @@ jobs:
       - name: Run Tests
         uses: cypress-io/github-action@v4
         with:
+          start: yarn serve
           config-file: cypress/cypress-github-actions.json
           spec: e2e/smoke.test.js
