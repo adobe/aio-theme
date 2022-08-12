@@ -28,5 +28,5 @@ jobs:
         with:
           build: yarn build
           start: yarn serve
-          config-file: cypress-github-actions.json
+          config-file: cypress.config.js
           spec: e2e/smoke.cy.js
