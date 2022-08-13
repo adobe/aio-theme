@@ -128,12 +128,23 @@ module.exports = {
         queries: algoliaQueries,
         enablePartialUpdates: true,
         matchFields: ['contentDigest'],
-        chunkSize: 10000, // default: 1000
+        chunkSize: 1000, // default: 1000
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
         settings: {
           searchableAttributes: ['contentHeading', 'title', 'description,content'],
+          ranking: [
+            'localIndex',
+            'typo',
+            'geo',
+            'words',
+            'filters',
+            'proximity',
+            'attribute',
+            'exact',
+            'custom'
+          ],
           attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:40', 'description:40'],
           distinct: 1,
