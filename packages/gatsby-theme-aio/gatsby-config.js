@@ -134,7 +134,7 @@ module.exports = {
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
         settings: {
           searchableAttributes: ['contentHeading', 'title', 'description,content'],
-          customRanking: ['localIndex'],
+          customRanking: [process.env.ALGOLIA_INDEX_NAME],
           attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:40', 'description:40'],
           distinct: 1,
