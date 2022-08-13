@@ -134,7 +134,7 @@ module.exports = {
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
         settings: {
           searchableAttributes: ['unordered(contentHeading)', 'unordered(title)', 'unordered(description)', 'unordered(previousHeadings)'],
-          attributesForFaceting: ['searchable(localIndex)', 'searchable(keywords)'],
+          attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:40', 'description:40'],
           distinct: 1,
           attributeForDistinct: 'url',
