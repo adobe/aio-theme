@@ -51,8 +51,7 @@ const createAlgoliaRecords = (node, records) => {
       anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
       url: getUrl(slug, node, record),
       customRanking: record.customRanking ?? '',
-      contentDigest,
-      localIndex: `${process.env.ALGOLIA_INDEX_NAME}`,
+      contentDigest
     };
     return algoliaRecord;
   });
@@ -98,22 +97,8 @@ function getUrl(slug, node, record) {
   return `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${slug == null ? '': slug}${anchor}`;
 }
 
-const removeDuplicateRecords = (records) => {
-  let uniqueContents = [];
-  records = records.filter((record) => {
-    if (uniqueContents.includes(record.content)) {
-      return false;
-    } else {
-      uniqueContents.push(record.content);
-      return true;
-    }
-  });
-  return records;
-};
-
 module.exports = {
   createAlgoliaRecords,
   createRawRecordsBasedOnAST,
-  createRawRecordsBasedOnHtml,
-  removeDuplicateRecords
+  createRawRecordsBasedOnHtml
 };
