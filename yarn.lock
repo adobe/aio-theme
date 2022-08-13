@@ -102,8 +102,8 @@ __metadata:
     os-browserify: ^0.3.0
     path-browserify: ^1.0.1
     penpal: ^6.2.2
-    postcss: ^8.4.14
-    preact: ^10.10.0
+    postcss: ^8.4.16
+    preact: ^10.10.2
     preact-render-to-string: ^5.2.1
     prism-react-renderer: 1.3.5
     prop-types: ^15.8.1
@@ -111,8 +111,8 @@ __metadata:
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
     react-id-generator: ^3.0.2
-    redoc: 2.0.0-rc.73
-    redoc-cli: ^0.13.16
+    redoc: 2.0.0-rc.75
+    redoc-cli: ^0.13.18
     sharp: ^0.30.7
     stream-http: ^3.2.0
     styled-components: ^5.3.5
@@ -18489,7 +18489,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfect-scrollbar@npm:^1.5.1, perfect-scrollbar@npm:^1.5.5":
+"perfect-scrollbar@npm:^1.5.5":
   version: 1.5.5
   resolution: "perfect-scrollbar@npm:1.5.5"
   checksum: 7a8d3097e91df1dd112f28ee9539c1a36ae7a836d986798af2e0d1e32c3ef21380215b3c06bc12434d89547d7f763637ac19b877549049b6c2166da85956c9dc
@@ -19031,7 +19031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.14":
+"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.16":
   version: 8.4.16
   resolution: "postcss@npm:8.4.16"
   dependencies:
@@ -19053,7 +19053,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.10.0":
+"preact@npm:^10.10.2":
   version: 10.10.2
   resolution: "preact@npm:10.10.2"
   checksum: 3e994205eb75ce7c79f45bfd86b297645937f926c06fa2a541bf87a5ae168dd6c9f0945af29986065877623d58d1977aff073e4378683994fabee0edbb165c24
@@ -19867,7 +19867,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redoc-cli@npm:^0.13.16":
+"redoc-cli@npm:^0.13.18":
   version: 0.13.18
   resolution: "redoc-cli@npm:0.13.18"
   dependencies:
@@ -19886,42 +19886,6 @@ __metadata:
   bin:
     redoc-cli: index.js
   checksum: 49954eb64461aa7ef09d81c783a11cfeb02356e16623d8992a60ffe4cfef8147811d5310bb42796961e4ab28dbeb03a34491ca1d4b7b3d14ed54b77c8b80cdc3
-  languageName: node
-  linkType: hard
-
-"redoc@npm:2.0.0-rc.73":
-  version: 2.0.0-rc.73
-  resolution: "redoc@npm:2.0.0-rc.73"
-  dependencies:
-    "@redocly/openapi-core": ^1.0.0-beta.104
-    classnames: ^2.3.1
-    decko: ^1.2.0
-    dompurify: ^2.2.8
-    eventemitter3: ^4.0.7
-    json-pointer: ^0.6.2
-    lunr: ^2.3.9
-    mark.js: ^8.11.1
-    marked: ^4.0.15
-    mobx-react: ^7.2.0
-    openapi-sampler: ^1.3.0
-    path-browserify: ^1.0.1
-    perfect-scrollbar: ^1.5.1
-    polished: ^4.1.3
-    prismjs: ^1.27.0
-    prop-types: ^15.7.2
-    react-tabs: ^3.2.2
-    slugify: ~1.4.7
-    stickyfill: ^1.1.1
-    style-loader: ^3.3.1
-    swagger2openapi: ^7.0.6
-    url-template: ^2.0.8
-  peerDependencies:
-    core-js: ^3.1.4
-    mobx: ^6.0.4
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-    styled-components: ^4.1.1 || ^5.1.1
-  checksum: ed4f0ee1d1cef9cf1e55bf4f1bac53cc9f0c77c8ad484d0f70d77fbf335ebcc5e8d1bbc6f760efbb56f16fa90d6d97f30addcc4d35c12f257d890ee37921160c
   languageName: node
   linkType: hard
 

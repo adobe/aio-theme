@@ -51,7 +51,8 @@ const createAlgoliaRecords = (node, records) => {
       anchor: record.html ? getAnchorLink(record.headings) : getAnchorLink(getHeadings(node, record)),
       url: getUrl(slug, node, record),
       customRanking: record.customRanking ?? '',
-      contentDigest
+      contentDigest,
+      localIndex: `${process.env.ALGOLIA_INDEX_NAME}`,
     };
     return algoliaRecord;
   });
