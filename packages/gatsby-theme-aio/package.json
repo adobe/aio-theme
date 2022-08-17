@@ -103,7 +103,7 @@
     "classnames": "^2.3.1",
     "core-js": "^3.24.0",
     "gatsby-plugin-algolia": "^0.26.0",
-    "gatsby-plugin-emotion": "^7.19.0",
+    "gatsby-plugin-emotion": "^7.21.0",
     "gatsby-plugin-layout": "^3.19.0",
     "gatsby-plugin-mdx": "^3.19.0",
     "gatsby-plugin-mdx-embed": "^1.0.0",
