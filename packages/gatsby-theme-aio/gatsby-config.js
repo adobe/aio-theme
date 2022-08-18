@@ -68,7 +68,7 @@ module.exports = {
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-images`
+          `gatsby-remark-images-remote`
         ],
         gatsbyRemarkPlugins: [
           {
@@ -92,7 +92,7 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-remote`,
             options: {
               maxWidth: DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,

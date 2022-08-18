@@ -10,7 +10,7 @@ import ExtractPdfContentStructure from './pdf-content-structure.md';
 
 <Hero className="custom" slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
-![Creative Cloud banner](images/cc-hero.png)
+![Creative Cloud banner](https://developer.adobe.com/shared/images/cc-hero.png)
 
 ![Creative Cloud icon](https://adobe.io/shared/icons/cc_appicon_64.svg)
 
