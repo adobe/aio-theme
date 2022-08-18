@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
+const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-builder');
 const exec = require('await-exec');
 
 /**
