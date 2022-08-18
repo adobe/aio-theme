@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const normalizePath = require('normalize-path');
-const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-utils');
+const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-builder');
 
 /**
  * Support of "import" directive:

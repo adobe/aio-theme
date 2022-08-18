@@ -10,16 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
-const { createAlgoliaRecords, createRawRecordsBasedOnAST } = require('./record-utils');
+const { createAlgoliaRecords, createRawRecordsBasedOnAST } = require('./record-builder');
 
 /**
  * Parse records from mdxAST
  */
 class CreateRecordsForRegularContent {
   execute(node, options) {
-    const mdxRecords = createRawRecordsBasedOnAST(node.mdxAST, options);
+    const mdxRecords = createRawRecordsBasedOnAST(node, options);
     const algoliaRecords = createAlgoliaRecords(node, mdxRecords);
-
     return algoliaRecords;
   }
 }

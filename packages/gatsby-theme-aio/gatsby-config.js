@@ -122,13 +122,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
-        enablePartialUpdates: true,
-        matchFields: ['contentDigest'],
-        chunkSize: 1000, // default: 1000
+        mergeSettings: false,
+        chunkSize: 10000, // default: 1000
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
@@ -136,8 +135,6 @@ module.exports = {
           searchableAttributes: ['title', 'unordered(contentHeading)', 'unordered(description)'],
           attributesForFaceting: ['searchable(keywords)'],
           attributesToSnippet: ['content:40', 'description:40'],
-          distinct: 1,
-          attributeForDistinct: 'url',
           snippetEllipsisText: '…',
           attributesToRetrieve: [
             'title',

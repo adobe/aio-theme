@@ -15,6 +15,7 @@
     "gatsby-cypress": "^2.20.0",
     "husky": "^8.0.1",
     "lerna": "^5.4.1",
+    "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0"
   },
   "scripts": {
@@ -25,11 +26,12 @@
     "dev:clean": "yarn workspace example clean && yarn workspace example develop",
     "dev:https": "yarn workspace example develop:https",
     "build": "yarn workspace example build",
+    "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn workspace example build --log-pages",
     "serve": "yarn workspace example serve",
     "clean": "yarn workspace example clean",
     "format": "npx prettier --write '**/*.{js,json}'",
     "cy:open": "cypress open",
-    "test:e2e": "start-server-and-test dev http://localhost:8000 cy:open"
+    "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
   "packageManager": "yarn@3.2.1"
 }

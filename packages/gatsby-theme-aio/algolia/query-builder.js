@@ -16,6 +16,7 @@ const CreateRecordsForFrame = require('./records/create-records-for-frame');
 const CreateRecordsForOpenApi = require('./records/create-records-for-open-api');
 const CreateRecordsForRegularContent = require('./records/create-records-for-regular-content');
 const { selectAll } = require('unist-util-select');
+const { reporter } = require('gatsby-cli/lib/reporter/reporter');
 
 class QueryBuilder {
   constructor() {
@@ -39,37 +40,33 @@ class QueryBuilder {
           allFile(
             filter: {absolutePath: {regex: "/${sourceDir}/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown"]}}}
           ) {
-            edges {
-              node {
-                modifiedTime(fromNow: true)
-                size
-                prettySize
-                extension
-                childMdx {
-                  id: id
-                  fileAbsolutePath
-                  frontmatter {
-                    title
-                    description
-                    edition
-                    contributor_name
-                    contributor_link
-                    keywords
-                    openAPISpec
-                    frameSrc
-                  }
-                  headings {
-                    value
-                  }
-                  wordCount {
-                    words
-                  }
-                  slug
-                  mdxAST
-                  internal {
-                    contentDigest
-                  }
+            nodes {
+              id
+              internal {
+                contentDigest
+              }
+              modifiedTime(fromNow: true)
+              size
+              childMdx {
+                frontmatter {
+                  title
+                  description
+                  keywords
+                  edition
+                  contributor_name
+                  contributor_link
+                  openAPISpec
+                  frameSrc
                 }
+                headings {
+                  value
+                }
+                wordCount {
+                  words
+                }
+                fileAbsolutePath
+                slug
+                mdxAST
               }
             }
           }
@@ -77,25 +74,58 @@ class QueryBuilder {
       `,
         transformer: async function ({
           data: {
-            allFile: { edges }
+            allFile: { nodes }
           }
         }) {
-          const nodes = edges
-            .map((edge) => edge.node)
-            .map((node) => {
-              const { childMdx, ...restFileFields } = node;
-              const { frontmatter, internal, ...restMdxFields } = childMdx;
+          const fileNodes = nodes.map((node) => {
+            const {
+              id,
+              internal: { contentDigest },
+              modifiedTime: lastModified,
+              size,
+              childMdx: {
+                frontmatter: {
+                  title,
+                  description,
+                  keywords,
+                  edition,
+                  contributor_name,
+                  contributor_link,
+                  openAPISpec,
+                  frameSrc
+                },
+                headings,
+                wordCount: { words },
+                fileAbsolutePath,
+                slug,
+                mdxAST
+              }
+            } = node;
 
-              return {
-                ...restFileFields,
-                ...childMdx.frontmatter,
-                ...childMdx.internal,
-                ...restMdxFields
-              };
-            });
+            // Returns flattened file node properties to build standardRecord later
+            return {
+              id,
+              contentDigest,
+              title,
+              description,
+              keywords,
+              edition,
+              contributor_name,
+              contributor_link,
+              openAPISpec,
+              frameSrc,
+              headings,
+              words,
+              fileAbsolutePath,
+              slug,
+              mdxAST,
+              lastModified,
+              size
+            };
+          });
 
           let records = [];
-          for (const node of nodes) {
+          for (const node of fileNodes) {
             records = [...records, ...(await self.createRecords(node))];
           }
           return records;
@@ -119,27 +149,27 @@ class QueryBuilder {
         pagesSourceDir: 'src/pages',
         publicFileExtension: 'html',
         sourceFileExtension: 'md',
-        tagsToIndex: 'p, li, td, code',
+        tagsToIndex: 'p, li, td',
         minCharsLengthPerTag: 20,
-        minWordsCount: 5
+        minWordsCount: 3
       };
       records = this.createRecordsForEmbeddedContent.execute(node, options);
     } else if (node.frameSrc) {
       const options = {
         pagesSourceDir: 'src/pages',
         staticSourceDir: 'static',
-        tagsToIndex: 'p, li, td, code',
+        tagsToIndex: 'p, li, td',
         minCharsLengthPerTag: 20,
-        minWordsCount: 5
+        minWordsCount: 3
       };
       records = await this.createRecordsForFrame.execute(node, options);
     } else if (node.openAPISpec) {
       const tempDir = './public/redoc';
       const options = {
         tempDir,
-        tagsToIndex: 'p, li, td, code',
+        tagsToIndex: 'p, li, td',
         minCharsLengthPerTag: 20,
-        minWordsCount: 5
+        minWordsCount: 3
       };
       records = await this.createRecordsForOpenApi.execute(node, options);
 
@@ -147,7 +177,7 @@ class QueryBuilder {
       fs.rmSync(tempDir, { recursive: true, force: true });
     } else {
       const options = {
-        tagsToIndex: 'paragraph text, code, tableCell text',
+        tagsToIndex: 'paragraph text, tableCell text',
         minCharsLengthPerTag: 20,
         minWordsCount: 5
       };
