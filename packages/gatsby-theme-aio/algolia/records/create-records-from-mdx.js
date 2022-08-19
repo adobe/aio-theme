@@ -23,13 +23,11 @@ function createRecordsFromMdx(node, options) {
   const { minWordsCount, minCharsLengthPerTag, tagsToIndex } = options;
   const selectedRecords = selectAll(tagsToIndex, node.mdxAST);
 
-  if (selectedRecords.length <= 0) return [];
-
-  const mdxRecords = selectedRecords.filter(({ content: { length, split } }) => {
-    return length >= minCharsLengthPerTag && split(' ').length >= minWordsCount && node.headings.length > 0;
+  const mdxRecords = selectedRecords.filter((record) => {
+    return record.content
+      ? record.content.length >= minCharsLengthPerTag && record.content.split(' ').length >= minWordsCount
+      : selectedRecords;
   });
-
-  if (mdxRecords.length <= 0) return [];
 
   const algoliaRecords = createAlgoliaRecords(node, mdxRecords);
   return algoliaRecords;

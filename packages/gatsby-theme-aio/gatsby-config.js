@@ -16,6 +16,7 @@ require('dotenv').config({
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/indexing-modes');
+const { ALGOLIA_INDEX_SETTINGS } = require('./algolia-search-settings');
 const queryFileData = require('./algolia/query-file-data');
 
 const algoliaQueries = queryFileData();
@@ -125,49 +126,15 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
+        settings: ALGOLIA_INDEX_SETTINGS,
+        enablePartialUpdates: true,
+        matchFields: ['contentDigest'],
         queries: algoliaQueries,
         mergeSettings: false,
         chunkSize: 10000, // default: 1000
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
-        continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-        settings: {
-          searchableAttributes: ['title', 'unordered(contentHeading)', 'unordered(description)'],
-          attributesForFaceting: ['searchable(keywords)'],
-          attributesToSnippet: ['content:40', 'description:40'],
-          snippetEllipsisText: '…',
-          attributesToRetrieve: [
-            'title',
-            'contentHeading',
-            'description',
-            'content',
-            'keywords',
-            'edition',
-            'modifiedTime',
-            'size',
-            'prettySize',
-            'extension',
-            'contributor_name',
-            'contributor_link',
-            'contributors',
-            'slug',
-            'words',
-            'anchor',
-            'url'
-          ],
-          highlightPreTag: '<mark>',
-          highlightPostTag: '</mark>',
-          hitsPerPage: 20,
-          ignorePlurals: true,
-          restrictHighlightAndSnippetArrays: false,
-          minWordSizefor1Typo: 4,
-          minWordSizefor2Typos: 8,
-          typoTolerance: true,
-          allowTyposOnNumericTokens: true,
-          minProximity: 1,
-          responseFields: ['*'],
-          advancedSyntax: true
-        }
+        continueOnFailure: true // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
       }
     }
   ]

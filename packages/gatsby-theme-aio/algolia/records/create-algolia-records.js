@@ -16,22 +16,22 @@ const { selectAll } = require('unist-util-select');
 function createAlgoliaRecords(node, records) {
   return records.map((record) => {
     const algoliaRecord = {
-      id: getId(node, record),
+      objectID: getId(node, record),
       contentDigest: getContentDigest(node, record),
       customRanking: getCustomRanking(node, record),
       title: getTitle(node, record),
       description: getDescription(node, record),
       content: getContent(node, record),
-      keywords: getKeywords(node, record),
-      edition: getEdition(node, record),
-      contributorName: getContributorName(node, record),
+      lastUpdated: getLastUpdated(node, record),
       contentHeading: getContentHeading(node, record),
-      previousHeadings: getPreviousHeadings(node, record),
       headingAnchor: getHeadingAnchor(node, record),
       slug: getSlug(node, record),
       url: getUrl(node, record),
+      previousHeadings: getPreviousHeadings(node, record),
+      keywords: getKeywords(node, record),
+      edition: getEdition(node, record),
+      contributorName: getContributorName(node, record),
       words: getWordCount(node, record),
-      lastUpdated: getLastUpdated(node, record),
       size: getSize(node)
     };
     return algoliaRecord;
