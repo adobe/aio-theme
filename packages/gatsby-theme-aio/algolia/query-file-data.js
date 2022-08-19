@@ -15,7 +15,7 @@ const createFileRecords = require('./create-file-records');
 function queryFileData(options = {}) {
   const sourceDir = 'src/pages';
 
-  return [
+  const fileData = [
     {
       query: `
         {
@@ -115,6 +115,8 @@ function queryFileData(options = {}) {
       }
     }
   ];
+
+  return fileData;
 }
 
 module.exports = queryFileData;
