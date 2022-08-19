@@ -10,33 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
-const htmlExtractor = new AlgoliaHTMLExtractor();
-const { selectAll } = require('unist-util-select');
 const uuid = require('uuid');
-const reporter = require('gatsby-cli/lib/reporter');
+const { selectAll } = require('unist-util-select');
 
-const createRawRecordsBasedOnAST = (node, options) => {
-  // https://mdxjs.com/table-of-components
-  const mdxAstRecord = selectAll(options.tagsToIndex, node.mdxAST);
-  return mdxAstRecord;
-};
-
-const createRawRecordsBasedOnHtml = (fileContent, options) => {
-  const htmlRecord = htmlExtractor
-    .run(fileContent, { cssSelector: options.tagsToIndex })
-    .filter(
-      (record) =>
-        record.content.length >= options.minCharsLengthPerTag &&
-        record.content.split(' ').length >= options.minWordsCount
-    );
-  return htmlRecord;
-};
-/* node fields */
-
-const createAlgoliaRecords = (node, records) => {
+function createAlgoliaRecords(node, records) {
   return records.map((record) => {
-    const standardRecord = {
+    const algoliaRecord = {
       id: getId(node, record),
       contentDigest: getContentDigest(node, record),
       customRanking: getCustomRanking(node, record),
@@ -55,30 +34,26 @@ const createAlgoliaRecords = (node, records) => {
       lastUpdated: getLastUpdated(node, record),
       size: getSize(node)
     };
-    return standardRecord;
+    return algoliaRecord;
   });
-};
+}
 
-//TODO: Fix getId
 function getId(node, record) {
   const customId = uuid.v4(getContent(record));
   return customId;
 }
 
-//TODO: Fix getContentDigest
 function getContentDigest(node, record) {
   const customContentDigest = uuid.v4(getContent(record));
   return customContentDigest;
 }
 
-//TODO: Fix getTitle
 function getTitle(node, record) {
   const title =
     node.title == null || node.title === '' ? node.headings[0]?.value ?? record.value ?? 'No title' : node.title;
   return title;
 }
 
-//TODO: Fix getDescription
 function getDescription(node, record) {
   const description =
     node.description == null || node.description === ''
@@ -87,7 +62,6 @@ function getDescription(node, record) {
   return description;
 }
 
-//TODO: Fix getHeadings
 function getHeadings(node, record) {
   const filteredHeadings = selectAll('heading text', node.mdxAST);
   const allHeadings = filteredHeadings.filter((heading) => heading.position.start.line < record.position.end.line);
@@ -175,8 +149,4 @@ function getSize(node) {
   return size;
 }
 
-module.exports = {
-  createAlgoliaRecords,
-  createRawRecordsBasedOnAST,
-  createRawRecordsBasedOnHtml
-};
+module.exports = createAlgoliaRecords;

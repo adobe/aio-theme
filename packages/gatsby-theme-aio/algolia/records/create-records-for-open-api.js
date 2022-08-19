@@ -10,36 +10,37 @@
  * governing permissions and limitations under the License.
  */
 
-const fs = require('fs');
-const path = require('path');
-const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-builder');
+const { existsSync, readFileSync } = require('fs');
+const { join } = require('path');
+const createRecordsFromHtml = require('./create-records-from-html');
+const createAlgoliaRecords = require('./create-algolia-records');
 const exec = require('await-exec');
 
 /**
  * Support of "openAPISpec" directive:
  * https://github.com/adobe/aio-theme#openapi
  */
-class CreateRecordsForOpenApi {
-  async execute(node, options) {
-    const redoc = require.resolve('redoc-cli');
-    const spec = node.openAPISpec.startsWith('/') ? path.join('static', node.openAPISpec) : node.openAPISpec;
-    const target = path.join(options.tempDir, 'index.html');
 
-    try {
-      await exec(`${redoc} bundle -o ${target} ${spec}`);
-    } catch (e) {
-      console.error(e);
-    }
+async function createRecordsForOpenApi(node, options) {
+  const redoc = require.resolve('redoc-cli');
+  const { openAPISpec } = node;
+  const spec = openAPISpec.startsWith('/') ? join('static', openAPISpec) : openAPISpec;
+  const htmlFile = join(options.tempDir, 'index.html');
 
-    if (!fs.existsSync(target)) {
-      throw Error(`Redoc file resolving error: no such file "${target}"`);
-    }
-
-    const fileContent = fs.readFileSync(target, 'utf8');
-    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
-
-    return createAlgoliaRecords(node, htmlRecords);
+  try {
+    await exec(`${redoc} bundle -o ${htmlFile} ${spec}`);
+  } catch (e) {
+    console.error(e);
   }
+
+  if (!existsSync(htmlFile)) {
+    throw Error(`Redoc file resolving error: no such file "${htmlFile}"`);
+  }
+
+  const htmlContent = readFileSync(htmlFile, 'utf8');
+  const htmlRecords = createRecordsFromHtml(htmlContent, options);
+
+  return createAlgoliaRecords(node, htmlRecords);
 }
 
-module.exports = CreateRecordsForOpenApi;
+module.exports = createRecordsForOpenApi;
