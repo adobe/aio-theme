@@ -100,6 +100,7 @@ __metadata:
     lmdb-store: ^1.6.14
     mdx-embed: ^1.0.0
     mobx: ^6.6.1
+    normalize-path: ^3.0.0
     os-browserify: ^0.3.0
     path-browserify: ^1.0.1
     penpal: ^6.2.2
@@ -115,6 +116,7 @@ __metadata:
     react-id-generator: ^3.0.2
     redoc: 2.0.0-rc.75
     redoc-cli: ^0.13.18
+    request: ^2.88.2
     sharp: ^0.30.7
     stream-http: ^3.2.0
     styled-components: ^5.3.5
@@ -20319,7 +20321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"request@npm:^2.87.0":
+"request@npm:^2.87.0, request@npm:^2.88.2":
   version: 2.88.2
   resolution: "request@npm:2.88.2"
   dependencies:

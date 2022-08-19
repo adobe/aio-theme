@@ -15,10 +15,10 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
-const AlgoliaQueryBuilder = require('./algolia/query-builder');
+const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/indexing-modes');
+const queryFileData = require('./algolia/query-file-data');
 
-const algoliaQueries = new AlgoliaQueryBuilder().build();
+const algoliaQueries = queryFileData();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
 
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {

@@ -10,17 +10,18 @@
  * governing permissions and limitations under the License.
  */
 
-const { createAlgoliaRecords, createRawRecordsBasedOnAST } = require('./record-builder');
+const AlgoliaHTMLExtractor = require('algolia-html-extractor');
+const htmlExtractor = new AlgoliaHTMLExtractor();
 
-/**
- * Parse records from mdxAST
- */
-class CreateRecordsForRegularContent {
-  execute(node, options) {
-    const mdxRecords = createRawRecordsBasedOnAST(node, options);
-    const algoliaRecords = createAlgoliaRecords(node, mdxRecords);
-    return algoliaRecords;
-  }
+function createRecordsFromHtml(htmlContent, options) {
+  const htmlRecord = htmlExtractor
+    .run(htmlContent, { cssSelector: options.tagsToIndex })
+    .filter(
+      (record) =>
+        record.content.length >= options.minCharsLengthPerTag &&
+        record.content.split(' ').length >= options.minWordsCount
+    );
+  return htmlRecord;
 }
 
-module.exports = CreateRecordsForRegularContent;
+module.exports = createRecordsFromHtml;

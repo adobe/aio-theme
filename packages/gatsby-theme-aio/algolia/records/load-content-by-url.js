@@ -15,25 +15,20 @@ const request = require('request');
 /**
  * Load content by url
  */
-class LoadContentByUrl {
-  /**
-   * Load cotent by url
-   *
-   * @param url
-   * @returns {Promise}
-   */
-  execute(url) {
-    return new Promise((resolve, reject) => {
-      request(url, (error, response, body) => {
-        if (error) {
-          reject(error);
-        }
-        if (response.statusCode != 200) {
-          reject('Invalid status code <' + response.statusCode + '> for URL:' + url);
-        }
-        resolve(body);
-      });
+function loadContentByUrl(url) {
+  let promise = new Promise((resolve, reject) => {
+    request(url, (error, response, body) => {
+      if (error) {
+        reject(error);
+      }
+      const { statusCode } = response;
+      if (statusCode !== 200) {
+        reject('Invalid status code <' + statusCode + '> for URL:' + url);
+      }
+      resolve(body);
     });
-  }
+  });
+  return promise;
 }
-module.exports = LoadContentByUrl;
+
+module.exports = loadContentByUrl;

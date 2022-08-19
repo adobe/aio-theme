@@ -10,9 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-const fs = require('fs');
+const { existsSync, readFileSync } = require('fs');
 const normalizePath = require('normalize-path');
-const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-builder');
+const createRecordsFromHtml = require('./create-records-from-html');
+const createAlgoliaRecords = require('./create-algolia-records');
 
 /**
  * Support of "import" directive:
@@ -20,36 +21,33 @@ const { createRawRecordsBasedOnHtml, createAlgoliaRecords } = require('./record-
  *
  * Parse index records from cache files.
  */
-class CreateRecordsForEmbeddedContent {
-  constructor(options = {}) {}
 
-  execute(node, options) {
-    const { fileAbsolutePath } = node;
-    const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
+function createRecordsForEmbeddedContent(node, options = {}) {
+  const { fileAbsolutePath } = node;
+  const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
 
-    const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
-    const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
-    const publicFileExtension = `.${options.publicFileExtension}`;
+  const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
+  const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
+  const publicFileExtension = `.${options.publicFileExtension}`;
 
-    let cacheFileAbsolutePath;
-    const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
+  let cacheFileAbsolutePath;
+  const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
 
-    if (isIndexFile) {
-      cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, publicFileExtension);
-    } else {
-      cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
-    }
-
-    if (!fs.existsSync(cacheFileAbsolutePath)) {
-      throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
-    }
-
-    const fileContent = fs.readFileSync(cacheFileAbsolutePath, 'utf8');
-    const htmlRecords = createRawRecordsBasedOnHtml(fileContent, options);
-    const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
-
-    return algoliaRecords;
+  if (isIndexFile) {
+    cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, publicFileExtension);
+  } else {
+    cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
   }
+
+  if (!existsSync(cacheFileAbsolutePath)) {
+    throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
+  }
+
+  const fileContent = readFileSync(cacheFileAbsolutePath, 'utf8');
+  const htmlRecords = createRecordsFromHtml(fileContent, options);
+
+  const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
+  return algoliaRecords;
 }
 
-module.exports = CreateRecordsForEmbeddedContent;
+module.exports = createRecordsForEmbeddedContent;
