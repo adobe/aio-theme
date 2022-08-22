@@ -178,13 +178,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     }
   };
 
-  const checkShowFilters = (indexName) => {
-    if (keywordResults.length > 0 && selectedIndex === indexName) {
-      return true;
-    }
-    return false;
-  }
-
   const search = async () => {
     if (searchQuery.length) {
       setIsSuggestionsOpen(false);
@@ -209,9 +202,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const mappedKeywordResults = [];
 
       if (search?.results?.length) {
-        search.results.forEach(({ hits, facets }) => {
-          mapSearchResults(hits, mappedSearchResults);
-          mapKeywordResults(facets, mappedKeywordResults);
+        search.results.forEach(({ hits, facets, index }) => {
+          if (facets === undefined) return;
+            mapSearchResults(hits, mappedSearchResults);
+            mapKeywordResults(facets, mappedKeywordResults);
+          
         });
       }
 
@@ -573,28 +568,38 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 css={css`
                   margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
+                Products
+              </h4>
+
+              {searchIndex.map((index, i) => {
+                const indexName = Object.keys(index)[0];
+                const indexLabel = index[indexName];
+
+                return (
+                  <Checkbox
+                    key={i}
+                    isSelected={indexName === selectedIndex}
+                    value={indexLabel}
+                    onChange={(checked) => {
+                      if (!(indexName === selectedIndex)) {
+                        setSelectedKeywords([]);
+                        setSelectedIndex(indexName);
+                      }
+                    }}>
+                    <span>{indexLabel}</span>
+                  </Checkbox>
+                );
+              })}
+
+              <h4
+                className="spectrum-Heading spectrum-Heading--sizeXS"
+                css={css`
+                  margin-bottom: var(--spectrum-global-dimension-size-100);
+                `}>
                 Filter by
               </h4>
-              <Accordion>
-                {searchIndex.map((index, i) => {
-                  const indexName = Object.keys(index)[0];
-                  const indexLabel = index[indexName];
-
-                  return (
-                    <AccordionItem
-                      id={i}
-                      key={i}
-                      header={indexLabel}
-                      isOpen={indexName === selectedIndex}
-                      onClick={() => {
-                        if (!(indexName === selectedIndex)) {
-                          setSelectedKeywords([]);
-                          setSelectedIndex(indexName);
-                        }
-                      }}
-                    >
-                      <div
-                        css={css`
+              <div
+                css={css`
                     margin-top: var(--spectrum-global-dimension-size-100);
                     margin-bottom: var(--spectrum-global-dimension-size-1200);
                     display: flex;
@@ -605,40 +610,33 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       margin-bottom: 0;
                     }
                   `}>
-                        {checkShowFilters(indexName) ?
-                          (keywordResults.map((keywordResult, i) => {
-                            const keyword = Object.keys(keywordResult)[0];
+                {keywordResults.length > 0 ?
+                  (keywordResults.map((keywordResult, i) => {
+                    const keyword = Object.keys(keywordResult)[0];
 
-                            return (
-                              <Checkbox
-                                key={i}
-                                isSelected={selectedKeywords.includes(keyword)}
-                                value={keyword}
-                                onChange={(checked) => {
-                                  if (!selectedIndex === indexName) {
-                                    setSelectedKeywords([]);
-                                  } else if (checked) {
-                                    setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
-                                  } else {
-                                    setSelectedKeywords(
-                                      selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
-                                    );
-                                  }
-                                }}>
-                                <span>{keyword}</span>
-                                <em>&nbsp;({keywordResult[keyword]})</em>
-                              </Checkbox>
+                    return (
+                      <Checkbox
+                        key={i}
+                        isSelected={selectedKeywords.includes(keyword)}
+                        value={keyword}
+                        onChange={(checked) => {
+                          if (checked) {
+                            setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
+                          } else {
+                            setSelectedKeywords(
+                              selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
                             );
-                          }))
-                          :
-                          (<div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>)}
-                      </div>
-                    </AccordionItem>
-                  );
-                })}
-              </Accordion>
+                          }
+                        }}>
+                        <span>{keyword}</span>
+                        <em>&nbsp;({keywordResult[keyword]})</em>
+                      </Checkbox>
+                    );
+                  }))
+                  :
+                  (<div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>)}
+              </div>
             </div>
-
             <div
               css={css`
                 height: 100%;
