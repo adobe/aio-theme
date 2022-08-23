@@ -13,14 +13,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { AnchorLink } from '../AnchorLink';
-import {
-  Tabs,
-  Item as TabsItem,
-  Label as TabsItemLabel,
-  TabsIndicator,
-  positionIndicator,
-  animateIndicator
-} from '../Tabs';
 import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import PropTypes from 'prop-types';
@@ -32,7 +24,6 @@ import '@spectrum-css/search';
 import '@spectrum-css/button';
 import { Cross, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
-import { Accordion, AccordionItem } from '../Accordion';
 
 const SEARCH_INPUT_WIDTH = '688px';
 const SEARCH_INDEX_ALL = 'all';
@@ -86,10 +77,10 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
 };
 
 const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) => {
-  if (selectedIndex === 'all') {
+  if (selectedIndex.includes('all')) {
     selectedIndex = indexAll;
   } else {
-    selectedIndex = [selectedIndex];
+    selectedIndex = selectedIndex;
   }
 
   const queries = [];
@@ -139,9 +130,26 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
+const indexLabelFormat = (indexName) => {
+  const indexNameArray = indexName.split('').map((char, index, array) => {
+    if (char === '-') {
+      return ' ';
+    } else if (index === 0 || array[index - 1] === '-') {
+      return char.toUpperCase();
+    } else {
+      return char;
+    }
+  });
+  indexNameArray[0] = indexNameArray[0].toUpperCase();
+
+  const indexLabel = indexNameArray.join('');
+
+  return indexLabel;
+};
+
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
+  const [selectedIndex, setSelectedIndex] = useState([mapToIndexName(searchIndex)[0]]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -152,21 +160,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const searchResultsRef = useRef(null);
   const [searchSuggestionResults, setSearchSuggestionResults] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [productResults, setProductResults] = useState([]);
   const [keywordResults, setKeywordResults] = useState([]);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
-  const selectedTabIndicator = useRef(null);
-  // Don't animate the tab indicator by default
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  const getSelectedTabIndex = () => searchIndex[mapToIndexName(searchIndex).indexOf(selectedIndex)].tabRef;
-
-  const positionSelectedTabIndicator = (selectedTab = getSelectedTabIndex()) => {
-    if (showSearchResults && selectedTab?.current) {
-      animateIndicator(selectedTabIndicator, isAnimated);
-      positionIndicator(selectedTabIndicator, selectedTab);
-    }
-  };
 
   const setTargetOrigin = () => {
     const parentURL = document.referrer;
@@ -193,23 +190,28 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         }
       }
 
-      positionSelectedTabIndicator();
       setShowSearchResults(true);
 
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
 
+      const mappedProductResults = [];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
-
       if (search?.results?.length) {
         search.results.forEach(({ hits, facets, index }) => {
           if (facets === undefined) return;
-            mapSearchResults(hits, mappedSearchResults);
-            mapKeywordResults(facets, mappedKeywordResults);
-          
+          if (hits.length > 0) {
+            if (index !== mapToIndexName(searchIndex)[0]) {
+              const mappedObject = { [index]: indexLabelFormat(index) };
+              mappedProductResults.push(mappedObject);
+            }
+          }
+          mapSearchResults(hits, mappedSearchResults);
+          mapKeywordResults(facets, mappedKeywordResults);
         });
       }
 
+      setProductResults([searchIndex[0], ...mappedProductResults, searchIndex[1]]);
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
     }
@@ -225,7 +227,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const index = searchParams.get(SEARCH_PARAMS.index);
 
       if (index) {
-        setSelectedIndex(index);
+        setSelectedIndex(index.split(','));
       }
 
       if (keywords) {
@@ -262,16 +264,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       searchResultsRef.current.scrollTop = 0;
     }
   }, [searchResults]);
-
-  useEffect(() => {
-    if (showSearchResults) {
-      positionSelectedTabIndicator();
-
-      setIsAnimated(true);
-    } else {
-      setIsAnimated(false);
-    }
-  }, [showSearchResults]);
 
   useEffect(() => {
     const onClick = ({ target }) => {
@@ -570,21 +562,24 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 `}>
                 Products
               </h4>
-
-              {searchIndex.map((index, i) => {
+              {productResults.map((index, i) => {
                 const indexName = Object.keys(index)[0];
                 const indexLabel = index[indexName];
-
                 return (
                   <Checkbox
                     key={i}
-                    isSelected={indexName === selectedIndex}
+                    isSelected={selectedIndex.includes(indexName)}
                     value={indexLabel}
                     onChange={(checked) => {
-                      if (!(indexName === selectedIndex)) {
-                        setSelectedKeywords([]);
-                        setSelectedIndex(indexName);
+                      if (!checked) {
+                        console.log(checked);
+                        console.log(selectedIndex);
+                        console.log(selectedIndex.filter(index => index === indexName));
+                        setSelectedIndex(selectedIndex.filter(index => index !== indexName));
+                      } else {
+                        setSelectedIndex([...selectedIndex, indexName]);
                       }
+                      setSelectedKeywords([]);
                     }}>
                     <span>{indexLabel}</span>
                   </Checkbox>
