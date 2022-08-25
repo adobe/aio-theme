@@ -12,8 +12,7 @@
 
 const { existsSync, readFileSync } = require('fs');
 const normalizePath = require('normalize-path');
-const createRecordsFromHtml = require('./create-records-from-html');
-const createAlgoliaRecords = require('./create-algolia-records');
+const { selectAll } = require('unist-util-select');
 
 /**
  * Support of "import" directive:
@@ -22,7 +21,20 @@ const createAlgoliaRecords = require('./create-algolia-records');
  * Parse index records from cache files.
  */
 
-function createRecordsForEmbeddedContent(node, options = {}) {
+async function getImportedContent(node) {
+  const importedContent = await selectAll('import', node.mdxAST);
+  if (importedContent.length <= 0) return null;
+
+  const options = {
+    publicDir: 'public',
+    pagesSourceDir: 'src/pages',
+    publicFileExtension: 'html',
+    sourceFileExtension: 'md',
+    tagsToIndex: 'p',
+    minCharsLengthPerTag: 10,
+    minWordsCount: 2,
+  };
+
   const { fileAbsolutePath } = node;
   const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
 
@@ -30,24 +42,18 @@ function createRecordsForEmbeddedContent(node, options = {}) {
   const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
   const publicFileExtension = `.${options.publicFileExtension}`;
 
-  let cacheFileAbsolutePath;
   const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
 
-  if (isIndexFile) {
-    cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, publicFileExtension);
-  } else {
-    cacheFileAbsolutePath = publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
-  }
+  let cacheFileAbsolutePath = isIndexFile
+    ? publicSourceFilePath.replace(sourceFileExtension, publicFileExtension)
+    : publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
 
   if (!existsSync(cacheFileAbsolutePath)) {
     throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
   }
 
-  const fileContent = readFileSync(cacheFileAbsolutePath, 'utf8');
-  const htmlRecords = createRecordsFromHtml(fileContent, options);
-
-  const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
-  return algoliaRecords;
+  const content = readFileSync(cacheFileAbsolutePath, 'utf8');
+  return { content, options };
 }
 
-module.exports = createRecordsForEmbeddedContent;
+module.exports = getImportedContent;

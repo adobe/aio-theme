@@ -11,15 +11,14 @@
  */
 
 require('dotenv').config({
-  path: `.env`
+  path: `.env`,
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/indexing-modes');
-const { ALGOLIA_INDEX_SETTINGS } = require('./algolia-search-settings');
-const queryFileData = require('./algolia/query-file-data');
+const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/config/algolia-indexing-modes');
+const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/config/algolia-search-settings');
+const indexAlgoliaRecords = require('./algolia/index-algolia-records');
 
-const algoliaQueries = queryFileData();
 let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
 
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
@@ -35,7 +34,7 @@ console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
 module.exports = {
   flags: {
-    PARALLEL_QUERY_RUNNING: true
+    PARALLEL_QUERY_RUNNING: true,
   },
   plugins: [
     `gatsby-plugin-preact`,
@@ -47,15 +46,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout/index.js`)
-      }
+        component: require.resolve(`./src/components/Layout/index.js`),
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `src/pages`
-      }
+        path: `src/pages`,
+      },
     },
     {
       resolve: `gatsby-plugin-mdx`,
@@ -63,7 +62,7 @@ module.exports = {
         mediaTypes: [`text/markdown`, `text/x-markdown`],
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/MDXFilter/index.js`)
+          default: require.resolve(`./src/components/MDXFilter/index.js`),
         },
         plugins: [
           `gatsby-transformer-remark`,
@@ -73,7 +72,7 @@ module.exports = {
         ],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-transformer-remark`
+            resolve: `gatsby-transformer-remark`,
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -82,15 +81,15 @@ module.exports = {
               maintainCase: false,
               removeAccents: true,
               enableCustomId: true,
-              elements: [`h2`, `h3`, `h4`, `h5`]
-            }
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
               ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`],
-              destinationDir: `assets`
-            }
+              destinationDir: `assets`,
+            },
           },
           {
             resolve: `gatsby-remark-images-remote`,
@@ -101,11 +100,11 @@ module.exports = {
               quality: 100,
               withWebp: { quality: 100 },
               disableBgImage: true,
-              backgroundColor: 'none'
-            }
-          }
-        ]
-      }
+              backgroundColor: 'none',
+            },
+          },
+        ],
+      },
     },
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
@@ -116,9 +115,9 @@ module.exports = {
           owner: process.env.REPO_OWNER,
           name: process.env.REPO_NAME,
           branch: process.env.REPO_BRANCH,
-          default_branch: process.env.REPO_DEFAULT_BRANCH
-        }
-      }
+          default_branch: process.env.REPO_DEFAULT_BRANCH,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-algolia`,
@@ -126,16 +125,16 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: indexAlgoliaRecords(),
+        chunkSize: 10000,
         settings: ALGOLIA_INDEX_SETTINGS,
         enablePartialUpdates: true,
         matchFields: ['contentDigest'],
-        queries: algoliaQueries,
-        mergeSettings: false,
-        chunkSize: 10000, // default: 1000
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
-        continueOnFailure: true // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-      }
-    }
-  ]
+        continueOnFailure: false, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
+        algoliasearchOptions: undefined,
+      },
+    },
+  ],
 };

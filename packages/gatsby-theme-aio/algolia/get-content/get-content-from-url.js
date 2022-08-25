@@ -10,18 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
-const htmlExtractor = new AlgoliaHTMLExtractor();
+const request = require('request');
 
-function createRecordsFromHtml(htmlContent, options) {
-  const htmlRecord = htmlExtractor
-    .run(htmlContent, { cssSelector: options.tagsToIndex })
-    .filter(
-      (record) =>
-        record.content.length >= options.minCharsLengthPerTag &&
-        record.content.split(' ').length >= options.minWordsCount
-    );
-  return htmlRecord;
+/**
+ * Load content by url
+ */
+function getContentFromUrl(url) {
+  return new Promise((resolve, reject) =>
+    request(url, (error, response, body) => {
+      if (error) {
+        reject(error);
+      }
+      const { statusCode } = response;
+      if (statusCode !== 200) {
+        reject('Invalid status code <' + statusCode + '> for URL:' + url);
+      }
+      resolve(body);
+    })
+  );
 }
 
-module.exports = createRecordsFromHtml;
+module.exports = getContentFromUrl;
