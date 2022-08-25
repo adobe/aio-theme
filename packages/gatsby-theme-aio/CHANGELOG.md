@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.2...@adobe/gatsby-theme-aio@4.4.3) (2022-08-25)
+
+### Features
+
+* Update feedback analytics to be more descriptive ([c807f9252](https://github.com/adobe/aio-theme/commit/c807f9252da78879a9f1b76ecdd558406ebd5d2c))
+
+* Re-added gatsby-remark-images-remote to work with gatsby v4 ([02a0c77](https://github.com/adobe/aio-theme/commit/02a0c77e76e61603b8c7667ee6ad7d540efac885))
+
+* Fix layout in vertical tab ([031a16b](https://github.com/adobe/aio-theme/commit/031a16ba46b5fbd0a2630b093f321e7af1470d8b))
+
+* Fix new env vars and search results cleanup([6b28c2a](https://github.com/adobe/aio-theme/commit/6b28c2a27d4c7319e2509c0c0e88c78d59e27194))
+
 ## [4.4.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.1...@adobe/gatsby-theme-aio@4.4.2) (2022-08-02)
 
 ### Features
