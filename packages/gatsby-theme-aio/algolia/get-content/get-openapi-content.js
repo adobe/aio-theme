@@ -10,10 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-const { existsSync, readFileSync } = require('fs');
+const { existsSync, readFileSync, rmSync } = require('fs');
 const { join } = require('path');
-const createRecordsFromHtml = require('./create-records-from-html');
-const createAlgoliaRecords = require('./create-algolia-records');
 const exec = require('await-exec');
 
 /**
@@ -21,7 +19,17 @@ const exec = require('await-exec');
  * https://github.com/adobe/aio-theme#openapi
  */
 
-async function createRecordsForOpenApi(node, options) {
+async function getOpenApiContent(node) {
+  if (!node.openAPISpec) return null;
+
+  const tempDir = './public/redoc';
+  const options = {
+    tempDir,
+    tagsToIndex: 'p',
+    minCharsLengthPerTag: 10,
+    minWordsCount: 3,
+  };
+
   const redoc = require.resolve('redoc-cli');
   const { openAPISpec } = node;
   const spec = openAPISpec.startsWith('/') ? join('static', openAPISpec) : openAPISpec;
@@ -38,9 +46,9 @@ async function createRecordsForOpenApi(node, options) {
   }
 
   const htmlContent = readFileSync(htmlFile, 'utf8');
-  const htmlRecords = createRecordsFromHtml(htmlContent, options);
+  rmSync(tempDir, { recursive: true, force: true });
 
-  return createAlgoliaRecords(node, htmlRecords);
+  return { htmlContent, options };
 }
 
-module.exports = createRecordsForOpenApi;
+module.exports = getOpenApiContent;

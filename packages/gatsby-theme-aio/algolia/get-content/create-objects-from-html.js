@@ -10,18 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
+const AlgoliaHTMLExtractor = require('./algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 
-function createRecordsFromHtml(htmlContent, options) {
-  const htmlRecord = htmlExtractor
-    .run(htmlContent, { cssSelector: options.tagsToIndex })
+function createObjectsFromHtml(content, options) {
+  const htmlObjects = htmlExtractor
+    .run(content, { cssSelector: options.tagsToIndex })
     .filter(
-      (record) =>
-        record.content.length >= options.minCharsLengthPerTag &&
-        record.content.split(' ').length >= options.minWordsCount
+      htmlElement =>
+        htmlElement.content.length >= options.minCharsLengthPerTag &&
+        htmlElement.content.split(' ').length >= options.minWordsCount
     );
-  return htmlRecord;
+
+  return htmlObjects;
 }
 
-module.exports = createRecordsFromHtml;
+module.exports = createObjectsFromHtml;

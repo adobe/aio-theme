@@ -15,8 +15,8 @@ const request = require('request');
 /**
  * Load content by url
  */
-function loadContentByUrl(url) {
-  let promise = new Promise((resolve, reject) => {
+function getContentFromUrl(url) {
+  return new Promise((resolve, reject) =>
     request(url, (error, response, body) => {
       if (error) {
         reject(error);
@@ -26,9 +26,8 @@ function loadContentByUrl(url) {
         reject('Invalid status code <' + statusCode + '> for URL:' + url);
       }
       resolve(body);
-    });
-  });
-  return promise;
+    })
+  );
 }
 
-module.exports = loadContentByUrl;
+module.exports = getContentFromUrl;

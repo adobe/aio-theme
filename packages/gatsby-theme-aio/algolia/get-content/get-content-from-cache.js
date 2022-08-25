@@ -10,24 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-const loadContentByUrl = require('./load-content-by-url');
-const loadContentFromCache = require('./load-content-from-cache');
-const createRecordsFromHtml = require('./create-records-from-html');
-const createAlgoliaRecords = require('./create-algolia-records');
+const normalizePath = require('normalize-path');
+const { existsSync, readFileSync } = require('fs');
 
 /**
  * Support of "frameSrc" directive:
  * https://github.com/adobe/aio-theme#frame
  */
+function getContentFromCache(node, options) {
+  const { fileAbsolutePath } = node;
+  const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
+  const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`;
 
-async function createRecordsForFrame(node, options) {
-  const htmlContent = /^https?:\/\//i.test(node.frameSrc)
-    ? await loadContentByUrl(node.frameSrc)
-    : loadContentFromCache(node, options);
+  if (!existsSync(staticFileAbsolutePath)) {
+    throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`);
+  }
 
-  const htmlRecords = createRecordsFromHtml(htmlContent, options);
-  const algoliaRecords = createAlgoliaRecords(node, htmlRecords);
-  return algoliaRecords;
+  const fileContent = readFileSync(staticFileAbsolutePath, 'utf8');
+  return fileContent;
 }
 
-module.exports = createRecordsForFrame;
+module.exports = getContentFromCache;
