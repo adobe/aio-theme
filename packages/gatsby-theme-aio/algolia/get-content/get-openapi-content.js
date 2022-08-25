@@ -45,10 +45,10 @@ async function getOpenApiContent(node) {
     throw Error(`Redoc file resolving error: no such file "${htmlFile}"`);
   }
 
-  const htmlContent = readFileSync(htmlFile, 'utf8');
+  const content = readFileSync(htmlFile, 'utf8');
   rmSync(tempDir, { recursive: true, force: true });
 
-  return { htmlContent, options };
+  return { content, options };
 }
 
 module.exports = getOpenApiContent;

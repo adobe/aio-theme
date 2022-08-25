@@ -10,23 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-<<<<<<< HEAD:packages/gatsby-theme-aio/algolia/get-content/create-records-from-html.js
-const AlgoliaHTMLExtractor = require('algolia-html-extractor');
-const htmlExtractor = new AlgoliaHTMLExtractor();
-
-function createRecordsFromHtml(htmlContent, options) {
-  const htmlRecord = htmlExtractor
-    .run(htmlContent, { cssSelector: options.tagsToIndex })
-    .filter(
-      (record) =>
-        record.content.length >= options.minCharsLengthPerTag &&
-        record.content.split(' ').length >= options.minWordsCount
-    );
-  return htmlRecord;
-}
-
-module.exports = createRecordsFromHtml;
-=======
 const AlgoliaHTMLExtractor = require('./algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 
@@ -43,4 +26,3 @@ function createObjectsFromHtml(content, options) {
 }
 
 module.exports = createObjectsFromHtml;
->>>>>>> a57bd3edfa34ff111debb40a470d138afc5261fc:packages/gatsby-theme-aio/algolia/get-content/create-objects-from-html.js

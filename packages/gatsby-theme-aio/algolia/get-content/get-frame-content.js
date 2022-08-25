@@ -29,11 +29,11 @@ async function getFrameContent(node) {
     minWordsCount: 3,
   };
 
-  const htmlContent = /^https?:\/\//i.test(node.frameSrc)
+  const content = /^https?:\/\//i.test(node.frameSrc)
     ? await getContentFromUrl(node.frameSrc)
     : getContentFromCache(node, options);
 
-  return { htmlContent, options };
+  return { content, options };
 }
 
 module.exports = getFrameContent;
