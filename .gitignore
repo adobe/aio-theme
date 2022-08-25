@@ -31,6 +31,7 @@ public
 # cypress
 cypress/videos
 cypress/screenshots
+cypress/downloads
 
 # lerna
 lerna-debug.log

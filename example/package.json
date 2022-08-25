@@ -3,8 +3,8 @@
   "name": "example",
   "version": "0.0.1",
   "dependencies": {
-    "@adobe/gatsby-theme-aio": "4.4.3",
-    "gatsby": "^4.20.0"
+    "@adobe/gatsby-theme-aio": "*",
+    "gatsby": "^4.21.1"
   },
   "scripts": {
     "start": "gatsby build && gatsby serve",
