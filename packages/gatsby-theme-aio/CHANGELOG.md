@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.3...@adobe/gatsby-theme-aio@4.4.4) (2022-08-25)
+
+### Features
+
+* Fix analytics feedback typo([0e8bb2a](https://github.com/adobe/aio-theme/commit/0e8bb2ab118a0039373d24412cf06086980f809f))
+
+
 ## [4.4.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.2...@adobe/gatsby-theme-aio@4.4.3) (2022-08-25)
 
 ### Features
