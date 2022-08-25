@@ -168,6 +168,10 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
       hideBreadcrumbNav: {
         type: 'Boolean',
         resolve: addFrontmatterType
+      },
+      spotlight: {
+        type: 'Boolean',
+        resolve: addFrontmatterType
       }
     }
   };
