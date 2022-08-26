@@ -2007,7 +2007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/request@npm:^2.88.6":
+"@cypress/request@npm:^2.88.10":
   version: 2.88.10
   resolution: "@cypress/request@npm:2.88.10"
   dependencies:
@@ -6444,10 +6444,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sinonjs__fake-timers@npm:^6.0.2":
-  version: 6.0.4
-  resolution: "@types/sinonjs__fake-timers@npm:6.0.4"
-  checksum: 200cb24235409964269465e8a94ad735ec8bab98f3b2405cd6351fa6f6399be268cbbd4e824c9d361d9431ae11070cff4c3b6400b18aff03cb7933985853c0c9
+"@types/sinonjs__fake-timers@npm:8.1.1":
+  version: 8.1.1
+  resolution: "@types/sinonjs__fake-timers@npm:8.1.1"
+  checksum: ca09d54d47091d87020824a73f026300fa06b17cd9f2f9b9387f28b549364b141ef194ee28db762f6588de71d8febcd17f753163cb7ea116b8387c18e80ebd5c
   languageName: node
   linkType: hard
 
@@ -6981,11 +6981,11 @@ __metadata:
     "@commitlint/config-conventional": ^17.0.3
     "@testing-library/cypress": ^8.0.3
     axe-core: ^4.4.3
-    cypress: ^8.7.0
-    cypress-axe: ^0.14.0
-    gatsby-cypress: ^1.14.0
+    cypress: ^10.6.0
+    cypress-axe: ^1.0.0
+    gatsby-cypress: ^2.21.0
     husky: ^8.0.1
-    lerna: ^5.2.0
+    lerna: ^5.4.3
     start-server-and-test: ^1.14.0
   languageName: unknown
   linkType: soft
@@ -8156,7 +8156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer@npm:^5.2.0, buffer@npm:^5.5.0, buffer@npm:^5.7.0":
+"buffer@npm:^5.2.0, buffer@npm:^5.5.0, buffer@npm:^5.6.0, buffer@npm:^5.7.0":
   version: 5.7.1
   resolution: "buffer@npm:5.7.1"
   dependencies:
@@ -8735,7 +8735,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-table3@npm:~0.6.0":
+"cli-table3@npm:~0.6.1":
   version: 0.6.2
   resolution: "cli-table3@npm:0.6.2"
   dependencies:
@@ -9877,33 +9877,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-axe@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "cypress-axe@npm:0.14.0"
+"cypress-axe@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "cypress-axe@npm:1.0.0"
   peerDependencies:
     axe-core: ^3 || ^4
-    cypress: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
-  checksum: 72c639502e2c2ed0f084453b9fa6c77bf5af736e8904600887b7c64e7edbd833e7d2de2b290d6149cc7805b5e08ce2fcc4206d0ee85b31ae7b4cfd02d582ed3c
+    cypress: ^10
+  checksum: 02b5d8ac11b659772fc11e587c61c75b86fdbd1dda7930ec76e02ed4f7e774d01a087bd21681460d9664d469f1bc778a8402825e9c7fd95e0aa2688264a381c2
   languageName: node
   linkType: hard
 
-"cypress@npm:^8.7.0":
-  version: 8.7.0
-  resolution: "cypress@npm:8.7.0"
+"cypress@npm:^10.6.0":
+  version: 10.6.0
+  resolution: "cypress@npm:10.6.0"
   dependencies:
-    "@cypress/request": ^2.88.6
+    "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
     "@types/node": ^14.14.31
-    "@types/sinonjs__fake-timers": ^6.0.2
+    "@types/sinonjs__fake-timers": 8.1.1
     "@types/sizzle": ^2.3.2
     arch: ^2.2.0
     blob-util: ^2.0.2
     bluebird: ^3.7.2
+    buffer: ^5.6.0
     cachedir: ^2.3.0
     chalk: ^4.1.0
     check-more-types: ^2.24.0
     cli-cursor: ^3.1.0
-    cli-table3: ~0.6.0
+    cli-table3: ~0.6.1
     commander: ^5.1.0
     common-tags: ^1.8.0
     dayjs: ^1.10.4
@@ -9922,20 +9923,19 @@ __metadata:
     listr2: ^3.8.3
     lodash: ^4.17.21
     log-symbols: ^4.0.0
-    minimist: ^1.2.5
+    minimist: ^1.2.6
     ospath: ^1.2.2
     pretty-bytes: ^5.6.0
     proxy-from-env: 1.0.0
-    ramda: ~0.27.1
     request-progress: ^3.0.0
+    semver: ^7.3.2
     supports-color: ^8.1.1
     tmp: ~0.2.1
     untildify: ^4.0.0
-    url: ^0.11.0
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 607771bda6c37228cd8537a7faa2ae89ae9bcf2720210b22865f532059d8c7e0741bb7520f241c46ceacd503ff349e41f0eea104734e71423071dd67a79098b9
+  checksum: 53993d2d712222df13ef4802db051fee8a7ac59b180ed11b22e6f10d36f5d9b2c2622f1bbfa012f61c7756139287a976abd075275ddd37191b13f40ec8deaa85
   languageName: node
   linkType: hard
 
@@ -11540,7 +11540,7 @@ __metadata:
   resolution: "example@workspace:example"
   dependencies:
     "@adobe/gatsby-theme-aio": "*"
-    gatsby: ^4.20.0
+    gatsby: ^4.21.1
   languageName: unknown
   linkType: soft
 
@@ -12371,15 +12371,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cypress@npm:^1.14.0":
-  version: 1.14.0
-  resolution: "gatsby-cypress@npm:1.14.0"
+"gatsby-cypress@npm:^2.21.0":
+  version: 2.21.0
+  resolution: "gatsby-cypress@npm:2.21.0"
   dependencies:
     "@babel/runtime": ^7.15.4
   peerDependencies:
     cypress: ^3.1.0
-    gatsby: ^3.0.0-next.0
-  checksum: f115f9e255f2cbab24cadbe3ac6db11322306a9c498021188e8e04cc119e15f7270f2c38629320c1b25bac492d1b4ec54e596afdcd3f7a3ee9186fa0a0111560
+    gatsby: ^4.0.0-next
+  checksum: cb1161e742579afc57c71b0f2c03dc3e4e70f0118f024c0f4cf44575afec126edb02a4bd151a8226aea7b99492ef8687f2b8ccbdad04b407dba865908cf22884
   languageName: node
   linkType: hard
 
@@ -12878,7 +12878,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^4.19.1, gatsby@npm:^4.19.2":
+"gatsby@npm:^4.19.2, gatsby@npm:^4.21.1":
   version: 4.21.1
   resolution: "gatsby@npm:4.21.1"
   dependencies:
@@ -15570,7 +15570,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lerna@npm:^5.2.0":
+"lerna@npm:^5.4.3":
   version: 5.4.3
   resolution: "lerna@npm:5.4.3"
   dependencies:
@@ -19889,13 +19889,6 @@ __metadata:
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
   checksum: a516faa25574be7947969883e6068dbe4aa19e8ef8e8e0fd96cddd6d36485e9106d85c0041a27153286b0770b381328f4072aa40d3b18a19f5f7d2b78b94b5ed
-  languageName: node
-  linkType: hard
-
-"ramda@npm:~0.27.1":
-  version: 0.27.2
-  resolution: "ramda@npm:0.27.2"
-  checksum: 28d6735dd1eea1a796c56cf6111f3673c6105bbd736e521cdd7826c46a18eeff337c2dba4668f6eed990d539b9961fd6db19aa46ccc1530ba67a396c0a9f580d
   languageName: node
   linkType: hard
 
