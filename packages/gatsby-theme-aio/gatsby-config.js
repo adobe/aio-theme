@@ -68,7 +68,7 @@ module.exports = {
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-images-remote`
+          `gatsby-remark-images-remote`,
         ],
         gatsbyRemarkPlugins: [
           {
@@ -133,7 +133,6 @@ module.exports = {
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
         continueOnFailure: false, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-        algoliasearchOptions: undefined,
       },
     },
   ],

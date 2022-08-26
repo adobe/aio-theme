@@ -14,15 +14,13 @@ const AlgoliaHTMLExtractor = require('./algolia-html-extractor');
 const htmlExtractor = new AlgoliaHTMLExtractor();
 
 function createObjectsFromHtml(content, options) {
-  const htmlObjects = htmlExtractor
+  return htmlExtractor
     .run(content, { cssSelector: options.tagsToIndex })
     .filter(
       htmlElement =>
         htmlElement.content.length >= options.minCharsLengthPerTag &&
         htmlElement.content.split(' ').length >= options.minWordsCount
     );
-
-  return htmlObjects;
 }
 
 module.exports = createObjectsFromHtml;

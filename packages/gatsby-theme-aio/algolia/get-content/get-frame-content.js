@@ -24,7 +24,7 @@ async function getFrameContent(node) {
   const options = {
     pagesSourceDir: 'src/pages',
     staticSourceDir: 'static',
-    tagsToIndex: 'p',
+    tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
     minWordsCount: 3,
   };

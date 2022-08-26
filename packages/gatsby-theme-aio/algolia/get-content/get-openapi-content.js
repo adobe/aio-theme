@@ -25,7 +25,7 @@ async function getOpenApiContent(node) {
   const tempDir = './public/redoc';
   const options = {
     tempDir,
-    tagsToIndex: 'p',
+    tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
     minWordsCount: 3,
   };

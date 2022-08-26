@@ -14,11 +14,11 @@ const getImportedContent = require('./get-content/get-imported-content');
 const getFrameContent = require('./get-content/get-frame-content');
 const getOpenApiContent = require('./get-content/get-openapi-content');
 const mdxQuery = require('./mdx-query');
-const createHtmlObjects = require('./get-content/create-objects-from-html');
-const createHtmlRecords = require('./create-html-records');
-const createMarkdownRecords = require('./create-markdown-records');
+const createRecordFromHtml = require('./create-record-from-html');
+const createRecordFromMarkdown = require('./create-record-from-markdown');
+const createObjectsFromHtml = require('./get-content/create-objects-from-html');
 
-async function indexAlgoliaRecords() {
+function indexAlgoliaRecords() {
   return [
     {
       query: mdxQuery,
@@ -27,82 +27,49 @@ async function indexAlgoliaRecords() {
           allFile: { edges },
         },
       }) {
-        const markdownObjects = edges.map(({ node: mdxFile }) => {
+        const markdownNodes = edges.map(({ node }) => {
           // Creates new markdown data objects from the mdxQuery source data (from the markdown files in src/pages).
           return {
-            id: mdxFile.id,
-            contentDigest: mdxFile.internal.contentDigest,
-            lastUpdated: mdxFile.modifiedTime,
-            size: mdxFile.size,
-            headings: mdxFile['childMdx'].headings,
-            content: mdxFile['childMdx'].excerpt,
-            words: mdxFile['childMdx'].wordCount.words,
-            fileAbsolutePath: mdxFile['childMdx'].fileAbsolutePath, // Required for additional source data
-            slug: mdxFile['childMdx'].slug,
-            title: mdxFile['childMdx'].frontmatter.title,
-            description: mdxFile['childMdx'].frontmatter.description,
-            keywords: mdxFile['childMdx'].frontmatter.keywords, // Used for search filters
-            openAPISpec: mdxFile['childMdx'].frontmatter.openAPISpec, // Required for OpenAPI sources
-            frameSrc: mdxFile['childMdx'].frontmatter.frameSrc, // Required for iframe sources
-            spotlight: mdxFile['childMdx'].frontmatter.spotlight, // Added to elevate records from file
-            mdxAST: mdxFile['childMdx'].mdxAST,
+            objectID: node.id,
+            contentDigest: node.internal.contentDigest,
+            lastUpdated: node.modifiedTime,
+            size: node.size,
+            headings: node['childMdx'].headings,
+            content: node['childMdx'].excerpt,
+            words: node['childMdx'].wordCount.words,
+            fileAbsolutePath: node['childMdx'].fileAbsolutePath, // Required for additional source data
+            slug: node['childMdx'].slug,
+            title: node['childMdx'].frontmatter.title,
+            description: node['childMdx'].frontmatter.description,
+            keywords: node['childMdx'].frontmatter.keywords, // Used for search filters
+            openAPISpec: node['childMdx'].frontmatter.openAPISpec, // Required for OpenAPI sources
+            frameSrc: node['childMdx'].frontmatter.frameSrc, // Required for iframe sources
+            spotlight: node['childMdx'].frontmatter.spotlight, // Added to elevate records from file
+            mdxAST: node['childMdx'].mdxAST,
           };
         });
 
-        // TODO: Step through with debugger on different source files/repos
-        // Creates record objects from the html of the imported, framed, or OpenApi content referenced in the markdown.
-        const htmlObjects = async node => {
+        let algoliaRecords = [];
+
+        for (const node of markdownNodes) {
           const htmlContent =
             (await getImportedContent(node)) ?? (await getFrameContent(node)) ?? (await getOpenApiContent(node));
 
-          if (htmlContent == null) return [];
-
-          return createHtmlObjects(htmlContent.content, htmlContent.options);
-        };
-
-        let markdownRecords = [];
-        let htmlRecords = [];
-
-        // TODO: Replace with real conditional
-        const isHtmlObject = false;
-        // TODO: Step through with debugger
-        if (isHtmlObject) {
-          for (const htmlObject of htmlObjects) {
-            htmlRecords = await createHtmlRecords(htmlObject);
-            const tempRecords = htmlRecords.map(({ mdxAST, ...keepAttrs }) => {
-              return keepAttrs;
-            });
-            console.log(`${tempRecords.length} records for "${node?.title === '' ? node.slug : node?.title}"`);
-            htmlRecords = [...htmlRecords, ...tempRecords];
+          if (htmlContent != null) {
+            const htmlObjects = createObjectsFromHtml(htmlContent.content, htmlContent.options);
+            for (const htmlObject of htmlObjects) {
+              const htmlRecord = await createRecordFromHtml(htmlObject, node);
+              algoliaRecords.push(htmlRecord);
+            }
+          } else {
+            const markdownRecord = await createRecordFromMarkdown(node);
+            algoliaRecords.push(markdownRecord);
           }
-          return htmlRecords;
         }
 
-        for (const markdownObject of markdownObjects) {
-          markdownRecords = await createMarkdownRecords(markdownObject);
-          // TODO: Rework this, step through with debugger
-          const tempRecords = markdownRecords.map(({ mdxAST, ...keepAttrs }) => {
-            return keepAttrs;
-          });
-          console.log(`${tempRecords.length} records for "${node?.title === '' ? node.slug : node?.title}"`);
-          markdownRecords = [...markdownRecords, ...tempRecords];
-        }
-        return markdownRecords;
+        return algoliaRecords;
       },
     },
-    // OPTIONAL: Additional queries and resulting records can be added to specific Algolia indexes as shown here.
-    // {
-    //   query: myQuery,
-    //   transformer: ({ data }) => data.pages.nodes, // optional
-    //   indexName: 'index name to target', // overrides main index name, optional
-    //   settings: {
-    //   // optional, any index settings
-    //   // Note: by supplying settings, you will overwrite all existing settings on the index
-    //   },
-    //   matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
-    //   mergeSettings: false, // optional, defaults to false. See notes on mergeSettings below
-    //   queryVariables: {}, // optional. Allows you to use graphql query variables in the query
-    // }
   ];
 }
 

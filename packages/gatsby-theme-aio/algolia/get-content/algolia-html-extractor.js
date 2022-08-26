@@ -33,7 +33,7 @@ module.exports = class AlgoliaHTMLExtractor {
     };
     let currentPosition = 0; // Position of the DOM node in the tree
     let currentLvl = null; // Current closest headings level
-    let currentAnchor = null; // Current closest anchor
+    let currentAnchor = ''; // Current closest anchor
     //
     // We select all nodes that match either the headings or the elements to
     // extract. This will allow us to loop over it in order it appears in the DOM
@@ -79,6 +79,7 @@ module.exports = class AlgoliaHTMLExtractor {
       const item = {
         html: this.extractHtml(node),
         content,
+        description: content,
         headings: Object.values(currentHierarchy).filter(h => h),
         anchor: currentAnchor,
         node,

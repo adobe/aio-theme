@@ -30,7 +30,7 @@ async function getImportedContent(node) {
     pagesSourceDir: 'src/pages',
     publicFileExtension: 'html',
     sourceFileExtension: 'md',
-    tagsToIndex: 'p',
+    tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
     minWordsCount: 2,
   };
