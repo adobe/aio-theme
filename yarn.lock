@@ -45,7 +45,7 @@ __metadata:
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
     "@spectrum-css/accordion": 3.0.24
-    "@spectrum-css/actionbutton": 2.1.3
+    "@spectrum-css/actionbutton": 2.1.4
     "@spectrum-css/actiongroup": ^2.0.0
     "@spectrum-css/assetlist": 3.0.24
     "@spectrum-css/badge": ^1.0.20
@@ -92,7 +92,6 @@ __metadata:
     gatsby-plugin-sharp: ^4.21.0
     gatsby-remark-autolink-headers: ^5.21.0
     gatsby-remark-copy-linked-files: ^5.21.0
-    gatsby-remark-images: ^6.21.0
     gatsby-remark-images-remote: ^2.1.1
     gatsby-source-filesystem: ^4.21.1
     gatsby-transformer-remark: ^5.21.0
@@ -2421,17 +2420,17 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/code-file-loader@npm:^7.2.14":
-  version: 7.3.3
-  resolution: "@graphql-tools/code-file-loader@npm:7.3.3"
+  version: 7.3.4
+  resolution: "@graphql-tools/code-file-loader@npm:7.3.4"
   dependencies:
-    "@graphql-tools/graphql-tag-pluck": 7.3.3
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/graphql-tag-pluck": 7.3.4
+    "@graphql-tools/utils": 8.10.1
     globby: ^11.0.3
     tslib: ^2.4.0
     unixify: ^1.0.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 579bbb8b75ba6d4ecffe62e521f156a5357e01814bd26b462ae059b5135ee5dd0edc4a5a696593825a3de49a06dcd187e2d0326118162c4319673e38b5410f8c
+  checksum: a5f9ad829b75668edd35c2b99c40b28d769bbefab19341beab4726730037adf6d0e4093e36e78be5fef2924ea2894389f41e41a807ab80248d7073841e6567d4
   languageName: node
   linkType: hard
 
@@ -2465,31 +2464,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/graphql-tag-pluck@npm:7.3.3":
-  version: 7.3.3
-  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.3"
+"@graphql-tools/graphql-tag-pluck@npm:7.3.4":
+  version: 7.3.4
+  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.4"
   dependencies:
     "@babel/parser": ^7.16.8
     "@babel/traverse": ^7.16.8
     "@babel/types": ^7.16.8
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/utils": 8.10.1
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 52e925824f38f6398ac5a5cd651eb6b3e76af76020d506a0b584708322fa89f062783efadabaa38155eb3846d4ce73deca5b5445661a5175c5db3152cc2c19dc
+  checksum: b4f778f908ef509f4f3c9a7928ade0e52ad7fa883e6ca9fcdb98f98f1144c0b1e78ebe36711c66a9755905d61a640961fdc2082795450b80d114ace8c6f5fdbd
   languageName: node
   linkType: hard
 
 "@graphql-tools/import@npm:^6.2.6":
-  version: 6.7.3
-  resolution: "@graphql-tools/import@npm:6.7.3"
+  version: 6.7.4
+  resolution: "@graphql-tools/import@npm:6.7.4"
   dependencies:
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/utils": 8.10.1
     resolve-from: 5.0.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 1586cf58850495a04d9815814f41a74f83b84826044f0d4f87ea4f3dc54fc8cfa1bf538168fc0837a3507f14bf0fe45beb7b5a88945c4de26a8cb3ed834e5844
+  checksum: 2ed239bec20da0227cc5ac4e701fb3397d06d4d67fdbf7c897fb0a4d6213f016c4e12abd20306fd3caa8f348646639c11170405fc18930f03c9aa2cd1216f72a
   languageName: node
   linkType: hard
 
@@ -2525,16 +2524,16 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/load@npm:^7.5.10":
-  version: 7.7.4
-  resolution: "@graphql-tools/load@npm:7.7.4"
+  version: 7.7.5
+  resolution: "@graphql-tools/load@npm:7.7.5"
   dependencies:
-    "@graphql-tools/schema": 9.0.1
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/schema": 9.0.2
+    "@graphql-tools/utils": 8.10.1
     p-limit: 3.1.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 04767adca14dd28e6f1cfa2a6d03f53f8e19dc2df2c5d9518b69c24ac2e78491fdda77f4f4b7f2a45673951c7f6c24f84563c1ac11645a9efeceeb1bf5838c5d
+  checksum: b80a86f34e0fc7ccd1b43fe1011ebbdce44f8a9606c8562a2f7f67bc4469a1feb820377949e7c431bbbb732765278cf24a19871e4c638f6c20795447c19e13c8
   languageName: node
   linkType: hard
 
@@ -2563,15 +2562,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/merge@npm:8.3.3":
-  version: 8.3.3
-  resolution: "@graphql-tools/merge@npm:8.3.3"
+"@graphql-tools/merge@npm:8.3.4":
+  version: 8.3.4
+  resolution: "@graphql-tools/merge@npm:8.3.4"
   dependencies:
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/utils": 8.10.1
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: fe8979cd5d82b56eca66e383700519bd674babb0ccd189cd30625418917893b62448686dc771cd4f0b0be000dfdf2f2e6bbfac7a54653241db15862bd2c2f6fc
+  checksum: 2d0fc2a5db2dc0eecd18e35dfaa7d016277152d3832f56bafd8fb276a90c8b96a25ad58c3670f2ed34bf04e2109933f04a8c052efa193a1eb815b2473d4ec2ff
   languageName: node
   linkType: hard
 
@@ -2600,29 +2599,29 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/relay-operation-optimizer@npm:^6.5.0":
-  version: 6.5.3
-  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.3"
+  version: 6.5.4
+  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.4"
   dependencies:
     "@ardatan/relay-compiler": 12.0.0
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/utils": 8.10.1
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 08a78a0d88535340ffc31016d052877acba7bfe3a8f0ad4f9b858f01041c6a3507111dda7916b292719356f54b1cc64bff0885a5c13c684184e0b63390dad4df
+  checksum: fe10647e7ab6dc71f0a3de6ecfd203383d6c7145f80354206f9a8264b87fa9f4715e8ab87f4e3c52549ba5af4901f0bb0d3045518041d757225ec4d2e02e2d8b
   languageName: node
   linkType: hard
 
-"@graphql-tools/schema@npm:9.0.1, @graphql-tools/schema@npm:^9.0.0":
-  version: 9.0.1
-  resolution: "@graphql-tools/schema@npm:9.0.1"
+"@graphql-tools/schema@npm:9.0.2, @graphql-tools/schema@npm:^9.0.0":
+  version: 9.0.2
+  resolution: "@graphql-tools/schema@npm:9.0.2"
   dependencies:
-    "@graphql-tools/merge": 8.3.3
-    "@graphql-tools/utils": 8.10.0
+    "@graphql-tools/merge": 8.3.4
+    "@graphql-tools/utils": 8.10.1
     tslib: ^2.4.0
     value-or-promise: 1.0.11
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 84f2d2bb0469e1905738edc6211f0a05a7e0a07ff9bdbb1dccfa0793fe44375eaa62a1c2fc9ad5fb8fa4010b3a5762cc9d5af8c042b51f57b2421a8f65e6cad3
+  checksum: 9929eccb4f5ac871935047907df3a6b80de5bb6a650f2e0e4322e200a4a9a6953943713cca35f3bda108a76658cb0c0df62f6e9d129014a3e2417add9df58ee2
   languageName: node
   linkType: hard
 
@@ -2693,14 +2692,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/utils@npm:8.10.0, @graphql-tools/utils@npm:^8.8.0":
-  version: 8.10.0
-  resolution: "@graphql-tools/utils@npm:8.10.0"
+"@graphql-tools/utils@npm:8.10.1, @graphql-tools/utils@npm:^8.8.0":
+  version: 8.10.1
+  resolution: "@graphql-tools/utils@npm:8.10.1"
   dependencies:
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 1070959ab24c23510d70e8a557d1d2a90d2c041f2f7b1458e18158cede172b1964d50a803e3d206add73cb843998aaa434713f7c89e2e174974815385a3cad70
+  checksum: db1a689cdfa7e1cbdbd8c3c1957338c018cb8b9978c747c69b7332c088af5a3af6b50eb6f14f1b369d43bff328a94a1ba68a0b4dcbf5349396747db328042d08
   languageName: node
   linkType: hard
 
@@ -5266,13 +5265,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/actionbutton@npm:2.1.3":
-  version: 2.1.3
-  resolution: "@spectrum-css/actionbutton@npm:2.1.3"
+"@spectrum-css/actionbutton@npm:2.1.4":
+  version: 2.1.4
+  resolution: "@spectrum-css/actionbutton@npm:2.1.4"
   peerDependencies:
     "@spectrum-css/icon": ^3.0.22
     "@spectrum-css/tokens": ^1.0.1
-  checksum: cb45b550037df92147ea099dc3577352210abd8072ecc3219d169eaef23cc488482859bdaa52b86cf99fd406cf5a2de65aeb08d0b619cf5326592d2c06f33fb9
+  checksum: 8dde776edc8a16ecc4a6c0c138788afe7e47057b7ac8f67e3ec39f4d5350830345a33aef2210b2ac853480a959eeee7c0d192286626cd3edf6720214f5e1d9d4
   languageName: node
   linkType: hard
 
@@ -12419,28 +12418,6 @@ __metadata:
     gatsby-plugin-sharp: ^4.19.0
     gatsby-source-filesystem: ^4.19.0
   checksum: a0537da52141d26a3fca217bf5cd309f6091f42a3a907a03f6d87adf78b4a8c9e5b62ac2b95d2cd52f15d2f0f07f128bf29f598d42e9fa157c3264d2c620d320
-  languageName: node
-  linkType: hard
-
-"gatsby-remark-images@npm:^6.21.0":
-  version: 6.21.0
-  resolution: "gatsby-remark-images@npm:6.21.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    "@gatsbyjs/potrace": ^2.2.0
-    chalk: ^4.1.2
-    cheerio: ^1.0.0-rc.10
-    gatsby-core-utils: ^3.21.0
-    is-relative-url: ^3.0.0
-    lodash: ^4.17.21
-    mdast-util-definitions: ^4.0.0
-    query-string: ^6.14.1
-    unist-util-select: ^3.0.4
-    unist-util-visit-parents: ^3.1.1
-  peerDependencies:
-    gatsby: ^4.0.0-next
-    gatsby-plugin-sharp: ^4.0.0-next
-  checksum: abadd26da467608e64e34f79a1b73e349607b252f0f9316cea89268b31100a1d235ae231c50be3a92fc92556de5ba6ad96501e346071fe3eb7b56086d49c6c9e
   languageName: node
   linkType: hard
 
@@ -23234,7 +23211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit-parents@npm:^3.0.0, unist-util-visit-parents@npm:^3.1.1":
+"unist-util-visit-parents@npm:^3.0.0":
   version: 3.1.1
   resolution: "unist-util-visit-parents@npm:3.1.1"
   dependencies:
