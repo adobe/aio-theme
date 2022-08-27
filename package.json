@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.1.1",
+    "@commitlint/config-conventional": "^17.1.0",
     "@testing-library/cypress": "^8.0.3",
     "axe-core": "^4.4.3",
     "cypress": "^10.6.0",
@@ -33,5 +33,5 @@
     "cy:open": "cypress open",
     "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.3"
 }
