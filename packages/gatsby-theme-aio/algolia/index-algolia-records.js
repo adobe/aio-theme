@@ -24,10 +24,10 @@ function indexAlgoliaRecords() {
       query: mdxQuery,
       transformer: async function ({
         data: {
-          allFile: { edges },
+          allFile: { nodes },
         },
       }) {
-        const markdownNodes = edges.map(({ node }) => {
+        const markdownNodes = nodes.map(node => {
           // Creates new markdown data objects from the mdxQuery source data (from the markdown files in src/pages).
           return {
             objectID: node.id,

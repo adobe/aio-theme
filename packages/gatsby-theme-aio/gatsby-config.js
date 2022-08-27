@@ -127,6 +127,7 @@ module.exports = {
         indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: indexAlgoliaRecords(),
         chunkSize: 10000,
+        mergeSettings: false,
         settings: ALGOLIA_INDEX_SETTINGS,
         enablePartialUpdates: true,
         matchFields: ['contentDigest'],

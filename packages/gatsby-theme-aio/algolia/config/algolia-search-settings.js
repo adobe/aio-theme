@@ -7,7 +7,7 @@ module.exports = {
     ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
     customRanking: ['desc(spotlight)', 'desc(size)'],
     attributesForFaceting: ['keywords'],
-    attributesToSnippet: ['content:40', 'description:20'],
+    attributesToSnippet: ['content:20', 'description:20'],
     snippetEllipsisText: '…',
     attributesToRetrieve: ['*'],
     attributesToHighlight: ['title', 'headings', 'description', 'content'],

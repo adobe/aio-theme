@@ -15,35 +15,33 @@ const mdxQuery = `
   allFile(
     filter: {absolutePath: {regex: "/src/pages/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown"]}}}
   ) {
-    edges {
-      node {
-        id
-        internal {
-          contentDigest
+     nodes {
+      id
+      internal {
+        contentDigest
+      }
+      modifiedTime(fromNow: true)
+      size
+      childMdx {
+        excerpt(pruneLength: 200)
+        frontmatter {
+          title
+          description
+          keywords
+          spotlight
+          openAPISpec
+          frameSrc
         }
-        modifiedTime(fromNow: true)
-        size
-        childMdx {
-          excerpt(pruneLength: 600)
-          frontmatter {
-            title
-            description
-            keywords
-            spotlight
-            openAPISpec
-            frameSrc
-          }
-          headings {
-            value
-            depth
-          }
-          wordCount {
-            words
-          }
-          fileAbsolutePath
-          slug
-          mdxAST
+        headings {
+          value
+          depth
         }
+        wordCount {
+          words
+        }
+        fileAbsolutePath
+        slug
+        mdxAST
       }
     }
   }

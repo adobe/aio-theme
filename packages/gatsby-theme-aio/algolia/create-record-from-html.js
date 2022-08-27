@@ -14,7 +14,7 @@ const { selectAll } = require('unist-util-select');
 
 // TODO: Finish implementation based on createMarkdownRecords()
 async function createRecordFromHtml(htmlObject, node) {
-  return {
+  const htmlRecord = {
     objectID: getId(htmlObject, node),
     contentDigest: getContentDigest(htmlObject, node),
     node: getNode(htmlObject, node),
@@ -32,6 +32,7 @@ async function createRecordFromHtml(htmlObject, node) {
     url: getUrl(htmlObject, node),
     spotlight: getSpotlight(htmlObject, node),
   };
+  return htmlRecord;
 }
 
 function getId(htmlObject) {
