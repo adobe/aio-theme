@@ -133,7 +133,7 @@ module.exports = {
         matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
-        continueOnFailure: false, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
+        continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
       },
     },
   ],
