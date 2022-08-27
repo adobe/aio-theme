@@ -1,4 +1,6 @@
-// TODO: Research usage of this no longer maintained open source code and add appropriate attributions.
+// Copyright 2018 Chris Manson
+// https://github.com/mansona/html-extractor/blob/master/lib/algoliaHtmlExtractor.js
+
 const { JSDOM } = require('jsdom');
 const uuid = require('uuid');
 
@@ -23,6 +25,8 @@ module.exports = class AlgoliaHTMLExtractor {
     const { headingSelector, cssSelector, tagsToExclude } = runOptions;
     //
     const items = [];
+
+    // Populated with the text from html headings h1-h6
     const currentHierarchy = {
       lvl0: null,
       lvl1: null,
