@@ -28,6 +28,7 @@ jobs:
         with:
           build: yarn build
           start: yarn serve
+          wait-on: 'http://localhost:9000'
           browser: chrome
           config-file: cypress.config.js
           spec: cypress/e2e/smoke.cy.js
