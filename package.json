@@ -33,8 +33,5 @@
     "cy:open": "cypress open",
     "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
-  "packageManager": "yarn@3.2.1",
-  "dependencies": {
-    "gatsby-remark-images-remote": "^2.1.1"
-  }
+  "packageManager": "yarn@3.2.1"
 }
