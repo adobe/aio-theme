@@ -116,6 +116,7 @@
     "gatsby-remark-autolink-headers": "^5.21.0",
     "gatsby-remark-copy-linked-files": "^5.21.0",
     "gatsby-remark-images": "^6.21.0",
+    "gatsby-remark-images-remote": "^2.1.1",
     "gatsby-source-filesystem": "^4.21.1",
     "gatsby-transformer-remark": "^5.21.0",
     "gatsby-transformer-sharp": "^4.21.0",

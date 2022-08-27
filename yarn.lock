@@ -93,6 +93,7 @@ __metadata:
     gatsby-remark-autolink-headers: ^5.21.0
     gatsby-remark-copy-linked-files: ^5.21.0
     gatsby-remark-images: ^6.21.0
+    gatsby-remark-images-remote: ^2.1.1
     gatsby-source-filesystem: ^4.21.1
     gatsby-transformer-remark: ^5.21.0
     gatsby-transformer-sharp: ^4.21.0
@@ -6589,7 +6590,6 @@ __metadata:
     cypress: ^10.6.0
     cypress-axe: ^1.0.0
     gatsby-cypress: ^2.21.0
-    gatsby-remark-images-remote: ^2.1.1
     husky: ^8.0.1
     lerna: ^5.4.3
     prettier: ^2.7.1
