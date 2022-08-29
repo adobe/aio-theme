@@ -32,6 +32,16 @@ if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
 
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
+// Used to convert ESM to CJS modules until Gatsby supports ESM.
+const wrapESMPlugin = name =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
+
 module.exports = {
   flags: {
     PARALLEL_QUERY_RUNNING: true,
