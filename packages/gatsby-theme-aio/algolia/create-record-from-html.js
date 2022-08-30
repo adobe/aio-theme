@@ -84,7 +84,7 @@ function getAnchor(htmlObject) {
 }
 
 function getSlug(htmlObject, node) {
-  return node?.slug;
+  return node?.parent?.slug;
 }
 
 function getUrl(htmlObject, node) {

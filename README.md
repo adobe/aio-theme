@@ -489,20 +489,20 @@ There are two parts to adding the Algolia search feature to your site:
 
 **Admin Only.** To publish your site's content to Algolia so it's searchable, add the following variables to your site's `.env` file:
 
-- `ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
+- `GATSBY_ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
   - `skip` mode - skip running of search indexation (default)
   - `console` mode - index data will be published to console, but not pushed to real search index
   - `index` mode - index data will be pushed to real search index
 - `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. You should never commit this key to GitHub.
-- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
+- `GATSBY_ALGOLIA_APPLICATION_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `GATSBY_ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
 
 ### Client-side (browser) environment variables
 
 To enable search on the browser side, you'll need to set the following variables in your site's `.env` file:
 
-- `GATSBY_ALGOLIA_APP_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `GATSBY_ALGOLIA_API_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
+- `GATSBY_ALGOLIA_APPLICATION_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
+- `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
 - `GATSBY_ALGOLIA_INDEX_ALL` - List of all indexes to search e.g. `["index1", "index2"]`
 - `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 

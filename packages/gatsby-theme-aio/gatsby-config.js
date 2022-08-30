@@ -19,12 +19,12 @@ const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./alg
 const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/config/algolia-search-settings');
 const indexAlgoliaRecords = require('./algolia/index-algolia-records');
 
-let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
+let algoliaIndexingMode = process.env.GATSBY_ALGOLIA_INDEXATION_MODE;
 
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
   algoliaIndexingMode = ALGOLIA_DEFAULT_INDEXING_MODE;
   console.warn(
-    `Algolia: Wrong value for ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(ALGOLIA_INDEXING_MODES).join(
+    `Algolia: Wrong value for GATSBY_ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(ALGOLIA_INDEXING_MODES).join(
       ' | '
     )}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
   );
@@ -133,14 +133,14 @@ module.exports = {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
         queries: indexAlgoliaRecords(),
         chunkSize: 10000,
         mergeSettings: false,
         settings: ALGOLIA_INDEX_SETTINGS,
         enablePartialUpdates: true,
-        matchFields: ['contentDigest'],
+        matchFields: ['repoName', 'contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing

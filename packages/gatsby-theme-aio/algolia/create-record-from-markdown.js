@@ -16,6 +16,7 @@ const { selectAll } = require('unist-util-select');
 async function createRecordFromMarkdown(node) {
   const markdownRecord = {
     objectID: getId(node),
+    repoName: getRepoName(),
     contentDigest: node.contentDigest,
     title: getTitle(node), // Get title from headings.depth
     description: getDescription(node),
@@ -36,6 +37,10 @@ async function createRecordFromMarkdown(node) {
   function getId(node) {
     const objectID = node.objectID;
     return objectID;
+  }
+
+  function getRepoName() {
+    return `${process.env.REPO_NAME}`;
   }
 
   // TODO: Add reporter for title to create frontmatter report for Adobe teams.
