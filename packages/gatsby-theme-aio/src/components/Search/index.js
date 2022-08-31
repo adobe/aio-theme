@@ -662,7 +662,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     const to = `${location.origin}${searchResult.url}`;
                     const title = searchResult._highlightResult.title?.value ? searchResult._highlightResult.title.value : "";
                     const content = searchResult._highlightResult.content?.value ? searchResult._highlightResult.content.value : "";
-  
+
                     return (
                       <div
                         css={css`
@@ -702,7 +702,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           css={css`
                             margin: var(--spectrum-global-dimension-size-100) 0;
                           `}
-                          dangerouslySetInnerHTML={{ __html: encodeHTML(searchResult._highlightResult.content.value) }}
+                          dangerouslySetInnerHTML={{ __html: encodeHTML(content) }}
                         />
                       </div>
                     );

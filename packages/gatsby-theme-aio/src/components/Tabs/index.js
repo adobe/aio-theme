@@ -235,7 +235,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
           css={css`
             display: ${orientation === 'vertical' ? 'grid' : 'block'};
             position: relative;
-            grid-template-columns: 300px calc(100% - 300px);
+            grid-template-columns: 300px calc(100vw - 300px);
             margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
             width: inherit;
             @media only screen and (max-width: ${mobileMinWidth}) {
