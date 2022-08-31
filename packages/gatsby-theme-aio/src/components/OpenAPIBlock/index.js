@@ -356,11 +356,11 @@ const OpenAPIBlock = ({ src }) => {
 
               [role='button'].dropdown {
                 .dropdown-selector-value {
-                  color: var(--spectrum-alias-text-color) !important;
+                  color: var(--spectrum-global-color-gray-50) !important;
                 }
 
                 .dropdown-arrow {
-                  border-color: var(--spectrum-alias-text-color) transparent transparent !important;
+                  border-color: var(--spectrum-global-color-gray-50) transparent transparent !important;
                 }
               }
 
