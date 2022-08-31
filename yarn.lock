@@ -108,7 +108,6 @@ __metadata:
     postcss: ^8.4.16
     preact: ^10.10.6
     preact-render-to-string: ^5.2.2
-    prettier: ^2.7.1
     prism-react-renderer: 1.3.5
     prop-types: ^15.8.1
     react: ^17.0.2
@@ -125,7 +124,7 @@ __metadata:
     swiper: ^8.3.2
     to-arraybuffer: ^1.0.1
     tty-browserify: ^0.0.1
-    unist-util-select: 2.0.2
+    unist-util-select: 3.0.4
     uuid: ^8.3.2
   peerDependencies:
     gatsby: ^4.21.1
@@ -23136,16 +23135,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-select@npm:2.0.2":
-  version: 2.0.2
-  resolution: "unist-util-select@npm:2.0.2"
+"unist-util-select@npm:3.0.4, unist-util-select@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "unist-util-select@npm:3.0.4"
   dependencies:
-    css-selector-parser: ^1.1.0
+    css-selector-parser: ^1.0.0
     not: ^0.1.0
-    nth-check: ^1.0.1
-    unist-util-is: ^3.0.0
-    zwitch: ^1.0.3
-  checksum: 5f356bfa4e8fca4b3805768ca4a2e425c7d2a8c664c25fbf7d4d1e7108ecd6b4ed358bf599135164a3ed901c7fa8607bb312ef3778b2e370bc5e61617bed3cdc
+    nth-check: ^2.0.0
+    unist-util-is: ^4.0.0
+    zwitch: ^1.0.0
+  checksum: e6bdb4c79037e7d398a7682e3a2fb461e4b9ea8305e2228f54c47a3a27759e0bfc9f31eee763c31978b337d55f4a2216b974d3b7fcba058b1267ca1fc1e3ccfb
   languageName: node
   linkType: hard
 
@@ -23157,19 +23156,6 @@ __metadata:
     debug: ^2.2.0
     nth-check: ^1.0.1
   checksum: 19681874146213fc151d3faecfbb2999bbc63722b0e3cda06e769dd153f128d9bfc9350aa574878a64e322fb5de8179a87fb32ff71f0262838ef8361ac8c540c
-  languageName: node
-  linkType: hard
-
-"unist-util-select@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "unist-util-select@npm:3.0.4"
-  dependencies:
-    css-selector-parser: ^1.0.0
-    not: ^0.1.0
-    nth-check: ^2.0.0
-    unist-util-is: ^4.0.0
-    zwitch: ^1.0.0
-  checksum: e6bdb4c79037e7d398a7682e3a2fb461e4b9ea8305e2228f54c47a3a27759e0bfc9f31eee763c31978b337d55f4a2216b974d3b7fcba058b1267ca1fc1e3ccfb
   languageName: node
   linkType: hard
 
@@ -24579,7 +24565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zwitch@npm:^1.0.0, zwitch@npm:^1.0.3":
+"zwitch@npm:^1.0.0":
   version: 1.0.5
   resolution: "zwitch@npm:1.0.5"
   checksum: 28a1bebacab3bc60150b6b0a2ba1db2ad033f068e81f05e4892ec0ea13ae63f5d140a1d692062ac0657840c8da076f35b94433b5f1c329d7803b247de80f064a

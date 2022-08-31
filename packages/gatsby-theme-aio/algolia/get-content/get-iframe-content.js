@@ -18,7 +18,7 @@ const getContentFromCache = require('./get-content-from-cache');
  * https://github.com/adobe/aio-theme#frame
  */
 
-async function getFrameContent(node) {
+async function getIFrameContent(node) {
   if (!node.frameSrc) return null;
 
   const options = {
@@ -36,4 +36,4 @@ async function getFrameContent(node) {
   return { content, options };
 }
 
-module.exports = getFrameContent;
+module.exports = getIFrameContent;

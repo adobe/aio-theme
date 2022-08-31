@@ -5,7 +5,7 @@ const { JSDOM } = require('jsdom');
 const uuid = require('uuid');
 
 // Extract content from an HTML page in the form of items with associated headings data
-module.exports = class AlgoliaHTMLExtractor {
+module.exports = class HtmlParser {
   defaultOptions(options) {
     return {
       cssSelector: 'p',

@@ -11,12 +11,13 @@
  */
 
 const getImportedContent = require('./get-content/get-imported-content');
-const getFrameContent = require('./get-content/get-frame-content');
+const getIFrameContent = require('./get-content/get-iframe-content');
 const getOpenApiContent = require('./get-content/get-openapi-content');
 const mdxQuery = require('./mdx-query');
-const createRecordFromHtml = require('./create-record-from-html');
-const createRecordFromMarkdown = require('./create-record-from-markdown');
-const createObjectsFromHtml = require('./get-content/create-objects-from-html');
+const parseHtml = require('./get-content/parse-html');
+const parseMarkdown = require('./get-content/parse-markdown');
+const createAlgoliaRecord = require('./create-algolia-record');
+const createAlgoliaRecordFromHtml = require('./create-algolia-record-from-html');
 
 function indexAlgoliaRecords() {
   return [
@@ -27,8 +28,8 @@ function indexAlgoliaRecords() {
           allFile: { nodes },
         },
       }) {
-        const markdownNodes = nodes.map(node => {
-          // Creates new markdown data objects from the mdxQuery source data (from the markdown files in src/pages).
+        const markdownFiles = nodes.map(node => {
+          // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
           return {
             objectID: node.id,
             contentDigest: node.internal.contentDigest,
@@ -51,22 +52,28 @@ function indexAlgoliaRecords() {
 
         let algoliaRecords = [];
 
-        for (const node of markdownNodes) {
+        for (const markdownFile of markdownFiles) {
           const htmlContent =
-            (await getImportedContent(node)) ?? (await getFrameContent(node)) ?? (await getOpenApiContent(node));
+            (await getImportedContent(markdownFile)) ??
+            (await getIFrameContent(markdownFile)) ??
+            (await getOpenApiContent(markdownFile));
 
           if (htmlContent != null) {
-            const htmlObjects = createObjectsFromHtml(htmlContent.content, htmlContent.options);
-            for (const htmlObject of htmlObjects) {
-              const htmlRecord = await createRecordFromHtml(htmlObject, node);
+            const rawRecords = parseHtml(htmlContent.content, htmlContent.options);
+            if (rawRecords.length <= 0) continue;
+            for (const rawRecord of rawRecords) {
+              const htmlRecord = await createAlgoliaRecordFromHtml(rawRecord, markdownFile);
               algoliaRecords.push(htmlRecord);
             }
           } else {
-            const markdownRecord = await createRecordFromMarkdown(node);
-            algoliaRecords.push(markdownRecord);
+            const rawRecords = parseMarkdown(markdownFile);
+            if (rawRecords == null) continue;
+            for (const rawRecord of rawRecords) {
+              const markdownRecord = await createAlgoliaRecord(rawRecord, markdownFile);
+              algoliaRecords.push(markdownRecord);
+            }
           }
         }
-
         return algoliaRecords;
       },
     },

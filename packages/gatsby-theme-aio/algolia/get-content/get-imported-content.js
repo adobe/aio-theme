@@ -21,8 +21,8 @@ const { selectAll } = require('unist-util-select');
  * Parse index records from cache files.
  */
 
-async function getImportedContent(node) {
-  const importedContent = await selectAll('import', node.mdxAST);
+async function getImportedContent(markdownFile) {
+  const importedContent = await selectAll('import', markdownFile.mdxAST);
   if (importedContent.length <= 0) return null;
 
   const options = {
@@ -35,8 +35,10 @@ async function getImportedContent(node) {
     minWordsCount: 2,
   };
 
-  const { fileAbsolutePath } = node;
-  const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
+  const { fileAbsolutePath } = markdownFile;
+  const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
+    options.pagesSourceDir
+  );
 
   const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
   const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
