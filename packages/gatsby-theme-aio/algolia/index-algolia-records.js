@@ -23,11 +23,11 @@ function indexAlgoliaRecords() {
   return [
     {
       query: mdxQuery,
-      transformer: async function ({
-        data: {
-          allFile: { nodes },
-        },
-      }) {
+      transformer: async function({
+                                    data: {
+                                      allFile: { nodes },
+                                    },
+                                  }) {
         const markdownFiles = nodes.map(node => {
           // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
           return {
@@ -74,6 +74,8 @@ function indexAlgoliaRecords() {
             }
           }
         }
+        // Returns the record objects (created from the HTML and markdown sources)
+        // to the plugin, which sends them to the Algolia servers using the Algolia API.
         return algoliaRecords;
       },
     },

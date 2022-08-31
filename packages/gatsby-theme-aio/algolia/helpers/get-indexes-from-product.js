@@ -13,7 +13,7 @@
 const indexes = require('./adobe-indexes');
 const products = require('./adobe-products');
 
-function getIndexesForProduct(productName) {
+function getIndexesFromProduct(productName) {
   const adobeIndexes = {
     'Adobe After Effects': () => [indexes.after_effects],
     'Adobe Analytics': () => [indexes.analytics_2_0_apis],
@@ -88,4 +88,4 @@ function getIndexesForProduct(productName) {
   return indexes;
 }
 
-module.exports = getIndexesForProduct;
+module.exports = getIndexesFromProduct;

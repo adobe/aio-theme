@@ -11,7 +11,7 @@
  */
 
 const { selectAll } = require('unist-util-select');
-const getProductForIndex = require('./helpers/get-product-from-index');
+const getProductFromIndex = require('./helpers/get-product-from-index');
 
 // TODO: Finish implementation
 async function createAlgoliaRecord(rawRecord, file) {
@@ -41,7 +41,7 @@ async function createAlgoliaRecord(rawRecord, file) {
   }
 
   function getProduct(repoName) {
-    const product = getProductForIndex(repoName);
+    const product = getProductFromIndex(repoName);
     return product;
   }
 
