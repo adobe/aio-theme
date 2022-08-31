@@ -1,7 +1,3 @@
----
-import: true
----
-
 # Include 1 Page
 
 This `include1.md` file is one directory up in the project from this `includes/index.md` file.
