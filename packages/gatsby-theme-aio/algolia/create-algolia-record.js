@@ -10,135 +10,37 @@
  * governing permissions and limitations under the License.
  */
 
-const { selectAll } = require('unist-util-select');
-const getProductFromIndex = require('./helpers/get-product-from-index');
-
-// TODO: Finish implementation
 async function createAlgoliaRecord(rawRecord, file) {
-  const markdownRecord = {
+  const record = {
     objectID: rawRecord.objectID,
-    repoName: getRepo(),
-    product: getProduct(process.env.REPO_NAME), // same as index name by convention
     contentDigest: rawRecord.contentDigest,
-    title: getFileTitle(rawRecord, file), // Get title from headings.depth
-    description: getFileDescription(rawRecord, file),
-    keywords: getFileKeywords(rawRecord, file),
-    headings: getHeadings(rawRecord, file),
-    content: getContent(rawRecord, file),
-    contentHeading: getContentHeading(rawRecord, file),
-    words: getFileWordCount(rawRecord, file),
-    size: getFileSize(rawRecord, file),
-    lastUpdated: getFileModifiedDate(rawRecord, file),
-    anchor: getAnchor(rawRecord, file),
-    slug: getFileSlug(rawRecord, file),
+    product: file.product,
+    title: rawRecord.title,
+    description: rawRecord.description,
+    content: rawRecord.content,
+    keywords: file.keywords,
+    headings: rawRecord.headings,
+    contentHeading: rawRecord.contentHeading,
+    words: rawRecord.words,
+    anchor: rawRecord.anchor,
+    spotlight: file.spotlight,
+    slug: file.slug,
     url: getUrl(rawRecord, file),
-    spotlight: getSpotlight(rawRecord, file),
+    lastUpdated: getDateLastUpdated(file),
   };
-  return markdownRecord;
+  return record;
+}
 
-  function getRepo() {
-    return process.env.REPO_NAME;
-  }
+function getUrl(rawRecord, file) {
+  const url = `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
+    file.slug == null ? '' : file.slug
+  }${rawRecord.anchor}`;
+  return url;
+}
 
-  function getProduct(repoName) {
-    const product = getProductFromIndex(repoName);
-    return product;
-  }
-
-  // TODO: Add reporter for title to create frontmatter report for Adobe teams.
-  function getFileTitle(rawRecord, file) {
-    const title = file.title || file.headings.filter(heading => heading.depth === 1)[0]?.value;
-    return title;
-  }
-
-  // TODO: Add reporter for description to create frontmatter report for Adobe teams.
-  function getFileDescription(rawRecord, file) {
-    const description = file.description || file.excerpt || rawRecord.content || '';
-    return description;
-  }
-
-  // TODO: Replace with paragraph content from record.
-  function getContent(rawRecord, file) {
-    const content = rawRecord.content || file.description || file.excerpt || '';
-    return content;
-  }
-
-  // TODO: Add reporter for keywords to create frontmatter report for Adobe teams.
-  function getFileKeywords(file) {
-    return file.keywords;
-  }
-
-  // TODO: Reduce cardinality for use in search customRanking setting
-  function getFileWordCount(file) {
-    const words = file.words || 0;
-    return words;
-  }
-
-  // TODO: Reduce cardinality for use in search customRanking setting
-  function getFileSize(file) {
-    const size = file.size;
-    return size;
-  }
-
-  function getFileModifiedDate(file) {
-    const lastUpdated = file.lastUpdated;
-    return lastUpdated;
-  }
-
-  // TODO: Either expand this or remove and just use file.slug
-  function getFileSlug(file) {
-    const slug = file.slug || '';
-    return slug;
-  }
-
-  // Gets all headings above the rawRecord's content
-  function getHeadings(rawRecord, file) {
-    let headingsAboveRawRecord = selectAll('heading', file.mdxAST);
-
-    const goodHeadings = headingsAboveRawRecord.filter(
-      ({ position }) => position.start.line < rawRecord.positionEndLine
-    );
-
-    // Removes jsdoc code tabs
-    const betterHeadings = goodHeadings.filter(
-      goodHeading =>
-        goodHeading.children[0].value !== 'Request' && goodHeading.children[0].value !== 'Response'
-    );
-
-    const headings = betterHeadings.map(heading => heading.children[0].value);
-    return headings;
-  }
-
-  // Gets the closest heading above the rawRecord's content
-  function getContentHeading(rawRecord, file) {
-    const contentHeading = getHeadings(rawRecord, file).slice(-1)[0];
-    return contentHeading;
-  }
-
-  // The anchor is just the transformed contentHeading
-  function getAnchor(rawRecord, file) {
-    const contentHeading = getContentHeading(rawRecord, file);
-    if (contentHeading == null) return '';
-
-    // TODO: Handle headings with custom anchors from
-    //  the gatsby-remark-autolink-headers plugin
-    return `#${contentHeading
-      .match(/[a-zA-Z0-9]\w+/g)
-      ?.map(s => s.toLowerCase())
-      .join('-')}`;
-  }
-
-  function getUrl(rawRecord, file) {
-    const url = `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
-      file.slug == null ? '' : file.slug
-    }${getAnchor(rawRecord, file)}`;
-    return url;
-  }
-
-  function getSpotlight(rawRecord, file) {
-    const spotlight = file.spotlight;
-    return spotlight;
-  }
+function getDateLastUpdated(file) {
+  const lastUpdated = file.lastUpdated;
+  return lastUpdated;
 }
 
 module.exports = createAlgoliaRecord;

@@ -3,14 +3,20 @@
 
 module.exports = {
   ALGOLIA_INDEX_SETTINGS: {
-    searchableAttributes: ['title', 'unordered(headings)', 'unordered(description)', 'unordered(content)'],
+    searchableAttributes: [
+      'title',
+      'unordered(content)',
+      'unordered(headings)',
+      'unordered(description)',
+      'unordered(excerpt)',
+    ],
     ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
-    customRanking: ['desc(spotlight)', 'desc(size)'],
+    customRanking: ['desc(spotlight)', 'desc(words)'],
     attributesForFaceting: ['keywords'],
-    attributesToSnippet: ['content:20', 'description:20'],
+    attributesToSnippet: ['content:20', 'description:20', 'excerpt:20'],
     snippetEllipsisText: '…',
     attributesToRetrieve: ['*'],
-    attributesToHighlight: ['title', 'headings', 'description', 'content'],
+    attributesToHighlight: ['title', 'content', 'headings', 'description', 'excerpt'],
     highlightPreTag: '<mark>',
     highlightPostTag: '</mark>',
     hitsPerPage: 20,

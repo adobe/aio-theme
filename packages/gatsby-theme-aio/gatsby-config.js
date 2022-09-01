@@ -15,8 +15,11 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/config/algolia-indexing-modes');
-const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/config/algolia-search-settings');
+const {
+  ALGOLIA_INDEXING_MODES,
+  ALGOLIA_DEFAULT_INDEXING_MODE,
+} = require('./algolia/search-settings/algolia-indexing-modes');
+const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/search-settings/algolia-search-settings');
 const indexAlgoliaRecords = require('./algolia/index-algolia-records');
 
 let algoliaIndexingMode = process.env.GATSBY_ALGOLIA_INDEXATION_MODE;
@@ -24,9 +27,9 @@ let algoliaIndexingMode = process.env.GATSBY_ALGOLIA_INDEXATION_MODE;
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
   algoliaIndexingMode = ALGOLIA_DEFAULT_INDEXING_MODE;
   console.warn(
-    `Algolia: Wrong value for GATSBY_ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(ALGOLIA_INDEXING_MODES).join(
-      ' | '
-    )}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
+    `Algolia: Wrong value for GATSBY_ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(
+      ALGOLIA_INDEXING_MODES
+    ).join(' | ')}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
   );
 }
 

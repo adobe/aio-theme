@@ -96,6 +96,8 @@ module.exports = class HtmlParser {
       item.objectID = uuid.v4(item);
       item.contentDigest = uuid.v4(content);
       item.words = content.split(' ').length;
+      item.title = Object.values(currentHierarchy).filter(h => h)[0];
+      item.contentHeading = Object.values(currentHierarchy).filter(h => h)[0];
       items.push(item);
 
       currentPosition += 1;

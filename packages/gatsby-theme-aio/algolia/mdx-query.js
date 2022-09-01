@@ -21,7 +21,6 @@ const mdxQuery = `
         contentDigest
       }
       modifiedTime(fromNow: true)
-      size
       childMdx {
         excerpt(pruneLength: 200)
         frontmatter {
