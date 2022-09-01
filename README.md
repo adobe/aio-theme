@@ -503,7 +503,7 @@ GATSBY_ALGOLIA_SEARCH_INDEX=[{'your-sites-index-name': 'your-sites-product-name'
 
 Please content the Adobe DevSite team to get the correct values for your site.
 
-- `GATSBY_ALGOLIA_INDEX_NAME`=your-sites-repo-name (by convention, the repo and index names are the same).
+- `GATSBY_ALGOLIA_INDEX_NAME` — your-sites-repo-name (by convention, the repo and index names are the same).
 - `GATSBY_ALGOLIA_APPLICATION_ID` — Alpha-numeric string required to **access** Adobe's product documentation, including yours.
 - `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to **search** Adobe's product documentation, including yours.
 - `GATSBY_ALGOLIA_INDEX_ALL` — List of products (product-index-names) you want to include in the search for your locally built site.
