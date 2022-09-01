@@ -497,8 +497,6 @@ To test your site's search locally — when you build it from your computer usin
 GATSBY_ALGOLIA_INDEX_NAME=your-sites-repo-name
 GATSBY_ALGOLIA_APPLICATION_ID=adobes-application-key
 GATSBY_ALGOLIA_SEARCH_API_KEY=adobes-public-search-key
-GATSBY_ALGOLIA_INDEX_ALL=['your-sites-index-name', 'another-sites-index-name']
-GATSBY_ALGOLIA_SEARCH_INDEX=[{'your-sites-index-name': 'your-sites-product-name'}, {'all': 'All Results'}]
 ```
 
 Please content the Adobe DevSite team to get the correct values for your site.
@@ -506,8 +504,6 @@ Please content the Adobe DevSite team to get the correct values for your site.
 - `GATSBY_ALGOLIA_INDEX_NAME` — your-sites-repo-name (by convention, the repo and index names are the same).
 - `GATSBY_ALGOLIA_APPLICATION_ID` — Alpha-numeric string required to **access** Adobe's product documentation, including yours.
 - `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to **search** Adobe's product documentation, including yours.
-- `GATSBY_ALGOLIA_INDEX_ALL` — List of products (product-index-names) you want to include in the search for your locally built site.
-- `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of product indexes with labels for displaying searches on your site's search page. For example, `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
 ## Global Navigation
 
