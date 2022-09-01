@@ -14,7 +14,7 @@ import React, { createElement, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
-import algoliaSearch from 'algoliasearch/lite';
+import algoliaSearch from 'algoliasearch';
 import { graphql, useStaticQuery } from 'gatsby';
 import {
   DESKTOP_SCREEN_WIDTH,

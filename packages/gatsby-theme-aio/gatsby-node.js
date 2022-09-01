@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-const webpack = require('webpack');
+const { ProvidePlugin } = require('webpack');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -21,15 +21,15 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         https: require.resolve('https-browserify'),
         http: require.resolve('stream-http'),
         tty: require.resolve('tty-browserify'),
-        os: require.resolve('os-browserify/browser')
-      }
+        os: require.resolve('os-browserify/browser'),
+      },
     },
     plugins: [
-      new webpack.ProvidePlugin({
+      new ProvidePlugin({
         process: 'process/browser',
-        Buffer: ['buffer', 'Buffer']
-      })
-    ]
+        Buffer: ['buffer', 'Buffer'],
+      }),
+    ],
   });
 };
 
@@ -114,68 +114,74 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
+function addFrontmatterType(source, context) {
+  const { getNodeById } = context.nodeModel;
+  return getNodeById({
+    id: source.MdxFrontmatter,
+  });
+}
+
 exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
   const resolvers = {
     MdxFrontmatter: {
       title: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       keywords: {
         type: '[String]',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       description: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       contributors: {
         type: '[String]',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       contributor_name: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       contributor_link: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       edition: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       openAPISpec: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       frameSrc: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       frameHeight: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       layout: {
         type: 'String',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       jsDoc: {
         type: 'Boolean',
-        resolve: addFrontmatterType
+        resolve: addFrontmatterType,
       },
       hideBreadcrumbNav: {
         type: 'Boolean',
-        resolve: addFrontmatterType
-      }
-    }
+        resolve: addFrontmatterType,
+      },
+      spotlight: {
+        type: 'Boolean',
+        resolve: addFrontmatterType,
+      },
+    },
   };
-
-  addFrontmatterType = (source, context) =>
-    context.nodeModel.getNodeById({
-      id: source.MdxFrontmatter
-    });
 
   createResolvers(resolvers);
 };

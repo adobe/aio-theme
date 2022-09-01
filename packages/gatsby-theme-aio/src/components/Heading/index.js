@@ -90,10 +90,11 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
       {!isHeading1 && <Anchor id={id} />}
       <HeadingTag
         {...props}
+        id={id}
         className={
           className ||
           classNames(className, `spectrum-Heading spectrum-Heading--size${headingSizes[level - 1]}`, {
-            'spectrum-Heading--light': isHeading1
+            'spectrum-Heading--light': isHeading1,
           })
         }
         css={css`
@@ -132,9 +133,9 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
   );
 };
 
-export const Heading1 = (props) => createHeading(1, props);
-export const Heading2 = (props) => createHeading(2, props);
-export const Heading3 = (props) => createHeading(3, props);
-export const Heading4 = (props) => createHeading(4, props);
-export const Heading5 = (props) => createHeading(5, props);
-export const Heading6 = (props) => createHeading(6, props);
+export const Heading1 = props => createHeading(1, props);
+export const Heading2 = props => createHeading(2, props);
+export const Heading3 = props => createHeading(3, props);
+export const Heading4 = props => createHeading(4, props);
+export const Heading5 = props => createHeading(5, props);
+export const Heading6 = props => createHeading(6, props);

@@ -10,30 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-const request = require('request');
+const HtmlParser = require('../helpers/html-parser');
+const htmlParser = new HtmlParser();
 
-/**
- * Load content by url
- */
-class LoadContentByUrl {
-  /**
-   * Load cotent by url
-   *
-   * @param url
-   * @returns {Promise}
-   */
-  execute(url) {
-    return new Promise((resolve, reject) => {
-      request(url, (error, response, body) => {
-        if (error) {
-          reject(error);
-        }
-        if (response.statusCode != 200) {
-          reject('Invalid status code <' + response.statusCode + '> for URL:' + url);
-        }
-        resolve(body);
-      });
-    });
-  }
+function parseHtml(content, options) {
+  const rawRecords = htmlParser
+    .run(content, { cssSelector: options.tagsToIndex })
+    .filter(
+      htmlElement =>
+        htmlElement.content.length >= options.minCharsLengthPerTag &&
+        htmlElement.content.split(' ').length >= options.minWordsCount
+    );
+
+  return rawRecords;
 }
-module.exports = LoadContentByUrl;
+
+module.exports = parseHtml;

@@ -10,18 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-const { createAlgoliaRecords, createRawRecordsBasedOnAST } = require('./record-utils');
+const request = require('request');
 
 /**
- * Parse records from mdxAST
+ * Load content by url
  */
-class CreateRecordsForRegularContent {
-  execute(node, options) {
-    const mdxRecords = createRawRecordsBasedOnAST(node.mdxAST, options);
-    const algoliaRecords = createAlgoliaRecords(node, mdxRecords);
-
-    return algoliaRecords;
-  }
+function getContentFromUrl(url) {
+  return new Promise((resolve, reject) =>
+    request(url, (error, response, body) => {
+      if (error) {
+        reject(error);
+      }
+      const { statusCode } = response;
+      if (statusCode !== 200) {
+        reject('Invalid status code <' + statusCode + '> for URL:' + url);
+      }
+      resolve(body);
+    })
+  );
 }
 
-module.exports = CreateRecordsForRegularContent;
+module.exports = getContentFromUrl;
