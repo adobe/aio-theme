@@ -11,30 +11,43 @@
  */
 
 require('dotenv').config({
-  path: `.env`
+  path: `.env`,
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_INDEXING_MODES, ALGOLIA_DEFAULT_INDEXING_MODE } = require('./algolia/defaults');
-const AlgoliaQueryBuilder = require('./algolia/query-builder');
+const {
+  ALGOLIA_INDEXING_MODES,
+  ALGOLIA_DEFAULT_INDEXING_MODE,
+} = require('./algolia/search-settings/algolia-indexing-modes');
+const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/search-settings/algolia-search-settings');
+const indexAlgoliaRecords = require('./algolia/index-algolia-records');
 
-const algoliaQueries = new AlgoliaQueryBuilder().build();
-let algoliaIndexingMode = process.env.ALGOLIA_INDEXATION_MODE;
+let algoliaIndexingMode = process.env.GATSBY_ALGOLIA_INDEXATION_MODE;
 
 if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
   algoliaIndexingMode = ALGOLIA_DEFAULT_INDEXING_MODE;
   console.warn(
-    `Algolia: Wrong value for ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(ALGOLIA_INDEXING_MODES).join(
-      ' | '
-    )}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
+    `Algolia: Wrong value for GATSBY_ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(
+      ALGOLIA_INDEXING_MODES
+    ).join(' | ')}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
   );
 }
 
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
 
+// Used to convert ESM to CJS modules until Gatsby supports ESM.
+const wrapESMPlugin = name =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name);
+      const plugin = mod.default(opts);
+      return plugin(...args);
+    };
+  };
+
 module.exports = {
   flags: {
-    PARALLEL_QUERY_RUNNING: true
+    PARALLEL_QUERY_RUNNING: true,
   },
   plugins: [
     `gatsby-plugin-preact`,
@@ -46,15 +59,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout/index.js`)
-      }
+        component: require.resolve(`./src/components/Layout/index.js`),
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `src/pages`
-      }
+        path: `src/pages`,
+      },
     },
     {
       resolve: `gatsby-plugin-mdx`,
@@ -62,17 +75,17 @@ module.exports = {
         mediaTypes: [`text/markdown`, `text/x-markdown`],
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/MDXFilter/index.js`)
+          default: require.resolve(`./src/components/MDXFilter/index.js`),
         },
         plugins: [
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-images-remote`
+          `gatsby-remark-images-remote`,
         ],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-transformer-remark`
+            resolve: `gatsby-transformer-remark`,
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -81,15 +94,15 @@ module.exports = {
               maintainCase: false,
               removeAccents: true,
               enableCustomId: true,
-              elements: [`h2`, `h3`, `h4`, `h5`]
-            }
+              elements: [`h2`, `h3`, `h4`, `h5`],
+            },
           },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
               ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`],
-              destinationDir: `assets`
-            }
+              destinationDir: `assets`,
+            },
           },
           {
             resolve: `gatsby-remark-images-remote`,
@@ -100,11 +113,11 @@ module.exports = {
               quality: 100,
               withWebp: { quality: 100 },
               disableBgImage: true,
-              backgroundColor: 'none'
-            }
-          }
-        ]
-      }
+              backgroundColor: 'none',
+            },
+          },
+        ],
+      },
     },
     {
       resolve: `@adobe/gatsby-source-github-file-contributors`,
@@ -115,63 +128,26 @@ module.exports = {
           owner: process.env.REPO_OWNER,
           name: process.env.REPO_NAME,
           branch: process.env.REPO_BRANCH,
-          default_branch: process.env.REPO_DEFAULT_BRANCH
-        }
-      }
+          default_branch: process.env.REPO_DEFAULT_BRANCH,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
-        queries: algoliaQueries,
+        queries: indexAlgoliaRecords(),
+        chunkSize: 10000,
+        mergeSettings: false,
+        settings: ALGOLIA_INDEX_SETTINGS,
         enablePartialUpdates: true,
-        matchFields: ['contentDigest'],
-        chunkSize: 10000, // default: 1000
+        matchFields: ['repoName', 'contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-        settings: {
-          searchableAttributes: ['contentHeading', 'title', 'description,content'],
-          attributesForFaceting: ['searchable(keywords)'],
-          attributesToSnippet: ['content:40', 'description:40'],
-          distinct: 1,
-          attributeForDistinct: 'url',
-          snippetEllipsisText: '…',
-          attributesToRetrieve: [
-            'title',
-            'contentHeading',
-            'description',
-            'content',
-            'keywords',
-            'edition',
-            'modifiedTime',
-            'size',
-            'prettySize',
-            'extension',
-            'contributor_name',
-            'contributor_link',
-            'contributors',
-            'slug',
-            'words',
-            'anchor',
-            'url'
-          ],
-          highlightPreTag: '<mark>',
-          highlightPostTag: '</mark>',
-          hitsPerPage: 20,
-          ignorePlurals: true,
-          restrictHighlightAndSnippetArrays: false,
-          minWordSizefor1Typo: 4,
-          minWordSizefor2Typos: 8,
-          typoTolerance: true,
-          allowTyposOnNumericTokens: true,
-          minProximity: 1,
-          responseFields: ['*'],
-          advancedSyntax: true
-        }
-      }
-    }
-  ]
+      },
+    },
+  ],
 };
