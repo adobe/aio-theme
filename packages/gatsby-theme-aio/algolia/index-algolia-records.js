@@ -10,14 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-const getImportedContent = require('./get-content/get-imported-content');
-const getIFrameContent = require('./get-content/get-iframe-content');
-const getOpenApiContent = require('./get-content/get-openapi-content');
+const getImportedContent = require('./helpers/get-imported-content');
+const getIFrameContent = require('./helpers/get-iframe-content');
+const getOpenApiContent = require('./helpers/get-openapi-content');
 const mdxQuery = require('./mdx-query');
-const parseHtml = require('./get-content/parse-html');
-const parseMarkdown = require('./get-content/parse-markdown');
+const parseHtml = require('./helpers/parse-html');
+const parseMarkdown = require('./helpers/parse-markdown');
 const createAlgoliaRecord = require('./create-algolia-record');
-const getProductFromIndex = require('./helpers/get-product-from-index');
+const { getProductFromIndex } = require('./helpers/get-products-indexes');
 
 function indexAlgoliaRecords() {
   return [
@@ -35,23 +35,23 @@ function indexAlgoliaRecords() {
             contentDigest: node.internal.contentDigest,
             product: getProductFromIndex(process.env.REPO_NAME),
             lastUpdated: node.modifiedTime,
-            headings: node['childMdx'].headings,
-            excerpt: node['childMdx'].excerpt,
-            words: node['childMdx'].wordCount.words,
-            fileAbsolutePath: node['childMdx'].fileAbsolutePath, // Required for additional source data
-            slug: node['childMdx'].slug,
-            title: node['childMdx'].frontmatter.title,
-            description: node['childMdx'].frontmatter.description,
-            keywords: node['childMdx'].frontmatter.keywords, // Used for search filters
-            openAPISpec: node['childMdx'].frontmatter.openAPISpec, // Required for OpenAPI sources
-            frameSrc: node['childMdx'].frontmatter.frameSrc, // Required for iframe sources
-            spotlight: node['childMdx'].frontmatter.spotlight, // Added to elevate records from file
-            mdxAST: node['childMdx'].mdxAST,
+            headings: node.childMdx.headings,
+            excerpt: node.childMdx.excerpt,
+            words: node.childMdx.wordCount.words,
+            fileAbsolutePath: node.childMdx.fileAbsolutePath, // Required for additional source data
+            slug: node.childMdx.slug,
+            title: node.childMdx.frontmatter.title,
+            description: node.childMdx.frontmatter.description,
+            keywords: node.childMdx.frontmatter.keywords, // Used for search filters
+            openAPISpec: node.childMdx.frontmatter.openAPISpec, // Required for OpenAPI sources
+            frameSrc: node.childMdx.frontmatter.frameSrc, // Required for iframe sources
+            spotlight: node.childMdx.frontmatter.spotlight, // Added to elevate records from file
+            mdxAST: node.childMdx.mdxAST,
           };
         });
 
         let rawRecords = [];
-        let algoliaRecords = [];
+        const algoliaRecords = [];
 
         for (const markdownFile of markdownFiles) {
           // Get source content

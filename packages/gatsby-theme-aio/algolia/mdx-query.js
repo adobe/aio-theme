@@ -45,6 +45,6 @@ const mdxQuery = `
     }
   }
 }
-`;
+`
 
-module.exports = mdxQuery;
+module.exports = mdxQuery

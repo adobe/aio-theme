@@ -10,11 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-module.exports = {
-  ALGOLIA_INDEXING_MODES: {
-    skip: true, // deprecated: removed from plugin. Now functions the same as dry run.
-    console: true,
-    index: false
-  },
-  ALGOLIA_DEFAULT_INDEXING_MODE: 'console'
-};
+const request = require('request')
+
+/**
+ * Load content by url
+ */
+function getContentFromUrl (url) {
+  return new Promise((resolve, reject) =>
+    request(url, (error, response, body) => {
+      if (error) {
+        reject(error)
+      }
+      const { statusCode } = response
+      if (statusCode !== 200) {
+        reject('Invalid status code <' + statusCode + '> for URL:' + url)
+      }
+      resolve(body)
+    })
+  )
+}
+
+module.exports = getContentFromUrl

@@ -43,4 +43,4 @@ function getDateLastUpdated(file) {
   return lastUpdated;
 }
 
-module.exports = createAlgoliaRecord;
+module.exports = createAlgoliaRecord
