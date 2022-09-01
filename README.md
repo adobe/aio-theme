@@ -82,9 +82,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [GitHub Contributors](#github-contributors)
       - [Analytics and Feedback component](#analytics-and-feedback-component)
       - [Identity Management Services](#identity-management-services)
-  - [Algolia indexing and search](#algolia-indexing-and-search)
-    - [Server-side environment variables](#server-side-environment-variables)
-    - [Client-side (browser) environment variables](#client-side-browser-environment-variables)
+    - [Algolia local search testing](#algolia-local-search-testing)
   - [Global Navigation](#global-navigation)
   - [Menus](#menus)
   - [Home link](#home-link)
@@ -185,7 +183,7 @@ aio discover -i
 
 Select the `@adobe/aio-cli-plugin-doc` plugin by pressing the _Spacebar_ and finally press _Enter_ to install it.
 
-For more information about the Doc plugin, see https://github.com/adobe/aio-cli-plugin-doc.
+For more information about the Doc plugin, see <https://github.com/adobe/aio-cli-plugin-doc>.
 
 Now you can create your site by running
 
@@ -432,7 +430,7 @@ If the GitHub Token information is missing, the build will just print a warning,
 
 To retrieve your GitHub personal access token, you can follow these [steps](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 Only `READ` permissions on repositories are required for the token.
-For example, if your doc site repo was at https://github.com/adobe/aio-theme using the `main` branch, this would be what your `.env` would look like:
+For example, if your doc site repo was at <https://github.com/adobe/aio-theme> using the `main` branch, this would be what your `.env` would look like:
 
 ```properties
 REPO_GITHUB_TOKEN=YOUR_PERSONAL_ACCESS_TOKEN_HERE
@@ -442,29 +440,41 @@ REPO_BRANCH=main
 REPO_ROOT=example
 ```
 
-By default, you can omit the `ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `ROOT`.
+By default, you can omit the `REPO_ROOT` env var, and it should use the root folder as the source of the documentation pages. If your site is in a sub-folder, add the relative path as the `REPO_ROOT`.
 
 #### Analytics and Feedback component
 
-- You need to set up [Adobe Launch](https://launch.adobe.com), with an Adobe Analytics Reporting Suite
-- In Adobe Analytics, add a custom eVar (Text String type) to capture the feedback. This eVar will contain either "yes" or "no".
-- In Adobe Launch, create two Data Elements:
-  1. Feedback-Yes: edit the code and paste in `return document.querySelectorAll('button.feedback-yes')[0].innerText`
-  2. Feedback-No: edit the code and paste in `return document.querySelectorAll('button.feedback-no')[0].innerText`
-- In Adobe Launch, for the two Data Elements, make sure these checkboxes are checked:
-  1. Enable Default Value
-  2. Force lowercase value
-  3. Clean text
-- In Adobe Launch, create three Rules:
-  1. Feedback-Yes: On click, it will set variables in Adobe Analytics (set the custom eVar to value of the Feedback-Yes Data Element), and then Send the Beacon
-  2. Feedback-No: On click, it will set variables in Adobe Analytics (set the custom eVar to the value of the Feedback-No Data Element), and then Send the Beacon
-  3. Analytics: On library loaded (page top), Send the Beacon
-- In Adobe Launch:
-  1. Go through the `Publishing Flow`, don't forget to `Add All Resources`
-  2. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon
-  3. Copy the url displayed in the `script` tag
+The `GATSBY_ADOBE_LAUNCH_SRC=` env var is used to enable the Analytics and Feedback component. To add analytics to your site, you need to set up [Adobe Launch](https://launch.adobe.com), with an Adobe Analytics Reporting Suite. Use the following steps:
 
-This last value will be the value you put in `GATSBY_ADOBE_LAUNCH_SRC`.
+**In Adobe Analytics:**
+
+1. Within Adobe Analytics, add a custom eVar (Text String type) to capture the feedback. This eVar will contain either `yes` or `no`.
+
+**In Adobe Launch:**
+
+2. Create two Data Elements:
+   - **Feedback-Yes**: `Edit` the code and paste in `return document.querySelectorAll('button.feedback-yes')[0].innerText`
+   - **Feedback-No**: `Edit` the code and paste in `return document.querySelectorAll('button.feedback-no')[0].innerText`
+3. Make sure the following checkboxes are checked:
+   - Enable Default Value
+   - Force lowercase value
+   - Clean text
+4. Create these three Rules:
+   - **Feedback-Yes**: On click, it will set variables in Adobe Analytics (set the custom eVar to value of the Feedback-Yes Data Element), and then Send the Beacon.
+   - **Feedback-No**: On click, it will set variables in Adobe Analytics (set the custom eVar to the value of the Feedback-No Data Element), and then Send the Beacon.
+
+**In Adobe Analytics:**
+
+  5. On library loaded (page top), Send the Beacon
+
+**In Adobe Launch:**
+
+  6. Go through the `Publishing Flow`, don't forget to `Add All Resources`.
+  7. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon.
+  8. Copy the URL displayed in the `script` tag.
+  9. Add the URL to the `.env` file as the value for `GATSBY_ADOBE_LAUNCH_SRC=`.
+
+**Example:**
 
 ```properties
 GATSBY_ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
@@ -472,39 +482,32 @@ GATSBY_ADOBE_LAUNCH_SRC=https://your.adobe.launch.url.here
 
 #### Identity Management Services
 
-To enable IMS on the browser side, you'll need to set following env variables:
+To enable IMS on the browser side, you'll need to set the following `.env` variables:
 
 - `GATSBY_IMS_CONFIG` - Map of `client_id` and `scopes` etc.
 - `GATSBY_IMS_SRC` - URL source of IMS library
 
-## Algolia indexing and search
+### Algolia local search testing
 
-Sites hosted on the `developer.adobe.com` domain can now add Algolia search to help users find content fast.
-There are two parts to adding the Algolia search feature to your site:
+Sites hosted on the `developer.adobe.com` domain use Algolia search when staged or published to production.
 
-1. Add server-side environment variables to create and publish your site's content to Algolia's servers. This is an admin-only feature. Consult your site administrator for more details.
-2. Add client-side environment variables to search your content on Algolia's servers and return content matches (with links) to users.
+To test your site's search locally — when you build it from your computer using `yarn dev` — you'll need to add Algolia search keys to the following `.env` variables:
 
-### Server-side environment variables
+```properties
+GATSBY_ALGOLIA_INDEX_NAME=your-sites-repo-name
+GATSBY_ALGOLIA_APPLICATION_ID=adobes-application-key
+GATSBY_ALGOLIA_SEARCH_API_KEY=adobes-public-search-key
+GATSBY_ALGOLIA_INDEX_ALL=['your-sites-index-name', 'another-sites-index-name']
+GATSBY_ALGOLIA_SEARCH_INDEX=[{'your-sites-index-name': 'your-sites-product-name'}, {'all': 'All Results'}]
+```
 
-**Admin Only.** To publish your site's content to Algolia so it's searchable, add the following variables to your site's `.env` file:
+Please content the Adobe DevSite team to get the correct values for your site.
 
-- `GATSBY_ALGOLIA_INDEXATION_MODE` — `[skip | console | index]`
-  - `skip` mode - skip running of search indexation (default)
-  - `console` mode - index data will be published to console, but not pushed to real search index
-  - `index` mode - index data will be pushed to real search index
-- `ALGOLIA_WRITE_API_KEY` - Alpha-numeric string required to write index files to Algolia's servers. You should never commit this key to GitHub.
-- `GATSBY_ALGOLIA_APPLICATION_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `GATSBY_ALGOLIA_INDEX_NAME` - The name of the Algolia index where the site's content will be published. If you don't add this variable (or if you leave it blank), your site's index is auto-generated using the name of your repo. If you need to publish the site's content to another site's index (creating a shared index), add the name of the other site's index here.
-
-### Client-side (browser) environment variables
-
-To enable search on the browser side, you'll need to set the following variables in your site's `.env` file:
-
-- `GATSBY_ALGOLIA_APPLICATION_ID` - Alpha-numeric string required to access Adobe's documentation indexes.
-- `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to search indexes on Algolia servers.
-- `GATSBY_ALGOLIA_INDEX_ALL` - List of all indexes to search e.g. `["index1", "index2"]`
-- `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of individual indexes with labels to perform search operations `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
+- `GATSBY_ALGOLIA_INDEX_NAME`=your-sites-repo-name (by convention, the repo and index names are the same).
+- `GATSBY_ALGOLIA_APPLICATION_ID` — Alpha-numeric string required to **access** Adobe's product documentation, including yours.
+- `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to **search** Adobe's product documentation, including yours.
+- `GATSBY_ALGOLIA_INDEX_ALL` — List of products (product-index-names) you want to include in the search for your locally built site.
+- `GATSBY_ALGOLIA_SEARCH_INDEX` - Map of product indexes with labels for displaying searches on your site's search page. For example, `[{"index1": "Index 1"}, {"all": "All Results"}]`. Use `all` to indicate that all indexes should be searched.
 
 ## Global Navigation
 
@@ -513,7 +516,7 @@ If you follow the recommended [content structure](#content-structure), you can d
 
 For example, the following folder structure maps to the URL defined in brackets:
 
-```
+```yaml
 src/pages [/]
 ├- index.md
 ├- api [/api/]
@@ -524,7 +527,7 @@ src/pages [/]
 
 then define your Global Navigation using `pages` in `gatsby-config.js`:
 
-```
+```js
 pages: [
   {
     title: 'Adobe Analytics',
@@ -543,7 +546,7 @@ pages: [
 
 You can also define it by pointing to the markdown files:
 
-```
+```js
 pages: [
   {
     title: 'Adobe Analytics',
@@ -574,7 +577,7 @@ Otherwise, the first defined tab is set as active by default.
 You can group links inside a dropdown menu in the Global Navigation with the `menu` field.
 Optionally, you can set a description to better differentiate grouped links e.g. based on the previous example:
 
-```
+```js
 pages: [
   {
     title: 'Adobe Analytics',
@@ -606,7 +609,7 @@ Breadcrumbs will be displayed automatically to help the user understand its curr
 
 You can define a home link in `gatsby-config.js` for instance:
 
-```
+```js
 home: {
   title: 'Photoshop',
   path: 'https://www.adobe.com/products/photoshop.html'
@@ -615,7 +618,7 @@ home: {
 
 A default home link is displayed if none provided. If you don't want to display any home link, set `hidden` to `true`:
 
-```
+```js
 home: {
   hidden: true
 }
@@ -628,7 +631,7 @@ You have to create a directory hierarchy which will be represented literally in 
 
 For example, the following folder structure maps to the URL defined in brackets:
 
-```
+```js
 src/pages [/]
 ├- index.md
 ├- api [/api/]
@@ -643,7 +646,7 @@ src/pages [/]
 
 then define your Side Navigation for `/guides/` using `subPages` in `gatsby-config.js`:
 
-```
+```js
 pages: [
   {
     title: 'Adobe Analytics',
@@ -698,7 +701,7 @@ To create a single-level side navigation, you shouldn't specify `pages` for `sub
 
 is matching to the following config:
 
-```
+```js
 pages: [
   {
     title: 'Support',
@@ -733,7 +736,7 @@ To create a single-level side navigation with headers, you should set `header: t
 
 is matching the following config:
 
-```
+```js
 pages: [
   {
     title: 'Support',
@@ -782,7 +785,7 @@ To create a multi-level side navigation, you have to define `pages` for `subPage
 
 is matching the following config:
 
-```
+```js
 pages: [
   {
     title: 'Support',
@@ -828,7 +831,7 @@ In the previous multi-level side navigation example, if the current location is 
 It also means that if you don't want the auto-collapsing behavior, you have to define different paths for `subPages` than you defined for `pages` e.g. for the previous example, to avoid auto-collapsing of `Overview`,
 you would have to define a different path for `Overview` and `Help`:
 
-```
+```js
 pages: [
   {
     title: 'Support',
@@ -906,7 +909,7 @@ Side navigation can use either of these behaviors, but should never mix behavior
 You can specify multiple versions for your site in `gatsby-config.js` under `versions`.
 The first entry is the selected version by default.
 
-```
+```js
 versions: [
   {
     title: 'v2.0',
@@ -944,7 +947,7 @@ For example, a blog could live at `example.com/blog/`, or a site could be hosted
 
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
-```
+```js
 pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
 ```
 
@@ -952,7 +955,7 @@ pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
 
 ### Preview on GitHub Pages
 
-To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at https://ORG_NAME.github.io/REPO_NAME.
+To enable GitHub Pages, go to your repository settings under the GitHub Pages section, select the `gh-pages` branch as source and press Save. Your site will be available for preview at <https://ORG_NAME.github.io/REPO_NAME>.
 
 On every commit to the `main` branch, the site will be built to GitHub Pages automatically, for you to preview as a development version. This is the default branch for new repos in GitHub.
 
@@ -964,7 +967,7 @@ On every commit to the `main` branch, the site will be built to GitHub Pages aut
 
 You can manually trigger the deploy workflow by pressing the **Run workflow** button:
 
-1. Go to your repository actions overview page i.e. https://github.com/ORG/REPOSITORY/actions
+1. Go to your repository actions overview page i.e. <https://github.com/ORG/REPOSITORY/actions>
 2. Click on the "Deploy" workflow
 3. Press **Run workflow**. You can choose which branch the workflow is run on and specify the deployment type (`dev` for development or/and `prod` for production).
 
@@ -1012,7 +1015,7 @@ description: This is the guides overview page of Adobe Analytics without a bread
 contributors:
   - https://github.com/simonwex
   - https://github.com/davidbenge
-hideBreadcrumbNav: false 
+hideBreadcrumbNav: false
 ---
 </pre>
 
@@ -1066,7 +1069,7 @@ The modular content system is a set of content blocks with variants and composit
 ### JSX Blocks
 
 **The Content Blocks are defined as JSX Blocks.** They use a `slots` property to identify which markdown elements to ingest using only string properties.
-This helps maintain better readability when rendered on https://github.com.
+This helps maintain better readability when rendered on <https://github.com>.
 
 Common slots are: `heading`, `image` and `text`. See below examples for full details.
 
@@ -1907,7 +1910,7 @@ Sites are using `npm` to define dependencies so we can also include external mar
 **You have to define a name in the `package.json` like [here](https://github.com/AdobeDocs/dev-site-documentation-template/blob/main/package.json#L3) to be able to include it
 as a dependency in another site.**
 
-You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install https://github.com/AdobeDocs/dev-site-documentation-template/
+You don't have to release the site on npm since npm supports installing dependencies using github repository urls. For example, to install <https://github.com/AdobeDocs/dev-site-documentation-template/>
 as a dependency in another site, you can run the command `npm install --save adobedocs/dev-site-documentation-template`;
 
 Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.
@@ -1920,7 +1923,7 @@ Together with Variant Blocks, the author can query what should be rendered from 
 
 **This allows to write content once, and reuse it everywhere.**
 
-For example, let's say there are 2 repositories named http://github.com/adobedocs/repo1 and http://github.com/adobedocs/repo2.
+For example, let's say there are 2 repositories named <http://github.com/adobedocs/repo1> and <http://github.com/adobedocs/repo2>.
 Both are sites using the theme and have markdown content defined under `src/pages`.
 
 1. repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
@@ -2088,7 +2091,7 @@ See [Conventional Commits](https://conventionalcommits.org/) for commit guidelin
 
 ## Releases
 
-You can check the latest released version of the theme at https://github.com/adobe/aio-theme/releases.
+You can check the latest released version of the theme at <https://github.com/adobe/aio-theme/releases>.
 
 This repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
