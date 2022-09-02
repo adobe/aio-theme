@@ -726,7 +726,7 @@ subPages: [
 
 #### Single-level side navigation with headers
 
-To create a single-level side navigation with headers, you should set `header: true` on top-level `subPages` and follow the [auto-collapsing](#auto-collapsing-of-multi-level-side-navigation) rules for example:
+To create a single-level side navigation with headers, you should set `header: true` on top-level `subPages` and follow the [auto-collapsing](#auto-collapsing-of-multi-level-side-navigation) rules. Do note if one subpage has header enabled, use header navigation type for all navigation items for example:
 
 ![single-level side navigation with headers](docs/images/single-level-sidenav-with-header.png)
 
