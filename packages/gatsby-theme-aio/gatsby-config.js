@@ -19,18 +19,21 @@ const {
   ALGOLIA_INDEXING_MODES,
   ALGOLIA_DEFAULT_INDEXING_MODE,
 } = require('./algolia/search-settings/algolia-indexing-modes');
-const { ALGOLIA_INDEX_SETTINGS } = require('./algolia/search-settings/algolia-search-settings');
+const { ALGOLIA_SEARCH_SETTINGS } = require('./algolia/algolia-search-settings');
 const indexAlgoliaRecords = require('./algolia/index-algolia-records');
+let isDryRun = true;
 
-let algoliaIndexingMode = process.env.GATSBY_ALGOLIA_INDEXATION_MODE;
-
-if (ALGOLIA_INDEXING_MODES[algoliaIndexingMode] == null) {
-  algoliaIndexingMode = ALGOLIA_DEFAULT_INDEXING_MODE;
-  console.warn(
-    `Algolia: Wrong value for GATSBY_ALGOLIA_INDEXATION_MODE. Should be [${Object.keys(
-      ALGOLIA_INDEXING_MODES
-    ).join(' | ')}]. Defaults to ${ALGOLIA_DEFAULT_INDEXING_MODE}.`
-  );
+let indexingMode = process.env.ALGOLIA_INDEXATION_MODE;
+if (
+  indexingMode == null ||
+  indexingMode === '' ||
+  indexingMode === 'skip' ||
+  indexingMode === 'console'
+) {
+  console.info(`Algolia indexing mode: Console-only.`);
+} else if (indexingMode === 'index') {
+  isDryRun = false;
+  console.info(`Algolia indexing mode: Indexing to servers`);
 }
 
 console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
@@ -141,11 +144,11 @@ module.exports = {
         queries: indexAlgoliaRecords(),
         chunkSize: 10000,
         mergeSettings: false,
-        settings: ALGOLIA_INDEX_SETTINGS,
-        enablePartialUpdates: true,
-        matchFields: ['repoName', 'contentDigest'],
+        settings: ALGOLIA_SEARCH_SETTINGS,
+        enablePartialUpdates: false,
+        matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true
-        dryRun: ALGOLIA_INDEXING_MODES[algoliaIndexingMode], // default: true. skipIndexing was removed in v0.26.0
+        dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
       },
     },
