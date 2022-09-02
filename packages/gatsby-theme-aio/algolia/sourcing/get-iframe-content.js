@@ -10,30 +10,30 @@
  * governing permissions and limitations under the License.
  */
 
-const getContentFromUrl = require('./get-content-from-url');
-const getContentFromCache = require('./get-content-from-cache');
+const getContentFromUrl = require('./get-content-from-url')
+const getContentFromCache = require('./get-content-from-cache')
 
 /**
  * Support of "frameSrc" directive:
  * https://github.com/adobe/aio-theme#frame
  */
 
-async function getIFrameContent(node) {
-  if (!node.frameSrc) return null;
+async function getIFrameContent (node) {
+  if (!node.frameSrc) return null
 
   const options = {
     pagesSourceDir: 'src/pages',
     staticSourceDir: 'static',
     tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
-    minWordsCount: 3,
-  };
+    minWordsCount: 3
+  }
 
   const content = /^https?:\/\//i.test(node.frameSrc)
     ? await getContentFromUrl(node.frameSrc)
-    : getContentFromCache(node, options);
+    : getContentFromCache(node, options)
 
-  return { content, options };
+  return { content, options }
 }
 
-module.exports = getIFrameContent;
+module.exports = getIFrameContent

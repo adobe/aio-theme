@@ -2,13 +2,13 @@
 // These settings determine the relevance, order, and content of the search results shown on the screen.
 
 module.exports = {
-  ALGOLIA_INDEX_SETTINGS: {
+  ALGOLIA_SEARCH_SETTINGS: {
     searchableAttributes: [
       'title',
       'unordered(content)',
       'unordered(headings)',
       'unordered(description)',
-      'unordered(excerpt)',
+      'unordered(excerpt)'
     ],
     ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
     customRanking: ['desc(spotlight)', 'desc(words)'],
@@ -28,6 +28,6 @@ module.exports = {
     allowTyposOnNumericTokens: true,
     minProximity: 1,
     responseFields: ['*'],
-    advancedSyntax: true,
-  },
-};
+    advancedSyntax: true
+  }
+}

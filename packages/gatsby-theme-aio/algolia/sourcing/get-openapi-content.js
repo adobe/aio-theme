@@ -10,45 +10,45 @@
  * governing permissions and limitations under the License.
  */
 
-const { existsSync, readFileSync, rmSync } = require('fs');
-const { join } = require('path');
-const exec = require('await-exec');
+const { existsSync, readFileSync, rmSync } = require('fs')
+const { join } = require('path')
+const exec = require('await-exec')
 
 /**
  * Support of "openAPISpec" directive:
  * https://github.com/adobe/aio-theme#openapi
  */
 
-async function getOpenApiContent(node) {
-  if (!node.openAPISpec) return null;
+async function getOpenApiContent (node) {
+  if (!node.openAPISpec) return null
 
-  const tempDir = './public/redoc';
+  const tempDir = './public/redoc'
   const options = {
     tempDir,
     tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
-    minWordsCount: 3,
-  };
+    minWordsCount: 3
+  }
 
-  const redoc = require.resolve('redoc-cli');
-  const { openAPISpec } = node;
-  const spec = openAPISpec.startsWith('/') ? join('static', openAPISpec) : openAPISpec;
-  const htmlFile = join(options.tempDir, 'index.html');
+  const redoc = require.resolve('redoc-cli')
+  const { openAPISpec } = node
+  const spec = openAPISpec.startsWith('/') ? join('static', openAPISpec) : openAPISpec
+  const htmlFile = join(options.tempDir, 'index.html')
 
   try {
-    await exec(`${redoc} bundle -o ${htmlFile} ${spec}`);
+    await exec(`${redoc} bundle -o ${htmlFile} ${spec}`)
   } catch (e) {
-    console.error(e);
+    console.error(e)
   }
 
   if (!existsSync(htmlFile)) {
-    throw Error(`Redoc file resolving error: no such file "${htmlFile}"`);
+    throw Error(`Redoc file resolving error: no such file "${htmlFile}"`)
   }
 
-  const content = readFileSync(htmlFile, 'utf8');
-  rmSync(tempDir, { recursive: true, force: true });
+  const content = readFileSync(htmlFile, 'utf8')
+  rmSync(tempDir, { recursive: true, force: true })
 
-  return { content, options };
+  return { content, options }
 }
 
-module.exports = getOpenApiContent;
+module.exports = getOpenApiContent

@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-async function createAlgoliaRecord(rawRecord, file) {
+async function createAlgoliaRecord (rawRecord, file) {
   const record = {
     objectID: rawRecord.objectID,
     contentDigest: rawRecord.contentDigest,
@@ -26,21 +26,21 @@ async function createAlgoliaRecord(rawRecord, file) {
     spotlight: file.spotlight,
     slug: file.slug,
     url: getUrl(rawRecord, file),
-    lastUpdated: getDateLastUpdated(file),
-  };
-  return record;
+    lastUpdated: getDateLastUpdated(file)
+  }
+  return record
 }
 
-function getUrl(rawRecord, file) {
+function getUrl (rawRecord, file) {
   const url = `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
     file.slug == null ? '' : file.slug
-  }${rawRecord.anchor}`;
-  return url;
+  }${rawRecord.anchor}`
+  return url
 }
 
-function getDateLastUpdated(file) {
-  const lastUpdated = file.lastUpdated;
-  return lastUpdated;
+function getDateLastUpdated (file) {
+  const lastUpdated = file.lastUpdated
+  return lastUpdated
 }
 
-module.exports = createAlgoliaRecord;
+module.exports = createAlgoliaRecord
