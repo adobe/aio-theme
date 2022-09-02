@@ -32,8 +32,6 @@ if (
   console.info(`Algolia indexing mode: Indexing to servers`);
 }
 
-console.info(`Algolia: using indexing mode ${algoliaIndexingMode}`);
-
 // Used to convert ESM to CJS modules until Gatsby supports ESM.
 const wrapESMPlugin = name =>
   function wrapESM(opts) {
