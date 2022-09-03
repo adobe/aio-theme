@@ -41,7 +41,10 @@ const Edition = ({ ...props }) => {
   return (
     <span class={`spectrum-Badge spectrum-Badge--sizeS ${editionColor}`} style="padding-bottom:4px">
       {editionText}.&nbsp;
-      <a href={`${EDITIONS_LINK}`} class="spectrum-Link spectrum-Link--overBackground" target="_blank">
+      <a
+        href={`${EDITIONS_LINK}`}
+        class="spectrum-Link spectrum-Link--overBackground"
+        target="_blank">
         Learn more
       </a>
     </span>
@@ -49,7 +52,7 @@ const Edition = ({ ...props }) => {
 };
 
 Edition.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export { Edition };

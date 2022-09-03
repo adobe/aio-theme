@@ -22,7 +22,7 @@ import classNames from 'classnames';
 const counter = {
   2: 0,
   3: 0,
-  4: 0
+  4: 0,
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
@@ -74,13 +74,13 @@ const Icons = ({ icons, isCentered }) =>
             height: 100%;
             object-fit: contain;
           }
-        `
+        `,
       })
     : null;
 
 const Texts = ({ texts }) => {
-  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
-  return textKeys.map((textKey) => texts[textKey]);
+  const textKeys = Object.keys(texts).filter(key => key.startsWith('text'));
+  return textKeys.map(textKey => texts[textKey]);
 };
 
 const Links = ({ links, isCentered }) =>
@@ -138,7 +138,7 @@ const Links = ({ links, isCentered }) =>
               margin-right: 0;
             }
           }
-        `
+        `,
       })
     : null;
 
@@ -243,7 +243,7 @@ const TextBlock = ({
                     height: 100%;
                     object-fit: contain;
                   }
-                `
+                `,
               })}
 
             {heading && (
@@ -277,7 +277,8 @@ const TextBlock = ({
             <Media css={mediaCSS} video={video} />
           </div>
         </section>
-        {width === '100%' || (typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0) ? (
+        {width === '100%' ||
+        (typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0) ? (
           <div aria-hidden="true" />
         ) : null}
       </>
@@ -324,7 +325,10 @@ const TextBlock = ({
                   align-items: center;
                   justify-content: center;
                   width: 50%;
-                  height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
+                  height: calc(
+                    var(--spectrum-global-dimension-size-4600) -
+                      var(--spectrum-global-dimension-size-225)
+                  );
                   box-sizing: border-box;
                   padding: var(--spectrum-global-dimension-size-200);
                   margin-top: 0;
@@ -343,7 +347,7 @@ const TextBlock = ({
                     height: auto;
                     width: 100%;
                   }
-                `
+                `,
               })}
 
             <Media css={mediaCSS} video={video} />
@@ -407,7 +411,7 @@ TextBlock.propTypes = {
   video: PropTypes.element,
   theme: PropTypes.string,
   width: PropTypes.oneOf(['100%', '50%', '33%', '25%']),
-  isCentered: PropTypes.bool
+  isCentered: PropTypes.bool,
 };
 
 export { TextBlock };

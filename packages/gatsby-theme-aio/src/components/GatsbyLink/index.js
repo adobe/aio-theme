@@ -27,11 +27,16 @@ const GatsbyLink = forwardRef(({ className, style, variant, to, ...props }, ref)
   }
 
   const { location, allSitePage, pathPrefix } = useContext(Context);
-  const pages = allSitePage.nodes.map((page) => withPrefix(page.path));
+  const pages = allSitePage.nodes.map(page => withPrefix(page.path));
 
   if (isInternalLink(to, location, pages)) {
     return (
-      <Link className={classNames(className)} to={fixInternalLink(to, location, pathPrefix)} ref={ref} {...props} />
+      <Link
+        className={classNames(className)}
+        to={fixInternalLink(to, location, pathPrefix)}
+        ref={ref}
+        {...props}
+      />
     );
   }
   // Support non folder structured links
@@ -69,7 +74,7 @@ const GatsbyLink = forwardRef(({ className, style, variant, to, ...props }, ref)
 GatsbyLink.propTypes = {
   variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative']),
   style: PropTypes.oneOf(['fill', 'outline']),
-  to: PropTypes.string
+  to: PropTypes.string,
 };
 
 export { GatsbyLink };

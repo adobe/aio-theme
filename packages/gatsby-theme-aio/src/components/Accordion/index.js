@@ -26,11 +26,14 @@ const Accordion = ({ children, ...props }) => (
 const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
   const [open, setOpen] = useState(isOpen);
   const onClick = () => {
-    setOpen((open) => !open);
+    setOpen(open => !open);
   };
 
   return (
-    <div className={classNames(['spectrum-Accordion-item', { 'is-open': open }])} role="presentation" {...props}>
+    <div
+      className={classNames(['spectrum-Accordion-item', { 'is-open': open }])}
+      role="presentation"
+      {...props}>
       <h3 className="spectrum-Accordion-itemHeading">
         <button
           className="spectrum-Accordion-itemHeader"
@@ -53,7 +56,7 @@ const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
 
 AccordionItem.propTypes = {
   header: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 };
 
 export { Accordion, AccordionItem };

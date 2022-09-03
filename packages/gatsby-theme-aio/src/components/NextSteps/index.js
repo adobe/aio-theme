@@ -69,7 +69,7 @@ const NextSteps = ({ pages }) => {
 };
 
 NextSteps.propTypes = {
-  pages: PropTypes.array
+  pages: PropTypes.array,
 };
 
 export { NextSteps };

@@ -18,12 +18,20 @@ import { getExternalLinkProps } from '../../utils';
 
 const externalLinkProps = getExternalLinkProps();
 
-const Contributors = ({ repository, branch, root, pagePath, contributors = [], externalContributors = [], date }) => {
-  externalContributors = externalContributors.map((contributor) => ({
-    login: contributor.replace('https://github.com/', '')
+const Contributors = ({
+  repository,
+  branch,
+  root,
+  pagePath,
+  contributors = [],
+  externalContributors = [],
+  date,
+}) => {
+  externalContributors = externalContributors.map(contributor => ({
+    login: contributor.replace('https://github.com/', ''),
   }));
 
-  externalContributors.forEach((externalContributor) => {
+  externalContributors.forEach(externalContributor => {
     // Verify no duplicates
     if (!contributors.find(({ login }) => externalContributor.login === login)) {
       // Adding external contributors first
@@ -33,7 +41,9 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
 
   return (
     <a
-      href={`https://github.com/${repository}/commits/${branch}${root ? `/${root}` : ''}/src/pages/${pagePath}`}
+      href={`https://github.com/${repository}/commits/${branch}${
+        root ? `/${root}` : ''
+      }/src/pages/${pagePath}`}
       {...externalLinkProps}
       css={css`
         text-decoration: none;
@@ -59,7 +69,8 @@ const Contributors = ({ repository, branch, root, pagePath, contributors = [], e
                 css={css`
                   margin-left: calc(-1 * var(--spectrum-global-dimension-size-200));
                   position: relative;
-                  border: var(--spectrum-global-dimension-size-40) solid var(--spectrum-global-color-gray-50);
+                  border: var(--spectrum-global-dimension-size-40) solid
+                    var(--spectrum-global-color-gray-50);
                   width: var(--spectrum-global-dimension-size-400);
                   height: var(--spectrum-global-dimension-size-400);
                   border-radius: var(--spectrum-global-dimension-static-percent-50);
@@ -88,7 +99,7 @@ Contributors.propTypes = {
   href: PropTypes.string,
   contributors: PropTypes.array,
   externalContributors: PropTypes.array,
-  date: PropTypes.string
+  date: PropTypes.string,
 };
 
 export { Contributors };

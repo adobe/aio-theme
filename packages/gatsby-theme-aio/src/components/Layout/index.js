@@ -26,7 +26,7 @@ import {
   rootFixPages,
   SEARCH_PARAMS,
   SIDENAV_WIDTH,
-  trailingSlashFix
+  trailingSlashFix,
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
@@ -49,11 +49,16 @@ import nextId from 'react-id-generator';
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+const hasSearch = !!(
+  process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+);
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APPLICATION_ID, process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+  algolia = algoliaSearch(
+    process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+  );
 } else {
   console.warn('AIO: Algolia config missing.');
 }
@@ -67,26 +72,26 @@ const pageSrc = {
   openAPI: {
     src: null,
     block: null,
-    frontMatter: 'openAPISpec'
+    frontMatter: 'openAPISpec',
   },
   frame: {
     src: null,
     block: null,
-    frontMatter: 'frameSrc'
-  }
+    frontMatter: 'frameSrc',
+  },
 };
 
-const toggleSideNav = (setShowSideNav) => {
-  setShowSideNav((showSideNav) => !showSideNav);
+const toggleSideNav = setShowSideNav => {
+  setShowSideNav(showSideNav => !showSideNav);
 };
 
-const addScript = (url) =>
+const addScript = url =>
   new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = url;
-    script.onload = (val) => resolve(val);
-    script.onerror = (err) => reject(err);
-    script.onabort = (err) => reject(err);
+    script.onload = val => resolve(val);
+    script.onerror = err => reject(err);
+    script.onabort = err => reject(err);
 
     document.head.appendChild(script);
   });
@@ -286,18 +291,18 @@ export default ({ children, pageContext, location }) => {
   // Unify all paths
   location.pathname = trailingSlashFix(decodeURIComponent(location.pathname));
 
-  pages.forEach((page) => {
+  pages.forEach(page => {
     normalizePagePath(page);
 
     if (page.menu) {
-      page.menu.forEach((menu) => {
+      page.menu.forEach(menu => {
         normalizePagePath(menu);
       });
     }
   });
 
   if (versions) {
-    versions.forEach((version) => {
+    versions.forEach(version => {
       normalizePagePath(version);
     });
   }
@@ -305,18 +310,18 @@ export default ({ children, pageContext, location }) => {
   normalizePagePath(home);
   normalizePagePath(docs);
 
-  const normalizeSubPages = (page) => {
+  const normalizeSubPages = page => {
     normalizePagePath(page);
 
     if (page.pages) {
-      page.pages.forEach((subPage) => {
+      page.pages.forEach(subPage => {
         normalizeSubPages(subPage);
       });
     }
   };
 
   if (subPages) {
-    subPages.forEach((subPage) => {
+    subPages.forEach(subPage => {
       normalizeSubPages(subPage);
     });
   }
@@ -337,11 +342,11 @@ export default ({ children, pageContext, location }) => {
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
 
-  if (pathPrefix === "/search-frame") {
+  if (pathPrefix === '/search-frame') {
     return (
       <>
-      <Helmet>
-        <noscript>{`
+        <Helmet>
+          <noscript>{`
           <style>
             #${layoutId} {
               grid-template-columns: 0 auto;
@@ -356,100 +361,100 @@ export default ({ children, pageContext, location }) => {
             }
           </style>
         `}</noscript>
-      </Helmet>
+        </Helmet>
 
-      <Global
-        styles={css`
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 400;
-          }
+        <Global
+          styles={css`
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: italic;
-            font-weight: 400;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: italic;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 700;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 700;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 300;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 300;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean-serif';
-            src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 900;
-          }
+            @font-face {
+              font-family: 'adobe-clean-serif';
+              src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 900;
+            }
 
-          html,
-          body {
-            margin: 0;
-            text-size-adjust: none;
-            overscroll-behavior: auto contain;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: transparent;
+            html,
+            body {
+              margin: 0;
+              text-size-adjust: none;
+              overscroll-behavior: auto contain;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              background-color: transparent;
 
-            ${showSearch && 'overflow: hidden;'}
-          }
+              ${showSearch && 'overflow: hidden;'}
+            }
 
-          *[hidden] {
-            display: none !important;
-          }
-        `}
-      />
+            *[hidden] {
+              display: none !important;
+            }
+          `}
+        />
         <div
-        dir="ltr"
-        className="spectrum spectrum--medium spectrum--large spectrum--light"
-        color-scheme="light"
-        css={css`
-          min-height: 100vh;
-          background-color: transparent;
-        `}>
+          dir="ltr"
+          className="spectrum spectrum--medium spectrum--large spectrum--light"
+          color-scheme="light"
+          css={css`
+            min-height: 100vh;
+            background-color: transparent;
+          `}>
           <Search
             algolia={algolia}
             searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
@@ -579,9 +584,13 @@ export default ({ children, pageContext, location }) => {
           allSitePage,
           allMdx,
           allGithub,
-          allGithubContributors
+          allGithubContributors,
         }}>
-        <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
+        <SEO
+          title={frontMatter?.title}
+          description={frontMatter?.description}
+          keywords={frontMatter?.keywords}
+        />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
@@ -680,7 +689,7 @@ export default ({ children, pageContext, location }) => {
                     createElement(pageSrc['frame'].block, {
                       src: pageSrc['frame'].src,
                       height: frontMatter?.frameHeight,
-                      location
+                      location,
                     })}
                 </main>
 

@@ -23,7 +23,7 @@ const commonCss = css`
   padding-right: 30px;
 `;
 
-const getIconName = (variant) => {
+const getIconName = variant => {
   let icon = variant;
 
   if (variant === 'error' || variant === 'negative' || variant === 'warning') {
@@ -34,7 +34,7 @@ const getIconName = (variant) => {
 };
 
 const InlineAlertTexts = ({ texts }) => {
-  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
+  const textKeys = Object.keys(texts).filter(key => key.startsWith('text'));
   return textKeys.map((textKey, index) =>
     index === 0
       ? cloneElement(texts[textKey], {
@@ -42,14 +42,14 @@ const InlineAlertTexts = ({ texts }) => {
           css: css`
             margin-top: 0;
             ${commonCss};
-          `
+          `,
         })
       : cloneElement(texts[textKey], {
           className: 'spectrum-InLineAlert-content',
           css: css`
             margin-top: var(--spectrum-global-dimension-size-150);
             ${commonCss};
-          `
+          `,
         })
   );
 };
@@ -76,7 +76,7 @@ const InlineAlert = ({ variant = 'info', header, ...props }) => {
               margin-bottom: 0.5rem;
               font-size: 1rem;
               line-height: 1.3rem;
-            `
+            `,
           })}
       </div>
       <InlineAlertTexts texts={props} />
@@ -87,7 +87,7 @@ const InlineAlert = ({ variant = 'info', header, ...props }) => {
 InlineAlert.propTypes = {
   variant: PropTypes.string,
   header: PropTypes.element,
-  text: PropTypes.element
+  text: PropTypes.element,
 };
 
 export { InlineAlert };

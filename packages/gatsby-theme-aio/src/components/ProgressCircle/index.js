@@ -17,7 +17,7 @@ import '@spectrum-css/progresscircle';
 const sizeMap = {
   S: 'small',
   M: 'medium',
-  L: 'large'
+  L: 'large',
 };
 
 const ProgressCircle = ({ size = 'M', ...props }) => {
@@ -44,7 +44,7 @@ const ProgressCircle = ({ size = 'M', ...props }) => {
 };
 
 ProgressCircle.propTypes = {
-  size: PropTypes.oneOf(['S', 'M', 'L'])
+  size: PropTypes.oneOf(['S', 'M', 'L']),
 };
 
 export { ProgressCircle };

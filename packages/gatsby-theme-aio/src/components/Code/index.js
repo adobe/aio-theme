@@ -21,7 +21,7 @@ import '@adobe/prism-adobe';
 import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
 
-const openTooltip = (setIsTooltipOpen) => {
+const openTooltip = setIsTooltipOpen => {
   setIsTooltipOpen(true);
   setTimeout(() => {
     setIsTooltipOpen(false);
@@ -42,7 +42,7 @@ const Code = ({ children, className = '', theme }) => {
   return (
     <Highlight {...defaultProps} code={children} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
-        const isEmptyItem = (token) => token && token.length === 1 && token[0].empty;
+        const isEmptyItem = token => token && token.length === 1 && token[0].empty;
         const lines = isEmptyItem(tokens[tokens.length - 1]) ? tokens.slice(0, -1) : tokens;
         const isMultiLine = lines.length > 1;
         const textarea = createRef();
@@ -88,10 +88,13 @@ const Code = ({ children, className = '', theme }) => {
                   top: var(--spectrum-global-dimension-size-50);
                   right: var(--spectrum-global-dimension-size-675);
                   left: initial;
-                  font-family: var(--spectrum-alias-body-text-font-family, var(--spectrum-global-font-family-base));
+                  font-family: var(
+                    --spectrum-alias-body-text-font-family,
+                    var(--spectrum-global-font-family-base)
+                  );
                 `}
                 className={classNames('spectrum-Tooltip spectrum-Tooltip--left', {
-                  'is-open': isTooltipOpen
+                  'is-open': isTooltipOpen,
                 })}>
                 <span className="spectrum-Tooltip-label">Copied to your clipboard</span>
                 <span className="spectrum-Tooltip-tip" />
@@ -141,7 +144,7 @@ const Code = ({ children, className = '', theme }) => {
 };
 
 Code.propTypes = {
-  theme: PropTypes.oneOf(['light', 'dark'])
+  theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export { Code };

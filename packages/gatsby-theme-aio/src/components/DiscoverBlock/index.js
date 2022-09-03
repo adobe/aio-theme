@@ -22,7 +22,7 @@ const DiscoverBlock = ({
   heading,
   link,
   text,
-  image
+  image,
 }) => (
   <>
     {image
@@ -33,7 +33,7 @@ const DiscoverBlock = ({
             @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
               margin-left: 0;
             }
-          `
+          `,
         })
       : heading}
     <div
@@ -85,7 +85,7 @@ const DiscoverBlock = ({
               position: static;
               margin: var(--spectrum-global-dimension-size-200) 0;
             }
-          `
+          `,
         })}
       {link}
       {text}
@@ -98,7 +98,7 @@ DiscoverBlock.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
   image: PropTypes.element,
-  link: PropTypes.element
+  link: PropTypes.element,
 };
 
 export { DiscoverBlock };

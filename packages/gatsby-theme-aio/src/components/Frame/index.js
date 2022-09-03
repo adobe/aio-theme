@@ -19,7 +19,11 @@ import PropTypes from 'prop-types';
 import Context from '../Context';
 import { isExternalLink } from '../../utils';
 
-const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))', location }) => {
+const Frame = ({
+  src,
+  height = 'calc(100vh - var(--spectrum-global-dimension-size-800))',
+  location,
+}) => {
   const iframe = useRef(null);
   const { ims, isLoadingIms } = useContext(Context);
   const [child, setChild] = useState(null);
@@ -102,11 +106,11 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
           } else {
             return null;
           }
-        }
-      }
+        },
+      },
     });
 
-    connection.promise.then((child) => {
+    connection.promise.then(child => {
       if (iframe.current.clientHeight === 0) {
         child.onHide();
       } else {
@@ -142,7 +146,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
 Frame.propTypes = {
   src: PropTypes.string,
   height: PropTypes.string,
-  location: PropTypes.object
+  location: PropTypes.object,
 };
 
 export default Frame;

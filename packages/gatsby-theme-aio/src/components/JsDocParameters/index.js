@@ -17,7 +17,7 @@ import { Accordion, AccordionItem } from '../Accordion';
 
 const ANCHOR = 'a';
 
-const jsDocFilter = (childrenArray) => {
+const jsDocFilter = childrenArray => {
   const filteredArray = [];
   let jsDoc = null;
   let jsDocItems = [];
@@ -48,7 +48,7 @@ const jsDocFilter = (childrenArray) => {
           // Finish the JS Doc Block
           filteredArray.push(
             cloneElement(jsDoc, {
-              items: jsDocItems
+              items: jsDocItems,
             })
           );
 
@@ -73,7 +73,7 @@ const jsDocFilter = (childrenArray) => {
   if (jsDoc) {
     filteredArray.push(
       cloneElement(jsDoc, {
-        items: jsDocItems
+        items: jsDocItems,
       })
     );
   }
@@ -82,7 +82,7 @@ const jsDocFilter = (childrenArray) => {
 };
 
 const JsDocParameters = ({ items }) => {
-  const createAccordionItems = (items) => {
+  const createAccordionItems = items => {
     const acc = [];
     let header = '';
     let body = [];
@@ -122,7 +122,7 @@ const JsDocParameters = ({ items }) => {
     return () => window.removeEventListener('popstate', shouldOpenAccordion);
   }, []);
 
-  const shouldOpenAccordion = (event) => {
+  const shouldOpenAccordion = event => {
     const hash = event.target.location.hash ? event.target.location.hash.substring(1) : null;
     const el = document.getElementById(hash);
     if (el?.classList.contains('spectrum-Accordion-item')) {
@@ -147,7 +147,7 @@ const JsDocParameters = ({ items }) => {
 };
 
 JsDocParameters.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
 };
 
 export { JsDocParameters, jsDocFilter };

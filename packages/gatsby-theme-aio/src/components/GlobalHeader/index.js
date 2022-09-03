@@ -23,7 +23,7 @@ import {
   getExternalLinkProps,
   MOBILE_SCREEN_WIDTH,
   rootFix,
-  rootFixPages
+  rootFixPages,
 } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
@@ -42,7 +42,7 @@ import {
   Label as TabsItemLabel,
   positionIndicator,
   Tabs,
-  TabsIndicator
+  TabsIndicator,
 } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
@@ -53,7 +53,9 @@ const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
 
-  let selectedIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
+  let selectedIndex = pagesWithRootFix.indexOf(
+    findSelectedTopPage(pathWithRootFix, pagesWithRootFix)
+  );
 
   // Assume first item is selected
   if (selectedIndex === -1) {
@@ -63,7 +65,7 @@ const getSelectedTabIndex = (location, pages) => {
   return selectedIndex;
 };
 
-const getAvatar = async (userId) => {
+const getAvatar = async userId => {
   try {
     const req = await fetch(`https://cc-api-behance.adobe.io/v2/users/${userId}?api_key=SUSI2`);
     const res = await req.json();
@@ -74,8 +76,8 @@ const getAvatar = async (userId) => {
   }
 };
 
-const toggleSideNavExpanded = (setSideNavExpanded) => {
-  setSideNavExpanded((sideNavExpanded) => !sideNavExpanded);
+const toggleSideNavExpanded = setSideNavExpanded => {
+  setSideNavExpanded(sideNavExpanded => !sideNavExpanded);
 };
 
 const GlobalHeader = ({
@@ -92,7 +94,7 @@ const GlobalHeader = ({
   hasSearch,
   showSearch,
   setShowSearch,
-  searchButtonId
+  searchButtonId,
 }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(getSelectedTabIndex(location, pages));
   const tabsRef = useRef(null);
@@ -115,7 +117,7 @@ const GlobalHeader = ({
   const profilePopoverId = nextId();
   const hasHome = home?.hidden !== true;
 
-  const positionSelectedTabIndicator = (index) => {
+  const positionSelectedTabIndicator = index => {
     const selectedTab = pages[index].tabRef;
 
     if (selectedTab?.current) {
@@ -171,7 +173,7 @@ const GlobalHeader = ({
       menuRef.current.style.top = `${top}px`;
       menuRef.current.style.position = 'fixed';
     } else {
-      pages.forEach((page) => {
+      pages.forEach(page => {
         const menuRef = page.menuRef;
         if (menuRef) {
           // Wait for animation to finish
@@ -185,7 +187,7 @@ const GlobalHeader = ({
 
   useEffect(() => {
     // Clicking outside of menu should close menu
-    const onClick = (event) => {
+    const onClick = event => {
       if (versionPopoverRef.current && !versionPopoverRef.current.contains(event.target)) {
         setOpenVersion(false);
       }
@@ -194,7 +196,7 @@ const GlobalHeader = ({
         setOpenProfile(false);
       }
 
-      pages.some((page) => {
+      pages.some(page => {
         if (page?.menuRef?.current && !page.menuRef.current.contains(event.target)) {
           setOpenMenuIndex(-1);
         }
@@ -222,7 +224,8 @@ const GlobalHeader = ({
       role="banner"
       css={css`
         height: 100%;
-        border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
+        border-bottom: var(--spectrum-global-dimension-size-10) solid
+          var(--spectrum-global-color-gray-200);
         box-sizing: border-box;
 
         @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -317,7 +320,8 @@ const GlobalHeader = ({
                     <Adobe
                       css={css`
                         width: calc(
-                          var(--spectrum-global-dimension-size-250) + var(--spectrum-global-dimension-size-25)
+                          var(--spectrum-global-dimension-size-250) +
+                            var(--spectrum-global-dimension-size-25)
                         );
                         height: var(--spectrum-global-dimension-size-225);
                         display: block;
@@ -329,7 +333,8 @@ const GlobalHeader = ({
                       css={css`
                         color: #fa0f00;
                         font-size: calc(
-                          var(--spectrum-global-dimension-size-200) - var(--spectrum-global-dimension-size-10)
+                          var(--spectrum-global-dimension-size-200) -
+                            var(--spectrum-global-dimension-size-10)
                         );
                         font-weight: 700;
                         white-space: nowrap;
@@ -352,8 +357,10 @@ const GlobalHeader = ({
                 <div
                   css={css`
                     height: calc(100% + var(--spectrum-global-dimension-size-10));
-                    border-left: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
-                    border-right: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
+                    border-left: var(--spectrum-global-dimension-size-10) solid
+                      var(--spectrum-global-color-gray-200);
+                    border-right: var(--spectrum-global-dimension-size-10) solid
+                      var(--spectrum-global-color-gray-200);
 
                     @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                       display: none;
@@ -370,7 +377,8 @@ const GlobalHeader = ({
                         padding: 0 var(--spectrum-global-dimension-size-300);
                         white-space: nowrap;
                         color: var(--spectrum-global-color-gray-700);
-                        transition: background-color var(--spectrum-global-animation-duration-100) ease-out,
+                        transition: background-color var(--spectrum-global-animation-duration-100)
+                            ease-out,
                           color var(--spectrum-global-animation-duration-100) ease-out;
 
                         &:hover {
@@ -412,14 +420,18 @@ const GlobalHeader = ({
 
               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                 position: absolute;
-                top: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-global-dimension-size-10));
+                top: calc(
+                  var(--spectrum-global-dimension-size-600) -
+                    var(--spectrum-global-dimension-size-10)
+                );
                 height: var(--spectrum-global-dimension-size-600);
                 left: 0;
                 right: 0;
                 margin-left: 0;
                 margin-right: 0;
                 background-color: var(--spectrum-global-color-gray-50);
-                border-bottom: var(--spectrum-global-dimension-size-10) solid var(--spectrum-global-color-gray-200);
+                border-bottom: var(--spectrum-global-dimension-size-10) solid
+                  var(--spectrum-global-color-gray-200);
               }
             `}>
             <div
@@ -431,7 +443,10 @@ const GlobalHeader = ({
                   pointer-events: none;
                   position: fixed;
                   top: var(--spectrum-global-dimension-size-600);
-                  height: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-global-dimension-size-25));
+                  height: calc(
+                    var(--spectrum-global-dimension-size-600) -
+                      var(--spectrum-global-dimension-size-25)
+                  );
                   right: 0;
                   width: var(--spectrum-global-dimension-size-300);
                   background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0), white);
@@ -479,11 +494,11 @@ const GlobalHeader = ({
                 const isSelectedTab = selectedTabIndex === i;
                 const menuPopoverId = nextId();
 
-                const setTabRef = (element) => {
+                const setTabRef = element => {
                   page.tabRef = { current: element };
                 };
 
-                const setTabMenuRef = (element) => {
+                const setTabMenuRef = element => {
                   page.menuRef = { current: element };
                 };
 
@@ -518,7 +533,7 @@ const GlobalHeader = ({
                         ref={setTabRef}
                         selected={isSelectedTab}
                         aria-controls={menuPopoverId}
-                        onClick={(event) => {
+                        onClick={event => {
                           event.stopImmediatePropagation();
 
                           setOpenVersion(false);
@@ -531,7 +546,8 @@ const GlobalHeader = ({
                             width: var(--spectrum-global-dimension-size-125) !important;
                             height: var(--spectrum-global-dimension-size-125) !important;
                             margin-left: var(--spectrum-global-dimension-size-100);
-                            transition: transform var(--spectrum-global-animation-duration-100) ease-in-out;
+                            transition: transform var(--spectrum-global-animation-duration-100)
+                              ease-in-out;
                             ${openMenuIndex === i && `transform: rotate(-90deg);`}
                           `}
                         />
@@ -543,7 +559,7 @@ const GlobalHeader = ({
                             margin-top: var(--spectrum-global-dimension-size-25);
                             border-top-left-radius: 0;
                             border-top-right-radius: 0;
-                            ${page.menu.some((menu) => menu.description) &&
+                            ${page.menu.some(menu => menu.description) &&
                             `width: var(--spectrum-global-dimension-size-2400);`}
 
                             @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -603,12 +619,12 @@ const GlobalHeader = ({
                           isQuiet
                           isOpen={openVersion}
                           aria-controls={versionPopoverId}
-                          onClick={(event) => {
+                          onClick={event => {
                             event.stopImmediatePropagation();
 
                             setOpenMenuIndex(-1);
                             setOpenProfile(false);
-                            setOpenVersion((open) => !open);
+                            setOpenVersion(open => !open);
                           }}>
                           {versions.find(({ selected }) => selected)?.title}
                         </PickerButton>
@@ -646,7 +662,8 @@ const GlobalHeader = ({
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     bottom: calc(
-                      var(--spectrum-global-dimension-size-400) - var(--spectrum-global-dimension-size-125)
+                      var(--spectrum-global-dimension-size-400) -
+                        var(--spectrum-global-dimension-size-125)
                     ) !important;
                   }
 
@@ -695,7 +712,7 @@ const GlobalHeader = ({
                   id={searchButtonId}
                   aria-label="search"
                   onClick={() => {
-                    setShowSearch((show) => !show);
+                    setShowSearch(show => !show);
                   }}
                   isQuiet
                   css={css`
@@ -749,12 +766,12 @@ const GlobalHeader = ({
                     <button
                       aria-label="Profile"
                       aria-controls={profilePopoverId}
-                      onClick={(event) => {
+                      onClick={event => {
                         event.stopImmediatePropagation();
 
                         setOpenVersion(false);
                         setOpenMenuIndex(-1);
-                        setOpenProfile((open) => !open);
+                        setOpenProfile(open => !open);
                       }}
                       css={css`
                         display: block;
@@ -817,7 +834,10 @@ const GlobalHeader = ({
                           <Divider size="S" />
                         </div>
 
-                        <AnchorButton href="https://account.adobe.com/" variant="secondary" style="outline">
+                        <AnchorButton
+                          href="https://account.adobe.com/"
+                          variant="secondary"
+                          style="outline">
                           Edit Profile
                         </AnchorButton>
 
@@ -858,7 +878,7 @@ GlobalHeader.propTypes = {
   setShowSearch: PropTypes.func,
   hasSearch: PropTypes.bool,
   showSearch: PropTypes.bool,
-  searchButtonId: PropTypes.string
+  searchButtonId: PropTypes.string,
 };
 
 export { GlobalHeader };

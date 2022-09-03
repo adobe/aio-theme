@@ -30,7 +30,7 @@ import {
   DEFAULT_HOME,
   rootFix,
   rootFixPages,
-  cleanRootFix
+  cleanRootFix,
 } from '../../utils';
 
 import { Footer } from '../Footer';
@@ -61,7 +61,7 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
     let ignoredChildrenCount = 0;
 
     // Verify if child is a custom MDX component
-    Object.keys(MDXBlocks).forEach((customComponent) => {
+    Object.keys(MDXBlocks).forEach(customComponent => {
       if (child?.props?.mdxType === customComponent) {
         ignoredChildrenCount++;
 
@@ -76,7 +76,10 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
               // Set default slots to element if repeat is defined
               (child.props.slots || 'element')
                 .split(',')
-                .map((slot, k) => [`${slot.trim()}${repeat === 1 ? '' : i}`, childrenArray[slots.length + k + 1]])
+                .map((slot, k) => [
+                  `${slot.trim()}${repeat === 1 ? '' : i}`,
+                  childrenArray[slots.length + k + 1],
+                ])
             );
           }
         }
@@ -96,7 +99,7 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
           }
 
           const childClone = cloneElement(child, {
-            ...props
+            ...props,
           });
 
           if (child.props.mdxType === 'Hero') {
@@ -126,18 +129,29 @@ const filterChildren = ({ childrenArray, query, hasSideNav }) => {
   return {
     filteredChildren,
     heroChild,
-    resourcesChild
+    resourcesChild,
   };
 };
 
 export default ({ children, pageContext, query }) => {
-  const { hasSideNav, siteMetadata, location, allSitePage, allMdx, allGithub, allGithubContributors } =
-    useContext(Context);
+  const {
+    hasSideNav,
+    siteMetadata,
+    location,
+    allSitePage,
+    allMdx,
+    allGithub,
+    allGithubContributors,
+  } = useContext(Context);
   const isTranscludedContent = typeof pageContext === 'undefined';
   let childrenArray = Children.toArray(children);
 
   if (isTranscludedContent || pageContext?.frontmatter?.layout === 'none') {
-    const { filteredChildren } = filterChildren({ childrenArray: jsDocFilter(childrenArray), query, hasSideNav });
+    const { filteredChildren } = filterChildren({
+      childrenArray: jsDocFilter(childrenArray),
+      query,
+      hasSideNav,
+    });
     return isTranscludedContent ? (
       <MDXProvider>{filteredChildren}</MDXProvider>
     ) : (
@@ -149,8 +163,14 @@ export default ({ children, pageContext, query }) => {
   } else {
     // PrevNext
     const selectedPage = findSelectedPage(location?.pathname, siteMetadata?.subPages);
-    const selectedPageSiblings = findSelectedPageSiblings(location?.pathname, siteMetadata?.subPages);
-    const { nextPage, previousPage } = findSelectedPageNextPrev(location?.pathname, siteMetadata?.subPages);
+    const selectedPageSiblings = findSelectedPageSiblings(
+      location?.pathname,
+      siteMetadata?.subPages
+    );
+    const { nextPage, previousPage } = findSelectedPageNextPrev(
+      location?.pathname,
+      siteMetadata?.subPages
+    );
 
     // Attribution
     const contributorName = pageContext?.frontmatter?.contributor_name;
@@ -160,9 +180,13 @@ export default ({ children, pageContext, query }) => {
     const edition = pageContext?.frontmatter?.edition;
 
     // OnThisPage
-    const componentPathObj = allSitePage?.nodes.find(({ path }) => withPrefix(path) === location?.pathname);
+    const componentPathObj = allSitePage?.nodes.find(
+      ({ path }) => withPrefix(path) === location?.pathname
+    );
     const componentPath = componentPathObj?.component ?? '';
-    const tableOfContentsObj = allMdx?.nodes.find(({ fileAbsolutePath }) => fileAbsolutePath === componentPath);
+    const tableOfContentsObj = allMdx?.nodes.find(
+      ({ fileAbsolutePath }) => fileAbsolutePath === componentPath
+    );
     const tableOfContents = tableOfContentsObj?.tableOfContents ?? {};
 
     // Github
@@ -175,7 +199,9 @@ export default ({ children, pageContext, query }) => {
 
     // Breadcrumbs
     const hideBreadcrumbNav =
-      pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
+      pageContext?.frontmatter?.hideBreadcrumbNav !== undefined
+        ? pageContext.frontmatter.hideBreadcrumbNav
+        : false;
     if (typeof hideBreadcrumbNav != 'boolean') {
       throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true');
     }
@@ -191,7 +217,7 @@ export default ({ children, pageContext, query }) => {
     if (selectedPages.length) {
       const levels = selectedPages[selectedPages.length - 1].level + 1;
       for (let level = 0; level < levels; level++) {
-        const selectedSubPage = selectedPages.filter((page) => page.level === level);
+        const selectedSubPage = selectedPages.filter(page => page.level === level);
         if (selectedSubPage.length) {
           // Add the last item corresponding to the current level
           selectedSubPages.push(selectedSubPage.pop());
@@ -207,11 +233,16 @@ export default ({ children, pageContext, query }) => {
     }
 
     // Custom MDX components
-    const { filteredChildren, heroChild, resourcesChild } = filterChildren({ childrenArray, hasSideNav });
+    const { filteredChildren, heroChild, resourcesChild } = filterChildren({
+      childrenArray,
+      hasSideNav,
+    });
 
     const isDocs = heroChild === null;
-    const isDocsOverview = heroChild !== null && (!heroChild.props.variant || heroChild.props.variant === 'default');
-    const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
+    const isDocsOverview =
+      heroChild !== null && (!heroChild.props.variant || heroChild.props.variant === 'default');
+    const isDiscovery =
+      heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
 
     const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
     const hasOnThisPage =
@@ -304,28 +335,31 @@ export default ({ children, pageContext, query }) => {
                               { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
                               selectedTopPageMenu && {
                                 ...selectedTopPageMenu,
-                                href: withPrefix(selectedTopPageMenu.href)
+                                href: withPrefix(selectedTopPageMenu.href),
                               },
-                              ...selectedSubPages.map((page) => ({
+                              ...selectedSubPages.map(page => ({
                                 ...page,
-                                href: withPrefix(cleanRootFix(page.href))
-                              }))
+                                href: withPrefix(cleanRootFix(page.href)),
+                              })),
                             ]}
                           />
                         ) : (
                           <Breadcrumbs
                             pages={[
                               DEFAULT_HOME,
-                              { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
+                              {
+                                ...siteMetadata?.pages?.[0],
+                                href: withPrefix(siteMetadata?.pages?.[0]?.href),
+                              },
                               { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
                               selectedTopPageMenu && {
                                 ...selectedTopPageMenu,
-                                href: withPrefix(selectedTopPageMenu.href)
+                                href: withPrefix(selectedTopPageMenu.href),
                               },
-                              ...selectedSubPages.map((page) => ({
+                              ...selectedSubPages.map(page => ({
                                 ...page,
-                                href: withPrefix(cleanRootFix(page.href))
-                              }))
+                                href: withPrefix(cleanRootFix(page.href)),
+                              })),
                             ]}
                           />
                         )}
@@ -342,7 +376,12 @@ export default ({ children, pageContext, query }) => {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>
-                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
+                      <GitHubActions
+                        repository={repository}
+                        branch={branch}
+                        root={root}
+                        pagePath={pagePath}
+                      />
                     </div>
                   </div>
                 )}

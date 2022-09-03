@@ -8,7 +8,7 @@ module.exports = {
       'unordered(content)',
       'unordered(headings)',
       'unordered(description)',
-      'unordered(excerpt)'
+      'unordered(excerpt)',
     ],
     ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
     customRanking: ['desc(spotlight)', 'desc(words)'],
@@ -28,6 +28,6 @@ module.exports = {
     allowTyposOnNumericTokens: true,
     minProximity: 1,
     responseFields: ['*'],
-    advancedSyntax: true
-  }
-}
+    advancedSyntax: true,
+  },
+};

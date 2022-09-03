@@ -25,12 +25,14 @@ const SummaryBlock = ({
   heading,
   text,
   image,
-  buttons
+  buttons,
 }) => (
   <section
     className={classNames(className, `spectrum--${theme}`)}
     css={css`
-      height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225));
+      height: calc(
+        var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-225)
+      );
       background-color: ${background};
       position: relative;
 
@@ -78,10 +80,14 @@ const SummaryBlock = ({
             margin-bottom: var(--spectrum-global-dimension-size-300) !important;
             color: var(--spectrum-global-color-gray-900);
             margin-top: 0;
-          `
+          `,
         })}
 
-      <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['primary', 'primary']} />
+      <HeroButtons
+        buttons={buttons}
+        styles={['outline', 'fill']}
+        variants={['primary', 'primary']}
+      />
     </div>
   </section>
 );
@@ -93,7 +99,7 @@ SummaryBlock.propTypes = {
   image: PropTypes.element,
   buttons: PropTypes.element,
   variant: PropTypes.string,
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export { SummaryBlock };

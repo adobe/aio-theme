@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 const counter = {
   2: 0,
   3: 0,
-  4: 0
+  4: 0,
 };
 const alignMapping = ['flex-start', 'flex-end'];
 
@@ -75,15 +75,21 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         className="spectrum-Card spectrum-Card--sizeM"
         css={css`
           margin: 0 var(--spectrum-global-dimension-size-300);
-          width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
-          height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+          width: calc(
+            var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800)
+          );
+          height: calc(
+            var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500)
+          );
 
           &:hover {
             border-color: var(--spectrum-card-border-color, var(--spectrum-global-color-gray-200));
           }
 
           @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-            width: calc(var(--spectrum-global-dimension-size-3600) - var(--spectrum-global-dimension-size-800));
+            width: calc(
+              var(--spectrum-global-dimension-size-3600) - var(--spectrum-global-dimension-size-800)
+            );
           }
 
           @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
@@ -94,7 +100,9 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         <div
           className="spectrum-Card-body"
           css={css`
-            height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500));
+            height: calc(
+              var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500)
+            );
             overflow: auto;
             text-align: left;
           `}>
@@ -116,7 +124,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
                     height: 100%;
                     object-fit: contain;
                   }
-                `
+                `,
               })}
           </div>
           <div
@@ -175,7 +183,7 @@ ProductCard.propTypes = {
   icon: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,
-  buttons: PropTypes.element
+  buttons: PropTypes.element,
 };
 
 export { ProductCard };

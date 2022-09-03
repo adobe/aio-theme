@@ -18,11 +18,11 @@ import '@spectrum-css/icon';
 const commonProps = {
   focusable: false,
   'aria-hidden': true,
-  role: 'img'
+  role: 'img',
 };
 
 // Used by GlobalNav
-export const Adobe = (props) => (
+export const Adobe = props => (
   <svg {...props} {...commonProps} viewBox="0 0 30 26" fill="#FA0F00" aria-label="Adobe">
     <polygon points="19,0 30,0 30,26"></polygon>
     <polygon points="11.1,0 0,0 0,26"></polygon>
@@ -32,7 +32,10 @@ export const Adobe = (props) => (
 
 // Used by Picker
 export const ChevronDown = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronDown100')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronDown100')}>
     <path
       d="M4.5 13.25a1.094 1.094 0 01-.773-1.868L8.109 7 3.727 2.618A1.094 1.094 0 015.273 1.07l5.157 5.156a1.094 1.094 0 010 1.546L5.273 12.93a1.091 1.091 0 01-.773.321z"
       className="spectrum-UIIcon--large"></path>
@@ -44,7 +47,10 @@ export const ChevronDown = ({ className, ...props }) => (
 
 // Used by Breadcrumbs
 export const ChevronRightSmall = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronRight75')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-ChevronRight75')}>
     <path
       d="M3.833 11.578a1.05 1.05 0 01-.742-1.793L6.876 6 3.091 2.215A1.05 1.05 0 114.575.73l4.529 4.527a1.05 1.05 0 010 1.486L4.575 11.27a1.047 1.047 0 01-.742.308z"
       className="spectrum-UIIcon--large"></path>
@@ -171,20 +177,33 @@ export const WarningMedium = ({ className, ...props }) => (
 
 // Used by GithubActions
 export const Edit = ({ ...props }) => (
-  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS" aria-label="Edit">
+  <svg
+    {...props}
+    {...commonProps}
+    viewBox="0 0 36 36"
+    className="spectrum-Icon spectrum-Icon--sizeS"
+    aria-label="Edit">
     <path d="M33.567 8.2L27.8 2.432a1.215 1.215 0 0 0-.866-.353H26.9a1.371 1.371 0 0 0-.927.406L5.084 23.372a.99.99 0 0 0-.251.422L2.055 33.1c-.114.377.459.851.783.851a.251.251 0 0 0 .062-.007c.276-.063 7.866-2.344 9.311-2.778a.972.972 0 0 0 .414-.249l20.888-20.889a1.372 1.372 0 0 0 .4-.883 1.221 1.221 0 0 0-.346-.945zM11.4 29.316c-2.161.649-4.862 1.465-6.729 2.022l2.009-6.73z"></path>
   </svg>
 );
 
 // Used by GithubActions
 export const Bug = ({ ...props }) => (
-  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS" aria-label="Bug">
+  <svg
+    {...props}
+    {...commonProps}
+    viewBox="0 0 36 36"
+    className="spectrum-Icon spectrum-Icon--sizeS"
+    aria-label="Bug">
     <path d="M26.194 7.242A9.8 9.8 0 0 0 18 3a9.8 9.8 0 0 0-8.194 4.242A11.943 11.943 0 0 0 18 10.5a11.943 11.943 0 0 0 8.194-3.258zm-20.978-.85L2.548 7.726a18.1 18.1 0 0 0 4.581 5.114A27.459 27.459 0 0 0 6.118 18H0v3h6.045a13.6 13.6 0 0 0 2.5 6.363 15.078 15.078 0 0 0-4.5 6.16l2.7 1.35a12.052 12.052 0 0 1 3.774-5.2 11.571 11.571 0 0 0 5.981 3.185V13.5A14.982 14.982 0 0 1 5.216 6.392zM36 21v-3h-6.118a27.459 27.459 0 0 0-1.011-5.16 18.1 18.1 0 0 0 4.581-5.114l-2.668-1.334A14.982 14.982 0 0 1 19.5 13.5v19.358a11.571 11.571 0 0 0 5.979-3.185 12.052 12.052 0 0 1 3.774 5.2l2.7-1.35a15.078 15.078 0 0 0-4.5-6.16A13.6 13.6 0 0 0 29.955 21z"></path>
   </svg>
 );
 
 export const CheckMark = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-Checkmark100')}>
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-Checkmark100')}>
     <path
       d="M5.125 12.625a1.25 1.25 0 01-.96-.45L1.04 8.425a1.25 1.25 0 011.92-1.6l2.136 2.563 5.922-7.536a1.25 1.25 0 111.964 1.545l-6.874 8.75a1.25 1.25 0 01-.965.478z"
       className="spectrum-UIIcon--large"></path>
@@ -195,7 +214,11 @@ export const CheckMark = ({ className, ...props }) => (
 );
 
 export const TripleGripper = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS">
+  <svg
+    {...props}
+    {...commonProps}
+    viewBox="0 0 36 36"
+    className="spectrum-Icon spectrum-Icon--sizeS">
     <rect height="4" rx="1" ry="1" width="28" x="4" y="16"></rect>
     <rect height="4" rx="1" ry="1" width="28" x="4" y="6"></rect>
     <rect height="4" rx="1" ry="1" width="28" x="4" y="26"></rect>

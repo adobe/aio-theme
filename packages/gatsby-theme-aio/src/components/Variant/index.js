@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-export const Variant = (props) => {
+export const Variant = props => {
   const queryParams = new URLSearchParams(props.query);
   const keys = queryParams.keys();
 

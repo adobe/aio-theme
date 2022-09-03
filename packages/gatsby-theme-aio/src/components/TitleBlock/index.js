@@ -22,7 +22,8 @@ const TitleBlock = ({ className, heading, text, theme = 'lightest' }) => (
     className={classNames(className, `spectrum--${theme}`)}
     css={css`
       background: var(--spectrum-global-color-gray-100);
-      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
+      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200)
+        0;
       text-align: center;
 
       @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
@@ -35,7 +36,7 @@ const TitleBlock = ({ className, heading, text, theme = 'lightest' }) => (
         max-width: calc(
           ${layoutColumns(12, [
             'var(--spectrum-global-dimension-size-4600)',
-            'var(--spectrum-global-dimension-size-150)'
+            'var(--spectrum-global-dimension-size-150)',
           ])}
         );
       `}>
@@ -55,7 +56,7 @@ const TitleBlock = ({ className, heading, text, theme = 'lightest' }) => (
 
       {text &&
         cloneElement(text, {
-          className: 'spectrum-Body spectrum-Body--sizeL'
+          className: 'spectrum-Body spectrum-Body--sizeL',
         })}
     </div>
   </section>
@@ -64,7 +65,7 @@ const TitleBlock = ({ className, heading, text, theme = 'lightest' }) => (
 TitleBlock.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export { TitleBlock };

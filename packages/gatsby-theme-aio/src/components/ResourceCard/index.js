@@ -18,7 +18,7 @@ import {
   layoutColumns,
   getExternalLinkProps,
   TABLET_SCREEN_WIDTH,
-  DESKTOP_SCREEN_WIDTH
+  DESKTOP_SCREEN_WIDTH,
 } from '../../utils';
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
@@ -26,7 +26,7 @@ import PropTypes from 'prop-types';
 
 const counter = {
   2: 0,
-  3: 0
+  3: 0,
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
@@ -72,7 +72,8 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           display: ${width === '100%' ? 'block' : 'table-cell'};
           width: ${width.replace('%', 'vw')};
           background: var(--spectrum-global-color-gray-100);
-          padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-200);
+          padding: var(--spectrum-global-dimension-size-300)
+            var(--spectrum-global-dimension-size-200);
           box-sizing: border-box;
 
           @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
@@ -123,7 +124,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
                   .gatsby-resp-image-image {
                     object-fit: cover;
                   }
-                `
+                `,
               })}
           </div>
           <div
@@ -176,7 +177,9 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           </div>
         </GatsbyLink>
       </section>
-      {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? <div aria-hidden="true" /> : null}
+      {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? (
+        <div aria-hidden="true" />
+      ) : null}
     </>
   );
 };
@@ -187,7 +190,7 @@ ResourceCard.propTypes = {
   link: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,
-  image: PropTypes.element
+  image: PropTypes.element,
 };
 
 export { ResourceCard };

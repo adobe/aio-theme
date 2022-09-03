@@ -16,7 +16,7 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { YouTube } from 'mdx-embed';
 
-const getYouTubeId = (url) => {
+const getYouTubeId = url => {
   if (url.hostname.startsWith('youtube.com') || url.hostname.startsWith('www.youtube.com')) {
     const queryParams = new URLSearchParams(url.search);
     return queryParams.get('v');
@@ -59,7 +59,7 @@ const Media = ({ video, ...props }) => {
 };
 
 Media.propTypes = {
-  video: PropTypes.element
+  video: PropTypes.element,
 };
 
 export { Media };

@@ -36,13 +36,21 @@ const AlertDialog = ({ isOpen, setIsOpen, title, children }) => (
       `}
       className={classNames(['spectrum-Modal-wrapper', { 'is-open': isOpen }])}>
       <div className={classNames(['spectrum-Modal', { 'is-open': isOpen }])}>
-        <section className="spectrum-Dialog spectrum-Dialog--medium" role="alertdialog" tabIndex="-1" aria-modal="true">
+        <section
+          className="spectrum-Dialog spectrum-Dialog--medium"
+          role="alertdialog"
+          tabIndex="-1"
+          aria-modal="true">
           <div className="spectrum-Dialog-grid">
             <h1 className="spectrum-Dialog-heading">{title}</h1>
             <Divider size="M" className="spectrum-Dialog-divider" />
             <section className="spectrum-Dialog-content">{children}</section>
             <div className="spectrum-ButtonGroup spectrum-Dialog-buttonGroup spectrum-Dialog-buttonGroup--noFooter">
-              <Button elementType="button" variant="accent" style="fill" onClick={() => setIsOpen(false)}>
+              <Button
+                elementType="button"
+                variant="accent"
+                style="fill"
+                onClick={() => setIsOpen(false)}>
                 Close
               </Button>
             </div>
@@ -56,7 +64,7 @@ const AlertDialog = ({ isOpen, setIsOpen, title, children }) => (
 AlertDialog.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export default AlertDialog;

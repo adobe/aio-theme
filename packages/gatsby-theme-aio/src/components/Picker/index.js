@@ -28,7 +28,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const id = nextId();
 
   useEffect(() => {
-    const onClick = (event) => {
+    const onClick = event => {
       if (!popover.current.contains(event.target)) {
         setOpenMenu(false);
       }
@@ -40,7 +40,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   }, []);
 
   useEffect(() => {
-    if (options.find((option) => option.selected)) {
+    if (options.find(option => option.selected)) {
       setHasSelection(true);
     }
   }, [options]);
@@ -62,13 +62,13 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
         aria-haspopup="listbox"
         aria-expanded={openMenu}
         aria-controls={id}
-        onClick={(event) => {
+        onClick={event => {
           event.stopPropagation();
           event.nativeEvent.stopImmediatePropagation();
-          setOpenMenu((openMenu) => !openMenu);
+          setOpenMenu(openMenu => !openMenu);
         }}>
         <span className={classNames('spectrum-Picker-label', { 'is-placeholder': label })}>
-          {label || options.find((option) => option.selected)?.title || options[0].title}
+          {label || options.find(option => option.selected)?.title || options[0].title}
         </span>
         <ChevronDown className="spectrum-Picker-menuIcon" />
       </button>
@@ -82,7 +82,7 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
                   setOptions(
                     options.map(({ selected, ...option }, k) => ({
                       selected: k === i,
-                      ...option
+                      ...option,
                     }))
                   );
 
@@ -124,13 +124,13 @@ Picker.propTypes = {
   isQuiet: PropTypes.bool,
   items: PropTypes.array,
   width: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 PickerButton.propTypes = {
   isQuiet: PropTypes.bool,
   isOpen: PropTypes.bool,
-  ariaControls: PropTypes.string
+  ariaControls: PropTypes.string,
 };
 
 export { Picker, PickerButton };

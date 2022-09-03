@@ -15,123 +15,130 @@ import { css } from '@emotion/react';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, MOBILE_SCREEN_WIDTH } from '../../utils';
+import {
+  layoutColumns,
+  getExternalLinkProps,
+  DESKTOP_SCREEN_WIDTH,
+  MOBILE_SCREEN_WIDTH,
+} from '../../utils';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
-    path: '/apis'
+    path: '/apis',
   },
   APIs: [
     {
       title: 'Adobe Creative Cloud',
-      path: '/creative-cloud'
+      path: '/creative-cloud',
     },
     {
       title: 'Adobe Experience Platform',
-      path: '/experience-platform-apis'
+      path: '/experience-platform-apis',
     },
     {
       title: 'Adobe Document Cloud',
-      path: '/document-services/homepage'
-    }
+      path: '/document-services/homepage',
+    },
   ],
   services: [
     {
       title: 'Adobe Cloud Manager',
-      path: '/experience-cloud/cloud-manager'
+      path: '/experience-cloud/cloud-manager',
     },
     {
       title: 'Adobe Analytics',
-      path: '/analytics-apis/docs/2.0'
+      path: '/analytics-apis/docs/2.0',
     },
     {
       title: 'App Builder',
-      path: '/app-builder'
-    }
+      path: '/app-builder',
+    },
   ],
   community: [
     {
       title: 'Adobe Tech Blog',
-      path: 'https://medium.com/adobetech'
+      path: 'https://medium.com/adobetech',
     },
     {
       title: 'Adobe on GitHub',
-      path: 'https://github.com/adobe'
+      path: 'https://github.com/adobe',
     },
     {
       title: 'Adobe Developer on YouTube',
-      path: 'https://youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ'
+      path: 'https://youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ',
     },
     {
       title: 'Adobe Developer on Twitter',
-      path: 'https://twitter.com/adobedevs'
+      path: 'https://twitter.com/adobedevs',
     },
     {
       title: 'Community Forums',
-      path: 'https://adobe.com/communities/index.html'
-    }
+      path: 'https://adobe.com/communities/index.html',
+    },
   ],
   support: [
     {
       title: 'Adobe Developer support',
-      path: '/developer-support'
+      path: '/developer-support',
     },
     {
       title: 'Adobe Product support',
-      path: 'https://helpx.adobe.com/contact/enterprise-support.html'
-    }
+      path: 'https://helpx.adobe.com/contact/enterprise-support.html',
+    },
   ],
   developer: [
     {
       title: 'Adobe Developer Console',
-      path: '/developer-console'
+      path: '/developer-console',
     },
     {
       title: 'Open source at Adobe',
-      path: '/open'
+      path: '/open',
     },
     {
       title: 'Download SDKs',
-      path: '/console/downloads'
+      path: '/console/downloads',
     },
     {
       title: 'Authentication',
-      path: '/developer-console/docs/guides/authentication'
+      path: '/developer-console/docs/guides/authentication',
     },
     {
       title: 'Careers',
-      path: 'https://adobe.com/careers.html'
-    }
+      path: 'https://adobe.com/careers.html',
+    },
   ],
   legal: [
     {
       title: 'Privacy',
-      path: 'https://adobe.com/privacy.html'
+      path: 'https://adobe.com/privacy.html',
     },
     {
       title: 'Terms of Use',
-      path: 'https://adobe.com/legal/terms.html'
+      path: 'https://adobe.com/legal/terms.html',
     },
     {
-      title: 'Cookie preferences'
+      title: 'Cookie preferences',
     },
     {
       title: 'Do not sell my personal information',
-      path: 'https://adobe.com/privacy/ca-rights.html'
+      path: 'https://adobe.com/privacy/ca-rights.html',
     },
     {
       title: 'AdChoices',
-      path: 'https://adobe.com/privacy/opt-out.html#interest-based-ads'
-    }
-  ]
+      path: 'https://adobe.com/privacy/opt-out.html#interest-based-ads',
+    },
+  ],
 };
 
 const OPEN_PRIVACY_ID = 'openPrivacy';
 
-const Heading = ({ children }) => <h3 className="spectrum-Heading spectrum-Heading--sizeXS">{children}</h3>;
+const Heading = ({ children }) => (
+  <h3 className="spectrum-Heading spectrum-Heading--sizeXS">{children}</h3>
+);
 
 const List = ({ children }) => <ul className="spectrum-Body spectrum-Body--sizeS">{children}</ul>;
 
@@ -442,7 +449,12 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID} href="#" aria-hidden="true" focusable="false" tabindex="-1"></a>
+                        <a
+                          id={OPEN_PRIVACY_ID}
+                          href="#"
+                          aria-hidden="true"
+                          focusable="false"
+                          tabindex="-1"></a>
                       </Link>
                     </li>
                   );
@@ -481,7 +493,7 @@ const Footer = ({ hasSideNav = false }) => (
 );
 
 Footer.propTypes = {
-  hasSideNav: PropTypes.bool
+  hasSideNav: PropTypes.bool,
 };
 
 export { Footer };

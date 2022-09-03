@@ -22,8 +22,8 @@ import '@spectrum-css/typography';
 const readTableOfContents = (headings, setTableOfContentsItems) => {
   const newTableOfContentsItems = [
     {
-      items: []
-    }
+      items: [],
+    },
   ];
 
   headings.forEach((heading, index) => {
@@ -40,13 +40,13 @@ const readTableOfContents = (headings, setTableOfContentsItems) => {
           newTableOfContentsItems.push({
             title,
             url,
-            items: []
+            items: [],
           });
         }
       } else if (heading.tagName === 'H3') {
         newTableOfContentsItems[newTableOfContentsItems.length - 1].items.push({
           title,
-          url
+          url,
         });
       }
     }
@@ -57,7 +57,9 @@ const readTableOfContents = (headings, setTableOfContentsItems) => {
 
 const OnThisPage = ({ tableOfContents }) => {
   const [activeHeadingLink, setActiveHeadingLink] = useState('');
-  const [tableOfContentsItems, setTableOfContentsItems] = useState(tableOfContents?.items?.[0]?.items);
+  const [tableOfContentsItems, setTableOfContentsItems] = useState(
+    tableOfContents?.items?.[0]?.items
+  );
 
   // To support transclusion with headings
   useEffect(() => {
@@ -68,13 +70,13 @@ const OnThisPage = ({ tableOfContents }) => {
     } else {
       const allHeadings2and3Ids = [];
 
-      tableOfContentsItems.forEach((heading2) => {
+      tableOfContentsItems.forEach(heading2 => {
         if (heading2.url) {
           allHeadings2and3Ids.push(heading2.url.substr(1));
         }
 
         if (heading2.items) {
-          heading2.items.forEach((heading3) => {
+          heading2.items.forEach(heading3 => {
             if (heading3.url) {
               allHeadings2and3Ids.push(heading3.url.substr(1));
             }
@@ -82,7 +84,7 @@ const OnThisPage = ({ tableOfContents }) => {
         }
       });
 
-      const found = Array.from(headings).some((heading) => {
+      const found = Array.from(headings).some(heading => {
         // Identify headings with anchors
         if (heading.previousElementSibling && heading.previousElementSibling.id) {
           return !allHeadings2and3Ids.includes(heading.previousElementSibling.id);
@@ -105,9 +107,9 @@ const OnThisPage = ({ tableOfContents }) => {
     const findActiveHeadingLink = () => {
       let activeHref = null;
 
-      headingLinks.some((headingLink) => {
+      headingLinks.some(headingLink => {
         const href = headingLink.getAttribute('href');
-        return activeHeadingLinks.some((activeSection) => {
+        return activeHeadingLinks.some(activeSection => {
           if (activeSection === href) {
             activeHref = href;
             return true;
@@ -120,11 +122,11 @@ const OnThisPage = ({ tableOfContents }) => {
       return activeHref;
     };
 
-    headingLinks.forEach((headingLink) => {
-      const observer = new window.IntersectionObserver((entries) => {
+    headingLinks.forEach(headingLink => {
+      const observer = new window.IntersectionObserver(entries => {
         for (const entry of entries) {
           const href = headingLink.getAttribute('href');
-          activeHeadingLinks = activeHeadingLinks.filter((activeHref) => activeHref !== href);
+          activeHeadingLinks = activeHeadingLinks.filter(activeHref => activeHref !== href);
 
           if (entry.isIntersecting) {
             activeHeadingLinks.push(href);
@@ -142,7 +144,7 @@ const OnThisPage = ({ tableOfContents }) => {
     });
 
     return () => {
-      headingLinks.forEach((i) => observers?.[i]?.disconnect());
+      headingLinks.forEach(i => observers?.[i]?.disconnect());
     };
   }, []);
 
@@ -186,7 +188,8 @@ const OnThisPage = ({ tableOfContents }) => {
                 `}>
                 {section.items.map((subSection, subIndex) => (
                   <li key={subIndex}>
-                    <span className={classNames({ 'is-active': activeHeadingLink === subSection.url })}>
+                    <span
+                      className={classNames({ 'is-active': activeHeadingLink === subSection.url })}>
                       <Link isQuiet={true}>
                         <a href={subSection.url}>{subSection.title}</a>
                       </Link>
@@ -207,7 +210,9 @@ const OnThisPage = ({ tableOfContents }) => {
         position: sticky;
         bottom: 0;
         margin-top: var(--spectrum-global-dimension-size-1600);
-        top: calc(var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400));
+        top: calc(
+          var(--spectrum-global-dimension-size-800) + var(--spectrum-global-dimension-size-400)
+        );
         left: ${layoutColumns(12)};
         width: ${layoutColumns(2)};
         margin-left: var(--spectrum-global-dimension-size-400);
@@ -227,7 +232,7 @@ const OnThisPage = ({ tableOfContents }) => {
 };
 
 OnThisPage.propTypes = {
-  tableOfContents: PropTypes.object
+  tableOfContents: PropTypes.object,
 };
 
 export { OnThisPage };

@@ -19,12 +19,18 @@ import {
   Label as TabsItemLabel,
   TabsIndicator,
   positionIndicator,
-  animateIndicator
+  animateIndicator,
 } from '../Tabs';
 import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import PropTypes from 'prop-types';
-import { MOBILE_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH, SIDENAV_WIDTH, SEARCH_PARAMS, isExternalLink } from '../../utils';
+import {
+  MOBILE_SCREEN_WIDTH,
+  DESKTOP_SCREEN_WIDTH,
+  SIDENAV_WIDTH,
+  SEARCH_PARAMS,
+  isExternalLink,
+} from '../../utils';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/textfield';
@@ -41,9 +47,9 @@ const SEARCH_MAX_RESULTS = 100;
 
 // Replace any character in a given unicode range with its html entity equivalent
 // Source: https://stackoverflow.com/a/18750001
-const encodeHTML = (html) =>
+const encodeHTML = html =>
   html
-    .replace(/[\u00A0-\u9999<>\&]/g, (i) => '&#' + i.charCodeAt(0) + ';')
+    .replace(/[\u00A0-\u9999<>\&]/g, i => '&#' + i.charCodeAt(0) + ';')
     .replace(/&#60;mark&#62;/g, '<mark>')
     .replace(/&#60;em&#62;/g, '<em>')
     .replace(/&#60;\/mark&#62;/g, '</mark>')
@@ -56,7 +62,7 @@ const setQueryStringParameter = (name, value) => {
   window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
 };
 
-const mapToIndexName = (searchIndex) => searchIndex.map((index) => Object.keys(index)[0]);
+const mapToIndexName = searchIndex => searchIndex.map(index => Object.keys(index)[0]);
 
 const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   const queries = [];
@@ -66,18 +72,23 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   }
   // Or prioritize searchIndex
   else {
-    const searchIndexNames = mapToIndexName(searchIndex).filter((index) => index !== SEARCH_INDEX_ALL);
-    searchIndex = [...searchIndexNames, ...indexAll.filter((index) => !searchIndexNames.includes(index))];
+    const searchIndexNames = mapToIndexName(searchIndex).filter(
+      index => index !== SEARCH_INDEX_ALL
+    );
+    searchIndex = [
+      ...searchIndexNames,
+      ...indexAll.filter(index => !searchIndexNames.includes(index)),
+    ];
   }
 
-  searchIndex.forEach((indexName) => {
+  searchIndex.forEach(indexName => {
     queries.push({
       indexName,
       query,
       params: {
         hitsPerPage: Math.ceil(SUGGESTION_MAX_RESULTS / searchIndex.length),
-        attributesToRetrieve: ['objectID', 'url', 'title', 'description']
-      }
+        attributesToRetrieve: ['objectID', 'url', 'title', 'description'],
+      },
     });
   });
 
@@ -92,7 +103,7 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
   }
 
   const queries = [];
-  selectedIndex.forEach((indexName) => {
+  selectedIndex.forEach(indexName => {
     queries.push({
       indexName,
       query,
@@ -100,8 +111,8 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
         facets: [SEARCH_KEYWORDS],
         attributesToRetrieve: ['objectID', 'url'],
         hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
-        filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
-      }
+        filters: keywords.map(keyword => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND '),
+      },
     });
   });
 
@@ -113,11 +124,11 @@ const mapSearchResults = (hits, results) => {
     // TODO corrupted record url check
     if (!isExternalLink(url)) {
       // Verify url is unique
-      if (!results.find((result) => result.url === url)) {
+      if (!results.find(result => result.url === url)) {
         results.push({
           objectID,
           url,
-          _highlightResult
+          _highlightResult,
         });
       }
     }
@@ -126,8 +137,8 @@ const mapSearchResults = (hits, results) => {
 
 const mapKeywordResults = (facets, results) => {
   if (facets[SEARCH_KEYWORDS]) {
-    Object.keys(facets[SEARCH_KEYWORDS]).forEach((keyword) => {
-      const found = results.find((result) => Object.keys(result)[0] === keyword);
+    Object.keys(facets[SEARCH_KEYWORDS]).forEach(keyword => {
+      const found = results.find(result => Object.keys(result)[0] === keyword);
       if (found) {
         // Increase keyword count
         found[keyword] += facets[SEARCH_KEYWORDS][keyword];
@@ -138,7 +149,15 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
-const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+const Search = ({
+  algolia,
+  searchIndex,
+  indexAll,
+  showSearch,
+  setShowSearch,
+  searchButtonId,
+  isIFramed,
+}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
@@ -158,7 +177,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   // Don't animate the tab indicator by default
   const [isAnimated, setIsAnimated] = useState(false);
 
-  const getSelectedTabIndex = () => searchIndex[mapToIndexName(searchIndex).indexOf(selectedIndex)].tabRef;
+  const getSelectedTabIndex = () =>
+    searchIndex[mapToIndexName(searchIndex).indexOf(selectedIndex)].tabRef;
 
   const positionSelectedTabIndicator = (selectedTab = getSelectedTabIndex()) => {
     if (showSearchResults && selectedTab?.current) {
@@ -170,7 +190,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const setTargetOrigin = () => {
     const parentURL = document.referrer;
 
-    if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
+    if (
+      parentURL.indexOf('localhost') >= 0 ||
+      parentURL.indexOf('developer-stage.adobe') >= 0 ||
+      parentURL.indexOf('hlx.page') >= 0 ||
+      parentURL.indexOf('hlx.live') >= 0 ||
+      parentURL.indexOf('developer.adobe') >= 0
+    ) {
       return parentURL;
     } else {
       return false;
@@ -185,7 +211,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setQueryStringParameter(SEARCH_PARAMS.index, selectedIndex);
 
       if (isIFramed) {
-        const message = JSON.stringify({ 'query': searchQuery, 'keywords': selectedKeywords, 'index': selectedIndex });
+        const message = JSON.stringify({
+          query: searchQuery,
+          keywords: selectedKeywords,
+          index: selectedIndex,
+        });
         const targetOrigin = setTargetOrigin();
         if (targetOrigin) {
           parent.postMessage(message, targetOrigin);
@@ -195,7 +225,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       positionSelectedTabIndicator();
       setShowSearchResults(true);
 
-      const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
+      const search = await searchIndexes(
+        algolia,
+        searchQuery,
+        selectedIndex,
+        indexAll,
+        selectedKeywords
+      );
 
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
@@ -210,7 +246,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
     }
-
   };
 
   useEffect(() => {
@@ -274,7 +309,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     const onClick = ({ target }) => {
       setIsSuggestionsOpen(false);
 
-      if (searchRef.current && !searchRef.current.contains(target) && target.id !== searchButtonId) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(target) &&
+        target.id !== searchButtonId
+      ) {
         setShowSearch(false);
       }
     };
@@ -302,22 +341,22 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     useEffect(() => {
       if (suggestionsRef) {
         if (searchSuggestionResults.length > 0) {
-          suggestionsRef.current.querySelectorAll("a").forEach(link => {
-            link.target = "_top";
+          suggestionsRef.current.querySelectorAll('a').forEach(link => {
+            link.target = '_top';
           });
         }
       }
-    }, [searchSuggestionResults])
+    }, [searchSuggestionResults]);
 
     useEffect(() => {
       if (searchResultsRef) {
         if (searchResults.length > 0) {
-          searchResultsRef.current.querySelectorAll("a").forEach(link => {
-            link.target = "_top";
+          searchResultsRef.current.querySelectorAll('a').forEach(link => {
+            link.target = '_top';
           });
         }
       }
-    }, [searchResults])
+    }, [searchResults]);
   }
 
   return (
@@ -326,7 +365,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         ref={searchRef}
         css={css`
           position: fixed;
-          top: ${isIFramed ? "0" : "var(--spectrum-global-dimension-size-800)"};
+          top: ${isIFramed ? '0' : 'var(--spectrum-global-dimension-size-800)'};
           left: 0;
           right: 0;
           ${showSearchResults && 'bottom: 0;'}
@@ -352,7 +391,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               width: 100%;
             `}
             className="spectrum-Search"
-            onSubmit={async (event) => {
+            onSubmit={async event => {
               event.preventDefault();
 
               await search();
@@ -382,14 +421,19 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     }
                   }
                 }}
-                onChange={async (e) => {
+                onChange={async e => {
                   const query = e.target.value;
                   setSearchQuery(query);
 
                   if (query.length && !searchResults.length) {
                     setShowClear(true);
 
-                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll);
+                    const suggestions = await searchSuggestions(
+                      algolia,
+                      query,
+                      searchIndex,
+                      indexAll
+                    );
 
                     if (suggestions?.results?.length) {
                       const results = [];
@@ -451,7 +495,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               <Menu
                 ref={suggestionsRef}
                 onKeyDown={({ key }) => {
-                  if (suggestionsRef?.current && suggestionsRef.current.contains(document.activeElement)) {
+                  if (
+                    suggestionsRef?.current &&
+                    suggestionsRef.current.contains(document.activeElement)
+                  ) {
                     if (key === 'ArrowDown') {
                       const nextSibling = document.activeElement.nextElementSibling;
                       if (nextSibling) {
@@ -469,10 +516,14 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     }
                   }
                 }}>
-                {searchSuggestionResults.map((searchSuggestion) => {
+                {searchSuggestionResults.map(searchSuggestion => {
                   const to = `${location.origin}${searchSuggestion.url}`;
-                  const title = searchSuggestion._highlightResult.title?.value ? searchSuggestion._highlightResult.title.value : "";
-                  const content = searchSuggestion._highlightResult.content?.value ? searchSuggestion._highlightResult.content.value : "";
+                  const title = searchSuggestion._highlightResult.title?.value
+                    ? searchSuggestion._highlightResult.title.value
+                    : '';
+                  const content = searchSuggestion._highlightResult.content?.value
+                    ? searchSuggestion._highlightResult.content.value
+                    : '';
 
                   return (
                     <MenuItem key={searchSuggestion.objectID} href={to}>
@@ -489,7 +540,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                         `}>
                         <strong
                           dangerouslySetInnerHTML={{
-                            __html: encodeHTML(title)
+                            __html: encodeHTML(title),
                           }}
                         />
 
@@ -503,7 +554,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: encodeHTML(content)
+                            __html: encodeHTML(content),
                           }}
                         />
                       </div>
@@ -589,12 +640,14 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                         key={i}
                         isSelected={selectedKeywords.includes(keyword)}
                         value={keyword}
-                        onChange={(checked) => {
+                        onChange={checked => {
                           if (checked) {
-                            setSelectedKeywords((selectedKeywords) => [...selectedKeywords, keyword]);
+                            setSelectedKeywords(selectedKeywords => [...selectedKeywords, keyword]);
                           } else {
                             setSelectedKeywords(
-                              selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
+                              selectedKeywords.filter(
+                                selectedKeyword => selectedKeyword !== keyword
+                              )
                             );
                           }
                         }}>
@@ -604,7 +657,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     );
                   })
                 ) : (
-                  <div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>
+                  <div className="spectrum-Body spectrum-Body--sizeS">
+                    No filter options available
+                  </div>
                 )}
               </div>
             </div>
@@ -621,7 +676,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   const indexName = Object.keys(index)[0];
                   const indexLabel = index[indexName];
 
-                  const setTabRef = (element) => {
+                  const setTabRef = element => {
                     index.tabRef = { current: element };
                   };
 
@@ -648,7 +703,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   ref={searchResultsRef}
                   css={css`
                     height: calc(
-                      100% - var(--spectrum-global-dimension-size-800) - var(--spectrum-global-dimension-size-800) -
+                      100% - var(--spectrum-global-dimension-size-800) -
+                        var(--spectrum-global-dimension-size-800) -
                         var(--spectrum-global-dimension-size-200)
                     );
                     overflow: auto;
@@ -658,10 +714,14 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       overflow: inherit;
                     }
                   `}>
-                  {searchResults.map((searchResult) => {
+                  {searchResults.map(searchResult => {
                     const to = `${location.origin}${searchResult.url}`;
-                    const title = searchResult._highlightResult.title?.value ? searchResult._highlightResult.title.value : "";
-                    const content = searchResult._highlightResult.content?.value ? searchResult._highlightResult.content.value : "";
+                    const title = searchResult._highlightResult.title?.value
+                      ? searchResult._highlightResult.title.value
+                      : '';
+                    const content = searchResult._highlightResult.content?.value
+                      ? searchResult._highlightResult.content.value
+                      : '';
 
                     return (
                       <div
@@ -684,7 +744,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           <AnchorLink to={to}>
                             <span
                               dangerouslySetInnerHTML={{
-                                __html: encodeHTML(title)
+                                __html: encodeHTML(title),
                               }}
                             />
                           </AnchorLink>
@@ -766,7 +826,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           css={css`
             position: fixed;
             z-index: 1;
-            top: ${isIFramed ? "var(--spectrum-global-dimension-size-800)" : "calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800))"};
+            top: ${isIFramed
+              ? 'var(--spectrum-global-dimension-size-800)'
+              : 'calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800))'};
             bottom: 0;
             left: 0;
             right: 0;
@@ -785,7 +847,7 @@ Search.propTypes = {
   indexAll: PropTypes.array,
   showSearch: PropTypes.bool,
   setShowSearch: PropTypes.func,
-  searchButtonId: PropTypes.string
+  searchButtonId: PropTypes.string,
 };
 
 export { Search };

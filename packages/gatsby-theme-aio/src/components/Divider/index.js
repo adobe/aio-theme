@@ -23,7 +23,7 @@ const Divider = ({ className, size, orientation = 'horizontal', ...props }) => (
       'spectrum-Divider',
       `spectrum-Divider--size${size}`,
       { 'spectrum-Divider--vertical': orientation === 'vertical' },
-      className
+      className,
     ])}
     {...props}
   />
@@ -31,7 +31,7 @@ const Divider = ({ className, size, orientation = 'horizontal', ...props }) => (
 
 Divider.propTypes = {
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-  size: PropTypes.oneOf(['S', 'M', 'L'])
+  size: PropTypes.oneOf(['S', 'M', 'L']),
 };
 
 export { Divider };

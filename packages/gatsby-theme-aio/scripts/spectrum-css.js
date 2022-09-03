@@ -27,7 +27,7 @@ const wrap = (file, identifier, wrapper) => {
         file,
         content
           .split('\n')
-          .map((line) => {
+          .map(line => {
             if (line.startsWith(identifier)) {
               applyWrapper = true;
               return wrapper(line);
@@ -45,5 +45,13 @@ const wrap = (file, identifier, wrapper) => {
   } catch (e) {}
 };
 
-wrap(large, '.spectrum--large {', (content) => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}}`);
-wrap(icon, '.spectrum--large', (content) => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}`);
+wrap(
+  large,
+  '.spectrum--large {',
+  content => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}}`
+);
+wrap(
+  icon,
+  '.spectrum--large',
+  content => `@media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {${content}`
+);

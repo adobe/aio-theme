@@ -26,7 +26,7 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, ..
     <Element
       {...props}
       className={classNames(className, 'spectrum-ActionButton', 'spectrum-ActionButton--sizeM', {
-        'spectrum-ActionButton--quiet': isQuiet
+        'spectrum-ActionButton--quiet': isQuiet,
       })}>
       {children}
     </Element>
@@ -35,7 +35,7 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, ..
 
 ActionButton.propTypes = {
   isQuiet: PropTypes.bool,
-  elementType: PropTypes.string
+  elementType: PropTypes.string,
 };
 
 const Text = ({ children }) => (

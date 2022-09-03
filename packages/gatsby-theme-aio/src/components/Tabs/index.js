@@ -22,7 +22,7 @@ import {
   MOBILE_SCREEN_WIDTH,
   DESKTOP_SCREEN_WIDTH,
   TABLET_SCREEN_WIDTH,
-  layoutColumns
+  layoutColumns,
 } from '../../utils';
 
 const positionIndicator = (indicator, selectedTab) => {
@@ -37,18 +37,26 @@ const animateIndicator = (indicator, animate) => {
 const setTabItemIcon = (child, className, iconSize) => {
   if (child?.props?.children?.props?.mdxType === 'img') {
     return (
-      <IconImage image={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />
+      <IconImage
+        image={child}
+        className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)}
+      />
     );
   }
-  return <Icons icon={child} className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)} />;
+  return (
+    <Icons
+      icon={child}
+      className={classNames(className, `spectrum-Icon spectrum-Icon-size${iconSize}`)}
+    />
+  );
 };
 
 const mobileMinWidth = '480px';
 
-const setImageLoading = (child) => {
+const setImageLoading = child => {
   if (child?.props?.mdxType === 'img') {
     return cloneElement(child, {
-      loading: 'eager'
+      loading: 'eager',
     });
   }
   return child;
@@ -71,7 +79,7 @@ const IconImage = ({ image = '', styles = '' }) => {
             object-fit: contain;
           }
           ${styles}
-        `
+        `,
       })
     : null;
 };
@@ -90,13 +98,16 @@ const Icons = ({ icon, styles }) => {
             object-fit: contain;
           }
           ${styles}
-        `
+        `,
       })
     : null;
 };
 
 const Tabs = forwardRef(
-  ({ orientation = 'horizontal', isQuiet = true, children, className, onFontsReady, ...props }, ref) => {
+  (
+    { orientation = 'horizontal', isQuiet = true, children, className, onFontsReady, ...props },
+    ref
+  ) => {
     useEffect(() => {
       // Font affects positioning of the Tab indicator
       document.fonts.ready.then(() => {
@@ -110,9 +121,15 @@ const Tabs = forwardRef(
         {...props}
         role="tablist"
         aria-orientation={orientation}
-        className={classNames(className, 'spectrum-Tabs', 'spectrum-Tabs--sizeM', `spectrum-Tabs--${orientation}`, {
-          'spectrum-Tabs--quiet': isQuiet
-        })}>
+        className={classNames(
+          className,
+          'spectrum-Tabs',
+          'spectrum-Tabs--sizeM',
+          `spectrum-Tabs--${orientation}`,
+          {
+            'spectrum-Tabs--quiet': isQuiet,
+          }
+        )}>
         {children}
       </div>
     );
@@ -120,7 +137,19 @@ const Tabs = forwardRef(
 );
 
 const Item = forwardRef(
-  ({ elementType = 'div', isSelected = false, className, children, icon, orientation, label, ...props }, ref) => {
+  (
+    {
+      elementType = 'div',
+      isSelected = false,
+      className,
+      children,
+      icon,
+      orientation,
+      label,
+      ...props
+    },
+    ref
+  ) => {
     const Element = elementType;
     const id = nextId();
     return (
@@ -131,7 +160,21 @@ const Item = forwardRef(
         aria-selected={isSelected}
         aria-controls={id}
         className={classNames(className, 'spectrum-Tabs-item', { 'is-selected': isSelected })}>
-        {icon ? <TabItemIcon icon={icon} isSelected={isSelected} css={orientation === 'horizontal' ? css`width:inherit !important; align-self:flex-start;` : css`align-self: flex-start;`}></TabItemIcon> : null}
+        {icon ? (
+          <TabItemIcon
+            icon={icon}
+            isSelected={isSelected}
+            css={
+              orientation === 'horizontal'
+                ? css`
+                    width: inherit !important;
+                    align-self: flex-start;
+                  `
+                : css`
+                    align-self: flex-start;
+                  `
+            }></TabItemIcon>
+        ) : null}
         {label ? <Label> {label} </Label> : null}
         {children}
       </Element>
@@ -140,7 +183,10 @@ const Item = forwardRef(
 );
 
 const TabItemIcon = forwardRef(
-  ({ elementType = 'div', icon, isSelected, className, children, iconSize = 'M', ...props }, ref) => {
+  (
+    { elementType = 'div', icon, isSelected, className, children, iconSize = 'M', ...props },
+    ref
+  ) => {
     const Element = elementType;
     return (
       <Element
@@ -172,41 +218,43 @@ const TabsIndicator = forwardRef(({ className, ...props }, ref) => {
 
 const Label = ({ children }) => <span className="spectrum-Tabs-itemLabel">{children}</span>;
 
-const TabView = forwardRef(({ elementType = 'div', isHidden, className, children, ...props }, ref) => {
-  const Element = elementType;
-  return (
-    <Element {...props} ref={ref} hidden={isHidden} className={classNames(className)}>
-      {children}
-    </Element>
-  );
-});
+const TabView = forwardRef(
+  ({ elementType = 'div', isHidden, className, children, ...props }, ref) => {
+    const Element = elementType;
+    return (
+      <Element {...props} ref={ref} hidden={isHidden} className={classNames(className)}>
+        {children}
+      </Element>
+    );
+  }
+);
 
 const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...props }) => {
   const [tabs] = useState([]);
   const selectedTabIndicator = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState({
-    tab: 0
+    tab: 0,
   });
 
   const propKeys = Object.keys(props);
-  let filteredMenuProps = propKeys.filter((key) => key.startsWith('heading')).map((menu) => menu);
+  let filteredMenuProps = propKeys.filter(key => key.startsWith('heading')).map(menu => menu);
 
   let menuItems = filteredMenuProps.map((_, index) => {
     return {
       heading: props?.[`heading${index}`]?.props?.children || props?.[`heading`],
       content: props?.[`content${index}`] || props?.[`content`],
-      image: props?.[`image${index}`] || props?.[`image`]
+      image: props?.[`image${index}`] || props?.[`image`],
     };
   });
 
   const positionSelectedTabIndicator = (index = selectedIndex.tab) => {
-    const selectedTab = tabs.filter((tab) => tab?.current)[index];
+    const selectedTab = tabs.filter(tab => tab?.current)[index];
     positionIndicator(selectedTabIndicator, selectedTab);
   };
 
-  const handleOnChange = (index) => {
+  const handleOnChange = index => {
     setSelectedIndex({
-      tab: index
+      tab: index,
     });
     positionSelectedTabIndicator(index);
   };
@@ -219,7 +267,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
         width: 100%;
         overflow: hidden !important;
         margin: 0;
-        padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
+        padding-bottom: calc(
+          var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250)
+        );
       `}>
       <div
         css={css`
@@ -236,7 +286,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
             display: ${orientation === 'vertical' ? 'grid' : 'block'};
             position: relative;
             grid-template-columns: 300px calc(100vw - 300px);
-            margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
+            margin-top: ${orientation === 'vertical'
+              ? 'var(--spectrum-global-dimension-size-300)'
+              : ''};
             width: inherit;
             @media only screen and (max-width: ${mobileMinWidth}) {
               display: block !important;
@@ -250,7 +302,10 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
             }
           `}>
           {menuItems?.length > 0 ? (
-            <Tabs orientation={orientation} isQuiet={true} onFontsReady={positionSelectedTabIndicator}>
+            <Tabs
+              orientation={orientation}
+              isQuiet={true}
+              onFontsReady={positionSelectedTabIndicator}>
               {menuItems.map((data, index) => {
                 const ref = createRef();
                 tabs.push(ref);
@@ -269,7 +324,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     label={<b>{data['heading']}</b>}
                     icon={data['image']}
                     orientation={orientation}
-                    onKeyDown={(e) => {
+                    onKeyDown={e => {
                       if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter') {
                         e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
                       }
@@ -338,7 +393,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
                     css={css`
                       text-align: left;
                       max-width: 100% !important;
-                      padding: ${orientation === 'vertical' ? '' : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
+                      padding: ${orientation === 'vertical'
+                        ? ''
+                        : `${layoutColumns(0.125)} ${layoutColumns(0.25)}`};
                       @media only screen and (max-width: ${mobileMinWidth}) {
                         padding-left: inherit !important;
                         max-width: ${layoutColumns(3)} !important;
@@ -366,14 +423,14 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
 Tabs.propTypes = {
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   isQuiet: PropTypes.boolean,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 Item.propTypes = {
   isSelected: PropTypes.boolean,
   className: PropTypes.string,
   icon: PropTypes.element,
-  label: PropTypes.object
+  label: PropTypes.object,
 };
 
 TabItemIcon.propTypes = {
@@ -381,12 +438,12 @@ TabItemIcon.propTypes = {
   icon: PropTypes.element,
   isSelected: PropTypes.boolean,
   iconSize: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 TabView.propTypes = {
   isHidden: PropTypes.boolean,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 TabsBlock.propTypes = {
@@ -395,7 +452,17 @@ TabsBlock.propTypes = {
   heading: PropTypes.string,
   content: PropTypes.string,
   image: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
-export { Tabs, Item, TabView, TabItemIcon, Label, TabsIndicator, positionIndicator, animateIndicator, TabsBlock };
+export {
+  Tabs,
+  Item,
+  TabView,
+  TabItemIcon,
+  Label,
+  TabsIndicator,
+  positionIndicator,
+  animateIndicator,
+  TabsBlock,
+};

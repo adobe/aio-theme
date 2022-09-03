@@ -47,7 +47,7 @@ const SEO = ({ title, description, keywords }) => (
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  keywords: PropTypes.array
+  keywords: PropTypes.array,
 };
 
 export { SEO };

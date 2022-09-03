@@ -27,23 +27,28 @@ import {
   MOBILE_SCREEN_WIDTH,
   rootFix,
   rootFixPages,
-  TABLET_SCREEN_WIDTH
+  TABLET_SCREEN_WIDTH,
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
 import classNames from 'classnames';
 
-const setImageLoading = (child) => {
+const setImageLoading = child => {
   if (child?.props?.mdxType === 'img') {
     return cloneElement(child, {
-      loading: 'eager'
+      loading: 'eager',
     });
   }
 
   return child;
 };
 
-const HeroButtons = ({ buttons, styles = ['outline', 'fill'], variants = ['secondary', 'accent'], className }) =>
+const HeroButtons = ({
+  buttons,
+  styles = ['outline', 'fill'],
+  variants = ['secondary', 'accent'],
+  className,
+}) =>
   buttons ? (
     <div
       className={className}
@@ -100,13 +105,13 @@ const HeroImage = ({ image, styles }) =>
           .gatsby-resp-image-image {
             object-fit: cover;
           }
-        `
+        `,
       })
     : null;
 
 const HeroTexts = ({ texts }) => {
-  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
-  return textKeys.map((textKey) =>
+  const textKeys = Object.keys(texts).filter(key => key.startsWith('text'));
+  return textKeys.map(textKey =>
     cloneElement(texts[textKey], {
       className: 'spectrum-Body spectrum-Body--sizeL',
       css: css`
@@ -117,7 +122,7 @@ const HeroTexts = ({ texts }) => {
             margin-bottom: 0 !important;
           }
         }
-      `
+      `,
     })
   );
 };
@@ -126,7 +131,9 @@ const HeroHeading = ({ heading, variant }) =>
   heading
     ? cloneElement(heading, {
         className:
-          variant === 'default' ? 'spectrum-Heading--sizeXL' : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
+          variant === 'default'
+            ? 'spectrum-Heading--sizeXL'
+            : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
         css: css`
           margin-top: 0;
           margin-bottom: var(--spectrum-global-dimension-size-200);
@@ -134,7 +141,7 @@ const HeroHeading = ({ heading, variant }) =>
           & + p {
             margin-bottom: var(--spectrum-global-dimension-size-200);
           }
-        `
+        `,
       })
     : null;
 
@@ -215,16 +222,23 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            {!hideBreadcrumbNav && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
-              <Breadcrumbs
-                pages={[
-                  DEFAULT_HOME,
-                  home,
-                  { ...selectedTopPage, href: withPrefix(cleanRootFix(selectedTopPage.href)) },
-                  selectedTopPageMenu && { ...selectedTopPageMenu, href: withPrefix(selectedTopPageMenu.href) }
-                ]}
-              />
-            )}
+            {!hideBreadcrumbNav &&
+              home?.hidden !== true &&
+              home?.title &&
+              home?.href &&
+              selectedTopPage && (
+                <Breadcrumbs
+                  pages={[
+                    DEFAULT_HOME,
+                    home,
+                    { ...selectedTopPage, href: withPrefix(cleanRootFix(selectedTopPage.href)) },
+                    selectedTopPageMenu && {
+                      ...selectedTopPageMenu,
+                      href: withPrefix(selectedTopPageMenu.href),
+                    },
+                  ]}
+                />
+              )}
 
             <HeroHeading heading={heading} variant={variant} />
 
@@ -234,7 +248,8 @@ const Hero = ({
       </section>
     );
   } else {
-    const height = 'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-250))';
+    const height =
+      'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-250))';
 
     if (variant === 'fullwidth') {
       return (
@@ -267,7 +282,11 @@ const Hero = ({
               top: 0;
               width: 100%;
               box-sizing: border-box;
-              padding: 0 calc(var(--spectrum-global-dimension-size-3600) + var(--spectrum-global-dimension-size-125));
+              padding: 0
+                calc(
+                  var(--spectrum-global-dimension-size-3600) +
+                    var(--spectrum-global-dimension-size-125)
+                );
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -348,7 +367,7 @@ const Hero = ({
                       height: 100%;
                       object-fit: contain;
                     }
-                  `
+                  `,
                 })}
 
               <HeroHeading heading={heading} isVariant />
@@ -389,17 +408,17 @@ Hero.propTypes = {
   variant: PropTypes.string,
   width: PropTypes.string,
   theme: PropTypes.string,
-  showBreadcrumbNav: PropTypes.bool
+  showBreadcrumbNav: PropTypes.bool,
 };
 
 HeroButtons.propTypes = {
   buttons: PropTypes.element,
   variants: PropTypes.array,
-  styles: PropTypes.array
+  styles: PropTypes.array,
 };
 
 HeroImage.propTypes = {
-  image: PropTypes.element
+  image: PropTypes.element,
 };
 
 export { Hero, HeroImage, HeroButtons };

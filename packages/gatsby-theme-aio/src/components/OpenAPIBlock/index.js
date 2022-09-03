@@ -66,7 +66,8 @@ const OpenAPIBlock = ({ src }) => {
                   border-radius: var(--spectrum-global-dimension-size-50);
                   font-size: var(--spectrum-global-dimension-size-100);
                   margin-right: var(--spectrum-global-dimension-size-100);
-                  padding: var(--spectrum-global-dimension-size-50) var(--spectrum-global-dimension-size-125);
+                  padding: var(--spectrum-global-dimension-size-50)
+                    var(--spectrum-global-dimension-size-125);
                   background-color: inherit;
                   width: var(--spectrum-global-dimension-size-700);
                   height: var(--spectrum-global-dimension-size-1);
@@ -119,14 +120,15 @@ const OpenAPIBlock = ({ src }) => {
                   padding-bottom: var(--spectrum-global-dimension-size-65);
                   border-radius: var(--spectrum-alias-border-radius-regular);
                   font-size: var(--spectrum-alias-font-size-default);
-                  font-family: adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-                    Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif;
+                  font-family: adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif;
                   font-style: normal;
                   text-decoration: none;
                   word-break: break-word;
                   hyphens: auto;
                   cursor: pointer;
-                  transition: background-color var(--spectrum-global-animation-duration-100) ease-out,
+                  transition: background-color var(--spectrum-global-animation-duration-100)
+                      ease-out,
                     color var(--spectrum-global-animation-duration-100) ease-out;
 
                   &:hover {
@@ -516,7 +518,8 @@ const OpenAPIBlock = ({ src }) => {
                 border-radius: var(--spectrum-global-dimension-size-50);
                 font-size: var(--spectrum-global-dimension-size-125);
                 margin-right: var(--spectrum-alias-size-100);
-                padding: var(--spectrum-global-dimension-size-50) var(--spectrum-global-dimension-size-125);
+                padding: var(--spectrum-global-dimension-size-50)
+                  var(--spectrum-global-dimension-size-125);
                 background-color: inherit;
               }
 
@@ -556,7 +559,8 @@ const OpenAPIBlock = ({ src }) => {
                 position: relative;
                 display: list-item;
                 margin: 0;
-                border-bottom: var(--spectrum-alias-border-size-thin) solid var(--spectrum-global-color-gray-300);
+                border-bottom: var(--spectrum-alias-border-size-thin) solid
+                  var(--spectrum-global-color-gray-300);
                 color: var(--spectrum-alias-text-color);
                 background-color: inherit;
 
@@ -583,8 +587,8 @@ const OpenAPIBlock = ({ src }) => {
                 }
 
                 svg {
-                  filter: brightness(0) saturate(100%) invert(61%) sepia(6%) saturate(11%) hue-rotate(13deg)
-                    brightness(91%) contrast(86%);
+                  filter: brightness(0) saturate(100%) invert(61%) sepia(6%) saturate(11%)
+                    hue-rotate(13deg) brightness(91%) contrast(86%);
                   margin-top: 3px;
                 }
 
@@ -614,9 +618,13 @@ const OpenAPIBlock = ({ src }) => {
                   li[role='tab'] {
                     position: relative;
                     box-sizing: border-box;
-                    height: calc(var(--spectrum-global-dimension-size-600) - var(--spectrum-alias-border-size-thick));
+                    height: calc(
+                      var(--spectrum-global-dimension-size-600) -
+                        var(--spectrum-alias-border-size-thick)
+                    );
                     line-height: calc(
-                      var(--spectrum-global-dimension-size-600) - var(--spectrum-alias-border-size-thick)
+                      var(--spectrum-global-dimension-size-600) -
+                        var(--spectrum-alias-border-size-thick)
                     );
                     z-index: 1;
                     text-decoration: none;
@@ -683,18 +691,18 @@ const OpenAPIBlock = ({ src }) => {
               hideDownloadButton: true,
               theme: {
                 sidebar: {
-                  width: SIDENAV_WIDTH
+                  width: SIDENAV_WIDTH,
                 },
                 rightPanel: {
-                  backgroundColor: 'rgb(37, 37, 37)'
+                  backgroundColor: 'rgb(37, 37, 37)',
                 },
                 codeBlock: {
-                  backgroundColor: 'rgb(50, 50, 50)'
+                  backgroundColor: 'rgb(50, 50, 50)',
                 },
                 typography: {
-                  fontFamily: `adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif`
-                }
-              }
+                  fontFamily: `adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif`,
+                },
+              },
             }}
             onLoaded={() => {
               setShowProgress(false);
@@ -709,7 +717,7 @@ const OpenAPIBlock = ({ src }) => {
 };
 
 OpenAPIBlock.propTypes = {
-  src: PropTypes.string
+  src: PropTypes.string,
 };
 
 export default OpenAPIBlock;

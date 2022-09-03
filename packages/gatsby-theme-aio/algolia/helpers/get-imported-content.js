@@ -10,9 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-const { existsSync, readFileSync } = require('fs')
-const normalizePath = require('normalize-path')
-const { selectAll } = require('unist-util-select')
+const { existsSync, readFileSync } = require('fs');
+const normalizePath = require('normalize-path');
+const { selectAll } = require('unist-util-select');
 
 /**
  * Support of "import" directive:
@@ -21,9 +21,9 @@ const { selectAll } = require('unist-util-select')
  * Parse index records from cache files.
  */
 
-async function getImportedContent (markdownFile) {
-  const importedContent = await selectAll('import', markdownFile.mdxAST)
-  if (importedContent.length <= 0) return null
+async function getImportedContent(markdownFile) {
+  const importedContent = await selectAll('import', markdownFile.mdxAST);
+  if (importedContent.length <= 0) return null;
 
   const options = {
     publicDir: 'public',
@@ -32,30 +32,30 @@ async function getImportedContent (markdownFile) {
     sourceFileExtension: 'md',
     tagsToIndex: 'p,td,li',
     minCharsLengthPerTag: 10,
-    minWordsCount: 2
-  }
+    minWordsCount: 2,
+  };
 
-  const { fileAbsolutePath } = markdownFile
+  const { fileAbsolutePath } = markdownFile;
   const [siteDirAbsolutePath, sourceFileRelativePath] = normalizePath(fileAbsolutePath).split(
     options.pagesSourceDir
-  )
+  );
 
-  const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`
-  const sourceFileExtension = new RegExp(`${options.sourceFileExtension}$`)
-  const publicFileExtension = `.${options.publicFileExtension}`
+  const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
+  const sourceFileExtension = new RegExp(`${options.sourceFileExtension}$`);
+  const publicFileExtension = `.${options.publicFileExtension}`;
 
-  const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md'
+  const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
 
   const cacheFileAbsolutePath = isIndexFile
     ? publicSourceFilePath.replace(sourceFileExtension, publicFileExtension)
-    : publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html'
+    : publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
 
   if (!existsSync(cacheFileAbsolutePath)) {
-    throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`)
+    throw Error(`Cache file resolving error: no such file "${cacheFileAbsolutePath}"`);
   }
 
-  const content = readFileSync(cacheFileAbsolutePath, 'utf8')
-  return { content, options }
+  const content = readFileSync(cacheFileAbsolutePath, 'utf8');
+  return { content, options };
 }
 
-module.exports = getImportedContent
+module.exports = getImportedContent;

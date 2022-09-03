@@ -24,23 +24,23 @@ import {
   DESKTOP_SCREEN_WIDTH,
   layoutColumns,
   MOBILE_SCREEN_WIDTH,
-  TABLET_SCREEN_WIDTH
+  TABLET_SCREEN_WIDTH,
 } from '../../utils';
 import { HeroButtons, HeroImage } from '../Hero';
 
 const Texts = ({ texts, index }) => {
   const definedTextKeys = texts.slots
     .split(',')
-    .map((key) => key.trim())
-    .filter((key) => key.startsWith('text'));
-  return definedTextKeys.map((data) => texts[`${data}${index}`]);
+    .map(key => key.trim())
+    .filter(key => key.startsWith('text'));
+  return definedTextKeys.map(data => texts[`${data}${index}`]);
 };
 
-const setImage = (child) => {
+const setImage = child => {
   if (child?.props?.mdxType === 'img') {
     return cloneElement(child, {
       loading: 'lazy',
-      style: { ...child.props.style, opacity: 1 }
+      style: { ...child.props.style, opacity: 1 },
     });
   }
   return child;
@@ -56,7 +56,7 @@ const SwiperContent = ({
   index,
   slideTheme,
   theme,
-  props
+  props,
 }) => (
   <div
     className={classNames(`spectrum--${slideTheme ? slideTheme : theme}`)}
@@ -129,7 +129,11 @@ const SwiperContent = ({
             css={css`
               margin-top: var(--spectrum-global-dimension-size-200);
             `}>
-            <HeroButtons buttons={buttons} styles={['outline', 'fill']} variants={['secondary', 'accent']} />
+            <HeroButtons
+              buttons={buttons}
+              styles={['outline', 'fill']}
+              variants={['secondary', 'accent']}
+            />
           </div>
         ) : null}
       </div>
@@ -146,19 +150,21 @@ const SwiperBlock = ({
   slideTheme,
   theme,
   enableNavigation,
-  props
+  props,
 }) => {
   const slides = Object.keys(props)
-    .filter((key) => key.startsWith('image'))
+    .filter(key => key.startsWith('image'))
     .map((data, index) => ({
       image: props[data],
       heading: props[`heading${index}`],
-      buttons: props[`buttons${index}`]
+      buttons: props[`buttons${index}`],
     }));
 
-  const textKeys = props.slots.split(',').filter((key) => key.trim().startsWith('text'));
+  const textKeys = props.slots.split(',').filter(key => key.trim().startsWith('text'));
 
-  const backgroundColor = `background-color: var(--spectrum-global-color-gray-${slideTheme === 'light' ? '50' : ''})`;
+  const backgroundColor = `background-color: var(--spectrum-global-color-gray-${
+    slideTheme === 'light' ? '50' : ''
+  })`;
 
   return (
     <Swiper
@@ -166,16 +172,16 @@ const SwiperBlock = ({
       speed={speed}
       slidesPerView={'auto'}
       autoplay={{
-        delay
+        delay,
       }}
       pagination={{
         bulletActiveClass,
         bulletClass,
-        clickable: true
+        clickable: true,
       }}
       navigation={{
         nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        prevEl: '.swiper-button-prev',
       }}>
       {slides.map((data, index) => (
         <SwiperSlide key={index}>

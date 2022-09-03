@@ -16,7 +16,7 @@ import globals from '../../conf/globals';
 
 const ROOT_FIX = '/_ROOT_/';
 
-const cleanMarkdownExtension = (pathname) => {
+const cleanMarkdownExtension = pathname => {
   return pathname
     .replace('/src/pages/', '/')
     .replace('/index.md/', '')
@@ -26,7 +26,7 @@ const cleanMarkdownExtension = (pathname) => {
     .replace('.md', '');
 };
 
-const trailingSlashFix = (pathname) => {
+const trailingSlashFix = pathname => {
   if (!pathname.endsWith('/')) {
     return `${pathname}/`;
   }
@@ -34,7 +34,7 @@ const trailingSlashFix = (pathname) => {
   return pathname;
 };
 
-const normalizePagePath = (page) => {
+const normalizePagePath = page => {
   if (page?.path) {
     if (isExternalLink(page.path)) {
       page.href = page.path;
@@ -48,7 +48,7 @@ const normalizePagePath = (page) => {
   }
 };
 
-const rootFix = (pathname) => {
+const rootFix = pathname => {
   if (pathname === withPrefix('/')) {
     return withPrefix(ROOT_FIX);
   }
@@ -56,12 +56,12 @@ const rootFix = (pathname) => {
   return pathname;
 };
 
-const cleanRootFix = (url) => url.replace(ROOT_FIX, '/');
+const cleanRootFix = url => url.replace(ROOT_FIX, '/');
 
-const rootFixPages = (pages) => {
+const rootFixPages = pages => {
   const rootFixedPages = JSON.parse(JSON.stringify(pages));
 
-  return rootFixedPages.map((page) => {
+  return rootFixedPages.map(page => {
     if (page.pathname === '/') {
       page.pathname = ROOT_FIX;
       page.href = `${ROOT_FIX}${page.href.slice(1)}`;
@@ -79,10 +79,13 @@ const layoutColumns = (columns, gutters = []) =>
   })`;
 
 const findSelectedTopPage = (pathname, pages) =>
-  pages.find((page) => pathname.startsWith(withPrefix(page.pathname)) || findSelectedTopPageMenu(pathname, page));
+  pages.find(
+    page =>
+      pathname.startsWith(withPrefix(page.pathname)) || findSelectedTopPageMenu(pathname, page)
+  );
 
 const findSelectedTopPageMenu = (pathname, page) =>
-  page?.menu && page.menu.find((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname)));
+  page?.menu && page.menu.find(menuPage => pathname.startsWith(withPrefix(menuPage.pathname)));
 
 const findSubPages = (pathname, pages, subPages) => {
   if (subPages == null) {
@@ -91,12 +94,12 @@ const findSubPages = (pathname, pages, subPages) => {
 
   const selectedTopPage = findSelectedTopPage(pathname, pages);
   return subPages.filter(
-    (page) =>
+    page =>
       withPrefix(page.pathname).startsWith(withPrefix(selectedTopPage?.pathname)) ||
       (selectedTopPage?.menu &&
         selectedTopPage.menu
-          .filter((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname)))
-          .find((menuPage) => withPrefix(page.pathname).startsWith(withPrefix(menuPage.pathname))))
+          .filter(menuPage => pathname.startsWith(withPrefix(menuPage.pathname)))
+          .find(menuPage => withPrefix(page.pathname).startsWith(withPrefix(menuPage.pathname))))
   );
 };
 
@@ -105,7 +108,7 @@ const findSelectedPage = (pathname, pages) => {
     return [];
   }
 
-  return pages?.find((page) => pathname === withPrefix(page.pathname));
+  return pages?.find(page => pathname === withPrefix(page.pathname));
 };
 
 const findSelectedPages = (pathname, pages) => {
@@ -116,7 +119,7 @@ const findSelectedPages = (pathname, pages) => {
   let selectedPages = [];
   let level = 1;
 
-  const find = (page) => {
+  const find = page => {
     let subPages = [];
     if (page.pathname && pathname.startsWith(withPrefix(page.pathname))) {
       page.level = level;
@@ -125,7 +128,7 @@ const findSelectedPages = (pathname, pages) => {
 
     if (page.pages) {
       level++;
-      page.pages.forEach((subPage) => {
+      page.pages.forEach(subPage => {
         subPages = [...subPages, ...find(subPage)];
       });
     }
@@ -133,7 +136,7 @@ const findSelectedPages = (pathname, pages) => {
     return subPages;
   };
 
-  pages.forEach((page) => {
+  pages.forEach(page => {
     const subPages = find(page);
     if (subPages.length) {
       selectedPages.push(subPages);
@@ -143,13 +146,13 @@ const findSelectedPages = (pathname, pages) => {
   return selectedPages.length ? selectedPages.pop() : [];
 };
 
-const flattenPages = (pages) => {
+const flattenPages = pages => {
   if (pages == null) {
     return [];
   }
 
   let flat = [];
-  const find = (page) => {
+  const find = page => {
     flat.push(page);
 
     if (page.pages) {
@@ -165,11 +168,11 @@ const flattenPages = (pages) => {
 
 const findSelectedPageNextPrev = (pathname, pages) => {
   const flat = flattenPages(pages);
-  const selectedPage = flat.find((page) => withPrefix(page.pathname) === pathname);
+  const selectedPage = flat.find(page => withPrefix(page.pathname) === pathname);
 
   return {
     nextPage: flat[flat.indexOf(selectedPage) + 1],
-    previousPage: flat[flat.indexOf(selectedPage) - 1]
+    previousPage: flat[flat.indexOf(selectedPage) - 1],
   };
 };
 
@@ -180,9 +183,9 @@ const findSelectedPageSiblings = (pathname, pages) => {
     return siblings;
   }
 
-  const find = (page) => {
+  const find = page => {
     if (page.pages) {
-      const selectedPage = page.pages.find((subPage) => withPrefix(subPage.pathname) === pathname);
+      const selectedPage = page.pages.find(subPage => withPrefix(subPage.pathname) === pathname);
       if (selectedPage) {
         siblings = [...page.pages];
       } else {
@@ -191,7 +194,7 @@ const findSelectedPageSiblings = (pathname, pages) => {
     }
   };
 
-  pages.forEach((page) => {
+  pages.forEach(page => {
     find(page);
   });
 
@@ -204,19 +207,23 @@ const isInternalLink = (pathname, location, allPaths) => {
   }
 
   const base = new URL(location.pathname, 'https://example.com');
-  const requestedPath = decodeURI(trailingSlashFix(cleanMarkdownExtension(new URL(pathname, base).pathname)));
+  const requestedPath = decodeURI(
+    trailingSlashFix(cleanMarkdownExtension(new URL(pathname, base).pathname))
+  );
 
-  return allPaths.some((path) => path === requestedPath);
+  return allPaths.some(path => path === requestedPath);
 };
 
 const fixInternalLink = (pathname, location, pathPrefix) => {
   const base = new URL(location.pathname, 'https://example.com');
   const url = new URL(pathname, base);
 
-  return `${trailingSlashFix(cleanMarkdownExtension(url.pathname.replace(pathPrefix, '')))}${url.search}${url.hash}`;
+  return `${trailingSlashFix(cleanMarkdownExtension(url.pathname.replace(pathPrefix, '')))}${
+    url.search
+  }${url.hash}`;
 };
 
-const isExternalLink = (url) => {
+const isExternalLink = url => {
   url = String(url).replace('#', '');
 
   let isExternal = true;
@@ -233,17 +240,17 @@ const getExternalLinkProps = (url = null) =>
   url === null || (isExternalLink(url) && !new URL(url).searchParams.has('aio_internal'))
     ? {
         target: '_blank',
-        rel: 'noopener noreferrer nofollow'
+        rel: 'noopener noreferrer nofollow',
       }
     : {};
 
-const getElementChild = (element) => React.Children.toArray(element.props.children)[0];
+const getElementChild = element => React.Children.toArray(element.props.children)[0];
 
 const cloneChildren = (children, changeProps) => {
-  return Children.map(children, (child) => {
+  return Children.map(children, child => {
     if (child?.props?.children) {
       child = cloneElement(child, {
-        children: cloneChildren(child.props.children, changeProps)
+        children: cloneChildren(child.props.children, changeProps),
       });
     }
 
@@ -253,12 +260,12 @@ const cloneChildren = (children, changeProps) => {
 
 const DEFAULT_HOME = {
   title: 'Products',
-  href: '/apis/'
+  href: '/apis/',
 };
 const SEARCH_PARAMS = {
   query: 'query',
   keywords: 'keywords',
-  index: 'index'
+  index: 'index',
 };
 const SIDENAV_WIDTH = globals.SIDENAV_WIDTH;
 const MOBILE_SCREEN_WIDTH = globals.MOBILE_SCREEN_WIDTH;
@@ -292,5 +299,5 @@ export {
   SIDENAV_WIDTH,
   MOBILE_SCREEN_WIDTH,
   TABLET_SCREEN_WIDTH,
-  DESKTOP_SCREEN_WIDTH
+  DESKTOP_SCREEN_WIDTH,
 };

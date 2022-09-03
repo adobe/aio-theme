@@ -34,7 +34,7 @@ const Resources = ({ heading, links }) => {
         cloneElement(heading, {
           css: css`
             margin-top: 0;
-          `
+          `,
         })}
       <ul
         className="spectrum-Body spectrum-Body--sizeM"
@@ -76,7 +76,7 @@ const Resources = ({ heading, links }) => {
 
 Resources.propTypes = {
   heading: PropTypes.element,
-  links: PropTypes.element
+  links: PropTypes.element,
 };
 
 export { Resources };

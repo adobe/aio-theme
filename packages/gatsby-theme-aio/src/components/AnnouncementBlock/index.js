@@ -29,7 +29,9 @@ const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }
         background: var(--spectrum-global-color-gray-100);
         box-sizing: border-box;
         text-align: center;
-        height: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125));
+        height: calc(
+          var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-125)
+        );
 
         p {
           margin-top: 0;
@@ -57,7 +59,7 @@ const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }
 
         {text &&
           cloneElement(text, {
-            className: 'spectrum-Body spectrum-Body--sizeM'
+            className: 'spectrum-Body spectrum-Body--sizeM',
           })}
 
         {link && (
@@ -79,7 +81,7 @@ AnnouncementBlock.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
   button: PropTypes.element,
-  theme: PropTypes.string
+  theme: PropTypes.string,
 };
 
 export { AnnouncementBlock };

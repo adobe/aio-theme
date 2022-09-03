@@ -1,5 +1,5 @@
 describe('Check theme for a11Y', () => {
-  const checkA11y = (route) => {
+  const checkA11y = route => {
     cy.visit(route).assertRoute(route);
     cy.wait(1500);
     cy.injectAxe();

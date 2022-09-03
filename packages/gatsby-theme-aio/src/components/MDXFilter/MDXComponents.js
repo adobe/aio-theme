@@ -49,5 +49,5 @@ export const MDXComponents = {
   th: Th,
   td: Td,
   thead: THead,
-  tr: Tr
+  tr: Tr,
 };

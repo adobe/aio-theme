@@ -10,67 +10,67 @@
  * governing permissions and limitations under the License.
  */
 
-const { selectAll } = require('unist-util-select')
-const uuid = require('uuid')
+const { selectAll } = require('unist-util-select');
+const uuid = require('uuid');
 
-function parseMarkdown (markdownFile) {
-  const selectedNodes = selectAll('root > paragraph', markdownFile.mdxAST)
-  const minCharLength = 50
+function parseMarkdown(markdownFile) {
+  const selectedNodes = selectAll('root > paragraph', markdownFile.mdxAST);
+  const minCharLength = 50;
 
-  if (selectedNodes.length <= 0) return null
+  if (selectedNodes.length <= 0) return null;
   // const filteredNodes = selectedNodes.filter(node => node.children.map(child => child.text));
-  const rawRecords = []
+  const rawRecords = [];
 
   for (const node of selectedNodes) {
-    const nodeText = node.children.map(child => child.value).join('')
-    if (nodeText.length < minCharLength) continue
+    const nodeText = node.children.map(child => child.value).join('');
+    if (nodeText.length < minCharLength) continue;
 
     const rawRecord = {
       content: nodeText,
       headings: markdownFile.headings.map(heading => heading.value),
       spotlight: markdownFile.spotlight,
       title: markdownFile.title,
-      description: markdownFile.description ?? nodeText
-    }
+      description: markdownFile.description ?? nodeText,
+    };
 
-    rawRecord.objectID = uuid.v4(rawRecord)
-    rawRecord.contentDigest = uuid.v4(rawRecord.content)
-    rawRecord.words = nodeText.split(' ').length
-    rawRecord.contentHeading = getContentHeading(node, markdownFile.mdxAST)
-    rawRecord.anchor = getAnchor(node, markdownFile.mdxAST)
+    rawRecord.objectID = uuid.v4(rawRecord);
+    rawRecord.contentDigest = uuid.v4(rawRecord.content);
+    rawRecord.words = nodeText.split(' ').length;
+    rawRecord.contentHeading = getContentHeading(node, markdownFile.mdxAST);
+    rawRecord.anchor = getAnchor(node, markdownFile.mdxAST);
 
-    rawRecords.push(rawRecord)
+    rawRecords.push(rawRecord);
   }
 
-  return rawRecords
+  return rawRecords;
 }
 
 // Get the closest heading above the rawRecord's content
-function getContentHeading (node, nodeTree) {
-  const contentPositionEndLine = node.children.slice(-1)[0].position.end.line // nodeText ending position
+function getContentHeading(node, nodeTree) {
+  const contentPositionEndLine = node.children.slice(-1)[0].position.end.line; // nodeText ending position
 
   const filteredHeadings = selectAll('heading', nodeTree)
     .filter(function (heading) {
-      return heading.position.start.line < contentPositionEndLine
+      return heading.position.start.line < contentPositionEndLine;
     })
     .filter(
       heading => heading.children[0].value !== 'Request' && heading.children[0].value !== 'Response'
-    )
+    );
 
-  const headings = filteredHeadings.map(heading => heading.children[0].value)
-  return headings.slice(-1)[0] // closest heading above nodeText
+  const headings = filteredHeadings.map(heading => heading.children[0].value);
+  return headings.slice(-1)[0]; // closest heading above nodeText
 }
 
 // The anchor is just the transformed contentHeading
-function getAnchor (node, nodeTree) {
-  const contentHeading = getContentHeading(node, nodeTree)
-  if (contentHeading == null) return ''
+function getAnchor(node, nodeTree) {
+  const contentHeading = getContentHeading(node, nodeTree);
+  if (contentHeading == null) return '';
 
   // TODO: Handle headings with custom anchors from the gatsby-remark-autolink-headers plugin
   return `#${contentHeading
     .match(/[a-zA-Z0-9]+/g)
     ?.map(s => s.toLowerCase())
-    .join('-')}`
+    .join('-')}`;
 }
 
-module.exports = parseMarkdown
+module.exports = parseMarkdown;

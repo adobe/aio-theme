@@ -93,9 +93,13 @@ const createHeading = (level, { id, children, className, css: styles, ...props }
         id={id}
         className={
           className ||
-          classNames(className, `spectrum-Heading spectrum-Heading--size${headingSizes[level - 1]}`, {
-            'spectrum-Heading--light': isHeading1,
-          })
+          classNames(
+            className,
+            `spectrum-Heading spectrum-Heading--size${headingSizes[level - 1]}`,
+            {
+              'spectrum-Heading--light': isHeading1,
+            }
+          )
         }
         css={css`
           ${!isHeading1 && animateAnchor}

@@ -25,8 +25,7 @@ const FeedbackButton = ({ variant, setIsOpen }) => (
     onClick={() => {
       setIsOpen(true);
     }}
-    daa-ll={`Feedback-${variant}`}
-    >
+    daa-ll={`Feedback-${variant}`}>
     {variant}
   </Button>
 );

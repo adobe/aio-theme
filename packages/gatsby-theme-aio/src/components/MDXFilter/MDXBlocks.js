@@ -48,5 +48,5 @@ export const MDXBlocks = {
   JsDocParameters,
   ProductCardGrid,
   TabsBlock,
-  Carousel
+  Carousel,
 };

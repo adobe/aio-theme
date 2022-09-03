@@ -34,7 +34,7 @@ const Breadcrumbs = ({ pages }) => (
 );
 
 Breadcrumbs.propTypes = {
-  pages: PropTypes.array
+  pages: PropTypes.array,
 };
 
 export { Breadcrumbs };

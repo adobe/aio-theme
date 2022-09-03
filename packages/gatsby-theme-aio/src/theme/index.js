@@ -11,5 +11,5 @@
  */
 
 export default {
-  code: 'dark'
+  code: 'dark',
 };

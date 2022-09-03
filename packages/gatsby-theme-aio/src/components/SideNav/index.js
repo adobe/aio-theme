@@ -23,18 +23,18 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
 
   // If one page has header enabled, use header navigation type for all navigation items
-  const hasHeader = selectedSubPages.some((page) => page.header);
-  const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
+  const hasHeader = selectedSubPages.some(page => page.header);
+  const isMultiLevel = selectedSubPages.some(page => page?.pages?.length > 0);
 
   const renderSubtree = (pages, level) =>
     pages
-      .filter((page) => page.title && page.href)
+      .filter(page => page.title && page.href)
       .map((page, index) => {
-        const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
+        const isSelected = selectedPages.find(selectedItem => selectedItem === page);
         const id = nextId();
 
         if (isSelected && !expandedPages.includes(page.href)) {
-          setExpandedPages((pages) => [...pages, page.href]);
+          setExpandedPages(pages => [...pages, page.href]);
         }
 
         return (
@@ -55,24 +55,31 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
             className={classNames([
               'spectrum-SideNav-item',
               { 'is-expanded': page.header || expandedPages.includes(page.href) },
-              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
+              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected },
             ])}>
             {page.header ? (
               <h2 className="spectrum-SideNav-heading" id={id}>
                 {page.title}
               </h2>
             ) : isExternalLink(page.href) ? (
-              <a {...getExternalLinkProps(page.href)} href={page.href} className="spectrum-SideNav-itemLink">
+              <a
+                {...getExternalLinkProps(page.href)}
+                href={page.href}
+                className="spectrum-SideNav-itemLink">
                 {page.title}
               </a>
             ) : (
               <GatsbyLink
-                onClick={(event) => {
-                  if (page?.pages?.length && !page.header && page.pages.find((subPage) => subPage.href === page.href)) {
+                onClick={event => {
+                  if (
+                    page?.pages?.length &&
+                    !page.header &&
+                    page.pages.find(subPage => subPage.href === page.href)
+                  ) {
                     event.preventDefault();
 
                     if (expandedPages.includes(page.href)) {
-                      setExpandedPages((pages) => pages.filter((href) => href !== page.href));
+                      setExpandedPages(pages => pages.filter(href => href !== page.href));
                     } else {
                       setExpandedPages([...expandedPages, page.href]);
                     }
@@ -93,7 +100,9 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                   ${level > 1
                     ? `
                     & > li > a {
-                      padding-left: calc(${level + 1} * var(--spectrum-global-dimension-size-150)) !important;
+                      padding-left: calc(${
+                        level + 1
+                      } * var(--spectrum-global-dimension-size-150)) !important;
                     }
                   `
                     : ''}
@@ -128,7 +137,9 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
         <ul
           role="tree"
           aria-label="Table of contents"
-          className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader })}>
+          className={classNames('spectrum-SideNav', {
+            'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader,
+          })}>
           {renderSubtree(selectedSubPages, 1)}
         </ul>
       </div>
@@ -139,7 +150,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 SideNav.propTypes = {
   selectedPages: PropTypes.array,
   selectedSubPages: PropTypes.array,
-  setShowSideNav: PropTypes.func
+  setShowSideNav: PropTypes.func,
 };
 
 export { SideNav };

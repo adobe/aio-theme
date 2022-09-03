@@ -22,7 +22,7 @@ const externalLinkProps = getExternalLinkProps();
 const commonsProps = {
   elementType: 'a',
   isQuiet: true,
-  ...externalLinkProps
+  ...externalLinkProps,
 };
 
 const GitHubActions = ({ repository, branch, root, pagePath }) => {
@@ -56,7 +56,7 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
 GitHubActions.propTypes = {
   repository: PropTypes.string,
   branch: PropTypes.string,
-  pagePath: PropTypes.string
+  pagePath: PropTypes.string,
 };
 
 export { GitHubActions };

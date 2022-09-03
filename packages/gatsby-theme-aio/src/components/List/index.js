@@ -26,7 +26,7 @@ const List = ({ children, elementType = 'ul', className, ...props }) => {
 };
 
 List.propTypes = {
-  elementType: PropTypes.string
+  elementType: PropTypes.string,
 };
 
 export { List };

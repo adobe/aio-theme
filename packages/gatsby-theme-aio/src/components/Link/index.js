@@ -20,12 +20,12 @@ const Link = ({ variant = 'primary', children }) =>
     className: classNames([
       'spectrum-Link',
       'spectrum-Link--quiet',
-      { 'spectrum-Link--secondary': variant === 'secondary' }
-    ])
+      { 'spectrum-Link--secondary': variant === 'secondary' },
+    ]),
   });
 
 Link.propTypes = {
-  variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 export { Link };

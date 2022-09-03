@@ -42,7 +42,8 @@ const Carousel = ({
       className={classNames(className, `spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
+        padding: var(--spectrum-global-dimension-size-600) 0
+          var(--spectrum-global-dimension-size-200) 0;
       `}>
       <div
         css={css`
@@ -84,7 +85,7 @@ Carousel.propTypes = {
   enableNavigation: PropTypes.bool,
   slideTheme: PropTypes.oneOf(['light', 'dark']),
   bulletActiveClass: PropTypes.string,
-  bulletClass: PropTypes.string
+  bulletClass: PropTypes.string,
 };
 
 export { Carousel };

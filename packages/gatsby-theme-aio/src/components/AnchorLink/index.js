@@ -30,7 +30,7 @@ const AnchorLink = ({ href, variant = 'primary', ...props }) => {
 
 AnchorLink.propTypes = {
   href: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 export { AnchorLink };

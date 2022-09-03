@@ -34,7 +34,11 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
     <li className="spectrum-Menu-divider" role="separator" />
   ) : (
     <Element
-      className={classNames('spectrum-Menu-item', { 'is-open': isHighlighted }, { 'is-selected': isSelected })}
+      className={classNames(
+        'spectrum-Menu-item',
+        { 'is-open': isHighlighted },
+        { 'is-selected': isSelected }
+      )}
       to={href}
       role="menuitem"
       tabIndex="0"
@@ -72,11 +76,11 @@ Item.propTypes = {
   isHighlighted: PropTypes.bool,
   isSelected: PropTypes.bool,
   isDivider: PropTypes.bool,
-  href: PropTypes.string
+  href: PropTypes.string,
 };
 
 Section.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export { Menu, Item, Section };

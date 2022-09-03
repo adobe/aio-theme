@@ -24,15 +24,18 @@ import { DESKTOP_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 
 const filterByClouds = (products, cloudFilter, additionalFilter, setFilteredProducts) => {
-  const filteredProducts = products.filter(({ cloud }) => cloudFilter.some((selectedCloud) => cloud === selectedCloud));
+  const filteredProducts = products.filter(({ cloud }) =>
+    cloudFilter.some(selectedCloud => cloud === selectedCloud)
+  );
   const selectedFilter = additionalFilters.find(({ value }) => value === additionalFilter);
 
   setFilteredProducts(selectedFilter.filter(filteredProducts, selectedFilter.ids));
 };
 
-const filterByName = (products) => products.sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB));
+const filterByName = products =>
+  products.sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB));
 
-const filterByLastUpdated = (products) =>
+const filterByLastUpdated = products =>
   products.sort(({ lastUpdated: lastUpdatedA }, { lastUpdated: lastUpdatedB }) => {
     if (new Date(lastUpdatedB) > new Date(lastUpdatedA)) {
       return 1;
@@ -44,7 +47,7 @@ const filterByLastUpdated = (products) =>
 
 const filterById = (products, ids = []) => {
   const filteredProducts = [];
-  ids.forEach((productId) => {
+  ids.forEach(productId => {
     const product = products.find(({ id }) => id === productId);
     if (product) {
       filteredProducts.push(product);
@@ -57,18 +60,18 @@ const additionalFilters = [
   {
     title: 'Last updated',
     value: 'last_updated',
-    filter: filterByLastUpdated
+    filter: filterByLastUpdated,
   },
   {
     title: 'Name',
     value: 'name',
-    filter: filterByName
+    filter: filterByName,
   },
   {
     title: 'Custom',
     value: 'id',
-    filter: filterById
-  }
+    filter: filterById,
+  },
 ];
 
 const ProductCardGrid = ({
@@ -77,7 +80,7 @@ const ProductCardGrid = ({
   interaction = false,
   orderBy = 'last_updated',
   filterByCloud = [],
-  filterByIds = []
+  filterByIds = [],
 }) => {
   if (filterByIds.length) {
     orderBy = 'id';
@@ -87,15 +90,24 @@ const ProductCardGrid = ({
   defaultFilter.ids = filterByIds;
 
   const [additionalFilter, setAdditionalFilter] = useState(defaultFilter.value);
-  const [filteredProducts, setFilteredProducts] = useState(defaultFilter.filter(products, defaultFilter.ids));
+  const [filteredProducts, setFilteredProducts] = useState(
+    defaultFilter.filter(products, defaultFilter.ids)
+  );
   const [cloudFilter, setCloudFilter] = useState(filterByCloud);
 
   useEffect(() => {
-    filterByClouds(products, cloudFilter.length ? cloudFilter : clouds, additionalFilter, setFilteredProducts);
+    filterByClouds(
+      products,
+      cloudFilter.length ? cloudFilter : clouds,
+      additionalFilter,
+      setFilteredProducts
+    );
   }, [cloudFilter, additionalFilter]);
 
-  const height = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500))';
-  const width = 'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800))';
+  const height =
+    'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-500))';
+  const width =
+    'calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800))';
 
   return (
     <section
@@ -115,16 +127,16 @@ const ProductCardGrid = ({
           `}>
           <Picker
             isQuiet
-            items={additionalFilters.slice(0, 2).map((filter) => {
+            items={additionalFilters.slice(0, 2).map(filter => {
               return filter.value === orderBy
                 ? {
                     selected: true,
-                    ...filter
+                    ...filter,
                   }
                 : filter;
             })}
             aria-label="Filter by name or last updated product"
-            onChange={(index) => {
+            onChange={index => {
               setAdditionalFilter(additionalFilters[index].value);
             }}
           />
@@ -170,11 +182,11 @@ const ProductCardGrid = ({
                   <Checkbox
                     key={i}
                     value={cloud}
-                    onChange={(checked) => {
+                    onChange={checked => {
                       if (checked) {
                         setCloudFilter([...cloudFilter, cloud]);
                       } else {
-                        setCloudFilter(cloudFilter.filter((filter) => filter !== cloud));
+                        setCloudFilter(cloudFilter.filter(filter => filter !== cloud));
                       }
                     }}
                     css={css`
@@ -205,7 +217,7 @@ const ProductCardGrid = ({
                 flex-wrap: wrap;
               }
             `}>
-            {filteredProducts.map((product) => (
+            {filteredProducts.map(product => (
               <div
                 key={product.id}
                 role="figure"
@@ -316,7 +328,7 @@ ProductCardGrid.propTypes = {
   products: PropTypes.array,
   orderBy: PropTypes.string,
   filterBy: PropTypes.array,
-  interaction: PropTypes.bool
+  interaction: PropTypes.bool,
 };
 
 export { ProductCardGrid };
