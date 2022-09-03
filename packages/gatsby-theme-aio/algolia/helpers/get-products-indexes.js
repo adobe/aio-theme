@@ -10,6 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
+// TODO: Document usage
+// const product = getProductFromIndex(adobeIndexes.aem_developer_materials);
+// const index = getIndexesFromProduct(adobeProducts.adobe_commerce);
+// console.log(product);
+// console.log(index);
+
 // Adobe products with documentation hosted on https//:developer.adobe.com
 const adobeProducts = {
   adobe_after_effects: 'Adobe After Effects',
@@ -257,9 +263,3 @@ module.exports = {
   getProductFromIndex,
   getIndexesFromProduct,
 };
-
-// TODO: Document usage
-// const product = getProductFromIndex(adobeIndexes.aem_developer_materials);
-// const index = getIndexesFromProduct(adobeProducts.adobe_commerce);
-// console.log(product);
-// console.log(index);
