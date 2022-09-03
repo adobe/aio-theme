@@ -10,19 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-const HtmlParser = require('./html-parser')
-const htmlParser = new HtmlParser()
+const HtmlParser = require('./html-parser');
+const htmlParser = new HtmlParser();
 
-function parseHtml (content, options) {
+function parseHtml(content, options) {
   const rawRecords = htmlParser
     .run(content, { cssSelector: options.tagsToIndex })
     .filter(
       htmlElement =>
         htmlElement.content.length >= options.minCharsLengthPerTag &&
         htmlElement.content.split(' ').length >= options.minWordsCount
-    )
+    );
 
-  return rawRecords
+  return rawRecords;
 }
 
-module.exports = parseHtml
+module.exports = parseHtml;

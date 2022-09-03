@@ -30,23 +30,25 @@ function indexAlgoliaRecords() {
       }) {
         const markdownFiles = nodes.map(node => {
           // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
+          const { slug, headings, fileAbsolutePath, excerpt, frontmatter, wordCount, mdxAST } =
+            node.childMdx;
           return {
             objectID: node.id,
             contentDigest: node.internal.contentDigest,
             product: getProductFromIndex(process.env.REPO_NAME),
             lastUpdated: node.modifiedTime,
-            headings: node.childMdx.headings,
-            excerpt: node.childMdx.excerpt,
-            words: node.childMdx.wordCount.words,
-            fileAbsolutePath: node.childMdx.fileAbsolutePath, // Required for additional source data
-            slug: node.childMdx.slug,
-            title: node.childMdx.frontmatter.title,
-            description: node.childMdx.frontmatter.description,
-            keywords: node.childMdx.frontmatter.keywords, // Used for search filters
-            openAPISpec: node.childMdx.frontmatter.openAPISpec, // Required for OpenAPI sources
-            frameSrc: node.childMdx.frontmatter.frameSrc, // Required for iframe sources
-            spotlight: node.childMdx.frontmatter.spotlight, // Added to elevate records from file
-            mdxAST: node.childMdx.mdxAST,
+            headings: headings,
+            excerpt: excerpt,
+            words: wordCount.words,
+            fileAbsolutePath: fileAbsolutePath, // Required for additional source data
+            slug: slug,
+            title: frontmatter.title,
+            description: frontmatter.description,
+            keywords: frontmatter.keywords, // Used for search filters
+            openAPISpec: frontmatter.openAPISpec, // Required for OpenAPI sources
+            frameSrc: frontmatter.frameSrc, // Required for iframe sources
+            spotlight: frontmatter.spotlight, // Added to elevate records from file
+            mdxAST: mdxAST,
           };
         });
 

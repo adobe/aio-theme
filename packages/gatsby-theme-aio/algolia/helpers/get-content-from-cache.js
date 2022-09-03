@@ -10,24 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-const normalizePath = require('normalize-path')
-const { existsSync, readFileSync } = require('fs')
+const normalizePath = require('normalize-path');
+const { existsSync, readFileSync } = require('fs');
 
 /**
  * Support of "frameSrc" directive:
  * https://github.com/adobe/aio-theme#frame
  */
-function getContentFromCache (node, options) {
-  const { fileAbsolutePath } = node
-  const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir)
-  const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`
+function getContentFromCache(node, options) {
+  const { fileAbsolutePath } = node;
+  const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
+  const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`;
 
   if (!existsSync(staticFileAbsolutePath)) {
-    throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`)
+    throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`);
   }
 
-  const fileContent = readFileSync(staticFileAbsolutePath, 'utf8')
-  return fileContent
+  const fileContent = readFileSync(staticFileAbsolutePath, 'utf8');
+  return fileContent;
 }
 
-module.exports = getContentFromCache
+module.exports = getContentFromCache;
