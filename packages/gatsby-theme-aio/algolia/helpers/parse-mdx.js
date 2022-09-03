@@ -53,14 +53,14 @@ function parseMdx(markdownFile) {
 }
 
 // Get the closest heading above the rawRecord's content
-function getContentHeading(mdastNode, markdownFile) {
+function getContentHeading(mdastNode, markdownFile, minCharLength) {
   let contentPositionEndLine = 0;
   contentPositionEndLine =
     mdastNode.type === 'code'
       ? mdastNode.position.end.line
       : mdastNode.children.slice(-1)[0].position.end.line;
 
-  const allHeadings = markdownFile.headings;
+  const allHeadings = selectAll('heading', markdownFile.mdxAST);
   if (allHeadings.length <= 0) return '';
 
   const filteredHeadings = allHeadings
@@ -69,7 +69,14 @@ function getContentHeading(mdastNode, markdownFile) {
       heading => heading.children[0].value !== 'Request' && heading.children[0].value !== 'Response'
     );
 
-  return filteredHeadings.slice(-1)[0]; // closest heading above the nodeValue
+  const headingsAboveContent = [];
+  for (const heading of filteredHeadings) {
+    const headingValue = heading.children.map(child => child.value).join('');
+    if (headingValue.length < minCharLength) continue;
+
+    headingsAboveContent.push(headingValue);
+  }
+  return headingsAboveContent.slice(-1)[0]; // closest heading above the nodeValue
 }
 
 // The anchor is just the transformed contentHeading
