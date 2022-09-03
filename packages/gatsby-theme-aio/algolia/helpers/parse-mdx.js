@@ -42,8 +42,8 @@ function parseMdx(markdownFile) {
       contentHeading: getContentHeading(mdastNode, markdownFile),
       anchor: getAnchor(mdastNode, markdownFile),
       spotlight: markdownFile.spotlight,
-      title: markdownFile.title,
-      description: markdownFile.description ?? nodeValue,
+      title: markdownFile.title ?? markdownFile.headings[0],
+      description: markdownFile.description ?? markdownFile.excerpt,
       words: nodeValue.split(' ').length,
     };
 
