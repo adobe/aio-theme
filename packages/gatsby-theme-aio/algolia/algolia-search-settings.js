@@ -5,10 +5,10 @@ module.exports = {
   ALGOLIA_SEARCH_SETTINGS: {
     searchableAttributes: [
       'unordered(product)',
-      'unordered(contentHeading)',
       'unordered(title)',
-      'unordered(content)',
       'unordered(description)',
+      'unordered(contentHeading)',
+      'unordered(content)',
       'unordered(excerpt)',
     ],
     ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
@@ -17,9 +17,7 @@ module.exports = {
     attributesToSnippet: ['content:20', 'description:20', 'excerpt:20'],
     snippetEllipsisText: '…',
     attributesToRetrieve: ['*'],
-    attributesToHighlight: ['contentHeading', 'content', 'title', 'description', 'excerpt'],
-    highlightPreTag: '<mark>',
-    highlightPostTag: '</mark>',
+    attributesToHighlight: ['title', 'description', 'contentHeading', 'content', 'excerpt'],
     hitsPerPage: 20,
     ignorePlurals: true,
     restrictHighlightAndSnippetArrays: false,
