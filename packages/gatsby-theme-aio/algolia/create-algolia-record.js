@@ -19,6 +19,7 @@ async function createAlgoliaRecord(rawRecord, file) {
     content: rawRecord.content,
     title: rawRecord.title,
     description: rawRecord.description,
+    excerpt: file.excerpt,
     keywords: file.keywords,
     headings: rawRecord.headings,
     words: rawRecord.words,
