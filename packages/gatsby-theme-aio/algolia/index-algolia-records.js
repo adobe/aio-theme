@@ -10,13 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-const getImportedContent = require('./sourcing/get-imported-content');
-const getIFrameContent = require('./sourcing/get-iframe-content');
-const getOpenApiContent = require('./sourcing/get-openapi-content');
+const getImportedContent = require('./helpers/get-imported-content');
+const getIFrameContent = require('./helpers/get-iframe-content');
+const getOpenApiContent = require('./helpers/get-openapi-content');
 const mdxQuery = require('./mdx-query');
-const parseHtml = require('./sourcing/parse-html');
-const parseMarkdown = require('./sourcing/parse-markdown');
+const parseHtml = require('./helpers/parse-html');
+const parseMarkdown = require('./helpers/parse-markdown');
 const createAlgoliaRecord = require('./create-algolia-record');
+const { getProductFromIndex } = require('./helpers/get-products-indexes');
 
 function indexAlgoliaRecords() {
   return [
