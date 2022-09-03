@@ -4,9 +4,9 @@
 module.exports = {
   ALGOLIA_SEARCH_SETTINGS: {
     searchableAttributes: [
+      'contentHeading',
       'title',
       'unordered(content)',
-      'unordered(headings)',
       'unordered(description)',
       'unordered(excerpt)',
     ],

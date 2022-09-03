@@ -15,7 +15,7 @@ const getIFrameContent = require('./helpers/get-iframe-content');
 const getOpenApiContent = require('./helpers/get-openapi-content');
 const mdxQuery = require('./mdx-query');
 const parseHtml = require('./helpers/parse-html');
-const parseMarkdown = require('./helpers/parse-markdown');
+const parseMdx = require('./helpers/parse-mdx');
 const createAlgoliaRecord = require('./create-algolia-record');
 const { getProductFromIndex } = require('./helpers/get-products-indexes');
 
@@ -66,7 +66,7 @@ function indexAlgoliaRecords() {
           rawRecords =
             htmlContent != null
               ? parseHtml(htmlContent.content, htmlContent.options)
-              : parseMarkdown(markdownFile);
+              : parseMdx(markdownFile);
 
           if (rawRecords == null || rawRecords.length <= 0) continue;
 
