@@ -138,7 +138,7 @@
     "redoc-cli": "^0.13.19",
     "rehype-slug-custom-id": "^1.1.0",
     "request": "^2.88.2",
-    "sharp": "^0.30.7",
+    "sharp": "^0.31.0",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.5",
     "swiper": "^8.3.2",
