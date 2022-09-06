@@ -14,6 +14,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
+// TODO: Revisit usage of keywords when/if it is replaced with category.
 const SEO = ({ title, description, keywords }) => (
   <Helmet>
     <html lang="en" />

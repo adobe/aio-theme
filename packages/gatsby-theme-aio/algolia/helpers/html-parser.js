@@ -85,7 +85,6 @@ module.exports = class HtmlParser {
         content,
         description: content,
         headings: Object.values(currentHierarchy).filter(h => h),
-        anchor: currentAnchor,
         node,
         customRanking: {
           position: currentPosition,
@@ -97,13 +96,26 @@ module.exports = class HtmlParser {
       item.contentDigest = uuid.v4(content);
       item.words = content.split(' ').length;
       item.title = Object.values(currentHierarchy).filter(h => h)[0];
-      item.contentHeading = Object.values(currentHierarchy).filter(h => h)[0];
+      item.contentHeading = Object.values(currentHierarchy).filter(h => h)[1];
+      item.anchor =
+        currentAnchor === ''
+          ? this.getFallbackAnchor(Object.values(currentHierarchy).filter(h => h)[1])
+          : currentAnchor;
       items.push(item);
-
       currentPosition += 1;
     });
 
     return items;
+  }
+
+  // TODO: Fix to work accurately and consistently when HTML source doesn't contain heading id's
+  getFallbackAnchor(contentHeading) {
+    if (contentHeading == null) return '';
+
+    return `#${contentHeading
+      .match(/[a-zA-Z0-9]+/g)
+      ?.map(s => s.toLowerCase())
+      .join('-')}`;
   }
 
   // Returns the outer HTML of a given node

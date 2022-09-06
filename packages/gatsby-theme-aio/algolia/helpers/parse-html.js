@@ -10,11 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-module.exports = {
-  ALGOLIA_INDEXING_MODES: {
-    skip: true, // deprecated: removed from plugin. Now functions the same as dry run.
-    console: true,
-    index: false
-  },
-  ALGOLIA_DEFAULT_INDEXING_MODE: 'console'
-};
+const HtmlParser = require('./html-parser');
+const htmlParser = new HtmlParser();
+
+function parseHtml(content, options) {
+  const rawRecords = htmlParser
+    .run(content, { cssSelector: options.tagsToIndex })
+    .filter(
+      htmlElement =>
+        htmlElement.content.length >= options.minCharsLengthPerTag &&
+        htmlElement.content.split(' ').length >= options.minWordsCount
+    );
+
+  return rawRecords;
+}
+
+module.exports = parseHtml;

@@ -340,8 +340,8 @@ export default ({ children, pageContext, location }) => {
   if (pathPrefix === "/search-frame") {
     return (
       <>
-      <Helmet>
-        <noscript>{`
+        <Helmet>
+          <noscript>{`
           <style>
             #${layoutId} {
               grid-template-columns: 0 auto;
@@ -356,10 +356,10 @@ export default ({ children, pageContext, location }) => {
             }
           </style>
         `}</noscript>
-      </Helmet>
+        </Helmet>
 
-      <Global
-        styles={css`
+        <Global
+          styles={css`
           @font-face {
             font-family: 'adobe-clean';
             src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
@@ -441,12 +441,12 @@ export default ({ children, pageContext, location }) => {
             display: none !important;
           }
         `}
-      />
+        />
         <div
-        dir="ltr"
-        className="spectrum spectrum--medium spectrum--large spectrum--light"
-        color-scheme="light"
-        css={css`
+          dir="ltr"
+          className="spectrum spectrum--medium spectrum--large spectrum--light"
+          color-scheme="light"
+          css={css`
           min-height: 100vh;
           background-color: transparent;
         `}>
@@ -730,7 +730,7 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
 
                     ${showSideNav &&
-                    `
+                  `
                     pointer-events: auto;
                     opacity: 1;
                   `}
