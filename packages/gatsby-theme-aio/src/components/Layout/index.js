@@ -581,7 +581,6 @@ export default ({ children, pageContext, location }) => {
           allGithub,
           allGithubContributors
         }}>
-        // TODO: Revisit usage of keywords when/if it is replaced with category.
         <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
         <div
           dir="ltr"
