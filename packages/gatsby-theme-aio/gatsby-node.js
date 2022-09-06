@@ -132,6 +132,10 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         type: '[String]',
         resolve: addFrontmatterType,
       },
+      category: {
+        type: 'String',
+        resolve: addFrontmatterType,
+      },
       description: {
         type: 'String',
         resolve: addFrontmatterType,
@@ -176,7 +180,7 @@ exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
         type: 'Boolean',
         resolve: addFrontmatterType,
       },
-      spotlight: {
+      featured: {
         type: 'Boolean',
         resolve: addFrontmatterType,
       },

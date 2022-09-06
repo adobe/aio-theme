@@ -41,12 +41,12 @@ async function getImportedContent(markdownFile) {
   );
 
   const publicSourceFilePath = `${siteDirAbsolutePath}${options.publicDir}${sourceFileRelativePath}`;
-  const sourceFileExtension = new RegExp(`\.${options.sourceFileExtension}$`);
+  const sourceFileExtension = new RegExp(`${options.sourceFileExtension}$`);
   const publicFileExtension = `.${options.publicFileExtension}`;
 
   const isIndexFile = sourceFileRelativePath.split('/').pop() === 'index.md';
 
-  let cacheFileAbsolutePath = isIndexFile
+  const cacheFileAbsolutePath = isIndexFile
     ? publicSourceFilePath.replace(sourceFileExtension, publicFileExtension)
     : publicSourceFilePath.replace(sourceFileExtension, '/') + 'index.html';
 

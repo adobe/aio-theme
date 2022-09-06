@@ -20,14 +20,18 @@ const mdxQuery = `
       internal {
         contentDigest
       }
+      birthTime
+      changeTime
       modifiedTime(fromNow: true)
+      size
       childMdx {
         excerpt(pruneLength: 200)
         frontmatter {
           title
           description
           keywords
-          spotlight
+          category
+          featured
           openAPISpec
           frameSrc
         }
