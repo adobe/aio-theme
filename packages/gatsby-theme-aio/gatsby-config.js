@@ -15,7 +15,7 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_SEARCH_SETTINGS } = require('./algolia/global-settings');
+const { GLOBAL_INDEX_SETTINGS } = require('./algolia/global-index-settings');
 const indexAlgoliaRecords = require('./algolia/index-records');
 let isDryRun = true;
 
@@ -138,7 +138,7 @@ module.exports = {
         queries: indexAlgoliaRecords(),
         chunkSize: 10000,
         mergeSettings: false,
-        settings: ALGOLIA_SEARCH_SETTINGS,
+        settings: GLOBAL_INDEX_SETTINGS,
         enablePartialUpdates: false,
         matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true

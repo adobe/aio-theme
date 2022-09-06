@@ -2,7 +2,7 @@
 // These settings determine the relevance, order, and content of the search results shown on the screen.
 
 module.exports = {
-  ALGOLIA_SEARCH_SETTINGS: {
+  GLOBAL_INDEX_SETTINGS: {
     searchableAttributes: [
       'title',
       'contentHeading',
