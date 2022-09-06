@@ -16,10 +16,10 @@ const getOpenApiContent = require('./helpers/get-openapi-content');
 const mdxQuery = require('./mdx-query');
 const parseHtml = require('./helpers/parse-html');
 const parseMdx = require('./helpers/parse-mdx');
-const createAlgoliaRecord = require('./create-algolia-record');
+const createAlgoliaRecord = require('./create-record');
 const { getProductFromIndex } = require('./helpers/get-products-indexes');
 
-function indexAlgoliaRecords() {
+function indexRecords() {
   return [
     {
       query: mdxQuery,
@@ -45,9 +45,10 @@ function indexAlgoliaRecords() {
             title: frontmatter.title,
             description: frontmatter.description,
             keywords: frontmatter.keywords, // Used for search filters
+            category: frontmatter.category, // Used for search filters
             openAPISpec: frontmatter.openAPISpec, // Required for OpenAPI sources
             frameSrc: frontmatter.frameSrc, // Required for iframe sources
-            spotlight: frontmatter.spotlight, // Added to elevate records from file
+            featured: frontmatter.featured, // Added to elevate records from file
             mdxAST: mdxAST,
           };
         });
@@ -84,4 +85,4 @@ function indexAlgoliaRecords() {
   ];
 }
 
-module.exports = indexAlgoliaRecords;
+module.exports = indexRecords;

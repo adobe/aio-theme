@@ -14,7 +14,8 @@ keywords:
   - SDK
   - C++
   - Scripting
-spotlight: true
+category: Overview
+featured: true
 ---
 
 import Overview from '../transclusions/overview.md'

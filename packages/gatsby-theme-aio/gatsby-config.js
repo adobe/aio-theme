@@ -15,8 +15,8 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { ALGOLIA_SEARCH_SETTINGS } = require('./algolia/algolia-search-settings');
-const indexAlgoliaRecords = require('./algolia/index-algolia-records');
+const { ALGOLIA_SEARCH_SETTINGS } = require('./algolia/global-settings');
+const indexAlgoliaRecords = require('./algolia/index-records');
 let isDryRun = true;
 
 let indexingMode = process.env.ALGOLIA_INDEXATION_MODE;
@@ -91,7 +91,7 @@ module.exports = {
               maintainCase: false,
               removeAccents: true,
               enableCustomId: true,
-              elements: [`h2`, `h3`, `h4`, `h5`],
+              elements: [`h1`, `h2`, `h3`, `h4`, `h5`],
             },
           },
           {
