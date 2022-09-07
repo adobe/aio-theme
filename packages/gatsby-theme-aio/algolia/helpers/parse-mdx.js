@@ -36,7 +36,7 @@ function parseMdx(markdownFile) {
 
     const rawRecord = {
       objectID: uuid.v4(nodeValue),
-      contentDigest: markdownFile.contentDigest,
+      contentDigest: uuid.v4(nodeValue),
       content: nodeValue,
       headings: markdownFile.headings.map(heading => heading.value),
       contentHeading: getContentHeading(mdastNode, markdownFile),
