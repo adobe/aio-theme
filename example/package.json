@@ -3,7 +3,7 @@
   "name": "example",
   "version": "0.0.1",
   "dependencies": {
-    "@adobe/gatsby-theme-aio": "4.5.1",
+    "@adobe/gatsby-theme-aio": "*",
     "gatsby": "^4.21.1"
   },
   "scripts": {
