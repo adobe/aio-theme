@@ -129,7 +129,7 @@
     "penpal": "^6.2.2",
     "postcss": "^8.4.16",
     "preact": "^10.10.6",
-    "preact-render-to-string": "^5.2.2",
+    "preact-render-to-string": "^5.2.3",
     "prism-react-renderer": "1.3.5",
     "prop-types": "^15.8.1",
     "react-helmet": "^6.1.0",
