@@ -146,7 +146,7 @@ module.exports = {
         },
         settings: indexSettings(),
         mergeSettings: false,
-        enablePartialUpdates: true,
+        enablePartialUpdates: false,
         matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.
