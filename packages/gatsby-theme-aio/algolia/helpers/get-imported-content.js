@@ -22,7 +22,7 @@ const { selectAll } = require('unist-util-select');
  */
 
 async function getImportedContent(markdownFile) {
-  const importedContent = await selectAll('import', markdownFile.mdxAST);
+  const importedContent = selectAll('import', markdownFile.mdxAST);
   if (importedContent.length <= 0) return null;
 
   const options = {

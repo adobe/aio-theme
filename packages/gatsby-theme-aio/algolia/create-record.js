@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+const {getAdobeDocType} = require("./helpers/get-adobe-doctype");
+
 async function createRecord(rawRecord, file) {
   const record = {
     anchor: rawRecord.anchor,
@@ -26,7 +28,7 @@ async function createRecord(rawRecord, file) {
     new: getNewStatus(file.birthTime),
     objectID: rawRecord.objectID,
     product: file.product,
-    productIcon: getProductIcon(),
+    icon: getIcon(file.product),
     size: file.size,
     slug: file.slug,
     title: rawRecord.title,
@@ -37,36 +39,11 @@ async function createRecord(rawRecord, file) {
   return record;
 }
 
-// TODO: Replace `keywords` with `category` within the frontmatter.
-//  Category refers to content type, with only a few for writers/teams to pick from:
-//  - Overview (Introduction, concepts, philosophy, etc.)
-//  - Setup (getting started, settings, configuration, etc.)
-//  - Architecture (Structure, etc. )
-//  - Instructions (Synonyms: How-to, tutorial, steps, etc.)
-//  - API (Synonyms: Reference, library, SDK, events, etc.)
-//  Populating category will be easier and less varied than keywords. Provides more structure.
+// We use the standard documentation types from Experience League to tag our markdown files with the category frontmatter.
+// https://experienceleague.adobe.com/docs/authoring-guide-exl/using/authoring/style-guide/content-types.html#product-documentation
 function getCategory(category) {
-  // use `file.category` (from the `category` key in the frontmatter) to set standard checkbox names for content types.
-  if (category == null) return;
-  const contentType = category?.toLowerCase();
-
-  if (
-    contentType === 'overview' ||
-    contentType === 'introduction' ||
-    contentType === 'concepts' ||
-    contentType === 'getting started'
-  ) {
-    return 'Overview';
-  }
-  if (
-    contentType === 'instructions' ||
-    contentType === 'steps' ||
-    contentType === 'how-to' ||
-    contentType === 'tutorial'
-  ) {
-    return 'Setup';
-  }
-  // and so on...
+  const docType = getAdobeDocType(category);
+  return docType;
 }
 
 function getKeywords(keywords) {
@@ -100,8 +77,9 @@ function getUrl(rawRecord, file) {
 }
 
 // TODO: Get url that returns the product icon so that the search results can be easily identified by product.
-function getProductIcon() {
-  // Need to find out if there are standard urls for Adobe product icons.
+function getIcon(product) {
+  // const iconUrl = assemble-iconUrl-here;
+  // return iconUrl;
 }
 
 module.exports = createRecord;

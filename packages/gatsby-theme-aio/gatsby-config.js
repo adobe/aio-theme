@@ -15,8 +15,8 @@ require('dotenv').config({
 });
 
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const { GLOBAL_INDEX_SETTINGS } = require('./algolia/global-index-settings');
-const indexAlgoliaRecords = require('./algolia/index-records');
+const indexSettings = require('./algolia/index-settings');
+const indexRecords = require('./algolia/index-records');
 let isDryRun = true;
 
 let indexingMode = process.env.ALGOLIA_INDEXATION_MODE;
@@ -26,10 +26,10 @@ if (
   indexingMode === 'skip' ||
   indexingMode === 'console'
 ) {
-  console.info(`Algolia indexing mode: Console-only.`);
+  console.info(`Indexing mode: Console-only.`);
 } else if (indexingMode === 'index') {
   isDryRun = false;
-  console.info(`Algolia indexing mode: Indexing to servers`);
+  console.info(`Indexing mode: Indexing to Algolia`);
 }
 
 // Used to convert ESM to CJS modules until Gatsby supports ESM.
@@ -134,12 +134,19 @@ module.exports = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        queries: indexAlgoliaRecords(),
-        chunkSize: 10000,
+        apiKey: process.env.ALGOLIA_ADMIN_API_KEY,
+        queries: indexRecords(),
+        chunkSize: 1000,
+        algoliasearchOptions: {
+          timeouts: {
+            connect: 20,
+            read: 60,
+            write: 60,
+          },
+        },
+        settings: indexSettings(),
         mergeSettings: false,
-        settings: GLOBAL_INDEX_SETTINGS,
-        enablePartialUpdates: false,
+        enablePartialUpdates: true,
         matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.

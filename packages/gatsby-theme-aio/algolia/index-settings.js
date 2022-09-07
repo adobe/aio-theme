@@ -1,8 +1,5 @@
-// These are the search settings that determine which records are retrieved from the site's index.
-// These settings determine the relevance, order, and content of the search results shown on the screen.
-
-module.exports = {
-  GLOBAL_INDEX_SETTINGS: {
+const indexSettings = () => {
+  return {
     searchableAttributes: [
       'title',
       'contentHeading',
@@ -31,5 +28,7 @@ module.exports = {
     restrictHighlightAndSnippetArrays: false,
     snippetEllipsisText: '…',
     typoTolerance: true,
-  },
+  }
 };
+
+module.exports = indexSettings;
