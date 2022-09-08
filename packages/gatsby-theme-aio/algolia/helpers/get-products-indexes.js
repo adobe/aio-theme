@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Adobe. All rights reserved.
- * This file   licensed to you under the Apache License, Version 2.0 (the "License");
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -28,7 +28,7 @@ const adobeProducts = {
   adobe_commerce: 'Adobe Commerce',
   adobe_creative_cloud: 'Adobe Creative Cloud',
   adobe_customer_journey_analytics: 'Adobe Customer Journey Analytics',
-  adobe_developer_app_builder: 'Adobe Developer App Builder',
+  adobe_developer_app_builder: 'Adobe App Builder',
   adobe_developer_console: 'Adobe Developer Console',
   adobe_developer_enablement: 'Adobe Developer Enablement',
   adobe_document_services: 'Adobe Document Services',
@@ -212,7 +212,7 @@ const getIndexesFromProduct = product => {
       adobeIndexes.cc_libraries_api,
     ],
     'Adobe Customer Journey Analytics': [adobeIndexes.cja_apis],
-    'Adobe Developer App Builder': [
+    'App Builder': [
       adobeIndexes.app_builder,
       adobeIndexes.app_builder_template_registry,
       adobeIndexes.graphql_mesh_gateway,
@@ -254,7 +254,6 @@ const getIndexesFromProduct = product => {
     'Adobe Workfront': [adobeIndexes.wf_apis, adobeIndexes.workfront_api_explorer],
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
-    'Adobe Theme Example': [adobeIndexes.aio_theme]
   }[product];
 };
 

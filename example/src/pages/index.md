@@ -14,7 +14,6 @@ keywords:
   - SDK
   - C++
   - Scripting
-category: Overview
 featured: true
 ---
 
