@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-const {getAdobeDocType} = require("./helpers/get-adobe-doctype");
+const { getAdobeDocType } = require("./helpers/get-adobe-doctype");
 
 async function createRecord(rawRecord, file) {
   const record = {
@@ -55,9 +55,8 @@ function getKeywords(keywords) {
 
 // Full url complete with anchor link to the nearest heading for the search record result.
 function getUrl(rawRecord, file) {
-  return `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
-      file.slug == null ? '' : file.slug
-  }${rawRecord.anchor}`;
+  return `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${file.slug == null ? '' : file.slug
+    }${rawRecord.anchor}`;
 }
 
 module.exports = createRecord;

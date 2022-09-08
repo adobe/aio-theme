@@ -1,5 +1,6 @@
 ---
-
+category: "api guides"
+description: "Learn how to use the Calculated Metrics API to create and manage calculated metrics."
 ---
 
 # Calculated Metrics API
