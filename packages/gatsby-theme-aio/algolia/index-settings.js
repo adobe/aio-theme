@@ -1,8 +1,5 @@
-// These are the search settings that determine which records are retrieved from the site's index.
-// These settings determine the relevance, order, and content of the search results shown on the screen.
-
-module.exports = {
-  GLOBAL_INDEX_SETTINGS: {
+const indexSettings = () => {
+  return {
     searchableAttributes: [
       'title',
       'contentHeading',
@@ -18,7 +15,7 @@ module.exports = {
     attributesToRetrieve: ['*'],
     attributesToSnippet: ['content:20', 'description:20', 'excerpt:20'],
     camelCaseAttributes: ['contentHeading', 'description', 'excerpt'],
-    customRanking: ['desc(featured)', 'desc(new)', 'desc(updated)', 'desc(size)'],
+    customRanking: ['desc(featured)', 'desc(isNew)', 'desc(howRecent)', 'desc(size)'],
     distinct: 1,
     hitsPerPage: 20,
     ignorePlurals: true,
@@ -31,5 +28,7 @@ module.exports = {
     restrictHighlightAndSnippetArrays: false,
     snippetEllipsisText: '…',
     typoTolerance: true,
-  },
+  }
 };
+
+module.exports = indexSettings;

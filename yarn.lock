@@ -107,7 +107,7 @@ __metadata:
     penpal: ^6.2.2
     postcss: ^8.4.16
     preact: ^10.10.6
-    preact-render-to-string: ^5.2.2
+    preact-render-to-string: ^5.2.3
     prism-react-renderer: 1.3.5
     prop-types: ^15.8.1
     react: ^17.0.2
@@ -125,7 +125,7 @@ __metadata:
     to-arraybuffer: ^1.0.1
     tty-browserify: ^0.0.1
     unist-util-select: 3.0.4
-    uuid: ^8.3.2
+    uuid: ^9.0.0
   peerDependencies:
     gatsby: ^4.22.0
     react: ^17.0.2
@@ -4245,23 +4245,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:14.6.4":
-  version: 14.6.4
-  resolution: "@nrwl/cli@npm:14.6.4"
+"@nrwl/cli@npm:14.6.5":
+  version: 14.6.5
+  resolution: "@nrwl/cli@npm:14.6.5"
   dependencies:
-    nx: 14.6.4
-  checksum: a6cf1a746f0eba6eec62f9fe41ae5810c11796d7db1d6a0e685a034b81aeba1deecedffe351727d1ae9f090bccb37f516e716c909ec08e925a54be447bea3389
+    nx: 14.6.5
+  checksum: 1f4d3648132c9d244f7805b23c78bcae1b0d56f279a2c69d7eb44ab77a92c1e8418d5b40d39e7ae6aaeecacea0a44b17f6bf0aba83db83628c3c1c597fd70068
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:14.6.4":
-  version: 14.6.4
-  resolution: "@nrwl/tao@npm:14.6.4"
+"@nrwl/tao@npm:14.6.5":
+  version: 14.6.5
+  resolution: "@nrwl/tao@npm:14.6.5"
   dependencies:
-    nx: 14.6.4
+    nx: 14.6.5
   bin:
     tao: index.js
-  checksum: 1dd0a49cc3e90f0e5488a74334c707b960eab6d63502c6afba676eca73af186e2ab3178b4a5d9ad73537819dbcf622af95bfdd571d37b8d6e5836efcbcc35843
+  checksum: 9833368f1335b810915a3e013ba33333588afba0276b022c7cc44653df943f3dda033471928a0807664314a64d5645a2cc4cdb92f96eb34d026910e4aac8c19d
   languageName: node
   linkType: hard
 
@@ -17109,12 +17109,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:14.6.4, nx@npm:>=14.6.1 < 16":
-  version: 14.6.4
-  resolution: "nx@npm:14.6.4"
+"nx@npm:14.6.5, nx@npm:>=14.6.1 < 16":
+  version: 14.6.5
+  resolution: "nx@npm:14.6.5"
   dependencies:
-    "@nrwl/cli": 14.6.4
-    "@nrwl/tao": 14.6.4
+    "@nrwl/cli": 14.6.5
+    "@nrwl/tao": 14.6.5
     "@parcel/watcher": 2.0.4
     chalk: 4.1.0
     chokidar: ^3.5.1
@@ -17153,7 +17153,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: 5d3c692e71a2b09547850460eb99aaf11d1830a30e1fbbf6694f5828ecc5188339af39f9c5a8efd78d566901f0c382c09797b891cfbab22be7c788a01b08521e
+  checksum: be84d05bc577b6ab89af1689e5446f38e7f121fa603fbe98be3054b85676a746e5394fc128b5de405e957b380481b72f7afb785268f85041bbb7578532703b39
   languageName: node
   linkType: hard
 
@@ -18706,14 +18706,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:^5.2.2":
-  version: 5.2.2
-  resolution: "preact-render-to-string@npm:5.2.2"
+"preact-render-to-string@npm:^5.2.3":
+  version: 5.2.3
+  resolution: "preact-render-to-string@npm:5.2.3"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: 2068b8ce4836ca1f01e086e34872dbf1642fd8569e5df655bb7270327d58867ef1a97b7c17dee9ec19fe4a8e73ff6d9ab0fee3be6fa3cffcba028aa265f97bf4
+  checksum: 6e46288d8956adde35b9fe3a21aecd9dea29751b40f0f155dea62f3896f27cb8614d457b32f48d33909d2da81135afcca6c55077520feacd7d15164d1371fb44
   languageName: node
   linkType: hard
 
@@ -23015,6 +23015,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 5575a8a75c13120e2f10e6ddc801b2c7ed7d8f3c8ac22c7ed0c7b2ba6383ec0abda88c905085d630e251719e0777045ae3236f04c812184b7c765f63a70e58df
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "uuid@npm:9.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 8dd2c83c43ddc7e1c71e36b60aea40030a6505139af6bee0f382ebcd1a56f6cd3028f7f06ffb07f8cf6ced320b76aea275284b224b002b289f89fe89c389b028
   languageName: node
   linkType: hard
 

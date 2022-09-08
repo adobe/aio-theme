@@ -28,32 +28,36 @@ function indexRecords() {
           allFile: { nodes },
         },
       }) {
-        const markdownFiles = nodes.map(node => {
-          // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
-          const { slug, headings, fileAbsolutePath, excerpt, frontmatter, wordCount, mdxAST } =
-            node.childMdx;
-          return {
-            objectID: node.id,
-            contentDigest: node.internal.contentDigest,
-            product: getProductFromIndex(process.env.REPO_NAME),
-            lastUpdated: node.modifiedTime,
-            headings: headings,
-            excerpt: excerpt,
-            words: wordCount.words,
-            fileAbsolutePath: fileAbsolutePath, // Required for additional source data
-            slug: slug,
-            title: frontmatter.title,
-            description: frontmatter.description,
-            keywords: frontmatter.keywords, // Used for search filters
-            category: frontmatter.category, // Used for search filters
-            openAPISpec: frontmatter.openAPISpec, // Required for OpenAPI sources
-            frameSrc: frontmatter.frameSrc, // Required for iframe sources
-            featured: frontmatter.featured, // Added to elevate records from file
-            mdxAST: mdxAST,
-          };
-        });
+        const markdownFiles = [];
+          for (const node of nodes) {
+            // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
+            markdownFiles.push({
+                objectID: node.id,
+                contentDigest: node.internal.contentDigest,
+                product: getProductFromIndex(process.env.REPO_NAME),
+                birthTime: node.birthTime,
+                changeTime: node.changeTime,
+                lastUpdated: node.modifiedTime,
+                headings: node.childMdx.headings,
+                excerpt: node.childMdx.excerpt,
+                words: node.childMdx.wordCount.words,
+                fileAbsolutePath: node.childMdx.fileAbsolutePath,
+                slug: node.slug,
+                size: node.size,
+                title: node.childMdx.frontmatter.title,
+                description: node.childMdx.frontmatter.description,
+                keywords: node.childMdx.frontmatter.keywords,
+                category: node.childMdx.frontmatter.category,
+                isNew: node.isNew,
+                howRecent: node.howRecent,
+                icon: node.icon,
+                openAPISpec: node.childMdx.frontmatter.openAPISpec,
+                frameSrc: node.childMdx.frontmatter.frameSrc,
+                featured: node.childMdx.frontmatter.featured,
+                mdxAST: node.childMdx.mdxAST,
+            });
+          }
 
-        let rawRecords = [];
         const algoliaRecords = [];
 
         for (const markdownFile of markdownFiles) {
@@ -61,11 +65,11 @@ function indexRecords() {
           const htmlContent =
             (await getImportedContent(markdownFile)) ??
             (await getIFrameContent(markdownFile)) ??
-            (await getOpenApiContent(markdownFile));
+            (await getOpenApiContent(markdownFile)) ?? {};
 
           // Create 'raw' records from content
-          rawRecords =
-            htmlContent != null
+          let rawRecords =
+              Object.keys(htmlContent).length > 0
               ? parseHtml(htmlContent.content, htmlContent.options)
               : parseMdx(markdownFile);
 

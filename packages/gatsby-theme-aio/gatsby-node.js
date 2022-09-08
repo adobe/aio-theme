@@ -35,7 +35,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
-  const typeDefs = `
+
+  const typeDefs = `  
     type Link {
       title: String
       path: String
@@ -110,82 +111,131 @@ exports.createSchemaCustomization = ({ actions }) => {
       pages: [Link]
     }
   `;
-
   createTypes(typeDefs);
 };
 
-function addFrontmatterType(source, context) {
-  const { getNodeById } = context.nodeModel;
-  return getNodeById({
-    id: source.MdxFrontmatter,
-  });
-}
-
-exports.createResolvers = ({ createResolvers, addFrontmatterType }) => {
+exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
+    File: {
+      isNew: {
+        type: 'Boolean',
+        resolve(source) {
+          const birthTime = new Date(source.birthTime);
+          const publishDate = birthTime.getTime();
+          const daysPassed = Math.floor((Date.now() - publishDate) / 1000 / 60 / 60 / 24);
+          console.log(daysPassed);
+          return daysPassed <= 60; // 60 days
+        }
+      },
+      howRecent: {
+        type: 'Int',
+        resolve(source, args, context, info) {
+          const changeTime = new Date(source.changeTime);
+          const timeUpdated = changeTime.getTime();
+          const daysPassed = Math.floor((Date.now() - timeUpdated) / 1000 / 60 / 60 / 24);
+          console.log(daysPassed);
+          return daysPassed <= 30 ? 3 : daysPassed <= 60 ? 2 : daysPassed <= 120 ? 1 : 0;
+        },
+      },
+      icon: {
+        type: 'String',
+        resolve(source) {
+          return source.icon;
+        }
+      },
+    },
     MdxFrontmatter: {
       title: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.title;
+        }
       },
       keywords: {
         type: '[String]',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.keywords;
+        }
       },
       category: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.category;
+        }
       },
       description: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.description;
+        }
       },
       contributors: {
         type: '[String]',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.contributors;
+        }
       },
       contributor_name: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.contributor_name;
+        }
       },
       contributor_link: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.contributor_link;
+        }
       },
       edition: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.edition;
+        }
       },
       openAPISpec: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.openAPISpec;
+        }
       },
       frameSrc: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.frameSrc;
+        }
       },
       frameHeight: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.frameHeight;
+        }
       },
       layout: {
         type: 'String',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.layout;
+        }
       },
       jsDoc: {
         type: 'Boolean',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.jsDoc;
+        }
       },
       hideBreadcrumbNav: {
         type: 'Boolean',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.hideBreadcrumbNav;
+        }
       },
       featured: {
         type: 'Boolean',
-        resolve: addFrontmatterType,
+        resolve(source, args, context, info) {
+          return source.featured;
+        }
       },
     },
   };
-
   createResolvers(resolvers);
 };

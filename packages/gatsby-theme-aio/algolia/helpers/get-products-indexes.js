@@ -28,7 +28,7 @@ const adobeProducts = {
   adobe_commerce: 'Adobe Commerce',
   adobe_creative_cloud: 'Adobe Creative Cloud',
   adobe_customer_journey_analytics: 'Adobe Customer Journey Analytics',
-  adobe_developer_app_builder: 'Adobe Developer App Builder',
+  adobe_developer_app_builder: 'Adobe App Builder',
   adobe_developer_console: 'Adobe Developer Console',
   adobe_developer_enablement: 'Adobe Developer Enablement',
   adobe_document_services: 'Adobe Document Services',
