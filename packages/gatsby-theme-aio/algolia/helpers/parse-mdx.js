@@ -43,9 +43,9 @@ function parseMdx(markdownFile) {
       anchor: getAnchor(mdastNode, markdownFile),
       featured: markdownFile.featured,
       category: markdownFile.category,
-      title: markdownFile.title === '' || markdownFile.title == null ? markdownFile.headings[0].value : markdownFile.title,
+      title: markdownFile.title === '' || markdownFile.title == null ? markdownFile.headings[0]?.value : markdownFile.title,
       description:
-        markdownFile.description === '' || markdownFile.title == null ? markdownFile.excerpt : markdownFile.description,
+        markdownFile.description === '' || markdownFile.description == null ? markdownFile.excerpt : markdownFile.description,
       words: nodeValue.split(' ').length,
     };
 

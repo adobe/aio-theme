@@ -78,7 +78,7 @@ __metadata:
     await-exec: ^0.1.2
     builtin-status-codes: ^3.0.0
     classnames: ^2.3.1
-    core-js: ^3.25.0
+    core-js: ^3.25.1
     dotenv: ^16.0.2
     gatsby: ^4.22.0
     gatsby-cli: ^4.22.0
@@ -100,7 +100,7 @@ __metadata:
     jsdom: ^20.0.0
     lmdb-store: ^1.6.14
     mdx-embed: ^1.0.0
-    mobx: ^6.6.1
+    mobx: ^6.6.2
     normalize-path: ^3.0.0
     os-browserify: ^0.3.0
     path-browserify: ^1.0.1
@@ -8686,7 +8686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.22.3, core-js@npm:^3.25.0":
+"core-js@npm:^3.22.3, core-js@npm:^3.25.1":
   version: 3.25.1
   resolution: "core-js@npm:3.25.1"
   checksum: bfacb078e790913841e2d5008b9b6705ae56ed23f83c7f0ae08d330d874561012611089d53b71520105234ed0abba36f28d91b391514a16541a8c8d98c464239
@@ -16437,7 +16437,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mobx@npm:^6.3.2, mobx@npm:^6.6.1":
+"mobx@npm:^6.3.2, mobx@npm:^6.6.2":
   version: 6.6.2
   resolution: "mobx@npm:6.6.2"
   checksum: b913abea51ed023d60c71eec0198e953c0b7faee93820be2e8f07037a789b3acf6fd89c340cb9d34e888532ebd34d34b10add7d129277a96026537e5ca48bda6
