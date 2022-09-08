@@ -17,6 +17,7 @@ import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import PropTypes from 'prop-types';
 import { MOBILE_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH, SIDENAV_WIDTH, SEARCH_PARAMS, isExternalLink } from '../../utils';
+import { getIndexesFromProduct } from '../../../algolia/helpers/get-products-indexes.js';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/textfield';
@@ -26,7 +27,7 @@ import { Cross, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
 
 const SEARCH_INPUT_WIDTH = '688px';
-const SEARCH_INDEX_ALL = 'all';
+const SEARCH_INDEX_ALL = 'All Products';
 const SEARCH_KEYWORDS = 'keywords';
 const SUGGESTION_MAX_RESULTS = 50;
 const SEARCH_MAX_RESULTS = 100;
@@ -48,18 +49,24 @@ const setQueryStringParameter = (name, value) => {
   window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
 };
 
-const mapToIndexName = (searchIndex) => searchIndex.map((index) => Object.keys(index)[0]);
+// const mapToIndexName = (searchIndex) => searchIndex.map((index) => Object.keys(index)[0]);
 
 const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   const queries = [];
+  const algoliaIndexList = await algolia.listIndices();
+  const existingIndices = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+    return Object.values(indexAll).includes(indexName);
+  });
+
   // By default use all indexes
-  if (Object.keys(searchIndex[0])[0] === SEARCH_INDEX_ALL) {
-    searchIndex = indexAll;
+  if (searchIndex[0] === SEARCH_INDEX_ALL) {
+    searchIndex = existingIndices;
   }
   // Or prioritize searchIndex
   else {
-    const searchIndexNames = mapToIndexName(searchIndex).filter((index) => index !== SEARCH_INDEX_ALL);
-    searchIndex = [...searchIndexNames, ...indexAll.filter((index) => !searchIndexNames.includes(index))];
+    const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
+    const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
+    searchIndex = [...localProductIndexes, ...existingIndices.filter((index) => !searchIndexNames.includes(index))].filter(index => existingIndices.includes(index));
   }
 
   searchIndex.forEach((indexName) => {
@@ -77,20 +84,25 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
 };
 
 const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) => {
+  const algoliaIndexList = await algolia.listIndices();
+  const existingIndices = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+    return Object.values(indexAll).includes(indexName);
+  });
   if (selectedIndex.includes('all')) {
-    selectedIndex = indexAll;
+    selectedIndex = existingIndices;
   } else {
-    selectedIndex = selectedIndex;
+    selectedIndex = selectedIndex.filter(selected => existingIndices.includes(selected));
   }
 
   const queries = [];
+
   selectedIndex.forEach((indexName) => {
     queries.push({
       indexName,
       query,
       params: {
         facets: [SEARCH_KEYWORDS],
-        attributesToRetrieve: ['objectID', 'url'],
+        attributesToRetrieve: ['objectID', 'url', 'product'],
         hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
         filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
       }
@@ -130,26 +142,9 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
-const indexLabelFormat = (indexName) => {
-  const indexNameArray = indexName.split('').map((char, index, array) => {
-    if (char === '-') {
-      return ' ';
-    } else if (index === 0 || array[index - 1] === '-') {
-      return char.toUpperCase();
-    } else {
-      return char;
-    }
-  });
-  indexNameArray[0] = indexNameArray[0].toUpperCase();
-
-  const indexLabel = indexNameArray.join('');
-
-  return indexLabel;
-};
-
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState([mapToIndexName(searchIndex)[0]]);
+  const [selectedIndex, setSelectedIndex] = useState(['all']);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -191,26 +186,30 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       }
 
       setShowSearchResults(true);
-
+    
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
 
       const mappedProductResults = [];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
+
       if (search?.results?.length) {
-        search.results.forEach(({ hits, facets, index }) => {
+        search.results.forEach(({ hits, facets }) => {
           if (facets === undefined) return;
           if (hits.length > 0) {
-            if (index !== mapToIndexName(searchIndex)[0]) {
-              const mappedObject = { [index]: indexLabelFormat(index) };
-              mappedProductResults.push(mappedObject);
+            const product = hits[0].product;
+            console.log(hits,product);
+            if (product !== searchIndex[0]) {
+              if (product !== undefined) {
+                mappedProductResults.push(product);
+              }
             }
           }
           mapSearchResults(hits, mappedSearchResults);
           mapKeywordResults(facets, mappedKeywordResults);
         });
       }
-
+      console.log(mappedProductResults);
       setProductResults([searchIndex[0], ...mappedProductResults, searchIndex[1]]);
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
@@ -562,26 +561,35 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 `}>
                 Products
               </h4>
-              {productResults.map((index, i) => {
-                const indexName = Object.keys(index)[0];
-                const indexLabel = index[indexName];
+              {productResults.map((productName, i) => {
                 return (
                   <Checkbox
                     key={i}
-                    isSelected={selectedIndex.includes(indexName)}
-                    value={indexLabel}
+                    isSelected={productName === SEARCH_INDEX_ALL ?
+                      selectedIndex.includes('all') :
+                      selectedIndex.some(index => {
+                        // console.log(index, productName, getIndexesFromProduct(productName));
+                        return getIndexesFromProduct(productName).includes(index);
+                      })
+                    }
+                    value={productName}
                     onChange={(checked) => {
                       if (!checked) {
-                        console.log(checked);
-                        console.log(selectedIndex);
-                        console.log(selectedIndex.filter(index => index === indexName));
-                        setSelectedIndex(selectedIndex.filter(index => index !== indexName));
+                        if (productName === 'All Products') {
+                          setSelectedIndex(selectedIndex.filter(index => index !== 'all'));
+                        } else {
+                          setSelectedIndex(selectedIndex.filter(index => !getIndexesFromProduct(productName).includes(index)));
+                        }
                       } else {
-                        setSelectedIndex([...selectedIndex, indexName]);
+                        if (productName === 'All Products') {
+                          setSelectedIndex([...selectedIndex, 'all']);
+                        } else {
+                          setSelectedIndex([...selectedIndex, ...getIndexesFromProduct(productName)]);
+                        }
                       }
                       setSelectedKeywords([]);
                     }}>
-                    <span>{indexLabel}</span>
+                    <span>{productName}</span>
                   </Checkbox>
                 );
               })}
@@ -754,9 +762,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         )}
       </div>
 
-      {!showSearchResults && (
-        <div
-          css={css`
+      {
+        !showSearchResults && (
+          <div
+            css={css`
             position: fixed;
             z-index: 1;
             top: ${isIFramed ? "var(--spectrum-global-dimension-size-800)" : "calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800))"};
@@ -766,8 +775,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             background-color: rgba(0, 0, 0, 0.4);
             pointer-events: none;
           `}
-        />
-      )}
+          />
+        )
+      }
     </>
   );
 };
@@ -775,7 +785,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 Search.propTypes = {
   algolia: PropTypes.object,
   searchIndex: PropTypes.array,
-  indexAll: PropTypes.array,
+  indexAll: PropTypes.object,
   showSearch: PropTypes.bool,
   setShowSearch: PropTypes.func,
   searchButtonId: PropTypes.string
