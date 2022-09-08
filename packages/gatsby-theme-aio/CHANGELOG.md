@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.1-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.0...@adobe/gatsby-theme-aio@4.5.1-rc0) (2022-09-07)
+
+### Features
+
+* Products filter list now shows all available products based on current query. ([0196aceeb](https://github.com/adobe/aio-theme/commit/0196aceeb344fbc6df09f7f75813124296c61b20))
+
+* Added product selection based on new algolia indexing. ([f96dc93af](https://github.com/adobe/aio-theme/commit/f96dc93af222b517e4725e2e3d33335d65a7e0de))
+
 ## [4.5.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.4...@adobe/gatsby-theme-aio@4.5.0) (2022-09-06)
 
 ### Features
