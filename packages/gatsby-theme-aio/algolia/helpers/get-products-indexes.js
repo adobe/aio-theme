@@ -212,7 +212,7 @@ const getIndexesFromProduct = product => {
       adobeIndexes.cc_libraries_api,
     ],
     'Adobe Customer Journey Analytics': [adobeIndexes.cja_apis],
-    'App Builder': [
+    'Adobe App Builder': [
       adobeIndexes.app_builder,
       adobeIndexes.app_builder_template_registry,
       adobeIndexes.graphql_mesh_gateway,
@@ -254,6 +254,7 @@ const getIndexesFromProduct = product => {
     'Adobe Workfront': [adobeIndexes.wf_apis, adobeIndexes.workfront_api_explorer],
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
+    'Adobe Theme Example': [adobeIndexes.aio_theme],
   }[product];
 };
 

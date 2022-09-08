@@ -151,8 +151,8 @@ export default ({ children, pageContext, location }) => {
   // Set Search indexAll
   useEffect(() => {
     (async () => {
-      const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
-      const ALGOLIA_INDEX_ALL = adobeIndexes;
+      // const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
+      // const ALGOLIA_INDEX_ALL = adobeIndexes;
 
       try {
         // if (ALGOLIA_INDEX_ALL_SRC) {

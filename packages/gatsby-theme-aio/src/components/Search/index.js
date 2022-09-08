@@ -66,7 +66,7 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   else {
     const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
     const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
-    searchIndex = [...localProductIndexes, ...existingIndices.filter((index) => !searchIndexNames.includes(index))].filter(index => existingIndices.includes(index));
+    searchIndex = [...localProductIndexes, ...existingIndices.filter((index) => !searchProductNames.includes(index))].filter(index => existingIndices.includes(index));
   }
 
   searchIndex.forEach((indexName) => {
@@ -144,6 +144,7 @@ const mapKeywordResults = (facets, results) => {
 
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -186,7 +187,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       }
 
       setShowSearchResults(true);
-    
+
+      if (oldSearchQuery === '') {
+        if (searchQuery !== oldSearchQuery) {
+          setSelectedIndex(['all']);
+        }
+      }
+
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
 
       const mappedProductResults = [];
@@ -198,10 +205,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           if (facets === undefined) return;
           if (hits.length > 0) {
             const product = hits[0].product;
-            console.log(hits,product);
             if (product !== searchIndex[0]) {
               if (product !== undefined) {
-                mappedProductResults.push(product);
+                if (!mappedProductResults.includes(product)) {
+                  mappedProductResults.push(product);
+                }
               }
             }
           }
@@ -209,10 +217,12 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           mapKeywordResults(facets, mappedKeywordResults);
         });
       }
-      console.log(mappedProductResults);
-      setProductResults([searchIndex[0], ...mappedProductResults, searchIndex[1]]);
+      if (searchQuery !== oldSearchQuery) {
+        setProductResults([searchIndex[0], ...mappedProductResults, searchIndex[1]]);
+      }
       setSearchResults(mappedSearchResults);
       setKeywordResults(mappedKeywordResults);
+      setOldSearchQuery(searchQuery);
     }
 
   };
@@ -350,6 +360,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               event.preventDefault();
               setSelectedKeywords([]);
               await search();
+              const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
+              const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
+              setSelectedIndex(localProductIndexes);
             }}>
             <div
               className={classNames('spectrum-Textfield', { 'is-focused': isFocused })}
@@ -568,7 +581,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     isSelected={productName === SEARCH_INDEX_ALL ?
                       selectedIndex.includes('all') :
                       selectedIndex.some(index => {
-                        // console.log(index, productName, getIndexesFromProduct(productName));
                         return getIndexesFromProduct(productName).includes(index);
                       })
                     }
@@ -582,9 +594,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                         }
                       } else {
                         if (productName === 'All Products') {
-                          setSelectedIndex([...selectedIndex, 'all']);
+                          setSelectedIndex(['all']);
                         } else {
-                          setSelectedIndex([...selectedIndex, ...getIndexesFromProduct(productName)]);
+                          setSelectedIndex([...selectedIndex.filter(index => index !== 'all'), ...getIndexesFromProduct(productName)]);
                         }
                       }
                       setSelectedKeywords([]);
