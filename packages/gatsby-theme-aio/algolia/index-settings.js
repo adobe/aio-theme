@@ -15,7 +15,7 @@ const indexSettings = () => {
     attributesToRetrieve: ['*'],
     attributesToSnippet: ['content:20', 'description:20', 'excerpt:20'],
     camelCaseAttributes: ['contentHeading', 'description', 'excerpt'],
-    customRanking: ['desc(featured)', 'desc(new)', 'desc(updated)', 'desc(size)'],
+    customRanking: ['desc(featured)', 'desc(isNew)', 'desc(howRecent)', 'desc(size)'],
     distinct: 1,
     hitsPerPage: 20,
     ignorePlurals: true,

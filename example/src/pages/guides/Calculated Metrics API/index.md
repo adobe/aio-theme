@@ -1,5 +1,5 @@
 ---
-category: api guides
+
 ---
 
 # Calculated Metrics API

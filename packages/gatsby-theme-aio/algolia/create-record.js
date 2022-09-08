@@ -28,11 +28,11 @@ async function createRecord(rawRecord, file) {
     headings: rawRecord.headings,
     keywords: getKeywords(file.keywords),
     lastUpdated: file.lastUpdated,
-    isNew: getNewStatus(this.birthTime),
-    isRecent: getTimeUpdated(this.changeTime),
+    isNew: file.isNew,
+    howRecent: file.howRecent,
     objectID: rawRecord.objectID,
     product: file.product,
-    icon: getIcon(file.product),
+    icon: file.icon,
     size: file.size,
     slug: file.slug,
     title: rawRecord.title,
@@ -45,44 +45,19 @@ async function createRecord(rawRecord, file) {
 // We use the standard documentation types from Experience League to tag our markdown files with the category frontmatter.
 // https://experienceleague.adobe.com/docs/authoring-guide-exl/using/authoring/style-guide/content-types.html#product-documentation
 function getCategory(category) {
-  const docType = getAdobeDocType(category);
-  return docType;
+  return getAdobeDocType(category);
 }
 
+// TODO: Replace with category frontmatter.
 function getKeywords(keywords) {
   return keywords;
 }
 
-const DAYS_CONSIDERED_NEW = 60;
-
-// The topic is considered new if created in the last 60 days. New topics in returned results get higher ranking.
-function getNewStatus(birthTime) {
-  if (birthTime == null) return;
-  const publishDate = birthTime.getTime();
-  const daysPassed = Math.floor((Date.now() - publishDate) / 1000 / 60 / 60 / 24);
-  return daysPassed <= DAYS_CONSIDERED_NEW;
-}
-
-// Most recently updated gets a higher number for customRanking
-function getTimeUpdated(changeTime) {
-  if (changeTime == null) return;
-  const timeUpdated = changeTime.getTime();
-  const daysPassed = Math.floor((Date.now() - timeUpdated) / 1000 / 60 / 60 / 24);
-  return daysPassed <= 30 ? 3 : daysPassed <= 60 ? 2 : daysPassed <= 120 ? 1 : 0;
-}
-
 // Full url complete with anchor link to the nearest heading for the search record result.
 function getUrl(rawRecord, file) {
-  const url = `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
-    file.slug == null ? '' : file.slug
+  return `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${
+      file.slug == null ? '' : file.slug
   }${rawRecord.anchor}`;
-  return url;
-}
-
-// TODO: Get url that returns the product icon so that the search results can be easily identified by product.
-function getIcon(product) {
-  // const iconUrl = assemble-iconUrl-here;
-  // return iconUrl;
 }
 
 module.exports = createRecord;

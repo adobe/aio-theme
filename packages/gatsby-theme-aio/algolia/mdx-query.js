@@ -22,6 +22,9 @@ const mdxQuery = `
       }
       birthTime
       changeTime
+      isNew
+      howRecent
+      icon
       modifiedTime(fromNow: true)
       size
       childMdx {
