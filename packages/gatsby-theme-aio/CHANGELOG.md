@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.2...@adobe/gatsby-theme-aio@4.5.3) (2022-09-08)
+
+* Fixed slug for search result urls.
+
+## [4.5.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.1...@adobe/gatsby-theme-aio@4.5.2) (2022-09-07)
+
+* Fixed description and title errors.
+
+## [4.5.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.0...@adobe/gatsby-theme-aio@4.5.1) (2022-09-07)
+
+### Features
+
+* Added `isNew` search property that tags a markdown file as new as long as its creation date is within the last 60 days.
+* Added `howRecent` search property that tags a markdown file as recently updated. Each search result is tagged with one of the following four values used to influence the search result ranking:
+
+  `3` — the file was updated within the last 30 days,
+
+  `2` — the file was updated within the last 60 days,
+
+  `1` — the file was updated within the last 120 days,
+
+  `0` — the file was updated more than 120 days ago.
+
+* Added `icon` search property for future implementation. The icon will be used to display a product or category icon to help identify the product or type of search result returned. ([4b8f284](https://github.com/adobe/aio-theme/commit/4b8f284c6a72468c2fd74bacded7ed0f956f3ddc))
+
+### Fixes
+
+* Updated Algolia index settings to increase timeouts. This fixed an issue in which Algolia indexing could time out and fail when upload speeds are slow and indexes are large. ([4b8f284](https://github.com/adobe/aio-theme/commit/4b8f284c6a72468c2fd74bacded7ed0f956f3ddc))
+
 ## [4.5.1-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.0...@adobe/gatsby-theme-aio@4.5.1-rc0) (2022-09-07)
 
 ### Features

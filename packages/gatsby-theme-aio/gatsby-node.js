@@ -36,7 +36,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
-  const typeDefs = `  
+  const typeDefs = `
     type Link {
       title: String
       path: String
@@ -123,7 +123,6 @@ exports.createResolvers = ({ createResolvers }) => {
           const birthTime = new Date(source.birthTime);
           const publishDate = birthTime.getTime();
           const daysPassed = Math.floor((Date.now() - publishDate) / 1000 / 60 / 60 / 24);
-          console.log(daysPassed);
           return daysPassed <= 60; // 60 days
         }
       },
@@ -133,7 +132,6 @@ exports.createResolvers = ({ createResolvers }) => {
           const changeTime = new Date(source.changeTime);
           const timeUpdated = changeTime.getTime();
           const daysPassed = Math.floor((Date.now() - timeUpdated) / 1000 / 60 / 60 / 24);
-          console.log(daysPassed);
           return daysPassed <= 30 ? 3 : daysPassed <= 60 ? 2 : daysPassed <= 120 ? 1 : 0;
         },
       },
@@ -147,91 +145,91 @@ exports.createResolvers = ({ createResolvers }) => {
     MdxFrontmatter: {
       title: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.title;
         }
       },
       keywords: {
         type: '[String]',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.keywords;
         }
       },
       category: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.category;
         }
       },
       description: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.description;
         }
       },
       contributors: {
         type: '[String]',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.contributors;
         }
       },
       contributor_name: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.contributor_name;
         }
       },
       contributor_link: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.contributor_link;
         }
       },
       edition: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.edition;
         }
       },
       openAPISpec: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.openAPISpec;
         }
       },
       frameSrc: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.frameSrc;
         }
       },
       frameHeight: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.frameHeight;
         }
       },
       layout: {
         type: 'String',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.layout;
         }
       },
       jsDoc: {
         type: 'Boolean',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.jsDoc;
         }
       },
       hideBreadcrumbNav: {
         type: 'Boolean',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.hideBreadcrumbNav;
         }
       },
       featured: {
         type: 'Boolean',
-        resolve(source, args, context, info) {
+        resolve(source) {
           return source.featured;
         }
       },
