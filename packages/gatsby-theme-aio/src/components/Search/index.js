@@ -114,13 +114,19 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
 
 const mapSearchResults = (hits, results) => {
   hits.forEach(({ objectID, url, _highlightResult }) => {
+    let urlPath = ''
+    if (url.includes('https://developer.adobe.com')) {
+      urlPath = url.replace('https://developer.adobe.com', '');
+    } else {
+      urlPath = url;
+    }
     // TODO corrupted record url check
-    if (!isExternalLink(url)) {
+    if (!isExternalLink(urlPath)) {
       // Verify url is unique
-      if (!results.find((result) => result.url === url)) {
+      if (!results.find((result) => result.url === urlPath)) {
         results.push({
           objectID,
-          url,
+          url: urlPath,
           _highlightResult
         });
       }
@@ -199,7 +205,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const mappedProductResults = [];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
-
+      
       if (search?.results?.length) {
         search.results.forEach(({ hits, facets }) => {
           if (facets === undefined) return;
