@@ -23,7 +23,8 @@ import '@spectrum-css/typography';
 import '@spectrum-css/textfield';
 import '@spectrum-css/search';
 import '@spectrum-css/button';
-import { Cross, Magnify } from '../Icons';
+import { ActionButton } from '../ActionButton';
+import { Close, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
 import { ProgressCircle } from '../ProgressCircle';
 
@@ -196,12 +197,12 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
       setShowSearchResults(true);
 
-      if (oldSearchQuery === '') {
-        if (searchQuery !== oldSearchQuery) {
-          setIsLoading(true);
-          setSelectedIndex(['all']);
-        }
+
+      if (searchQuery !== oldSearchQuery) {
+        setIsLoading(true);
+        setSelectedIndex(['all']);
       }
+
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
       const mappedProductResults = [searchIndex[1]];
       const mappedSearchResults = [];
@@ -224,10 +225,12 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             }
           }
 
-          if (searchQuery == oldSearchQuery) {
+          if (searchQuery === oldSearchQuery) {
             mapSearchResults(hits, mappedSearchResults);
             mapKeywordResults(facets, mappedKeywordResults);
           }
+
+          return true;
         });
       }
       if (searchQuery !== oldSearchQuery) {
@@ -374,10 +377,13 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             onSubmit={async (event) => {
               event.preventDefault();
               setSelectedKeywords([]);
+              setShowClear(true);
               await search();
-              const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
-              const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
-              setSelectedIndex(localProductIndexes);
+              if (searchQuery !== oldSearchQuery) {
+                const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
+                const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
+                setSelectedIndex(localProductIndexes);
+              }
             }}>
             <div
               className={classNames('spectrum-Textfield', { 'is-focused': isFocused })}
@@ -441,20 +447,29 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               />
             </div>
             {showClear && (
-              <button
+              <ActionButton
                 css={css`
                   position: absolute;
+                  
+                  margin-right: var(--spectrum-global-dimension-size-100);
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    margin-right: 0;
+                  }
                 `}
                 tabIndex="-1"
+                isQuiet
                 aria-label="Clear Search"
                 type="reset"
                 className="spectrum-ClearButton spectrum-Search-clearButton"
                 onClick={() => {
                   setSearchQuery('');
+                  setSearchResults([]);
+                  setShowSearchResults(false);
                   inputRef.current.focus();
                 }}>
-                <Cross />
-              </button>
+                <Close />
+              </ActionButton>
             )}
           </form>
 
