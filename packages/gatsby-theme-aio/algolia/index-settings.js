@@ -3,9 +3,9 @@ const indexSettings = () => {
     searchableAttributes: [
       'title',
       'contentHeading',
+      'unordered(content)',
       'unordered(description)',
       'unordered(excerpt)',
-      'unordered(content)',
     ],
     advancedSyntax: true,
     allowTyposOnNumericTokens: true,

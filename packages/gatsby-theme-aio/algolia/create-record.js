@@ -14,9 +14,6 @@ const { getAdobeDocType } = require("./helpers/get-adobe-doctype");
 
 async function createRecord(rawRecord, file) {
   const record = {
-    anchor: rawRecord.anchor,
-    birthTime: file.birthTime,
-    changeTime: file.changeTime,
     category: getCategory(file.category),
     content: rawRecord.content,
     contentDigest: rawRecord.contentDigest,
@@ -24,15 +21,15 @@ async function createRecord(rawRecord, file) {
     description: rawRecord.description,
     excerpt: file.excerpt,
     featured: file.featured,
-    fileAbsolutePath: file.fileAbsolutePath,
     headings: rawRecord.headings,
+    howRecent: getHowRecent(file.changeTime),
+    icon: file.icon,
+    isNew: getIsNew(file.birthTime),
     keywords: getKeywords(file.keywords),
     lastUpdated: file.lastUpdated,
-    isNew: file.isNew,
-    howRecent: file.howRecent,
     objectID: rawRecord.objectID,
+    path: getPath(rawRecord, file),
     product: file.product,
-    icon: file.icon,
     size: file.size,
     slug: file.slug,
     title: rawRecord.title,
@@ -40,6 +37,16 @@ async function createRecord(rawRecord, file) {
     words: rawRecord.words,
   };
   return record;
+}
+
+function getIsNew(birthTimeInDays) {
+  const days = parseInt(birthTimeInDays, 10);
+  return days <= 30;
+}
+
+function getHowRecent(lastUpdatedInDays) {
+  const days = parseInt(lastUpdatedInDays, 10);
+  return days <= 30 ? 3 : days <= 60 ? 2 : days <= 90 ? 1 : 0;
 }
 
 // We use the standard documentation types from Experience League to tag our markdown files with the category frontmatter.
@@ -55,8 +62,13 @@ function getKeywords(keywords) {
 
 // Full url complete with anchor link to the nearest heading for the search record result.
 function getUrl(rawRecord, file) {
-  return `${process.env.GATSBY_SITE_DOMAIN_URL}${process.env.PATH_PREFIX}${file.slug == null ? '' : file.slug
+  return `${process.env.GATSBY_SITE_DOMAIN_URL}${file.pathPrefix}${file.slug == null ? '' : file.slug
     }${rawRecord.anchor}`;
+}
+
+function getPath(rawRecord, file) {
+  return `${file.pathPrefix}${file.slug == null ? '' : file.slug
+  }${rawRecord.anchor}`;
 }
 
 module.exports = createRecord;
