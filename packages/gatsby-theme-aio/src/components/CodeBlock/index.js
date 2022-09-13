@@ -13,8 +13,7 @@
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { Tabs, Item as TabsItem, Label as TabsItemLabel, TabsIndicator, positionIndicator } from '../Tabs';
-import { Picker } from '../Picker';
+import { Tabs, Item as TabsItem, Label as TabsItemLabel, positionIndicator,CodeTabIndicator } from '../Tabs';
 
 const CodeBlock = (props) => {
   const [tabs] = useState([]);
@@ -30,15 +29,8 @@ const CodeBlock = (props) => {
   };
 
   useEffect(() => {
-    const codePres = [...document.querySelectorAll('pre.prism-code')];
-    codePres.map((codePre) => {
-      codePre.tabIndex = 0;
-    });
-  }, []);
-
-  useEffect(() => {
     positionSelectedTabIndicator();
-  }, [tabs]);
+  }, [positionSelectedTabIndicator,tabs]);
 
   const { theme } = props;
   const codeBlocks = [];
@@ -87,7 +79,6 @@ const CodeBlock = (props) => {
   };
 
   const backgroundColor = `background-color: var(--spectrum-global-color-gray-${theme === 'light' ? '200' : '50'});`;
-
   return (
     <div
       className={`spectrum--${theme}`}
@@ -113,24 +104,23 @@ const CodeBlock = (props) => {
             const ref = createRef();
             tabs.push(ref);
 
-            const isSelected = selectedIndex.tab === index;
-
+            // const isSelected = selectedIndex.tab === index;
             return (
               <TabsItem
                 key={index}
                 ref={ref}
-                selected={isSelected}
-                tabIndex={0}
+                selected={true}
+                tabIndex={index === selectedIndex.tab ? "0":"-1"}
                 onKeyDown={(e) => {
-                  if (e.key === 'ArrowRight') {
+                  if (e.key === 'ArrowRight' || e.key === 'R' || e.key === 'r') {
                     e.currentTarget.nextSibling && e.currentTarget.nextSibling.focus();
                   }
-                  if (e.key === 'ArrowLeft') {
+                  if (e.key === 'ArrowLeft' || e.key === 'L' || e.key === 'l') {
                     e.currentTarget.previousSibling && e.currentTarget.previousSibling.focus();
-                  }
+                  }  
                 }}
                 onClick={() => {
-                  handleOnChange(ref);
+                  handleOnChange(ref)
                 }}
                 onFocus={() => {
                   handleOnChange(ref);
@@ -139,9 +129,9 @@ const CodeBlock = (props) => {
               </TabsItem>
             );
           })}
-          <TabsIndicator ref={selectedTabIndicator} />
+          <CodeTabIndicator ref={selectedTabIndicator}  index={selectedIndex.tab}/>
         </Tabs>
-        <div
+        {/* <div
           css={css`
             display: flex;
             align-items: center;
@@ -167,7 +157,7 @@ const CodeBlock = (props) => {
                 />
               )
           )}
-        </div>
+        </div> */}
       </div>
       {codeBlocks.map((block, i) =>
         block.code.map((code, k) => (
@@ -177,9 +167,6 @@ const CodeBlock = (props) => {
                 margin-top: 0;
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
-              }
-              & pre.prism-code span:first-child {
-                color: #ffffff;
               }
             `}
             key={k}
