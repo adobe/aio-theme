@@ -25,6 +25,7 @@ import '@spectrum-css/search';
 import '@spectrum-css/button';
 import { Cross, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
+import { ProgressCircle } from '../ProgressCircle';
 
 const SEARCH_INPUT_WIDTH = '688px';
 const SEARCH_INDEX_ALL = 'All Products';
@@ -149,6 +150,7 @@ const mapKeywordResults = (facets, results) => {
 };
 
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
@@ -196,13 +198,12 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
       if (oldSearchQuery === '') {
         if (searchQuery !== oldSearchQuery) {
+          setIsLoading(true);
           setSelectedIndex(['all']);
         }
       }
-
       const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
-
-      const mappedProductResults = [];
+      const mappedProductResults = [searchIndex[1]];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
 
@@ -211,26 +212,34 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           if (facets === undefined) return;
           if (hits.length > 0) {
             const product = hits[0].product;
-            if (product !== searchIndex[0]) {
-              if (product !== undefined) {
-                if (!mappedProductResults.includes(product)) {
+
+            if (product !== undefined) {
+              if (!mappedProductResults.includes(product)) {
+                if (product !== searchIndex[0]) {
                   mappedProductResults.push(product);
+                } else {
+                  mappedProductResults.splice(1, 0, searchIndex[0]);
                 }
               }
             }
           }
-          mapSearchResults(hits, mappedSearchResults);
-          mapKeywordResults(facets, mappedKeywordResults);
+
+          if (searchQuery == oldSearchQuery) {
+            mapSearchResults(hits, mappedSearchResults);
+            mapKeywordResults(facets, mappedKeywordResults);
+          }
         });
       }
       if (searchQuery !== oldSearchQuery) {
-        setProductResults([searchIndex[0], ...mappedProductResults, searchIndex[1]]);
+        setProductResults(mappedProductResults);
+      } else {
+        setSearchResults(mappedSearchResults);
+        setKeywordResults(mappedKeywordResults);
+        setIsLoading(false);
       }
-      setSearchResults(mappedSearchResults);
-      setKeywordResults(mappedKeywordResults);
+
       setOldSearchQuery(searchQuery);
     }
-
   };
 
   useEffect(() => {
@@ -551,7 +560,17 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           </Popover>
         </div>
 
-        {showSearchResults && (
+        {isLoading && (<div
+          css={css`
+                width:100%;
+                height:100%;
+                display: grid;
+                place-items: start center;
+              `}>
+          <ProgressCircle size="L" />
+        </div>)}
+
+        {showSearchResults && !isLoading && (
           <div
             css={css`
               display: flex;
