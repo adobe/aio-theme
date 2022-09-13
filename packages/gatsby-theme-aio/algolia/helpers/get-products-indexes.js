@@ -119,7 +119,7 @@ const adobeIndexes = {
 
 const getProductFromIndex = index => {
   index = index.replace(/([a-zA-Z].+\/)/, '');
-  const products = {
+  const product = {
     'after-effects': adobeProducts.adobe_after_effects,
     'analytics-2.0-apis': adobeProducts.adobe_analytics,
     animate: adobeProducts.adobe_animate,
@@ -182,8 +182,7 @@ const getProductFromIndex = index => {
     'xmp-docs': adobeProducts.adobe_xmp,
     'default': '',
   }[index];
-
-  return products[index] ? products[index] : products['default'];
+  return !product ? null : product;
 };
 
 const getIndexesFromProduct = product => {
@@ -258,7 +257,7 @@ const getIndexesFromProduct = product => {
     'default': [''],
   }[product];
 
-  return indexes[product] ? indexes[product] : indexes['default'];
+  return !indexes ? null : indexes;
 };
 
 module.exports = {
