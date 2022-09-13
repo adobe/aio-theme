@@ -51,12 +51,10 @@ const adobeProducts = {
   adobe_workfront: 'Adobe Workfront',
   adobe_xd: 'Adobe XD',
   adobe_xmp: 'Adobe XMP',
-  aio_theme: 'Adobe Theme Example', // For testing only
 };
 
 // Algolia adobeIndexes for Adobe products documentation.
 const adobeIndexes = {
-  aio_theme: 'aio-theme',
   adobe_dev_console: 'adobe-dev-console',
   adobe_io_events: 'adobe-io-events',
   adobe_io_runtime: 'adobe-io-runtime',
@@ -120,7 +118,8 @@ const adobeIndexes = {
 };
 
 const getProductFromIndex = index => {
-  return {
+  index = index.replace(/([a-zA-Z].+\/)/, '');
+  const products = {
     'after-effects': adobeProducts.adobe_after_effects,
     'analytics-2.0-apis': adobeProducts.adobe_analytics,
     animate: adobeProducts.adobe_animate,
@@ -181,12 +180,14 @@ const getProductFromIndex = index => {
     xd: adobeProducts.adobe_xd,
     'uxp-xd': adobeProducts.adobe_xd,
     'xmp-docs': adobeProducts.adobe_xmp,
-    'aio-theme': adobeProducts.aio_theme,
+    'default': '',
   }[index];
+
+  return products[index] ? products[index] : products['default'];
 };
 
 const getIndexesFromProduct = product => {
-  return {
+  const indexes = {
     'Adobe After Effects': [adobeIndexes.after_effects],
     'Adobe Analytics': [adobeIndexes.analytics_2_0_apis],
     'Adobe Animate': [adobeIndexes.animate],
@@ -254,8 +255,10 @@ const getIndexesFromProduct = product => {
     'Adobe Workfront': [adobeIndexes.wf_apis, adobeIndexes.workfront_api_explorer],
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
-    'Adobe Theme Example': [adobeIndexes.aio_theme],
+    'default': [''],
   }[product];
+
+  return indexes[product] ? indexes[product] : indexes['default'];
 };
 
 module.exports = {

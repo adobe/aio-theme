@@ -18,8 +18,8 @@ const getContentFromCache = require('./get-content-from-cache');
  * https://github.com/adobe/aio-theme#frame
  */
 
-async function getIFrameContent(node) {
-  if (!node.frameSrc) return null;
+async function getIFrameContent(markdownFile) {
+  if (!markdownFile.frameSrc) return null;
 
   const options = {
     pagesSourceDir: 'src/pages',
@@ -29,9 +29,9 @@ async function getIFrameContent(node) {
     minWordsCount: 3,
   };
 
-  const content = /^https?:\/\//i.test(node.frameSrc)
-    ? await getContentFromUrl(node.frameSrc)
-    : getContentFromCache(node, options);
+  const content = /^https?:\/\//i.test(markdownFile.frameSrc)
+    ? await getContentFromUrl(markdownFile.frameSrc)
+    : getContentFromCache(markdownFile, options);
 
   return { content, options };
 }

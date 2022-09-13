@@ -25,36 +25,37 @@ function indexRecords() {
       query: mdxQuery,
       transformer: async function ({
         data: {
+          site: { pathPrefix },
+          github: { repository },
           allFile: { nodes },
         },
       }) {
         const markdownFiles = [];
         for (const node of nodes) {
-          // Creates flattened objects from the mdxQuery source data (markdown files in src/pages).
           markdownFiles.push({
-            objectID: node.id,
-            contentDigest: node.internal.contentDigest,
-            product: getProductFromIndex(process.env.REPO_NAME),
             birthTime: node.birthTime,
+            category: node.childMdx.frontmatter.category,
             changeTime: node.changeTime,
-            lastUpdated: node.modifiedTime,
-            size: node.size,
-            isNew: node.isNew,
+            description: node.childMdx.frontmatter.description,
+            excerpt: node.childMdx.excerpt,
+            featured: node.childMdx.frontmatter.featured,
+            fileAbsolutePath: node.childMdx.fileAbsolutePath,
+            frameSrc: node.childMdx.frontmatter.frameSrc,
+            headings: node.childMdx.headings,
             howRecent: node.howRecent,
             icon: node.icon,
-            headings: node.childMdx.headings,
-            excerpt: node.childMdx.excerpt,
-            words: node.childMdx.wordCount.words,
-            fileAbsolutePath: node.childMdx.fileAbsolutePath,
+            isNew: node.isNew,
+            keywords: node.childMdx.frontmatter.keywords,
+            lastUpdated: node.modifiedTime,
+            mdxAST: node.childMdx.mdxAST,
+            objectID: node.id,
+            openAPISpec: node.childMdx.frontmatter.openAPISpec,
+            pathPrefix: `${pathPrefix}/`,
+            product: getProductFromIndex(repository),
+            size: node.size,
             slug: node.childMdx.slug,
             title: node.childMdx.frontmatter.title,
-            description: node.childMdx.frontmatter.description,
-            keywords: node.childMdx.frontmatter.keywords,
-            category: node.childMdx.frontmatter.category,
-            openAPISpec: node.childMdx.frontmatter.openAPISpec,
-            frameSrc: node.childMdx.frontmatter.frameSrc,
-            featured: node.childMdx.frontmatter.featured,
-            mdxAST: node.childMdx.mdxAST,
+            words: node.childMdx.wordCount.words,
           });
         }
 
