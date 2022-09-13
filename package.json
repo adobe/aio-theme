@@ -25,6 +25,7 @@
     "dev": "yarn workspace example develop",
     "dev:clean": "yarn workspace example clean && yarn workspace example develop",
     "dev:https": "yarn workspace example develop:https",
+    "dev:schema": "yarn workspace example develop:schema",
     "build": "yarn workspace example build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn workspace example build --log-pages",
     "serve": "yarn workspace example serve",

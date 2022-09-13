@@ -11,6 +11,7 @@
     "start:prefix": "gatsby build --prefix-paths && gatsby serve --prefix-paths",
     "develop": "gatsby develop --host 0.0.0.0",
     "develop:https": "gatsby develop --https --host localhost.corp.adobe.com --port 9000",
+    "develop:schema": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"

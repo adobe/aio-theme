@@ -19,8 +19,8 @@ const exec = require('await-exec');
  * https://github.com/adobe/aio-theme#openapi
  */
 
-async function getOpenApiContent(node) {
-  if (!node.openAPISpec) return null;
+async function getOpenApiContent(markdownFile) {
+  if (!markdownFile.openAPISpec) return null;
 
   const tempDir = './public/redoc';
   const options = {
@@ -31,7 +31,7 @@ async function getOpenApiContent(node) {
   };
 
   const redoc = require.resolve('redoc-cli');
-  const { openAPISpec } = node;
+  const { openAPISpec } = markdownFile;
   const spec = openAPISpec.startsWith('/') ? join('static', openAPISpec) : openAPISpec;
   const htmlFile = join(options.tempDir, 'index.html');
 

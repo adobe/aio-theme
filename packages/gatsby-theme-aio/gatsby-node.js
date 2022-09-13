@@ -34,84 +34,85 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
+  const { createTypes } = actions; // define custom types
 
-  const typeDefs = `
-    type Link {
-      title: String
-      path: String
-    }
-
-    type Menu {
+  createTypes(`
+      type SiteSiteMetadata implements Node @dontInfer {
       title: String
       description: String
-      path: String
-    }
-
-    type TopPage {
-      title: String
-      path: String
-      menu: [Menu]
-    }
-
-    type Version {
-      title: String
-      path: String
-      selected: Boolean
-    }
-
-    type Home {
-      title: String
-      path: String
-      hidden: Boolean
-    }
-
-    type SiteSiteMetadata {
       home: Home
       pages: [TopPage]
       subPages: [SubPage]
       versions: [Version]
       docs: Link
     }
-
-    type SubPage {
+    
+    type Home @dontInfer {
+      title: String
+      path: String
+      hidden: Boolean
+    }
+    
+    type TopPage @dontInfer {
+      title: String
+      path: String
+      menu: [Menu]
+    }
+    
+    type Menu @dontInfer {
+      title: String
+      description: String
+      path: String
+    }
+    
+    type SubPage @dontInfer {
       title: String
       path: String
       header: Boolean
       pages: [NestedSubPage1]
     }
-
-    type NestedSubPage1 {
+    
+    type NestedSubPage1 @dontInfer {
       title: String
       path: String
       pages: [NestedSubPage2]
     }
 
-    type NestedSubPage2 {
+    type NestedSubPage2 @dontInfer {
       title: String
       path: String
       pages: [NestedSubPage3]
     }
 
-    type NestedSubPage3 {
+    type NestedSubPage3 @dontInfer {
       title: String
       path: String
       pages: [NestedSubPage4]
     }
 
-    type NestedSubPage4 {
+    type NestedSubPage4 @dontInfer {
       title: String
       path: String
       pages: [NestedSubPage5]
     }
 
-    type NestedSubPage5 {
+    type NestedSubPage5 @dontInfer {
       title: String
       path: String
       pages: [Link]
     }
-  `;
-  createTypes(typeDefs);
+    
+    type Version @dontInfer {
+      title: String
+      path: String
+      selected: Boolean
+    }
+        
+    type Link @dontInfer {
+      title: String
+      path: String
+    }
+  `);
 };
 
 exports.createResolvers = ({ createResolvers }) => {
@@ -119,119 +120,81 @@ exports.createResolvers = ({ createResolvers }) => {
     File: {
       isNew: {
         type: 'Boolean',
-        resolve(source) {
-          const birthTime = new Date(source.birthTime);
-          const publishDate = birthTime.getTime();
-          const daysPassed = Math.floor((Date.now() - publishDate) / 1000 / 60 / 60 / 24);
-          return daysPassed <= 60; // 60 days
-        }
+        resolve: source => source.isNew,
       },
       howRecent: {
         type: 'Int',
-        resolve(source, args, context, info) {
-          const changeTime = new Date(source.changeTime);
-          const timeUpdated = changeTime.getTime();
-          const daysPassed = Math.floor((Date.now() - timeUpdated) / 1000 / 60 / 60 / 24);
-          return daysPassed <= 30 ? 3 : daysPassed <= 60 ? 2 : daysPassed <= 120 ? 1 : 0;
-        },
+        resolve: source => source.howRecent || 0,
       },
       icon: {
         type: 'String',
-        resolve(source) {
-          return source.icon;
-        }
+        resolve: source => source.icon || '',
+      },
+      path: {
+        type: 'String',
+        resolve: source => source.path || '',
       },
     },
     MdxFrontmatter: {
       title: {
         type: 'String',
-        resolve(source) {
-          return source.title;
-        }
+        resolve: source => source.title,
       },
       keywords: {
         type: '[String]',
-        resolve(source) {
-          return source.keywords;
-        }
+        resolve: source => source.keywords,
       },
       category: {
         type: 'String',
-        resolve(source) {
-          return source.category;
-        }
+        resolve: source => source.category,
       },
       description: {
         type: 'String',
-        resolve(source) {
-          return source.description;
-        }
+        resolve: source => source.description,
       },
       contributors: {
         type: '[String]',
-        resolve(source) {
-          return source.contributors;
-        }
-      },
-      contributor_name: {
-        type: 'String',
-        resolve(source) {
-          return source.contributor_name;
-        }
+        resolve: source => source.contributors
       },
       contributor_link: {
         type: 'String',
-        resolve(source) {
-          return source.contributor_link;
-        }
+        resolve: source => source.contributor_link,
+      },
+      contributor_name: {
+        type: 'String',
+        resolve: source => source.contributor_name,
       },
       edition: {
         type: 'String',
-        resolve(source) {
-          return source.edition;
-        }
+        resolve: source => source.edition,
       },
       openAPISpec: {
         type: 'String',
-        resolve(source) {
-          return source.openAPISpec;
-        }
+        resolve: source => source.openAPISpec,
       },
       frameSrc: {
         type: 'String',
-        resolve(source) {
-          return source.frameSrc;
-        }
+        resolve: source => source.frameSrc,
       },
       frameHeight: {
         type: 'String',
-        resolve(source) {
-          return source.frameHeight;
-        }
+        resolve: source => source.frameHeight,
       },
       layout: {
         type: 'String',
-        resolve(source) {
-          return source.layout;
-        }
+        resolve: source => source.layout,
       },
       jsDoc: {
         type: 'Boolean',
-        resolve(source) {
-          return source.jsDoc;
-        }
+        resolve: source => source.jsDoc,
       },
       hideBreadcrumbNav: {
         type: 'Boolean',
-        resolve(source) {
-          return source.hideBreadcrumbNav;
-        }
+        resolve: source => source.hideBreadcrumbNav,
       },
       featured: {
         type: 'Boolean',
-        resolve(source) {
-          return source.featured;
-        }
+        resolve: source => source.featured || false,
       },
     },
   };

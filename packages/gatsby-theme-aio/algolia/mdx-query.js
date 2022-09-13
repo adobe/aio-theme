@@ -11,7 +11,13 @@
  */
 
 const mdxQuery = `
-  {
+{
+  site {
+    pathPrefix
+  }
+  github {
+    repository
+  },
   allFile(
     filter: {absolutePath: {regex: "/src/pages/"}, internal: {mediaType: {in: ["text/markdown", "text/mdx", "text/x-markdown"]}}}
   ) {
@@ -20,12 +26,12 @@ const mdxQuery = `
       internal {
         contentDigest
       }
-      birthTime
-      changeTime
+      birthTime(difference: "days")
+      changeTime(difference: "days")
+      modifiedTime(fromNow: true)
+      icon
       isNew
       howRecent
-      icon
-      modifiedTime(fromNow: true)
       size
       childMdx {
         excerpt(pruneLength: 200)
@@ -36,7 +42,14 @@ const mdxQuery = `
           category
           featured
           openAPISpec
+          jsDoc
           frameSrc
+          frameHeight
+          contributors
+          edition
+          hideBreadcrumbNav
+          contributor_name
+          contributor_link
         }
         headings {
           value

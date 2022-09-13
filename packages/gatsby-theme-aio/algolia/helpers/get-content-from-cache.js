@@ -17,17 +17,16 @@ const { existsSync, readFileSync } = require('fs');
  * Support of "frameSrc" directive:
  * https://github.com/adobe/aio-theme#frame
  */
-function getContentFromCache(node, options) {
-  const { fileAbsolutePath } = node;
+function getContentFromCache(markdownFile, options) {
+  const { fileAbsolutePath } = markdownFile;
   const [siteDirAbsolutePath] = normalizePath(fileAbsolutePath).split(options.pagesSourceDir);
-  const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${node.frameSrc}`;
+  const staticFileAbsolutePath = `${siteDirAbsolutePath}${options.staticSourceDir}${markdownFile.frameSrc}`;
 
   if (!existsSync(staticFileAbsolutePath)) {
     throw Error(`Static file resolving error: no such file "${staticFileAbsolutePath}"`);
   }
 
-  const fileContent = readFileSync(staticFileAbsolutePath, 'utf8');
-  return fileContent;
+  return readFileSync(staticFileAbsolutePath, 'utf8');
 }
 
 module.exports = getContentFromCache;
