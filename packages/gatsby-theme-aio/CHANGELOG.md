@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.3...@adobe/gatsby-theme-aio@4.5.4) (2022-09-13)
+
+* Adds a `path` key to all the search record objects for use on the frontend.
+* Refactors our custom graphql schema code in `gatsby-node.js` to return defaults and ensure our custom types are being resolved correctly.
+* Adds default return values (currently null) to `getProductFromIndex()` and `getIndexesFromProduct()` when there is no matching product or index passed.
+* Removes the product and index names of the theme's example project from the list of AdobeDocs products and indexes.
+
 ## [4.5.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.2...@adobe/gatsby-theme-aio@4.5.3) (2022-09-08)
 
 * Fixed slug for search result urls.
