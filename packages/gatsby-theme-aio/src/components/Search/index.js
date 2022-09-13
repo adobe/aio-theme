@@ -205,7 +205,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const mappedProductResults = [];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
-      
+
       if (search?.results?.length) {
         search.results.forEach(({ hits, facets }) => {
           if (facets === undefined) return;
@@ -578,55 +578,66 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 css={css`
                   margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
-                Products
-              </h4>
-              {productResults.map((productName, i) => {
-                return (
-                  <Checkbox
-                    key={i}
-                    isSelected={productName === SEARCH_INDEX_ALL ?
-                      selectedIndex.includes('all') :
-                      selectedIndex.some(index => {
-                        return getIndexesFromProduct(productName).includes(index);
-                      })
-                    }
-                    value={productName}
-                    onChange={(checked) => {
-                      if (!checked) {
-                        if (productName === 'All Products') {
-                          setSelectedIndex(selectedIndex.filter(index => index !== 'all'));
-                        } else {
-                          setSelectedIndex(selectedIndex.filter(index => !getIndexesFromProduct(productName).includes(index)));
-                        }
-                      } else {
-                        if (productName === 'All Products') {
-                          setSelectedIndex(['all']);
-                        } else {
-                          setSelectedIndex([...selectedIndex.filter(index => index !== 'all'), ...getIndexesFromProduct(productName)]);
-                        }
-                      }
-                      setSelectedKeywords([]);
-                    }}>
-                    <span>{productName}</span>
-                  </Checkbox>
-                );
-              })}
-
-              <h4
-                className="spectrum-Heading spectrum-Heading--sizeXS"
-                css={css`
-                  margin-bottom: var(--spectrum-global-dimension-size-100);
-                `}>
-                Filter by
+                Filter by Products
               </h4>
               <div
                 css={css`
-                    margin-top: var(--spectrum-global-dimension-size-100);
-                    margin-bottom: var(--spectrum-global-dimension-size-1200);
                     display: flex;
                     flex-direction: column;
                     overflow: auto;
+                    max-height: 30%;
   
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      margin-bottom: 0;
+                    }
+                  `}>
+                {productResults.map((productName, i) => {
+                  return (
+                    <Checkbox
+                      key={i}
+                      isSelected={productName === SEARCH_INDEX_ALL ?
+                        selectedIndex.includes('all') :
+                        selectedIndex.some(index => {
+                          return getIndexesFromProduct(productName).includes(index);
+                        })
+                      }
+                      value={productName}
+                      onChange={(checked) => {
+                        if (!checked) {
+                          if (productName === 'All Products') {
+                            setSelectedIndex(selectedIndex.filter(index => index !== 'all'));
+                          } else {
+                            setSelectedIndex(selectedIndex.filter(index => !getIndexesFromProduct(productName).includes(index)));
+                          }
+                        } else {
+                          if (productName === 'All Products') {
+                            setSelectedIndex(['all']);
+                          } else {
+                            setSelectedIndex([...selectedIndex.filter(index => index !== 'all'), ...getIndexesFromProduct(productName)]);
+                          }
+                        }
+                        setSelectedKeywords([]);
+                      }}>
+                      <span>{productName}</span>
+                    </Checkbox>
+                  );
+                })}
+              </div>
+              <h4
+                className="spectrum-Heading spectrum-Heading--sizeXS"
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                  margin-bottom: var(--spectrum-global-dimension-size-100);
+                `}>
+                Filter by Keywords
+              </h4>
+              <div
+                css={css`
+                    margin-bottom: var(--spectrum-global-dimension-size-100);
+                    display: flex;
+                    flex-direction: column;
+                    overflow: auto;
+                    max-height: 50%;
                     @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                       margin-bottom: 0;
                     }
