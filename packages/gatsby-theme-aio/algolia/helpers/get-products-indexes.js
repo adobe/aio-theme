@@ -180,9 +180,9 @@ const getProductFromIndex = index => {
     xd: adobeProducts.adobe_xd,
     'uxp-xd': adobeProducts.adobe_xd,
     'xmp-docs': adobeProducts.adobe_xmp,
-    'default': '',
   }[index];
-  return !product ? null : product;
+
+  return product || null;
 };
 
 const getIndexesFromProduct = product => {
@@ -254,10 +254,9 @@ const getIndexesFromProduct = product => {
     'Adobe Workfront': [adobeIndexes.wf_apis, adobeIndexes.workfront_api_explorer],
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
-    'default': [''],
   }[product];
 
-  return !indexes ? null : indexes;
+  return indexes || null;
 };
 
 module.exports = {
