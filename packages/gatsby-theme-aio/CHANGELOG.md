@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.4...@adobe/gatsby-theme-aio@4.5.5) (2022-09-14)
+
+* Reopen theme's custom schema for automatic type inference from other projects [051012d](https://github.com/adobe/aio-theme/pull/1090/commits/051012dc5652cf2bff9614888aad208d4b0876ae).
+
 ## [4.5.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.3...@adobe/gatsby-theme-aio@4.5.4) (2022-09-13)
 
 * Adds a `path` key to all the search record objects for use on the frontend.
