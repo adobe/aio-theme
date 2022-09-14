@@ -9,8 +9,7 @@
     "url": "https://github.com/adobe/aio-theme"
   },
   "author": {
-    "name": "Stephan Ringel",
-    "url": "https://github.com/icaraps"
+    "name": "Adobe Devsite Team"
   },
   "contributors": [
     {
@@ -40,6 +39,10 @@
     {
       "name": "Simon Mac Donald",
       "url": "https://github.com/macdonst"
+    },
+    {
+      "name": "Stephan Ringel",
+      "url": "https://github.com/icaraps"
     }
   ],
   "publishConfig": {
