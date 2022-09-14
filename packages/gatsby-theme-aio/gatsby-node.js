@@ -37,7 +37,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions; // define custom types
 
   createTypes(`
-      type SiteSiteMetadata implements Node @dontInfer {
+      type SiteSiteMetadata implements Node {
       title: String
       description: String
       home: Home
@@ -46,69 +46,69 @@ exports.createSchemaCustomization = ({ actions }) => {
       versions: [Version]
       docs: Link
     }
-    
-    type Home @dontInfer {
+
+    type Home {
       title: String
       path: String
       hidden: Boolean
     }
-    
-    type TopPage @dontInfer {
+
+    type TopPage {
       title: String
       path: String
       menu: [Menu]
     }
-    
-    type Menu @dontInfer {
+
+    type Menu {
       title: String
       description: String
       path: String
     }
-    
-    type SubPage @dontInfer {
+
+    type SubPage {
       title: String
       path: String
       header: Boolean
       pages: [NestedSubPage1]
     }
-    
-    type NestedSubPage1 @dontInfer {
+
+    type NestedSubPage1 {
       title: String
       path: String
       pages: [NestedSubPage2]
     }
 
-    type NestedSubPage2 @dontInfer {
+    type NestedSubPage2 {
       title: String
       path: String
       pages: [NestedSubPage3]
     }
 
-    type NestedSubPage3 @dontInfer {
+    type NestedSubPage3 {
       title: String
       path: String
       pages: [NestedSubPage4]
     }
 
-    type NestedSubPage4 @dontInfer {
+    type NestedSubPage4 {
       title: String
       path: String
       pages: [NestedSubPage5]
     }
 
-    type NestedSubPage5 @dontInfer {
+    type NestedSubPage5 {
       title: String
       path: String
       pages: [Link]
     }
-    
-    type Version @dontInfer {
+
+    type Version {
       title: String
       path: String
       selected: Boolean
     }
-        
-    type Link @dontInfer {
+
+    type Link {
       title: String
       path: String
     }
