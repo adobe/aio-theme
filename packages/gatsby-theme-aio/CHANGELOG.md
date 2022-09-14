@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.0-alpha.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.0-alpha...@adobe/gatsby-theme-aio@4.6.0-alpha.1) (2022-09-14)
+
+### Fixes 
+
+* Fixed empty string checkbox in product filters.
+
 ## [4.6.0-alpha](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.4-rc0...@adobe/gatsby-theme-aio@4.6.0-alpha) (2022-09-13)
 
 ### Features
