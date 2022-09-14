@@ -214,7 +214,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           if (hits.length > 0) {
             const product = hits[0].product;
 
-            if (product !== undefined) {
+            if (product) {
               if (!mappedProductResults.includes(product)) {
                 if (product !== searchIndex[0]) {
                   mappedProductResults.push(product);
@@ -632,6 +632,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       isSelected={productName === SEARCH_INDEX_ALL ?
                         selectedIndex.includes('all') :
                         selectedIndex.some(index => {
+                          console.log(productName, getIndexesFromProduct(productName));
                           return getIndexesFromProduct(productName).includes(index);
                         })
                       }

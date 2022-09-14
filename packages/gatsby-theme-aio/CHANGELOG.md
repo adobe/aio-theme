@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* Added progress circle during initial query search.\
+* Added progress circle during initial query search.
 * Added clarity to filtering options.
 
 ### Fixes 
