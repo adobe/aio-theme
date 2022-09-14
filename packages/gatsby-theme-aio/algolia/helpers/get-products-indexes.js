@@ -119,7 +119,7 @@ const adobeIndexes = {
 
 const getProductFromIndex = index => {
   index = index.replace(/([a-zA-Z].+\/)/, '');
-  const products = {
+  const product = {
     'after-effects': adobeProducts.adobe_after_effects,
     'analytics-2.0-apis': adobeProducts.adobe_analytics,
     animate: adobeProducts.adobe_animate,
@@ -180,10 +180,9 @@ const getProductFromIndex = index => {
     xd: adobeProducts.adobe_xd,
     'uxp-xd': adobeProducts.adobe_xd,
     'xmp-docs': adobeProducts.adobe_xmp,
-    'default': '',
-  };
+  }[index];
 
-  return products[index] ? products[index] : products['default'];
+  return product || null;
 };
 
 const getIndexesFromProduct = product => {
@@ -255,10 +254,9 @@ const getIndexesFromProduct = product => {
     'Adobe Workfront': [adobeIndexes.wf_apis, adobeIndexes.workfront_api_explorer],
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
-    'default': [''],
-  };
+  }[product];
 
-  return indexes[product] ? indexes[product] : indexes['default'];
+  return indexes || null;
 };
 
 module.exports = {

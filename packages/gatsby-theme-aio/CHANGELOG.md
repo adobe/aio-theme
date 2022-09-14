@@ -3,25 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.6.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.4-rc0...@adobe/gatsby-theme-aio@4.6.0-alpha) (2022-09-13)
+## [4.6.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.5...@adobe/gatsby-theme-aio@4.6.0) (2022-09-14)
 
 ### Features
 
-* Added progress circle during initial query search.
-* Added clarity to filtering options.
+* Added local search functionality to search results page.
 
 ### Fixes 
 
-* Temporary fix for undefined indexes in getProductsIndexes Algolia helper.
 * Fixed search results layout to center filters better.
-* Fixed search bar close button
-* Tuned search query behaviour.
+* Fixed search bar close button styling.
 
-## [4.5.4-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.3...@adobe/gatsby-theme-aio@4.5.4-rc0) (2022-09-09)
+## [4.5.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.4...@adobe/gatsby-theme-aio@4.5.5) (2022-09-14)
 
-### Fixes 
+* Reopen theme's custom schema for automatic type inference from other projects [051012d](https://github.com/adobe/aio-theme/pull/1090/commits/051012dc5652cf2bff9614888aad208d4b0876ae).
 
-* Fixed results not showing after new Algolia indexing structure.
+## [4.5.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.3...@adobe/gatsby-theme-aio@4.5.4) (2022-09-13)
+
+* Adds a `path` key to all the search record objects for use on the frontend.
+* Refactors our custom graphql schema code in `gatsby-node.js` to return defaults and ensure our custom types are being resolved correctly.
+* Adds default return values (currently null) to `getProductFromIndex()` and `getIndexesFromProduct()` when there is no matching product or index passed.
+* Removes the product and index names of the theme's example project from the list of AdobeDocs products and indexes.
 
 ## [4.5.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.2...@adobe/gatsby-theme-aio@4.5.3) (2022-09-08)
 
