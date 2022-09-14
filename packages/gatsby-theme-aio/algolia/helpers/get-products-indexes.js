@@ -181,7 +181,7 @@ const getProductFromIndex = index => {
     'uxp-xd': adobeProducts.adobe_xd,
     'xmp-docs': adobeProducts.adobe_xmp,
     'default': '',
-  }[index];
+  };
 
   return products[index] ? products[index] : products['default'];
 };
@@ -256,7 +256,7 @@ const getIndexesFromProduct = product => {
     'Adobe XD': [adobeIndexes.xd, adobeIndexes.uxp_xd],
     'Adobe XMP': [adobeIndexes.xmp_docs],
     'default': [''],
-  }[product];
+  };
 
   return indexes[product] ? indexes[product] : indexes['default'];
 };
