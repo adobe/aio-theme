@@ -632,7 +632,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                       isSelected={productName === SEARCH_INDEX_ALL ?
                         selectedIndex.includes('all') :
                         selectedIndex.some(index => {
-                          console.log(productName, getIndexesFromProduct(productName));
                           return getIndexesFromProduct(productName).includes(index);
                         })
                       }
