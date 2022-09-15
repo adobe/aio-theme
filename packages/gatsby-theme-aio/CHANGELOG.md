@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.6.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.5...@adobe/gatsby-theme-aio@4.6.0) (2022-09-14)
+## [4.6.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.7...@adobe/gatsby-theme-aio@4.6.0) (2022-09-14)
 
 ### Features
 
@@ -13,6 +13,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * Fixed search results layout to center filters better.
 * Fixed search bar close button styling.
+
+## [4.5.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.6...@adobe/gatsby-theme-aio@4.5.7) (2022-09-14)
+
+* Fix package version [051012d](https://github.com/adobe/aio-theme/commit/910f3e6c36478d7a026baa5541a98c73012209f7).
+
+## [4.5.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.5...@adobe/gatsby-theme-aio@4.5.6) (2022-09-14)
+
+* Fix package version [051012d](https://github.com/adobe/aio-theme/commit/910f3e6c36478d7a026baa5541a98c73012209f7).
 
 ## [4.5.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.4...@adobe/gatsby-theme-aio@4.5.5) (2022-09-14)
 
