@@ -53,13 +53,15 @@ const setQueryStringParameter = (name, value) => {
 
 // const mapToIndexName = (searchIndex) => searchIndex.map((index) => Object.keys(index)[0]);
 
-const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
+const searchSuggestions = async (algolia, query, searchIndex, indexAll, existingIndices) => {
   const queries = [];
-  const algoliaIndexList = await algolia.listIndices();
-  const existingIndices = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-    return Object.values(indexAll).includes(indexName);
-  });
-
+  if (!existingIndices) {
+    const algoliaIndexList = await algolia.listIndices();
+    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(indexes);
+  }
   // By default use all indexes
   if (searchIndex[0] === SEARCH_INDEX_ALL) {
     searchIndex = existingIndices;
@@ -85,11 +87,16 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   return await algolia.multipleQueries(queries);
 };
 
-const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) => {
-  const algoliaIndexList = await algolia.listIndices();
-  const existingIndices = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-    return Object.values(indexAll).includes(indexName);
-  });
+const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIndices, keywords) => {
+
+  if (!existingIndices) {
+    const algoliaIndexList = await algolia.listIndices();
+    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(indexes);
+  }
+
   if (selectedIndex.includes('all')) {
     selectedIndex = existingIndices;
   } else {
@@ -155,6 +162,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
+  const [existingIndices, setExistingIndices] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -203,7 +211,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         setSelectedIndex(['all']);
       }
 
-      const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
+      const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, existingIndices, selectedKeywords);
       const mappedProductResults = [searchIndex[1]];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
@@ -245,6 +253,15 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     }
   };
 
+  useEffect(async () => {
+    const algoliaIndexList = await algolia.listIndices();
+    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(indexes);
+    console.log('set indicies');
+  }, [])
+
   useEffect(() => {
     if (showSearch) {
       // Read search params
@@ -276,15 +293,21 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   }, [showSearch]);
 
   useEffect(() => {
+    console.log(selectedIndex);
     search();
-  }, [selectedIndex, selectedKeywords]);
+  }, [selectedIndex]);
 
-  useEffect(() => {
-    if (triggerSearch) {
-      setTriggerSearch(false);
-      search();
-    }
-  }, [triggerSearch, setTriggerSearch]);
+  // useEffect(() => {
+  //   console.log(selectedIndex);
+  //   search();
+  // }, [selectedIndex, selectedKeywords]);
+
+  // useEffect(() => {
+  //   if (triggerSearch) {
+  //     setTriggerSearch(false);
+  //     search();
+  //   }
+  // }, [triggerSearch, setTriggerSearch]);
 
   useEffect(() => {
     if (searchResultsRef?.current) {
@@ -383,6 +406,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
                 const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
                 setSelectedIndex(localProductIndexes);
+                console.log('check');
               }
             }}>
             <div
@@ -417,7 +441,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   if (query.length && !searchResults.length) {
                     setShowClear(true);
 
-                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll);
+                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll, existingIndices);
 
                     if (suggestions?.results?.length) {
                       const results = [];
@@ -695,7 +719,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           }
                         }}>
                         <span>{keyword}</span>
-                        <em>&nbsp;({keywordResult[keyword]})</em>
+                        {/* will enable once this makes sense currently confuses user to think it's # of results */}
+                        {/* <em>&nbsp;({keywordResult[keyword]})</em> */}
                       </Checkbox>
                     );
                   }))
