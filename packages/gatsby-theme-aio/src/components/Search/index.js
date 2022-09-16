@@ -259,7 +259,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       return Object.values(indexAll).includes(indexName);
     });
     setExistingIndices(indexes);
-    console.log('set indicies');
   }, [])
 
   useEffect(() => {
@@ -293,21 +292,15 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   }, [showSearch]);
 
   useEffect(() => {
-    console.log(selectedIndex);
     search();
-  }, [selectedIndex]);
+  }, [selectedIndex, selectedKeywords]);
 
-  // useEffect(() => {
-  //   console.log(selectedIndex);
-  //   search();
-  // }, [selectedIndex, selectedKeywords]);
-
-  // useEffect(() => {
-  //   if (triggerSearch) {
-  //     setTriggerSearch(false);
-  //     search();
-  //   }
-  // }, [triggerSearch, setTriggerSearch]);
+  useEffect(() => {
+    if (triggerSearch) {
+      setTriggerSearch(false);
+      search();
+    }
+  }, [triggerSearch, setTriggerSearch]);
 
   useEffect(() => {
     if (searchResultsRef?.current) {
@@ -406,7 +399,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
                 const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
                 setSelectedIndex(localProductIndexes);
-                console.log('check');
               }
             }}>
             <div
