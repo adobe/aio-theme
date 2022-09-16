@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.9-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.8...@adobe/gatsby-theme-aio@4.5.9-rc1) (2022-09-15)
+
+### Fixes
+
+* Improved local search performance. WIP
+
 ## [4.5.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.7...@adobe/gatsby-theme-aio@4.5.8) (2022-09-15)
 
 ### Features
