@@ -141,7 +141,7 @@
     "sharp": "^0.31.0",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.5",
-    "swiper": "^8.3.2",
+    "swiper": "^8.4.2",
     "to-arraybuffer": "^1.0.1",
     "tty-browserify": "^0.0.1",
     "unist-util-select": "3.0.4",
