@@ -238,8 +238,8 @@ const getIndexesFromProduct = product => {
     'Adobe Lightroom': [
       adobeIndexes.lightroom,
       adobeIndexes.lightroom_public_apis,
-      adobeIndexes.lightroom_classic,
     ],
+    'Adobe Lightroom Classic': [adobeIndexes.lightroom_classic],
     'Adobe Photoshop': [
       adobeIndexes.photoshop,
       adobeIndexes.uxp_photoshop,
