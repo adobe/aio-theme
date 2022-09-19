@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -25,9 +25,11 @@ const Accordion = ({ children, ...props }) => (
 
 const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
   const [open, setOpen] = useState(isOpen);
-  const onClick = () => {
+  const toggleOpen = () => {
     setOpen((open) => !open);
   };
+
+  useEffect(() => { setOpen(isOpen) }, [isOpen]);
 
   return (
     <div className={classNames(['spectrum-Accordion-item', { 'is-open': open }])} role="presentation" {...props}>
@@ -36,7 +38,7 @@ const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
           className="spectrum-Accordion-itemHeader"
           type="button"
           aria-expanded={open}
-          onClick={onClick}
+          onClick={toggleOpen}
           css={css`
             text-transform: none;
           `}>

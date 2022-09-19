@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.8...@adobe/gatsby-theme-aio@4.6.1) (2022-09-19)
+
+### Features
+
+* Added local search functionality to results page
+
+## [4.5.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.7...@adobe/gatsby-theme-aio@4.5.8) (2022-09-15)
+
+### Features
+
+* Added local search alpha for testing. WIP.
+
 ## [4.5.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.6...@adobe/gatsby-theme-aio@4.5.7) (2022-09-14)
 
 * Fix package version [051012d](https://github.com/adobe/aio-theme/commit/910f3e6c36478d7a026baa5541a98c73012209f7).
@@ -24,9 +36,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [4.5.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.2...@adobe/gatsby-theme-aio@4.5.3) (2022-09-08)
 
+### Fixes 
+
 * Fixed slug for search result urls.
 
 ## [4.5.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.1...@adobe/gatsby-theme-aio@4.5.2) (2022-09-07)
+
+### Fixes 
 
 * Fixed description and title errors.
 
@@ -50,6 +66,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Fixes
 
 * Updated Algolia index settings to increase timeouts. This fixed an issue in which Algolia indexing could time out and fail when upload speeds are slow and indexes are large. ([4b8f284](https://github.com/adobe/aio-theme/commit/4b8f284c6a72468c2fd74bacded7ed0f956f3ddc))
+
+## [4.5.1-rc0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.0...@adobe/gatsby-theme-aio@4.5.1-rc0) (2022-09-07)
+
+### Features
+
+* Products filter list now shows all available products based on current query. ([0196aceeb](https://github.com/adobe/aio-theme/commit/0196aceeb344fbc6df09f7f75813124296c61b20))
+
+* Added product selection based on new algolia indexing. ([f96dc93af](https://github.com/adobe/aio-theme/commit/f96dc93af222b517e4725e2e3d33335d65a7e0de))
 
 ## [4.5.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.4.4...@adobe/gatsby-theme-aio@4.5.0) (2022-09-06)
 

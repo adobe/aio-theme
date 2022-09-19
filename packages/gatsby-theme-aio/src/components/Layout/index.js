@@ -28,6 +28,7 @@ import {
   SIDENAV_WIDTH,
   trailingSlashFix
 } from '../../utils';
+import { adobeIndexes } from '../../../algolia/helpers/get-products-indexes.js';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -150,15 +151,18 @@ export default ({ children, pageContext, location }) => {
   // Set Search indexAll
   useEffect(() => {
     (async () => {
-      const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
-      const ALGOLIA_INDEX_ALL = process.env.GATSBY_ALGOLIA_INDEX_ALL;
+      // const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
+      // const ALGOLIA_INDEX_ALL = adobeIndexes;
 
       try {
-        if (ALGOLIA_INDEX_ALL_SRC) {
-          await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
-          setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
-        } else if (ALGOLIA_INDEX_ALL) {
-          setIndexAll(JSON.parse(ALGOLIA_INDEX_ALL));
+        // if (ALGOLIA_INDEX_ALL_SRC) {
+        //   await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
+        //   setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
+        // } else if (ALGOLIA_INDEX_ALL) {
+        //   setIndexAll(JSON.parse(adobeIndexes));
+        // }
+        if (adobeIndexes) {
+          setIndexAll(adobeIndexes);
         }
       } catch (e) {
         console.error(`AIO: Failed setting search index.`);

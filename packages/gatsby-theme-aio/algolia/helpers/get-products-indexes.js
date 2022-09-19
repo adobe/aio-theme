@@ -28,7 +28,7 @@ const adobeProducts = {
   adobe_commerce: 'Adobe Commerce',
   adobe_creative_cloud: 'Adobe Creative Cloud',
   adobe_customer_journey_analytics: 'Adobe Customer Journey Analytics',
-  adobe_developer_app_builder: 'Adobe App Builder',
+  adobe_developer_app_builder: 'Adobe Developer App Builder',
   adobe_developer_console: 'Adobe Developer Console',
   adobe_developer_enablement: 'Adobe Developer Enablement',
   adobe_document_services: 'Adobe Document Services',
@@ -212,7 +212,7 @@ const getIndexesFromProduct = product => {
       adobeIndexes.cc_libraries_api,
     ],
     'Adobe Customer Journey Analytics': [adobeIndexes.cja_apis],
-    'App Builder': [
+    'Adobe Developer App Builder': [
       adobeIndexes.app_builder,
       adobeIndexes.app_builder_template_registry,
       adobeIndexes.graphql_mesh_gateway,
@@ -238,8 +238,8 @@ const getIndexesFromProduct = product => {
     'Adobe Lightroom': [
       adobeIndexes.lightroom,
       adobeIndexes.lightroom_public_apis,
-      adobeIndexes.lightroom_classic,
     ],
+    'Adobe Lightroom Classic': [adobeIndexes.lightroom_classic],
     'Adobe Photoshop': [
       adobeIndexes.photoshop,
       adobeIndexes.uxp_photoshop,
