@@ -291,8 +291,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const index = searchParams.get(SEARCH_PARAMS.index);
 
       if (index) {
-          setSelectedIndex(index.split(','));
-        }
+        setSelectedIndex(index.split(','));
+      }
 
       if (keywords) {
         setSelectedKeywords(keywords.split(','));
@@ -637,7 +637,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 flex-direction: column;
                 box-sizing: border-box;
                 padding: var(--spectrum-global-dimension-size-200);
-                min-width: ${SIDENAV_WIDTH};
+                width: ${SIDENAV_WIDTH};
               `}>
               <h4
                 className="spectrum-Heading spectrum-Heading--sizeXS"
@@ -650,9 +650,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 css={css`
                     display: flex;
                     flex-direction: column;
-                    overflow: auto;
+                    overflow-y: auto;
+                    overflow-x: hidden;
                     max-height: 30%;
-  
+                    width: ${SIDENAV_WIDTH};
                     @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                       margin-bottom: 0;
                     }
@@ -703,8 +704,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                     margin-bottom: var(--spectrum-global-dimension-size-100);
                     display: flex;
                     flex-direction: column;
-                    overflow: auto;
+                    overflow-y: auto;
+                    overflow-x: hidden;
                     max-height: 50%;
+                    width: ${SIDENAV_WIDTH};
                     @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                       margin-bottom: 0;
                     }
@@ -728,7 +731,11 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           }
                           setTriggerSearch(true);
                         }}>
-                        <span>{keyword}</span>
+                        <span
+                        css={css`
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        `}>{keyword}</span>
                         {/* will enable once this makes sense currently confuses user to think it's # of results */}
                         {/* <em>&nbsp;({keywordResult[keyword]})</em> */}
                       </Checkbox>
