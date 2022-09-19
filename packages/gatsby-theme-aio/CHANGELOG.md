@@ -3,11 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.5.9-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.8...@adobe/gatsby-theme-aio@4.5.9-rc1) (2022-09-15)
+## [4.6.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.8...@adobe/gatsby-theme-aio@4.6.1) (2022-09-19)
 
-### Fixes
-* Reduce search triggers to solve overwritting local search indices.
-* Improved local search performance.
+### Features
+
+* Added local search functionality to results page
 
 ## [4.5.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.7...@adobe/gatsby-theme-aio@4.5.8) (2022-09-15)
 
