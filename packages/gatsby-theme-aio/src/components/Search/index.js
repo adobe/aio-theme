@@ -247,10 +247,8 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             }
           }
 
-          if (searchQuery === oldSearchQuery) {
-            mapSearchResults(hits, mappedSearchResults);
-            mapKeywordResults(facets, mappedKeywordResults);
-          }
+          mapSearchResults(hits, mappedSearchResults);
+          mapKeywordResults(facets, mappedKeywordResults);
 
           return true;
         });
