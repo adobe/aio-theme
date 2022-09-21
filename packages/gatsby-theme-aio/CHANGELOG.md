@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
+
+### Fix
+
+* Fixed no results on sites with default product filter set to 'All Products' [d53a2e5](https://github.com/adobe/aio-theme/commit/d53a2e530f3bcbf69e7bb6047b7c543d1f4d01ca).
+
 ## [4.6.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.5.8...@adobe/gatsby-theme-aio@4.6.1) (2022-09-19)
 
 ### Features
