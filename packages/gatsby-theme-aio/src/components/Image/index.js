@@ -37,10 +37,11 @@ export const Image = (props) => {
         <span className="gatsby-resp-image-background-image" />
         <img
           {...props}
+          alt={props.alt}
           className="gatsby-resp-image-image"
           css={css`
             width: 100%;
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.5s;
           `}
         />
@@ -48,5 +49,5 @@ export const Image = (props) => {
     );
   }
 
-  return <img {...props} />;
+  return <img {...props} alt={props.alt} />;
 };
