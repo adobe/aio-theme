@@ -138,6 +138,7 @@ export default ({ children, pageContext, location }) => {
           window.adobeIMS.initialize();
         } catch (e) {
           console.error(`AIO: IMS error.`);
+        } finally {
           setIsLoadingIms(false);
         }
       })();
@@ -600,7 +601,7 @@ export default ({ children, pageContext, location }) => {
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0 auto;
+                  grid-template-columns: 0px auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -714,6 +715,7 @@ export default ({ children, pageContext, location }) => {
 
             {hasSideNav && (
               <div
+                role="presentation"
                 css={css`
                   display: none;
 

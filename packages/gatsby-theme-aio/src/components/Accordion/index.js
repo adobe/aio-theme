@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -23,14 +23,19 @@ const Accordion = ({ children, ...props }) => (
   </div>
 );
 
-const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
+const AccordionItem = ({ header, slot_id, isOpen = false, children, ...props }) => {
   const [open, setOpen] = useState(isOpen);
   const onClick = () => {
     setOpen((open) => !open);
   };
 
+  useEffect(() => {
+    setOpen(window.location.href.endsWith(slot_id))
+  }, [])
+
   return (
     <div className={classNames(['spectrum-Accordion-item', { 'is-open': open }])} role="presentation" {...props}>
+      <div aria-hidden="true" id={slot_id ? slot_id : null} class="css-vpapan-Anchor"></div>
       <h3 className="spectrum-Accordion-itemHeading">
         <button
           className="spectrum-Accordion-itemHeader"
@@ -42,7 +47,8 @@ const AccordionItem = ({ header, isOpen = false, children, ...props }) => {
           `}>
           {header}
         </button>
-        <ChevronRight className="spectrum-Accordion-itemIndicator" />
+        {/* <ChevronRight className="spectrum-Accordion-itemIndicator" /> */}
+        <span className="spectrum-Accordion-itemIndicator" onClick={onClick}>{open ? "-" : "+"}</span>
       </h3>
       <div className="spectrum-Accordion-itemContent" role="region">
         {children}

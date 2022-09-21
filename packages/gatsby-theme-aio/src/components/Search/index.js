@@ -289,6 +289,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     const onEscape = ({ key }) => {
       if (key === 'Escape') {
         setShowSearch(false);
+        document.getElementById("aio-Search-close").focus()
       }
     };
 
