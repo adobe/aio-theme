@@ -33,10 +33,7 @@ import Context from "../Context";
 import { Breadcrumbs } from "../Breadcrumbs";
 import classNames from "classnames";
 
-/*
-import AnimationVideo from "../../../../pages/videos/Adobe_DCP_Marquee_Animation.json";
 import lottie from 'lottie-web';
-*/
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -175,28 +172,30 @@ const Hero = ({
   isPrimaryBtn=false,
   variantsTypePrimary='cta',
   variantsTypeSecondary='overBackground',
+  animationVideo="",
   ...props
 }) => {
   const { siteMetadata, location } = useContext(Context);
 
-  /*
-  useEffect(()=>{
   
-    var anim = lottie.loadAnimation({
-      container: document.querySelector("#svgContainer"), 
-      renderer: "svg",
-      loop: false,
-      autoplay: true,
-      animationData: AnimationVideo
-        });
-
-        anim.addEventListener("enterFrame", function (animation) {
-             if (animation.currentTime > (anim.totalFrames - 25)) {
-                anim.pause();
-             }
-        });
+  useEffect(()=>{
+    if ( animationVideo ) {
+      var anim = lottie.loadAnimation({
+        container: document.querySelector("#svgContainer"), 
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        animationData: animationVideo
+      });
+  
+      anim.addEventListener("enterFrame", function (animation) {
+            if (animation.currentTime > (anim.totalFrames - 25)) {
+              anim.pause();
+            }
+      });
+    }
   },[])
-*/
+
 
   if (!variant || variant === 'default') {
     const { home, pages } = siteMetadata;
@@ -360,7 +359,7 @@ const Hero = ({
           </div>
         </section>
       )
-    } else if(variant === 'video' && AnimationVideo){
+    } else if(variant === 'video' && animationVideo){
       return (
         <section
           className={classNames(className, `spectrum--${theme}`)}
@@ -738,6 +737,7 @@ Hero.propTypes = {
   theme: PropTypes.string,
   customLayout: PropTypes.bool,
   assetsImg:PropTypes.element,
+  animationVideo: PropTypes.element
 };
 
 HeroButtons.propTypes = {
