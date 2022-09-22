@@ -43,7 +43,7 @@ const setImageLoading = (child) => {
   return child;
 };
 
-const HeroButtons = ({ buttons, styles = ['outline', 'fill'], variants = ['secondary', 'accent'], className }) =>
+const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], className }) =>
   buttons ? (
     <div
       className={className}
