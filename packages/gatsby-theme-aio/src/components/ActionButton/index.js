@@ -14,7 +14,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '@spectrum-css/actionbutton';
-import { css } from '@emotion/react';
 
 const ActionButton = ({ children, elementType = 'button', isQuiet, className, ...props }) => {
   const Element = elementType;
@@ -38,14 +37,6 @@ ActionButton.propTypes = {
   elementType: PropTypes.string
 };
 
-const Text = ({ children }) => (
-  <span
-    className="spectrum-ActionButton-label"
-    css={css`
-      margin-left: var(--spectrum-global-dimension-size-100);
-    `}>
-    {children}
-  </span>
-);
+const Text = ({ children }) => <span className="spectrum-ActionButton-label">{children}</span>;
 
 export { ActionButton, Text };

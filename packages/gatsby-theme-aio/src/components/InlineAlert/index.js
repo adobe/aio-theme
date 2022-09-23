@@ -15,78 +15,54 @@ import { css } from '@emotion/react';
 import * as Icons from '../Icons';
 import PropTypes from 'prop-types';
 import '@spectrum-css/inlinealert';
-import classNames from 'classnames';
-
-const commonCss = css`
-  font-size: 1rem;
-  line-height: 1.3rem;
-  padding-right: 30px;
-`;
 
 const getIconName = (variant) => {
   let icon = variant;
 
-  if (variant === 'error' || variant === 'negative' || variant === 'warning') {
+  if (variant === 'error') {
     icon = 'alert';
   }
 
   return `${icon.charAt(0).toUpperCase()}${icon.slice(1)}Medium`;
 };
 
-const InlineAlertTexts = ({ texts }) => {
-  const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
-  return textKeys.map((textKey, index) =>
-    index === 0
-      ? cloneElement(texts[textKey], {
-          className: 'spectrum-InLineAlert-content',
-          css: css`
-            margin-top: 0;
-            ${commonCss};
-          `
-        })
-      : cloneElement(texts[textKey], {
-          className: 'spectrum-InLineAlert-content',
-          css: css`
-            margin-top: var(--spectrum-global-dimension-size-150);
-            ${commonCss};
-          `
-        })
-  );
-};
-
-const InlineAlert = ({ variant = 'info', header, ...props }) => {
-  const Icon = Icons[getIconName(variant)] ? Icons[getIconName(variant)] : Icons.NeutralMedium;
-  variant = variant === 'warning' ? 'negative' : variant;
+const InlineAlert = ({ variant = 'info', text }) => {
+  const Icon = Icons[getIconName(variant)];
 
   return (
     <div
       role="alert"
-      className={classNames('spectrum-InLineAlert', `spectrum-InLineAlert--${variant}`)}
+      className={`spectrum-InLineAlert spectrum-InLineAlert--${variant}`}
       css={css`
-        min-width: 100%;
+        display: block !important;
+        min-width: 0 !important;
+        width: 100%;
         margin-top: var(--spectrum-global-dimension-size-300);
       `}>
-      <Icon className="spectrum-Icon spectrum-Icon--sizeM spectrum-InLineAlert-icon" />
-      <div>
-        {header &&
-          cloneElement(header, {
-            className: 'spectrum-InLineAlert-header',
-            css: css`
-              margin-top: 0;
-              margin-bottom: 0.5rem;
-              font-size: 1rem;
-              line-height: 1.3rem;
-            `
-          })}
+      <Icon className="spectrum-InLineAlert-icon" />
+      <div
+        className="spectrum-InLineAlert-content"
+        css={css`
+          margin-top: 0;
+          margin-right: var(--spectrum-global-dimension-size-400);
+
+          p {
+            margin: 0;
+          }
+        `}>
+        {cloneElement(text, {
+          className: ' ',
+          css: css`
+            margin: 0 !important;
+          `
+        })}
       </div>
-      <InlineAlertTexts texts={props} />
     </div>
   );
 };
 
 InlineAlert.propTypes = {
   variant: PropTypes.string,
-  header: PropTypes.element,
   text: PropTypes.element
 };
 

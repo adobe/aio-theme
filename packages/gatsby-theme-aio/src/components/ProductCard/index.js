@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement, useEffect, useState } from 'react';
+import React, { useEffect, useState, cloneElement } from 'react';
 import { css } from '@emotion/react';
 import { HeroButtons } from '../Hero';
 import '@spectrum-css/typography';
@@ -72,7 +72,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
       <div
         role="figure"
         tabIndex="0"
-        className="spectrum-Card spectrum-Card--sizeM"
+        className="spectrum-Card"
         css={css`
           margin: 0 var(--spectrum-global-dimension-size-300);
           width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
@@ -153,8 +153,8 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         <div className="spectrum-Card-footer">
           <HeroButtons
             buttons={buttons}
-            styles={['outline', 'outline']}
-            variants={['secondary', 'accent']}
+            quiets={[true, false]}
+            variants={['secondary', 'primary']}
             css={css`
               justify-content: flex-end;
 

@@ -15,7 +15,7 @@ import { css } from '@emotion/react';
 import '@spectrum-css/table';
 
 const Table = ({ children, ...props }) => (
-  <table className="spectrum-Table spectrum-Table--sizeM" {...props}>
+  <table className="spectrum-Table" {...props}>
     {children}
   </table>
 );

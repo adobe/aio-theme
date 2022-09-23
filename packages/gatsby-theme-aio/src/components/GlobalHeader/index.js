@@ -10,48 +10,44 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import nextId from 'react-id-generator';
 import { withPrefix } from 'gatsby';
 import { GatsbyLink } from '../GatsbyLink';
 import {
-  DEFAULT_HOME,
-  DESKTOP_SCREEN_WIDTH,
   findSelectedTopPage,
   findSelectedTopPageMenu,
-  getExternalLinkProps,
-  MOBILE_SCREEN_WIDTH,
   rootFix,
-  rootFixPages
+  rootFixPages,
+  getExternalLinkProps,
+  DESKTOP_SCREEN_WIDTH,
+  MOBILE_SCREEN_WIDTH,
+  DEFAULT_HOME
 } from '../../utils';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, ChevronDown, Close, Magnify, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, Magnify, Close, TripleGripper } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
-import { Item as MenuItem, Menu } from '../Menu';
+import { Menu, Item as MenuItem } from '../Menu';
 import { Popover } from '../Popover';
 import { Image } from '../Image';
 import { Link } from '../Link';
 import {
-  animateIndicator,
+  Tabs,
   Item as TabsItem,
   Label as TabsItemLabel,
+  TabsIndicator,
   positionIndicator,
-  Tabs,
-  TabsIndicator
+  animateIndicator
 } from '../Tabs';
 import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
-
-const clearQueryStringParameters = () => {
-  window.history.replaceState({}, '', `${window.location.pathname}`);
-};
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -396,7 +392,7 @@ const GlobalHeader = ({
             ref={tabsContainerRef}
             css={css`
               grid-area: navigation;
-              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-350);'}
+              ${hasHome && 'margin-left: var(--spectrum-global-dimension-size-200);'}
 
               @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                 ${!hasHome && 'margin-left: var(--spectrum-global-dimension-size-300);'}
@@ -665,8 +661,8 @@ const GlobalHeader = ({
                     margin-left: var(--spectrum-global-dimension-size-300);
                     white-space: nowrap;
                   `}>
-                  <AnchorButton variant="primary" style="outline" href={withPrefix(docs.href)}>
-                    <span class="spectrum-Button-label">{docs.title ?? 'View Docs'}</span>
+                  <AnchorButton variant="primary" href={withPrefix(docs.href)}>
+                    {docs.title ?? 'View Docs'}
                   </AnchorButton>
                 </div>
               )}
@@ -679,8 +675,8 @@ const GlobalHeader = ({
                     display: block;
                   }
                 `}>
-                <AnchorButton variant="primary" style="outline" href="/console">
-                  <span class="spectrum-Button-label">Console</span>
+                <AnchorButton variant="primary" href="/console">
+                  Console
                 </AnchorButton>
               </div>
             </Tabs>
@@ -699,12 +695,7 @@ const GlobalHeader = ({
                   id={searchButtonId}
                   aria-label="search"
                   onClick={() => {
-                    setShowSearch((show) => {
-                      if (show) {
-                        clearQueryStringParameters();
-                      }
-                      return !show;
-                    });
+                    setShowSearch((show) => !show);
                   }}
                   isQuiet
                   css={css`
@@ -720,7 +711,6 @@ const GlobalHeader = ({
 
               <AnchorButton
                 variant="primary"
-                style="outline"
                 href="/console"
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -826,13 +816,12 @@ const GlobalHeader = ({
                           <Divider size="S" />
                         </div>
 
-                        <AnchorButton href="https://account.adobe.com/" variant="secondary" style="outline">
+                        <AnchorButton href="https://account.adobe.com/" variant="primary" isQuiet>
                           Edit Profile
                         </AnchorButton>
 
                         <Button
                           variant="primary"
-                          style="outline"
                           css={css`
                             margin: var(--spectrum-global-dimension-size-200) 0;
                           `}

@@ -174,11 +174,8 @@ export default ({ children, pageContext, query }) => {
     const pagePath = componentPath.replace(/.*\/src\/pages\//g, '');
 
     // Breadcrumbs
-    const hideBreadcrumbNav =
-      pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
-    if (typeof hideBreadcrumbNav != 'boolean') {
-      throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true');
-    }
+    const hideBreadcrumbNav = pageContext?.frontmatter?.hideBreadcrumbNav !== undefined ? pageContext.frontmatter.hideBreadcrumbNav : false;
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true"); }
     const { home } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
@@ -334,8 +331,6 @@ export default ({ children, pageContext, query }) => {
                     <div
                       css={css`
                         margin-left: auto;
-                        display: flex;
-                        align-items: center;
 
                         @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                           margin-left: 0;
@@ -349,7 +344,7 @@ export default ({ children, pageContext, query }) => {
                 <div
                   css={css`
                     display: block;
-                  `}>
+                `}>
                   {edition && <Edition name={edition} />}
                   {contributorLink && <Attribution name={contributorName} link={contributorLink} />}
                 </div>
@@ -363,12 +358,12 @@ export default ({ children, pageContext, query }) => {
                 {!isDiscovery && (
                   <div
                     css={css`
-                      display: flex;
-                      flex-wrap: wrap;
-                      align-items: center;
-                      justify-content: space-between;
-                      margin-bottom: var(--spectrum-global-dimension-size-200);
-                    `}>
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: var(--spectrum-global-dimension-size-200);
+                  `}>
                     <div>
                       <Contributors
                         repository={repository}
@@ -386,10 +381,10 @@ export default ({ children, pageContext, query }) => {
                     </div>
                     <div
                       css={css`
-                        @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                          margin-top: var(--spectrum-global-dimension-size-200);
-                        }
-                      `}>
+                      @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                        margin-top: var(--spectrum-global-dimension-size-200);
+                      }
+                    `}>
                       <Feedback />
                     </div>
                   </div>
@@ -401,7 +396,7 @@ export default ({ children, pageContext, query }) => {
           </div>
           <Footer hasSideNav={hasSideNav} />
         </main>
-      </MDXProvider>
+      </MDXProvider >
     );
   }
 };

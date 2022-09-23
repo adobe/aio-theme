@@ -12,7 +12,7 @@
 
 // TODO reuse ProductCard
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Checkbox } from '../Checkbox';
@@ -210,7 +210,7 @@ const ProductCardGrid = ({
                 key={product.id}
                 role="figure"
                 tabIndex="0"
-                className="spectrum-Card spectrum-Card--sizeM"
+                className="spectrum-Card"
                 css={css`
                   width: ${width};
                   height: ${height};
@@ -284,8 +284,8 @@ const ProductCardGrid = ({
                         css={css`
                           margin: var(--gap) 0 0 var(--gap);
                         `}>
-                        <AnchorButton href={product.discover} variant="secondary" style="outline">
-                          <span class="spectrum-Button-label">Learn more</span>
+                        <AnchorButton isQuiet href={product.discover} variant="secondary">
+                          Learn more
                         </AnchorButton>
                       </div>
                     )}
@@ -295,8 +295,8 @@ const ProductCardGrid = ({
                         css={css`
                           margin: var(--gap) 0 0 var(--gap);
                         `}>
-                        <AnchorButton href={product.docs} variant="accent" style="outline">
-                          <span class="spectrum-Button-label">View docs</span>
+                        <AnchorButton href={product.docs} variant="primary">
+                          View docs
                         </AnchorButton>
                       </div>
                     )}

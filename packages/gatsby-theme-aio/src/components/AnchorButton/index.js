@@ -12,20 +12,20 @@
 
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink } from '../../utils';
+import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../../utils';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import '@spectrum-css/button';
 import classNames from 'classnames';
 
-const AnchorButton = ({ className, style, variant, href, ...props }) => {
+const AnchorButton = ({ className, href, variant, isQuiet, ...props }) => {
   if (isExternalLink(href)) {
     return (
       <Button
-        className={classNames(className)}
+        className={className}
         elementType="a"
-        style={style}
         variant={variant}
+        isQuiet={isQuiet}
         href={href}
         {...getExternalLinkProps(href)}
         {...props}
@@ -36,9 +36,9 @@ const AnchorButton = ({ className, style, variant, href, ...props }) => {
   return (
     <GatsbyLink
       role="button"
-      className={classNames(['spectrum-Button', 'spectrum-Button--sizeM'])}
-      style={style}
-      variant={variant}
+      className={classNames(className, 'spectrum-Button', 'spectrum-Button--sizeM', `spectrum-Button--${variant}`, {
+        'spectrum-Button--quiet': isQuiet
+      })}
       to={href}
       {...props}
     />
@@ -47,8 +47,8 @@ const AnchorButton = ({ className, style, variant, href, ...props }) => {
 
 AnchorButton.propTypes = {
   href: PropTypes.string,
-  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative']),
-  style: PropTypes.oneOf(['fill', 'outline'])
+  variant: PropTypes.oneOf(['cta', 'overBackground', 'primary', 'secondary', 'negative']),
+  isQuiet: PropTypes.bool
 };
 
 export { AnchorButton };

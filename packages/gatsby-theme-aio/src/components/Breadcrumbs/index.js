@@ -12,16 +12,21 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/react';
 import { GatsbyLink } from '../GatsbyLink';
 import '@spectrum-css/breadcrumb';
 import { ChevronRightSmall } from '../Icons';
 
 const Breadcrumbs = ({ pages }) => (
   <nav aria-label="Breadcrumb" role="navigation">
-    <ul className="spectrum-Breadcrumbs spectrum-Breadcrumbs--sizeM">
+    <ul
+      className="spectrum-Breadcrumbs spectrum-Breadcrumbs--compact"
+      css={css`
+        display: block;
+      `}>
       {pages.map((page, index) =>
         page ? (
-          <li className="spectrum-Breadcrumbs-item spectrum-Breadcrumbs--sizeM" key={index}>
+          <li className="spectrum-Breadcrumbs-item" key={index}>
             <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
               {page.title}
             </GatsbyLink>

@@ -107,10 +107,24 @@ export const SuccessMedium = ({ className, ...props }) => (
   </svg>
 );
 
-// Used by InlineAlert for no image
-export const NeutralMedium = ({ className, ...props }) => (
-  <svg {...props} {...commonProps} className={classNames(className, 'spectrum-Icon')}></svg>
-); // No image
+// Used by InlineAlert
+export const WarningMedium = ({ className, ...props }) => (
+  <svg
+    {...props}
+    {...commonProps}
+    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-HelpMedium')}
+    css={css`
+      width: var(--spectrum-icon-warning-medium-width, var(--spectrum-global-dimension-size-225));
+      height: var(--spectrum-icon-warning-medium-height, var(--spectrum-global-dimension-size-225));
+    `}>
+    <path
+      d="M10.563 2.206l-9.249 16.55a.5.5 0 00.436.744h18.5a.5.5 0 00.436-.744l-9.251-16.55a.5.5 0 00-.872 0zm1.436 15.044a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3.5a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
+      className="spectrum-UIIcon--large"></path>
+    <path
+      d="M8.564 1.289L.2 16.256A.5.5 0 00.636 17h16.728a.5.5 0 00.436-.744L9.436 1.289a.5.5 0 00-.872 0zM10 14.75a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
+      className="spectrum-UIIcon--medium"></path>
+  </svg>
+);
 
 // Used by InlineAlert
 export const HelpMedium = ({ className, ...props }) => (
@@ -150,35 +164,16 @@ export const AlertMedium = ({ className, ...props }) => (
   </svg>
 );
 
-// Deprecated. No longer used by InlineAlert. Spectrum replaced Warning with Negative. See lines 23-24 of InlineAlert.js.
-export const WarningMedium = ({ className, ...props }) => (
-  <svg
-    {...props}
-    {...commonProps}
-    className={classNames(className, 'spectrum-Icon', 'spectrum-UIIcon-WarningMedium')}
-    css={css`
-      width: var(--spectrum-icon-alert-medium-width, var(--spectrum-global-dimension-size-225));
-      height: var(--spectrum-icon-alert-medium-height, var(--spectrum-global-dimension-size-225));
-    `}>
-    <path
-      d="M10.563 2.206l-9.249 16.55a.5.5 0 00.436.744h18.5a.5.5 0 00.436-.744l-9.251-16.55a.5.5 0 00-.872 0zm1.436 15.044a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3.5a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
-      className="spectrum-UIIcon--large"></path>
-    <path
-      d="M8.564 1.289L.2 16.256A.5.5 0 00.636 17h16.728a.5.5 0 00.436-.744L9.436 1.289a.5.5 0 00-.872 0zM10 14.75a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-1.5a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25zm0-3a.25.25 0 01-.25.25h-1.5a.25.25 0 01-.25-.25v-6a.25.25 0 01.25-.25h1.5a.25.25 0 01.25.25z"
-      className="spectrum-UIIcon--medium"></path>
-  </svg>
-);
-
 // Used by GithubActions
 export const Edit = ({ ...props }) => (
-  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS" aria-label="Edit">
+  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS">
     <path d="M33.567 8.2L27.8 2.432a1.215 1.215 0 0 0-.866-.353H26.9a1.371 1.371 0 0 0-.927.406L5.084 23.372a.99.99 0 0 0-.251.422L2.055 33.1c-.114.377.459.851.783.851a.251.251 0 0 0 .062-.007c.276-.063 7.866-2.344 9.311-2.778a.972.972 0 0 0 .414-.249l20.888-20.889a1.372 1.372 0 0 0 .4-.883 1.221 1.221 0 0 0-.346-.945zM11.4 29.316c-2.161.649-4.862 1.465-6.729 2.022l2.009-6.73z"></path>
   </svg>
 );
 
 // Used by GithubActions
 export const Bug = ({ ...props }) => (
-  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS" aria-label="Bug">
+  <svg {...props} {...commonProps} viewBox="0 0 36 36" className="spectrum-Icon spectrum-Icon--sizeS">
     <path d="M26.194 7.242A9.8 9.8 0 0 0 18 3a9.8 9.8 0 0 0-8.194 4.242A11.943 11.943 0 0 0 18 10.5a11.943 11.943 0 0 0 8.194-3.258zm-20.978-.85L2.548 7.726a18.1 18.1 0 0 0 4.581 5.114A27.459 27.459 0 0 0 6.118 18H0v3h6.045a13.6 13.6 0 0 0 2.5 6.363 15.078 15.078 0 0 0-4.5 6.16l2.7 1.35a12.052 12.052 0 0 1 3.774-5.2 11.571 11.571 0 0 0 5.981 3.185V13.5A14.982 14.982 0 0 1 5.216 6.392zM36 21v-3h-6.118a27.459 27.459 0 0 0-1.011-5.16 18.1 18.1 0 0 0 4.581-5.114l-2.668-1.334A14.982 14.982 0 0 1 19.5 13.5v19.358a11.571 11.571 0 0 0 5.979-3.185 12.052 12.052 0 0 1 3.774 5.2l2.7-1.35a15.078 15.078 0 0 0-4.5-6.16A13.6 13.6 0 0 0 29.955 21z"></path>
   </svg>
 );
@@ -238,19 +233,17 @@ export const Cross = ({ className, ...props }) => (
 
 // Used by Attribution
 export const Star = ({ className, ...props }) => (
-  <svg
-    {...props}
-    {...commonProps}
-    className="spectrum-Icon"
+  <svg xmlns="http://www.w3.org/2000/svg"
     height="16"
     width="16"
-    viewBox="0 0 24 24"
+    viewBox="0 0 16 16"
+    className="spectrum-Icon"
     css={css`
-      margin-top: 5px;
+      margin-bottom: -2px;
       margin-right: 5px;
       margin-left: -2px;
       );
     `}>
-    <path d="M9.24132.3l2.161,5.715,6.106.289a.255.255,0,0,1,.147.454l-4.77,3.823,1.612,5.9a.255.255,0,0,1-.386.28L9.00232,13.4l-5.11,3.358a.255.255,0,0,1-.386-.28l1.612-5.9-4.77-3.821a.255.255,0,0,1,.147-.457l6.107-.285L8.76332.3a.255.255,0,0,1,.478,0Z" />
-  </svg>
+    <rect id="Contributor" fill="#ffffff" opacity="0" width="16" height="16" /><path d="M9.24132.3l2.161,5.715,6.106.289a.255.255,0,0,1,.147.454l-4.77,3.823,1.612,5.9a.255.255,0,0,1-.386.28L9.00232,13.4l-5.11,3.358a.255.255,0,0,1-.386-.28l1.612-5.9-4.77-3.821a.255.255,0,0,1,.147-.457l6.107-.285L8.76332.3a.255.255,0,0,1,.478,0Z" />
+  </svg >
 );

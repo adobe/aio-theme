@@ -10,24 +10,24 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Children, cloneElement, useContext } from 'react';
+import React, { cloneElement, Children, useContext } from 'react';
 import { withPrefix } from 'gatsby';
 import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import '@spectrum-css/typography';
 import PropTypes from 'prop-types';
 import {
-  cleanRootFix,
-  cloneChildren,
-  DEFAULT_HOME,
-  DESKTOP_SCREEN_WIDTH,
-  findSelectedTopPage,
-  findSelectedTopPageMenu,
   getElementChild,
+  cloneChildren,
+  DESKTOP_SCREEN_WIDTH,
+  TABLET_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-  rootFix,
+  DEFAULT_HOME,
+  findSelectedTopPage,
   rootFixPages,
-  TABLET_SCREEN_WIDTH
+  rootFix,
+  cleanRootFix,
+  findSelectedTopPageMenu
 } from '../../utils';
 import Context from '../Context';
 import { Breadcrumbs } from '../Breadcrumbs';
@@ -43,34 +43,36 @@ const setImageLoading = (child) => {
   return child;
 };
 
-const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], className }) =>
+const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], className }) =>
   buttons ? (
-    <div
-      className={className}
-      css={css`
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spectrum-global-dimension-size-200);
-      `}>
-      {Children.map(buttons.props.children, (item, i) => {
-        let variant = variants[0];
-        let style = styles[0];
+    <div>
+      <div
+        className={className}
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--spectrum-global-dimension-size-200);
+        `}>
+        {Children.map(buttons.props.children, (item, i) => {
+          let variant = variants[0];
+          let quiet = quiets[0];
 
-        if (i > 0) {
-          variant = variants[1];
-          style = styles[1];
-        }
+          if (i > 0) {
+            variant = variants[1];
+            quiet = quiets[1];
+          }
 
-        const link = getElementChild(item);
+          const link = getElementChild(item);
 
-        return (
-          <div key={i}>
-            <AnchorButton href={link.props.href} style={style} variant={variant}>
-              <span class="spectrum-Button-label">{link.props.children}</span>
-            </AnchorButton>
-          </div>
-        );
-      })}
+          return (
+            <div key={i}>
+              <AnchorButton isQuiet={quiet} href={link.props.href} variant={variant}>
+                {link.props.children}
+              </AnchorButton>
+            </div>
+          );
+        })}
+      </div>
     </div>
   ) : null;
 
@@ -91,10 +93,6 @@ const HeroImage = ({ image, styles }) =>
             max-width: none !important;
             width: 100% !important;
             height: 100% !important;
-          }
-
-          .gatsby-resp-image-background-image {
-            padding-bottom: unset !important;
           }
 
           .gatsby-resp-image-image {
@@ -159,9 +157,7 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    if (typeof hideBreadcrumbNav != 'boolean') {
-      throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}');
-    }
+    if(typeof hideBreadcrumbNav != "boolean"){ throw new Error("hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}"); }
 
     return (
       <section
@@ -258,6 +254,7 @@ const Hero = ({
               }
             }
           `}>
+
           <HeroImage image={image} />
 
           <div
@@ -284,8 +281,7 @@ const Hero = ({
 
             <HeroButtons
               buttons={buttons}
-              variants={['secondary', 'accent']}
-              styles={['outline', 'fill']}
+              variants={['cta', 'overBackground']}
               css={css`
                 margin-top: var(--spectrum-global-dimension-size-400);
               `}
@@ -395,7 +391,7 @@ Hero.propTypes = {
 HeroButtons.propTypes = {
   buttons: PropTypes.element,
   variants: PropTypes.array,
-  styles: PropTypes.array
+  quiets: PropTypes.array
 };
 
 HeroImage.propTypes = {
