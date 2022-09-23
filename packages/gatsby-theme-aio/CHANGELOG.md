@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3-dc-revert](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.6.3-de-revert) (2022-09-23)
+
+### Fix
+
+* Hotfix for dc to revert spectrum changes [f338e30](https://github.com/adobe/aio-theme/commit/f338e30c592d8499ac3d5cda9f72fe1b5a562f3a).
+
+
 ## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
 
 ### Fix
