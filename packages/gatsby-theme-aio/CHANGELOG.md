@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3-dc-revert-1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3-dc-revert..@adobe/gatsby-theme-aio@4.6.3-de-revert-1) (2022-09-23)
+
+### Fix
+
+* Updatet yarn.lock [a8f43bc](https://github.com/adobe/aio-theme/commit/a8f43bc6382ee7ff1c35c8b7dade7ce3eae3c55b).
+
+
 ## [4.6.3-dc-revert](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.6.3-de-revert) (2022-09-23)
 
 ### Fix
