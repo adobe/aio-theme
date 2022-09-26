@@ -28,6 +28,7 @@ import {
   SIDENAV_WIDTH,
   trailingSlashFix
 } from '../../utils';
+import { adobeIndexes } from '../../../algolia/helpers/get-products-indexes.js';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -151,15 +152,18 @@ export default ({ children, pageContext, location }) => {
   // Set Search indexAll
   useEffect(() => {
     (async () => {
-      const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
-      const ALGOLIA_INDEX_ALL = process.env.GATSBY_ALGOLIA_INDEX_ALL;
+      // const ALGOLIA_INDEX_ALL_SRC = process.env.GATSBY_ALGOLIA_INDEX_ALL_SRC;
+      // const ALGOLIA_INDEX_ALL = adobeIndexes;
 
       try {
-        if (ALGOLIA_INDEX_ALL_SRC) {
-          await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
-          setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
-        } else if (ALGOLIA_INDEX_ALL) {
-          setIndexAll(JSON.parse(ALGOLIA_INDEX_ALL));
+        // if (ALGOLIA_INDEX_ALL_SRC) {
+        //   await addScript(`${ALGOLIA_INDEX_ALL_SRC}`);
+        //   setIndexAll(window.AIO_ALGOLIA_INDEX_ALL);
+        // } else if (ALGOLIA_INDEX_ALL) {
+        //   setIndexAll(JSON.parse(adobeIndexes));
+        // }
+        if (adobeIndexes) {
+          setIndexAll(adobeIndexes);
         }
       } catch (e) {
         console.error(`AIO: Failed setting search index.`);
@@ -601,7 +605,7 @@ export default ({ children, pageContext, location }) => {
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0px auto;
+                  grid-template-columns: 0 auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -650,7 +654,7 @@ export default ({ children, pageContext, location }) => {
                   z-index: 1;
                   width: ${SIDENAV_WIDTH};
                   height: 100%;
-                  background-color: var(--spectrum-global-color-gray-100);
+                  background-color: var(--spectrum-global-color-gray-75);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
