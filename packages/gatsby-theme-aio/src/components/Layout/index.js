@@ -598,7 +598,7 @@ export default ({ children, pageContext, location }) => {
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
                 @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0px auto;
+                  grid-template-columns: 0 auto;
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
@@ -647,7 +647,7 @@ export default ({ children, pageContext, location }) => {
                   z-index: 1;
                   width: ${SIDENAV_WIDTH};
                   height: 100%;
-                  background-color: var(--spectrum-global-color-gray-100);
+                  background-color: var(--spectrum-global-color-gray-75);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
