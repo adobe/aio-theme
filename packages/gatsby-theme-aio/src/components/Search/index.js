@@ -13,28 +13,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { AnchorLink } from '../AnchorLink';
-import {
-  Tabs,
-  Item as TabsItem,
-  Label as TabsItemLabel,
-  TabsIndicator,
-  positionIndicator,
-  animateIndicator
-} from '../Tabs';
 import { Item as MenuItem, Menu } from '../Menu';
 import { Popover } from '../Popover';
 import PropTypes from 'prop-types';
 import { MOBILE_SCREEN_WIDTH, DESKTOP_SCREEN_WIDTH, SIDENAV_WIDTH, SEARCH_PARAMS, isExternalLink } from '../../utils';
+import { getIndexesFromProduct } from '../../../algolia/helpers/get-products-indexes.js';
 import classNames from 'classnames';
 import '@spectrum-css/typography';
 import '@spectrum-css/textfield';
 import '@spectrum-css/search';
 import '@spectrum-css/button';
-import { Cross, Magnify } from '../Icons';
+import { ActionButton } from '../ActionButton';
+import { Close, Magnify } from '../Icons';
 import { Checkbox } from '../Checkbox';
+import { ProgressCircle } from '../ProgressCircle';
 
 const SEARCH_INPUT_WIDTH = '688px';
-const SEARCH_INDEX_ALL = 'all';
+const SEARCH_INDEX_ALL = 'All Products';
 const SEARCH_KEYWORDS = 'keywords';
 const SUGGESTION_MAX_RESULTS = 50;
 const SEARCH_MAX_RESULTS = 100;
@@ -56,18 +51,33 @@ const setQueryStringParameter = (name, value) => {
   window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
 };
 
-const mapToIndexName = (searchIndex) => searchIndex.map((index) => Object.keys(index)[0]);
+const clearQueryStringParameters = () => {
+  window.history.replaceState({}, '', `${window.location.pathname}`);
+};
 
-const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
+const searchSuggestions = async (algolia, query, searchIndex, indexAll, existingIndices) => {
   const queries = [];
+  let indexes;
+  if (!existingIndices) {
+    const algoliaIndexList = await algolia.listIndices();
+    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(filteredIndexes);
+    indexes = filteredIndexes;
+  } else {
+    indexes = existingIndices;
+  }
+
   // By default use all indexes
-  if (Object.keys(searchIndex[0])[0] === SEARCH_INDEX_ALL) {
-    searchIndex = indexAll;
+  if (searchIndex[0] === SEARCH_INDEX_ALL) {
+    searchIndex = indexes;
   }
   // Or prioritize searchIndex
   else {
-    const searchIndexNames = mapToIndexName(searchIndex).filter((index) => index !== SEARCH_INDEX_ALL);
-    searchIndex = [...searchIndexNames, ...indexAll.filter((index) => !searchIndexNames.includes(index))];
+    const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
+    const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
+    searchIndex = [...localProductIndexes, ...indexes.filter((index) => !searchProductNames.includes(index))].filter(index => indexes.includes(index));
   }
 
   searchIndex.forEach((indexName) => {
@@ -84,21 +94,35 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll) => {
   return await algolia.multipleQueries(queries);
 };
 
-const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) => {
-  if (selectedIndex === 'all') {
-    selectedIndex = indexAll;
+const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIndices, keywords) => {
+
+  let indexes;
+  if (!existingIndices) {
+    const algoliaIndexList = await algolia.listIndices();
+    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(filteredIndexes);
+    indexes = filteredIndexes;
   } else {
-    selectedIndex = [selectedIndex];
+    indexes = existingIndices;
+  }
+
+  if (selectedIndex.includes('all')) {
+    selectedIndex = indexes;
+  } else {
+    selectedIndex = selectedIndex.filter(selected => indexes.includes(selected));
   }
 
   const queries = [];
+
   selectedIndex.forEach((indexName) => {
     queries.push({
       indexName,
       query,
       params: {
         facets: [SEARCH_KEYWORDS],
-        attributesToRetrieve: ['objectID', 'url'],
+        attributesToRetrieve: ['objectID', 'url', 'product'],
         hitsPerPage: Math.ceil(SEARCH_MAX_RESULTS / selectedIndex.length),
         filters: keywords.map((keyword) => `${SEARCH_KEYWORDS}:"${keyword}"`).join(' AND ')
       }
@@ -110,13 +134,19 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, keywords) 
 
 const mapSearchResults = (hits, results) => {
   hits.forEach(({ objectID, url, _highlightResult }) => {
+    let urlPath = ''
+    if (url.includes('https://developer.adobe.com')) {
+      urlPath = url.replace('https://developer.adobe.com', '');
+    } else {
+      urlPath = url;
+    }
     // TODO corrupted record url check
-    if (!isExternalLink(url)) {
+    if (!isExternalLink(urlPath)) {
       // Verify url is unique
-      if (!results.find((result) => result.url === url)) {
+      if (!results.find((result) => result.url === urlPath)) {
         results.push({
           objectID,
-          url,
+          url: urlPath,
           _highlightResult
         });
       }
@@ -139,8 +169,11 @@ const mapKeywordResults = (facets, results) => {
 };
 
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState(mapToIndexName(searchIndex)[0]);
+  const [oldSearchQuery, setOldSearchQuery] = useState('')
+  const [selectedIndex, setSelectedIndex] = useState(['all']);
+  const [existingIndices, setExistingIndices] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -151,21 +184,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const searchResultsRef = useRef(null);
   const [searchSuggestionResults, setSearchSuggestionResults] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [productResults, setProductResults] = useState([]);
   const [keywordResults, setKeywordResults] = useState([]);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
-  const selectedTabIndicator = useRef(null);
-  // Don't animate the tab indicator by default
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  const getSelectedTabIndex = () => searchIndex[mapToIndexName(searchIndex).indexOf(selectedIndex)].tabRef;
-
-  const positionSelectedTabIndicator = (selectedTab = getSelectedTabIndex()) => {
-    if (showSearchResults && selectedTab?.current) {
-      animateIndicator(selectedTabIndicator, isAnimated);
-      positionIndicator(selectedTabIndicator, selectedTab);
-    }
-  };
 
   const setTargetOrigin = () => {
     const parentURL = document.referrer;
@@ -179,6 +201,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
   const search = async () => {
     if (searchQuery.length) {
+      let search;
       setIsSuggestionsOpen(false);
       setQueryStringParameter(SEARCH_PARAMS.query, searchQuery);
       setQueryStringParameter(SEARCH_PARAMS.keywords, selectedKeywords);
@@ -192,26 +215,70 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         }
       }
 
-      positionSelectedTabIndicator();
       setShowSearchResults(true);
 
-      const search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, selectedKeywords);
+      if (searchQuery !== oldSearchQuery) {
+        setIsLoading(true);
+        search = await searchIndexes(algolia, searchQuery, ['all'], indexAll, existingIndices, selectedKeywords);
+      } else {
+        search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, existingIndices, selectedKeywords);
+      }
 
+      const localProduct = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL)[0];
+
+      const mappedProductResults = [SEARCH_INDEX_ALL];
       const mappedSearchResults = [];
       const mappedKeywordResults = [];
 
       if (search?.results?.length) {
         search.results.forEach(({ hits, facets }) => {
+          if (facets === undefined) return;
+          if (hits.length > 0) {
+            const product = hits[0].product;
+
+            if (product) {
+              if (!mappedProductResults.includes(product)) {
+                if (product !== localProduct) {
+                  mappedProductResults.push(product);
+                } else {
+                  mappedProductResults.splice(1, 0, localProduct);
+                }
+              }
+            }
+          }
+
           mapSearchResults(hits, mappedSearchResults);
           mapKeywordResults(facets, mappedKeywordResults);
+
+          return true;
         });
       }
-
-      setSearchResults(mappedSearchResults);
-      setKeywordResults(mappedKeywordResults);
+      if (searchQuery !== oldSearchQuery) {
+        setProductResults(mappedProductResults);
+        setOldSearchQuery(searchQuery);
+        if (localProduct && mappedProductResults.includes(localProduct)) {
+          setSelectedIndex(getIndexesFromProduct(localProduct));
+          setTriggerSearch(true);
+        } else {
+          setSearchResults(mappedSearchResults);
+          setKeywordResults(mappedKeywordResults);
+          setIsLoading(false);
+        }
+      } else {
+        setSearchResults(mappedSearchResults);
+        setKeywordResults(mappedKeywordResults);
+        setIsLoading(false);
+      }
     }
-
   };
+
+  useEffect(async () => {
+    const algoliaIndexList = await algolia.listIndices();
+    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
+      return Object.values(indexAll).includes(indexName);
+    });
+    setExistingIndices(indexes);
+  }, [])
 
   useEffect(() => {
     if (showSearch) {
@@ -222,7 +289,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       const index = searchParams.get(SEARCH_PARAMS.index);
 
       if (index) {
-        setSelectedIndex(index);
+        setSelectedIndex(index.split(','));
       }
 
       if (keywords) {
@@ -240,12 +307,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       if (inputRef?.current) {
         inputRef.current.focus();
       }
+    } else {
+      clearQueryStringParameters();
     }
   }, [showSearch]);
-
-  useEffect(() => {
-    search();
-  }, [selectedIndex, selectedKeywords]);
 
   useEffect(() => {
     if (triggerSearch) {
@@ -259,16 +324,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       searchResultsRef.current.scrollTop = 0;
     }
   }, [searchResults]);
-
-  useEffect(() => {
-    if (showSearchResults) {
-      positionSelectedTabIndicator();
-
-      setIsAnimated(true);
-    } else {
-      setIsAnimated(false);
-    }
-  }, [showSearchResults]);
 
   useEffect(() => {
     const onClick = ({ target }) => {
@@ -289,7 +344,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
     const onEscape = ({ key }) => {
       if (key === 'Escape') {
         setShowSearch(false);
-        document.getElementById("aio-Search-close").focus()
+        clearQueryStringParameters();
       }
     };
 
@@ -355,8 +410,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             className="spectrum-Search"
             onSubmit={async (event) => {
               event.preventDefault();
-
-              await search();
+              setSelectedKeywords([]);
+              setShowClear(true);
+              setTriggerSearch(true);
             }}>
             <div
               className={classNames('spectrum-Textfield', { 'is-focused': isFocused })}
@@ -390,7 +446,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   if (query.length && !searchResults.length) {
                     setShowClear(true);
 
-                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll);
+                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll, existingIndices);
 
                     if (suggestions?.results?.length) {
                       const results = [];
@@ -420,20 +476,30 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
               />
             </div>
             {showClear && (
-              <button
+              <ActionButton
                 css={css`
                   position: absolute;
+                  
+                  margin-right: var(--spectrum-global-dimension-size-100);
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    margin-right: 0;
+                  }
                 `}
                 tabIndex="-1"
+                isQuiet
                 aria-label="Clear Search"
                 type="reset"
                 className="spectrum-ClearButton spectrum-Search-clearButton"
                 onClick={() => {
                   setSearchQuery('');
+                  setSearchResults([]);
+                  setShowSearchResults(false);
+                  clearQueryStringParameters();
                   inputRef.current.focus();
                 }}>
-                <Cross />
-              </button>
+                <Close />
+              </ActionButton>
             )}
           </form>
 
@@ -539,7 +605,17 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
           </Popover>
         </div>
 
-        {showSearchResults && (
+        {isLoading && (<div
+          css={css`
+                width:100%;
+                height:100%;
+                display: grid;
+                place-items: start center;
+              `}>
+          <ProgressCircle size="L" />
+        </div>)}
+
+        {showSearchResults && !isLoading && (
           <div
             css={css`
               display: flex;
@@ -559,30 +635,83 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 flex-direction: column;
                 box-sizing: border-box;
                 padding: var(--spectrum-global-dimension-size-200);
-                min-width: ${SIDENAV_WIDTH};
+                width: ${SIDENAV_WIDTH};
               `}>
               <h4
                 className="spectrum-Heading spectrum-Heading--sizeXS"
                 css={css`
                   margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
-                Filter by
+                Filter by Products
               </h4>
-
               <div
                 css={css`
-                  margin-top: var(--spectrum-global-dimension-size-100);
-                  margin-bottom: var(--spectrum-global-dimension-size-1200);
-                  display: flex;
-                  flex-direction: column;
-                  overflow: auto;
-
-                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                    margin-bottom: 0;
-                  }
+                    display: flex;
+                    flex-direction: column;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    max-height: 30%;
+                    width: ${SIDENAV_WIDTH};
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      margin-bottom: 0;
+                    }
+                  `}>
+                {productResults.map((productName, i) => {
+                  return (
+                    <Checkbox
+                      key={i}
+                      isSelected={productName === SEARCH_INDEX_ALL ?
+                        selectedIndex.includes('all') :
+                        selectedIndex.some(index => {
+                          return getIndexesFromProduct(productName).includes(index);
+                        })
+                      }
+                      value={productName}
+                      onChange={(checked) => {
+                        if (!checked) {
+                          if (productName === 'All Products') {
+                            setSelectedIndex(selectedIndex.filter(index => index !== 'all'));
+                          } else {
+                            setSelectedIndex(selectedIndex.filter(index => !getIndexesFromProduct(productName).includes(index)));
+                          }
+                        } else {
+                          if (productName === 'All Products') {
+                            setSelectedIndex(['all']);
+                          } else {
+                            setSelectedIndex([...selectedIndex.filter(index => index !== 'all'), ...getIndexesFromProduct(productName)]);
+                          }
+                        }
+                        setSelectedKeywords([]);
+                        setTriggerSearch(true);
+                      }}>
+                      <span>{productName}</span>
+                    </Checkbox>
+                  );
+                })}
+              </div>
+              <h4
+                className="spectrum-Heading spectrum-Heading--sizeXS"
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                  margin-bottom: var(--spectrum-global-dimension-size-100);
                 `}>
-                {keywordResults.length > 0 ? (
-                  keywordResults.map((keywordResult, i) => {
+                Filter by Keywords
+              </h4>
+              <div
+                css={css`
+                    margin-bottom: var(--spectrum-global-dimension-size-100);
+                    display: flex;
+                    flex-direction: column;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    max-height: 50%;
+                    width: ${SIDENAV_WIDTH};
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      margin-bottom: 0;
+                    }
+                  `}>
+                {keywordResults.length > 0 ?
+                  (keywordResults.map((keywordResult, i) => {
                     const keyword = Object.keys(keywordResult)[0];
 
                     return (
@@ -598,52 +727,26 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                               selectedKeywords.filter((selectedKeyword) => selectedKeyword !== keyword)
                             );
                           }
+                          setTriggerSearch(true);
                         }}>
-                        <span>{keyword}</span>
-                        <em>&nbsp;({keywordResult[keyword]})</em>
+                        <span
+                        css={css`
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        `}>{keyword}</span>
+                        {/* will enable once this makes sense currently confuses user to think it's # of results */}
+                        {/* <em>&nbsp;({keywordResult[keyword]})</em> */}
                       </Checkbox>
                     );
-                  })
-                ) : (
-                  <div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>
-                )}
+                  }))
+                  :
+                  (<div className="spectrum-Body spectrum-Body--sizeS">No filter options available</div>)}
               </div>
             </div>
-
             <div
               css={css`
                 height: 100%;
               `}>
-              <Tabs
-                onFontsReady={() => {
-                  positionSelectedTabIndicator();
-                }}>
-                {searchIndex.map((index, i) => {
-                  const indexName = Object.keys(index)[0];
-                  const indexLabel = index[indexName];
-
-                  const setTabRef = (element) => {
-                    index.tabRef = { current: element };
-                  };
-
-                  return (
-                    <TabsItem
-                      key={i}
-                      ref={setTabRef}
-                      selected={selectedIndex === indexName}
-                      tabIndex={0}
-                      onClick={async () => {
-                        setSelectedKeywords([]);
-                        setSelectedIndex(indexName);
-                      }}>
-                      <TabsItemLabel>{indexLabel}</TabsItemLabel>
-                    </TabsItem>
-                  );
-                })}
-
-                <TabsIndicator ref={selectedTabIndicator} />
-              </Tabs>
-
               {searchResults.length > 0 ? (
                 <div
                   ref={searchResultsRef}
@@ -762,9 +865,10 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
         )}
       </div>
 
-      {!showSearchResults && (
-        <div
-          css={css`
+      {
+        !showSearchResults && (
+          <div
+            css={css`
             position: fixed;
             z-index: 1;
             top: ${isIFramed ? "var(--spectrum-global-dimension-size-800)" : "calc(var(--spectrum-global-dimension-size-1200) + var(--spectrum-global-dimension-size-800))"};
@@ -774,8 +878,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
             background-color: rgba(0, 0, 0, 0.4);
             pointer-events: none;
           `}
-        />
-      )}
+          />
+        )
+      }
     </>
   );
 };
@@ -783,7 +888,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 Search.propTypes = {
   algolia: PropTypes.object,
   searchIndex: PropTypes.array,
-  indexAll: PropTypes.array,
+  indexAll: PropTypes.object,
   showSearch: PropTypes.bool,
   setShowSearch: PropTypes.func,
   searchButtonId: PropTypes.string
