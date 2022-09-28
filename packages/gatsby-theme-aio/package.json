@@ -105,7 +105,7 @@
     "classnames": "^2.3.2",
     "core-js": "^3.25.1",
     "gatsby-plugin-algolia": "^0.26.0",
-    "gatsby-plugin-emotion": "^7.23.0",
+    "gatsby-plugin-emotion": "^7.24.0",
     "gatsby-plugin-layout": "^3.23.0",
     "gatsby-plugin-mdx": "^3.20.0",
     "gatsby-plugin-mdx-embed": "^1.0.0",
