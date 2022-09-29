@@ -25,13 +25,11 @@ const Accordion = ({ children, ...props }) => (
 
 const AccordionItem = ({ header, slot_id, isOpen = false, children, ...props }) => {
   const [open, setOpen] = useState(isOpen);
-  const onClick = () => {
+  const toggleOpen = () => {
     setOpen((open) => !open);
   };
 
-  useEffect(() => {
-    setOpen(window.location.href.endsWith(slot_id))
-  }, [])
+  useEffect(() => { setOpen(isOpen) }, [isOpen]);
 
   return (
     <div className={classNames(['spectrum-Accordion-item', { 'is-open': open }])} role="presentation" {...props}>
@@ -41,7 +39,7 @@ const AccordionItem = ({ header, slot_id, isOpen = false, children, ...props }) 
           className="spectrum-Accordion-itemHeader"
           type="button"
           aria-expanded={open}
-          onClick={onClick}
+          onClick={toggleOpen}
           css={css`
             text-transform: none;
           `}>

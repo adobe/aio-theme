@@ -50,7 +50,7 @@ const getAriaLabel = (label, heading='') => {
   return labelVal;
 }
 
-const HeroButtons = ({ buttons, variants = ['cta', 'primary'], quiets = [true, true], className, heading='' }) =>
+const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], className }) =>
   buttons ? (
     <div>
       <div

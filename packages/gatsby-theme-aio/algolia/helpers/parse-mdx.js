@@ -67,9 +67,7 @@ function getContentHeading(mdastNode, markdownFile, minCharLength) {
 
   const filteredHeadings = allHeadings
     .filter(heading => heading.position.start.line < contentPositionEndLine)
-    .filter(
-      heading => heading.children[0].value !== 'Request' && heading.children[0].value !== 'Response'
-    );
+    .filter(heading => heading.depth > 4);
 
   const headingsAboveContent = [];
   for (const heading of filteredHeadings) {

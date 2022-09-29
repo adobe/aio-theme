@@ -49,6 +49,10 @@ import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
 
+const clearQueryStringParameters = () => {
+  window.history.replaceState({}, '', `${window.location.pathname}`);
+};
+
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
@@ -695,7 +699,12 @@ const GlobalHeader = ({
                   id={searchButtonId}
                   aria-label="search"
                   onClick={() => {
-                    setShowSearch((show) => !show);
+                    setShowSearch((show) => {
+                      if (show) {
+                        clearQueryStringParameters();
+                      }
+                      return !show;
+                    });
                   }}
                   isQuiet
                   css={css`

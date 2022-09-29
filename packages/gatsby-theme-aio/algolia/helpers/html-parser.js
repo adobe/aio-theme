@@ -83,7 +83,7 @@ module.exports = class HtmlParser {
       const item = {
         html: this.extractHtml(node),
         content,
-        description: content,
+        description: content.substring(0, 200),
         headings: Object.values(currentHierarchy).filter(h => h),
         node,
         customRanking: {
