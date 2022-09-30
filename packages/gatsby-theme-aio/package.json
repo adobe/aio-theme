@@ -50,7 +50,7 @@
     "yalc-push": "yalc push"
   },
   "devDependencies": {
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.0.3",
     "gatsby": "^4.22.0",
     "gatsby-cli": "^4.23.0",
     "react": "^17.0.2",
