@@ -328,10 +328,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.19.4, @babel/compat-data@npm:^7.20.0":
   version: 7.20.0
   resolution: "@babel/compat-data@npm:7.20.0"
   checksum: 325148e2961edcfc17d53ec4b27f85ebdd6be1aa33d1d297acf84fb5879f58c0a18bfb6418f9f108b4c84a98606adb1668250a15fd4fab2cc84c537b454b9a42
+=======
+"@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.18.8, @babel/compat-data@npm:^7.19.1":
+  version: 7.19.1
+  resolution: "@babel/compat-data@npm:7.19.1"
+  checksum: f985887ea08a140e4af87a94d3fb17af0345491eb97f5a85b1840255c2e2a97429f32a8fd12a7aae9218af5f1024f1eb12a5cd280d2d69b2337583c17ea506ba
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -360,6 +367,7 @@ __metadata:
   linkType: hard
 
 "@babel/core@npm:^7.14.0, @babel/core@npm:^7.15.5":
+<<<<<<< HEAD
   version: 7.19.6
   resolution: "@babel/core@npm:7.19.6"
   dependencies:
@@ -373,12 +381,31 @@ __metadata:
     "@babel/template": ^7.18.10
     "@babel/traverse": ^7.19.6
     "@babel/types": ^7.19.4
+=======
+  version: 7.19.1
+  resolution: "@babel/core@npm:7.19.1"
+  dependencies:
+    "@ampproject/remapping": ^2.1.0
+    "@babel/code-frame": ^7.18.6
+    "@babel/generator": ^7.19.0
+    "@babel/helper-compilation-targets": ^7.19.1
+    "@babel/helper-module-transforms": ^7.19.0
+    "@babel/helpers": ^7.19.0
+    "@babel/parser": ^7.19.1
+    "@babel/template": ^7.18.10
+    "@babel/traverse": ^7.19.1
+    "@babel/types": ^7.19.0
+>>>>>>> Reverted Yarn lock file
     convert-source-map: ^1.7.0
     debug: ^4.1.0
     gensync: ^1.0.0-beta.2
     json5: ^2.2.1
     semver: ^6.3.0
+<<<<<<< HEAD
   checksum: 85c0bd38d0ef180aa2d23c3db6840a0baec88d2e05c30e7ffc3dfeb6b2b89d6e4864922f04997a1f4ce55f9dd469bf2e76518d5c7ae744b98516709d32769b73
+=======
+  checksum: 941c8c119b80bdba5fafc80bbaa424d51146b6d3c30b8fae35879358dd37c11d3d0926bc7e970a0861229656eedaa8c884d4a3a25cc904086eb73b827a2f1168
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -426,17 +453,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.19.0, @babel/helper-compilation-targets@npm:^7.19.3":
   version: 7.20.0
   resolution: "@babel/helper-compilation-targets@npm:7.20.0"
   dependencies:
     "@babel/compat-data": ^7.20.0
+=======
+"@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.19.0, @babel/helper-compilation-targets@npm:^7.19.1":
+  version: 7.19.1
+  resolution: "@babel/helper-compilation-targets@npm:7.19.1"
+  dependencies:
+    "@babel/compat-data": ^7.19.1
+>>>>>>> Reverted Yarn lock file
     "@babel/helper-validator-option": ^7.18.6
     browserslist: ^4.21.3
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0
+<<<<<<< HEAD
   checksum: bc183f2109648849c8fde0b3c5cf08adf2f7ad6dc617b546fd20f34c8ef574ee5ee293c8d1bd0ed0221212e8f5907cdc2c42097870f1dcc769a654107d82c95b
+=======
+  checksum: c2d3039265e498b341a6b597f855f2fcef02659050fefedf36ad4e6815e6aafe1011a761214cc80d98260ed07ab15a8cbe959a0458e97bec5f05a450e1b1741b
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -638,7 +677,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/helper-validator-identifier@npm:^7.18.6, @babel/helper-validator-identifier@npm:^7.19.1":
+=======
+"@babel/helper-validator-identifier@npm:^7.18.6":
+>>>>>>> Reverted Yarn lock file
   version: 7.19.1
   resolution: "@babel/helper-validator-identifier@npm:7.19.1"
   checksum: 0eca5e86a729162af569b46c6c41a63e18b43dbe09fda1d2a3c8924f7d617116af39cac5e4cd5d431bb760b4dca3c0970e0c444789b1db42bcf1fa41fbad0a3a
@@ -686,12 +729,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.6, @babel/parser@npm:^7.20.0":
   version: 7.20.0
   resolution: "@babel/parser@npm:7.20.0"
   bin:
     parser: ./bin/babel-parser.js
   checksum: d54d68e45ff1b9a0c50a3f79d9031f482eb58f18928525949dc20da5b1658ee79167e756129371fd75d3e8fc7e218ab707727145a68958636be9672c7b71768e
+=======
+"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.1":
+  version: 7.19.1
+  resolution: "@babel/parser@npm:7.19.1"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: b1e0acb346b2a533c857e1e97ac0886cdcbd76aafef67835a2b23f760c10568eb53ad8a27dd5f862d8ba4e583742e6067f107281ccbd68959d61bc61e4ddaa51
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1491,8 +1543,13 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-runtime@npm:^7.15.0":
+<<<<<<< HEAD
   version: 7.19.6
   resolution: "@babel/plugin-transform-runtime@npm:7.19.6"
+=======
+  version: 7.19.1
+  resolution: "@babel/plugin-transform-runtime@npm:7.19.1"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/helper-module-imports": ^7.18.6
     "@babel/helper-plugin-utils": ^7.19.0
@@ -1502,7 +1559,11 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
+<<<<<<< HEAD
   checksum: ef93efbcbb00dcf4da6dcc55bda698a2a57fca3fb05a6a13e932ecfdb7c1c5d2f0b5b245c1c4faca0318853937caba0d82442f58b7653249f64275d08052fbd8
+=======
+  checksum: d9f693003a546b380a7322087490a51e8c6cd47b44e654f5030f96088cf7888b6c746d6335f723581154aaceed4ef0877acfa642f054ce3beb6ba9bb970987f4
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1563,15 +1624,24 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-typescript@npm:^7.18.6":
+<<<<<<< HEAD
   version: 7.20.0
   resolution: "@babel/plugin-transform-typescript@npm:7.20.0"
+=======
+  version: 7.19.1
+  resolution: "@babel/plugin-transform-typescript@npm:7.19.1"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/helper-create-class-features-plugin": ^7.19.0
     "@babel/helper-plugin-utils": ^7.19.0
     "@babel/plugin-syntax-typescript": ^7.20.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
+<<<<<<< HEAD
   checksum: 7cc335a95374d03e09ec48fe313dccde477ab4784f26f7b24fdc7a9db3c670759c3c8177a671a68365467c0885dad82b5dda3f57ba0b6bf7459f4ae55fae4ee4
+=======
+  checksum: 434752f9cfb3cfe5dc0a3c8118b404bb7340b665c01cf6b817a9d6dafa10ca128fccecf4c507286fb00a92b89bcabeb8256e67c18aef5db9fdc4eb8a71881d70
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1599,11 +1669,19 @@ __metadata:
   linkType: hard
 
 "@babel/preset-env@npm:^7.15.4":
+<<<<<<< HEAD
   version: 7.19.4
   resolution: "@babel/preset-env@npm:7.19.4"
   dependencies:
     "@babel/compat-data": ^7.19.4
     "@babel/helper-compilation-targets": ^7.19.3
+=======
+  version: 7.19.1
+  resolution: "@babel/preset-env@npm:7.19.1"
+  dependencies:
+    "@babel/compat-data": ^7.19.1
+    "@babel/helper-compilation-targets": ^7.19.1
+>>>>>>> Reverted Yarn lock file
     "@babel/helper-plugin-utils": ^7.19.0
     "@babel/helper-validator-option": ^7.18.6
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": ^7.18.6
@@ -1671,7 +1749,11 @@ __metadata:
     "@babel/plugin-transform-unicode-escapes": ^7.18.10
     "@babel/plugin-transform-unicode-regex": ^7.18.6
     "@babel/preset-modules": ^0.1.5
+<<<<<<< HEAD
     "@babel/types": ^7.19.4
+=======
+    "@babel/types": ^7.19.0
+>>>>>>> Reverted Yarn lock file
     babel-plugin-polyfill-corejs2: ^0.3.3
     babel-plugin-polyfill-corejs3: ^0.6.0
     babel-plugin-polyfill-regenerator: ^0.4.1
@@ -1679,7 +1761,11 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
+<<<<<<< HEAD
   checksum: f12af25281f3c5e7df60fa1e79ad481ddd7f6a111d4c0fabcffdabf0eaed3a01b4f8c647ae5445ed1f58df70f52083ffd283e8919ade7afa73801a49c733d22c
+=======
+  checksum: 3fcd4f3e768b8b0c9e8f9fb2b23d694d838d3cc936c783aaa9c436b863ae24811059b6ffed80e2ac7d54e7d2c18b0a190f4de05298cf461d27b2817b617ea71f
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1728,12 +1814,21 @@ __metadata:
   linkType: hard
 
 "@babel/runtime-corejs3@npm:^7.10.2":
+<<<<<<< HEAD
   version: 7.20.0
   resolution: "@babel/runtime-corejs3@npm:7.20.0"
   dependencies:
     core-js-pure: ^3.25.1
     regenerator-runtime: ^0.13.10
   checksum: 6cc7045fe9dcb9e7c7114b6e16521c5d51b592cb2ded9df423f2585a7b7aa5a3f197ba77dea7e3c27982ebc7160393a60e1752122897dbb765af6f0f154f2dfb
+=======
+  version: 7.19.1
+  resolution: "@babel/runtime-corejs3@npm:7.19.1"
+  dependencies:
+    core-js-pure: ^3.25.1
+    regenerator-runtime: ^0.13.4
+  checksum: 38a1e8fcd2ba1f76c951259c98a5a11052123923adbf30ec8b2fec202dbbe38c6db61658ef9398e00c30f799e2e54ea036e56a09f43229261918bf5ec1b7d03a
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1757,9 +1852,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.6, @babel/traverse@npm:^7.20.0, @babel/traverse@npm:^7.4.5":
   version: 7.20.0
   resolution: "@babel/traverse@npm:7.20.0"
+=======
+"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.4.5":
+  version: 7.19.1
+  resolution: "@babel/traverse@npm:7.19.1"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/code-frame": ^7.18.6
     "@babel/generator": ^7.20.0
@@ -1767,11 +1868,19 @@ __metadata:
     "@babel/helper-function-name": ^7.19.0
     "@babel/helper-hoist-variables": ^7.18.6
     "@babel/helper-split-export-declaration": ^7.18.6
+<<<<<<< HEAD
     "@babel/parser": ^7.20.0
     "@babel/types": ^7.20.0
     debug: ^4.1.0
     globals: ^11.1.0
   checksum: 19615ec2c3467f929dfa2ae98494961a2c7b333b6628e1c7643188d936abc167c41f5af541b692b1ca776a4d066291a7eb8b22f98aba3d496f362bae4c2082cd
+=======
+    "@babel/parser": ^7.19.1
+    "@babel/types": ^7.19.0
+    debug: ^4.1.0
+    globals: ^11.1.0
+  checksum: 9d782b5089ebc989e54c2406814ed1206cb745ed2734e6602dee3e23d4b6ebbb703ff86e536276630f8de83fda6cde99f0634e3c3d847ddb40572d0303ba8800
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -2404,16 +2513,25 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/code-file-loader@npm:^7.2.14":
+<<<<<<< HEAD
   version: 7.3.7
   resolution: "@graphql-tools/code-file-loader@npm:7.3.7"
   dependencies:
     "@graphql-tools/graphql-tag-pluck": 7.3.7
     "@graphql-tools/utils": 8.13.0
+=======
+  version: 7.3.6
+  resolution: "@graphql-tools/code-file-loader@npm:7.3.6"
+  dependencies:
+    "@graphql-tools/graphql-tag-pluck": 7.3.6
+    "@graphql-tools/utils": 8.12.0
+>>>>>>> Reverted Yarn lock file
     globby: ^11.0.3
     tslib: ^2.4.0
     unixify: ^1.0.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+<<<<<<< HEAD
   checksum: 80c2c507908f37e32314c83ccd3a2e87a6a8136989641be66ec7f2dbe451b70d9a451deca55215321cda9f67e039f66375f5c3b414e4f9b3f10ff1352fab8fff
   languageName: node
   linkType: hard
@@ -2421,28 +2539,54 @@ __metadata:
 "@graphql-tools/graphql-tag-pluck@npm:7.3.7":
   version: 7.3.7
   resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.7"
+=======
+  checksum: a63b0c512d1a6b56fc6aebc933a779d8b155aedc060ee37fcdcacd909341024db9546d5f93b49ad676ee348e3303b048c9ef190263f3747e016f818a04c49133
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/graphql-tag-pluck@npm:7.3.6":
+  version: 7.3.6
+  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.6"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/parser": ^7.16.8
     "@babel/traverse": ^7.16.8
     "@babel/types": ^7.16.8
+<<<<<<< HEAD
     "@graphql-tools/utils": 8.13.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
   checksum: 9b3ea1c133da1c022699ccbaf5010f7eb33427a34735d942828cc7fb989bed01d0cf0aacdb302c5af8f3f8e95b56ce53f1ffc9547ab5fcc0be8f659b7006da17
+=======
+    "@graphql-tools/utils": 8.12.0
+    tslib: ^2.4.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 3543a41a3b84dc014ce5d0824c8275b8d8592e55bbcd8f955a0968a6b9c00c11d82d90b6bbb533f2d09f94e07d10ec70d53696470ee32fad00d055767909d164
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
 "@graphql-tools/load@npm:^7.5.10":
+<<<<<<< HEAD
   version: 7.8.1
   resolution: "@graphql-tools/load@npm:7.8.1"
   dependencies:
     "@graphql-tools/schema": 9.0.5
     "@graphql-tools/utils": 8.13.0
+=======
+  version: 7.7.7
+  resolution: "@graphql-tools/load@npm:7.7.7"
+  dependencies:
+    "@graphql-tools/schema": 9.0.4
+    "@graphql-tools/utils": 8.12.0
+>>>>>>> Reverted Yarn lock file
     p-limit: 3.1.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+<<<<<<< HEAD
   checksum: 559a287f97581b9584716754f4ad9d3ccd9307508add8ba56f1e7340faed8e1e729cf2c19b4a345f5580199a97cb66ee1742796fad2d694957a2c680c48a391e
   languageName: node
   linkType: hard
@@ -2456,6 +2600,21 @@ __metadata:
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
   checksum: 037f83162a47bbfc621ecd9ad0f24f8343adb406848f68d8202f531770f9603dc79d3c9c539d91a4c6365868507398e8d605189930a79f6da97dd5c3957e8e88
+=======
+  checksum: 59590c07c029b5b2427116408f91cb1f5ab359bdf0a9314a8d31cedc540c235d1daddbbc8ab6369db1ea7e654cf52ca9d4f185058290acc8c5c3183d1bb68ef7
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/merge@npm:8.3.6":
+  version: 8.3.6
+  resolution: "@graphql-tools/merge@npm:8.3.6"
+  dependencies:
+    "@graphql-tools/utils": 8.12.0
+    tslib: ^2.4.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 3e45ebff0dce9524e72c4af1d2b9799c16515c1236290e07cd68fb2226c4e54734e2444d89a64b387b7ba991d15c6f948fdfc20c77a74b1d24babddd865ff32a
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -2471,6 +2630,7 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/relay-operation-optimizer@npm:^6.5.0":
+<<<<<<< HEAD
   version: 6.5.7
   resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.7"
   dependencies:
@@ -2489,10 +2649,31 @@ __metadata:
   dependencies:
     "@graphql-tools/merge": 8.3.7
     "@graphql-tools/utils": 8.13.0
+=======
+  version: 6.5.6
+  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.6"
+  dependencies:
+    "@ardatan/relay-compiler": 12.0.0
+    "@graphql-tools/utils": 8.12.0
+    tslib: ^2.4.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 12efc88c775221a333a97a517bec160b449778cf3de5377048a81d213b0f67d82c0f2de631ba31e3443355650317ea8af5a2e107a00517dbf73d8e8720e797fb
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/schema@npm:9.0.4, @graphql-tools/schema@npm:^9.0.0":
+  version: 9.0.4
+  resolution: "@graphql-tools/schema@npm:9.0.4"
+  dependencies:
+    "@graphql-tools/merge": 8.3.6
+    "@graphql-tools/utils": 8.12.0
+>>>>>>> Reverted Yarn lock file
     tslib: ^2.4.0
     value-or-promise: 1.0.11
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+<<<<<<< HEAD
   checksum: c8f99a3eaed00aa8ee0c5189d19e7893728a6a559b422c69db609ead7a76c3d702f792040010540b91e2f8517137363cb74a37f1cec5238f6c18f8da4e9956c4
   languageName: node
   linkType: hard
@@ -2500,11 +2681,24 @@ __metadata:
 "@graphql-tools/utils@npm:8.13.0, @graphql-tools/utils@npm:^8.8.0":
   version: 8.13.0
   resolution: "@graphql-tools/utils@npm:8.13.0"
+=======
+  checksum: 0644ba225ff7fb03c6fb7f026b6a77a4ac5dd14fd10bb562ea0072bfe0258620fd4789b851b0b97007db8754d0b7d88a1061bb98bacc679b22e2eb7706e79e0e
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/utils@npm:8.12.0, @graphql-tools/utils@npm:^8.8.0":
+  version: 8.12.0
+  resolution: "@graphql-tools/utils@npm:8.12.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+<<<<<<< HEAD
   checksum: 8806bcda40cbda02577fe57c383ababb8961e3800be9ef228c9773793318477e5a706b6141803ea6dd68da0f39cff186d124039b742b519cbfb45cd6d15ccb22
+=======
+  checksum: 24edc6ba3bcfa9a4c1d1d37117c3f96d847beed9638325083c32c6ec9674729dc89fc8cc389d317ae5d9dba22e91443bd9788f1dc8de91a1b6f1e592112bd48f
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -3052,6 +3246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@lerna/add@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/add@npm:5.6.2"
@@ -3061,11 +3256,23 @@ __metadata:
     "@lerna/filter-options": 5.6.2
     "@lerna/npm-conf": 5.6.2
     "@lerna/validation-error": 5.6.2
+=======
+"@lerna/add@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/add@npm:5.5.2"
+  dependencies:
+    "@lerna/bootstrap": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/npm-conf": 5.5.2
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     dedent: ^0.7.0
     npm-package-arg: 8.1.1
     p-map: ^4.0.0
     pacote: ^13.6.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: a6e9a6270f3145cb24da1b90a312cbbe0f3a0c556943c7e7b8cf4bfbb0912db4de7e7dc248321dd26955b3b8dbf8ede8c9481e2a0f3107c8a5cd917bfe187976
   languageName: node
   linkType: hard
@@ -3086,6 +3293,28 @@ __metadata:
     "@lerna/symlink-binary": 5.6.2
     "@lerna/symlink-dependencies": 5.6.2
     "@lerna/validation-error": 5.6.2
+=======
+  checksum: 4e7802b2aceae2aaffd75d60624bb149e242603230c1c70ef10baf4386ddd6a8ea3dd105cd947d8a95f65ff6a0d7e2858206cd45f0f0e3c3765b95c20607a520
+  languageName: node
+  linkType: hard
+
+"@lerna/bootstrap@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/bootstrap@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/has-npm-version": 5.5.2
+    "@lerna/npm-install": 5.5.2
+    "@lerna/package-graph": 5.5.2
+    "@lerna/pulse-till-done": 5.5.2
+    "@lerna/rimraf-dir": 5.5.2
+    "@lerna/run-lifecycle": 5.5.2
+    "@lerna/run-topologically": 5.5.2
+    "@lerna/symlink-binary": 5.5.2
+    "@lerna/symlink-dependencies": 5.5.2
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     "@npmcli/arborist": 5.3.0
     dedent: ^0.7.0
     get-port: ^5.1.1
@@ -3096,6 +3325,7 @@ __metadata:
     p-map-series: ^2.1.0
     p-waterfall: ^2.1.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: 5b416f2276077348a72c4079d96b35729502a8bc3f91144cf3109b1ea5966245c809769304414a9b038de0980e783ed2a8da898fd05802879e8186e35a8a14cf
   languageName: node
   linkType: hard
@@ -3126,10 +3356,43 @@ __metadata:
 "@lerna/child-process@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/child-process@npm:5.6.2"
+=======
+  checksum: 470fc2cfd05d1b7a831f87d1d85289e3f23836b9c9daaeaaf0151d826e0c08ebe060ff3b6362672b1680125e752389c17579d4986eef33401aff08d74f70f59d
+  languageName: node
+  linkType: hard
+
+"@lerna/changed@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/changed@npm:5.5.2"
+  dependencies:
+    "@lerna/collect-updates": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/listable": 5.5.2
+    "@lerna/output": 5.5.2
+  checksum: 492aed5b559bd9fa020a0ffe0f816d83221c9816bc5c2c2ecf83767c99d3edffa07db82c83d5009a6331e3d60014a71cb5c8d05f99ef1e4476c2fc199cd8c47b
+  languageName: node
+  linkType: hard
+
+"@lerna/check-working-tree@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/check-working-tree@npm:5.5.2"
+  dependencies:
+    "@lerna/collect-uncommitted": 5.5.2
+    "@lerna/describe-ref": 5.5.2
+    "@lerna/validation-error": 5.5.2
+  checksum: 20e869608ee1ecaa7b07ec631431e2a6d2af224af8f405b30637d719260f10b2caf0e759f80002e359fc7933c2d2c003ecf8864f5c6a2274e50ffafb155ba2ef
+  languageName: node
+  linkType: hard
+
+"@lerna/child-process@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/child-process@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     chalk: ^4.1.0
     execa: ^5.0.0
     strong-log-transformer: ^2.1.0
+<<<<<<< HEAD
   checksum: 94e9c03119b3177cb41e210ac8a4bf04386857192e3a99c8bdd3d2ae913eda1538f813138de03693681ee360644cab9a0584658df9e2acbd04eb52a2e3a761cf
   languageName: node
   linkType: hard
@@ -3195,11 +3458,79 @@ __metadata:
     "@lerna/project": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@lerna/write-log-file": 5.6.2
+=======
+  checksum: 16ef629b72230195d5ab442dc4d63e6490d2ef7f85d64615724e9d6bf3da7227f887e47e1dd0d329ea8fb9ed010b8ecb206096d554d717fd33e24133dd82efd3
+  languageName: node
+  linkType: hard
+
+"@lerna/clean@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/clean@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/prompt": 5.5.2
+    "@lerna/pulse-till-done": 5.5.2
+    "@lerna/rimraf-dir": 5.5.2
+    p-map: ^4.0.0
+    p-map-series: ^2.1.0
+    p-waterfall: ^2.1.1
+  checksum: c8dc120f88f5db86f37caf349ba9f9d5c06418e69507d5c10d13365af13902692cd886fafbcd5bf4dc49f507b853d87acfc4f5af8d13f2dfb180d8d2119dfc30
+  languageName: node
+  linkType: hard
+
+"@lerna/cli@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/cli@npm:5.5.2"
+  dependencies:
+    "@lerna/global-options": 5.5.2
+    dedent: ^0.7.0
+    npmlog: ^6.0.2
+    yargs: ^16.2.0
+  checksum: bd77403d02bcadbce24e75473779b6f574bf0ae7078fc77098e4c6c36de5da8145adcb79eed134a4fc4afa03edbe2bdbfa90ad9421202996c50879dd9e5ff279
+  languageName: node
+  linkType: hard
+
+"@lerna/collect-uncommitted@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/collect-uncommitted@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    chalk: ^4.1.0
+    npmlog: ^6.0.2
+  checksum: 2bc65e2ab26926b1b297417d9444517f7c37495d6a3d656bf8797efcb3618588c0d91b67026bb17cf94522da4c7aa484aa8ac2a5691d859347418580943ed7b6
+  languageName: node
+  linkType: hard
+
+"@lerna/collect-updates@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/collect-updates@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/describe-ref": 5.5.2
+    minimatch: ^3.0.4
+    npmlog: ^6.0.2
+    slash: ^3.0.0
+  checksum: df26632f99770479c6710cfa41e8212af40c1029b46e0d67a9c3ae7f800fb11e679b20ea11c31ce4e9a5e923d70b462c4865a648684adcc5b0d59e370ac46413
+  languageName: node
+  linkType: hard
+
+"@lerna/command@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/command@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/package-graph": 5.5.2
+    "@lerna/project": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    "@lerna/write-log-file": 5.5.2
+>>>>>>> Reverted Yarn lock file
     clone-deep: ^4.0.1
     dedent: ^0.7.0
     execa: ^5.0.0
     is-ci: ^2.0.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 6a3bdef20658b474476a3750862e2d4753284d0023faf755b39d403a7dc71f6c5c46bc68f79ba27af1a12eb8add391f3afb82aee08b93e02141aa44f939cd668
   languageName: node
   linkType: hard
@@ -3209,6 +3540,17 @@ __metadata:
   resolution: "@lerna/conventional-commits@npm:5.6.2"
   dependencies:
     "@lerna/validation-error": 5.6.2
+=======
+  checksum: 384a20332cb5b6eda0ca3b460ed88ba2f8335b78cb47838898d3bf219438b3c54fd9fe4f5f8fe4df12d7e7dddcea1580a5c63953501bdb35ceeccf2647e3c227
+  languageName: node
+  linkType: hard
+
+"@lerna/conventional-commits@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/conventional-commits@npm:5.5.2"
+  dependencies:
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     conventional-changelog-angular: ^5.0.12
     conventional-changelog-core: ^4.2.4
     conventional-recommended-bump: ^6.1.0
@@ -3218,6 +3560,7 @@ __metadata:
     npmlog: ^6.0.2
     pify: ^5.0.0
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: a8dbcd4bbb697aebb6c1b045f8597f019b754cf42b5abaf6a77da7379e212107bb46e8c9747a7bc1b41de640109036f71bc97df0b1066ca6c719172dd5d8b563
   languageName: node
   linkType: hard
@@ -3225,10 +3568,20 @@ __metadata:
 "@lerna/create-symlink@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/create-symlink@npm:5.6.2"
+=======
+  checksum: 1f4b3881fb0f01043bb413cefd64279f74b645b8a0016e2aa963b0d757fae8f68bff57b833e64d79fc2e7026b53049a7fa101e06a519e07f06cb398e17e66768
+  languageName: node
+  linkType: hard
+
+"@lerna/create-symlink@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/create-symlink@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     cmd-shim: ^5.0.0
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 1848bd60d5f3227cf66103571779d8c12c363c54ade93aaddcb10b7bba00adaf263faccee15fd05ac87ee5514feecd0e20e42b79b798a457609af1e77e734762
   languageName: node
   linkType: hard
@@ -3241,6 +3594,20 @@ __metadata:
     "@lerna/command": 5.6.2
     "@lerna/npm-conf": 5.6.2
     "@lerna/validation-error": 5.6.2
+=======
+  checksum: bab3131c418609b1e691d145ce188aae3b35b617d3f4888ce4c856cd741e08bfebf37e93f34310b24424ab9174ddb9a4ee70a63a2d41062fcd572cec03f3fe3b
+  languageName: node
+  linkType: hard
+
+"@lerna/create@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/create@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/npm-conf": 5.5.2
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     dedent: ^0.7.0
     fs-extra: ^9.1.0
     init-package-json: ^3.0.2
@@ -3253,6 +3620,7 @@ __metadata:
     validate-npm-package-license: ^3.0.4
     validate-npm-package-name: ^4.0.0
     yargs-parser: 20.2.4
+<<<<<<< HEAD
   checksum: 94706188839a8cd0b8c20fb593a0cb4375bd350e2b6587a29933786bdd8c83417a1d651e5f53fb69e0939bad4f97dd013f5a4c901557e3c20fc360bbd0590806
   languageName: node
   linkType: hard
@@ -3329,10 +3697,89 @@ __metadata:
 "@lerna/get-packed@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/get-packed@npm:5.6.2"
+=======
+  checksum: b5bbd846181efba7d1a4e2063e59ddd58e38066068e1f2e7402de0d87a794655cb9abe1bbcf32659b7c59ab82a527de1ed3a00bce7e83e211410429868d8813b
+  languageName: node
+  linkType: hard
+
+"@lerna/describe-ref@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/describe-ref@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    npmlog: ^6.0.2
+  checksum: abec8de17904ce7ad11ac1b4830c5c7223f8f9106d9ea25f768024e9373f8df48c753e163c67e146fa43ff479e06e132459f0d3cf9c7c60172815a446191fed2
+  languageName: node
+  linkType: hard
+
+"@lerna/diff@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/diff@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    npmlog: ^6.0.2
+  checksum: 6263f49b7b0a22924717a2ba551cdb0431d73def569b88892ecf43477bc1516d7f66749511a4712b9ed17cf6bb480cf902741eef8e61a22b6d2ce3898f732fef
+  languageName: node
+  linkType: hard
+
+"@lerna/exec@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/exec@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/profiler": 5.5.2
+    "@lerna/run-topologically": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    p-map: ^4.0.0
+  checksum: 987b0b11f92e80e71be8d3a756bef966d7cfaa16a484490d236a380d7c3002de2b4e8bc1588912153af9c2a4615e22f629aa1043ec6bbc4240504c6721c8fa2a
+  languageName: node
+  linkType: hard
+
+"@lerna/filter-options@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/filter-options@npm:5.5.2"
+  dependencies:
+    "@lerna/collect-updates": 5.5.2
+    "@lerna/filter-packages": 5.5.2
+    dedent: ^0.7.0
+    npmlog: ^6.0.2
+  checksum: 04286e0efa7535bc32a4a10e87b72313200d3360cdaea21f3fea10c35bb9c47fd45ea0d7353177821e224cc6af4a02a0bbc8f9d28f54220e16cfb7ca80488306
+  languageName: node
+  linkType: hard
+
+"@lerna/filter-packages@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/filter-packages@npm:5.5.2"
+  dependencies:
+    "@lerna/validation-error": 5.5.2
+    multimatch: ^5.0.0
+    npmlog: ^6.0.2
+  checksum: bf0cfdeb2a290df1a0595e5f55549c1b9c6193a5a3045bcbddc5fe8f3cc4a824000b6c8ec13fd5671b22286c5246ef442034d9d36e18db4a98e5a2be34770afe
+  languageName: node
+  linkType: hard
+
+"@lerna/get-npm-exec-opts@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/get-npm-exec-opts@npm:5.5.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 479140413ca273f4d62cb252272cee50096e8ce0b7a15f31ede03226ed4a14caf2c06ba571018051ac364ca0bdf8e58abceff74f3818f5634d6e5acfba56e220
+  languageName: node
+  linkType: hard
+
+"@lerna/get-packed@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/get-packed@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     fs-extra: ^9.1.0
     ssri: ^9.0.1
     tar: ^6.1.0
+<<<<<<< HEAD
   checksum: 12637d74cf654214fb6adfe444370d90d66f5aa2fdbcfc6bedd4168e24a8e91346ad22f1386630b635452b3a0089c91cd3ea141f6cddfd8d111ba7b94dbbaac8
   languageName: node
   linkType: hard
@@ -3342,10 +3789,22 @@ __metadata:
   resolution: "@lerna/github-client@npm:5.6.2"
   dependencies:
     "@lerna/child-process": 5.6.2
+=======
+  checksum: 83e8fa87327b8d9bab907e3caa00807da353c8dbf6d13f112256b8f524510d1d27f06464413b0f60820d9f668310bacc70d9897cefbe8cb4b1fcc40b8035a0e1
+  languageName: node
+  linkType: hard
+
+"@lerna/github-client@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/github-client@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+>>>>>>> Reverted Yarn lock file
     "@octokit/plugin-enterprise-rest": ^6.0.1
     "@octokit/rest": ^19.0.3
     git-url-parse: ^13.1.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 08a7386af70bacec5b1c2ec7ba09a0cae407e54c65d33c89444b4460df48dc325772fe77b38ce7c5355295e24ba64d0d64e53ae3ca76ddd4b930af1f5b38507c
   languageName: node
   linkType: hard
@@ -3458,11 +3917,126 @@ __metadata:
 "@lerna/log-packed@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/log-packed@npm:5.6.2"
+=======
+  checksum: 35495cf48870b6aab436bccad2ef6bece5f41f1ed8d6e8e580f56fd0c98dd3bf38b65989d75de98bcdd4a7b6a54f2239a16c84a4b132c42c5e66004bfabac506
+  languageName: node
+  linkType: hard
+
+"@lerna/gitlab-client@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/gitlab-client@npm:5.5.2"
+  dependencies:
+    node-fetch: ^2.6.1
+    npmlog: ^6.0.2
+  checksum: f5b2ce0336f96c56d67b9c80fe7bbc863e1c45694a06d847e2f50b36819bfe68c0088aab95680653337123c65fca503de7b9c9408beb05b1789f019c90ca584b
+  languageName: node
+  linkType: hard
+
+"@lerna/global-options@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/global-options@npm:5.5.2"
+  checksum: b10dda29bd2d44c688711d8a43bc399ee7a724e93b0d642075079485c0e76b4dccdff139ae6dc10e7bfa002f730816e7882cee35bce0b1091901e7b5b6caf249
+  languageName: node
+  linkType: hard
+
+"@lerna/has-npm-version@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/has-npm-version@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    semver: ^7.3.4
+  checksum: f0b20b58b4d1660b3485587078e5f5e1f4ecaebe85005ce5955e21c33789117744023e94255a1dc22c6601830ebc80b9963a802c837a7d762ee8b32660dd3887
+  languageName: node
+  linkType: hard
+
+"@lerna/import@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/import@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/prompt": 5.5.2
+    "@lerna/pulse-till-done": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    dedent: ^0.7.0
+    fs-extra: ^9.1.0
+    p-map-series: ^2.1.0
+  checksum: 2a3be953eef097047a380b4e4432e42170b01e235721683ed396f161cb857155b6c9cf87b42f60effba6dbfff164d3e35b237625ae82b25d7bb4759102a4f64b
+  languageName: node
+  linkType: hard
+
+"@lerna/info@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/info@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/output": 5.5.2
+    envinfo: ^7.7.4
+  checksum: ff32370780294d1e0780f6f4ff6e0dced4d6b164c27cdc6904e50d53e16d85e54e1bcfd36b0d66a4098f5f2eea873e167a709b6145796dc3cef51dd612ec2594
+  languageName: node
+  linkType: hard
+
+"@lerna/init@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/init@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/project": 5.5.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+    write-json-file: ^4.3.0
+  checksum: f4b4a1dd15daa80273866b90ec073991e7ebfe7f5ef70c2d7ac871a363f51a8a9091d65b07bda5d35c299d7c7253af84ac6398e3cf01488fd9fb62dd4ad38d38
+  languageName: node
+  linkType: hard
+
+"@lerna/link@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/link@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/package-graph": 5.5.2
+    "@lerna/symlink-dependencies": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    p-map: ^4.0.0
+    slash: ^3.0.0
+  checksum: 6d617bbe1ff54ff0d008a10d0abe5781b91cf57a745d9eda841b96b8c6541294fb9993c69154b5e7653495474b546ea3d985e011ccea521244787d44fd66b72b
+  languageName: node
+  linkType: hard
+
+"@lerna/list@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/list@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/listable": 5.5.2
+    "@lerna/output": 5.5.2
+  checksum: 6a9e6903b6b9fe44043a644f56177299f4b64fade0ddd8db3c703a9d6866eb437456e5f061fd39a1c1435ccead635aee1831959e8305883a3369e31f9f3f9daf
+  languageName: node
+  linkType: hard
+
+"@lerna/listable@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/listable@npm:5.5.2"
+  dependencies:
+    "@lerna/query-graph": 5.5.2
+    chalk: ^4.1.0
+    columnify: ^1.6.0
+  checksum: 1828af14f6f9801aaf0b42002ee32447608e70c9ef06c07e774052c16ceeb560832de50a7d2f6d3d006f64ec86957f8d015bf4b0422e987c4ea4a1c7e0cdf127
+  languageName: node
+  linkType: hard
+
+"@lerna/log-packed@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/log-packed@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     byte-size: ^7.0.0
     columnify: ^1.6.0
     has-unicode: ^2.0.1
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: bbb43bd521bd431298048556a0ca1b83819d6352a06c4792a121403ab5cc2a467c7e89848cec72c7e348af12d3eac1e65e95d1372bedad2ef4a68aaa5d624e5a
   languageName: node
   linkType: hard
@@ -3495,11 +4069,46 @@ __metadata:
   dependencies:
     "@lerna/child-process": 5.6.2
     "@lerna/get-npm-exec-opts": 5.6.2
+=======
+  checksum: e7bea8458f2ebc0845759a21786553352cf3c10512db5242e351e993fbec800f4c7e4897d73bf9c1a2a24350122358cff4e18e134c97aea9fe3f9727ffd61233
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-conf@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/npm-conf@npm:5.5.2"
+  dependencies:
+    config-chain: ^1.1.12
+    pify: ^5.0.0
+  checksum: a4724d6c8e60924c37c699293986ada46349b9b02f01ca86ac79e7b4f61e618356d9cd9ec7291be107ca31307168172b84a976a0c1347c4a2e893760976fdb9a
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-dist-tag@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/npm-dist-tag@npm:5.5.2"
+  dependencies:
+    "@lerna/otplease": 5.5.2
+    npm-package-arg: 8.1.1
+    npm-registry-fetch: ^13.3.0
+    npmlog: ^6.0.2
+  checksum: 7fa00477a36fbe062233aab34450697ffd32f590e8867f1b15f612f9b115b65aaecb5460bcfb07a7a7d0ea7fe3ab71cd8d0cf69a003e7fdeae0c5414474c6fad
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-install@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/npm-install@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/get-npm-exec-opts": 5.5.2
+>>>>>>> Reverted Yarn lock file
     fs-extra: ^9.1.0
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     signal-exit: ^3.0.3
     write-pkg: ^4.0.0
+<<<<<<< HEAD
   checksum: 6878ee7420edb0353ae8b755b10ae33100980b108cbeaa5848f4b5d2c19c836dbe2d93b401365fe05baf080808c8ad259a05bb78d52b177fc21d6c24bdf41b27
   languageName: node
   linkType: hard
@@ -3510,12 +4119,25 @@ __metadata:
   dependencies:
     "@lerna/otplease": 5.6.2
     "@lerna/run-lifecycle": 5.6.2
+=======
+  checksum: 9b7bd1415be3902c65f68f1c22aeaec1bba72c2666555fd6977c50b0ab356783a304fe00be17f4f3c3dc1e9296dd8729191e70977fd704eff88e2aba721bfb5c
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-publish@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/npm-publish@npm:5.5.2"
+  dependencies:
+    "@lerna/otplease": 5.5.2
+    "@lerna/run-lifecycle": 5.5.2
+>>>>>>> Reverted Yarn lock file
     fs-extra: ^9.1.0
     libnpmpublish: ^6.0.4
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     pify: ^5.0.0
     read-package-json: ^5.0.1
+<<<<<<< HEAD
   checksum: 87ec165e2c5976fd04e41bbed0cf796317813d4ef50cc42a1c96c25d96f761333d34fa575702f2979b3c828ea7df87d21064521fc4137da9d16f67803192c902
   languageName: node
   linkType: hard
@@ -3580,10 +4202,77 @@ __metadata:
 "@lerna/package@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/package@npm:5.6.2"
+=======
+  checksum: e45d37a41d00650ad813b36410da0b1c34423e4aceadc2fde008a308d583a829d73414c78dd221603cb7c2643a34067f181f497ad68334f002dddc4a55556f7e
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-run-script@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/npm-run-script@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    "@lerna/get-npm-exec-opts": 5.5.2
+    npmlog: ^6.0.2
+  checksum: 0232dff3d6269628961cbcc8a521e80e80dd08de35cb304d36e3a81dbf6e4ad433da21d960668f2b54f302b7bad59eb68cf4b522dc399ba9f4b22872589f6aa7
+  languageName: node
+  linkType: hard
+
+"@lerna/otplease@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/otplease@npm:5.5.2"
+  dependencies:
+    "@lerna/prompt": 5.5.2
+  checksum: aafb4fedd5ae39344b705de0270525ee2e3f3667361162ffad9b968e8dc100a95e580f0eb549ced114b548b27c7b9745632cafa491642f5bf21d6b96f920364c
+  languageName: node
+  linkType: hard
+
+"@lerna/output@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/output@npm:5.5.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 41d243a7aaf7f35eb30bc83bee09bb5e37ac6620df627ba9f79cf8a93b2ad011a8f99bd8aaae673364189ddaa35d985922f5f809a8808a770de341a0ffcc1478
+  languageName: node
+  linkType: hard
+
+"@lerna/pack-directory@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/pack-directory@npm:5.5.2"
+  dependencies:
+    "@lerna/get-packed": 5.5.2
+    "@lerna/package": 5.5.2
+    "@lerna/run-lifecycle": 5.5.2
+    "@lerna/temp-write": 5.5.2
+    npm-packlist: ^5.1.1
+    npmlog: ^6.0.2
+    tar: ^6.1.0
+  checksum: 9608e48c0fc4f83e0da3f97f4a96fb027e65399203d9478eba820e14383413695661d37ef4bc5b072846d922379049ed67b8c501c0fe75df0d8d8d6e1ed7e2ff
+  languageName: node
+  linkType: hard
+
+"@lerna/package-graph@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/package-graph@npm:5.5.2"
+  dependencies:
+    "@lerna/prerelease-id-from-version": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    npm-package-arg: 8.1.1
+    npmlog: ^6.0.2
+    semver: ^7.3.4
+  checksum: ecde4f3476874fcc15abcaf3d95b05cf8155c6685ea203c9224dab162eb4fb383a2d7cb7a2985165453a8ea9b9f5a54caa1f6b3d183105d5aa5e630e8f919ff9
+  languageName: node
+  linkType: hard
+
+"@lerna/package@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/package@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     load-json-file: ^6.2.0
     npm-package-arg: 8.1.1
     write-pkg: ^4.0.0
+<<<<<<< HEAD
   checksum: 7f0d32cf4a74c76d932633a06ace58eca7ea46a2624ef304101b6b882ebe4ec1c683c6836784b790132d29e68e396f6490703db3070af3cff02ef32260f0fb52
   languageName: node
   linkType: hard
@@ -3600,10 +4289,29 @@ __metadata:
 "@lerna/profiler@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/profiler@npm:5.6.2"
+=======
+  checksum: ba8c63991eaff09350630e0049fb5054e69bbf4684485c42a64a6d120d6d4b66cc16749ed60cb69daeae1e5dc7ed7154c691206f39911f720fa687aa8133495b
+  languageName: node
+  linkType: hard
+
+"@lerna/prerelease-id-from-version@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/prerelease-id-from-version@npm:5.5.2"
+  dependencies:
+    semver: ^7.3.4
+  checksum: 995d6e62422d589eec0d53bec4b367ae4c18d51a803e908e5953d64cc2168a1146540b70a3394739186bf700ffec1c4f166af25e450e2a7322b6f9d8dabb9844
+  languageName: node
+  linkType: hard
+
+"@lerna/profiler@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/profiler@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     upath: ^2.0.1
+<<<<<<< HEAD
   checksum: a66e0c763b1b0477cdfb0d8c06da0693bf142aaa4cd694022e35a9f7b016126780b685494c862cc3f3a175b14f31f1fc9902f924aa48d1243ad3e41088a661f1
   languageName: node
   linkType: hard
@@ -3614,6 +4322,18 @@ __metadata:
   dependencies:
     "@lerna/package": 5.6.2
     "@lerna/validation-error": 5.6.2
+=======
+  checksum: ccc01c6e37c27bb8e67522c638535baf2e42c3bc4e8a989a0929519105e3ef046f69ef4be29eec45f9b0588528bbf99f509f53a3bdffeb8e19343daa46527684
+  languageName: node
+  linkType: hard
+
+"@lerna/project@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/project@npm:5.5.2"
+  dependencies:
+    "@lerna/package": 5.5.2
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     cosmiconfig: ^7.0.0
     dedent: ^0.7.0
     dot-prop: ^6.0.1
@@ -3625,6 +4345,7 @@ __metadata:
     p-map: ^4.0.0
     resolve-from: ^5.0.0
     write-json-file: ^4.3.0
+<<<<<<< HEAD
   checksum: 26ba2daa219bc033fe06770f3f539ca801c96993a7e2e95d0a2ad72646f43746d5efe67e8a407306b2de6ebfa8220c6682b8a6fd72ec4402ce3af21cdec54f20
   languageName: node
   linkType: hard
@@ -3662,6 +4383,45 @@ __metadata:
     "@lerna/run-topologically": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@lerna/version": 5.6.2
+=======
+  checksum: bf873d60386682d4fa69143182cb610a7e85aecfb2e993b5be018bbb291ab2522b1828b0c1e23601c0b0e1b2331b79f5f93e24f8be78d8bd0bd6298903b97dde
+  languageName: node
+  linkType: hard
+
+"@lerna/prompt@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/prompt@npm:5.5.2"
+  dependencies:
+    inquirer: ^8.2.4
+    npmlog: ^6.0.2
+  checksum: 5c40edf199a43fc2568fdae76205e1c9d087b454413cfb26ce9c5ae7ed156af5d9cf367bbce6a98c86120b0ec0ceba408efa510b6116b1a6090be842e6b1b803
+  languageName: node
+  linkType: hard
+
+"@lerna/publish@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/publish@npm:5.5.2"
+  dependencies:
+    "@lerna/check-working-tree": 5.5.2
+    "@lerna/child-process": 5.5.2
+    "@lerna/collect-updates": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/describe-ref": 5.5.2
+    "@lerna/log-packed": 5.5.2
+    "@lerna/npm-conf": 5.5.2
+    "@lerna/npm-dist-tag": 5.5.2
+    "@lerna/npm-publish": 5.5.2
+    "@lerna/otplease": 5.5.2
+    "@lerna/output": 5.5.2
+    "@lerna/pack-directory": 5.5.2
+    "@lerna/prerelease-id-from-version": 5.5.2
+    "@lerna/prompt": 5.5.2
+    "@lerna/pulse-till-done": 5.5.2
+    "@lerna/run-lifecycle": 5.5.2
+    "@lerna/run-topologically": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    "@lerna/version": 5.5.2
+>>>>>>> Reverted Yarn lock file
     fs-extra: ^9.1.0
     libnpmaccess: ^6.0.3
     npm-package-arg: 8.1.1
@@ -3671,6 +4431,7 @@ __metadata:
     p-pipe: ^3.1.0
     pacote: ^13.6.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: dce481b6e6ec168e75bc9c08bd075169b299fdf345abebf14029fa717029ddf2fc1464c65653234830807fb881ef0999a0af0f094a143c38865dd9d0dfb74ffd
   languageName: node
   linkType: hard
@@ -3696,10 +4457,38 @@ __metadata:
 "@lerna/resolve-symlink@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/resolve-symlink@npm:5.6.2"
+=======
+  checksum: 247518d0144abda69d9ad9c5daa408f9aaefa3acfb1141f8404268d0b4fd7217991b12d6d9bfd26649693dbc7e1c1fa47d402a26fc4c5cd176cb8504c5d96df8
+  languageName: node
+  linkType: hard
+
+"@lerna/pulse-till-done@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/pulse-till-done@npm:5.5.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: e7dfd21290c73e434e520de39a6f8402b759542254c401649b8472dfce1ec2ecde658c08392257f73119d942a8d528aa1143ff9e77d8838a324403ff111fa752
+  languageName: node
+  linkType: hard
+
+"@lerna/query-graph@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/query-graph@npm:5.5.2"
+  dependencies:
+    "@lerna/package-graph": 5.5.2
+  checksum: 64f05c72cf3b9866b26952b2e75b2d3bf693644f0792bf0da98c08427a1e3072aa45a04e512d14e4aa0168435448d9ce32a0b1450c3d5740f2a52a62eeba6278
+  languageName: node
+  linkType: hard
+
+"@lerna/resolve-symlink@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/resolve-symlink@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     read-cmd-shim: ^3.0.0
+<<<<<<< HEAD
   checksum: 19a95bb295ff9154f3661d36b54abfd5e415c0fb85a669a2fc7b600a180de13877b310d230c7782d8d5441324c5527c311f7a4afef57d6b8be04cbce5cd94927
   languageName: node
   linkType: hard
@@ -3785,12 +4574,100 @@ __metadata:
 "@lerna/temp-write@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/temp-write@npm:5.6.2"
+=======
+  checksum: 919a7165ec2f13a9279b3b7e3a23a5b421c90b6ea0a7987c2027d9adcba6a6672708bca670d9281d85a2eebaa92728c03acd1a3babf1c0d353c8345bc1cc5c4d
+  languageName: node
+  linkType: hard
+
+"@lerna/rimraf-dir@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/rimraf-dir@npm:5.5.2"
+  dependencies:
+    "@lerna/child-process": 5.5.2
+    npmlog: ^6.0.2
+    path-exists: ^4.0.0
+    rimraf: ^3.0.2
+  checksum: 5ed1699ade89399a657d8394343914e8f49a6077be0c09f2e24f0e20a0601bf0360553bd46e1f661ea297871d700c661e6a9977918508ac3b28d9e8c64c539de
+  languageName: node
+  linkType: hard
+
+"@lerna/run-lifecycle@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/run-lifecycle@npm:5.5.2"
+  dependencies:
+    "@lerna/npm-conf": 5.5.2
+    "@npmcli/run-script": ^4.1.7
+    npmlog: ^6.0.2
+    p-queue: ^6.6.2
+  checksum: 8f25e0ee067dccd69f3b5810a22ba29186ec5577c2b7b90168ceecf30b6de6af510ed0ccfd38f0d0b00c284fdcf070f8f5da7b7421097fd2229b425f5d316cba
+  languageName: node
+  linkType: hard
+
+"@lerna/run-topologically@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/run-topologically@npm:5.5.2"
+  dependencies:
+    "@lerna/query-graph": 5.5.2
+    p-queue: ^6.6.2
+  checksum: 004721c2fcea6429b61290ae550e53c92626aa055a0099d62461598bc5d1ae695ea098532d5990fead0f1318a86c1c892f799f9932c4155bf5e4453b5dbc4a06
+  languageName: node
+  linkType: hard
+
+"@lerna/run@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/run@npm:5.5.2"
+  dependencies:
+    "@lerna/command": 5.5.2
+    "@lerna/filter-options": 5.5.2
+    "@lerna/npm-run-script": 5.5.2
+    "@lerna/output": 5.5.2
+    "@lerna/profiler": 5.5.2
+    "@lerna/run-topologically": 5.5.2
+    "@lerna/timer": 5.5.2
+    "@lerna/validation-error": 5.5.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+  checksum: c905b0861209cb850a67ce1729e9da237c06732b1ac11c6b7f19ee663ad64e5dea32ae798e5c22922ed5430906c512545867c3a5afb421a76fe6fcac09d57540
+  languageName: node
+  linkType: hard
+
+"@lerna/symlink-binary@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/symlink-binary@npm:5.5.2"
+  dependencies:
+    "@lerna/create-symlink": 5.5.2
+    "@lerna/package": 5.5.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+  checksum: 637ae0e625f653341f18cb51c2cdb6b80a3e691a9df209b0ade75ca9f3f39e04746e5be7ce6a8b757f1d7b704096e4130e26ff2597825a246beae13aeb465681
+  languageName: node
+  linkType: hard
+
+"@lerna/symlink-dependencies@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/symlink-dependencies@npm:5.5.2"
+  dependencies:
+    "@lerna/create-symlink": 5.5.2
+    "@lerna/resolve-symlink": 5.5.2
+    "@lerna/symlink-binary": 5.5.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+    p-map-series: ^2.1.0
+  checksum: b48cb664c4d12bf3010e1b783ab5d1b829fa3227ce370e288c38a1870a2663cca2b568907a4ed0c73e2d818b8c086407a0e4cc4d673119bfc6c83071b7ac5785
+  languageName: node
+  linkType: hard
+
+"@lerna/temp-write@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/temp-write@npm:5.5.2"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     graceful-fs: ^4.1.15
     is-stream: ^2.0.0
     make-dir: ^3.0.0
     temp-dir: ^1.0.0
     uuid: ^8.3.2
+<<<<<<< HEAD
   checksum: 9a3ef13e08230a88de046aaaba0efdc2b5e27f16abd97af03b395bc2cf40ec52d8b6850d25a913b955046f52013c4a99b3e75a48397356d0a9a86b0f97afa905
   languageName: node
   linkType: hard
@@ -3830,6 +4707,46 @@ __metadata:
     "@lerna/temp-write": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@nrwl/devkit": ">=14.8.1 < 16"
+=======
+  checksum: fa1225c49ab43eeb2caa70e9e69d956ddde2f3e192cadfb14579dd62ca789362953079c560a3379acad373655438bae62fb5577068c7fa7c703d873921eafde4
+  languageName: node
+  linkType: hard
+
+"@lerna/timer@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/timer@npm:5.5.2"
+  checksum: e7a2029a72b03c9babfef83e8866f71be7edb6fe125c5ad9af1fbfc37fe0c2f2a6ff816874db26e32984aa7dbcb2228fff85beca3cd2a5a22bf91dcb34d80c29
+  languageName: node
+  linkType: hard
+
+"@lerna/validation-error@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/validation-error@npm:5.5.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 0fad4b059084cdcfe405b92f07a2b2e2b0b871020a1e3d41c696511ecdfe9b3e9b9db6f621dc6aa2e390704d3023019aa024271f45c61af6b9c77676b685ab46
+  languageName: node
+  linkType: hard
+
+"@lerna/version@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/version@npm:5.5.2"
+  dependencies:
+    "@lerna/check-working-tree": 5.5.2
+    "@lerna/child-process": 5.5.2
+    "@lerna/collect-updates": 5.5.2
+    "@lerna/command": 5.5.2
+    "@lerna/conventional-commits": 5.5.2
+    "@lerna/github-client": 5.5.2
+    "@lerna/gitlab-client": 5.5.2
+    "@lerna/output": 5.5.2
+    "@lerna/prerelease-id-from-version": 5.5.2
+    "@lerna/prompt": 5.5.2
+    "@lerna/run-lifecycle": 5.5.2
+    "@lerna/run-topologically": 5.5.2
+    "@lerna/temp-write": 5.5.2
+    "@lerna/validation-error": 5.5.2
+>>>>>>> Reverted Yarn lock file
     chalk: ^4.1.0
     dedent: ^0.7.0
     load-json-file: ^6.2.0
@@ -3842,6 +4759,7 @@ __metadata:
     semver: ^7.3.4
     slash: ^3.0.0
     write-json-file: ^4.3.0
+<<<<<<< HEAD
   checksum: da0e0b822af685b0553dac95aa1355b5bfb9abde208d1afcc1a0e38134c49e7d3dc1430d0c951ffad236032bba5c242025754494dd6ceb5ad913f3cc8b9113b3
   languageName: node
   linkType: hard
@@ -3853,6 +4771,19 @@ __metadata:
     npmlog: ^6.0.2
     write-file-atomic: ^4.0.1
   checksum: 814e9cf20ac28be49b22720be7bef8f708b28c344d54a0664cb8c44bbcb11387c4f89abf1050cfc81b41fa770099c748ac97fdb99d8a016c9e2c3ca801f27a30
+=======
+  checksum: 4ce0ff86dac13203354ef76d6f45eff28766f701d55fcf35aca19c23696932deff5a28449569d12e9b4e8b9aaf640165a77725eaac878e9814b843b00b537b61
+  languageName: node
+  linkType: hard
+
+"@lerna/write-log-file@npm:5.5.2":
+  version: 5.5.2
+  resolution: "@lerna/write-log-file@npm:5.5.2"
+  dependencies:
+    npmlog: ^6.0.2
+    write-file-atomic: ^4.0.1
+  checksum: 3b0ebcddaa701f757f2056c222c3425d5149e004686134518e8c7e57b68b78137670990c02e5a30fc6ca0ae45d4df0c5948b89ab308d7e36ad7e92c12fa593ea
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4263,6 +5194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@nrwl/cli@npm:15.0.3":
   version: 15.0.3
   resolution: "@nrwl/cli@npm:15.0.3"
@@ -4295,6 +5227,25 @@ __metadata:
   bin:
     tao: index.js
   checksum: 5b64088ede1612a121a1ea8d0737616a232232cf8b0aea690abee521dbdbedcd9d274df3e08873a917c83c3a4cb5ae53c4277356794b8968562c735c74824698
+=======
+"@nrwl/cli@npm:14.7.8":
+  version: 14.7.8
+  resolution: "@nrwl/cli@npm:14.7.8"
+  dependencies:
+    nx: 14.7.8
+  checksum: adbfde6e46bcabcc3e8593101bbd79b60054a7aa695a91d87d5b2372b5a06f6a9ea68e2be18ca490b4eb930d0f1db1a44f104273b991f3bdbad8fbce63c39e52
+  languageName: node
+  linkType: hard
+
+"@nrwl/tao@npm:14.7.8":
+  version: 14.7.8
+  resolution: "@nrwl/tao@npm:14.7.8"
+  dependencies:
+    nx: 14.7.8
+  bin:
+    tao: index.js
+  checksum: 32c7728cb0023044c8015ad2ea09b36eaa250f1cc71ec4964363f83330027f02f743ad5b39ee39d9aae7ec9df6dfdad3a090cfc5523bc5481c48b39e64048fae
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4344,10 +5295,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@octokit/openapi-types@npm:^14.0.0":
   version: 14.0.0
   resolution: "@octokit/openapi-types@npm:14.0.0"
   checksum: 0a1f8f3be998cd82c5a640e9166d43fd183b33d5d36f5e1a9b81608e94d0da87c01ec46c9988f69cd26585d4e2ffc4d3ec99ee4f75e5fe997fc86dad0aa8293c
+=======
+"@octokit/openapi-types@npm:^13.11.0":
+  version: 13.12.0
+  resolution: "@octokit/openapi-types@npm:13.12.0"
+  checksum: d8f2598d95b7031799af54c6af0bfcd03f59372f417248a7bf04f60d1ac79019d41aff3ed5285760bd80e3b674a611043385ace4067346277e8c95ff6437a2e7
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4358,6 +5316,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@octokit/plugin-paginate-rest@npm:^5.0.0":
   version: 5.0.1
   resolution: "@octokit/plugin-paginate-rest@npm:5.0.1"
@@ -4366,6 +5325,16 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=4"
   checksum: cfded297d9f66c7607bd34075eb0c5f7278a1617d6be86115997c0757151c9be2fcf7a8849c2a5cebab56931a263b5cc35742b6227935afe77f5ed61b0627a3d
+=======
+"@octokit/plugin-paginate-rest@npm:^4.0.0":
+  version: 4.3.1
+  resolution: "@octokit/plugin-paginate-rest@npm:4.3.1"
+  dependencies:
+    "@octokit/types": ^7.5.0
+  peerDependencies:
+    "@octokit/core": ">=4"
+  checksum: 96d420fc9944cd3cb67c41d47781ee00d406e34622ed6a6cc1995ee9602e1ab23b51e30f5a5d3b80d4b62879234e0c21fe6c654b267ccb9550379f2e0051e681
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4378,6 +5347,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@octokit/plugin-rest-endpoint-methods@npm:^6.7.0":
   version: 6.7.0
   resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.7.0"
@@ -4387,6 +5357,17 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=3"
   checksum: 513c6c0717d08f3e85848029bd700412b7d9787750f78cc79a3dede356e94b238bf8a518b108f556a7efe626871720dd0466de9f31091578ea4e0f5a016f0ae7
+=======
+"@octokit/plugin-rest-endpoint-methods@npm:^6.0.0":
+  version: 6.6.2
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.6.2"
+  dependencies:
+    "@octokit/types": ^7.5.0
+    deprecation: ^2.3.1
+  peerDependencies:
+    "@octokit/core": ">=3"
+  checksum: 3c3fe12e6f0463aeb77b6a7ea6da0b1928ed179b27745c778c32ead3796fe4352322dc103095d141d548aa6b0d91bb0196e4a2d5d60cd71fc820c3774e23c1f4
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4427,12 +5408,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@octokit/types@npm:^8.0.0":
   version: 8.0.0
   resolution: "@octokit/types@npm:8.0.0"
   dependencies:
     "@octokit/openapi-types": ^14.0.0
   checksum: 1a0197b2c4c522ac90f145e02b3f8cb048a47f71c2c6bdbf021a03db7dd30ca92a899c0186acb401337f218efe44e60d33cc1cc68715b622bb75bc1a4e79515d
+=======
+"@octokit/types@npm:^7.0.0, @octokit/types@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "@octokit/types@npm:7.5.0"
+  dependencies:
+    "@octokit/openapi-types": ^13.11.0
+  checksum: ded2fa77d939e54e97c9561120c19990781686250a0fbb36c3c8fe63f2c6ab081eca065e67a830a5731e1f0d9a4b8a8c26f858e28e1beb0f0c31aed31284e087
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -4972,8 +5962,13 @@ __metadata:
   linkType: hard
 
 "@redocly/openapi-core@npm:^1.0.0-beta.104":
+<<<<<<< HEAD
   version: 1.0.0-beta.111
   resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
+=======
+  version: 1.0.0-beta.110
+  resolution: "@redocly/openapi-core@npm:1.0.0-beta.110"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@redocly/ajv": ^8.11.0
     "@types/node": ^14.11.8
@@ -4985,7 +5980,11 @@ __metadata:
     node-fetch: ^2.6.1
     pluralize: ^8.0.0
     yaml-ast-parser: 0.0.43
+<<<<<<< HEAD
   checksum: a6848b5aef4d8aa8c64d07ab80eb9020970f53f531feebc93d06f050e1064f850c707e02da5edee0e8898946c5e99c3aa2d576b9fc7ff873986133116aa95f7a
+=======
+  checksum: 17acdc9822c13a9cd823d0badbefe7b42be1782a035565c2895fbb66e4cbc379e31a5d3f4ec421f65ba044343524cb577c0d2039d7578df48684c6039948232b
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -5380,8 +6379,13 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^8.1.0":
+<<<<<<< HEAD
   version: 8.19.0
   resolution: "@testing-library/dom@npm:8.19.0"
+=======
+  version: 8.18.1
+  resolution: "@testing-library/dom@npm:8.18.1"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -5391,7 +6395,11 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
+<<<<<<< HEAD
   checksum: 6bb93fef96703b6c47cf1b7cc8f71d402a9576084a94ba4e9926f51bd7bb1287fbb4f6942d82bd03fc6f3d998ae97e60f6aea4618f3a1ce6139597d2a4ecb7b9
+=======
+  checksum: 432a7da2bb626b11375b22e22d12c02317b35d69c0f69972c03bd0104895b496f21dc5b9d4447adef6e0c9acb3c0a64337f7d38c9667dbbacf09d5cd523394dd
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -5643,9 +6651,15 @@ __metadata:
   linkType: hard
 
 "@types/lodash@npm:^4.14.92":
+<<<<<<< HEAD
   version: 4.14.186
   resolution: "@types/lodash@npm:4.14.186"
   checksum: ee0c1368a8100bb6efb88335107473a41928fc307ff1ef4ff1278868ccddba9c04c68c36d1ffe3a0392ef4a956e1955f7de3203ec09df4f1655dd1b88485c549
+=======
+  version: 4.14.185
+  resolution: "@types/lodash@npm:4.14.185"
+  checksum: f81d13da5ecab110ca9c5c7cc2bedc3c9802a6acf668576aecd1b8f4b134ed81d06c15f1e600fb08f05975098280a0d97d30cddfc2cb39ec1c6b56e971ca53b3
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -5699,9 +6713,15 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=10.0.0":
+<<<<<<< HEAD
   version: 18.11.7
   resolution: "@types/node@npm:18.11.7"
   checksum: 69d630825cf6fbf580d08d76a4d4836ef8c34ed4fe0842221ade87d275f517099cbfabe8e22397208e564bd24926db97699ab9db5c091383269a432b336665e2
+=======
+  version: 18.7.18
+  resolution: "@types/node@npm:18.7.18"
+  checksum: 8aec61f0f96e2a69ce51f1f40f949ca578bbb4fe05d7c0b8ce3aeeb848e90f755837f17f6ac132ca404d974fe9b2974150ad3b4984fc9dc7c3ceddb10bae0167
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -5713,9 +6733,15 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^14.0.0, @types/node@npm:^14.11.8, @types/node@npm:^14.14.31":
+<<<<<<< HEAD
   version: 14.18.33
   resolution: "@types/node@npm:14.18.33"
   checksum: 4e23f95186d8ae1d38c999bc6b46fe94e790da88744b0a3bfeedcbd0d9ffe2cb0ff39e85f43014f6739e5270292c1a1f6f97a1fc606fd573a0c17fda9a1d42de
+=======
+  version: 14.18.29
+  resolution: "@types/node@npm:14.18.29"
+  checksum: 43481c1c066dd01578ff137f437a8a901f8fcd3cdc068c36047c444861ab4aac8a62fb4eb6d03738df02006336c90619bfc7860d4e5b259916956942d2e68e88
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -5764,13 +6790,22 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*":
+<<<<<<< HEAD
   version: 18.0.24
   resolution: "@types/react@npm:18.0.24"
+=======
+  version: 18.0.20
+  resolution: "@types/react@npm:18.0.20"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
+<<<<<<< HEAD
   checksum: 7d06125bac61e1c6661e5dfbeeeb56d5b6d1d4c743292faebaa6b0f30f8414c7af3cadf674923fd86e4ca14e82566ff9156cd40c56786be024600c31b97d6c03
+=======
+  checksum: f67f5b16efd89e237bf0e40d133218c398cf2a2f81166ce1e9fa32d0df6b869106740983396c51df9708a1b79b2a9d725eda1230cc3064c92d86d9ea6a4b714c
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -7036,6 +8071,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "babel-plugin-remove-graphql-queries@npm:^4.22.0, babel-plugin-remove-graphql-queries@npm:^4.24.0":
   version: 4.24.0
   resolution: "babel-plugin-remove-graphql-queries@npm:4.24.0"
@@ -7047,6 +8083,19 @@ __metadata:
     "@babel/core": ^7.0.0
     gatsby: ^4.0.0-next
   checksum: c0e589dbaf4653540c031c6c4003be36096339d695bfb86c29b4e508c6ee913c97d1691752e5cd5bf0452865bc52af380d1e8b03f1cedd41f9b17e57ddff6460
+=======
+"babel-plugin-remove-graphql-queries@npm:^4.22.0, babel-plugin-remove-graphql-queries@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "babel-plugin-remove-graphql-queries@npm:4.23.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    "@babel/types": ^7.15.4
+    gatsby-core-utils: ^3.23.0
+  peerDependencies:
+    "@babel/core": ^7.0.0
+    gatsby: ^4.0.0-next
+  checksum: 1be5822eacf5ff9497d2a96195dc890144ca2a9b3b20c2bcebf55b648b6a0182c04d1bd1c5ecc078bf5950eb3fb4074ea5016a409d00010b2206555d080da7e3
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -7123,9 +8172,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "babel-preset-gatsby@npm:^2.22.0, babel-preset-gatsby@npm:^2.24.0":
   version: 2.24.0
   resolution: "babel-preset-gatsby@npm:2.24.0"
+=======
+"babel-preset-gatsby@npm:^2.22.0, babel-preset-gatsby@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "babel-preset-gatsby@npm:2.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.14.0
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
@@ -7782,9 +8837,15 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001407":
+<<<<<<< HEAD
   version: 1.0.30001426
   resolution: "caniuse-lite@npm:1.0.30001426"
   checksum: e8b9c14ee33410d95b27da619f50648f373a7be712748970643f25d95fa80687b4755ba365f34a7a1cea00f9137193943aa6e742eedf0a4d7857f83809f49435
+=======
+  version: 1.0.30001409
+  resolution: "caniuse-lite@npm:1.0.30001409"
+  checksum: d8581693491295ad8716db7ad6dccf74de970fc3ef4723b38bbc03b972862d363a9710c2a7582abcb741e1619164ddceca1df4dcf3d53d550e74829a9cb5ca82
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -8061,9 +9122,15 @@ __metadata:
   linkType: hard
 
 "ci-info@npm:^3.2.0":
+<<<<<<< HEAD
   version: 3.5.0
   resolution: "ci-info@npm:3.5.0"
   checksum: 7def3789706ec18db3dc371dc699bd0df12057d54b796201f50ba87200e0849d3d83c68da00ab2ab8cdd738d91b25ab9e31620588f8d7e64ffaa1f760fd121cf
+=======
+  version: 3.4.0
+  resolution: "ci-info@npm:3.4.0"
+  checksum: 7f660730170a6ce248e173b670587a0c583e31526d21afcd21f77c811c1aaeb8926999081542d1f30e12cce1df582d4c88709fa45f44c00498b46bdf21d4d21a
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -8736,6 +9803,7 @@ __metadata:
   linkType: hard
 
 "core-js-compat@npm:^3.25.1":
+<<<<<<< HEAD
   version: 3.26.0
   resolution: "core-js-compat@npm:3.26.0"
   dependencies:
@@ -8748,13 +9816,33 @@ __metadata:
   version: 3.26.0
   resolution: "core-js-pure@npm:3.26.0"
   checksum: bbf5fa65cf3368a25f9d9cc525863acc8082fa3797efc8dc514f85d7f4aa870f4999b68863f3c7b96ed0b062add261a448758e6d337626c2535ad89ee8481a92
+=======
+  version: 3.25.2
+  resolution: "core-js-compat@npm:3.25.2"
+  dependencies:
+    browserslist: ^4.21.4
+  checksum: 2e3de43cfed9f0f7ca4fe2c529be514aba6b80209fa314bd882aa5d5f8e3f43b59b2f9b174158ec3b321358ba2ed726a937abe7344279c67da1c51422b5f0b93
+  languageName: node
+  linkType: hard
+
+"core-js-pure@npm:^3.25.1, core-js-pure@npm:^3.8.1":
+  version: 3.25.2
+  resolution: "core-js-pure@npm:3.25.2"
+  checksum: 8940d844f3a2474b9f51478341b682cb86d998723337f249424a7cdedd321dd2568cb0fbc459bb0f98a9427d23d1a3050aa44644ac2301fe380308ebecd6f28e
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
 "core-js@npm:^3.22.3, core-js@npm:^3.25.1":
+<<<<<<< HEAD
   version: 3.26.0
   resolution: "core-js@npm:3.26.0"
   checksum: 0149eb9d3909fde9c17626af3a6e625c326e8598d0bb5e6c5b48a18e5fcd4eaf48d4964d873667d8148542ff590fb98eb3f93618da114ca54999d6bc0349734b
+=======
+  version: 3.25.2
+  resolution: "core-js@npm:3.25.2"
+  checksum: e93c6c645d44d98973efb07750975552ad405f080f5a563a99972ff6b2c5c6ee25705f55accd363f5dccd51e9e5f56be25e2be6c14a7294da65763e0e5659c02
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -8783,14 +9871,23 @@ __metadata:
   linkType: hard
 
 "cosmiconfig-typescript-loader@npm:^4.0.0":
+<<<<<<< HEAD
   version: 4.1.1
   resolution: "cosmiconfig-typescript-loader@npm:4.1.1"
+=======
+  version: 4.1.0
+  resolution: "cosmiconfig-typescript-loader@npm:4.1.0"
+>>>>>>> Reverted Yarn lock file
   peerDependencies:
     "@types/node": "*"
     cosmiconfig: ">=7"
     ts-node: ">=10"
     typescript: ">=3"
+<<<<<<< HEAD
   checksum: a774961868f0406d0fd75e448c2e1a0ddb95de27d477fa325a37369a2cbd892cf4d639a109082cd886840dea7707ea9bed5c38a468b52de18400c4f1d495d35a
+=======
+  checksum: 434f68e75ea8559deb0058cb06ac0a25ec5c0e65fafc21a891bac863e18cf944bd881b0d80188d02f599e061c3f0e42156f6405e4a299975e40cb1bd740a9b24
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -8830,9 +9927,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "create-gatsby@npm:^2.24.0":
   version: 2.24.0
   resolution: "create-gatsby@npm:2.24.0"
+=======
+"create-gatsby@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "create-gatsby@npm:2.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
   bin:
@@ -9415,10 +10518,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "decimal.js@npm:^10.4.1":
   version: 10.4.2
   resolution: "decimal.js@npm:10.4.2"
   checksum: 536cd6816a3197f2e1aa3da4860856cb5a2db73f6fafe8cb3b924ccc63f9b7d78296acc13dccbd419bd958ccc6357921fb15467f883b37cab04bfba7044cada2
+=======
+"decimal.js@npm:^10.3.1":
+  version: 10.4.1
+  resolution: "decimal.js@npm:10.4.1"
+  checksum: 5da6dc74af5b73d954741b24d404ef6da07841794d9e51412a2708ec384dd7b4bced3365fb178f4cd119b7ef45f0b34344014a4dc0494c8374c5e746df3cb410
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -9666,15 +10776,24 @@ __metadata:
   linkType: hard
 
 "detect-port@npm:^1.3.0":
+<<<<<<< HEAD
   version: 1.5.1
   resolution: "detect-port@npm:1.5.1"
+=======
+  version: 1.5.0
+  resolution: "detect-port@npm:1.5.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     address: ^1.0.1
     debug: 4
   bin:
     detect: bin/detect-port.js
     detect-port: bin/detect-port.js
+<<<<<<< HEAD
   checksum: b48da9340481742547263d5d985e65d078592557863402ecf538511735e83575867e94f91fe74405ea19b61351feb99efccae7e55de9a151d5654e3417cea05b
+=======
+  checksum: 72d9141539cb2ff570c147f77dc6b73907bb9caee2a56744cb8d46f566bc5ee2ccb40c1e36cd26a197a4abd6d59e8970f48d0d33b8f994ee0e62e6d7f748fc85
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -10065,6 +11184,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "ejs@npm:^3.1.7":
   version: 3.1.8
   resolution: "ejs@npm:3.1.8"
@@ -10080,6 +11200,12 @@ __metadata:
   version: 1.4.284
   resolution: "electron-to-chromium@npm:1.4.284"
   checksum: be496e9dca6509dbdbb54dc32146fc99f8eb716d28a7ee8ccd3eba0066561df36fc51418d8bd7cf5a5891810bf56c0def3418e74248f51ea4a843d423603d10a
+=======
+"electron-to-chromium@npm:^1.4.251":
+  version: 1.4.256
+  resolution: "electron-to-chromium@npm:1.4.256"
+  checksum: 878ca8e33a05165808a662b52ac332a42a5fcf842540de38c4cdde462e4c2cb2f2c10c4864cd44c486f8470f88818f42d275774865666aad424e1e4f500d91e8
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -10603,8 +11729,13 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.30.1":
+<<<<<<< HEAD
   version: 7.31.10
   resolution: "eslint-plugin-react@npm:7.31.10"
+=======
+  version: 7.31.8
+  resolution: "eslint-plugin-react@npm:7.31.8"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     array-includes: ^3.1.5
     array.prototype.flatmap: ^1.3.0
@@ -10622,7 +11753,11 @@ __metadata:
     string.prototype.matchall: ^4.0.7
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
+<<<<<<< HEAD
   checksum: f013669c296483559a760648fa06425f161b1aff93c668f14c4561c933d22a7836b745b88a795c53cab929c71513d5fd1f2ffdddff915709f01b77ac25f5b71b
+=======
+  checksum: 0683e2a624a4df6f08264a3f6bc614a81e8f961c83173bdf2d8d3523f84ed5d234cddc976dbc6815913e007c5984df742ba61be0c0592b27c3daabe0f68165a3
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -11402,7 +12537,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.0":
+=======
+"follow-redirects@npm:^1.14.0":
+>>>>>>> Reverted Yarn lock file
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -11639,9 +12778,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0, gatsby-cli@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-cli@npm:4.24.0"
+=======
+"gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "gatsby-cli@npm:4.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -11659,13 +12804,22 @@ __metadata:
     clipboardy: ^2.3.0
     common-tags: ^1.8.2
     convert-hrtime: ^3.0.0
+<<<<<<< HEAD
     create-gatsby: ^2.24.0
+=======
+    create-gatsby: ^2.23.0
+>>>>>>> Reverted Yarn lock file
     envinfo: ^7.8.1
     execa: ^5.1.1
     fs-exists-cached: ^1.0.0
     fs-extra: ^10.1.0
+<<<<<<< HEAD
     gatsby-core-utils: ^3.24.0
     gatsby-telemetry: ^3.24.0
+=======
+    gatsby-core-utils: ^3.23.0
+    gatsby-telemetry: ^3.23.0
+>>>>>>> Reverted Yarn lock file
     hosted-git-info: ^3.0.8
     is-valid-path: ^0.1.1
     joi: ^17.4.2
@@ -11687,6 +12841,7 @@ __metadata:
     yurnalist: ^2.1.0
   bin:
     gatsby: cli.js
+<<<<<<< HEAD
   checksum: a47971a89a59b615a701ba6a8211b2733fd37c420d1ba71737c57f8766217e5214df764a6eb901d15e52c91fab8b64410cf634d616ea2828e0e68948249feeda
   languageName: node
   linkType: hard
@@ -11694,6 +12849,15 @@ __metadata:
 "gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.23.0, gatsby-core-utils@npm:^3.24.0":
   version: 3.24.0
   resolution: "gatsby-core-utils@npm:3.24.0"
+=======
+  checksum: a16a47ea10a74fabb7804835703c63bc06385991c13a6949e8b545e12867e318dd9d898f9895e3c006e6b1cf5ea02b216eb8b0f04b02c7f8de8087309abd6397
+  languageName: node
+  linkType: hard
+
+"gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.23.0":
+  version: 3.23.0
+  resolution: "gatsby-core-utils@npm:3.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
     ci-info: 2.0.0
@@ -11726,6 +12890,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-graphiql-explorer@npm:^2.22.0, gatsby-graphiql-explorer@npm:^2.24.0":
   version: 2.24.0
   resolution: "gatsby-graphiql-explorer@npm:2.24.0"
@@ -11763,6 +12928,45 @@ __metadata:
 "gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.1":
   version: 2.24.1
   resolution: "gatsby-page-utils@npm:2.24.1"
+=======
+"gatsby-graphiql-explorer@npm:^2.22.0, gatsby-graphiql-explorer@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "gatsby-graphiql-explorer@npm:2.23.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+  checksum: eff646cbc929fbe3fd8736226929cdef10e4cd3e60569d951547ef4aae815d5181d4fbd3eb78d19dc85ef8c1d0cc7f5c413ddb81a01fbc02a62d62c67714f4e0
+  languageName: node
+  linkType: hard
+
+"gatsby-legacy-polyfills@npm:^2.22.0, gatsby-legacy-polyfills@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "gatsby-legacy-polyfills@npm:2.23.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    core-js-compat: 3.9.0
+  checksum: 32c8816b9cc187433215bfe86913b402908b202ae9adc8aef61ab5d0371e315d94611a89393ec7782d3b7e051f4fc3f1072a9b23209d7b5f7c7fb0f318c2ed9b
+  languageName: node
+  linkType: hard
+
+"gatsby-link@npm:^4.22.0, gatsby-link@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "gatsby-link@npm:4.23.0"
+  dependencies:
+    "@types/reach__router": ^1.3.10
+    gatsby-page-utils: ^2.23.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@gatsbyjs/reach-router": ^1.3.5
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
+  checksum: 07da020b7b5893a22554c3a0efaf2844f76321f653ade0df426bc2111f251b6e4c13ccab24e4be855fc978a01d611e9875fd2c9d47391ab9d7fc0b5bae0af417
+  languageName: node
+  linkType: hard
+
+"gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.23.0":
+  version: 2.23.0
+  resolution: "gatsby-page-utils@npm:2.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
     bluebird: ^3.7.2
@@ -11929,9 +13133,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.1":
   version: 4.24.1
   resolution: "gatsby-plugin-page-creator@npm:4.24.1"
+=======
+"gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "gatsby-plugin-page-creator@npm:4.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
     "@babel/traverse": ^7.15.4
@@ -12004,9 +13214,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-plugin-typescript@npm:^4.22.0, gatsby-plugin-typescript@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-plugin-typescript@npm:4.24.0"
+=======
+"gatsby-plugin-typescript@npm:^4.22.0, gatsby-plugin-typescript@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "gatsby-plugin-typescript@npm:4.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/core": ^7.15.5
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
@@ -12014,6 +13230,7 @@ __metadata:
     "@babel/plugin-proposal-optional-chaining": ^7.14.5
     "@babel/preset-typescript": ^7.15.0
     "@babel/runtime": ^7.15.4
+<<<<<<< HEAD
     babel-plugin-remove-graphql-queries: ^4.24.0
   peerDependencies:
     gatsby: ^4.0.0-next
@@ -12024,6 +13241,18 @@ __metadata:
 "gatsby-plugin-utils@npm:^3.16.0, gatsby-plugin-utils@npm:^3.17.0, gatsby-plugin-utils@npm:^3.18.0":
   version: 3.18.0
   resolution: "gatsby-plugin-utils@npm:3.18.0"
+=======
+    babel-plugin-remove-graphql-queries: ^4.23.0
+  peerDependencies:
+    gatsby: ^4.0.0-next
+  checksum: 6e512f85693fe37c618f9828d20d1df58b320cc4a7ab9f307407eb5cbe52193fe1bc75c769b2028b7f0115ea2f6e65a5a941e16b99f26b3e2bfe44f26c54603d
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-utils@npm:^3.16.0, gatsby-plugin-utils@npm:^3.17.0":
+  version: 3.17.0
+  resolution: "gatsby-plugin-utils@npm:3.17.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
     "@gatsbyjs/potrace": ^2.3.0
@@ -12040,6 +13269,7 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
     graphql: ^15.0.0
+<<<<<<< HEAD
   checksum: 34c9e1f9cbe6ecd54dbd1ccd5e57a9129cb14022a8e0c7379abaaa4260b5a6c7014091f72d9b4533e4afbbf2158a17b6058929497d69004e17ad0ec11ee09e50
   languageName: node
   linkType: hard
@@ -12047,6 +13277,15 @@ __metadata:
 "gatsby-react-router-scroll@npm:^5.22.0, gatsby-react-router-scroll@npm:^5.24.0":
   version: 5.24.0
   resolution: "gatsby-react-router-scroll@npm:5.24.0"
+=======
+  checksum: 9482031e0fea1e9ec2a9dcffbd87f6e5e499dc4f79391e6661c6d70ce354cf303a4f41b737dc0829196f39ed3d59dc0b47ef8ea19e013455308c90704440c475
+  languageName: node
+  linkType: hard
+
+"gatsby-react-router-scroll@npm:^5.22.0, gatsby-react-router-scroll@npm:^5.23.0":
+  version: 5.23.0
+  resolution: "gatsby-react-router-scroll@npm:5.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/runtime": ^7.15.4
     prop-types: ^15.8.1
@@ -12116,9 +13355,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-script@npm:^1.7.0, gatsby-script@npm:^1.9.0":
   version: 1.9.0
   resolution: "gatsby-script@npm:1.9.0"
+=======
+"gatsby-script@npm:^1.7.0, gatsby-script@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "gatsby-script@npm:1.8.0"
+>>>>>>> Reverted Yarn lock file
   peerDependencies:
     "@gatsbyjs/reach-router": ^1.3.5
     react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
@@ -12163,6 +13408,7 @@ __metadata:
     xstate: 4.32.1
   peerDependencies:
     gatsby: ^4.0.0-next
+<<<<<<< HEAD
   checksum: 6e45cf46db2862b411db57733276dcecabc869b52b24b43d3643a5132d2b4d682fec589ab9fae7fdf341abcfac995d5849fd98c870070a6d3fcf1f096439e607
   languageName: node
   linkType: hard
@@ -12170,6 +13416,15 @@ __metadata:
 "gatsby-telemetry@npm:^3.22.0, gatsby-telemetry@npm:^3.24.0":
   version: 3.24.0
   resolution: "gatsby-telemetry@npm:3.24.0"
+=======
+  checksum: 5b938fca34cde217da446b575db76499794be30f2e8e651afb92e820ea43275b5432f6aa41c531d671fcedfa66897d639835a307634256dc1c415bdcca10bbc9
+  languageName: node
+  linkType: hard
+
+"gatsby-telemetry@npm:^3.22.0, gatsby-telemetry@npm:^3.23.0":
+  version: 3.23.0
+  resolution: "gatsby-telemetry@npm:3.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/runtime": ^7.15.4
@@ -12239,9 +13494,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-worker@npm:^1.22.0, gatsby-worker@npm:^1.24.0":
   version: 1.24.0
   resolution: "gatsby-worker@npm:1.24.0"
+=======
+"gatsby-worker@npm:^1.22.0, gatsby-worker@npm:^1.23.0":
+  version: 1.23.0
+  resolution: "gatsby-worker@npm:1.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/core": ^7.15.5
     "@babel/runtime": ^7.15.4
@@ -12428,8 +13689,13 @@ __metadata:
   linkType: hard
 
 "gatsby@npm:^4.22.0":
+<<<<<<< HEAD
   version: 4.24.5
   resolution: "gatsby@npm:4.24.5"
+=======
+  version: 4.23.0
+  resolution: "gatsby@npm:4.23.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -12638,7 +13904,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "get-intrinsic@npm:^1.0.1, get-intrinsic@npm:^1.0.2, get-intrinsic@npm:^1.1.0, get-intrinsic@npm:^1.1.1, get-intrinsic@npm:^1.1.3":
+=======
+"get-intrinsic@npm:^1.0.1, get-intrinsic@npm:^1.0.2, get-intrinsic@npm:^1.1.0, get-intrinsic@npm:^1.1.1, get-intrinsic@npm:^1.1.2":
+>>>>>>> Reverted Yarn lock file
   version: 1.1.3
   resolution: "get-intrinsic@npm:1.1.3"
   dependencies:
@@ -12787,10 +14057,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "git-url-parse@npm:^13.1.0":
   version: 13.1.0
   resolution: "git-url-parse@npm:13.1.0"
   dependencies:
+=======
+"git-up@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "git-up@npm:7.0.0"
+  dependencies:
+    is-ssh: ^1.4.0
+    parse-url: ^8.1.0
+  checksum: 2faadbab51e94d2ffb220e426e950087cc02c15d664e673bd5d1f734cfa8196fed8b19493f7bf28fe216d087d10e22a7fd9b63687e0ba7d24f0ddcfb0a266d6e
+  languageName: node
+  linkType: hard
+
+"git-url-parse@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "git-url-parse@npm:13.1.0"
+  dependencies:
+>>>>>>> Reverted Yarn lock file
     git-up: ^7.0.0
   checksum: 212a9b0343e9199998b6a532efe2014476a7a1283af393663ca49ac28d4768929aad16d3322e2685236065ee394dbc93e7aa63a48956531e984c56d8b5edb54d
   languageName: node
@@ -14070,10 +15357,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
   checksum: 61fd57d03b0d984e2ed3720fb1c7a897827ea174bd44402878e059542ea8c4aeedee0ea0985998aa5cc2736b2fa6e271c08587addb5b3959ac52cf665173d1ac
+=======
+"is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.4":
+  version: 1.2.6
+  resolution: "is-callable@npm:1.2.6"
+  checksum: 7667d6a6be66df00741cfa18c657877c46a00139ea7ea7765251e9db0182745c9ee173506941a329d6914e34e59e9cc80029fb3f68bbf8c22a6c155ee6ea77b3
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -15116,6 +16410,7 @@ __metadata:
   linkType: hard
 
 "lerna@npm:^5.5.1":
+<<<<<<< HEAD
   version: 5.6.2
   resolution: "lerna@npm:5.6.2"
   dependencies:
@@ -15137,6 +16432,27 @@ __metadata:
     "@lerna/run": 5.6.2
     "@lerna/version": 5.6.2
     "@nrwl/devkit": ">=14.8.1 < 16"
+=======
+  version: 5.5.2
+  resolution: "lerna@npm:5.5.2"
+  dependencies:
+    "@lerna/add": 5.5.2
+    "@lerna/bootstrap": 5.5.2
+    "@lerna/changed": 5.5.2
+    "@lerna/clean": 5.5.2
+    "@lerna/cli": 5.5.2
+    "@lerna/create": 5.5.2
+    "@lerna/diff": 5.5.2
+    "@lerna/exec": 5.5.2
+    "@lerna/import": 5.5.2
+    "@lerna/info": 5.5.2
+    "@lerna/init": 5.5.2
+    "@lerna/link": 5.5.2
+    "@lerna/list": 5.5.2
+    "@lerna/publish": 5.5.2
+    "@lerna/run": 5.5.2
+    "@lerna/version": 5.5.2
+>>>>>>> Reverted Yarn lock file
     import-local: ^3.0.2
     inquirer: ^8.2.4
     npmlog: ^6.0.2
@@ -15144,7 +16460,11 @@ __metadata:
     typescript: ^3 || ^4
   bin:
     lerna: cli.js
+<<<<<<< HEAD
   checksum: 5e06ac9f1e47e414231aa9d9e6a74f6ea7eef62e0110941b1ac1a73635cfaaae3802047e16c33c9682f5932e72653b959b2895cc49da334afbae51ff718baca3
+=======
+  checksum: acda9d667b093b059a562f3c977df1584bcad8594b25917fab6caeb52432d39305b210e913cab87b1a46d951ee6c67a6588a0359122d884d3334a3e0a2f1894e
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -16750,15 +18070,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "msgpackr@npm:^1.5.4":
   version: 1.7.2
   resolution: "msgpackr@npm:1.7.2"
+=======
+"msgpackr@npm:^1.5.0, msgpackr@npm:^1.5.4":
+  version: 1.7.0
+  resolution: "msgpackr@npm:1.7.0"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     msgpackr-extract: ^2.1.2
   dependenciesMeta:
     msgpackr-extract:
       optional: true
+<<<<<<< HEAD
   checksum: 156cf8938667c3a191feedaed05c8a2d7c95b53d0834c32928e849a2bd93292e4eba33e3601c79cc4cc79023161d658e91472f1719d0d5c63fb1d0f2b142fa07
+=======
+  checksum: f83c96dd4ec781fb7aa687ad3050dbfa82ad5b792f93a5f59224468d09130cf6cef2b0466f25449ccad3aa070d5a7df88bc3cd781f0d8dfe6446c6798de1d081
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -17350,12 +18680,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "nx@npm:15.0.3, nx@npm:>=14.8.1 < 16":
   version: 15.0.3
   resolution: "nx@npm:15.0.3"
   dependencies:
     "@nrwl/cli": 15.0.3
     "@nrwl/tao": 15.0.3
+=======
+"nx@npm:14.7.8, nx@npm:>=14.6.1 < 16":
+  version: 14.7.8
+  resolution: "nx@npm:14.7.8"
+  dependencies:
+    "@nrwl/cli": 14.7.8
+    "@nrwl/tao": 14.7.8
+>>>>>>> Reverted Yarn lock file
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
@@ -17399,7 +18738,11 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
+<<<<<<< HEAD
   checksum: 17f4322025c51df55e06e4d41e6197824ecf449f99a9b5af11c7bd7a99e36d007e5dcaf1bd253f096c3f14e5f001dbd9449881a72a079042ee83b811e18c9102
+=======
+  checksum: 8a3e1ced1f236e5c0929bea10dc78b3f3cb7ed7a20efa31630515d4216dc22aa3c811427a0e89cd4af97df79f663e29ad4ebf206325c0c814c18498e03845910
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -18111,10 +19454,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"parse-path@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "parse-path@npm:7.0.0"
+  dependencies:
+    protocols: ^2.0.0
+  checksum: 244b46523a58181d251dda9b888efde35d8afb957436598d948852f416d8c76ddb4f2010f9fc94218b4be3e5c0f716aa0d2026194a781e3b8981924142009302
+  languageName: node
+  linkType: hard
+
 "parse-srcset@npm:^1.0.2":
   version: 1.0.2
   resolution: "parse-srcset@npm:1.0.2"
   checksum: 3a0380380c6082021fcce982f0b89fb8a493ce9dfd7d308e5e6d855201e80db8b90438649b31fdd82a3d6089a8ca17dccddaa2b730a718389af4c037b8539ebf
+  languageName: node
+  linkType: hard
+
+"parse-url@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "parse-url@npm:8.1.0"
+  dependencies:
+    parse-path: ^7.0.0
+  checksum: b93e21ab4c93c7d7317df23507b41be7697694d4c94f49ed5c8d6288b01cba328fcef5ba388e147948eac20453dee0df9a67ab2012415189fff85973bdffe8d9
   languageName: node
   linkType: hard
 
@@ -21977,12 +23338,21 @@ __metadata:
   linkType: hard
 
 "swiper@npm:^8.3.2":
+<<<<<<< HEAD
   version: 8.4.4
   resolution: "swiper@npm:8.4.4"
   dependencies:
     dom7: ^4.0.4
     ssr-window: ^4.0.2
   checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
+=======
+  version: 8.4.2
+  resolution: "swiper@npm:8.4.2"
+  dependencies:
+    dom7: ^4.0.4
+    ssr-window: ^4.0.2
+  checksum: 84f987c8d399ed054002052d00937036d74705bf8177a9f6e7ffb035fbc9aa5b88c833503970df44f86330e632694af9d948baddc7ac32233c8d58756924cccf
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -22605,22 +23975,40 @@ __metadata:
   linkType: hard
 
 "typescript@npm:^3 || ^4, typescript@npm:^4.6.4":
+<<<<<<< HEAD
   version: 4.8.4
   resolution: "typescript@npm:4.8.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 3e4f061658e0c8f36c820802fa809e0fd812b85687a9a2f5430bc3d0368e37d1c9605c3ce9b39df9a05af2ece67b1d844f9f6ea8ff42819f13bcb80f85629af0
+=======
+  version: 4.8.3
+  resolution: "typescript@npm:4.8.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 8286a5edcaf3d68e65c451aa1e7150ad1cf53ee0813c07ec35b7abdfdb10f355ecaa13c6a226a694ae7a67785fd7eeebf89f845da0b4f7e4a35561ddc459aba0
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^3 || ^4#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
+<<<<<<< HEAD
   version: 4.8.4
   resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
+=======
+  version: 4.8.3
+  resolution: "typescript@patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 2222d2382fb3146089b1d27ce2b55e9d1f99cc64118f1aba75809b693b856c5d3c324f052f60c75b577947fc538bc1c27bad0eb76cbdba9a63a253489504ba7e
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -22632,11 +24020,19 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
+<<<<<<< HEAD
   version: 3.17.4
   resolution: "uglify-js@npm:3.17.4"
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 7b3897df38b6fc7d7d9f4dcd658599d81aa2b1fb0d074829dd4e5290f7318dbca1f4af2f45acb833b95b1fe0ed4698662ab61b87e94328eb4c0a0d3435baf924
+=======
+  version: 3.17.1
+  resolution: "uglify-js@npm:3.17.1"
+  bin:
+    uglifyjs: bin/uglifyjs
+  checksum: 5e24ad48e096d309e77a462fa0508a9bfe33e2ab00e1bd21dc8bd5d035cf0b58063914bef1c6d6aca78e9e5bbe619714b142ffc646165702e3714f4cfbc7151c
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -23089,8 +24485,13 @@ __metadata:
   linkType: hard
 
 "update-browserslist-db@npm:^1.0.9":
+<<<<<<< HEAD
   version: 1.0.10
   resolution: "update-browserslist-db@npm:1.0.10"
+=======
+  version: 1.0.9
+  resolution: "update-browserslist-db@npm:1.0.9"
+>>>>>>> Reverted Yarn lock file
   dependencies:
     escalade: ^3.1.1
     picocolors: ^1.0.0
@@ -23098,7 +24499,11 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     browserslist-lint: cli.js
+<<<<<<< HEAD
   checksum: 12db73b4f63029ac407b153732e7cd69a1ea8206c9100b482b7d12859cd3cd0bc59c602d7ae31e652706189f1acb90d42c53ab24a5ba563ed13aebdddc5561a0
+=======
+  checksum: f625899b236f6a4d7f62b56be1b8da230c5563d1fef84d3ef148f2e1a3f11a5a4b3be4fd7e3703e51274c116194017775b10afb4de09eb2c0d09d36b90f1f578
+>>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
