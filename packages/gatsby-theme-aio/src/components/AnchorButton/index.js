@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { GatsbyLink } from '../GatsbyLink';
-import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../utils';
+import { getExternalLinkProps, isExternalLink, gdocsRelativeLinkFix } from '../../utils';
 import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import '@spectrum-css/button';
