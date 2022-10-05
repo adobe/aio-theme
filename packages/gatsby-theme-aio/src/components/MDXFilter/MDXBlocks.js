@@ -30,6 +30,7 @@ import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
 import { TabsBlock } from '../Tabs';
 import { Carousel } from '../Carousel';
+import { AnchorButtonGroup } from '../AnchorButtonGroup';
 
 export const MDXBlocks = {
   Hero,
@@ -48,5 +49,6 @@ export const MDXBlocks = {
   JsDocParameters,
   ProductCardGrid,
   TabsBlock,
-  Carousel
+  Carousel,
+  AnchorButtonGroup
 };
