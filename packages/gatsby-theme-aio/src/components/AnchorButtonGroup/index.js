@@ -19,21 +19,58 @@ import '@spectrum-css/typography';
 import { AnchorButton } from '../AnchorButton';
 
 
-const AnchorButtonGroup = ({className, theme = 'dark'}) => {
+const AnchorButtonGroup = ({className, theme = 'light'}) => {
   return (
-    <section
-    className={classNames(className, `spectrum--${theme}`)}
-    css={css`
-      background: var(--spectrum-global-color-gray-100);
-      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
-    `}>
-      <span class="spectrum-Button-label">WTF</span>
-      <div>
-        <AnchorButton href="https://google.com" style="fill" variant="accent">
-          <span class="spectrum-Button-label">Button</span>
-        </AnchorButton>
-      </div>
-    </section>
+    <>
+      <section
+      className={classNames(className, `spectrum--${theme}`)}
+      css={css`
+        background: var(--spectrum-global-color-gray-100);
+        padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
+      `}>
+        <div>
+          <AnchorButton href="https://google.com" style="fill" variant="accent">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+
+          <AnchorButton href="https://google.com" style="outline" variant="accent">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+        </div>
+        <div>
+          <AnchorButton href="https://google.com" style="fill" variant="primary">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+          <AnchorButton href="https://google.com" style="outline" variant="primary">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+        </div>
+        <div>
+          <AnchorButton href="https://google.com" style="fill" variant="secondary">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+          <AnchorButton href="https://google.com" style="outline" variant="secondary">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+        </div>
+        <div>
+          <AnchorButton href="https://google.com" style="fill" variant="negative">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+          <AnchorButton href="https://google.com" style="outline" variant="negative">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+        </div>
+        <div>
+          <AnchorButton href="https://google.com" style="fill" variant="staticWhite">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+          <AnchorButton href="https://google.com" style="outline" variant="staticWhite">
+            <span class="spectrum-Button-label">Button</span>
+          </AnchorButton>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -42,4 +79,4 @@ AnchorButtonGroup.propTypes = {
   theme: PropTypes.oneOf(['light', 'dark', 'lightest'])
 };
 
-export default AnchorButtonGroup;
+export { AnchorButtonGroup };

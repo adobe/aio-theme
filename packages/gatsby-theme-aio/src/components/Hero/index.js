@@ -50,7 +50,7 @@ const getAriaLabel = (label, heading='') => {
   return labelVal;
 }
 
-const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], className }) =>
+const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], heading='', className }) =>
   buttons ? (
     <div>
       <div
@@ -61,20 +61,20 @@ const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accen
           gap: var(--spectrum-global-dimension-size-200);
         `}>
         {Children.map(buttons.props.children, (item, i) => {
+          let style = styles[0];
           let variant = variants[0];
-          let quiet = quiets[0];
 
           if (i > 0) {
+            style = styles[1];
             variant = variants[1];
-            quiet = quiets[1];
           }
 
           const link = getElementChild(item);
 
           return (
             <div key={i}>
-              <AnchorButton aria-label={getAriaLabel(link.props.children, heading)} isQuiet={quiet} href={link.props.href} variant={variant}>
-                {link.props.children}
+              <AnchorButton aria-label={getAriaLabel(link.props.children, heading)} href={link.props.href} variant={variant} style={style}>
+                <span class="spectrum-Button-label">{link.props.children}</span>
               </AnchorButton>
             </div>
           );
@@ -109,7 +109,7 @@ const HeroImage = ({ image, styles }) =>
     })
     : null;
 
-const HeroTexts = ({ texts }) => {
+const HeroTexts = ({ texts, customLayout }) => {
   const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
   return textKeys.map((textKey) =>
     cloneElement(texts[textKey], {
@@ -117,7 +117,6 @@ const HeroTexts = ({ texts }) => {
       css: css`
         &.spectrum-Body--sizeL {
           margin-top: 0 !important;
-          color:#fff !important;
 
           &:last-of-type {
             margin-bottom: 0 !important;
@@ -166,8 +165,8 @@ const Hero = ({
   customLayout = false,
   primaryOutline = false,
   isPrimaryBtn=false,
-  variantsTypePrimary='cta',
-  variantsTypeSecondary='overBackground',
+  variantsTypePrimary='accent',
+  variantsTypeSecondary='secondary',
   animationVideo="",
   ...props
 }) => {
@@ -337,7 +336,7 @@ const Hero = ({
             {buttons ? (
               <HeroButtons
                 buttons={buttons}
-                quiets={[!isPrimaryBtn, !primaryOutline]}
+                styles={['fill', 'outline']}
                 variants={[variantsTypePrimary,variantsTypeSecondary]}
                 css={css`
                   margin-top: var(--spectrum-global-dimension-size-200);
@@ -444,8 +443,8 @@ const Hero = ({
 
                   <HeroButtons
                     buttons={buttons}
-                    quiets={[false]}
-                    variants={["primary", "overBackground"]}
+                    style={["fill"]}
+                    variants={["accent", "secondary"]}
                     css={css`
                       margin-top: var(--spectrum-global-dimension-size-400);
                     `}
@@ -569,7 +568,7 @@ const Hero = ({
                   margin-top: var(--spectrum-global-dimension-size-400);
                 `}
                 variants={[variantsTypePrimary, variantsTypeSecondary]}
-                quiets={[primaryOutline]}
+                style={["outine"]}
               />
             </div>
             <div>
@@ -626,7 +625,7 @@ const Hero = ({
 
             <HeroButtons
               buttons={buttons}
-              variants={['cta', 'overBackground']}
+              variants={['accent', 'secondary']}
               css={css`
                 margin-top: var(--spectrum-global-dimension-size-400);
               `}
