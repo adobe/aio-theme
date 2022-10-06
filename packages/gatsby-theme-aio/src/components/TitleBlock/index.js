@@ -24,7 +24,7 @@ const TitleBlock = ({ className, heading, text, theme = 'lightest',id }) => (
       background: var(--spectrum-global-color-gray-100);
       padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;
       text-align: center;
-      max-width:${DESKTOP_SCREEN_WIDTH};
+
       @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
         padding: var(--spectrum-global-dimension-size-400);
       }
