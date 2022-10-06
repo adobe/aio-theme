@@ -94,7 +94,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           }
         `}>
         <Element
-          className={`spectrum-Card spectrum-Card--vertical`}
+          className={`spectrum-Card spectrum-Card--vertical spectrum-Card--sizeM`}
           to={href}
           {...getExternalLinkProps(href)}
           css={css`
@@ -210,8 +210,8 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
               <div className="spectrum-Card-footer">
                 <HeroButtons
                   buttons={buttons}
-                  quiets={[false]}
-                  variants={[btnVarient]}
+                  styles={['outline']}
+                  variants={[btnVariant]}
                   css={css`
 
                 @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
