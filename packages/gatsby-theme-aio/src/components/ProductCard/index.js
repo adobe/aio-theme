@@ -73,7 +73,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
       <div
         role="figure"
         // tabIndex="0"
-        className="spectrum-Card"
+        className="spectrum-Card spectrum-Card--sizeM"
         css={css`
           margin: 0 var(--spectrum-global-dimension-size-300);
           width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
@@ -155,7 +155,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
         <div className="spectrum-Card-footer">
           <HeroButtons
             buttons={buttons}
-            quiets={[true, false]}
+            quiets={['outline', 'outline']}
             variants={['secondary', 'primary']}
             css={css`
               justify-content: flex-end;
