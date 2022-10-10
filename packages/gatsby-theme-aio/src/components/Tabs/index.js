@@ -550,7 +550,6 @@ const TabsBlock = ({
                   css={css`
                     text-align: left;
                     padding: 0px 0 var(--spectrum-global-dimension-size-100) 10px !important;
-                    max-width: ${layoutColumns(8.5)} !important;
                     overflow-x: hidden !important;
 
                     @media only screen and (max-width: ${mobileMinWidth}) {
