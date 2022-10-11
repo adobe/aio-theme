@@ -167,6 +167,16 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
+const setTargetOrigin = () => {
+  const parentURL = document.referrer;
+
+  if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
+    return parentURL;
+  } else {
+    return false;
+  }
+};
+
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -187,16 +197,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const [keywordResults, setKeywordResults] = useState([]);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
-
-  const setTargetOrigin = () => {
-    const parentURL = document.referrer;
-
-    if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
-      return parentURL;
-    } else {
-      return false;
-    }
-  };
 
   const search = async () => {
     if (searchQuery.length) {
@@ -316,7 +316,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setTriggerSearch(false);
       search();
     }
-  }, [triggerSearch, setTriggerSearch]);
+  }, [triggerSearch]);
 
   useEffect(() => {
     if (searchResultsRef?.current) {
