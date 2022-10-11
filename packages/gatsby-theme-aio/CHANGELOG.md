@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.0-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.7.0-rc1) (2022-10-11)
+
+### Fix
+
+* Merge DC shadowed components back into main theme [af84e99](https://github.com/adobe/aio-theme/commit/af84e9942e50e5b5f31efda4566750a35d78ebb9).
+
 ## [4.6.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.5...@adobe/gatsby-theme-aio@4.6.6) (2022-10-27)
 
 * Remove lmdb-store [cef19be](https://github.com/adobe/aio-theme/commit/cef19bed85166ee867649e1175d8a3f51aef87ec).
@@ -36,7 +42,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * Add in uxp-indesign to search [1b52068](https://github.com/adobe/aio-theme/commit/1b520682e34d84ef37976497d74f44dfb7042e0c).
-
 
 ## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
 
