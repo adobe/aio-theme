@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import nextId from "react-id-generator";
 import { GatsbyLink } from '../GatsbyLink';
-import { Menu } from '../components/Menu';
+import { Menu } from '../Menu';
 import { graphql, useStaticQuery, withPrefix } from "gatsby";
 import Context from'../Context';
 import { rootFix, normalizePagePath, MOBILE_SCREEN_WIDTH } from '../../utils';
