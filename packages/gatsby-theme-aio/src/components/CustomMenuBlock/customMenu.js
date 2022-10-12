@@ -6,12 +6,12 @@ import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import nextId from "react-id-generator";
-import { GatsbyLink } from "@adobe/gatsby-theme-aio/src/components/GatsbyLink";
-import { Menu } from "@adobe/gatsby-theme-aio/src/components/Menu";
+import { GatsbyLink } from '../GatsbyLink';
+import { Menu } from ''../components/Menu';
 import { graphql, useStaticQuery, withPrefix } from "gatsby";
-import Context from "@adobe/gatsby-theme-aio/src/components/Context";
-import { rootFix, normalizePagePath } from "@adobe/gatsby-theme-aio/src/utils";
-import { MOBILE_SCREEN_WIDTH } from "@adobe/gatsby-theme-aio/conf/globals";
+import Context from'../Context';
+import { rootFix, normalizePagePath } from '../../utils';
+import { MOBILE_SCREEN_WIDTH } from '../../conf/globals';
 import "@spectrum-css/menu";
       
 const CustomMenu = ({menuItem='salesFAQMenus'}) => {

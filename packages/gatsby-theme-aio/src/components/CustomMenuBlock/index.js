@@ -13,23 +13,23 @@ import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import nextId from "react-id-generator";
-import { GatsbyLink } from "@adobe/gatsby-theme-aio/src/components/GatsbyLink";
+import { GatsbyLink } from '../GatsbyLink';
 import {
   ChevronDown,
   ChevronRight,
-} from "@adobe/gatsby-theme-aio/src/components/Icons";
-import { Menu } from "@adobe/gatsby-theme-aio/src/components/Menu";
+} from '../Icons';
+import { Menu } from '../Menu';
 import { graphql, useStaticQuery, withPrefix } from "gatsby";
-import Context from "@adobe/gatsby-theme-aio/src/components/Context";
+import Context from '../Context';
 import {
   rootFix,
   findSelectedPages,
   normalizePagePath,
-} from "@adobe/gatsby-theme-aio/src/utils";
+} from '../../utils';
 import {
   TABLET_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-} from "@adobe/gatsby-theme-aio/conf/globals";
+} from '../../conf/globals';
 import "@spectrum-css/menu";
 
 // Import the svg image dynamically to use in menu item.
@@ -43,8 +43,9 @@ const useDynamicSVGImport = (name, options = {}) => {
     setLoading(true);
     const importIcon = async () => {
       try {
+        // TODO must pass these in as the references are different now
         ImportedIconRef.current = await import(
-          `../../../../pages/images/${name}.svg`
+          `../../../../../../src/pages/images/${name}.svg`
         );
         if (onCompleted) {
           onCompleted(name, ImportedIconRef.current);
