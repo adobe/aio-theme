@@ -17,14 +17,14 @@ import {
   TABLET_SCREEN_WIDTH,
   layoutColumns,
   MOBILE_SCREEN_WIDTH,
-} from "@adobe/gatsby-theme-aio/src/utils";
+} from "../../utils";
 
-import {  DESKTOP_SCREEN_WIDTH } from "../../../../utils";
+import {  DESKTOP_SCREEN_WIDTH } from "../../utils";
 
 import {
   HeroButtons,
   HeroImage,
-} from "@adobe/gatsby-theme-aio/src/components/Hero";
+} from "../Hero";
 import classNames from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
