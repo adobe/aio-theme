@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.0-rc3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc2...@adobe/gatsby-theme-aio@4.7.0-rc3) (2022-10-12)
+
+### Fix
+
+* forgot to add divider and repeat hero [49ef858](https://github.com/adobe/aio-theme/commit/49ef858bfcf5964297eb781374706666fab88363).
+
+
 ## [4.7.0-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc1...@adobe/gatsby-theme-aio@4.7.0-rc2) (2022-10-12)
 
 ### Fix
