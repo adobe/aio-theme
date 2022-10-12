@@ -29,7 +29,7 @@ import {
 import {
   TABLET_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-} from '../../conf/globals';
+} from '../../../conf/globals';
 import "@spectrum-css/menu";
 
 // Import the svg image dynamically to use in menu item.
