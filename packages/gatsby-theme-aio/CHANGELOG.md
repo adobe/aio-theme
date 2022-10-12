@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+## [4.7.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc5...@adobe/gatsby-theme-aio@4.7.0-rc6) (2022-10-12)
+
+### Fix
+
+* fix undefined [185f780](https://github.com/adobe/aio-theme/commit/185f78093dbf87964e5fc22167e88c6240130954).
+
 
 ## [4.7.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc4...@adobe/gatsby-theme-aio@4.7.0-rc5) (2022-10-12)
 
