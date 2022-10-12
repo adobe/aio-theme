@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+## [4.7.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc4...@adobe/gatsby-theme-aio@4.7.0-rc5) (2022-10-12)
+
+### Fix
+
+* references in custom menu block [5c16737](https://github.com/adobe/aio-theme/commit/5c1673746ce5730344647085029831f7d4825eb0).
+
+
 ## [4.7.0-rc4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc3...@adobe/gatsby-theme-aio@4.7.0-rc4) (2022-10-12)
 
 ### Fix
