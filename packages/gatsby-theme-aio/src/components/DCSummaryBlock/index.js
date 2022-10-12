@@ -12,20 +12,20 @@
 
 import React, { cloneElement } from "react";
 import { css } from "@emotion/react";
-import { HeroButtons } from "@adobe/gatsby-theme-aio/src/components/Hero";
+import { HeroButtons } from '../Hero';
 import {
   layoutColumns,
   TABLET_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH
-} from "@adobe/gatsby-theme-aio/src/utils";
+} from '../../utils';
 import "@spectrum-css/typography";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import {  DESKTOP_SCREEN_WIDTH } from "../../../../utils";
+import {  DESKTOP_SCREEN_WIDTH } from "../../utils";
 
 
-const SummaryBlock = ({
+const DCSummaryBlock = ({
   className,
   background = "var(--spectrum-global-color-gray-100)",
   theme = "dark",
@@ -110,7 +110,7 @@ const SummaryBlock = ({
             `,
           })}
         {!buttonPositionRight && (
-          <HeroButtons buttons={buttons} quiets={[isBtnVariant, !primaryOutline]} />
+          <HeroButtons buttons={buttons} styles={[isBtnVariant, !primaryOutline]} />
         )}
       </div>
       {buttonPositionRight && (
@@ -127,7 +127,7 @@ const SummaryBlock = ({
         >
           <HeroButtons
             buttons={buttons}
-            quiets={[isBtnVariant, primaryOutline]}
+            styles={[isBtnVariant, primaryOutline]}
             variants={[btnVariant, btnVariant]}
           />
         </div>
@@ -136,7 +136,7 @@ const SummaryBlock = ({
   </section>
 );
 
-SummaryBlock.propTypes = {
+DCSummaryBlock.propTypes = {
   background: PropTypes.string,
   heading: PropTypes.element,
   text: PropTypes.element,
@@ -150,4 +150,4 @@ SummaryBlock.propTypes = {
   primaryOutline: PropTypes.bool,
 };
 
-export { SummaryBlock };
+export { DCSummaryBlock };
