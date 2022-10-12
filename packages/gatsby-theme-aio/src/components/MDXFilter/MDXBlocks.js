@@ -26,7 +26,6 @@ import { Carousel } from "../Carousel";
 import { TabsBlock } from "../Tabs";
 import { WrapperComponent } from '../WrapperComponent';
 import { FormWrapperComponent } from '../FormWrapperComponent';
-import { Hero } from '../Hero';
 import { CustomMenuBlock } from '../CustomMenuBlock';
 import { CustomIframeBlock } from '../CustomIframe';
 import { CustomCard } from '../CustomCard';
@@ -51,6 +50,7 @@ export const MDXBlocks = {
   Variant,
   TitleBlock,
   TextBlock,
+  Divider,
   AnnouncementBlock,
   SummaryBlock,
   ProductCard,
