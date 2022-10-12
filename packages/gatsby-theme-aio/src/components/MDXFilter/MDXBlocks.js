@@ -21,6 +21,17 @@ import { CodeBlock } from '../CodeBlock';
 import { Variant } from '../Variant';
 import { TitleBlock } from '../TitleBlock';
 import { TextBlock } from '../TextBlock';
+import { Divider } from '../Divider';
+import { Carousel } from "../Carousel";
+import { TabsBlock } from "../Tabs";
+import { WrapperComponent } from '../WrapperComponent';
+import { FormWrapperComponent } from '../FormWrapperComponent';
+import { Hero } from '../Hero';
+import { CustomMenuBlock } from '../CustomMenuBlock';
+import { CustomIframeBlock } from '../CustomIframe';
+import { CustomCard } from '../CustomCard';
+import { MenuWrapperComponent } from '../MenuWrapperComponent';
+import { Accordion, AccordionItem } from '../Accordion';
 import { AnnouncementBlock } from '../AnnouncementBlock';
 import { SummaryBlock } from '../SummaryBlock';
 import { ProductCard } from '../ProductCard';
@@ -28,9 +39,8 @@ import { ResourceCard } from '../ResourceCard';
 import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
-import { TabsBlock } from '../Tabs';
-import { Carousel } from '../Carousel';
 import { AnchorButtonGroup } from '../AnchorButtonGroup';
+import { DCSummaryBlock } from '../DCSummaryBlock';
 
 export const MDXBlocks = {
   Hero,
@@ -48,7 +58,18 @@ export const MDXBlocks = {
   Media,
   JsDocParameters,
   ProductCardGrid,
-  TabsBlock,
+  WrapperComponent,
+  FormWrapperComponent,
+  MenuWrapperComponent,
+  CustomMenuBlock,
+  CustomIframeBlock,
+  CustomCard,
+  Accordion,
+  AccordionItem,
+  TabsBlock: ({ theme, ...props }) => (
+    <TabsBlock theme={theme ?? globalTheme.code} {...props} />
+  ),
   Carousel,
-  AnchorButtonGroup
+  AnchorButtonGroup,
+  DCSummaryBlock
 };
