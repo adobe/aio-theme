@@ -25,11 +25,9 @@ import {
   rootFix,
   findSelectedPages,
   normalizePagePath,
-} from '../../utils';
-import {
   TABLET_SCREEN_WIDTH,
-  MOBILE_SCREEN_WIDTH,
-} from '../../../conf/globals';
+  MOBILE_SCREEN_WIDTH
+} from '../../utils';
 import "@spectrum-css/menu";
 
 // Import the svg image dynamically to use in menu item.

@@ -10,8 +10,7 @@ import { GatsbyLink } from '../GatsbyLink';
 import { Menu } from '../components/Menu';
 import { graphql, useStaticQuery, withPrefix } from "gatsby";
 import Context from'../Context';
-import { rootFix, normalizePagePath } from '../../utils';
-import { MOBILE_SCREEN_WIDTH } from '../../conf/globals';
+import { rootFix, normalizePagePath, MOBILE_SCREEN_WIDTH } from '../../utils';
 import "@spectrum-css/menu";
       
 const CustomMenu = ({menuItem='salesFAQMenus'}) => {
