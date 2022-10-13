@@ -55,10 +55,10 @@ const clearQueryStringParameters = () => {
   window.history.replaceState({}, '', `${window.location.pathname}`);
 };
 
-const searchSuggestions = async (algolia, query, searchIndex, indexAll, existingIndices) => {
+const searchSuggestions = async (algolia, query, searchIndex, indexAll, existingIndices, setExistingIndices) => {
   const queries = [];
   let indexes;
-  if (!existingIndices) {
+  if (!existingIndices.length) {
     const algoliaIndexList = await algolia.listIndices();
     const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
       return Object.values(indexAll).includes(indexName);
@@ -94,10 +94,10 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   return await algolia.multipleQueries(queries);
 };
 
-const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIndices, keywords) => {
+const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIndices, setExistingIndices, keywords) => {
 
   let indexes;
-  if (!existingIndices) {
+  if (!existingIndices.length) {
     const algoliaIndexList = await algolia.listIndices();
     const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
       return Object.values(indexAll).includes(indexName);
@@ -107,7 +107,6 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIn
   } else {
     indexes = existingIndices;
   }
-
   if (selectedIndex.includes('all')) {
     selectedIndex = indexes;
   } else {
@@ -168,6 +167,16 @@ const mapKeywordResults = (facets, results) => {
   }
 };
 
+const setTargetOrigin = () => {
+  const parentURL = document.referrer;
+
+  if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
+    return parentURL;
+  } else {
+    return false;
+  }
+};
+
 const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -189,16 +198,6 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
 
-  const setTargetOrigin = () => {
-    const parentURL = document.referrer;
-
-    if (parentURL.indexOf('localhost') >= 0 || parentURL.indexOf('developer-stage.adobe') >= 0 || parentURL.indexOf('hlx.page') >= 0 || parentURL.indexOf('hlx.live') >= 0 || parentURL.indexOf('developer.adobe') >= 0) {
-      return parentURL;
-    } else {
-      return false;
-    }
-  };
-
   const search = async () => {
     if (searchQuery.length) {
       let search;
@@ -219,9 +218,9 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 
       if (searchQuery !== oldSearchQuery) {
         setIsLoading(true);
-        search = await searchIndexes(algolia, searchQuery, ['all'], indexAll, existingIndices, selectedKeywords);
+        search = await searchIndexes(algolia, searchQuery, ['all'], indexAll, existingIndices, setExistingIndices, selectedKeywords);
       } else {
-        search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, existingIndices, selectedKeywords);
+        search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, existingIndices, setExistingIndices, selectedKeywords);
       }
 
       const localProduct = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL)[0];
@@ -317,7 +316,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
       setTriggerSearch(false);
       search();
     }
-  }, [triggerSearch, setTriggerSearch]);
+  }, [triggerSearch]);
 
   useEffect(() => {
     if (searchResultsRef?.current) {
@@ -446,7 +445,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   if (query.length && !searchResults.length) {
                     setShowClear(true);
 
-                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll, existingIndices);
+                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll, existingIndices, setExistingIndices);
 
                     if (suggestions?.results?.length) {
                       const results = [];
@@ -730,7 +729,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                           setTriggerSearch(true);
                         }}>
                         <span
-                        css={css`
+                          css={css`
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         `}>{keyword}</span>
