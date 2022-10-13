@@ -114,8 +114,8 @@ __metadata:
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
     react-id-generator: ^3.0.2
-    redoc: 2.0.0
-    redoc-cli: ^0.13.20
+    redoc: 2.0.0-rc.56
+    redoc-cli: 0.13.0
     rehype-slug-custom-id: ^1.1.0
     request: ^2.88.2
     sharp: ^0.31.0
@@ -329,10 +329,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.18.8, @babel/compat-data@npm:^7.19.3":
   version: 7.19.3
   resolution: "@babel/compat-data@npm:7.19.3"
   checksum: e6014cdb31f3e893a1bde6dd3ae05c8f946778318fa337b18b546ace6f9c9f7a5033fd9447070ebc8e820fa9fc7e0a30d4e354989e091900305a876b44346c8f
+=======
+"@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.19.3, @babel/compat-data@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/compat-data@npm:7.19.4"
+  checksum: 757fdaeb6756c2d323ff56f60fb8e670292108cda6abf762a56c0d40910ecc4d2c7e283dbdfbcee6bc28c74ad659144352609e1cb49d31e101ab13ea5ce90072
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -397,6 +404,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.3":
   version: 7.19.3
   resolution: "@babel/generator@npm:7.19.3"
@@ -405,6 +413,16 @@ __metadata:
     "@jridgewell/gen-mapping": ^0.3.2
     jsesc: ^2.5.1
   checksum: b1585e398f6c37f442a2fdac964a326b348fbc8fb99a6aaf4f72bbe993adb0ca792bc0a9c65e59930b2a2e55eb5aa3aab360ceb678d3d40692eb0cda2b7b6aa6
+=======
+"@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.3, @babel/generator@npm:^7.19.4":
+  version: 7.19.5
+  resolution: "@babel/generator@npm:7.19.5"
+  dependencies:
+    "@babel/types": ^7.19.4
+    "@jridgewell/gen-mapping": ^0.3.2
+    jsesc: ^2.5.1
+  checksum: a66eafc540f80fc36c1b009b28bde1d12aff85e7916e7f5adf49c5a8866fecee4906b3c3c6db315d2723ea54e4e5ddfb2913fe6ab424f51dbccf753000930eaf
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -606,11 +624,11 @@ __metadata:
   linkType: hard
 
 "@babel/helper-simple-access@npm:^7.18.6":
-  version: 7.18.6
-  resolution: "@babel/helper-simple-access@npm:7.18.6"
+  version: 7.19.4
+  resolution: "@babel/helper-simple-access@npm:7.19.4"
   dependencies:
-    "@babel/types": ^7.18.6
-  checksum: 37cd36eef199e0517845763c1e6ff6ea5e7876d6d707a6f59c9267c547a50aa0e84260ba9285d49acfaf2cfa0a74a772d92967f32ac1024c961517d40b6c16a5
+    "@babel/types": ^7.19.4
+  checksum: 964cb1ec36b69aabbb02f8d5ee1d680ebbb628611a6740958d9b05107ab16c0492044e430618ae42b1f8ea73e4e1bafe3750e8ebc959d6f3277d9cfbe1a94880
   languageName: node
   linkType: hard
 
@@ -632,10 +650,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-string-parser@npm:^7.18.10":
-  version: 7.18.10
-  resolution: "@babel/helper-string-parser@npm:7.18.10"
-  checksum: d554a4393365b624916b5c00a4cc21c990c6617e7f3fe30be7d9731f107f12c33229a7a3db9d829bfa110d2eb9f04790745d421640e3bd245bb412dc0ea123c1
+"@babel/helper-string-parser@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/helper-string-parser@npm:7.19.4"
+  checksum: b2f8a3920b30dfac81ec282ac4ad9598ea170648f8254b10f475abe6d944808fb006aab325d3eb5a8ad3bea8dfa888cfa6ef471050dae5748497c110ec060943
   languageName: node
   linkType: hard
 
@@ -666,13 +684,13 @@ __metadata:
   linkType: hard
 
 "@babel/helpers@npm:^7.12.5, @babel/helpers@npm:^7.19.0":
-  version: 7.19.0
-  resolution: "@babel/helpers@npm:7.19.0"
+  version: 7.19.4
+  resolution: "@babel/helpers@npm:7.19.4"
   dependencies:
     "@babel/template": ^7.18.10
-    "@babel/traverse": ^7.19.0
-    "@babel/types": ^7.19.0
-  checksum: e50e78e0dbb0435075fa3f85021a6bcae529589800bca0292721afd7f7c874bea54508d6dc57eca16e5b8224f8142c6b0e32e3b0140029dc09865da747da4623
+    "@babel/traverse": ^7.19.4
+    "@babel/types": ^7.19.4
+  checksum: e2684e9a79d45b95db05c7e14628e8dd1d91ad59433a3afd715bdf19d4683d9e9f84382bcc82316b678aa609ecfc41b07be0b9c49eed07c444f82a6b9e501186
   languageName: node
   linkType: hard
 
@@ -687,12 +705,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.3":
   version: 7.19.3
   resolution: "@babel/parser@npm:7.19.3"
   bin:
     parser: ./bin/babel-parser.js
   checksum: 854f1390328a8cea5d95ed2a8655a8976cdb41e72393845df0f86088dc777817a5e015a1a61739d312accccf1a22358fb70707a013d25596251cceba2c8985ee
+=======
+"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.3, @babel/parser@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/parser@npm:7.19.4"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 5ef97da97915085ff3b9c562b04fb6316074ece52d20de95f44c47b46abf87fd754cbcae769a69570a84652b736afe5bb2cb7dc117aa7ad6d81ab40eed0c613b
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -844,18 +871,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-object-rest-spread@npm:^7.0.0, @babel/plugin-proposal-object-rest-spread@npm:^7.14.7, @babel/plugin-proposal-object-rest-spread@npm:^7.18.9":
-  version: 7.18.9
-  resolution: "@babel/plugin-proposal-object-rest-spread@npm:7.18.9"
+"@babel/plugin-proposal-object-rest-spread@npm:^7.0.0, @babel/plugin-proposal-object-rest-spread@npm:^7.14.7, @babel/plugin-proposal-object-rest-spread@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/plugin-proposal-object-rest-spread@npm:7.19.4"
   dependencies:
-    "@babel/compat-data": ^7.18.8
-    "@babel/helper-compilation-targets": ^7.18.9
-    "@babel/helper-plugin-utils": ^7.18.9
+    "@babel/compat-data": ^7.19.4
+    "@babel/helper-compilation-targets": ^7.19.3
+    "@babel/helper-plugin-utils": ^7.19.0
     "@babel/plugin-syntax-object-rest-spread": ^7.8.3
     "@babel/plugin-transform-parameters": ^7.18.8
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 66b9bae741d46edf1c96776d26dfe5d335981e57164ec2450583e3d20dfaa08a5137ffebb897e443913207789f9816bfec4ae845f38762c0196a60949eaffdba
+  checksum: 90a2a59da305e6c8c83831e16079193df33d727a77a90972e286af2c8c0295fddb91b0978b88f16f63080d08a82b08ce3ee82a88b0488b3c51decc73c1d35786
   languageName: node
   linkType: hard
 
@@ -1166,14 +1193,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-block-scoping@npm:^7.0.0, @babel/plugin-transform-block-scoping@npm:^7.18.9":
-  version: 7.18.9
-  resolution: "@babel/plugin-transform-block-scoping@npm:7.18.9"
+"@babel/plugin-transform-block-scoping@npm:^7.0.0, @babel/plugin-transform-block-scoping@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/plugin-transform-block-scoping@npm:7.19.4"
   dependencies:
-    "@babel/helper-plugin-utils": ^7.18.9
+    "@babel/helper-plugin-utils": ^7.19.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: f8064ea431eb7aa349dc5b6be87a650f912b48cd65afde917e8644f6f840d7f9d2ce4795f2aa3955aa5b23a73d4ad38abd03386ae109b4b8702b746c6d35bda3
+  checksum: 86353ccbb57b4a0513ac2b1209271858f9c3f2c56b15a6225ff5f1c97ffb1c48f8984046a718a9835ecdae100cbe80ed0b9ca15a5554e33386671b56a8cd887c
   languageName: node
   linkType: hard
 
@@ -1207,14 +1234,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-destructuring@npm:^7.0.0, @babel/plugin-transform-destructuring@npm:^7.18.13":
-  version: 7.18.13
-  resolution: "@babel/plugin-transform-destructuring@npm:7.18.13"
+"@babel/plugin-transform-destructuring@npm:^7.0.0, @babel/plugin-transform-destructuring@npm:^7.19.4":
+  version: 7.19.4
+  resolution: "@babel/plugin-transform-destructuring@npm:7.19.4"
   dependencies:
-    "@babel/helper-plugin-utils": ^7.18.9
+    "@babel/helper-plugin-utils": ^7.19.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 83e44ec93a4cfbf69376db8836d00ec803820081bf0f8b6cea73a9b3cd320b8285768d5b385744af4a27edda4b6502245c52d3ed026ea61356faf57bfe78effb
+  checksum: 0ca40f6abf7273dafefb7a1cc11fef2b9ab3edbd23188cdcff8cd5e30783b89d64e7813e44aae9efab417b90972ae80971bf6c4130eeeb112bcfb44100c72657
   languageName: node
   linkType: hard
 
@@ -1603,10 +1630,17 @@ __metadata:
   linkType: hard
 
 "@babel/preset-env@npm:^7.15.4":
+<<<<<<< HEAD
   version: 7.19.3
   resolution: "@babel/preset-env@npm:7.19.3"
   dependencies:
     "@babel/compat-data": ^7.19.3
+=======
+  version: 7.19.4
+  resolution: "@babel/preset-env@npm:7.19.4"
+  dependencies:
+    "@babel/compat-data": ^7.19.4
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@babel/helper-compilation-targets": ^7.19.3
     "@babel/helper-plugin-utils": ^7.19.0
     "@babel/helper-validator-option": ^7.18.6
@@ -1621,7 +1655,7 @@ __metadata:
     "@babel/plugin-proposal-logical-assignment-operators": ^7.18.9
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.18.6
     "@babel/plugin-proposal-numeric-separator": ^7.18.6
-    "@babel/plugin-proposal-object-rest-spread": ^7.18.9
+    "@babel/plugin-proposal-object-rest-spread": ^7.19.4
     "@babel/plugin-proposal-optional-catch-binding": ^7.18.6
     "@babel/plugin-proposal-optional-chaining": ^7.18.9
     "@babel/plugin-proposal-private-methods": ^7.18.6
@@ -1645,10 +1679,10 @@ __metadata:
     "@babel/plugin-transform-arrow-functions": ^7.18.6
     "@babel/plugin-transform-async-to-generator": ^7.18.6
     "@babel/plugin-transform-block-scoped-functions": ^7.18.6
-    "@babel/plugin-transform-block-scoping": ^7.18.9
+    "@babel/plugin-transform-block-scoping": ^7.19.4
     "@babel/plugin-transform-classes": ^7.19.0
     "@babel/plugin-transform-computed-properties": ^7.18.9
-    "@babel/plugin-transform-destructuring": ^7.18.13
+    "@babel/plugin-transform-destructuring": ^7.19.4
     "@babel/plugin-transform-dotall-regex": ^7.18.6
     "@babel/plugin-transform-duplicate-keys": ^7.18.9
     "@babel/plugin-transform-exponentiation-operator": ^7.18.6
@@ -1675,7 +1709,11 @@ __metadata:
     "@babel/plugin-transform-unicode-escapes": ^7.18.10
     "@babel/plugin-transform-unicode-regex": ^7.18.6
     "@babel/preset-modules": ^0.1.5
+<<<<<<< HEAD
     "@babel/types": ^7.19.3
+=======
+    "@babel/types": ^7.19.4
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     babel-plugin-polyfill-corejs2: ^0.3.3
     babel-plugin-polyfill-corejs3: ^0.6.0
     babel-plugin-polyfill-regenerator: ^0.4.1
@@ -1683,7 +1721,11 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
+<<<<<<< HEAD
   checksum: f967cf48fa54f4b87cfd6dcad0d8c6249379af55c657f7519d2e3538ebb5e3f73b465677d88a6730e569f45150a2966e14b43bd1134d434a12ca351c14381871
+=======
+  checksum: f12af25281f3c5e7df60fa1e79ad481ddd7f6a111d4c0fabcffdabf0eaed3a01b4f8c647ae5445ed1f58df70f52083ffd283e8919ade7afa73801a49c733d22c
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -1732,21 +1774,21 @@ __metadata:
   linkType: hard
 
 "@babel/runtime-corejs3@npm:^7.10.2":
-  version: 7.19.1
-  resolution: "@babel/runtime-corejs3@npm:7.19.1"
+  version: 7.19.4
+  resolution: "@babel/runtime-corejs3@npm:7.19.4"
   dependencies:
     core-js-pure: ^3.25.1
     regenerator-runtime: ^0.13.4
-  checksum: 38a1e8fcd2ba1f76c951259c98a5a11052123923adbf30ec8b2fec202dbbe38c6db61658ef9398e00c30f799e2e54ea036e56a09f43229261918bf5ec1b7d03a
+  checksum: 3418534964d0d334da46b21bbe50510630101fd4a5afe632077d261656a715868e3f0f304ac7c9d608dc2aa72cbea49e31a5bc5cb9f7b5cb23ce01cb917acaef
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
-  version: 7.19.0
-  resolution: "@babel/runtime@npm:7.19.0"
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+  version: 7.19.4
+  resolution: "@babel/runtime@npm:7.19.4"
   dependencies:
     regenerator-runtime: ^0.13.4
-  checksum: fa69c351bb05e1db3ceb9a02fdcf620c234180af68cdda02152d3561015f6d55277265d3109815992f96d910f3db709458cae4f8df1c3def66f32e0867d82294
+  checksum: 66b7e3c13e9ee1d2c9397ea89144f29a875edee266a0eb2d9971be51b32fdbafc85808c7a45e011e6681899bb804b4e2ee2aed6dc07108dbbd6b11b6cc2afba6
   languageName: node
   linkType: hard
 
@@ -1761,16 +1803,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.3, @babel/traverse@npm:^7.4.5":
   version: 7.19.3
   resolution: "@babel/traverse@npm:7.19.3"
   dependencies:
     "@babel/code-frame": ^7.18.6
     "@babel/generator": ^7.19.3
+=======
+"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.3, @babel/traverse@npm:^7.19.4, @babel/traverse@npm:^7.4.5":
+  version: 7.19.4
+  resolution: "@babel/traverse@npm:7.19.4"
+  dependencies:
+    "@babel/code-frame": ^7.18.6
+    "@babel/generator": ^7.19.4
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@babel/helper-environment-visitor": ^7.18.9
     "@babel/helper-function-name": ^7.19.0
     "@babel/helper-hoist-variables": ^7.18.6
     "@babel/helper-split-export-declaration": ^7.18.6
+<<<<<<< HEAD
     "@babel/parser": ^7.19.3
     "@babel/types": ^7.19.3
     debug: ^4.1.0
@@ -1787,6 +1839,24 @@ __metadata:
     "@babel/helper-validator-identifier": ^7.19.1
     to-fast-properties: ^2.0.0
   checksum: 34a5b3db3b99a1a80ec2a784c2bb0e48769a38f1526dc377a5753a3ac5e5704663c405a393117ecc7a9df9da07b01625be7c4c3fee43ae46aba23b0c40928d77
+=======
+    "@babel/parser": ^7.19.4
+    "@babel/types": ^7.19.4
+    debug: ^4.1.0
+    globals: ^11.1.0
+  checksum: 8ae1ac3dace181620cd0e3078aec99604a48302fb873193a171e37a7cc4f8909ed496f286bf08c6473f9692db36423e2601eb9c771493d19f6a5fd1a56745af5
+  languageName: node
+  linkType: hard
+
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.12.7, @babel/types@npm:^7.15.4, @babel/types@npm:^7.16.8, @babel/types@npm:^7.18.10, @babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.19.0, @babel/types@npm:^7.19.3, @babel/types@npm:^7.19.4, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
+  version: 7.19.4
+  resolution: "@babel/types@npm:7.19.4"
+  dependencies:
+    "@babel/helper-string-parser": ^7.19.4
+    "@babel/helper-validator-identifier": ^7.19.1
+    to-fast-properties: ^2.0.0
+  checksum: 4032f6407093f80dd4f4764be676f7527d2a5c0381586967cd79683cf8af01cdc16745a381b9cef045f702f0c9b0dffd880d84ee55dad59ba01bd23d5d52a8e0
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -2231,9 +2301,9 @@ __metadata:
   linkType: hard
 
 "@exodus/schemasafe@npm:^1.0.0-rc.2":
-  version: 1.0.0-rc.7
-  resolution: "@exodus/schemasafe@npm:1.0.0-rc.7"
-  checksum: 965577141f5aa261a94e2a432f35bbbc086443c302bf16c641b35208d237367559ffb6910a8f1bfdf1b19efe8121851d196e0d754cfb8608f8d76b44e6f3b482
+  version: 1.0.0-rc.9
+  resolution: "@exodus/schemasafe@npm:1.0.0-rc.9"
+  checksum: e013b0921e1cdb55468fc72034fd9447634b7732bcb3cfe9311d499801ed682309ef463b4d65a3f6c972e0f8dfb364d8b9556a752e9f17df7d02f8d6e84cf2c9
   languageName: node
   linkType: hard
 
@@ -2256,7 +2326,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@gatsbyjs/parcel-namer-relative-to-cwd@npm:^1.9.0":
+=======
+"@gatsbyjs/parcel-namer-relative-to-cwd@npm:1.9.0":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 1.9.0
   resolution: "@gatsbyjs/parcel-namer-relative-to-cwd@npm:1.9.0"
   dependencies:
@@ -2358,38 +2432,38 @@ __metadata:
   linkType: hard
 
 "@graphql-codegen/typescript-operations@npm:^2.3.5":
-  version: 2.5.3
-  resolution: "@graphql-codegen/typescript-operations@npm:2.5.3"
+  version: 2.5.4
+  resolution: "@graphql-codegen/typescript-operations@npm:2.5.4"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.6.2
-    "@graphql-codegen/typescript": ^2.7.3
-    "@graphql-codegen/visitor-plugin-common": 2.12.1
+    "@graphql-codegen/typescript": ^2.7.4
+    "@graphql-codegen/visitor-plugin-common": 2.12.2
     auto-bind: ~4.0.0
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: b91ca8c994705c881226cb36095ef8707f24bcb07d0862a434ab02ff609787ea53ee7589cd5200190b8ad90a2d73a575088c4924feff525b559e1af8305bd57b
+  checksum: 845c70a482f55ead2ca73b43f443c2378debe7f6cec316b5bac4edceab29e550c4f176b1e2e6b693c80295c91e544284929fc954bb034d026e2dcadd93ef90d4
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript@npm:^2.4.8, @graphql-codegen/typescript@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "@graphql-codegen/typescript@npm:2.7.3"
+"@graphql-codegen/typescript@npm:^2.4.8, @graphql-codegen/typescript@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "@graphql-codegen/typescript@npm:2.7.4"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.6.2
     "@graphql-codegen/schema-ast": ^2.5.1
-    "@graphql-codegen/visitor-plugin-common": 2.12.1
+    "@graphql-codegen/visitor-plugin-common": 2.12.2
     auto-bind: ~4.0.0
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: fa08ad7a379cfc05cf80d71509d1f8154919b8a0e89e8bf2c95a41856e0b42e3788b9225faf084a94cf900dab8893e42aa296bdb4725d5d20ce00c9e2e0bd707
+  checksum: 91ce69d19eead417d4ba07a59f4be19fd50a28c4bd3800f8cd69efa7e2afb05cea6e15b8d58086b67c366970a6c58f0c5179a46a9f07c7f135f642a9d6af3583
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@npm:2.12.1":
-  version: 2.12.1
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.12.1"
+"@graphql-codegen/visitor-plugin-common@npm:2.12.2":
+  version: 2.12.2
+  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.12.2"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.6.2
     "@graphql-tools/optimize": ^1.3.0
@@ -2403,7 +2477,7 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: 846d1c698b12863a25d36da761ff7c1904405e6a8ead450f95658db407bc007582eb9328f4ba57fe33129ff3e6ebce2b55347125c0bf980370480ffd47299d2e
+  checksum: 325b6a2bbd297c7beff00963f4f375d2990956287d4e4976864875340728abf1bdaa9891bbd9fc2625d783689f2655befd212a03c521d3661e16dcea0e0a6de4
   languageName: node
   linkType: hard
 
@@ -3005,7 +3079,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/resolve-uri@npm:^3.0.3":
+"@jridgewell/resolve-uri@npm:3.1.0, @jridgewell/resolve-uri@npm:^3.0.3":
   version: 3.1.0
   resolution: "@jridgewell/resolve-uri@npm:3.1.0"
   checksum: b5ceaaf9a110fcb2780d1d8f8d4a0bfd216702f31c988d8042e5f8fbe353c55d9b0f55a1733afdc64806f8e79c485d2464680ac48a0d9fcadb9548ee6b81d267
@@ -3029,7 +3103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:^1.4.10":
+"@jridgewell/sourcemap-codec@npm:1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.10":
   version: 1.4.14
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.14"
   checksum: 61100637b6d173d3ba786a5dff019e1a74b1f394f323c1fee337ff390239f053b87266c7a948777f4b1ee68c01a8ad0ab61e5ff4abb5a012a0b091bec391ab97
@@ -3047,15 +3121,16 @@ __metadata:
   linkType: hard
 
 "@jridgewell/trace-mapping@npm:^0.3.13, @jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.9":
-  version: 0.3.15
-  resolution: "@jridgewell/trace-mapping@npm:0.3.15"
+  version: 0.3.16
+  resolution: "@jridgewell/trace-mapping@npm:0.3.16"
   dependencies:
-    "@jridgewell/resolve-uri": ^3.0.3
-    "@jridgewell/sourcemap-codec": ^1.4.10
-  checksum: 38917e9c2b014d469a9f51c016ed506acbe44dd16ec2f6f99b553ebf3764d22abadbf992f2367b6d2b3511f3eae8ed3a8963f6c1030093fda23efd35ecab2bae
+    "@jridgewell/resolve-uri": 3.1.0
+    "@jridgewell/sourcemap-codec": 1.4.14
+  checksum: 881fa21ce066ab5e9c23991ac435dfae2ac8ffa74510379a028b0d002437b48a50464369436c5d242b6e648eec17f77003c73c1f54325cfcd8824967c2356910
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@lerna/add@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/add@npm:5.6.1"
@@ -3065,11 +3140,23 @@ __metadata:
     "@lerna/filter-options": 5.6.1
     "@lerna/npm-conf": 5.6.1
     "@lerna/validation-error": 5.6.1
+=======
+"@lerna/add@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/add@npm:5.6.2"
+  dependencies:
+    "@lerna/bootstrap": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/npm-conf": 5.6.2
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     dedent: ^0.7.0
     npm-package-arg: 8.1.1
     p-map: ^4.0.0
     pacote: ^13.6.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: 043a0af415e920ffa56f13cd16a5dbea597e55d9bae37374bc34a70b0b1f88633d7d1ac2b0126a52ee7783fb3f0786932be5fbf6d7ff7dc68d087f25dd6f6def
   languageName: node
   linkType: hard
@@ -3090,6 +3177,28 @@ __metadata:
     "@lerna/symlink-binary": 5.6.1
     "@lerna/symlink-dependencies": 5.6.1
     "@lerna/validation-error": 5.6.1
+=======
+  checksum: a6e9a6270f3145cb24da1b90a312cbbe0f3a0c556943c7e7b8cf4bfbb0912db4de7e7dc248321dd26955b3b8dbf8ede8c9481e2a0f3107c8a5cd917bfe187976
+  languageName: node
+  linkType: hard
+
+"@lerna/bootstrap@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/bootstrap@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/has-npm-version": 5.6.2
+    "@lerna/npm-install": 5.6.2
+    "@lerna/package-graph": 5.6.2
+    "@lerna/pulse-till-done": 5.6.2
+    "@lerna/rimraf-dir": 5.6.2
+    "@lerna/run-lifecycle": 5.6.2
+    "@lerna/run-topologically": 5.6.2
+    "@lerna/symlink-binary": 5.6.2
+    "@lerna/symlink-dependencies": 5.6.2
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@npmcli/arborist": 5.3.0
     dedent: ^0.7.0
     get-port: ^5.1.1
@@ -3100,6 +3209,7 @@ __metadata:
     p-map-series: ^2.1.0
     p-waterfall: ^2.1.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: b81fac94d0dd567fc16d725daf498757f0c301e041edf0ff2645c6722ff33da5d1dcb34cbcb17f9d036bc3f32e0a6599a4e4711705b82da470c301ddd9593671
   languageName: node
   linkType: hard
@@ -3130,10 +3240,43 @@ __metadata:
 "@lerna/child-process@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/child-process@npm:5.6.1"
+=======
+  checksum: 5b416f2276077348a72c4079d96b35729502a8bc3f91144cf3109b1ea5966245c809769304414a9b038de0980e783ed2a8da898fd05802879e8186e35a8a14cf
+  languageName: node
+  linkType: hard
+
+"@lerna/changed@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/changed@npm:5.6.2"
+  dependencies:
+    "@lerna/collect-updates": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/listable": 5.6.2
+    "@lerna/output": 5.6.2
+  checksum: 69a86cf3b3124553dee5de03988e7e7ecbf3f9084685ff13da1a1c9dfd4dcc3991145db4937cc0a72dde029da6cd37b3614bd21b7b461f8d5724a2f38b6c56d7
+  languageName: node
+  linkType: hard
+
+"@lerna/check-working-tree@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/check-working-tree@npm:5.6.2"
+  dependencies:
+    "@lerna/collect-uncommitted": 5.6.2
+    "@lerna/describe-ref": 5.6.2
+    "@lerna/validation-error": 5.6.2
+  checksum: 46a30143ab3f73f8e70c76bdffa66d521b787251c986800f60335188a62375186a380c0d772439b0fa9cf057da2f028780674744d684636e84e6974b9a4193e5
+  languageName: node
+  linkType: hard
+
+"@lerna/child-process@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/child-process@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     chalk: ^4.1.0
     execa: ^5.0.0
     strong-log-transformer: ^2.1.0
+<<<<<<< HEAD
   checksum: 9baa3c434c33080812e34599a9ecef5b4fe35a5bb9898c10fdff261a64d8a7be4853e88fe3ec7178d09d78fc3635bb78f5a37685c2b10fa0493fc6ec64bfb0d5
   languageName: node
   linkType: hard
@@ -3199,11 +3342,79 @@ __metadata:
     "@lerna/project": 5.6.1
     "@lerna/validation-error": 5.6.1
     "@lerna/write-log-file": 5.6.1
+=======
+  checksum: 94e9c03119b3177cb41e210ac8a4bf04386857192e3a99c8bdd3d2ae913eda1538f813138de03693681ee360644cab9a0584658df9e2acbd04eb52a2e3a761cf
+  languageName: node
+  linkType: hard
+
+"@lerna/clean@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/clean@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/prompt": 5.6.2
+    "@lerna/pulse-till-done": 5.6.2
+    "@lerna/rimraf-dir": 5.6.2
+    p-map: ^4.0.0
+    p-map-series: ^2.1.0
+    p-waterfall: ^2.1.1
+  checksum: b20aa2d5c0ace554dcb2ce37915b6a172627e1d26f54a6be33ae8b59d2b31ac1c4c70fa99ca5bffefc9a725ef798059b3b83f751728f6471e9edee1cb901d8b9
+  languageName: node
+  linkType: hard
+
+"@lerna/cli@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/cli@npm:5.6.2"
+  dependencies:
+    "@lerna/global-options": 5.6.2
+    dedent: ^0.7.0
+    npmlog: ^6.0.2
+    yargs: ^16.2.0
+  checksum: e0b853feafe6d572056ea61a18fed4acb0ad62bcd99c3b5d753a8b8e8b69e5275f5eb7e102e7d09340d8f8e0e73a038b203acb4c77437d7edcf835470917b296
+  languageName: node
+  linkType: hard
+
+"@lerna/collect-uncommitted@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/collect-uncommitted@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    chalk: ^4.1.0
+    npmlog: ^6.0.2
+  checksum: 9c9298bc447629819634dc5fa697caa6a4b33c4e9fd61ae7ad4108a42d916ef9193ea4cb72d6cf766fc6863e350211ab9b1fcde6a8fb75b75f43aa5e4a1afeb4
+  languageName: node
+  linkType: hard
+
+"@lerna/collect-updates@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/collect-updates@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/describe-ref": 5.6.2
+    minimatch: ^3.0.4
+    npmlog: ^6.0.2
+    slash: ^3.0.0
+  checksum: 44149466c60e63f495bb09a3a8fd6c1d91f55de9dfcaac3adcefaf27c690adb6ac2c2a9b6bf5c9f8e430cb41db7c6994c9506b28945f5bb46a47e78f2829425d
+  languageName: node
+  linkType: hard
+
+"@lerna/command@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/command@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/package-graph": 5.6.2
+    "@lerna/project": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    "@lerna/write-log-file": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     clone-deep: ^4.0.1
     dedent: ^0.7.0
     execa: ^5.0.0
     is-ci: ^2.0.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: e80b897796e28f1c00d32c17ca61a8a44cf4cf68168902575f3dcf2b378c6a694f725614f88d1667d27e950911ec8a6aefbe611a9108f2d6dcb133803719ea1e
   languageName: node
   linkType: hard
@@ -3213,6 +3424,17 @@ __metadata:
   resolution: "@lerna/conventional-commits@npm:5.6.1"
   dependencies:
     "@lerna/validation-error": 5.6.1
+=======
+  checksum: 6a3bdef20658b474476a3750862e2d4753284d0023faf755b39d403a7dc71f6c5c46bc68f79ba27af1a12eb8add391f3afb82aee08b93e02141aa44f939cd668
+  languageName: node
+  linkType: hard
+
+"@lerna/conventional-commits@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/conventional-commits@npm:5.6.2"
+  dependencies:
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     conventional-changelog-angular: ^5.0.12
     conventional-changelog-core: ^4.2.4
     conventional-recommended-bump: ^6.1.0
@@ -3222,6 +3444,7 @@ __metadata:
     npmlog: ^6.0.2
     pify: ^5.0.0
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: f55171e98a156528c468f6a1e5999773e03f55eda6a70a26bd6c1467adc12fc8ba7f6c8b3cb951001a77d3da591e211fbfe5943e18544c5030aca65759d29f77
   languageName: node
   linkType: hard
@@ -3229,10 +3452,20 @@ __metadata:
 "@lerna/create-symlink@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/create-symlink@npm:5.6.1"
+=======
+  checksum: a8dbcd4bbb697aebb6c1b045f8597f019b754cf42b5abaf6a77da7379e212107bb46e8c9747a7bc1b41de640109036f71bc97df0b1066ca6c719172dd5d8b563
+  languageName: node
+  linkType: hard
+
+"@lerna/create-symlink@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/create-symlink@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     cmd-shim: ^5.0.0
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 9b2f10c45afa6141201491ae27b67d196d6d063219a3518e4fe027f7abcd00ab8709651d65678786cfecbce16913b33b302f92afba7349887f9cb1d24bbcdaf3
   languageName: node
   linkType: hard
@@ -3245,9 +3478,22 @@ __metadata:
     "@lerna/command": 5.6.1
     "@lerna/npm-conf": 5.6.1
     "@lerna/validation-error": 5.6.1
+=======
+  checksum: 1848bd60d5f3227cf66103571779d8c12c363c54ade93aaddcb10b7bba00adaf263faccee15fd05ac87ee5514feecd0e20e42b79b798a457609af1e77e734762
+  languageName: node
+  linkType: hard
+
+"@lerna/create@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/create@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/npm-conf": 5.6.2
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     dedent: ^0.7.0
     fs-extra: ^9.1.0
-    globby: ^11.0.2
     init-package-json: ^3.0.2
     npm-package-arg: 8.1.1
     p-reduce: ^2.1.0
@@ -3258,6 +3504,7 @@ __metadata:
     validate-npm-package-license: ^3.0.4
     validate-npm-package-name: ^4.0.0
     yargs-parser: 20.2.4
+<<<<<<< HEAD
   checksum: 78c3ac40fa8106c73d2b88922372b7ee2d30ab9497803f8b1f897205b78f346bba80e2dabb0086c43680b9afab30eb63df5b93660fa986a1961bb23d6ba42354
   languageName: node
   linkType: hard
@@ -3334,10 +3581,89 @@ __metadata:
 "@lerna/get-packed@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/get-packed@npm:5.6.1"
+=======
+  checksum: 94706188839a8cd0b8c20fb593a0cb4375bd350e2b6587a29933786bdd8c83417a1d651e5f53fb69e0939bad4f97dd013f5a4c901557e3c20fc360bbd0590806
+  languageName: node
+  linkType: hard
+
+"@lerna/describe-ref@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/describe-ref@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    npmlog: ^6.0.2
+  checksum: 510814bd0004859475cf62917a3145b010b33b519be3b80f30170b98500e176285d8f4b0aa9e5928b80798be90bc65f1591d6c72e26fee70d46e0f006996d69e
+  languageName: node
+  linkType: hard
+
+"@lerna/diff@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/diff@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    npmlog: ^6.0.2
+  checksum: 0731f5819da8c7bb2a210a9514541e7f7cdde8ddf1802e3ec5e40bd689f3c546d6fba12b9c72cd48aa97d179ff767c658bdfe26bf9590056307ee738b5b44052
+  languageName: node
+  linkType: hard
+
+"@lerna/exec@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/exec@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/profiler": 5.6.2
+    "@lerna/run-topologically": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    p-map: ^4.0.0
+  checksum: 30255cffbb67bc6a89290c1755e0e832fe9be1de0a98a2a6553a0baf0e1f509e0268318eeb3da4441bad2aa5517268b522f57dc3aefc49d122b301dd06ff6086
+  languageName: node
+  linkType: hard
+
+"@lerna/filter-options@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/filter-options@npm:5.6.2"
+  dependencies:
+    "@lerna/collect-updates": 5.6.2
+    "@lerna/filter-packages": 5.6.2
+    dedent: ^0.7.0
+    npmlog: ^6.0.2
+  checksum: c1b4ce4973bd8fff66a1632891f69ce4c20858d304cc02502df1576235b879cb4d3dd04b4be4b1835058f445c44d572554b206cf35ec4c1a3b76de396949bff1
+  languageName: node
+  linkType: hard
+
+"@lerna/filter-packages@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/filter-packages@npm:5.6.2"
+  dependencies:
+    "@lerna/validation-error": 5.6.2
+    multimatch: ^5.0.0
+    npmlog: ^6.0.2
+  checksum: b5b4c3b1d1ae6d889802ead0e682aecb8a12c1cbb3738a95e68013e9c7fd04cc0e495e249ef69eb52e65c69bca760d357d265642b1e066857c898ff1415978bd
+  languageName: node
+  linkType: hard
+
+"@lerna/get-npm-exec-opts@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/get-npm-exec-opts@npm:5.6.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 3430e602db853e075490e6b080d46340940acf354fb5513da19af2a8ad60c8fa397de7cbcbe0bda8a4266e9d995bc7cba1698d092933c5feaef134585eef9f08
+  languageName: node
+  linkType: hard
+
+"@lerna/get-packed@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/get-packed@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     fs-extra: ^9.1.0
     ssri: ^9.0.1
     tar: ^6.1.0
+<<<<<<< HEAD
   checksum: 65e85f9007818049a919da00738d6acca05e77293d17b5473a515b9e6a72b85d507909e492a702fc879d8dc46fb62984060694889ac9f9d74dfae92866ee277c
   languageName: node
   linkType: hard
@@ -3347,10 +3673,22 @@ __metadata:
   resolution: "@lerna/github-client@npm:5.6.1"
   dependencies:
     "@lerna/child-process": 5.6.1
+=======
+  checksum: 12637d74cf654214fb6adfe444370d90d66f5aa2fdbcfc6bedd4168e24a8e91346ad22f1386630b635452b3a0089c91cd3ea141f6cddfd8d111ba7b94dbbaac8
+  languageName: node
+  linkType: hard
+
+"@lerna/github-client@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/github-client@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@octokit/plugin-enterprise-rest": ^6.0.1
     "@octokit/rest": ^19.0.3
     git-url-parse: ^13.1.0
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 6b0848014a52c7ae6b40a7da708d174c1bca2540c6f0a74bd2134671a9227ce81f3826daf6daf6d83d8af44a479364ac54320b99aa45313728753507fc36515d
   languageName: node
   linkType: hard
@@ -3463,11 +3801,126 @@ __metadata:
 "@lerna/log-packed@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/log-packed@npm:5.6.1"
+=======
+  checksum: 08a7386af70bacec5b1c2ec7ba09a0cae407e54c65d33c89444b4460df48dc325772fe77b38ce7c5355295e24ba64d0d64e53ae3ca76ddd4b930af1f5b38507c
+  languageName: node
+  linkType: hard
+
+"@lerna/gitlab-client@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/gitlab-client@npm:5.6.2"
+  dependencies:
+    node-fetch: ^2.6.1
+    npmlog: ^6.0.2
+  checksum: ad9e45621b727858f4ea87a5d624da41cd6784e616d247b86275fb08fbfb4c9974c5f698f59ac0272ec1d0a848bba5f04ef2fbc32c62ca3a77ecd3b0415bd298
+  languageName: node
+  linkType: hard
+
+"@lerna/global-options@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/global-options@npm:5.6.2"
+  checksum: 7cb542edef4f06c98dc5a1f797a442e4a1f8bde444046bc5258b0908ecd888ac7fe75902c90c20898feb90e685dee2e3518dc5c85a8155504373ec3f4634f3db
+  languageName: node
+  linkType: hard
+
+"@lerna/has-npm-version@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/has-npm-version@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    semver: ^7.3.4
+  checksum: 98ca1161618a84e0509b9c988f3dd2e147225564d31820ea7b94332388afb7650b510ad902919c5ec9a0ec95b27aab81b4c3067769d106c801426620018a7aa4
+  languageName: node
+  linkType: hard
+
+"@lerna/import@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/import@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/prompt": 5.6.2
+    "@lerna/pulse-till-done": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    dedent: ^0.7.0
+    fs-extra: ^9.1.0
+    p-map-series: ^2.1.0
+  checksum: fdcecfd29de36488f78d51776d0edaf4e789bcedad57fe72818ab2e8416578396cfdf142f57095490eefcdd0d3d63a55b23a5e03cf42e5b97878a997025b6b86
+  languageName: node
+  linkType: hard
+
+"@lerna/info@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/info@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/output": 5.6.2
+    envinfo: ^7.7.4
+  checksum: 0124b7b1fe75e9bee4f4d4e13216a61869ad918ac9dfbad79aa49e3dd4657a67945aceae6632452b08580d1370823af0ce15ac6fd7134b9042f69624c531be57
+  languageName: node
+  linkType: hard
+
+"@lerna/init@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/init@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/project": 5.6.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+    write-json-file: ^4.3.0
+  checksum: 15e9cfee4ec7c0a09ed0426a38c4cdd2d85b1b005bc5c499f69464e7fe4f5dc4ec1dab0e0fae260508f100f68a84ae54d1b8ab556bdd17938f3db8862290eec9
+  languageName: node
+  linkType: hard
+
+"@lerna/link@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/link@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/package-graph": 5.6.2
+    "@lerna/symlink-dependencies": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    p-map: ^4.0.0
+    slash: ^3.0.0
+  checksum: 5d4d3cf7cd90e30797cd0961d835984f5f4f01de508c89cd4870462bd64b65f6a2cf01a2f0df738ce612f45154d3ba4fbfbe73d24f21c0b0015d8c3263b93a80
+  languageName: node
+  linkType: hard
+
+"@lerna/list@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/list@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/listable": 5.6.2
+    "@lerna/output": 5.6.2
+  checksum: 969b4a458e26bb12533549577fc3c95b62f7a982e04c77bf0755b99a1280d51a0b6288d9a42f1cb05d2f84e852c0fac6a388a5ab735daf1eaa478d9a5e4244f3
+  languageName: node
+  linkType: hard
+
+"@lerna/listable@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/listable@npm:5.6.2"
+  dependencies:
+    "@lerna/query-graph": 5.6.2
+    chalk: ^4.1.0
+    columnify: ^1.6.0
+  checksum: 3c94647582cd976117c636799e10cea486d171b9c7c20554ffc68c0dd5e33f0d847667264c19a40fbf44a697902dc11e55ca01e74d12f536fb67e338c124381e
+  languageName: node
+  linkType: hard
+
+"@lerna/log-packed@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/log-packed@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     byte-size: ^7.0.0
     columnify: ^1.6.0
     has-unicode: ^2.0.1
     npmlog: ^6.0.2
+<<<<<<< HEAD
   checksum: 51b5155c80748489f9efb4989fd91deeda78678267f386d47374a7007107ee8ea741b46840087f2d806df31894cba644c1d473c3f160af0932264d318928181d
   languageName: node
   linkType: hard
@@ -3500,11 +3953,46 @@ __metadata:
   dependencies:
     "@lerna/child-process": 5.6.1
     "@lerna/get-npm-exec-opts": 5.6.1
+=======
+  checksum: bbb43bd521bd431298048556a0ca1b83819d6352a06c4792a121403ab5cc2a467c7e89848cec72c7e348af12d3eac1e65e95d1372bedad2ef4a68aaa5d624e5a
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-conf@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/npm-conf@npm:5.6.2"
+  dependencies:
+    config-chain: ^1.1.12
+    pify: ^5.0.0
+  checksum: ee79c50b57859c918e597b48f44483c00c47fc84e61440c21d756981e8ff0d2721ff068e9539fabc50c073710d5c8fee469aa9e6620c0ecbf4dfce9db4979f94
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-dist-tag@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/npm-dist-tag@npm:5.6.2"
+  dependencies:
+    "@lerna/otplease": 5.6.2
+    npm-package-arg: 8.1.1
+    npm-registry-fetch: ^13.3.0
+    npmlog: ^6.0.2
+  checksum: f50f8b090d197b773b467853d54f2993dd99721cfd8dc17f4af587bc0f53a6c1d879175673f34471d2778b114bc97fcb86bfade1d1aafa349ade92f78878dbf5
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-install@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/npm-install@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/get-npm-exec-opts": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     fs-extra: ^9.1.0
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     signal-exit: ^3.0.3
     write-pkg: ^4.0.0
+<<<<<<< HEAD
   checksum: 4606c9021bf4b84cef8953eda89a5844bab8d89a6ace2f19393d86081e76f1e6f3dcffcba54a8885966ef9da372eb5f98bfb5e88b78ff47f7bb04f4fc865ac20
   languageName: node
   linkType: hard
@@ -3515,12 +4003,25 @@ __metadata:
   dependencies:
     "@lerna/otplease": 5.6.1
     "@lerna/run-lifecycle": 5.6.1
+=======
+  checksum: 6878ee7420edb0353ae8b755b10ae33100980b108cbeaa5848f4b5d2c19c836dbe2d93b401365fe05baf080808c8ad259a05bb78d52b177fc21d6c24bdf41b27
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-publish@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/npm-publish@npm:5.6.2"
+  dependencies:
+    "@lerna/otplease": 5.6.2
+    "@lerna/run-lifecycle": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     fs-extra: ^9.1.0
     libnpmpublish: ^6.0.4
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     pify: ^5.0.0
     read-package-json: ^5.0.1
+<<<<<<< HEAD
   checksum: c9d0c724dd2b4cbc90a6bbf061f20f01dd761a602fcc40b723fcaa7fb08e16ed6bf01aeb2be63f1cdd6d93340683152c3f54a7fb97d957221c6c37ebd2d7d5b0
   languageName: node
   linkType: hard
@@ -3585,10 +4086,77 @@ __metadata:
 "@lerna/package@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/package@npm:5.6.1"
+=======
+  checksum: 87ec165e2c5976fd04e41bbed0cf796317813d4ef50cc42a1c96c25d96f761333d34fa575702f2979b3c828ea7df87d21064521fc4137da9d16f67803192c902
+  languageName: node
+  linkType: hard
+
+"@lerna/npm-run-script@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/npm-run-script@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    "@lerna/get-npm-exec-opts": 5.6.2
+    npmlog: ^6.0.2
+  checksum: b8319fe926484afd28f7fa68d92cca438a6429841bec06c843ca673bff044da15380c0077530bc7dd11b10c413a7404c6f7597f0ec15a33137ff5dbb1b9f98f2
+  languageName: node
+  linkType: hard
+
+"@lerna/otplease@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/otplease@npm:5.6.2"
+  dependencies:
+    "@lerna/prompt": 5.6.2
+  checksum: a8eaf9a3104d2d869dac773001e7b82b5825ae1753e1ed5ec953f11930bfc61ec7131a3e802a735cf88e6d61c945ac7bf52a5ae3a3937c40be11ef34b0f85a06
+  languageName: node
+  linkType: hard
+
+"@lerna/output@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/output@npm:5.6.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 34494135cf13cf024bb325c85f91e33f1d295df941afa659bdab3896862a9b69165ad6afdefc30945576577960f83c8e2374d2d5feb79e9a34b757ccffce2d9f
+  languageName: node
+  linkType: hard
+
+"@lerna/pack-directory@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/pack-directory@npm:5.6.2"
+  dependencies:
+    "@lerna/get-packed": 5.6.2
+    "@lerna/package": 5.6.2
+    "@lerna/run-lifecycle": 5.6.2
+    "@lerna/temp-write": 5.6.2
+    npm-packlist: ^5.1.1
+    npmlog: ^6.0.2
+    tar: ^6.1.0
+  checksum: 1231c9d0d1573267616364a50ef736be6edfdcf82600aee0d89ba8ddae891a32ad8d6d041af92ea685dee95ab7d4662098d62c61201d071a8ec9b4e19dd28e80
+  languageName: node
+  linkType: hard
+
+"@lerna/package-graph@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/package-graph@npm:5.6.2"
+  dependencies:
+    "@lerna/prerelease-id-from-version": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    npm-package-arg: 8.1.1
+    npmlog: ^6.0.2
+    semver: ^7.3.4
+  checksum: 1627c2de7bad648f6579ebf5cfdeedf3d4eb1931d8dfde10f9ee60663f38b9286b29292b135337f9c4976c4c444b27d341b4ced408f8a067ba97d66ac1efe203
+  languageName: node
+  linkType: hard
+
+"@lerna/package@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/package@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     load-json-file: ^6.2.0
     npm-package-arg: 8.1.1
     write-pkg: ^4.0.0
+<<<<<<< HEAD
   checksum: 35f8c558fbd22edfd9da199039fc9d69bcaf084eae7c18898f7d12255594a65a2bfdbb0837ac53d09b21b00dbe1ed40dd9559ac738b8670fb04daf5585114b1d
   languageName: node
   linkType: hard
@@ -3605,10 +4173,29 @@ __metadata:
 "@lerna/profiler@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/profiler@npm:5.6.1"
+=======
+  checksum: 7f0d32cf4a74c76d932633a06ace58eca7ea46a2624ef304101b6b882ebe4ec1c683c6836784b790132d29e68e396f6490703db3070af3cff02ef32260f0fb52
+  languageName: node
+  linkType: hard
+
+"@lerna/prerelease-id-from-version@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/prerelease-id-from-version@npm:5.6.2"
+  dependencies:
+    semver: ^7.3.4
+  checksum: 0b48944fc17941061036d7ed93829ca9555897b5073177cb6435cda852da433095df4a76c0b37842788ea5a4536a5300adec2bc23d55daeb8a0b0ca53de16268
+  languageName: node
+  linkType: hard
+
+"@lerna/profiler@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/profiler@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     upath: ^2.0.1
+<<<<<<< HEAD
   checksum: d078c03c8b3f8caea1528c297dfddd68fdc0a1cdeb0f99b19dda3078e799279959bf610575ff4f0de6230955eda1c5648b3d492551848cf51f72456eeb26e9ce
   languageName: node
   linkType: hard
@@ -3619,6 +4206,18 @@ __metadata:
   dependencies:
     "@lerna/package": 5.6.1
     "@lerna/validation-error": 5.6.1
+=======
+  checksum: a66e0c763b1b0477cdfb0d8c06da0693bf142aaa4cd694022e35a9f7b016126780b685494c862cc3f3a175b14f31f1fc9902f924aa48d1243ad3e41088a661f1
+  languageName: node
+  linkType: hard
+
+"@lerna/project@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/project@npm:5.6.2"
+  dependencies:
+    "@lerna/package": 5.6.2
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     cosmiconfig: ^7.0.0
     dedent: ^0.7.0
     dot-prop: ^6.0.1
@@ -3630,6 +4229,7 @@ __metadata:
     p-map: ^4.0.0
     resolve-from: ^5.0.0
     write-json-file: ^4.3.0
+<<<<<<< HEAD
   checksum: 9201c13c7a28a5459fdfb59429d0729c001a91ed3404cacd1d4d3ce9c4b503f115842fd2d7e2d30c53d7285e83dc0267cc842418f4b0c05360d38f9fdc3c94d0
   languageName: node
   linkType: hard
@@ -3667,6 +4267,45 @@ __metadata:
     "@lerna/run-topologically": 5.6.1
     "@lerna/validation-error": 5.6.1
     "@lerna/version": 5.6.1
+=======
+  checksum: 26ba2daa219bc033fe06770f3f539ca801c96993a7e2e95d0a2ad72646f43746d5efe67e8a407306b2de6ebfa8220c6682b8a6fd72ec4402ce3af21cdec54f20
+  languageName: node
+  linkType: hard
+
+"@lerna/prompt@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/prompt@npm:5.6.2"
+  dependencies:
+    inquirer: ^8.2.4
+    npmlog: ^6.0.2
+  checksum: a6f9352f223493d2eeb975f0eeb8981184a6981e2166a49bed792cebd811bf896234bf818b6e8260a6cf2cb2e5e0e26bf3c25475a159dc9b044f3708252b52b8
+  languageName: node
+  linkType: hard
+
+"@lerna/publish@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/publish@npm:5.6.2"
+  dependencies:
+    "@lerna/check-working-tree": 5.6.2
+    "@lerna/child-process": 5.6.2
+    "@lerna/collect-updates": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/describe-ref": 5.6.2
+    "@lerna/log-packed": 5.6.2
+    "@lerna/npm-conf": 5.6.2
+    "@lerna/npm-dist-tag": 5.6.2
+    "@lerna/npm-publish": 5.6.2
+    "@lerna/otplease": 5.6.2
+    "@lerna/output": 5.6.2
+    "@lerna/pack-directory": 5.6.2
+    "@lerna/prerelease-id-from-version": 5.6.2
+    "@lerna/prompt": 5.6.2
+    "@lerna/pulse-till-done": 5.6.2
+    "@lerna/run-lifecycle": 5.6.2
+    "@lerna/run-topologically": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    "@lerna/version": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     fs-extra: ^9.1.0
     libnpmaccess: ^6.0.3
     npm-package-arg: 8.1.1
@@ -3676,6 +4315,7 @@ __metadata:
     p-pipe: ^3.1.0
     pacote: ^13.6.1
     semver: ^7.3.4
+<<<<<<< HEAD
   checksum: 41cad0181e0ca2dc31a622e86497910357eb1650e6f87dd113eb689b6a95bdc03ca66be1eab8d0a5af7ebf2dfe91e42ff431503883190706f4e9fda8a7c267b3
   languageName: node
   linkType: hard
@@ -3701,10 +4341,38 @@ __metadata:
 "@lerna/resolve-symlink@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/resolve-symlink@npm:5.6.1"
+=======
+  checksum: dce481b6e6ec168e75bc9c08bd075169b299fdf345abebf14029fa717029ddf2fc1464c65653234830807fb881ef0999a0af0f094a143c38865dd9d0dfb74ffd
+  languageName: node
+  linkType: hard
+
+"@lerna/pulse-till-done@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/pulse-till-done@npm:5.6.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 923995424e6399947fa752d0eb7b33852e6f77d0c17280c2fef43e757f47f28e07227708bc2ce1d8dc81c8afee2e1509cee1d7c3d08ab8f615498770974f8f0d
+  languageName: node
+  linkType: hard
+
+"@lerna/query-graph@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/query-graph@npm:5.6.2"
+  dependencies:
+    "@lerna/package-graph": 5.6.2
+  checksum: a582795283760828417e3554ec015c68c815690bb7b29d7cf368a3a9d82f5150b8e6dbf02356cf4e4539b581d9879609876577ec87f3e4cc7a4caf605b2a042d
+  languageName: node
+  linkType: hard
+
+"@lerna/resolve-symlink@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/resolve-symlink@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     read-cmd-shim: ^3.0.0
+<<<<<<< HEAD
   checksum: f1e2ef78ea29099fb2e2fd84bce0f6d9fa71ac861b6e25435df7efdf24e54e768cf5f62845a1f334fcc32547a1d4124336ab80d8a0ad81f861fc5d222001e709
   languageName: node
   linkType: hard
@@ -3790,12 +4458,100 @@ __metadata:
 "@lerna/temp-write@npm:5.6.1":
   version: 5.6.1
   resolution: "@lerna/temp-write@npm:5.6.1"
+=======
+  checksum: 19a95bb295ff9154f3661d36b54abfd5e415c0fb85a669a2fc7b600a180de13877b310d230c7782d8d5441324c5527c311f7a4afef57d6b8be04cbce5cd94927
+  languageName: node
+  linkType: hard
+
+"@lerna/rimraf-dir@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/rimraf-dir@npm:5.6.2"
+  dependencies:
+    "@lerna/child-process": 5.6.2
+    npmlog: ^6.0.2
+    path-exists: ^4.0.0
+    rimraf: ^3.0.2
+  checksum: b0ec7dc69e3caa4c4eae88b8feedf248feff603e50d082a5f363fc0a1f604fc7b76d2067d69c79fdaa20675e3d5a87b59baaab6225c73dc1322b8705ce58030b
+  languageName: node
+  linkType: hard
+
+"@lerna/run-lifecycle@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/run-lifecycle@npm:5.6.2"
+  dependencies:
+    "@lerna/npm-conf": 5.6.2
+    "@npmcli/run-script": ^4.1.7
+    npmlog: ^6.0.2
+    p-queue: ^6.6.2
+  checksum: 3c05af8ddd442a2fba007a41daeac3157dbfe845c3123f106b738843e2615e2a7350c8381622a6b4a793e675340c5671baabef95e6c63398c39b2fcedcafe6fb
+  languageName: node
+  linkType: hard
+
+"@lerna/run-topologically@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/run-topologically@npm:5.6.2"
+  dependencies:
+    "@lerna/query-graph": 5.6.2
+    p-queue: ^6.6.2
+  checksum: d10b59ddff43c0f8387bcd7f9618d135ae6f33ba23d74d9d2fa16cece4209759f8ada46e1050cff07ad82388eda4774a7f0a1690bac4b36ce8f3a23c2718d0d3
+  languageName: node
+  linkType: hard
+
+"@lerna/run@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/run@npm:5.6.2"
+  dependencies:
+    "@lerna/command": 5.6.2
+    "@lerna/filter-options": 5.6.2
+    "@lerna/npm-run-script": 5.6.2
+    "@lerna/output": 5.6.2
+    "@lerna/profiler": 5.6.2
+    "@lerna/run-topologically": 5.6.2
+    "@lerna/timer": 5.6.2
+    "@lerna/validation-error": 5.6.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+  checksum: a3ed53fea86b2b80d0c95aa2a9f007e524cde35422ebad312e21adaeae8564475f3d2a5ab40612ab8be1bfe8e935b61115808833e3e281ab93240f1b38b7d69a
+  languageName: node
+  linkType: hard
+
+"@lerna/symlink-binary@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/symlink-binary@npm:5.6.2"
+  dependencies:
+    "@lerna/create-symlink": 5.6.2
+    "@lerna/package": 5.6.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+  checksum: f4d633677cde5b27e580c064ffca60b46be6808afcab5bd327e3c4e4d0cb7a924d79d5022f87f1e2209014687c75cb7c59d8514cab3911f4e14a5b5bbbf96fec
+  languageName: node
+  linkType: hard
+
+"@lerna/symlink-dependencies@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/symlink-dependencies@npm:5.6.2"
+  dependencies:
+    "@lerna/create-symlink": 5.6.2
+    "@lerna/resolve-symlink": 5.6.2
+    "@lerna/symlink-binary": 5.6.2
+    fs-extra: ^9.1.0
+    p-map: ^4.0.0
+    p-map-series: ^2.1.0
+  checksum: f1de8b38288f42647a0c663b8d6c701bf80acadaaf566830f736d3aae4b9f6dc0bac2fb3a771a266c62bcc72dd3b02b9ab5c2b4ccba40ad9e91894c08a168df8
+  languageName: node
+  linkType: hard
+
+"@lerna/temp-write@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/temp-write@npm:5.6.2"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     graceful-fs: ^4.1.15
     is-stream: ^2.0.0
     make-dir: ^3.0.0
     temp-dir: ^1.0.0
     uuid: ^8.3.2
+<<<<<<< HEAD
   checksum: f1c18658f1317edc3bdb1507bc5857debb5b2965ac5b72d37413e2cc2a28cc1e12f438a7da17132cceafa1b6a5682158ac42c7dfb38c123ca9ce78f5c6d72558
   languageName: node
   linkType: hard
@@ -3834,6 +4590,46 @@ __metadata:
     "@lerna/run-topologically": 5.6.1
     "@lerna/temp-write": 5.6.1
     "@lerna/validation-error": 5.6.1
+=======
+  checksum: 9a3ef13e08230a88de046aaaba0efdc2b5e27f16abd97af03b395bc2cf40ec52d8b6850d25a913b955046f52013c4a99b3e75a48397356d0a9a86b0f97afa905
+  languageName: node
+  linkType: hard
+
+"@lerna/timer@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/timer@npm:5.6.2"
+  checksum: 3eb43f371f5e357a42ec0a69722b13feff3967c88057334562366ffae40ce5ee7750718a498037e1f0ab9d438274357c4033561f068a76b1a6f98861a5eeae0c
+  languageName: node
+  linkType: hard
+
+"@lerna/validation-error@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/validation-error@npm:5.6.2"
+  dependencies:
+    npmlog: ^6.0.2
+  checksum: 3871cbacc7668ab2b0498f3d394ea65fa721257402cffa89efb97f6bed89d11504f554d25007d079e679181bcbbf773432745733654f8415e901c7d08a6ae06b
+  languageName: node
+  linkType: hard
+
+"@lerna/version@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/version@npm:5.6.2"
+  dependencies:
+    "@lerna/check-working-tree": 5.6.2
+    "@lerna/child-process": 5.6.2
+    "@lerna/collect-updates": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/conventional-commits": 5.6.2
+    "@lerna/github-client": 5.6.2
+    "@lerna/gitlab-client": 5.6.2
+    "@lerna/output": 5.6.2
+    "@lerna/prerelease-id-from-version": 5.6.2
+    "@lerna/prompt": 5.6.2
+    "@lerna/run-lifecycle": 5.6.2
+    "@lerna/run-topologically": 5.6.2
+    "@lerna/temp-write": 5.6.2
+    "@lerna/validation-error": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@nrwl/devkit": ">=14.8.1 < 16"
     chalk: ^4.1.0
     dedent: ^0.7.0
@@ -3847,6 +4643,7 @@ __metadata:
     semver: ^7.3.4
     slash: ^3.0.0
     write-json-file: ^4.3.0
+<<<<<<< HEAD
   checksum: 8a8a609dee49a1ecddc1471fcdbc8837d36e2c54eae5b152d83a3ed20754920fe3ce09f6ee8554e7eea74269c15100b7e478a4fbf4fb5ac53e0e42e0d78be1de
   languageName: node
   linkType: hard
@@ -3858,6 +4655,19 @@ __metadata:
     npmlog: ^6.0.2
     write-file-atomic: ^4.0.1
   checksum: 692b7ee0db2e4c150d983b8d588c7635ddc19b5f9e76fa948cf48437fa3950aa784127d87d55c125317892e22d755f09ec8fc01c9ac45647d72344a6415ad5da
+=======
+  checksum: da0e0b822af685b0553dac95aa1355b5bfb9abde208d1afcc1a0e38134c49e7d3dc1430d0c951ffad236032bba5c242025754494dd6ceb5ad913f3cc8b9113b3
+  languageName: node
+  linkType: hard
+
+"@lerna/write-log-file@npm:5.6.2":
+  version: 5.6.2
+  resolution: "@lerna/write-log-file@npm:5.6.2"
+  dependencies:
+    npmlog: ^6.0.2
+    write-file-atomic: ^4.0.1
+  checksum: 814e9cf20ac28be49b22720be7bef8f708b28c344d54a0664cb8c44bbcb11387c4f89abf1050cfc81b41fa770099c748ac97fdb99d8a016c9e2c3ca801f27a30
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -4268,6 +5078,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@nrwl/cli@npm:14.8.3":
   version: 14.8.3
   resolution: "@nrwl/cli@npm:14.8.3"
@@ -4281,12 +5092,28 @@ __metadata:
   version: 14.8.3
   resolution: "@nrwl/devkit@npm:14.8.3"
   dependencies:
+=======
+"@nrwl/cli@npm:14.8.4":
+  version: 14.8.4
+  resolution: "@nrwl/cli@npm:14.8.4"
+  dependencies:
+    nx: 14.8.4
+  checksum: f2146664c63ef1f07a591dafa496d8ab763b7761de7b3b8c1a7b525737eb21c6256c4ef6a54253e24881f111b5c8478332c1da2424cb84b799721fb663bf9aac
+  languageName: node
+  linkType: hard
+
+"@nrwl/devkit@npm:>=14.8.1 < 16":
+  version: 14.8.4
+  resolution: "@nrwl/devkit@npm:14.8.4"
+  dependencies:
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@phenomnomnominal/tsquery": 4.1.1
     ejs: ^3.1.7
     ignore: ^5.0.4
     tslib: ^2.3.0
   peerDependencies:
     nx: ">= 13.10 <= 15"
+<<<<<<< HEAD
   checksum: 37a386e24a07dd302536fe116de9ae3a33b91fb911cbde23f9fdcb10be2d0e04caecbc8d33a97fb4335027ba2b2c8d2bf4facc3a2260dbbd33e85773d0ddfee1
   languageName: node
   linkType: hard
@@ -4299,52 +5126,66 @@ __metadata:
   bin:
     tao: index.js
   checksum: 193bfd943357634285ae848247c8382cf1d3202934f2a543b4d64db3dd5c1fe863cc05e313514b1a7913327499c719831a4c400c0387bec453b5a5662eb01391
+=======
+  checksum: 7da82be7577aa2f52a5f10d519e395d7a186643aa7c37be833456c54a49538b7c521e770371382f1c79a140d6c6ba9ce8ab45bf4dfa361ab80cb6befb8fc04d4
+  languageName: node
+  linkType: hard
+
+"@nrwl/tao@npm:14.8.4":
+  version: 14.8.4
+  resolution: "@nrwl/tao@npm:14.8.4"
+  dependencies:
+    nx: 14.8.4
+  bin:
+    tao: index.js
+  checksum: 8be3ba083b7a7a9960abe0c0ab43f2f4af37d719cc60700f872eacbd3b77c19d711f638961525373b8ff168b9e9c4f85d501629de7d67986fffae9144f4a6b0c
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
 "@octokit/auth-token@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@octokit/auth-token@npm:3.0.1"
+  version: 3.0.2
+  resolution: "@octokit/auth-token@npm:3.0.2"
   dependencies:
-    "@octokit/types": ^7.0.0
-  checksum: e94ba5abc2f86cf49e8dc0b86225f2fdda6af451328b13a43d68972117d4e3dccba5cb375fa0c5970a43c9392665bf4e4f0ef1332522f76d4fa4b16c5ad6cc1d
+    "@octokit/types": ^8.0.0
+  checksum: c7204770a6cb1661379c31b5a26779b509324446e61a4902893a69fd471738c817afc470f8ac8d86ad827738cc953046d27fbb87fc81782ff10e366b70241f4e
   languageName: node
   linkType: hard
 
 "@octokit/core@npm:^4.0.0":
-  version: 4.0.5
-  resolution: "@octokit/core@npm:4.0.5"
+  version: 4.1.0
+  resolution: "@octokit/core@npm:4.1.0"
   dependencies:
     "@octokit/auth-token": ^3.0.0
     "@octokit/graphql": ^5.0.0
     "@octokit/request": ^6.0.0
     "@octokit/request-error": ^3.0.0
-    "@octokit/types": ^7.0.0
+    "@octokit/types": ^8.0.0
     before-after-hook: ^2.2.0
     universal-user-agent: ^6.0.0
-  checksum: 6e4a2161d22b9cb24cd1cf702e6d18200fc48a29dc66db08c37809d65243d29429123652072126d9f161e45aef6a57e72a5d56d7e975829c190e8c3c46b3f1b9
+  checksum: 4e53e02ff3ebe808b74385be0055cc1cce4b548060b20e3f2d5dd1bf7877ff7b6556f11278edc070842bf24aa869f9f59a02638f1b14083eb290b9e297447a2d
   languageName: node
   linkType: hard
 
 "@octokit/endpoint@npm:^7.0.0":
-  version: 7.0.2
-  resolution: "@octokit/endpoint@npm:7.0.2"
+  version: 7.0.3
+  resolution: "@octokit/endpoint@npm:7.0.3"
   dependencies:
-    "@octokit/types": ^7.0.0
+    "@octokit/types": ^8.0.0
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
-  checksum: 81743b228e903d27e426280a63f1d2c2771b3bda4a2e577f6f25f075a1eb577b6c853b62abed1a6bfa0fa01322dac9b71e2f07c75cd7946d952b1c8f6032d96d
+  checksum: c36b1577062e51d1683779a59c75d046d59f9a5c3a0f046d465e6c4c39f64bfc3a3052b42fa91a4552c7903ec382c604b4a2e1aadebdf7458191849ede5d4978
   languageName: node
   linkType: hard
 
 "@octokit/graphql@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@octokit/graphql@npm:5.0.1"
+  version: 5.0.2
+  resolution: "@octokit/graphql@npm:5.0.2"
   dependencies:
     "@octokit/request": ^6.0.0
-    "@octokit/types": ^7.0.0
+    "@octokit/types": ^8.0.0
     universal-user-agent: ^6.0.0
-  checksum: 310549c2d7966adb46428e943cd99cb766519819bd4945d8349d3ec0642e4ee39d9194e1b0a87a5404951c04c247fafb4a8456ed4c839c64bfb4042aa4a6812c
+  checksum: cc746573f5782f92723d988c44c1864b6cf51bbfe7b2f33c9dcc1c5dc3fd7b58bacce083a3631512e1200e3d6e00a21f66b26e69b92d7d4d0e682d630e712eb9
   languageName: node
   linkType: hard
 
@@ -4352,6 +5193,16 @@ __metadata:
   version: 13.13.1
   resolution: "@octokit/openapi-types@npm:13.13.1"
   checksum: 7f49a46ada1cc6ed105b19aa839f570643c099488929939d7c690d3f466b6c6e0b54e066a557bd0679e0cc36d706a992c9c763c63c5f1f90afe98a68fcb15186
+<<<<<<< HEAD
+=======
+  languageName: node
+  linkType: hard
+
+"@octokit/openapi-types@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@octokit/openapi-types@npm:14.0.0"
+  checksum: 0a1f8f3be998cd82c5a640e9166d43fd183b33d5d36f5e1a9b81608e94d0da87c01ec46c9988f69cd26585d4e2ffc4d3ec99ee4f75e5fe997fc86dad0aa8293c
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -4383,39 +5234,39 @@ __metadata:
   linkType: hard
 
 "@octokit/plugin-rest-endpoint-methods@npm:^6.0.0":
-  version: 6.6.2
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.6.2"
+  version: 6.7.0
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.7.0"
   dependencies:
-    "@octokit/types": ^7.5.0
+    "@octokit/types": ^8.0.0
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 3c3fe12e6f0463aeb77b6a7ea6da0b1928ed179b27745c778c32ead3796fe4352322dc103095d141d548aa6b0d91bb0196e4a2d5d60cd71fc820c3774e23c1f4
+  checksum: 513c6c0717d08f3e85848029bd700412b7d9787750f78cc79a3dede356e94b238bf8a518b108f556a7efe626871720dd0466de9f31091578ea4e0f5a016f0ae7
   languageName: node
   linkType: hard
 
 "@octokit/request-error@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "@octokit/request-error@npm:3.0.1"
+  version: 3.0.2
+  resolution: "@octokit/request-error@npm:3.0.2"
   dependencies:
-    "@octokit/types": ^7.0.0
+    "@octokit/types": ^8.0.0
     deprecation: ^2.0.0
     once: ^1.4.0
-  checksum: ae386b5181b3cb66b844047a21d062b683cd7ec4daf70cb9868406c1a51608a72d683955e692c7cc6237d66a09b12c6bcf102a712985da68bcedcc3820117e75
+  checksum: 41549554ce780de13d3421f8036635014c8dcbdf867c288526ef7b17e9d92470f33341ddadacf2868dc0181440842803484104efbe11ebfaecdaeec58871a13e
   languageName: node
   linkType: hard
 
 "@octokit/request@npm:^6.0.0":
-  version: 6.2.1
-  resolution: "@octokit/request@npm:6.2.1"
+  version: 6.2.2
+  resolution: "@octokit/request@npm:6.2.2"
   dependencies:
     "@octokit/endpoint": ^7.0.0
     "@octokit/request-error": ^3.0.0
-    "@octokit/types": ^7.0.0
+    "@octokit/types": ^8.0.0
     is-plain-object: ^5.0.0
     node-fetch: ^2.6.7
     universal-user-agent: ^6.0.0
-  checksum: f0a3e878de8c2e6930da5af835d9a3750800eff9ba66af02400dc75238475a9b9c2c5473047792c0f37c2c371095a36485c0729c419873bdccb6058bb8637685
+  checksum: adbeb38807c60b53d32d9b69be0c1f861c26698bc6f5f3f7e05d26972290dc4867827dd333bdd801818c347e5723efd049a2b9848c6c8bf74a2032968dede0ff
   languageName: node
   linkType: hard
 
@@ -4431,12 +5282,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "@octokit/types@npm:^7.0.0, @octokit/types@npm:^7.5.0":
+=======
+"@octokit/types@npm:^7.5.0":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 7.5.1
   resolution: "@octokit/types@npm:7.5.1"
   dependencies:
     "@octokit/openapi-types": ^13.11.0
   checksum: eaa9aac2f4760aef5e69e4f663450fce34d4fab5a6a8c26cba49257ce0c4b621fd8f19ddad0ce9764b64cc6b3ef5d6fe631ff518832d3e09affbc96b7432fae5
+<<<<<<< HEAD
+=======
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@octokit/types@npm:8.0.0"
+  dependencies:
+    "@octokit/openapi-types": ^14.0.0
+  checksum: 1a0197b2c4c522ac90f145e02b3f8cb048a47f71c2c6bdbf021a03db7dd30ca92a899c0186acb401337f218efe44e60d33cc1cc68715b622bb75bc1a4e79515d
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -4888,12 +5755,12 @@ __metadata:
   linkType: hard
 
 "@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.7":
-  version: 0.5.7
-  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7"
+  version: 0.5.8
+  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.8"
   dependencies:
     ansi-html-community: ^0.0.8
     common-path-prefix: ^3.0.0
-    core-js-pure: ^3.8.1
+    core-js-pure: ^3.23.3
     error-stack-parser: ^2.0.6
     find-up: ^5.0.0
     html-entities: ^2.1.0
@@ -4904,7 +5771,7 @@ __metadata:
     "@types/webpack": 4.x || 5.x
     react-refresh: ">=0.10.0 <1.0.0"
     sockjs-client: ^1.4.0
-    type-fest: ">=0.17.0 <3.0.0"
+    type-fest: ">=0.17.0 <4.0.0"
     webpack: ">=4.43.0 <6.0.0"
     webpack-dev-server: 3.x || 4.x
     webpack-hot-middleware: 2.x
@@ -4922,7 +5789,7 @@ __metadata:
       optional: true
     webpack-plugin-serve:
       optional: true
-  checksum: 3490649181878cc8808fb91f3870ef095e5a1fb9647b3ac83740df07379c9d1cf540f24bf2b09d5f26a3a8c805b2c6b9c5be7192bdb9317d0ffffa67426e9f66
+  checksum: 48d8b2813dfba7d482e58a2b0161b79e3a5d608603f1a3c34d709ecc2e6e08f8b14f79934c57849d06f153eb327f18e3d8e1539f978e40ca91539c342f27b8ae
   languageName: node
   linkType: hard
 
@@ -4975,9 +5842,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redocly/openapi-core@npm:^1.0.0-beta.104":
-  version: 1.0.0-beta.110
-  resolution: "@redocly/openapi-core@npm:1.0.0-beta.110"
+"@redocly/openapi-core@npm:^1.0.0-beta.50, @redocly/openapi-core@npm:^1.0.0-beta.54":
+  version: 1.0.0-beta.111
+  resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
   dependencies:
     "@redocly/ajv": ^8.11.0
     "@types/node": ^14.11.8
@@ -4989,7 +5856,18 @@ __metadata:
     node-fetch: ^2.6.1
     pluralize: ^8.0.0
     yaml-ast-parser: 0.0.43
-  checksum: 17acdc9822c13a9cd823d0badbefe7b42be1782a035565c2895fbb66e4cbc379e31a5d3f4ec421f65ba044343524cb577c0d2039d7578df48684c6039948232b
+  checksum: a6848b5aef4d8aa8c64d07ab80eb9020970f53f531feebc93d06f050e1064f850c707e02da5edee0e8898946c5e99c3aa2d576b9fc7ff873986133116aa95f7a
+  languageName: node
+  linkType: hard
+
+"@redocly/react-dropdown-aria@npm:^2.0.11":
+  version: 2.0.12
+  resolution: "@redocly/react-dropdown-aria@npm:2.0.12"
+  peerDependencies:
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+    styled-components: ^5.1.1
+  checksum: 89273a60065515461965fa45a664f6648653c79f037c36cac201eb57e6ceabeb824342d49a9de568eb3ea1552a8e0ce64342ca1607d0b5557f1d6bfde93e5b67
   languageName: node
   linkType: hard
 
@@ -5345,11 +6223,11 @@ __metadata:
   linkType: hard
 
 "@swc/helpers@npm:^0.4.2":
-  version: 0.4.11
-  resolution: "@swc/helpers@npm:0.4.11"
+  version: 0.4.12
+  resolution: "@swc/helpers@npm:0.4.12"
   dependencies:
     tslib: ^2.4.0
-  checksum: 736857d524b41a8a4db81094e9b027f554004e0fa3e86325d85bdb38f7e6459ce022db079edb6c61ba0f46fe8583b3e663e95f7acbd13e51b8da6c34e45bba2e
+  checksum: 3f9112f37d87815b6d4270137fc78d22bb98c75138e9b0eac7cac203ec2cf2bffbf13b20a713067c292affd5e9e70a724eb245b8daf0963e7fe528b901771c28
   languageName: node
   linkType: hard
 
@@ -5384,8 +6262,8 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^8.1.0":
-  version: 8.18.1
-  resolution: "@testing-library/dom@npm:8.18.1"
+  version: 8.19.0
+  resolution: "@testing-library/dom@npm:8.19.0"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -5395,7 +6273,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: 432a7da2bb626b11375b22e22d12c02317b35d69c0f69972c03bd0104895b496f21dc5b9d4447adef6e0c9acb3c0a64337f7d38c9667dbbacf09d5cd523394dd
+  checksum: 6bb93fef96703b6c47cf1b7cc8f71d402a9576084a94ba4e9926f51bd7bb1287fbb4f6942d82bd03fc6f3d998ae97e60f6aea4618f3a1ce6139597d2a4ecb7b9
   languageName: node
   linkType: hard
 
@@ -5703,9 +6581,15 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=10.0.0":
+<<<<<<< HEAD
   version: 18.8.2
   resolution: "@types/node@npm:18.8.2"
   checksum: b7c74dea0e835fb7faf69b4a2e87d43c1d228d88adacdff464d9e92d18a0b43bec6147b9eb3287650ac75fe5af730c53391869d02175e6b032dcb99ae2f54c92
+=======
+  version: 18.8.5
+  resolution: "@types/node@npm:18.8.5"
+  checksum: f7d896f54743178e64c534c6da16f582505acf18904ecd0ee8541cb4bc1d429ba514e7ecfd5145221b71adbd6ae1ff72df082f667e56d056fcd1a719df948e08
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -5717,9 +6601,22 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^14.0.0, @types/node@npm:^14.11.8, @types/node@npm:^14.14.31":
+<<<<<<< HEAD
   version: 14.18.31
   resolution: "@types/node@npm:14.18.31"
   checksum: df33021d673a5e3c943cf96c9f3fbccf364d20f487b2ab7eb49db144974c2049f0a91e9358df09235f543c1f0b11388c5b0b636ae1f2ed55a27c75f63bc3d2c5
+=======
+  version: 14.18.32
+  resolution: "@types/node@npm:14.18.32"
+  checksum: 45463114bf85d06dc12925d876dd90b7fff43d9ee10a40e48fd16aece3d0201c76426c128e41230b2818d386422be06c5be33b3d94d90ee924b6fa4d54574035
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^15.6.1":
+  version: 15.14.9
+  resolution: "@types/node@npm:15.14.9"
+  checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -5759,11 +6656,11 @@ __metadata:
   linkType: hard
 
 "@types/reach__router@npm:^1.3.10":
-  version: 1.3.10
-  resolution: "@types/reach__router@npm:1.3.10"
+  version: 1.3.11
+  resolution: "@types/reach__router@npm:1.3.11"
   dependencies:
     "@types/react": "*"
-  checksum: fdcb761d3b8cd74530c00490a7b5b1868e82b742e05b03d8fc09d88cc135ec6377556bcc8b345bf0f3aa8c99259e6cecbccf912ef8c9da12611c274a5ffb3fa9
+  checksum: 6bcf40714e0dafff66cbf10a534320eae35dae8344f616d2ddf077937287a0df188dfbfb32fb8045cbc641139d1ab69ee5bb258a51642823cadefbcda020a044
   languageName: node
   linkType: hard
 
@@ -6160,12 +7057,21 @@ __metadata:
   linkType: hard
 
 "@yarnpkg/parsers@npm:^3.0.0-rc.18":
+<<<<<<< HEAD
   version: 3.0.0-rc.22
   resolution: "@yarnpkg/parsers@npm:3.0.0-rc.22"
   dependencies:
     js-yaml: ^3.10.0
     tslib: ^2.4.0
   checksum: 4a31b4faad853b6cb09ff198017dd2f81782cb57ff8aaa2446ab9c8eb51aacaad3fa740e0c156c60c66cdb9cff8939f99b2b09c9890e2b8d015dcbed0150cb8a
+=======
+  version: 3.0.0-rc.25
+  resolution: "@yarnpkg/parsers@npm:3.0.0-rc.25"
+  dependencies:
+    js-yaml: ^3.10.0
+    tslib: ^2.4.0
+  checksum: c76ff37072814db2258f0d695db267b3eb3133fec6fe963db831e5288cc8fba2ece3db0732abbe52391da643c2c49522897ae0ccd0136e5cbf14428572d7ec15
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -6207,9 +7113,9 @@ __metadata:
   linkType: hard
 
 "abortcontroller-polyfill@npm:^1.1.9":
-  version: 1.7.3
-  resolution: "abortcontroller-polyfill@npm:1.7.3"
-  checksum: 55739d7f0c9bd6afa2aabb3148778967c4dd4dcff91f6b9259df38da34f9882d3f7730b0954e9767a19cc16a8dd9a58915da4e8a50220300d45af3817d7557b1
+  version: 1.7.5
+  resolution: "abortcontroller-polyfill@npm:1.7.5"
+  checksum: daf4169f4228ae0e4f4dbcfa782e501b923667f2666b7c55bd3b7664e5d6b100e333a93371173985fdf21f65d7dfba15bdb2e6031bdc9e57e4ce0297147da3aa
   languageName: node
   linkType: hard
 
@@ -6917,6 +7823,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.0.0":
+  version: 1.1.2
+  resolution: "axios@npm:1.1.2"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 136c25a5031aa2845fdbda3006c36888bbe351b11d1195f1f898a23c5df1430febbdb1ad034a61f27967e83762d5b5a3e851fff8a363cb4badeb883f8ff21461
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -7306,9 +8223,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:1.20.0":
-  version: 1.20.0
-  resolution: "body-parser@npm:1.20.0"
+"body-parser@npm:1.20.1":
+  version: 1.20.1
+  resolution: "body-parser@npm:1.20.1"
   dependencies:
     bytes: 3.1.2
     content-type: ~1.0.4
@@ -7318,11 +8235,11 @@ __metadata:
     http-errors: 2.0.0
     iconv-lite: 0.4.24
     on-finished: 2.4.1
-    qs: 6.10.3
+    qs: 6.11.0
     raw-body: 2.5.1
     type-is: ~1.6.18
     unpipe: 1.0.0
-  checksum: 12fffdeac82fe20dddcab7074215d5156e7d02a69ae90cbe9fee1ca3efa2f28ef52097cbea76685ee0a1509c71d85abd0056a08e612c09077cad6277a644cf88
+  checksum: f1050dbac3bede6a78f0b87947a8d548ce43f91ccc718a50dd774f3c81f2d8b04693e52acf62659fad23101827dd318da1fb1363444ff9a8482b886a3e4a5266
   languageName: node
   linkType: hard
 
@@ -7763,9 +8680,9 @@ __metadata:
   linkType: hard
 
 "camelize@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "camelize@npm:1.0.0"
-  checksum: 769f8d10071f57b974d9a51dc02f589dd7fb07ea6a7ecde1a57b52ae68657ba61fe85c60d50661b76c7dbb76b6474fbfd3356aee33cf5f025cd7fd6fb2811b73
+  version: 1.0.1
+  resolution: "camelize@npm:1.0.1"
+  checksum: 91d8611d09af725e422a23993890d22b2b72b4cabf7239651856950c76b4bf53fe0d0da7c5e4db05180e898e4e647220e78c9fbc976113bd96d603d1fcbfcb99
   languageName: node
   linkType: hard
 
@@ -7782,9 +8699,15 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001407":
+<<<<<<< HEAD
   version: 1.0.30001416
   resolution: "caniuse-lite@npm:1.0.30001416"
   checksum: 4d93f449aeb3527877892647beb53a01b71eef6d63907b65ed2f6d07b2fb2a9b739ebbb60adc02baa16df26fba81be9f207312159a1cf864251ad79b884db0a3
+=======
+  version: 1.0.30001419
+  resolution: "caniuse-lite@npm:1.0.30001419"
+  checksum: 7a4dc2794a6773574b5aebcd1c9c0d56159654821714152d8a0b04e261e1522bfd3d86589b8406ce81c7bf5b706118b73b2cb85d577ae433e303dd48ac9ff65f
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -8061,9 +8984,9 @@ __metadata:
   linkType: hard
 
 "ci-info@npm:^3.2.0":
-  version: 3.4.0
-  resolution: "ci-info@npm:3.4.0"
-  checksum: 7f660730170a6ce248e173b670587a0c583e31526d21afcd21f77c811c1aaeb8926999081542d1f30e12cce1df582d4c88709fa45f44c00498b46bdf21d4d21a
+  version: 3.5.0
+  resolution: "ci-info@npm:3.5.0"
+  checksum: 7def3789706ec18db3dc371dc699bd0df12057d54b796201f50ba87200e0849d3d83c68da00ab2ab8cdd738d91b25ab9e31620588f8d7e64ffaa1f760fd121cf
   languageName: node
   linkType: hard
 
@@ -8698,11 +9621,9 @@ __metadata:
   linkType: hard
 
 "convert-source-map@npm:^1.5.0, convert-source-map@npm:^1.7.0":
-  version: 1.8.0
-  resolution: "convert-source-map@npm:1.8.0"
-  dependencies:
-    safe-buffer: ~5.1.1
-  checksum: 985d974a2d33e1a2543ada51c93e1ba2f73eaed608dc39f229afc78f71dcc4c8b7d7c684aa647e3c6a3a204027444d69e53e169ce94e8d1fa8d7dee80c9c8fed
+  version: 1.9.0
+  resolution: "convert-source-map@npm:1.9.0"
+  checksum: dc55a1f28ddd0e9485ef13565f8f756b342f9a46c4ae18b843fe3c30c675d058d6a4823eff86d472f187b176f0adf51ea7b69ea38be34be4a63cbbf91b0593c8
   languageName: node
   linkType: hard
 
@@ -8746,7 +9667,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "core-js-pure@npm:^3.25.1, core-js-pure@npm:^3.8.1":
+=======
+"core-js-pure@npm:^3.23.3, core-js-pure@npm:^3.25.1":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 3.25.5
   resolution: "core-js-pure@npm:3.25.5"
   checksum: e48799a8ab28f00ef3db18377142ff2c578574ab2b18ebddde6cbf12823e0181a57c80e3caa6046ce2a2e439d603a252be767583ddc54248e3d1060bc5012127
@@ -9217,8 +10142,13 @@ __metadata:
   linkType: hard
 
 "cypress@npm:^10.8.0":
+<<<<<<< HEAD
   version: 10.9.0
   resolution: "cypress@npm:10.9.0"
+=======
+  version: 10.10.0
+  resolution: "cypress@npm:10.10.0"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -9264,7 +10194,11 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
+<<<<<<< HEAD
   checksum: 79e3dccbb82d0b0c92bb8888682766a9738374f473cf2e9a04825a6b3dbe4420c57948cabaf757af0929192a8e61b7f08b32d7f6ee0c3cddf2736cf4f408edc1
+=======
+  checksum: 668a32534a527dba79754abbf98af176b80c539a12ec00058932ba2a19c794c7888323e59e738c30f726ad740c5451c31d02548a0cb7c1b1c8ad01c55a984ca2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -9418,9 +10352,15 @@ __metadata:
   linkType: hard
 
 "decimal.js@npm:^10.4.1":
+<<<<<<< HEAD
   version: 10.4.1
   resolution: "decimal.js@npm:10.4.1"
   checksum: 5da6dc74af5b73d954741b24d404ef6da07841794d9e51412a2708ec384dd7b4bced3365fb178f4cd119b7ef45f0b34344014a4dc0494c8374c5e746df3cb410
+=======
+  version: 10.4.2
+  resolution: "decimal.js@npm:10.4.2"
+  checksum: 536cd6816a3197f2e1aa3da4860856cb5a2db73f6fafe8cb3b924ccc63f9b7d78296acc13dccbd419bd958ccc6357921fb15467f883b37cab04bfba7044cada2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -9517,11 +10457,11 @@ __metadata:
   linkType: hard
 
 "defaults@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "defaults@npm:1.0.3"
+  version: 1.0.4
+  resolution: "defaults@npm:1.0.4"
   dependencies:
     clone: ^1.0.2
-  checksum: 96e2112da6553d376afd5265ea7cbdb2a3b45535965d71ab8bb1da10c8126d168fdd5268799625324b368356d21ba2a7b3d4ec50961f11a47b7feb9de3d4413e
+  checksum: 3a88b7a587fc076b84e60affad8b85245c01f60f38fc1d259e7ac1d89eb9ce6abb19e27215de46b98568dd5bc48471730b327637e6f20b0f1bc85cf00440c80a
   languageName: node
   linkType: hard
 
@@ -10079,9 +11019,15 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.251":
+<<<<<<< HEAD
   version: 1.4.272
   resolution: "electron-to-chromium@npm:1.4.272"
   checksum: 61774a483072bf96d6badd653a8a094d2aa56d9ec7f6475dfbb3540d2c80fe3f21bdbaa9cecf8b200174c43f63ec4ba2dc56c335af006b38c0a844be9a23e5f7
+=======
+  version: 1.4.281
+  resolution: "electron-to-chromium@npm:1.4.281"
+  checksum: 8c64a7b8a652405f0d8856f9b6df6d8a0188a71f4d03b938bc76456b3fb27fe9b5a7c3a9805e9e3cce482033a9645f13391a3416483498dca1c23bce1ff858dc
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -10277,8 +11223,13 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.19.0, es-abstract@npm:^1.19.1, es-abstract@npm:^1.19.2, es-abstract@npm:^1.19.5, es-abstract@npm:^1.20.0":
+<<<<<<< HEAD
   version: 1.20.3
   resolution: "es-abstract@npm:1.20.3"
+=======
+  version: 1.20.4
+  resolution: "es-abstract@npm:1.20.4"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     call-bind: ^1.0.2
     es-to-primitive: ^1.2.1
@@ -10290,7 +11241,11 @@ __metadata:
     has-property-descriptors: ^1.0.0
     has-symbols: ^1.0.3
     internal-slot: ^1.0.3
+<<<<<<< HEAD
     is-callable: ^1.2.6
+=======
+    is-callable: ^1.2.7
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     is-negative-zero: ^2.0.2
     is-regex: ^1.1.4
     is-shared-array-buffer: ^1.0.2
@@ -10304,7 +11259,11 @@ __metadata:
     string.prototype.trimend: ^1.0.5
     string.prototype.trimstart: ^1.0.5
     unbox-primitive: ^1.0.2
+<<<<<<< HEAD
   checksum: 225f24966ed960868bcfa7b39b38c9f4b68d1e0351e4e052a199e3e2fd93838a28b050687a0edf1021c20173d0831d076ff33ec581de77ca8aded67e2e138a80
+=======
+  checksum: 89297cc785c31aedf961a603d5a07ed16471e435d3a1b6d070b54f157cf48454b95cda2ac55e4b86ff4fe3276e835fcffd2771578e6fa634337da49b26826141
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -10605,8 +11564,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.30.1":
-  version: 7.31.8
-  resolution: "eslint-plugin-react@npm:7.31.8"
+  version: 7.31.10
+  resolution: "eslint-plugin-react@npm:7.31.10"
   dependencies:
     array-includes: ^3.1.5
     array.prototype.flatmap: ^1.3.0
@@ -10624,7 +11583,7 @@ __metadata:
     string.prototype.matchall: ^4.0.7
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-  checksum: 0683e2a624a4df6f08264a3f6bc614a81e8f961c83173bdf2d8d3523f84ed5d234cddc976dbc6815913e007c5984df742ba61be0c0592b27c3daabe0f68165a3
+  checksum: f013669c296483559a760648fa06425f161b1aff93c668f14c4561c933d22a7836b745b88a795c53cab929c71513d5fd1f2ffdddff915709f01b77ac25f5b71b
   languageName: node
   linkType: hard
 
@@ -10987,12 +11946,12 @@ __metadata:
   linkType: hard
 
 "express@npm:^4.17.1":
-  version: 4.18.1
-  resolution: "express@npm:4.18.1"
+  version: 4.18.2
+  resolution: "express@npm:4.18.2"
   dependencies:
     accepts: ~1.3.8
     array-flatten: 1.1.1
-    body-parser: 1.20.0
+    body-parser: 1.20.1
     content-disposition: 0.5.4
     content-type: ~1.0.4
     cookie: 0.5.0
@@ -11011,7 +11970,7 @@ __metadata:
     parseurl: ~1.3.3
     path-to-regexp: 0.1.7
     proxy-addr: ~2.0.7
-    qs: 6.10.3
+    qs: 6.11.0
     range-parser: ~1.2.1
     safe-buffer: 5.2.1
     send: 0.18.0
@@ -11021,7 +11980,7 @@ __metadata:
     type-is: ~1.6.18
     utils-merge: 1.0.1
     vary: ~1.1.2
-  checksum: c3d44c92e48226ef32ec978becfedb0ecf0ca21316bfd33674b3c5d20459840584f2325726a4f17f33d9c99f769636f728982d1c5433a5b6fe6eb95b8cf0c854
+  checksum: 3c4b9b076879442f6b968fe53d85d9f1eeacbb4f4c41e5f16cc36d77ce39a2b0d81b3f250514982110d815b2f7173f5561367f9110fcc541f9371948e8c8b037
   languageName: node
   linkType: hard
 
@@ -11404,7 +12363,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "follow-redirects@npm:^1.10.0, follow-redirects@npm:^1.14.0":
+=======
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.0":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -11747,17 +12710,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-link@npm:^4.22.0, gatsby-link@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-link@npm:4.24.0"
   dependencies:
     "@types/reach__router": ^1.3.10
     gatsby-page-utils: ^2.24.0
+=======
+"gatsby-link@npm:^4.22.0, gatsby-link@npm:^4.24.1":
+  version: 4.24.1
+  resolution: "gatsby-link@npm:4.24.1"
+  dependencies:
+    "@types/reach__router": ^1.3.10
+    gatsby-page-utils: ^2.24.1
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     prop-types: ^15.8.1
   peerDependencies:
     "@gatsbyjs/reach-router": ^1.3.5
     react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
     react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
+<<<<<<< HEAD
   checksum: 35aed9a2270de6144f4ee153790ebb90b71681348b12340c417c708fc26e7e8334e151e040517d5e20dccfb94a5c0274dd06411a9b1373c2a598cde9a5e4f316
   languageName: node
   linkType: hard
@@ -11765,6 +12738,15 @@ __metadata:
 "gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.0":
   version: 2.24.0
   resolution: "gatsby-page-utils@npm:2.24.0"
+=======
+  checksum: 6ee4ba8c5a538c3bf8db02ab71dc222d9c0f52483bd59c6613815b248b08bf52805f698e91154e2f38fc61b3fdbdde17cbbae1dff7e3044d6ae3d1e8b004fed5
+  languageName: node
+  linkType: hard
+
+"gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.1":
+  version: 2.24.1
+  resolution: "gatsby-page-utils@npm:2.24.1"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     "@babel/runtime": ^7.15.4
     bluebird: ^3.7.2
@@ -11774,7 +12756,11 @@ __metadata:
     glob: ^7.2.3
     lodash: ^4.17.21
     micromatch: ^4.0.5
+<<<<<<< HEAD
   checksum: 84d62150a2164f8f0ff80f5cd4996a7b413b1b88ef28588c963c236b9e86421006dd384d779b912deb7506d3fd8eee8c21b8ffc5ad7f0db20b0112ec57c153cb
+=======
+  checksum: ded1f97dbe3edc1e8c22f2e3e1925ddd7459d3215a288e49cc8d89a43761f1cbaee2a8238fe0207d4fda1b5c1323c319fbd4b7746976c4d4e8af74724a32f2ca
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -11805,11 +12791,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-parcel-config@npm:0.15.0":
   version: 0.15.0
   resolution: "gatsby-parcel-config@npm:0.15.0"
   dependencies:
     "@gatsbyjs/parcel-namer-relative-to-cwd": ^1.9.0
+=======
+"gatsby-parcel-config@npm:0.15.1":
+  version: 0.15.1
+  resolution: "gatsby-parcel-config@npm:0.15.1"
+  dependencies:
+    "@gatsbyjs/parcel-namer-relative-to-cwd": 1.9.0
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@parcel/bundler-default": 2.6.2
     "@parcel/compressor-raw": 2.6.2
     "@parcel/namer-default": 2.6.2
@@ -11820,9 +12814,16 @@ __metadata:
     "@parcel/resolver-default": 2.6.2
     "@parcel/runtime-js": 2.6.2
     "@parcel/transformer-js": 2.6.2
+<<<<<<< HEAD
   peerDependencies:
     "@parcel/core": ^2.0.0
   checksum: 8663bdfc005d2f2d95e4dccfea1f54350a2def0787abd2f8d1fc7bc2a4bf150c5c909c36b1edeffa9553bc628a78098d8ff8b9173dd1da15848854a4bfb5ec47
+=======
+    "@parcel/transformer-json": 2.6.2
+  peerDependencies:
+    "@parcel/core": ^2.0.0
+  checksum: d1d906daeee447aee8709f1953b44a98c067c4971484c747881ead4fcf86206383b98e2ac05669aecca49ba6d1502e97d6a21efcd9c09c82a1d987691c21241c
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -11930,9 +12931,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-plugin-page-creator@npm:4.24.0"
+=======
+"gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.1":
+  version: 4.24.1
+  resolution: "gatsby-plugin-page-creator@npm:4.24.1"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     "@babel/runtime": ^7.15.4
     "@babel/traverse": ^7.15.4
@@ -11941,14 +12948,22 @@ __metadata:
     fs-exists-cached: ^1.0.0
     fs-extra: ^10.1.0
     gatsby-core-utils: ^3.24.0
+<<<<<<< HEAD
     gatsby-page-utils: ^2.24.0
+=======
+    gatsby-page-utils: ^2.24.1
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     gatsby-plugin-utils: ^3.18.0
     gatsby-telemetry: ^3.24.0
     globby: ^11.1.0
     lodash: ^4.17.21
   peerDependencies:
     gatsby: ^4.0.0-next
+<<<<<<< HEAD
   checksum: a16516bcf6f9f57d0e12c431ca86d4578597de609a1b79db90b82b2faab53ffb2400928c59b2e3f2ab7d02401f54515bb2bb8489b3b66b434e1d90f827c5ac1e
+=======
+  checksum: 46b6944dd7de9fb3f5bcf39fc49932485e09331b0e3c67f71a4ee98013919a4773bd75fd106e66bfb87d45e782d93a68dd78a25bd37e637fd3cb834cc040ec69
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -12429,8 +13444,13 @@ __metadata:
   linkType: hard
 
 "gatsby@npm:^4.22.0":
+<<<<<<< HEAD
   version: 4.24.1
   resolution: "gatsby@npm:4.24.1"
+=======
+  version: 4.24.4
+  resolution: "gatsby@npm:4.24.4"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -12516,10 +13536,17 @@ __metadata:
     gatsby-core-utils: ^3.24.0
     gatsby-graphiql-explorer: ^2.24.0
     gatsby-legacy-polyfills: ^2.24.0
+<<<<<<< HEAD
     gatsby-link: ^4.24.0
     gatsby-page-utils: ^2.24.0
     gatsby-parcel-config: 0.15.0
     gatsby-plugin-page-creator: ^4.24.0
+=======
+    gatsby-link: ^4.24.1
+    gatsby-page-utils: ^2.24.1
+    gatsby-parcel-config: 0.15.1
+    gatsby-plugin-page-creator: ^4.24.1
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     gatsby-plugin-typescript: ^4.24.0
     gatsby-plugin-utils: ^3.18.0
     gatsby-react-router-scroll: ^5.24.0
@@ -12605,7 +13632,11 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
+<<<<<<< HEAD
   checksum: e5a1eecade215a40fef6b083793fcccb51c5751b496c831f514778c721b309586302fd574a3e0f743c6ca4c5ec228d5120c9262493e23dfbd1bcdf802da927a7
+=======
+  checksum: e67cf944ff94518bbedc9c8277451d779463e17c3104b6ab587d0ae6f26b71af3aedea73d913d1539c7683143ef8c1f1b71d34fc34e4cfdff7a629a60f2ce241
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -14073,7 +15104,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.6":
+=======
+"is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
   checksum: 61fd57d03b0d984e2ed3720fb1c7a897827ea174bd44402878e059542ea8c4aeedee0ea0985998aa5cc2736b2fa6e271c08587addb5b3959ac52cf665173d1ac
@@ -14696,15 +15731,24 @@ __metadata:
   linkType: hard
 
 "joi@npm:^17.4.0, joi@npm:^17.4.2":
+<<<<<<< HEAD
   version: 17.6.2
   resolution: "joi@npm:17.6.2"
+=======
+  version: 17.6.3
+  resolution: "joi@npm:17.6.3"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     "@hapi/hoek": ^9.0.0
     "@hapi/topo": ^5.0.0
     "@sideway/address": ^4.1.3
     "@sideway/formula": ^3.0.0
     "@sideway/pinpoint": ^2.0.0
+<<<<<<< HEAD
   checksum: 4a29330e0be35f5c8b754b0c0e900936e083901643c09764028605c7beea937e73231bad7425c9d0168998584d2a96d5f05c8d54194d58b7166c9ba4db47eba2
+=======
+  checksum: a4cd53a83e68de7727ba48daa79047183d65a9bb6c2ad4f3028cb56a7526d113860c8189e95371d8d3a8315c344a478547f875daf3856f2d9477a995ca1ef05a
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -14885,7 +15929,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-pointer@npm:0.6.2, json-pointer@npm:^0.6.2":
+"json-pointer@npm:0.6.2, json-pointer@npm:^0.6.1":
   version: 0.6.2
   resolution: "json-pointer@npm:0.6.2"
   dependencies:
@@ -15119,6 +16163,7 @@ __metadata:
   linkType: hard
 
 "lerna@npm:^5.5.1":
+<<<<<<< HEAD
   version: 5.6.1
   resolution: "lerna@npm:5.6.1"
   dependencies:
@@ -15139,6 +16184,28 @@ __metadata:
     "@lerna/publish": 5.6.1
     "@lerna/run": 5.6.1
     "@lerna/version": 5.6.1
+=======
+  version: 5.6.2
+  resolution: "lerna@npm:5.6.2"
+  dependencies:
+    "@lerna/add": 5.6.2
+    "@lerna/bootstrap": 5.6.2
+    "@lerna/changed": 5.6.2
+    "@lerna/clean": 5.6.2
+    "@lerna/cli": 5.6.2
+    "@lerna/command": 5.6.2
+    "@lerna/create": 5.6.2
+    "@lerna/diff": 5.6.2
+    "@lerna/exec": 5.6.2
+    "@lerna/import": 5.6.2
+    "@lerna/info": 5.6.2
+    "@lerna/init": 5.6.2
+    "@lerna/link": 5.6.2
+    "@lerna/list": 5.6.2
+    "@lerna/publish": 5.6.2
+    "@lerna/run": 5.6.2
+    "@lerna/version": 5.6.2
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@nrwl/devkit": ">=14.8.1 < 16"
     import-local: ^3.0.2
     inquirer: ^8.2.4
@@ -15147,7 +16214,11 @@ __metadata:
     typescript: ^3 || ^4
   bin:
     lerna: cli.js
+<<<<<<< HEAD
   checksum: cc0c609cab72bd8d008ecdd5cda10216d2b0d4292d612905e471d701149f1ee66a2a115e79937ef8d4ab3fe032962def12a86c4cd3381b930cff56a8211fab64
+=======
+  checksum: 5e06ac9f1e47e414231aa9d9e6a74f6ea7eef62e0110941b1ac1a73635cfaaae3802047e16c33c9682f5932e72653b959b2895cc49da334afbae51ff718baca3
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -15887,12 +16958,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "marked@npm:^4.0.15":
   version: 4.1.1
   resolution: "marked@npm:4.1.1"
   bin:
     marked: bin/marked.js
   checksum: 717e3357952ee53de831bf0eb110ed075bebca2376c58bcdf7ee523ef540d45308ad6d51b2c933da0968832ea4386f31c142ca65443e77c098e84f6cce73e418
+=======
+"marked@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "marked@npm:0.7.0"
+  bin:
+    marked: ./bin/marked
+  checksum: 5965e990ee0497aceae1b63c479ad614773331e255c7c9feb00120813574370d03e104d062f3c52ca4d96e7c4ff726ad8ca7ef2debe53728fb73975677b6878e
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -16205,6 +17285,13 @@ __metadata:
   dependencies:
     fs-monkey: ^1.0.3
   checksum: fab88266dc576dc4999e38bdf531d703fb798affac2e0dd3fc17470878486844027b2766008ba80c0103b443f52cf9068a5c00f4e1ecf04106f4b29c11855822
+  languageName: node
+  linkType: hard
+
+"memoize-one@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "memoize-one@npm:5.2.1"
+  checksum: a3cba7b824ebcf24cdfcd234aa7f86f3ad6394b8d9be4c96ff756dafb8b51c7f71320785fbc2304f1af48a0467cbbd2a409efc9333025700ed523f254cb52e3d
   languageName: node
   linkType: hard
 
@@ -16540,9 +17627,9 @@ __metadata:
   linkType: hard
 
 "minimist@npm:^1.2.0, minimist@npm:^1.2.3, minimist@npm:^1.2.5, minimist@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "minimist@npm:1.2.6"
-  checksum: d15428cd1e11eb14e1233bcfb88ae07ed7a147de251441d61158619dfb32c4d7e9061d09cab4825fdee18ecd6fce323228c8c47b5ba7cd20af378ca4048fb3fb
+  version: 1.2.7
+  resolution: "minimist@npm:1.2.7"
+  checksum: 7346574a1038ca23c32e02252f603801f09384dd1d78b69a943a4e8c2c28730b80e96193882d3d3b22a063445f460e48316b29b8a25addca2d7e5e8f75478bec
   languageName: node
   linkType: hard
 
@@ -16824,11 +17911,11 @@ __metadata:
   linkType: hard
 
 "nan@npm:^2.14.2":
-  version: 2.16.0
-  resolution: "nan@npm:2.16.0"
+  version: 2.17.0
+  resolution: "nan@npm:2.17.0"
   dependencies:
     node-gyp: latest
-  checksum: cb16937273ea55b01ea47df244094c12297ce6b29b36e845d349f1f7c268b8d7c5abd126a102c5678a1e1afd0d36bba35ea0cc959e364928ce60561c9306064a
+  checksum: ec609aeaf7e68b76592a3ba96b372aa7f5df5b056c1e37410b0f1deefbab5a57a922061e2c5b369bae9c7c6b5e6eecf4ad2dac8833a1a7d3a751e0a7c7f849ed
   languageName: node
   linkType: hard
 
@@ -16923,11 +18010,19 @@ __metadata:
   linkType: hard
 
 "node-abi@npm:^3.3.0":
+<<<<<<< HEAD
   version: 3.25.0
   resolution: "node-abi@npm:3.25.0"
   dependencies:
     semver: ^7.3.5
   checksum: 5d10b31fe9ff3a9e34791dc217995d84e8acc7057b7112e2da6472503f20057ca14ce06a9da3c7d8cc51b3735963502be3812755165c1095ff6fb0e53c9454dc
+=======
+  version: 3.26.0
+  resolution: "node-abi@npm:3.26.0"
+  dependencies:
+    semver: ^7.3.5
+  checksum: 01271cf7b7e5b62a1d3d556efa4756a625b63b085dfd20558107abff3458082bfb0aed82a2985b1f82ccacd400bf3959ead5c0d1249aaf167fc88b82280f1764
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -17014,8 +18109,13 @@ __metadata:
   linkType: hard
 
 "node-gyp@npm:^9.0.0, node-gyp@npm:latest":
+<<<<<<< HEAD
   version: 9.2.0
   resolution: "node-gyp@npm:9.2.0"
+=======
+  version: 9.3.0
+  resolution: "node-gyp@npm:9.3.0"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     env-paths: ^2.2.0
     glob: ^7.1.4
@@ -17029,7 +18129,11 @@ __metadata:
     which: ^2.0.2
   bin:
     node-gyp: bin/node-gyp.js
+<<<<<<< HEAD
   checksum: 91f0589eabbd37f0d4e3fe9918f1f9e25afc707f6e107f0133be19c5aac62e731d92abdc2b106258665a4487b18cc2878d3fcd3dc2c6cffd68da1cb2a5ccf450
+=======
+  checksum: 589ddd3ed967724ef425f9624bfa47cf73022640ab3eba6d556e92cdc4ddef33b63fce3a467c93b995a3f61df92eafd3c3d1e8dbe4a2c00c383334487dea99c3
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -17385,17 +18489,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "nx@npm:14.8.3, nx@npm:>=14.8.1 < 16":
   version: 14.8.3
   resolution: "nx@npm:14.8.3"
   dependencies:
     "@nrwl/cli": 14.8.3
     "@nrwl/tao": 14.8.3
+=======
+"nx@npm:14.8.4, nx@npm:>=14.8.1 < 16":
+  version: 14.8.4
+  resolution: "nx@npm:14.8.4"
+  dependencies:
+    "@nrwl/cli": 14.8.4
+    "@nrwl/tao": 14.8.4
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
     "@zkochan/js-yaml": 0.0.6
+<<<<<<< HEAD
     axios: 0.21.1
+=======
+    axios: ^1.0.0
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
     chalk: 4.1.0
     chokidar: ^3.5.1
     cli-cursor: 3.1.0
@@ -17434,7 +18551,11 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
+<<<<<<< HEAD
   checksum: e946f121814ae9513e78a28e67a308457d5002c6804d38757b784cdda50e0c7fc4ef8d097bff786a3a67a30a26d7c4ca76afda839214def3657552fd572adf89
+=======
+  checksum: 28026fa22c527f466a38ccc583bcf12cb5bdf971d69d4db51e2eac2b79784fe4709f315fdaae8700eae691dbc8a80e1f91b2d475f9f1b34d49b81f7b83667e0a
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -17660,7 +18781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openapi-sampler@npm:^1.3.0":
+"openapi-sampler@npm:^1.0.1":
   version: 1.3.0
   resolution: "openapi-sampler@npm:1.3.0"
   dependencies:
@@ -18410,7 +19531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfect-scrollbar@npm:^1.5.5":
+"perfect-scrollbar@npm:^1.5.1":
   version: 1.5.5
   resolution: "perfect-scrollbar@npm:1.5.5"
   checksum: 7a8d3097e91df1dd112f28ee9539c1a36ae7a836d986798af2e0d1e32c3ef21380215b3c06bc12434d89547d7f763637ac19b877549049b6c2166da85956c9dc
@@ -18953,13 +20074,22 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.16":
+<<<<<<< HEAD
   version: 8.4.17
   resolution: "postcss@npm:8.4.17"
+=======
+  version: 8.4.18
+  resolution: "postcss@npm:8.4.18"
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   dependencies:
     nanoid: ^3.3.4
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
+<<<<<<< HEAD
   checksum: a6d9096dd711e17f7b1d18ff5dcb4fdedf3941d5a3dc8b0e4ea873b8f31972d57f73d6da9a8aed7ff389eb52190ed34f6a94f299a7f5ddc68b08a24a48f77eb9
+=======
+  checksum: 9349fd99849b2e3d2e134ff949b7770ecb12375f352723ce2bcc06167eba3850ea7844c1b191a85cd915d6a396b4e8ee9a5267e6cc5d8d003d0cbc7a97555d39
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -18973,13 +20103,13 @@ __metadata:
   linkType: hard
 
 "preact-render-to-string@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "preact-render-to-string@npm:5.2.4"
+  version: 5.2.5
+  resolution: "preact-render-to-string@npm:5.2.5"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: cb29e280174bb4e8a77be454b927dfa35f2672d9bf2eb11d6634208b076d81508a35d53a38a5dfee7676fc48be2c1e0db2e83fca955f7016ce5ed844f35d92b4
+  checksum: 42a735274a190577e3a1fc785ab179a8ec422345d0fd24402146aa2e3c2b216b724c94d569677f744e366c2fbbe5619bc4ab8270cb8036c366d524b54e82fd3f
   languageName: node
   linkType: hard
 
@@ -19086,7 +20216,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prismjs@npm:^1.27.0":
+"prismjs@npm:^1.24.1":
   version: 1.29.0
   resolution: "prismjs@npm:1.29.0"
   checksum: 007a8869d4456ff8049dc59404e32d5666a07d99c3b0e30a18bd3b7676dfa07d1daae9d0f407f20983865fd8da56de91d09cb08e6aa61f5bc420a27c0beeaf93
@@ -19253,6 +20383,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
+  languageName: node
+  linkType: hard
+
 "ps-tree@npm:1.2.0":
   version: 1.2.0
   resolution: "ps-tree@npm:1.2.0"
@@ -19339,12 +20476,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.10.3":
-  version: 6.10.3
-  resolution: "qs@npm:6.10.3"
+"qs@npm:6.11.0":
+  version: 6.11.0
+  resolution: "qs@npm:6.11.0"
   dependencies:
     side-channel: ^1.0.4
-  checksum: 0fac5e6c7191d0295a96d0e83c851aeb015df7e990e4d3b093897d3ac6c94e555dbd0a599739c84d7fa46d7fee282d94ba76943983935cf33bba6769539b8019
+  checksum: 6e1f29dd5385f7488ec74ac7b6c92f4d09a90408882d0c208414a34dd33badc1a621019d4c799a3df15ab9b1d0292f97c1dd71dc7c045e69f81a8064e5af7297
   languageName: node
   linkType: hard
 
@@ -19811,9 +20948,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redoc-cli@npm:^0.13.20":
-  version: 0.13.20
-  resolution: "redoc-cli@npm:0.13.20"
+"redoc-cli@npm:0.13.0":
+  version: 0.13.0
+  resolution: "redoc-cli@npm:0.13.0"
   dependencies:
     chokidar: ^3.5.1
     handlebars: ^4.7.7
@@ -19823,40 +20960,42 @@ __metadata:
     node-libs-browser: ^2.2.1
     react: ^17.0.1
     react-dom: ^17.0.1
-    redoc: 2.0.0-rc.77
+    redoc: 2.0.0-rc.57
     styled-components: ^5.3.0
-    update-notifier: ^5.0.1
-    yargs: ^17.3.1
+    yargs: ^17.0.1
   bin:
     redoc-cli: index.js
-  checksum: 11779752c1276438aa16dc67cc4911490452fc474e92532278222e7d9655c05bee4e68a65d379cab5af8d55bd3552213f30eb707b74d8b5f3f4e354f030e835e
+  checksum: b592af48859dac683c459e8ab6e67a0121070d36a7dd2fd32e7629d9d7008314f2c6c1504bc98f06fd04cfb94a111f85c1af9e0cf1c0c7845da19de177a7bb8f
   languageName: node
   linkType: hard
 
-"redoc@npm:2.0.0":
-  version: 2.0.0
-  resolution: "redoc@npm:2.0.0"
+"redoc@npm:2.0.0-rc.56":
+  version: 2.0.0-rc.56
+  resolution: "redoc@npm:2.0.0-rc.56"
   dependencies:
-    "@redocly/openapi-core": ^1.0.0-beta.104
+    "@babel/runtime": ^7.14.0
+    "@redocly/openapi-core": ^1.0.0-beta.50
+    "@redocly/react-dropdown-aria": ^2.0.11
+    "@types/node": ^15.6.1
     classnames: ^2.3.1
     decko: ^1.2.0
     dompurify: ^2.2.8
     eventemitter3: ^4.0.7
-    json-pointer: ^0.6.2
+    json-pointer: ^0.6.1
     lunr: ^2.3.9
     mark.js: ^8.11.1
-    marked: ^4.0.15
+    marked: ^0.7.0
+    memoize-one: ^5.2.1
     mobx-react: ^7.2.0
-    openapi-sampler: ^1.3.0
+    openapi-sampler: ^1.0.1
     path-browserify: ^1.0.1
-    perfect-scrollbar: ^1.5.5
+    perfect-scrollbar: ^1.5.1
     polished: ^4.1.3
-    prismjs: ^1.27.0
+    prismjs: ^1.24.1
     prop-types: ^15.7.2
     react-tabs: ^3.2.2
     slugify: ~1.4.7
     stickyfill: ^1.1.1
-    style-loader: ^3.3.1
     swagger2openapi: ^7.0.6
     url-template: ^2.0.8
   peerDependencies:
@@ -19865,34 +21004,36 @@ __metadata:
     react: ^16.8.4 || ^17.0.0
     react-dom: ^16.8.4 || ^17.0.0
     styled-components: ^4.1.1 || ^5.1.1
-  checksum: 684d43dc62fb5f66ee765604b5745c6f742bf35b4cb603e546399ba76c987c7ef61313a51c99ababbb42a703d44bf84b78e3f7d1e5666d08b62930c52e35536f
+  checksum: dd04f7b4c3b85478f35a6ebb067eb2a4ce7d107040b716ec4044021d7ce3de1ab16620e1247381d867d9db9ee299a9e45fcd363f58d8094ecb8ba31ab86dc8df
   languageName: node
   linkType: hard
 
-"redoc@npm:2.0.0-rc.77":
-  version: 2.0.0-rc.77
-  resolution: "redoc@npm:2.0.0-rc.77"
+"redoc@npm:2.0.0-rc.57":
+  version: 2.0.0-rc.57
+  resolution: "redoc@npm:2.0.0-rc.57"
   dependencies:
-    "@redocly/openapi-core": ^1.0.0-beta.104
+    "@babel/runtime": ^7.14.0
+    "@redocly/openapi-core": ^1.0.0-beta.54
+    "@redocly/react-dropdown-aria": ^2.0.11
     classnames: ^2.3.1
     decko: ^1.2.0
     dompurify: ^2.2.8
     eventemitter3: ^4.0.7
-    json-pointer: ^0.6.2
+    json-pointer: ^0.6.1
     lunr: ^2.3.9
     mark.js: ^8.11.1
-    marked: ^4.0.15
+    marked: ^0.7.0
+    memoize-one: ^5.2.1
     mobx-react: ^7.2.0
-    openapi-sampler: ^1.3.0
+    openapi-sampler: ^1.0.1
     path-browserify: ^1.0.1
-    perfect-scrollbar: ^1.5.5
+    perfect-scrollbar: ^1.5.1
     polished: ^4.1.3
-    prismjs: ^1.27.0
+    prismjs: ^1.24.1
     prop-types: ^15.7.2
     react-tabs: ^3.2.2
     slugify: ~1.4.7
     stickyfill: ^1.1.1
-    style-loader: ^3.3.1
     swagger2openapi: ^7.0.6
     url-template: ^2.0.8
   peerDependencies:
@@ -19901,7 +21042,7 @@ __metadata:
     react: ^16.8.4 || ^17.0.0
     react-dom: ^16.8.4 || ^17.0.0
     styled-components: ^4.1.1 || ^5.1.1
-  checksum: 960759320a1d81236712c4ded7dbdbec7f24892d1c4c188b0b800d8f416852557f7f91d7b123dd897f709bd1e45af52233ca122a596b28902b8a396c85e5a4ab
+  checksum: c319d4dd5b4d4c0c777cd8ca895a48d2cd21e88f08d72a740dd5c9dd6f68edb798a1a97702ae1a164a596f378723f0ec49e378d825b41114ca47e283694bccbf
   languageName: node
   linkType: hard
 
@@ -19947,9 +21088,9 @@ __metadata:
   linkType: hard
 
 "regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.7":
-  version: 0.13.9
-  resolution: "regenerator-runtime@npm:0.13.9"
-  checksum: 65ed455fe5afd799e2897baf691ca21c2772e1a969d19bb0c4695757c2d96249eb74ee3553ea34a91062b2a676beedf630b4c1551cc6299afb937be1426ec55e
+  version: 0.13.10
+  resolution: "regenerator-runtime@npm:0.13.10"
+  checksum: 09893f5a9e82932642d9a999716b6c626dc53ef2a01307c952ebbf8e011802360163a37c304c18a6c358548be5a72b448e37209954a18696f21e438c81cbb4b9
   languageName: node
   linkType: hard
 
@@ -20966,9 +22107,9 @@ __metadata:
   linkType: hard
 
 "shell-quote@npm:^1.7.3":
-  version: 1.7.3
-  resolution: "shell-quote@npm:1.7.3"
-  checksum: aca58e73a3a5d933d02e0bdddedc53ee14f7c2ec264f97ac915b9d4482d077a38e422aa664631d60a672cd3cdb4054eb2e6c0303f54882453dacb6483e482d34
+  version: 1.7.4
+  resolution: "shell-quote@npm:1.7.4"
+  checksum: 2874ea9c1a7c3ebfc9ec5734a897e16533d0d06f2e4cddc22ba3d1cab5cdc07d0f825364c1b1e39abe61236f44d8e60e933c7ad7349ce44de4f5dddc7b4354e9
   languageName: node
   linkType: hard
 
@@ -21845,15 +22986,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "style-loader@npm:3.3.1"
-  peerDependencies:
-    webpack: ^5.0.0
-  checksum: 470feef680f59e2fce4d6601b5c55b88c01ad8d1dd693c528ffd591ff5fd7c01a4eff3bdbe62f26f847d6bd2430c9ab594be23307cfe7a3446ab236683f0d066
-  languageName: node
-  linkType: hard
-
 "style-to-object@npm:0.3.0, style-to-object@npm:^0.3.0":
   version: 0.3.0
   resolution: "style-to-object@npm:0.3.0"
@@ -22005,12 +23137,12 @@ __metadata:
   linkType: hard
 
 "swiper@npm:^8.3.2":
-  version: 8.4.2
-  resolution: "swiper@npm:8.4.2"
+  version: 8.4.4
+  resolution: "swiper@npm:8.4.4"
   dependencies:
     dom7: ^4.0.4
     ssr-window: ^4.0.2
-  checksum: 84f987c8d399ed054002052d00937036d74705bf8177a9f6e7ffb035fbc9aa5b88c833503970df44f86330e632694af9d948baddc7ac32233c8d58756924cccf
+  checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
   languageName: node
   linkType: hard
 
@@ -22660,11 +23792,19 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
+<<<<<<< HEAD
   version: 3.17.2
   resolution: "uglify-js@npm:3.17.2"
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 128233638176abe6cc0ec0f1dbae7bcb3f02edd78eb5c7752b4f379ec9d29032cd2edf06b2522dbeba0a1f05afb25f6eaffe638581da6d8554bd4c060d6622b1
+=======
+  version: 3.17.3
+  resolution: "uglify-js@npm:3.17.3"
+  bin:
+    uglifyjs: bin/uglifyjs
+  checksum: 2650b2e0385fe6bf68bc0b7746028fd004bbe839447c28a59f8a9e458187e897a5057900cb715b3be4cf7cf3f1d10217198210c5c23c0bffcb20feca2de5bb17
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   languageName: node
   linkType: hard
 
@@ -23117,8 +24257,8 @@ __metadata:
   linkType: hard
 
 "update-browserslist-db@npm:^1.0.9":
-  version: 1.0.9
-  resolution: "update-browserslist-db@npm:1.0.9"
+  version: 1.0.10
+  resolution: "update-browserslist-db@npm:1.0.10"
   dependencies:
     escalade: ^3.1.1
     picocolors: ^1.0.0
@@ -23126,11 +24266,11 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     browserslist-lint: cli.js
-  checksum: f625899b236f6a4d7f62b56be1b8da230c5563d1fef84d3ef148f2e1a3f11a5a4b3be4fd7e3703e51274c116194017775b10afb4de09eb2c0d09d36b90f1f578
+  checksum: 12db73b4f63029ac407b153732e7cd69a1ea8206c9100b482b7d12859cd3cd0bc59c602d7ae31e652706189f1acb90d42c53ab24a5ba563ed13aebdddc5561a0
   languageName: node
   linkType: hard
 
-"update-notifier@npm:^5.0.1, update-notifier@npm:^5.1.0":
+"update-notifier@npm:^5.1.0":
   version: 5.1.0
   resolution: "update-notifier@npm:5.1.0"
   dependencies:
@@ -24253,7 +25393,11 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 "yargs@npm:^17.0.0, yargs@npm:^17.0.1, yargs@npm:^17.3.1, yargs@npm:^17.4.0":
+=======
+"yargs@npm:^17.0.0, yargs@npm:^17.0.1, yargs@npm:^17.4.0":
+>>>>>>> fix: pin to redoc@2.0.0-rc.56 for photoshop
   version: 17.6.0
   resolution: "yargs@npm:17.6.0"
   dependencies:
