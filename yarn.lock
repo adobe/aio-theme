@@ -211,7 +211,7 @@ __metadata:
     react-helmet: ^6.1.0
     react-id-generator: ^3.0.2
     redoc: 2.0.0-rc.56
-    redoc-cli: ^0.13.0
+    redoc-cli: 0.13.0
     rehype-slug-custom-id: ^1.1.0
     request: ^2.88.2
     sharp: ^0.31.0
@@ -5070,7 +5070,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redocly/openapi-core@npm:^1.0.0-beta.104, @redocly/openapi-core@npm:^1.0.0-beta.50":
+"@redocly/openapi-core@npm:^1.0.0-beta.104, @redocly/openapi-core@npm:^1.0.0-beta.50, @redocly/openapi-core@npm:^1.0.0-beta.54":
   version: 1.0.0-beta.111
   resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
   dependencies:
@@ -19948,7 +19948,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redoc-cli@npm:^0.13.0, redoc-cli@npm:^0.13.20":
+"redoc-cli@npm:0.13.0":
+  version: 0.13.0
+  resolution: "redoc-cli@npm:0.13.0"
+  dependencies:
+    chokidar: ^3.5.1
+    handlebars: ^4.7.7
+    isarray: ^2.0.5
+    mkdirp: ^1.0.4
+    mobx: ^6.3.2
+    node-libs-browser: ^2.2.1
+    react: ^17.0.1
+    react-dom: ^17.0.1
+    redoc: 2.0.0-rc.57
+    styled-components: ^5.3.0
+    yargs: ^17.0.1
+  bin:
+    redoc-cli: index.js
+  checksum: b592af48859dac683c459e8ab6e67a0121070d36a7dd2fd32e7629d9d7008314f2c6c1504bc98f06fd04cfb94a111f85c1af9e0cf1c0c7845da19de177a7bb8f
+  languageName: node
+  linkType: hard
+
+"redoc-cli@npm:^0.13.20":
   version: 0.13.20
   resolution: "redoc-cli@npm:0.13.20"
   dependencies:
@@ -20042,6 +20063,44 @@ __metadata:
     react-dom: ^16.8.4 || ^17.0.0
     styled-components: ^4.1.1 || ^5.1.1
   checksum: dd04f7b4c3b85478f35a6ebb067eb2a4ce7d107040b716ec4044021d7ce3de1ab16620e1247381d867d9db9ee299a9e45fcd363f58d8094ecb8ba31ab86dc8df
+  languageName: node
+  linkType: hard
+
+"redoc@npm:2.0.0-rc.57":
+  version: 2.0.0-rc.57
+  resolution: "redoc@npm:2.0.0-rc.57"
+  dependencies:
+    "@babel/runtime": ^7.14.0
+    "@redocly/openapi-core": ^1.0.0-beta.54
+    "@redocly/react-dropdown-aria": ^2.0.11
+    classnames: ^2.3.1
+    decko: ^1.2.0
+    dompurify: ^2.2.8
+    eventemitter3: ^4.0.7
+    json-pointer: ^0.6.1
+    lunr: ^2.3.9
+    mark.js: ^8.11.1
+    marked: ^0.7.0
+    memoize-one: ^5.2.1
+    mobx-react: ^7.2.0
+    openapi-sampler: ^1.0.1
+    path-browserify: ^1.0.1
+    perfect-scrollbar: ^1.5.1
+    polished: ^4.1.3
+    prismjs: ^1.24.1
+    prop-types: ^15.7.2
+    react-tabs: ^3.2.2
+    slugify: ~1.4.7
+    stickyfill: ^1.1.1
+    swagger2openapi: ^7.0.6
+    url-template: ^2.0.8
+  peerDependencies:
+    core-js: ^3.1.4
+    mobx: ^6.0.4
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+    styled-components: ^4.1.1 || ^5.1.1
+  checksum: c319d4dd5b4d4c0c777cd8ca895a48d2cd21e88f08d72a740dd5c9dd6f68edb798a1a97702ae1a164a596f378723f0ec49e378d825b41114ca47e283694bccbf
   languageName: node
   linkType: hard
 
