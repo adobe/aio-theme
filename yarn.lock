@@ -33,7 +33,103 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@*, @adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio":
+"@adobe/gatsby-theme-aio@npm:*":
+  version: 4.6.2
+  resolution: "@adobe/gatsby-theme-aio@npm:4.6.2"
+  dependencies:
+    "@adobe/focus-ring-polyfill": ^0.1.5
+    "@adobe/gatsby-source-github-file-contributors": ^0.3.1
+    "@adobe/prism-adobe": ^1.0.3
+    "@emotion/react": ^11.10.4
+    "@loadable/component": ^5.15.2
+    "@mdx-js/mdx": 1.6.22
+    "@mdx-js/react": 1.6.22
+    "@spectrum-css/accordion": 3.0.24
+    "@spectrum-css/actionbutton": 2.1.7
+    "@spectrum-css/actiongroup": ^2.0.0
+    "@spectrum-css/assetlist": 3.0.24
+    "@spectrum-css/badge": ^1.0.20
+    "@spectrum-css/breadcrumb": 5.0.0
+    "@spectrum-css/button": 6.0.13
+    "@spectrum-css/card": 5.0.0
+    "@spectrum-css/checkbox": 3.1.3
+    "@spectrum-css/dialog": 6.0.15
+    "@spectrum-css/divider": 1.0.27
+    "@spectrum-css/icon": 3.0.23
+    "@spectrum-css/inlinealert": 4.0.13
+    "@spectrum-css/link": 3.1.23
+    "@spectrum-css/menu": 4.0.4
+    "@spectrum-css/modal": 3.0.23
+    "@spectrum-css/picker": 1.2.12
+    "@spectrum-css/popover": 5.0.18
+    "@spectrum-css/progresscircle": 1.0.23
+    "@spectrum-css/search": 4.2.12
+    "@spectrum-css/sidenav": 3.0.24
+    "@spectrum-css/table": 4.0.19
+    "@spectrum-css/tabs": 3.2.19
+    "@spectrum-css/textfield": 3.2.4
+    "@spectrum-css/tooltip": 3.1.18
+    "@spectrum-css/typography": 4.0.20
+    "@spectrum-css/underlay": 2.0.31
+    "@spectrum-css/vars": 8.0.0
+    "@spectrum-css/well": 3.0.22
+    algolia-html-extractor: ^0.0.1
+    algoliasearch: ^4.14.2
+    await-exec: ^0.1.2
+    builtin-status-codes: ^3.0.0
+    classnames: ^2.3.2
+    core-js: ^3.25.1
+    gatsby-plugin-algolia: ^0.26.0
+    gatsby-plugin-emotion: ^7.23.0
+    gatsby-plugin-layout: ^3.23.0
+    gatsby-plugin-mdx: ^3.20.0
+    gatsby-plugin-mdx-embed: ^1.0.0
+    gatsby-plugin-preact: ^6.23.0
+    gatsby-plugin-react-helmet: ^5.23.0
+    gatsby-plugin-sharp: ^4.23.0
+    gatsby-remark-autolink-headers: ^5.23.0
+    gatsby-remark-copy-linked-files: ^5.23.0
+    gatsby-remark-images-remote: ^2.1.1
+    gatsby-source-filesystem: ^4.23.0
+    gatsby-transformer-remark: ^5.23.0
+    gatsby-transformer-sharp: ^4.23.0
+    https-browserify: ^1.0.0
+    jsdom: ^20.0.0
+    lmdb-store: ^1.6.14
+    mdx-embed: ^1.0.0
+    mobx: ^6.6.2
+    normalize-path: ^3.0.0
+    os-browserify: ^0.3.0
+    path-browserify: ^1.0.1
+    penpal: ^6.2.2
+    postcss: ^8.4.16
+    preact: ^10.11.0
+    preact-render-to-string: ^5.2.4
+    prism-react-renderer: 1.3.5
+    prop-types: ^15.8.1
+    react-helmet: ^6.1.0
+    react-id-generator: ^3.0.2
+    redoc: 2.0.0
+    redoc-cli: ^0.13.20
+    rehype-slug-custom-id: ^1.1.0
+    request: ^2.88.2
+    sharp: ^0.31.0
+    stream-http: ^3.2.0
+    styled-components: ^5.3.5
+    swiper: ^8.3.2
+    to-arraybuffer: ^1.0.1
+    tty-browserify: ^0.0.1
+    unist-util-select: 3.0.4
+    uuid: ^9.0.0
+  peerDependencies:
+    gatsby: ^4.22.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  checksum: 54b9220b915bf1e2dba545b5686baaca382a37330d4956b1cf8c7ccd20e3a0b365c3896672fbd28ee4ca3f0c062660202ba2f2d9d3372cffc70c878b89d572c2
+  languageName: node
+  linkType: hard
+
+"@adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio":
   version: 0.0.0-use.local
   resolution: "@adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio"
   dependencies:
@@ -115,7 +211,7 @@ __metadata:
     react-helmet: ^6.1.0
     react-id-generator: ^3.0.2
     redoc: 2.0.0-rc.56
-    redoc-cli: 0.13.0
+    redoc-cli: ^0.13.0
     rehype-slug-custom-id: ^1.1.0
     request: ^2.88.2
     sharp: ^0.31.0
@@ -4974,7 +5070,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redocly/openapi-core@npm:^1.0.0-beta.50, @redocly/openapi-core@npm:^1.0.0-beta.54":
+"@redocly/openapi-core@npm:^1.0.0-beta.104, @redocly/openapi-core@npm:^1.0.0-beta.50":
   version: 1.0.0-beta.111
   resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
   dependencies:
@@ -14903,7 +14999,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-pointer@npm:0.6.2, json-pointer@npm:^0.6.1":
+"json-pointer@npm:0.6.2, json-pointer@npm:^0.6.1, json-pointer@npm:^0.6.2":
   version: 0.6.2
   resolution: "json-pointer@npm:0.6.2"
   dependencies:
@@ -15911,6 +16007,15 @@ __metadata:
   bin:
     marked: ./bin/marked
   checksum: 5965e990ee0497aceae1b63c479ad614773331e255c7c9feb00120813574370d03e104d062f3c52ca4d96e7c4ff726ad8ca7ef2debe53728fb73975677b6878e
+  languageName: node
+  linkType: hard
+
+"marked@npm:^4.0.15":
+  version: 4.1.1
+  resolution: "marked@npm:4.1.1"
+  bin:
+    marked: bin/marked.js
+  checksum: 717e3357952ee53de831bf0eb110ed075bebca2376c58bcdf7ee523ef540d45308ad6d51b2c933da0968832ea4386f31c142ca65443e77c098e84f6cce73e418
   languageName: node
   linkType: hard
 
@@ -17685,7 +17790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openapi-sampler@npm:^1.0.1":
+"openapi-sampler@npm:^1.0.1, openapi-sampler@npm:^1.3.0":
   version: 1.3.0
   resolution: "openapi-sampler@npm:1.3.0"
   dependencies:
@@ -18435,7 +18540,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfect-scrollbar@npm:^1.5.1":
+"perfect-scrollbar@npm:^1.5.1, perfect-scrollbar@npm:^1.5.5":
   version: 1.5.5
   resolution: "perfect-scrollbar@npm:1.5.5"
   checksum: 7a8d3097e91df1dd112f28ee9539c1a36ae7a836d986798af2e0d1e32c3ef21380215b3c06bc12434d89547d7f763637ac19b877549049b6c2166da85956c9dc
@@ -19111,7 +19216,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prismjs@npm:^1.24.1":
+"prismjs@npm:^1.24.1, prismjs@npm:^1.27.0":
   version: 1.29.0
   resolution: "prismjs@npm:1.29.0"
   checksum: 007a8869d4456ff8049dc59404e32d5666a07d99c3b0e30a18bd3b7676dfa07d1daae9d0f407f20983865fd8da56de91d09cb08e6aa61f5bc420a27c0beeaf93
@@ -19843,9 +19948,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redoc-cli@npm:0.13.0":
-  version: 0.13.0
-  resolution: "redoc-cli@npm:0.13.0"
+"redoc-cli@npm:^0.13.0, redoc-cli@npm:^0.13.20":
+  version: 0.13.20
+  resolution: "redoc-cli@npm:0.13.20"
   dependencies:
     chokidar: ^3.5.1
     handlebars: ^4.7.7
@@ -19855,12 +19960,49 @@ __metadata:
     node-libs-browser: ^2.2.1
     react: ^17.0.1
     react-dom: ^17.0.1
-    redoc: 2.0.0-rc.57
+    redoc: 2.0.0-rc.77
     styled-components: ^5.3.0
-    yargs: ^17.0.1
+    update-notifier: ^5.0.1
+    yargs: ^17.3.1
   bin:
     redoc-cli: index.js
-  checksum: b592af48859dac683c459e8ab6e67a0121070d36a7dd2fd32e7629d9d7008314f2c6c1504bc98f06fd04cfb94a111f85c1af9e0cf1c0c7845da19de177a7bb8f
+  checksum: 11779752c1276438aa16dc67cc4911490452fc474e92532278222e7d9655c05bee4e68a65d379cab5af8d55bd3552213f30eb707b74d8b5f3f4e354f030e835e
+  languageName: node
+  linkType: hard
+
+"redoc@npm:2.0.0":
+  version: 2.0.0
+  resolution: "redoc@npm:2.0.0"
+  dependencies:
+    "@redocly/openapi-core": ^1.0.0-beta.104
+    classnames: ^2.3.1
+    decko: ^1.2.0
+    dompurify: ^2.2.8
+    eventemitter3: ^4.0.7
+    json-pointer: ^0.6.2
+    lunr: ^2.3.9
+    mark.js: ^8.11.1
+    marked: ^4.0.15
+    mobx-react: ^7.2.0
+    openapi-sampler: ^1.3.0
+    path-browserify: ^1.0.1
+    perfect-scrollbar: ^1.5.5
+    polished: ^4.1.3
+    prismjs: ^1.27.0
+    prop-types: ^15.7.2
+    react-tabs: ^3.2.2
+    slugify: ~1.4.7
+    stickyfill: ^1.1.1
+    style-loader: ^3.3.1
+    swagger2openapi: ^7.0.6
+    url-template: ^2.0.8
+  peerDependencies:
+    core-js: ^3.1.4
+    mobx: ^6.0.4
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+    styled-components: ^4.1.1 || ^5.1.1
+  checksum: 684d43dc62fb5f66ee765604b5745c6f742bf35b4cb603e546399ba76c987c7ef61313a51c99ababbb42a703d44bf84b78e3f7d1e5666d08b62930c52e35536f
   languageName: node
   linkType: hard
 
@@ -19903,32 +20045,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redoc@npm:2.0.0-rc.57":
-  version: 2.0.0-rc.57
-  resolution: "redoc@npm:2.0.0-rc.57"
+"redoc@npm:2.0.0-rc.77":
+  version: 2.0.0-rc.77
+  resolution: "redoc@npm:2.0.0-rc.77"
   dependencies:
-    "@babel/runtime": ^7.14.0
-    "@redocly/openapi-core": ^1.0.0-beta.54
-    "@redocly/react-dropdown-aria": ^2.0.11
+    "@redocly/openapi-core": ^1.0.0-beta.104
     classnames: ^2.3.1
     decko: ^1.2.0
     dompurify: ^2.2.8
     eventemitter3: ^4.0.7
-    json-pointer: ^0.6.1
+    json-pointer: ^0.6.2
     lunr: ^2.3.9
     mark.js: ^8.11.1
-    marked: ^0.7.0
-    memoize-one: ^5.2.1
+    marked: ^4.0.15
     mobx-react: ^7.2.0
-    openapi-sampler: ^1.0.1
+    openapi-sampler: ^1.3.0
     path-browserify: ^1.0.1
-    perfect-scrollbar: ^1.5.1
+    perfect-scrollbar: ^1.5.5
     polished: ^4.1.3
-    prismjs: ^1.24.1
+    prismjs: ^1.27.0
     prop-types: ^15.7.2
     react-tabs: ^3.2.2
     slugify: ~1.4.7
     stickyfill: ^1.1.1
+    style-loader: ^3.3.1
     swagger2openapi: ^7.0.6
     url-template: ^2.0.8
   peerDependencies:
@@ -19937,7 +20077,7 @@ __metadata:
     react: ^16.8.4 || ^17.0.0
     react-dom: ^16.8.4 || ^17.0.0
     styled-components: ^4.1.1 || ^5.1.1
-  checksum: c319d4dd5b4d4c0c777cd8ca895a48d2cd21e88f08d72a740dd5c9dd6f68edb798a1a97702ae1a164a596f378723f0ec49e378d825b41114ca47e283694bccbf
+  checksum: 960759320a1d81236712c4ded7dbdbec7f24892d1c4c188b0b800d8f416852557f7f91d7b123dd897f709bd1e45af52233ca122a596b28902b8a396c85e5a4ab
   languageName: node
   linkType: hard
 
@@ -21881,6 +22021,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"style-loader@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "style-loader@npm:3.3.1"
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 470feef680f59e2fce4d6601b5c55b88c01ad8d1dd693c528ffd591ff5fd7c01a4eff3bdbe62f26f847d6bd2430c9ab594be23307cfe7a3446ab236683f0d066
+  languageName: node
+  linkType: hard
+
 "style-to-object@npm:0.3.0, style-to-object@npm:^0.3.0":
   version: 0.3.0
   resolution: "style-to-object@npm:0.3.0"
@@ -23157,7 +23306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"update-notifier@npm:^5.1.0":
+"update-notifier@npm:^5.0.1, update-notifier@npm:^5.1.0":
   version: 5.1.0
   resolution: "update-notifier@npm:5.1.0"
   dependencies:
@@ -24280,7 +24429,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.0.0, yargs@npm:^17.0.1, yargs@npm:^17.4.0":
+"yargs@npm:^17.0.0, yargs@npm:^17.0.1, yargs@npm:^17.3.1, yargs@npm:^17.4.0":
   version: 17.6.0
   resolution: "yargs@npm:17.6.0"
   dependencies:
