@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.2-photoshop-redoc-3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2-photoshop-redoc-2...@adobe/gatsby-theme-aio@4.6.2-photoshop-redoc-3) (2022-10-13)
+
+### Fix
+
+* Pin redoc-cli@0.13.0 [b44338c](https://github.com/adobe/aio-theme/commit/b44338c48c4e66fe926ced78bc347aa4bdf503b6).
+
+
 ## [4.6.2-photoshop-redoc-2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2-photoshop-redoc-1...@adobe/gatsby-theme-aio@4.6.2-photoshop-redoc-2) (2022-10-13)
 
 ### Fix
