@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.2-photoshop-redoc-1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.6.2-photoshop-redoc-1) (2022-10-13)
+
+### Fix
+
+* Fixed no results on sites with default product filter set to 'All Products' [31cb60b](https://github.com/adobe/aio-theme/commit/31cb60b61c2b37179b4726af29b8d72c3e3ff3fc).
+
+
 ## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
 
 ### Fix
