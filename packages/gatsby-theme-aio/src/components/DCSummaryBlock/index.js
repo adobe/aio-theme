@@ -33,6 +33,10 @@ const DCSummaryBlock = ({
   text,
   buttons,
   buttonPositionRight = false,
+  variantsTypePrimary='accent',
+  variantsTypeSecondary='secondary',
+  variantStyleFill = "fill",
+  variantStyleOutline = "outline",
   primaryOutline = false,
   isBtnVariant = false,
   btnVariant = "overBackground",
@@ -110,7 +114,8 @@ const DCSummaryBlock = ({
             `,
           })}
         {!buttonPositionRight && (
-          <HeroButtons buttons={buttons} styles={[isBtnVariant, !primaryOutline]} />
+          <HeroButtons buttons={buttons}   styles={[variantStyleFill, variantStyleOutline]}
+          variants={[variantsTypePrimary,variantsTypeSecondary]} />
         )}
       </div>
       {buttonPositionRight && (
@@ -127,8 +132,8 @@ const DCSummaryBlock = ({
         >
           <HeroButtons
             buttons={buttons}
-            styles={[isBtnVariant, primaryOutline]}
-            variants={[btnVariant, btnVariant]}
+            styles={[variantStyleFill, variantStyleOutline]}
+            variants={[variantsTypePrimary,variantsTypeSecondary]}
           />
         </div>
       )}

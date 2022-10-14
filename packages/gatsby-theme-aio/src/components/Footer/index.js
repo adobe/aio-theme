@@ -20,6 +20,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import LinkedInRetargeting from './linkedInRetargetting'
 
+const DESKTOP_SCREEN_MAX_WIDTH = '1060px'; 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
@@ -188,7 +189,7 @@ const Footer = ({ hasSideNav = false }) => (
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${layoutColumns(12)};
+          max-width: ${DESKTOP_SCREEN_MAX_WIDTH};
           margin: 0 auto;
           ${hasSideNav &&
           'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};

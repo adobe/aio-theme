@@ -46,7 +46,7 @@ const AccordionItem = ({ header, slot_id, isOpen = false, children, ...props }) 
           {header}
         </button>
         {/* <ChevronRight className="spectrum-Accordion-itemIndicator" /> */}
-        <span className="spectrum-Accordion-itemIndicator" onClick={onClick}>{open ? "-" : "+"}</span>
+        <span className="spectrum-Accordion-itemIndicator" onClick={toggleOpen}>{open ? "-" : "+"}</span>
       </h3>
       <div className="spectrum-Accordion-itemContent" role="region">
         {children}
