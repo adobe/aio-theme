@@ -202,6 +202,8 @@ const TextBlock = ({
   isPrimaryBtn=false,
   variantsTypePrimary='accent',
   variantsTypeSecondary='secondary',
+  variantStyleFill = "fill",
+  variantStyleOutline = "outline",
   hasCodeBlock = false,
   homeZigZag = false,
   isbuttonGroups = false,
@@ -345,7 +347,7 @@ const TextBlock = ({
 
             <HeroButtons
               buttons={buttons}
-              styles={['fill', 'outline']}
+              styles={[variantStyleFill, variantStyleOutline]}
               variants={[variantsTypePrimary,variantsTypeSecondary]}
               css={css`
                 margin-top: var(--spectrum-global-dimension-size-150);
@@ -529,7 +531,7 @@ const TextBlock = ({
 
               <HeroButtons
                 buttons={buttons}
-                styles={['fill', 'outline']}
+                styles={[variantStyleFill, variantStyleOutline]}
                 variants={[variantsTypePrimary,variantsTypeSecondary]}
                 heading={homeZigZag ? heading?.props?.children : ''}
                 css={css`

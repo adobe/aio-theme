@@ -116,6 +116,7 @@ const CustomCard = ({
         css={css`
           margin: 0 var(--spectrum-global-dimension-size-300);
           width: calc(var(--spectrum-global-dimension-size-3000) - var(--spectrum-global-dimension-size-500));
+          min-width: var(--spectrum-card-min-width,var(--spectrum-global-dimension-size-3000));
           // width: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-800));
           // height: calc(var(--spectrum-global-dimension-size-4600) - var(--spectrum-global-dimension-size-${height}));
           ${ !cursorDisable && `cursor:pointer;`}
@@ -139,6 +140,10 @@ const CustomCard = ({
             height: calc(var(--spectrum-global-dimension-size-3600) + var(--spectrum-global-dimension-size-900));
             overflow: auto;
             text-align: left;
+            padding-bottom: var(--spectrum-card-body-padding-bottom,var(--spectrum-global-dimension-size-250));
+            padding-top: var(--spectrum-card-body-padding-top,var(--spectrum-global-dimension-size-250));
+            padding-left: var(--spectrum-card-body-padding-left,var(--spectrum-global-dimension-size-300));
+            padding-right: var(--spectrum-card-body-padding-right,var(--spectrum-global-dimension-size-300));
             @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               height: calc(var(--spectrum-global-dimension-size-3600) + var(--spectrum-global-dimension-size-150)) !important;
             }

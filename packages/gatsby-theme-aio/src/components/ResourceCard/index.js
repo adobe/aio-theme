@@ -32,7 +32,7 @@ const counter = {
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
-const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, text2=null, image, className, isCustomStories = false, buttons, isFooter = false, btnVarient='primary', contHeight}) => {
+const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, text2=null, image, className, isCustomStories = false, buttons, isFooter = false, btnVariant='primary', contHeight}) => {
   let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
