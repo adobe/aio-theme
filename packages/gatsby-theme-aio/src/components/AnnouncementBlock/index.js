@@ -18,7 +18,9 @@ import PropTypes from 'prop-types';
 import { getElementChild, TABLET_SCREEN_WIDTH } from '../../utils';
 import classNames from 'classnames';
 
-const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }) => {
+const AnnouncementBlock = ({ className, heading, text, button, theme = 'light',   variantsTypePrimary='accent',
+variantsTypeSecondary='secondary',variantStyleFill = "fill",variantStyleOutline = "outline" }) => {
+
   const link = getElementChild(button);
 
   return (
@@ -65,7 +67,8 @@ const AnnouncementBlock = ({ className, heading, text, button, theme = 'light' }
             css={css`
               margin-top: var(--spectrum-global-dimension-size-200);
             `}>
-            <AnchorButton href={link.props.href} variant="accent" style="fill">
+            <AnchorButton href={link.props.href}  styles={[variantStyleFill, variantStyleOutline]}
+              variants={[variantsTypePrimary,variantsTypeSecondary]}>
               <span class="spectrum-Button-label">{link.props.children}</span>
             </AnchorButton>
           </div>

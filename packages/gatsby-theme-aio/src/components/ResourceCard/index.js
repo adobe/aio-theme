@@ -12,8 +12,8 @@
 
 import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { GatsbyLink } from '@adobe/gatsby-theme-aio/src/components/GatsbyLink';
-import { HeroButtons } from '@adobe/gatsby-theme-aio/src/components/Hero';
+import { GatsbyLink } from '../GatsbyLink';
+import { HeroButtons } from '../Hero';
 import {
   getElementChild,
   layoutColumns,
@@ -32,7 +32,8 @@ const counter = {
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
-const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, text2=null, image, className, isCustomStories = false, buttons, isFooter = false, btnVariant='primary', contHeight}) => {
+const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, text2=null, image, className, isCustomStories = false, buttons, isFooter = false,   variantsTypePrimary='accent',
+variantsTypeSecondary='secondary',variantStyleFill = "fill",variantStyleOutline = "outline", contHeight}) => {
   let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
@@ -210,8 +211,9 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
               <div className="spectrum-Card-footer">
                 <HeroButtons
                   buttons={buttons}
-                  styles={['outline']}
-                  variants={[btnVariant]}
+                  styles={[variantStyleFill, variantStyleOutline]}
+                  variants={[variantsTypePrimary,variantsTypeSecondary]}
+
                   css={css`
 
                 @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
