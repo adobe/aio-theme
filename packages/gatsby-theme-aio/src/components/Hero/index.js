@@ -117,6 +117,7 @@ const HeroTexts = ({ texts, customLayout }) => {
       css: css`
         &.spectrum-Body--sizeL {
           margin-top: 0 !important;
+          color: #fff!important;
 
           &:last-of-type {
             margin-bottom: 0 !important;
@@ -443,8 +444,8 @@ const Hero = ({
 
                   <HeroButtons
                     buttons={buttons}
-                    style={["fill"]}
-                    variants={["accent", "secondary"]}
+                    styles={['outline']}
+                    variants={['staticWhite']}
                     css={css`
                       margin-top: var(--spectrum-global-dimension-size-400);
                     `}
