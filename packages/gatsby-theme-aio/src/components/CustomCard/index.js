@@ -32,6 +32,10 @@ const CustomCard = ({
   buttons,
   footer =false,
   buttonDisplay=false,
+  variantsTypePrimary='accent',
+  variantsTypeSecondary='secondary',
+  variantStyleFill = "fill",
+  variantStyleOutline = "outline",
   height=500,
   cursorDisable=false,
   headerSize='225',
@@ -142,8 +146,8 @@ const CustomCard = ({
             text-align: left;
             padding-bottom: var(--spectrum-card-body-padding-bottom,var(--spectrum-global-dimension-size-250));
             padding-top: var(--spectrum-card-body-padding-top,var(--spectrum-global-dimension-size-250));
-            padding-left: var(--spectrum-card-body-padding-left,var(--spectrum-global-dimension-size-300));
-            padding-right: var(--spectrum-card-body-padding-right,var(--spectrum-global-dimension-size-300));
+            padding-right: var(--spectrum-card-body-padding-right,var(--spectrum-global-dimension-size-300)) !important;
+            padding-left: var(--spectrum-card-body-padding-left,var(--spectrum-global-dimension-size-300)) !important;
             @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               height: calc(var(--spectrum-global-dimension-size-3600) + var(--spectrum-global-dimension-size-150)) !important;
             }
@@ -212,8 +216,8 @@ const CustomCard = ({
                >
                 <HeroButtons
                   buttons={buttons}
-                  quiets={[false, false]}
-                  variants={['primary', 'primary']}
+                  quiets={[variantStyleFill, variantStyleOutline]}
+                  variants={[variantsTypePrimary,variantsTypeSecondary]}
                   css={css`
                     justify-content: flex-end;
                     @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
@@ -230,8 +234,8 @@ const CustomCard = ({
           <div className="spectrum-Card-footer">
             <HeroButtons
               buttons={buttons}
-              quiets={[true, false]}
-              variants={['secondary', 'primary']}
+              quiets={[variantStyleFill, variantStyleOutline]}
+              variants={[variantsTypePrimary,variantsTypeSecondary]}
               css={css`
                 justify-content: flex-end;
 
