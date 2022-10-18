@@ -108,6 +108,7 @@ const adobeIndexes = {
   stock_api_specs: 'stock-api-specs',
   substance_3d_automation: 'substance-3d-automation',
   target_developers: 'target-developers',
+  uxp_indesign: 'uxp-indesign',
   uxp_photoshop: 'uxp-photoshop',
   uxp_photoshop_2021: 'uxp-photoshop-2021',
   xd: 'xd',
@@ -165,6 +166,7 @@ const getProductFromIndex = index => {
     'lightroom-public-apis': adobeProducts.adobe_lightroom,
     'lightroom-classic': adobeProducts.adobe_lightroom_classic,
     photoshop: adobeProducts.adobe_photoshop,
+    'uxp-indesign': adobeProducts.adobe_indesign,
     'uxp-photoshop': adobeProducts.adobe_photoshop,
     'uxp-photoshop-2021': adobeProducts.adobe_photoshop,
     'cis-photoshop-api-docs': adobeProducts.adobe_photoshop,
@@ -232,7 +234,11 @@ const getIndexesFromProduct = product => {
     'Adobe Express': [adobeIndexes.cc_everywhere],
     'Adobe Fonts': [adobeIndexes.fonts],
     'Adobe Illustrator': [adobeIndexes.illustrator],
-    'Adobe InDesign': [adobeIndexes.indesign, adobeIndexes.indesign_api_docs],
+    'Adobe InDesign': [
+      adobeIndexes.indesign, 
+      adobeIndexes.indesign_api_docs, 
+      adobeIndexes.uxp_indesign
+    ],
     'Adobe I/O': [adobeIndexes.adobe_io_events, adobeIndexes.adobe_io_runtime],
     'Adobe Journey Optimizer': [adobeIndexes.journey_optimizer_apis],
     'Adobe Lightroom': [
