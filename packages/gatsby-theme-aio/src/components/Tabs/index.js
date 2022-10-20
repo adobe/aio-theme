@@ -249,6 +249,9 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
               width: ${layoutColumns(8)} !important;
             }
           `}>
+          <div  css={css`
+            ${menuItems?.length > 6 ? 'overflow-x:auto; overflow-y: hidden;' : ''}
+            `}>
           {menuItems?.length > 0 ? (
             <Tabs orientation={orientation} isQuiet={true} onFontsReady={positionSelectedTabIndicator}>
               {menuItems.map((data, index) => {
@@ -327,6 +330,7 @@ const TabsBlock = ({ theme = 'light', orientation = 'horizontal', className, ...
               <TabsIndicator ref={selectedTabIndicator} />
             </Tabs>
           ) : null}
+          </div>
           {menuItems?.length > 0
             ? menuItems.map((data, index) => {
                 const isHidden = selectedIndex.tab === index;
