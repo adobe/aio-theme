@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3...@adobe/gatsby-theme-aio@4.6.4) (2022-10-20)
+
+### Features
+
+* Add commerce-services to search [36be10c](https://github.com/adobe/aio-theme/commit/36be10c11a139594e4a138e20161d58aca336236).
+* Add aep-mobile-sdkdocs to search [e3a2c1c](https://github.com/adobe/aio-theme/commit/e3a2c1c92f9a2d9cb71176dbb3c4c5497b544e5c).
+* Add testing script in file for indices and products mapping [e3a2c1c](https://github.com/adobe/aio-theme/commit/e3a2c1c92f9a2d9cb71176dbb3c4c5497b544e5c).
+
+### Fixes
+
+* Fixed search not loading results with query params preset [e3a2c1c](https://github.com/adobe/aio-theme/commit/e3a2c1c92f9a2d9cb71176dbb3c4c5497b544e5c).
+* Fixed iframed search rendering before indices are ready [e3a2c1c](https://github.com/adobe/aio-theme/commit/e3a2c1c92f9a2d9cb71176dbb3c4c5497b544e5c).
+
 ## [4.6.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.6.3) (2022-10-20)
 
 ### Features
