@@ -119,7 +119,7 @@ export default ({ children, pageContext, location }) => {
   const [ims, setIms] = useState(null);
   const [isLoadingIms, setIsLoadingIms] = useState(true);
   // ["index1", "index2", ...]
-  const [indexAll, setIndexAll] = useState(null);
+  const [indexAll, setIndexAll] = useState(false);
 
   // Load and initialize IMS
   useEffect(() => {
@@ -445,15 +445,17 @@ export default ({ children, pageContext, location }) => {
           min-height: 100vh;
           background-color: transparent;
         `}>
-          <Search
-            algolia={algolia}
-            searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
-            indexAll={indexAll}
-            showSearch={showSearch}
-            setShowSearch={setShowSearch}
-            searchButtonId={searchButtonId}
-            isIFramed
-          />
+          {hasSearch && indexAll && (
+            <Search
+              algolia={algolia}
+              searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+              indexAll={indexAll}
+              showSearch={true}
+              setShowSearch={setShowSearch}
+              searchButtonId={searchButtonId}
+              isIFramed
+            />
+          )}
         </div>
       </>
     );
