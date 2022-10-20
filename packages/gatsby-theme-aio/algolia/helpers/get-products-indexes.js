@@ -59,6 +59,7 @@ const adobeIndexes = {
   adobe_io_events: 'adobe-io-events',
   adobe_io_runtime: 'adobe-io-runtime',
   aem_developer_materials: 'aem-developer-materials',
+  aep_mobile_sdkdocs: 'aep-mobile-sdkdocs',
   after_effects: 'after-effects',
   analytics_2_0_apis: 'analytics-2.0-apis',
   animate: 'animate',
@@ -156,6 +157,7 @@ const getProductFromIndex = index => {
     'experience-manager-forms-cloud-service-developer-reference':
       adobeProducts.adobe_experience_manager,
     'experience-platform-apis': adobeProducts.adobe_experience_platform,
+    'aep-mobile-sdkdocs': adobeProducts.adobe_experience_platform,
     'cc-everywhere': adobeProducts.adobe_express,
     fonts: adobeProducts.adobe_fonts,
     illustrator: adobeProducts.adobe_illustrator,
@@ -233,13 +235,13 @@ const getIndexesFromProduct = product => {
       adobeIndexes.aem_developer_materials,
       adobeIndexes.experience_manager_forms_cloud_service_developer_reference,
     ],
-    'Adobe Experience Platform': [adobeIndexes.experience_platform_apis],
+    'Adobe Experience Platform': [adobeIndexes.experience_platform_apis, adobeIndexes.aep_mobile_sdkdocs],
     'Adobe Express': [adobeIndexes.cc_everywhere],
     'Adobe Fonts': [adobeIndexes.fonts],
     'Adobe Illustrator': [adobeIndexes.illustrator],
     'Adobe InDesign': [
-      adobeIndexes.indesign, 
-      adobeIndexes.indesign_api_docs, 
+      adobeIndexes.indesign,
+      adobeIndexes.indesign_api_docs,
       adobeIndexes.uxp_indesign
     ],
     'Adobe I/O': [adobeIndexes.adobe_io_events, adobeIndexes.adobe_io_runtime],
@@ -267,6 +269,36 @@ const getIndexesFromProduct = product => {
 
   return indexes || null;
 };
+
+// For testing when need to modify lists above
+/* 
+console.log("Testing Indices - Start");
+const newProducts = Object.values(adobeIndexes).map(i => {
+  if (!getProductFromIndex(i)) {
+    console.log('getProductFromIndex', i, getProductFromIndex(i));
+  }
+  return getProductFromIndex(i);
+});
+const newIndexes = Object.values(adobeProducts).map(i => {
+  if (!getIndexesFromProduct(i)) {
+    console.log('getIndexesFromProduct', i, getIndexesFromProduct(i));
+  }
+  return getIndexesFromProduct(i);
+});
+newProducts.forEach(i => {
+  if (!getIndexesFromProduct(i)) {
+    console.log('getIndexesFromProduct', i, getIndexesFromProduct(i));
+  }
+});
+newIndexes.forEach(i => {
+  i.forEach(ind => {
+    if (!getProductFromIndex(ind)) {
+      console.log('getProductFromIndex', ind, getProductFromIndex(ind));
+    }
+  })
+});
+console.log("Testing Indices - Finish");
+ */
 
 module.exports = {
   adobeProducts,
