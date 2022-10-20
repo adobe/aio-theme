@@ -46,7 +46,7 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@spectrum-css/accordion": 3.0.24
     "@spectrum-css/actionbutton": 2.1.7
-    "@spectrum-css/actiongroup": ^2.0.0
+    "@spectrum-css/actiongroup": ^3.0.1
     "@spectrum-css/assetlist": 3.0.24
     "@spectrum-css/badge": ^1.0.20
     "@spectrum-css/breadcrumb": 5.0.0
@@ -5067,13 +5067,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/actiongroup@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@spectrum-css/actiongroup@npm:2.0.0"
+"@spectrum-css/actiongroup@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@spectrum-css/actiongroup@npm:3.0.1"
   peerDependencies:
-    "@spectrum-css/actionbutton": ^1.1.13
-    "@spectrum-css/vars": ^8.0.0
-  checksum: 2003d7b911a3b364700e3a9e976799ba3668d9590e9fa2f5ea71e8dd099846d2c17d6f63da86719b4f48630bbdf35a733ce9e4f0cc1b2df9987c1bdbb01cd0b2
+    "@spectrum-css/actionbutton": ^2.1.8
+    "@spectrum-css/tokens": ^3.0.0
+  checksum: 72b9b2c3d8a9acb16d7aa2ed0147361a36dd4d4b7d0b84190f0f8f6aca584bb705083334169e791045e43e40c231447e38aa50d6c68f5977f2a9e6be0ac8ef6c
   languageName: node
   linkType: hard
 
