@@ -134,7 +134,7 @@ module.exports = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        apiKey: process.env.ALGOLIA_ADMIN_API_KEY,
+        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         queries: indexRecords(),
         chunkSize: 1000,
         algoliasearchOptions: {
