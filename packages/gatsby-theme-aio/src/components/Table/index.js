@@ -13,11 +13,14 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import '@spectrum-css/table';
+import {layoutColumns, MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH} from "../../utils";
 
 const Table = ({ children, ...props }) => (
-  <table className="spectrum-Table spectrum-Table--sizeM" {...props}>
-    {children}
-  </table>
+  <div css={css`overflow-x: auto; overflow-y: hidden;`}>
+    <table className="spectrum-Table spectrum-Table--sizeM" {...props}>
+      {children}
+    </table>
+  </div>
 );
 
 const THead = ({ children }) => <thead className="spectrum-Table-head">{children}</thead>;
