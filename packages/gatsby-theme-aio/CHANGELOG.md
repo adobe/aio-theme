@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.4...@adobe/gatsby-theme-aio@4.6.5) (2022-10-24)
+
+### Fixes
+
+* Add overflow to tables [e457931](https://github.com/adobe/aio-theme/commit/e4579316956cd92413df03c5aedcc29405be5ead).
+* Add overflow to tabs when there are than 6 [6666b82](https://github.com/adobe/aio-theme/commit/6666b824b14ad09186d0bce815a28504f2ff2f2c).
+* Fix algolia write key to match deploy [9c66c1f](https://github.com/adobe/aio-theme/commit/9c66c1f949b7ee0a3df81d99657b10cf225e7ed8).
+* Pin gatsby-plugin-sharp and gatsby-transformer-sharp@4.23.0 [8a2f49d](https://github.com/adobe/aio-theme/commit/8a2f49dd978747f7c0c1537cbdc3eed04688fe37).
+
 ## [4.6.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3...@adobe/gatsby-theme-aio@4.6.4) (2022-10-20)
 
 ### Features
