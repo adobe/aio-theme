@@ -448,7 +448,7 @@ export default ({ children, pageContext, location }) => {
           {hasSearch && indexAll && (
             <Search
               algolia={algolia}
-              searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+              passSearchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
               indexAll={indexAll}
               showSearch={true}
               setShowSearch={setShowSearch}
@@ -688,7 +688,7 @@ export default ({ children, pageContext, location }) => {
             {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
-                searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
+                passSearchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
                 indexAll={indexAll}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}
