@@ -99,7 +99,7 @@ __metadata:
     https-browserify: ^1.0.0
     jsdom: ^20.0.0
     lmdb-store: ^1.6.14
-    mdx-embed: ^1.0.0
+    mdx-embed: ^1.1.2
     mobx: ^6.6.2
     normalize-path: ^3.0.0
     os-browserify: ^0.3.0
@@ -16163,15 +16163,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdx-embed@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "mdx-embed@npm:1.0.0"
+"mdx-embed@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "mdx-embed@npm:1.1.2"
   peerDependencies:
     "@mdx-js/mdx": ^1.6.16
     "@mdx-js/react": ^1.6.16
-    react: ^16.9.0
-    react-dom: ^16.9.0
-  checksum: 59af0df877beae45d8e396df91a32bc21a661c136d46964f5be007cdbf157650d9f2136146acb3fe2c8ea38cfd9c773cffa53ab89bf6d8ab63179e92acbc2937
+    react: ^16.x || ^17.x || ^18.x
+    react-dom: ^16.x || ^17.x || ^18.x
+  checksum: af837318956882378ae7db2ac9a35d057b5036fe2cff32af3374510665a9a15789a308a03b9a050400c18309eebb82ddd8bad3d4c4c01aacd03e2217031b7443
   languageName: node
   linkType: hard
 
