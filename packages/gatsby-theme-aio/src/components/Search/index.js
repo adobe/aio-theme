@@ -177,11 +177,23 @@ const setTargetOrigin = () => {
   }
 };
 
-const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+// const setExpectedOrigin = () => {
+//   const host = window.location.host;
+//   if (host.includes('localhost')) {
+//     return 'http://localhost:8000';
+//   } else if ($IS_STAGE || $IS_HLX_PATH) {
+//     return 'https://developer-stage.adobe.com';
+//   } else {
+//     return 'https://developer.adobe.com';
+//   }
+// }
+
+const Search = ({ algolia, passSearchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
+  const [searchIndex, setSearchIndex] = useState(passSearchIndex || []);
   const [existingIndices, setExistingIndices] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -272,6 +284,29 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   };
 
   useEffect(async () => {
+    if (isIFramed) {
+
+      window.addEventListener("message", (e) => {
+        // const expectedOrigin = setExpectedOrigin();
+        // if (e.origin !== expectedOrigin) return;
+        
+        try {
+          const message = JSON.parse(e.data);
+          if (message.localProduct) {
+            setSearchIndex([message.localProduct, ...searchIndex]);
+
+            const reply = JSON.stringify({ received: message.localProduct });
+            const targetOrigin = setTargetOrigin();
+            if (targetOrigin) {
+              parent.postMessage(reply, targetOrigin);
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    };
+
     const algoliaIndexList = await algolia.listIndices();
     const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
       return Object.values(indexAll).includes(indexName);
