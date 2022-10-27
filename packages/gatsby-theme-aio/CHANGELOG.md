@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.5...@adobe/gatsby-theme-aio@4.6.6) (2022-10-27)
+
+* Remove lmdb-store [cef19be](https://github.com/adobe/aio-theme/commit/cef19bed85166ee867649e1175d8a3f51aef87ec).
+
+### Fixes
+
 ## [4.6.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.4...@adobe/gatsby-theme-aio@4.6.5) (2022-10-24)
 
 ### Fixes
