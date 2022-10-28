@@ -655,7 +655,7 @@ const GlobalHeader = ({
                   }
 
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                    bottom: calc(-1 * var(--spectrum-tabs-rule-size)) !important;
+                    bottom: 0px !important;
                   }
                 `}
               />
