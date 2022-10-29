@@ -60,8 +60,14 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   let indexes;
   if (!existingIndices.length) {
     const algoliaIndexList = await algolia.listIndices();
-    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
+    const localIndexList = indexAll.map((prod) => prod.productIndices);
+    localIndexList.map((idx) => idx.map((idx) => console.log(idx)));
+
+    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(algoliaIndex => {
+      if (localIndexList.includes(algoliaIndex)) {
+        console.log(algoliaIndex);
+      }
+      return localIndexList.includes(algoliaIndex);
     });
     setExistingIndices(filteredIndexes);
     indexes = filteredIndexes;
@@ -188,12 +194,12 @@ const setTargetOrigin = () => {
 //   }
 // }
 
-const Search = ({ algolia, passSearchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
-  const [searchIndex, setSearchIndex] = useState(passSearchIndex || []);
+  const [searchIndex, setSearchIndex] = useState([SEARCH_INDEX_ALL]);
   const [existingIndices, setExistingIndices] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -289,7 +295,7 @@ const Search = ({ algolia, passSearchIndex, indexAll, showSearch, setShowSearch,
       window.addEventListener("message", (e) => {
         // const expectedOrigin = setExpectedOrigin();
         // if (e.origin !== expectedOrigin) return;
-        
+
         try {
           const message = JSON.parse(e.data);
           if (message.localProduct) {
@@ -922,7 +928,7 @@ const Search = ({ algolia, passSearchIndex, indexAll, showSearch, setShowSearch,
 Search.propTypes = {
   algolia: PropTypes.object,
   searchIndex: PropTypes.array,
-  indexAll: PropTypes.object,
+  indexAll: PropTypes.array,
   showSearch: PropTypes.bool,
   setShowSearch: PropTypes.func,
   searchButtonId: PropTypes.string
