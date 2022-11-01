@@ -155,36 +155,16 @@ export default ({ children, pageContext, location }) => {
       Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json")
       .then(result => {
         const productIndexMap = result.data;
-        console.log(typeof productIndexMap, productIndexMap);
-        setIndexAll(productIndexMap);
+        if (typeof productIndexMap === 'string' ) {
+          setIndexAll(JSON.parse(productIndexMap));
+        } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]' ) { // https://stackoverflow.com/a/12996879/15028986
+          setIndexAll(productIndexMap);
+        }
       })
       .catch(err => {
-        console.log("====================================")
-        console.log(`AIO: Failed fetching search index.\n${err}`)
-        console.log("====================================")
+        console.error(`AIO: Failed fetching search index.\n${err}`)
       })
     }
-    // (async () => {
-    //   if (hasSearch) {
-    //     Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.js")
-    //     .then(result => {
-    //       const productIndexMap = result.data;
-    //       console.log(typeof productIndexMap, productIndexMap);
-    //     })
-    //     .catch(err => {
-    //       console.log("====================================")
-    //       console.log(`AIO: Failed fetching search index.\n${err}`)
-    //       console.log("====================================")
-    //     })
-    //     // try {
-    //     //   if (adobeIndexes) {
-    //     //     setIndexAll(adobeIndexes);
-    //     //   }
-    //     // } catch (e) {
-    //     //   console.error(`AIO: Failed fetching search index.`);
-    //     // }
-    //   }
-    // })();
   }, []);
 
   // Load all data once and pass it to the Provider

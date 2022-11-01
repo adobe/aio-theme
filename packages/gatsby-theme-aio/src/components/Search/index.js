@@ -59,16 +59,11 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   const queries = [];
   let indexes;
   if (!existingIndices.length) {
-    const algoliaIndexList = await algolia.listIndices();
-    const localIndexList = indexAll.map((prod) => prod.productIndices);
-    localIndexList.map((idx) => idx.map((idx) => console.log(idx)));
-
-    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(algoliaIndex => {
-      if (localIndexList.includes(algoliaIndex)) {
-        console.log(algoliaIndex);
-      }
-      return localIndexList.includes(algoliaIndex);
-    });
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => indexName);
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
     setExistingIndices(filteredIndexes);
     indexes = filteredIndexes;
   } else {
@@ -83,6 +78,7 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   else {
     const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
     const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
+    // const localProductIndexes = indexAll getIndexesFromProduct(searchProductNames[0]);
     searchIndex = [...localProductIndexes, ...indexes.filter((index) => !searchProductNames.includes(index))].filter(index => indexes.includes(index));
   }
 
@@ -104,15 +100,17 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIn
 
   let indexes;
   if (!existingIndices.length) {
-    const algoliaIndexList = await algolia.listIndices();
-    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
-    });
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => indexName);
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
     setExistingIndices(filteredIndexes);
     indexes = filteredIndexes;
   } else {
     indexes = existingIndices;
   }
+
   if (selectedIndex.includes('all')) {
     selectedIndex = indexes;
   } else {
@@ -298,10 +296,18 @@ const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowS
 
         try {
           const message = JSON.parse(e.data);
-          if (message.localProduct) {
-            setSearchIndex([message.localProduct, ...searchIndex]);
+          if (message.localPathName) {
+            let localPathName = message.localPathName;
+            // make sure path name has a slash at start/end to match path-prefix format 
+            if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
+            if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
+            const localProduct = indexAll.find(product => product.productIndices.some(idx => { return idx.indexPathPrefix === message.localPathName }));
 
-            const reply = JSON.stringify({ received: message.localProduct });
+            if (localProduct.productName) {
+              setSearchIndex([localProduct.productName, ...searchIndex]);
+            }
+
+            const reply = JSON.stringify({ received: message.localPathName });
             const targetOrigin = setTargetOrigin();
             if (targetOrigin) {
               parent.postMessage(reply, targetOrigin);
@@ -313,11 +319,15 @@ const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowS
       });
     };
 
-    const algoliaIndexList = await algolia.listIndices();
-    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
-    });
-    setExistingIndices(indexes);
+    /* Prepare list of existing indices by cross referencing Algolia */
+
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => indexName);
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
+    setExistingIndices(filteredIndexes);
+
   }, [])
 
   useEffect(() => {
