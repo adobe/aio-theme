@@ -34,8 +34,8 @@ __metadata:
   linkType: hard
 
 "@adobe/gatsby-theme-aio@npm:*":
-  version: 4.6.2
-  resolution: "@adobe/gatsby-theme-aio@npm:4.6.2"
+  version: 4.6.6
+  resolution: "@adobe/gatsby-theme-aio@npm:4.6.6"
   dependencies:
     "@adobe/focus-ring-polyfill": ^0.1.5
     "@adobe/gatsby-source-github-file-contributors": ^0.3.1
@@ -86,16 +86,15 @@ __metadata:
     gatsby-plugin-mdx-embed: ^1.0.0
     gatsby-plugin-preact: ^6.23.0
     gatsby-plugin-react-helmet: ^5.23.0
-    gatsby-plugin-sharp: ^4.23.0
+    gatsby-plugin-sharp: 4.23.0
     gatsby-remark-autolink-headers: ^5.23.0
     gatsby-remark-copy-linked-files: ^5.23.0
     gatsby-remark-images-remote: ^2.1.1
     gatsby-source-filesystem: ^4.23.0
     gatsby-transformer-remark: ^5.23.0
-    gatsby-transformer-sharp: ^4.23.0
+    gatsby-transformer-sharp: 4.23.0
     https-browserify: ^1.0.0
     jsdom: ^20.0.0
-    lmdb-store: ^1.6.14
     mdx-embed: ^1.0.0
     mobx: ^6.6.2
     normalize-path: ^3.0.0
@@ -125,7 +124,7 @@ __metadata:
     gatsby: ^4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 54b9220b915bf1e2dba545b5686baaca382a37330d4956b1cf8c7ccd20e3a0b365c3896672fbd28ee4ca3f0c062660202ba2f2d9d3372cffc70c878b89d572c2
+  checksum: 573aa83e406cb3c53c7b78fceb88102224a41bf417b5a1bdb9418b868dbb4f6dba218916f8e6a72dc20641686d151b1098dbb38acab25cf201a157049590c56c
   languageName: node
   linkType: hard
 
@@ -424,31 +423,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.19.4, @babel/compat-data@npm:^7.20.0":
-  version: 7.20.0
-  resolution: "@babel/compat-data@npm:7.20.0"
-  checksum: 325148e2961edcfc17d53ec4b27f85ebdd6be1aa33d1d297acf84fb5879f58c0a18bfb6418f9f108b4c84a98606adb1668250a15fd4fab2cc84c537b454b9a42
-=======
-"@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.18.8, @babel/compat-data@npm:^7.19.1":
-  version: 7.19.1
-  resolution: "@babel/compat-data@npm:7.19.1"
-  checksum: f985887ea08a140e4af87a94d3fb17af0345491eb97f5a85b1840255c2e2a97429f32a8fd12a7aae9218af5f1024f1eb12a5cd280d2d69b2337583c17ea506ba
->>>>>>> Reverted Yarn lock file
-=======
-"@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.18.8, @babel/compat-data@npm:^7.19.3":
-  version: 7.19.3
-  resolution: "@babel/compat-data@npm:7.19.3"
-  checksum: e6014cdb31f3e893a1bde6dd3ae05c8f946778318fa337b18b546ace6f9c9f7a5033fd9447070ebc8e820fa9fc7e0a30d4e354989e091900305a876b44346c8f
->>>>>>> fix: ugh
-=======
-"@babel/compat-data@npm:^7.17.7, @babel/compat-data@npm:^7.19.3, @babel/compat-data@npm:^7.19.4":
-  version: 7.19.4
-  resolution: "@babel/compat-data@npm:7.19.4"
-  checksum: 757fdaeb6756c2d323ff56f60fb8e670292108cda6abf762a56c0d40910ecc4d2c7e283dbdfbcee6bc28c74ad659144352609e1cb49d31e101ab13ea5ce90072
->>>>>>> fix: go over these components as they were not in initial pr
+  version: 7.20.1
+  resolution: "@babel/compat-data@npm:7.20.1"
+  checksum: 989b9b7a6fe43c547bb8329241bd0ba6983488b83d29cc59de35536272ee6bb4cc7487ba6c8a4bceebb3a57f8c5fea1434f80bbbe75202bc79bc1110f955ff25
   languageName: node
   linkType: hard
 
@@ -477,8 +455,6 @@ __metadata:
   linkType: hard
 
 "@babel/core@npm:^7.14.0, @babel/core@npm:^7.15.5":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 7.19.6
   resolution: "@babel/core@npm:7.19.6"
   dependencies:
@@ -492,44 +468,12 @@ __metadata:
     "@babel/template": ^7.18.10
     "@babel/traverse": ^7.19.6
     "@babel/types": ^7.19.4
-=======
-  version: 7.19.1
-  resolution: "@babel/core@npm:7.19.1"
-=======
-  version: 7.19.3
-  resolution: "@babel/core@npm:7.19.3"
->>>>>>> fix: ugh
-  dependencies:
-    "@ampproject/remapping": ^2.1.0
-    "@babel/code-frame": ^7.18.6
-    "@babel/generator": ^7.19.3
-    "@babel/helper-compilation-targets": ^7.19.3
-    "@babel/helper-module-transforms": ^7.19.0
-    "@babel/helpers": ^7.19.0
-    "@babel/parser": ^7.19.3
-    "@babel/template": ^7.18.10
-<<<<<<< HEAD
-    "@babel/traverse": ^7.19.1
-    "@babel/types": ^7.19.0
->>>>>>> Reverted Yarn lock file
-=======
-    "@babel/traverse": ^7.19.3
-    "@babel/types": ^7.19.3
->>>>>>> fix: ugh
     convert-source-map: ^1.7.0
     debug: ^4.1.0
     gensync: ^1.0.0-beta.2
     json5: ^2.2.1
     semver: ^6.3.0
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 85c0bd38d0ef180aa2d23c3db6840a0baec88d2e05c30e7ffc3dfeb6b2b89d6e4864922f04997a1f4ce55f9dd469bf2e76518d5c7ae744b98516709d32769b73
-=======
-  checksum: 941c8c119b80bdba5fafc80bbaa424d51146b6d3c30b8fae35879358dd37c11d3d0926bc7e970a0861229656eedaa8c884d4a3a25cc904086eb73b827a2f1168
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: dd883311209ad5a2c65b227daeb7247d90a382c50f4c6ad60c5ee40927eb39c34f0690d93b775c0427794261b72fa8f9296589a2dbda0782366a9f1c6de00c08
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -547,35 +491,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.6, @babel/generator@npm:^7.20.0":
-  version: 7.20.0
-  resolution: "@babel/generator@npm:7.20.0"
+"@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.6, @babel/generator@npm:^7.20.1":
+  version: 7.20.1
+  resolution: "@babel/generator@npm:7.20.1"
   dependencies:
     "@babel/types": ^7.20.0
     "@jridgewell/gen-mapping": ^0.3.2
     jsesc: ^2.5.1
-  checksum: df2fef0ac305cf031013e311d4582b15b5c297fd538bec71e6cae3b689189ac4be6055482487b06da1be2f007b8985d5162a84e14e43a20435b8c89551910509
-=======
-"@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.3":
-  version: 7.19.3
-  resolution: "@babel/generator@npm:7.19.3"
-=======
-"@babel/generator@npm:^7.12.5, @babel/generator@npm:^7.14.0, @babel/generator@npm:^7.15.4, @babel/generator@npm:^7.16.8, @babel/generator@npm:^7.19.3, @babel/generator@npm:^7.19.4":
-  version: 7.19.5
-  resolution: "@babel/generator@npm:7.19.5"
->>>>>>> fix: go over these components as they were not in initial pr
-  dependencies:
-    "@babel/types": ^7.19.4
-    "@jridgewell/gen-mapping": ^0.3.2
-    jsesc: ^2.5.1
-<<<<<<< HEAD
-  checksum: b1585e398f6c37f442a2fdac964a326b348fbc8fb99a6aaf4f72bbe993adb0ca792bc0a9c65e59930b2a2e55eb5aa3aab360ceb678d3d40692eb0cda2b7b6aa6
->>>>>>> fix: ugh
-=======
-  checksum: a66eafc540f80fc36c1b009b28bde1d12aff85e7916e7f5adf49c5a8866fecee4906b3c3c6db315d2723ea54e4e5ddfb2913fe6ab424f51dbccf753000930eaf
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: e6846d88c59a5dae4c86f3cc84f84972cf9cc5fa0f4944606303a9df3ba1be388e0cb08a625c86f7282ab03faf54acd72efba34f019b6762f4739a175173783e
   languageName: node
   linkType: hard
 
@@ -598,41 +521,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.19.0, @babel/helper-compilation-targets@npm:^7.19.3":
   version: 7.20.0
   resolution: "@babel/helper-compilation-targets@npm:7.20.0"
   dependencies:
     "@babel/compat-data": ^7.20.0
-=======
-"@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.19.0, @babel/helper-compilation-targets@npm:^7.19.1":
-  version: 7.19.1
-  resolution: "@babel/helper-compilation-targets@npm:7.19.1"
-  dependencies:
-    "@babel/compat-data": ^7.19.1
->>>>>>> Reverted Yarn lock file
-=======
-"@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.19.0, @babel/helper-compilation-targets@npm:^7.19.3":
-  version: 7.19.3
-  resolution: "@babel/helper-compilation-targets@npm:7.19.3"
-  dependencies:
-    "@babel/compat-data": ^7.19.3
->>>>>>> fix: ugh
     "@babel/helper-validator-option": ^7.18.6
     browserslist: ^4.21.3
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: bc183f2109648849c8fde0b3c5cf08adf2f7ad6dc617b546fd20f34c8ef574ee5ee293c8d1bd0ed0221212e8f5907cdc2c42097870f1dcc769a654107d82c95b
-=======
-  checksum: c2d3039265e498b341a6b597f855f2fcef02659050fefedf36ad4e6815e6aafe1011a761214cc80d98260ed07ab15a8cbe959a0458e97bec5f05a450e1b1741b
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: aafcb4490c98cddb3255fff98bfbdb881b4def85a1935fd9b1f9b1f0f8b502696839f6b387fb508ca991ea72ba82ce6913bab99f21df4ce80bda2b79e91a09f5
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -800,11 +699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@babel/helper-simple-access@npm:^7.19.4":
-=======
-"@babel/helper-simple-access@npm:^7.18.6":
->>>>>>> fix: go over these components as they were not in initial pr
   version: 7.19.4
   resolution: "@babel/helper-simple-access@npm:7.19.4"
   dependencies:
@@ -838,15 +733,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@babel/helper-validator-identifier@npm:^7.18.6, @babel/helper-validator-identifier@npm:^7.19.1":
-=======
-"@babel/helper-validator-identifier@npm:^7.18.6":
->>>>>>> Reverted Yarn lock file
-=======
-"@babel/helper-validator-identifier@npm:^7.18.6, @babel/helper-validator-identifier@npm:^7.19.1":
->>>>>>> fix: ugh
   version: 7.19.1
   resolution: "@babel/helper-validator-identifier@npm:7.19.1"
   checksum: 0eca5e86a729162af569b46c6c41a63e18b43dbe09fda1d2a3c8924f7d617116af39cac5e4cd5d431bb760b4dca3c0970e0c444789b1db42bcf1fa41fbad0a3a
@@ -872,25 +759,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@babel/helpers@npm:^7.12.5, @babel/helpers@npm:^7.19.4":
-  version: 7.20.0
-  resolution: "@babel/helpers@npm:7.20.0"
+  version: 7.20.1
+  resolution: "@babel/helpers@npm:7.20.1"
   dependencies:
     "@babel/template": ^7.18.10
-    "@babel/traverse": ^7.20.0
+    "@babel/traverse": ^7.20.1
     "@babel/types": ^7.20.0
-  checksum: a68f271474eabc06d64db3d22f435068c3451ba55828f22b72db0e392dff911a6813de3c7bb783e6e4756fd97f8910904d6d647de92a3dc3bfae14688a1a907a
-=======
-"@babel/helpers@npm:^7.12.5, @babel/helpers@npm:^7.19.0":
-  version: 7.19.4
-  resolution: "@babel/helpers@npm:7.19.4"
-  dependencies:
-    "@babel/template": ^7.18.10
-    "@babel/traverse": ^7.19.4
-    "@babel/types": ^7.19.4
-  checksum: e2684e9a79d45b95db05c7e14628e8dd1d91ad59433a3afd715bdf19d4683d9e9f84382bcc82316b678aa609ecfc41b07be0b9c49eed07c444f82a6b9e501186
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: be35f78666bdab895775ed94dbeb098f7b4fa08ce4cfb0c3a9e69b7220cce56960dcdc2b14f5df9d3b80388d4bf7df155c97f6cf6768c0138f4e6931d0f44955
   languageName: node
   linkType: hard
 
@@ -905,39 +781,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.6, @babel/parser@npm:^7.20.0":
-  version: 7.20.0
-  resolution: "@babel/parser@npm:7.20.0"
+"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.6, @babel/parser@npm:^7.20.1":
+  version: 7.20.1
+  resolution: "@babel/parser@npm:7.20.1"
   bin:
     parser: ./bin/babel-parser.js
-  checksum: d54d68e45ff1b9a0c50a3f79d9031f482eb58f18928525949dc20da5b1658ee79167e756129371fd75d3e8fc7e218ab707727145a68958636be9672c7b71768e
-=======
-"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.1":
-  version: 7.19.1
-  resolution: "@babel/parser@npm:7.19.1"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: b1e0acb346b2a533c857e1e97ac0886cdcbd76aafef67835a2b23f760c10568eb53ad8a27dd5f862d8ba4e583742e6067f107281ccbd68959d61bc61e4ddaa51
->>>>>>> Reverted Yarn lock file
-=======
-"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.3":
-  version: 7.19.3
-  resolution: "@babel/parser@npm:7.19.3"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: 854f1390328a8cea5d95ed2a8655a8976cdb41e72393845df0f86088dc777817a5e015a1a61739d312accccf1a22358fb70707a013d25596251cceba2c8985ee
->>>>>>> fix: ugh
-=======
-"@babel/parser@npm:^7.12.7, @babel/parser@npm:^7.14.0, @babel/parser@npm:^7.15.5, @babel/parser@npm:^7.16.8, @babel/parser@npm:^7.18.10, @babel/parser@npm:^7.19.3, @babel/parser@npm:^7.19.4":
-  version: 7.19.4
-  resolution: "@babel/parser@npm:7.19.4"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: 5ef97da97915085ff3b9c562b04fb6316074ece52d20de95f44c47b46abf87fd754cbcae769a69570a84652b736afe5bb2cb7dc117aa7ad6d81ab40eed0c613b
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 2db7ba692b8b3054df129876b115ed8b265d5c138dee5e1db56a999209df3dd3d508e0985bf3cc44fc432498da094c164906b531d049608e55e208dae0678d42
   languageName: node
   linkType: hard
 
@@ -966,8 +815,8 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-proposal-async-generator-functions@npm:^7.19.1":
-  version: 7.19.1
-  resolution: "@babel/plugin-proposal-async-generator-functions@npm:7.19.1"
+  version: 7.20.1
+  resolution: "@babel/plugin-proposal-async-generator-functions@npm:7.20.1"
   dependencies:
     "@babel/helper-environment-visitor": ^7.18.9
     "@babel/helper-plugin-utils": ^7.19.0
@@ -975,7 +824,7 @@ __metadata:
     "@babel/plugin-syntax-async-generators": ^7.8.4
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: f101555b00aee6ee0107c9e40d872ad646bbd3094abdbeda56d17b107df69a0cb49e5d02dcf5f9d8753e25564e798d08429f12d811aaa1b307b6a725c0b8159c
+  checksum: 518483a68c5618932109913eb7316ed5e656c575cbd9d22667bc0451e35a1be45f8eaeb8e2065834b36c8a93c4840f78cebf8f1d067b07c422f7be16d58eca60
   languageName: node
   linkType: hard
 
@@ -1412,22 +1261,13 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-block-scoping@npm:^7.0.0, @babel/plugin-transform-block-scoping@npm:^7.19.4":
-<<<<<<< HEAD
   version: 7.20.0
   resolution: "@babel/plugin-transform-block-scoping@npm:7.20.0"
-=======
-  version: 7.19.4
-  resolution: "@babel/plugin-transform-block-scoping@npm:7.19.4"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@babel/helper-plugin-utils": ^7.19.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-<<<<<<< HEAD
   checksum: ff5ba1a2c481047e3a1fd880e78a4942ad05c0ead1424e2db150fa4009b86707d66e945173abb14451ed5ca605a19620a2b9414d16407d296326ab26219ef511
-=======
-  checksum: 86353ccbb57b4a0513ac2b1209271858f9c3f2c56b15a6225ff5f1c97ffb1c48f8984046a718a9835ecdae100cbe80ed0b9ca15a5554e33386671b56a8cd887c
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -1462,22 +1302,13 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-destructuring@npm:^7.0.0, @babel/plugin-transform-destructuring@npm:^7.19.4":
-<<<<<<< HEAD
   version: 7.20.0
   resolution: "@babel/plugin-transform-destructuring@npm:7.20.0"
-=======
-  version: 7.19.4
-  resolution: "@babel/plugin-transform-destructuring@npm:7.19.4"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@babel/helper-plugin-utils": ^7.19.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-<<<<<<< HEAD
   checksum: ce43dfcc36254ac2aef386465942f46f9901cec5d14e8aef68ebced71d46fed7d9ec88046fe2e47a57a769a26cc20ec61c4c4f13efb733ad3a82edea52aa7bdf
-=======
-  checksum: 0ca40f6abf7273dafefb7a1cc11fef2b9ab3edbd23188cdcff8cd5e30783b89d64e7813e44aae9efab417b90972ae80971bf6c4130eeeb112bcfb44100c72657
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -1661,13 +1492,13 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-parameters@npm:^7.0.0, @babel/plugin-transform-parameters@npm:^7.12.1, @babel/plugin-transform-parameters@npm:^7.18.8":
-  version: 7.18.8
-  resolution: "@babel/plugin-transform-parameters@npm:7.18.8"
+  version: 7.20.1
+  resolution: "@babel/plugin-transform-parameters@npm:7.20.1"
   dependencies:
-    "@babel/helper-plugin-utils": ^7.18.6
+    "@babel/helper-plugin-utils": ^7.19.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 2b5863300da60face8a250d91da16294333bd5626e9721b13a3ba2078bd2a5a190e32c6e7a1323d5f547f579aeb2804ff49a62a55fcad2b1d099e55a55b788ea
+  checksum: 37dd4eac477f585275f56adee26e7db1f7c867d17ecfc9fb792d560ab12bb7e5bd3b29ab715cb70fb875e4671a76103999bdac55558e4c34ebb1d2a734366fba
   languageName: node
   linkType: hard
 
@@ -1755,13 +1586,8 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-runtime@npm:^7.15.0":
-<<<<<<< HEAD
   version: 7.19.6
   resolution: "@babel/plugin-transform-runtime@npm:7.19.6"
-=======
-  version: 7.19.1
-  resolution: "@babel/plugin-transform-runtime@npm:7.19.1"
->>>>>>> Reverted Yarn lock file
   dependencies:
     "@babel/helper-module-imports": ^7.18.6
     "@babel/helper-plugin-utils": ^7.19.0
@@ -1771,11 +1597,7 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-<<<<<<< HEAD
   checksum: ef93efbcbb00dcf4da6dcc55bda698a2a57fca3fb05a6a13e932ecfdb7c1c5d2f0b5b245c1c4faca0318853937caba0d82442f58b7653249f64275d08052fbd8
-=======
-  checksum: d9f693003a546b380a7322087490a51e8c6cd47b44e654f5030f96088cf7888b6c746d6335f723581154aaceed4ef0877acfa642f054ce3beb6ba9bb970987f4
->>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -1836,33 +1658,15 @@ __metadata:
   linkType: hard
 
 "@babel/plugin-transform-typescript@npm:^7.18.6":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 7.20.0
   resolution: "@babel/plugin-transform-typescript@npm:7.20.0"
-=======
-  version: 7.19.1
-  resolution: "@babel/plugin-transform-typescript@npm:7.19.1"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 7.19.3
-  resolution: "@babel/plugin-transform-typescript@npm:7.19.3"
->>>>>>> fix: ugh
   dependencies:
     "@babel/helper-create-class-features-plugin": ^7.19.0
     "@babel/helper-plugin-utils": ^7.19.0
     "@babel/plugin-syntax-typescript": ^7.20.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 7cc335a95374d03e09ec48fe313dccde477ab4784f26f7b24fdc7a9db3c670759c3c8177a671a68365467c0885dad82b5dda3f57ba0b6bf7459f4ae55fae4ee4
-=======
-  checksum: 434752f9cfb3cfe5dc0a3c8118b404bb7340b665c01cf6b817a9d6dafa10ca128fccecf4c507286fb00a92b89bcabeb8256e67c18aef5db9fdc4eb8a71881d70
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 094c8c4ad05fee7f1bda243923cadb2b05b58448ea7cf9560e734c7cffd72acfeab3e1e0d2b084eb47a5a950ac316f970b83904b3504c203fa6fe9d8d61526a8
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -1890,32 +1694,11 @@ __metadata:
   linkType: hard
 
 "@babel/preset-env@npm:^7.15.4":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 7.19.4
   resolution: "@babel/preset-env@npm:7.19.4"
   dependencies:
     "@babel/compat-data": ^7.19.4
     "@babel/helper-compilation-targets": ^7.19.3
-=======
-  version: 7.19.1
-  resolution: "@babel/preset-env@npm:7.19.1"
-  dependencies:
-    "@babel/compat-data": ^7.19.1
-    "@babel/helper-compilation-targets": ^7.19.1
->>>>>>> Reverted Yarn lock file
-=======
-  version: 7.19.3
-  resolution: "@babel/preset-env@npm:7.19.3"
-=======
-  version: 7.19.4
-  resolution: "@babel/preset-env@npm:7.19.4"
->>>>>>> fix: go over these components as they were not in initial pr
-  dependencies:
-    "@babel/compat-data": ^7.19.4
-    "@babel/helper-compilation-targets": ^7.19.3
->>>>>>> fix: ugh
     "@babel/helper-plugin-utils": ^7.19.0
     "@babel/helper-validator-option": ^7.18.6
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": ^7.18.6
@@ -1983,19 +1766,7 @@ __metadata:
     "@babel/plugin-transform-unicode-escapes": ^7.18.10
     "@babel/plugin-transform-unicode-regex": ^7.18.6
     "@babel/preset-modules": ^0.1.5
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@babel/types": ^7.19.4
-=======
-    "@babel/types": ^7.19.0
->>>>>>> Reverted Yarn lock file
-=======
-    "@babel/types": ^7.19.3
->>>>>>> fix: ugh
-=======
-    "@babel/types": ^7.19.4
->>>>>>> fix: go over these components as they were not in initial pr
     babel-plugin-polyfill-corejs2: ^0.3.3
     babel-plugin-polyfill-corejs3: ^0.6.0
     babel-plugin-polyfill-regenerator: ^0.4.1
@@ -2003,19 +1774,7 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: f12af25281f3c5e7df60fa1e79ad481ddd7f6a111d4c0fabcffdabf0eaed3a01b4f8c647ae5445ed1f58df70f52083ffd283e8919ade7afa73801a49c733d22c
-=======
-  checksum: 3fcd4f3e768b8b0c9e8f9fb2b23d694d838d3cc936c783aaa9c436b863ae24811059b6ffed80e2ac7d54e7d2c18b0a190f4de05298cf461d27b2817b617ea71f
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: f967cf48fa54f4b87cfd6dcad0d8c6249379af55c657f7519d2e3538ebb5e3f73b465677d88a6730e569f45150a2966e14b43bd1134d434a12ca351c14381871
->>>>>>> fix: ugh
-=======
-  checksum: f12af25281f3c5e7df60fa1e79ad481ddd7f6a111d4c0fabcffdabf0eaed3a01b4f8c647ae5445ed1f58df70f52083ffd283e8919ade7afa73801a49c733d22c
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -2064,47 +1823,21 @@ __metadata:
   linkType: hard
 
 "@babel/runtime-corejs3@npm:^7.10.2":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 7.20.0
-  resolution: "@babel/runtime-corejs3@npm:7.20.0"
+  version: 7.20.1
+  resolution: "@babel/runtime-corejs3@npm:7.20.1"
   dependencies:
     core-js-pure: ^3.25.1
     regenerator-runtime: ^0.13.10
-  checksum: 6cc7045fe9dcb9e7c7114b6e16521c5d51b592cb2ded9df423f2585a7b7aa5a3f197ba77dea7e3c27982ebc7160393a60e1752122897dbb765af6f0f154f2dfb
-=======
-  version: 7.19.1
-  resolution: "@babel/runtime-corejs3@npm:7.19.1"
-  dependencies:
-    core-js-pure: ^3.25.1
-    regenerator-runtime: ^0.13.4
-  checksum: 38a1e8fcd2ba1f76c951259c98a5a11052123923adbf30ec8b2fec202dbbe38c6db61658ef9398e00c30f799e2e54ea036e56a09f43229261918bf5ec1b7d03a
->>>>>>> Reverted Yarn lock file
-=======
-  version: 7.19.4
-  resolution: "@babel/runtime-corejs3@npm:7.19.4"
-  dependencies:
-    core-js-pure: ^3.25.1
-    regenerator-runtime: ^0.13.4
-  checksum: 3418534964d0d334da46b21bbe50510630101fd4a5afe632077d261656a715868e3f0f304ac7c9d608dc2aa72cbea49e31a5bc5cb9f7b5cb23ce01cb917acaef
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: bac1463304deb0e395f78aef2bf0e042d0ae303285b9f55e443d8ce4d3d05ccb92ac0aa5ca4bf83526695d21b12a239317537b00918d6ebf7a4132e5ec2f6f33
   languageName: node
   linkType: hard
 
 "@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
-<<<<<<< HEAD
-  version: 7.20.0
-  resolution: "@babel/runtime@npm:7.20.0"
+  version: 7.20.1
+  resolution: "@babel/runtime@npm:7.20.1"
   dependencies:
     regenerator-runtime: ^0.13.10
-  checksum: 637fca51db34f3a59d329b7e0d01163769fe94915fdb04e4ac4ba62de9f1ca637ce3a564fe3b0166ccdd7f02f14b6a5707ee3e550b3e01c72327c6620d8e6a8b
-=======
-  version: 7.19.4
-  resolution: "@babel/runtime@npm:7.19.4"
-  dependencies:
-    regenerator-runtime: ^0.13.4
-  checksum: 66b7e3c13e9ee1d2c9397ea89144f29a875edee266a0eb2d9971be51b32fdbafc85808c7a45e011e6681899bb804b4e2ee2aed6dc07108dbbd6b11b6cc2afba6
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 00567a333d3357925742a6f5e39394dcc0af6e6029103fe188158bf7ae8b0b3ee3c6c0f68fccc217f0a6cfa455f6be252298baf56b3f5ff37b34313b170cd9f6
   languageName: node
   linkType: hard
 
@@ -2119,55 +1852,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.6, @babel/traverse@npm:^7.20.0, @babel/traverse@npm:^7.4.5":
-  version: 7.20.0
-  resolution: "@babel/traverse@npm:7.20.0"
-=======
-"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.4.5":
-  version: 7.19.1
-  resolution: "@babel/traverse@npm:7.19.1"
->>>>>>> Reverted Yarn lock file
+"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.6, @babel/traverse@npm:^7.20.1, @babel/traverse@npm:^7.4.5":
+  version: 7.20.1
+  resolution: "@babel/traverse@npm:7.20.1"
   dependencies:
     "@babel/code-frame": ^7.18.6
-    "@babel/generator": ^7.20.0
-=======
-"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.3, @babel/traverse@npm:^7.4.5":
-  version: 7.19.3
-  resolution: "@babel/traverse@npm:7.19.3"
-  dependencies:
-    "@babel/code-frame": ^7.18.6
-    "@babel/generator": ^7.19.3
->>>>>>> fix: ugh
-=======
-"@babel/traverse@npm:^7.12.9, @babel/traverse@npm:^7.14.0, @babel/traverse@npm:^7.15.4, @babel/traverse@npm:^7.16.8, @babel/traverse@npm:^7.19.0, @babel/traverse@npm:^7.19.1, @babel/traverse@npm:^7.19.3, @babel/traverse@npm:^7.19.4, @babel/traverse@npm:^7.4.5":
-  version: 7.19.4
-  resolution: "@babel/traverse@npm:7.19.4"
-  dependencies:
-    "@babel/code-frame": ^7.18.6
-    "@babel/generator": ^7.19.4
->>>>>>> fix: go over these components as they were not in initial pr
+    "@babel/generator": ^7.20.1
     "@babel/helper-environment-visitor": ^7.18.9
     "@babel/helper-function-name": ^7.19.0
     "@babel/helper-hoist-variables": ^7.18.6
     "@babel/helper-split-export-declaration": ^7.18.6
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@babel/parser": ^7.20.0
+    "@babel/parser": ^7.20.1
     "@babel/types": ^7.20.0
     debug: ^4.1.0
     globals: ^11.1.0
-  checksum: 19615ec2c3467f929dfa2ae98494961a2c7b333b6628e1c7643188d936abc167c41f5af541b692b1ca776a4d066291a7eb8b22f98aba3d496f362bae4c2082cd
-=======
-    "@babel/parser": ^7.19.1
-    "@babel/types": ^7.19.0
-    debug: ^4.1.0
-    globals: ^11.1.0
-  checksum: 9d782b5089ebc989e54c2406814ed1206cb745ed2734e6602dee3e23d4b6ebbb703ff86e536276630f8de83fda6cde99f0634e3c3d847ddb40572d0303ba8800
->>>>>>> Reverted Yarn lock file
+  checksum: 6696176d574b7ff93466848010bc7e94b250169379ec2a84f1b10da46a7cc2018ea5e3a520c3078487db51e3a4afab9ecff48f25d1dbad8c1319362f4148fb4b
   languageName: node
   linkType: hard
 
@@ -2179,32 +1878,6 @@ __metadata:
     "@babel/helper-validator-identifier": ^7.19.1
     to-fast-properties: ^2.0.0
   checksum: 8729b1114c707a03625cd79e3ae3a28d69b36ddcf804cb0a4599af226e5e9fad71665bdc0e56c43527ecfcabc545d9c797231f5ce718ae1ab52d31a57b6c2024
-=======
-    "@babel/parser": ^7.19.3
-    "@babel/types": ^7.19.3
-=======
-    "@babel/parser": ^7.19.4
-    "@babel/types": ^7.19.4
->>>>>>> fix: go over these components as they were not in initial pr
-    debug: ^4.1.0
-    globals: ^11.1.0
-  checksum: 8ae1ac3dace181620cd0e3078aec99604a48302fb873193a171e37a7cc4f8909ed496f286bf08c6473f9692db36423e2601eb9c771493d19f6a5fd1a56745af5
-  languageName: node
-  linkType: hard
-
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.12.7, @babel/types@npm:^7.15.4, @babel/types@npm:^7.16.8, @babel/types@npm:^7.18.10, @babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.19.0, @babel/types@npm:^7.19.3, @babel/types@npm:^7.19.4, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
-  version: 7.19.4
-  resolution: "@babel/types@npm:7.19.4"
-  dependencies:
-    "@babel/helper-string-parser": ^7.19.4
-    "@babel/helper-validator-identifier": ^7.19.1
-    to-fast-properties: ^2.0.0
-<<<<<<< HEAD
-  checksum: 34a5b3db3b99a1a80ec2a784c2bb0e48769a38f1526dc377a5753a3ac5e5704663c405a393117ecc7a9df9da07b01625be7c4c3fee43ae46aba23b0c40928d77
->>>>>>> fix: ugh
-=======
-  checksum: 4032f6407093f80dd4f4764be676f7527d2a5c0381586967cd79683cf8af01cdc16745a381b9cef045f702f0c9b0dffd880d84ee55dad59ba01bd23d5d52a8e0
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -2225,13 +1898,13 @@ __metadata:
   linkType: hard
 
 "@commitlint/cli@npm:^17.1.2":
-  version: 17.1.2
-  resolution: "@commitlint/cli@npm:17.1.2"
+  version: 17.2.0
+  resolution: "@commitlint/cli@npm:17.2.0"
   dependencies:
     "@commitlint/format": ^17.0.0
-    "@commitlint/lint": ^17.1.0
-    "@commitlint/load": ^17.1.2
-    "@commitlint/read": ^17.1.0
+    "@commitlint/lint": ^17.2.0
+    "@commitlint/load": ^17.2.0
+    "@commitlint/read": ^17.2.0
     "@commitlint/types": ^17.0.0
     execa: ^5.0.0
     lodash: ^4.17.19
@@ -2240,16 +1913,16 @@ __metadata:
     yargs: ^17.0.0
   bin:
     commitlint: cli.js
-  checksum: 2f87c560ede9c731574ceb3a4be0d4a12fed60aedef57a567a98b978537105da0aa70d189803f7894ee7a079038f63ee45345ebd29e9d29789d9fdf4c64006d4
+  checksum: e850a2bfac3df902b72150050811e89a7aa5202918aa47bea5b8f6e5cff2277e9b15786a087b146bd510d450efad7ce3216338c4d580d9342ef43616abc2744c
   languageName: node
   linkType: hard
 
 "@commitlint/config-conventional@npm:^17.1.0":
-  version: 17.1.0
-  resolution: "@commitlint/config-conventional@npm:17.1.0"
+  version: 17.2.0
+  resolution: "@commitlint/config-conventional@npm:17.2.0"
   dependencies:
     conventional-changelog-conventionalcommits: ^5.0.0
-  checksum: 8209f6b105ff0cd5239e3c0211be875fa17e02552927979faeba51d3797c8258df9bd1eb064f886e13aedf890d2da2083f6d41727d49d57bcc12520011d723a4
+  checksum: c91f8f4aac263d907f94c0ddba482f5d5a590bbbc8466c1afcb94bb0a2dfc891561647d8544744a4d0ae4c80034aa9e931197a6cdf2fb1c64f8f9e5e25c01e81
   languageName: node
   linkType: hard
 
@@ -2290,31 +1963,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/is-ignored@npm:^17.1.0":
-  version: 17.1.0
-  resolution: "@commitlint/is-ignored@npm:17.1.0"
+"@commitlint/is-ignored@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/is-ignored@npm:17.2.0"
   dependencies:
     "@commitlint/types": ^17.0.0
     semver: 7.3.7
-  checksum: d371e7dbf137dee40d06b54f7edd1ac079d6ff696d756fb8b6a9c1a69b12a92295ecd2cf6d7079db229783c510b57a5f88080f486d3810177aef85b098f2464d
+  checksum: ae88eae5f4661d963a46ed39ae58dd3e3b0a1139cbab59f76f535170eb263c203e25d67286f3a0dedb7cfd77606d65d65a9eaa8e4a1949cd82d342064c4e5cc3
   languageName: node
   linkType: hard
 
-"@commitlint/lint@npm:^17.1.0":
-  version: 17.1.0
-  resolution: "@commitlint/lint@npm:17.1.0"
+"@commitlint/lint@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/lint@npm:17.2.0"
   dependencies:
-    "@commitlint/is-ignored": ^17.1.0
-    "@commitlint/parse": ^17.0.0
-    "@commitlint/rules": ^17.0.0
+    "@commitlint/is-ignored": ^17.2.0
+    "@commitlint/parse": ^17.2.0
+    "@commitlint/rules": ^17.2.0
     "@commitlint/types": ^17.0.0
-  checksum: a457461da400d9adc5fa52bdc78c0e97f9b0f3e021f4b74efae2e7aae1b3febea759ef4a952cde2330a247cd48203345b038197ed1fcc750433ac042a4a7217d
+  checksum: e35f30b89e6126b6491b062c003b26afe129c9243e1866a569676ae0e3b04a6bce11ee348df82332a984dc38aabbeb139df0fb94a7d421f981ef352fe0c5420c
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:^17.1.2":
-  version: 17.1.2
-  resolution: "@commitlint/load@npm:17.1.2"
+"@commitlint/load@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/load@npm:17.2.0"
   dependencies:
     "@commitlint/config-validator": ^17.1.0
     "@commitlint/execute-rule": ^17.0.0
@@ -2328,38 +2001,38 @@ __metadata:
     resolve-from: ^5.0.0
     ts-node: ^10.8.1
     typescript: ^4.6.4
-  checksum: c01e2d8a5b9b20706d91d7930f960b901450aa1e306d597eb0fca56f60d692bd1f63495914614bd59b0a6bcc51e11036a2291c79beb96ab7e8463034c5c5ecbb
+  checksum: ac7c971049e4fd9ec837389b8dfb94bd86dbed492f863394c6baa0cc11774919a43ad1fb27aabc9a50169d8da13c352aa1a2d3b7c07573e5e3067d87eb0b114a
   languageName: node
   linkType: hard
 
-"@commitlint/message@npm:^17.0.0":
-  version: 17.0.0
-  resolution: "@commitlint/message@npm:17.0.0"
-  checksum: ec80ea7f98082e48116fda1203277ac139bf2f442a8f58f87f8b823c6e526ec3771a9de7821b249254d580bff59a3fe205d044d1e9df29c34c3014a41e851c5d
+"@commitlint/message@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/message@npm:17.2.0"
+  checksum: 504760cfb1004d571f198d60641d2dc3e59e0ac28a244ba767fe938ee1124399acbe5be3b074da9ec88a9cb6b0378e198833c4b983feaeb0e4f1f886bbe927b6
   languageName: node
   linkType: hard
 
-"@commitlint/parse@npm:^17.0.0":
-  version: 17.0.0
-  resolution: "@commitlint/parse@npm:17.0.0"
+"@commitlint/parse@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/parse@npm:17.2.0"
   dependencies:
     "@commitlint/types": ^17.0.0
     conventional-changelog-angular: ^5.0.11
     conventional-commits-parser: ^3.2.2
-  checksum: 86610df080665b8ba83037c598f4e6d0538a5ec40fdb0c2ad1925bfdf0f494934deafa020d2e21663f64dbc20fec4e889d21675573d3860c379c2d305db7a141
+  checksum: a6be0e9124debb2e2d97dd442a855c9dafcc86999b970f52e77bddf4a5e5ff569011ea1a2f5ab6075ec1f5634b8354e68033fd01542abf9c72b026ae77306189
   languageName: node
   linkType: hard
 
-"@commitlint/read@npm:^17.1.0":
-  version: 17.1.0
-  resolution: "@commitlint/read@npm:17.1.0"
+"@commitlint/read@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/read@npm:17.2.0"
   dependencies:
     "@commitlint/top-level": ^17.0.0
     "@commitlint/types": ^17.0.0
     fs-extra: ^10.0.0
     git-raw-commits: ^2.0.0
     minimist: ^1.2.6
-  checksum: b9f728860a17db3e6c2e7872eca788b83192e1b83fbed3c4acdc0a83674573576df40041ca136eec9e19c1d0964efe31cfa98ec3f0907ccdefa80f6b5e7eeca4
+  checksum: b2adcbe1f1853a0d6b477c245a22ce18eda0e15c47d0211aa141f5101acf84b77e4c9bace076021e8d0a78b3d05c1f7f4e04e550ea0317992b592686e07b81ac
   languageName: node
   linkType: hard
 
@@ -2377,16 +2050,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/rules@npm:^17.0.0":
-  version: 17.0.0
-  resolution: "@commitlint/rules@npm:17.0.0"
+"@commitlint/rules@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@commitlint/rules@npm:17.2.0"
   dependencies:
     "@commitlint/ensure": ^17.0.0
-    "@commitlint/message": ^17.0.0
+    "@commitlint/message": ^17.2.0
     "@commitlint/to-lines": ^17.0.0
     "@commitlint/types": ^17.0.0
     execa: ^5.0.0
-  checksum: cd0944069932bee738a0ed70cb972fa0d14c0e35642310ca856d5e368ddc48513d05ece00f2e309ebcf4ecb119f8b44b322ff086edaa5208edb3cec0968dac06
+  checksum: d13250a0a9c012944fee13426521500fd1da9ae5bac9597c4689ff8e1a0f04875614a90beddfca147165690a34e12ec277ff0b11dce43463aa559ebdf90ba397
   languageName: node
   linkType: hard
 
@@ -2674,15 +2347,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@gatsbyjs/parcel-namer-relative-to-cwd@npm:1.9.0":
-=======
-"@gatsbyjs/parcel-namer-relative-to-cwd@npm:^1.9.0":
->>>>>>> fix: ugh
-=======
-"@gatsbyjs/parcel-namer-relative-to-cwd@npm:1.9.0":
->>>>>>> fix: go over these components as they were not in initial pr
   version: 1.9.0
   resolution: "@gatsbyjs/parcel-namer-relative-to-cwd@npm:1.9.0"
   dependencies:
@@ -2741,22 +2406,22 @@ __metadata:
   linkType: hard
 
 "@graphql-codegen/core@npm:^2.5.1":
-  version: 2.6.2
-  resolution: "@graphql-codegen/core@npm:2.6.2"
+  version: 2.6.4
+  resolution: "@graphql-codegen/core@npm:2.6.4"
   dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
+    "@graphql-codegen/plugin-helpers": ^2.7.2
     "@graphql-tools/schema": ^9.0.0
-    "@graphql-tools/utils": ^8.8.0
+    "@graphql-tools/utils": 9.0.0
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: 3d078e9caa11baf7ceaa4d67b29a6be32f50a183c1fa6f228a3ade62902b9b91cdea2c94d99adbadf10ec38a7f2df9f16cd366dc7b4febf95336e3b4a7eb9160
+  checksum: ba4ace33e2f9dc25ea37b9afc6f75841aa04907df3406cdfc3981f86625bae232c9c5ea294b7a1605083149b50adcb743825d8fb2327c1fc88978ee37d131daf
   languageName: node
   linkType: hard
 
-"@graphql-codegen/plugin-helpers@npm:^2.4.2, @graphql-codegen/plugin-helpers@npm:^2.6.2":
-  version: 2.7.1
-  resolution: "@graphql-codegen/plugin-helpers@npm:2.7.1"
+"@graphql-codegen/plugin-helpers@npm:^2.4.2, @graphql-codegen/plugin-helpers@npm:^2.6.2, @graphql-codegen/plugin-helpers@npm:^2.7.2":
+  version: 2.7.2
+  resolution: "@graphql-codegen/plugin-helpers@npm:2.7.2"
   dependencies:
     "@graphql-tools/utils": ^8.8.0
     change-case-all: 1.0.14
@@ -2766,7 +2431,7 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-  checksum: fffb801ccccee36d729c134caa79cc5eb6a1b3717253646cd1759e2dd0e754bccb6b0b6b5341a649fd18794f8b0b970776b71907d5a7b15048521ea9eb283180
+  checksum: 66e0d507ad5db60b67092ebf7632d464d56ab446ac8fd87c293e00d9016944912d8cf9199e3e026b0a9247a50f50c4118a44f49e13675db64211652cd6259b05
   languageName: node
   linkType: hard
 
@@ -2784,73 +2449,40 @@ __metadata:
   linkType: hard
 
 "@graphql-codegen/typescript-operations@npm:^2.3.5":
-<<<<<<< HEAD
-  version: 2.5.5
-  resolution: "@graphql-codegen/typescript-operations@npm:2.5.5"
+  version: 2.5.6
+  resolution: "@graphql-codegen/typescript-operations@npm:2.5.6"
   dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
-    "@graphql-codegen/typescript": ^2.7.5
-    "@graphql-codegen/visitor-plugin-common": 2.13.0
-=======
-  version: 2.5.4
-  resolution: "@graphql-codegen/typescript-operations@npm:2.5.4"
-  dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
-    "@graphql-codegen/typescript": ^2.7.4
-    "@graphql-codegen/visitor-plugin-common": 2.12.2
->>>>>>> fix: go over these components as they were not in initial pr
+    "@graphql-codegen/plugin-helpers": ^2.7.2
+    "@graphql-codegen/typescript": ^2.8.1
+    "@graphql-codegen/visitor-plugin-common": 2.13.1
     auto-bind: ~4.0.0
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-<<<<<<< HEAD
-  checksum: 1411b0da8aa30f6bab4af31db3015dca8c0b76fd516827130c513f7abf94725c559b1b3268348e0249fa196863d7aba8a01337bf55835999f047a1561a7477fc
+  checksum: 8551b312fc96aba6d6168a6ece613ccb05c07786383f966655335c41f5f72d740f9ccf5f6128e8d9ab92bbd5d4a44adec263b8f452cfc94465db0c4246b086ff
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript@npm:^2.4.8, @graphql-codegen/typescript@npm:^2.7.5":
-  version: 2.8.0
-  resolution: "@graphql-codegen/typescript@npm:2.8.0"
+"@graphql-codegen/typescript@npm:^2.4.8, @graphql-codegen/typescript@npm:^2.8.1":
+  version: 2.8.1
+  resolution: "@graphql-codegen/typescript@npm:2.8.1"
   dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
+    "@graphql-codegen/plugin-helpers": ^2.7.2
     "@graphql-codegen/schema-ast": ^2.5.1
-    "@graphql-codegen/visitor-plugin-common": 2.13.0
-=======
-  checksum: 845c70a482f55ead2ca73b43f443c2378debe7f6cec316b5bac4edceab29e550c4f176b1e2e6b693c80295c91e544284929fc954bb034d026e2dcadd93ef90d4
-  languageName: node
-  linkType: hard
-
-"@graphql-codegen/typescript@npm:^2.4.8, @graphql-codegen/typescript@npm:^2.7.4":
-  version: 2.7.4
-  resolution: "@graphql-codegen/typescript@npm:2.7.4"
-  dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
-    "@graphql-codegen/schema-ast": ^2.5.1
-    "@graphql-codegen/visitor-plugin-common": 2.12.2
->>>>>>> fix: go over these components as they were not in initial pr
+    "@graphql-codegen/visitor-plugin-common": 2.13.1
     auto-bind: ~4.0.0
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-<<<<<<< HEAD
-  checksum: 45550613384c930d046f1ca8bfd73c25e1219fc45315b1885017e08577a517547d5af86908162f61eee0670689df5c926b5e394b318d5c3d94ee5eef5ac1bc52
+  checksum: 2b5466190e385c557eed6210b861fb9e632fb61b90bd0f97ff983f359c0ad8106228667c9ff2201842100417a07cfaffa91794ef03058a151df256d733363fa2
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@npm:2.13.0":
-  version: 2.13.0
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.13.0"
-=======
-  checksum: 91ce69d19eead417d4ba07a59f4be19fd50a28c4bd3800f8cd69efa7e2afb05cea6e15b8d58086b67c366970a6c58f0c5179a46a9f07c7f135f642a9d6af3583
-  languageName: node
-  linkType: hard
-
-"@graphql-codegen/visitor-plugin-common@npm:2.12.2":
-  version: 2.12.2
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.12.2"
->>>>>>> fix: go over these components as they were not in initial pr
+"@graphql-codegen/visitor-plugin-common@npm:2.13.1":
+  version: 2.13.1
+  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.13.1"
   dependencies:
-    "@graphql-codegen/plugin-helpers": ^2.6.2
+    "@graphql-codegen/plugin-helpers": ^2.7.2
     "@graphql-tools/optimize": ^1.3.0
     "@graphql-tools/relay-operation-optimizer": ^6.5.0
     "@graphql-tools/utils": ^8.8.0
@@ -2862,117 +2494,63 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-<<<<<<< HEAD
-  checksum: 1d7491d626059529faca2eda5466aa8b05bf2cc9a768175043461d0ec4793b4cbda2fb762ef44e6c8d094f951960569f2adf177af74156f4a74f33c6d5ae77bf
-=======
-  checksum: 325b6a2bbd297c7beff00963f4f375d2990956287d4e4976864875340728abf1bdaa9891bbd9fc2625d783689f2655befd212a03c521d3661e16dcea0e0a6de4
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 0c329aa6e435602f2f6c1569ec2091b7850f58cc5dca7ac763c38c82588545ec1110c1de587f5f3949b11ff96f94401d1e63e329607d78424583b276fd08f1ae
   languageName: node
   linkType: hard
 
 "@graphql-tools/code-file-loader@npm:^7.2.14":
-<<<<<<< HEAD
-  version: 7.3.7
-  resolution: "@graphql-tools/code-file-loader@npm:7.3.7"
+  version: 7.3.9
+  resolution: "@graphql-tools/code-file-loader@npm:7.3.9"
   dependencies:
-    "@graphql-tools/graphql-tag-pluck": 7.3.7
-    "@graphql-tools/utils": 8.13.0
-=======
-  version: 7.3.6
-  resolution: "@graphql-tools/code-file-loader@npm:7.3.6"
-  dependencies:
-    "@graphql-tools/graphql-tag-pluck": 7.3.6
-    "@graphql-tools/utils": 8.12.0
->>>>>>> Reverted Yarn lock file
+    "@graphql-tools/graphql-tag-pluck": 7.3.9
+    "@graphql-tools/utils": 9.0.0
     globby: ^11.0.3
     tslib: ^2.4.0
     unixify: ^1.0.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-<<<<<<< HEAD
-  checksum: 80c2c507908f37e32314c83ccd3a2e87a6a8136989641be66ec7f2dbe451b70d9a451deca55215321cda9f67e039f66375f5c3b414e4f9b3f10ff1352fab8fff
+  checksum: 6b40ce67313714241e39e023bef770dabcdd5ce3a6cc672f2f684902080deabce39d046025894eb1e510efcfeb30406327adbf1608f64fc945ffb3696d7506fd
   languageName: node
   linkType: hard
 
-"@graphql-tools/graphql-tag-pluck@npm:7.3.7":
-  version: 7.3.7
-  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.7"
-=======
-  checksum: a63b0c512d1a6b56fc6aebc933a779d8b155aedc060ee37fcdcacd909341024db9546d5f93b49ad676ee348e3303b048c9ef190263f3747e016f818a04c49133
-  languageName: node
-  linkType: hard
-
-"@graphql-tools/graphql-tag-pluck@npm:7.3.6":
-  version: 7.3.6
-  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.6"
->>>>>>> Reverted Yarn lock file
+"@graphql-tools/graphql-tag-pluck@npm:7.3.9":
+  version: 7.3.9
+  resolution: "@graphql-tools/graphql-tag-pluck@npm:7.3.9"
   dependencies:
     "@babel/parser": ^7.16.8
     "@babel/traverse": ^7.16.8
     "@babel/types": ^7.16.8
-<<<<<<< HEAD
-    "@graphql-tools/utils": 8.13.0
+    "@graphql-tools/utils": 9.0.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 9b3ea1c133da1c022699ccbaf5010f7eb33427a34735d942828cc7fb989bed01d0cf0aacdb302c5af8f3f8e95b56ce53f1ffc9547ab5fcc0be8f659b7006da17
-=======
-    "@graphql-tools/utils": 8.12.0
-    tslib: ^2.4.0
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 3543a41a3b84dc014ce5d0824c8275b8d8592e55bbcd8f955a0968a6b9c00c11d82d90b6bbb533f2d09f94e07d10ec70d53696470ee32fad00d055767909d164
->>>>>>> Reverted Yarn lock file
+  checksum: e55f57e0b0a00ff3731458b7a54827f78bcd11e7d31d00f1313810c34be270a228a58f659c8e12a5a06e9718c4828a8a13f0320fe7b046e88429ec291ad78792
   languageName: node
   linkType: hard
 
 "@graphql-tools/load@npm:^7.5.10":
-<<<<<<< HEAD
-  version: 7.8.1
-  resolution: "@graphql-tools/load@npm:7.8.1"
+  version: 7.8.3
+  resolution: "@graphql-tools/load@npm:7.8.3"
   dependencies:
-    "@graphql-tools/schema": 9.0.5
-    "@graphql-tools/utils": 8.13.0
-=======
-  version: 7.7.7
-  resolution: "@graphql-tools/load@npm:7.7.7"
-  dependencies:
-    "@graphql-tools/schema": 9.0.4
-    "@graphql-tools/utils": 8.12.0
->>>>>>> Reverted Yarn lock file
+    "@graphql-tools/schema": 9.0.7
+    "@graphql-tools/utils": 9.0.0
     p-limit: 3.1.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-<<<<<<< HEAD
-  checksum: 559a287f97581b9584716754f4ad9d3ccd9307508add8ba56f1e7340faed8e1e729cf2c19b4a345f5580199a97cb66ee1742796fad2d694957a2c680c48a391e
+  checksum: 1d878332bb7f526a89a73fdfd826a611d52e6027ed9e5b7444b0adb8ef9f0e613869ce93feebeac67536b199ce22cbf62d4071fb0ff95a1d2ece66e0ff553e0c
   languageName: node
   linkType: hard
 
-"@graphql-tools/merge@npm:8.3.7":
-  version: 8.3.7
-  resolution: "@graphql-tools/merge@npm:8.3.7"
+"@graphql-tools/merge@npm:8.3.9":
+  version: 8.3.9
+  resolution: "@graphql-tools/merge@npm:8.3.9"
   dependencies:
-    "@graphql-tools/utils": 8.13.0
+    "@graphql-tools/utils": 9.0.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 037f83162a47bbfc621ecd9ad0f24f8343adb406848f68d8202f531770f9603dc79d3c9c539d91a4c6365868507398e8d605189930a79f6da97dd5c3957e8e88
-=======
-  checksum: 59590c07c029b5b2427116408f91cb1f5ab359bdf0a9314a8d31cedc540c235d1daddbbc8ab6369db1ea7e654cf52ca9d4f185058290acc8c5c3183d1bb68ef7
-  languageName: node
-  linkType: hard
-
-"@graphql-tools/merge@npm:8.3.6":
-  version: 8.3.6
-  resolution: "@graphql-tools/merge@npm:8.3.6"
-  dependencies:
-    "@graphql-tools/utils": 8.12.0
-    tslib: ^2.4.0
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 3e45ebff0dce9524e72c4af1d2b9799c16515c1236290e07cd68fb2226c4e54734e2444d89a64b387b7ba991d15c6f948fdfc20c77a74b1d24babddd865ff32a
->>>>>>> Reverted Yarn lock file
+  checksum: 0852ce0c3391c7f7154848d5c25a4f0d34db1241d682400347d9d16289d5d7831f8b8cd8018f701f016a8f9f374ef10d067df212eb43c42f0387b3e2d64cb723
   languageName: node
   linkType: hard
 
@@ -2988,75 +2566,51 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/relay-operation-optimizer@npm:^6.5.0":
-<<<<<<< HEAD
-  version: 6.5.7
-  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.7"
+  version: 6.5.9
+  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.9"
   dependencies:
     "@ardatan/relay-compiler": 12.0.0
-    "@graphql-tools/utils": 8.13.0
+    "@graphql-tools/utils": 9.0.0
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 3037e122106eb84e92138fca92da18421e24f5ec0a2d82fdacbad1d9859adbf1333b98b3de4848e34b0d341212b963e2903ba843acbea37e6d31cc5f1f92d163
+  checksum: 5a00a50f6d84ec98a477ed0408dd5da6f5e5268cb0b92541576db4a8c6a5023d8be7707730cccdc83a87ecae0f772a660f8a338d85376ef90e63eeffd2abd421
   languageName: node
   linkType: hard
 
-"@graphql-tools/schema@npm:9.0.5, @graphql-tools/schema@npm:^9.0.0":
-  version: 9.0.5
-  resolution: "@graphql-tools/schema@npm:9.0.5"
+"@graphql-tools/schema@npm:9.0.7, @graphql-tools/schema@npm:^9.0.0":
+  version: 9.0.7
+  resolution: "@graphql-tools/schema@npm:9.0.7"
   dependencies:
-    "@graphql-tools/merge": 8.3.7
-    "@graphql-tools/utils": 8.13.0
-=======
-  version: 6.5.6
-  resolution: "@graphql-tools/relay-operation-optimizer@npm:6.5.6"
-  dependencies:
-    "@ardatan/relay-compiler": 12.0.0
-    "@graphql-tools/utils": 8.12.0
-    tslib: ^2.4.0
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 12efc88c775221a333a97a517bec160b449778cf3de5377048a81d213b0f67d82c0f2de631ba31e3443355650317ea8af5a2e107a00517dbf73d8e8720e797fb
-  languageName: node
-  linkType: hard
-
-"@graphql-tools/schema@npm:9.0.4, @graphql-tools/schema@npm:^9.0.0":
-  version: 9.0.4
-  resolution: "@graphql-tools/schema@npm:9.0.4"
-  dependencies:
-    "@graphql-tools/merge": 8.3.6
-    "@graphql-tools/utils": 8.12.0
->>>>>>> Reverted Yarn lock file
+    "@graphql-tools/merge": 8.3.9
+    "@graphql-tools/utils": 9.0.0
     tslib: ^2.4.0
     value-or-promise: 1.0.11
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-<<<<<<< HEAD
-  checksum: c8f99a3eaed00aa8ee0c5189d19e7893728a6a559b422c69db609ead7a76c3d702f792040010540b91e2f8517137363cb74a37f1cec5238f6c18f8da4e9956c4
+  checksum: cba3c9dae3b9064374e778eab5873dbc4ac68fee9d65f37f920556a673c8b6f2cff779c6470073db95d063ce50654451d78df6a126c4612349ca85f4a50d1ce3
   languageName: node
   linkType: hard
 
-"@graphql-tools/utils@npm:8.13.0, @graphql-tools/utils@npm:^8.8.0":
-  version: 8.13.0
-  resolution: "@graphql-tools/utils@npm:8.13.0"
-=======
-  checksum: 0644ba225ff7fb03c6fb7f026b6a77a4ac5dd14fd10bb562ea0072bfe0258620fd4789b851b0b97007db8754d0b7d88a1061bb98bacc679b22e2eb7706e79e0e
-  languageName: node
-  linkType: hard
-
-"@graphql-tools/utils@npm:8.12.0, @graphql-tools/utils@npm:^8.8.0":
-  version: 8.12.0
-  resolution: "@graphql-tools/utils@npm:8.12.0"
->>>>>>> Reverted Yarn lock file
+"@graphql-tools/utils@npm:9.0.0":
+  version: 9.0.0
+  resolution: "@graphql-tools/utils@npm:9.0.0"
   dependencies:
     tslib: ^2.4.0
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-<<<<<<< HEAD
-  checksum: 8806bcda40cbda02577fe57c383ababb8961e3800be9ef228c9773793318477e5a706b6141803ea6dd68da0f39cff186d124039b742b519cbfb45cd6d15ccb22
-=======
-  checksum: 24edc6ba3bcfa9a4c1d1d37117c3f96d847beed9638325083c32c6ec9674729dc89fc8cc389d317ae5d9dba22e91443bd9788f1dc8de91a1b6f1e592112bd48f
->>>>>>> Reverted Yarn lock file
+  checksum: 8da22b13e0cfceac20f2ee08c45f360d0bd1390fa0edd8496ea75a0ca7d10ab3bbafca6b4b0dbc3f233a05cd53096e3063b9208f727c72db00e461751164afbd
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/utils@npm:^8.8.0":
+  version: 8.13.1
+  resolution: "@graphql-tools/utils@npm:8.13.1"
+  dependencies:
+    tslib: ^2.4.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: ff04fdeb29e9ac596ea53386cd5b23cd741bb14c1997c6b0ba3c34ca165bd82b528a355e8c8e2ba726eb39e833ba9cbb0851ba0addb8c6d367089a1145bf9a49
   languageName: node
   linkType: hard
 
@@ -3595,7 +3149,6 @@ __metadata:
   linkType: hard
 
 "@jridgewell/trace-mapping@npm:^0.3.13, @jridgewell/trace-mapping@npm:^0.3.14, @jridgewell/trace-mapping@npm:^0.3.9":
-<<<<<<< HEAD
   version: 0.3.17
   resolution: "@jridgewell/trace-mapping@npm:0.3.17"
   dependencies:
@@ -3605,8 +3158,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@lerna/add@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/add@npm:5.6.2"
@@ -3616,58 +3167,11 @@ __metadata:
     "@lerna/filter-options": 5.6.2
     "@lerna/npm-conf": 5.6.2
     "@lerna/validation-error": 5.6.2
-=======
-"@lerna/add@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/add@npm:5.5.2"
-  dependencies:
-    "@lerna/bootstrap": 5.5.2
-    "@lerna/command": 5.5.2
-    "@lerna/filter-options": 5.5.2
-    "@lerna/npm-conf": 5.5.2
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/add@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/add@npm:5.6.1"
-  dependencies:
-    "@lerna/bootstrap": 5.6.1
-    "@lerna/command": 5.6.1
-    "@lerna/filter-options": 5.6.1
-    "@lerna/npm-conf": 5.6.1
-    "@lerna/validation-error": 5.6.1
->>>>>>> fix: ugh
-=======
-  version: 0.3.16
-  resolution: "@jridgewell/trace-mapping@npm:0.3.16"
-  dependencies:
-    "@jridgewell/resolve-uri": 3.1.0
-    "@jridgewell/sourcemap-codec": 1.4.14
-  checksum: 881fa21ce066ab5e9c23991ac435dfae2ac8ffa74510379a028b0d002437b48a50464369436c5d242b6e648eec17f77003c73c1f54325cfcd8824967c2356910
-  languageName: node
-  linkType: hard
-
-"@lerna/add@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/add@npm:5.6.2"
-  dependencies:
-    "@lerna/bootstrap": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/filter-options": 5.6.2
-    "@lerna/npm-conf": 5.6.2
-    "@lerna/validation-error": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     dedent: ^0.7.0
     npm-package-arg: 8.1.1
     p-map: ^4.0.0
     pacote: ^13.6.1
     semver: ^7.3.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix: go over these components as they were not in initial pr
   checksum: a6e9a6270f3145cb24da1b90a312cbbe0f3a0c556943c7e7b8cf4bfbb0912db4de7e7dc248321dd26955b3b8dbf8ede8c9481e2a0f3107c8a5cd917bfe187976
   languageName: node
   linkType: hard
@@ -3688,53 +3192,6 @@ __metadata:
     "@lerna/symlink-binary": 5.6.2
     "@lerna/symlink-dependencies": 5.6.2
     "@lerna/validation-error": 5.6.2
-<<<<<<< HEAD
-=======
-  checksum: 4e7802b2aceae2aaffd75d60624bb149e242603230c1c70ef10baf4386ddd6a8ea3dd105cd947d8a95f65ff6a0d7e2858206cd45f0f0e3c3765b95c20607a520
-  languageName: node
-  linkType: hard
-
-"@lerna/bootstrap@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/bootstrap@npm:5.5.2"
-  dependencies:
-    "@lerna/command": 5.5.2
-    "@lerna/filter-options": 5.5.2
-    "@lerna/has-npm-version": 5.5.2
-    "@lerna/npm-install": 5.5.2
-    "@lerna/package-graph": 5.5.2
-    "@lerna/pulse-till-done": 5.5.2
-    "@lerna/rimraf-dir": 5.5.2
-    "@lerna/run-lifecycle": 5.5.2
-    "@lerna/run-topologically": 5.5.2
-    "@lerna/symlink-binary": 5.5.2
-    "@lerna/symlink-dependencies": 5.5.2
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 043a0af415e920ffa56f13cd16a5dbea597e55d9bae37374bc34a70b0b1f88633d7d1ac2b0126a52ee7783fb3f0786932be5fbf6d7ff7dc68d087f25dd6f6def
-  languageName: node
-  linkType: hard
-
-"@lerna/bootstrap@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/bootstrap@npm:5.6.1"
-  dependencies:
-    "@lerna/command": 5.6.1
-    "@lerna/filter-options": 5.6.1
-    "@lerna/has-npm-version": 5.6.1
-    "@lerna/npm-install": 5.6.1
-    "@lerna/package-graph": 5.6.1
-    "@lerna/pulse-till-done": 5.6.1
-    "@lerna/rimraf-dir": 5.6.1
-    "@lerna/run-lifecycle": 5.6.1
-    "@lerna/run-topologically": 5.6.1
-    "@lerna/symlink-binary": 5.6.1
-    "@lerna/symlink-dependencies": 5.6.1
-    "@lerna/validation-error": 5.6.1
->>>>>>> fix: ugh
-=======
->>>>>>> fix: go over these components as they were not in initial pr
     "@npmcli/arborist": 5.3.0
     dedent: ^0.7.0
     get-port: ^5.1.1
@@ -3745,9 +3202,6 @@ __metadata:
     p-map-series: ^2.1.0
     p-waterfall: ^2.1.1
     semver: ^7.3.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 5b416f2276077348a72c4079d96b35729502a8bc3f91144cf3109b1ea5966245c809769304414a9b038de0980e783ed2a8da898fd05802879e8186e35a8a14cf
   languageName: node
   linkType: hard
@@ -3778,63 +3232,10 @@ __metadata:
 "@lerna/child-process@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/child-process@npm:5.6.2"
-=======
-  checksum: 470fc2cfd05d1b7a831f87d1d85289e3f23836b9c9daaeaaf0151d826e0c08ebe060ff3b6362672b1680125e752389c17579d4986eef33401aff08d74f70f59d
-=======
-  checksum: b81fac94d0dd567fc16d725daf498757f0c301e041edf0ff2645c6722ff33da5d1dcb34cbcb17f9d036bc3f32e0a6599a4e4711705b82da470c301ddd9593671
->>>>>>> fix: ugh
-=======
-  checksum: 5b416f2276077348a72c4079d96b35729502a8bc3f91144cf3109b1ea5966245c809769304414a9b038de0980e783ed2a8da898fd05802879e8186e35a8a14cf
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/changed@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/changed@npm:5.6.2"
-  dependencies:
-    "@lerna/collect-updates": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/listable": 5.6.2
-    "@lerna/output": 5.6.2
-  checksum: 69a86cf3b3124553dee5de03988e7e7ecbf3f9084685ff13da1a1c9dfd4dcc3991145db4937cc0a72dde029da6cd37b3614bd21b7b461f8d5724a2f38b6c56d7
-  languageName: node
-  linkType: hard
-
-"@lerna/check-working-tree@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/check-working-tree@npm:5.6.2"
-  dependencies:
-    "@lerna/collect-uncommitted": 5.6.2
-    "@lerna/describe-ref": 5.6.2
-    "@lerna/validation-error": 5.6.2
-  checksum: 46a30143ab3f73f8e70c76bdffa66d521b787251c986800f60335188a62375186a380c0d772439b0fa9cf057da2f028780674744d684636e84e6974b9a4193e5
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/child-process@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/child-process@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/child-process@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/child-process@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/child-process@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/child-process@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     chalk: ^4.1.0
     execa: ^5.0.0
     strong-log-transformer: ^2.1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 94e9c03119b3177cb41e210ac8a4bf04386857192e3a99c8bdd3d2ae913eda1538f813138de03693681ee360644cab9a0584658df9e2acbd04eb52a2e3a761cf
   languageName: node
   linkType: hard
@@ -3900,103 +3301,11 @@ __metadata:
     "@lerna/project": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@lerna/write-log-file": 5.6.2
-=======
-  checksum: 16ef629b72230195d5ab442dc4d63e6490d2ef7f85d64615724e9d6bf3da7227f887e47e1dd0d329ea8fb9ed010b8ecb206096d554d717fd33e24133dd82efd3
-=======
-  checksum: 9baa3c434c33080812e34599a9ecef5b4fe35a5bb9898c10fdff261a64d8a7be4853e88fe3ec7178d09d78fc3635bb78f5a37685c2b10fa0493fc6ec64bfb0d5
->>>>>>> fix: ugh
-=======
-  checksum: 94e9c03119b3177cb41e210ac8a4bf04386857192e3a99c8bdd3d2ae913eda1538f813138de03693681ee360644cab9a0584658df9e2acbd04eb52a2e3a761cf
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/clean@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/clean@npm:5.6.2"
-  dependencies:
-    "@lerna/command": 5.6.2
-    "@lerna/filter-options": 5.6.2
-    "@lerna/prompt": 5.6.2
-    "@lerna/pulse-till-done": 5.6.2
-    "@lerna/rimraf-dir": 5.6.2
-    p-map: ^4.0.0
-    p-map-series: ^2.1.0
-    p-waterfall: ^2.1.1
-  checksum: b20aa2d5c0ace554dcb2ce37915b6a172627e1d26f54a6be33ae8b59d2b31ac1c4c70fa99ca5bffefc9a725ef798059b3b83f751728f6471e9edee1cb901d8b9
-  languageName: node
-  linkType: hard
-
-"@lerna/cli@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/cli@npm:5.6.2"
-  dependencies:
-    "@lerna/global-options": 5.6.2
-    dedent: ^0.7.0
-    npmlog: ^6.0.2
-    yargs: ^16.2.0
-  checksum: e0b853feafe6d572056ea61a18fed4acb0ad62bcd99c3b5d753a8b8e8b69e5275f5eb7e102e7d09340d8f8e0e73a038b203acb4c77437d7edcf835470917b296
-  languageName: node
-  linkType: hard
-
-"@lerna/collect-uncommitted@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/collect-uncommitted@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    chalk: ^4.1.0
-    npmlog: ^6.0.2
-  checksum: 9c9298bc447629819634dc5fa697caa6a4b33c4e9fd61ae7ad4108a42d916ef9193ea4cb72d6cf766fc6863e350211ab9b1fcde6a8fb75b75f43aa5e4a1afeb4
-  languageName: node
-  linkType: hard
-
-"@lerna/collect-updates@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/collect-updates@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/describe-ref": 5.6.2
-    minimatch: ^3.0.4
-    npmlog: ^6.0.2
-    slash: ^3.0.0
-  checksum: 44149466c60e63f495bb09a3a8fd6c1d91f55de9dfcaac3adcefaf27c690adb6ac2c2a9b6bf5c9f8e430cb41db7c6994c9506b28945f5bb46a47e78f2829425d
-  languageName: node
-  linkType: hard
-
-"@lerna/command@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/command@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/child-process": 5.5.2
-    "@lerna/package-graph": 5.5.2
-    "@lerna/project": 5.5.2
-    "@lerna/validation-error": 5.5.2
-    "@lerna/write-log-file": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/child-process": 5.6.1
-    "@lerna/package-graph": 5.6.1
-    "@lerna/project": 5.6.1
-    "@lerna/validation-error": 5.6.1
-    "@lerna/write-log-file": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/child-process": 5.6.2
-    "@lerna/package-graph": 5.6.2
-    "@lerna/project": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    "@lerna/write-log-file": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     clone-deep: ^4.0.1
     dedent: ^0.7.0
     execa: ^5.0.0
     is-ci: ^2.0.0
     npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 6a3bdef20658b474476a3750862e2d4753284d0023faf755b39d403a7dc71f6c5c46bc68f79ba27af1a12eb8add391f3afb82aee08b93e02141aa44f939cd668
   languageName: node
   linkType: hard
@@ -4006,31 +3315,6 @@ __metadata:
   resolution: "@lerna/conventional-commits@npm:5.6.2"
   dependencies:
     "@lerna/validation-error": 5.6.2
-=======
-  checksum: 384a20332cb5b6eda0ca3b460ed88ba2f8335b78cb47838898d3bf219438b3c54fd9fe4f5f8fe4df12d7e7dddcea1580a5c63953501bdb35ceeccf2647e3c227
-=======
-  checksum: e80b897796e28f1c00d32c17ca61a8a44cf4cf68168902575f3dcf2b378c6a694f725614f88d1667d27e950911ec8a6aefbe611a9108f2d6dcb133803719ea1e
->>>>>>> fix: ugh
-=======
-  checksum: 6a3bdef20658b474476a3750862e2d4753284d0023faf755b39d403a7dc71f6c5c46bc68f79ba27af1a12eb8add391f3afb82aee08b93e02141aa44f939cd668
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/conventional-commits@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/conventional-commits@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/validation-error": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/validation-error": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     conventional-changelog-angular: ^5.0.12
     conventional-changelog-core: ^4.2.4
     conventional-recommended-bump: ^6.1.0
@@ -4040,9 +3324,6 @@ __metadata:
     npmlog: ^6.0.2
     pify: ^5.0.0
     semver: ^7.3.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: a8dbcd4bbb697aebb6c1b045f8597f019b754cf42b5abaf6a77da7379e212107bb46e8c9747a7bc1b41de640109036f71bc97df0b1066ca6c719172dd5d8b563
   languageName: node
   linkType: hard
@@ -4050,40 +3331,10 @@ __metadata:
 "@lerna/create-symlink@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/create-symlink@npm:5.6.2"
-=======
-  checksum: 1f4b3881fb0f01043bb413cefd64279f74b645b8a0016e2aa963b0d757fae8f68bff57b833e64d79fc2e7026b53049a7fa101e06a519e07f06cb398e17e66768
-  languageName: node
-  linkType: hard
-
-"@lerna/create-symlink@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/create-symlink@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: f55171e98a156528c468f6a1e5999773e03f55eda6a70a26bd6c1467adc12fc8ba7f6c8b3cb951001a77d3da591e211fbfe5943e18544c5030aca65759d29f77
-  languageName: node
-  linkType: hard
-
-"@lerna/create-symlink@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/create-symlink@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-  checksum: a8dbcd4bbb697aebb6c1b045f8597f019b754cf42b5abaf6a77da7379e212107bb46e8c9747a7bc1b41de640109036f71bc97df0b1066ca6c719172dd5d8b563
-  languageName: node
-  linkType: hard
-
-"@lerna/create-symlink@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/create-symlink@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     cmd-shim: ^5.0.0
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 1848bd60d5f3227cf66103571779d8c12c363c54ade93aaddcb10b7bba00adaf263faccee15fd05ac87ee5514feecd0e20e42b79b798a457609af1e77e734762
   languageName: node
   linkType: hard
@@ -4096,40 +3347,6 @@ __metadata:
     "@lerna/command": 5.6.2
     "@lerna/npm-conf": 5.6.2
     "@lerna/validation-error": 5.6.2
-=======
-  checksum: bab3131c418609b1e691d145ce188aae3b35b617d3f4888ce4c856cd741e08bfebf37e93f34310b24424ab9174ddb9a4ee70a63a2d41062fcd572cec03f3fe3b
-=======
-  checksum: 9b2f10c45afa6141201491ae27b67d196d6d063219a3518e4fe027f7abcd00ab8709651d65678786cfecbce16913b33b302f92afba7349887f9cb1d24bbcdaf3
->>>>>>> fix: ugh
-=======
-  checksum: 1848bd60d5f3227cf66103571779d8c12c363c54ade93aaddcb10b7bba00adaf263faccee15fd05ac87ee5514feecd0e20e42b79b798a457609af1e77e734762
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/create@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/create@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/child-process": 5.5.2
-    "@lerna/command": 5.5.2
-    "@lerna/npm-conf": 5.5.2
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/child-process": 5.6.1
-    "@lerna/command": 5.6.1
-    "@lerna/npm-conf": 5.6.1
-    "@lerna/validation-error": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/child-process": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/npm-conf": 5.6.2
-    "@lerna/validation-error": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     dedent: ^0.7.0
     fs-extra: ^9.1.0
     init-package-json: ^3.0.2
@@ -4142,9 +3359,6 @@ __metadata:
     validate-npm-package-license: ^3.0.4
     validate-npm-package-name: ^4.0.0
     yargs-parser: 20.2.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 94706188839a8cd0b8c20fb593a0cb4375bd350e2b6587a29933786bdd8c83417a1d651e5f53fb69e0939bad4f97dd013f5a4c901557e3c20fc360bbd0590806
   languageName: node
   linkType: hard
@@ -4221,109 +3435,10 @@ __metadata:
 "@lerna/get-packed@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/get-packed@npm:5.6.2"
-=======
-  checksum: b5bbd846181efba7d1a4e2063e59ddd58e38066068e1f2e7402de0d87a794655cb9abe1bbcf32659b7c59ab82a527de1ed3a00bce7e83e211410429868d8813b
-=======
-  checksum: 78c3ac40fa8106c73d2b88922372b7ee2d30ab9497803f8b1f897205b78f346bba80e2dabb0086c43680b9afab30eb63df5b93660fa986a1961bb23d6ba42354
->>>>>>> fix: ugh
-=======
-  checksum: 94706188839a8cd0b8c20fb593a0cb4375bd350e2b6587a29933786bdd8c83417a1d651e5f53fb69e0939bad4f97dd013f5a4c901557e3c20fc360bbd0590806
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/describe-ref@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/describe-ref@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    npmlog: ^6.0.2
-  checksum: 510814bd0004859475cf62917a3145b010b33b519be3b80f30170b98500e176285d8f4b0aa9e5928b80798be90bc65f1591d6c72e26fee70d46e0f006996d69e
-  languageName: node
-  linkType: hard
-
-"@lerna/diff@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/diff@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    npmlog: ^6.0.2
-  checksum: 0731f5819da8c7bb2a210a9514541e7f7cdde8ddf1802e3ec5e40bd689f3c546d6fba12b9c72cd48aa97d179ff767c658bdfe26bf9590056307ee738b5b44052
-  languageName: node
-  linkType: hard
-
-"@lerna/exec@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/exec@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/filter-options": 5.6.2
-    "@lerna/profiler": 5.6.2
-    "@lerna/run-topologically": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    p-map: ^4.0.0
-  checksum: 30255cffbb67bc6a89290c1755e0e832fe9be1de0a98a2a6553a0baf0e1f509e0268318eeb3da4441bad2aa5517268b522f57dc3aefc49d122b301dd06ff6086
-  languageName: node
-  linkType: hard
-
-"@lerna/filter-options@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/filter-options@npm:5.6.2"
-  dependencies:
-    "@lerna/collect-updates": 5.6.2
-    "@lerna/filter-packages": 5.6.2
-    dedent: ^0.7.0
-    npmlog: ^6.0.2
-  checksum: c1b4ce4973bd8fff66a1632891f69ce4c20858d304cc02502df1576235b879cb4d3dd04b4be4b1835058f445c44d572554b206cf35ec4c1a3b76de396949bff1
-  languageName: node
-  linkType: hard
-
-"@lerna/filter-packages@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/filter-packages@npm:5.6.2"
-  dependencies:
-    "@lerna/validation-error": 5.6.2
-    multimatch: ^5.0.0
-    npmlog: ^6.0.2
-  checksum: b5b4c3b1d1ae6d889802ead0e682aecb8a12c1cbb3738a95e68013e9c7fd04cc0e495e249ef69eb52e65c69bca760d357d265642b1e066857c898ff1415978bd
-  languageName: node
-  linkType: hard
-
-"@lerna/get-npm-exec-opts@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/get-npm-exec-opts@npm:5.6.2"
-  dependencies:
-    npmlog: ^6.0.2
-  checksum: 3430e602db853e075490e6b080d46340940acf354fb5513da19af2a8ad60c8fa397de7cbcbe0bda8a4266e9d995bc7cba1698d092933c5feaef134585eef9f08
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/get-packed@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/get-packed@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/get-packed@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/get-packed@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/get-packed@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/get-packed@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     fs-extra: ^9.1.0
     ssri: ^9.0.1
     tar: ^6.1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 12637d74cf654214fb6adfe444370d90d66f5aa2fdbcfc6bedd4168e24a8e91346ad22f1386630b635452b3a0089c91cd3ea141f6cddfd8d111ba7b94dbbaac8
   languageName: node
   linkType: hard
@@ -4333,38 +3448,10 @@ __metadata:
   resolution: "@lerna/github-client@npm:5.6.2"
   dependencies:
     "@lerna/child-process": 5.6.2
-=======
-  checksum: 83e8fa87327b8d9bab907e3caa00807da353c8dbf6d13f112256b8f524510d1d27f06464413b0f60820d9f668310bacc70d9897cefbe8cb4b1fcc40b8035a0e1
-=======
-  checksum: 65e85f9007818049a919da00738d6acca05e77293d17b5473a515b9e6a72b85d507909e492a702fc879d8dc46fb62984060694889ac9f9d74dfae92866ee277c
->>>>>>> fix: ugh
-=======
-  checksum: 12637d74cf654214fb6adfe444370d90d66f5aa2fdbcfc6bedd4168e24a8e91346ad22f1386630b635452b3a0089c91cd3ea141f6cddfd8d111ba7b94dbbaac8
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/github-client@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/github-client@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/child-process": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/child-process": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/child-process": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     "@octokit/plugin-enterprise-rest": ^6.0.1
     "@octokit/rest": ^19.0.3
     git-url-parse: ^13.1.0
     npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 08a7386af70bacec5b1c2ec7ba09a0cae407e54c65d33c89444b4460df48dc325772fe77b38ce7c5355295e24ba64d0d64e53ae3ca76ddd4b930af1f5b38507c
   languageName: node
   linkType: hard
@@ -4477,146 +3564,11 @@ __metadata:
 "@lerna/log-packed@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/log-packed@npm:5.6.2"
-=======
-  checksum: 35495cf48870b6aab436bccad2ef6bece5f41f1ed8d6e8e580f56fd0c98dd3bf38b65989d75de98bcdd4a7b6a54f2239a16c84a4b132c42c5e66004bfabac506
-=======
-  checksum: 6b0848014a52c7ae6b40a7da708d174c1bca2540c6f0a74bd2134671a9227ce81f3826daf6daf6d83d8af44a479364ac54320b99aa45313728753507fc36515d
->>>>>>> fix: ugh
-=======
-  checksum: 08a7386af70bacec5b1c2ec7ba09a0cae407e54c65d33c89444b4460df48dc325772fe77b38ce7c5355295e24ba64d0d64e53ae3ca76ddd4b930af1f5b38507c
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/gitlab-client@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/gitlab-client@npm:5.6.2"
-  dependencies:
-    node-fetch: ^2.6.1
-    npmlog: ^6.0.2
-  checksum: ad9e45621b727858f4ea87a5d624da41cd6784e616d247b86275fb08fbfb4c9974c5f698f59ac0272ec1d0a848bba5f04ef2fbc32c62ca3a77ecd3b0415bd298
-  languageName: node
-  linkType: hard
-
-"@lerna/global-options@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/global-options@npm:5.6.2"
-  checksum: 7cb542edef4f06c98dc5a1f797a442e4a1f8bde444046bc5258b0908ecd888ac7fe75902c90c20898feb90e685dee2e3518dc5c85a8155504373ec3f4634f3db
-  languageName: node
-  linkType: hard
-
-"@lerna/has-npm-version@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/has-npm-version@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    semver: ^7.3.4
-  checksum: 98ca1161618a84e0509b9c988f3dd2e147225564d31820ea7b94332388afb7650b510ad902919c5ec9a0ec95b27aab81b4c3067769d106c801426620018a7aa4
-  languageName: node
-  linkType: hard
-
-"@lerna/import@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/import@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/prompt": 5.6.2
-    "@lerna/pulse-till-done": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    dedent: ^0.7.0
-    fs-extra: ^9.1.0
-    p-map-series: ^2.1.0
-  checksum: fdcecfd29de36488f78d51776d0edaf4e789bcedad57fe72818ab2e8416578396cfdf142f57095490eefcdd0d3d63a55b23a5e03cf42e5b97878a997025b6b86
-  languageName: node
-  linkType: hard
-
-"@lerna/info@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/info@npm:5.6.2"
-  dependencies:
-    "@lerna/command": 5.6.2
-    "@lerna/output": 5.6.2
-    envinfo: ^7.7.4
-  checksum: 0124b7b1fe75e9bee4f4d4e13216a61869ad918ac9dfbad79aa49e3dd4657a67945aceae6632452b08580d1370823af0ce15ac6fd7134b9042f69624c531be57
-  languageName: node
-  linkType: hard
-
-"@lerna/init@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/init@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/project": 5.6.2
-    fs-extra: ^9.1.0
-    p-map: ^4.0.0
-    write-json-file: ^4.3.0
-  checksum: 15e9cfee4ec7c0a09ed0426a38c4cdd2d85b1b005bc5c499f69464e7fe4f5dc4ec1dab0e0fae260508f100f68a84ae54d1b8ab556bdd17938f3db8862290eec9
-  languageName: node
-  linkType: hard
-
-"@lerna/link@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/link@npm:5.6.2"
-  dependencies:
-    "@lerna/command": 5.6.2
-    "@lerna/package-graph": 5.6.2
-    "@lerna/symlink-dependencies": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    p-map: ^4.0.0
-    slash: ^3.0.0
-  checksum: 5d4d3cf7cd90e30797cd0961d835984f5f4f01de508c89cd4870462bd64b65f6a2cf01a2f0df738ce612f45154d3ba4fbfbe73d24f21c0b0015d8c3263b93a80
-  languageName: node
-  linkType: hard
-
-"@lerna/list@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/list@npm:5.6.2"
-  dependencies:
-    "@lerna/command": 5.6.2
-    "@lerna/filter-options": 5.6.2
-    "@lerna/listable": 5.6.2
-    "@lerna/output": 5.6.2
-  checksum: 969b4a458e26bb12533549577fc3c95b62f7a982e04c77bf0755b99a1280d51a0b6288d9a42f1cb05d2f84e852c0fac6a388a5ab735daf1eaa478d9a5e4244f3
-  languageName: node
-  linkType: hard
-
-"@lerna/listable@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/listable@npm:5.6.2"
-  dependencies:
-    "@lerna/query-graph": 5.6.2
-    chalk: ^4.1.0
-    columnify: ^1.6.0
-  checksum: 3c94647582cd976117c636799e10cea486d171b9c7c20554ffc68c0dd5e33f0d847667264c19a40fbf44a697902dc11e55ca01e74d12f536fb67e338c124381e
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/log-packed@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/log-packed@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/log-packed@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/log-packed@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/log-packed@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/log-packed@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     byte-size: ^7.0.0
     columnify: ^1.6.0
     has-unicode: ^2.0.1
     npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: bbb43bd521bd431298048556a0ca1b83819d6352a06c4792a121403ab5cc2a467c7e89848cec72c7e348af12d3eac1e65e95d1372bedad2ef4a68aaa5d624e5a
   languageName: node
   linkType: hard
@@ -4649,64 +3601,11 @@ __metadata:
   dependencies:
     "@lerna/child-process": 5.6.2
     "@lerna/get-npm-exec-opts": 5.6.2
-=======
-  checksum: e7bea8458f2ebc0845759a21786553352cf3c10512db5242e351e993fbec800f4c7e4897d73bf9c1a2a24350122358cff4e18e134c97aea9fe3f9727ffd61233
-=======
-  checksum: 51b5155c80748489f9efb4989fd91deeda78678267f386d47374a7007107ee8ea741b46840087f2d806df31894cba644c1d473c3f160af0932264d318928181d
->>>>>>> fix: ugh
-=======
-  checksum: bbb43bd521bd431298048556a0ca1b83819d6352a06c4792a121403ab5cc2a467c7e89848cec72c7e348af12d3eac1e65e95d1372bedad2ef4a68aaa5d624e5a
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/npm-conf@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/npm-conf@npm:5.6.2"
-  dependencies:
-    config-chain: ^1.1.12
-    pify: ^5.0.0
-  checksum: ee79c50b57859c918e597b48f44483c00c47fc84e61440c21d756981e8ff0d2721ff068e9539fabc50c073710d5c8fee469aa9e6620c0ecbf4dfce9db4979f94
-  languageName: node
-  linkType: hard
-
-"@lerna/npm-dist-tag@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/npm-dist-tag@npm:5.6.2"
-  dependencies:
-    "@lerna/otplease": 5.6.2
-    npm-package-arg: 8.1.1
-    npm-registry-fetch: ^13.3.0
-    npmlog: ^6.0.2
-  checksum: f50f8b090d197b773b467853d54f2993dd99721cfd8dc17f4af587bc0f53a6c1d879175673f34471d2778b114bc97fcb86bfade1d1aafa349ade92f78878dbf5
-  languageName: node
-  linkType: hard
-
-"@lerna/npm-install@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/npm-install@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/child-process": 5.5.2
-    "@lerna/get-npm-exec-opts": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/child-process": 5.6.1
-    "@lerna/get-npm-exec-opts": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/child-process": 5.6.2
-    "@lerna/get-npm-exec-opts": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     fs-extra: ^9.1.0
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     signal-exit: ^3.0.3
     write-pkg: ^4.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 6878ee7420edb0353ae8b755b10ae33100980b108cbeaa5848f4b5d2c19c836dbe2d93b401365fe05baf080808c8ad259a05bb78d52b177fc21d6c24bdf41b27
   languageName: node
   linkType: hard
@@ -4717,43 +3616,12 @@ __metadata:
   dependencies:
     "@lerna/otplease": 5.6.2
     "@lerna/run-lifecycle": 5.6.2
-=======
-  checksum: 9b7bd1415be3902c65f68f1c22aeaec1bba72c2666555fd6977c50b0ab356783a304fe00be17f4f3c3dc1e9296dd8729191e70977fd704eff88e2aba721bfb5c
-=======
-  checksum: 4606c9021bf4b84cef8953eda89a5844bab8d89a6ace2f19393d86081e76f1e6f3dcffcba54a8885966ef9da372eb5f98bfb5e88b78ff47f7bb04f4fc865ac20
->>>>>>> fix: ugh
-=======
-  checksum: 6878ee7420edb0353ae8b755b10ae33100980b108cbeaa5848f4b5d2c19c836dbe2d93b401365fe05baf080808c8ad259a05bb78d52b177fc21d6c24bdf41b27
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/npm-publish@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/npm-publish@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/otplease": 5.5.2
-    "@lerna/run-lifecycle": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/otplease": 5.6.1
-    "@lerna/run-lifecycle": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/otplease": 5.6.2
-    "@lerna/run-lifecycle": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     fs-extra: ^9.1.0
     libnpmpublish: ^6.0.4
     npm-package-arg: 8.1.1
     npmlog: ^6.0.2
     pify: ^5.0.0
     read-package-json: ^5.0.1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 87ec165e2c5976fd04e41bbed0cf796317813d4ef50cc42a1c96c25d96f761333d34fa575702f2979b3c828ea7df87d21064521fc4137da9d16f67803192c902
   languageName: node
   linkType: hard
@@ -4818,97 +3686,10 @@ __metadata:
 "@lerna/package@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/package@npm:5.6.2"
-=======
-  checksum: e45d37a41d00650ad813b36410da0b1c34423e4aceadc2fde008a308d583a829d73414c78dd221603cb7c2643a34067f181f497ad68334f002dddc4a55556f7e
-=======
-  checksum: c9d0c724dd2b4cbc90a6bbf061f20f01dd761a602fcc40b723fcaa7fb08e16ed6bf01aeb2be63f1cdd6d93340683152c3f54a7fb97d957221c6c37ebd2d7d5b0
->>>>>>> fix: ugh
-=======
-  checksum: 87ec165e2c5976fd04e41bbed0cf796317813d4ef50cc42a1c96c25d96f761333d34fa575702f2979b3c828ea7df87d21064521fc4137da9d16f67803192c902
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/npm-run-script@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/npm-run-script@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    "@lerna/get-npm-exec-opts": 5.6.2
-    npmlog: ^6.0.2
-  checksum: b8319fe926484afd28f7fa68d92cca438a6429841bec06c843ca673bff044da15380c0077530bc7dd11b10c413a7404c6f7597f0ec15a33137ff5dbb1b9f98f2
-  languageName: node
-  linkType: hard
-
-"@lerna/otplease@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/otplease@npm:5.6.2"
-  dependencies:
-    "@lerna/prompt": 5.6.2
-  checksum: a8eaf9a3104d2d869dac773001e7b82b5825ae1753e1ed5ec953f11930bfc61ec7131a3e802a735cf88e6d61c945ac7bf52a5ae3a3937c40be11ef34b0f85a06
-  languageName: node
-  linkType: hard
-
-"@lerna/output@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/output@npm:5.6.2"
-  dependencies:
-    npmlog: ^6.0.2
-  checksum: 34494135cf13cf024bb325c85f91e33f1d295df941afa659bdab3896862a9b69165ad6afdefc30945576577960f83c8e2374d2d5feb79e9a34b757ccffce2d9f
-  languageName: node
-  linkType: hard
-
-"@lerna/pack-directory@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/pack-directory@npm:5.6.2"
-  dependencies:
-    "@lerna/get-packed": 5.6.2
-    "@lerna/package": 5.6.2
-    "@lerna/run-lifecycle": 5.6.2
-    "@lerna/temp-write": 5.6.2
-    npm-packlist: ^5.1.1
-    npmlog: ^6.0.2
-    tar: ^6.1.0
-  checksum: 1231c9d0d1573267616364a50ef736be6edfdcf82600aee0d89ba8ddae891a32ad8d6d041af92ea685dee95ab7d4662098d62c61201d071a8ec9b4e19dd28e80
-  languageName: node
-  linkType: hard
-
-"@lerna/package-graph@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/package-graph@npm:5.6.2"
-  dependencies:
-    "@lerna/prerelease-id-from-version": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    npm-package-arg: 8.1.1
-    npmlog: ^6.0.2
-    semver: ^7.3.4
-  checksum: 1627c2de7bad648f6579ebf5cfdeedf3d4eb1931d8dfde10f9ee60663f38b9286b29292b135337f9c4976c4c444b27d341b4ced408f8a067ba97d66ac1efe203
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/package@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/package@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/package@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/package@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/package@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/package@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     load-json-file: ^6.2.0
     npm-package-arg: 8.1.1
     write-pkg: ^4.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 7f0d32cf4a74c76d932633a06ace58eca7ea46a2624ef304101b6b882ebe4ec1c683c6836784b790132d29e68e396f6490703db3070af3cff02ef32260f0fb52
   languageName: node
   linkType: hard
@@ -4925,49 +3706,10 @@ __metadata:
 "@lerna/profiler@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/profiler@npm:5.6.2"
-=======
-  checksum: ba8c63991eaff09350630e0049fb5054e69bbf4684485c42a64a6d120d6d4b66cc16749ed60cb69daeae1e5dc7ed7154c691206f39911f720fa687aa8133495b
-=======
-  checksum: 35f8c558fbd22edfd9da199039fc9d69bcaf084eae7c18898f7d12255594a65a2bfdbb0837ac53d09b21b00dbe1ed40dd9559ac738b8670fb04daf5585114b1d
->>>>>>> fix: ugh
-=======
-  checksum: 7f0d32cf4a74c76d932633a06ace58eca7ea46a2624ef304101b6b882ebe4ec1c683c6836784b790132d29e68e396f6490703db3070af3cff02ef32260f0fb52
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/prerelease-id-from-version@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/prerelease-id-from-version@npm:5.6.2"
-  dependencies:
-    semver: ^7.3.4
-  checksum: 0b48944fc17941061036d7ed93829ca9555897b5073177cb6435cda852da433095df4a76c0b37842788ea5a4536a5300adec2bc23d55daeb8a0b0ca53de16268
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/profiler@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/profiler@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/profiler@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/profiler@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/profiler@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/profiler@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     upath: ^2.0.1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: a66e0c763b1b0477cdfb0d8c06da0693bf142aaa4cd694022e35a9f7b016126780b685494c862cc3f3a175b14f31f1fc9902f924aa48d1243ad3e41088a661f1
   languageName: node
   linkType: hard
@@ -4978,34 +3720,6 @@ __metadata:
   dependencies:
     "@lerna/package": 5.6.2
     "@lerna/validation-error": 5.6.2
-=======
-  checksum: ccc01c6e37c27bb8e67522c638535baf2e42c3bc4e8a989a0929519105e3ef046f69ef4be29eec45f9b0588528bbf99f509f53a3bdffeb8e19343daa46527684
-=======
-  checksum: d078c03c8b3f8caea1528c297dfddd68fdc0a1cdeb0f99b19dda3078e799279959bf610575ff4f0de6230955eda1c5648b3d492551848cf51f72456eeb26e9ce
->>>>>>> fix: ugh
-=======
-  checksum: a66e0c763b1b0477cdfb0d8c06da0693bf142aaa4cd694022e35a9f7b016126780b685494c862cc3f3a175b14f31f1fc9902f924aa48d1243ad3e41088a661f1
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/project@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/project@npm:5.6.2"
-  dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@lerna/package": 5.5.2
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-    "@lerna/package": 5.6.1
-    "@lerna/validation-error": 5.6.1
->>>>>>> fix: ugh
-=======
-    "@lerna/package": 5.6.2
-    "@lerna/validation-error": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     cosmiconfig: ^7.0.0
     dedent: ^0.7.0
     dot-prop: ^6.0.1
@@ -5017,9 +3731,6 @@ __metadata:
     p-map: ^4.0.0
     resolve-from: ^5.0.0
     write-json-file: ^4.3.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 26ba2daa219bc033fe06770f3f539ca801c96993a7e2e95d0a2ad72646f43746d5efe67e8a407306b2de6ebfa8220c6682b8a6fd72ec4402ce3af21cdec54f20
   languageName: node
   linkType: hard
@@ -5057,111 +3768,6 @@ __metadata:
     "@lerna/run-topologically": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@lerna/version": 5.6.2
-=======
-  checksum: bf873d60386682d4fa69143182cb610a7e85aecfb2e993b5be018bbb291ab2522b1828b0c1e23601c0b0e1b2331b79f5f93e24f8be78d8bd0bd6298903b97dde
-=======
-  checksum: 9201c13c7a28a5459fdfb59429d0729c001a91ed3404cacd1d4d3ce9c4b503f115842fd2d7e2d30c53d7285e83dc0267cc842418f4b0c05360d38f9fdc3c94d0
->>>>>>> fix: ugh
-=======
-  checksum: 26ba2daa219bc033fe06770f3f539ca801c96993a7e2e95d0a2ad72646f43746d5efe67e8a407306b2de6ebfa8220c6682b8a6fd72ec4402ce3af21cdec54f20
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/prompt@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/prompt@npm:5.6.2"
-  dependencies:
-    inquirer: ^8.2.4
-    npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 5c40edf199a43fc2568fdae76205e1c9d087b454413cfb26ce9c5ae7ed156af5d9cf367bbce6a98c86120b0ec0ceba408efa510b6116b1a6090be842e6b1b803
-  languageName: node
-  linkType: hard
-
-"@lerna/publish@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/publish@npm:5.5.2"
-  dependencies:
-    "@lerna/check-working-tree": 5.5.2
-    "@lerna/child-process": 5.5.2
-    "@lerna/collect-updates": 5.5.2
-    "@lerna/command": 5.5.2
-    "@lerna/describe-ref": 5.5.2
-    "@lerna/log-packed": 5.5.2
-    "@lerna/npm-conf": 5.5.2
-    "@lerna/npm-dist-tag": 5.5.2
-    "@lerna/npm-publish": 5.5.2
-    "@lerna/otplease": 5.5.2
-    "@lerna/output": 5.5.2
-    "@lerna/pack-directory": 5.5.2
-    "@lerna/prerelease-id-from-version": 5.5.2
-    "@lerna/prompt": 5.5.2
-    "@lerna/pulse-till-done": 5.5.2
-    "@lerna/run-lifecycle": 5.5.2
-    "@lerna/run-topologically": 5.5.2
-    "@lerna/validation-error": 5.5.2
-    "@lerna/version": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 296a3fc4f7378c1ac087937012e98f667d857058c56dc90504684f3e2418dfb2945f303d4468a0c02efa257c82a128537ffbf1995977f6f431c2524a76ec7fd3
-  languageName: node
-  linkType: hard
-
-"@lerna/publish@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/publish@npm:5.6.1"
-  dependencies:
-    "@lerna/check-working-tree": 5.6.1
-    "@lerna/child-process": 5.6.1
-    "@lerna/collect-updates": 5.6.1
-    "@lerna/command": 5.6.1
-    "@lerna/describe-ref": 5.6.1
-    "@lerna/log-packed": 5.6.1
-    "@lerna/npm-conf": 5.6.1
-    "@lerna/npm-dist-tag": 5.6.1
-    "@lerna/npm-publish": 5.6.1
-    "@lerna/otplease": 5.6.1
-    "@lerna/output": 5.6.1
-    "@lerna/pack-directory": 5.6.1
-    "@lerna/prerelease-id-from-version": 5.6.1
-    "@lerna/prompt": 5.6.1
-    "@lerna/pulse-till-done": 5.6.1
-    "@lerna/run-lifecycle": 5.6.1
-    "@lerna/run-topologically": 5.6.1
-    "@lerna/validation-error": 5.6.1
-    "@lerna/version": 5.6.1
->>>>>>> fix: ugh
-=======
-  checksum: a6f9352f223493d2eeb975f0eeb8981184a6981e2166a49bed792cebd811bf896234bf818b6e8260a6cf2cb2e5e0e26bf3c25475a159dc9b044f3708252b52b8
-  languageName: node
-  linkType: hard
-
-"@lerna/publish@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/publish@npm:5.6.2"
-  dependencies:
-    "@lerna/check-working-tree": 5.6.2
-    "@lerna/child-process": 5.6.2
-    "@lerna/collect-updates": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/describe-ref": 5.6.2
-    "@lerna/log-packed": 5.6.2
-    "@lerna/npm-conf": 5.6.2
-    "@lerna/npm-dist-tag": 5.6.2
-    "@lerna/npm-publish": 5.6.2
-    "@lerna/otplease": 5.6.2
-    "@lerna/output": 5.6.2
-    "@lerna/pack-directory": 5.6.2
-    "@lerna/prerelease-id-from-version": 5.6.2
-    "@lerna/prompt": 5.6.2
-    "@lerna/pulse-till-done": 5.6.2
-    "@lerna/run-lifecycle": 5.6.2
-    "@lerna/run-topologically": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    "@lerna/version": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
     fs-extra: ^9.1.0
     libnpmaccess: ^6.0.3
     npm-package-arg: 8.1.1
@@ -5171,9 +3777,6 @@ __metadata:
     p-pipe: ^3.1.0
     pacote: ^13.6.1
     semver: ^7.3.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: dce481b6e6ec168e75bc9c08bd075169b299fdf345abebf14029fa717029ddf2fc1464c65653234830807fb881ef0999a0af0f094a143c38865dd9d0dfb74ffd
   languageName: node
   linkType: hard
@@ -5199,58 +3802,10 @@ __metadata:
 "@lerna/resolve-symlink@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/resolve-symlink@npm:5.6.2"
-=======
-  checksum: 247518d0144abda69d9ad9c5daa408f9aaefa3acfb1141f8404268d0b4fd7217991b12d6d9bfd26649693dbc7e1c1fa47d402a26fc4c5cd176cb8504c5d96df8
-=======
-  checksum: 41cad0181e0ca2dc31a622e86497910357eb1650e6f87dd113eb689b6a95bdc03ca66be1eab8d0a5af7ebf2dfe91e42ff431503883190706f4e9fda8a7c267b3
->>>>>>> fix: ugh
-=======
-  checksum: dce481b6e6ec168e75bc9c08bd075169b299fdf345abebf14029fa717029ddf2fc1464c65653234830807fb881ef0999a0af0f094a143c38865dd9d0dfb74ffd
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/pulse-till-done@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/pulse-till-done@npm:5.6.2"
-  dependencies:
-    npmlog: ^6.0.2
-  checksum: 923995424e6399947fa752d0eb7b33852e6f77d0c17280c2fef43e757f47f28e07227708bc2ce1d8dc81c8afee2e1509cee1d7c3d08ab8f615498770974f8f0d
-  languageName: node
-  linkType: hard
-
-"@lerna/query-graph@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/query-graph@npm:5.6.2"
-  dependencies:
-    "@lerna/package-graph": 5.6.2
-  checksum: a582795283760828417e3554ec015c68c815690bb7b29d7cf368a3a9d82f5150b8e6dbf02356cf4e4539b581d9879609876577ec87f3e4cc7a4caf605b2a042d
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/resolve-symlink@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/resolve-symlink@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/resolve-symlink@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/resolve-symlink@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/resolve-symlink@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/resolve-symlink@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     fs-extra: ^9.1.0
     npmlog: ^6.0.2
     read-cmd-shim: ^3.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 19a95bb295ff9154f3661d36b54abfd5e415c0fb85a669a2fc7b600a180de13877b310d230c7782d8d5441324c5527c311f7a4afef57d6b8be04cbce5cd94927
   languageName: node
   linkType: hard
@@ -5336,120 +3891,12 @@ __metadata:
 "@lerna/temp-write@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/temp-write@npm:5.6.2"
-=======
-  checksum: 919a7165ec2f13a9279b3b7e3a23a5b421c90b6ea0a7987c2027d9adcba6a6672708bca670d9281d85a2eebaa92728c03acd1a3babf1c0d353c8345bc1cc5c4d
-=======
-  checksum: f1e2ef78ea29099fb2e2fd84bce0f6d9fa71ac861b6e25435df7efdf24e54e768cf5f62845a1f334fcc32547a1d4124336ab80d8a0ad81f861fc5d222001e709
->>>>>>> fix: ugh
-=======
-  checksum: 19a95bb295ff9154f3661d36b54abfd5e415c0fb85a669a2fc7b600a180de13877b310d230c7782d8d5441324c5527c311f7a4afef57d6b8be04cbce5cd94927
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/rimraf-dir@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/rimraf-dir@npm:5.6.2"
-  dependencies:
-    "@lerna/child-process": 5.6.2
-    npmlog: ^6.0.2
-    path-exists: ^4.0.0
-    rimraf: ^3.0.2
-  checksum: b0ec7dc69e3caa4c4eae88b8feedf248feff603e50d082a5f363fc0a1f604fc7b76d2067d69c79fdaa20675e3d5a87b59baaab6225c73dc1322b8705ce58030b
-  languageName: node
-  linkType: hard
-
-"@lerna/run-lifecycle@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/run-lifecycle@npm:5.6.2"
-  dependencies:
-    "@lerna/npm-conf": 5.6.2
-    "@npmcli/run-script": ^4.1.7
-    npmlog: ^6.0.2
-    p-queue: ^6.6.2
-  checksum: 3c05af8ddd442a2fba007a41daeac3157dbfe845c3123f106b738843e2615e2a7350c8381622a6b4a793e675340c5671baabef95e6c63398c39b2fcedcafe6fb
-  languageName: node
-  linkType: hard
-
-"@lerna/run-topologically@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/run-topologically@npm:5.6.2"
-  dependencies:
-    "@lerna/query-graph": 5.6.2
-    p-queue: ^6.6.2
-  checksum: d10b59ddff43c0f8387bcd7f9618d135ae6f33ba23d74d9d2fa16cece4209759f8ada46e1050cff07ad82388eda4774a7f0a1690bac4b36ce8f3a23c2718d0d3
-  languageName: node
-  linkType: hard
-
-"@lerna/run@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/run@npm:5.6.2"
-  dependencies:
-    "@lerna/command": 5.6.2
-    "@lerna/filter-options": 5.6.2
-    "@lerna/npm-run-script": 5.6.2
-    "@lerna/output": 5.6.2
-    "@lerna/profiler": 5.6.2
-    "@lerna/run-topologically": 5.6.2
-    "@lerna/timer": 5.6.2
-    "@lerna/validation-error": 5.6.2
-    fs-extra: ^9.1.0
-    p-map: ^4.0.0
-  checksum: a3ed53fea86b2b80d0c95aa2a9f007e524cde35422ebad312e21adaeae8564475f3d2a5ab40612ab8be1bfe8e935b61115808833e3e281ab93240f1b38b7d69a
-  languageName: node
-  linkType: hard
-
-"@lerna/symlink-binary@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/symlink-binary@npm:5.6.2"
-  dependencies:
-    "@lerna/create-symlink": 5.6.2
-    "@lerna/package": 5.6.2
-    fs-extra: ^9.1.0
-    p-map: ^4.0.0
-  checksum: f4d633677cde5b27e580c064ffca60b46be6808afcab5bd327e3c4e4d0cb7a924d79d5022f87f1e2209014687c75cb7c59d8514cab3911f4e14a5b5bbbf96fec
-  languageName: node
-  linkType: hard
-
-"@lerna/symlink-dependencies@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/symlink-dependencies@npm:5.6.2"
-  dependencies:
-    "@lerna/create-symlink": 5.6.2
-    "@lerna/resolve-symlink": 5.6.2
-    "@lerna/symlink-binary": 5.6.2
-    fs-extra: ^9.1.0
-    p-map: ^4.0.0
-    p-map-series: ^2.1.0
-  checksum: f1de8b38288f42647a0c663b8d6c701bf80acadaaf566830f736d3aae4b9f6dc0bac2fb3a771a266c62bcc72dd3b02b9ab5c2b4ccba40ad9e91894c08a168df8
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@lerna/temp-write@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/temp-write@npm:5.5.2"
->>>>>>> Reverted Yarn lock file
-=======
-"@lerna/temp-write@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/temp-write@npm:5.6.1"
->>>>>>> fix: ugh
-=======
-"@lerna/temp-write@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/temp-write@npm:5.6.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     graceful-fs: ^4.1.15
     is-stream: ^2.0.0
     make-dir: ^3.0.0
     temp-dir: ^1.0.0
     uuid: ^8.3.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 9a3ef13e08230a88de046aaaba0efdc2b5e27f16abd97af03b395bc2cf40ec52d8b6850d25a913b955046f52013c4a99b3e75a48397356d0a9a86b0f97afa905
   languageName: node
   linkType: hard
@@ -5489,103 +3936,6 @@ __metadata:
     "@lerna/temp-write": 5.6.2
     "@lerna/validation-error": 5.6.2
     "@nrwl/devkit": ">=14.8.1 < 16"
-=======
-  checksum: fa1225c49ab43eeb2caa70e9e69d956ddde2f3e192cadfb14579dd62ca789362953079c560a3379acad373655438bae62fb5577068c7fa7c703d873921eafde4
-=======
-  checksum: f1c18658f1317edc3bdb1507bc5857debb5b2965ac5b72d37413e2cc2a28cc1e12f438a7da17132cceafa1b6a5682158ac42c7dfb38c123ca9ce78f5c6d72558
->>>>>>> fix: ugh
-=======
-  checksum: 9a3ef13e08230a88de046aaaba0efdc2b5e27f16abd97af03b395bc2cf40ec52d8b6850d25a913b955046f52013c4a99b3e75a48397356d0a9a86b0f97afa905
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/timer@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/timer@npm:5.6.2"
-  checksum: 3eb43f371f5e357a42ec0a69722b13feff3967c88057334562366ffae40ce5ee7750718a498037e1f0ab9d438274357c4033561f068a76b1a6f98861a5eeae0c
-  languageName: node
-  linkType: hard
-
-"@lerna/validation-error@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/validation-error@npm:5.6.2"
-  dependencies:
-    npmlog: ^6.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 0fad4b059084cdcfe405b92f07a2b2e2b0b871020a1e3d41c696511ecdfe9b3e9b9db6f621dc6aa2e390704d3023019aa024271f45c61af6b9c77676b685ab46
-  languageName: node
-  linkType: hard
-
-"@lerna/version@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@lerna/version@npm:5.5.2"
-  dependencies:
-    "@lerna/check-working-tree": 5.5.2
-    "@lerna/child-process": 5.5.2
-    "@lerna/collect-updates": 5.5.2
-    "@lerna/command": 5.5.2
-    "@lerna/conventional-commits": 5.5.2
-    "@lerna/github-client": 5.5.2
-    "@lerna/gitlab-client": 5.5.2
-    "@lerna/output": 5.5.2
-    "@lerna/prerelease-id-from-version": 5.5.2
-    "@lerna/prompt": 5.5.2
-    "@lerna/run-lifecycle": 5.5.2
-    "@lerna/run-topologically": 5.5.2
-    "@lerna/temp-write": 5.5.2
-    "@lerna/validation-error": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: ba68f38534ff7a408eb0fdbb3515d6162d67da7298bf3ad2af65d2e7e6f98fb1290505220ec852218beae37c0c8571d30294cb9547f8c39781fcf1d6e0707b1d
-  languageName: node
-  linkType: hard
-
-"@lerna/version@npm:5.6.1":
-  version: 5.6.1
-  resolution: "@lerna/version@npm:5.6.1"
-  dependencies:
-    "@lerna/check-working-tree": 5.6.1
-    "@lerna/child-process": 5.6.1
-    "@lerna/collect-updates": 5.6.1
-    "@lerna/command": 5.6.1
-    "@lerna/conventional-commits": 5.6.1
-    "@lerna/github-client": 5.6.1
-    "@lerna/gitlab-client": 5.6.1
-    "@lerna/output": 5.6.1
-    "@lerna/prerelease-id-from-version": 5.6.1
-    "@lerna/prompt": 5.6.1
-    "@lerna/run-lifecycle": 5.6.1
-    "@lerna/run-topologically": 5.6.1
-    "@lerna/temp-write": 5.6.1
-    "@lerna/validation-error": 5.6.1
-=======
-  checksum: 3871cbacc7668ab2b0498f3d394ea65fa721257402cffa89efb97f6bed89d11504f554d25007d079e679181bcbbf773432745733654f8415e901c7d08a6ae06b
-  languageName: node
-  linkType: hard
-
-"@lerna/version@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/version@npm:5.6.2"
-  dependencies:
-    "@lerna/check-working-tree": 5.6.2
-    "@lerna/child-process": 5.6.2
-    "@lerna/collect-updates": 5.6.2
-    "@lerna/command": 5.6.2
-    "@lerna/conventional-commits": 5.6.2
-    "@lerna/github-client": 5.6.2
-    "@lerna/gitlab-client": 5.6.2
-    "@lerna/output": 5.6.2
-    "@lerna/prerelease-id-from-version": 5.6.2
-    "@lerna/prompt": 5.6.2
-    "@lerna/run-lifecycle": 5.6.2
-    "@lerna/run-topologically": 5.6.2
-    "@lerna/temp-write": 5.6.2
-    "@lerna/validation-error": 5.6.2
->>>>>>> fix: go over these components as they were not in initial pr
-    "@nrwl/devkit": ">=14.8.1 < 16"
->>>>>>> fix: ugh
     chalk: ^4.1.0
     dedent: ^0.7.0
     load-json-file: ^6.2.0
@@ -5598,9 +3948,6 @@ __metadata:
     semver: ^7.3.4
     slash: ^3.0.0
     write-json-file: ^4.3.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: da0e0b822af685b0553dac95aa1355b5bfb9abde208d1afcc1a0e38134c49e7d3dc1430d0c951ffad236032bba5c242025754494dd6ceb5ad913f3cc8b9113b3
   languageName: node
   linkType: hard
@@ -5612,33 +3959,6 @@ __metadata:
     npmlog: ^6.0.2
     write-file-atomic: ^4.0.1
   checksum: 814e9cf20ac28be49b22720be7bef8f708b28c344d54a0664cb8c44bbcb11387c4f89abf1050cfc81b41fa770099c748ac97fdb99d8a016c9e2c3ca801f27a30
-=======
-  checksum: 4ce0ff86dac13203354ef76d6f45eff28766f701d55fcf35aca19c23696932deff5a28449569d12e9b4e8b9aaf640165a77725eaac878e9814b843b00b537b61
-=======
-  checksum: 8a8a609dee49a1ecddc1471fcdbc8837d36e2c54eae5b152d83a3ed20754920fe3ce09f6ee8554e7eea74269c15100b7e478a4fbf4fb5ac53e0e42e0d78be1de
->>>>>>> fix: ugh
-=======
-  checksum: da0e0b822af685b0553dac95aa1355b5bfb9abde208d1afcc1a0e38134c49e7d3dc1430d0c951ffad236032bba5c242025754494dd6ceb5ad913f3cc8b9113b3
->>>>>>> fix: go over these components as they were not in initial pr
-  languageName: node
-  linkType: hard
-
-"@lerna/write-log-file@npm:5.6.2":
-  version: 5.6.2
-  resolution: "@lerna/write-log-file@npm:5.6.2"
-  dependencies:
-    npmlog: ^6.0.2
-    write-file-atomic: ^4.0.1
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 3b0ebcddaa701f757f2056c222c3425d5149e004686134518e8c7e57b68b78137670990c02e5a30fc6ca0ae45d4df0c5948b89ab308d7e36ad7e92c12fa593ea
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 692b7ee0db2e4c150d983b8d588c7635ddc19b5f9e76fa948cf48437fa3950aa784127d87d55c125317892e22d755f09ec8fc01c9ac45647d72344a6415ad5da
->>>>>>> fix: ugh
-=======
-  checksum: 814e9cf20ac28be49b22720be7bef8f708b28c344d54a0664cb8c44bbcb11387c4f89abf1050cfc81b41fa770099c748ac97fdb99d8a016c9e2c3ca801f27a30
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -6049,39 +4369,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@nrwl/cli@npm:15.0.3":
-  version: 15.0.3
-  resolution: "@nrwl/cli@npm:15.0.3"
+"@nrwl/cli@npm:15.0.5":
+  version: 15.0.5
+  resolution: "@nrwl/cli@npm:15.0.5"
   dependencies:
-    nx: 15.0.3
-  checksum: 5ce4a3a1b745b90aef7c72ff27ecda9848e91be6c8a67f4908bdadc2d7c7f610fb6796a3d150ce43871eebdf59bf24bf07fb9309b5a5551fa8abbe97bfe04617
-=======
-"@nrwl/cli@npm:14.8.3":
-  version: 14.8.3
-  resolution: "@nrwl/cli@npm:14.8.3"
-  dependencies:
-    nx: 14.8.3
-  checksum: 0f8f0dcb9acd6da9fab605135d506a5f140df0ad47ae4360559f02136a726d339dd20817e89bdce91e76eca199fe4ac1a0523e2f7758d5e66f11bba136419ae4
->>>>>>> fix: ugh
-=======
-"@nrwl/cli@npm:14.8.4":
-  version: 14.8.4
-  resolution: "@nrwl/cli@npm:14.8.4"
-  dependencies:
-    nx: 14.8.4
-  checksum: f2146664c63ef1f07a591dafa496d8ab763b7761de7b3b8c1a7b525737eb21c6256c4ef6a54253e24881f111b5c8478332c1da2424cb84b799721fb663bf9aac
->>>>>>> fix: go over these components as they were not in initial pr
+    nx: 15.0.5
+  checksum: 127953f37ebf8e8b2f134210b49025e9a8175f1f50637f567431762febcd2e6e569aeadc0ea1f21bc6bec0a3e524e50cf2ab111a27268ca0831fe32586145966
   languageName: node
   linkType: hard
 
 "@nrwl/devkit@npm:>=14.8.1 < 16":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 15.0.3
-  resolution: "@nrwl/devkit@npm:15.0.3"
+  version: 15.0.5
+  resolution: "@nrwl/devkit@npm:15.0.5"
   dependencies:
     "@phenomnomnominal/tsquery": 4.1.1
     ejs: ^3.1.7
@@ -6090,58 +4389,18 @@ __metadata:
     tslib: ^2.3.0
   peerDependencies:
     nx: ">= 14 <= 16"
-  checksum: b0635ba6acd32a62e5a94cc95e39cec3597665ed5c721dced435adfd4d82af4b7e4f970e3c8578409b3f85a2b72d9bcaecbc8a95ff48dc7675224f4e7fc620b4
+  checksum: 908cb8e196f12b246934b221e2a0b4ebddb6597b7d8289feb7d61a068eb6fa71177cc1ee1c522b0f9efcc6b79b9b3043879ec708e02ee7f3eb03ffacce4ecf50
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:15.0.3":
-  version: 15.0.3
-  resolution: "@nrwl/tao@npm:15.0.3"
+"@nrwl/tao@npm:15.0.5":
+  version: 15.0.5
+  resolution: "@nrwl/tao@npm:15.0.5"
   dependencies:
-    nx: 15.0.3
+    nx: 15.0.5
   bin:
     tao: index.js
-  checksum: 5b64088ede1612a121a1ea8d0737616a232232cf8b0aea690abee521dbdbedcd9d274df3e08873a917c83c3a4cb5ae53c4277356794b8968562c735c74824698
-=======
-"@nrwl/cli@npm:14.7.8":
-  version: 14.7.8
-  resolution: "@nrwl/cli@npm:14.7.8"
-=======
-  version: 14.8.3
-  resolution: "@nrwl/devkit@npm:14.8.3"
->>>>>>> fix: ugh
-=======
-  version: 14.8.4
-  resolution: "@nrwl/devkit@npm:14.8.4"
->>>>>>> fix: go over these components as they were not in initial pr
-  dependencies:
-    "@phenomnomnominal/tsquery": 4.1.1
-    ejs: ^3.1.7
-    ignore: ^5.0.4
-    tslib: ^2.3.0
-  peerDependencies:
-    nx: ">= 13.10 <= 15"
-  checksum: 7da82be7577aa2f52a5f10d519e395d7a186643aa7c37be833456c54a49538b7c521e770371382f1c79a140d6c6ba9ce8ab45bf4dfa361ab80cb6befb8fc04d4
-  languageName: node
-  linkType: hard
-
-"@nrwl/tao@npm:14.8.4":
-  version: 14.8.4
-  resolution: "@nrwl/tao@npm:14.8.4"
-  dependencies:
-    nx: 14.8.4
-  bin:
-    tao: index.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 32c7728cb0023044c8015ad2ea09b36eaa250f1cc71ec4964363f83330027f02f743ad5b39ee39d9aae7ec9df6dfdad3a090cfc5523bc5481c48b39e64048fae
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 193bfd943357634285ae848247c8382cf1d3202934f2a543b4d64db3dd5c1fe863cc05e313514b1a7913327499c719831a4c400c0387bec453b5a5662eb01391
->>>>>>> fix: ugh
-=======
-  checksum: 8be3ba083b7a7a9960abe0c0ab43f2f4af37d719cc60700f872eacbd3b77c19d711f638961525373b8ff168b9e9c4f85d501629de7d67986fffae9144f4a6b0c
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 573d04d6d9db42298ec8dc0e0ca9b56bce35d651112fd1038fc6e8ced2755b822687cce406efb2c1b0a7078942de6f4dcbfc6927a4ddeda1d78dc29a14103883
   languageName: node
   linkType: hard
 
@@ -6191,23 +4450,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@octokit/openapi-types@npm:^14.0.0":
   version: 14.0.0
   resolution: "@octokit/openapi-types@npm:14.0.0"
   checksum: 0a1f8f3be998cd82c5a640e9166d43fd183b33d5d36f5e1a9b81608e94d0da87c01ec46c9988f69cd26585d4e2ffc4d3ec99ee4f75e5fe997fc86dad0aa8293c
-=======
-"@octokit/openapi-types@npm:^13.11.0":
-<<<<<<< HEAD
-  version: 13.12.0
-  resolution: "@octokit/openapi-types@npm:13.12.0"
-  checksum: d8f2598d95b7031799af54c6af0bfcd03f59372f417248a7bf04f60d1ac79019d41aff3ed5285760bd80e3b674a611043385ace4067346277e8c95ff6437a2e7
->>>>>>> Reverted Yarn lock file
-=======
-  version: 13.13.1
-  resolution: "@octokit/openapi-types@npm:13.13.1"
-  checksum: 7f49a46ada1cc6ed105b19aa839f570643c099488929939d7c690d3f466b6c6e0b54e066a557bd0679e0cc36d706a992c9c763c63c5f1f90afe98a68fcb15186
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -6218,7 +4464,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@octokit/plugin-paginate-rest@npm:^5.0.0":
   version: 5.0.1
   resolution: "@octokit/plugin-paginate-rest@npm:5.0.1"
@@ -6227,16 +4472,6 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=4"
   checksum: cfded297d9f66c7607bd34075eb0c5f7278a1617d6be86115997c0757151c9be2fcf7a8849c2a5cebab56931a263b5cc35742b6227935afe77f5ed61b0627a3d
-=======
-"@octokit/plugin-paginate-rest@npm:^4.0.0":
-  version: 4.3.1
-  resolution: "@octokit/plugin-paginate-rest@npm:4.3.1"
-  dependencies:
-    "@octokit/types": ^7.5.0
-  peerDependencies:
-    "@octokit/core": ">=4"
-  checksum: 96d420fc9944cd3cb67c41d47781ee00d406e34622ed6a6cc1995ee9602e1ab23b51e30f5a5d3b80d4b62879234e0c21fe6c654b267ccb9550379f2e0051e681
->>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -6249,7 +4484,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@octokit/plugin-rest-endpoint-methods@npm:^6.7.0":
   version: 6.7.0
   resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.7.0"
@@ -6259,17 +4493,6 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=3"
   checksum: 513c6c0717d08f3e85848029bd700412b7d9787750f78cc79a3dede356e94b238bf8a518b108f556a7efe626871720dd0466de9f31091578ea4e0f5a016f0ae7
-=======
-"@octokit/plugin-rest-endpoint-methods@npm:^6.0.0":
-  version: 6.6.2
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:6.6.2"
-  dependencies:
-    "@octokit/types": ^7.5.0
-    deprecation: ^2.3.1
-  peerDependencies:
-    "@octokit/core": ">=3"
-  checksum: 3c3fe12e6f0463aeb77b6a7ea6da0b1928ed179b27745c778c32ead3796fe4352322dc103095d141d548aa6b0d91bb0196e4a2d5d60cd71fc820c3774e23c1f4
->>>>>>> Reverted Yarn lock file
   languageName: node
   linkType: hard
 
@@ -6310,25 +4533,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@octokit/types@npm:^8.0.0":
   version: 8.0.0
   resolution: "@octokit/types@npm:8.0.0"
   dependencies:
     "@octokit/openapi-types": ^14.0.0
   checksum: 1a0197b2c4c522ac90f145e02b3f8cb048a47f71c2c6bdbf021a03db7dd30ca92a899c0186acb401337f218efe44e60d33cc1cc68715b622bb75bc1a4e79515d
-=======
-"@octokit/types@npm:^7.0.0, @octokit/types@npm:^7.5.0":
-  version: 7.5.1
-  resolution: "@octokit/types@npm:7.5.1"
-  dependencies:
-    "@octokit/openapi-types": ^13.11.0
-<<<<<<< HEAD
-  checksum: ded2fa77d939e54e97c9561120c19990781686250a0fbb36c3c8fe63f2c6ab081eca065e67a830a5731e1f0d9a4b8a8c26f858e28e1beb0f0c31aed31284e087
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: eaa9aac2f4760aef5e69e4f663450fce34d4fab5a6a8c26cba49257ce0c4b621fd8f19ddad0ce9764b64cc6b3ef5d6fe631ff518832d3e09affbc96b7432fae5
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -6868,18 +5078,8 @@ __metadata:
   linkType: hard
 
 "@redocly/openapi-core@npm:^1.0.0-beta.104":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 1.0.0-beta.111
   resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
-=======
-  version: 1.0.0-beta.110
-  resolution: "@redocly/openapi-core@npm:1.0.0-beta.110"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 1.0.0-beta.111
-  resolution: "@redocly/openapi-core@npm:1.0.0-beta.111"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@redocly/ajv": ^8.11.0
     "@types/node": ^14.11.8
@@ -6891,15 +5091,7 @@ __metadata:
     node-fetch: ^2.6.1
     pluralize: ^8.0.0
     yaml-ast-parser: 0.0.43
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: a6848b5aef4d8aa8c64d07ab80eb9020970f53f531feebc93d06f050e1064f850c707e02da5edee0e8898946c5e99c3aa2d576b9fc7ff873986133116aa95f7a
-=======
-  checksum: 17acdc9822c13a9cd823d0badbefe7b42be1782a035565c2895fbb66e4cbc379e31a5d3f4ec421f65ba044343524cb577c0d2039d7578df48684c6039948232b
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: a6848b5aef4d8aa8c64d07ab80eb9020970f53f531feebc93d06f050e1064f850c707e02da5edee0e8898946c5e99c3aa2d576b9fc7ff873986133116aa95f7a
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -7294,18 +5486,8 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^8.1.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 8.19.0
   resolution: "@testing-library/dom@npm:8.19.0"
-=======
-  version: 8.18.1
-  resolution: "@testing-library/dom@npm:8.18.1"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 8.19.0
-  resolution: "@testing-library/dom@npm:8.19.0"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -7315,15 +5497,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 6bb93fef96703b6c47cf1b7cc8f71d402a9576084a94ba4e9926f51bd7bb1287fbb4f6942d82bd03fc6f3d998ae97e60f6aea4618f3a1ce6139597d2a4ecb7b9
-=======
-  checksum: 432a7da2bb626b11375b22e22d12c02317b35d69c0f69972c03bd0104895b496f21dc5b9d4447adef6e0c9acb3c0a64337f7d38c9667dbbacf09d5cd523394dd
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 6bb93fef96703b6c47cf1b7cc8f71d402a9576084a94ba4e9926f51bd7bb1287fbb4f6942d82bd03fc6f3d998ae97e60f6aea4618f3a1ce6139597d2a4ecb7b9
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -7466,12 +5640,12 @@ __metadata:
   linkType: hard
 
 "@types/eslint@npm:*":
-  version: 8.4.8
-  resolution: "@types/eslint@npm:8.4.8"
+  version: 8.4.9
+  resolution: "@types/eslint@npm:8.4.9"
   dependencies:
     "@types/estree": "*"
     "@types/json-schema": "*"
-  checksum: 5b4708a56adeb5c209bc5d33590499be01286a90d3c324e2aabb1812d405a622ea9dd65eb8a095b2b9eb902bc8a25afddb9832f1f634457f973c07eade86aa5e
+  checksum: 9eda34e000f1e09850f447d8d65b671f59153aa5b580aca5b95185cf42b047b9cfda86eea83a6295aa883931b769a79236ce439601be7ab4485be88ce77b69ad
   languageName: node
   linkType: hard
 
@@ -7575,21 +5749,9 @@ __metadata:
   linkType: hard
 
 "@types/lodash@npm:^4.14.92":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 4.14.186
-  resolution: "@types/lodash@npm:4.14.186"
-  checksum: ee0c1368a8100bb6efb88335107473a41928fc307ff1ef4ff1278868ccddba9c04c68c36d1ffe3a0392ef4a956e1955f7de3203ec09df4f1655dd1b88485c549
-=======
-  version: 4.14.185
-  resolution: "@types/lodash@npm:4.14.185"
-  checksum: f81d13da5ecab110ca9c5c7cc2bedc3c9802a6acf668576aecd1b8f4b134ed81d06c15f1e600fb08f05975098280a0d97d30cddfc2cb39ec1c6b56e971ca53b3
->>>>>>> Reverted Yarn lock file
-=======
-  version: 4.14.186
-  resolution: "@types/lodash@npm:4.14.186"
-  checksum: ee0c1368a8100bb6efb88335107473a41928fc307ff1ef4ff1278868ccddba9c04c68c36d1ffe3a0392ef4a956e1955f7de3203ec09df4f1655dd1b88485c549
->>>>>>> fix: ugh
+  version: 4.14.187
+  resolution: "@types/lodash@npm:4.14.187"
+  checksum: 5f8a4fe6d8a6785b8ecbd9efdc8b7d3341b873f63c5390ad0f269a517508e92c1b1d7d43e97bdfb6bba5bba9a8501b30a54f791ef4c30b854382745c75c607d4
   languageName: node
   linkType: hard
 
@@ -7643,27 +5805,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=10.0.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 18.11.7
-  resolution: "@types/node@npm:18.11.7"
-  checksum: 69d630825cf6fbf580d08d76a4d4836ef8c34ed4fe0842221ade87d275f517099cbfabe8e22397208e564bd24926db97699ab9db5c091383269a432b336665e2
-=======
-  version: 18.7.18
-  resolution: "@types/node@npm:18.7.18"
-  checksum: 8aec61f0f96e2a69ce51f1f40f949ca578bbb4fe05d7c0b8ce3aeeb848e90f755837f17f6ac132ca404d974fe9b2974150ad3b4984fc9dc7c3ceddb10bae0167
->>>>>>> Reverted Yarn lock file
-=======
-  version: 18.8.2
-  resolution: "@types/node@npm:18.8.2"
-  checksum: b7c74dea0e835fb7faf69b4a2e87d43c1d228d88adacdff464d9e92d18a0b43bec6147b9eb3287650ac75fe5af730c53391869d02175e6b032dcb99ae2f54c92
->>>>>>> fix: ugh
-=======
-  version: 18.8.5
-  resolution: "@types/node@npm:18.8.5"
-  checksum: f7d896f54743178e64c534c6da16f582505acf18904ecd0ee8541cb4bc1d429ba514e7ecfd5145221b71adbd6ae1ff72df082f667e56d056fcd1a719df948e08
->>>>>>> fix: go over these components as they were not in initial pr
+  version: 18.11.9
+  resolution: "@types/node@npm:18.11.9"
+  checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
   languageName: node
   linkType: hard
 
@@ -7675,27 +5819,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^14.0.0, @types/node@npm:^14.11.8, @types/node@npm:^14.14.31":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 14.18.33
   resolution: "@types/node@npm:14.18.33"
   checksum: 4e23f95186d8ae1d38c999bc6b46fe94e790da88744b0a3bfeedcbd0d9ffe2cb0ff39e85f43014f6739e5270292c1a1f6f97a1fc606fd573a0c17fda9a1d42de
-=======
-  version: 14.18.29
-  resolution: "@types/node@npm:14.18.29"
-  checksum: 43481c1c066dd01578ff137f437a8a901f8fcd3cdc068c36047c444861ab4aac8a62fb4eb6d03738df02006336c90619bfc7860d4e5b259916956942d2e68e88
->>>>>>> Reverted Yarn lock file
-=======
-  version: 14.18.31
-  resolution: "@types/node@npm:14.18.31"
-  checksum: df33021d673a5e3c943cf96c9f3fbccf364d20f487b2ab7eb49db144974c2049f0a91e9358df09235f543c1f0b11388c5b0b636ae1f2ed55a27c75f63bc3d2c5
->>>>>>> fix: ugh
-=======
-  version: 14.18.32
-  resolution: "@types/node@npm:14.18.32"
-  checksum: 45463114bf85d06dc12925d876dd90b7fff43d9ee10a40e48fd16aece3d0201c76426c128e41230b2818d386422be06c5be33b3d94d90ee924b6fa4d54574035
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -7744,31 +5870,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 18.0.24
   resolution: "@types/react@npm:18.0.24"
-=======
-  version: 18.0.20
-  resolution: "@types/react@npm:18.0.20"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 18.0.21
-  resolution: "@types/react@npm:18.0.21"
->>>>>>> fix: ugh
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 7d06125bac61e1c6661e5dfbeeeb56d5b6d1d4c743292faebaa6b0f30f8414c7af3cadf674923fd86e4ca14e82566ff9156cd40c56786be024600c31b97d6c03
-=======
-  checksum: f67f5b16efd89e237bf0e40d133218c398cf2a2f81166ce1e9fa32d0df6b869106740983396c51df9708a1b79b2a9d725eda1230cc3064c92d86d9ea6a4b714c
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 36c1a7c9d507e81e2e629c1ad3db51d7b84d8b010c2d5008da411874286c6a5ccc711ae1d4c470efc0bdc77153cc8804a40e927e929e5164c669ca41b84b846d
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -8154,30 +6262,12 @@ __metadata:
   linkType: hard
 
 "@yarnpkg/parsers@npm:^3.0.0-rc.18":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 3.0.0-rc.26
-  resolution: "@yarnpkg/parsers@npm:3.0.0-rc.26"
+  version: 3.0.0-rc.27
+  resolution: "@yarnpkg/parsers@npm:3.0.0-rc.27"
   dependencies:
     js-yaml: ^3.10.0
     tslib: ^2.4.0
-  checksum: a6a30d4a3dca3efb79800e1dd41fad568e309abbf6042cba35808a1d641be9890675f1e38d40fb61cadc31a16c9d0199f5a7626bb8584c37720bd3a7329ca59f
-=======
-  version: 3.0.0-rc.22
-  resolution: "@yarnpkg/parsers@npm:3.0.0-rc.22"
-  dependencies:
-    js-yaml: ^3.10.0
-    tslib: ^2.4.0
-  checksum: 4a31b4faad853b6cb09ff198017dd2f81782cb57ff8aaa2446ab9c8eb51aacaad3fa740e0c156c60c66cdb9cff8939f99b2b09c9890e2b8d015dcbed0150cb8a
->>>>>>> fix: ugh
-=======
-  version: 3.0.0-rc.25
-  resolution: "@yarnpkg/parsers@npm:3.0.0-rc.25"
-  dependencies:
-    js-yaml: ^3.10.0
-    tslib: ^2.4.0
-  checksum: c76ff37072814db2258f0d695db267b3eb3133fec6fe963db831e5288cc8fba2ece3db0732abbe52391da643c2c49522897ae0ccd0136e5cbf14428572d7ec15
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: c7299fc135c859c35032bc6bcc2977aa7c61c4d81568b145c0eb4e5857de78a9ab112a073a445cfb7811b4f2ff4aa07db5850475e55ca09101267a3c6bb87cc0
   languageName: node
   linkType: hard
 
@@ -8324,13 +6414,8 @@ __metadata:
   linkType: hard
 
 "acorn@npm:^8.1.0, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.1, acorn@npm:^8.8.0":
-<<<<<<< HEAD
   version: 8.8.1
   resolution: "acorn@npm:8.8.1"
-=======
-  version: 8.8.0
-  resolution: "acorn@npm:8.8.0"
->>>>>>> fix: ugh
   bin:
     acorn: bin/acorn
   checksum: 4079b67283b94935157698831967642f24a075c52ce3feaaaafe095776dfbe15d86a1b33b1e53860fc0d062ed6c83f4284a5c87c85b9ad51853a01173da6097f
@@ -8655,11 +6740,11 @@ __metadata:
   linkType: hard
 
 "aria-query@npm:^5.0.0":
-  version: 5.1.1
-  resolution: "aria-query@npm:5.1.1"
+  version: 5.1.3
+  resolution: "aria-query@npm:5.1.3"
   dependencies:
     deep-equal: ^2.0.5
-  checksum: c691c2e7d810ab35fa4baa703e19792c0d59d7d92812a7fe4ebab818e0712dea4a8f1d320739446604b854f6aec5bcaf9587ddf5a6573de520156e334b739f41
+  checksum: 929ff95f02857b650fb4cbcd2f41072eee2f46159a6605ea03bf63aa572e35ffdff43d69e815ddc462e16e07de8faba3978afc2813650b4448ee18c9895d982b
   languageName: node
   linkType: hard
 
@@ -8867,11 +6952,11 @@ __metadata:
   linkType: hard
 
 "autoprefixer@npm:^10.4.0":
-  version: 10.4.12
-  resolution: "autoprefixer@npm:10.4.12"
+  version: 10.4.13
+  resolution: "autoprefixer@npm:10.4.13"
   dependencies:
     browserslist: ^4.21.4
-    caniuse-lite: ^1.0.30001407
+    caniuse-lite: ^1.0.30001426
     fraction.js: ^4.2.0
     normalize-range: ^0.1.2
     picocolors: ^1.0.0
@@ -8880,7 +6965,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 6ae79cbacd31fb3d464ec64eb6ad2600f4f689c3080bbe62c5536d539b41b472083a2e941ef99d14aa11142370d6c16e8b05a62f077374933ed991aceb5943d2
+  checksum: dcb1cb7ae96a3363d65d82e52f9a0a7d8c982256f6fd032d7e1ec311f099c23acfebfd517ff8e96bf93f716a66c4ea2b80c60aa19efd2f474ce434bd75ef7b79
   languageName: node
   linkType: hard
 
@@ -8913,9 +6998,9 @@ __metadata:
   linkType: hard
 
 "axe-core@npm:^4.4.3":
-  version: 4.5.0
-  resolution: "axe-core@npm:4.5.0"
-  checksum: 05b5fa52a8ed8498215cec4a43253d115cc2b43616e840768e05b1b00d6789e7480e5b29159920a45a9504489423836b2fe65a49a67b54cbc5d53b1b37245750
+  version: 4.5.1
+  resolution: "axe-core@npm:4.5.1"
+  checksum: db90c6b41483e9c3452393933072fe0b8c2221e6d9b96ae0e6a03a4ce1e4c35bec539c92e9b6fcd63c4acf6678ad3c3ca7f5ab1d884210d157867cc54acd4f6a
   languageName: node
   linkType: hard
 
@@ -8929,22 +7014,13 @@ __metadata:
   linkType: hard
 
 "axios@npm:^1.0.0":
-<<<<<<< HEAD
   version: 1.1.3
   resolution: "axios@npm:1.1.3"
-=======
-  version: 1.1.2
-  resolution: "axios@npm:1.1.2"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-<<<<<<< HEAD
   checksum: cab3b17bf6092c9387f7023d699db093cfa23650b56c4422cd474d124b78b2e3b5a520f932c330664a58ab85b867b1c25a95cace475ef72d236888c852b84e6d
-=======
-  checksum: 136c25a5031aa2845fdbda3006c36888bbe351b11d1195f1f898a23c5df1430febbdb1ad034a61f27967e83762d5b5a3e851fff8a363cb4badeb883f8ff21461
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -9067,8 +7143,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "babel-plugin-remove-graphql-queries@npm:^4.22.0, babel-plugin-remove-graphql-queries@npm:^4.24.0":
   version: 4.24.0
   resolution: "babel-plugin-remove-graphql-queries@npm:4.24.0"
@@ -9080,28 +7154,6 @@ __metadata:
     "@babel/core": ^7.0.0
     gatsby: ^4.0.0-next
   checksum: c0e589dbaf4653540c031c6c4003be36096339d695bfb86c29b4e508c6ee913c97d1691752e5cd5bf0452865bc52af380d1e8b03f1cedd41f9b17e57ddff6460
-=======
-"babel-plugin-remove-graphql-queries@npm:^4.22.0, babel-plugin-remove-graphql-queries@npm:^4.23.0":
-  version: 4.23.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:4.23.0"
-=======
-"babel-plugin-remove-graphql-queries@npm:^4.22.0, babel-plugin-remove-graphql-queries@npm:^4.24.0":
-  version: 4.24.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:4.24.0"
->>>>>>> fix: ugh
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    "@babel/types": ^7.15.4
-    gatsby-core-utils: ^3.24.0
-  peerDependencies:
-    "@babel/core": ^7.0.0
-    gatsby: ^4.0.0-next
-<<<<<<< HEAD
-  checksum: 1be5822eacf5ff9497d2a96195dc890144ca2a9b3b20c2bcebf55b648b6a0182c04d1bd1c5ecc078bf5950eb3fb4074ea5016a409d00010b2206555d080da7e3
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: c0e589dbaf4653540c031c6c4003be36096339d695bfb86c29b4e508c6ee913c97d1691752e5cd5bf0452865bc52af380d1e8b03f1cedd41f9b17e57ddff6460
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -9178,21 +7230,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "babel-preset-gatsby@npm:^2.22.0, babel-preset-gatsby@npm:^2.24.0":
   version: 2.24.0
   resolution: "babel-preset-gatsby@npm:2.24.0"
-=======
-"babel-preset-gatsby@npm:^2.22.0, babel-preset-gatsby@npm:^2.23.0":
-  version: 2.23.0
-  resolution: "babel-preset-gatsby@npm:2.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"babel-preset-gatsby@npm:^2.22.0, babel-preset-gatsby@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "babel-preset-gatsby@npm:2.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/plugin-proposal-class-properties": ^7.14.0
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
@@ -9547,7 +7587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.3, browserslist@npm:^4.16.6, browserslist@npm:^4.17.5, browserslist@npm:^4.18.1, browserslist@npm:^4.20.3, browserslist@npm:^4.21.3, browserslist@npm:^4.21.4, browserslist@npm:^4.6.6":
+"browserslist@npm:^4.0.0, browserslist@npm:^4.14.5, browserslist@npm:^4.16.3, browserslist@npm:^4.16.6, browserslist@npm:^4.17.5, browserslist@npm:^4.18.1, browserslist@npm:^4.21.3, browserslist@npm:^4.21.4, browserslist@npm:^4.6.6":
   version: 4.21.4
   resolution: "browserslist@npm:4.21.4"
   dependencies:
@@ -9764,9 +7804,9 @@ __metadata:
   linkType: hard
 
 "call-me-maybe@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "call-me-maybe@npm:1.0.1"
-  checksum: d19e9d6ac2c6a83fb1215718b64c5e233f688ebebb603bdfe4af59cde952df1f2b648530fab555bf290ea910d69d7d9665ebc916e871e0e194f47c2e48e4886b
+  version: 1.0.2
+  resolution: "call-me-maybe@npm:1.0.2"
+  checksum: 42ff2d0bed5b207e3f0122589162eaaa47ba618f79ad2382fe0ba14d9e49fbf901099a6227440acc5946f86a4953e8aa2d242b330b0a5de4d090bb18f8935cae
   languageName: node
   linkType: hard
 
@@ -9848,28 +7888,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001407":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 1.0.30001426
-  resolution: "caniuse-lite@npm:1.0.30001426"
-  checksum: e8b9c14ee33410d95b27da619f50648f373a7be712748970643f25d95fa80687b4755ba365f34a7a1cea00f9137193943aa6e742eedf0a4d7857f83809f49435
-=======
-  version: 1.0.30001409
-  resolution: "caniuse-lite@npm:1.0.30001409"
-  checksum: d8581693491295ad8716db7ad6dccf74de970fc3ef4723b38bbc03b972862d363a9710c2a7582abcb741e1619164ddceca1df4dcf3d53d550e74829a9cb5ca82
->>>>>>> Reverted Yarn lock file
-=======
-  version: 1.0.30001415
-  resolution: "caniuse-lite@npm:1.0.30001415"
-  checksum: cd7ca55243a2d556aed2c2da4638643b032f88bbbd745ba7cdaf72fb2131812c63816f615dec704762ab385364387ce885953fa3a4d7555ea219336303dcc06f
->>>>>>> fix: ugh
-=======
-  version: 1.0.30001418
-  resolution: "caniuse-lite@npm:1.0.30001418"
-  checksum: 03380a9ba50b1abd0081e76bfdf331bfb2c28f2277ce5eead5b83960c4db9f1fbbd84a536efa6f8f1fe2c038bc01129d6c42d17f8323fe99a016a5da3829c4bc
->>>>>>> fix: go over these components as they were not in initial pr
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001426":
+  version: 1.0.30001429
+  resolution: "caniuse-lite@npm:1.0.30001429"
+  checksum: d1658080248ef5ef0f5157423b2766026e6aa45642ce3b2cc74859b6a54e39881dd902397a2368324ed30ed0cd40250f11a4a4f3773453cd57b88db5e5e5c76a
   languageName: node
   linkType: hard
 
@@ -10146,21 +8168,9 @@ __metadata:
   linkType: hard
 
 "ci-info@npm:^3.2.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 3.5.0
   resolution: "ci-info@npm:3.5.0"
   checksum: 7def3789706ec18db3dc371dc699bd0df12057d54b796201f50ba87200e0849d3d83c68da00ab2ab8cdd738d91b25ab9e31620588f8d7e64ffaa1f760fd121cf
-=======
-  version: 3.4.0
-  resolution: "ci-info@npm:3.4.0"
-  checksum: 7f660730170a6ce248e173b670587a0c583e31526d21afcd21f77c811c1aaeb8926999081542d1f30e12cce1df582d4c88709fa45f44c00498b46bdf21d4d21a
->>>>>>> Reverted Yarn lock file
-=======
-  version: 3.5.0
-  resolution: "ci-info@npm:3.5.0"
-  checksum: 7def3789706ec18db3dc371dc699bd0df12057d54b796201f50ba87200e0849d3d83c68da00ab2ab8cdd738d91b25ab9e31620588f8d7e64ffaa1f760fd121cf
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -10833,8 +8843,6 @@ __metadata:
   linkType: hard
 
 "core-js-compat@npm:^3.25.1":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 3.26.0
   resolution: "core-js-compat@npm:3.26.0"
   dependencies:
@@ -10847,53 +8855,13 @@ __metadata:
   version: 3.26.0
   resolution: "core-js-pure@npm:3.26.0"
   checksum: bbf5fa65cf3368a25f9d9cc525863acc8082fa3797efc8dc514f85d7f4aa870f4999b68863f3c7b96ed0b062add261a448758e6d337626c2535ad89ee8481a92
-=======
-  version: 3.25.2
-  resolution: "core-js-compat@npm:3.25.2"
-=======
-  version: 3.25.5
-  resolution: "core-js-compat@npm:3.25.5"
->>>>>>> fix: ugh
-  dependencies:
-    browserslist: ^4.21.4
-  checksum: 30686b750d675b685426ee25e41e30b83aa05ff7b79def94b457529d05c1ad123cd4d0b70d9162b077a15dc9f6f177ee997d846d0a3324176dd3c504e917309c
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-"core-js-pure@npm:^3.25.1, core-js-pure@npm:^3.8.1":
-<<<<<<< HEAD
-  version: 3.25.2
-  resolution: "core-js-pure@npm:3.25.2"
-  checksum: 8940d844f3a2474b9f51478341b682cb86d998723337f249424a7cdedd321dd2568cb0fbc459bb0f98a9427d23d1a3050aa44644ac2301fe380308ebecd6f28e
->>>>>>> Reverted Yarn lock file
-=======
-=======
-"core-js-pure@npm:^3.23.3, core-js-pure@npm:^3.25.1":
->>>>>>> fix: go over these components as they were not in initial pr
-  version: 3.25.5
-  resolution: "core-js-pure@npm:3.25.5"
-  checksum: e48799a8ab28f00ef3db18377142ff2c578574ab2b18ebddde6cbf12823e0181a57c80e3caa6046ce2a2e439d603a252be767583ddc54248e3d1060bc5012127
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
 "core-js@npm:^3.22.3, core-js@npm:^3.25.1":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 3.26.0
   resolution: "core-js@npm:3.26.0"
   checksum: 0149eb9d3909fde9c17626af3a6e625c326e8598d0bb5e6c5b48a18e5fcd4eaf48d4964d873667d8148542ff590fb98eb3f93618da114ca54999d6bc0349734b
-=======
-  version: 3.25.2
-  resolution: "core-js@npm:3.25.2"
-  checksum: e93c6c645d44d98973efb07750975552ad405f080f5a563a99972ff6b2c5c6ee25705f55accd363f5dccd51e9e5f56be25e2be6c14a7294da65763e0e5659c02
->>>>>>> Reverted Yarn lock file
-=======
-  version: 3.25.5
-  resolution: "core-js@npm:3.25.5"
-  checksum: 208b308c49bc022f90d4349d4c99802a73c9d55053976b3c529f10014c1e37845926defad8c519f2c7f71ea0acf18d2b323ab6aaee34dc85b4c4b3ced0623f3f
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -10922,32 +8890,14 @@ __metadata:
   linkType: hard
 
 "cosmiconfig-typescript-loader@npm:^4.0.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 4.1.1
-  resolution: "cosmiconfig-typescript-loader@npm:4.1.1"
-=======
-  version: 4.1.0
-  resolution: "cosmiconfig-typescript-loader@npm:4.1.0"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 4.1.1
-  resolution: "cosmiconfig-typescript-loader@npm:4.1.1"
->>>>>>> fix: ugh
+  version: 4.2.0
+  resolution: "cosmiconfig-typescript-loader@npm:4.2.0"
   peerDependencies:
     "@types/node": "*"
     cosmiconfig: ">=7"
     ts-node: ">=10"
     typescript: ">=3"
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: a774961868f0406d0fd75e448c2e1a0ddb95de27d477fa325a37369a2cbd892cf4d639a109082cd886840dea7707ea9bed5c38a468b52de18400c4f1d495d35a
-=======
-  checksum: 434f68e75ea8559deb0058cb06ac0a25ec5c0e65fafc21a891bac863e18cf944bd881b0d80188d02f599e061c3f0e42156f6405e4a299975e40cb1bd740a9b24
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: a774961868f0406d0fd75e448c2e1a0ddb95de27d477fa325a37369a2cbd892cf4d639a109082cd886840dea7707ea9bed5c38a468b52de18400c4f1d495d35a
->>>>>>> fix: ugh
+  checksum: bbfe0dd4b8afe93880dbd85aeae551799ff05ecec23b7490bab56366d8362024ee12da954c86c16448d5919c47f0ac23d5d4e64062cda09e6f0ff63c9e080346
   languageName: node
   linkType: hard
 
@@ -10987,21 +8937,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "create-gatsby@npm:^2.24.0":
   version: 2.24.0
   resolution: "create-gatsby@npm:2.24.0"
-=======
-"create-gatsby@npm:^2.23.0":
-  version: 2.23.0
-  resolution: "create-gatsby@npm:2.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"create-gatsby@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "create-gatsby@npm:2.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/runtime": ^7.15.4
   bin:
@@ -11110,7 +9048,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-declaration-sorter@npm:^6.3.0":
+"css-declaration-sorter@npm:^6.3.1":
   version: 6.3.1
   resolution: "css-declaration-sorter@npm:6.3.1"
   peerDependencies:
@@ -11264,24 +9202,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^5.2.12":
-  version: 5.2.12
-  resolution: "cssnano-preset-default@npm:5.2.12"
+"cssnano-preset-default@npm:^5.2.13":
+  version: 5.2.13
+  resolution: "cssnano-preset-default@npm:5.2.13"
   dependencies:
-    css-declaration-sorter: ^6.3.0
+    css-declaration-sorter: ^6.3.1
     cssnano-utils: ^3.1.0
     postcss-calc: ^8.2.3
     postcss-colormin: ^5.3.0
-    postcss-convert-values: ^5.1.2
+    postcss-convert-values: ^5.1.3
     postcss-discard-comments: ^5.1.2
     postcss-discard-duplicates: ^5.1.0
     postcss-discard-empty: ^5.1.1
     postcss-discard-overridden: ^5.1.0
-    postcss-merge-longhand: ^5.1.6
-    postcss-merge-rules: ^5.1.2
+    postcss-merge-longhand: ^5.1.7
+    postcss-merge-rules: ^5.1.3
     postcss-minify-font-values: ^5.1.0
     postcss-minify-gradients: ^5.1.1
-    postcss-minify-params: ^5.1.3
+    postcss-minify-params: ^5.1.4
     postcss-minify-selectors: ^5.2.1
     postcss-normalize-charset: ^5.1.0
     postcss-normalize-display-values: ^5.1.0
@@ -11289,17 +9227,17 @@ __metadata:
     postcss-normalize-repeat-style: ^5.1.1
     postcss-normalize-string: ^5.1.0
     postcss-normalize-timing-functions: ^5.1.0
-    postcss-normalize-unicode: ^5.1.0
+    postcss-normalize-unicode: ^5.1.1
     postcss-normalize-url: ^5.1.0
     postcss-normalize-whitespace: ^5.1.1
     postcss-ordered-values: ^5.1.3
-    postcss-reduce-initial: ^5.1.0
+    postcss-reduce-initial: ^5.1.1
     postcss-reduce-transforms: ^5.1.0
     postcss-svgo: ^5.1.0
     postcss-unique-selectors: ^5.1.1
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 3d6c05e7719f05c577c3123dc8f823ddc055ec5402ee8184cea1832c209a87ab11aa2aa2cba3e6f4ae6e144c1f3f5122fad1bc7c3086bc3441770f2733e03f58
+  checksum: f773de44f67f71e7301e1f4b4664b894c3a48bba4dadc16c559acd0b14ceafed228bdc76fe19d500b0ded9394732377069daadff2184465fa369f8dfd72d47e2
   languageName: node
   linkType: hard
 
@@ -11313,15 +9251,15 @@ __metadata:
   linkType: hard
 
 "cssnano@npm:^5.0.0":
-  version: 5.1.13
-  resolution: "cssnano@npm:5.1.13"
+  version: 5.1.14
+  resolution: "cssnano@npm:5.1.14"
   dependencies:
-    cssnano-preset-default: ^5.2.12
+    cssnano-preset-default: ^5.2.13
     lilconfig: ^2.0.3
     yaml: ^1.10.2
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 3af0810c98626794e3386e690cd633c73ce472cb138f1011b69956de5071920ddce9d45f857018bb72cd2c3ed19674d65edade591110a6d5acd7c3109ef5d5d6
+  checksum: 73463c723c5e598b37b8b4d2f014145bd72133e6581349a1b154904e0830e58de17afb1e801ed3ea3b18e386883964ce4d0299e43d4dc37d339214a956c6697f
   languageName: node
   linkType: hard
 
@@ -11384,18 +9322,8 @@ __metadata:
   linkType: hard
 
 "cypress@npm:^10.8.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 10.11.0
   resolution: "cypress@npm:10.11.0"
-=======
-  version: 10.9.0
-  resolution: "cypress@npm:10.9.0"
->>>>>>> fix: ugh
-=======
-  version: 10.10.0
-  resolution: "cypress@npm:10.10.0"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -11441,15 +9369,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 938cc6a20f7eeace5c8e850d234904ee1651cbb36d94666fe600cf17ce964e73d4f7d8d944aab677491702a57364e6aceeb4fe8bcbd96147ff5e2b575a956fb2
-=======
-  checksum: 79e3dccbb82d0b0c92bb8888682766a9738374f473cf2e9a04825a6b3dbe4420c57948cabaf757af0929192a8e61b7f08b32d7f6ee0c3cddf2736cf4f408edc1
->>>>>>> fix: ugh
-=======
-  checksum: 668a32534a527dba79754abbf98af176b80c539a12ec00058932ba2a19c794c7888323e59e738c30f726ad740c5451c31d02548a0cb7c1b1c8ad01c55a984ca2
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -11586,12 +9506,12 @@ __metadata:
   linkType: hard
 
 "decamelize-keys@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "decamelize-keys@npm:1.1.0"
+  version: 1.1.1
+  resolution: "decamelize-keys@npm:1.1.1"
   dependencies:
     decamelize: ^1.1.0
     map-obj: ^1.0.0
-  checksum: 8bc5d32e035a072f5dffc1f1f3d26ca7ab1fb44a9cade34c97ab6cd1e62c81a87e718101e96de07d78cecda20a3fdb955df958e46671ccad01bb8dcf0de2e298
+  checksum: fc645fe20b7bda2680bbf9481a3477257a7f9304b1691036092b97ab04c0ab53e3bf9fcc2d2ae382536568e402ec41fb11e1d4c3836a9abe2d813dd9ef4311e0
   languageName: node
   linkType: hard
 
@@ -11602,24 +9522,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "decimal.js@npm:^10.4.1":
   version: 10.4.2
   resolution: "decimal.js@npm:10.4.2"
   checksum: 536cd6816a3197f2e1aa3da4860856cb5a2db73f6fafe8cb3b924ccc63f9b7d78296acc13dccbd419bd958ccc6357921fb15467f883b37cab04bfba7044cada2
-<<<<<<< HEAD
-=======
-"decimal.js@npm:^10.3.1":
-=======
-"decimal.js@npm:^10.4.1":
->>>>>>> fix: ugh
-  version: 10.4.1
-  resolution: "decimal.js@npm:10.4.1"
-  checksum: 5da6dc74af5b73d954741b24d404ef6da07841794d9e51412a2708ec384dd7b4bced3365fb178f4cd119b7ef45f0b34344014a4dc0494c8374c5e746df3cb410
->>>>>>> Reverted Yarn lock file
-=======
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -11867,33 +9773,15 @@ __metadata:
   linkType: hard
 
 "detect-port@npm:^1.3.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 1.5.1
   resolution: "detect-port@npm:1.5.1"
-=======
-  version: 1.5.0
-  resolution: "detect-port@npm:1.5.0"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 1.5.1
-  resolution: "detect-port@npm:1.5.1"
->>>>>>> fix: ugh
   dependencies:
     address: ^1.0.1
     debug: 4
   bin:
     detect: bin/detect-port.js
     detect-port: bin/detect-port.js
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: b48da9340481742547263d5d985e65d078592557863402ecf538511735e83575867e94f91fe74405ea19b61351feb99efccae7e55de9a151d5654e3417cea05b
-=======
-  checksum: 72d9141539cb2ff570c147f77dc6b73907bb9caee2a56744cb8d46f566bc5ee2ccb40c1e36cd26a197a4abd6d59e8970f48d0d33b8f994ee0e62e6d7f748fc85
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: b48da9340481742547263d5d985e65d078592557863402ecf538511735e83575867e94f91fe74405ea19b61351feb99efccae7e55de9a151d5654e3417cea05b
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -12284,10 +10172,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix: ugh
 "ejs@npm:^3.1.7":
   version: 3.1.8
   resolution: "ejs@npm:3.1.8"
@@ -12299,29 +10183,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "electron-to-chromium@npm:^1.4.251":
   version: 1.4.284
   resolution: "electron-to-chromium@npm:1.4.284"
   checksum: be496e9dca6509dbdbb54dc32146fc99f8eb716d28a7ee8ccd3eba0066561df36fc51418d8bd7cf5a5891810bf56c0def3418e74248f51ea4a843d423603d10a
-=======
-"electron-to-chromium@npm:^1.4.251":
-  version: 1.4.256
-  resolution: "electron-to-chromium@npm:1.4.256"
-  checksum: 878ca8e33a05165808a662b52ac332a42a5fcf842540de38c4cdde462e4c2cb2f2c10c4864cd44c486f8470f88818f42d275774865666aad424e1e4f500d91e8
->>>>>>> Reverted Yarn lock file
-=======
-"electron-to-chromium@npm:^1.4.251":
-<<<<<<< HEAD
-  version: 1.4.271
-  resolution: "electron-to-chromium@npm:1.4.271"
-  checksum: 8fcba3bb2001694f3a3d8639247866d05fbf1017fd48b294606b722e1e3379999e663163685ac1332d7c1a2b291950f46e4aba06e5c61b8300dce509ae06c6c7
->>>>>>> fix: ugh
-=======
-  version: 1.4.279
-  resolution: "electron-to-chromium@npm:1.4.279"
-  checksum: f98f592ad6acb34a63a7c804b21a14c0f05e85bc2892812e8d20019493b6bd5425c401bfd00363015ca953fb0489136c02cc60140cd9ad59e2b299531faa9d2f
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -12517,18 +10382,8 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.19.0, es-abstract@npm:^1.19.1, es-abstract@npm:^1.19.2, es-abstract@npm:^1.19.5, es-abstract@npm:^1.20.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 1.20.4
   resolution: "es-abstract@npm:1.20.4"
-=======
-  version: 1.20.3
-  resolution: "es-abstract@npm:1.20.3"
->>>>>>> fix: ugh
-=======
-  version: 1.20.4
-  resolution: "es-abstract@npm:1.20.4"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     call-bind: ^1.0.2
     es-to-primitive: ^1.2.1
@@ -12540,15 +10395,7 @@ __metadata:
     has-property-descriptors: ^1.0.0
     has-symbols: ^1.0.3
     internal-slot: ^1.0.3
-<<<<<<< HEAD
-<<<<<<< HEAD
     is-callable: ^1.2.7
-=======
-    is-callable: ^1.2.6
->>>>>>> fix: ugh
-=======
-    is-callable: ^1.2.7
->>>>>>> fix: go over these components as they were not in initial pr
     is-negative-zero: ^2.0.2
     is-regex: ^1.1.4
     is-shared-array-buffer: ^1.0.2
@@ -12562,15 +10409,7 @@ __metadata:
     string.prototype.trimend: ^1.0.5
     string.prototype.trimstart: ^1.0.5
     unbox-primitive: ^1.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 89297cc785c31aedf961a603d5a07ed16471e435d3a1b6d070b54f157cf48454b95cda2ac55e4b86ff4fe3276e835fcffd2771578e6fa634337da49b26826141
-=======
-  checksum: 225f24966ed960868bcfa7b39b38c9f4b68d1e0351e4e052a199e3e2fd93838a28b050687a0edf1021c20173d0831d076ff33ec581de77ca8aded67e2e138a80
->>>>>>> fix: ugh
-=======
-  checksum: 89297cc785c31aedf961a603d5a07ed16471e435d3a1b6d070b54f157cf48454b95cda2ac55e4b86ff4fe3276e835fcffd2771578e6fa634337da49b26826141
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -12871,18 +10710,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.30.1":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 7.31.10
   resolution: "eslint-plugin-react@npm:7.31.10"
-=======
-  version: 7.31.8
-  resolution: "eslint-plugin-react@npm:7.31.8"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 7.31.10
-  resolution: "eslint-plugin-react@npm:7.31.10"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     array-includes: ^3.1.5
     array.prototype.flatmap: ^1.3.0
@@ -12900,15 +10729,7 @@ __metadata:
     string.prototype.matchall: ^4.0.7
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: f013669c296483559a760648fa06425f161b1aff93c668f14c4561c933d22a7836b745b88a795c53cab929c71513d5fd1f2ffdddff915709f01b77ac25f5b71b
-=======
-  checksum: 0683e2a624a4df6f08264a3f6bc614a81e8f961c83173bdf2d8d3523f84ed5d234cddc976dbc6815913e007c5984df742ba61be0c0592b27c3daabe0f68165a3
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: f013669c296483559a760648fa06425f161b1aff93c668f14c4561c933d22a7836b745b88a795c53cab929c71513d5fd1f2ffdddff915709f01b77ac25f5b71b
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -13688,19 +11509,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.0":
-=======
-"follow-redirects@npm:^1.14.0":
->>>>>>> Reverted Yarn lock file
-=======
-"follow-redirects@npm:^1.10.0, follow-redirects@npm:^1.14.0":
->>>>>>> fix: ugh
-=======
-"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.0":
->>>>>>> fix: go over these components as they were not in initial pr
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -13937,21 +11746,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0, gatsby-cli@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-cli@npm:4.24.0"
-=======
-"gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0":
-  version: 4.23.0
-  resolution: "gatsby-cli@npm:4.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0, gatsby-cli@npm:^4.24.0":
-  version: 4.24.0
-  resolution: "gatsby-cli@npm:4.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -13969,31 +11766,13 @@ __metadata:
     clipboardy: ^2.3.0
     common-tags: ^1.8.2
     convert-hrtime: ^3.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
     create-gatsby: ^2.24.0
-=======
-    create-gatsby: ^2.23.0
->>>>>>> Reverted Yarn lock file
-=======
-    create-gatsby: ^2.24.0
->>>>>>> fix: ugh
     envinfo: ^7.8.1
     execa: ^5.1.1
     fs-exists-cached: ^1.0.0
     fs-extra: ^10.1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
     gatsby-core-utils: ^3.24.0
     gatsby-telemetry: ^3.24.0
-=======
-    gatsby-core-utils: ^3.23.0
-    gatsby-telemetry: ^3.23.0
->>>>>>> Reverted Yarn lock file
-=======
-    gatsby-core-utils: ^3.24.0
-    gatsby-telemetry: ^3.24.0
->>>>>>> fix: ugh
     hosted-git-info: ^3.0.8
     is-valid-path: ^0.1.1
     joi: ^17.4.2
@@ -14015,8 +11794,6 @@ __metadata:
     yurnalist: ^2.1.0
   bin:
     gatsby: cli.js
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: a47971a89a59b615a701ba6a8211b2733fd37c420d1ba71737c57f8766217e5214df764a6eb901d15e52c91fab8b64410cf634d616ea2828e0e68948249feeda
   languageName: node
   linkType: hard
@@ -14024,24 +11801,6 @@ __metadata:
 "gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.23.0, gatsby-core-utils@npm:^3.24.0":
   version: 3.24.0
   resolution: "gatsby-core-utils@npm:3.24.0"
-=======
-  checksum: a16a47ea10a74fabb7804835703c63bc06385991c13a6949e8b545e12867e318dd9d898f9895e3c006e6b1cf5ea02b216eb8b0f04b02c7f8de8087309abd6397
-  languageName: node
-  linkType: hard
-
-"gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.23.0":
-  version: 3.23.0
-  resolution: "gatsby-core-utils@npm:3.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: a47971a89a59b615a701ba6a8211b2733fd37c420d1ba71737c57f8766217e5214df764a6eb901d15e52c91fab8b64410cf634d616ea2828e0e68948249feeda
-  languageName: node
-  linkType: hard
-
-"gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.23.0, gatsby-core-utils@npm:^3.24.0":
-  version: 3.24.0
-  resolution: "gatsby-core-utils@npm:3.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/runtime": ^7.15.4
     ci-info: 2.0.0
@@ -14071,11 +11830,9 @@ __metadata:
     cypress: ^3.1.0
     gatsby: ^4.0.0-next
   checksum: e7fca30a619c8d34791606264d21abd42a8ba3f70f1111bd800bcc8637afdc4a14393bf324955d34299ce7be7db9a0ee16ece3a0ad898ae3cab0d7e4cb7cd794
-<<<<<<< HEAD
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "gatsby-graphiql-explorer@npm:^2.22.0, gatsby-graphiql-explorer@npm:^2.24.0":
   version: 2.24.0
   resolution: "gatsby-graphiql-explorer@npm:2.24.0"
@@ -14113,65 +11870,6 @@ __metadata:
 "gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.1":
   version: 2.24.1
   resolution: "gatsby-page-utils@npm:2.24.1"
-=======
-"gatsby-graphiql-explorer@npm:^2.22.0, gatsby-graphiql-explorer@npm:^2.23.0":
-  version: 2.23.0
-  resolution: "gatsby-graphiql-explorer@npm:2.23.0"
-=======
-  languageName: node
-  linkType: hard
-
-"gatsby-graphiql-explorer@npm:^2.22.0, gatsby-graphiql-explorer@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "gatsby-graphiql-explorer@npm:2.24.0"
->>>>>>> fix: ugh
-  dependencies:
-    "@babel/runtime": ^7.15.4
-  checksum: 69792d8c840abf535382f3c1cd8dfd4ea72a4b39567a553d630142a72acb594c907dc586738798d19c4813895e958890ed97ad5c0ef19d6b14e8fc43eabdee87
-  languageName: node
-  linkType: hard
-
-"gatsby-legacy-polyfills@npm:^2.22.0, gatsby-legacy-polyfills@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "gatsby-legacy-polyfills@npm:2.24.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    core-js-compat: 3.9.0
-  checksum: 3427738fe23ecd4acf587538b2a285682e1a2268aca59ebc01033e9abd2ad449fd52f766cf153d3b8bebf3388246a0e323169362eaaa0010a6cfb3e455057a47
-  languageName: node
-  linkType: hard
-
-"gatsby-link@npm:^4.22.0, gatsby-link@npm:^4.24.1":
-  version: 4.24.1
-  resolution: "gatsby-link@npm:4.24.1"
-  dependencies:
-    "@types/reach__router": ^1.3.10
-    gatsby-page-utils: ^2.24.1
-    prop-types: ^15.8.1
-  peerDependencies:
-    "@gatsbyjs/reach-router": ^1.3.5
-    react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
-    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
-  checksum: 6ee4ba8c5a538c3bf8db02ab71dc222d9c0f52483bd59c6613815b248b08bf52805f698e91154e2f38fc61b3fdbdde17cbbae1dff7e3044d6ae3d1e8b004fed5
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-"gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.23.0":
-  version: 2.23.0
-  resolution: "gatsby-page-utils@npm:2.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.0":
-  version: 2.24.0
-  resolution: "gatsby-page-utils@npm:2.24.0"
->>>>>>> fix: ugh
-=======
-"gatsby-page-utils@npm:^2.22.0, gatsby-page-utils@npm:^2.24.1":
-  version: 2.24.1
-  resolution: "gatsby-page-utils@npm:2.24.1"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@babel/runtime": ^7.15.4
     bluebird: ^3.7.2
@@ -14181,15 +11879,7 @@ __metadata:
     glob: ^7.2.3
     lodash: ^4.17.21
     micromatch: ^4.0.5
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: ded1f97dbe3edc1e8c22f2e3e1925ddd7459d3215a288e49cc8d89a43761f1cbaee2a8238fe0207d4fda1b5c1323c319fbd4b7746976c4d4e8af74724a32f2ca
-=======
-  checksum: 84d62150a2164f8f0ff80f5cd4996a7b413b1b88ef28588c963c236b9e86421006dd384d779b912deb7506d3fd8eee8c21b8ffc5ad7f0db20b0112ec57c153cb
->>>>>>> fix: ugh
-=======
-  checksum: ded1f97dbe3edc1e8c22f2e3e1925ddd7459d3215a288e49cc8d89a43761f1cbaee2a8238fe0207d4fda1b5c1323c319fbd4b7746976c4d4e8af74724a32f2ca
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -14220,27 +11910,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-parcel-config@npm:0.15.1":
   version: 0.15.1
   resolution: "gatsby-parcel-config@npm:0.15.1"
   dependencies:
     "@gatsbyjs/parcel-namer-relative-to-cwd": 1.9.0
-=======
-"gatsby-parcel-config@npm:0.15.0":
-  version: 0.15.0
-  resolution: "gatsby-parcel-config@npm:0.15.0"
-  dependencies:
-    "@gatsbyjs/parcel-namer-relative-to-cwd": ^1.9.0
->>>>>>> fix: ugh
-=======
-"gatsby-parcel-config@npm:0.15.1":
-  version: 0.15.1
-  resolution: "gatsby-parcel-config@npm:0.15.1"
-  dependencies:
-    "@gatsbyjs/parcel-namer-relative-to-cwd": 1.9.0
->>>>>>> fix: go over these components as they were not in initial pr
     "@parcel/bundler-default": 2.6.2
     "@parcel/compressor-raw": 2.6.2
     "@parcel/namer-default": 2.6.2
@@ -14251,23 +11925,10 @@ __metadata:
     "@parcel/resolver-default": 2.6.2
     "@parcel/runtime-js": 2.6.2
     "@parcel/transformer-js": 2.6.2
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@parcel/transformer-json": 2.6.2
   peerDependencies:
     "@parcel/core": ^2.0.0
   checksum: d1d906daeee447aee8709f1953b44a98c067c4971484c747881ead4fcf86206383b98e2ac05669aecca49ba6d1502e97d6a21efcd9c09c82a1d987691c21241c
-=======
-  peerDependencies:
-    "@parcel/core": ^2.0.0
-  checksum: 8663bdfc005d2f2d95e4dccfea1f54350a2def0787abd2f8d1fc7bc2a4bf150c5c909c36b1edeffa9553bc628a78098d8ff8b9173dd1da15848854a4bfb5ec47
->>>>>>> fix: ugh
-=======
-    "@parcel/transformer-json": 2.6.2
-  peerDependencies:
-    "@parcel/core": ^2.0.0
-  checksum: d1d906daeee447aee8709f1953b44a98c067c4971484c747881ead4fcf86206383b98e2ac05669aecca49ba6d1502e97d6a21efcd9c09c82a1d987691c21241c
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -14375,27 +12036,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.1":
   version: 4.24.1
   resolution: "gatsby-plugin-page-creator@npm:4.24.1"
-=======
-"gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.23.0":
-  version: 4.23.0
-  resolution: "gatsby-plugin-page-creator@npm:4.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.0":
-  version: 4.24.0
-  resolution: "gatsby-plugin-page-creator@npm:4.24.0"
->>>>>>> fix: ugh
-=======
-"gatsby-plugin-page-creator@npm:^4.22.0, gatsby-plugin-page-creator@npm:^4.24.1":
-  version: 4.24.1
-  resolution: "gatsby-plugin-page-creator@npm:4.24.1"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     "@babel/runtime": ^7.15.4
     "@babel/traverse": ^7.15.4
@@ -14404,30 +12047,14 @@ __metadata:
     fs-exists-cached: ^1.0.0
     fs-extra: ^10.1.0
     gatsby-core-utils: ^3.24.0
-<<<<<<< HEAD
-<<<<<<< HEAD
     gatsby-page-utils: ^2.24.1
-=======
-    gatsby-page-utils: ^2.24.0
->>>>>>> fix: ugh
-=======
-    gatsby-page-utils: ^2.24.1
->>>>>>> fix: go over these components as they were not in initial pr
     gatsby-plugin-utils: ^3.18.0
     gatsby-telemetry: ^3.24.0
     globby: ^11.1.0
     lodash: ^4.17.21
   peerDependencies:
     gatsby: ^4.0.0-next
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 46b6944dd7de9fb3f5bcf39fc49932485e09331b0e3c67f71a4ee98013919a4773bd75fd106e66bfb87d45e782d93a68dd78a25bd37e637fd3cb834cc040ec69
-=======
-  checksum: a16516bcf6f9f57d0e12c431ca86d4578597de609a1b79db90b82b2faab53ffb2400928c59b2e3f2ab7d02401f54515bb2bb8489b3b66b434e1d90f827c5ac1e
->>>>>>> fix: ugh
-=======
-  checksum: 46b6944dd7de9fb3f5bcf39fc49932485e09331b0e3c67f71a4ee98013919a4773bd75fd106e66bfb87d45e782d93a68dd78a25bd37e637fd3cb834cc040ec69
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -14484,49 +12111,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-plugin-typescript@npm:^4.22.0, gatsby-plugin-typescript@npm:^4.24.0":
   version: 4.24.0
   resolution: "gatsby-plugin-typescript@npm:4.24.0"
-=======
-"gatsby-plugin-typescript@npm:^4.22.0, gatsby-plugin-typescript@npm:^4.23.0":
-  version: 4.23.0
-  resolution: "gatsby-plugin-typescript@npm:4.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-=======
-"gatsby-plugin-sharp@npm:^4.23.0":
-  version: 4.24.0
-  resolution: "gatsby-plugin-sharp@npm:4.24.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    "@gatsbyjs/potrace": ^2.3.0
-    async: ^3.2.4
-    bluebird: ^3.7.2
-    debug: ^4.3.4
-    filenamify: ^4.3.0
-    fs-extra: ^10.1.0
-    gatsby-core-utils: ^3.24.0
-    gatsby-plugin-utils: ^3.18.0
-    lodash: ^4.17.21
-    mini-svg-data-uri: ^1.4.4
-    probe-image-size: ^7.2.3
-    semver: ^7.3.7
-    sharp: ^0.30.7
-    svgo: ^2.8.0
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: 757ba1afd3c1293bff02782f3a95d28baa4b05ce23300e52ac4fb1198efff667f5104abcf8dd65df6a7da25d085a93dfbae1508fc80e445be6fd121cbd4acd24
-  languageName: node
-  linkType: hard
-
->>>>>>> chore(pre-release): publish@4.7.0-rc1
-"gatsby-plugin-typescript@npm:^4.22.0, gatsby-plugin-typescript@npm:^4.24.0":
-  version: 4.24.0
-  resolution: "gatsby-plugin-typescript@npm:4.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/core": ^7.15.5
     "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.5
@@ -14534,8 +12121,6 @@ __metadata:
     "@babel/plugin-proposal-optional-chaining": ^7.14.5
     "@babel/preset-typescript": ^7.15.0
     "@babel/runtime": ^7.15.4
-<<<<<<< HEAD
-<<<<<<< HEAD
     babel-plugin-remove-graphql-queries: ^4.24.0
   peerDependencies:
     gatsby: ^4.0.0-next
@@ -14546,27 +12131,6 @@ __metadata:
 "gatsby-plugin-utils@npm:^3.16.0, gatsby-plugin-utils@npm:^3.17.0, gatsby-plugin-utils@npm:^3.18.0":
   version: 3.18.0
   resolution: "gatsby-plugin-utils@npm:3.18.0"
-=======
-    babel-plugin-remove-graphql-queries: ^4.23.0
-=======
-    babel-plugin-remove-graphql-queries: ^4.24.0
->>>>>>> fix: ugh
-  peerDependencies:
-    gatsby: ^4.0.0-next
-  checksum: 87e43484b5b74d242b9a134ef5446f72f9b7392e84f53d39ace75fcbd95da37c5b654f75fdbc2724c3808613b85c4d4a6893d295dcd991c4c1c075ae53d9f306
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-"gatsby-plugin-utils@npm:^3.16.0, gatsby-plugin-utils@npm:^3.17.0":
-  version: 3.17.0
-  resolution: "gatsby-plugin-utils@npm:3.17.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-plugin-utils@npm:^3.16.0, gatsby-plugin-utils@npm:^3.17.0, gatsby-plugin-utils@npm:^3.18.0":
-  version: 3.18.0
-  resolution: "gatsby-plugin-utils@npm:3.18.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/runtime": ^7.15.4
     "@gatsbyjs/potrace": ^2.3.0
@@ -14583,8 +12147,6 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
     graphql: ^15.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 34c9e1f9cbe6ecd54dbd1ccd5e57a9129cb14022a8e0c7379abaaa4260b5a6c7014091f72d9b4533e4afbbf2158a17b6058929497d69004e17ad0ec11ee09e50
   languageName: node
   linkType: hard
@@ -14592,24 +12154,6 @@ __metadata:
 "gatsby-react-router-scroll@npm:^5.22.0, gatsby-react-router-scroll@npm:^5.24.0":
   version: 5.24.0
   resolution: "gatsby-react-router-scroll@npm:5.24.0"
-=======
-  checksum: 9482031e0fea1e9ec2a9dcffbd87f6e5e499dc4f79391e6661c6d70ce354cf303a4f41b737dc0829196f39ed3d59dc0b47ef8ea19e013455308c90704440c475
-  languageName: node
-  linkType: hard
-
-"gatsby-react-router-scroll@npm:^5.22.0, gatsby-react-router-scroll@npm:^5.23.0":
-  version: 5.23.0
-  resolution: "gatsby-react-router-scroll@npm:5.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 34c9e1f9cbe6ecd54dbd1ccd5e57a9129cb14022a8e0c7379abaaa4260b5a6c7014091f72d9b4533e4afbbf2158a17b6058929497d69004e17ad0ec11ee09e50
-  languageName: node
-  linkType: hard
-
-"gatsby-react-router-scroll@npm:^5.22.0, gatsby-react-router-scroll@npm:^5.24.0":
-  version: 5.24.0
-  resolution: "gatsby-react-router-scroll@npm:5.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/runtime": ^7.15.4
     prop-types: ^15.8.1
@@ -14679,21 +12223,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-script@npm:^1.7.0, gatsby-script@npm:^1.9.0":
   version: 1.9.0
   resolution: "gatsby-script@npm:1.9.0"
-=======
-"gatsby-script@npm:^1.7.0, gatsby-script@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "gatsby-script@npm:1.8.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-script@npm:^1.7.0, gatsby-script@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "gatsby-script@npm:1.9.0"
->>>>>>> fix: ugh
   peerDependencies:
     "@gatsbyjs/reach-router": ^1.3.5
     react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
@@ -14738,8 +12270,6 @@ __metadata:
     xstate: 4.32.1
   peerDependencies:
     gatsby: ^4.0.0-next
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 6e45cf46db2862b411db57733276dcecabc869b52b24b43d3643a5132d2b4d682fec589ab9fae7fdf341abcfac995d5849fd98c870070a6d3fcf1f096439e607
   languageName: node
   linkType: hard
@@ -14747,24 +12277,6 @@ __metadata:
 "gatsby-telemetry@npm:^3.22.0, gatsby-telemetry@npm:^3.24.0":
   version: 3.24.0
   resolution: "gatsby-telemetry@npm:3.24.0"
-=======
-  checksum: 5b938fca34cde217da446b575db76499794be30f2e8e651afb92e820ea43275b5432f6aa41c531d671fcedfa66897d639835a307634256dc1c415bdcca10bbc9
-  languageName: node
-  linkType: hard
-
-"gatsby-telemetry@npm:^3.22.0, gatsby-telemetry@npm:^3.23.0":
-  version: 3.23.0
-  resolution: "gatsby-telemetry@npm:3.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 6e45cf46db2862b411db57733276dcecabc869b52b24b43d3643a5132d2b4d682fec589ab9fae7fdf341abcfac995d5849fd98c870070a6d3fcf1f096439e607
-  languageName: node
-  linkType: hard
-
-"gatsby-telemetry@npm:^3.22.0, gatsby-telemetry@npm:^3.24.0":
-  version: 3.24.0
-  resolution: "gatsby-telemetry@npm:3.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/runtime": ^7.15.4
@@ -14814,47 +12326,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "gatsby-transformer-sharp@npm:4.23.0":
   version: 4.23.0
   resolution: "gatsby-transformer-sharp@npm:4.23.0"
-=======
-"gatsby-transformer-sharp@npm:^4.23.0":
-  version: 4.24.0
-  resolution: "gatsby-transformer-sharp@npm:4.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/runtime": ^7.15.4
     "@gatsbyjs/potrace": ^2.3.0
     bluebird: ^3.7.2
     common-tags: ^1.8.2
     fs-extra: ^10.1.0
-    gatsby-plugin-utils: ^3.18.0
+    gatsby-plugin-utils: ^3.17.0
     probe-image-size: ^7.2.3
     semver: ^7.3.7
     sharp: ^0.30.7
   peerDependencies:
     gatsby: ^4.0.0-next
     gatsby-plugin-sharp: ^4.0.0-next
-  checksum: 11a263c098cba4e6ac68b5f455a0c7e5a6b1f258b89a11176165e6870e36a5490a973c51126f24a809b29be3b9d342edbc5cfef04dbac032ff8d00c7493fb60e
+  checksum: 895f650d3714b1de0b29aa22adefcff8b485c9a4d4b2ade10fa6549a233ce376706674edd588e311927450bfa75d8541fb0ce42773785905f633090113041b87
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "gatsby-worker@npm:^1.22.0, gatsby-worker@npm:^1.24.0":
   version: 1.24.0
   resolution: "gatsby-worker@npm:1.24.0"
-=======
-"gatsby-worker@npm:^1.22.0, gatsby-worker@npm:^1.23.0":
-  version: 1.23.0
-  resolution: "gatsby-worker@npm:1.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-"gatsby-worker@npm:^1.22.0, gatsby-worker@npm:^1.24.0":
-  version: 1.24.0
-  resolution: "gatsby-worker@npm:1.24.0"
->>>>>>> fix: ugh
   dependencies:
     "@babel/core": ^7.15.5
     "@babel/runtime": ^7.15.4
@@ -15041,23 +12535,8 @@ __metadata:
   linkType: hard
 
 "gatsby@npm:^4.22.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 4.24.5
-  resolution: "gatsby@npm:4.24.5"
-=======
-  version: 4.23.0
-  resolution: "gatsby@npm:4.23.0"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 4.24.1
-  resolution: "gatsby@npm:4.24.1"
->>>>>>> fix: ugh
-=======
-  version: 4.24.4
-  resolution: "gatsby@npm:4.24.4"
->>>>>>> fix: go over these components as they were not in initial pr
+  version: 4.24.6
+  resolution: "gatsby@npm:4.24.6"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -15143,23 +12622,10 @@ __metadata:
     gatsby-core-utils: ^3.24.0
     gatsby-graphiql-explorer: ^2.24.0
     gatsby-legacy-polyfills: ^2.24.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix: go over these components as they were not in initial pr
     gatsby-link: ^4.24.1
     gatsby-page-utils: ^2.24.1
     gatsby-parcel-config: 0.15.1
     gatsby-plugin-page-creator: ^4.24.1
-<<<<<<< HEAD
-=======
-    gatsby-link: ^4.24.0
-    gatsby-page-utils: ^2.24.0
-    gatsby-parcel-config: 0.15.0
-    gatsby-plugin-page-creator: ^4.24.0
->>>>>>> fix: ugh
-=======
->>>>>>> fix: go over these components as they were not in initial pr
     gatsby-plugin-typescript: ^4.24.0
     gatsby-plugin-utils: ^3.18.0
     gatsby-react-router-scroll: ^5.24.0
@@ -15245,15 +12711,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 9dfe5d8c7308151c815115a842d1a0ff6fa8763f43fc64616ae37b1ce02db531b9e7b5e9bda549b6d188013bb69f67b6a4580e2775e8f5ec9e8df33c590f3109
-=======
-  checksum: e5a1eecade215a40fef6b083793fcccb51c5751b496c831f514778c721b309586302fd574a3e0f743c6ca4c5ec228d5120c9262493e23dfbd1bcdf802da927a7
->>>>>>> fix: ugh
-=======
-  checksum: e67cf944ff94518bbedc9c8277451d779463e17c3104b6ab587d0ae6f26b71af3aedea73d913d1539c7683143ef8c1f1b71d34fc34e4cfdff7a629a60f2ce241
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 3c70d3dc329237c6012114965fafea849406a06289fb53020f8b0c80765e3fed0d7e89a4d01cb51f4505a15c19a1afcc4eeddafae7f7a3f2519e500ea62ed163
   languageName: node
   linkType: hard
 
@@ -15287,15 +12745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "get-intrinsic@npm:^1.0.1, get-intrinsic@npm:^1.0.2, get-intrinsic@npm:^1.1.0, get-intrinsic@npm:^1.1.1, get-intrinsic@npm:^1.1.3":
-=======
-"get-intrinsic@npm:^1.0.1, get-intrinsic@npm:^1.0.2, get-intrinsic@npm:^1.1.0, get-intrinsic@npm:^1.1.1, get-intrinsic@npm:^1.1.2":
->>>>>>> Reverted Yarn lock file
-=======
-"get-intrinsic@npm:^1.0.1, get-intrinsic@npm:^1.0.2, get-intrinsic@npm:^1.1.0, get-intrinsic@npm:^1.1.1, get-intrinsic@npm:^1.1.3":
->>>>>>> fix: ugh
   version: 1.1.3
   resolution: "get-intrinsic@npm:1.1.3"
   dependencies:
@@ -15434,25 +12884,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"git-up@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "git-up@npm:7.0.0"
-  dependencies:
-    is-ssh: ^1.4.0
-    parse-url: ^8.1.0
-  checksum: 2faadbab51e94d2ffb220e426e950087cc02c15d664e673bd5d1f734cfa8196fed8b19493f7bf28fe216d087d10e22a7fd9b63687e0ba7d24f0ddcfb0a266d6e
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-"git-url-parse@npm:^13.1.0":
-  version: 13.1.0
-  resolution: "git-url-parse@npm:13.1.0"
-  dependencies:
-=======
-=======
->>>>>>> fix: ugh
 "git-up@npm:^7.0.0":
   version: 7.0.0
   resolution: "git-up@npm:7.0.0"
@@ -15467,7 +12898,6 @@ __metadata:
   version: 13.1.0
   resolution: "git-url-parse@npm:13.1.0"
   dependencies:
->>>>>>> Reverted Yarn lock file
     git-up: ^7.0.0
   checksum: 212a9b0343e9199998b6a532efe2014476a7a1283af393663ca49ac28d4768929aad16d3322e2685236065ee394dbc93e7aa63a48956531e984c56d8b5edb54d
   languageName: node
@@ -16143,11 +13573,11 @@ __metadata:
   linkType: hard
 
 "hosted-git-info@npm:^5.0.0":
-  version: 5.2.0
-  resolution: "hosted-git-info@npm:5.2.0"
+  version: 5.2.1
+  resolution: "hosted-git-info@npm:5.2.1"
   dependencies:
     lru-cache: ^7.5.1
-  checksum: a997292085721707cd1c6991c22c8b7780d466dc54702ead7187d76be2c045844c347bf9e2c3f5f5349a412916d9a981321ca0c7f26e625a9c019748cc6d98d7
+  checksum: fa35df185224adfd69141f3b2f8cc31f50e705a5ebb415ccfbfd055c5b94bd08d3e658edf1edad9e2ac7d81831ac7cf261f5d219b3adc8d744fb8cdacaaf2ead
   languageName: node
   linkType: hard
 
@@ -16747,28 +14177,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
   checksum: 61fd57d03b0d984e2ed3720fb1c7a897827ea174bd44402878e059542ea8c4aeedee0ea0985998aa5cc2736b2fa6e271c08587addb5b3959ac52cf665173d1ac
-=======
-"is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.4":
-  version: 1.2.6
-  resolution: "is-callable@npm:1.2.6"
-  checksum: 7667d6a6be66df00741cfa18c657877c46a00139ea7ea7765251e9db0182745c9ee173506941a329d6914e34e59e9cc80029fb3f68bbf8c22a6c155ee6ea77b3
->>>>>>> Reverted Yarn lock file
-=======
-"is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.6":
-=======
-"is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
->>>>>>> fix: go over these components as they were not in initial pr
-  version: 1.2.7
-  resolution: "is-callable@npm:1.2.7"
-  checksum: 61fd57d03b0d984e2ed3720fb1c7a897827ea174bd44402878e059542ea8c4aeedee0ea0985998aa5cc2736b2fa6e271c08587addb5b3959ac52cf665173d1ac
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -17388,33 +14800,15 @@ __metadata:
   linkType: hard
 
 "joi@npm:^17.4.0, joi@npm:^17.4.2":
-<<<<<<< HEAD
-<<<<<<< HEAD
-  version: 17.6.4
-  resolution: "joi@npm:17.6.4"
-=======
-  version: 17.6.2
-  resolution: "joi@npm:17.6.2"
->>>>>>> fix: ugh
-=======
-  version: 17.6.3
-  resolution: "joi@npm:17.6.3"
->>>>>>> fix: go over these components as they were not in initial pr
+  version: 17.7.0
+  resolution: "joi@npm:17.7.0"
   dependencies:
     "@hapi/hoek": ^9.0.0
     "@hapi/topo": ^5.0.0
     "@sideway/address": ^4.1.3
     "@sideway/formula": ^3.0.0
     "@sideway/pinpoint": ^2.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: f16243618f8c861bdcb7ccfdef7501d04e5c8ff93c4083a0ec907230c7bf427189c5894431f345d089a986f8e4b9efca8cc42e32663ded4d4f38edde6fda5315
-=======
-  checksum: 4a29330e0be35f5c8b754b0c0e900936e083901643c09764028605c7beea937e73231bad7425c9d0168998584d2a96d5f05c8d54194d58b7166c9ba4db47eba2
->>>>>>> fix: ugh
-=======
-  checksum: a4cd53a83e68de7727ba48daa79047183d65a9bb6c2ad4f3028cb56a7526d113860c8189e95371d8d3a8315c344a478547f875daf3856f2d9477a995ca1ef05a
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 767a847936cb66787256c4351ff86e1b9e8d7383cbe81a5c827064032c2a8e8b6e938baef5ad32c4035fe4c56e537bd90aa2a952be8a0658601c920cdeb4fb3c
   languageName: node
   linkType: hard
 
@@ -17504,8 +14898,8 @@ __metadata:
   linkType: hard
 
 "jsdom@npm:^20.0.0":
-  version: 20.0.1
-  resolution: "jsdom@npm:20.0.1"
+  version: 20.0.2
+  resolution: "jsdom@npm:20.0.2"
   dependencies:
     abab: ^2.0.6
     acorn: ^8.8.0
@@ -17538,7 +14932,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 9fc0b66a866f58a28e95f5a39b167ea663dc01c9754a019c356cc517d27ff0216055f37ace69e0f4414c51084adca8d5ec71c1e6faee3b8df0941a494167c3a0
+  checksum: 1912e73ecbc7cb1e458b63c4976a1f1dd40c1cdb9f91559cfeccb08c68ad1b9918c6260bd021559ecb1a7c233fae0d0c3fdcbd2ce82df597ef9373d67c8934c0
   languageName: node
   linkType: hard
 
@@ -17829,11 +15223,6 @@ __metadata:
   linkType: hard
 
 "lerna@npm:^5.5.1":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix: go over these components as they were not in initial pr
   version: 5.6.2
   resolution: "lerna@npm:5.6.2"
   dependencies:
@@ -17854,54 +15243,7 @@ __metadata:
     "@lerna/publish": 5.6.2
     "@lerna/run": 5.6.2
     "@lerna/version": 5.6.2
-<<<<<<< HEAD
     "@nrwl/devkit": ">=14.8.1 < 16"
-=======
-  version: 5.5.2
-  resolution: "lerna@npm:5.5.2"
-  dependencies:
-    "@lerna/add": 5.5.2
-    "@lerna/bootstrap": 5.5.2
-    "@lerna/changed": 5.5.2
-    "@lerna/clean": 5.5.2
-    "@lerna/cli": 5.5.2
-    "@lerna/create": 5.5.2
-    "@lerna/diff": 5.5.2
-    "@lerna/exec": 5.5.2
-    "@lerna/import": 5.5.2
-    "@lerna/info": 5.5.2
-    "@lerna/init": 5.5.2
-    "@lerna/link": 5.5.2
-    "@lerna/list": 5.5.2
-    "@lerna/publish": 5.5.2
-    "@lerna/run": 5.5.2
-    "@lerna/version": 5.5.2
->>>>>>> Reverted Yarn lock file
-=======
-  version: 5.6.1
-  resolution: "lerna@npm:5.6.1"
-  dependencies:
-    "@lerna/add": 5.6.1
-    "@lerna/bootstrap": 5.6.1
-    "@lerna/changed": 5.6.1
-    "@lerna/clean": 5.6.1
-    "@lerna/cli": 5.6.1
-    "@lerna/command": 5.6.1
-    "@lerna/create": 5.6.1
-    "@lerna/diff": 5.6.1
-    "@lerna/exec": 5.6.1
-    "@lerna/import": 5.6.1
-    "@lerna/info": 5.6.1
-    "@lerna/init": 5.6.1
-    "@lerna/link": 5.6.1
-    "@lerna/list": 5.6.1
-    "@lerna/publish": 5.6.1
-    "@lerna/run": 5.6.1
-    "@lerna/version": 5.6.1
-=======
->>>>>>> fix: go over these components as they were not in initial pr
-    "@nrwl/devkit": ">=14.8.1 < 16"
->>>>>>> fix: ugh
     import-local: ^3.0.2
     inquirer: ^8.2.4
     npmlog: ^6.0.2
@@ -17909,19 +15251,7 @@ __metadata:
     typescript: ^3 || ^4
   bin:
     lerna: cli.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 5e06ac9f1e47e414231aa9d9e6a74f6ea7eef62e0110941b1ac1a73635cfaaae3802047e16c33c9682f5932e72653b959b2895cc49da334afbae51ff718baca3
-=======
-  checksum: acda9d667b093b059a562f3c977df1584bcad8594b25917fab6caeb52432d39305b210e913cab87b1a46d951ee6c67a6588a0359122d884d3334a3e0a2f1894e
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: cc0c609cab72bd8d008ecdd5cda10216d2b0d4292d612905e471d701149f1ee66a2a115e79937ef8d4ab3fe032962def12a86c4cd3381b930cff56a8211fab64
->>>>>>> fix: ugh
-=======
-  checksum: 5e06ac9f1e47e414231aa9d9e6a74f6ea7eef62e0110941b1ac1a73635cfaaae3802047e16c33c9682f5932e72653b959b2895cc49da334afbae51ff718baca3
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -18655,11 +15985,11 @@ __metadata:
   linkType: hard
 
 "marked@npm:^4.0.15":
-  version: 4.1.1
-  resolution: "marked@npm:4.1.1"
+  version: 4.2.0
+  resolution: "marked@npm:4.2.0"
   bin:
     marked: bin/marked.js
-  checksum: 717e3357952ee53de831bf0eb110ed075bebca2376c58bcdf7ee523ef540d45308ad6d51b2c933da0968832ea4386f31c142ca65443e77c098e84f6cce73e418
+  checksum: d3e3c2d2e192a518060ed6d4a6a78c467d705361ee03f5b3c0ddcf28f530335632340e222662f963935b60f72e40feca992352241bb94c5681106af989337600
   languageName: node
   linkType: hard
 
@@ -18967,11 +16297,11 @@ __metadata:
   linkType: hard
 
 "memfs@npm:^3.1.2, memfs@npm:^3.2.2":
-  version: 3.4.7
-  resolution: "memfs@npm:3.4.7"
+  version: 3.4.9
+  resolution: "memfs@npm:3.4.9"
   dependencies:
     fs-monkey: ^1.0.3
-  checksum: fab88266dc576dc4999e38bdf531d703fb798affac2e0dd3fc17470878486844027b2766008ba80c0103b443f52cf9068a5c00f4e1ecf04106f4b29c11855822
+  checksum: 575dfde73f4105db42ffc2fdcd06efb9037541de095bd4fe9fb29134a1a775dfe922839b30db632de76cb29354d79d8f82a5e4f5f588e21bc47358b6d058a9c6
   languageName: node
   linkType: hard
 
@@ -19534,34 +16864,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "msgpackr@npm:^1.5.4":
   version: 1.7.2
   resolution: "msgpackr@npm:1.7.2"
-=======
-"msgpackr@npm:^1.5.0, msgpackr@npm:^1.5.4":
-<<<<<<< HEAD
-  version: 1.7.0
-  resolution: "msgpackr@npm:1.7.0"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 1.7.2
-  resolution: "msgpackr@npm:1.7.2"
->>>>>>> fix: ugh
   dependencies:
     msgpackr-extract: ^2.1.2
   dependenciesMeta:
     msgpackr-extract:
       optional: true
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 156cf8938667c3a191feedaed05c8a2d7c95b53d0834c32928e849a2bd93292e4eba33e3601c79cc4cc79023161d658e91472f1719d0d5c63fb1d0f2b142fa07
-=======
-  checksum: f83c96dd4ec781fb7aa687ad3050dbfa82ad5b792f93a5f59224468d09130cf6cef2b0466f25449ccad3aa070d5a7df88bc3cd781f0d8dfe6446c6798de1d081
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 156cf8938667c3a191feedaed05c8a2d7c95b53d0834c32928e849a2bd93292e4eba33e3601c79cc4cc79023161d658e91472f1719d0d5c63fb1d0f2b142fa07
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -19600,18 +16911,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-=======
-"nan@npm:^2.14.2":
-  version: 2.17.0
-  resolution: "nan@npm:2.17.0"
-  dependencies:
-    node-gyp: latest
-  checksum: ec609aeaf7e68b76592a3ba96b372aa7f5df5b056c1e37410b0f1deefbab5a57a922061e2c5b369bae9c7c6b5e6eecf4ad2dac8833a1a7d3a751e0a7c7f849ed
-  languageName: node
-  linkType: hard
-
->>>>>>> fix: go over these components as they were not in initial pr
 "nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
@@ -19703,27 +17002,11 @@ __metadata:
   linkType: hard
 
 "node-abi@npm:^3.3.0":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 3.28.0
   resolution: "node-abi@npm:3.28.0"
   dependencies:
     semver: ^7.3.5
   checksum: ed8db5e58fc9e1400a3f74d8815b6981208a4fca2031e2c5f5986f58f7e3a1f4161dae82c655f9114892b3f46c21c02feec10fbac0f8ffcfd26a3d57447093d1
-=======
-  version: 3.25.0
-  resolution: "node-abi@npm:3.25.0"
-  dependencies:
-    semver: ^7.3.5
-  checksum: 5d10b31fe9ff3a9e34791dc217995d84e8acc7057b7112e2da6472503f20057ca14ce06a9da3c7d8cc51b3735963502be3812755165c1095ff6fb0e53c9454dc
->>>>>>> fix: ugh
-=======
-  version: 3.26.0
-  resolution: "node-abi@npm:3.26.0"
-  dependencies:
-    semver: ^7.3.5
-  checksum: 01271cf7b7e5b62a1d3d556efa4756a625b63b085dfd20558107abff3458082bfb0aed82a2985b1f82ccacd400bf3959ead5c0d1249aaf167fc88b82280f1764
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -19810,18 +17093,8 @@ __metadata:
   linkType: hard
 
 "node-gyp@npm:^9.0.0, node-gyp@npm:latest":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 9.3.0
   resolution: "node-gyp@npm:9.3.0"
-=======
-  version: 9.2.0
-  resolution: "node-gyp@npm:9.2.0"
->>>>>>> fix: ugh
-=======
-  version: 9.3.0
-  resolution: "node-gyp@npm:9.3.0"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     env-paths: ^2.2.0
     glob: ^7.1.4
@@ -19835,15 +17108,7 @@ __metadata:
     which: ^2.0.2
   bin:
     node-gyp: bin/node-gyp.js
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 589ddd3ed967724ef425f9624bfa47cf73022640ab3eba6d556e92cdc4ddef33b63fce3a467c93b995a3f61df92eafd3c3d1e8dbe4a2c00c383334487dea99c3
-=======
-  checksum: 91f0589eabbd37f0d4e3fe9918f1f9e25afc707f6e107f0133be19c5aac62e731d92abdc2b106258665a4487b18cc2878d3fcd3dc2c6cffd68da1cb2a5ccf450
->>>>>>> fix: ugh
-=======
-  checksum: 589ddd3ed967724ef425f9624bfa47cf73022640ab3eba6d556e92cdc4ddef33b63fce3a467c93b995a3f61df92eafd3c3d1e8dbe4a2c00c383334487dea99c3
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -20199,52 +17464,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"nx@npm:15.0.3, nx@npm:>=14.8.1 < 16":
-  version: 15.0.3
-  resolution: "nx@npm:15.0.3"
+"nx@npm:15.0.5, nx@npm:>=14.8.1 < 16":
+  version: 15.0.5
+  resolution: "nx@npm:15.0.5"
   dependencies:
-    "@nrwl/cli": 15.0.3
-    "@nrwl/tao": 15.0.3
-=======
-"nx@npm:14.7.8, nx@npm:>=14.6.1 < 16":
-  version: 14.7.8
-  resolution: "nx@npm:14.7.8"
-  dependencies:
-    "@nrwl/cli": 14.7.8
-    "@nrwl/tao": 14.7.8
->>>>>>> Reverted Yarn lock file
-=======
-"nx@npm:14.8.3, nx@npm:>=14.8.1 < 16":
-  version: 14.8.3
-  resolution: "nx@npm:14.8.3"
-  dependencies:
-    "@nrwl/cli": 14.8.3
-    "@nrwl/tao": 14.8.3
->>>>>>> fix: ugh
-=======
-"nx@npm:14.8.4, nx@npm:>=14.8.1 < 16":
-  version: 14.8.4
-  resolution: "nx@npm:14.8.4"
-  dependencies:
-    "@nrwl/cli": 14.8.4
-    "@nrwl/tao": 14.8.4
->>>>>>> fix: go over these components as they were not in initial pr
+    "@nrwl/cli": 15.0.5
+    "@nrwl/tao": 15.0.5
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
     "@zkochan/js-yaml": 0.0.6
-<<<<<<< HEAD
-<<<<<<< HEAD
     axios: ^1.0.0
-=======
-    axios: 0.21.1
->>>>>>> fix: ugh
-=======
-    axios: ^1.0.0
->>>>>>> fix: go over these components as they were not in initial pr
     chalk: 4.1.0
     chokidar: ^3.5.1
     cli-cursor: 3.1.0
@@ -20283,19 +17513,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  checksum: 17f4322025c51df55e06e4d41e6197824ecf449f99a9b5af11c7bd7a99e36d007e5dcaf1bd253f096c3f14e5f001dbd9449881a72a079042ee83b811e18c9102
-=======
-  checksum: 8a3e1ced1f236e5c0929bea10dc78b3f3cb7ed7a20efa31630515d4216dc22aa3c811427a0e89cd4af97df79f663e29ad4ebf206325c0c814c18498e03845910
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: e946f121814ae9513e78a28e67a308457d5002c6804d38757b784cdda50e0c7fc4ef8d097bff786a3a67a30a26d7c4ca76afda839214def3657552fd572adf89
->>>>>>> fix: ugh
-=======
-  checksum: 28026fa22c527f466a38ccc583bcf12cb5bdf971d69d4db51e2eac2b79784fe4709f315fdaae8700eae691dbc8a80e1f91b2d475f9f1b34d49b81f7b83667e0a
->>>>>>> fix: go over these components as they were not in initial pr
+  checksum: 27168b5d3fa8984e4508cce51e2fa3b9bed748de98dd154e59e06ea0e313def046ef103b45649c63cbf8dfe4e67ad737bcbe418ef9d13324c49623c8f76e0034
   languageName: node
   linkType: hard
 
@@ -20583,11 +17801,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "ordered-binary@npm:^1.2.4":
-=======
-"ordered-binary@npm:^1.0.0, ordered-binary@npm:^1.2.4":
->>>>>>> fix: ugh
   version: 1.4.0
   resolution: "ordered-binary@npm:1.4.0"
   checksum: 951fecb400b4e4e5176983679994cb7eb0a3ed1da8406d2bb1f7e76417cb61af85ea557d184cccfa3fe50b4c1582a69a4b2e20625f0d56083330b11bf1bcdeb4
@@ -21002,18 +18216,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"parse-path@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "parse-path@npm:7.0.0"
-  dependencies:
-    protocols: ^2.0.0
-  checksum: 244b46523a58181d251dda9b888efde35d8afb957436598d948852f416d8c76ddb4f2010f9fc94218b4be3e5c0f716aa0d2026194a781e3b8981924142009302
-  languageName: node
-  linkType: hard
-
-=======
->>>>>>> fix: ugh
 "parse-path@npm:^7.0.0":
   version: 7.0.0
   resolution: "parse-path@npm:7.0.0"
@@ -21030,18 +18232,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"parse-url@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "parse-url@npm:8.1.0"
-  dependencies:
-    parse-path: ^7.0.0
-  checksum: b93e21ab4c93c7d7317df23507b41be7697694d4c94f49ed5c8d6288b01cba328fcef5ba388e147948eac20453dee0df9a67ab2012415189fff85973bdffe8d9
-  languageName: node
-  linkType: hard
-
-=======
->>>>>>> fix: ugh
 "parse-url@npm:^8.1.0":
   version: 8.1.0
   resolution: "parse-url@npm:8.1.0"
@@ -21468,15 +18658,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-convert-values@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "postcss-convert-values@npm:5.1.2"
+"postcss-convert-values@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "postcss-convert-values@npm:5.1.3"
   dependencies:
-    browserslist: ^4.20.3
+    browserslist: ^4.21.4
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.2.15
-  checksum: b1615daf12d3425bf4edee9451de402702f41019ccfc85f7883d87438becf533b3061a5a3567865029c534147a6c90e89b4c42ae6741c768c879a68d35aea812
+  checksum: df48cdaffabf9737f9cfdc58a3dc2841cf282506a7a944f6c70236cff295d3a69f63de6e0935eeb8a9d3f504324e5b4e240abc29e21df9e35a02585d3060aeb5
   languageName: node
   linkType: hard
 
@@ -21539,29 +18729,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-merge-longhand@npm:^5.1.6":
-  version: 5.1.6
-  resolution: "postcss-merge-longhand@npm:5.1.6"
+"postcss-merge-longhand@npm:^5.1.7":
+  version: 5.1.7
+  resolution: "postcss-merge-longhand@npm:5.1.7"
   dependencies:
     postcss-value-parser: ^4.2.0
-    stylehacks: ^5.1.0
+    stylehacks: ^5.1.1
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 327b5474d9e84b8d8aed3e24444938cbf1274326d357b551b700203f03f7bcb615381b92b933770ffe35b154677205af08875373413f2c5e625c34730599707b
+  checksum: 81c3fc809f001b9b71a940148e242bdd6e2d77713d1bfffa15eb25c1f06f6648d5e57cb21645746d020a2a55ff31e1740d2b27900442913a9d53d8a01fb37e1b
   languageName: node
   linkType: hard
 
-"postcss-merge-rules@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "postcss-merge-rules@npm:5.1.2"
+"postcss-merge-rules@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "postcss-merge-rules@npm:5.1.3"
   dependencies:
-    browserslist: ^4.16.6
+    browserslist: ^4.21.4
     caniuse-api: ^3.0.0
     cssnano-utils: ^3.1.0
     postcss-selector-parser: ^6.0.5
   peerDependencies:
     postcss: ^8.2.15
-  checksum: fcbc415999a35248dcce03064a5456123663507b05ff0f1de5c97b6effc68014ab0ffd5f06e71cf08d401f037932e271b7db33124c73260f3630a1441212a0c8
+  checksum: 0ddaddff98cd7f3fac2b0e716c641f529a61a8668be6d5b48d60770d0a1246126088e1d606f309b9748ff598a3794f3fd6dd5b8c3d79112f84744cab5375d4d9
   languageName: node
   linkType: hard
 
@@ -21589,16 +18779,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-minify-params@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "postcss-minify-params@npm:5.1.3"
+"postcss-minify-params@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "postcss-minify-params@npm:5.1.4"
   dependencies:
-    browserslist: ^4.16.6
+    browserslist: ^4.21.4
     cssnano-utils: ^3.1.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 2d218f6b82474310c866b690210595a5e6a4c695f174f9100b018adb4a171bd67b1adaba26c241b3d41a4ea0f4962e0f5a77cf12ae60d9db76f80b0c7cbd6bcd
+  checksum: bd63e2cc89edcf357bb5c2a16035f6d02ef676b8cede4213b2bddd42626b3d428403849188f95576fc9f03e43ebd73a29bf61d33a581be9a510b13b7f7f100d5
   languageName: node
   linkType: hard
 
@@ -21721,15 +18911,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-normalize-unicode@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "postcss-normalize-unicode@npm:5.1.0"
+"postcss-normalize-unicode@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "postcss-normalize-unicode@npm:5.1.1"
   dependencies:
-    browserslist: ^4.16.6
+    browserslist: ^4.21.4
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 3570c90050f190811b5dbf7b4cf4f30f0b627c1ba5fbe5ad332e8b0aa7ef14b3d0aa2af1cb1074d0267aec8c9771e28866d867c8a8a0c433b6c34e50445f9c16
+  checksum: 4c24d26cc9f4b19a9397db4e71dd600dab690f1de8e14a3809e2aa1452dbc3791c208c38a6316bbc142f29e934fdf02858e68c94038c06174d78a4937e0f273c
   languageName: node
   linkType: hard
 
@@ -21768,15 +18958,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-reduce-initial@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "postcss-reduce-initial@npm:5.1.0"
+"postcss-reduce-initial@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "postcss-reduce-initial@npm:5.1.1"
   dependencies:
-    browserslist: ^4.16.6
+    browserslist: ^4.21.4
     caniuse-api: ^3.0.0
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 2cb10fa3fa7d7df9e4376df64d19177debd5cfe6d8fde52327d27de425eb28d5d85fa45c857cf7c0aed35d16455b6f4762b53959480f92a1dfa4b51a1d780a32
+  checksum: 1b704aba8c38103cbb5a75c6201dbf58ec2f3a978013c7f7e8957fd3bf3282f992050dec5a01bc050d031bad836e187dd6622b922ca78ab92bcd0afd21fb0b98
   languageName: node
   linkType: hard
 
@@ -21842,31 +19032,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.11, postcss@npm:^8.4.16":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 8.4.18
   resolution: "postcss@npm:8.4.18"
-=======
-  version: 8.4.17
-  resolution: "postcss@npm:8.4.17"
->>>>>>> fix: ugh
-=======
-  version: 8.4.18
-  resolution: "postcss@npm:8.4.18"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     nanoid: ^3.3.4
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 9349fd99849b2e3d2e134ff949b7770ecb12375f352723ce2bcc06167eba3850ea7844c1b191a85cd915d6a396b4e8ee9a5267e6cc5d8d003d0cbc7a97555d39
-=======
-  checksum: a6d9096dd711e17f7b1d18ff5dcb4fdedf3941d5a3dc8b0e4ea873b8f31972d57f73d6da9a8aed7ff389eb52190ed34f6a94f299a7f5ddc68b08a24a48f77eb9
->>>>>>> fix: ugh
-=======
-  checksum: 9349fd99849b2e3d2e134ff949b7770ecb12375f352723ce2bcc06167eba3850ea7844c1b191a85cd915d6a396b4e8ee9a5267e6cc5d8d003d0cbc7a97555d39
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -21880,35 +19052,20 @@ __metadata:
   linkType: hard
 
 "preact-render-to-string@npm:^5.2.4":
-<<<<<<< HEAD
   version: 5.2.6
   resolution: "preact-render-to-string@npm:5.2.6"
-=======
-  version: 5.2.5
-  resolution: "preact-render-to-string@npm:5.2.5"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-<<<<<<< HEAD
   checksum: be8d5d8fb502d422c503e68af7bcccb6facd942f3ae9a4d093ebe3f1d4f0b15c540624bdac434d53a2a8e8fb7afa4606383414e937c40933ca43445470a026ff
-=======
-  checksum: 42a735274a190577e3a1fc785ab179a8ec422345d0fd24402146aa2e3c2b216b724c94d569677f744e366c2fbbe5619bc4ab8270cb8036c366d524b54e82fd3f
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
 "preact@npm:^10.11.0":
-<<<<<<< HEAD
   version: 10.11.2
   resolution: "preact@npm:10.11.2"
   checksum: 92b4087a4048595e43fc5c005e9a1f3c890ec83657689de9b40b1894e26f8c2b6b071c63e08941a44044d1612532f8313483b62e3d6e1aa3c39bde27614ed790
-=======
-  version: 10.11.1
-  resolution: "preact@npm:10.11.1"
-  checksum: 4c4c450d8d8f6ad9ae027bb2baa7ec36b8a97241d7e40258b6f5480ac6cddb43f3e33011c82fd380fe94727622037253e09241cd1b29e0a2be77b58ef75ee425
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -24814,15 +21971,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylehacks@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "stylehacks@npm:5.1.0"
+"stylehacks@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "stylehacks@npm:5.1.1"
   dependencies:
-    browserslist: ^4.16.6
+    browserslist: ^4.21.4
     postcss-selector-parser: ^6.0.4
   peerDependencies:
     postcss: ^8.2.15
-  checksum: 310b3452c11fd443b0d327aa2d5b43ae7479407339204b7ad11cf2e16d33b690c1cbf47a21b737ef112411e53563f0f996c5fa3642d135c896329950a008277f
+  checksum: 11175366ef52de65bf06cefba0ddc9db286dc3a1451fd2989e74c6ea47091a02329a4bf6ce10b1a36950056927b6bbbe47c5ab3a1f4c7032df932d010fbde5a2
   languageName: node
   linkType: hard
 
@@ -24934,30 +22091,12 @@ __metadata:
   linkType: hard
 
 "swiper@npm:^8.3.2":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 8.4.4
   resolution: "swiper@npm:8.4.4"
   dependencies:
     dom7: ^4.0.4
     ssr-window: ^4.0.2
   checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
-=======
-  version: 8.4.2
-  resolution: "swiper@npm:8.4.2"
-  dependencies:
-    dom7: ^4.0.4
-    ssr-window: ^4.0.2
-  checksum: 84f987c8d399ed054002052d00937036d74705bf8177a9f6e7ffb035fbc9aa5b88c833503970df44f86330e632694af9d948baddc7ac32233c8d58756924cccf
->>>>>>> Reverted Yarn lock file
-=======
-  version: 8.4.4
-  resolution: "swiper@npm:8.4.4"
-  dependencies:
-    dom7: ^4.0.4
-    ssr-window: ^4.0.2
-  checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -25021,8 +22160,8 @@ __metadata:
   linkType: hard
 
 "tar@npm:^6.1.0, tar@npm:^6.1.11, tar@npm:^6.1.2":
-  version: 6.1.11
-  resolution: "tar@npm:6.1.11"
+  version: 6.1.12
+  resolution: "tar@npm:6.1.12"
   dependencies:
     chownr: ^2.0.0
     fs-minipass: ^2.0.0
@@ -25030,7 +22169,7 @@ __metadata:
     minizlib: ^2.1.1
     mkdirp: ^1.0.3
     yallist: ^4.0.0
-  checksum: a04c07bb9e2d8f46776517d4618f2406fb977a74d914ad98b264fc3db0fe8224da5bec11e5f8902c5b9bcb8ace22d95fbe3c7b36b8593b7dfc8391a25898f32f
+  checksum: 49d72e4420944e7ede2782d6b0826a6ede6cdab23c7de63470917e7a78166bc4d5b1a96279d3d79a85f1ba5a17cd37c0acbb3cbff19a07447691445b8b051c55
   languageName: node
   linkType: hard
 
@@ -25418,9 +22557,9 @@ __metadata:
   linkType: hard
 
 "tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:~2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+  version: 2.4.1
+  resolution: "tslib@npm:2.4.1"
+  checksum: 19480d6e0313292bd6505d4efe096a6b31c70e21cf08b5febf4da62e95c265c8f571f7b36fcc3d1a17e068032f59c269fab3459d6cd3ed6949eafecf64315fca
   languageName: node
   linkType: hard
 
@@ -25580,58 +22719,22 @@ __metadata:
   linkType: hard
 
 "typescript@npm:^3 || ^4, typescript@npm:^4.6.4":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 4.8.4
   resolution: "typescript@npm:4.8.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 3e4f061658e0c8f36c820802fa809e0fd812b85687a9a2f5430bc3d0368e37d1c9605c3ce9b39df9a05af2ece67b1d844f9f6ea8ff42819f13bcb80f85629af0
-=======
-  version: 4.8.3
-  resolution: "typescript@npm:4.8.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 8286a5edcaf3d68e65c451aa1e7150ad1cf53ee0813c07ec35b7abdfdb10f355ecaa13c6a226a694ae7a67785fd7eeebf89f845da0b4f7e4a35561ddc459aba0
->>>>>>> Reverted Yarn lock file
-=======
-  version: 4.8.4
-  resolution: "typescript@npm:4.8.4"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 3e4f061658e0c8f36c820802fa809e0fd812b85687a9a2f5430bc3d0368e37d1c9605c3ce9b39df9a05af2ece67b1d844f9f6ea8ff42819f13bcb80f85629af0
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^3 || ^4#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 4.8.4
   resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
-=======
-  version: 4.8.3
-  resolution: "typescript@patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 2222d2382fb3146089b1d27ce2b55e9d1f99cc64118f1aba75809b693b856c5d3c324f052f60c75b577947fc538bc1c27bad0eb76cbdba9a63a253489504ba7e
->>>>>>> Reverted Yarn lock file
-=======
-  version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=a1c5e5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
@@ -25643,35 +22746,11 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 3.17.4
   resolution: "uglify-js@npm:3.17.4"
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 7b3897df38b6fc7d7d9f4dcd658599d81aa2b1fb0d074829dd4e5290f7318dbca1f4af2f45acb833b95b1fe0ed4698662ab61b87e94328eb4c0a0d3435baf924
-=======
-  version: 3.17.1
-  resolution: "uglify-js@npm:3.17.1"
-  bin:
-    uglifyjs: bin/uglifyjs
-  checksum: 5e24ad48e096d309e77a462fa0508a9bfe33e2ab00e1bd21dc8bd5d035cf0b58063914bef1c6d6aca78e9e5bbe619714b142ffc646165702e3714f4cfbc7151c
->>>>>>> Reverted Yarn lock file
-=======
-  version: 3.17.2
-  resolution: "uglify-js@npm:3.17.2"
-  bin:
-    uglifyjs: bin/uglifyjs
-  checksum: 128233638176abe6cc0ec0f1dbae7bcb3f02edd78eb5c7752b4f379ec9d29032cd2edf06b2522dbeba0a1f05afb25f6eaffe638581da6d8554bd4c060d6622b1
->>>>>>> fix: ugh
-=======
-  version: 3.17.3
-  resolution: "uglify-js@npm:3.17.3"
-  bin:
-    uglifyjs: bin/uglifyjs
-  checksum: 2650b2e0385fe6bf68bc0b7746028fd004bbe839447c28a59f8a9e458187e897a5057900cb715b3be4cf7cf3f1d10217198210c5c23c0bffcb20feca2de5bb17
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -26124,18 +23203,8 @@ __metadata:
   linkType: hard
 
 "update-browserslist-db@npm:^1.0.9":
-<<<<<<< HEAD
-<<<<<<< HEAD
   version: 1.0.10
   resolution: "update-browserslist-db@npm:1.0.10"
-=======
-  version: 1.0.9
-  resolution: "update-browserslist-db@npm:1.0.9"
->>>>>>> Reverted Yarn lock file
-=======
-  version: 1.0.10
-  resolution: "update-browserslist-db@npm:1.0.10"
->>>>>>> fix: go over these components as they were not in initial pr
   dependencies:
     escalade: ^3.1.1
     picocolors: ^1.0.0
@@ -26143,15 +23212,7 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     browserslist-lint: cli.js
-<<<<<<< HEAD
-<<<<<<< HEAD
   checksum: 12db73b4f63029ac407b153732e7cd69a1ea8206c9100b482b7d12859cd3cd0bc59c602d7ae31e652706189f1acb90d42c53ab24a5ba563ed13aebdddc5561a0
-=======
-  checksum: f625899b236f6a4d7f62b56be1b8da230c5563d1fef84d3ef148f2e1a3f11a5a4b3be4fd7e3703e51274c116194017775b10afb4de09eb2c0d09d36b90f1f578
->>>>>>> Reverted Yarn lock file
-=======
-  checksum: 12db73b4f63029ac407b153732e7cd69a1ea8206c9100b482b7d12859cd3cd0bc59c602d7ae31e652706189f1acb90d42c53ab24a5ba563ed13aebdddc5561a0
->>>>>>> fix: go over these components as they were not in initial pr
   languageName: node
   linkType: hard
 
@@ -26663,9 +23724,9 @@ __metadata:
   linkType: hard
 
 "webpack-stats-plugin@npm:^1.0.3":
-  version: 1.1.0
-  resolution: "webpack-stats-plugin@npm:1.1.0"
-  checksum: f692f3003813122a1745607c1db78fbcdf51dca570984a591f53f8e6e4a856ebb1490c43837ad4728ca2b62aed9bdadecb79e5e04efc5bff41ff075e5d809c54
+  version: 1.1.1
+  resolution: "webpack-stats-plugin@npm:1.1.1"
+  checksum: aa553ccfb9389f2d8a2d04eb6289230bc323edb11b0cbdd676d41617dd790a7f0d0844c46b927a9465139b3edb9da2cc7a2ef664891920c052ef4fa5f2797230
   languageName: node
   linkType: hard
 
@@ -27014,13 +24075,8 @@ __metadata:
   linkType: hard
 
 "ws@npm:^8.9.0":
-<<<<<<< HEAD
   version: 8.10.0
   resolution: "ws@npm:8.10.0"
-=======
-  version: 8.9.0
-  resolution: "ws@npm:8.9.0"
->>>>>>> fix: ugh
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ^5.0.2
@@ -27029,11 +24085,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-<<<<<<< HEAD
   checksum: 3a32e15dffe633dd5ce99659793dbcf1440ea25d2da1060c88cbd22efdfb7986a6933e68aaa4b098fc3f1f7870cb386afd378a1ceaca4b31748471576d5a8b52
-=======
-  checksum: 23aa0f021b2eb65c108ec4c3e08c0d81ba01f82b500432dfe327fd6be36079c1d81fdb0eac6464d2a0eb49904d34a9ab8c59619d673fa07b8346f83aeb0cbf12
->>>>>>> fix: ugh
   languageName: node
   linkType: hard
 
