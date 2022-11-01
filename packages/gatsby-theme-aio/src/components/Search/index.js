@@ -308,10 +308,10 @@ const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowS
             }
 
             const reply = JSON.stringify({ received: message.localPathName });
-            const targetOrigin = setTargetOrigin();
-            if (targetOrigin) {
-              parent.postMessage(reply, targetOrigin);
-            }
+            parent.postMessage(reply, "*");
+            // const targetOrigin = setTargetOrigin();
+            // if (targetOrigin) {
+            // }
           }
         } catch (e) {
           console.error(e);
