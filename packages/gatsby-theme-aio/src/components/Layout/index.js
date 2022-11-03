@@ -338,7 +338,7 @@ export default ({ children, pageContext, location }) => {
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
 
-  if (true /* pathPrefix === "/search-frame" */) {
+  if (pathPrefix === "/search-frame") {
     return (
       <>
         <Helmet>
@@ -454,7 +454,6 @@ export default ({ children, pageContext, location }) => {
           {hasSearch && indexAll && (
             <Search
               algolia={algolia}
-              // passSearchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
               indexAll={indexAll}
               showSearch={true}
               setShowSearch={setShowSearch}
@@ -694,7 +693,6 @@ export default ({ children, pageContext, location }) => {
             {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
-                // passSearchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
                 indexAll={indexAll}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}

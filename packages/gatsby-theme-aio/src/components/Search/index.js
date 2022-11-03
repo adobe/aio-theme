@@ -78,7 +78,6 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   else {
     const searchProductNames = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL);
     const localProductIndexes = getIndexesFromProduct(searchProductNames[0]);
-    // const localProductIndexes = indexAll getIndexesFromProduct(searchProductNames[0]);
     searchIndex = [...localProductIndexes, ...indexes.filter((index) => !searchProductNames.includes(index))].filter(index => indexes.includes(index));
   }
 
@@ -136,13 +135,20 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIn
 };
 
 const mapSearchResults = (hits, results) => {
-  hits.forEach(({ objectID, url, _highlightResult }) => {
+  hits.forEach(({ objectID, url, path, _highlightResult }) => {
     let urlPath = ''
-    if (url.includes('https://developer.adobe.com')) {
-      urlPath = url.replace('https://developer.adobe.com', '');
+    if (path) {
+      // console.log(path);
+      urlPath = path;
     } else {
-      urlPath = url;
+      // console.log(url);
+      if (url.includes('https://developer.adobe.com')) {
+        urlPath = url.replace('https://developer.adobe.com', '');
+      } else {
+        urlPath = url;
+      }
     }
+   
     // TODO corrupted record url check
     if (!isExternalLink(urlPath)) {
       // Verify url is unique
@@ -192,7 +198,7 @@ const setTargetOrigin = () => {
 //   }
 // }
 
-const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+const Search = ({ algolia, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
@@ -309,8 +315,10 @@ const Search = ({ algolia, /* passSearchIndex, */ indexAll, showSearch, setShowS
 
             const reply = JSON.stringify({ received: message.localPathName });
             parent.postMessage(reply, "*");
+            // // wip add security feature for expected / target origins
             // const targetOrigin = setTargetOrigin();
             // if (targetOrigin) {
+            //   parent.postMessage(reply, targetOrigin);
             // }
           }
         } catch (e) {
