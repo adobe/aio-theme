@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3-dc-revert-2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3-dc-revert-1..@adobe/gatsby-theme-aio@4.6.3-de-revert-2) (2022-11-03)
+
+### Fix
+
+* Remove lmdb-store as depdendency [32cca81](https://github.com/adobe/aio-theme/commit/32cca8107e73cfb41f6b4e3c7dab1114e2294060).
+
+
 ## [4.6.3-dc-revert-1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3-dc-revert..@adobe/gatsby-theme-aio@4.6.3-de-revert-1) (2022-09-23)
 
 ### Fix
