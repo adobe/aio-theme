@@ -148,7 +148,7 @@ const mapSearchResults = (hits, results) => {
         urlPath = url;
       }
     }
-   
+
     // TODO corrupted record url check
     if (!isExternalLink(urlPath)) {
       // Verify url is unique
@@ -300,29 +300,27 @@ const Search = ({ algolia, indexAll, showSearch, setShowSearch, searchButtonId, 
         // const expectedOrigin = setExpectedOrigin();
         // if (e.origin !== expectedOrigin) return;
 
-        try {
-          const message = JSON.parse(e.data);
-          if (message.localPathName) {
-            let localPathName = message.localPathName;
-            // make sure path name has a slash at start/end to match path-prefix format 
-            if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
-            if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
-            const localProduct = indexAll.find(product => product.productIndices.some(idx => { return idx.indexPathPrefix === message.localPathName }));
+        const message = JSON.parse(e.data);
+        if (message.localPathName) {
+          let localPathName = message.localPathName;
+          // make sure path name has a slash at start/end to match path-prefix format 
+          if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
+          if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
+          const localProduct = indexAll.find(product => product.productIndices.some(idx => {
+            return idx.indexPathPrefix.startsWith(message.localPathName);
+          }));
 
-            if (localProduct.productName) {
-              setSearchIndex([localProduct.productName, ...searchIndex]);
-            }
-
-            const reply = JSON.stringify({ received: message.localPathName });
-            parent.postMessage(reply, "*");
-            // // wip add security feature for expected / target origins
-            // const targetOrigin = setTargetOrigin();
-            // if (targetOrigin) {
-            //   parent.postMessage(reply, targetOrigin);
-            // }
+          if (localProduct?.productName) {
+            setSearchIndex([localProduct.productName, ...searchIndex]);
           }
-        } catch (e) {
-          console.error(e);
+
+          const reply = JSON.stringify({ received: message.localPathName });
+          parent.postMessage(reply, "*");
+          // // wip add security feature for expected / target origins
+          // const targetOrigin = setTargetOrigin();
+          // if (targetOrigin) {
+          //   parent.postMessage(reply, targetOrigin);
+          // }
         }
       });
     };
@@ -597,7 +595,18 @@ const Search = ({ algolia, indexAll, showSearch, setShowSearch, searchButtonId, 
                 {searchSuggestionResults.map((searchSuggestion) => {
                   const to = `${location.origin}${searchSuggestion.url}`;
                   const title = searchSuggestion._highlightResult.title?.value ? searchSuggestion._highlightResult.title.value : "";
-                  const content = searchSuggestion._highlightResult.content?.value ? searchSuggestion._highlightResult.content.value : "";
+                  const descriptions = Object.entries(searchSuggestion._highlightResult).filter(optn => optn[1].matchedWords.length > 0);
+                  let content = "";
+                  if (descriptions.length > 1) {
+                    descriptions.sort((a, b) => {
+                      return a[1].value.length > b[1].value.length ? -1 : 1;
+                    });
+                    content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                  } else {
+                    content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                  }
+
+                  content = content.substring(0, 250);
 
                   return (
                     <MenuItem key={searchSuggestion.objectID} href={to}>
@@ -823,7 +832,18 @@ const Search = ({ algolia, indexAll, showSearch, setShowSearch, searchButtonId, 
                   {searchResults.map((searchResult) => {
                     const to = `${location.origin}${searchResult.url}`;
                     const title = searchResult._highlightResult.title?.value ? searchResult._highlightResult.title.value : "";
-                    const content = searchResult._highlightResult.content?.value ? searchResult._highlightResult.content.value : "";
+                    const descriptions = Object.entries(searchResult._highlightResult).filter(optn => optn[1].matchedWords.length > 0);
+                    let content = "";
+                    if (descriptions.length > 1) {
+                      descriptions.sort((a, b) => {
+                        return a[1].value.length > b[1].value.length ? -1 : 1;
+                      });
+                      content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                    } else {
+                      content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                    }
+
+                    content = content.substring(0, 250);
 
                     return (
                       <div
