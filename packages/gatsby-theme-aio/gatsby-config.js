@@ -75,6 +75,7 @@ module.exports = {
           default: require.resolve(`./src/components/MDXFilter/index.js`),
         },
         plugins: [
+          `gatsby-remark-mermaid`,
           `gatsby-transformer-remark`,
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
@@ -82,7 +83,21 @@ module.exports = {
         ],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-transformer-remark`,
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              language: 'mermaid',
+              theme: 'default',
+              viewport: {
+                width: 100,
+                height: 100
+              },
+              mermaidOptions: {
+                themeCSS: ".node rect { fill: #f5f5f5; }"
+              }
+            }
+          },
+          {
+            resolve: 'gatsby-transformer-remark',
           },
           {
             resolve: `gatsby-remark-autolink-headers`,

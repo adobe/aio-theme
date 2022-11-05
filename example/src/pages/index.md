@@ -37,11 +37,20 @@ Adobe Product API offers limitless ways to integrate your most important custome
 
 #### Resources
 
-* [Quickstart Guide](https://adobe.io?aio_internal)
-* [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
-* [Adobe InDesign](/AdobeInDesign.pdf)
+*  [Quickstart Guide](https://adobe.io?aio_internal)
+*  [Adobe Analytics Github Repo](https://github.com/AdobeDocs/analytics-2.0-apis)
+*  [Adobe InDesign](/AdobeInDesign.pdf)
 
 <Overview />
+
+## Mermaid code blocks
+
+```mermaid
+graph LR
+install[Install Plugin]
+install --> configure[Configure Plugin]
+configure --> draw[Draw Fancy Diagrams]
+```
 
 ## Discover
 
