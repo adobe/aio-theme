@@ -78,10 +78,6 @@ const getAvatar = async (userId) => {
   }
 };
 
-const toggleSideNavExpanded = (setSideNavExpanded) => {
-  setSideNavExpanded((sideNavExpanded) => !sideNavExpanded);
-};
-
 const GlobalHeader = ({
   hasIMS,
   ims,
@@ -125,6 +121,10 @@ const GlobalHeader = ({
     if (selectedTab?.current) {
       positionIndicator(selectedTabIndicatorRef, selectedTab);
     }
+  };
+
+  const toggleSideNavExpanded = () => {
+    setSideNavExpanded(!sideNavExpanded);
   };
 
   useEffect(() => {

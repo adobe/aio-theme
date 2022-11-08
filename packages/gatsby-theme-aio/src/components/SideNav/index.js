@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
@@ -22,10 +22,25 @@ import {ChevronRight} from "../Icons";
 
 const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
-
+  const [sideNavClick, setSideNavClick] = useState(false);
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some((page) => page.header);
   const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
+  const ref = useRef(null);
+  const handleClickOutside = event => {
+    if (ref.current &&
+      !ref.current.contains(event.target)) {
+      // reset it when user did not click on the side nav.
+      setSideNavClick(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
 
   const renderSubtree = (pages, level) =>
     pages
@@ -34,7 +49,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
         const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
         const id = nextId();
 
-        if (isSelected && !expandedPages.includes(page.href)) {
+        if (isSelected && !sideNavClick && !expandedPages.includes(page.href)) {
           setExpandedPages((pages) => [...pages, page.href]);
         }
 
@@ -68,10 +83,9 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
               </a>
             ) : (
               <GatsbyLink
-                onClick={(event) => {
-                  if (page?.pages?.length && !page.header && page.pages.find((subPage) => subPage.href === page.href)) {
-                    event.preventDefault();
-
+                onClick={() => {
+                  setSideNavClick(true);
+                  if (page?.pages?.length && !page.header) {
                     if (expandedPages.includes(page.href)) {
                       setExpandedPages((pages) => pages.filter((href) => href !== page.href));
                     } else {
@@ -118,6 +132,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
 
   return (
     <nav
+      ref={ref}
       id="side-menu"
       role="navigation"
       aria-label="Primary"
