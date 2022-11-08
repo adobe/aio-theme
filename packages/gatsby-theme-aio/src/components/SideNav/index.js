@@ -18,6 +18,7 @@ import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import nextId from 'react-id-generator';
+import {ChevronRight} from "../Icons";
 
 const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
@@ -83,6 +84,15 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 to={page.href}
                 className="spectrum-SideNav-itemLink">
                 {page.title}
+                {page.pages && page.pages.length > 0 ? <ChevronRight
+                  css={css` position:absolute; right:0px;
+                            width: var(--spectrum-global-dimension-size-125) !important;
+                            height: var(--spectrum-global-dimension-size-125) !important;
+                            margin-left: var(--spectrum-global-dimension-size-100);
+                            transition: transform var(--spectrum-global-animation-duration-100) ease-in-out;
+                            ${expandedPages.includes(page.href) && `transform: rotate(90deg);`}
+                          `}
+                /> : null}
               </GatsbyLink>
             )}
             {page.pages && (
