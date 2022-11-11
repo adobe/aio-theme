@@ -53,7 +53,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
       // The iframe to which a connection should be made
       iframe: iframe.current,
       // Manually set origin as auto-detection may fail, as the src of the iframe is set later
-      childOrigin: new URL(iframeSrc).origin,
+      childOrigin: isExternalLink(src) ? new URL(src).origin : window.origin,
       // Methods the parent is exposing to the child
       methods: {
         scrollTop(position = 0) {
