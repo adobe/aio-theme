@@ -20,7 +20,7 @@ const Breadcrumbs = ({ pages }) => (
   <nav aria-label="Breadcrumb" role="navigation">
     <ul className="spectrum-Breadcrumbs spectrum-Breadcrumbs--sizeM">
       {pages.map((page, index) =>
-        page ? (
+        page && !page.header ? (
           <li className="spectrum-Breadcrumbs-item spectrum-Breadcrumbs--sizeM" key={index}>
             <GatsbyLink className="spectrum-Breadcrumbs-itemLink" to={page.href}>
               {page.title}
