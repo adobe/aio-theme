@@ -18,7 +18,9 @@ import '@spectrum-css/typography';
 import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, MOBILE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import LinkedInRetargeting from './linkedInRetargetting'
 
+const DESKTOP_SCREEN_MAX_WIDTH = '1060px'; 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
@@ -187,7 +189,7 @@ const Footer = ({ hasSideNav = false }) => (
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${layoutColumns(12)};
+          max-width: ${DESKTOP_SCREEN_MAX_WIDTH};
           margin: 0 auto;
           ${hasSideNav &&
           'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};
@@ -224,7 +226,7 @@ const Footer = ({ hasSideNav = false }) => (
           css={css`
             display: grid;
             grid-template-areas: 'apis blogs support developer';
-            grid-template-columns: 30% 22% 19%;
+            grid-template-columns: 25%;
             gap: var(--spectrum-global-dimension-size-400);
 
             @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
@@ -261,6 +263,15 @@ const Footer = ({ hasSideNav = false }) => (
                       </Link>
                     </li>
                   ))}
+                  {services.map(({ title, path }, i) => (
+                    <li key={i}>
+                      <Link isQuiet={true} variant="secondary">
+                        <a {...getExternalLinkProps(path)} href={path}>
+                          {title}
+                        </a>
+                      </Link>
+                    </li>
+                  ))}
                   <li>
                     <Link isQuiet={true}>
                       <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path}>
@@ -270,7 +281,7 @@ const Footer = ({ hasSideNav = false }) => (
                   </li>
                 </List>
               </div>
-              <div
+              {/* <div
                 css={css`
                   margin-left: var(--spectrum-global-dimension-size-400);
                 `}>
@@ -285,7 +296,7 @@ const Footer = ({ hasSideNav = false }) => (
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </div>
             <div
               css={css`
@@ -430,7 +441,7 @@ const Footer = ({ hasSideNav = false }) => (
                         />
                       </svg>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...getExternalLinkProps(path)} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path} aria-label={title}>
                           {title}
                         </a>
                       </Link>
@@ -442,7 +453,7 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID} href="#" aria-hidden="true" focusable="false" tabindex="-1"></a>
+                        <a id={OPEN_PRIVACY_ID} href="#/" aria-label="Cookie preferences" ></a>
                       </Link>
                     </li>
                   );
@@ -451,7 +462,7 @@ const Footer = ({ hasSideNav = false }) => (
                 return (
                   <li key={i}>
                     <Link isQuiet={true} variant="secondary">
-                      <a {...getExternalLinkProps(path)} href={path}>
+                      <a {...getExternalLinkProps(path)} href={path} aria-label={title}>
                         {title}
                       </a>
                     </Link>
@@ -476,6 +487,7 @@ const Footer = ({ hasSideNav = false }) => (
           </div>
         </div>
       </div>
+      <LinkedInRetargeting/>
     </footer>
   </>
 );

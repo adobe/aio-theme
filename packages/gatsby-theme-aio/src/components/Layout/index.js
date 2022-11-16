@@ -139,6 +139,7 @@ export default ({ children, pageContext, location }) => {
           window.adobeIMS.initialize();
         } catch (e) {
           console.error(`AIO: IMS error.`);
+        } finally {
           setIsLoadingIms(false);
         }
       })();
@@ -646,7 +647,7 @@ export default ({ children, pageContext, location }) => {
                   z-index: 1;
                   width: ${SIDENAV_WIDTH};
                   height: 100%;
-                  background-color: var(--spectrum-global-color-gray-100);
+                  background-color: var(--spectrum-global-color-gray-75);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
@@ -711,6 +712,7 @@ export default ({ children, pageContext, location }) => {
 
             {hasSideNav && (
               <div
+                role="presentation"
                 css={css`
                   display: none;
 

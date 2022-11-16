@@ -47,7 +47,7 @@ const AnchorButton = ({ className, style, variant, href, ...props }) => {
 
 AnchorButton.propTypes = {
   href: PropTypes.string,
-  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative']),
+  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative', 'staticWhite']),
   style: PropTypes.oneOf(['fill', 'outline'])
 };
 

@@ -13,6 +13,7 @@
 import React, { cloneElement, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { GatsbyLink } from '../GatsbyLink';
+import { HeroButtons } from '../Hero';
 import {
   getElementChild,
   layoutColumns,
@@ -23,6 +24,7 @@ import {
 import '@spectrum-css/typography';
 import '@spectrum-css/card';
 import PropTypes from 'prop-types';
+import classNames from "classnames";
 
 const counter = {
   2: 0,
@@ -30,7 +32,8 @@ const counter = {
 };
 const alignMapping = ['margin-left: 0;', 'margin-right: 0;'];
 
-const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, image }) => {
+const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text, text2=null, image, className, isCustomStories = false, buttons, isFooter = false,   variantsTypePrimary='accent',
+variantsTypeSecondary='secondary',variantStyleFill = "fill",variantStyleOutline = "outline", contHeight}) => {
   let initColumns = 100 / parseFloat(width);
 
   if (width === '33%') {
@@ -52,7 +55,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
     counter[columns]++;
   }
 
-  const href = getElementChild(link).props.href;
+  const href = link ? getElementChild(link).props.href : null;
   let extraMargin = '';
 
   if (columns === 2) {
@@ -64,24 +67,35 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
     }
   }
 
+  const MIN_MOBILE_SCREEN_WIDTH = '1024px';
+
+  const MAX_MOBILE_SCREEN_WIDTH = '1280px';
+
+  const Element = isFooter ? 'div' : GatsbyLink;
+
   return (
     <>
       <section
-        className={`spectrum--${theme}`}
+        className={classNames(className, `spectrum--${theme}`)}
         css={css`
           display: ${width === '100%' ? 'block' : 'table-cell'};
           width: ${width.replace('%', 'vw')};
           background: var(--spectrum-global-color-gray-100);
-          padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-200);
+          padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-175);
           box-sizing: border-box;
 
           @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
             display: block;
             width: 100%;
           }
+
+          @media screen and (min-width: ${MIN_MOBILE_SCREEN_WIDTH}) and (max-width: ${MAX_MOBILE_SCREEN_WIDTH}) {
+            display: inline-flex !important;
+            width: 50%;
+          }
         `}>
-        <GatsbyLink
-          className={`spectrum-Card spectrum-Card--vertical`}
+        <Element
+          className={`spectrum-Card spectrum-Card--vertical spectrum-Card--sizeM`}
           to={href}
           {...getExternalLinkProps(href)}
           css={css`
@@ -99,7 +113,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
           <div
             className="spectrum-Card-preview"
             css={css`
-              height: var(--spectrum-global-dimension-size-3000);
+              height: var(--spectrum-global-dimension-size-${text2 ? 2400 : 2000});
               width: 100%;
               padding: 0 !important;
             `}>
@@ -109,7 +123,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  height: 100%;
+                  height: ${isCustomStories ? '100%' : 'auto'};
                   width: 100%;
                   margin-bottom: 0 !important;
                   margin-top: 0;
@@ -130,10 +144,29 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
             className="spectrum-Card-body"
             css={css`
               flex: 1;
-              padding: var(--spectrum-global-dimension-size-300) !important;
+              padding: var(--spectrum-global-dimension-size-200) !important;
               justify-content: flex-start !important;
               overflow: hidden;
+              height:${contHeight};
             `}>
+            {text2 ? <div
+              className=""
+              css={css`
+                height: auto;
+              `}>
+              <div className="spectrum-Card-subtitle">
+                <p
+                  className="spectrum-Body spectrum-Body-S"
+                  css={css`
+                    text-align: left;
+                    color: var(--spectrum-global-color-gray-700);
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                  `}>
+                  {text2 && text2.props.children}
+                </p>
+              </div>
+            </div>:null}
             <div
               className="spectrum-Card-header"
               css={css`
@@ -147,7 +180,7 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
                   text-align: left;
                 `}>
                 <h3
-                  className="spectrum-Heading spectrum-Heading--sizeM"
+                  className="spectrum-Heading spectrum-Heading--sizeS"
                   css={css`
                     margin-top: 0 !important;
                     margin-bottom: 0 !important;
@@ -174,7 +207,24 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
               </div>
             </div>
           </div>
-        </GatsbyLink>
+            {isFooter &&(
+              <div className="spectrum-Card-footer">
+                <HeroButtons
+                  buttons={buttons}
+                  styles={[variantStyleFill, variantStyleOutline]}
+                  variants={[variantsTypePrimary,variantsTypeSecondary]}
+
+                  css={css`
+
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                  justify-content: center;
+                }
+              `}
+                />
+              </div>
+            )
+            }
+        </Element>
       </section>
       {typeof counter[columns] !== 'undefined' && counter[columns] % columns === 0 ? <div aria-hidden="true" /> : null}
     </>
@@ -183,11 +233,14 @@ const ResourceCard = ({ theme = 'lightest', width = '100%', link, heading, text,
 
 ResourceCard.propTypes = {
   theme: PropTypes.string,
-  width: PropTypes.oneOf(['100%', '50%', '33%']),
+  width: PropTypes.oneOf(['100%', '50%', '33%','25%']),
   link: PropTypes.element,
   heading: PropTypes.element,
   text: PropTypes.element,
-  image: PropTypes.element
+  text2: PropTypes.element,
+  buttons: PropTypes.element,
+  image: PropTypes.element,
+  isFooter: PropTypes.element
 };
 
 export { ResourceCard };
