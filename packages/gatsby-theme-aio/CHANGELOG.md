@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.0-rc10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc9...@adobe/gatsby-theme-aio@4.7.0-rc10) (2022-11-01)
+
+### Fix
+
+* Merging in all things 
+
+
+## [4.7.0-rc9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc8...@adobe/gatsby-theme-aio@4.7.0-rc9) (2022-10-12)
+
+### Fix
+
+* references one more time [2037899](https://github.com/adobe/aio-theme/commit/2037899c162cb2f3da031f997b804a3f731c9743).
+
+## [4.7.0-rc8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc7...@adobe/gatsby-theme-aio@4.7.0-rc8) (2022-10-12)
+
+### Fix
+
+* move references into utils [820c7be](https://github.com/adobe/aio-theme/commit/820c7beccc8f68c23136ef7697ee974b77d47e5b).
+
+## [4.7.0-rc7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc6...@adobe/gatsby-theme-aio@4.7.0-rc7) (2022-10-12)
+
+### Fix
+
+* fix references [bac4974](https://github.com/adobe/aio-theme/commit/bac49746f7d2e356a9b7e9ceefb55edb0089a2fb).
+
+
+## [4.7.0-rc6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc5...@adobe/gatsby-theme-aio@4.7.0-rc6) (2022-10-12)
+
+### Fix
+
+* fix undefined [185f780](https://github.com/adobe/aio-theme/commit/185f78093dbf87964e5fc22167e88c6240130954).
+
+
+## [4.7.0-rc5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc4...@adobe/gatsby-theme-aio@4.7.0-rc5) (2022-10-12)
+
+### Fix
+
+* references in custom menu block [5c16737](https://github.com/adobe/aio-theme/commit/5c1673746ce5730344647085029831f7d4825eb0).
+
+
+## [4.7.0-rc4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc3...@adobe/gatsby-theme-aio@4.7.0-rc4) (2022-10-12)
+
+### Fix
+
+* references in carousel [3d10c42](https://github.com/adobe/aio-theme/commit/3d10c42af47cfb2be2d70f2ba92f3658a792ba18).
+
+
+## [4.7.0-rc3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc2...@adobe/gatsby-theme-aio@4.7.0-rc3) (2022-10-12)
+
+### Fix
+
+* forgot to add divider and repeat hero [49ef858](https://github.com/adobe/aio-theme/commit/49ef858bfcf5964297eb781374706666fab88363).
+
+
+## [4.7.0-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0-rc1...@adobe/gatsby-theme-aio@4.7.0-rc2) (2022-10-12)
+
+### Fix
+
+* Update more components to be compatible with merge [103c11b](https://github.com/adobe/aio-theme/commit/103c11ba47e543b81e57e22b8679366d49ececde).
+
+
+## [4.7.0-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.2...@adobe/gatsby-theme-aio@4.7.0-rc1) (2022-10-11)
+
+### Fix
+
+* Merge DC shadowed components back into main theme [af84e99](https://github.com/adobe/aio-theme/commit/af84e9942e50e5b5f31efda4566750a35d78ebb9).
+
 ## [4.6.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.5...@adobe/gatsby-theme-aio@4.6.6) (2022-10-27)
 
 * Remove lmdb-store [cef19be](https://github.com/adobe/aio-theme/commit/cef19bed85166ee867649e1175d8a3f51aef87ec).
@@ -36,7 +103,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * Add in uxp-indesign to search [1b52068](https://github.com/adobe/aio-theme/commit/1b520682e34d84ef37976497d74f44dfb7042e0c).
-
 
 ## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
 

@@ -3,10 +3,10 @@ title: Home - Creative Cloud
 description: This is the home page of Creative Cloud
 ---
 
+
 import CreatePdfFromUrl from './create-pdf-from-url.md';
 import DynamicPdfDocumentGeneration from './dynamic-pdf-document-generation.md';
 import ExtractPdfContentStructure from './pdf-content-structure.md';
-
 
 <Hero className="custom" slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
@@ -24,6 +24,8 @@ stakeholders stay perfectly in sync across projects of any size
 * [Get started](../1.4)
 * [Sign up for the newsletter](../support/contribute/)
 
+<AnchorButtonGroup />
+
 <AnnouncementBlock className="custom" slots="heading, text, button" />
 
 ### Try out the magic of Photoshop
@@ -32,8 +34,6 @@ Pull together Photoshop, Lightroom and Adobe Sensei into one place. Reduce time 
 more creative time.
 
 [Demo](https://www.adobe.io/apis/creativecloud/photo-imaging-api/api-demo.html)
-
-
 
 
 <TextBlock className="custom" slots="image, heading, text1, text2, links"/>
@@ -72,8 +72,6 @@ When you’re ready, you can ship your plugin to XD users right from within the 
 - [No Icon Product](/guides)
 
 ![Screenshot 2](images/intro2.png)
-
-
 
 
 <TitleBlock className="custom" slots="heading, text" />
@@ -143,7 +141,6 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 ### Blogs and resources
 
 With the Cloud Content APIs, you can bring design work created in XD directly to your product or service.
-
 
 
 
@@ -223,8 +220,6 @@ Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020 Rob Kleiman, July 8th 2020
 ### Creating a Great Adobe XD Plugin Listing
 
 Rob Kleiman, July 8th 2020
-
-
 
 
 
@@ -384,9 +379,6 @@ Text
 ![](images/ic-extract-40.svg)
 
 <ExtractPdfContentStructure/>
-
-
-<TitleBlock slots="heading" theme="light" />
 
 ### Horizontal Tabs Block
 
