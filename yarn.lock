@@ -43,7 +43,7 @@ __metadata:
     "@emotion/react": ^11.10.4
     "@loadable/component": ^5.15.2
     "@mdx-js/mdx": 1.6.22
-    "@mdx-js/react": 1.6.22
+    "@mdx-js/react": 2.1.5
     "@spectrum-css/accordion": 3.0.24
     "@spectrum-css/actionbutton": 2.1.7
     "@spectrum-css/actiongroup": ^2.0.0
@@ -4008,12 +4008,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:1.6.22":
-  version: 1.6.22
-  resolution: "@mdx-js/react@npm:1.6.22"
+"@mdx-js/react@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@mdx-js/react@npm:2.1.5"
+  dependencies:
+    "@types/mdx": ^2.0.0
+    "@types/react": ">=16"
   peerDependencies:
-    react: ^16.13.1 || ^17.0.0
-  checksum: bc84bd514bc127f898819a0c6f1a6915d9541011bd8aefa1fcc1c9bea8939f31051409e546bdec92babfa5b56092a16d05ef6d318304ac029299df5181dc94c8
+    react: ">=16"
+  checksum: e47fb7086a4dd3e4d75d9ef0bf530009f72437a5ea91048e65d2e2f53955015a8c81b5058ac56fa00f401843305518e9f298183645d56c7e34336df4cc0b62bf
   languageName: node
   linkType: hard
 
@@ -5670,6 +5673,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mdx@npm:^2.0.0":
+  version: 2.0.3
+  resolution: "@types/mdx@npm:2.0.3"
+  checksum: 41deb51c29535913af01d25f0e1414cfb5a6948d0e60e77e4aca895694de48bf0ac69c5a81fe2d9617d726cb253001ef82a65b683d5ef51987d15aa1931d086b
+  languageName: node
+  linkType: hard
+
 "@types/minimatch@npm:*":
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
@@ -5775,7 +5785,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.0.25
   resolution: "@types/react@npm:18.0.25"
   dependencies:
