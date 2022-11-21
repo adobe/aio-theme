@@ -120,6 +120,7 @@
     "gatsby-transformer-sharp": "4.23.0",
     "https-browserify": "^1.0.0",
     "jsdom": "^20.0.0",
+    "lottie-web": "^5.9.6",
     "mdx-embed": "^1.0.0",
     "mobx": "^6.6.2",
     "normalize-path": "^3.0.0",
