@@ -87,7 +87,7 @@ __metadata:
     gatsby-plugin-layout: ^3.23.0
     gatsby-plugin-mdx: ^3.20.0
     gatsby-plugin-mdx-embed: ^1.0.0
-    gatsby-plugin-preact: ^6.23.0
+    gatsby-plugin-preact: ^7.2.0
     gatsby-plugin-react-helmet: ^5.23.0
     gatsby-plugin-sharp: 4.23.0
     gatsby-remark-autolink-headers: ^5.23.0
@@ -11964,19 +11964,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-preact@npm:^6.23.0":
-  version: 6.24.0
-  resolution: "gatsby-plugin-preact@npm:6.24.0"
+"gatsby-plugin-preact@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "gatsby-plugin-preact@npm:7.2.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     "@gatsbyjs/webpack-hot-middleware": ^2.25.3
     "@prefresh/babel-plugin": ^0.4.3
     "@prefresh/webpack": ^3.3.4
   peerDependencies:
-    gatsby: ^4.0.0-next
+    gatsby: ^5.0.0-next
     preact: ^10.3.4
     preact-render-to-string: ^5.1.8
-  checksum: 3c050fdced9441b24febf4f9601f8f3f2a99a2f7ed7f264ade44a72d3bef5348e95751f86fdf4ff72dd1d47e6db91104582cf94a5d86064aa04f32acbcfaedd6
+  checksum: c50fa18f19dc1708d0d53e6231a84359428036506a68c4e71d5faa8a2d3acf02ce4b6ba48fdbf0640c50fdbc74389b3675cb23d32caa291c0e17978cc7519e0b
   languageName: node
   linkType: hard
 
