@@ -83,7 +83,7 @@ __metadata:
     gatsby: ^4.22.0
     gatsby-cli: ^4.23.0
     gatsby-plugin-algolia: ^0.26.0
-    gatsby-plugin-emotion: ^7.23.0
+    gatsby-plugin-emotion: ^8.2.0
     gatsby-plugin-layout: ^3.23.0
     gatsby-plugin-mdx: ^3.20.0
     gatsby-plugin-mdx-embed: ^1.0.0
@@ -11851,17 +11851,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-emotion@npm:^7.23.0":
-  version: 7.24.0
-  resolution: "gatsby-plugin-emotion@npm:7.24.0"
+"gatsby-plugin-emotion@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "gatsby-plugin-emotion@npm:8.2.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     "@emotion/babel-preset-css-prop": ^11.2.0
   peerDependencies:
     "@babel/core": ^7.11.6
     "@emotion/react": ^11.0.0
-    gatsby: ^4.0.0-next
-  checksum: 87e838896cea016262fad96d401ccea0b7d5da5e917e1772a703f0f39e9dcfe6313f3f46800a3144067b39e225cf43ac0f50d3148f5d747264c54eb87e4db8d1
+    gatsby: ^5.0.0-next
+  checksum: 986a02ed9c73604701bb1b86e0fa0e2c2ff2040bd2a955bcbaea8a0b438be13c1a23964944ea9aad633453f5920b5ebf13059d8fd53b487ebd33907042e54ba6
   languageName: node
   linkType: hard
 
