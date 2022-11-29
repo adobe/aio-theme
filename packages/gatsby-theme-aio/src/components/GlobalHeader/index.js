@@ -652,13 +652,41 @@ const GlobalHeader = ({
                             const menuHref = withPrefix(menu.href);
                             return (
                               <MenuItem
-                                className="spectrum-Link spectrum-Link--quiet global_header"
+                                className="spectrum-Link spectrum-Link--quiet"
                                 key={k}
                                 tabIndex="0"
                                 id={`menuIndex${i}-${k}`}
                                 href={menuHref}
                                 {...getExternalLinkProps(menuHref)}
                                 isHighlighted={menu === selectedMenu}
+                                css={css`
+                                  display: -webkit-box;
+                                  display: -webkit-flex;
+                                  display: -ms-flexbox;
+                                  display: flex;
+                                  height: calc(100% - var(--spectrum-global-dimension-size-10)) !important;
+                                  -webkit-align-items: center;
+                                  -webkit-box-align: center;
+                                  -ms-flex-align: center;
+                                  align-items: center;
+                                  -webkit-box-pack: center;
+                                  -ms-flex-pack: center;
+                                  -webkit-justify-content: center;
+                                  justify-content: center;
+                                  box-sizing: border-box;
+                                  padding: 0 var(--spectrum-global-dimension-size-300) !important;
+                                  white-space: nowrap;
+                                  color: var(--spectrum-global-color-gray-700) !important;
+                                  -webkit-transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
+                                  transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
+
+                                  &:hover: {
+                                    background-color: var(--spectrum-global-color-gray-75) !important;
+                                    color: var(--spectrum-global-color-gray-900) !important;
+                                    text-decoration: none !important;
+                                  }
+                                `}
+
                                 onKeyDown={(e) => {
                                    if (e.key === 'ArrowDown') {
                                     e.preventDefault();
