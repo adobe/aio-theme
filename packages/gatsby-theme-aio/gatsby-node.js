@@ -48,6 +48,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       salesFAQMenus: salesFAQMenus
       techSupportFAQMenus: techSupportFAQMenus
       subMenuPages: subMenuPages
+      allFile: allFile
     }
     
     type subMenuPages {
@@ -136,6 +137,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Link {
       title: String
       path: String
+    }
+
+    type allFile {
+      edges: Node
     }
   `);
 };
