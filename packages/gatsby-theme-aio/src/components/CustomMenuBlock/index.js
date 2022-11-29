@@ -37,53 +37,7 @@ const useDynamicSVGImport = (name, options = {}) => {
   const [error, setError] = useState();
   const { onCompleted, onError } = options;
 
-  useEffect(() => {
-    setLoading(true);
-    const importIcon = async () => {
-      try {
-        // TODO must pass these in as the references are different now
-        ImportedIconRef.current = await import(
-          `../../../../../../src/pages/images/${name}.svg`
-        );
-        if (onCompleted) {
-          onCompleted(name, ImportedIconRef.current);
-        }
-      } catch (err) {
-        console.log("error", error);
-        if (onError) {
-          onError(err);
-        }
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    importIcon();
-  }, [name, onCompleted, onError, error]);
-
   return { error, loading, SvgIcon: ImportedIconRef.current?.default };
-};
-
-//Create the image element to load the svg icon in each menu item.
-const Icon = ({ name, onCompleted, onError }) => {
-  const { error, SvgIcon } = useDynamicSVGImport(name, {
-    onCompleted,
-    onError,
-  });
-  if (error) {
-    return error.message;
-  }
-  if (SvgIcon) {
-    return (
-      <img
-        src={SvgIcon}
-        title=""
-        alt=""
-        style={{ width: 40, height: 40 }}
-      ></img>
-    );
-  }
-  return null;
 };
 
 const CustomMenuBlock = ( ) => {
@@ -108,11 +62,35 @@ const CustomMenuBlock = ( ) => {
               }
             }
           }
+          allFile(filter: { extension: { eq: "svg" } }) {
+            edges {
+              node {
+                publicURL
+              }
+            }
+          }
         }
       }
     `
   );
 
+  //Create the image element to load the svg icon in each menu item.
+const Icon = ({ name, onCompleted, onError }) => {
+  const filterFile = fileArr.find((imgNode) => imgNode.node.publicURL.includes(name))?.node?.publicURL
+  if (filterFile) {
+    return (
+      <img
+        src={filterFile}
+        title=""
+        alt=""
+        style={{ width: 40, height: 40 }}
+      ></img>
+    );
+  }
+  return null;
+};
+
+  const fileArr = data.allFile.edges
   const { subMenuPages } = data.site.siteMetadata;
   const { location } = useContext(Context);
 
