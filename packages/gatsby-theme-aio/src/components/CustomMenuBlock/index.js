@@ -62,11 +62,11 @@ const CustomMenuBlock = ( ) => {
               }
             }
           }
-          allFile(filter: { extension: { eq: "svg" } }) {
-            edges {
-              node {
-                publicURL
-              }
+        }
+       allFile(filter: { extension: { eq: "svg" } }) {
+          edges {
+            node {
+              publicURL
             }
           }
         }
