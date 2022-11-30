@@ -514,6 +514,10 @@ const TabsBlock = ({
                       id="apiReference"
                       css={css`
                         color: #4b9cf5;
+                         &:focus {
+                           text-decoration:underline;
+                           border-bottom: 1px solid #1374e6;
+                         }
                       `}
                       target={"_blank"}
                       rel="noreferrer"

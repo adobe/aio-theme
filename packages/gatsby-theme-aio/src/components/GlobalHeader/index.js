@@ -680,7 +680,7 @@ const GlobalHeader = ({
                                   -webkit-transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
                                   transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
 
-                                  &:hover: {
+                                  &:hover {
                                     background-color: var(--spectrum-global-color-gray-75) !important;
                                     color: var(--spectrum-global-color-gray-900) !important;
                                     text-decoration: none !important;
