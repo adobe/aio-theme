@@ -128,6 +128,10 @@ const GlobalHeader = ({
     }
   };
 
+  const toggleSideNavExpanded = () => {
+    setSideNavExpanded(!sideNavExpanded);
+  };
+
   useEffect(() => {
     const index = getSelectedTabIndex(location, pages);
     setSelectedTabIndex(index);
