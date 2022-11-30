@@ -508,7 +508,6 @@ const TabsBlock = ({
                     `}
                   >
                     <a
-                      className="linking-accessbility"
                       href={APIReference}
                       tabIndex={-1}
                       id="apiReference"
