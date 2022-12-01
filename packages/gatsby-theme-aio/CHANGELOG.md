@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0...@adobe/gatsby-theme-aio@4.7.1) (2022-12-01)
+
+### Features
+
+* Added dropdown indicator for side nav [a2bdb52](https://github.com/adobe/aio-theme/commit/a2bdb5257889138379b95b380353e8aad1e0d098).
+
+### Fixes
+
+* Fix double breadcrumb issue [847c05d](https://github.com/adobe/aio-theme/commit/847c05dc9a625e5e57c977628008ba611e371fae)
+
+* Fix menu styling dropdown [ac7c583](https://github.com/adobe/aio-theme/commit/ac7c58399b576cc8a9a07d56c679de4a12aae434)
+
+* Fix custom menu block [c8dbb5b](https://github.com/adobe/aio-theme/commit/c8dbb5b87fa830f0436eef6f8ed5e625ac23fb0d)
+
+* Rename ProductCardGrid to OldProductCardGrid and default ProductCardGrid to Document Cloud's version [a0b3e30](https://github.com/adobe/aio-theme/commit/a0b3e302e500745473292dfe7ed4b34fe6e53559)
+
+* Fix halfWidth Hero text's to default to non-white and apply staticWhite to Button [38f552f](https://github.com/adobe/aio-theme/commit/38f552f99e8f45f04423e4f54b955c11d94b30c1)
+
+* Remove lottie-web from project's base package.json [8f3a7ae](https://github.com/adobe/aio-theme/commit/8f3a7aeb75caf36707e546214cbdbc31ea20f7e4)
+
 ## [4.7.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.6...@adobe/gatsby-theme-aio@4.7.0) (2022-11-16)
 
 ### Features
