@@ -34,8 +34,5 @@
     "cy:open": "cypress open",
     "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
-  "packageManager": "yarn@3.2.3",
-  "dependencies": {
-    "lottie-web": "^5.9.6"
-  }
+  "packageManager": "yarn@3.2.3"
 }
