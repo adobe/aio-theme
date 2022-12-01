@@ -42,7 +42,7 @@ Button.propTypes = {
   elementType: PropTypes.string,
   href: PropTypes.string,
   style: PropTypes.oneOf(['fill', 'outline']),
-  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative'])
+  variant: PropTypes.oneOf(['accent', 'primary', 'secondary', 'negative', 'staticWhite'])
 };
 
 export { Button, Text };
