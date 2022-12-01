@@ -38,6 +38,7 @@ import { ResourceCard } from '../ResourceCard';
 import { Media } from '../Media';
 import { JsDocParameters } from '../JsDocParameters';
 import { ProductCardGrid } from '../ProductCardGrid';
+import { OldProductCardGrid } from '../OldProductCardGrid';
 import { AnchorButtonGroup } from '../AnchorButtonGroup';
 import { DCSummaryBlock } from '../DCSummaryBlock';
 
@@ -58,6 +59,7 @@ export const MDXBlocks = {
   Media,
   JsDocParameters,
   ProductCardGrid,
+  OldProductCardGrid,
   WrapperComponent,
   FormWrapperComponent,
   MenuWrapperComponent,
