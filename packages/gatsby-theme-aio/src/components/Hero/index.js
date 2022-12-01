@@ -110,7 +110,7 @@ const HeroImage = ({ image, styles }) =>
     })
     : null;
 
-const HeroTexts = ({ texts, customLayout }) => {
+const HeroTexts = ({ texts, customLayout, isTextWhite = true }) => {
   const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
   return textKeys.map((textKey) =>
     cloneElement(texts[textKey], {
@@ -118,8 +118,11 @@ const HeroTexts = ({ texts, customLayout }) => {
       css: css`
         &.spectrum-Body--sizeL {
           margin-top: 0 !important;
-          color: #fff!important;
-
+          ${isTextWhite === true &&
+          `
+            color: #fff!important;
+          `
+          }
           &:last-of-type {
             margin-bottom: 0 !important;
           }
@@ -696,7 +699,7 @@ const Hero = ({
 
               <HeroHeading heading={heading} isVariant />
 
-              <HeroTexts texts={props} />
+              <HeroTexts texts={props} isTextWhite={false} />
 
               <HeroButtons
                 buttons={buttons}
