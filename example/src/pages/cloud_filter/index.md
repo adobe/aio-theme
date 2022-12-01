@@ -14,7 +14,7 @@ Explore the APIs offered by products and view documentation
 
 
 
-<ProductCardGrid clouds={clouds} products={products} interaction={true} />
+<OldProductCardGrid clouds={clouds} products={products} interaction={true} />
 
 
 
@@ -25,5 +25,5 @@ Explore the APIs offered by products and view documentation
 
 
 
-<ProductCardGrid products={products} clouds={clouds} filterByIds={[2,3,4,40]} />
+<OldProductCardGrid products={products} clouds={clouds} filterByIds={[2,3,4,40]} />
 
