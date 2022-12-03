@@ -45,9 +45,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       subPages: [SubPage]
       versions: [Version]
       docs: Link
-      salesFAQMenus: salesFAQMenus
-      techSupportFAQMenus: techSupportFAQMenus
-      subMenuPages: subMenuPages
+      salesFAQMenus: [salesFAQMenus]
+      techSupportFAQMenus: [techSupportFAQMenus]
+      subMenuPages: [subMenuPages]
       allFile: allFile
     }
     
