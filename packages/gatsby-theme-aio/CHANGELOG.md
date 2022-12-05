@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.2...@adobe/gatsby-theme-aio@4.7.3) (2022-12-05)
+
+
+### Fixes
+
+* Mobile nav nav strike through [c6aa68b](https://github.com/adobe/aio-theme/commit/c6aa68b8a174f66405db50981c9fb9f5957b0089).
+
 ## [4.7.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.1...@adobe/gatsby-theme-aio@4.7.2) (2022-12-05)
 
 
