@@ -121,8 +121,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       title: 'Cookie preferences'
     },
     {
-      title: 'Do not sell my personal information',
-      path: 'https://adobe.com/privacy/ca-rights.html'
+      title: 'Do not sell or share my personal information',
+      path: 'https://adobe.com/privacy/us-rights.html'
     },
     {
       title: 'AdChoices',
