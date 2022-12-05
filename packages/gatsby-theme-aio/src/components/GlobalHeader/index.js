@@ -826,9 +826,6 @@ const GlobalHeader = ({
                   bottom: 0px !important;
                 }
 
-                @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                  bottom: calc(-1 * var(--spectrum-tabs-rule-size)) !important;
-                }
               `}
             />
             {docs && (
