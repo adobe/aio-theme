@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.1...@adobe/gatsby-theme-aio@4.7.2) (2022-12-05)
+
+
+### Fixes
+
+* Fix graphql reference for subsite nav [11552b1](https://github.com/adobe/aio-theme/commit/11552b1301074c9e110379a20006f6c989810b70).
+
 ## [4.7.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0...@adobe/gatsby-theme-aio@4.7.1) (2022-12-01)
 
 ### Features
