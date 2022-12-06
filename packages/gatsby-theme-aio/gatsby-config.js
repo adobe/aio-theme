@@ -133,7 +133,7 @@ module.exports = {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX ? `${process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX}-${process.env.GATSBY_ALGOLIA_INDEX_NAME}` : process.env.GATSBY_ALGOLIA_INDEX_NAME,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         queries: indexRecords(),
         chunkSize: 1000,
