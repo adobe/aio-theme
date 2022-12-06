@@ -118,7 +118,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       path: 'https://adobe.com/legal/terms.html'
     },
     {
-      title: 'Cookie preferences'
+      title: 'Cookie preferences',
+      path: '#/'
     },
     {
       title: 'Do not sell my personal information',
@@ -132,6 +133,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
 };
 
 const OPEN_PRIVACY_ID = 'openPrivacy';
+
+const VIEW_ALL_APIS_DESC = 'View all APIs and Services';
 
 const Heading = ({ children }) => <h3 className="spectrum-Heading spectrum-Heading--sizeXS">{children}</h3>;
 
@@ -274,7 +277,8 @@ const Footer = ({ hasSideNav = false }) => (
                   ))}
                   <li>
                     <Link isQuiet={true}>
-                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path}>
+                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path} aria-labelledby="allAPIsDesc">
+                        <span id="allAPIsDesc" css={css`display: none;`}>{VIEW_ALL_APIS_DESC}</span>
                         <strong>{allAPIs.title}</strong>
                       </a>
                     </Link>
@@ -453,7 +457,7 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID} href="#/" aria-label="Cookie preferences" ></a>
+                        <a id={OPEN_PRIVACY_ID} href={path} aria-label="Cookie preferences" tabindex="0"></a>
                       </Link>
                     </li>
                   );
