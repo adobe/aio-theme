@@ -491,7 +491,9 @@ const Footer = ({ hasSideNav = false }) => (
           </div>
         </div>
       </div>
+      {process.env.GATSBY_DC_LINKED_IN && (
       <LinkedInRetargeting/>
+      )}
     </footer>
   </>
 );
