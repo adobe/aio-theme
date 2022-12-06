@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.3...@adobe/gatsby-theme-aio@4.7.4) (2022-12-05)
+
+
+### Fixes
+
+* Make sure DC Linked In Tracking only appears on their site [f856678](https://github.com/adobe/aio-theme/commit/f856678fac48ae9417a4811c4f12119b725f0566).
+
+* Update Do no track link [76b3510](https://github.com/adobe/aio-theme/commit/76b3510cce6654b5dba536de36632074359f72ef).
+
+* Change Privacy link [a969eed](https://github.com/adobe/aio-theme/commit/a969eed421c151c5070c5bb0aa0e3c95012b501c).
+
+
 ## [4.7.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.2...@adobe/gatsby-theme-aio@4.7.3) (2022-12-05)
 
 
