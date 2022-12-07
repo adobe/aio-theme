@@ -156,6 +156,7 @@ const ProductCard = ({ theme = 'lightest', width = '100%', icon, heading, text, 
           <HeroButtons
             buttons={buttons}
             quiets={['outline', 'outline']}
+            styles={['outline', 'outline']}
             variants={['secondary', 'primary']}
             css={css`
               justify-content: flex-end;
