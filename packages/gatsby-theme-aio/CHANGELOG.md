@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.4...@adobe/gatsby-theme-aio@4.7.5) (2022-12-07)
+
+
+### Fixes
+
+* Fix announcement button style [36cdef8](https://github.com/adobe/aio-theme/commit/36cdef8f9531b00993ba694c1b9c97c82ced89d9).
+
+* Fix button on product card [edbcca0](https://github.com/adobe/aio-theme/commit/edbcca02ac5a86ff98597529fbc438ab69772d4d).
+
+
 ## [4.7.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.3...@adobe/gatsby-theme-aio@4.7.4) (2022-12-05)
 
 
