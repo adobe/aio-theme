@@ -314,8 +314,8 @@ const TabsBlock = ({
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        width: 100%;
-        overflow:hidden !important;
+        max-width: 100%;
+        overflow-x:hidden !important;
         margin: 0;
         padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
       `}
@@ -339,10 +339,10 @@ const TabsBlock = ({
           css={css`
             display: ${orientation === 'vertical' ? 'grid': 'block'};
             position: relative;
-            grid-template-columns: 300px calc(100vw - 300px);
+            grid-template-columns: 300px calc(100% - 300px);
             margin-top: var(--spectrum-global-dimension-size-300);
             // width:${layoutColumns(12)} !important;
-            width:inherit;
+            width: ${DESKTOP_SCREEN_WIDTH} !important';
 
             @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               // display: initial !important;
@@ -412,7 +412,7 @@ const TabsBlock = ({
                         display: flex !important;
                         padding: var(--spectrum-global-dimension-size-125) !important;
                         height: auto !important;
-                        line-height: ${orientation === 'vertical' ? 'initial !important' : 'initial'};
+                        line-height: initial;
                         margin-left: var(--spectrum-tabs-textonly-tabitem-margin-right);
                         .spectrum-Tabs-itemLabel{
                           margin-top:5px;
