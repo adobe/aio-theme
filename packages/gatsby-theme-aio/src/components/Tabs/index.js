@@ -314,8 +314,8 @@ const TabsBlock = ({
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        max-width: 100%;
-        overflow-x:hidden !important;
+        width: 100%;
+        overflow:hidden !important;
         margin: 0;
         padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
       `}
@@ -336,14 +336,13 @@ const TabsBlock = ({
         `}
       >
         <div
-          className="tabs-content"
           css={css`
-            display: ${orientation === 'vertical' ? 'grid': 'initial'};
+            display: ${orientation === 'vertical' ? 'grid': 'block'};
             position: relative;
-            grid-template-columns: 300px calc(100% - 300px);
+            grid-template-columns: 300px calc(100vw - 300px);
             margin-top: var(--spectrum-global-dimension-size-300);
             // width:${layoutColumns(12)} !important;
-            width:${DESKTOP_SCREEN_WIDTH} !important;
+            width:inherit;
 
             @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               // display: initial !important;
@@ -405,14 +404,16 @@ const TabsBlock = ({
                       css={css`
                         text-align: left;
                         white-space: normal;
-                        width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-600)) !important;
+                        width: ${orientation === 'vertical'
+                        ? 'calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-600))'
+                        : 'calc(var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))'} !important;
                         font-size: var(--spectrum-global-dimension-size-200);
                         margin-bottom: ${orientation === 'vertical' ? '1rem !important' : '0rem'};
                         display: flex !important;
                         padding: var(--spectrum-global-dimension-size-125) !important;
                         height: auto !important;
-                        line-height: initial;
-
+                        line-height: ${orientation === 'vertical' ? 'initial !important' : 'initial'};
+                        margin-left: var(--spectrum-tabs-textonly-tabitem-margin-right);
                         .spectrum-Tabs-itemLabel{
                           margin-top:5px;
                           margin-bottom:5px;
@@ -441,7 +442,6 @@ const TabsBlock = ({
                           padding-left: var(--spectrum-global-dimension-size-0) !important;
                         }
                         @media only screen and (min-width: ${TABLET_SCREEN_WIDTH}) {
-                          width: calc(var(--spectrum-global-dimension-size-2000) + var(--spectrum-global-dimension-size-750)) !important;
                           left: var(--spectrum-global-dimension-size-250) !important;
                         }
                       `}
