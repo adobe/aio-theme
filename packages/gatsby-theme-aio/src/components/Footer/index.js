@@ -457,7 +457,12 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID} href={path} aria-label="Cookie preferences" tabindex="0"></a>
+                        <a id={OPEN_PRIVACY_ID}  css={css`
+                           &:focus {
+                              text-decoration: underline;
+                              text-decoration-style: double;
+                          }
+                        `} href={path} aria-label="Cookie preferences" tabindex="0"></a>
                       </Link>
                     </li>
                   );
