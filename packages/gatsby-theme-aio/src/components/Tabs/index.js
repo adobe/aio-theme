@@ -342,7 +342,7 @@ const TabsBlock = ({
             grid-template-columns: 300px calc(100% - 300px);
             margin-top: var(--spectrum-global-dimension-size-300);
             // width:${layoutColumns(12)} !important;
-            width: ${DESKTOP_SCREEN_WIDTH} !important';
+            width:${DESKTOP_SCREEN_WIDTH} !important;
 
             @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               // display: initial !important;
