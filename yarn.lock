@@ -6393,7 +6393,7 @@ __metadata:
     "@commitlint/cli": ^17.1.2
     "@commitlint/config-conventional": ^17.1.0
     "@testing-library/cypress": ^8.0.3
-    axe-core: ^4.4.3
+    axe-core: ^4.6.0
     cypress: ^10.8.0
     cypress-axe: ^1.0.0
     gatsby-cypress: ^2.23.0
@@ -6926,6 +6926,13 @@ __metadata:
   version: 4.5.2
   resolution: "axe-core@npm:4.5.2"
   checksum: 4068f183b2ef1db7e5a75606032c238781abfaa34ab4c23177e17f7dff8cc83f175e887b52689d20d88d2d4f001cbf632bd98925850026fe1d9abc739cabcf16
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "axe-core@npm:4.6.0"
+  checksum: ed112f76bbb2e2ab52dda623fc4baf882b2d00045a55b2cc15358e891f7f164d674be1a2fbcfd49e11d064b146c387c5c9c3c29d7d59c9de6c22c65b86eb68ac
   languageName: node
   linkType: hard
 
