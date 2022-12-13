@@ -316,16 +316,18 @@ export default ({ children, pageContext, query }) => {
                           <Breadcrumbs
                             pages={[
                               DEFAULT_HOME,
-                              { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) },
+                              siteMetadata?.pages?.length > 1 ? { ...siteMetadata?.pages?.[0], href: withPrefix(siteMetadata?.pages?.[0]?.href) } : null,
                               { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
                               selectedTopPageMenu && {
                                 ...selectedTopPageMenu,
                                 href: withPrefix(selectedTopPageMenu.href)
                               },
-                              ...selectedSubPages.map((page) => ({
-                                ...page,
-                                href: withPrefix(cleanRootFix(page.href))
-                              }))
+                              ...selectedSubPages.map((page) => page.title === selectedTopPage?.title && page.href === selectedTopPage?.href ? null :
+                                   ({
+                                    ...page,
+                                    href: withPrefix(cleanRootFix(page.href))
+                                  })
+                              )
                             ]}
                           />
                         )}

@@ -620,6 +620,9 @@ home: {
 }
 ```
 
+### Table Image
+When inserting image to table, please ensure it has a complete .svg path. 
+
 ## Side Navigation
 
 The Side navigation links are configurable in `gatsby-config.js` under `subPages`.

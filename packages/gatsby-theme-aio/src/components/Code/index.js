@@ -74,6 +74,11 @@ const Code = ({ children, className = '', theme }) => {
               />
               <ActionButton
                 aria-describedby={tooltipId}
+                css={css`
+                border-color: var(--spectrum-actionbutton-m-border-color,var(--spectrum-alias-border-color));
+                color: var(--spectrum-actionbutton-m-text-color,var(--spectrum-alias-text-color));
+                padding: var(--spectrum-global-dimension-size-65)    
+                `}
                 onClick={() => {
                   copy(textarea, document, setIsTooltipOpen);
                 }}>

@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,28 +11,29 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Children, cloneElement, useContext } from 'react';
-import { withPrefix } from 'gatsby';
-import { css } from '@emotion/react';
-import { AnchorButton } from '../AnchorButton';
-import '@spectrum-css/typography';
-import PropTypes from 'prop-types';
+import React, { cloneElement, Children, useContext,useEffect } from "react";
+import { withPrefix } from "gatsby";
+import { css } from "@emotion/react";
+import { AnchorButton } from "../AnchorButton";
+import "@spectrum-css/typography";
+import PropTypes from "prop-types";
 import {
-  cleanRootFix,
-  cloneChildren,
-  DEFAULT_HOME,
-  DESKTOP_SCREEN_WIDTH,
-  findSelectedTopPage,
-  findSelectedTopPageMenu,
   getElementChild,
+  cloneChildren,
+  TABLET_SCREEN_WIDTH,
+  DESKTOP_SCREEN_WIDTH,
   MOBILE_SCREEN_WIDTH,
-  rootFix,
+  DEFAULT_HOME,
+  findSelectedTopPage,
   rootFixPages,
-  TABLET_SCREEN_WIDTH
-} from '../../utils';
-import Context from '../Context';
-import { Breadcrumbs } from '../Breadcrumbs';
-import classNames from 'classnames';
+  rootFix,
+  findSelectedTopPageMenu,
+} from "../../utils";
+import Context from "../Context";
+import { Breadcrumbs } from "../Breadcrumbs";
+import classNames from "classnames";
+
+import lottie from 'lottie-web';
 
 const setImageLoading = (child) => {
   if (child?.props?.mdxType === 'img') {
@@ -43,42 +45,50 @@ const setImageLoading = (child) => {
   return child;
 };
 
-const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], className }) =>
+const getAriaLabel = (label, heading='') => {
+  const labelVal = label === 'Learn more' && heading !=='' ? `${label} about ${heading}` : `${label}`;
+  return labelVal;
+}
+
+const HeroButtons = ({ buttons, styles = ['fill', 'outline'], variants = ['accent', 'secondary'], heading='', className }) =>
+
   buttons ? (
-    <div
-      className={className}
-      css={css`
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spectrum-global-dimension-size-200);
-      `}>
-      {Children.map(buttons.props.children, (item, i) => {
-        let variant = variants[0];
-        let style = styles[0];
+    <div>
+      <div
+        className={className}
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--spectrum-global-dimension-size-200);
+        `}>
+        {Children.map(buttons.props.children, (item, i) => {
+          let style = styles[0];
+          let variant = variants[0];
 
-        if (i > 0) {
-          variant = variants[1];
-          style = styles[1];
-        }
+          if (i > 0) {
+            style = styles[1];
+            variant = variants[1];
+          }
 
-        const link = getElementChild(item);
+          const link = getElementChild(item);
 
-        return (
-          <div key={i}>
-            <AnchorButton href={link.props.href} style={style} variant={variant}>
-              <span class="spectrum-Button-label">{link.props.children}</span>
-            </AnchorButton>
-          </div>
-        );
-      })}
+          return (
+            <div key={i}>
+              <AnchorButton aria-label={getAriaLabel(link.props.children, heading)} href={link.props.href} variant={variant} style={style}>
+                <span class="spectrum-Button-label">{link.props.children}</span>
+              </AnchorButton>
+            </div>
+          );
+        })}
+      </div>
     </div>
   ) : null;
 
 const HeroImage = ({ image, styles }) =>
   image
     ? cloneElement(image, {
-        children: cloneChildren(image.props.children, setImageLoading),
-        css: css`
+      children: cloneChildren(image.props.children, setImageLoading),
+      css: css`
           display: flex;
           align-items: center;
           justify-content: center;
@@ -93,18 +103,14 @@ const HeroImage = ({ image, styles }) =>
             height: 100% !important;
           }
 
-          .gatsby-resp-image-background-image {
-            padding-bottom: unset !important;
-          }
-
           .gatsby-resp-image-image {
             object-fit: cover;
           }
         `
-      })
+    })
     : null;
 
-const HeroTexts = ({ texts }) => {
+const HeroTexts = ({ texts, customLayout, isTextWhite = true }) => {
   const textKeys = Object.keys(texts).filter((key) => key.startsWith('text'));
   return textKeys.map((textKey) =>
     cloneElement(texts[textKey], {
@@ -112,22 +118,33 @@ const HeroTexts = ({ texts }) => {
       css: css`
         &.spectrum-Body--sizeL {
           margin-top: 0 !important;
-
+          ${isTextWhite === true &&
+          `
+            color: #fff!important;
+          `
+          }
           &:last-of-type {
             margin-bottom: 0 !important;
           }
+        }
+
+        @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+          padding: 0 var(--spectrum-global-dimension-size-115);
         }
       `
     })
   );
 };
 
-const HeroHeading = ({ heading, variant }) =>
+const HeroHeading = ({ heading, variant, customLayout }) =>
   heading
     ? cloneElement(heading, {
-        className:
-          variant === 'default' ? 'spectrum-Heading--sizeXL' : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
-        css: css`
+      // force h1 to support gdocs
+      mdxType: 'h1',
+      originalType: 'h1',
+      className:
+        (variant === 'default' || customLayout) ? customLayout ? 'spectrum-Heading--sizeXL spectrum-Heading--serif' : 'spectrum-Heading--sizeXL' : 'spectrum-Heading--sizeXXL spectrum-Heading--serif',
+      css: css`
           margin-top: 0;
           margin-bottom: var(--spectrum-global-dimension-size-200);
 
@@ -135,7 +152,7 @@ const HeroHeading = ({ heading, variant }) =>
             margin-bottom: var(--spectrum-global-dimension-size-200);
           }
         `
-      })
+    })
     : null;
 
 const Hero = ({
@@ -146,12 +163,39 @@ const Hero = ({
   image,
   icon,
   buttons,
+  assetsImg,
   variant = 'default',
+  containerHeight = 1000,
   width = DESKTOP_SCREEN_WIDTH,
-  hideBreadcrumbNav = false,
+  customLayout = false,
+  primaryOutline = false,
+  isPrimaryBtn=false,
+  variantsTypePrimary='accent',
+  variantsTypeSecondary='secondary',
+  animationVideo="",
   ...props
 }) => {
   const { siteMetadata, location } = useContext(Context);
+
+  
+  useEffect(()=>{
+    if ( animationVideo ) {
+      var anim = lottie.loadAnimation({
+        container: document.querySelector("#svgContainer"), 
+        renderer: "svg",
+        loop: false,
+        autoplay: true,
+        animationData: animationVideo
+      });
+  
+      anim.addEventListener("enterFrame", function (animation) {
+            if (animation.currentTime > (anim.totalFrames - 25)) {
+              anim.pause();
+            }
+      });
+    }
+  },[])
+
 
   if (!variant || variant === 'default') {
     const { home, pages } = siteMetadata;
@@ -159,9 +203,6 @@ const Hero = ({
     const pagesWithRootFix = rootFixPages(pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
     const selectedTopPageMenu = findSelectedTopPageMenu(pathWithRootFix, selectedTopPage);
-    if (typeof hideBreadcrumbNav != 'boolean') {
-      throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav={false}');
-    }
 
     return (
       <section
@@ -215,12 +256,12 @@ const Hero = ({
                 padding: 0 var(--spectrum-global-dimension-size-400);
               }
             `}>
-            {!hideBreadcrumbNav && home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
+            {home?.hidden !== true && home?.title && home?.href && selectedTopPage && (
               <Breadcrumbs
                 pages={[
                   DEFAULT_HOME,
                   home,
-                  { ...selectedTopPage, href: withPrefix(cleanRootFix(selectedTopPage.href)) },
+                  { ...selectedTopPage, href: withPrefix(selectedTopPage.href) },
                   selectedTopPageMenu && { ...selectedTopPageMenu, href: withPrefix(selectedTopPageMenu.href) }
                 ]}
               />
@@ -234,9 +275,314 @@ const Hero = ({
       </section>
     );
   } else {
-    const height = 'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-250))';
+    const height = 'calc(var(--spectrum-global-dimension-size-6000) + var(--spectrum-global-dimension-size-1800))';
+    if (variant === 'fullwidth' && customLayout) {
+      return (
+        <section
+          className={classNames(className, `spectrum--${theme}`)}
+          css={css`
+            width: 100%;
+            background: ${background ?? "var(--spectrum-global-color-gray-50)"};
 
-    if (variant === 'fullwidth') {
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+              overflow: auto;
+            }
+
+            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+              .spectrum-Heading--sizeXL {
+                font-size: var(--spectrum-alias-heading-l-text-size);
+              }
+            }
+          `}
+        >
+          <HeroImage image={image} />
+
+          <div
+            css={css`
+              height: 100%;
+              top: 0;
+              bottom: 0;
+              width: 100%;
+              box-sizing: border-box;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-end;
+              text-align: center;
+
+              h1 {
+                padding: var(--spectrum-global-dimension-size-500) var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-0) !important;
+              }
+
+              @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                padding: 0 !important;
+              }
+
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                padding: 0 var(--spectrum-global-dimension-size-250);
+
+                h1 {
+                  padding: var(--spectrum-global-dimension-size-400) var(--spectrum-global-dimension-size-200) var(--spectrum-global-dimension-size-0) !important;
+                }
+              }
+            `}
+          >
+            {heading && (
+              <HeroHeading
+                heading={heading}
+                variant={variant}
+                customLayout={customLayout}
+              />
+            )}
+
+            <HeroTexts texts={props} />
+
+            {buttons ? (
+              <HeroButtons
+                buttons={buttons}
+                styles={['fill', 'outline']}
+                variants={[variantsTypePrimary,variantsTypeSecondary]}
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                  margin-bottom: var(--spectrum-global-dimension-size-200);
+                `}
+              />
+            ) : (
+              <div
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-200);
+                `}
+              />
+            )}
+            <div className={assetsImg?.props?.children}/>
+          </div>
+        </section>
+      )
+    } else if(variant === 'video' && animationVideo){
+      return (
+        <section
+          className={classNames(className, `spectrum--${theme}`)}
+          css={css`
+            background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-400);
+              box-sizing: border-box;
+            }
+            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-400);
+              box-sizing: border-box;
+            }
+          `}>
+            <div css={css`
+              @media screen and (min-width: ${DESKTOP_SCREEN_WIDTH}) {
+                position: relative;
+                max-width:${DESKTOP_SCREEN_WIDTH}
+                margin:auto;
+              }
+            `}>
+              <div css={css`
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                  display: none;
+                }
+              `}>
+              <div id="svgContainer"></div>
+              </div>
+
+              <div
+                css={css`
+                  display: flex;
+                  height: 100%;
+                  max-width: ${width};
+                  margin: auto;
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    display: inline;
+                  }
+              `}>
+                <div
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center !important;
+                    position: absolute;
+                    padding: 0;
+                    top: 0;
+                    text-align: left;
+                    width: 30%;
+                    align-item:center;
+                    bottom: 0;
+                    box-sizing: border-box;
+
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      padding: 0 !important;
+                      width: 100% !important;
+                      position: initial !important;
+                    }
+
+                    @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                      padding: 0 var(--spectrum-global-dimension-size-100);
+                      width:100% !important;
+                      top: 20px !important;
+                      position: initial !important;
+                      h1 {
+                        padding: 0 var(--spectrum-global-dimension-size-200) 0 var(--spectrum-global-dimension-size-0) !important;
+                        font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size))
+                      }
+                    }
+                `}>
+
+                  {heading && (
+                    <HeroHeading
+                      heading={heading}
+                      variant={variant}
+                      customLayout={customLayout}
+                    />
+                  )}
+
+                  <HeroTexts texts={props} />
+
+                  <HeroButtons
+                    buttons={buttons}
+                    styles={['outline']}
+                    variants={['staticWhite']}
+                    css={css`
+                      margin-top: var(--spectrum-global-dimension-size-400);
+                    `}
+                  />
+                </div>
+                <div
+                  css={css`
+                    max-width: ${width};
+                    margin: auto;
+                    display: none;
+                    @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                      display: block;
+                    }
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      display: inline;
+                    }
+                `}>
+                <div className={assetsImg?.props?.children}/>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    } else if (variant === 'halfwidth' && customLayout ) {
+      return (
+        <section
+          className={classNames(className, `spectrum--${theme}`)}
+          css={css`
+            background: ${background ?? 'var(--spectrum-global-color-gray-50)'};
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-400);
+              box-sizing: border-box;
+            }
+            @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+              height: auto;
+              padding: var(--spectrum-global-dimension-size-225);
+              box-sizing: border-box;
+            }
+        `}>
+          <div css={css`
+            @media screen and (min-width: ${DESKTOP_SCREEN_WIDTH}) {
+              display: flex;
+              justify-content: space-between;
+              position: relative;
+              max-width:${DESKTOP_SCREEN_WIDTH};
+              margin:auto;
+            }
+          `}>            
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: center !important;
+                // position: absolute;
+                padding: 0;
+                top: 0;
+                text-align: left;
+                width: 36%;
+                align-item:center;
+                bottom: 0;
+                box-sizing: border-box;
+
+                @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                  padding: 0 !important;
+                  width: 100% !important;
+                  position: initial !important;
+                }
+
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                  padding: 0 var(--spectrum-global-dimension-size-100);
+                  width:100% !important;
+                  top: 20px !important;
+                  position: initial !important;
+                  h1 {
+                    padding: 0 var(--spectrum-global-dimension-size-200) 0 var(--spectrum-global-dimension-size-0) !important;
+                    font-size: var(--spectrum-heading-l-text-size, var(--spectrum-alias-heading-l-text-size))
+                  }
+                }
+            `}>                    
+            {icon &&
+              cloneElement(icon, {
+                children: cloneChildren(icon.props.children, setImageLoading),
+                css: css`
+                  height: var(--spectrum-global-dimension-size-400);
+                  width: var(--spectrum-global-dimension-size-3600);
+                  margin-top: 0 !important;
+                  margin-bottom: var(--spectrum-global-dimension-size-300) !important;
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    width: var(--spectrum-global-dimension-size-3000) !important;
+                  }
+                  .gatsby-resp-image-wrapper {
+                    max-width: none !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                  }
+
+                  .gatsby-resp-image-image {
+                    height: 100%;
+                    object-fit: contain;
+                  }
+                `
+              })}
+
+                {heading && (
+                  <HeroHeading
+                    heading={heading}
+                    variant={variant}
+                    customLayout={customLayout}
+                  />
+                )}
+
+              <HeroTexts texts={props} />
+
+              <HeroButtons
+                buttons={buttons}
+                css={css`
+                  margin-top: var(--spectrum-global-dimension-size-400);
+                `}
+                variants={[variantsTypePrimary, variantsTypeSecondary]}
+                style={["outine"]}
+              />
+            </div>
+            <div>
+              <div className={assetsImg?.props?.children}/>
+            </div>
+          </div>
+        </section>
+      );
+    } else if (variant === 'fullwidth') {
       return (
         <section
           className={classNames(className, `spectrum--${theme}`)}
@@ -284,15 +630,15 @@ const Hero = ({
 
             <HeroButtons
               buttons={buttons}
-              variants={['secondary', 'accent']}
-              styles={['outline', 'fill']}
+              variants={['accent', 'secondary']}
               css={css`
                 margin-top: var(--spectrum-global-dimension-size-400);
               `}
             />
+            <div className={assetsImg?.props?.children}/>
           </div>
         </section>
-      );
+      );    
     } else if (variant === 'halfwidth') {
       return (
         <section
@@ -353,7 +699,7 @@ const Hero = ({
 
               <HeroHeading heading={heading} isVariant />
 
-              <HeroTexts texts={props} />
+              <HeroTexts texts={props} isTextWhite={false} />
 
               <HeroButtons
                 buttons={buttons}
@@ -389,13 +735,15 @@ Hero.propTypes = {
   variant: PropTypes.string,
   width: PropTypes.string,
   theme: PropTypes.string,
-  showBreadcrumbNav: PropTypes.bool
+  customLayout: PropTypes.bool,
+  assetsImg:PropTypes.element,
+  animationVideo: PropTypes.element
 };
 
 HeroButtons.propTypes = {
   buttons: PropTypes.element,
   variants: PropTypes.array,
-  styles: PropTypes.array
+  quiets: PropTypes.array
 };
 
 HeroImage.propTypes = {

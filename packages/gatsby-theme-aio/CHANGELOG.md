@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.4...@adobe/gatsby-theme-aio@4.7.5) (2022-12-07)
+
+
+### Fixes
+
+* Fix announcement button style [36cdef8](https://github.com/adobe/aio-theme/commit/36cdef8f9531b00993ba694c1b9c97c82ced89d9).
+
+* Fix button on product card [edbcca0](https://github.com/adobe/aio-theme/commit/edbcca02ac5a86ff98597529fbc438ab69772d4d).
+
+
+## [4.7.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.3...@adobe/gatsby-theme-aio@4.7.4) (2022-12-05)
+
+
+### Fixes
+
+* Make sure DC Linked In Tracking only appears on their site [f856678](https://github.com/adobe/aio-theme/commit/f856678fac48ae9417a4811c4f12119b725f0566).
+
+* Update Do no track link [76b3510](https://github.com/adobe/aio-theme/commit/76b3510cce6654b5dba536de36632074359f72ef).
+
+* Change Privacy link [a969eed](https://github.com/adobe/aio-theme/commit/a969eed421c151c5070c5bb0aa0e3c95012b501c).
+
+
+## [4.7.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.2...@adobe/gatsby-theme-aio@4.7.3) (2022-12-05)
+
+
+### Fixes
+
+* Mobile nav nav strike through [c6aa68b](https://github.com/adobe/aio-theme/commit/c6aa68b8a174f66405db50981c9fb9f5957b0089).
+
+## [4.7.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.1...@adobe/gatsby-theme-aio@4.7.2) (2022-12-05)
+
+
+### Fixes
+
+* Fix graphql reference for subsite nav [11552b1](https://github.com/adobe/aio-theme/commit/11552b1301074c9e110379a20006f6c989810b70).
+
+## [4.7.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.0...@adobe/gatsby-theme-aio@4.7.1) (2022-12-01)
+
+### Features
+
+* Added dropdown indicator for side nav [a2bdb52](https://github.com/adobe/aio-theme/commit/a2bdb5257889138379b95b380353e8aad1e0d098).
+
+### Fixes
+
+* Fix double breadcrumb issue [847c05d](https://github.com/adobe/aio-theme/commit/847c05dc9a625e5e57c977628008ba611e371fae)
+
+* Fix menu styling dropdown [ac7c583](https://github.com/adobe/aio-theme/commit/ac7c58399b576cc8a9a07d56c679de4a12aae434)
+
+* Fix custom menu block [c8dbb5b](https://github.com/adobe/aio-theme/commit/c8dbb5b87fa830f0436eef6f8ed5e625ac23fb0d)
+
+* Rename ProductCardGrid to OldProductCardGrid and default ProductCardGrid to Document Cloud's version [a0b3e30](https://github.com/adobe/aio-theme/commit/a0b3e302e500745473292dfe7ed4b34fe6e53559)
+
+* Fix halfWidth Hero text's to default to non-white and apply staticWhite to Button [38f552f](https://github.com/adobe/aio-theme/commit/38f552f99e8f45f04423e4f54b955c11d94b30c1)
+
+* Remove lottie-web from project's base package.json [8f3a7ae](https://github.com/adobe/aio-theme/commit/8f3a7aeb75caf36707e546214cbdbc31ea20f7e4)
+
+## [4.7.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.6...@adobe/gatsby-theme-aio@4.7.0) (2022-11-16)
+
+### Features
+
+* Merge DC shadowed components back into main theme [e8013d0](https://github.com/adobe/aio-theme/commit/e8013d0db6488055f4d1b6edb2bc0d8dff1f6730).
+
+* Add indicator to side nav [f111dcf](https://github.com/adobe/aio-theme/commit/f111dcfc576329047296d1ed726e5fc096086384).
+
+### Fixes
+
+* fix(DEVSITE-600): frame no longer supported relative paths [abc5d2e](https://github.com/adobe/aio-theme/commit/abc5d2efb9a85f91278a74afdfdca6f62e7355cc).
+
+* fix mobile nav strike through [2b08ba4](https://github.com/adobe/aio-theme/commit/2b08ba4c87a9b9b2b5336fd4b0574fdb2d257031).
+
+## [4.6.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.5...@adobe/gatsby-theme-aio@4.6.6) (2022-10-27)
+
+* Remove lmdb-store [cef19be](https://github.com/adobe/aio-theme/commit/cef19bed85166ee867649e1175d8a3f51aef87ec).
+
+### Fixes
+
+## [4.6.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.4...@adobe/gatsby-theme-aio@4.6.5) (2022-10-24)
+
+### Fixes
+
+* Add overflow to tables [e457931](https://github.com/adobe/aio-theme/commit/e4579316956cd92413df03c5aedcc29405be5ead).
+* Add overflow to tabs when there are than 6 [6666b82](https://github.com/adobe/aio-theme/commit/6666b824b14ad09186d0bce815a28504f2ff2f2c).
+* Fix algolia write key to match deploy [9c66c1f](https://github.com/adobe/aio-theme/commit/9c66c1f949b7ee0a3df81d99657b10cf225e7ed8).
+* Pin gatsby-plugin-sharp and gatsby-transformer-sharp@4.23.0 [8a2f49d](https://github.com/adobe/aio-theme/commit/8a2f49dd978747f7c0c1537cbdc3eed04688fe37).
+
 ## [4.6.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.3...@adobe/gatsby-theme-aio@4.6.4) (2022-10-20)
 
 ### Features
@@ -21,7 +106,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * Add in uxp-indesign to search [1b52068](https://github.com/adobe/aio-theme/commit/1b520682e34d84ef37976497d74f44dfb7042e0c).
-
 
 ## [4.6.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.6.1...@adobe/gatsby-theme-aio@4.6.2) (2022-09-21)
 

@@ -45,8 +45,34 @@ exports.createSchemaCustomization = ({ actions }) => {
       subPages: [SubPage]
       versions: [Version]
       docs: Link
+      salesFAQMenus: [salesFAQMenus]
+      techSupportFAQMenus: [techSupportFAQMenus]
+      subMenuPages: [subMenuPages]
+      allFile: allFile
+    }
+    
+    type subMenuPages {
+      path: String
+      title: String
+      icon: String
+      pages: [MenuPages] 
+    }
+    
+    type MenuPages {
+      path: String
+      title: String
     }
 
+    type salesFAQMenus {
+      path: String
+      title: String
+    }
+    
+    type techSupportFAQMenus {
+      path: String
+      title: String
+    }
+    
     type Home {
       title: String
       path: String
@@ -111,6 +137,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Link {
       title: String
       path: String
+    }
+
+    type allFile {
+      edges: Node
     }
   `);
 };
