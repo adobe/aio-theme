@@ -59,10 +59,11 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   const queries = [];
   let indexes;
   if (!existingIndices.length) {
-    const algoliaIndexList = await algolia.listIndices();
-    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
-    });
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => { return indexPrefix ? `${indexPrefix}-${indexName}` : indexName });
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
     setExistingIndices(filteredIndexes);
     indexes = filteredIndexes;
   } else {
@@ -98,15 +99,17 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIn
 
   let indexes;
   if (!existingIndices.length) {
-    const algoliaIndexList = await algolia.listIndices();
-    const filteredIndexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
-    });
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => { return indexPrefix ? `${indexPrefix}-${indexName}` : indexName });
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
     setExistingIndices(filteredIndexes);
     indexes = filteredIndexes;
   } else {
     indexes = existingIndices;
   }
+
   if (selectedIndex.includes('all')) {
     selectedIndex = indexes;
   } else {
@@ -132,13 +135,20 @@ const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIn
 };
 
 const mapSearchResults = (hits, results) => {
-  hits.forEach(({ objectID, url, _highlightResult }) => {
+  hits.forEach(({ objectID, url, path, _highlightResult }) => {
     let urlPath = ''
-    if (url.includes('https://developer.adobe.com')) {
-      urlPath = url.replace('https://developer.adobe.com', '');
+    if (path) {
+      // console.log(path);
+      urlPath = path;
     } else {
-      urlPath = url;
+      // console.log(url);
+      if (url.includes('https://developer.adobe.com')) {
+        urlPath = url.replace('https://developer.adobe.com', '');
+      } else {
+        urlPath = url;
+      }
     }
+
     // TODO corrupted record url check
     if (!isExternalLink(urlPath)) {
       // Verify url is unique
@@ -177,11 +187,12 @@ const setTargetOrigin = () => {
   }
 };
 
-const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
+const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [oldSearchQuery, setOldSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(['all']);
+  const [searchIndex, setSearchIndex] = useState([SEARCH_INDEX_ALL]);
   const [existingIndices, setExistingIndices] = useState([]);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -272,11 +283,43 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
   };
 
   useEffect(async () => {
-    const algoliaIndexList = await algolia.listIndices();
-    const indexes = Object.values(algoliaIndexList.items).map(({ name }) => name).filter(indexName => {
-      return Object.values(indexAll).includes(indexName);
+    if (isIFramed) {
+
+      window.addEventListener("message", (e) => {
+        const message = JSON.parse(e.data);
+        if (message.localPathName) {
+          let localPathName = message.localPathName;
+          if (localPathName !== "/") {
+            // make sure path name has a slash at start/end to match path-prefix format 
+            if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
+            if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
+            const localProduct = indexAll.find(product => product.productIndices.some(idx => {
+              return idx.indexPathPrefix.startsWith(message.localPathName);
+            }));
+
+            if (localProduct?.productName) {
+              setSearchIndex([localProduct.productName, ...searchIndex]);
+            }
+          }
+
+          const reply = JSON.stringify({ received: message.localPathName });
+          parent.postMessage(reply, "*");
+        }
+      });
+    };
+
+    /* Prepare list of existing indices by cross referencing Algolia */
+
+    const algoliaIndices = await algolia.listIndices();
+    const algoliaIndexNames = Object.values(algoliaIndices.items).map(({ name }) => name)
+    // extract sub array of indices from each product and flatten/merge into single array of indices
+    const localIndexList = indexAll.map((prod) => prod.productIndices).flat().map(({ indexName }) => {
+      return indexPrefix ? `${indexPrefix}-${indexName}` : indexName
     });
-    setExistingIndices(indexes);
+
+    const filteredIndexes = localIndexList.filter(localIndex => algoliaIndexNames.includes(localIndex));
+    setExistingIndices(filteredIndexes);
+
   }, [])
 
   useEffect(() => {
@@ -539,7 +582,20 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                 {searchSuggestionResults.map((searchSuggestion) => {
                   const to = `${location.origin}${searchSuggestion.url}`;
                   const title = searchSuggestion._highlightResult.title?.value ? searchSuggestion._highlightResult.title.value : "";
-                  const content = searchSuggestion._highlightResult.content?.value ? searchSuggestion._highlightResult.content.value : "";
+                  const descriptions = Object.entries(searchSuggestion._highlightResult).filter(optn => {
+                    return optn[1].matchedWords.length > 0
+                  });
+                  let content = "";
+                  if (descriptions.length > 1) {
+                    descriptions.sort((a, b) => {
+                      return a[1].value.length > b[1].value.length ? -1 : 1;
+                    });
+                    content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                  } else {
+                    content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                  }
+
+                  content = content.substring(0, 250);
 
                   return (
                     <MenuItem key={searchSuggestion.objectID} href={to}>
@@ -765,7 +821,18 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
                   {searchResults.map((searchResult) => {
                     const to = `${location.origin}${searchResult.url}`;
                     const title = searchResult._highlightResult.title?.value ? searchResult._highlightResult.title.value : "";
-                    const content = searchResult._highlightResult.content?.value ? searchResult._highlightResult.content.value : "";
+                    const descriptions = Object.entries(searchResult._highlightResult).filter(optn => optn[1].matchedWords.length > 0);
+                    let content = "";
+                    if (descriptions.length > 1) {
+                      descriptions.sort((a, b) => {
+                        return a[1].value.length > b[1].value.length ? -1 : 1;
+                      });
+                      content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                    } else {
+                      content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                    }
+
+                    content = content.substring(0, 250);
 
                     return (
                       <div
@@ -888,7 +955,7 @@ const Search = ({ algolia, searchIndex, indexAll, showSearch, setShowSearch, sea
 Search.propTypes = {
   algolia: PropTypes.object,
   searchIndex: PropTypes.array,
-  indexAll: PropTypes.object,
+  indexAll: PropTypes.array,
   showSearch: PropTypes.bool,
   setShowSearch: PropTypes.func,
   searchButtonId: PropTypes.string

@@ -16,6 +16,7 @@ import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
 import algoliaSearch from 'algoliasearch';
 import { graphql, useStaticQuery } from 'gatsby';
+import Axios from 'axios';
 import {
   DESKTOP_SCREEN_WIDTH,
   findSelectedPages,
@@ -28,7 +29,6 @@ import {
   SIDENAV_WIDTH,
   trailingSlashFix
 } from '../../utils';
-import { adobeIndexes } from '../../../algolia/helpers/get-products-indexes.js';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';
@@ -51,6 +51,8 @@ import nextId from 'react-id-generator';
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
 const hasSearch = !!(process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+// GATSBY_ALGOLIA_INDEX_ENV_PREFIX=[prod | stage | *] this is the env prefix assigned to the index name during indexing
+const algoliaIndexEnv = process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX;
 
 let algolia = null;
 if (hasSearch) {
@@ -151,15 +153,20 @@ export default ({ children, pageContext, location }) => {
 
   // Set Search indexAll
   useEffect(() => {
-    (async () => {
-      try {
-        if (adobeIndexes) {
-          setIndexAll(adobeIndexes);
-        }
-      } catch (e) {
-        console.error(`AIO: Failed setting search index.`);
-      }
-    })();
+    if (hasSearch) {
+      Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json")
+        .then(result => {
+          const productIndexMap = result.data;
+          if (typeof productIndexMap === 'string') {
+            setIndexAll(JSON.parse(productIndexMap));
+          } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]') { // https://stackoverflow.com/a/12996879/15028986
+            setIndexAll(productIndexMap);
+          }
+        })
+        .catch(err => {
+          console.error(`AIO: Failed fetching search index.\n${err}`)
+        })
+    }
   }, []);
 
   // Load all data once and pass it to the Provider
@@ -449,8 +456,8 @@ export default ({ children, pageContext, location }) => {
           {hasSearch && indexAll && (
             <Search
               algolia={algolia}
-              searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
               indexAll={indexAll}
+              indexPrefix={algoliaIndexEnv ? algoliaIndexEnv : ""}
               showSearch={true}
               setShowSearch={setShowSearch}
               searchButtonId={searchButtonId}
@@ -689,8 +696,8 @@ export default ({ children, pageContext, location }) => {
             {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
-                searchIndex={JSON.parse(process.env.GATSBY_ALGOLIA_SEARCH_INDEX)}
                 indexAll={indexAll}
+                indexPrefix={algoliaIndexEnv ? algoliaIndexEnv : ""}
                 showSearch={showSearch}
                 setShowSearch={setShowSearch}
                 searchButtonId={searchButtonId}
