@@ -81,7 +81,7 @@ __metadata:
     core-js: ^3.25.1
     dotenv: ^16.0.2
     gatsby: ^4.22.0
-    gatsby-cli: ^4.23.0
+    gatsby-cli: ^5.3.1
     gatsby-plugin-algolia: ^0.26.0
     gatsby-plugin-emotion: ^7.23.0
     gatsby-plugin-layout: ^3.23.0
@@ -8925,6 +8925,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"create-gatsby@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "create-gatsby@npm:3.3.1"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+  bin:
+    create-gatsby: cli.js
+  checksum: 1592dd829f20524c8f351da45e91f9193ecfdf2bff259f7dc9c2b80ed815563721d210ac677ff9738a7c4cbca1d26f54ea4417b7b6836c604384c770dce806bd
+  languageName: node
+  linkType: hard
+
 "create-hash@npm:^1.1.0, create-hash@npm:^1.1.2, create-hash@npm:^1.2.0":
   version: 1.2.0
   resolution: "create-hash@npm:1.2.0"
@@ -11713,7 +11724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.23.0, gatsby-cli@npm:^4.25.0":
+"gatsby-cli@npm:^4.22.0, gatsby-cli@npm:^4.25.0":
   version: 4.25.0
   resolution: "gatsby-cli@npm:4.25.0"
   dependencies:
@@ -11765,6 +11776,57 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-cli@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "gatsby-cli@npm:5.3.1"
+  dependencies:
+    "@babel/code-frame": ^7.14.0
+    "@babel/core": ^7.15.5
+    "@babel/generator": ^7.16.8
+    "@babel/helper-plugin-utils": ^7.16.7
+    "@babel/preset-typescript": ^7.16.7
+    "@babel/runtime": ^7.15.4
+    "@babel/template": ^7.16.7
+    "@babel/types": ^7.16.8
+    "@jridgewell/trace-mapping": ^0.3.13
+    "@types/common-tags": ^1.8.1
+    better-opn: ^2.1.1
+    boxen: ^5.1.2
+    chalk: ^4.1.2
+    clipboardy: ^2.3.0
+    common-tags: ^1.8.2
+    convert-hrtime: ^3.0.0
+    create-gatsby: ^3.3.1
+    envinfo: ^7.8.1
+    execa: ^5.1.1
+    fs-exists-cached: ^1.0.0
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^4.3.1
+    gatsby-telemetry: ^4.3.1
+    hosted-git-info: ^3.0.8
+    is-valid-path: ^0.1.1
+    joi: ^17.4.2
+    lodash: ^4.17.21
+    node-fetch: ^2.6.6
+    opentracing: ^0.14.5
+    pretty-error: ^2.1.2
+    progress: ^2.0.3
+    prompts: ^2.4.2
+    redux: 4.1.2
+    resolve-cwd: ^3.0.0
+    semver: ^7.3.8
+    signal-exit: ^3.0.6
+    stack-trace: ^0.0.10
+    strip-ansi: ^6.0.1
+    yargs: ^15.4.1
+    yoga-layout-prebuilt: ^1.10.0
+    yurnalist: ^2.1.0
+  bin:
+    gatsby: cli.js
+  checksum: 293769f9d45e5196c2b3d7b85d6c6d7a56d10e7651e68f60274244863b9b69b2eae16cd216118fdc32b02b3112a0ea83b3bf12cea89716e7d6351879e139fbdf
+  languageName: node
+  linkType: hard
+
 "gatsby-core-utils@npm:^3.20.0, gatsby-core-utils@npm:^3.21.0, gatsby-core-utils@npm:^3.22.0, gatsby-core-utils@npm:^3.25.0":
   version: 3.25.0
   resolution: "gatsby-core-utils@npm:3.25.0"
@@ -11785,6 +11847,29 @@ __metadata:
     tmp: ^0.2.1
     xdg-basedir: ^4.0.0
   checksum: d67e1b56b32762f9f416bc0e3df8841247b735ac64ceb192ebbf50a7715bfe383586871a11031d2d0d986954df5ffd0e78b573e431e7c0557b9066d9cc353e4b
+  languageName: node
+  linkType: hard
+
+"gatsby-core-utils@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "gatsby-core-utils@npm:4.3.1"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fastq: ^1.13.0
+    file-type: ^16.5.3
+    fs-extra: ^10.1.0
+    got: ^11.8.5
+    import-from: ^4.0.0
+    lmdb: 2.5.3
+    lock: ^1.1.0
+    node-object-hash: ^2.3.10
+    proper-lockfile: ^4.1.2
+    resolve-from: ^5.0.0
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: caa3d356ea0ccd2549fdec659f0fbbe6353c6845a543fea55ecb3d2a881ebff19bd4fe0a497f89da451b1a1fbbc2c2ca87824024dad85f80f5516b1e4342d3dd
   languageName: node
   linkType: hard
 
@@ -12252,6 +12337,26 @@ __metadata:
     lodash: ^4.17.21
     node-fetch: ^2.6.7
   checksum: b6e7a33eb342fad346c124efcded608b9dc9dd1bf13fc4c12bc17a86d18d9198bd95de042351d8b7c3a88a5e9ce39a4dc3b55cd4ed34c1b7490eb8a3059bc86c
+  languageName: node
+  linkType: hard
+
+"gatsby-telemetry@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "gatsby-telemetry@npm:4.3.1"
+  dependencies:
+    "@babel/code-frame": ^7.14.0
+    "@babel/runtime": ^7.15.4
+    "@turist/fetch": ^7.2.0
+    "@turist/time": ^0.0.2
+    boxen: ^4.2.0
+    configstore: ^5.0.1
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^4.3.1
+    git-up: ^7.0.0
+    is-docker: ^2.2.1
+    lodash: ^4.17.21
+    node-fetch: ^2.6.7
+  checksum: 340f7817a54ad92d33a6c8b8a679c751585214125b79d05d556d754741ab9b9975a1760c06d529e04bed478d11aaf3d043103203aba3134bdb4695dd7d7d105e
   languageName: node
   linkType: hard
 
