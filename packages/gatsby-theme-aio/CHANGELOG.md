@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.5...@adobe/gatsby-theme-aio@4.7.6) (2022-12-14)
+
+### Fixes
+
+* Updates for vertical tabs. [864a9de](https://github.com/adobe/aio-theme/commit/864a9de2c5b299c3aa9341ec91f3eb0182dc4025).
+
+* Update cookie preference keyboard [b76aaf3](https://github.com/adobe/aio-theme/commit/b76aaf323e5f84ef0a91db39490fd3faf06924ae).
+
+### Features
+
+* Add local product context to iframed search, stage / prod env awareness, and new location for product index map [352ac8c](https://github.com/adobe/aio-theme/commit/352ac8cfa21963dad3feff527bc64f8568b8f4fe).
+
 ## [4.7.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.4...@adobe/gatsby-theme-aio@4.7.5) (2022-12-07)
 
 
