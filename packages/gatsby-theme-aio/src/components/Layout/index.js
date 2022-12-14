@@ -29,7 +29,6 @@ import {
   SIDENAV_WIDTH,
   trailingSlashFix
 } from '../../utils';
-// import { adobeIndexes } from '../../../algolia/helpers/get-products-indexes.js';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
 import '@spectrum-css/vars/dist/spectrum-large.css';

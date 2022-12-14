@@ -187,17 +187,6 @@ const setTargetOrigin = () => {
   }
 };
 
-// const setExpectedOrigin = () => {
-//   const host = window.location.host;
-//   if (host.includes('localhost')) {
-//     return 'http://localhost:8000';
-//   } else if ($IS_STAGE || $IS_HLX_PATH) {
-//     return 'https://developer-stage.adobe.com';
-//   } else {
-//     return 'https://developer.adobe.com';
-//   }
-// }
-
 const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, searchButtonId, isIFramed }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -297,9 +286,6 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
     if (isIFramed) {
 
       window.addEventListener("message", (e) => {
-        // const expectedOrigin = setExpectedOrigin();
-        // if (e.origin !== expectedOrigin) return;
-
         const message = JSON.parse(e.data);
         if (message.localPathName) {
           let localPathName = message.localPathName;
@@ -318,11 +304,6 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
 
           const reply = JSON.stringify({ received: message.localPathName });
           parent.postMessage(reply, "*");
-          // // wip add security feature for expected / target origins
-          // const targetOrigin = setTargetOrigin();
-          // if (targetOrigin) {
-          //   parent.postMessage(reply, targetOrigin);
-          // }
         }
       });
     };
