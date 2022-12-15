@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.8...@adobe/gatsby-theme-aio@4.7.8) (2022-12-15)
+
+### Fixes
+
+* Updates for vertical tabs. [8c6c346](https://github.com/adobe/aio-theme/commit/8c6c34615e1e6d17a54026b7d0258d6c0272bc1c).
+
+## [4.7.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.7...@adobe/gatsby-theme-aio@4.7.7) (2022-12-15)
+
+* test release
+
 ## [4.7.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.5...@adobe/gatsby-theme-aio@4.7.6) (2022-12-14)
 
 ### Fixes
