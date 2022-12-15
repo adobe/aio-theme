@@ -314,8 +314,8 @@ const TabsBlock = ({
       className={classNames(className, `tabsBlock spectrum--${theme}`)}
       css={css`
         background: var(--spectrum-global-color-gray-100);
-        width: 100%;
-        overflow:hidden !important;
+        max-width: 100%;
+        overflow-x:hidden !important;
         margin: 0;
         padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
       `}
@@ -340,7 +340,7 @@ const TabsBlock = ({
             position: relative;
             grid-template-columns: 300px calc(100% - 300px);
             margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
-            width: inherit;
+            width: ${orientation === 'vertical' ? DESKTOP_SCREEN_WIDTH + ' !important' : 'inherit'};
            
            @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               // display: initial !important;
