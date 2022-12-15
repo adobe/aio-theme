@@ -321,7 +321,6 @@ const TabsBlock = ({
       `}
       >
       <div
-        className="tabs-wrapper"
         css={css`
         display: ${orientation === 'vertical' ? 'inline-flex': ''};
 
@@ -340,15 +339,14 @@ const TabsBlock = ({
             display: ${orientation === 'vertical' ? 'grid': 'block'};
             position: relative;
             grid-template-columns: 300px calc(100% - 300px);
-            margin-top: var(--spectrum-global-dimension-size-300);
-            // width:${layoutColumns(12)} !important;
-            width:${DESKTOP_SCREEN_WIDTH} !important;
-
-            @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+            margin-top: ${orientation === 'vertical' ? 'var(--spectrum-global-dimension-size-300)' : ''};
+            width: ${orientation === 'vertical' ? DESKTOP_SCREEN_WIDTH + ' !important' : 'inherit'};
+           
+           @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
               // display: initial !important;
               width: 100% !important;
             }
-
+            
             @media only screen and (device-width: ${TABLET_SCREEN_WIDTH}) {
               width:${layoutColumns(8)} !important;
             }
@@ -412,8 +410,7 @@ const TabsBlock = ({
                         display: flex !important;
                         padding: var(--spectrum-global-dimension-size-125) !important;
                         height: auto !important;
-                        line-height: initial;
-                        margin-left: var(--spectrum-tabs-textonly-tabitem-margin-right);
+                        line-height: ${orientation === 'vertical' ? 'initial !important' : 'initial'};
                         .spectrum-Tabs-itemLabel{
                           margin-top:5px;
                           margin-bottom:5px;
@@ -446,7 +443,6 @@ const TabsBlock = ({
                         }
                       `}
                     >
-                    </Item>
                       <div
                         key={`mobileTabView_${index}`}
                         className="mobileTabView"
@@ -467,6 +463,7 @@ const TabsBlock = ({
                       >
                         {data['content'] ? data['content'] : null}
                       </div>
+                  </Item>
                     </>
                   )
                 })}
