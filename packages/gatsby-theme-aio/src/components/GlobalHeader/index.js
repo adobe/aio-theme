@@ -487,6 +487,7 @@ const GlobalHeader = ({
                 margin-top: 0;
               }
             `}
+            isHeader={true}
             ref={tabsRef}
             onFontsReady={() => {
               positionSelectedTabIndicator(selectedTabIndex);
