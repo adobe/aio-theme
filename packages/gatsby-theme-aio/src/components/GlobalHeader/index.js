@@ -878,6 +878,7 @@ const GlobalHeader = ({
                 onClick={() => {
                   setShowSearch((show) => !show);
                 }}
+                aria-label={showSearch ? "Close Search" : "Search"}
                 isQuiet
                 css={css`
                   margin-right: var(--spectrum-global-dimension-size-200);
@@ -927,7 +928,7 @@ const GlobalHeader = ({
                   <ActionButtonLabel>Sign in</ActionButtonLabel>
                 </ActionButton>
 
-                <div hidden={!profile}>
+                <div >
                   <button
                     aria-label="Profile"
                     aria-controls={profilePopoverId}
@@ -977,7 +978,7 @@ const GlobalHeader = ({
                           margin-top: var(--spectrum-global-dimension-size-400);
                           margin-bottom: var(--spectrum-global-dimension-size-200);
                         `}>
-                        <Image alt="Avatar" src={avatar} />
+                        <Image alt="" src={avatar} />
                       </div>
 
                       <div
@@ -1004,6 +1005,7 @@ const GlobalHeader = ({
                       </AnchorButton>
 
                       <Button
+                        tabIndex="0"
                         variant="primary"
                         css={css`
                           margin: var(--spectrum-global-dimension-size-200) 0;
