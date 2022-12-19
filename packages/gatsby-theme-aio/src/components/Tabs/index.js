@@ -109,6 +109,7 @@ const Tabs = forwardRef(({
   }, [onFontsReady]);
 
   return (
+
     <div
       ref={ref}
       {...props}
@@ -123,7 +124,7 @@ const Tabs = forwardRef(({
 
 const Item = forwardRef(({
   elementType = 'div',
-  isDisabled=false,
+    isDisabled=false,
   isSelected=false,
   className,
   children,
@@ -137,6 +138,7 @@ const Item = forwardRef(({
     <Element
       {...props}
       ref={ref}
+      role='tab'
       title={label?.props?.children}
       aria-selected={isSelected}
       disabled={isDisabled}
@@ -216,7 +218,6 @@ const HeaderTabItem = forwardRef(({
     <Element
       {...props}
       ref={ref}
-      role='tab'
       title={label?.props?.children}
       aria-selected={isSelected}
       autofocus={true}
