@@ -933,6 +933,7 @@ const GlobalHeader = ({
                   <button
                     aria-label="Profile"
                     aria-controls={profilePopoverId}
+                    aria-expanded={openProfile}
                     onClick={(event) => {
                       event.stopImmediatePropagation();
 
