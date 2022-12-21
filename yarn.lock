@@ -94,7 +94,7 @@ __metadata:
     gatsby-remark-copy-linked-files: ^5.23.0
     gatsby-remark-images-remote: ^2.1.1
     gatsby-source-filesystem: ^4.23.0
-    gatsby-transformer-remark: ^5.23.0
+    gatsby-transformer-remark: ^5.25.1
     gatsby-transformer-sharp: 4.23.0
     https-browserify: ^1.0.0
     jsdom: ^20.0.0
@@ -12255,9 +12255,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-transformer-remark@npm:^5.23.0":
-  version: 5.25.0
-  resolution: "gatsby-transformer-remark@npm:5.25.0"
+"gatsby-transformer-remark@npm:^5.25.1":
+  version: 5.25.1
+  resolution: "gatsby-transformer-remark@npm:5.25.1"
   dependencies:
     "@babel/runtime": ^7.15.4
     gatsby-core-utils: ^3.25.0
@@ -12283,7 +12283,7 @@ __metadata:
     unist-util-visit: ^2.0.3
   peerDependencies:
     gatsby: ^4.0.0-next
-  checksum: f460b91b41e74af13c09ea46ddcffc9d301b024baaaa94db5a8b1061844c2373437f37ec37d00abbde8eaadb52e205cfed99b4b8dbcdfd04193dc3d240e89fd6
+  checksum: b7b8f67fea0ee34178a4d4611f1eaf8adad9954fd2d3e89ecde489cd2b03fc5e6a88485ffa40b0fd7a56aea9fb452640de953f395abf111f7f77c0521b5ecf2c
   languageName: node
   linkType: hard
 
