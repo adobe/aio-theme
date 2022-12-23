@@ -887,6 +887,10 @@ const GlobalHeader = ({
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     margin-right: 0;
                   }
+                  &:focus{
+                    border: 2px solid #007aff !important;
+                    border-radius: 15% !important;
+                  }
                 `}>
                 {showSearch ? <Close /> : <Magnify />}
               </ActionButton>
