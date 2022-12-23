@@ -116,8 +116,8 @@ const GlobalHeader = ({
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
 
   const POPOVER_ANIMATION_DELAY = 200;
-  const versionPopoverId = nextId();
-  const profilePopoverId = nextId();
+  const versionPopoverId = "version " + nextId();
+  const profilePopoverId = "profile " + nextId();
   const hasHome = home?.hidden !== true;
 
   const positionSelectedTabIndicator = (index) => {
@@ -513,7 +513,7 @@ const GlobalHeader = ({
             )}
             {pages.map((page, i) => {
               const isSelectedTab = selectedTabIndex === i;
-              const menuPopoverId = nextId();
+              const menuPopoverId = "menu " + nextId();
               const setTabRef = (element) => {
                 page.tabRef = { current: element };
               };
