@@ -208,6 +208,7 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
   const [keywordResults, setKeywordResults] = useState([]);
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [triggerSearch, setTriggerSearch] = useState(false);
+  const [searchQueryCounter, setSearchQueryCounter] = useState(0);
 
   const search = async () => {
     if (searchQuery.length) {
@@ -397,6 +398,42 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
     };
   }, [setShowSearch]);
 
+  useEffect(() => {
+    // simple debouncing strategy for search queries while user is typing
+    const timeOutId = setTimeout(() => debounceCallback(), 500);
+    const debounceCallback = async () => {
+      if (searchQuery.length && !searchResults.length) {
+        setShowClear(true);
+
+        const suggestions = await searchSuggestions(algolia, searchQuery, searchIndex, indexAll, existingIndices, setExistingIndices);
+        setSearchQueryCounter(searchQueryCounter + 1);
+        console.log('Total search queries counted is:', searchQueryCounter);
+
+        if (suggestions?.results?.length) {
+          const results = [];
+          suggestions.results.forEach(({ hits }) => {
+            mapSearchResults(hits, results);
+          });
+          setSearchSuggestionResults(results);
+
+          if (!searchResults.length) {
+            setShowSearchResults(false);
+          }
+        } else {
+          setSearchSuggestionResults([]);
+        }
+
+        setIsSuggestionsOpen(true);
+      } else {
+        setShowClear(false);
+        setIsSuggestionsOpen(false);
+      }
+    }
+
+    return () => clearTimeout(timeOutId);
+
+  }, [searchQuery])
+
   if (isIFramed) {
     useEffect(() => {
       if (suggestionsRef) {
@@ -485,31 +522,6 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
                 onChange={async (e) => {
                   const query = e.target.value;
                   setSearchQuery(query);
-
-                  if (query.length && !searchResults.length) {
-                    setShowClear(true);
-
-                    const suggestions = await searchSuggestions(algolia, query, searchIndex, indexAll, existingIndices, setExistingIndices);
-
-                    if (suggestions?.results?.length) {
-                      const results = [];
-                      suggestions.results.forEach(({ hits }) => {
-                        mapSearchResults(hits, results);
-                      });
-                      setSearchSuggestionResults(results);
-
-                      if (!searchResults.length) {
-                        setShowSearchResults(false);
-                      }
-                    } else {
-                      setSearchSuggestionResults([]);
-                    }
-
-                    setIsSuggestionsOpen(true);
-                  } else {
-                    setShowClear(false);
-                    setIsSuggestionsOpen(false);
-                  }
                 }}
                 aria-label="Search"
                 type="search"
