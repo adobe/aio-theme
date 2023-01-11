@@ -295,7 +295,6 @@ const updatePadding = !enablePicker ?  "padding-top: var(--spectrum-global-dimen
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                role="figure"
                 className="spectrum-Card spectrum-Card--sizeM"
                 css={css`
                   width: ${width};

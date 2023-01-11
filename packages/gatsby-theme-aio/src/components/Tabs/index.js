@@ -94,6 +94,7 @@ const Tabs = forwardRef(({
   orientation='horizontal',
   density='regular',
   isQuiet = true,
+  isHeader = false,
   children,
   className,
   onFontsReady,
@@ -108,11 +109,12 @@ const Tabs = forwardRef(({
   }, [onFontsReady]);
 
   return (
+
     <div
       ref={ref}
       {...props}
-      role='tablist'
-      aria-orientation={orientation}
+      role={!isHeader ? 'tablist' : undefined}
+      aria-orientation={!isHeader ? 'orientation' : undefined}
       className={classNames(className, 'spectrum-Tabs', 'spectrum-Tabs--sizeM', `spectrum-Tabs--${orientation}`, { 'spectrum-Tabs--quiet' : isQuiet }, { 'spectrum-Tabs--compact': density === 'compact' })}
     >
       {children}
@@ -122,7 +124,7 @@ const Tabs = forwardRef(({
 
 const Item = forwardRef(({
   elementType = 'div',
-  isDisabled=false,
+    isDisabled=false,
   isSelected=false,
   className,
   children,
@@ -216,7 +218,6 @@ const HeaderTabItem = forwardRef(({
     <Element
       {...props}
       ref={ref}
-      role='tab'
       title={label?.props?.children}
       aria-selected={isSelected}
       autofocus={true}

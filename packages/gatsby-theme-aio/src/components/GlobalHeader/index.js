@@ -116,8 +116,8 @@ const GlobalHeader = ({
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
 
   const POPOVER_ANIMATION_DELAY = 200;
-  const versionPopoverId = nextId();
-  const profilePopoverId = nextId();
+  const versionPopoverId = "version " + nextId();
+  const profilePopoverId = "profile " + nextId();
   const hasHome = home?.hidden !== true;
 
   const positionSelectedTabIndicator = (index) => {
@@ -487,6 +487,7 @@ const GlobalHeader = ({
                 margin-top: 0;
               }
             `}
+            isHeader={true}
             ref={tabsRef}
             onFontsReady={() => {
               positionSelectedTabIndicator(selectedTabIndex);
@@ -512,7 +513,7 @@ const GlobalHeader = ({
             )}
             {pages.map((page, i) => {
               const isSelectedTab = selectedTabIndex === i;
-              const menuPopoverId = nextId();
+              const menuPopoverId = "menu " + nextId();
               const setTabRef = (element) => {
                 page.tabRef = { current: element };
               };
@@ -878,12 +879,17 @@ const GlobalHeader = ({
                 onClick={() => {
                   setShowSearch((show) => !show);
                 }}
+                aria-label={showSearch ? "Close Search" : "Search"}
                 isQuiet
                 css={css`
                   margin-right: var(--spectrum-global-dimension-size-200);
 
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     margin-right: 0;
+                  }
+                  &:focus{
+                    border: 2px solid #007aff !important;
+                    border-radius: 15% !important;
                   }
                 `}>
                 {showSearch ? <Close /> : <Magnify />}
@@ -927,10 +933,11 @@ const GlobalHeader = ({
                   <ActionButtonLabel>Sign in</ActionButtonLabel>
                 </ActionButton>
 
-                <div hidden={!profile}>
+                <div >
                   <button
                     aria-label="Profile"
                     aria-controls={profilePopoverId}
+                    aria-expanded={openProfile}
                     onClick={(event) => {
                       event.stopImmediatePropagation();
 
@@ -977,7 +984,7 @@ const GlobalHeader = ({
                           margin-top: var(--spectrum-global-dimension-size-400);
                           margin-bottom: var(--spectrum-global-dimension-size-200);
                         `}>
-                        <Image alt="Avatar" src={avatar} />
+                        <Image alt="" src={avatar} />
                       </div>
 
                       <div
@@ -1004,6 +1011,7 @@ const GlobalHeader = ({
                       </AnchorButton>
 
                       <Button
+                        tabIndex="0"
                         variant="primary"
                         css={css`
                           margin: var(--spectrum-global-dimension-size-200) 0;
