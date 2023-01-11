@@ -49,6 +49,7 @@ const GatsbyLink = forwardRef(({ className, style, variant, to, ...props }, ref)
   }
 
   // Support external relative links and linked files
+  // Not going to replace the path if it's for mobile sdk path of 'client-sdks' as their structure is setup differently.
   return (
     <a
       className={classNames(className)}
@@ -56,7 +57,7 @@ const GatsbyLink = forwardRef(({ className, style, variant, to, ...props }, ref)
         to &&
         !new URL(to, 'https://example.com').pathname.split('.')[1] &&
         pathPrefix &&
-        to.startsWith(trailingSlashFix(pathPrefix))
+        to.startsWith(trailingSlashFix(pathPrefix)) && !to.startsWith("/client-sdks")
           ? to.replace(pathPrefix, '')
           : to
       }
