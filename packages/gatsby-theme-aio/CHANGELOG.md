@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.9...@adobe/gatsby-theme-aio@4.7.9) (2022-12-15)
+
+### Fixes
+
+* Update accessibility fixes on home page. [835582a](https://github.com/adobe/aio-theme/commit/835582a83405cff2cc409d1f6288225aa9a8670e).
+* fix: added simple debouncing to search to reduce queries while user types [1796c51](https://github.com/adobe/aio-theme/commit/1796c51e203172845eedfb7255a81dff4763c2db).
+* Resolve the path properly for the mobile sdk team.  [2a5e288](https://github.com/adobe/aio-theme/commit/2a5e2883bb250cfb92ec86f3b9740d084a605790).
+
 ## [4.7.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.9...@adobe/gatsby-theme-aio@4.7.9) (2022-12-15)
 
 ### Fixes
