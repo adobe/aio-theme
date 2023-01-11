@@ -190,7 +190,7 @@ __metadata:
     gatsby-remark-copy-linked-files: ^5.23.0
     gatsby-remark-images-remote: ^2.1.1
     gatsby-source-filesystem: ^4.23.0
-    gatsby-transformer-remark: ^5.23.0
+    gatsby-transformer-remark: ^6.4.0
     gatsby-transformer-sharp: 4.23.0
     https-browserify: ^1.0.0
     jsdom: ^20.0.0
@@ -1840,6 +1840,15 @@ __metadata:
   dependencies:
     regenerator-runtime: ^0.13.11
   checksum: 42a8504db21031b1859fbc0f52d698a3d2f5ada9519eb76c6f96a7e657d8d555732a18fe71ef428a67cc9fc81ca0d3562fb7afdc70549c5fec343190cbaa9b03
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.20.7":
+  version: 7.20.7
+  resolution: "@babel/runtime@npm:7.20.7"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 4629ce5c46f06cca9cfb9b7fc00d48003335a809888e2b91ec2069a2dcfbfef738480cff32ba81e0b7c290f8918e5c22ddcf2b710001464ee84ba62c7e32a3a3
   languageName: node
   linkType: hard
 
@@ -11884,6 +11893,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "gatsby-core-utils@npm:4.4.0"
+  dependencies:
+    "@babel/runtime": ^7.20.7
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fastq: ^1.13.0
+    file-type: ^16.5.3
+    fs-extra: ^10.1.0
+    got: ^11.8.5
+    import-from: ^4.0.0
+    lmdb: 2.5.3
+    lock: ^1.1.0
+    node-object-hash: ^2.3.10
+    proper-lockfile: ^4.1.2
+    resolve-from: ^5.0.0
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: 4f3634f727e6ed953c62e0500831b46aa974ef1281b03690b893e0f4d6d15891ce1dfe17e59137b1cecbc7726fb3744f96c1fdfdad462bb0ec1af6bb9d79dd17
+  languageName: node
+  linkType: hard
+
 "gatsby-cypress@npm:^2.23.0":
   version: 2.25.0
   resolution: "gatsby-cypress@npm:2.25.0"
@@ -12380,6 +12412,38 @@ __metadata:
   peerDependencies:
     gatsby: ^4.0.0-next
   checksum: f460b91b41e74af13c09ea46ddcffc9d301b024baaaa94db5a8b1061844c2373437f37ec37d00abbde8eaadb52e205cfed99b4b8dbcdfd04193dc3d240e89fd6
+  languageName: node
+  linkType: hard
+
+"gatsby-transformer-remark@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "gatsby-transformer-remark@npm:6.4.0"
+  dependencies:
+    "@babel/runtime": ^7.20.7
+    gatsby-core-utils: ^4.4.0
+    gray-matter: ^4.0.3
+    hast-util-raw: ^6.1.0
+    hast-util-to-html: ^7.1.3
+    lodash: ^4.17.21
+    mdast-util-to-hast: ^10.2.0
+    mdast-util-to-string: ^2.0.0
+    mdast-util-toc: ^5.1.0
+    remark: ^13.0.0
+    remark-footnotes: ^3.0.0
+    remark-gfm: ^1.0.0
+    remark-parse: ^9.0.0
+    remark-retext: ^4.0.0
+    remark-stringify: ^9.0.1
+    retext-english: ^3.0.4
+    sanitize-html: ^2.7.3
+    underscore.string: ^3.3.6
+    unified: ^9.2.2
+    unist-util-remove-position: ^3.0.0
+    unist-util-select: ^3.0.4
+    unist-util-visit: ^2.0.3
+  peerDependencies:
+    gatsby: ^5.0.0-next
+  checksum: 54a3a79f3e6ff67db638829a6248b37ed1b23982a145139f7ddb3bf07a6e5d6bd3aff43ab07cfb3ea61806b5e3d42945aaa1b1c2105d74ed0db4c38833bc9e79
   languageName: node
   linkType: hard
 
@@ -13486,7 +13550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hast-util-raw@npm:^6.0.2":
+"hast-util-raw@npm:^6.0.2, hast-util-raw@npm:^6.1.0":
   version: 6.1.0
   resolution: "hast-util-raw@npm:6.1.0"
   dependencies:
@@ -13718,7 +13782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"htmlparser2@npm:^8.0.1":
+"htmlparser2@npm:^8.0.0, htmlparser2@npm:^8.0.1":
   version: 8.0.1
   resolution: "htmlparser2@npm:8.0.1"
   dependencies:
@@ -20839,6 +20903,20 @@ __metadata:
     parse-srcset: ^1.0.2
     postcss: ^7.0.27
   checksum: 883cfe20e094b2861bffbbdf7dd4cb9dde5d7fe14b83b3d4a1e22160172126f9fd120cd9c9a0257a473bfe824daec92a29bebd1712d5e08437add14f6846d871
+  languageName: node
+  linkType: hard
+
+"sanitize-html@npm:^2.7.3":
+  version: 2.8.1
+  resolution: "sanitize-html@npm:2.8.1"
+  dependencies:
+    deepmerge: ^4.2.2
+    escape-string-regexp: ^4.0.0
+    htmlparser2: ^8.0.0
+    is-plain-object: ^5.0.0
+    parse-srcset: ^1.0.2
+    postcss: ^8.3.11
+  checksum: 0d35503b261800b736a02648e8b9b2a5206cbc621248cf8dd86d5b9bdd470d0146d74704222d287bd7359a599e8a186cc5b015401237b0244352f18f37465daa
   languageName: node
   linkType: hard
 
