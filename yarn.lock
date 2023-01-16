@@ -33,103 +33,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/gatsby-theme-aio@npm:*":
-  version: 4.7.9
-  resolution: "@adobe/gatsby-theme-aio@npm:4.7.9"
-  dependencies:
-    "@adobe/focus-ring-polyfill": ^0.1.5
-    "@adobe/gatsby-source-github-file-contributors": ^0.3.1
-    "@adobe/prism-adobe": ^1.0.3
-    "@emotion/react": ^11.10.4
-    "@loadable/component": ^5.15.2
-    "@mdx-js/mdx": 1.6.22
-    "@mdx-js/react": 1.6.22
-    "@spectrum-css/accordion": 3.0.24
-    "@spectrum-css/actionbutton": 2.1.7
-    "@spectrum-css/actiongroup": ^2.0.0
-    "@spectrum-css/assetlist": 3.0.24
-    "@spectrum-css/badge": ^1.0.20
-    "@spectrum-css/breadcrumb": 5.0.0
-    "@spectrum-css/button": 6.0.13
-    "@spectrum-css/card": 5.0.0
-    "@spectrum-css/checkbox": 3.1.3
-    "@spectrum-css/dialog": 6.0.15
-    "@spectrum-css/divider": 1.0.27
-    "@spectrum-css/icon": 3.0.23
-    "@spectrum-css/inlinealert": 4.0.13
-    "@spectrum-css/link": 3.1.23
-    "@spectrum-css/menu": 4.0.4
-    "@spectrum-css/modal": 3.0.23
-    "@spectrum-css/picker": 1.2.12
-    "@spectrum-css/popover": 5.0.18
-    "@spectrum-css/progresscircle": 1.0.23
-    "@spectrum-css/search": 4.2.12
-    "@spectrum-css/sidenav": 3.0.24
-    "@spectrum-css/table": 4.0.19
-    "@spectrum-css/tabs": 3.2.19
-    "@spectrum-css/textfield": 3.2.4
-    "@spectrum-css/tooltip": 3.1.18
-    "@spectrum-css/typography": 4.0.20
-    "@spectrum-css/underlay": 2.0.31
-    "@spectrum-css/vars": 8.0.0
-    "@spectrum-css/well": 3.0.22
-    algolia-html-extractor: ^0.0.1
-    algoliasearch: ^4.14.2
-    await-exec: ^0.1.2
-    builtin-status-codes: ^3.0.0
-    classnames: ^2.3.2
-    core-js: ^3.25.1
-    gatsby-plugin-algolia: ^0.26.0
-    gatsby-plugin-emotion: ^7.23.0
-    gatsby-plugin-layout: ^3.23.0
-    gatsby-plugin-mdx: ^3.20.0
-    gatsby-plugin-mdx-embed: ^1.0.0
-    gatsby-plugin-preact: ^6.23.0
-    gatsby-plugin-react-helmet: ^5.23.0
-    gatsby-plugin-sharp: ^4.23.0
-    gatsby-remark-autolink-headers: ^5.23.0
-    gatsby-remark-copy-linked-files: ^5.23.0
-    gatsby-remark-images-remote: ^2.1.1
-    gatsby-source-filesystem: ^4.23.0
-    gatsby-transformer-remark: ^5.23.0
-    gatsby-transformer-sharp: 4.23.0
-    https-browserify: ^1.0.0
-    jsdom: ^20.0.0
-    lottie-web: ^5.9.6
-    mdx-embed: ^1.0.0
-    mobx: ^6.6.2
-    normalize-path: ^3.0.0
-    os-browserify: ^0.3.0
-    path-browserify: ^1.0.1
-    penpal: ^6.2.2
-    postcss: ^8.4.16
-    preact: ^10.11.0
-    preact-render-to-string: ^5.2.4
-    prism-react-renderer: 1.3.5
-    prop-types: ^15.8.1
-    react-helmet: ^6.1.0
-    react-id-generator: ^3.0.2
-    redoc: 2.0.0
-    redoc-cli: ^0.13.20
-    rehype-slug-custom-id: ^1.1.0
-    request: ^2.88.2
-    sharp: ^0.31.0
-    stream-http: ^3.2.0
-    styled-components: ^5.3.5
-    swiper: ^8.3.2
-    to-arraybuffer: ^1.0.1
-    tty-browserify: ^0.0.1
-    unist-util-select: 3.0.4
-    uuid: ^9.0.0
-  peerDependencies:
-    gatsby: ^4.22.0
-    react: ^17.0.2
-    react-dom: ^17.0.2
-  checksum: 04e6b7650095e9c15f157693f246d0ff2d62696f63a8bc85fa3e8527c029ffd46e7aa1b7c1e1eb79bb29461e481d7469ccf1516f654bc56f6bd20c3b1caf9163
-  languageName: node
-  linkType: hard
-
-"@adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio":
+"@adobe/gatsby-theme-aio@*, @adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio":
   version: 0.0.0-use.local
   resolution: "@adobe/gatsby-theme-aio@workspace:packages/gatsby-theme-aio"
   dependencies:
@@ -142,7 +46,7 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@spectrum-css/accordion": 3.0.24
     "@spectrum-css/actionbutton": 2.1.7
-    "@spectrum-css/actiongroup": ^2.0.0
+    "@spectrum-css/actiongroup": ^3.0.8
     "@spectrum-css/assetlist": 3.0.24
     "@spectrum-css/badge": ^1.0.20
     "@spectrum-css/breadcrumb": 5.0.0
@@ -5197,13 +5101,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/actiongroup@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@spectrum-css/actiongroup@npm:2.0.0"
+"@spectrum-css/actiongroup@npm:^3.0.8":
+  version: 3.0.8
+  resolution: "@spectrum-css/actiongroup@npm:3.0.8"
   peerDependencies:
-    "@spectrum-css/actionbutton": ^1.1.13
-    "@spectrum-css/vars": ^8.0.0
-  checksum: 2003d7b911a3b364700e3a9e976799ba3668d9590e9fa2f5ea71e8dd099846d2c17d6f63da86719b4f48630bbdf35a733ce9e4f0cc1b2df9987c1bdbb01cd0b2
+    "@spectrum-css/actionbutton": ^3.0.0
+    "@spectrum-css/tokens": ^6.0.0
+  checksum: b5d6a4b6c952c5bfc974cd83bbc7676741054697d88c56d39265add94a13864900fa4ab900ed238826a4dde801852482299dc834627572e07b5cfea93b369df8
   languageName: node
   linkType: hard
 
