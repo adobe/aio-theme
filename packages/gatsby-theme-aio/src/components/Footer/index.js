@@ -160,7 +160,7 @@ const Footer = ({ hasSideNav = false }) => (
       `}</style>
         <script
           defer
-          src="https://wwwimages2.adobe.com/etc/beagle/public/globalnav/adobe-privacy/latest/privacy.min.js"
+          src="https://www.adobe.com/etc.clientlibs/globalnav/clientlibs/base/privacy-standalone.js"
         />
       </Helmet>
     )}
