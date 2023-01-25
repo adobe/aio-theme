@@ -217,3 +217,51 @@ Element | Description
 `name` | A fully-qualified component name, in the format `<vendor-name>/<component-name>`. All letters must be in lowercase. Use dashes in the `<component-name>` to separate words. Themes must use the format `<vendor-name>/theme-<area>-<theme-name>`.
 `type` | For modules, this value must be set to `magento2-module`. Other possible types are `metapackage`, `magento2-theme`, and `magento2-language`.
 `autoload` | Specify necessary information to be loaded, such as [registration.php](../build/component-registration.md). For more information, see [Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) from Composer.
+
+Inline Alert as a nested component
+
+1. Under _Personal Information_, enter your **First Name**, **Last Name**, **Email Address**, and **Country**.
+
+   <InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   Personal Information :
+
+   Lorem ipsum dolor sit amee
+
+   Add more information
+
+   Lorem ipsum dolor sit amet
+
+   </InlineNestedAlert>
+
+   Lorem ipsum dolor sit amet
+
+2. Under _My Company Primarily_, choose the best description of your company's primary focus. Then, set **My Role** to the option that best describes what you do for the company.
+
+   <InlineNestedAlert variant="info" header="true" iconPosition="left">
+
+      Level2 :
+
+      Lorem ipsum dolor sit amee
+
+      Level 2 information
+
+      Lorem ipsum dolor sit amet
+
+   </InlineNestedAlert>
+
+   1. SubLevel 1
+
+      Subcontain
+
+      <InlineNestedAlert variant="error" header="true" iconPosition="left">
+
+      Sublevel1 :
+
+      Lorem ipsum dolor sit amee
+
+      Sub Level 1 information
+
+      Lorem ipsum dolor sit amet
+
+      </InlineNestedAlert>
