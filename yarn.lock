@@ -4292,18 +4292,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/cli@npm:15.6.1":
-  version: 15.6.1
-  resolution: "@nrwl/cli@npm:15.6.1"
+"@nrwl/cli@npm:15.6.2":
+  version: 15.6.2
+  resolution: "@nrwl/cli@npm:15.6.2"
   dependencies:
-    nx: 15.6.1
-  checksum: caa9ba9cd576476052b723a34a8e508ae4de2d940f6aec1684b1efdd5bd132a6b76236ba2c16e7e434d00888044e36674fbeff1ce5b55d911a87dd456d66920c
+    nx: 15.6.2
+  checksum: 9165f7f11c906be50bc75009be5f180c9469f5b594a28034caac7a11e8adadafe79ed44f90b1cca77fdfd60ba14c96baa1bc917c82524f27dcfda74a6eca3660
   languageName: node
   linkType: hard
 
 "@nrwl/devkit@npm:>=14.8.1 < 16":
-  version: 15.6.1
-  resolution: "@nrwl/devkit@npm:15.6.1"
+  version: 15.6.2
+  resolution: "@nrwl/devkit@npm:15.6.2"
   dependencies:
     "@phenomnomnominal/tsquery": 4.1.1
     ejs: ^3.1.7
@@ -4312,18 +4312,18 @@ __metadata:
     tslib: ^2.3.0
   peerDependencies:
     nx: ">= 14 <= 16"
-  checksum: 0520cf99908dce19826b09194994af28884df7efd6bed5bf8b6fe217524d5d7d0d5ac9bb1d077c9c7f4f4cc0f339e5d665c96ee86c636c568c770f8caa965406
+  checksum: 1e8af03fb4606f7c1d356a117209d0607a43dd4d47f7824be49ef1d5de779662578da3070d9e3dd754399c744fb3280fd9b8ea1d26d3678bd5a33eb693e6a67d
   languageName: node
   linkType: hard
 
-"@nrwl/tao@npm:15.6.1":
-  version: 15.6.1
-  resolution: "@nrwl/tao@npm:15.6.1"
+"@nrwl/tao@npm:15.6.2":
+  version: 15.6.2
+  resolution: "@nrwl/tao@npm:15.6.2"
   dependencies:
-    nx: 15.6.1
+    nx: 15.6.2
   bin:
     tao: index.js
-  checksum: c4c2e4bc884cf499279fabff7e9aa1800db437e67f61e9c6c1cdb89bc3a2ebee5e5ee46f48bf54556f9f49fb32bbf7ca2703358b4a15eb26ba2be2eb761729c0
+  checksum: 0b9b7b1c43f682638fcf413d520d8626b427f68fe7d6807eb6931b9120273126dac8d10d3602ea6591140dd9ff6e6421eb5231f9a2b25360d3d3bd1141f44605
   languageName: node
   linkType: hard
 
@@ -17637,12 +17637,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:15.6.1, nx@npm:>=14.8.1 < 16":
-  version: 15.6.1
-  resolution: "nx@npm:15.6.1"
+"nx@npm:15.6.2, nx@npm:>=14.8.1 < 16":
+  version: 15.6.2
+  resolution: "nx@npm:15.6.2"
   dependencies:
-    "@nrwl/cli": 15.6.1
-    "@nrwl/tao": 15.6.1
+    "@nrwl/cli": 15.6.2
+    "@nrwl/tao": 15.6.2
     "@parcel/watcher": 2.0.4
     "@yarnpkg/lockfile": ^1.1.0
     "@yarnpkg/parsers": ^3.0.0-rc.18
@@ -17686,7 +17686,7 @@ __metadata:
       optional: true
   bin:
     nx: bin/nx.js
-  checksum: 5d21e80af70e2ae79e62043613ed902d19b77317c21d53168f60c11b18ed981a7d335cc718e68a07af0e9ed85ac3c3076387d819db4a25d51a479a15cee109d8
+  checksum: 823deaf544d50311ae04123b214d9e1e179003724208ebfb9e1bd3b25bcd91e1508a8f27dd2f31f34e1d4e23e71afac2fd9d857676c9b33ea7c2d51da01b8be0
   languageName: node
   linkType: hard
 
