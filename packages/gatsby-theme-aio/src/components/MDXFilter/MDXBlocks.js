@@ -17,6 +17,7 @@ import { Hero } from '../Hero';
 import { DiscoverBlock } from '../DiscoverBlock';
 import { Resources } from '../Resources';
 import { InlineAlert } from '../InlineAlert';
+import { InlineNestedAlert } from '../InlineNestedAlert';
 import { CodeBlock } from '../CodeBlock';
 import { Variant } from '../Variant';
 import { TitleBlock } from '../TitleBlock';
@@ -47,6 +48,7 @@ export const MDXBlocks = {
   DiscoverBlock,
   Resources,
   InlineAlert,
+  InlineNestedAlert,
   CodeBlock: ({ theme, ...props }) => <CodeBlock theme={theme ?? globalTheme.code} {...props} />,
   Variant,
   TitleBlock,
