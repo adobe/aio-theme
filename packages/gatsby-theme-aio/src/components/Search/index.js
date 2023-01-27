@@ -295,7 +295,7 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
             if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
             if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
             const localProduct = indexAll.find(product => product.productIndices.some(idx => {
-              return idx.indexPathPrefix.startsWith(message.localPathName);
+              return localPathName.startsWith(idx.indexPathPrefix);
             }));
 
             if (localProduct?.productName) {
