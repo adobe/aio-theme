@@ -132,7 +132,7 @@ export const getQueryString = () => {
   return params.toString();
 };
 
-const setSearchFrameSource = () => {
+const searchIFrameSource = () => {
   /**
    * Returns expected origin based on the host
    * @param {*} host The host
@@ -143,13 +143,11 @@ const setSearchFrameSource = () => {
     if (isDevEnvironment(host)) {
       return `http://localhost:8000`;
     }
-    if (isStageEnvironment(host)) {
+    else if (isStageEnvironment(host)) {
       return `https://developer-stage.adobe.com${suffix}`;
+    } else {
+      return `https://developer.adobe.com${suffix}`;
     }
-    if (isHlxPath(host)) {
-      return `${window.location.origin}${suffix}`;
-    }
-    return `https://developer.adobe.com${suffix}`;
   };
 
   /**
@@ -160,6 +158,16 @@ const setSearchFrameSource = () => {
   function isDevEnvironment(host) {
     return host.indexOf('localhost') >= 0;
   }
+
+  /**
+ * Checks whether the current URL is a stage environment based on host value
+ * @param {*} host The host
+ * @returns True if the current URL is a stage environment, false otherwise
+ */
+  function isStageEnvironment(host) {
+    return host.indexOf('developer-stage') >= 0;
+  }
+
 
   const src = isDevEnvironment(window.location.host) ? setExpectedOrigin(window.location.host) : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
   const queryString = new URLSearchParams(window.location.search);
@@ -833,7 +841,7 @@ export default ({ children, pageContext, location }) => {
             {hasSearch && loadSearchFrame && (
               <iframe
                 id='searchIframe'
-                src={setSearchFrameSource()}
+                src={searchIFrameSource()}
                 css={css`position: fixed;
                     top: var(--spectrum-global-dimension-size-800);
                     left: 0px;
