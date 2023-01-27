@@ -127,7 +127,7 @@ const setQueryStringParameter = (name, value) => {
 /**
  * @returns The query string from the URL
  */
- export const getQueryString = () => {
+export const getQueryString = () => {
   const params = new URLSearchParams(window.location.search);
   return params.toString();
 };
@@ -173,7 +173,6 @@ export default ({ children, pageContext, location }) => {
   const [isLoadingIms, setIsLoadingIms] = useState(true);
   // ["index1", "index2", ...]
   const [indexAll, setIndexAll] = useState(false);
-  const [searchPathNameCheck, setSearchPathNameCheck] = useState("");
 
   // Load and initialize IMS
   useEffect(() => {
@@ -300,6 +299,7 @@ export default ({ children, pageContext, location }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadSearchFrame, setLoadSearchFrame] = useState(false);
 
   // Show search if search param is set
   useEffect(() => {
@@ -523,33 +523,58 @@ export default ({ children, pageContext, location }) => {
     );
   }
 
-  const searchFrameOnLoad = (renderedFrame, counter = 0, loaded) => {
-    console.log(searchPathNameCheck);
-    console.log(window.location.pathname);
-    renderedFrame.contentWindow.postMessage(JSON.stringify({ localPathName: window.location.pathname }), '*');
+  let searchPathNameCheck = "";
 
-    if (searchPathNameCheck !== window.location.pathname) {
-      // attempt to establish connection for 3 seconds then time out
-      if (counter > 30) {
-        // eslint-disable-next-line no-console
-        console.warn('Loading Search iFrame timed out');
-        return;
+  const searchFrameOnLoad = (counter = 0, loaded) => {
+    const renderedFrame = document.getElementById('searchIframe');
+
+    renderedFrame.contentWindow.postMessage(JSON.stringify({ localPathName: window.location.pathname }), '*');
+    if (window.location.pathname !== '/') {
+      if (searchPathNameCheck !== window.location.pathname) {
+        // attempt to establish connection for 3 seconds then time out
+        if (counter > 30) {
+          // eslint-disable-next-line no-console
+          console.warn('Loading Search iFrame timed out');
+          return;
+        }
+        window.setTimeout(() => { searchFrameOnLoad(renderedFrame, counter + 1, loaded); }, 100);
       }
-      window.setTimeout(() => { searchFrameOnLoad(renderedFrame, counter + 1, loaded); }, 100);
     }
     // Past this point we successfully passed the local pathname
     // and received a confirmation from the iframe
     if (!loaded) {
       const queryString = getQueryString();
       if (queryString) {
-        let searchIframeContainer = document.querySelector('div.nav-console-search-frame');
-        if (searchIframeContaine.length > 0) {
-          searchIframeContainer.style.visibility = 'visible';
-        }
+        // let searchIframeContainer = document.querySelector('div.nav-console-search-frame');
+        // if (searchIframeContainer.length > 0) {
+        //   searchIframeContainer.style.visibility = 'visible';
+        // }
+        setShowSearch(true);
       }
     }
 
     loaded = true;
+  };
+
+  // Referenced https://stackoverflow.com/a/10444444/15028986
+  const checkIframeLoaded = () => {
+    const renderedFrame = document.getElementById('searchIframe');
+    // Get a handle to the iframe element
+    let iframeDoc;
+    try {
+      iframeDoc = renderedFrame.contentDocument;
+      // Check if loading is complete
+      if (iframeDoc.readyState === 'complete') {
+        renderedFrame.onload = () => {
+          searchFrameOnLoad();
+        };
+        // The loading is complete, call the function we want executed once the iframe is loaded
+        return;
+      }
+    } catch (error) {
+      window.setTimeout(checkIframeLoaded, 100);
+    }
+
   };
 
   const onMessageReceivedFromIframe = (evt) => {
@@ -557,13 +582,12 @@ export default ({ children, pageContext, location }) => {
     // if (evt.origin !== expectedOrigin) return;
     try {
       const message = typeof evt.data === 'string' ? JSON.parse(evt.data) : evt.data;
-
       if (message.query) {
         setQueryStringParameter(SEARCH_PARAMS.query, message.query);
         setQueryStringParameter(SEARCH_PARAMS.keywords, message.keywords);
         setQueryStringParameter(SEARCH_PARAMS.index, message.index);
       } else if (message.received) {
-        setSearchPathNameCheck(message.received);
+        searchPathNameCheck = message.received;
       }
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -571,37 +595,16 @@ export default ({ children, pageContext, location }) => {
     }
   }
 
-  // Referenced https://stackoverflow.com/a/10444444/15028986
-  const checkIframeLoaded = (renderedFrame) => {
-
-    // Get a handle to the iframe element
-    const iframeDoc = renderedFrame.contentDocument || renderedFrame.contentWindow.document;
-
-    // Check if loading is complete
-    if (iframeDoc.readyState === 'complete') {
-      renderedFrame.onload = () => {
-        searchFrameOnLoad(renderedFrame);
-      };
-      // The loading is complete, call the function we want executed once the iframe is loaded
-      return;
-    }
-    // If we are here, it is not loaded.
-    // Set things up so we check the status again in 100 milliseconds
-    window.setTimeout(checkIframeLoaded, 100);
-  };
-
   useEffect(() => {
     window.addEventListener("message", onMessageReceivedFromIframe);
-    console.log('message received');
-    return () =>
-      window.removeEventListener("message", onMessageReceivedFromIframe);
+    if (hasSearch) {
+      setLoadSearchFrame(true);
+    }
   }, []);
 
   useEffect(() => {
-    if (showSearch) {
-      checkIframeLoaded(document.getElementById('searchIframe'));
-    }
-  }, [showSearch])
+    checkIframeLoaded();
+  }, [loadSearchFrame])
 
   return (
     <>
@@ -827,7 +830,7 @@ export default ({ children, pageContext, location }) => {
               </div>
             </div>
 
-            {hasSearch && showSearch && (
+            {hasSearch && loadSearchFrame && (
               <iframe
                 id='searchIframe'
                 src={setSearchFrameSource()}
@@ -840,19 +843,9 @@ export default ({ children, pageContext, location }) => {
                     z-index: 10;
                     width: 100%;
                     height: 100%;
-                    visibility: ${setShowSearch ? "visible" : "hidden"};`}
+                    visibility: ${showSearch ? "visible" : "hidden"};`}
               ></iframe>
             )}
-            {/*   {hasSearch && showSearch && indexAll && (
-              <Search
-                algolia={algolia}
-                indexAll={indexAll}
-                indexPrefix={algoliaIndexEnv ? algoliaIndexEnv : ""}
-                showSearch={showSearch}
-                setShowSearch={setShowSearch}
-                searchButtonId={searchButtonId}
-              />
-            )} */}
 
             <div
               css={css`
