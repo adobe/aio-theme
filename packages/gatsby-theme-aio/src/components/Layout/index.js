@@ -117,11 +117,63 @@ const updatePageSrc = (type, frontMatter, setIsLoading) => {
   }
 };
 
+// Used to update the url in the browser
+const setQueryStringParameter = (name, value) => {
+  const params = new URLSearchParams(window.location.search);
+  params.set(name, value);
+  window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+};
+
+/**
+ * @returns The query string from the URL
+ */
+ export const getQueryString = () => {
+  const params = new URLSearchParams(window.location.search);
+  return params.toString();
+};
+
+const setSearchFrameSource = () => {
+  /**
+   * Returns expected origin based on the host
+   * @param {*} host The host
+   * @param {*} suffix A suffix to append
+   * @returns The expected origin
+   */
+  const setExpectedOrigin = (host, suffix = '') => {
+    if (isDevEnvironment(host)) {
+      return `http://localhost:8000`;
+    }
+    if (isStageEnvironment(host)) {
+      return `https://developer-stage.adobe.com${suffix}`;
+    }
+    if (isHlxPath(host)) {
+      return `${window.location.origin}${suffix}`;
+    }
+    return `https://developer.adobe.com${suffix}`;
+  };
+
+  /**
+   * Checks whether the current URL is a dev environment based on host value
+   * @param {*} host The host
+   * @returns True if the current URL is a dev environment, false otherwise
+   */
+  function isDevEnvironment(host) {
+    return host.indexOf('localhost') >= 0;
+  }
+
+  const src = isDevEnvironment(window.location.host) ? setExpectedOrigin(window.location.host) : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
+  const queryString = new URLSearchParams(window.location.search);
+  return queryString && queryString.toString().length > 0
+    ? `${src}?${queryString.toString()}`
+    : src;
+};
+
 export default ({ children, pageContext, location }) => {
   const [ims, setIms] = useState(null);
   const [isLoadingIms, setIsLoadingIms] = useState(true);
   // ["index1", "index2", ...]
   const [indexAll, setIndexAll] = useState(false);
+  const [searchPathNameCheck, setSearchPathNameCheck] = useState("");
 
   // Load and initialize IMS
   useEffect(() => {
@@ -148,24 +200,6 @@ export default ({ children, pageContext, location }) => {
     } else {
       console.warn('AIO: IMS config missing.');
       setIsLoadingIms(false);
-    }
-  }, []);
-
-  // Set Search indexAll
-  useEffect(() => {
-    if (hasSearch) {
-      Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json")
-        .then(result => {
-          const productIndexMap = result.data;
-          if (typeof productIndexMap === 'string') {
-            setIndexAll(JSON.parse(productIndexMap));
-          } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]') { // https://stackoverflow.com/a/12996879/15028986
-            setIndexAll(productIndexMap);
-          }
-        })
-        .catch(err => {
-          console.error(`AIO: Failed fetching search index.\n${err}`)
-        })
     }
   }, []);
 
@@ -340,7 +374,27 @@ export default ({ children, pageContext, location }) => {
   updatePageSrc('openAPI', frontMatter, setIsLoading);
   updatePageSrc('frame', frontMatter, setIsLoading);
 
+  // Set Search indexAll
+  useEffect(() => {
+    if (hasSearch) {
+      Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json")
+        .then(result => {
+          const productIndexMap = result.data;
+          if (typeof productIndexMap === 'string') {
+            setIndexAll(JSON.parse(productIndexMap));
+          } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]') { // https://stackoverflow.com/a/12996879/15028986
+            setIndexAll(productIndexMap);
+          }
+        })
+        .catch(err => {
+          console.error(`AIO: Failed fetching search index.\n${err}`)
+        })
+    }
+  }, []);
+
+
   if (pathPrefix === "/search-frame") {
+
     return (
       <>
         <Helmet>
@@ -468,6 +522,86 @@ export default ({ children, pageContext, location }) => {
       </>
     );
   }
+
+  const searchFrameOnLoad = (renderedFrame, counter = 0, loaded) => {
+    console.log(searchPathNameCheck);
+    console.log(window.location.pathname);
+    renderedFrame.contentWindow.postMessage(JSON.stringify({ localPathName: window.location.pathname }), '*');
+
+    if (searchPathNameCheck !== window.location.pathname) {
+      // attempt to establish connection for 3 seconds then time out
+      if (counter > 30) {
+        // eslint-disable-next-line no-console
+        console.warn('Loading Search iFrame timed out');
+        return;
+      }
+      window.setTimeout(() => { searchFrameOnLoad(renderedFrame, counter + 1, loaded); }, 100);
+    }
+    // Past this point we successfully passed the local pathname
+    // and received a confirmation from the iframe
+    if (!loaded) {
+      const queryString = getQueryString();
+      if (queryString) {
+        let searchIframeContainer = document.querySelector('div.nav-console-search-frame');
+        if (searchIframeContaine.length > 0) {
+          searchIframeContainer.style.visibility = 'visible';
+        }
+      }
+    }
+
+    loaded = true;
+  };
+
+  const onMessageReceivedFromIframe = (evt) => {
+    // const expectedOrigin = setExpectedOrigin(window.location.host);
+    // if (evt.origin !== expectedOrigin) return;
+    try {
+      const message = typeof evt.data === 'string' ? JSON.parse(evt.data) : evt.data;
+
+      if (message.query) {
+        setQueryStringParameter(SEARCH_PARAMS.query, message.query);
+        setQueryStringParameter(SEARCH_PARAMS.keywords, message.keywords);
+        setQueryStringParameter(SEARCH_PARAMS.index, message.index);
+      } else if (message.received) {
+        setSearchPathNameCheck(message.received);
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
+    }
+  }
+
+  // Referenced https://stackoverflow.com/a/10444444/15028986
+  const checkIframeLoaded = (renderedFrame) => {
+
+    // Get a handle to the iframe element
+    const iframeDoc = renderedFrame.contentDocument || renderedFrame.contentWindow.document;
+
+    // Check if loading is complete
+    if (iframeDoc.readyState === 'complete') {
+      renderedFrame.onload = () => {
+        searchFrameOnLoad(renderedFrame);
+      };
+      // The loading is complete, call the function we want executed once the iframe is loaded
+      return;
+    }
+    // If we are here, it is not loaded.
+    // Set things up so we check the status again in 100 milliseconds
+    window.setTimeout(checkIframeLoaded, 100);
+  };
+
+  useEffect(() => {
+    window.addEventListener("message", onMessageReceivedFromIframe);
+    console.log('message received');
+    return () =>
+      window.removeEventListener("message", onMessageReceivedFromIframe);
+  }, []);
+
+  useEffect(() => {
+    if (showSearch) {
+      checkIframeLoaded(document.getElementById('searchIframe'));
+    }
+  }, [showSearch])
 
   return (
     <>
@@ -693,7 +827,23 @@ export default ({ children, pageContext, location }) => {
               </div>
             </div>
 
-            {hasSearch && showSearch && indexAll && (
+            {hasSearch && showSearch && (
+              <iframe
+                id='searchIframe'
+                src={setSearchFrameSource()}
+                css={css`position: fixed;
+                    top: var(--spectrum-global-dimension-size-800);
+                    left: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    background-color: transparent;
+                    z-index: 10;
+                    width: 100%;
+                    height: 100%;
+                    visibility: ${setShowSearch ? "visible" : "hidden"};`}
+              ></iframe>
+            )}
+            {/*   {hasSearch && showSearch && indexAll && (
               <Search
                 algolia={algolia}
                 indexAll={indexAll}
@@ -702,7 +852,7 @@ export default ({ children, pageContext, location }) => {
                 setShowSearch={setShowSearch}
                 searchButtonId={searchButtonId}
               />
-            )}
+            )} */}
 
             <div
               css={css`
