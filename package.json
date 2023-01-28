@@ -14,7 +14,7 @@
     "cypress-axe": "^1.0.0",
     "gatsby-cypress": "^2.23.0",
     "husky": "^8.0.1",
-    "lerna": "^5.5.1",
+    "lerna": "^6.4.1",
     "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0"
   },
