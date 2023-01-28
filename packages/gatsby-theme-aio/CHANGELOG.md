@@ -7,6 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Fixes
 
+* Fix the Profile icon  [35e6274](https://github.com/adobe/aio-theme/commit/35e627433c2b121f890cf7be2efb98368dc0c10d).
 * Adding nested inline alert [74ae0ae](https://github.com/adobe/aio-theme/commit/74ae0aeae41d4640c5f4f22cc9ab0d9d9a74e989).
 * Update on footer's privacy library to standlone privacy library.  [e343cb9](https://github.com/adobe/aio-theme/commit/e343cb9bdd2f4000625c292629db63941effd708).
 
