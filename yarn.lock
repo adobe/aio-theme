@@ -62,7 +62,7 @@ __metadata:
     "@spectrum-css/modal": 3.0.23
     "@spectrum-css/picker": 1.2.12
     "@spectrum-css/popover": 5.0.18
-    "@spectrum-css/progresscircle": 1.0.23
+    "@spectrum-css/progresscircle": 2.0.10
     "@spectrum-css/search": 4.2.12
     "@spectrum-css/sidenav": 3.0.24
     "@spectrum-css/table": 4.0.19
@@ -5274,12 +5274,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/progresscircle@npm:1.0.23":
-  version: 1.0.23
-  resolution: "@spectrum-css/progresscircle@npm:1.0.23"
+"@spectrum-css/progresscircle@npm:2.0.10":
+  version: 2.0.10
+  resolution: "@spectrum-css/progresscircle@npm:2.0.10"
   peerDependencies:
-    "@spectrum-css/vars": ^8.0.0
-  checksum: b28b7438f977a182653a27545c1a6dc254d11afb947ab0e9468dc5561ea706a6981710f5afe7873fb789d7ba593a1848067afcab5668f4c8bfeb9eeeb6648b88
+    "@spectrum-css/tokens": ^6.0.0
+  checksum: 91e85d1e9297100e61675e19595497734b2644853945239f1f024976121d4f58ac86c24d4a8ee9d7d604ff6cd0af6cb5870bb7192a1b66902080f43c176defda
   languageName: node
   linkType: hard
 
