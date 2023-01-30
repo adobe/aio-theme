@@ -55,7 +55,7 @@ const clearQueryStringParameters = () => {
   window.history.replaceState({}, '', `${window.location.pathname}`);
 };
 
-const searchSuggestions = async (algolia, query, searchIndex, indexAll, existingIndices, setExistingIndices) => {
+const searchSuggestions = async (algolia, query, indexPrefix, searchIndex, indexAll, existingIndices, setExistingIndices) => {
   const queries = [];
   let indexes;
   if (!existingIndices.length) {
@@ -95,7 +95,7 @@ const searchSuggestions = async (algolia, query, searchIndex, indexAll, existing
   return await algolia.multipleQueries(queries);
 };
 
-const searchIndexes = async (algolia, query, selectedIndex, indexAll, existingIndices, setExistingIndices, keywords) => {
+const searchIndexes = async (algolia, query, indexPrefix, selectedIndex, indexAll, existingIndices, setExistingIndices, keywords) => {
 
   let indexes;
   if (!existingIndices.length) {
@@ -230,9 +230,9 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
 
       if (searchQuery !== oldSearchQuery) {
         setIsLoading(true);
-        search = await searchIndexes(algolia, searchQuery, ['all'], indexAll, existingIndices, setExistingIndices, selectedKeywords);
+        search = await searchIndexes(algolia, searchQuery, indexPrefix, ['all'], indexAll, existingIndices, setExistingIndices, selectedKeywords);
       } else {
-        search = await searchIndexes(algolia, searchQuery, selectedIndex, indexAll, existingIndices, setExistingIndices, selectedKeywords);
+        search = await searchIndexes(algolia, searchQuery, indexPrefix, selectedIndex, indexAll, existingIndices, setExistingIndices, selectedKeywords);
       }
 
       const localProduct = searchIndex.filter((product) => product !== SEARCH_INDEX_ALL)[0];
@@ -295,7 +295,7 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
             if (!localPathName.startsWith('/')) { localPathName = `/${localPathName}` }
             if (!localPathName.endsWith('/')) { localPathName = `${localPathName}/` }
             const localProduct = indexAll.find(product => product.productIndices.some(idx => {
-              return idx.indexPathPrefix.startsWith(message.localPathName);
+              return localPathName.startsWith(idx.indexPathPrefix);
             }));
 
             if (localProduct?.productName) {
@@ -388,7 +388,8 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
       if (key === 'Escape') {
         setShowSearch(false);
         clearQueryStringParameters();
-        document.getElementById("aio-Search-close").focus()
+        const searchClose = document.getElementById("aio-Search-close");
+        searchClose ? searchClose.focus() : "";
       }
     };
 
@@ -405,7 +406,7 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
       if (searchQuery.length && !searchResults.length) {
         setShowClear(true);
 
-        const suggestions = await searchSuggestions(algolia, searchQuery, searchIndex, indexAll, existingIndices, setExistingIndices);
+        const suggestions = await searchSuggestions(algolia, searchQuery, indexPrefix, searchIndex, indexAll, existingIndices, setExistingIndices);
         setSearchQueryCounter(searchQueryCounter + 1);
         console.log('Total search queries counted is:', searchQueryCounter);
 
@@ -438,22 +439,15 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
     useEffect(() => {
       if (suggestionsRef) {
         if (searchSuggestionResults.length > 0) {
-          suggestionsRef.current.querySelectorAll("a").forEach(link => {
-            link.target = "_top";
-          });
+          const allLinks = suggestionsRef.current.querySelectorAll("a");
+          if (allLinks.length > 0) {
+            allLinks.forEach(link => {
+              link.target = "_top";
+            });
+          }
         }
       }
-    }, [searchSuggestionResults])
-
-    useEffect(() => {
-      if (searchResultsRef) {
-        if (searchResults.length > 0) {
-          searchResultsRef.current.querySelectorAll("a").forEach(link => {
-            link.target = "_top";
-          });
-        }
-      }
-    }, [searchResults])
+    }, [searchSuggestionResults, searchResults])
   }
 
   return (

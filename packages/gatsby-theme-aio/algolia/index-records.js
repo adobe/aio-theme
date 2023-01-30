@@ -14,10 +14,10 @@ const getImportedContent = require('./helpers/get-imported-content');
 const getIFrameContent = require('./helpers/get-iframe-content');
 const getOpenApiContent = require('./helpers/get-openapi-content');
 const mdxQuery = require('./mdx-query');
+const axios = require('axios').default;
 const parseHtml = require('./helpers/parse-html');
 const parseMdx = require('./helpers/parse-mdx');
 const createAlgoliaRecord = require('./create-record');
-const { getProductFromIndex } = require('./helpers/get-products-indexes');
 
 function indexRecords() {
   return [
@@ -30,6 +30,22 @@ function indexRecords() {
           allFile: { nodes },
         },
       }) {
+
+        let productIndexMap;
+        try {
+          const result = await axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json");
+          productIndexMap = result.data;
+        } catch (error) {
+          console.error(`AIO: Failed fetching search index.\n${error}`)
+          process.exit();
+        }
+
+        const productFromPath = productIndexMap.find(prod => {
+          return prod.productIndices.some(index => {
+            return index.indexPathPrefix.includes(pathPrefix)
+          })
+        });
+
         const markdownFiles = [];
         for (const node of nodes) {
           markdownFiles.push({
@@ -51,7 +67,7 @@ function indexRecords() {
             objectID: node.id,
             openAPISpec: node.childMdx.frontmatter.openAPISpec,
             pathPrefix: `${pathPrefix}/`,
-            product: getProductFromIndex(repository),
+            product: productFromPath.productName,
             size: node.size,
             slug: node.childMdx.slug,
             title: node.childMdx.frontmatter.title,
