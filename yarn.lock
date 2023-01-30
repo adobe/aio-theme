@@ -59,7 +59,7 @@ __metadata:
     "@spectrum-css/inlinealert": 4.0.13
     "@spectrum-css/link": 3.1.23
     "@spectrum-css/menu": 4.0.4
-    "@spectrum-css/modal": 3.0.23
+    "@spectrum-css/modal": 3.0.28
     "@spectrum-css/picker": 1.2.12
     "@spectrum-css/popover": 5.0.18
     "@spectrum-css/progresscircle": 1.0.23
@@ -5243,12 +5243,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/modal@npm:3.0.23":
-  version: 3.0.23
-  resolution: "@spectrum-css/modal@npm:3.0.23"
+"@spectrum-css/modal@npm:3.0.28":
+  version: 3.0.28
+  resolution: "@spectrum-css/modal@npm:3.0.28"
   peerDependencies:
     "@spectrum-css/vars": ^8.0.0
-  checksum: e2ce69d24a8d6bda3a5dd2f9f7a20a5df7f6a55f4ee330ef51c08a73eeda9b6173e80a4b464062983591c816d87c2a227821555b7d0e07a8775b70994efa0683
+  checksum: 3eb0756bf09160eb417b5a24b4e97fc084b78d2987b5708465a420478e5cf7916ccbea3afc19633fea5b7c093871ee52c0eb08fdf4402e5e90bd9944943b6a63
   languageName: node
   linkType: hard
 
