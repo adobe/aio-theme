@@ -933,7 +933,7 @@ const GlobalHeader = ({
                   <ActionButtonLabel>Sign in</ActionButtonLabel>
                 </ActionButton>
 
-                <div >
+                <div hidden={!profile}>
                   <button
                     aria-label="Profile"
                     aria-controls={profilePopoverId}
