@@ -47,7 +47,7 @@ __metadata:
     "@spectrum-css/accordion": 3.0.24
     "@spectrum-css/actionbutton": 2.1.7
     "@spectrum-css/actiongroup": ^2.0.0
-    "@spectrum-css/assetlist": 3.0.24
+    "@spectrum-css/assetlist": 3.0.30
     "@spectrum-css/badge": ^1.0.20
     "@spectrum-css/breadcrumb": 5.0.0
     "@spectrum-css/button": 6.0.13
@@ -5114,14 +5114,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/assetlist@npm:3.0.24":
-  version: 3.0.24
-  resolution: "@spectrum-css/assetlist@npm:3.0.24"
+"@spectrum-css/assetlist@npm:3.0.30":
+  version: 3.0.30
+  resolution: "@spectrum-css/assetlist@npm:3.0.30"
   peerDependencies:
     "@spectrum-css/checkbox": ^3.1.1
     "@spectrum-css/icon": ^3.0.21
     "@spectrum-css/vars": ^8.0.0
-  checksum: ce2a73c8e106c6c8c22cd79ee0d1a5156bd93ce972d7826a544e32ec56848d6f7608c2657a4bee8d0286f6ae3b5fb88109f0beafe85f86cfc3b7dc96cfcef16b
+  checksum: 67ef64f9d9d1875b16c2a17030662574ae7c71607905efcdee74f9d47f22e4fe8412de5607a3cbd52caaa97d8bafe92e6fd271a8c87531b0047f03bf04dde1eb
   languageName: node
   linkType: hard
 
