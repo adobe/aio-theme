@@ -56,7 +56,7 @@ __metadata:
     "@spectrum-css/dialog": 6.0.15
     "@spectrum-css/divider": 1.0.27
     "@spectrum-css/icon": 3.0.23
-    "@spectrum-css/inlinealert": 4.0.13
+    "@spectrum-css/inlinealert": 5.0.14
     "@spectrum-css/link": 3.1.23
     "@spectrum-css/menu": 4.0.4
     "@spectrum-css/modal": 3.0.23
@@ -5213,13 +5213,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/inlinealert@npm:4.0.13":
-  version: 4.0.13
-  resolution: "@spectrum-css/inlinealert@npm:4.0.13"
+"@spectrum-css/inlinealert@npm:5.0.14":
+  version: 5.0.14
+  resolution: "@spectrum-css/inlinealert@npm:5.0.14"
   peerDependencies:
     "@spectrum-css/icon": ^3.0.21
-    "@spectrum-css/vars": ^8.0.0
-  checksum: fe04feac72554c602bddf5b82f822eef91425010981b79cd5c0a64b83e9ce098fa0b185d2ca92e27d167021e230c62b2adb2a2c909e965421826824d230af08a
+    "@spectrum-css/tokens": ^6.0.0
+  checksum: 21ba9943cea3212d70d0adcf842ff5d86f1177a116b0e002e78dfd760f4044192dc3e0a130ebc42b0ec1bc0076fe6eb74ce204a24fac2144a57ba9f59e1d26a0
   languageName: node
   linkType: hard
 
