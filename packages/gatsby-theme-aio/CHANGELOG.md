@@ -3,14 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.7.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.11...@adobe/gatsby-theme-aio@4.7.11) (2023-01-26)
+## [4.7.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.11...@adobe/gatsby-theme-aio@4.7.11) (2023-01-30)
+
+### Features
+
+* Search is now iFramed from /search-frame/ page. [0eb7e75](https://github.com/adobe/aio-theme/commit/0eb7e75a6cf16b7ff0cceb877324c90c91d96a33).
 
 ### Fixes
 
 * Fix the Profile icon  [35e6274](https://github.com/adobe/aio-theme/commit/35e627433c2b121f890cf7be2efb98368dc0c10d).
 * Adding nested inline alert [74ae0ae](https://github.com/adobe/aio-theme/commit/74ae0aeae41d4640c5f4f22cc9ab0d9d9a74e989).
 * Update on footer's privacy library to standlone privacy library.  [e343cb9](https://github.com/adobe/aio-theme/commit/e343cb9bdd2f4000625c292629db63941effd708).
-
+* `indexPrefix` undefined error on page load with query parameters  [0eb7e75](https://github.com/adobe/aio-theme/commit/0eb7e75a6cf16b7ff0cceb877324c90c91d96a33).
+* undefined links error when trying to assign `target` while loading results [0eb7e75](https://github.com/adobe/aio-theme/commit/0eb7e75a6cf16b7ff0cceb877324c90c91d96a33).
+* aio-Search-close button missing error when testing on search-frame page [0eb7e75](https://github.com/adobe/aio-theme/commit/0eb7e75a6cf16b7ff0cceb877324c90c91d96a33).
+* 
 ## [4.7.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.10...@adobe/gatsby-theme-aio@4.7.10) (2022-12-15)
 
 ### Fixes
