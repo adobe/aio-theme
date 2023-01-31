@@ -1412,6 +1412,29 @@ This is faux step text for the `text3` slot.
 
 ![inline alert](docs/images/inline-alert-more.png)
 
+#### Nested InlineAlert
+
+To add an InlineAlert within another component, we have created a new component to do that. Here is how you should create an inline alert
+within another component:
+
+```markdown
+<InlineNestedAlert variant="info" header="true" iconPosition="right">
+
+   Personal Information :
+
+   Lorem ipsum dolor sit amee
+
+   Add more information
+
+   Lorem ipsum dolor sit amet
+
+ </InlineNestedAlert>
+ ```
+ This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert. 
+ The nested InlineAlert must wrap around the content that it wants to display.  It can only supports one header by using the parameter 
+ header="true".  It supports variant the same way as the regular InlineAlert.  Also it supports another parameter as iconPosition to be 
+ displayed either left or right side of the alert.
+ 
 ### Media Block
 
 The Media Block is used to display interactive medias like videos.
