@@ -29,7 +29,7 @@ import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, ChevronDown, Magnify, Close, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, Magnify, Close, TripleGripper, CheckMark } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
@@ -48,6 +48,8 @@ import '@spectrum-css/typography';
 import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
+
+
 
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
@@ -577,22 +579,6 @@ const GlobalHeader = ({
                         setOpenProfile(false);
                         setOpenMenuIndex(openMenuIndex === i ? -1 : i);
                       }}
-                      onMouseOver={(event) => {
-                        event.stopImmediatePropagation();
-                        setOpenVersion(false);
-                        setOpenProfile(false);
-                        setOpenMenuIndex(i)
-                        // setOpenMenuIndex(openMenuIndex === i ? -1 : i);
-                      }}
-                      onMouseLeave={
-                        (event) => {
-                          event.stopImmediatePropagation();
-                          setOpenVersion(false);
-                          setOpenProfile(false);
-                          setOpenMenuIndex(-1)
-                        }
-                      }
-
                       >
                       <TabsItemLabel>{page.title}</TabsItemLabel>
                       <ChevronDown
@@ -612,20 +598,6 @@ const GlobalHeader = ({
                           setOpenProfile(false);
                           setOpenMenuIndex(openMenuIndex === i ? -1 : i);
                         }}
-                        onMouseEnter={(event) => {
-                          event.stopImmediatePropagation();
-                          setOpenVersion(false);
-                          setOpenProfile(false);
-                          setOpenMenuIndex(i)
-                        }}
-                        onMouseLeave={
-                          (event) => {
-                            event.stopImmediatePropagation();
-                            setOpenVersion(false);
-                            setOpenProfile(false);
-                            setOpenMenuIndex(-1)
-                          }
-                        }
                         role="button"
                         tabIndex={0}
                         aria-label={page.title}
@@ -743,12 +715,24 @@ const GlobalHeader = ({
                                     css={css`
                                       margin: var(--spectrum-global-dimension-size-100) 0;
                                     `}>
-                                    <div
-                                      css={css`
+                                    <div css={css`
+                                        margin-top: var(--spectrum-global-dimension-size-50);
+                                        margin-bottom: var(--spectrum-global-dimension-size-50);
                                         color: var(--spectrum-global-color-gray-900);
-                                      `}>
-                                      {menu.title}
-                                    </div>
+                                        display: flex;
+                                        flex-direction: row;
+                                        justify-content: space-between;
+                                    `}>
+                                        <div>{menu.title}</div>
+                                        {
+                                        location.pathname.endsWith(`/${menu.path}`) &&
+                                            <CheckMarkIcn  css={css`
+                                              width: var(--spectrum-global-dimension-size-200) !important;
+                                              height: var(--spectrum-global-dimension-size-200) !important;
+                                              color: #116ede !important; `} 
+                                            />
+                                        }
+                                </div>
                                     <div
                                       className="spectrum-Body spectrum-Body--sizeXS"
                                       css={css`
@@ -760,9 +744,22 @@ const GlobalHeader = ({
                                   </div>
                                 ) : (
                                   <div css={css`
-                                  margin-top: var(--spectrum-global-dimension-size-50);
-                                  margin-bottom: var(--spectrum-global-dimension-size-50);
-                                `}>{menu.title}</div>
+                                    margin-top: var(--spectrum-global-dimension-size-50);
+                                    margin-bottom: var(--spectrum-global-dimension-size-50);
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: space-between;
+                                  `}>
+                                    <div>{menu.title}</div>
+                                    {
+                                    location.pathname.endsWith(`/${menu.path}`) &&
+                                          <CheckMarkIcn  css={css`
+                                          width: var(--spectrum-global-dimension-size-125) !important;
+                                          height: var(--spectrum-global-dimension-size-125) !important;
+                                          color: #116ede !important; `} 
+                                          />
+                                    }
+                                  </div>
                                 )}
                               </MenuItem>
                             );
