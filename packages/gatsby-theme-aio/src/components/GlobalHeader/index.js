@@ -716,50 +716,58 @@ const GlobalHeader = ({
                                       margin: var(--spectrum-global-dimension-size-100) 0;
                                     `}>
                                     <div css={css`
-                                        margin-top: var(--spectrum-global-dimension-size-50);
-                                        margin-bottom: var(--spectrum-global-dimension-size-50);
-                                        color: var(--spectrum-global-color-gray-900);
-                                        display: flex;
-                                        flex-direction: row;
-                                        justify-content: space-between;
-                                    `}>
-                                        <div>{menu.title}</div>
-                                        {
-                                        location.pathname.endsWith(`/${menu.path}`) &&
-                                            <CheckMarkIcn  css={css`
-                                              width: var(--spectrum-global-dimension-size-200) !important;
-                                              height: var(--spectrum-global-dimension-size-200) !important;
+                                  margin-top: var(--spectrum-global-dimension-size-50);
+                                  margin-bottom: var(--spectrum-global-dimension-size-50);
+                                  display: flex;
+                                  flex-direction: row;
+                                  justify-content :flex-start ;
+                                  overflow : hidden;
+                                  gap:6px;
+                        `}>
+
+                                <div css={css`
+                                     width: var(--spectrum-global-dimension-size-100) !important;
+                                     height: var(--spectrum-global-dimension-size-100) !important;
+                                `}>
+                                  {location.pathname.endsWith(`/${menu.path}`) &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
+                                              height: var(--spectrum-global-dimension-size-150) !important; 
                                               color: #116ede !important; `} 
-                                            />
-                                        }
+                                              />}
                                 </div>
+                                <div>{menu.title}</div>
+                              </div>
                                     <div
                                       className="spectrum-Body spectrum-Body--sizeXS"
                                       css={css`
                                         white-space: normal;
                                         margin-top: var(--spectrum-global-dimension-size-50);
+                                        margin-left: var(--spectrum-global-dimension-size-150);
                                       `}>
                                       {menu.description}
                                     </div>
                                   </div>
                                 ) : (
                                   <div css={css`
-                                    margin-top: var(--spectrum-global-dimension-size-50);
-                                    margin-bottom: var(--spectrum-global-dimension-size-50);
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: space-between;
-                                  `}>
-                                    <div>{menu.title}</div>
-                                    {
-                                    location.pathname.endsWith(`/${menu.path}`) &&
-                                          <CheckMarkIcn  css={css`
-                                          width: var(--spectrum-global-dimension-size-125) !important;
-                                          height: var(--spectrum-global-dimension-size-125) !important;
-                                          color: #116ede !important; `} 
-                                          />
-                                    }
-                                  </div>
+                                  margin-top: var(--spectrum-global-dimension-size-50);
+                                  margin-bottom: var(--spectrum-global-dimension-size-50);
+                                  display: flex;
+                                  flex-direction: row;
+                                  justify-content :flex-start ;
+                                  overflow : hidden;
+                                  gap:6px;
+                        `}>
+
+                                <div css={css`
+                                     width: var(--spectrum-global-dimension-size-100) !important;
+                                     height: var(--spectrum-global-dimension-size-100) !important;
+                                `}>
+                                  {location.pathname.endsWith(`/${menu.path}`) &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
+                                              height: var(--spectrum-global-dimension-size-150) !important; 
+                                              color: #116ede !important; `} 
+                                              />}
+                                </div>
+                                <div>{menu.title}</div>
+                              </div>
                                 )}
                               </MenuItem>
                             );
