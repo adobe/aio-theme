@@ -729,7 +729,7 @@ const GlobalHeader = ({
                                      width: var(--spectrum-global-dimension-size-100) !important;
                                      height: var(--spectrum-global-dimension-size-100) !important;
                                 `}>
-                                  {location.pathname.endsWith(`/${menu.path}`) &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
+                                  {menu.pathname && location.pathname === menu.pathname &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
                                               height: var(--spectrum-global-dimension-size-150) !important; 
                                               color: #116ede !important; `} 
                                               />}
@@ -761,7 +761,7 @@ const GlobalHeader = ({
                                      width: var(--spectrum-global-dimension-size-100) !important;
                                      height: var(--spectrum-global-dimension-size-100) !important;
                                 `}>
-                                  {location.pathname.endsWith(`/${menu.path}`) &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
+                                  {menu.pathname && location.pathname === menu.pathname  &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
                                               height: var(--spectrum-global-dimension-size-150) !important; 
                                               color: #116ede !important; `} 
                                               />}
