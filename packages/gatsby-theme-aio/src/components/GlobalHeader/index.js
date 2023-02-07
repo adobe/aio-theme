@@ -923,9 +923,15 @@ const GlobalHeader = ({
                 <ActionButton
                   css={css`
                     margin-top: calc(-1 * var(--spectrum-global-dimension-size-25));
+                    &:focus{
+                      border: 2px solid #007aff !important;
+                      border-radius: 15% !important;
+                      padding-right: 5px;
+                    }
                   `}
                   hidden={isLoadingIms || isLoadingProfile || profile}
                   variant="primary"
+                  tabIndex="0"
                   isQuiet
                   onClick={() => {
                     ims.signIn();

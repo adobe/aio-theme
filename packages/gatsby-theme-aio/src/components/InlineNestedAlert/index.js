@@ -35,7 +35,7 @@ const getIconName = (variant) => {
 
 const InlineNestedAlertTexts = ({ texts }) => {
   let alertElement = [];
-  texts.forEach(text => {
+  Array.isArray(texts) ? texts.forEach(text => {
     alertElement.push(cloneElement(text, {
           className: 'spectrum-InLineAlert-content',
           css: css`
@@ -43,7 +43,13 @@ const InlineNestedAlertTexts = ({ texts }) => {
                 ${commonCss};
               `
         }));
-  })
+  }) : alertElement.push(cloneElement(texts, {
+    className: 'spectrum-InLineAlert-content',
+    css: css`
+                margin-top: var(--spectrum-global-dimension-size-150);
+                ${commonCss};
+              `
+  }));
   return alertElement;
 };
 
@@ -51,7 +57,11 @@ const InlineNestedAlert = ({ variant = 'info', header, iconPosition, ...props })
   const Icon = Icons[getIconName(variant)] ? Icons[getIconName(variant)] : Icons.NeutralMedium;
   variant = variant === 'warning' ? 'negative' : variant;
   let textArr = [];
-  header ? textArr = props.children.slice(1) : textArr = props.children;
+  if (Array.isArray(props.children) && header == "true") {
+    textArr = props.children.slice(1)
+  } else {
+    textArr = props.children;
+  }
   const alertCss = iconPosition === 'left' ? css`width: 98%;
             padding-left: 40px;
             margin-top: var(--spectrum-global-dimension-size-300);
@@ -67,7 +77,7 @@ const InlineNestedAlert = ({ variant = 'info', header, iconPosition, ...props })
       >
       <Icon className="spectrum-Icon spectrum-Icon--sizeM spectrum-InLineAlert-icon" />
       <div>
-        {header &&
+        {header === "true" &&
           cloneElement(props.children[0], {
             className: 'spectrum-InLineAlert-header',
             css: css`
