@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.0...@adobe/gatsby-theme-aio@4.8.0) (2023-02-08)
+
+### Fixes
+
+* Fix inline Alert [09efa94](https://github.com/adobe/aio-theme/commit/09efa94f838f8f97536d26c46a5ef743a3a7ac00).
+
 ## [4.7.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.11...@adobe/gatsby-theme-aio@4.7.11) (2023-01-30)
 
 ### Features
