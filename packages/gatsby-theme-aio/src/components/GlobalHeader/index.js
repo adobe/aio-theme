@@ -55,6 +55,7 @@ const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
 
+  
   let selectedIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
   let tempArr = pathWithRootFix.split('/');
   let inx = tempArr.indexOf('use-cases');
@@ -71,7 +72,6 @@ const getSelectedTabIndex = (location, pages) => {
   if (selectedIndex === -1) {
     selectedIndex = 0;
   }
-
   return selectedIndex;
 };
 
@@ -116,6 +116,7 @@ const GlobalHeader = ({
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [selectedMenuItem, setSelectedMenuItem] = useState({});
 
   const POPOVER_ANIMATION_DELAY = 200;
   const versionPopoverId = "version " + nextId();
@@ -137,7 +138,8 @@ const GlobalHeader = ({
   useEffect(() => {
     const index = getSelectedTabIndex(location, pages);
     setSelectedTabIndex(index);
-
+    const pathWithRootFix = rootFix(location.pathname);
+    setSelectedMenuItem(findSelectedTopPageMenu(pathWithRootFix, pages[index]));
     animateIndicator(selectedTabIndicatorRef, isAnimated);
     positionSelectedTabIndicator(index);
   }, [location.pathname]);
@@ -547,6 +549,7 @@ const GlobalHeader = ({
                     <TabsItem
                      tabIndex={"0"}
                      id={`tabindex${i}`}
+                     className={isSelectedTab ? 'isSelected': ''}
                     //  onFocus={()=>{setOpenMenuIndex(-1)}}
                      index={i}
                      hasDropdown
@@ -636,6 +639,8 @@ const GlobalHeader = ({
                                 href={menuHref}
                                 {...getExternalLinkProps(menuHref)}
                                 isHighlighted={menu === selectedMenu}
+                                isSelected={ menu === selectedMenuItem }
+                                marginTop={ menu.description ? `var(--spectrum-global-dimension-size-100)` : `var(--spectrum-global-dimension-size-50)` }
                                 css={css`
                                   display: -webkit-box;
                                   display: -webkit-flex;
@@ -669,7 +674,6 @@ const GlobalHeader = ({
                                     e.preventDefault();
 
                                     if(k+1===page.menu.length){
-                                      console.log("pageDown",page.menu);
                                       setTimeout(()=>{
                                         setOpenMenuIndex(-1)
                                         if(pages.length===i+1){
@@ -715,33 +719,18 @@ const GlobalHeader = ({
                                     css={css`
                                       margin: var(--spectrum-global-dimension-size-100) 0;
                                     `}>
-                                    <div css={css`
-                                  margin-top: var(--spectrum-global-dimension-size-50);
-                                  margin-bottom: var(--spectrum-global-dimension-size-50);
-                                  display: flex;
-                                  flex-direction: row;
-                                  justify-content :flex-start ;
-                                  overflow : hidden;
-                                  gap:6px;
-                        `}>
-
-                                <div css={css`
-                                     width: var(--spectrum-global-dimension-size-100) !important;
-                                     height: var(--spectrum-global-dimension-size-100) !important;
-                                `}>
-                                  {menu.pathname && location.pathname === menu.pathname &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
-                                              height: var(--spectrum-global-dimension-size-150) !important; 
-                                              color: #116ede !important; `} 
-                                              />}
-                                </div>
-                                <div>{menu.title}</div>
-                              </div>
+                                    <div
+                                      css={css`
+                                        color: var(--spectrum-global-color-gray-900);
+                                      `}>
+                                      {menu.title}
+                                    </div>
+                                    
                                     <div
                                       className="spectrum-Body spectrum-Body--sizeXS"
                                       css={css`
                                         white-space: normal;
                                         margin-top: var(--spectrum-global-dimension-size-50);
-                                        margin-left: var(--spectrum-global-dimension-size-150);
                                       `}>
                                       {menu.description}
                                     </div>
@@ -749,25 +738,9 @@ const GlobalHeader = ({
                                 ) : (
                                   <div css={css`
                                   margin-top: var(--spectrum-global-dimension-size-50);
-                                  margin-bottom: var(--spectrum-global-dimension-size-50);
-                                  display: flex;
-                                  flex-direction: row;
-                                  justify-content :flex-start ;
-                                  overflow : hidden;
-                                  gap:6px;
-                        `}>
-
-                                <div css={css`
-                                     width: var(--spectrum-global-dimension-size-100) !important;
-                                     height: var(--spectrum-global-dimension-size-100) !important;
-                                `}>
-                                  {menu.pathname && location.pathname === menu.pathname  &&   <CheckMark css={css` width: var(--spectrum-global-dimension-size-150) !important;
-                                              height: var(--spectrum-global-dimension-size-150) !important; 
-                                              color: #116ede !important; `} 
-                                              />}
-                                </div>
-                                <div>{menu.title}</div>
-                              </div>
+                                  margin-bottom: var(--spectrum-global-dimension-size-50);`}>
+                                  {menu.title}
+                                  </div>
                                 )}
                               </MenuItem>
                             );

@@ -27,7 +27,7 @@ const Menu = forwardRef(({ children, ...props }, ref) => {
   );
 });
 
-const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '', ...props }) => {
+const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '', marginTop, ...props }) => {
   const Element = href ? GatsbyLink : 'li';
 
   return isDivider ? (
@@ -42,13 +42,30 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
         text-align: left;
       `}
       {...props}>
-      <span className="spectrum-Menu-itemLabel">{children}</span>
-      <CheckMark
-        className="spectrum-Menu-checkmark spectrum-Menu-itemIcon"
-        css={css`
-          display: none;
-        `}
-      />
+      <div css={css`display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+    gap: 12px;
+}`}>
+        <div css={css`
+          width: var(--spectrum-global-dimension-size-100) !important;
+          height: var(--spectrum-global-dimension-size-100) !important;
+          ${marginTop ? `margin-top: ${marginTop} !important` : ""}
+        `}>
+          <CheckMark
+            className="spectrum-Menu-checkmark spectrum-Menu-itemIcon"
+            css={css`
+             display: ${isSelected ? "block" : "none"} ;
+             color:  var(--spectrum-alias-icon-color-selected) !important;
+             
+            `}
+          />
+          </div>
+        <div>
+          <span className="spectrum-Menu-itemLabel">{children}</span>
+        </div>
+      </div>
     </Element>
   );
 };
