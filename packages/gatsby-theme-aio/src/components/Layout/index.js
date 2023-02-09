@@ -169,7 +169,7 @@ const searchIFrameSource = () => {
   }
 
 
-  const src = isDevEnvironment(window.location.host) ? setExpectedOrigin(window.location.host) : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
+  const src = "https://developer-stage.adobe.com/search-frame"; // isDevEnvironment(window.location.host) ? setExpectedOrigin(window.location.host) : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
   const queryString = new URLSearchParams(window.location.search);
   return queryString && queryString.toString().length > 0
     ? `${src}?${queryString.toString()}`
