@@ -640,7 +640,7 @@ const GlobalHeader = ({
                                 {...getExternalLinkProps(menuHref)}
                                 isHighlighted={menu === selectedMenu}
                                 isSelected={ menu === selectedMenuItem }
-                                marginTop={ menu.description ? `var(--spectrum-global-dimension-size-100)` : `var(--spectrum-global-dimension-size-50)` }
+                                isHeightUnset={ menu.description ? true : false}
                                 css={css`
                                   display: -webkit-box;
                                   display: -webkit-flex;
