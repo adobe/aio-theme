@@ -182,6 +182,46 @@ Doing a full clean up on your local repo
 yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
 ```
 
+### Developing with Adobe Theme I/O
+
+This is what you can do to develop and test locally with an updated aio-theme. Make all your changes in aio-theme. 
+Change your directory to /packages/gatsby-theme-aio
+
+```bash
+cd /packages/gatsby-theme-aio
+````
+
+Publish the current state of the theme package to your yalc directory.  
+
+````bash
+yalc publish --push
+````
+
+Switch to the project that you would like to test your latest theme-aio with.  Navigate to the root directly of that local project(eg. document-services - you would navigate to document-services repo's root . 
+
+````bash
+yalc add @adobe/gatsby-theme-aio
+````
+
+View the package.json dependency of the local project to make sure it has added the theme like this.  Also make sure it is using gatsby version 4.22.0.
+
+````bash
+  "dependencies": {
+    "@adobe/gatsby-theme-aio": "file:.yalc/@adobe/gatsby-theme-aio",
+    "gatsby" : "4.22.0"
+   }
+````
+
+Clean the project and run again
+
+```bash
+yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
+````
+
+```bash
+yarn dev
+````
+
 ## Content structure
 
 The content of the site is written in [Markdown](https://daringfireball.net/projects/markdown/) which is both easy to read and easy to learn.
