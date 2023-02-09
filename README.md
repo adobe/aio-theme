@@ -43,20 +43,6 @@ Using a theme, all of your default configuration lives in an npm package.
     <li><a href="https://github.com/adobedocs/dev-site-documentation-template/">Repository</a></li>
   </ul>
 </details>
-<details>
-  <summary>Platform template</summary>
-  <ul>
-    <li><a href="https://adobedocs.github.io/dev-site-platform-template/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/dev-site-platform-template/">Repository</a></li>
-  </ul>
-</details>
-<details>
-  <summary>Product template</summary>
-  <ul>
-    <li><a href="https://adobedocs.github.io/dev-site-product-template/">Demo</a></li>
-    <li><a href="https://github.com/adobedocs/dev-site-product-template/">Repository</a></li>
-  </ul>
-</details>
 
 ## Contents
 
@@ -167,36 +153,33 @@ Simply click on the “Use this template” button to create a new GitHub reposi
 
 _The templates are pre-configured with example pages._
 
-### Using the Adobe I/O CLI
+### Using the Adobe theme I/O 
 
-First install the Adobe I/O CLI via the Terminal
+First make sure the dependency of the theme-aio is added to the project's package.json.
 
 ```bash
-npm install -g @adobe/aio-cli
+"dependencies": {
+    "@adobe/gatsby-theme-aio": "^4.7.11",
+    "gatsby": "4.22.0"
+}
 ```
 
-Then install the Doc Plugin by running.
+Then do a yarn install.
 
 ```bash
-aio discover -i
+yarn install
 ```
 
-Select the `@adobe/aio-cli-plugin-doc` plugin by pressing the _Spacebar_ and finally press _Enter_ to install it.
-
-For more information about the Doc plugin, see <https://github.com/adobe/aio-cli-plugin-doc>.
-
-Now you can create your site by running
+For running the Adobe theme I/O example or run your repo locally
 
 ```bash
-aio doc init path/to/site/folder
+yarn dev
 ```
 
-which will use by default the [Documentation site template](https://github.com/AdobeDocs/dev-site-documentation-template).
-
-You can specify another template with
+Doing a full clean up on your local repo
 
 ```bash
-aio doc init path/to/doc/folder --template URL_TO_TEMPLATE_GIT_REPO
+yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
 ```
 
 ## Content structure
@@ -1432,7 +1415,8 @@ within another component:
  ```
  This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert. 
  The nested InlineAlert must wrap around the content that it wants to display.  It can only supports one header by using the parameter 
- header="true".  It supports variant the same way as the regular InlineAlert.  Also it supports another parameter as iconPosition to be 
+ header="true".  Header will not be supported if there is only 1 line.  It supports variant the same way as the regular InlineAlert.  Also it supports 
+ another parameter as iconPosition to be 
  displayed either left or right side of the alert.
  
 ### Media Block
