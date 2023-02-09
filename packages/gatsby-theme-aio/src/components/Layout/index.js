@@ -790,6 +790,23 @@ export default ({ children, pageContext, location }) => {
                   searchButtonId={searchButtonId}
                 />
               </div>
+              {hasSearch && loadSearchFrame && (
+                <iframe
+                  id='searchIframe'
+                  src={searchIFrameSource()}
+                  css={css`position: fixed;
+                    top: var(--spectrum-global-dimension-size-800);
+                    left: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    background-color: transparent;
+                    z-index: 10;
+                    width: 100%;
+                    height: 100%;
+                    visibility: ${showSearch ? "visible" : "hidden"};`}
+                ></iframe>
+              )}
+
               <div
                 id={sideNavId}
                 hidden={!hasSideNav}
@@ -837,23 +854,6 @@ export default ({ children, pageContext, location }) => {
                 {!pageSrc['openAPI'].has && !pageSrc['frame'].has && children}
               </div>
             </div>
-
-            {hasSearch && loadSearchFrame && (
-              <iframe
-                id='searchIframe'
-                src={searchIFrameSource()}
-                css={css`position: fixed;
-                    top: var(--spectrum-global-dimension-size-800);
-                    left: 0px;
-                    right: 0px;
-                    bottom: 0px;
-                    background-color: transparent;
-                    z-index: 10;
-                    width: 100%;
-                    height: 100%;
-                    visibility: ${showSearch ? "visible" : "hidden"};`}
-              ></iframe>
-            )}
 
             <div
               css={css`
