@@ -51,9 +51,8 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
         <div css={css`
           width: 20px !important;
          ${ isHeightUnset ? "" : "height: 15px !important;" }
-         margin-left: 2px !important;
+         padding-right: 5px;
          overflow: hidden;
-          
         `}>
           <CheckMark
             className="spectrum-Menu-checkmark spectrum-Menu-itemIcon"

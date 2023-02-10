@@ -656,7 +656,8 @@ const GlobalHeader = ({
                                   -webkit-justify-content: center;
                                   justify-content: center;
                                   box-sizing: border-box;
-                                  padding: 0 var(--spectrum-global-dimension-size-300) !important;
+                                  padding: 0 var(--spectrum-global-dimension-size-175) !important;
+                                  margin-right: var(--spectrum-global-dimension-size-175) !important;
                                   white-space: nowrap;
                                   color: var(--spectrum-global-color-gray-700) !important;
                                   -webkit-transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
