@@ -29,7 +29,7 @@ import { css } from '@emotion/react';
 import { AnchorButton } from '../AnchorButton';
 import { Button } from '../Button';
 import { ProgressCircle } from '../ProgressCircle';
-import { Adobe, ChevronDown, Magnify, Close, TripleGripper } from '../Icons';
+import { Adobe, ChevronDown, Magnify, Close, TripleGripper, CheckMark } from '../Icons';
 import { ActionButton, Text as ActionButtonLabel } from '../ActionButton';
 import { PickerButton } from '../Picker';
 import { Menu, Item as MenuItem } from '../Menu';
@@ -49,10 +49,13 @@ import '@spectrum-css/assetlist';
 import { Divider } from '../Divider';
 import DEFAULT_AVATAR from './avatar.svg';
 
+
+
 const getSelectedTabIndex = (location, pages) => {
   const pathWithRootFix = rootFix(location.pathname);
   const pagesWithRootFix = rootFixPages(pages);
 
+  
   let selectedIndex = pagesWithRootFix.indexOf(findSelectedTopPage(pathWithRootFix, pagesWithRootFix));
   let tempArr = pathWithRootFix.split('/');
   let inx = tempArr.indexOf('use-cases');
@@ -69,7 +72,6 @@ const getSelectedTabIndex = (location, pages) => {
   if (selectedIndex === -1) {
     selectedIndex = 0;
   }
-
   return selectedIndex;
 };
 
@@ -114,6 +116,7 @@ const GlobalHeader = ({
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [selectedMenuItem, setSelectedMenuItem] = useState({});
 
   const POPOVER_ANIMATION_DELAY = 200;
   const versionPopoverId = "version " + nextId();
@@ -135,7 +138,8 @@ const GlobalHeader = ({
   useEffect(() => {
     const index = getSelectedTabIndex(location, pages);
     setSelectedTabIndex(index);
-
+    const pathWithRootFix = rootFix(location.pathname);
+    setSelectedMenuItem(findSelectedTopPageMenu(pathWithRootFix, pages[index]));
     animateIndicator(selectedTabIndicatorRef, isAnimated);
     positionSelectedTabIndicator(index);
   }, [location.pathname]);
@@ -545,6 +549,7 @@ const GlobalHeader = ({
                     <TabsItem
                      tabIndex={"0"}
                      id={`tabindex${i}`}
+                     className={isSelectedTab ? 'isSelected': ''}
                     //  onFocus={()=>{setOpenMenuIndex(-1)}}
                      index={i}
                      hasDropdown
@@ -577,22 +582,6 @@ const GlobalHeader = ({
                         setOpenProfile(false);
                         setOpenMenuIndex(openMenuIndex === i ? -1 : i);
                       }}
-                      onMouseOver={(event) => {
-                        event.stopImmediatePropagation();
-                        setOpenVersion(false);
-                        setOpenProfile(false);
-                        setOpenMenuIndex(i)
-                        // setOpenMenuIndex(openMenuIndex === i ? -1 : i);
-                      }}
-                      onMouseLeave={
-                        (event) => {
-                          event.stopImmediatePropagation();
-                          setOpenVersion(false);
-                          setOpenProfile(false);
-                          setOpenMenuIndex(-1)
-                        }
-                      }
-
                       >
                       <TabsItemLabel>{page.title}</TabsItemLabel>
                       <ChevronDown
@@ -612,20 +601,6 @@ const GlobalHeader = ({
                           setOpenProfile(false);
                           setOpenMenuIndex(openMenuIndex === i ? -1 : i);
                         }}
-                        onMouseEnter={(event) => {
-                          event.stopImmediatePropagation();
-                          setOpenVersion(false);
-                          setOpenProfile(false);
-                          setOpenMenuIndex(i)
-                        }}
-                        onMouseLeave={
-                          (event) => {
-                            event.stopImmediatePropagation();
-                            setOpenVersion(false);
-                            setOpenProfile(false);
-                            setOpenMenuIndex(-1)
-                          }
-                        }
                         role="button"
                         tabIndex={0}
                         aria-label={page.title}
@@ -664,6 +639,8 @@ const GlobalHeader = ({
                                 href={menuHref}
                                 {...getExternalLinkProps(menuHref)}
                                 isHighlighted={menu === selectedMenu}
+                                isSelected={ menu === selectedMenuItem }
+                                isHeightUnset={ menu.description ? true : false}
                                 css={css`
                                   display: -webkit-box;
                                   display: -webkit-flex;
@@ -679,7 +656,8 @@ const GlobalHeader = ({
                                   -webkit-justify-content: center;
                                   justify-content: center;
                                   box-sizing: border-box;
-                                  padding: 0 var(--spectrum-global-dimension-size-300) !important;
+                                  padding: 0 var(--spectrum-global-dimension-size-175) !important;
+                                  margin-right: var(--spectrum-global-dimension-size-175) !important;
                                   white-space: nowrap;
                                   color: var(--spectrum-global-color-gray-700) !important;
                                   -webkit-transition: background-color var(--spectrum-global-animation-duration-100) ease-out,color var(--spectrum-global-animation-duration-100) ease-out;
@@ -697,7 +675,6 @@ const GlobalHeader = ({
                                     e.preventDefault();
 
                                     if(k+1===page.menu.length){
-                                      console.log("pageDown",page.menu);
                                       setTimeout(()=>{
                                         setOpenMenuIndex(-1)
                                         if(pages.length===i+1){
@@ -749,6 +726,7 @@ const GlobalHeader = ({
                                       `}>
                                       {menu.title}
                                     </div>
+                                    
                                     <div
                                       className="spectrum-Body spectrum-Body--sizeXS"
                                       css={css`
@@ -761,8 +739,9 @@ const GlobalHeader = ({
                                 ) : (
                                   <div css={css`
                                   margin-top: var(--spectrum-global-dimension-size-50);
-                                  margin-bottom: var(--spectrum-global-dimension-size-50);
-                                `}>{menu.title}</div>
+                                  margin-bottom: var(--spectrum-global-dimension-size-50);`}>
+                                  {menu.title}
+                                  </div>
                                 )}
                               </MenuItem>
                             );

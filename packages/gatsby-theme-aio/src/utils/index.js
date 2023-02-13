@@ -81,8 +81,16 @@ const layoutColumns = (columns, gutters = []) =>
 const findSelectedTopPage = (pathname, pages) =>
   pages.find((page) => pathname.startsWith(withPrefix(page.pathname)) || findSelectedTopPageMenu(pathname, page));
 
-const findSelectedTopPageMenu = (pathname, page) =>
-  page?.menu && page.menu.find((menuPage) => pathname.startsWith(withPrefix(menuPage.pathname)));
+
+const findSelectedTopPageMenu = (pathname, page) => {
+  const res = page?.menu && page.menu.find((menuPage) => pathname === menuPage.pathname);
+  return res ? res : findSelectedTopPageMenuByPrefix(pathname, page)
+}
+  
+  
+const findSelectedTopPageMenuByPrefix = (pathname, page) =>
+    page?.menu && page.menu.find((menuPage) =>  pathname.startsWith(withPrefix(menuPage.pathname)));
+  
 
 const findSubPages = (pathname, pages, subPages) => {
   if (subPages == null) {
