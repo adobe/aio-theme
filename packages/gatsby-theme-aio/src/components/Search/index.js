@@ -530,6 +530,7 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
                   position: absolute;
                   
                   margin-right: var(--spectrum-global-dimension-size-100);
+                  margin-bottom: var(--spectrum-global-dimension-size-40);
 
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     margin-right: 0;

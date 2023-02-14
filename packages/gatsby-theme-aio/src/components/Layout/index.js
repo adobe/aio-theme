@@ -791,10 +791,11 @@ export default ({ children, pageContext, location }) => {
                 />
               </div>
               {hasSearch && loadSearchFrame && (
-                <iframe
-                  id='searchIframe'
-                  src={searchIFrameSource()}
-                  css={css`position: fixed;
+              <iframe
+                id='searchIframe'
+                src={searchIFrameSource()}
+                tabIndex="0"
+                css={css`position: fixed;
                     top: var(--spectrum-global-dimension-size-800);
                     left: 0px;
                     right: 0px;
@@ -804,8 +805,8 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
                     height: 100%;
                     visibility: ${showSearch ? "visible" : "hidden"};`}
-                ></iframe>
-              )}
+              ></iframe>
+            )}
 
               <div
                 id={sideNavId}

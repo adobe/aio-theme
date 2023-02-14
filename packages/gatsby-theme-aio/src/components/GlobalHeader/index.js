@@ -881,6 +881,7 @@ const GlobalHeader = ({
                 }}
                 aria-label={showSearch ? "Close Search" : "Search"}
                 isQuiet
+                tabIndex="0"
                 css={css`
                   margin-right: var(--spectrum-global-dimension-size-200);
 
@@ -900,6 +901,7 @@ const GlobalHeader = ({
               variant="primary"
               href="/console"
               id={"consoleId"}
+              tabIndex="0"
               css={css`
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                   display: none;
