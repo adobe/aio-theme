@@ -83,7 +83,7 @@ __metadata:
     gatsby: ^4.22.0
     gatsby-cli: ^4.23.0
     gatsby-plugin-algolia: ^0.26.0
-    gatsby-plugin-emotion: ^7.23.0
+    gatsby-plugin-emotion: ^8.6.0
     gatsby-plugin-layout: ^3.23.0
     gatsby-plugin-mdx: ^3.20.0
     gatsby-plugin-mdx-embed: ^1.0.0
@@ -1732,7 +1732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.20.13
   resolution: "@babel/runtime@npm:7.20.13"
   dependencies:
@@ -2072,7 +2072,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/babel-preset-css-prop@npm:^11.2.0":
+"@emotion/babel-preset-css-prop@npm:^11.10.0":
   version: 11.10.0
   resolution: "@emotion/babel-preset-css-prop@npm:11.10.0"
   dependencies:
@@ -12004,17 +12004,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-emotion@npm:^7.23.0":
-  version: 7.25.0
-  resolution: "gatsby-plugin-emotion@npm:7.25.0"
+"gatsby-plugin-emotion@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "gatsby-plugin-emotion@npm:8.6.0"
   dependencies:
-    "@babel/runtime": ^7.15.4
-    "@emotion/babel-preset-css-prop": ^11.2.0
+    "@babel/runtime": ^7.20.13
+    "@emotion/babel-preset-css-prop": ^11.10.0
   peerDependencies:
     "@babel/core": ^7.11.6
     "@emotion/react": ^11.0.0
-    gatsby: ^4.0.0-next
-  checksum: 46bfa7f2866c5f00afe4c1b8c149ce27271062ffaece71e173a4d4fa209ee6431c999d467e0c779b6d5eee68b784ca6b031595c490d2b2de9233fa01312883d1
+    gatsby: ^5.0.0-next
+  checksum: 7f5dddcad1a52d2909da8ece9209791977b4fa7d202a1e6358c113daacbdb3ffa9ba73d201de078732b6d7f5015253657e2935b4645ef4b25b2e60e97bc213e2
   languageName: node
   linkType: hard
 
