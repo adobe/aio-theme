@@ -804,6 +804,7 @@ export default ({ children, pageContext, location }) => {
                     z-index: 10;
                     width: 100%;
                     height: 100%;
+                    opacity: ${showSearch ? 1 : 0};
                     visibility: ${showSearch ? "visible" : "hidden"};`}
               ></iframe>
             )}
