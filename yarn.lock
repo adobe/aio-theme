@@ -87,7 +87,7 @@ __metadata:
     gatsby-plugin-layout: ^3.23.0
     gatsby-plugin-mdx: ^3.20.0
     gatsby-plugin-mdx-embed: ^1.0.0
-    gatsby-plugin-preact: ^6.23.0
+    gatsby-plugin-preact: ^7.6.1
     gatsby-plugin-react-helmet: ^5.23.0
     gatsby-plugin-sharp: ^4.23.0
     gatsby-remark-autolink-headers: ^5.23.0
@@ -1732,7 +1732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.7, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.20.13
   resolution: "@babel/runtime@npm:7.20.13"
   dependencies:
@@ -12117,19 +12117,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-preact@npm:^6.23.0":
-  version: 6.25.0
-  resolution: "gatsby-plugin-preact@npm:6.25.0"
+"gatsby-plugin-preact@npm:^7.6.1":
+  version: 7.6.1
+  resolution: "gatsby-plugin-preact@npm:7.6.1"
   dependencies:
-    "@babel/runtime": ^7.15.4
+    "@babel/runtime": ^7.20.13
     "@gatsbyjs/webpack-hot-middleware": ^2.25.3
     "@prefresh/babel-plugin": ^0.4.3
     "@prefresh/webpack": ^3.3.4
   peerDependencies:
-    gatsby: ^4.0.0-next
+    gatsby: ^5.0.0-next
     preact: ^10.3.4
     preact-render-to-string: ^5.1.8
-  checksum: 1acc1b354e133e4f5338e2e3fd6739543ace822f319338701f1bd3e7254e986e04d5ba111f7b2d82b5f85c916267f361204e1032657bb6579bfe277c525daf1f
+  checksum: 4074fc0db76aaeaab7ea6e406935ed30036255c953dbccf957ed4db8f3a95b11d4603ea2ea9f05e52e98ed28db75f3a3c9c8b5c86ad30174a6ef480d723a098a
   languageName: node
   linkType: hard
 
