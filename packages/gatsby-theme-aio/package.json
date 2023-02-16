@@ -117,7 +117,7 @@
     "gatsby-remark-images-remote": "^2.1.1",
     "gatsby-source-filesystem": "^4.23.0",
     "gatsby-transformer-remark": "^5.23.0",
-    "gatsby-transformer-sharp": "4.23.0",
+    "gatsby-transformer-sharp": "5.6.0",
     "https-browserify": "^1.0.0",
     "jsdom": "^20.0.0",
     "lottie-web": "^5.9.6",
