@@ -2,12 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## [4.8.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.0...@adobe/gatsby-theme-aio@4.8.1) (2023-02-16)
+
+### Fixes
+
+* Fix safari iframe visibility with opacity toggle [0f21c7c](https://github.com/adobe/aio-theme/commit/0f21c7c0e8f982bbf1572c0751e772a7d06924dc).
 
 ## [4.8.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.7.11...@adobe/gatsby-theme-aio@4.8.0) (2023-02-16)
 
 ### Fixes
 
-* Fix safari iframe visibility with opacity toggle [0f21c7c](https://github.com/adobe/aio-theme/commit/0f21c7c0e8f982bbf1572c0751e772a7d06924dc).
 * Fix search keyboard accessibility with reposition in layout [8f4df67](https://github.com/adobe/aio-theme/commit/8f4df6767209d73f276b9f2338978fd999ebeb4c).
 * Fix search results missing link retarget, clear button center css [42f2043](https://github.com/adobe/aio-theme/commit/42f2043648eb7975b0a389e862ca25fed3bcea1a).
 * Fix header navBar hovering issue [21e9cbd](https://github.com/adobe/aio-theme/commit/21e9cbdcd77da4d31a8114522baa1140f5f984fb).
