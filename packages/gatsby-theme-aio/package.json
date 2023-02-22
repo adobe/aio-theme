@@ -110,7 +110,7 @@
     "gatsby-plugin-mdx": "^3.20.0",
     "gatsby-plugin-mdx-embed": "^1.0.0",
     "gatsby-plugin-preact": "^6.23.0",
-    "gatsby-plugin-react-helmet": "^5.23.0",
+    "gatsby-plugin-react-helmet": "^6.7.0",
     "gatsby-plugin-sharp": "^4.23.0",
     "gatsby-remark-autolink-headers": "^5.23.0",
     "gatsby-remark-copy-linked-files": "^5.23.0",
