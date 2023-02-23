@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.1...@adobe/gatsby-theme-aio@4.8.2) (2023-02-22)
+
+### Feature
+
+* Add Developer Distribution to the footer [13c998c](https://github.com/adobe/aio-theme/commit/13c998c7d2f54a1f9e8a6c64dccde5a2f7c94b4d).
+
+
 ## [4.8.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.0...@adobe/gatsby-theme-aio@4.8.1) (2023-02-16)
 
 ### Fixes
