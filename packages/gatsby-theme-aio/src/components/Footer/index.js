@@ -15,132 +15,139 @@ import { css } from '@emotion/react';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, MOBILE_SCREEN_WIDTH } from '../../utils';
+import {
+  layoutColumns,
+  getExternalLinkProps,
+  DESKTOP_SCREEN_WIDTH,
+  MOBILE_SCREEN_WIDTH,
+} from '../../utils';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import LinkedInRetargeting from './linkedInRetargetting'
+import LinkedInRetargeting from './linkedInRetargetting';
 
-const DESKTOP_SCREEN_MAX_WIDTH = '1060px'; 
+const DESKTOP_SCREEN_MAX_WIDTH = '1280px';
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
-    path: '/apis'
+    path: '/apis',
   },
   APIs: [
     {
       title: 'Adobe Creative Cloud',
-      path: '/creative-cloud'
+      path: '/creative-cloud',
     },
     {
       title: 'Adobe Experience Platform',
-      path: '/experience-platform-apis'
+      path: '/experience-platform-apis',
     },
     {
       title: 'Adobe Document Cloud',
-      path: '/document-services/homepage'
-    }
+      path: '/document-services/homepage',
+    },
   ],
   services: [
     {
       title: 'Adobe Cloud Manager',
-      path: '/experience-cloud/cloud-manager'
+      path: '/experience-cloud/cloud-manager',
     },
     {
       title: 'Adobe Analytics',
-      path: '/analytics-apis/docs/2.0'
+      path: '/analytics-apis/docs/2.0',
     },
     {
       title: 'App Builder',
-      path: '/app-builder'
-    }
+      path: '/app-builder',
+    },
   ],
   community: [
     {
       title: 'Adobe Tech Blog',
-      path: 'https://medium.com/adobetech'
+      path: 'https://medium.com/adobetech',
     },
     {
       title: 'Adobe on GitHub',
-      path: 'https://github.com/adobe'
+      path: 'https://github.com/adobe',
     },
     {
       title: 'Adobe Developer on YouTube',
-      path: 'https://youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ'
+      path: 'https://youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ',
     },
     {
       title: 'Adobe Developer on Twitter',
-      path: 'https://twitter.com/adobedevs'
+      path: 'https://twitter.com/adobedevs',
     },
     {
       title: 'Community Forums',
-      path: 'https://adobe.com/communities/index.html'
-    }
+      path: 'https://adobe.com/communities/index.html',
+    },
   ],
   support: [
     {
       title: 'Adobe Developer support',
-      path: '/developer-support'
+      path: '/developer-support',
     },
     {
       title: 'Adobe Product support',
-      path: 'https://helpx.adobe.com/contact/enterprise-support.html'
-    }
+      path: 'https://helpx.adobe.com/contact/enterprise-support.html',
+    },
   ],
   developer: [
     {
       title: 'Adobe Developer Console',
-      path: '/developer-console'
+      path: '/developer-console',
     },
     {
       title: 'Developer Distribution',
-      path: '/developer-distribution/creative-cloud/'
+      path: '/developer-distribution/creative-cloud/',
     },
     {
       title: 'Open source at Adobe',
-      path: '/open'
+      path: '/open',
     },
     {
       title: 'Download SDKs',
-      path: '/console/downloads'
+      path: '/console/downloads',
     },
     {
       title: 'Authentication',
-      path: '/developer-console/docs/guides/authentication'
+      path: '/developer-console/docs/guides/authentication',
     },
     {
       title: 'Careers',
-      path: 'https://adobe.com/careers.html'
-    }
+      path: 'https://adobe.com/careers.html',
+    },
   ],
   legal: [
     {
       title: 'Privacy',
-      path: 'https://adobe.com/privacy.html'
+      path: 'https://adobe.com/privacy.html',
     },
     {
       title: 'Terms of Use',
-      path: 'https://adobe.com/legal/terms.html'
+      path: 'https://adobe.com/legal/terms.html',
     },
     {
       title: 'Cookie preferences',
-      path: '#/'
+      path: '#/',
     },
     {
       title: 'Do not sell or share my personal information',
-      path: 'https://adobe.com/privacy/us-rights.html'
+      path: 'https://adobe.com/privacy/us-rights.html',
     },
     {
       title: 'AdChoices',
-      path: 'https://adobe.com/privacy/opt-out.html#interest-based-ads'
-    }
-  ]
+      path: 'https://adobe.com/privacy/opt-out.html#interest-based-ads',
+    },
+  ],
 };
 
 const OPEN_PRIVACY_ID = 'openPrivacy';
 
 const VIEW_ALL_APIS_DESC = 'View all APIs and Services';
 
-const Heading = ({ children }) => <h3 className="spectrum-Heading spectrum-Heading--sizeXS">{children}</h3>;
+const Heading = ({ children }) => (
+  <h3 className="spectrum-Heading spectrum-Heading--sizeXS">{children}</h3>
+);
 
 const List = ({ children }) => <ul className="spectrum-Body spectrum-Body--sizeS">{children}</ul>;
 
@@ -281,8 +288,17 @@ const Footer = ({ hasSideNav = false }) => (
                   ))}
                   <li>
                     <Link isQuiet={true}>
-                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path} aria-labelledby="allAPIsDesc">
-                        <span id="allAPIsDesc" css={css`display: none;`}>{VIEW_ALL_APIS_DESC}</span>
+                      <a
+                        {...getExternalLinkProps(allAPIs.path)}
+                        href={allAPIs.path}
+                        aria-labelledby="allAPIsDesc">
+                        <span
+                          id="allAPIsDesc"
+                          css={css`
+                            display: none;
+                          `}>
+                          {VIEW_ALL_APIS_DESC}
+                        </span>
                         <strong>{allAPIs.title}</strong>
                       </a>
                     </Link>
@@ -461,12 +477,17 @@ const Footer = ({ hasSideNav = false }) => (
                   return (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a id={OPEN_PRIVACY_ID}  css={css`
-                           &:focus {
+                        <a
+                          id={OPEN_PRIVACY_ID}
+                          css={css`
+                            &:focus {
                               text-decoration: underline;
                               text-decoration-style: double;
-                          }
-                        `} href={path} aria-label="Cookie preferences" tabindex="0"></a>
+                            }
+                          `}
+                          href={path}
+                          aria-label="Cookie preferences"
+                          tabindex="0"></a>
                       </Link>
                     </li>
                   );
@@ -500,15 +521,13 @@ const Footer = ({ hasSideNav = false }) => (
           </div>
         </div>
       </div>
-      {process.env.GATSBY_DC_LINKED_IN && (
-      <LinkedInRetargeting/>
-      )}
+      {process.env.GATSBY_DC_LINKED_IN && <LinkedInRetargeting />}
     </footer>
   </>
 );
 
 Footer.propTypes = {
-  hasSideNav: PropTypes.bool
+  hasSideNav: PropTypes.bool,
 };
 
 export { Footer };

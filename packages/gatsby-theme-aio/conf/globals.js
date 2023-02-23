@@ -13,8 +13,8 @@
 module.exports = {
   SIDENAV_WIDTH: 'var(--spectrum-global-dimension-static-size-3200)',
   // --spectrum-global-dimension-static-grid-fixed-max-width
-  DESKTOP_SCREEN_WIDTH: '1060px',
+  DESKTOP_SCREEN_WIDTH: '1280px',
   TABLET_SCREEN_WIDTH: '1024px',
   // --spectrum-global-dimension-static-breakpoint-small
-  MOBILE_SCREEN_WIDTH: '768px'
+  MOBILE_SCREEN_WIDTH: '768px',
 };
