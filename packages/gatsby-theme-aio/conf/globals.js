@@ -16,5 +16,5 @@ module.exports = {
   DESKTOP_SCREEN_WIDTH: '1280px',
   TABLET_SCREEN_WIDTH: '1024px',
   // --spectrum-global-dimension-static-breakpoint-small
-  MOBILE_SCREEN_WIDTH: '768px',
+  MOBILE_SCREEN_WIDTH: '768px'
 };
