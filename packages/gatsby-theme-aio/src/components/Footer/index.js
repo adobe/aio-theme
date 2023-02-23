@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import LinkedInRetargeting from './linkedInRetargetting'
 
-const DESKTOP_SCREEN_MAX_WIDTH = '1060px'; 
+const DESKTOP_SCREEN_MAX_WIDTH = '1280px'; 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
