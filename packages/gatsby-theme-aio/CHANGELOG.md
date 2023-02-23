@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.23(https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.2...@adobe/gatsby-theme-aio@4.8.3) (2023-02-22)
+
+### Fixes
+
+* Fix margin on nested inline [e16cb96](https://github.com/adobe/aio-theme/commit/e16cb962c30ab1974546803bc945c3227583b057).
+
+* Set desktop width back to 1280px [e4bb043](https://github.com/adobe/aio-theme/commit/e4bb043c939bb83ed208f5cfd083bae66ab4c9d6).
+
+
 ## [4.8.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.1...@adobe/gatsby-theme-aio@4.8.2) (2023-02-22)
 
 ### Feature
