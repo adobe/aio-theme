@@ -92,6 +92,10 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       path: '/developer-console'
     },
     {
+      title: 'Developer Distribution',
+      path: '/developer-distribution/creative-cloud/'
+    },
+    {
       title: 'Open source at Adobe',
       path: '/open'
     },
