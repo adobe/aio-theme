@@ -39,14 +39,14 @@ const InlineNestedAlertTexts = ({ texts }) => {
     alertElement.push(cloneElement(text, {
           className: 'spectrum-InLineAlert-content',
           css: css`
-                margin-top: var(--spectrum-global-dimension-size-150);
+                margin-top: 0;
                 ${commonCss};
               `
         }));
   }) : alertElement.push(cloneElement(texts, {
     className: 'spectrum-InLineAlert-content',
     css: css`
-                margin-top: var(--spectrum-global-dimension-size-150);
+                margin-top: 0;
                 ${commonCss};
               `
   }));
@@ -64,9 +64,10 @@ const InlineNestedAlert = ({ variant = 'info', header, iconPosition, ...props })
   }
   const alertCss = iconPosition === 'left' ? css`width: 98%;
             padding-left: 40px;
-            margin-top: var(--spectrum-global-dimension-size-300);
+            margin-top: 0;
             svg {
                 left: 0;
+                margin-top: 3px;
                 margin-left: var(--spectrum-global-dimension-size-175) !important;
             }` : css`min-width: 100%; margin-top: var(--spectrum-global-dimension-size-300)`;
   return (
