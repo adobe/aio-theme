@@ -17,7 +17,10 @@ import {layoutColumns, MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH} from "../../uti
 
 const Table = ({ children, ...props }) => (
   <div css={css`overflow-x: auto; overflow-y: hidden;`}>
-    <table className="spectrum-Table spectrum-Table--sizeM" {...props}>
+    <table className="spectrum-Table spectrum-Table--sizeM" {...props}
+       css={css`
+        margin-bottom: var(--spectrum-global-dimension-size-150);
+       `}>
       {children}
     </table>
   </div>
