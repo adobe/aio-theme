@@ -42,7 +42,7 @@ import { ProductCardGrid } from '../ProductCardGrid';
 import { OldProductCardGrid } from '../OldProductCardGrid';
 import { AnchorButtonGroup } from '../AnchorButtonGroup';
 import { DCSummaryBlock } from '../DCSummaryBlock';
-
+import {TeaserBlock} from "../TeaserBlock";
 export const MDXBlocks = {
   Hero,
   DiscoverBlock,
@@ -68,6 +68,7 @@ export const MDXBlocks = {
   CustomMenuBlock,
   CustomIframeBlock,
   CustomCard,
+  TeaserBlock,
   Accordion,
   AccordionItem,
   TabsBlock: ({ theme, ...props }) => (
