@@ -21,7 +21,6 @@ const TeaserBlock = ({
     variant = "fullwidth",
 }) => {
 
-    console.log('heading', heading);
     return (
         <div>
             <section
