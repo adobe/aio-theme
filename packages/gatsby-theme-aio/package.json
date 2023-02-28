@@ -73,7 +73,7 @@
     "@spectrum-css/actionbutton": "2.1.7",
     "@spectrum-css/actiongroup": "^2.0.0",
     "@spectrum-css/assetlist": "3.0.24",
-    "@spectrum-css/badge": "^1.0.20",
+    "@spectrum-css/badge": "^3.0.3",
     "@spectrum-css/breadcrumb": "5.0.0",
     "@spectrum-css/button": "6.0.13",
     "@spectrum-css/card": "5.0.0",
