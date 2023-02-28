@@ -22,7 +22,8 @@ const TeaserBlock = ({
 }) => {
 
     return (
-        <div>
+        <div   css={css`
+        margin-top: var(--spectrum-global-dimension-size-150);`}   >
             <section
                 className={classNames(className, `spectrum--${theme}`)}
                 style={{ width: variant === "fullwidth" ? "100%" : "80%", margin: variant === "fullwidth" ? "0" : "auto" }}
@@ -37,8 +38,8 @@ const TeaserBlock = ({
             >
                 <div
                     css={css`
-                    padding-top: 10px;
-                    padding-bottom: 10px;`}
+                    padding-top: var(--spectrum-global-dimension-size-125);
+                    padding-bottom: var(--spectrum-global-dimension-size-125);`}
                 >
                     <div
                         style={{ marginLeft: position === "right" ? "auto" : position === "center" ? "35%" : "5%" }}
@@ -59,8 +60,9 @@ const TeaserBlock = ({
                     >
                         <div css={css`width: 80%`}>
                             {heading && cloneElement(heading, {
-                                        style: { color: `${textColor}` }
+                                        style: { color: `${textColor}`, "margin-top": `var(--spectrum-global-dimension-size-200)` }
                                     })}
+
                             <div>
                                 {text &&
                                     cloneElement(text, {

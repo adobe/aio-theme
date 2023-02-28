@@ -25,6 +25,8 @@ import AddAnalyticsFlutter from './add-analytics/flutter.md'
 import AddAnalyticsUnity from './add-analytics/unity.md'
 import AddAnalyticsReactNative from './add-analytics/react-native.md'
 import AddAnalyticsXamarin from './add-analytics/xamarin.md'
+import TeaserComp from './teaser/teasercomp.md'
+import blackbg from "./teaser/black_power.jpg"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -107,6 +109,20 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 ![Jenkinator](./jenkinator.svg "Jenkinator")
 
 ![Jenkinator](./diagram.svg "Diagram")
+
+<TeaserComp />
+
+<TeaserBlock  slots="heading,text" textColor="white" position="right" bgURL={blackbg}/>
+
+### TeaserBlock with image background
+
+In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="right" attribute
+
+<TeaserBlock  slots="heading,text" textColor="white" position="left" backgroundColor="rgb(64, 34, 138)" />
+
+### TeaserBlock with background color
+
+In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="left" attribute
 
 ## Inline Alerts {#Categories}
 
@@ -265,3 +281,6 @@ Inline Alert as a nested component
       Lorem ipsum dolor sit amet
 
       </InlineNestedAlert>
+
+
+
