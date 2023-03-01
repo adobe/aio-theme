@@ -14,12 +14,16 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import '@spectrum-css/typography';
+import {css} from "@emotion/react";
 
 const List = ({ children, elementType = 'ul', className, ...props }) => {
   const Element = elementType;
 
   return (
-    <Element {...props} className={classNames(className, 'spectrum-Body spectrum-Body--sizeM')}>
+    <Element {...props} className={classNames(className, 'spectrum-Body spectrum-Body--sizeM')}
+     css={css`
+      margin-top: var(--spectrum-global-dimension-size-150);
+      `}>
       {children}
     </Element>
   );
