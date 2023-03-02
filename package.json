@@ -6,17 +6,17 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@testing-library/cypress": "^8.0.3",
-    "axe-core": "^4.4.3",
-    "cypress": "^10.8.0",
-    "cypress-axe": "^1.0.0",
-    "gatsby-cypress": "^2.23.0",
-    "husky": "^8.0.1",
-    "lerna": "^5.5.1",
-    "prettier": "^2.7.1",
-    "start-server-and-test": "^1.14.0"
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@testing-library/cypress": "^9.0.0",
+    "axe-core": "^4.6.3",
+    "cypress": "^12.7.0",
+    "cypress-axe": "^1.4.0",
+    "gatsby-cypress": "^3.7.0",
+    "husky": "^8.0.3",
+    "lerna": "^6.5.1",
+    "prettier": "^2.8.4",
+    "start-server-and-test": "^2.0.0"
   },
   "scripts": {
     "prepare": "husky install",
