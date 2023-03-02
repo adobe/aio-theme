@@ -1897,6 +1897,45 @@ Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 Use `repeat` to define how many code sections are part of the carousel.
 
+### TeaserBlock
+
+Teaser component is used to place the text over the background image/color
+
+![TeaserBlock](docs/images/TeaserBlock.png)
+
+```
+import bgImg from "./Images/black_image.png"
+<TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/> 
+
+### TeaserBlock with image background
+
+In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="right" attribute
+
+- [Learn more](../guides/)
+
+
+<TeaserBlock slots="heading,text" textColor="white" position="left" backgroundColor="rgb(64, 34, 138)" />
+
+### TeaserBlock with background color
+
+In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="left" attribute
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `heading` (optional)
+- `text` (optional)
+- `buttons`(optional)
+
+Use `bgURL` to load the image, `backgroundColor` to load the backgroundcolor.
+
+Use `position` to position the heading, text values are `left, right, center`.
+
+Use `textColor` to color the heading, text
+
+Use `variant` to specify full width or half width values are `fullwidth,halfwidth`.
+
 ### Edition
 
 The Edition component is used to display the edition of the product.
