@@ -509,7 +509,7 @@ export default ({ children, pageContext, location }) => {
         />
         <div
           dir="ltr"
-          className="spectrum spectrum--medium spectrum--large spectrum--light"
+          className="spectrum spectrum--medium spectrum--light"
           color-scheme="light"
           css={css`
           min-height: 100vh;
@@ -734,7 +734,7 @@ export default ({ children, pageContext, location }) => {
         <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
         <div
           dir="ltr"
-          className="spectrum spectrum--medium spectrum--large spectrum--light"
+          className="spectrum spectrum--medium spectrum--light"
           color-scheme="light"
           css={css`
             min-height: 100vh;
