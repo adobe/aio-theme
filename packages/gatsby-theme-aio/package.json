@@ -46,7 +46,6 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "node scripts/spectrum-css.js",
     "yalc-push": "yalc push"
   },
   "devDependencies": {
