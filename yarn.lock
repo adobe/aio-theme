@@ -52,7 +52,7 @@ __metadata:
     "@spectrum-css/breadcrumb": 5.0.0
     "@spectrum-css/button": 6.0.13
     "@spectrum-css/card": 5.0.0
-    "@spectrum-css/checkbox": 3.1.3
+    "@spectrum-css/checkbox": 6.0.6
     "@spectrum-css/dialog": 6.0.15
     "@spectrum-css/divider": 1.0.27
     "@spectrum-css/icon": 3.0.23
@@ -4525,13 +4525,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/checkbox@npm:3.1.3":
-  version: 3.1.3
-  resolution: "@spectrum-css/checkbox@npm:3.1.3"
+"@spectrum-css/checkbox@npm:6.0.6":
+  version: 6.0.6
+  resolution: "@spectrum-css/checkbox@npm:6.0.6"
   peerDependencies:
-    "@spectrum-css/icon": ^3.0.21
-    "@spectrum-css/vars": ^8.0.0
-  checksum: 3dd3c0e205b54734d8726d4dc6c4466e1912ac5756b724804eb50e10f67da3f95950d8431f38ef3980af727c11487f60bec08f90fcdbe20d1aedd6846b5a55a8
+    "@spectrum-css/icon": ^3.0.0
+    "@spectrum-css/tokens": ^7.0.0
+  checksum: 501c926557bce714347f466315ecd4504e3655d65e0bae6520ed57439784e5f3ba371be9fcef75a57da6faf7ca1143c60ad9e5e75f94d33a7acbb8138de6c1c9
   languageName: node
   linkType: hard
 
