@@ -279,10 +279,27 @@ const GlobalHeader = ({
         `}>
         <div
           css={css`
-            height: 100%;
-            grid-area: title;
+                  display: none;
 
-            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    grid-area:title;
+                    display: block;
+                    margin: 0 var(--spectrum-global-dimension-size-100);
+                  }
+                `}>
+          <ActionButton
+            isQuiet
+            onClick={() => {
+              toggleSideNav && toggleSideNav();
+            }}>
+            <TripleGripper />
+          </ActionButton>
+        </div>
+        <div
+          css={css`
+            height: 100%;
+            @media screen and (min-width: ${MOBILE_SCREEN_WIDTH}) {
+              grid-area: title;
               padding-left: ${!hasSideNav ? 'var(--spectrum-global-dimension-size-200)' : '0'};
             }
           `}>

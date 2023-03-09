@@ -754,7 +754,7 @@ export default ({ children, pageContext, location }) => {
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                  grid-template-rows: var(--spectrum-global-dimension-size-1200);
+                  grid-template-rows: 20px;
                 }
               `}>
               <div
