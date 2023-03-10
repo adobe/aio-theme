@@ -48,7 +48,7 @@ __metadata:
     "@spectrum-css/actionbutton": 2.1.7
     "@spectrum-css/actiongroup": ^2.0.0
     "@spectrum-css/assetlist": 3.0.24
-    "@spectrum-css/badge": ^1.0.20
+    "@spectrum-css/badge": ^3.0.7
     "@spectrum-css/breadcrumb": 5.0.0
     "@spectrum-css/button": 6.0.13
     "@spectrum-css/card": 5.0.0
@@ -4481,12 +4481,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/badge@npm:^1.0.20":
-  version: 1.0.20
-  resolution: "@spectrum-css/badge@npm:1.0.20"
+"@spectrum-css/badge@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "@spectrum-css/badge@npm:3.0.7"
   peerDependencies:
-    "@spectrum-css/vars": ^8.0.0
-  checksum: 75c9a6272c836ac8317e985598cd8646917420599d2a3b582132cab1cb80a626e4c32492ce009ff9f2f10e3466022c11210082a63b11460faba3209acbff555d
+    "@spectrum-css/tokens": ^7.0.0
+  checksum: 93fb4a443062f2e4c5e3efbac0072ef41c348c337bc075d509205b37eba18a51db67537abd29d5fd907c30b9543ae6a7e617514355a527c4b72918e647899fd6
   languageName: node
   linkType: hard
 
