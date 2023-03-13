@@ -3,7 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.8.23(https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.2...@adobe/gatsby-theme-aio@4.8.3) (2023-02-22)
+## [4.8.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.3...@adobe/gatsby-theme-aio@4.8.4) (2023-03-13)
+
+### Feature
+
+* Added Teaser component [1cee38b](https://github.com/adobe/aio-theme/commit/1cee38b1c412d78e38e2903c8a17a28b048629c3).
+
+
+### Fixes
+
+* Added spacing to table [aa4e209](https://github.com/adobe/aio-theme/commit/aa4e20996c5ac729c6bde2ab450ed6c859ebd79e).
+
+* Fix e2e testing [7f87e423](https://github.com/adobe/aio-theme/commit/7f87e4231263770ef81d427d0dcbd467988d3fb3).
+
+* Fix search false positive on any query parameters [1120d94](https://github.com/adobe/aio-theme/commit/1120d94935bb3efa22a1cff8abb7df543c81a93e).
+
+## [4.8.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.2...@adobe/gatsby-theme-aio@4.8.3) (2023-02-22)
 
 ### Fixes
 
