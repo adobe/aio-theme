@@ -94,7 +94,6 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Metadata with Front matter](#metadata-with-front-matter)
     - [OpenAPI](#openapi)
     - [JSDoc](#jsdoc)
-  - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
     - [JSX Blocks](#jsx-blocks)
