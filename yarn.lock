@@ -70,7 +70,7 @@ __metadata:
     "@spectrum-css/textfield": 3.2.4
     "@spectrum-css/tooltip": 3.1.18
     "@spectrum-css/typography": 4.0.20
-    "@spectrum-css/underlay": 2.0.31
+    "@spectrum-css/underlay": 2.0.40
     "@spectrum-css/vars": 8.0.0
     "@spectrum-css/well": 3.0.22
     algolia-html-extractor: ^0.0.1
@@ -4702,12 +4702,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/underlay@npm:2.0.31":
-  version: 2.0.31
-  resolution: "@spectrum-css/underlay@npm:2.0.31"
+"@spectrum-css/underlay@npm:2.0.40":
+  version: 2.0.40
+  resolution: "@spectrum-css/underlay@npm:2.0.40"
   peerDependencies:
     "@spectrum-css/vars": ^8.0.0
-  checksum: b9c3734b7e8a05851644ab962a998e569e1ad828ceef2a3a6989e2232bdc6d19f93f11ffd273091b39a5de84e9bc478ed20291056a79572957028d4dcce28bdd
+  checksum: c4fc27754b37fd74d2daa1a8a915f6982c565af96e99ef631bb1585d4cd360fda2406f1fffd27995c3c542d2f12f8af17f0b7e3146d58811454689955c6b1743
   languageName: node
   linkType: hard
 
