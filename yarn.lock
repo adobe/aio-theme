@@ -124,7 +124,7 @@ __metadata:
     swiper: ^8.3.2
     to-arraybuffer: ^1.0.1
     tty-browserify: ^0.0.1
-    unist-util-select: 3.0.4
+    unist-util-select: 4.0.3
     uuid: ^9.0.0
   peerDependencies:
     gatsby: ^4.22.0
@@ -22860,16 +22860,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-select@npm:3.0.4, unist-util-select@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "unist-util-select@npm:3.0.4"
+"unist-util-select@npm:4.0.3":
+  version: 4.0.3
+  resolution: "unist-util-select@npm:4.0.3"
   dependencies:
+    "@types/unist": ^2.0.0
     css-selector-parser: ^1.0.0
-    not: ^0.1.0
     nth-check: ^2.0.0
-    unist-util-is: ^4.0.0
-    zwitch: ^1.0.0
-  checksum: e6bdb4c79037e7d398a7682e3a2fb461e4b9ea8305e2228f54c47a3a27759e0bfc9f31eee763c31978b337d55f4a2216b974d3b7fcba058b1267ca1fc1e3ccfb
+    zwitch: ^2.0.0
+  checksum: 73125de1bd2e4bef0cdcffa3d7ac65f55ed9572733d03c52b785d09d1e4050d131e981f937d1d92cf9f9de61f24e85a1c9f7bb0a097ca3780ec5931d8a124c64
   languageName: node
   linkType: hard
 
@@ -22881,6 +22880,19 @@ __metadata:
     debug: ^2.2.0
     nth-check: ^1.0.1
   checksum: 19681874146213fc151d3faecfbb2999bbc63722b0e3cda06e769dd153f128d9bfc9350aa574878a64e322fb5de8179a87fb32ff71f0262838ef8361ac8c540c
+  languageName: node
+  linkType: hard
+
+"unist-util-select@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "unist-util-select@npm:3.0.4"
+  dependencies:
+    css-selector-parser: ^1.0.0
+    not: ^0.1.0
+    nth-check: ^2.0.0
+    unist-util-is: ^4.0.0
+    zwitch: ^1.0.0
+  checksum: e6bdb4c79037e7d398a7682e3a2fb461e4b9ea8305e2228f54c47a3a27759e0bfc9f31eee763c31978b337d55f4a2216b974d3b7fcba058b1267ca1fc1e3ccfb
   languageName: node
   linkType: hard
 
@@ -24272,5 +24284,12 @@ __metadata:
   version: 1.0.5
   resolution: "zwitch@npm:1.0.5"
   checksum: 28a1bebacab3bc60150b6b0a2ba1db2ad033f068e81f05e4892ec0ea13ae63f5d140a1d692062ac0657840c8da076f35b94433b5f1c329d7803b247de80f064a
+  languageName: node
+  linkType: hard
+
+"zwitch@npm:^2.0.0":
+  version: 2.0.4
+  resolution: "zwitch@npm:2.0.4"
+  checksum: f22ec5fc2d5f02c423c93d35cdfa83573a3a3bd98c66b927c368ea4d0e7252a500df2a90a6b45522be536a96a73404393c958e945fdba95e6832c200791702b6
   languageName: node
   linkType: hard
