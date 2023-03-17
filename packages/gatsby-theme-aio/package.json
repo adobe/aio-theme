@@ -96,7 +96,7 @@
     "@spectrum-css/tooltip": "3.1.18",
     "@spectrum-css/typography": "4.0.20",
     "@spectrum-css/underlay": "2.0.31",
-    "@spectrum-css/vars": "8.0.0",
+    "@spectrum-css/vars": "8.0.5",
     "@spectrum-css/well": "3.0.22",
     "algolia-html-extractor": "^0.0.1",
     "algoliasearch": "^4.14.2",
