@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet';
 import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
 import algoliaSearch from 'algoliasearch';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import Axios from 'axios';
 import {
   DESKTOP_SCREEN_WIDTH,
@@ -27,7 +27,7 @@ import {
   rootFixPages,
   SEARCH_PARAMS,
   SIDENAV_WIDTH,
-  trailingSlashFix
+  trailingSlashFix,
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
@@ -45,18 +45,24 @@ import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
+import { ChevronRight } from '../Icons';
 
 // GATSBY_ALGOLIA_APPLICATION_ID=...
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...
 // GATSBY_ALGOLIA_SEARCH_INDEX=[{"index": "index label"}, {"all": "All Results"}]
 // GATSBY_ALGOLIA_INDEX_ALL=["index1", "index2", ...]
-const hasSearch = !!(process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+const hasSearch = !!(
+  process.env.GATSBY_ALGOLIA_APPLICATION_ID && process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+);
 // GATSBY_ALGOLIA_INDEX_ENV_PREFIX=[prod | stage | *] this is the env prefix assigned to the index name during indexing
 const algoliaIndexEnv = process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX;
 
 let algolia = null;
 if (hasSearch) {
-  algolia = algoliaSearch(process.env.GATSBY_ALGOLIA_APPLICATION_ID, process.env.GATSBY_ALGOLIA_SEARCH_API_KEY);
+  algolia = algoliaSearch(
+    process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+    process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
+  );
 } else {
   console.warn('AIO: Algolia config missing.');
 }
@@ -70,26 +76,26 @@ const pageSrc = {
   openAPI: {
     src: null,
     block: null,
-    frontMatter: 'openAPISpec'
+    frontMatter: 'openAPISpec',
   },
   frame: {
     src: null,
     block: null,
-    frontMatter: 'frameSrc'
-  }
+    frontMatter: 'frameSrc',
+  },
 };
 
-const toggleSideNav = (setShowSideNav) => {
-  setShowSideNav((showSideNav) => !showSideNav);
+const toggleSideNav = setShowSideNav => {
+  setShowSideNav(showSideNav => !showSideNav);
 };
 
-const addScript = (url) =>
+const addScript = url =>
   new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = url;
-    script.onload = (val) => resolve(val);
-    script.onerror = (err) => reject(err);
-    script.onabort = (err) => reject(err);
+    script.onload = val => resolve(val);
+    script.onerror = err => reject(err);
+    script.onabort = err => reject(err);
 
     document.head.appendChild(script);
   });
@@ -142,8 +148,7 @@ const searchIFrameSource = () => {
   const setExpectedOrigin = (host, suffix = '') => {
     if (isDevEnvironment(host)) {
       return `http://localhost:8000`;
-    }
-    else if (isStageEnvironment(host)) {
+    } else if (isStageEnvironment(host)) {
       return `https://developer-stage.adobe.com${suffix}`;
     } else {
       return `https://developer.adobe.com${suffix}`;
@@ -160,16 +165,17 @@ const searchIFrameSource = () => {
   }
 
   /**
- * Checks whether the current URL is a stage environment based on host value
- * @param {*} host The host
- * @returns True if the current URL is a stage environment, false otherwise
- */
+   * Checks whether the current URL is a stage environment based on host value
+   * @param {*} host The host
+   * @returns True if the current URL is a stage environment, false otherwise
+   */
   function isStageEnvironment(host) {
     return host.indexOf('developer-stage') >= 0;
   }
 
-
-  const src = isDevEnvironment(window.location.host) ? setExpectedOrigin(window.location.host) : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
+  const src = isDevEnvironment(window.location.host)
+    ? setExpectedOrigin(window.location.host)
+    : `${setExpectedOrigin(window.location.host, '/search-frame')}`;
   const queryString = new URLSearchParams(window.location.search);
   return queryString && queryString.toString().length > 0
     ? `${src}?${queryString.toString()}`
@@ -308,6 +314,7 @@ export default ({ children, pageContext, location }) => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadSearchFrame, setLoadSearchFrame] = useState(false);
+  const [hasSideNav, setHasSideNav] = useState(false);
 
   // Show search if search param is set
   useEffect(() => {
@@ -331,18 +338,18 @@ export default ({ children, pageContext, location }) => {
   // Unify all paths
   location.pathname = trailingSlashFix(decodeURIComponent(location.pathname));
 
-  pages.forEach((page) => {
+  pages.forEach(page => {
     normalizePagePath(page);
 
     if (page.menu) {
-      page.menu.forEach((menu) => {
+      page.menu.forEach(menu => {
         normalizePagePath(menu);
       });
     }
   });
 
   if (versions) {
-    versions.forEach((version) => {
+    versions.forEach(version => {
       normalizePagePath(version);
     });
   }
@@ -350,18 +357,18 @@ export default ({ children, pageContext, location }) => {
   normalizePagePath(home);
   normalizePagePath(docs);
 
-  const normalizeSubPages = (page) => {
+  const normalizeSubPages = page => {
     normalizePagePath(page);
 
     if (page.pages) {
-      page.pages.forEach((subPage) => {
+      page.pages.forEach(subPage => {
         normalizeSubPages(subPage);
       });
     }
   };
 
   if (subPages) {
-    subPages.forEach((subPage) => {
+    subPages.forEach(subPage => {
       normalizeSubPages(subPage);
     });
   }
@@ -370,7 +377,9 @@ export default ({ children, pageContext, location }) => {
   const pagesWithRootFix = rootFixPages(pages);
   const sideNavSelectedPages = findSelectedPages(pathWithRootFix, subPages);
   const sideNavSelectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
-  const hasSideNav = sideNavSelectedSubPages.length > 0;
+  if (sideNavSelectedSubPages.length > 0) {
+    setHasSideNav(true);
+  }
 
   const frontMatter = pageContext?.frontmatter;
 
@@ -385,24 +394,35 @@ export default ({ children, pageContext, location }) => {
   // Set Search indexAll
   useEffect(() => {
     if (hasSearch) {
-      Axios.get("https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json")
+      Axios.get(
+        'https://raw.githubusercontent.com/AdobeDocs/search-indices/main/product-index-map.json'
+      )
         .then(result => {
           const productIndexMap = result.data;
           if (typeof productIndexMap === 'string') {
             setIndexAll(JSON.parse(productIndexMap));
-          } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]') { // https://stackoverflow.com/a/12996879/15028986
+          } else if (Object.prototype.toString.call(productIndexMap) == '[object Array]') {
+            // https://stackoverflow.com/a/12996879/15028986
             setIndexAll(productIndexMap);
           }
         })
         .catch(err => {
-          console.error(`AIO: Failed fetching search index.\n${err}`)
-        })
+          console.error(`AIO: Failed fetching search index.\n${err}`);
+        });
     }
+    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      setHasSideNav(true);
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+        setHasSideNav(true);
+      }
+    });
   }, []);
 
+  useEffect;
 
-  if (pathPrefix === "/search-frame") {
-
+  if (pathPrefix === '/search-frame') {
     return (
       <>
         <Helmet>
@@ -425,101 +445,102 @@ export default ({ children, pageContext, location }) => {
 
         <Global
           styles={css`
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 400;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/cb695f/000000000000000000017701/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: italic;
-            font-weight: 400;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/74ffb1/000000000000000000017702/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: italic;
+              font-weight: 400;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 700;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/eaf09c/000000000000000000017703/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 700;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean';
-            src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 300;
-          }
+            @font-face {
+              font-family: 'adobe-clean';
+              src: url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/40207f/0000000000000000000176ff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 300;
+            }
 
-          @font-face {
-            font-family: 'adobe-clean-serif';
-            src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff2'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('woff'),
-              url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
-                format('opentype');
-            font-display: swap;
-            font-style: normal;
-            font-weight: 900;
-          }
+            @font-face {
+              font-family: 'adobe-clean-serif';
+              src: url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('woff2'),
+                url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('woff'),
+                url('https://use.typekit.net/af/505d17/00000000000000003b9aee44/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3')
+                  format('opentype');
+              font-display: swap;
+              font-style: normal;
+              font-weight: 900;
+            }
 
-          html,
-          body {
-            margin: 0;
-            text-size-adjust: none;
-            overscroll-behavior: auto contain;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: transparent;
+            html,
+            body {
+              margin: 0;
+              text-size-adjust: none;
+              overscroll-behavior: auto contain;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              background-color: transparent;
 
-            ${showSearch && 'overflow: hidden;'}
-          }
+              ${showSearch && 'overflow: hidden;'}
+              ${showSideNav && 'overflow: hidden;'}
+            }
 
-          *[hidden] {
-            display: none !important;
-          }
-        `}
+            *[hidden] {
+              display: none !important;
+            }
+          `}
         />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
           color-scheme="light"
           css={css`
-          min-height: 100vh;
-          background-color: transparent;
-        `}>
+            min-height: 100vh;
+            background-color: transparent;
+          `}>
           {hasSearch && indexAll && (
             <Search
               algolia={algolia}
               indexAll={indexAll}
-              indexPrefix={algoliaIndexEnv ? algoliaIndexEnv : ""}
+              indexPrefix={algoliaIndexEnv ? algoliaIndexEnv : ''}
               showSearch={true}
               setShowSearch={setShowSearch}
               searchButtonId={searchButtonId}
@@ -531,12 +552,15 @@ export default ({ children, pageContext, location }) => {
     );
   }
 
-  let searchPathNameCheck = "";
+  let searchPathNameCheck = '';
 
   const searchFrameOnLoad = (counter = 0, loaded) => {
     const renderedFrame = document.getElementById('searchIframe');
 
-    renderedFrame.contentWindow.postMessage(JSON.stringify({ localPathName: window.location.pathname }), '*');
+    renderedFrame.contentWindow.postMessage(
+      JSON.stringify({ localPathName: window.location.pathname }),
+      '*'
+    );
     if (window.location.pathname !== '/') {
       if (searchPathNameCheck !== window.location.pathname) {
         // attempt to establish connection for 3 seconds then time out
@@ -545,18 +569,16 @@ export default ({ children, pageContext, location }) => {
           console.warn('Loading Search iFrame timed out');
           return;
         }
-        window.setTimeout(() => { searchFrameOnLoad(renderedFrame, counter + 1, loaded); }, 100);
+        window.setTimeout(() => {
+          searchFrameOnLoad(renderedFrame, counter + 1, loaded);
+        }, 100);
       }
     }
     // Past this point we successfully passed the local pathname
     // and received a confirmation from the iframe
     if (!loaded) {
-      const queryString = getQueryString();
-      if (queryString) {
-        // let searchIframeContainer = document.querySelector('div.nav-console-search-frame');
-        // if (searchIframeContainer.length > 0) {
-        //   searchIframeContainer.style.visibility = 'visible';
-        // }
+      const searchParams = new URL(window.location).searchParams;
+      if (searchParams.get(SEARCH_PARAMS.query)) {
         setShowSearch(true);
       }
     }
@@ -582,10 +604,9 @@ export default ({ children, pageContext, location }) => {
     } catch (error) {
       window.setTimeout(checkIframeLoaded, 100);
     }
-
   };
 
-  const onMessageReceivedFromIframe = (evt) => {
+  const onMessageReceivedFromIframe = evt => {
     // const expectedOrigin = setExpectedOrigin(window.location.host);
     // if (evt.origin !== expectedOrigin) return;
     try {
@@ -601,10 +622,10 @@ export default ({ children, pageContext, location }) => {
       // eslint-disable-next-line no-console
       console.error(e);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener("message", onMessageReceivedFromIframe);
+    window.addEventListener('message', onMessageReceivedFromIframe);
     if (hasSearch) {
       setLoadSearchFrame(true);
     }
@@ -612,7 +633,7 @@ export default ({ children, pageContext, location }) => {
 
   useEffect(() => {
     checkIframeLoaded();
-  }, [loadSearchFrame])
+  }, [loadSearchFrame]);
 
   return (
     <>
@@ -710,6 +731,7 @@ export default ({ children, pageContext, location }) => {
             -moz-osx-font-smoothing: grayscale;
 
             ${showSearch && 'overflow: hidden;'}
+            ${showSideNav && 'overflow: hidden;'}
           }
 
           *[hidden] {
@@ -729,9 +751,13 @@ export default ({ children, pageContext, location }) => {
           allSitePage,
           allMdx,
           allGithub,
-          allGithubContributors
+          allGithubContributors,
         }}>
-        <SEO title={frontMatter?.title} description={frontMatter?.description} keywords={frontMatter?.keywords} />
+        <SEO
+          title={frontMatter?.title}
+          description={frontMatter?.description}
+          keywords={frontMatter?.keywords}
+        />
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
@@ -791,11 +817,12 @@ export default ({ children, pageContext, location }) => {
                 />
               </div>
               {hasSearch && loadSearchFrame && (
-              <iframe
-                id='searchIframe'
-                src={searchIFrameSource()}
-                tabIndex="0"
-                css={css`position: fixed;
+                <iframe
+                  id="searchIframe"
+                  src={searchIFrameSource()}
+                  tabIndex="0"
+                  css={css`
+                    position: fixed;
                     top: var(--spectrum-global-dimension-size-800);
                     left: 0px;
                     right: 0px;
@@ -805,9 +832,9 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
                     height: 100%;
                     opacity: ${showSearch ? 1 : 0};
-                    visibility: ${showSearch ? "visible" : "hidden"};`}
-              ></iframe>
-            )}
+                    visibility: ${showSearch ? 'visible' : 'hidden'};
+                  `}></iframe>
+              )}
 
               <div
                 id={sideNavId}
@@ -816,7 +843,9 @@ export default ({ children, pageContext, location }) => {
                   grid-area: sidenav;
                   position: fixed;
                   z-index: 1;
-                  width: ${SIDENAV_WIDTH};
+                  width: ${window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)
+                    ? '95%'
+                    : SIDENAV_WIDTH};
                   height: 100%;
                   background-color: var(--spectrum-global-color-gray-75);
 
@@ -825,13 +854,12 @@ export default ({ children, pageContext, location }) => {
                     transform: translateX(${showSideNav ? '0' : '-100%'});
                   }
                 `}>
-                {hasSideNav && (
-                  <SideNav
-                    selectedPages={sideNavSelectedPages}
-                    selectedSubPages={sideNavSelectedSubPages}
-                    setShowSideNav={setShowSideNav}
-                  />
-                )}
+                <SideNav
+                  mainNavPages={pages}
+                  selectedPages={sideNavSelectedPages}
+                  selectedSubPages={sideNavSelectedSubPages}
+                  setShowSideNav={setShowSideNav}
+                />
               </div>
               <div
                 css={css`
@@ -849,7 +877,7 @@ export default ({ children, pageContext, location }) => {
                     createElement(pageSrc['frame'].block, {
                       src: pageSrc['frame'].src,
                       height: frontMatter?.frameHeight,
-                      location
+                      location,
                     })}
                 </main>
 
@@ -889,7 +917,7 @@ export default ({ children, pageContext, location }) => {
                     width: 100%;
 
                     ${showSideNav &&
-                  `
+                    `
                     pointer-events: auto;
                     opacity: 1;
                   `}
