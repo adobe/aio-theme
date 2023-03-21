@@ -140,7 +140,7 @@
     "request": "^2.88.2",
     "sharp": "^0.31.0",
     "stream-http": "^3.2.0",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.9",
     "swiper": "^8.3.2",
     "to-arraybuffer": "^1.0.1",
     "tty-browserify": "^0.0.1",
