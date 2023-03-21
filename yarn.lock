@@ -5771,7 +5771,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.4.4
     "@testing-library/cypress": ^9.0.0
     axe-core: ^4.6.3
-    cypress: ^12.7.0
+    cypress: ^12.8.1
     cypress-axe: ^1.4.0
     gatsby-cypress: ^3.7.0
     husky: ^8.0.3
@@ -8695,9 +8695,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^12.7.0":
-  version: 12.7.0
-  resolution: "cypress@npm:12.7.0"
+"cypress@npm:^12.8.1":
+  version: 12.8.1
+  resolution: "cypress@npm:12.8.1"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -8743,7 +8743,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: a9489f7f254dcee1b8a374d14d175c8f8681a3388e4c02181e0486f064f4de59bfc79dec1f401605332d3a5869bf2ba06b3a1653a5c287e447810d756d470078
+  checksum: a229f2b3ff20b1b533f6d4670303596aef596a394db77ea8eafe2fa8f175b79b9d48ba66262513fa806076be5c857e159539f6d8fd9acf4df9936a2fa649bf1e
   languageName: node
   linkType: hard
 
