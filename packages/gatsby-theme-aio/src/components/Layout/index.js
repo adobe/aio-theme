@@ -832,6 +832,10 @@ export default ({ children, pageContext, location }) => {
                     height: 100%;
                     opacity: ${showSearch ? 1 : 0};
                     visibility: ${showSearch ? 'visible' : 'hidden'};
+
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      top: var(--spectrum-global-dimension-size-600);
+                    }
                   `}></iframe>
               )}
 
