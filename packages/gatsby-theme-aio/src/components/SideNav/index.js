@@ -13,7 +13,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
+import { isBrowser, isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
@@ -263,21 +263,23 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
         `}>
         {/* The section below is the alternative top menu */}
         {(() => {
-          if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
-            return (
-              <>
-                <p>Global Navigation</p>
-                <ul
-                  role="tree"
-                  aria-label="Global Navigation"
-                  className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
-                  {renderMenuTree(mainNavPages, 1)}
-                  <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
-                    Console
-                  </AnchorButton>
-                </ul>
-              </>
-            );
+          if (isBrowser()) {
+            if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+              return (
+                <>
+                  <p>Global Navigation</p>
+                  <ul
+                    role="tree"
+                    aria-label="Global Navigation"
+                    className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
+                    {renderMenuTree(mainNavPages, 1)}
+                    <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+                      Console
+                    </AnchorButton>
+                  </ul>
+                </>
+              );
+            }
           }
         })()}
 

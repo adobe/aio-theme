@@ -28,6 +28,7 @@ import {
   SEARCH_PARAMS,
   SIDENAV_WIDTH,
   trailingSlashFix,
+  isBrowser,
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
@@ -846,15 +847,17 @@ export default ({ children, pageContext, location }) => {
                   grid-area: sidenav;
                   position: fixed;
                   z-index: 1;
-                  width: ${window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)
-                    ? '95%'
-                    : SIDENAV_WIDTH};
+                  width: ${SIDENAV_WIDTH};
                   height: 100%;
                   background-color: var(--spectrum-global-color-gray-75);
 
                   @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
                     transform: translateX(${showSideNav ? '0' : '-100%'});
+                  }
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    width: 95%;
                   }
                 `}>
                 <SideNav
