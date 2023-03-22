@@ -45,7 +45,6 @@ import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
-import { ChevronRight } from '../Icons';
 
 // GATSBY_ALGOLIA_APPLICATION_ID=...
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...

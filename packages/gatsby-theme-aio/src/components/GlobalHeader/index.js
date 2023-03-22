@@ -130,10 +130,6 @@ const GlobalHeader = ({
     }
   };
 
-  const toggleSideNavExpanded = () => {
-    setSideNavExpanded(!sideNavExpanded);
-  };
-
   useEffect(() => {
     const index = getSelectedTabIndex(location, pages);
     setSelectedTabIndex(index);
@@ -859,19 +855,6 @@ const GlobalHeader = ({
                   </AnchorButton>
                 </div>
               )}
-              <div
-                css={css`
-                  display: none;
-                  margin-left: var(--spectrum-global-dimension-size-300);
-
-                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                    display: block;
-                  }
-                `}>
-                <AnchorButton variant="primary" href="/console">
-                  Console
-                </AnchorButton>
-              </div>
             </Tabs>
           </div>
           <div
@@ -906,19 +889,16 @@ const GlobalHeader = ({
                   {showSearch ? <Close /> : <Magnify />}
                 </ActionButton>
               )}
-
-              <AnchorButton
-                variant="primary"
-                href="/console"
-                id={'consoleId'}
-                tabIndex="0"
+              <div
                 css={css`
                   @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                     display: none;
                   }
                 `}>
-                Console
-              </AnchorButton>
+                <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+                  Console
+                </AnchorButton>
+              </div>
 
               {hasIMS && (
                 <div

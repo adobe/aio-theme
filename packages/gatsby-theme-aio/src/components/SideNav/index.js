@@ -19,6 +19,7 @@ import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import nextId from 'react-id-generator';
 import { ChevronRight } from '../Icons';
+import { AnchorButton } from '../AnchorButton';
 
 const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
@@ -271,6 +272,9 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
                   aria-label="Global Navigation"
                   className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
                   {renderMenuTree(mainNavPages, 1)}
+                  <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+                    Console
+                  </AnchorButton>
                 </ul>
               </>
             );
