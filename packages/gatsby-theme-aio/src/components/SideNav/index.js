@@ -148,7 +148,7 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
       .map((page, index) => {
         const isSelected = selectedPages.find(selectedItem => selectedItem === page);
         const id = nextId();
-        const pageHref = page.href ? page.href : page.menu[0].href;
+        const pageHref = page.href ? page.href : `#${page.title.toLowerCase()}`;
 
         if (isSelected && !sideNavClick && !expandedMenus.includes(pageHref)) {
           setExpandedMenus(pages => [...pages, pageHref]);
