@@ -69,6 +69,7 @@ __metadata:
     "@spectrum-css/tabs": 3.2.19
     "@spectrum-css/textfield": 3.2.4
     "@spectrum-css/tooltip": 3.1.18
+    "@spectrum-css/tray": 2.0.21
     "@spectrum-css/typography": 4.0.20
     "@spectrum-css/underlay": 2.0.31
     "@spectrum-css/vars": 8.0.0
@@ -4720,6 +4721,18 @@ __metadata:
     "@spectrum-css/icon": ^3.0.21
     "@spectrum-css/vars": ^8.0.0
   checksum: 8ef3b01978ee4638e3ba0c5cd7a345d783aebe32c27bab9fb9cf255480222ecc404d324b5b4098b1ed69be18cf7bdc73e10e2a1b548c7e30898f1a6a9c2dec7f
+  languageName: node
+  linkType: hard
+
+"@spectrum-css/tray@npm:2.0.21":
+  version: 2.0.21
+  resolution: "@spectrum-css/tray@npm:2.0.21"
+  peerDependencies:
+    "@spectrum-css/button": ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+    "@spectrum-css/icon": ^3.0.0
+    "@spectrum-css/modal": ^3.0.0
+    "@spectrum-css/tokens": ^7.0.0
+  checksum: fad8016b5de9e30298e2a626153358a0db03c179f330162b4042242b76a56b414833f0a928f6976f9b8247125bd262ca3408d1a3f70479a244c274c659068b0e
   languageName: node
   linkType: hard
 

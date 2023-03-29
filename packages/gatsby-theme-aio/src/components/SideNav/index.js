@@ -25,6 +25,8 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
   const [expandedPages, setExpandedPages] = useState([]);
   const [expandedMenus, setExpandedMenus] = useState([]);
   const [sideNavClick, setSideNavClick] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
+
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some(page => page.header);
   const isMultiLevel = selectedSubPages.some(page => page?.pages?.length > 0);
@@ -41,6 +43,21 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
     };
+  }, []);
+
+  useEffect(() => {
+    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      setMobileView(true);
+    } else {
+      setMobileView(false);
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+        setMobileView(true);
+      } else {
+        setMobileView(false);
+      }
+    });
   }, []);
 
   const renderSubtree = (pages, level) =>
@@ -262,41 +279,37 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
           height: calc(100vh - var(--spectrum-global-dimension-size-800));
         `}>
         {/* The section below is the alternative top menu */}
-        {(() => {
-          if (isBrowser()) {
-            if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
-              return (
-                <>
-                  <p>Global Navigation</p>
-                  <ul
-                    role="tree"
-                    aria-label="Global Navigation"
-                    className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
-                    {renderMenuTree(mainNavPages, 1)}
-                    <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
-                      Console
-                    </AnchorButton>
-                  </ul>
-                </>
-              );
-            }
-          }
-        })()}
+        {mobileView && (
+          <>
+            <p>Global Navigation</p>
+            <ul
+              role="tree"
+              aria-label="Global Navigation"
+              className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
+              {renderMenuTree(mainNavPages, 1)}
+              <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+                Console
+              </AnchorButton>
+            </ul>
+            {selectedSubPages.length > 0 && (
+              <>
+                <hr></hr>
+                <p>Table of contents</p>
+              </>
+            )}
+          </>
+        )}
 
         {/* The section below is what used to be the sidenav with documentation subpages */}
         {selectedSubPages.length > 0 && (
-          <>
-            <hr></hr>
-            <p>Table of contents</p>
-            <ul
-              role="tree"
-              aria-label="Table of contents"
-              className={classNames('spectrum-SideNav', {
-                'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader,
-              })}>
-              {renderSubtree(selectedSubPages, 1)}
-            </ul>
-          </>
+          <ul
+            role="tree"
+            aria-label="Table of contents"
+            className={classNames('spectrum-SideNav', {
+              'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader,
+            })}>
+            {renderSubtree(selectedSubPages, 1)}
+          </ul>
         )}
       </div>
     </nav>
