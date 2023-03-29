@@ -13,23 +13,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
+import { isBrowser, isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import nextId from 'react-id-generator';
-import {ChevronRight} from "../Icons";
+import { ChevronRight } from '../Icons';
+import { AnchorButton } from '../AnchorButton';
 
-const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
+const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav }) => {
   const [expandedPages, setExpandedPages] = useState([]);
+  const [expandedMenus, setExpandedMenus] = useState([]);
   const [sideNavClick, setSideNavClick] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
+
   // If one page has header enabled, use header navigation type for all navigation items
-  const hasHeader = selectedSubPages.some((page) => page.header);
-  const isMultiLevel = selectedSubPages.some((page) => page?.pages?.length > 0);
+  const hasHeader = selectedSubPages.some(page => page.header);
+  const isMultiLevel = selectedSubPages.some(page => page?.pages?.length > 0);
   const ref = useRef(null);
   const handleClickOutside = event => {
-    if (ref.current &&
-      !ref.current.contains(event.target)) {
+    if (ref.current && !ref.current.contains(event.target)) {
       // reset it when user did not click on the side nav.
       setSideNavClick(false);
     }
@@ -42,15 +45,31 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      setMobileView(true);
+    } else {
+      setMobileView(false);
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+        setMobileView(true);
+      } else {
+        setMobileView(false);
+      }
+    });
+  }, []);
+
   const renderSubtree = (pages, level) =>
     pages
-      .filter((page) => page.title && page.href)
+      .filter(page => page.title)
       .map((page, index) => {
-        const isSelected = selectedPages.find((selectedItem) => selectedItem === page);
+        const isSelected = selectedPages.find(selectedItem => selectedItem === page);
         const id = nextId();
+        const pageHref = page.href ? page.href : page.menu[0].href;
 
-        if (isSelected && !sideNavClick && !expandedPages.includes(page.href)) {
-          setExpandedPages((pages) => [...pages, page.href]);
+        if (isSelected && !sideNavClick && !expandedPages.includes(pageHref)) {
+          setExpandedPages(pages => [...pages, pageHref]);
         }
 
         return (
@@ -58,7 +77,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
             key={index}
             role="treeitem"
             aria-level={level}
-            aria-expanded={page.header || expandedPages.includes(page.href)}
+            aria-expanded={page.header || expandedPages.includes(pageHref)}
             css={css`
               &:not(.is-expanded) .spectrum-SideNav {
                 display: none;
@@ -70,15 +89,18 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
             `}
             className={classNames([
               'spectrum-SideNav-item',
-              { 'is-expanded': page.header || expandedPages.includes(page.href) },
-              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected }
+              { 'is-expanded': page.header || expandedPages.includes(pageHref) },
+              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected },
             ])}>
             {page.header ? (
               <h2 className="spectrum-SideNav-heading" id={id}>
                 {page.title}
               </h2>
-            ) : isExternalLink(page.href) ? (
-              <a {...getExternalLinkProps(page.href)} href={page.href} className="spectrum-SideNav-itemLink">
+            ) : isExternalLink(pageHref) ? (
+              <a
+                {...getExternalLinkProps(pageHref)}
+                href={pageHref}
+                className="spectrum-SideNav-itemLink">
                 {page.title}
               </a>
             ) : (
@@ -86,27 +108,32 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                 onClick={() => {
                   setSideNavClick(true);
                   if (page?.pages?.length && !page.header) {
-                    if (expandedPages.includes(page.href)) {
-                      setExpandedPages((pages) => pages.filter((href) => href !== page.href));
+                    if (expandedPages.includes(pageHref)) {
+                      setExpandedPages(pages => pages.filter(href => href !== pageHref));
                     } else {
-                      setExpandedPages([...expandedPages, page.href]);
+                      setExpandedPages([...expandedPages, pageHref]);
                     }
                   } else {
                     setShowSideNav(false);
                   }
                 }}
-                to={page.href}
+                to={pageHref}
                 className="spectrum-SideNav-itemLink">
                 {page.title}
-                {page.pages && page.pages.length > 0 ? <ChevronRight
-                  css={css` position:absolute; right:0px;
-                            width: var(--spectrum-global-dimension-size-125) !important;
-                            height: var(--spectrum-global-dimension-size-125) !important;
-                            margin-left: var(--spectrum-global-dimension-size-100);
-                            transition: transform var(--spectrum-global-animation-duration-100) ease-in-out;
-                            ${expandedPages.includes(page.href) && `transform: rotate(90deg);`}
-                          `}
-                /> : null}
+                {page.pages && page.pages.length > 0 ? (
+                  <ChevronRight
+                    css={css`
+                      position: absolute;
+                      right: 0px;
+                      width: var(--spectrum-global-dimension-size-125) !important;
+                      height: var(--spectrum-global-dimension-size-125) !important;
+                      margin-left: var(--spectrum-global-dimension-size-100);
+                      transition: transform var(--spectrum-global-animation-duration-100)
+                        ease-in-out;
+                      ${expandedPages.includes(pageHref) && `transform: rotate(90deg);`}
+                    `}
+                  />
+                ) : null}
               </GatsbyLink>
             )}
             {page.pages && (
@@ -117,13 +144,114 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
                   ${level > 1
                     ? `
                     & > li > a {
-                      padding-left: calc(${level + 1} * var(--spectrum-global-dimension-size-150)) !important;
+                      padding-left: calc(${
+                        level + 1
+                      } * var(--spectrum-global-dimension-size-150)) !important;
                     }
                   `
                     : ''}
                 `}
                 {...(page.heading ? { 'aria-labelledby': id } : {})}>
                 {renderSubtree(page.pages, level + 1)}
+              </ul>
+            )}
+          </li>
+        );
+      });
+
+  const renderMenuTree = (pages, level) =>
+    pages
+      .filter(page => page.title)
+      .map((page, index) => {
+        const isSelected = selectedPages.find(selectedItem => selectedItem === page);
+        const id = nextId();
+        const pageHref = page.href ? page.href : `#${page.title.toLowerCase()}`;
+
+        if (isSelected && !sideNavClick && !expandedMenus.includes(pageHref)) {
+          setExpandedMenus(pages => [...pages, pageHref]);
+        }
+
+        return (
+          <li
+            key={index}
+            role="treeitem"
+            aria-level={level}
+            aria-expanded={page.header || expandedMenus.includes(pageHref)}
+            css={css`
+              &:not(.is-expanded) .spectrum-SideNav {
+                display: none;
+              }
+
+              &:first-of-type .spectrum-SideNav-heading {
+                margin-top: 0;
+              }
+            `}
+            className={classNames([
+              'spectrum-SideNav-item',
+              { 'is-expanded': page.header || expandedMenus.includes(pageHref) },
+              { 'is-selected': selectedPages[selectedPages.length - 1] === page && isSelected },
+            ])}>
+            {page.header ? (
+              <h2 className="spectrum-SideNav-heading" id={id}>
+                {page.title}
+              </h2>
+            ) : isExternalLink(pageHref) ? (
+              <a
+                {...getExternalLinkProps(pageHref)}
+                href={pageHref}
+                className="spectrum-SideNav-itemLink">
+                {page.title}
+              </a>
+            ) : (
+              <GatsbyLink
+                onClick={() => {
+                  setSideNavClick(true);
+                  if (page?.menu?.length && !page.header) {
+                    if (expandedMenus.includes(pageHref)) {
+                      setExpandedMenus(pages => pages.filter(href => href !== pageHref));
+                    } else {
+                      setExpandedMenus([...expandedMenus, pageHref]);
+                    }
+                  } else {
+                    setShowSideNav(false);
+                  }
+                }}
+                to={pageHref}
+                className="spectrum-SideNav-itemLink">
+                {page.title}
+                {page.menu && page.menu.length > 0 ? (
+                  <ChevronRight
+                    css={css`
+                      position: absolute;
+                      right: 0px;
+                      width: var(--spectrum-global-dimension-size-125) !important;
+                      height: var(--spectrum-global-dimension-size-125) !important;
+                      margin-left: var(--spectrum-global-dimension-size-100);
+                      transition: transform var(--spectrum-global-animation-duration-100)
+                        ease-in-out;
+                      ${expandedMenus.includes(pageHref) && `transform: rotate(90deg);`}
+                    `}
+                  />
+                ) : null}
+              </GatsbyLink>
+            )}
+            {page.menu && (
+              <ul
+                className="spectrum-SideNav"
+                role="group"
+                css={css`
+                  ${level > 1
+                    ? `
+                    & > li > a {
+                      padding-left: calc(${
+                        level + 1
+                      } * var(--spectrum-global-dimension-size-150)) !important;
+                    }
+                  `
+                    : ''}
+                `}
+                {...(page.heading ? { 'aria-labelledby': id } : {})}>
+                {renderMenuTree(page.menu, level + 1)}
               </ul>
             )}
           </li>
@@ -140,7 +268,7 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
         margin-top: var(--spectrum-global-dimension-size-800);
 
         @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-          margin-top: var(--spectrum-global-dimension-size-1200);
+          margin-top: var(--spectrum-global-dimension-size-400);
         }
       `}>
       <div
@@ -150,21 +278,49 @@ const SideNav = ({ selectedPages, selectedSubPages, setShowSideNav }) => {
           overflow: auto;
           height: calc(100vh - var(--spectrum-global-dimension-size-800));
         `}>
-        <ul
-          role="tree"
-          aria-label="Table of contents"
-          className={classNames('spectrum-SideNav', { 'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader })}>
-          {renderSubtree(selectedSubPages, 1)}
-        </ul>
+        {/* The section below is the alternative top menu */}
+        {mobileView && (
+          <>
+            <p>Global Navigation</p>
+            <ul
+              role="tree"
+              aria-label="Global Navigation"
+              className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
+              {renderMenuTree(mainNavPages, 1)}
+              <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+                Console
+              </AnchorButton>
+            </ul>
+            {selectedSubPages.length > 0 && (
+              <>
+                <hr></hr>
+                <p>Table of contents</p>
+              </>
+            )}
+          </>
+        )}
+
+        {/* The section below is what used to be the sidenav with documentation subpages */}
+        {selectedSubPages.length > 0 && (
+          <ul
+            role="tree"
+            aria-label="Table of contents"
+            className={classNames('spectrum-SideNav', {
+              'spectrum-SideNav--multiLevel': isMultiLevel && !hasHeader,
+            })}>
+            {renderSubtree(selectedSubPages, 1)}
+          </ul>
+        )}
       </div>
     </nav>
   );
 };
 
 SideNav.propTypes = {
+  mainNavPages: PropTypes.array,
   selectedPages: PropTypes.array,
   selectedSubPages: PropTypes.array,
-  setShowSideNav: PropTypes.func
+  setShowSideNav: PropTypes.func,
 };
 
 export { SideNav };

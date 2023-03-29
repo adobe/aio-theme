@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet';
 import { css, Global } from '@emotion/react';
 import loadable from '@loadable/component';
 import algoliaSearch from 'algoliasearch';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import Axios from 'axios';
 import {
   DESKTOP_SCREEN_WIDTH,
@@ -313,6 +313,7 @@ export default ({ children, pageContext, location }) => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadSearchFrame, setLoadSearchFrame] = useState(false);
+  const [hasSideNav, setHasSideNav] = useState(false);
 
   // Show search if search param is set
   useEffect(() => {
@@ -376,7 +377,9 @@ export default ({ children, pageContext, location }) => {
   const pagesWithRootFix = rootFixPages(pages);
   const sideNavSelectedPages = findSelectedPages(pathWithRootFix, subPages);
   const sideNavSelectedSubPages = findSubPages(pathWithRootFix, pagesWithRootFix, subPages);
-  const hasSideNav = sideNavSelectedSubPages.length > 0;
+  if (sideNavSelectedSubPages.length > 0) {
+    setHasSideNav(true);
+  }
 
   const frontMatter = pageContext?.frontmatter;
 
@@ -407,6 +410,14 @@ export default ({ children, pageContext, location }) => {
           console.error(`AIO: Failed fetching search index.\n${err}`);
         });
     }
+    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      setHasSideNav(true);
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+        setHasSideNav(true);
+      }
+    });
   }, []);
 
   if (pathPrefix === '/search-frame') {
@@ -469,6 +480,7 @@ export default ({ children, pageContext, location }) => {
               font-display: swap;
               font-style: normal;
               font-weight: 700;
+
             }
 
             @font-face {
@@ -717,6 +729,7 @@ export default ({ children, pageContext, location }) => {
             -moz-osx-font-smoothing: grayscale;
 
             ${showSearch && 'overflow: hidden;'}
+            ${showSideNav && 'overflow: hidden;'}
           }
 
           *[hidden] {
@@ -765,7 +778,7 @@ export default ({ children, pageContext, location }) => {
                 }
 
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
-                  grid-template-rows: var(--spectrum-global-dimension-size-1200);
+                  grid-template-rows: 20px;
                 }
               `}>
               <div
@@ -818,6 +831,11 @@ export default ({ children, pageContext, location }) => {
                     height: 100%;
                     opacity: ${showSearch ? 1 : 0};
                     visibility: ${showSearch ? 'visible' : 'hidden'};
+
+                    @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                      top: var(--spectrum-global-dimension-size-600);
+                    }
+
                   `}></iframe>
               )}
 
@@ -836,14 +854,17 @@ export default ({ children, pageContext, location }) => {
                     transition: transform var(--spectrum-global-animation-duration-200) ease-in-out;
                     transform: translateX(${showSideNav ? '0' : '-100%'});
                   }
+
+                  @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
+                    width: 95%;
+                  }
                 `}>
-                {hasSideNav && (
-                  <SideNav
-                    selectedPages={sideNavSelectedPages}
-                    selectedSubPages={sideNavSelectedSubPages}
-                    setShowSideNav={setShowSideNav}
-                  />
-                )}
+                <SideNav
+                  mainNavPages={pages}
+                  selectedPages={sideNavSelectedPages}
+                  selectedSubPages={sideNavSelectedSubPages}
+                  setShowSideNav={setShowSideNav}
+                />
               </div>
               <div
                 css={css`
