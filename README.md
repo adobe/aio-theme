@@ -92,16 +92,8 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
-  - [<pre>](#pre)
-  - [description: This is the guides overview page of Adobe Analytics](#description-this-is-the-guides-overview-page-of-adobe-analytics)
-  - [<pre>](#pre-1)
-  - [- https://github.com/simonwex](#--httpsgithubcomsimonwex)
-  - [<pre>](#pre-2)
-  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
-  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
     - [JSDoc](#jsdoc)
-  - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
     - [JSX Blocks](#jsx-blocks)
@@ -1381,7 +1373,7 @@ the icon and border color of the alert. The `variant` values you can use are des
 - `warning` — use to focus attention on a potential problem that could occur.
 - `neutral` — use as an all-purpose callout that displays a black border and no icon.
 
-![inline alert](docs/images/inline-alert-variants.png)
+![inline alert](docs/images/inline_alert_variants.png)
 
 The slots and variants of an InlineAlert block are as follows.
 

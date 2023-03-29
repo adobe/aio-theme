@@ -42,7 +42,7 @@ const GitHubActions = ({ repository, branch, root, pagePath }) => {
 
       <ActionButton
         {...commonsProps}
-        href={`https://github.com/${repository}/issues/new?body=Issue%20in%20${rootFolder}/src/pages/${pagePath}`}
+        href={`https://github.com/${repository}/issues/new?title=Issue%20in%20${rootFolder}/src/pages/${pagePath}`}
         css={css`
           margin-left: var(--spectrum-global-dimension-size-300);
         `}>

@@ -28,7 +28,6 @@ import {
   SEARCH_PARAMS,
   SIDENAV_WIDTH,
   trailingSlashFix,
-  isBrowser,
 } from '../../utils';
 import '@spectrum-css/vars/dist/spectrum-global.css';
 import '@spectrum-css/vars/dist/spectrum-medium.css';
@@ -328,6 +327,7 @@ export default ({ children, pageContext, location }) => {
     window.onpopstate = () => {
       const searchParams = new URL(window.location).searchParams;
       if (searchParams.get(SEARCH_PARAMS.query)) {
+        searchParams.get(SEARCH_PARAMS.query);
         setShowSearch(true);
       } else {
         setShowSearch(false);
@@ -420,8 +420,6 @@ export default ({ children, pageContext, location }) => {
     });
   }, []);
 
-  useEffect;
-
   if (pathPrefix === '/search-frame') {
     return (
       <>
@@ -482,6 +480,7 @@ export default ({ children, pageContext, location }) => {
               font-display: swap;
               font-style: normal;
               font-weight: 700;
+
             }
 
             @font-face {
@@ -520,7 +519,6 @@ export default ({ children, pageContext, location }) => {
               background-color: transparent;
 
               ${showSearch && 'overflow: hidden;'}
-              ${showSideNav && 'overflow: hidden;'}
             }
 
             *[hidden] {
@@ -837,6 +835,7 @@ export default ({ children, pageContext, location }) => {
                     @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                       top: var(--spectrum-global-dimension-size-600);
                     }
+
                   `}></iframe>
               )}
 
