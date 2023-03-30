@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.0...@adobe/gatsby-theme-aio@4.9.0) (2023-03-13)
+
+### Feature
+
+* Added mobile support to header, navigation, and search [5846df1](https://github.com/adobe/aio-theme/commit/5846df1869510e7f1c8c33e4fc3740940b82a0b2).
 
 ## [4.8.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.3...@adobe/gatsby-theme-aio@4.8.4) (2023-03-13)
 
