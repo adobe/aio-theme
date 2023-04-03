@@ -3,7 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.9.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.0...@adobe/gatsby-theme-aio@4.9.0) (2023-03-13)
+## [4.9.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.0...@adobe/gatsby-theme-aio@4.9.1) (2023-04-03)
+
+### Feature
+
+* Add in ability to set desktop width via secret [448c433](https://github.com/adobe/aio-theme/commit/448c43334a06227c9302dea6f50082444f499591).
+
+
+## [4.9.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.8.4...@adobe/gatsby-theme-aio@4.9.0) (2023-03-13)
 
 ### Feature
 
