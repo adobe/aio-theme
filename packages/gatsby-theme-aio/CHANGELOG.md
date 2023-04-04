@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.1...@adobe/gatsby-theme-aio@4.9.2) (2023-04-04)
+
+### Feature
+
+* Add in ability to set footer desktop max width via secret [16592b3
+](https://github.com/adobe/aio-theme/commit/16592b33ca43af7f1ea509bffb8c2fef2943d556).
+
+
 ## [4.9.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.0...@adobe/gatsby-theme-aio@4.9.1) (2023-04-03)
 
 ### Feature
