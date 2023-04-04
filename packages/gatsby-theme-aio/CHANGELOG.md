@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.2...@adobe/gatsby-theme-aio@4.9.3) (2023-04-04)
+
+### Fix
+
+* Rename desktop width and footer env [329ed94](https://github.com/adobe/aio-theme/commit/329ed946cea4f7c83d852bfe07510d1defd2ccc9).
+
+
 ## [4.9.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.1...@adobe/gatsby-theme-aio@4.9.2) (2023-04-04)
 
 ### Feature
