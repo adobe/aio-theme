@@ -15,12 +15,11 @@ import { css } from '@emotion/react';
 import { Divider } from '../Divider';
 import { Link } from '../Link';
 import '@spectrum-css/typography';
-import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, MOBILE_SCREEN_WIDTH } from '../../utils';
+import { layoutColumns, getExternalLinkProps, DESKTOP_SCREEN_WIDTH, DESKTOP_FOOTER_SCREEN_WIDTH_MAX, MOBILE_SCREEN_WIDTH } from '../../utils';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import LinkedInRetargeting from './linkedInRetargetting'
 
-const DESKTOP_SCREEN_MAX_WIDTH = '1280px'; 
 const { APIs, services, community, support, developer, legal, allAPIs } = {
   allAPIs: {
     title: 'View all',
@@ -196,7 +195,7 @@ const Footer = ({ hasSideNav = false }) => (
       <div
         css={css`
           box-sizing: border-box;
-          max-width: ${DESKTOP_SCREEN_MAX_WIDTH};
+          max-width: ${DESKTOP_FOOTER_SCREEN_WIDTH_MAX};
           margin: 0 auto;
           ${hasSideNav &&
           'margin: 0 var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-400)'};

@@ -14,6 +14,7 @@ module.exports = {
   SIDENAV_WIDTH: 'var(--spectrum-global-dimension-static-size-3200)',
   // --spectrum-global-dimension-static-grid-fixed-max-width
   DESKTOP_SCREEN_WIDTH: process.env.REPO_DESKTOP_SCREEN_WIDTH || '1280px',
+  DESKTOP_FOOTER_SCREEN_WIDTH_MAX: process.env.REPO_DESKTOP_FOOTER_SCREEN_WIDTH_MAX || '1280px',
   TABLET_SCREEN_WIDTH: '1024px',
   // --spectrum-global-dimension-static-breakpoint-small
   MOBILE_SCREEN_WIDTH: '768px'
