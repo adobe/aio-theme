@@ -73,18 +73,10 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
           iframe.current.style.height = height;
         },
         getIMSAccessToken() {
-          if (ims?.isSignedInUser()) {
             return ims.getAccessToken();
-          }
-
-          return null;
         },
         getIMSProfile() {
-          if (ims?.isSignedInUser()) {
             return ims.getProfile();
-          }
-
-          return null;
         },
         signIn() {
           if (ims && !ims.isSignedInUser()) {
