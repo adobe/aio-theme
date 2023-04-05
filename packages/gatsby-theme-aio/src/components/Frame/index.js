@@ -73,10 +73,29 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
           iframe.current.style.height = height;
         },
         getIMSAccessToken() {
+          let g = new Date();
+          console.log('getIMSAccessToken')
+          console.log(g.toLocaleString())
+          console.log(ims)
+          console.log(ims.getAccessToken())
+          if(ims) {
             return ims.getAccessToken();
+          } else {
+            return null;
+          }
+
         },
         getIMSProfile() {
+          console.log('getIMSProfile')
+          console.log(g.toLocaleString())
+          console.log(ims)
+          console.log(ims.getIMSProfile())
+          if(ims) {
             return ims.getProfile();
+          } else {
+            return null;
+          }
+
         },
         signIn() {
           if (ims && !ims.isSignedInUser()) {
