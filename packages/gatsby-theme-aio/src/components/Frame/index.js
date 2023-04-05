@@ -86,6 +86,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
 
         },
         getIMSProfile() {
+          let g = new Date();
           console.log('getIMSProfile')
           console.log(g.toLocaleString())
           console.log(ims)

@@ -197,7 +197,12 @@ export default ({ children, pageContext, location }) => {
         try {
           await addScript(`${IMS_SRC}`);
           let IMS_CONFIG_JSON = JSON.parse(IMS_CONFIG);
+          console.log('IMS_CONFIG_JSON')
+          console.log(IMS_CONFIG_JSON)
           IMS_CONFIG_JSON.onReady = () => {
+            let g = new Date();
+            console.log('IMS_CONFIG_JSON onReady')
+            console.log(g.toLocaleString())
             setIms(window.adobeIMS);
             setIsLoadingIms(false);
           };
