@@ -75,14 +75,12 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
         getIMSAccessToken() {
           console.log()
           console.log('===========================')
+          console.log('wat')
           let g = new Date();
           console.log('getIMSAccessToken')
-          console.log(g.toLocaleString())
-          console.log(ims)
-          console.log(ims.getAccessToken())
-          console.log('===========================')
-          console.log('wat')
-          console.log(window.adobeIMS.getAccessToken())
+          if(window.adobeIMS) {
+            console.log(window.adobeIMS.getAccessToken())
+          }
           console.log('===========================')
           if(ims) {
             return ims.getAccessToken();
