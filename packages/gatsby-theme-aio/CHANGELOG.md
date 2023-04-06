@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.3...@adobe/gatsby-theme-aio@4.9.4) (2023-04-06)
+
+### Fix
+
+* Hacky fix for frame component reference to ims [323d082](https://github.com/adobe/aio-theme/commit/323d08230b5735ac64b9e5ba1553bb44d78035ee).
+
+
 ## [4.9.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.2...@adobe/gatsby-theme-aio@4.9.3) (2023-04-04)
 
 ### Fix
