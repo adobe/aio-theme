@@ -73,11 +73,17 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
           iframe.current.style.height = height;
         },
         getIMSAccessToken() {
+          console.log()
+          console.log('===========================')
           let g = new Date();
           console.log('getIMSAccessToken')
           console.log(g.toLocaleString())
           console.log(ims)
           console.log(ims.getAccessToken())
+          console.log('===========================')
+          console.log('wat')
+          console.log(window.adobeIMS.getAccessToken())
+          console.log('===========================')
           if(ims) {
             return ims.getAccessToken();
           } else {

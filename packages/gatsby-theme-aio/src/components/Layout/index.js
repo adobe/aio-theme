@@ -201,12 +201,14 @@ export default ({ children, pageContext, location }) => {
           console.log(IMS_CONFIG_JSON)
           IMS_CONFIG_JSON.onReady = () => {
             let g = new Date();
+            console.log('===============================================')
             console.log('IMS_CONFIG_JSON onReady')
             console.log(g.toLocaleString())
 
             console.log('window.adobeIMS.getAccessToken')
-            window.adobeIMS.getAccessToken()
+            console.log(window.adobeIMS.getAccessToken());
             console.log('===============================================')
+            console.log()
             setIms(window.adobeIMS);
             setIsLoadingIms(false);
           };
