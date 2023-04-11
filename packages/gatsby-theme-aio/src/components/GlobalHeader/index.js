@@ -630,7 +630,7 @@ const GlobalHeader = ({
                               border-top-left-radius: 0;
                               border-top-right-radius: 0;
                               ${page.menu.some(menu => menu.description) &&
-                              `width: var(--spectrum-global-dimension-size-2400);`}
+                              `width: 230px;`}
 
                               @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                                 margin-top: calc(-1 * var(--spectrum-global-dimension-size-40));

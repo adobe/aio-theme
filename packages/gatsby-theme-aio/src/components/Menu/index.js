@@ -46,11 +46,12 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
     flex-direction: row;
     justify-content: flex-start;
     overflow: hidden;
+    align-self: start;
     ${ isHeightUnset && !isHeightUnset ? `margin-top: var(--spectrum-global-dimension-size-50) !important` : ""}
 }`}>
         <div css={css`
           width: 20px !important;
-         ${ isHeightUnset ? "" : "height: 15px !important;" }
+         ${ isHeightUnset ? "margin-top: 8px;" : "height: 15px !important;" }
          padding-right: 5px;
          overflow: hidden;
         `}>
@@ -59,7 +60,6 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
             css={css`
              display: ${isSelected ? "block" : "none"} ;
              color:  var(--spectrum-alias-icon-color-selected) !important;
-             
             `}
           />
           </div>
