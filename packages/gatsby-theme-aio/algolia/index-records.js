@@ -95,7 +95,12 @@ function indexRecords() {
           // Create Algolia records from rawRecords
           for (const rawRecord of rawRecords) {
             const record = await createAlgoliaRecord(rawRecord, markdownFile);
-            algoliaRecords.push(record);
+            if (record.size > 20000) {
+              console.warn(`Record at path ${record?.path} objectID=${record?.objectID} is too big
+              size=${record?.size}/20000 bytes and will be skipped.`);
+            } else {
+              algoliaRecords.push(record);
+            }
           }
         }
         // Return the normalized Algolia records to the plugin for indexing.
