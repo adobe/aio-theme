@@ -51,7 +51,7 @@ const Item = ({ children, isDivider = false, isHighlighted, isSelected, href = '
 }`}>
         <div css={css`
           width: 20px !important;
-         ${ isHeightUnset ? "margin-top: 8px;" : "height: 15px !important;" }
+         ${ isHeightUnset ? "margin-top: 8px;" : "height: 15px !important; margin-top: 4px;" }
          padding-right: 5px;
          overflow: hidden;
         `}>

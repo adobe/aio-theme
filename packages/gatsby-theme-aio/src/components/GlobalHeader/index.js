@@ -813,7 +813,13 @@ const GlobalHeader = ({
                                 }}
                                 href={version.href}
                                 {...getExternalLinkProps(version.href)}>
-                                {version.title}
+                                  <div
+                                    css={css`
+                                      margin-top: var(--spectrum-global-dimension-size-50);
+                                      margin-bottom: var(--spectrum-global-dimension-size-50);
+                                    `}>
+                                        {version.title}
+                                  </div>
                               </MenuItem>
                             ))}
                           </Menu>
