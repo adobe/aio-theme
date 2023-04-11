@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.5...@adobe/gatsby-theme-aio@4.9.6) (2023-04-11)
+
+### Fix
+
+* Fix mis-aligned menu items withouth descriptions in nav bar dropdown [b211242](https://github.com/adobe/aio-theme/commit/b2112425ecfe2ce421248da4379a0a53bf8ba57f).
+
+
 ## [4.9.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.4...@adobe/gatsby-theme-aio@4.9.5) (2023-04-11)
 
 ### Fix
