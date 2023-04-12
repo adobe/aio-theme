@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.6...@adobe/gatsby-theme-aio@4.9.7) (2023-04-12)
+
+### Fix
+
+* Fix page not interactable or scrollable on latest safari@16.4 due to search-iframe css [6bcd296](https://github.com/adobe/aio-theme/commit/6bcd2964f8957146fafb8df1b4ed93375aaeae96).
+
 ## [4.9.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.5...@adobe/gatsby-theme-aio@4.9.6) (2023-04-11)
 
 ### Fix
