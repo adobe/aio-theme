@@ -829,8 +829,7 @@ export default ({ children, pageContext, location }) => {
                     z-index: 10;
                     width: 100%;
                     height: 100%;
-                    opacity: ${showSearch ? 1 : 0};
-                    visibility: ${showSearch ? 'visible' : 'hidden'};
+                    display: ${showSearch ? 'block' : 'none'};
 
                     @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                       top: var(--spectrum-global-dimension-size-600);
