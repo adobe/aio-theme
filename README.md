@@ -171,7 +171,7 @@ yarn dev
 Doing a full clean up on your local repo
 
 ```bash
-yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
+yarn clean && yarn cache clean && rm -r node_modules && rm yarn.lock
 ```
 
 ### Developing with Adobe Theme I/O
