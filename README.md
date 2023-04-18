@@ -1928,6 +1928,52 @@ Use `textColor` to color the heading, text
 
 Use `variant` to specify full width or half width values are `fullwidth,halfwidth`.
 
+### Accordion 
+
+Accordion has a group of accordion items used to collapse and expand the content
+
+#### Accordion item
+
+Accordion item is to expand and collapse the content by clicking the icon. By default it uses `+` and `-` icon
+
+Use `isOpen` to expand the content without clicking the icon
+
+Use `header` to display the heading with the icon
+
+Use `isChevronIcon` to use ChevronIcon to expand and collapse instead of the default icon.
+
+Use `position` to position the icon text values are `left, right`. It default to the left
+
+Use `iconColor` to change the icon color. By default it is black
+
+![Accordion](docs/images/Accordion.png)
+
+```
+
+<Accordion>
+
+<AccordionItem header="AccordionItemWithDefaultIcon">
+
+AccordionItem with default options to expand and collapse
+
+</AccordionItem>
+
+<AccordionItem header="AccordionItemWithChevron" isChevronIcon  position="right" iconColor="#1473E6">
+
+AccordionItem expand and collapse using ChevronIcon 
+
+</AccordionItem>
+
+<AccordionItem header="AccordionItemDefaultOpen" isOpen>
+
+AccordionItem default expand
+
+</AccordionItem>    
+
+</Accordion>
+
+```
+
 ### Edition
 
 The Edition component is used to display the edition of the product.
