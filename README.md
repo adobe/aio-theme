@@ -1930,7 +1930,7 @@ Use `variant` to specify full width or half width values are `fullwidth,halfwidt
 
 ### Accordion 
 
-Accordion has a group of accordion items used to collapse and expand the content
+Accordion has a group of accordion items used to collapse and expand the child content
 
 #### Accordion item
 
