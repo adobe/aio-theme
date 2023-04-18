@@ -124,6 +124,38 @@ In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and 
 
 In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="left" attribute
 
+
+## Accordion
+
+Accordion has a group of accordion items used to collapse and expand the child content
+
+### AccordionItem
+
+Accordion item is to expand and collapse the content by clicking the icon. By default it uses `+` and `-` icon
+
+<Accordion>
+
+   <AccordionItem header="AccordionItemWithDefaultIcon">
+
+   AccordionItem with default options to expand and collapse
+
+   </AccordionItem>
+
+   <AccordionItem header="AccordionItemWithChevron" isChevronIcon  position="right" iconColor="#1473E6">
+
+   AccordionItem expand and collapse using ChevronIcon 
+
+   </AccordionItem>
+
+   <AccordionItem header="AccordionItemDefaultOpen" isOpen>
+
+   AccordionItem default expand
+
+   </AccordionItem>    
+
+</Accordion>
+
+
 ## Inline Alerts {#Categories}
 
 These are the five types of inline alerts you can use.
