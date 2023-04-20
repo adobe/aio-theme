@@ -1901,9 +1901,9 @@ Use `slots` to identify the markdown content:
 - `text` (required)
 - `buttons`(optional)
 
-Use `videos` give the imported videos in an array
+Use `videos` give the imported video varaiables in an array example `videos={[video1,video2,...]}`
 
-Use `position` to position the video values are left, right. The preset variant is left.
+Use `position` to position the video left/right. Default it position to left
 
 Use `variant` to specify full width or half width values are fullWidth,halfWidth. By default it is fullWidth.
 
