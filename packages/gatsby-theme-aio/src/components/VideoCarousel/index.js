@@ -227,7 +227,7 @@ const VideoCarousel = ({
         videoDurationArr()
     }, [])
 
-    const textKeys = props.slots.split(",").filter((key) => key.trim().startsWith("text"));
+    const textKeys = props.slots?.split(",")?.filter((key) => key.trim().startsWith("text"));
 
     if (videos?.length && !duration.length) return <></>
     if (variant === "halfWidth") {

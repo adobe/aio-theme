@@ -4,7 +4,9 @@ import video3 from "./video3.mp4"
 
 ## VideoCarousel
 
-<VideoCarousel slots="heading, text, buttons" repeat="3" theme="lightest" videos={[video1,video2,video3]} isCenter position="right" variant = 'fullWidth' enableNavigation="true" navigationIconColor="#1473E6"/>
+Videocarousel is used to display the information with video and text. We can position the video using position attribute
+
+<VideoCarousel slots="heading, text" repeat="3" theme="lightest" videos={[video1,video2,video3]} isCenter position="right" variant = 'fullWidth' enableNavigation={true} navigationIconColor="#1473E6" />
 
 ### Acrobat on web and desktop 
 

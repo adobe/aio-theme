@@ -87,13 +87,13 @@ const TeaserBlock = ({
 
 TeaserBlock.propTypes = {
     theme: PropTypes.string,
-    bgURL: PropTypes.element,
+    bgURL: PropTypes.string,
     heading: PropTypes.element,
     textColor: PropTypes.string,
     backgroundColor: PropTypes.string,
     text: PropTypes.element,
     buttons: PropTypes.element,
-    position: PropTypes.element,
+    position: PropTypes.string,
     variant: PropTypes.element
 };
 
