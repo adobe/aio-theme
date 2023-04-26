@@ -60,6 +60,7 @@ const SwiperContent = ({
             className={classNames(`spectrum--${theme}`)}
             css={css`
                 display: flex;
+                gap:5%;
                 margin-bottom: var(--spectrum-global-dimension-size-500);
                 flex-direction: ${position === "left" ? "row" : "row-reverse"};
                 
@@ -79,6 +80,8 @@ const SwiperContent = ({
                 css={css`
                     flex: 1;
                     justify-content: center;
+                    width:100%;
+                    padding-right:5%;
                     @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
                     margin: auto;
                     }
@@ -97,7 +100,7 @@ const SwiperContent = ({
                 {videos.length &&
                     <video name="media3" loop="true" muted="true" autoPlay preload="metadata" playsInline css={css`
                             height:auto;
-                            width:470px;
+                            width:570px;
                         `}>
                         <source src={videos[index]} />
                     </video>}
@@ -106,6 +109,7 @@ const SwiperContent = ({
             {textKeys.length > 0 || heading || buttons ? (
                 <div
                     css={css`
+                        padding-left:5%;
                         text-align: left;
                         flex: 1;
                         display: ${isCenter ? "flex" : "block"};
@@ -238,7 +242,7 @@ const VideoCarousel = ({
                     position: relative;
                     z-index: 0;
                     background: var(--spectrum-global-color-gray-100);
-                    padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-200) 0;`}
+                    padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;`}
                 role="button"
                 tabindex={0}
                 onKeyDown={(e) => {
