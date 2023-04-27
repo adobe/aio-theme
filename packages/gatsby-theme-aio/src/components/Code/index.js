@@ -22,7 +22,7 @@ import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
 import Prism from "prism-react-renderer/prism";
 
-(typeof global !== "undefined" ? global : window).Prism = Prism;
+window.Prism = Prism;
 
 require("prismjs/components/prism-java");
 require("prismjs/components/prism-csharp");
