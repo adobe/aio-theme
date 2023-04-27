@@ -20,6 +20,18 @@ import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
 import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
+import Prism from "prism-react-renderer/prism";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+
+require("prismjs/components/prism-java");
+require("prismjs/components/prism-csharp");
+require("prismjs/components/prism-kotlin");
+require("prismjs/components/prism-swift");
+require("prismjs/components/prism-bash");
+require("prismjs/components/prism-sql");
+require("prismjs/components/prism-typescript");
+require("prismjs/components/prism-objectivec");
 
 const openTooltip = (setIsTooltipOpen) => {
   setIsTooltipOpen(true);
