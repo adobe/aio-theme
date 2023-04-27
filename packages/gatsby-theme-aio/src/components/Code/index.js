@@ -20,9 +20,6 @@ import '@spectrum-css/tooltip';
 import '@adobe/prism-adobe';
 import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
-import Prism from "prism-react-renderer/prism";
-
-global.Prism = Prism;
 
 require("prismjs/components/prism-java");
 require("prismjs/components/prism-csharp");
