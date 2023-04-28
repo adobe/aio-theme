@@ -33,6 +33,8 @@ require("prismjs/components/prism-sql");
 require("prismjs/components/prism-typescript");
 require("prismjs/components/prism-objectivec");
 require("prismjs/components/prism-php");
+require("prismjs/components/prism-yaml");
+require("prismjs/components/prism-json");
 
 const openTooltip = (setIsTooltipOpen) => {
   setIsTooltipOpen(true);
