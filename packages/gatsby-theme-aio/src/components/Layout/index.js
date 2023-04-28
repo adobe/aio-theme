@@ -192,6 +192,9 @@ export default ({ children, pageContext, location }) => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
     const IMS_CONFIG = process.env.GATSBY_IMS_CONFIG;
 
+    addScript("prism.js").then({
+
+    })
     if (IMS_SRC && IMS_CONFIG) {
       (async () => {
         try {
