@@ -43,9 +43,14 @@ const componentsToLoad = ['java', 'php'];
 const loadedComponents = ['clike', 'javascript'];
 
 const loader = getLoader(components, componentsToLoad, loadedComponents);
-loader.load(id => {
-  require(`prismjs/components/prism-${id}.min.js`);
-});
+try{
+  loader.load(id => {
+    require(`prismjs/components/prism-${id}.min.js`);
+  });
+} catch (e) {
+  console.log(e);
+}
+
 
 
 const openTooltip = (setIsTooltipOpen) => {
