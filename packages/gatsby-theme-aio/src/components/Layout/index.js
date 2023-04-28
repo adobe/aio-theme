@@ -187,14 +187,18 @@ export default ({ children, pageContext, location }) => {
   // ["index1", "index2", ...]
   const [indexAll, setIndexAll] = useState(false);
 
+
   // Load and initialize IMS
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
     const IMS_CONFIG = process.env.GATSBY_IMS_CONFIG;
+    let script_tag = document.createElement('script');
+    script_tag.type = 'text/javascript';
+    script_tag.text = 'window.Prism = window.Prism';
+    document.head.appendChild(script_tag);
 
-    addScript("prism.js").then({
 
-    })
+    addScript("prism.js").then({});
     if (IMS_SRC && IMS_CONFIG) {
       (async () => {
         try {
