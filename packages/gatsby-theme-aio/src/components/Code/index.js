@@ -24,22 +24,10 @@ import Prism from "prism-react-renderer/prism";
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 
-// await import("prismjs/components/prism-java");
-// require("prismjs/components/prism-csharp");
-// require("prismjs/components/prism-kotlin");
-// require("prismjs/components/prism-swift");
-// require("prismjs/components/prism-bash");
-// require("prismjs/components/prism-sql");
-// require("prismjs/components/prism-typescript");
-// require("prismjs/components/prism-objectivec");
-// require("prismjs/components/prism-php");
-// require("prismjs/components/prism-yaml");
-// require("prismjs/components/prism-json");
-
 const getLoader = require('prismjs/dependencies');
 const components = require('prismjs/components');
 
-const componentsToLoad = ['java', 'php'];
+const componentsToLoad = ['java', 'php', 'csharp', 'kotlin', 'swift', 'bash', 'sql', 'typescript', 'objectivec', 'yaml', 'json'];
 const loadedComponents = ['clike', 'javascript'];
 
 const loader = getLoader(components, componentsToLoad, loadedComponents);
