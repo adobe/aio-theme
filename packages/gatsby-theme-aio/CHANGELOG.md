@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.8-rc2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.7...@adobe/gatsby-theme-aio@4.9.8-rc2) (2023-05-01)
+
+### Fix
+
+* Fix Code highlighting to include more programming languages.
+* 
 ## [4.9.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.6...@adobe/gatsby-theme-aio@4.9.7) (2023-04-12)
 
 ### Fix
