@@ -21,6 +21,25 @@ import '@adobe/prism-adobe';
 import { ActionButton } from '../ActionButton';
 import PropTypes from 'prop-types';
 
+import Prism from "prism-react-renderer/prism";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+
+const getLoader = require('prismjs/dependencies');
+const components = require('prismjs/components');
+
+const componentsToLoad = ['java', 'php', 'csharp', 'kotlin', 'swift', 'bash', 'sql', 'typescript', 'objectivec', 'yaml', 'json'];
+const loadedComponents = ['clike', 'javascript'];
+
+const loader = getLoader(components, componentsToLoad, loadedComponents);
+try{
+  loader.load(id => {
+    require(`prismjs/components/prism-${id}.min.js`);
+  });
+} catch (e) {
+  console.log(e);
+}
+
 const openTooltip = (setIsTooltipOpen) => {
   setIsTooltipOpen(true);
   setTimeout(() => {
