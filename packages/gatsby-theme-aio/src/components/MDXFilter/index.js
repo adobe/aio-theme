@@ -382,7 +382,7 @@ export default ({ children, pageContext, query }) => {
                         date={
                           contributors[0]?.date
                             ? new Date(contributors[0].date).toLocaleDateString()
-                            : new Date().toLocaleDateString()
+                            : ""
                         }
                       />
                     </div>
