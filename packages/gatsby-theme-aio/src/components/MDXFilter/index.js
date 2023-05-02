@@ -380,9 +380,9 @@ export default ({ children, pageContext, query }) => {
                         contributors={contributors}
                         externalContributors={pageContext?.frontmatter?.contributors}
                         date={
-                          contributors[0]
+                          contributors[0]?.date
                             ? new Date(contributors[0].date).toLocaleDateString()
-                            : new Date().toLocaleDateString()
+                            : ""
                         }
                       />
                     </div>
