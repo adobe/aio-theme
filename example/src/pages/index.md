@@ -26,6 +26,7 @@ import AddAnalyticsUnity from './add-analytics/unity.md'
 import AddAnalyticsReactNative from './add-analytics/react-native.md'
 import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 import TeaserComp from './teaser/teasercomp.md'
+import VideoCarouselComp from './videoCarousel/videoCarousel.md'
 import blackbg from "./teaser/black_power.jpg"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
@@ -149,12 +150,13 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 
    <AccordionItem header="AccordionItemDefaultOpen" isOpen>
 
-   AccordionItem default expand
+      AccordionItem default expand
 
    </AccordionItem>    
 
 </Accordion>
 
+<VideoCarouselComp />
 
 ## Inline Alerts {#Categories}
 
