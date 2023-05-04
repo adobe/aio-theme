@@ -28,6 +28,7 @@ import AddAnalyticsXamarin from './add-analytics/xamarin.md'
 import TeaserComp from './teaser/teasercomp.md'
 import VideoCarouselComp from './videoCarousel/videoCarousel.md'
 import blackbg from "./teaser/black_power.jpg"
+import TextBlockComp from "./textblock/textblock.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -157,6 +158,8 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 </Accordion>
 
 <VideoCarouselComp />
+
+<TextBlockComp />
 
 ## Inline Alerts {#Categories}
 

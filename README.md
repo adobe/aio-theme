@@ -1648,6 +1648,27 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 ```
 
+**With a local video**
+
+![text block with a local video](docs/images/textblockwithvideo.png)
+
+```
+
+import video1 from '../videos/localVideo.mp4'
+
+<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left"  />
+
+![Adobe Express](./images/Adobe-Express-logo-RGB.png)
+
+### One-click edits with Adobe Express quick actions 
+
+Quick actions turn multistep design workflows into just a few clicks, making removing backgrounds, resizing images and merging videos faster than ever – all powered by Adobe Photoshop and Adobe Premiere Pro. Enable these powerful shortcuts in any website in minutes.
+
+- [Learn more](https://adobe.io)
+- [Try it ](https://adobe.io)
+
+```
+
 Use `slots` to identify the markdown content:
 
 - `heading` (required)
@@ -1665,6 +1686,10 @@ Use `width` to define the size of the block. Supported values are `100%`, `50%`,
 Use `isCentered` to center the text.
 
 Use `className` to customize the component **at your own risk.**
+
+Use `videoUrl` to add the local video to the block
+
+Use `position` to position the video values are `left`, `right`. The preset variant is left.
 
 ### Tabs Block
 
