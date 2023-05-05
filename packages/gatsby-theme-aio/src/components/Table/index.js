@@ -119,7 +119,9 @@ const Td = ({ children, ...props }) => {
       className="spectrum-Table-cell"
       css={css`
         width: ${props.cellWidth}px;
-        overflow-x: hidden;
+        max-width: ${props.cellWidth}px;
+
+        overflow-x: auto;
       `}>
       <div
         css={css`
