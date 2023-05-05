@@ -10,42 +10,125 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
+import PropTypes from 'prop-types';
 import '@spectrum-css/table';
-import {layoutColumns, MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH} from "../../utils";
+import { MOBILE_SCREEN_WIDTH } from '../../utils';
 
-const Table = ({ children, ...props }) => (
-  <div css={css`overflow-x: auto; overflow-y: hidden;`}>
-    <table className="spectrum-Table spectrum-Table--sizeM" {...props}
-       css={css`
+const Table = ({ children, ...props }) => {
+  const [width, setWidth] = useState(MOBILE_SCREEN_WIDTH);
+  const tableRef = useRef(null);
+  const columnWidthDistribution = props.columnWidths
+    ? props.columnWidths
+        .split(',')
+        .map(num => (width * Number(num)) / 100)
+        .filter(width => !isNaN(width))
+    : [];
+
+  useEffect(() => {
+    if (tableRef.current.parentNode) {
+      setWidth(Number(tableRef.current.parentNode.offsetWidth));
+    }
+  }, [width]);
+
+  return (
+    <table
+      ref={tableRef}
+      className="spectrum-Table spectrum-Table--sizeM"
+      css={css`
+        overflow-x: hidden;
+        overflow-y: hidden;
         margin-bottom: var(--spectrum-global-dimension-size-150);
-       `}>
-      {children}
+        width: ${width}px;
+      `}
+      {...props}>
+      {children.map(child => {
+        child.props.tableWidth = width;
+        child.props.columnWidthDistribution = columnWidthDistribution;
+        return child;
+      })}
     </table>
-  </div>
-);
+  );
+};
 
-const THead = ({ children }) => <thead className="spectrum-Table-head">{children}</thead>;
+const THead = ({ children, ...props }) => {
+  return (
+    <thead
+      className="spectrum-Table-head"
+      css={css`
+        width: ${props.parentWidth}px;
+      `}>
+      {[children].map(child => {
+        child.props.tableWidth = props.tableWidth;
+        child.props.columnWidthDistribution = props.columnWidthDistribution;
+        return child;
+      })}
+    </thead>
+  );
+};
 
 const Th = ({ children }) => <th className="spectrum-Table-headCell">{children}</th>;
 
-const TBody = ({ children }) => <tbody className="spectrum-Table-body">{children}</tbody>;
+const TBody = ({ children, ...props }) => {
+  const childrenArr = children.length > 1 ? children : [children];
+  return (
+    <tbody
+      className="spectrum-Table-body"
+      css={css`
+        width: ${props.tableWidth}px;
+      `}>
+      {childrenArr.map(child => {
+        child.props.tableWidth = props.tableWidth;
+        child.props.columnWidthDistribution = props.columnWidthDistribution;
+        return child;
+      })}
+    </tbody>
+  );
+};
 
-const Tr = ({ children }) => (
-  <tr
-    className="spectrum-Table-row"
-    css={css`
-      cursor: inherit;
+const Tr = ({ children, ...props }) => {
+  const tableWidth = props.tableWidth;
+  const columnCount = parseInt(children.length);
+  const columnWidthDistribution = !props.columnWidthDistribution.length
+    ? Array(columnCount).fill(Number(tableWidth) / columnCount)
+    : props.columnWidthDistribution;
 
-      &:hover {
-        background-color: inherit;
-      }
-    `}>
-    {children}
-  </tr>
-);
+  return (
+    <tr
+      className="spectrum-Table-row"
+      css={css`
+        cursor: inherit;
+        width: ${props.tableWidth}px;
 
-const Td = ({ children }) => <td className="spectrum-Table-cell">{children}</td>;
+        &:hover {
+          background-color: inherit;
+        }
+      `}>
+      {children.map((child, index) => {
+        child.props.cellWidth = columnWidthDistribution[index];
+        return child;
+      })}
+    </tr>
+  );
+};
+
+const Td = ({ children, ...props }) => {
+  return (
+    <td
+      className="spectrum-Table-cell"
+      css={css`
+        width: ${props.cellWidth}px;
+        overflow-x: hidden;
+      `}>
+      <div
+        css={css`
+          max-width: ${props.cellWidth}px;
+        `}>
+        {children}
+      </div>
+    </td>
+  );
+};
 
 export { Table, THead, Th, TBody, Tr, Td };
