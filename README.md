@@ -145,7 +145,7 @@ Simply click on the “Use this template” button to create a new GitHub reposi
 
 _The templates are pre-configured with example pages._
 
-### Using the Adobe theme I/O 
+### Using the Adobe theme I/O
 
 First make sure the dependency of the theme-aio is added to the project's package.json.
 
@@ -176,43 +176,43 @@ yarn clean && yarn cache clean && rm -r node_modules && rm yarn.lock
 
 ### Developing with Adobe Theme I/O
 
-This is what you can do to develop and test locally with an updated aio-theme. Make all your changes in aio-theme. 
+This is what you can do to develop and test locally with an updated aio-theme. Make all your changes in aio-theme.
 Change your directory to /packages/gatsby-theme-aio
 
 ```bash
 cd /packages/gatsby-theme-aio
-````
+```
 
-Publish the current state of the theme package to your yalc directory.  
+Publish the current state of the theme package to your yalc directory.
 
-````bash
+```bash
 yalc publish --push
-````
+```
 
-Switch to the project that you would like to test your latest theme-aio with.  Navigate to the root directly of that local project(eg. document-services - you would navigate to document-services repo's root . 
+Switch to the project that you would like to test your latest theme-aio with. Navigate to the root directly of that local project(eg. document-services - you would navigate to document-services repo's root .
 
-````bash
+```bash
 yalc add @adobe/gatsby-theme-aio
-````
+```
 
-View the package.json dependency of the local project to make sure it has added the theme like this.  Also make sure it is using gatsby version 4.22.0.
+View the package.json dependency of the local project to make sure it has added the theme like this. Also make sure it is using gatsby version 4.22.0.
 
-````bash
+```bash
   "dependencies": {
     "@adobe/gatsby-theme-aio": "file:.yalc/@adobe/gatsby-theme-aio",
     "gatsby" : "4.22.0"
    }
-````
+```
 
 Clean the project and run again
 
 ```bash
 yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
-````
+```
 
 ```bash
 yarn dev
-````
+```
 
 ## Content structure
 
@@ -480,14 +480,14 @@ The `GATSBY_ADOBE_LAUNCH_SRC=` env var is used to enable the Analytics and Feedb
 
 **In Adobe Analytics:**
 
-  5. On library loaded (page top), Send the Beacon
+5. On library loaded (page top), Send the Beacon
 
 **In Adobe Launch:**
 
-  6. Go through the `Publishing Flow`, don't forget to `Add All Resources`.
-  7. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon.
-  8. Copy the URL displayed in the `script` tag.
-  9. Add the URL to the `.env` file as the value for `GATSBY_ADOBE_LAUNCH_SRC=`.
+6. Go through the `Publishing Flow`, don't forget to `Add All Resources`.
+7. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon.
+8. Copy the URL displayed in the `script` tag.
+9. Add the URL to the `.env` file as the value for `GATSBY_ADOBE_LAUNCH_SRC=`.
 
 **Example:**
 
@@ -533,7 +533,7 @@ src/pages [/]
 ├- api [/api/]
 │  └- index.md
 └- guides [/guides/]
-   └─ index.md
+└─ index.md
 ```
 
 then define your Global Navigation using `pages` in `gatsby-config.js`:
@@ -542,17 +542,17 @@ then define your Global Navigation using `pages` in `gatsby-config.js`:
 pages: [
   {
     title: 'Adobe Analytics',
-    path: '/'
+    path: '/',
   },
   {
     title: 'Guides',
-    path: '/guides/'
+    path: '/guides/',
   },
   {
     title: 'API Reference',
-    path: '/api/'
-  }
-]
+    path: '/api/',
+  },
+];
 ```
 
 You can also define it by pointing to the markdown files:
@@ -561,17 +561,17 @@ You can also define it by pointing to the markdown files:
 pages: [
   {
     title: 'Adobe Analytics',
-    path: 'index.md'
+    path: 'index.md',
   },
   {
     title: 'Guides',
-    path: 'guides.md'
+    path: 'guides.md',
   },
   {
     title: 'API Reference',
-    path: 'api.md'
-  }
-]
+    path: 'api.md',
+  },
+];
 ```
 
 Search `?foo=bar` and hash `#foo` values are also supported.
@@ -631,12 +631,13 @@ A default home link is displayed if none provided. If you don't want to display 
 
 ```js
 home: {
-  hidden: true
+  hidden: true;
 }
 ```
 
 ### Table Image
-When inserting image to table, please ensure it has a complete .svg path. 
+
+When inserting image to table, please ensure it has a complete .svg path.
 
 ## Side Navigation
 
@@ -962,7 +963,7 @@ For example, a blog could live at `example.com/blog/`, or a site could be hosted
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
 ```js
-pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
+pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/';
 ```
 
 ## Deploying the site
@@ -1004,21 +1005,26 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
-<pre>
----
+## <pre>
+
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
+
 ---
+
 </pre>
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
-<pre>
----
+## <pre>
+
 contributors:
+
 - https://github.com/simonwex
+
 ---
+
 </pre>
   
 You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
@@ -1435,22 +1441,23 @@ within another component:
 ```markdown
 <InlineNestedAlert variant="info" header="true" iconPosition="right">
 
-   Personal Information :
+Personal Information :
 
-   Lorem ipsum dolor sit amee
+Lorem ipsum dolor sit amee
 
-   Add more information
+Add more information
 
-   Lorem ipsum dolor sit amet
+Lorem ipsum dolor sit amet
 
  </InlineNestedAlert>
- ```
- This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert. 
- The nested InlineAlert must wrap around the content that it wants to display.  It can only supports one header by using the parameter 
- header="true".  Header will not be supported if there is only 1 line.  It supports variant the same way as the regular InlineAlert.  Also it supports 
- another parameter as iconPosition to be 
- displayed either left or right side of the alert.
- 
+```
+
+This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert.
+The nested InlineAlert must wrap around the content that it wants to display. It can only supports one header by using the parameter
+header="true". Header will not be supported if there is only 1 line. It supports variant the same way as the regular InlineAlert. Also it supports
+another parameter as iconPosition to be
+displayed either left or right side of the alert.
+
 ### Media Block
 
 The Media Block is used to display interactive medias like videos.
@@ -1720,6 +1727,94 @@ Use `orientation` to tabs can be either horizontal or vertical. Defaults to `hor
 
 Use `repeat` to define how many tab items sections are part of the tabs Block.
 
+### Table Block
+
+The table block automatically decorates markdown and html tables:
+
+Markdown:
+
+```md
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+```
+
+HTML:
+
+```html
+<table>
+    <th>
+        <td>Tables</td>
+        <td>Are</td>
+        <td>Cool</td>
+    </th>
+    <tr>
+        <td>col 3 is</td>
+        <td>right-aligned</td>
+        <td>$1600</td>
+    </tr>
+    <tr>
+        <td>col 2 is</td>
+        <td>centered</td>
+        <td>$12</td>
+    </tr>
+    <tr>
+        <td>zebra stripes</td>
+        <td>are neat</td>
+        <td>$1</td>
+    </tr>
+</table>
+```
+
+Will both look like this:
+
+![styled markdown table](docs/images/table-md.png)
+
+**When should I use an HTML table over Markdown?**
+
+Markdown has a simple way of defining and formatting your tables, but it can be limited in customization and difficult to format with a lot of data. You should consider using HTML tables if you're experiencing said limitations.
+
+_Here is a couple of examples:_
+
+By default, the column width distribution is even across all columns in the table. To customize it we support a `columnWidths` property which you can configure like so:
+
+```html
+<table columnWidths="20,60,20">
+  ...
+</table>
+```
+
+![styled markdown table](docs/images/table-custom-distribution.png)
+
+The `columnWidths` property expects a distribution by percentage of the table width. _Comma separated numbers only_.
+
+You can assign any distribution as long as the number of entries matches the number of columns and the distribution adds up to 100% otherwise it may not work as expected.
+
+| # Columns | Default Distribution | Custom Distribution Example |
+| --------- | -------------------- | --------------------------- |
+| 2         | "50,50"              | "25,75"                     |
+| 3         | "33.33,33.33,33.33"  | "10,20,70"                  |
+| 4         | "25,25,25,25"        | "10,20,35,35"               |
+
+We also support inline css overrides using the css property like so:
+
+```html
+<table
+  css="
+    background-color:teal; 
+    tbody {
+      background-color:orange;
+    }">
+  ...
+</table>
+```
+
+![styled markdown table](docs/images/table-custom-css.png)
+
+Combining modifiers is supported as well unless mentioned otherwise.
+
 ### Product Card
 
 Product Cards group information that allow to browse a collection of related content.
@@ -1897,7 +1992,7 @@ Teaser component is used to place the text over the background image/color
 
 ```
 import bgImg from "./Images/black_image.png"
-<TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/> 
+<TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/>
 
 ### TeaserBlock with image background
 
@@ -1928,7 +2023,7 @@ Use `textColor` to color the heading, text
 
 Use `variant` to specify full width or half width values are `fullwidth,halfwidth`.
 
-### Accordion 
+### Accordion
 
 Accordion has a group of accordion items used to collapse and expand the child content
 
@@ -1960,7 +2055,7 @@ AccordionItem with default options to expand and collapse
 
 <AccordionItem header="AccordionItemWithChevron" isChevronIcon  position="right" iconColor="#1473E6">
 
-AccordionItem expand and collapse using ChevronIcon 
+AccordionItem expand and collapse using ChevronIcon
 
 </AccordionItem>
 
@@ -1968,7 +2063,7 @@ AccordionItem expand and collapse using ChevronIcon
 
 AccordionItem default expand
 
-</AccordionItem>    
+</AccordionItem>
 
 </Accordion>
 

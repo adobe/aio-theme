@@ -16,11 +16,11 @@ import PropTypes from 'prop-types';
 import '@spectrum-css/table';
 import { MOBILE_SCREEN_WIDTH } from '../../utils';
 
-const Table = ({ children, ...props }) => {
+const Table = ({ children, css: cssOverrides, columnWidths, ...props }) => {
   const [width, setWidth] = useState(MOBILE_SCREEN_WIDTH);
   const tableRef = useRef(null);
-  const columnWidthDistribution = props.columnWidths
-    ? props.columnWidths
+  const columnWidthDistribution = columnWidths
+    ? columnWidths
         .split(',')
         .map(num => (width * Number(num)) / 100)
         .filter(width => !isNaN(width))
@@ -37,10 +37,10 @@ const Table = ({ children, ...props }) => {
       ref={tableRef}
       className="spectrum-Table spectrum-Table--sizeM"
       css={css`
-        overflow-x: hidden;
-        overflow-y: hidden;
+        overflow: hidden;
         margin-bottom: var(--spectrum-global-dimension-size-150);
         width: ${width}px;
+        ${cssOverrides}
       `}
       {...props}>
       {children.map(child => {
@@ -131,6 +131,11 @@ const Td = ({ children, ...props }) => {
       </div>
     </td>
   );
+};
+
+Table.propTypes = {
+  css: PropTypes.string,
+  columnWidths: PropTypes.string,
 };
 
 export { Table, THead, Th, TBody, Tr, Td };
