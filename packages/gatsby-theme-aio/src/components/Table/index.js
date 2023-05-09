@@ -15,12 +15,16 @@ import { css } from '@emotion/react';
 import '@spectrum-css/table';
 import {layoutColumns, MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH} from "../../utils";
 
-const Table = ({ children, ...props }) => (
+const tableOverrides = `
+  margin-top: var(--spectrum-global-dimension-size-150);
+`;
+
+const Table = ({ children, css: cssOverrides, ...props }) => (
   <div css={css`overflow-x: auto; overflow-y: hidden;`}>
     <table className="spectrum-Table spectrum-Table--sizeM" {...props}
-       css={css`
-        margin-bottom: var(--spectrum-global-dimension-size-150);
-       `}>
+           css={css`
+            ${tableOverrides}
+            ${cssOverrides}`}>
       {children}
     </table>
   </div>
