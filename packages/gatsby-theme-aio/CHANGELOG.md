@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.8...@adobe/gatsby-theme-aio@4.9.9) (2023-05-09)
+
+### Fix
+
+* Fix multiple text blocks in a row content now showing up properly. [c1f305a](https://github.com/adobe/aio-theme/commit/c1f305aba2e7d10dacb7add139eaa0b861135bbd).
+
 ## [4.9.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.7...@adobe/gatsby-theme-aio@4.9.8) (2023-05-03)
 
 ### Fix
