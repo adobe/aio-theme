@@ -1656,7 +1656,7 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 import video1 from '../videos/localVideo.mp4'
 
-<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left"  />
+<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left"  />
 
 ![Adobe Express](./images/Adobe-Express-logo-RGB.png)
 
@@ -1690,6 +1690,7 @@ Use `className` to customize the component **at your own risk.**
 Use `videoUrl` to add the local video to the block
 
 Use `position` to position the video values are `left`, `right`. The preset variant is left.
+
 
 ### Table Block
 

@@ -43,6 +43,7 @@ import { OldProductCardGrid } from '../OldProductCardGrid';
 import { AnchorButtonGroup } from '../AnchorButtonGroup';
 import { DCSummaryBlock } from '../DCSummaryBlock';
 import {TeaserBlock} from "../TeaserBlock";
+import { VideoCarousel } from '../VideoCarousel';
 export const MDXBlocks = {
   Hero,
   DiscoverBlock,
@@ -76,5 +77,6 @@ export const MDXBlocks = {
   ),
   Carousel,
   AnchorButtonGroup,
-  DCSummaryBlock
+  DCSummaryBlock,
+  VideoCarousel
 };

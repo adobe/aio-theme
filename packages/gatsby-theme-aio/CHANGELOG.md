@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.7...@adobe/gatsby-theme-aio@4.9.8) (2023-05-03)
+
+### Fix
+
+* Fix invalid date problem when contributor doesn't have last updated date. [1fb264a](https://github.com/adobe/aio-theme/commit/1fb264a988c0039b3e2fba5700a90d8916e2a4a8).
+* New language for code highlights. [3d24836](https://github.com/adobe/aio-theme/commit/3d24836c4476d925b5d458ed06a5bae6a54f42b2).
+* Add New VideoCarousel component. [7d87d97](https://github.com/adobe/aio-theme/commit/7d87d97bf10fd83bfa758d00b14e02b4e86923be).
+
 ## [4.9.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.6...@adobe/gatsby-theme-aio@4.9.7) (2023-04-12)
 
 ### Fix
