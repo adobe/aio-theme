@@ -145,7 +145,7 @@ Simply click on the “Use this template” button to create a new GitHub reposi
 
 _The templates are pre-configured with example pages._
 
-### Using the Adobe theme I/O
+### Using the Adobe theme I/O 
 
 First make sure the dependency of the theme-aio is added to the project's package.json.
 
@@ -176,43 +176,43 @@ yarn clean && yarn cache clean && rm -r node_modules && rm yarn.lock
 
 ### Developing with Adobe Theme I/O
 
-This is what you can do to develop and test locally with an updated aio-theme. Make all your changes in aio-theme.
+This is what you can do to develop and test locally with an updated aio-theme. Make all your changes in aio-theme. 
 Change your directory to /packages/gatsby-theme-aio
 
 ```bash
 cd /packages/gatsby-theme-aio
-```
+````
 
-Publish the current state of the theme package to your yalc directory.
+Publish the current state of the theme package to your yalc directory.  
 
-```bash
+````bash
 yalc publish --push
-```
+````
 
-Switch to the project that you would like to test your latest theme-aio with. Navigate to the root directly of that local project(eg. document-services - you would navigate to document-services repo's root .
+Switch to the project that you would like to test your latest theme-aio with.  Navigate to the root directly of that local project(eg. document-services - you would navigate to document-services repo's root . 
 
-```bash
+````bash
 yalc add @adobe/gatsby-theme-aio
-```
+````
 
-View the package.json dependency of the local project to make sure it has added the theme like this. Also make sure it is using gatsby version 4.22.0.
+View the package.json dependency of the local project to make sure it has added the theme like this.  Also make sure it is using gatsby version 4.22.0.
 
-```bash
+````bash
   "dependencies": {
     "@adobe/gatsby-theme-aio": "file:.yalc/@adobe/gatsby-theme-aio",
     "gatsby" : "4.22.0"
    }
-```
+````
 
 Clean the project and run again
 
 ```bash
 yarn clean && yarn cache clean && rm node_modules && rm yarn.lock
-```
+````
 
 ```bash
 yarn dev
-```
+````
 
 ## Content structure
 
@@ -480,14 +480,14 @@ The `GATSBY_ADOBE_LAUNCH_SRC=` env var is used to enable the Analytics and Feedb
 
 **In Adobe Analytics:**
 
-5. On library loaded (page top), Send the Beacon
+  5. On library loaded (page top), Send the Beacon
 
 **In Adobe Launch:**
 
-6. Go through the `Publishing Flow`, don't forget to `Add All Resources`.
-7. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon.
-8. Copy the URL displayed in the `script` tag.
-9. Add the URL to the `.env` file as the value for `GATSBY_ADOBE_LAUNCH_SRC=`.
+  6. Go through the `Publishing Flow`, don't forget to `Add All Resources`.
+  7. In `Environments`, select the appropriate environment, and under the `Install` column, select the icon.
+  8. Copy the URL displayed in the `script` tag.
+  9. Add the URL to the `.env` file as the value for `GATSBY_ADOBE_LAUNCH_SRC=`.
 
 **Example:**
 
@@ -533,7 +533,7 @@ src/pages [/]
 ├- api [/api/]
 │  └- index.md
 └- guides [/guides/]
-└─ index.md
+   └─ index.md
 ```
 
 then define your Global Navigation using `pages` in `gatsby-config.js`:
@@ -542,17 +542,17 @@ then define your Global Navigation using `pages` in `gatsby-config.js`:
 pages: [
   {
     title: 'Adobe Analytics',
-    path: '/',
+    path: '/'
   },
   {
     title: 'Guides',
-    path: '/guides/',
+    path: '/guides/'
   },
   {
     title: 'API Reference',
-    path: '/api/',
-  },
-];
+    path: '/api/'
+  }
+]
 ```
 
 You can also define it by pointing to the markdown files:
@@ -561,17 +561,17 @@ You can also define it by pointing to the markdown files:
 pages: [
   {
     title: 'Adobe Analytics',
-    path: 'index.md',
+    path: 'index.md'
   },
   {
     title: 'Guides',
-    path: 'guides.md',
+    path: 'guides.md'
   },
   {
     title: 'API Reference',
-    path: 'api.md',
-  },
-];
+    path: 'api.md'
+  }
+]
 ```
 
 Search `?foo=bar` and hash `#foo` values are also supported.
@@ -631,13 +631,12 @@ A default home link is displayed if none provided. If you don't want to display 
 
 ```js
 home: {
-  hidden: true;
+  hidden: true
 }
 ```
 
 ### Table Image
-
-When inserting image to table, please ensure it has a complete .svg path.
+When inserting image to table, please ensure it has a complete .svg path. 
 
 ## Side Navigation
 
@@ -963,7 +962,7 @@ For example, a blog could live at `example.com/blog/`, or a site could be hosted
 To add a Path Prefix, go to your `gatsby-config.js` file and specify the prefix with:
 
 ```js
-pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/';
+pathPrefix: process.env.PATH_PREFIX || '/MY_PREFIX/'
 ```
 
 ## Deploying the site
@@ -1005,26 +1004,21 @@ Using the `Exclude a subfolder from deletion`: folders listed here separated out
 
 Front matter allows an author to specify metadata for a page. For example, you can define the page meta title and description by adding front matter to the beginning of your markdown file:
 
-## <pre>
-
+<pre>
+---
 title: Guides - Adobe Analytics
 description: This is the guides overview page of Adobe Analytics
-
 ---
-
 </pre>
 
 In addition to the GitHub contributors of a markdown file, you can specify external contributors with front matter.
 They'll show up first before the GitHub contributors.
 
-## <pre>
-
-contributors:
-
-- https://github.com/simonwex
-
+<pre>
 ---
-
+contributors:
+- https://github.com/simonwex
+---
 </pre>
   
 You can also specify whether or not to hide breadcrumb navigation on pages without a hero at the top.  Pages with a Hero can flag the breadcrumb option on the Hero component if needed.
@@ -1441,23 +1435,22 @@ within another component:
 ```markdown
 <InlineNestedAlert variant="info" header="true" iconPosition="right">
 
-Personal Information :
+   Personal Information :
 
-Lorem ipsum dolor sit amee
+   Lorem ipsum dolor sit amee
 
-Add more information
+   Add more information
 
-Lorem ipsum dolor sit amet
+   Lorem ipsum dolor sit amet
 
  </InlineNestedAlert>
-```
-
-This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert.
-The nested InlineAlert must wrap around the content that it wants to display. It can only supports one header by using the parameter
-header="true". Header will not be supported if there is only 1 line. It supports variant the same way as the regular InlineAlert. Also it supports
-another parameter as iconPosition to be
-displayed either left or right side of the alert.
-
+ ```
+ This new InlineNestedAlert will not be supporting the 'slot' parameter as the regular InlineAlert. 
+ The nested InlineAlert must wrap around the content that it wants to display.  It can only supports one header by using the parameter 
+ header="true".  Header will not be supported if there is only 1 line.  It supports variant the same way as the regular InlineAlert.  Also it supports 
+ another parameter as iconPosition to be 
+ displayed either left or right side of the alert.
+ 
 ### Media Block
 
 The Media Block is used to display interactive medias like videos.
@@ -1655,6 +1648,27 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 ```
 
+**With a local video**
+
+![text block with a local video](docs/images/textblockwithvideo.png)
+
+```
+
+import video1 from '../videos/localVideo.mp4'
+
+<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left"  />
+
+![Adobe Express](./images/Adobe-Express-logo-RGB.png)
+
+### One-click edits with Adobe Express quick actions 
+
+Quick actions turn multistep design workflows into just a few clicks, making removing backgrounds, resizing images and merging videos faster than ever – all powered by Adobe Photoshop and Adobe Premiere Pro. Enable these powerful shortcuts in any website in minutes.
+
+- [Learn more](https://adobe.io)
+- [Try it ](https://adobe.io)
+
+```
+
 Use `slots` to identify the markdown content:
 
 - `heading` (required)
@@ -1673,59 +1687,9 @@ Use `isCentered` to center the text.
 
 Use `className` to customize the component **at your own risk.**
 
-### Tabs Block
+Use `videoUrl` to add the local video to the block
 
-Tabs block is a custom block component that allows for tabbed content that can be displayed either vertically or horizontally.
-
-![tabsBlock](docs/images/tabsBlock.png)
-
-```
-
-<TabsBlock orientation="vertical" slots="heading, image, content" theme="light" />
-
-### Create PDF from URL
-
-![Create PDF](images/createpdf.svg)
-
-<Overview/>
-
-<TabsBlock orientation="vertical" slots="heading, content" theme="light" />
-
-### Dynamic PDF Document Generation
-
-<Overview/>
-
-```
-
-```
-
-<TabsBlock orientation="horizontal" slots="heading, image, content" theme="light" />
-
-### Create PDF from URL
-
-![Create PDF](images/createpdf.svg)
-
-<Overview/>
-
-<TabsBlock orientation="horizontal" slots="heading, content" theme="light" />
-
-### Dynamic PDF Document Generation
-
-<Overview/>
-
-```
-
-Use `slots` to identify the markdown content:
-
-- `heading` (1 required per row)
-- `image` (optional)
-- `content` (1 required per row)
-
-Use `theme` to match the text color to your color scheme. Defaults to `light`.
-
-Use `orientation` to tabs can be either horizontal or vertical. Defaults to `horizontal`.
-
-Use `repeat` to define how many tab items sections are part of the tabs Block.
+Use `position` to position the video values are `left`, `right`. The preset variant is left.
 
 ### Table Block
 
@@ -1814,6 +1778,60 @@ We also support inline css overrides using the css property like so:
 ![styled markdown table](docs/images/table-custom-css.png)
 
 Combining modifiers is supported as well unless mentioned otherwise.
+
+### Tabs Block
+
+Tabs block is a custom block component that allows for tabbed content that can be displayed either vertically or horizontally.
+
+![tabsBlock](docs/images/tabsBlock.png)
+
+```
+
+<TabsBlock orientation="vertical" slots="heading, image, content" theme="light" />
+
+### Create PDF from URL
+
+![Create PDF](images/createpdf.svg)
+
+<Overview/>
+
+<TabsBlock orientation="vertical" slots="heading, content" theme="light" />
+
+### Dynamic PDF Document Generation
+
+<Overview/>
+
+```
+
+```
+
+<TabsBlock orientation="horizontal" slots="heading, image, content" theme="light" />
+
+### Create PDF from URL
+
+![Create PDF](images/createpdf.svg)
+
+<Overview/>
+
+<TabsBlock orientation="horizontal" slots="heading, content" theme="light" />
+
+### Dynamic PDF Document Generation
+
+<Overview/>
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `heading` (1 required per row)
+- `image` (optional)
+- `content` (1 required per row)
+
+Use `theme` to match the text color to your color scheme. Defaults to `light`.
+
+Use `orientation` to tabs can be either horizontal or vertical. Defaults to `horizontal`.
+
+Use `repeat` to define how many tab items sections are part of the tabs Block.
 
 ### Product Card
 
@@ -1984,6 +2002,58 @@ Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 Use `repeat` to define how many code sections are part of the carousel.
 
+### VideoCarousel
+
+VideoCarousel is used to show the information along with videos and buttons.
+
+![Carousel](docs/images/videoCarousel.png)
+
+Use `slots` to identify the markdown content:
+
+- `heading` (optional)
+- `text` (required)
+- `buttons`(optional)
+
+Use `videos` give the imported video varaiables in an array example `videos={[video1,video2,...]}`
+
+Use `position` to position the video left/right. By default it position to left.
+
+Use `variant` to specify full width or half width values are fullWidth,halfWidth. By default it is fullWidth.
+
+Use `enableNavigation` to display navigation icon. By default it is in false. If you want naviagtion set it to true
+
+Use `navigationIconColor` to change the icon color. By default it is black.
+
+```
+import video1 from './video1.mp4'
+import video2 from "./video2.mp4"
+import video3 from "./video3.mp4"
+
+<VideoCarousel slots="heading, text, buttons" repeat="3" theme="lightest" videos={[video1,video2,video3]} isCenter position="right" variant = 'fullWidth' enableNavigation={true} navigationIconColor="#1473E6"/>
+
+#### Acrobat on web and desktop 
+
+The Adobe Express full editor allows users to edit images and quickly create eye-catching cover and divider pages within Acrobat.
+
+* [Learn more](../guides)
+* [View docs](../guides)
+
+#### Breakout EDU 
+
+Breakout EDU is an educational game platform for teachers and students that enables users to bring more creativity to virtual games with the Adobe Express full editor.
+
+* [Learn more](../guides)
+* [View docs](../guides)
+
+### Letter 
+
+Letter is an email newsletter tool that helps content creators, designers, and developers make standout communications with the Adobe Express full editor.
+
+* [Learn more](../guides)
+* [View docs](../guides)
+
+```
+
 ### TeaserBlock
 
 Teaser component is used to place the text over the background image/color
@@ -1992,7 +2062,7 @@ Teaser component is used to place the text over the background image/color
 
 ```
 import bgImg from "./Images/black_image.png"
-<TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/>
+<TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/> 
 
 ### TeaserBlock with image background
 
@@ -2023,7 +2093,7 @@ Use `textColor` to color the heading, text
 
 Use `variant` to specify full width or half width values are `fullwidth,halfwidth`.
 
-### Accordion
+### Accordion 
 
 Accordion has a group of accordion items used to collapse and expand the child content
 
@@ -2055,7 +2125,7 @@ AccordionItem with default options to expand and collapse
 
 <AccordionItem header="AccordionItemWithChevron" isChevronIcon  position="right" iconColor="#1473E6">
 
-AccordionItem expand and collapse using ChevronIcon
+AccordionItem expand and collapse using ChevronIcon 
 
 </AccordionItem>
 
@@ -2063,7 +2133,7 @@ AccordionItem expand and collapse using ChevronIcon
 
 AccordionItem default expand
 
-</AccordionItem>
+</AccordionItem>    
 
 </Accordion>
 
