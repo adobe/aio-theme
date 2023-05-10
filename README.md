@@ -113,6 +113,7 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Summary Block](#summary-block)
     - [Title Block](#title-block)
     - [Text Block](#text-block)
+    - [Table Block](#table-block)
     - [Tabs Block](#tabs-block)
     - [Product Card](#product-card)
     - [Product Card Grid](#product-card-grid)
