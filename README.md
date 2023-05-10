@@ -1691,6 +1691,95 @@ Use `videoUrl` to add the local video to the block
 
 Use `position` to position the video values are `left`, `right`. The preset variant is left.
 
+
+### Table Block
+
+The table block automatically decorates markdown and html tables:
+
+Markdown:
+
+```md
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+```
+
+HTML:
+
+```html
+<table>
+    <th>
+        <td>Tables</td>
+        <td>Are</td>
+        <td>Cool</td>
+    </th>
+    <tr>
+        <td>col 3 is</td>
+        <td>right-aligned</td>
+        <td>$1600</td>
+    </tr>
+    <tr>
+        <td>col 2 is</td>
+        <td>centered</td>
+        <td>$12</td>
+    </tr>
+    <tr>
+        <td>zebra stripes</td>
+        <td>are neat</td>
+        <td>$1</td>
+    </tr>
+</table>
+```
+
+Will both look like this:
+
+![styled markdown table](docs/images/table-md.png)
+
+**When should I use an HTML table over Markdown?**
+
+Markdown has a simple way of defining and formatting your tables, but it can be limited in customization and difficult to format with a lot of data. You should consider using HTML tables if you're experiencing said limitations.
+
+_Here is a couple of examples:_
+
+By default, the column width distribution is even across all columns in the table. To customize it we support a `columnWidths` property which you can configure like so:
+
+```html
+<table columnWidths="20,60,20">
+  ...
+</table>
+```
+
+![styled markdown table](docs/images/table-custom-distribution.png)
+
+The `columnWidths` property expects a distribution by percentage of the table width. _Comma separated numbers only_.
+
+You can assign any distribution as long as the number of entries matches the number of columns and the distribution adds up to 100% otherwise it may not work as expected.
+
+| # Columns | Default Distribution | Custom Distribution Example |
+| --------- | -------------------- | --------------------------- |
+| 2         | "50,50"              | "25,75"                     |
+| 3         | "33.33,33.33,33.33"  | "10,20,70"                  |
+| 4         | "25,25,25,25"        | "10,20,35,35"               |
+
+We also support inline css overrides using the css property like so:
+
+```html
+<table
+  css="
+    background-color:teal; 
+    tbody {
+      background-color:orange;
+    }">
+  ...
+</table>
+```
+
+![styled markdown table](docs/images/table-custom-css.png)
+
+Combining modifiers is supported as well unless mentioned otherwise.
+
 ### Tabs Block
 
 Tabs block is a custom block component that allows for tabbed content that can be displayed either vertically or horizontally.
