@@ -29,6 +29,7 @@ import TeaserComp from './teaser/teasercomp.md'
 import VideoCarouselComp from './videoCarousel/videoCarousel.md'
 import blackbg from "./teaser/black_power.jpg"
 import TextBlockComp from "./textblock/textblock.md"
+import MiniResource from "./miniresource_block/index.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -160,6 +161,8 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 <VideoCarouselComp />
 
 <TextBlockComp />
+
+<MiniResource />
 
 ## Inline Alerts {#Categories}
 
