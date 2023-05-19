@@ -50,7 +50,7 @@ const getSelectedTabIndex = (location, pages) => {
   return selectedIndex;
 };
 
-const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav }) => {
+const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav, location }) => {
   const [expandedPages, setExpandedPages] = useState([]);
   const [expandedMenus, setExpandedMenus] = useState([]);
   const [sideNavClick, setSideNavClick] = useState(false);
