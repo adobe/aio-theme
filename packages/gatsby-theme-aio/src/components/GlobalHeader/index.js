@@ -670,10 +670,8 @@ const GlobalHeader = ({
                                       -webkit-justify-content: center;
                                       justify-content: center;
                                       box-sizing: border-box;
-                                      padding: 0 var(--spectrum-global-dimension-size-175) !important;
-                                      margin-right: var(
-                                        --spectrum-global-dimension-size-175
-                                      ) !important;
+                                      padding: ${selectedMenu !== undefined && "0 var(--spectrum-global-dimension-size-175) !important"};
+                                      margin-right: ${selectedMenu === undefined && "var(--spectrum-global-dimension-size-175) !important; "}
                                       white-space: nowrap;
                                       color: var(--spectrum-global-color-gray-700) !important;
                                       -webkit-transition: background-color
@@ -690,6 +688,15 @@ const GlobalHeader = ({
                                         color: var(--spectrum-global-color-gray-900) !important;
                                         text-decoration: none !important;
                                       }
+
+                                      &>div>div{
+                                        width:var(--spectrum-global-dimension-size-100) !important;
+                                      }
+
+                                      &>div>div>svg{
+                                        padding : 0 !important;
+                                      }
+
                                     `}
                                     onKeyDown={e => {
                                       if (e.key === 'ArrowDown') {

@@ -860,6 +860,7 @@ export default ({ children, pageContext, location }) => {
                 `}>
                 <SideNav
                   mainNavPages={pages}
+                  location={location}
                   selectedPages={sideNavSelectedPages}
                   selectedSubPages={sideNavSelectedSubPages}
                   setShowSideNav={setShowSideNav}

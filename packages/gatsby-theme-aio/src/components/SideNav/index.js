@@ -13,19 +13,49 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
-import { isBrowser, isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
+import { isBrowser,   findSelectedTopPage,
+  findSelectedTopPageMenu,
+  rootFix,
+  rootFixPages, isExternalLink, getExternalLinkProps, MOBILE_SCREEN_WIDTH } from '../../utils';
 import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/sidenav';
 import nextId from 'react-id-generator';
-import { ChevronRight } from '../Icons';
+import { ChevronRight, CheckMark } from '../Icons';
 import { AnchorButton } from '../AnchorButton';
 
-const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav }) => {
+
+const getSelectedTabIndex = (location, pages) => {
+  const pathWithRootFix = rootFix(location.pathname);
+  const pagesWithRootFix = rootFixPages(pages);
+
+  let selectedIndex = pagesWithRootFix.indexOf(
+    findSelectedTopPage(pathWithRootFix, pagesWithRootFix)
+  );
+  let tempArr = pathWithRootFix.split('/');
+  let inx = tempArr.indexOf('use-cases');
+  if (selectedIndex === -1 && inx > -1) {
+    tempArr[inx + 1] = 'agreements-and-contracts';
+    tempArr[inx + 2] = 'sales-proposals-and-contracts';
+    if (tempArr[inx + 3] == undefined) {
+      tempArr.push('');
+    }
+    let tempPathName = tempArr.join('/');
+    selectedIndex = pagesWithRootFix.indexOf(findSelectedTopPage(tempPathName, pagesWithRootFix));
+  }
+  // Assume first item is selected
+  if (selectedIndex === -1) {
+    selectedIndex = 0;
+  }
+  return selectedIndex;
+};
+
+const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav, location }) => {
   const [expandedPages, setExpandedPages] = useState([]);
   const [expandedMenus, setExpandedMenus] = useState([]);
   const [sideNavClick, setSideNavClick] = useState(false);
   const [mobileView, setMobileView] = useState(false);
+  const [selectedMenuItem, setSelectedMenuItem] = useState({});
 
   // If one page has header enabled, use header navigation type for all navigation items
   const hasHeader = selectedSubPages.some(page => page.header);
@@ -44,6 +74,13 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
       document.removeEventListener('click', handleClickOutside, true);
     };
   }, []);
+
+
+  useEffect(() => {
+    const index = getSelectedTabIndex(location, mainNavPages);
+    const pathWithRootFix = rootFix(location.pathname);
+    setSelectedMenuItem(findSelectedTopPageMenu(pathWithRootFix, mainNavPages[index]));
+  }, [location.pathname])
 
   useEffect(() => {
     if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
@@ -200,6 +237,7 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
                 {...getExternalLinkProps(pageHref)}
                 href={pageHref}
                 className="spectrum-SideNav-itemLink">
+
                 {page.title}
               </a>
             ) : (
@@ -218,6 +256,7 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
                 }}
                 to={pageHref}
                 className="spectrum-SideNav-itemLink">
+                { selectedMenuItem === page  && <CheckMark /> }
                 {page.title}
                 {page.menu && page.menu.length > 0 ? (
                   <ChevronRight
