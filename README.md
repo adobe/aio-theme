@@ -1964,6 +1964,79 @@ Use `slots` to identify the markdown content:
 Use `theme` to match the text color to your color scheme. Defaults to `lightest`.
 
 Use `width` to define the size of the block. Supported values are `100%`, `50%` and `33%`.
+### MiniResourceCard
+
+Used to display the Product information along with the images/icons and headings, with link in a concise and visually appealing way.
+
+![miniresource card](docs/images/mini-resource.png)
+
+```
+<MiniResourceCard slots="image,heading,text,link" repeat="6" theme="lightest" inRow="3" textColor="#427dcd"/>
+
+![Forge the path to customer success](./S_AniChangeBackground.png)
+
+### Remove Background
+
+To remove the background from an image
+
+[Adobe I/O](https://adobe.io)
+
+![Forge the path to customer success](./S_AniConvertToGIF.png)
+
+### Convert to GIF
+
+To convert the video to the GIF format
+
+[Adobe I/O](https://adobe.io)
+
+![Forge the path to customer success](./S_AniCrop.png)
+
+### Crop Image
+
+To crop the image
+
+[Adobe I/O](https://adobe.io)
+
+![Forge the path to customer success](./S_AniMergeVideo.png)
+
+### Merge Video
+
+Merge two or more videos
+
+[Adobe I/O](https://adobe.io)
+
+![Forge the path to customer success](./S_AniResizeVideo.png)
+
+### Resize Video
+
+To resize the video
+
+[Adobe I/O](https://adobe.io)
+
+![Forge the path to customer success](./S_AniTrimVideo.png)
+
+### Trim Video
+
+Trimming the video
+
+[Adobe I/O](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image` (required)
+- `heading` (optional)
+- `text` (optional)
+- `link` (optional)
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+Use `repeat` to define how many code sections are part.
+
+Use `textColor` to define the color of the text. The preset is black.
+
+Use `inRow` to define the number of mini cards in a row
 
 ### Carousel
 
