@@ -44,6 +44,7 @@ import { AnchorButtonGroup } from '../AnchorButtonGroup';
 import { DCSummaryBlock } from '../DCSummaryBlock';
 import {TeaserBlock} from "../TeaserBlock";
 import { VideoCarousel } from '../VideoCarousel';
+import { GetCredential } from '../GetCredential';
 export const MDXBlocks = {
   Hero,
   DiscoverBlock,
@@ -78,5 +79,6 @@ export const MDXBlocks = {
   Carousel,
   AnchorButtonGroup,
   DCSummaryBlock,
-  VideoCarousel
+  VideoCarousel,
+  GetCredential
 };

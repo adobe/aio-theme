@@ -22,7 +22,7 @@ import { isExternalLink } from '../../utils';
 const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-size-800))', location }) => {
   const iframe = useRef(null);
   // some strangeness with ims not being set within context???
-  const { ims, isLoadingIms } = useContext(Context);
+  const { ims, isLoadingIms, clientId, APIKey } = useContext(Context);
   let imsHack;
   const [child, setChild] = useState(null);
 
@@ -52,6 +52,13 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
       };
     }
   }, [iframe, isLoadingIms]);
+
+  useEffect(() => {
+    if (child) {
+      child.onSetClientId(clientId);
+      child.onSetAPIKey(APIKey);
+    }
+  }, [clientId, APIKey]);
 
   const iframeSrc = isExternalLink(src) ? src : withPrefix(src);
 

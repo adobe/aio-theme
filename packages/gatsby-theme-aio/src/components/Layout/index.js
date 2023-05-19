@@ -45,6 +45,7 @@ import { GlobalHeader } from '../GlobalHeader';
 import { SEO } from '../SEO';
 import { ProgressCircle } from '../ProgressCircle';
 import nextId from 'react-id-generator';
+import {GetCredential} from "../GetCredential";
 
 // GATSBY_ALGOLIA_APPLICATION_ID=...
 // GATSBY_ALGOLIA_SEARCH_API_KEY=...
@@ -314,6 +315,8 @@ export default ({ children, pageContext, location }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadSearchFrame, setLoadSearchFrame] = useState(false);
   const [hasSideNav, setHasSideNav] = useState(false);
+  const [clientId, setClientId] = useState(null);
+  const [APIKey, setAPIKey] = useState(null);
 
   // Show search if search param is set
   useEffect(() => {
@@ -750,6 +753,8 @@ export default ({ children, pageContext, location }) => {
           allMdx,
           allGithub,
           allGithubContributors,
+          clientId,
+          APIKey,
         }}>
         <SEO
           title={frontMatter?.title}
@@ -876,6 +881,7 @@ export default ({ children, pageContext, location }) => {
                 </main>
 
                 <main hidden={!pageSrc['frame'].has}>
+                  <GetCredential credentialType="apiKey" setClientId={setClientId} setAPIKey={setAPIKey} />
                   {pageSrc['frame'].src &&
                     pageSrc['frame'].block &&
                     createElement(pageSrc['frame'].block, {
