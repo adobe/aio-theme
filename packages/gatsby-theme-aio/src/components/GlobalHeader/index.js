@@ -690,7 +690,7 @@ const GlobalHeader = ({
                                       }
 
                                       &>div>div{
-                                          width:10px !important;
+                                        width:var(--spectrum-global-dimension-size-100) !important;
                                       }
 
                                       &>div>div>svg{
