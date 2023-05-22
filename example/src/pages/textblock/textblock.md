@@ -5,7 +5,7 @@ import video1 from "./TextBlockWithLocalVideo.mp4"
 
 Text Blocks are used for layout compositions. They are areas for long blocks of text and explaining features etc. for Product/Platform pages. They are coupled with images or videos.
 
-<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left" />
+<TextBlock slots="icons,heading,text,buttons" videoUrl={video1} variantsTypePrimary='accent' variantStyleFill = "fill" homeZigZag position="left" hasCodeBlock />
 
 ![Adobe Express](./Adobe-Express-logo-RGB.png)
 
@@ -15,4 +15,3 @@ Quick actions turn multistep design workflows into just a few clicks, making rem
 
 - [Learn more](https://adobe.io)
 - [Try it ](https://adobe.io)
-
