@@ -515,11 +515,11 @@ GATSBY_ALGOLIA_APPLICATION_ID=adobes-application-key
 GATSBY_ALGOLIA_SEARCH_API_KEY=adobes-public-search-key
 ```
 
-Please content the Adobe DevSite team to get the correct values for your site.
+Please contact the Adobe DevSite team to get the correct values for your site.
 
 - `GATSBY_ALGOLIA_INDEX_NAME` — your-sites-repo-name (by convention, the repo and index names are the same).
 - `GATSBY_ALGOLIA_APPLICATION_ID` — Alpha-numeric string required to **access** Adobe's product documentation, including yours.
-- `GATSBY_ALGOLIA_SEARCH_KEY` - Alpha-numeric string required to **search** Adobe's product documentation, including yours.
+- `GATSBY_ALGOLIA_SEARCH_API_KEY` - Alpha-numeric string required to **search** Adobe's product documentation, including yours.
 
 ## Global Navigation
 
