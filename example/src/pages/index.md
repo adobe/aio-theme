@@ -266,6 +266,12 @@ Some tables here for testing.
 | **Interface:**  | [`InstallSchemaInterface`] |
 | **Method:**     | `install()`                |
 
+| |
+|:----------------:|
+| **Class name:** |
+| **Interface:**  |
+| **Method:**     |
+
 Here's a table with some column headers and bigger rows.
 
 Element | Description

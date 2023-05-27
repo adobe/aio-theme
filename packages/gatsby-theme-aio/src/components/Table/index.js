@@ -89,7 +89,7 @@ const TBody = ({ children, ...props }) => {
 
 const Tr = ({ children, ...props }) => {
   const tableWidth = props.tableWidth;
-  const columnCount = parseInt(children.length);
+  const columnCount = isNaN(children.length) ? 1 : parseInt(children.length);
   const columnWidthDistribution = !props.columnWidthDistribution.length
     ? Array(columnCount).fill(Number(tableWidth) / columnCount)
     : props.columnWidthDistribution;
@@ -105,10 +105,12 @@ const Tr = ({ children, ...props }) => {
           background-color: inherit;
         }
       `}>
-      {children.map((child, index) => {
-        child.props.cellWidth = columnWidthDistribution[index];
-        return child;
-      })}
+      {columnCount === 1
+        ? children
+        : children.map((child, index) => {
+            child.props.cellWidth = columnWidthDistribution[index];
+            return child;
+          })}
     </tr>
   );
 };
