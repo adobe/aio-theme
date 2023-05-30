@@ -37,6 +37,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
         child.onShow();
       }
     }
+    checkIFrameLoaded();
   }, [location.pathname]);
 
   useEffect(() => {
@@ -44,14 +45,13 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
     if (iframe != null && !isLoadingIms) {
 
       // TODO: figure out why ims from context is not being updated so have to use a hacky solution like this
-      imsHack = window.adobeIMS;
       const connection = createConnection();
 
       return () => {
         connection.destroy();
       };
     }
-  }, [iframe, isLoadingIms]);
+  }, [iframe, isLoadingIms, location.pathname]);
 
   useEffect(() => {
     if (child) {
@@ -62,12 +62,36 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
 
   const iframeSrc = isExternalLink(src) ? src : withPrefix(src);
 
+  const checkIFrameLoaded = () => {
+    const renderedFrame = document.getElementById('redoclyIFrame');
+    let iframeDoc;
+    try {
+      iframeDoc = renderedFrame.contentDocument;
+      // Check if loading is complete
+      if (iframeDoc.readyState === 'complete') {
+        renderedFrame.onload = () => {
+          const connection = createConnection();
+          renderedFrame.contentWindow.postMessage(
+            JSON.stringify({ localPathName: window.location.pathname }),
+            '*'
+          );
+        };
+        // The loading is complete, call the function we want executed once the iframe is loaded
+        return;
+      }
+    } catch (error) {
+      window.setTimeout(checkIFrameLoaded, 100);
+    }
+  }
+
   const createConnection = () => {
+    imsHack = window.adobeIMS;
     const connection = connectToChild({
       // The iframe to which a connection should be made
       iframe: iframe.current,
       // Manually set origin as auto-detection may fail, as the src of the iframe is set later
-      childOrigin: isExternalLink(src) ? new URL(src).origin : window.origin,
+      //  childOrigin: isExternalLink(src) ? new URL(src).origin : window.origin,
+      childOrigin: '*',
       // Methods the parent is exposing to the child
       methods: {
         scrollTop(position = 0) {
@@ -117,10 +141,11 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
             return null;
           }
         }
-      }
+      },
     });
 
     connection.promise.then((child) => {
+      console.log("connected to child");
       if (iframe.current.clientHeight === 0) {
         child.onHide();
       } else {
@@ -139,6 +164,7 @@ const Frame = ({ src, height = 'calc(100vh - var(--spectrum-global-dimension-siz
     <>
       <iframe
         title="Main content"
+        id="redoclyIFrame"
         ref={iframe}
         src={connectionReady ? iframeSrc : ''}
         css={css`
