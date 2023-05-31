@@ -1,3 +1,8 @@
+
+## Mini Resource card
+
+Miniresource card allows to put the text, image, description
+
 <MiniResourceCard slots="image,heading,text,link" repeat="6" theme="lightest" inRow="3" textColor="#427dcd"/>
 
 ![Forge the path to customer success](./S_AniChangeBackground.png)
