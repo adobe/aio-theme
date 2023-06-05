@@ -97,7 +97,7 @@
     "@spectrum-css/typography": "4.0.20",
     "@spectrum-css/underlay": "2.0.31",
     "@spectrum-css/vars": "8.0.0",
-    "@spectrum-css/well": "3.0.22",
+    "@spectrum-css/well": "3.0.32",
     "algolia-html-extractor": "^0.0.1",
     "algoliasearch": "^4.14.2",
     "await-exec": "^0.1.2",
