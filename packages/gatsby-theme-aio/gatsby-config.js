@@ -53,6 +53,7 @@ module.exports = {
     `gatsby-plugin-mdx-embed`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -151,6 +152,15 @@ module.exports = {
         concurrentQueries: false, // default: true
         dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.
         continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
+      },
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require(`postcss-import`),
+        require(`postcss-varfallback`),
+        require(`postcss-dropunusedvars`),
+        require(`cssnano`)],
       },
     },
   ],
