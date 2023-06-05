@@ -119,7 +119,7 @@
     "gatsby-transformer-remark": "^5.23.0",
     "gatsby-transformer-sharp": "4.23.0",
     "https-browserify": "^1.0.0",
-    "jsdom": "^20.0.0",
+    "jsdom": "^21.1.1",
     "lottie-web": "^5.9.6",
     "mdx-embed": "^1.0.0",
     "mobx": "^6.6.2",
