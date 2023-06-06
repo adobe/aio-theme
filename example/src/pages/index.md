@@ -327,6 +327,12 @@ Inline Alert as a nested component
       Lorem ipsum dolor sit amet
 
       </InlineNestedAlert>
+   
 
+<Media slots="video" width="500px" height="300px"/>
 
+<https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4>
 
+<Media slots="video" width="500px" height="300px"/>
+
+<https://video.tv.adobe.com/v/26260/>
