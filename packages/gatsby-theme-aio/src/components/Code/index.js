@@ -78,9 +78,9 @@ const Code = ({ children, className = '', theme }) => {
               css={css`
                 position: absolute;
                 right: 10px;
-                top: -10px;
-                border-color: var(--spectrum-actionbutton-m-border-color,var(--spectrum-alias-border-color));
-                color: var(--spectrum-actionbutton-m-text-color,var(--spectrum-alias-text-color));
+                top: 0px;
+                border-color: var(--spectrum-actionbutton-m-border-color,var(--spectrum-alias-border-color)) !important;
+                color: var(--spectrum-actionbutton-m-text-color,var(--spectrum-alias-text-color)) !important;
                 padding: var(--spectrum-global-dimension-size-65)    
                 `}
               onClick={() => {
@@ -124,7 +124,7 @@ const Code = ({ children, className = '', theme }) => {
                 <span className="spectrum-Tooltip-tip" />
               </span>
             </div>
-            <pre className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
+            <pre css={css`padding-top: 30px !important;`} className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
               {lines.map((line, i) => {
                 const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 
