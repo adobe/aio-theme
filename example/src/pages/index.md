@@ -327,7 +327,6 @@ Inline Alert as a nested component
       Lorem ipsum dolor sit amet
 
       </InlineNestedAlert>
-   
-   
-   
-   
+
+
+
