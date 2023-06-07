@@ -164,12 +164,6 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 
 <MiniResource />
 
-#### Media with mp4
-
-<Media slots="video" width="100%" height="300px"/>
-
-<https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4>
-
 #### Media with adobe link
 
 <Media slots="video" width="100%" height="300px"/>
