@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.10...@adobe/gatsby-theme-aio@4.9.11) (2023-06-07)
+
+### Fix
+
+* Error when only one table column [d347f50](https://github.com/adobe/aio-theme/commit/d347f50f2466abf26b206f4ac312bee1051918f0)
+
+* Formatting issues in text block [ff03756](https://github.com/adobe/aio-theme/commit/ff037563d63e8a8475aa7056894900ba031e7d2a)
+
 ## [4.9.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.9...@adobe/gatsby-theme-aio@4.9.10) (2023-05-19)
 
 ### Feature
