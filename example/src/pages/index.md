@@ -164,6 +164,18 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 
 <MiniResource />
 
+#### Media with mp4
+
+<Media slots="video" width="100%" height="300px"/>
+
+<https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4>
+
+#### Media with adobe link
+
+<Media slots="video" width="100%" height="300px"/>
+
+<https://video.tv.adobe.com/v/26260/>
+
 ## Inline Alerts {#Categories}
 
 These are the five types of inline alerts you can use.
@@ -328,11 +340,3 @@ Inline Alert as a nested component
 
       </InlineNestedAlert>
    
-
-<Media slots="video" width="500px" height="300px"/>
-
-<https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4>
-
-<Media slots="video" width="500px" height="300px"/>
-
-<https://video.tv.adobe.com/v/26260/>
