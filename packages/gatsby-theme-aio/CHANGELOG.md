@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.12](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.11...@adobe/gatsby-theme-aio@4.9.12) (2023-06-07)
+
+### Fix
+
+* Fix minicard to be clickable and not just the image [c293c01](https://github.com/adobe/aio-theme/commit/c293c01ac7340e498dacb6cb0716f8406638fb83)
+
+
 ## [4.9.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.10...@adobe/gatsby-theme-aio@4.9.11) (2023-06-07)
 
 ### Fix
