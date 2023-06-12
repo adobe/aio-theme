@@ -73,6 +73,21 @@ const Code = ({ children, className = '', theme }) => {
               position: relative;
               max-width: calc(100vw - var(--spectrum-global-dimension-size-800));
             `}>
+            <ActionButton
+              aria-describedby={tooltipId}
+              css={css`
+                position: absolute;
+                right: 10px;
+                top: 0px;
+                border-color: var(--spectrum-actionbutton-m-border-color,var(--spectrum-alias-border-color)) !important;
+                color: var(--spectrum-actionbutton-m-text-color,var(--spectrum-alias-text-color)) !important;
+                padding: var(--spectrum-global-dimension-size-65)    
+                `}
+              onClick={() => {
+                copy(textarea, document, setIsTooltipOpen);
+              }}>
+              Copy
+            </ActionButton>
             <div
               css={css`
                 position: absolute;
@@ -91,18 +106,6 @@ const Code = ({ children, className = '', theme }) => {
                 ref={textarea}
                 value={children}
               />
-              <ActionButton
-                aria-describedby={tooltipId}
-                css={css`
-                border-color: var(--spectrum-actionbutton-m-border-color,var(--spectrum-alias-border-color));
-                color: var(--spectrum-actionbutton-m-text-color,var(--spectrum-alias-text-color));
-                padding: var(--spectrum-global-dimension-size-65)    
-                `}
-                onClick={() => {
-                  copy(textarea, document, setIsTooltipOpen);
-                }}>
-                Copy
-              </ActionButton>
               <span
                 role="tooltip"
                 id={tooltipId}
@@ -121,7 +124,7 @@ const Code = ({ children, className = '', theme }) => {
                 <span className="spectrum-Tooltip-tip" />
               </span>
             </div>
-            <pre className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
+            <pre css={css`padding-top: 30px !important;`} className={classNames(className, 'spectrum-Code spectrum-Code--sizeM')}>
               {lines.map((line, i) => {
                 const { style: lineStyles, ...lineProps } = getLineProps({ line, key: i });
 
@@ -132,15 +135,17 @@ const Code = ({ children, className = '', theme }) => {
                       display: table-row;
                     `}>
                     {isMultiLine && (
-                      <span
+                      <span data-pseudo-content={i+1}
                         css={css`
                           display: table-cell;
                           color: var(--spectrum-global-color-gray-500);
                           text-align: left;
                           padding-right: var(--spectrum-global-dimension-size-200);
                           user-select: none;
+                          &::before {
+                            content: attr(data-pseudo-content);
+                          }
                         `}>
-                        {i + 1}
                       </span>
                     )}
                     <span
