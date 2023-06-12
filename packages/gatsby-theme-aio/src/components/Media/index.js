@@ -31,6 +31,9 @@ const Media = ({ video, ...props }) => {
   }
 
   const link = getElementChild(video);
+  const videos = ["mp4", "3gp", "ogg"];
+  const url = new URL(link.props.href);
+  const extension = url.pathname.split(".")[1];
   const youTubeId = getYouTubeId(new URL(link.props.href));
   if (youTubeId) {
     return (
@@ -44,18 +47,23 @@ const Media = ({ video, ...props }) => {
     );
   }
 
-  return (
-    <video
+  return extension && videos.includes(extension) ?
+    ( <video
       controls
       src={link.props.href}
       css={css`
         display: block;
-        width: 100%;
         margin: var(--spectrum-global-dimension-size-400) auto;
       `}
       {...props}
     />
-  );
+  ) : (
+      <iframe src={link.props.href}  css={css`
+        display: block;
+        margin: var(--spectrum-global-dimension-size-400) auto;
+      `} {...props}/>
+    )
+    ;
 };
 
 Media.propTypes = {
