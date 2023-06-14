@@ -323,6 +323,10 @@ export default ({ children, pageContext, location }) => {
     }
   }, [setShowSearch]);
 
+  useEffect( () => {
+    setHasSideNav(false);
+  }, [location]);
+
   useEffect(() => {
     window.onpopstate = () => {
       const searchParams = new URL(window.location).searchParams;
