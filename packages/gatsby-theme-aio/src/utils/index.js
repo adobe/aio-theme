@@ -10,7 +10,17 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { Children, cloneElement } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
+import { useDebouncedCallback } from 'use-debounce';
 import { withPrefix } from 'gatsby';
 import globals from '../../conf/globals';
 
@@ -265,6 +275,107 @@ const cloneChildren = (children, changeProps) => {
   });
 };
 
+// Modified to actually grab the parent size https://github.com/dagda1/cuttingedge/blob/main/packages/use-get-parent-size/src/useParentSize/useParentSize.ts
+
+const initialContentRect = {
+  bottom: undefined,
+  height: undefined,
+  left: undefined,
+  width: undefined,
+  right: undefined,
+  top: undefined,
+  x: undefined,
+  y: undefined,
+};
+
+const isNil = val => typeof val === 'undefined' || val === null;
+
+const useParentSize = (
+  ref,
+  {
+    debounceDelay = 500,
+    initialValues = initialContentRect,
+    transformFunc = o => o,
+    maxDifference = 10,
+    callback = o => o,
+  }
+) => {
+  const [contentRect, setContentRect] = useState({
+    ...initialContentRect,
+    ...initialValues,
+  });
+  const rerenderCount = useRef(0);
+  const previousContentRect = useRef(initialValues);
+
+  const transformer = useCallback(transformFunc, [transformFunc]);
+
+  if (!ref) console.error('You must pass a valid ref to useParentSize');
+
+  const debouncedCallback = useDebouncedCallback(
+    value => {
+      setContentRect(value);
+      callback(value);
+    },
+    debounceDelay,
+    {
+      leading: true,
+    }
+  );
+
+  const refElement = ref.current;
+
+  useLayoutEffect(() => {
+    if (isNil(refElement)) {
+      if (rerenderCount.current > 10) {
+        throw new Error('Maximum rerender count and no refElement Found');
+      }
+
+      setContentRect({ ...contentRect });
+      rerenderCount.current++;
+      return;
+    }
+
+    if (isNil(refElement.parentNode)) {
+      if (rerenderCount.parentNode > 10) {
+        throw new Error('Maximum rerender count and no parentNode Found');
+      }
+
+      setContentRect({ ...contentRect });
+      rerenderCount.parentNode++;
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(entries => {
+      if (!Array.isArray(entries) || entries.length !== 1) {
+        return;
+      }
+
+      const entry = entries[0];
+      const newWidth = Math.round(entry.contentRect.width);
+      const newHeight = Math.round(entry.contentRect.height);
+
+      const widthDiff = Math.abs(newWidth - (previousContentRect.current.width ?? 0));
+      const heightDiff = Math.abs(newHeight - (previousContentRect.current.height ?? 0));
+
+      if (widthDiff > maxDifference || heightDiff > maxDifference) {
+        previousContentRect.current.height = newHeight;
+        previousContentRect.current.width = newWidth;
+        debouncedCallback(entry.contentRect);
+      }
+    });
+
+    requestAnimationFrame(() => resizeObserver?.observe(refElement.parentNode));
+
+    return () => {
+      if (!!refElement.parentNode) {
+        resizeObserver?.unobserve(refElement.parentNode);
+      }
+    };
+  }, [maxDifference, debouncedCallback, refElement, initialValues, contentRect]);
+
+  return useMemo(() => transformer(contentRect), [contentRect, transformer]);
+};
+
 const DEFAULT_HOME = {
   title: 'Products',
   href: '/apis/',
@@ -303,6 +414,7 @@ export {
   getExternalLinkProps,
   getElementChild,
   cloneChildren,
+  useParentSize,
   DEFAULT_HOME,
   SEARCH_PARAMS,
   SIDENAV_WIDTH,

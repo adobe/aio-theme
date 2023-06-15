@@ -65,10 +65,12 @@
     "@adobe/focus-ring-polyfill": "^0.1.5",
     "@adobe/gatsby-source-github-file-contributors": "^0.3.1",
     "@adobe/prism-adobe": "^1.0.3",
+    "@cutting/use-get-parent-size": "^2.1.2",
     "@emotion/react": "^11.10.4",
     "@loadable/component": "^5.15.2",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
+    "@react-hook/resize-observer": "^1.2.6",
     "@spectrum-css/accordion": "3.0.24",
     "@spectrum-css/actionbutton": "2.1.7",
     "@spectrum-css/actiongroup": "^2.0.0",
@@ -138,6 +140,7 @@
     "redoc-cli": "^0.13.20",
     "rehype-slug-custom-id": "^1.1.0",
     "request": "^2.88.2",
+    "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.31.0",
     "stream-http": "^3.2.0",
     "styled-components": "^5.3.5",
@@ -145,6 +148,7 @@
     "to-arraybuffer": "^1.0.1",
     "tty-browserify": "^0.0.1",
     "unist-util-select": "3.0.4",
+    "use-debounce": "^9.0.4",
     "uuid": "^9.0.0"
   }
 }
