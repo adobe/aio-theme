@@ -40,7 +40,6 @@ __metadata:
     "@adobe/focus-ring-polyfill": ^0.1.5
     "@adobe/gatsby-source-github-file-contributors": ^0.3.1
     "@adobe/prism-adobe": ^1.0.3
-    "@cutting/use-get-parent-size": ^2.1.2
     "@emotion/react": ^11.10.4
     "@loadable/component": ^5.15.2
     "@mdx-js/mdx": 1.6.22
@@ -2014,22 +2013,6 @@ __metadata:
   dependencies:
     "@jridgewell/trace-mapping": 0.3.9
   checksum: 5718f267085ed8edb3e7ef210137241775e607ee18b77d95aa5bd7514f47f5019aa2d82d96b3bf342ef7aa890a346fa1044532ff7cc3009e7d24fce3ce6200fa
-  languageName: node
-  linkType: hard
-
-"@cutting/use-get-parent-size@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "@cutting/use-get-parent-size@npm:2.1.2"
-  dependencies:
-    assert-ts: ^0.3.4
-    resize-observer-polyfill: ^1.5.1
-    use-debounce: ^9.0.4
-  peerDependencies:
-    react: ">= 18.x.x"
-    react-dom: ">= 18.x.x"
-    resize-observer-polyfill: "*"
-    use-debounce: ">= 9.0.x"
-  checksum: a197bed7c1b47818069bdcb009f4ddd14cd89078c82eb70d342ae27f8b7419bd24ce1b344df17bc018882a6e897177f65c4ad8b42e25a3fdd5be023d85ce988e
   languageName: node
   linkType: hard
 
@@ -6394,13 +6377,6 @@ __metadata:
   version: 1.0.0
   resolution: "assert-plus@npm:1.0.0"
   checksum: 19b4340cb8f0e6a981c07225eacac0e9d52c2644c080198765d63398f0075f83bbc0c8e95474d54224e297555ad0d631c1dcd058adb1ddc2437b41a6b424ac64
-  languageName: node
-  linkType: hard
-
-"assert-ts@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "assert-ts@npm:0.3.4"
-  checksum: 143d6dd83c3cbe71bc4927d734de22ef0a0052f3bde059eed78d5ca5b71428bc35a5c0437d3637cde17583babc46116e6076414a4f69e5735e32391adc5984e6
   languageName: node
   linkType: hard
 
