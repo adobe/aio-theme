@@ -10,27 +10,32 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import '@spectrum-css/table';
-import { MOBILE_SCREEN_WIDTH } from '../../utils';
+import { MOBILE_SCREEN_WIDTH, useParentSize } from '../../utils';
 
 const Table = ({ children, css: cssOverrides, columnWidths, ...props }) => {
-  const [width, setWidth] = useState(MOBILE_SCREEN_WIDTH);
   const tableRef = useRef(null);
+  const [width, setWidth] = useState(parseInt(MOBILE_SCREEN_WIDTH, 10));
+
+  useParentSize(tableRef, {
+    debounceDelay: 500,
+    initialValues: { width: parseInt(MOBILE_SCREEN_WIDTH, 10) },
+    callback: size => {
+      if (size.width) {
+        setWidth(size.width);
+      }
+    },
+  });
+
   const columnWidthDistribution = columnWidths
     ? columnWidths
         .split(',')
         .map(num => (width * Number(num)) / 100)
         .filter(width => !isNaN(width))
     : [];
-
-  useEffect(() => {
-    if (tableRef.current.parentNode) {
-      setWidth(Number(tableRef.current.parentNode.offsetWidth));
-    }
-  }, [width]);
 
   return (
     <table
