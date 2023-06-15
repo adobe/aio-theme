@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.12...@adobe/gatsby-theme-aio@4.9.13) (2023-06-15)
+
+### Fix
+
+* Fix table not responding to parent size change [7d6bfb5](https://github.com/adobe/aio-theme/commit/7d6bfb5da043e3428272d4983eaad6944da9b587)
+
 ## [4.9.12](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.11...@adobe/gatsby-theme-aio@4.9.12) (2023-06-07)
 
 ### Fix
@@ -22,11 +28,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Feature
 
-* Add in mini resource component [af1ef54](af1ef544fb054afb15dd7fc3ebbea3c81c22d59c).
+* Add in mini resource component [af1ef54](https://github.com/adobe/aio-theme/commit/af1ef544fb054afb15dd7fc3ebbea3c81c22d59c).
 
 ### Fix
 
-* Checkmark padding issue on the navbar [9b7c31f](9b7c31f02a91f6a35091167f44bffb8cbe50cd84)
+* Checkmark padding issue on the navbar [9b7c31f](https://github.com/adobe/aio-theme/commit/9b7c31f02a91f6a35091167f44bffb8cbe50cd84)
 
 ## [4.9.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.8...@adobe/gatsby-theme-aio@4.9.9) (2023-05-09)
 
