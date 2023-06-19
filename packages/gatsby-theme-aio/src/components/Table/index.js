@@ -75,22 +75,22 @@ const THead = ({ children, ...props }) => {
 
 const Th = ({ children }) => <th className="spectrum-Table-headCell">{children}</th>;
 
-const TBody = ({ children, ...props }) => {
-  const childrenArr = children.length > 1 ? children : [children];
-  return (
-    <tbody
-      className="spectrum-Table-body"
-      css={css`
-        width: ${props.tableWidth}px;
-      `}>
-      {childrenArr.map(child => {
-        child.props.tableWidth = props.tableWidth;
-        child.props.columnWidthDistribution = props.columnWidthDistribution;
-        return child;
-      })}
-    </tbody>
-  );
-};
+const TBody = ({ children, ...props }) => (
+  <tbody
+    className="spectrum-Table-body"
+    css={css`
+      width: ${props.tableWidth}px;
+    `}>
+    {React.Children.map(children, child => ({
+      ...child,
+      props: {
+        ...child.props,
+        tableWidth: props.tableWidth,
+        columnWidthDistribution: props.columnWidthDistribution,
+      },
+    }))}
+  </tbody>
+);
 
 const Tr = ({ children, ...props }) => {
   const tableWidth = props.tableWidth;
