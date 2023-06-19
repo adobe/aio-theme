@@ -13,6 +13,7 @@
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
+import { Picker } from '../Picker';
 import { Tabs, Item as TabsItem, Label as TabsItemLabel, positionIndicator,CodeTabIndicator } from '../Tabs';
 
 const CodeBlock = (props) => {
@@ -37,7 +38,7 @@ const CodeBlock = (props) => {
   const propKeys = Object.keys(props);
   const filteredCodeProps = propKeys.filter((key) => key.startsWith('code'));
   const filteredHeadingProps = propKeys.filter((key) => key.startsWith('heading'));
-  const languages = props.languages.split(',').map((language) => language.trim());
+  const languages = props.languages?.split(',').map((language) => language.trim());
 
   // A code language maps to a code content but one tab heading can have multiple codes
   const ignoredHeadings = [];
@@ -46,7 +47,7 @@ const CodeBlock = (props) => {
       codeBlocks.push({
         heading: headingI,
         code: [filteredCodeProps[i]],
-        languages: [languages[i]]
+        languages: languages && [languages[i]]
       });
 
       const headingTextI = props[headingI].props.children;
@@ -57,7 +58,7 @@ const CodeBlock = (props) => {
 
           if (headingTextI === headingTextK) {
             const block = codeBlocks.find((block) => block.heading === headingI);
-            if (block) {
+            if (block && block.languages) {
               block.code.push(filteredCodeProps[k]);
               block.languages.push(languages[k]);
               ignoredHeadings.push(headingK);
@@ -131,7 +132,7 @@ const CodeBlock = (props) => {
           })}
           <CodeTabIndicator ref={selectedTabIndicator}  index={selectedIndex.tab}/>
         </Tabs>
-        {/* <div
+        { <div
           css={css`
             display: flex;
             align-items: center;
@@ -140,14 +141,15 @@ const CodeBlock = (props) => {
           `}>
           {codeBlocks.map(
             (block, i) =>
-              selectedIndex.tab === i && (
+              selectedIndex.tab === i && codeBlocks[i].languages && (
                 <Picker
                   key={i}
                   isQuiet
-                  items={codeBlocks[i].languages.map((language, k) => ({
-                    title: language,
+                  items={codeBlocks[i].languages.map((language, k) => {
+                    return typeof language !== 'undefined' ?
+                  {title: language,
                     selected: k === selectedIndex.language
-                  }))}
+                  }:null})}
                   onChange={(index) => {
                     setSelectedIndex({
                       tab: selectedIndex.tab,
@@ -157,7 +159,7 @@ const CodeBlock = (props) => {
                 />
               )
           )}
-        </div> */}
+        </div>}
       </div>
       {codeBlocks.map((block, i) =>
         block.code.map((code, k) => (

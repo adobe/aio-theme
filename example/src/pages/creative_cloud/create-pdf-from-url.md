@@ -42,7 +42,7 @@ curl --location --request POST 'https://cpf-ue1.adobe.io/ops/:create?respondWith
   --form 'InputFile0=@""'
 ```
 
-#### Node.js
+#### REST API
 
 ```js
 // Create an ExecutionContext using credentials and create a new operation instance.
