@@ -40,11 +40,10 @@ const Minicard = ({
 }) => {
     const Element = link ? GatsbyLink : 'div';
     return (
-        <Element
-            to={href(link)}
+        <div
+            
             css={css`
             display: flex;
-            text-decoration: none;
 
             justify-content: ${!heading && !text && "center"}
 
@@ -57,11 +56,13 @@ const Minicard = ({
 
             @media screen and (max-width: ${MIN_MOBILE_SCREEN_WIDTH}) {
             max-width: calc(${layoutColumns(3.5)}) !important;
-            }
+            }        
+
         `}
         >
             {image ? (
-                <div
+                <Element
+                    to={href(link)}
                     css={css`
                     width:100px;
                     height:80px
@@ -87,7 +88,7 @@ const Minicard = ({
                     >
                         <HeroImage image={image} />
                     </h2>
-                </div>
+                </Element>
             ) : null}
 
             {text !== undefined || heading !== undefined ? (
@@ -152,7 +153,7 @@ const Minicard = ({
 
                 </div>
             ) : null}
-        </Element>
+        </div>
     );
 };
 
@@ -164,7 +165,6 @@ const MiniResourceCard = ({
     ...props
 }) => {
     const propKeys = Object.keys(props);
-    console.log("propsss", props);
     const miniCards = propKeys.filter((key) => key.startsWith("image")).map((data, index) => {
         return {
             image: props[data],

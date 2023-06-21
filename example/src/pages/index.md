@@ -30,6 +30,7 @@ import VideoCarouselComp from './videoCarousel/videoCarousel.md'
 import blackbg from "./teaser/black_power.jpg"
 import TextBlockComp from "./textblock/textblock.md"
 import MiniResource from "./miniresource_block/index.md"
+import TextBlockImage from "./imageTextBlock/index.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -164,6 +165,8 @@ Accordion item is to expand and collapse the content by clicking the icon. By de
 
 <MiniResource />
 
+<TextBlockImage />
+
 ## Inline Alerts {#Categories}
 
 These are the five types of inline alerts you can use.
@@ -260,25 +263,25 @@ This is an example of `inline code` written with the standard markdown backticks
 
 Some tables here for testing.
 
-| | |
-|-----------------|----------------------------|
+|                 |                            |
+| --------------- | -------------------------- |
 | **Class name:** | `InstallSchema`            |
 | **Interface:**  | [`InstallSchemaInterface`] |
 | **Method:**     | `install()`                |
 
-| |
-|:----------------:|
+|                 |
+| :-------------: |
 | **Class name:** |
 | **Interface:**  |
-| **Method:**     |
+|   **Method:**   |
 
 Here's a table with some column headers and bigger rows.
 
-Element | Description
---- | ---
-`name` | A fully-qualified component name, in the format `<vendor-name>/<component-name>`. All letters must be in lowercase. Use dashes in the `<component-name>` to separate words. Themes must use the format `<vendor-name>/theme-<area>-<theme-name>`.
-`type` | For modules, this value must be set to `magento2-module`. Other possible types are `metapackage`, `magento2-theme`, and `magento2-language`.
-`autoload` | Specify necessary information to be loaded, such as [registration.php](../build/component-registration.md). For more information, see [Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) from Composer.
+| Element    | Description                                                                                                                                                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | A fully-qualified component name, in the format `<vendor-name>/<component-name>`. All letters must be in lowercase. Use dashes in the `<component-name>` to separate words. Themes must use the format `<vendor-name>/theme-<area>-<theme-name>`. |
+| `type`     | For modules, this value must be set to `magento2-module`. Other possible types are `metapackage`, `magento2-theme`, and `magento2-language`.                                                                                                      |
+| `autoload` | Specify necessary information to be loaded, such as [registration.php](../build/component-registration.md). For more information, see [Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) from Composer.                     |
 
 Inline Alert as a nested component
 

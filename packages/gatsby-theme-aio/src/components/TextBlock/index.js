@@ -33,55 +33,55 @@ const MIN_TABLET_SCREEN_WIDTH = '1023px'
 const alignMapping = ["margin-left: 0;", "margin-right: 0;"];
 
 const mediaCSS = css`
-  & {
-    display: inline;
-    width: ${layoutColumns(6)};
-    box-sizing: border-box;
-    padding: var(--spectrum-global-dimension-size-200);
-
-    @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-      display: block;
-      width: 100%;
+    & {
+      display: inline;
+      width: ${layoutColumns(6)};
+      box-sizing: border-box;
+      padding: var(--spectrum-global-dimension-size-200);
+  
+      @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+        display: block;
+        width: 100%;
+      }
     }
-  }
-`;
+  `;
 
 const Icons = ({ icons, isCentered }) =>
   icons
     ? cloneElement(icons, {
-        css: css`
-          list-style: none;
-          padding: 0;
-          margin-bottom: var(--spectrum-global-dimension-size-400) !important;
-          display: flex;
-          justify-content: ${isCentered ? "center" : "flex-start"};
-
-          & li {
+      css: css`
+            list-style: none;
+            padding: 0;
+            margin-bottom: var(--spectrum-global-dimension-size-400) !important;
             display: flex;
-            border-right: 1px solid var(--spectrum-global-color-gray-300);
-            height: var(--spectrum-global-dimension-size-600);
-            margin-right: var(--spectrum-global-dimension-size-150);
-          }
-
-          & li:last-of-type {
-            padding-right: 0;
-            border-right: none;
-          }
-
-          .gatsby-resp-image-wrapper {
-            position: relative;
-            width: var(--spectrum-global-dimension-size-800) !important;
-            margin: 0 auto 0 0!important
-          }
-
-          .gatsby-resp-image-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            object-fit: contain;
-          }
-        `,
+            justify-content: ${isCentered ? "center" : "flex-start"};
+  
+            & li {
+              display: flex;
+              border-right: 1px solid var(--spectrum-global-color-gray-300);
+              height: var(--spectrum-global-dimension-size-600);
+              margin-right: var(--spectrum-global-dimension-size-150);
+            }
+  
+            & li:last-of-type {
+              padding-right: 0;
+              border-right: none;
+            }
+  
+            .gatsby-resp-image-wrapper {
+              position: relative;
+              width: var(--spectrum-global-dimension-size-800) !important;
+              margin-left:0 !important;
+            }
+  
+            .gatsby-resp-image-image {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              object-fit: contain;
+            }
+          `,
     })
     : null;
 
@@ -94,91 +94,91 @@ const Links = ({ links, isCentered, isLinksGroups = false }) =>
   links
     ? cloneElement(links, {
       css: css`
-          list-style: none;
-          padding: 0;
-          display: flex;
-          justify-content: ${isCentered ? "center" : "flex-start"};
-          ${!isLinksGroups ? "" : "flex-wrap: wrap;"}
-          margin-top: ${isCentered || isLinksGroups
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: ${isCentered ? "center" : "flex-start"};
+            ${!isLinksGroups ? "" : "flex-wrap: wrap;"}
+            margin-top: ${isCentered || isLinksGroups
           ? "var(--spectrum-global-dimension-size-200) !important;"
           : "var(--spectrum-global-dimension-size-600) !important;"};
-          & li {
-            display: flex;
-            align-items: center;
-            ${isLinksGroups
-          ? `border-radius: 10px; 
-                border:solid 1.8px;
-                margin-right: var(--spectrum-global-dimension-size-200);
-                height: var(--spectrum-global-dimension-size-300);
-                margin-top: var(--spectrum-global-dimension-size-100);
-                background-color: #F7F7F7;
-                `
-          : "height: var(--spectrum-global-dimension-size-400)"};
-          }
-
-          & li a {
-            white-space: nowrap;           
-            ${isLinksGroups
-          ? `margin: var(--spectrum-global-dimension-size-100); 
-              color: currentColor;
-              text-decoration: none;
-              font-size: var(--spectrum-global-dimension-size-175);`
-          : "margin-right: var(--spectrum-global-dimension-size-600);"};
-          }
-
-          & li:last-of-type a {
-            margin-right: ${isLinksGroups ? "var(--spectrum-global-dimension-size-100)" : "0"}
-          }
-
-          & li:hover{
-            ${isLinksGroups ?
-          `background-color: var(--spectrum-button-primary-m-background-color-hover, var(--spectrum-global-color-gray-800));
-            border-color: var(--spectrum-button-primary-m-border-color-hover, var(--spectrum-global-color-gray-800));            color: var(--spectrum-button-primary-m-text-color-hover, var(--spectrum-global-color-gray-50));`
-          : ""}
-          }        
-          & li:hover a{
-            ${isLinksGroups ? `
-            color: var(--spectrum-button-primary-m-text-color-hover, var(--spectrum-global-color-gray-50));
-            text-decoration: none;`
-          : ""}
-          }
-
-          .gatsby-resp-image-wrapper {
-            max-width: none !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
-
-          .gatsby-resp-image-wrapper {
-            width: var(--spectrum-global-dimension-size-400) !important;
-            margin-left: 0 !important;
-            margin-right: var(--spectrum-global-dimension-size-150) !important;
-          }
-
-          .gatsby-resp-image-image {
-            object-fit: contain;
-          }
-          
-          @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-            flex-direction: ${isLinksGroups ? "initial" : "column"};
-            align-items: ${isCentered ? "center" : "left"};          
-
-            li {
-              margin-top: var(--spectrum-global-dimension-size-100);              
-            }
-
-            li a {
+            & li {
+              display: flex;
+              align-items: center;
               ${isLinksGroups
+          ? `border-radius: 10px; 
+                  border:solid 1.8px;
+                  margin-right: var(--spectrum-global-dimension-size-200);
+                  height: var(--spectrum-global-dimension-size-300);
+                  margin-top: var(--spectrum-global-dimension-size-100);
+                  background-color: #F7F7F7;
+                  `
+          : "height: var(--spectrum-global-dimension-size-400)"};
+            }
+  
+            & li a {
+              white-space: nowrap;           
+              ${isLinksGroups
+          ? `margin: var(--spectrum-global-dimension-size-100); 
+                color: currentColor;
+                text-decoration: none;
+                font-size: var(--spectrum-global-dimension-size-175);`
+          : "margin-right: var(--spectrum-global-dimension-size-600);"};
+            }
+  
+            & li:last-of-type a {
+              margin-right: ${isLinksGroups ? "var(--spectrum-global-dimension-size-100)" : "0"}
+            }
+  
+            & li:hover{
+              ${isLinksGroups ?
+          `background-color: var(--spectrum-button-primary-m-background-color-hover, var(--spectrum-global-color-gray-800));
+              border-color: var(--spectrum-button-primary-m-border-color-hover, var(--spectrum-global-color-gray-800));            color: var(--spectrum-button-primary-m-text-color-hover, var(--spectrum-global-color-gray-50));`
+          : ""}
+            }        
+            & li:hover a{
+              ${isLinksGroups ? `
+              color: var(--spectrum-button-primary-m-text-color-hover, var(--spectrum-global-color-gray-50));
+              text-decoration: none;`
+          : ""}
+            }
+  
+            .gatsby-resp-image-wrapper {
+              max-width: none !important;
+              width: 100% !important;
+              height: 100% !important;
+            }
+  
+            .gatsby-resp-image-wrapper {
+              width: var(--spectrum-global-dimension-size-400) !important;
+              margin-left: 0 !important;
+              margin-right: var(--spectrum-global-dimension-size-150) !important;
+            }
+  
+            .gatsby-resp-image-image {
+              object-fit: contain;
+            }
+            
+            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+              flex-direction: ${isLinksGroups ? "initial" : "column"};
+              align-items: ${isCentered ? "center" : "left"};          
+  
+              li {
+                margin-top: var(--spectrum-global-dimension-size-100);              
+              }
+  
+              li a {
+                ${isLinksGroups
           ? "font-size: var(--spectrum-global-dimension-size-130);` "
           : `margin-right: 0;`
         }
+              }
             }
-          }
-
-          @media screen and (max-width: 767px) {
-            ${isLinksGroups ? `width: min-content` : ""}
-          }
-        `,
+  
+            @media screen and (max-width: 767px) {
+              ${isLinksGroups ? `width: min-content` : ""}
+            }
+          `,
     })
     : null;
 
@@ -206,13 +206,12 @@ const TextBlock = ({
   variantStyleFill = "fill",
   variantStyleOutline = "outline",
   hasCodeBlock = false,
-  homeZigZag = false,
-  isbuttonGroups = false,
   videoUrl,
   position = "left",
+  homeZigZag = false,
+  isbuttonGroups = false,
   ...props
 }) => {
-
   const Element = headerElementType;
 
   let initColumns = 100 / parseFloat(width);
@@ -246,67 +245,65 @@ const TextBlock = ({
 
     if (columns === 1) {
       blockWidth = `max-width: ${layoutColumns(6)};`;
-    } else if (columns >= 3) {
-      blockWidth = "max-width: var(--spectrum-global-dimension-size-5000);";
+    } else if (columns > 3) {
+      blockWidth = "max-width: var(--spectrum-global-dimension-size-3600);";
     } else {
       blockWidth = "max-width: var(--spectrum-global-dimension-size-4600);";
       extraMargin = alignMapping[counter[columns] % columns];
     }
-
-
     return (
       <>
         <section
           className={classNames(className, `spectrum--${theme}`)}
           css={css`
-            display: table-cell;
-            width: ${width.replace("%", "vw")};
-            background: var(--spectrum-global-color-gray-100);
-            padding: var(--spectrum-global-dimension-size-1000) 0;
-
-            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-              display: block;
-              width: 100%;
-            }
-          `}
+              display: table-cell;
+              width: ${width.replace("%", "vw")};
+              background: var(--spectrum-global-color-gray-100);
+              padding: var(--spectrum-global-dimension-size-1000) 0;
+  
+              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                display: block;
+                width: 100%;
+              }
+            `}
         >
           <div
             css={css`
-              ${blockWidth}
-              padding: 0 var(--spectrum-global-dimension-size-400);
-              margin: auto;
-              ${extraMargin}
-
-              @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                max-width: none;
+                ${blockWidth}
+                padding: 0 var(--spectrum-global-dimension-size-400);
                 margin: auto;
-              }
-            `}
+                ${extraMargin}
+  
+                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                  max-width: none;
+                  margin: auto;
+                }
+              `}
           >
             <Icons icons={icons} isCentered={isCentered} />
 
             {image &&
               cloneElement(image, {
                 css: css`
-                  height: var(--spectrum-global-dimension-size-1000);
-                  margin-top: 0;
-                  margin-bottom: var(--spectrum-global-dimension-size-300);
-
-                  .gatsby-resp-image-wrapper {
-                    position: relative;
-                    max-width: none !important;
-                    width: 100% !important;
-                    height: 100% !important;
-                  }
-
-                  .gatsby-resp-image-image {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
-                    object-fit: contain;
-                  }
-                `,
+                    height: var(--spectrum-global-dimension-size-1000);
+                    margin-top: 0;
+                    margin-bottom: var(--spectrum-global-dimension-size-300);
+  
+                    .gatsby-resp-image-wrapper {
+                      position: relative;
+                      max-width: none !important;
+                      width: 100% !important;
+                      height: 100% !important;
+                    }
+  
+                    .gatsby-resp-image-image {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      height: 100%;
+                      object-fit: contain;
+                    }
+                  `,
               })}
             {assetImg &&
               <div className={assetImg?.props?.children} />}
@@ -315,15 +312,15 @@ const TextBlock = ({
               <Element
                 className="spectrum-Heading spectrum-Heading--sizeM"
                 css={css`
-                  margin-bottom: var(
-                    --spectrum-global-dimension-size-200
-                  ) !important;
-
-                  & ~ p {
-                    margin-top: 0;
-                    margin-bottom: 0 !important;
-                  }
-                `}
+                    margin-bottom: var(
+                      --spectrum-global-dimension-size-200
+                    ) !important;
+  
+                    & ~ p {
+                      margin-top: 0;
+                      margin-bottom: 0 !important;
+                    }
+                  `}
               >
                 {heading.props.children}
               </Element>
@@ -332,18 +329,18 @@ const TextBlock = ({
               <h3
                 className="spectrum-Heading spectrum-Heading--sizeM"
                 css={css`
-                  font-size: var(
-                    --spectrum-global-dimension-size-225
-                  ) !important;
-                  margin-bottom: var(
-                    --spectrum-global-dimension-size-200
-                  ) !important;
-
-                  & ~ p {
-                    margin-top: 0;
-                    margin-bottom: 0 !important;
-                  }
-                `}
+                    font-size: var(
+                      --spectrum-global-dimension-size-225
+                    ) !important;
+                    margin-bottom: var(
+                      --spectrum-global-dimension-size-200
+                    ) !important;
+  
+                    & ~ p {
+                      margin-top: 0;
+                      margin-bottom: 0 !important;
+                    }
+                  `}
               >
                 {subHeading.props.children}
               </h3>
@@ -356,10 +353,10 @@ const TextBlock = ({
               styles={[variantStyleFill, variantStyleOutline]}
               variants={[variantsTypePrimary, variantsTypeSecondary]}
               css={css`
-                margin-top: var(--spectrum-global-dimension-size-150);
-                margin-bottom: var(--spectrum-global-dimension-size-150);
-                justify-content: center;
-              `}
+                  margin-top: var(--spectrum-global-dimension-size-150);
+                  margin-bottom: var(--spectrum-global-dimension-size-150);
+                  justify-content: center;
+                `}
             />
 
             <Links links={links} isCentered={isCentered} />
@@ -368,17 +365,17 @@ const TextBlock = ({
 
             {videoUrl &&
               <video loop="true" muted="true" autoPlay preload="metadata" playsInline css={css`
-                display: inline;
-                width: ${layoutColumns(4)};
-                box-sizing: border-box;
-                padding: var(--spectrum-global-dimension-size-200);
-            
-                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                  display: block;
-                  width: 100%;
-                }
-              }
-                `}>
+	                            display: inline;
+	                            width: ${layoutColumns(4)};
+	                            box-sizing: border-box;
+	                            padding: var(--spectrum-global-dimension-size-200);
+                        
+	                            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+	                              display: block;
+	                              width: 100%;
+	                            }
+	                          }
+	                            `}>
                 <source src={videoUrl} type="video/mp4" />
               </video>}
 
@@ -398,72 +395,72 @@ const TextBlock = ({
       <section
         className={classNames(className, `spectrum--${theme}`)}
         css={css`
-          width: 100%;
-          background: var(--spectrum-global-color-gray-100);
-        `}
+            width: 100%;
+            background: var(--spectrum-global-color-gray-100);
+          `}
       >
         <div
           css={css`
-            width: ${DESKTOP_SCREEN_WIDTH};
-            box-sizing: border-box;
-            margin: auto;
-            padding: var(--spectrum-global-dimension-size-1000) 0;
-
-            @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-              width: 100%;
-
-              // & > div {
-              //   flex-direction: column !important;
-              // }
-            }
-          `}
+              width: ${DESKTOP_SCREEN_WIDTH};
+              box-sizing: border-box;
+              margin: auto;
+              padding: var(--spectrum-global-dimension-size-1000) 0;
+  
+              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+                width: 100%;
+  
+                // & > div {
+                //   flex-direction: column !important;
+                // }
+              }
+            `}
         >
           <div
             css={css`
-              display: flex;
-              align-items: center;
-              flex-direction: ${imageOnly
+                display: flex;
+                align-items: center;
+                flex-direction: ${imageOnly
                 ? "column"
-                : position === "right" ? "row-reverse"
-                  : isReversed
-                    ? "row-reverse" : "row"};
-
-              @media screen and (max-width: ${MIN_TABLET_SCREEN_WIDTH}) {
-                flex-direction: column;
-              }
-            `}
+                : position === "right"
+                  ? "row-reverse"
+                  : isReversed ? "row-reverse" : "row"};
+  
+                @media screen and (max-width: ${MIN_TABLET_SCREEN_WIDTH}) {
+                  flex-direction: column;
+                }
+              `}
           >
             {image &&
               cloneElement(image, {
                 css: css`
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  width: ${imgWidth};
-                  // we need to modify the height
-                  // height: calc(
-                  //   var(--spectrum-global-dimension-size-4600) -
-                  //     var(--spectrum-global-dimension-size-225)
-                  // );
-                  box-sizing: border-box;
-                  padding: var(--spectrum-global-dimension-size-200);
-                  margin-top: 0;
-
-                  .gatsby-resp-image-wrapper {
-                    max-width: none !important;
-                    width: 100% !important;
-                    height: 100% !important;
-                  }
-
-                  .gatsby-resp-image-image {
-                    object-fit: contain;
-                  }
-
-                  @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                    height: auto;
-                    width: 100%;
-                  }
-                `,
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${imgWidth};
+                    // we need to modify the height
+                    // height: calc(
+                    //   var(--spectrum-global-dimension-size-4600) -
+                    //     var(--spectrum-global-dimension-size-225)
+                    // );
+                    box-sizing: border-box;
+                    padding: var(--spectrum-global-dimension-size-200);
+                    margin-top: 0;
+  
+                    .gatsby-resp-image-wrapper {
+                      max-width: none !important;
+                      width: 100% !important;
+                      height: 100% !important;
+                    }
+  
+                    .gatsby-resp-image-image {
+                      object-fit: contain;
+                    }
+  
+                    @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                      height: auto;
+                      width: 100%;
+                    }
+                  `,
               })}
             {assetImg &&
               <div className={assetImg?.props?.children} />}
@@ -472,35 +469,35 @@ const TextBlock = ({
 
             {videoUrl &&
               <video loop="true" muted="true" autoPlay preload="metadata" playsInline css={css`
-                display: inline;
-                width: ${layoutColumns(5)};
-                box-sizing: border-box;
-                padding: var(--spectrum-global-dimension-size-200);
-            
-                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                  display: block;
-                  width: 100%;
-                }
-              }
-                `}>
+	                            display: inline;
+	                            width: ${layoutColumns(5)};
+	                            box-sizing: border-box;
+	                            padding: var(--spectrum-global-dimension-size-200);
+                        
+	                            @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+	                              display: block;
+	                              width: 100%;
+	                            }
+	                          }
+	                            `}>
                 <source src={videoUrl} type="video/mp4" />
               </video>}
 
             {!imageOnly && <div
               css={css`
-                ${hasCodeBlock ? `width: 70%;` : `width: 50%;`}
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                text-align: left;
-                box-sizing: border-box;
-                padding: 0 var(--spectrum-global-dimension-size-400);
-
-                @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-                  width: 100%;
-                  margin: var(--spectrum-global-dimension-size-400) 0;
-                }
-              `}
+                  ${hasCodeBlock ? `width: 70%;` : `width: 50%;`}
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  text-align: left;
+                  box-sizing: border-box;
+                  padding: 0 var(--spectrum-global-dimension-size-400);
+  
+                  @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
+                    width: 100%;
+                    margin: var(--spectrum-global-dimension-size-400) 0;
+                  }
+                `}
             >
               <Icons icons={icons} isCentered={isCentered} />
 
@@ -508,15 +505,15 @@ const TextBlock = ({
                 <Element
                   className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
-                    margin-top: 0 !important;
-                    margin-bottom: var(
-                      --spectrum-global-dimension-size-200
-                    ) !important;
-
-                    & + p {
                       margin-top: 0 !important;
-                    }
-                  `}
+                      margin-bottom: var(
+                        --spectrum-global-dimension-size-200
+                      ) !important;
+  
+                      & + p {
+                        margin-top: 0 !important;
+                      }
+                    `}
                 >
                   {heading.props.children}
                 </Element>
@@ -525,18 +522,18 @@ const TextBlock = ({
                 <h3
                   className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
-                font-size: var(
-                  --spectrum-global-dimension-size-225
-                ) !important;
-                  margin-bottom: var(
-                    --spectrum-global-dimension-size-200
+                  font-size: var(
+                    --spectrum-global-dimension-size-225
                   ) !important;
-
-                  & ~ p {
-                    margin-top: 0;
-                    margin-bottom: 0 !important;
-                  }
-                `}
+                    margin-bottom: var(
+                      --spectrum-global-dimension-size-200
+                    ) !important;
+  
+                    & ~ p {
+                      margin-top: 0;
+                      margin-bottom: 0 !important;
+                    }
+                  `}
                 >
                   {subHeading.props.children}
                 </h3>
@@ -548,18 +545,18 @@ const TextBlock = ({
                 <h3
                   className="spectrum-Heading spectrum-Heading--sizeM"
                   css={css`
-                  font-size: var(
-                    --spectrum-global-dimension-size-225
-                  ) !important;                  
-                  margin-top: var(
-                    --spectrum-global-dimension-size-200
-                  ) !important;
-
-                  & ~ p {
-                    margin-top: 0;
-                    margin-bottom: 0 !important;
-                  }
-                `}
+                    font-size: var(
+                      --spectrum-global-dimension-size-225
+                    ) !important;                  
+                    margin-top: var(
+                      --spectrum-global-dimension-size-200
+                    ) !important;
+  
+                    & ~ p {
+                      margin-top: 0;
+                      margin-bottom: 0 !important;
+                    }
+                  `}
                 >
                   {subHeading.props.children}
                 </h3>
@@ -575,8 +572,8 @@ const TextBlock = ({
                 variants={[variantsTypePrimary, variantsTypeSecondary]}
                 heading={homeZigZag ? heading?.props?.children : ''}
                 css={css`
-                  margin-top: var(--spectrum-global-dimension-size-200);
-                `}
+                    margin-top: var(--spectrum-global-dimension-size-200);
+                  `}
               />
 
               <Links links={links} isCentered={isCentered} />
@@ -606,8 +603,8 @@ TextBlock.propTypes = {
   imgWidth: PropTypes.string,
   homeZigZag: PropTypes.bool,
   isbuttonGroups: PropTypes.bool,
-  videoUrl: PropTypes.element,
   position: PropTypes.string,
+  videoUrl: PropTypes.string,
 };
 
 export { TextBlock };

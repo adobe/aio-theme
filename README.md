@@ -52,7 +52,8 @@ Using a theme, all of your default configuration lives in an npm package.
   - [Contents](#contents)
   - [Getting started](#getting-started)
     - [Using GitHub repository templates](#using-github-repository-templates)
-    - [Using the Adobe I/O CLI](#using-the-adobe-io-cli)
+    - [Using the Adobe theme I/O](#using-the-adobe-theme-io)
+    - [Developing with Adobe Theme I/O](#developing-with-adobe-theme-io)
   - [Content structure](#content-structure)
     - [Frontmatter](#frontmatter)
       - [Edition keyword](#edition-keyword)
@@ -72,6 +73,7 @@ Using a theme, all of your default configuration lives in an npm package.
   - [Global Navigation](#global-navigation)
   - [Menus](#menus)
   - [Home link](#home-link)
+    - [Table Image](#table-image)
   - [Side Navigation](#side-navigation)
     - [Variations](#variations)
       - [Single-level side navigation](#single-level-side-navigation)
@@ -92,8 +94,15 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
+  - [](#)
+  - [description: This is the guides overview page of Adobe Analytics](#description-this-is-the-guides-overview-page-of-adobe-analytics)
+  - [](#-1)
+  - [](#-2)
+  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
+  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
     - [JSDoc](#jsdoc)
+  - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
     - [JSX Blocks](#jsx-blocks)
@@ -108,6 +117,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Anatomy of an InlineAlert block](#anatomy-of-an-inlinealert-block)
       - [Simple InlineAlert](#simple-inlinealert)
       - [Richer InlineAlert](#richer-inlinealert)
+      - [Nested InlineAlert](#nested-inlinealert)
     - [Media Block](#media-block)
     - [Announcement Block](#announcement-block)
     - [Summary Block](#summary-block)
@@ -118,7 +128,13 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Product Card](#product-card)
     - [Product Card Grid](#product-card-grid)
     - [Resource Card](#resource-card)
+    - [MiniResourceCard](#miniresourcecard)
     - [Carousel](#carousel)
+    - [VideoCarousel](#videocarousel)
+    - [ImageTextBlock](#imageTextBlock)
+    - [TeaserBlock](#teaserblock)
+    - [Accordion](#accordion)
+      - [Accordion item](#accordion-item)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
@@ -2128,6 +2144,47 @@ Letter is an email newsletter tool that helps content creators, designers, and d
 * [View docs](../guides)
 
 ```
+### ImageTextBlock
+
+ImageTextBlock is used to display two images, along with text, a heading, and buttons, arranged horizontally. This layout allows for a visually appealing presentation of the content within the modal.
+
+![ImageTextBlock](docs/images/imagetext-block.png)
+
+```
+<ImageTextBlock slots="image,heading,text,buttons" repeat="2" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='accent'/>
+
+![Adobe Service](6_Image_Sales.jpg)
+
+## Adobe Service
+
+Service is the rent we pay for being. It is not something you do in your spare time
+
+- [Learn more](https://adobe.io)
+
+![Adobe InDesign](6_Image_Rental.jpg)
+
+## Adobe InDesign
+
+Adobe InDesign brings its new share for review features to life with Adobe.
+
+- [Learn more](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image` (required)
+- `heading` (optional)
+- `text` (optional)
+- `buttons`(optional)
+
+Use `bgColor` to load the backgroundcolor.
+
+Use `repeat` to define how many code sections are part. The limit for repeat is two.
+
+Use `isCenter` to center the text.
+
+Use `className` to customize the component **at your own risk.**
 
 ### TeaserBlock
 
