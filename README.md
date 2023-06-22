@@ -1359,7 +1359,8 @@ Use `slots` to identify the markdown content:
 Use `repeat` to define how many code sections are part of the Code Block.
 
 Use `languages` to define a language name for each code section. Code sections with the same heading are automatically
-grouped together.
+grouped together.  The number of languages should match the number of headings.  If no language is present, each of the heading
+will render in each tab with even the same headings.  
 
 ### InlineAlert block (Updated: 2022-06-08)
 
