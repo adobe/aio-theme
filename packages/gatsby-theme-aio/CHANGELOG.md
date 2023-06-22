@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [4.10.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.13...@adobe/gatsby-theme-aio@4.10.0) (2023-06-2)
+
+### Features
+
+* Add in new block ImageTextBlock [d197da7](https://github.com/adobe/aio-theme/commit/d197da71c0fe290f300e73e059b872566ae95d70)
+
 ## [4.9.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.12...@adobe/gatsby-theme-aio@4.9.13) (2023-06-15)
 
 ### Fix
