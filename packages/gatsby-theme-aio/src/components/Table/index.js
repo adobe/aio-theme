@@ -76,7 +76,7 @@ const THead = ({ children, ...props }) => {
 const Th = ({ children }) => <th className="spectrum-Table-headCell">{children}</th>;
 
 const TBody = ({ children, ...props }) => {
-  const childrenArr = children.length > 1 ? children : [children];
+  const childrenArr = Array.isArray(children) ? children : [children];
   return (
     <tbody
       className="spectrum-Table-body"
