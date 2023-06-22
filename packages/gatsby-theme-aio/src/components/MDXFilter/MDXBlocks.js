@@ -45,6 +45,8 @@ import { DCSummaryBlock } from '../DCSummaryBlock';
 import { TeaserBlock } from "../TeaserBlock";
 import { VideoCarousel } from '../VideoCarousel';
 import { MiniResourceCard } from '../MiniResourceCard';
+import { ImageTextBlock } from '../ImageTextBlock';
+
 export const MDXBlocks = {
   Hero,
   DiscoverBlock,
@@ -80,5 +82,6 @@ export const MDXBlocks = {
   AnchorButtonGroup,
   DCSummaryBlock,
   VideoCarousel,
-  MiniResourceCard
+  MiniResourceCard,
+  ImageTextBlock
 };

@@ -96,7 +96,7 @@ const InlineNestedAlert = ({ variant = 'info', header, iconPosition, ...props })
 
 InlineNestedAlert.propTypes = {
   variant: PropTypes.string,
-  header: PropTypes.element,
+  header: PropTypes.text,
   text: PropTypes.element
 };
 
