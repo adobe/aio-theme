@@ -324,7 +324,9 @@ export default ({ children, pageContext, location }) => {
   }, [setShowSearch]);
 
   useEffect( () => {
-    setHasSideNav(false);
+    if (window.innerWidth >= parseInt(MOBILE_SCREEN_WIDTH)) {
+      setShowSideNav(false);
+    }
   }, [location]);
 
   useEffect(() => {
@@ -864,6 +866,7 @@ export default ({ children, pageContext, location }) => {
                 `}>
                 <SideNav
                   mainNavPages={pages}
+                  versions={versions}
                   location={location}
                   selectedPages={sideNavSelectedPages}
                   selectedSubPages={sideNavSelectedSubPages}
