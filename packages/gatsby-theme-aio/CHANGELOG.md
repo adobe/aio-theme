@@ -3,8 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.0...@adobe/gatsby-theme-aio@4.10.1) (2023-06-22)
 
-## [4.10.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.13...@adobe/gatsby-theme-aio@4.10.0) (2023-06-2)
+### Fixes
+
+* Fix table body error when a single child in array with isArray instead [9fdacdb](https://github.com/adobe/aio-theme/commit/9fdacdb7e4e125a51848249e5c2d62b44e566fe8)
+
+## [4.10.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.9.13...@adobe/gatsby-theme-aio@4.10.0) (2023-06-22)
 
 ### Features
 
