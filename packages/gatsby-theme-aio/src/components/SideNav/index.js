@@ -325,8 +325,8 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
               role="tree"
               aria-label="Global Navigation"
               className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
-              {renderMenuTree(mainNavPages, 1)}
               {versions && renderMenuTree([{title: 'Versions', menu: versions}], 1)}
+              {renderMenuTree(mainNavPages, 1)}
               <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
                 Console
               </AnchorButton>
