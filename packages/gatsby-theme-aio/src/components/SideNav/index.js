@@ -50,7 +50,7 @@ const getSelectedTabIndex = (location, pages) => {
   return selectedIndex;
 };
 
-const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav, location }) => {
+const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setShowSideNav, location }) => {
   const [expandedPages, setExpandedPages] = useState([]);
   const [expandedMenus, setExpandedMenus] = useState([]);
   const [sideNavClick, setSideNavClick] = useState(false);
@@ -325,6 +325,7 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
               role="tree"
               aria-label="Global Navigation"
               className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
+              {versions && renderMenuTree([{title: 'Versions', menu: versions}], 1)}
               {renderMenuTree(mainNavPages, 1)}
               <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
                 Console
@@ -357,6 +358,7 @@ const SideNav = ({ mainNavPages, selectedPages, selectedSubPages, setShowSideNav
 
 SideNav.propTypes = {
   mainNavPages: PropTypes.array,
+  versions: PropTypes.array,
   selectedPages: PropTypes.array,
   selectedSubPages: PropTypes.array,
   setShowSideNav: PropTypes.func,
