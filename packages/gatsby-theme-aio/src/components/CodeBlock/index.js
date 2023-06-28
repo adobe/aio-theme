@@ -111,6 +111,7 @@ const CodeBlock = (props) => {
                 key={index}
                 ref={ref}
                 selected={true}
+                id={'code-block-' + props[block.heading].props.children}
                 tabIndex={index === selectedIndex.tab ? "0":"-1"}
                 onKeyDown={(e) => {
                   if (e.key === 'ArrowRight' || e.key === 'R' || e.key === 'r') {
@@ -141,7 +142,7 @@ const CodeBlock = (props) => {
           `}>
           {codeBlocks.map(
             (block, i) =>
-              selectedIndex.tab === i && codeBlocks[i].languages && (
+              selectedIndex.tab === i && codeBlocks[i].languages.length > 1 && (
                 <Picker
                   key={i}
                   isQuiet
