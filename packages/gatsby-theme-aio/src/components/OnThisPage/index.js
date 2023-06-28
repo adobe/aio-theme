@@ -95,6 +95,11 @@ const OnThisPage = ({ tableOfContents }) => {
         readTableOfContents(headings, setTableOfContentsItems);
       }
     }
+    const codeBlockHeadings = document.querySelectorAll('[id*="code-block-"]');
+    let codeHeadings = [];
+    codeBlockHeadings && codeBlockHeadings.forEach(codeBlockHeading => { codeHeadings.push(codeBlockHeading.children[0].textContent)});
+    let ignoreCodeBlockHeadings = tableOfContentsItems?.filter(item => codeHeadings && !codeHeadings?.includes(item.title));
+    setTableOfContentsItems(ignoreCodeBlockHeadings);
   }, []);
 
   // Highlights the visible sections on the page based on scrolling
