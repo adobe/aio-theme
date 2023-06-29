@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.1...@adobe/gatsby-theme-aio@4.10.2) (2023-06-29)
+
+### Fixes
+
+* Update Mission Version selections in Mobile [413cd15](https://github.com/adobe/aio-theme/commit/413cd15c1bb478cbf9968274d91cd55ad4c44635)
+* Remove headings if same as codeblock headings [0c9ef54](https://github.com/adobe/aio-theme/commit/0c9ef54489c6abe2d8ee5569cc2d2648b43d9066)
+
 ## [4.10.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.0...@adobe/gatsby-theme-aio@4.10.1) (2023-06-22)
 
 ### Fixes
