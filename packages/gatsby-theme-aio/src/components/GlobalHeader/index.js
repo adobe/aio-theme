@@ -155,10 +155,9 @@ const GlobalHeader = ({
   useEffect(() => {
     if (versionPopoverRef.current) {
       if (openVersion) {
-        const { top, left } = versionPopoverRef.current.getBoundingClientRect();
+        const { left } = versionPopoverRef.current.getBoundingClientRect();
 
         versionPopoverRef.current.style.left = `calc(${left}px + var(--spectrum-global-dimension-size-160))`;
-        versionPopoverRef.current.style.top = `${top}px`;
         versionPopoverRef.current.style.position = 'fixed';
       } else {
         // Wait for animation to finish
@@ -173,10 +172,9 @@ const GlobalHeader = ({
     if (openMenuIndex !== -1) {
       const menuRef = pages[openMenuIndex].menuRef;
 
-      const { top, left } = menuRef.current.getBoundingClientRect();
+      const { left } = menuRef.current.getBoundingClientRect();
 
       menuRef.current.style.left = `${left}px`;
-      menuRef.current.style.top = `${top}px`;
       menuRef.current.style.position = 'fixed';
     } else {
       pages.forEach(page => {
@@ -629,6 +627,7 @@ const GlobalHeader = ({
                               margin-top: var(--spectrum-global-dimension-size-25);
                               border-top-left-radius: 0;
                               border-top-right-radius: 0;
+                              top: var(--spectrum-global-dimension-size-700);
                               ${page.menu.some(menu => menu.description) &&
                               `width: 230px;`}
 
@@ -808,7 +807,10 @@ const GlobalHeader = ({
                           id={versionPopoverId}
                           variant="picker"
                           isQuiet
-                          isOpen={openVersion}>
+                          isOpen={openVersion}
+                          css={css`
+                              top: var(--spectrum-global-dimension-size-700);
+                           `}>
                           <Menu>
                             {versions.map((version, k) => (
                               <MenuItem
