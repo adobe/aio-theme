@@ -318,7 +318,7 @@ const TabsBlock = ({
         max-width: 100%;
         overflow-x:hidden !important;
         margin: 0;
-        padding-bottom: calc(var(--spectrum-global-dimension-size-1250) + var(--spectrum-global-dimension-size-250));
+        padding-bottom: var(--spectrum-global-dimension-size-250);
       `}
       >
       <div
