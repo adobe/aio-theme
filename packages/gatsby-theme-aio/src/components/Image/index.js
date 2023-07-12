@@ -40,7 +40,8 @@ export const Image = (props) => {
           alt={props.alt}
           className="gatsby-resp-image-image"
           css={css`
-            width: 100%;
+            max-width: ${props.isTable ? '100%' : ''};
+            width: ${props.isTable ? '' : '100%'};
             opacity: 1;
             transition: opacity 0.5s;
           `}

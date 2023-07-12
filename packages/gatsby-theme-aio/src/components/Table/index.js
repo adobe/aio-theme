@@ -114,6 +114,9 @@ const Tr = ({ children, ...props }) => {
         ? children
         : children.map((child, index) => {
             child.props.cellWidth = columnWidthDistribution[index];
+            if (child.props?.children?.props?.children?.props) {
+              child.props.children.props.children.props.isTable = true;
+            }
             return child;
           })}
     </tr>
