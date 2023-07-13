@@ -10,16 +10,19 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import '@spectrum-css/table';
+import Context from '../Context';
 import { MOBILE_SCREEN_WIDTH, useParentSize } from '../../utils';
 
 const Table = ({ children, css: cssOverrides, columnWidths, ...props }) => {
   const tableRef = useRef(null);
   const [width, setWidth] = useState(parseInt(MOBILE_SCREEN_WIDTH, 10));
+  //const { setIsTable } = useContext(Context);
 
+  //setIsTable(true);
   useParentSize(tableRef, {
     debounceDelay: 500,
     initialValues: { width: parseInt(MOBILE_SCREEN_WIDTH, 10) },
@@ -114,9 +117,6 @@ const Tr = ({ children, ...props }) => {
         ? children
         : children.map((child, index) => {
             child.props.cellWidth = columnWidthDistribution[index];
-            if (child.props?.children?.props?.children?.props) {
-              child.props.children.props.children.props.isTable = true;
-            }
             return child;
           })}
     </tr>
