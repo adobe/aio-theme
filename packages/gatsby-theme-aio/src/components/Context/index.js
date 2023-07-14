@@ -13,7 +13,8 @@
 import { createContext } from 'react';
 
 const Context = createContext({});
+const TableContext = createContext('');
 
 export const Provider = Context.Provider;
 
-export default Context;
+export {Context as default, TableContext};

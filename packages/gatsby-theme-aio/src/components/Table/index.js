@@ -15,6 +15,7 @@ import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import '@spectrum-css/table';
 import { MOBILE_SCREEN_WIDTH, useParentSize } from '../../utils';
+import {TableContext} from '../Context';
 
 const Table = ({ children, css: cssOverrides, columnWidths, ...props }) => {
   const tableRef = useRef(null);
@@ -121,6 +122,8 @@ const Tr = ({ children, ...props }) => {
 };
 
 const Td = ({ children, ...props }) => {
+  const [isTable, setIsTable] = useState(true);
+
   return (
     <td
       className="spectrum-Table-cell"
@@ -134,7 +137,7 @@ const Td = ({ children, ...props }) => {
         css={css`
           max-width: ${props.cellWidth}px;
         `}>
-        {children}
+        <TableContext.Provider value={{ isTable, setIsTable }}>{children}</TableContext.Provider>
       </div>
     </td>
   );

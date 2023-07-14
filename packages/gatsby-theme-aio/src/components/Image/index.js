@@ -10,11 +10,13 @@
  * governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React, {useContext} from 'react';
 import { css } from '@emotion/react';
 import { DESKTOP_SCREEN_WIDTH } from '../../utils';
+import {TableContext} from "../Context";
 
 export const Image = (props) => {
+  const {isTable} = useContext(TableContext);
   // Check if gatsby-remark-images-remote processing was skipped
   if (!props.src || props.src.default || props.src.endsWith('.svg') || props.src.endsWith('.gif') || !props.loading) {
     // Defaults to same as gatsby-remark-images-remote loading config
@@ -40,7 +42,8 @@ export const Image = (props) => {
           alt={props.alt}
           className="gatsby-resp-image-image"
           css={css`
-            width: 100%;
+             max-width: ${isTable ? '100%' : ''};
+            width: ${isTable ? '' : '100%'};
             opacity: 1;
             transition: opacity 0.5s;
           `}
