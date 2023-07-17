@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.2...@adobe/gatsby-theme-aio@4.10.3) (2023-07-17)
+
+### Fixes
+
+* Nav Bar has a gap after selection [cb693f6](https://github.com/adobe/aio-theme/commit/cb693f658bf8f5f179f9477c1029d9295171afd1)
+* Large amount of padding at the bottom of tabs [901459c](https://github.com/adobe/aio-theme/commit/901459cdb98e068bc698b75494dc0743b655ea24)
+* Update with changes to image size [39a8e26](https://github.com/adobe/aio-theme/commit/39a8e26bbf76c0889445789f49d601450fabe28a)
+
 ## [4.10.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.1...@adobe/gatsby-theme-aio@4.10.2) (2023-06-29)
 
 ### Fixes
