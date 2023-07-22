@@ -326,6 +326,7 @@ export default ({ children, pageContext, location }) => {
   useEffect( () => {
     if (window.innerWidth >= parseInt(MOBILE_SCREEN_WIDTH)) {
       setShowSideNav(false);
+      setHasSideNav(false);
     }
   }, [location]);
 
