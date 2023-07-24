@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.3...@adobe/gatsby-theme-aio@4.10.4) (2023-07-24)
+
+### Features
+
+* Added a frontmatter reporting step to algolia indexing  [76853ce](https://github.com/adobe/aio-theme/commit/76853cea23926e14be800c71d389d1cfff1e69bb)
+
+* Improved the report format and custom logs when isDryRun  [8af9ba2](https://github.com/adobe/aio-theme/commit/8af9ba2de5286cd56d971a727e9f19364095b2c9)
+
+### Fixes
+
+* Update SideNav to be better responsively [9692a29](https://github.com/adobe/aio-theme/commit/9692a29fef93b8be1e0be4c5f98ac0c2cac9efd6)
+
+* Fixed text issue on mini resource card [892f4f1](https://github.com/adobe/aio-theme/commit/892f4f10f1e81a434f0955bc820018de6c299587)
+
 ## [4.10.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.2...@adobe/gatsby-theme-aio@4.10.3) (2023-07-17)
 
 ### Fixes
