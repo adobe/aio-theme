@@ -135,7 +135,7 @@ module.exports = {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         indexName: process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX ? `${process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX}-${process.env.GATSBY_ALGOLIA_INDEX_NAME}` : process.env.GATSBY_ALGOLIA_INDEX_NAME,
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        queries: indexRecords(),
+        queries: indexRecords(isDryRun),
         chunkSize: 1000,
         algoliasearchOptions: {
           timeouts: {

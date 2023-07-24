@@ -19,7 +19,7 @@ const parseHtml = require('./helpers/parse-html');
 const parseMdx = require('./helpers/parse-mdx');
 const createAlgoliaRecord = require('./create-record');
 
-function indexRecords() {
+function indexRecords(isDryRun) {
   return [
     {
       query: mdxQuery,
@@ -76,25 +76,48 @@ function indexRecords() {
           });
         }
 
-        // markdownFiles frontmatter report - start
+        const frontmatterReport = isDryRun => {
+          // markdownFiles frontmatter report - start
+          let warnCount = 0;
+          let passCount = 0;
 
-        console.log('\x1b[35m ==== FRONTMATTER REPORT - STARTING ==================== \x1b[0m');
-        console.info('\x1b[36m [cmd + click] on the file path to open \x1b[0m');
+          console.log('\x1b[35m ==== FRONTMATTER REPORT - STARTING ==================== \x1b[0m');
+          console.info('\x1b[36m [cmd + click] on the file path to open \x1b[0m');
+          markdownFiles.forEach(file => {
+            if (!file.description || !file.keywords || !file.title) {
+              warnCount++;
+              console.log('\n\x1b[43mWarn\x1b[0m - ' + file.fileAbsolutePath + ': ');
+              if (!file.title) console.log('\x1b[33m\tMissing Title \x1b[0m');
+              if (!file.description) console.log('\x1b[33m\tMissing Description \x1b[0m');
+              if (!file.keywords) console.log('\x1b[33m\tMissing Keywords \x1b[0m');
+            } else {
+              passCount++;
+              console.log('\x1b[42mPass\x1b[0m - ' + file.fileAbsolutePath);
+            }
+          });
 
-        markdownFiles.forEach(file => {
-          if (!file.description || !file.keywords || !file.title) {
-            console.log('\n\x1b[41mFail\x1b[0m - ' + file.fileAbsolutePath + ': ');
-            if (!file.title) console.log('\x1b[33m\tMissing Title \x1b[0m');
-            if (!file.description) console.log('\x1b[33m\tMissing Description \x1b[0m');
-            if (!file.keywords) console.log('\x1b[33m\tMissing Keywords \x1b[0m');
+          if (isDryRun) {
+            if (passCount)
+              console.info(
+                `- \x1b[42m${passCount} Pages have Title, Description, and Keywords\x1b[0m`
+              );
+            if (warnCount)
+              console.warn(`- \x1b[43m${warnCount} Pages are missing frontmatter\x1b[0m`);
           } else {
-            console.log('\x1b[42mPass\x1b[0m - ' + file.fileAbsolutePath);
+            if (passCount)
+              console.info(
+                `- \x1b[42m${passCount} Pages have Title, Description, and Keywords\x1b[0m`
+              );
+              // Implement an Error or prompt to user when attempting to index frontmatter-less files
+            if (warnCount)
+              console.error(`\x1b[41m${warnCount} Pages are missing frontmatter\x1b[0m`);
           }
-        });
+          console.log('\x1b[35m ==== FRONTMATTER REPORT - FINISHED ==================== \x1b[0m');
 
-        console.log('\x1b[35m ==== FRONTMATTER REPORT - FINISHED ==================== \x1b[0m');
+          // markdownFiles frontmatter report - end
+        };
 
-        // markdownFiles frontmatter report - end
+        frontmatterReport(isDryRun);
 
         const algoliaRecords = [];
 
