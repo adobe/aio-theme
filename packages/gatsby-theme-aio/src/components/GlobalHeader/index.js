@@ -275,7 +275,7 @@ const GlobalHeader = ({
             css={css`
               display: none;
 
-              @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
+              @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                 grid-area: title;
                 display: block;
                 margin: 0 var(--spectrum-global-dimension-size-100);
