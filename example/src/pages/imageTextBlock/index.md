@@ -1,3 +1,7 @@
+## Text block with the image
+
+This is an example for image on the text block
+
 <ImageTextBlock slots="image,heading,text,buttons" repeat="2" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='accent'/>
 
 ![Adobe Service](6_Image_Sales.jpg)

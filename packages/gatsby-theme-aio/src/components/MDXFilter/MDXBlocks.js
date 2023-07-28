@@ -46,6 +46,7 @@ import { TeaserBlock } from "../TeaserBlock";
 import { VideoCarousel } from '../VideoCarousel';
 import { MiniResourceCard } from '../MiniResourceCard';
 import { ImageTextBlock } from '../ImageTextBlock';
+import { ListBlock } from '../ListBlock';
 
 export const MDXBlocks = {
   Hero,
@@ -83,5 +84,6 @@ export const MDXBlocks = {
   DCSummaryBlock,
   VideoCarousel,
   MiniResourceCard,
-  ImageTextBlock
+  ImageTextBlock,
+  ListBlock
 };
