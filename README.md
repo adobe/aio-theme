@@ -2274,12 +2274,12 @@ AccordionItem default expand
 ```
 ### ListBlock
 
-Used to entails the presence of two distinct columns, separated by a divider with each column presenting a list of items in ordered or unordered.
+The `ListBlock` component showcases a two-column layout with alternating left and right content.
 
 ![listblock](docs/images/list-block.png)
 
 ```
-<ListBlock slots="left, right" repeat="4" list="unorder" iconColor="#2ac3a2" icon="checkmark" variant="fullWidth" />
+<ListBlock slots="text1, text2" repeat="4" iconColor="#2ac3a2" icon="checkmark" variant="fullWidth" />
 
 500 free Document Transactions per month
 
@@ -2296,23 +2296,23 @@ Technical Support included (different tiers available)
 No credit card or commitment required
 
 Scalable for high volume needs.
-```
 
+```
 Use `slots` to identify the markdown content:
 
-- `left`(required)
+- `text1`(required) is placed in left side.
+- `text2`(required) is placed in right side.
 
-- `right`(required)
-
-Use `repeat` to define how many code sections are part.
-
-Use `list` to define the order or unorder list. Defaults to `unorder`.
+Use `repeat`(required) to define how many code sections are part.
 
 Use `iconColor` to define the marker color. The preset is black.
 
-Use `icon` used to indicate individual items or elements within the list. If the list is in order by default it is `disc` else `number`. Values are `checkmark,disc, number`
+Use `icon` used to indicate individual items or elements within the list. By default it is in `checkmark`. Values are `checkmark,disc, number`.
 
-Use `variant` to specify full width or half width values are `fullwidth,halfwidth`.
+Use `variant` to specify full width or half width values are `fullWidth,halfWidth`.
+
+Text1 will align the text on the leftside list i.e (1,3,5,...)
+Text2 will align the text on right side i.e (2,4,6...)
 
 ### Edition
 

@@ -23,81 +23,76 @@ margin: 0 !important;
 	width : 90% !important;
 }`
 
-const ListItem = ({ content, orderCSS, index, data }) => {
-	return (
-		<li
-			key={index}
-			css={css` ${orderCSS}`}>
-			{content === "right" ? data.right : data.left}
-		</li>
-	)
-}
+const List = ({ icon, iconColor, listItem, content }) => {
 
-const List = ({ icon, iconColor, listItem, content, list }) => {
+  const bulletIcons = icon ?? "checkmark";
 
-	const bulletIcons = icon ?? (list === "unorder" ? "disc" : list === "order" ? "number" : icon);
+  return (
+    <ul css={css` ${commonCSS}`}>
+      {listItem?.map((data, index) => {
+        const shouldHideBullet = bulletIcons === "checkmark" || (content === "right" && data?.text1 === undefined) || (content === "left" && data?.text2 === undefined);
+        return (
+          <li
+            key={index}
+            css={css`
+							list-style: ${shouldHideBullet ? "none " : bulletIcons};
+							font-size: 1.5em;
+							position: ${bulletIcons === "checkmark" && "relative"};
+							padding-left: ${bulletIcons === "checkmark" && "1.5em"};
+							&::marker {
+								color: ${iconColor};
+							}
 
-	const cssForUnorder = `list-style: ${bulletIcons === "checkmark" ? "none " : bulletIcons};
-	font-size: 1.5em;
-	position: ${bulletIcons === "checkmark" && "relative"};
-	padding-left: ${bulletIcons === "checkmark" && "1.5em"};
-	&::marker {
-			color: ${iconColor};
-	}
-	${bulletIcons === "checkmark" &&
-		`&:before {
-		content: "\u2713";
-		position: absolute;
-		left:0;
-		top: 0;
-		color: ${iconColor};
-		}`
-	}`
+							& > p{
+									margin: var(--spectrum-global-dimension-size-150) 0 !important;
+							}
 
-	const cssForOrder = `list-style: ${bulletIcons ?? "number"};
-		font-size: 1.5em;
-		&::marker {
-	    color: ${iconColor};
-		}`
-
-	const Element = list === "unorder" ? "ul" : "ol";
-	const cssForListItem = list === "unorder" ? cssForUnorder : cssForOrder;
-
-	return (
-		<Element css={css` ${commonCSS}`}> {listItem.map((data, index) => <ListItem content={content} orderCSS={cssForListItem} index={index} data={data} />)} </Element>
-	)
+							${bulletIcons === "checkmark" &&
+              `&:before {
+								content: "\u2713";
+								position: absolute;
+								left:0;
+								top: 0;
+								color: ${iconColor};
+								}`
+              }
+							`}>
+            {content === "right" ? data?.text1 : data?.text2}
+          </li>
+        )
+      })} </ul>
+  )
 }
 
 const ListBlock = ({
-	className,
-	list = "unorder",
-	icon,
-	variant = "haflWidth",
-	iconColor = "black",
-	...props
+  className,
+  icon,
+  variant = "halfWidth",
+  iconColor = "black",
+  repeat,
+  ...props
 }) => {
 
-	const propKeys = Object?.keys(props);
-	const listItem = propKeys.filter((key) => key.startsWith("right")).map((data, index) => {
-		return {
-			right: props[data],
-			left: props[`left${index}`]
-		};
-	});
+  const propKeys = Object?.keys(props);
+  const listItem = propKeys.filter((key) => key.startsWith("text2")).map((data, index) => {
+    return {
+      text1: props[data],
+      text2: repeat === "1" || repeat === undefined ? props["text1"] : props[`text1${index}`],
+    };
+  });
 
-	return (
-		<section
-			className={classNames(className)}
-			css={css`
+  return (
+    <section
+      className={classNames(className)}
+      css={css`
 					margin:auto;
 					padding : 4% 0;
 					width : ${variant === "halfWidth" ? "60%" : "100%"};
-
 				`}
-		>
-			<div>
-				<div
-					css={css`
+    >
+      <div>
+        <div
+          css={css`
 						display : flex;
 						justify-content: space-between;
 						text-align : left;
@@ -107,25 +102,24 @@ const ListBlock = ({
 						}
 
 						`}
-				>
-					<List listItem={listItem} iconColor={iconColor} icon={icon} content="left" list={list} />
+        >
+          <List listItem={listItem} iconColor={iconColor} icon={icon} content="left" />
 
-					<div css={css`border-right: 1px solid`}></div>
+          <div css={css`border-right: 1px solid var(--spectrum-global-color-gray-300)`}></div>
 
-					<List listItem={listItem} iconColor={iconColor} icon={icon} content="right" list={list} />
+          <List listItem={listItem} iconColor={iconColor} icon={icon} content="right" />
 
-				</div>
-			</div>
-		</section>
-	)
+        </div>
+      </div>
+    </section>
+  )
 }
 
 ListBlock.propTypes = {
-	className: PropTypes.string,
-	list: PropTypes.string,
-	icon: PropTypes.string,
-	iconColor: PropTypes.string,
-	variant: PropTypes.string,
+  className: PropTypes.string,
+  icon: PropTypes.string,
+  iconColor: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 export { ListBlock }

@@ -2,7 +2,7 @@
 
 This an exmaple of showing list
 
-<ListBlock slots="left, right " repeat="4" list="unorder" iconColor="#2ac3a2" icon="checkmark" variant="fullWidth" />
+<ListBlock slots="text1, text2" repeat="4" iconColor="#2ac3a2" icon="checkmark" variant="fullWidth" />
 
 500 free Document Transactions per month
 
