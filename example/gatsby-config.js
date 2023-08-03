@@ -107,6 +107,10 @@ module.exports = {
         ]
       },
       {
+        title: 'CC Library',
+        path: '/cc_library/'
+      },
+      {
         title: 'CC',
         path: '/creative_cloud/'
       },
