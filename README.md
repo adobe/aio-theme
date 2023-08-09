@@ -94,9 +94,15 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
+  - [](#)
+  - [description: This is the guides overview page of Adobe Analytics](#description-this-is-the-guides-overview-page-of-adobe-analytics)
+  - [](#-1)
+  - [](#-2)
   - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
+  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
     - [JSDoc](#jsdoc)
+  - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
     - [JSX Blocks](#jsx-blocks)
@@ -125,10 +131,11 @@ Using a theme, all of your default configuration lives in an npm package.
     - [MiniResourceCard](#miniresourcecard)
     - [Carousel](#carousel)
     - [VideoCarousel](#videocarousel)
-    - [ImageTextBlock](#imageTextBlock)
+    - [ImageTextBlock](#imagetextblock)
     - [TeaserBlock](#teaserblock)
     - [Accordion](#accordion)
       - [Accordion item](#accordion-item)
+    - [ListBlock](#listblock)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
@@ -2092,7 +2099,7 @@ Use `repeat` to define how many code sections are part of the carousel.
 
 VideoCarousel is used to show the information along with videos and buttons.
 
-![Carousel](docs/images/videoCarousel.png)
+![Carousel](docs/images/video-carousel.png)
 
 Use `slots` to identify the markdown content:
 
@@ -2265,6 +2272,47 @@ AccordionItem default expand
 </Accordion>
 
 ```
+### ListBlock
+
+The `ListBlock` component showcases a two-column layout with alternating left and right content.
+
+![listblock](docs/images/list-block.png)
+
+```
+<ListBlock slots="text1, text2" repeat="4" iconColor="#2ac3a2" icon="checkmark" variant="fullWidth" />
+
+500 free Document Transactions per month
+
+Volume and multi-product discounts
+
+Access to all 15+ PDF Services including PDF Extract, PDF Accessibility Auto-Tag API, and Document Generation
+
+Access to all 15+ PDF Services including PDF Extract, PDF Accessibility Auto-Tag API, and Document Generation
+
+Easy to sign up and create credentials in minutes
+
+Technical Support included (different tiers available)
+
+No credit card or commitment required
+
+Scalable for high volume needs.
+
+```
+Use `slots` to identify the markdown content:
+
+- `text1`(required) is placed in left side.
+- `text2`(required) is placed in right side.
+
+Use `repeat`(required) to define how many code sections are part.
+
+Use `iconColor` to define the marker color. The preset is black.
+
+Use `icon` used to indicate individual items or elements within the list. By default it is in `checkmark`. Values are `checkmark,disc, number`.
+
+Use `variant` to specify full width or half width values are `fullWidth,halfWidth`.
+
+Text1 will align the text on the leftside list i.e (1,3,5,...)
+Text2 will align the text on right side i.e (2,4,6...)
 
 ### Edition
 
