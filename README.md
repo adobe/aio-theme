@@ -289,6 +289,12 @@ For example, adding the `contributor_name` and `contributor_link` keywords to th
 
 ![attribution frontmatter keyword](docs/images/attribution_keyword_screenshot.png)
 
+#### Hide page from search with noIndex
+
+Adding `noIndex: true` will flag the page to be skipped during local search indexing. This is required when storing transcluded files under `src/pages/` since we index all pages by default.
+
+Note: duplicate results in local search are likely due to not setting `noIndex: true` inside transcluded pages.
+
 ### Markdown pages
 
 Make sure the markdown content is located under `src/pages`.
