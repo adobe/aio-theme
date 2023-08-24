@@ -50,6 +50,7 @@ const mdxQuery = `
           hideBreadcrumbNav
           contributor_name
           contributor_link
+          noIndex
         }
         headings {
           value

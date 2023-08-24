@@ -25,7 +25,7 @@ function indexRecords(isDryRun) {
       query: mdxQuery,
       transformer: async function ({
         data: {
-          site: { pathPrefix },
+          site: { pathPrefix, noIndexList },
           github: { repository },
           allFile: { nodes },
         },
@@ -49,6 +49,10 @@ function indexRecords(isDryRun) {
 
         const markdownFiles = [];
         for (const node of nodes) {
+
+          // skip file if noIndex is set true in frontmatter
+          if (node.childMdx.frontmatter.noIndex) continue;
+
           markdownFiles.push({
             birthTime: node.birthTime,
             category: node.childMdx.frontmatter.category,
@@ -108,7 +112,7 @@ function indexRecords(isDryRun) {
               console.info(
                 `- \x1b[42m${passCount} Pages have Title, Description, and Keywords\x1b[0m`
               );
-              // Implement an Error or prompt to user when attempting to index frontmatter-less files
+            // Implement an Error or prompt to user when attempting to index frontmatter-less files
             if (warnCount)
               console.error(`\x1b[41m${warnCount} Pages are missing frontmatter\x1b[0m`);
           }
