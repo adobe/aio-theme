@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.4...@adobe/gatsby-theme-aio@4.10.5) (2023-08-24)
+
+### Features
+
+* Added frontmatter keyword `noIndex` for skipping page during search indexing  [d7e6063](https://github.com/adobe/aio-theme/commit/d7e6063e61ce111fe9a5a07c6d66be3b709c446c)
+
+* Added new component to list the ordered, unordered list  [f56368f](https://github.com/adobe/aio-theme/commit/f56368fda71b16f6ab85b6138f9dc7e7edc4744f)
+
+
 ## [4.10.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.3...@adobe/gatsby-theme-aio@4.10.4) (2023-07-24)
 
 ### Features
