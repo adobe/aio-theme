@@ -184,7 +184,7 @@ exports.createResolvers = ({ createResolvers }) => {
       },
       contributors: {
         type: '[String]',
-        resolve: source => source.contributors
+        resolve: source => source.contributors,
       },
       contributor_link: {
         type: 'String',
@@ -225,6 +225,10 @@ exports.createResolvers = ({ createResolvers }) => {
       featured: {
         type: 'Boolean',
         resolve: source => source.featured || false,
+      },
+      noIndex: {
+        type: 'Boolean',
+        resolve: source => source.noIndex || false,
       },
     },
   };
