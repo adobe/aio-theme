@@ -25,7 +25,7 @@ function indexRecords(isDryRun) {
       query: mdxQuery,
       transformer: async function ({
         data: {
-          site: { pathPrefix, noIndexList },
+          site: { pathPrefix },
           github: { repository },
           allFile: { nodes },
         },
