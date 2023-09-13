@@ -32,6 +32,7 @@ import TextBlockComp from "./textblock/textblock.md"
 import MiniResource from "./miniresource_block/index.md"
 import TextBlockImage from "./imageTextBlock/index.md"
 import ListComp from "./listblock/index.md"
+import { GetCredentialExternal } from "./credential/GetCredentialExternal.js"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -115,6 +116,10 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 
 ![Jenkinator](./diagram.svg "Diagram")
 
+<GetCredentialExternal />
+
+<Toast variant="info" message="Information" />
+
 <TeaserComp />
 
 <TeaserBlock  slots="heading,text" textColor="white" position="right" bgURL={blackbg}/>
@@ -128,7 +133,6 @@ In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and 
 ### TeaserBlock with background color
 
 In TeaserBlock using bgURL={img}, we can load the backroundimage in the div and align the text position on the right by using position="left" attribute
-
 
 ## Accordion
 

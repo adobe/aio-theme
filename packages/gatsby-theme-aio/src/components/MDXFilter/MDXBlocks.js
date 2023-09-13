@@ -47,6 +47,8 @@ import { VideoCarousel } from '../VideoCarousel';
 import { MiniResourceCard } from '../MiniResourceCard';
 import { ImageTextBlock } from '../ImageTextBlock';
 import { ListBlock } from '../ListBlock';
+import { GetCredential } from "../GetCredential";
+import { Toast } from "../Toast";
 
 export const MDXBlocks = {
   Hero,
@@ -85,5 +87,7 @@ export const MDXBlocks = {
   VideoCarousel,
   MiniResourceCard,
   ImageTextBlock,
-  ListBlock
+  ListBlock,
+  GetCredential,
+  Toast
 };
