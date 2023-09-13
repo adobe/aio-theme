@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 import { css } from "@emotion/react";
 import classNames from "classnames";
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 const SignIn = ({ signInProps }) => {
 

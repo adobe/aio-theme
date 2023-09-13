@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 const MyCredential = ({
   credentialProps,

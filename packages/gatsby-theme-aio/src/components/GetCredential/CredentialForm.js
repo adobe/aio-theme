@@ -7,7 +7,7 @@ import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
 import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, CommonFields, downloadAndModifyZip, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { AlertIcon, FormFields, downloadAndModifyZip, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
 
@@ -348,7 +348,7 @@ const Side = ({ side }) => (side);
 const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
   const isRed = formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0;
   return (
-    <CommonFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
+    <FormFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
       <div css={css`position:relative; display:inline-block; width: 100%`}>
         <input
           type="text"
@@ -373,7 +373,7 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
         />
         <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
       </div>
-    </CommonFields>
+    </FormFields>
   )
 }
 
@@ -384,7 +384,7 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
   const isRed = formData["AllowedOrigins"] !== undefined && !isAllowedOriginsValid && formData["AllowedOrigins"]?.length !== 0;
 
   return (
-    <CommonFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >
+    <FormFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >
       <textarea
         css={css`
           flex: 1;
@@ -414,7 +414,7 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
         placeholder={originsProps?.placeholder}
         onChange={(e) => handleChange(e, "AllowedOrigins")}
       ></textarea>
-    </CommonFields>
+    </FormFields>
   )
 }
 
@@ -434,7 +434,7 @@ const Downloads = ({ downloadsProp, handleChange, formData }) => {
 
 const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
   return (
-    <CommonFields isFormValue={isFormValue} fields={downloadProp}>
+    <FormFields isFormValue={isFormValue} fields={downloadProp}>
       <select
         css={css`
           font-style: italic;
@@ -454,7 +454,7 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
           <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
         ))}
       </select>
-    </CommonFields>
+    </FormFields>
 
   )
 }

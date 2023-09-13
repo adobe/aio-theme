@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 const JoinBetaProgram = ({ joinBeta }) => {
 

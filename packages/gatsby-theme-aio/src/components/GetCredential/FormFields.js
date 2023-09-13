@@ -6,7 +6,7 @@ import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
 
-export const CommonFields = ({ isFormValue, fields, children, formData, isRed }) => {
+export const FormFields = ({ isFormValue, fields, children, formData, isRed }) => {
 
   const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description, className, required } = fields;
 

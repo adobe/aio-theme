@@ -7,7 +7,7 @@ import classNames from "classnames";
 import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
-import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization, setOrganizationValue }) => {
 

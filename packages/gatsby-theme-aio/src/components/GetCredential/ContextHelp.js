@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { css } from "@emotion/react";
 import classNames from 'classnames';
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 
 export const ContextHelp = ({ heading, text, link, label }) => {
 
