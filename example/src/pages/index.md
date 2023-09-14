@@ -118,7 +118,7 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 
 <GetCredentialExternal />
 
-<Toast variant="info" message="Information" />
+<Toast variant="success" message="Page Loaded successfully" disable={5000} />
 
 <TeaserComp />
 

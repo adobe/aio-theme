@@ -11,6 +11,9 @@ import { AlertIcon, FormFields, downloadAndModifyZip, getOrganization, MAX_TABLE
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
 
+const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
+const credentialNameRegex = /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/;
+
 const CredentialForm = ({ formProps, credentialType, service }) => {
 
   const [loading, setLoading] = useState(false);
@@ -42,8 +45,40 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     }
   }
 
+  const initialLoad = () => {
+    const fields = [];
+    const downloadObj = { label: "Language", selectOptions: [] };
+
+    credentialForm?.children.forEach(({ type, props }) => {
+      if (type?.name === "Downloads" && props?.children) {
+        downloadObj.required = props.required || false;
+        downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
+        setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
+      }
+      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" } });
+    });
+
+    if (downloadObj.selectOptions.length) {
+      fields.push({ Download: downloadObj });
+      if (downloadObj.selectOptions.length === 1) {
+        setFormData(prevData => ({ ...prevData, Download: downloadObj.selectOptions[0]?.title }));
+      }
+    }
+
+    setFormField(fields);
+    getValueFromLocalStorage();
+
+    if (domains) {
+      setShowCredential(true);
+      setShowCreateForm(false);
+    }
+  }
+
   useEffect(() => {
     getValueFromLocalStorage();
+    setTimeout(() => {
+      setOrganization(false);
+    }, 10000);
   }, [organizationChange])
 
   const domains = localStorage.getItem('apiKey');
@@ -60,36 +95,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       };
       setFormData(updateForm);
       setAlertShow(false);
+      initialLoad()
     }
+
   }, [showCredential])
 
-  useEffect(() => {
-
-    const fields = [];
-    const downloadObj = { label: "Language", selectOptions: [] };
-
-    credentialForm?.children.forEach(({ type, props }) => {
-      if (type?.name === "Downloads" && props?.children) {
-        downloadObj.required = props.required || false;
-        downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
-        setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
-      }
-      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" } });
-    });
-
-    if (downloadObj.selectOptions.length) {
-      fields.push({ Download: downloadObj });
-    }
-
-    setFormField(fields);
-    getValueFromLocalStorage();
-
-    if (domains) {
-      setShowCredential(true);
-      setShowCreateForm(false);
-    }
-
-  }, []);
+  useEffect(() => { initialLoad(); }, []);
 
   useEffect(() => {
     if (isError) {
@@ -108,10 +119,10 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     if (requiredFields.includes("Downloads") || formData['Downloads']) {
       requiredFields.push("Download");
     };
-    const isValidCredentialName = /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName);
-    const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/.test(data.trim()));
+    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
+    const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
     const isAllowedOriginsValid = requiredFields.includes("AllowedOrigins") ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
-    const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid;
+    const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid && formData.Agree === true;
 
     setIsValid(isValid);
 
@@ -119,10 +130,10 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   useEffect(() => {
     setTimeout(() => { setAlertShow(false) }, 8000);
-  }, [alertShow])
+  }, [alertShow]);
 
   const handleChange = (e, type) => {
-    const value = (type === "Downloads") ? e.target.checked : e.target.value;
+    const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
   };
 
@@ -164,7 +175,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }, { key: "Organization", value: organization?.name }], credentialName: formData["CredentialName"], response: resResp };
         localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
         downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
-      } else if (response.status === 400) {
+      } else if (resResp?.messages) {
         setAlertShow(true);
         setIsValid(false);
         setErrorResp(resResp?.messages[0]?.message);
@@ -272,6 +283,20 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                   )
                 })
                 }
+                <div css={css`display: flex; gap: 10px;`}>
+                  <input type="checkbox" checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
+                  <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
+                    <a
+                      href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
+                      css={css`
+                        color:rgb(0, 84, 182);
+                        &:hover {
+                          color: rgb(2, 101, 220);
+                        }
+                      `}
+                      target="_blank">Adobe Developer Terms of Use</a>.
+                  </p>
+                </div>
                 <button
                   id="credentialButton"
                   className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
@@ -297,29 +322,17 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
               Go to Developer Console
             </a>
           </p>
-          <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >
-            <a
-              href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
-              css={css`
-                color:rgb(0, 84, 182);
-                &:hover {
-                  color: rgb(2, 101, 220);
-                }
-              `}
-              target="_blank">  Adobe Developer Terms of Use</a>.
-          </p>
         </div>
       }
 
-      {alertShow && errResp &&
+      {alertShow &&
         <>
-        
-          {!organizationChange ? (
+          {organizationChange ?
+            <Toast message="Organization Changed" variant="success" /> :
             <Toast
               message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
               variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
-            />) :
-            <Toast message="Organization Changed" variant="success" />
+            />
           }
         </>
       }
@@ -379,7 +392,7 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
 
 const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange }) => {
 
-  const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/.test(data.trim()));
+  const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
   const isAllowedOriginsValid = validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5;
   const isRed = formData["AllowedOrigins"] !== undefined && !isAllowedOriginsValid && formData["AllowedOrigins"]?.length !== 0;
 
@@ -434,27 +447,32 @@ const Downloads = ({ downloadsProp, handleChange, formData }) => {
 
 const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
   return (
-    <FormFields isFormValue={isFormValue} fields={downloadProp}>
-      <select
-        css={css`
-          font-style: italic;
-          font-weight: 500;
-          font-family: 'adobe-clean';
-          padding: 7px;
-          border-radius: 3px;
-          border: 1px solid #D0D0D0 !important;
-          width:100%;
-        `}
-        id="selectBox"
-        value={ formData['Download'] ? formData['Download'] : downloadProp?.selectOptions[0].title }
-        onChange={(e) => handleChange(e, "Download")} 
-      >
-        {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
-        {downloadProp?.selectOptions?.map((option, index) => (
-          <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
-        ))}
-      </select>
-    </FormFields>
+    <>
+      {
+        downloadProp?.selectOptions?.length > 1 &&
+        <FormFields isFormValue={isFormValue} fields={downloadProp}>
+          <select
+            css={css`
+              font-style: italic;
+              font-weight: 500;
+              font-family: 'adobe-clean';
+              padding: 7px;
+              border-radius: 3px;
+              border: 1px solid #D0D0D0 !important;
+              width:100%;
+            `}
+            id="selectBox"
+            value={formData['Download']}
+            onChange={(e) => handleChange(e, "Download")}
+          >
+            {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
+            {downloadProp?.selectOptions?.map((option, index) => (
+              <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
+            ))}
+          </select>
+        </FormFields>
+      }
+    </>
 
   )
 }
