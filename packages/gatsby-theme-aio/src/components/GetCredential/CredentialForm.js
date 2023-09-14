@@ -78,7 +78,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     getValueFromLocalStorage();
     setTimeout(() => {
       setOrganization(false);
-    }, 10000);
+    }, 8000);
   }, [organizationChange])
 
   const domains = localStorage.getItem('apiKey');
@@ -220,8 +220,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             className="spectrum-Body spectrum-Body--sizeS"
             css={css`color:var(--spectrum-global-color-gray-800);`}
           >You're creating this credential in [<b>{organization?.name}</b>].
-            <span
+            <button
+              tabIndex="0"
               css={css`
+                border: none;
+                padding:0;
+                font-family:'adobe-clean';
+                background: transparent;
                 margin-left :10px;
                 text-decoration:underline;
                 color: var(--spectrum-global-color-gray-800);
@@ -230,7 +235,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
               onClick={() => setModalOpen(true)}
             >
               Change organization?
-            </span>
+            </button>
           </p>
           <div
             css={css`
@@ -294,7 +299,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                           color: rgb(2, 101, 220);
                         }
                       `}
-                      target="_blank">Adobe Developer Terms of Use</a>.
+                      target="_blank" rel="noreferrer">Adobe Developer Terms of Use</a>.
                   </p>
                 </div>
                 <button
@@ -384,7 +389,7 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
           placeholder={nameProps?.placeholder}
           maxLength={nameProps?.range}
         />
-        <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
+        <span css={css`display : ${formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
       </div>
     </FormFields>
   )

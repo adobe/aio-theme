@@ -15,7 +15,7 @@ const Toast = ({
     if (disable) {
       setTimeout(() => { setAlertShow(false) }, disable);
     }
-  }, [alertShow])
+  }, [alertShow, disable])
 
   const variantMap = {
     error: { VariantIcon: AlertMedium, bgColorVarient: "rgb(211, 21, 16)" },
@@ -42,7 +42,7 @@ const Toast = ({
             z-index: 1; 
             bottom: 25px;
             right: calc(50% - 5%);
-            font-family: adobe-clean;
+            font-family: 'adobe-clean';
             display: inline-flex;
             line-hight: 12px;
 
@@ -80,14 +80,19 @@ const Toast = ({
               </div>
             </div>
             <div ><hr css={css`height:25px;`} /></div>
-            <div
+            <button
               onClick={() => setAlertShow(false)}
               css={css`
                   display:flex;
                   cursor: pointer;
+                  border: none;
+                  padding:0;
+                  font-family:'adobe-clean';
+                  background: transparent;
+                  color: white;
                 `}>
               <Close fill="white" />
-            </div>
+            </button>
           </div>
         </div>
       }
@@ -98,7 +103,7 @@ const Toast = ({
 Toast.propTypes = {
   variant: PropTypes.string,
   message: PropTypes.string,
-  disable: PropTypes.string,
+  disable: PropTypes.number,
 }
 
 export { Toast };

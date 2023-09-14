@@ -27,7 +27,7 @@ const MyCredential = ({
   const card = credentialProps.MyCredential;
   let domain;
   const apiKey = localStorage?.getItem('apiKey');
-  if (apiKey !== "null" || apiKey !== null && apiKey) {
+  if ((apiKey !== "null") || (apiKey !== null && apiKey)) {
     domain = JSON.parse(atob(apiKey));
   }
 
@@ -86,8 +86,12 @@ const MyCredential = ({
         `}
       >
         Download not working?
-        <span
+        <button
           css={css`
+            padding:0;
+            font-family:'adobe-clean';
+            border: none;
+            background: transparent;
             margin-left: 10px;
             cursor:pointer;
             text-decoration:underline;
@@ -99,7 +103,7 @@ const MyCredential = ({
           onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`)}
         >
           Restart download
-        </span>
+        </button>
       </p>
       <div
         css={css`
@@ -289,8 +293,12 @@ const MyCredential = ({
               `}
             >Need another credential</h4>
             <p className="spectrum-Body spectrum-Body--sizeS">
-              <span onClick={handleRestart}
+              <button onClick={handleRestart}
                 css={css`
+                  border: none;
+                  padding:0;
+                  font-family:'adobe-clean';
+                  background: transparent;
                   color:var(--spectrum-global-color-gray-800);
                   text-decoration:underline;
                   cursor:pointer;
@@ -300,7 +308,7 @@ const MyCredential = ({
                 `
                 }>
                 Restart and create a new credential
-              </span>
+              </button>
             </p>
           </div>
         </div>

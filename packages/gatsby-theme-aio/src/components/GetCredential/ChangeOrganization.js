@@ -26,7 +26,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
   const handleRedirect = () => {
     setAlertShow(true);
-    if (selectedOrganization == "developer-org-name") {
+    if (selectedOrganization === "developer-org-name") {
       setRedirectBetaProgram(true);
     }
     else {
@@ -114,12 +114,10 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                         flex-direction:column;
                       `}>
                         <div className="spectrum-Textfield spectrum-Textfield--sizeM">
-                          <label
-                            for="textfield-m"
-                            className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-                            css={css`color: var(--spectrum-global-color-gray-600)`}>
+                          <p
+                            css={css`color: var(--spectrum-global-color-gray-600);margin:0;`}>
                             Organization
-                          </label>
+                          </p>
                         </div>
                         <select
                           css={css`
@@ -138,7 +136,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                       </div>
                       <div>
                         Can't find your organization?
-                        <a href=""
+                        <a href="https://some_help_link"
                           css={css`
                           color:rgb(0, 84, 182);
                           &:hover {
