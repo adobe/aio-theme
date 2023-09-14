@@ -20,7 +20,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState({});
   const [errResp, setErrorResp] = useState("`Unable to create credential. Error <code>:<error text>. Please try to submit the form again`");
-  // check the localstorage if you already have previous credentials and then choose what need to select
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
   const [formField, setFormField] = useState([]);
@@ -113,17 +112,11 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   }, [isError])
 
   useEffect(() => {
-
     const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type.name === "CredentialName")?.map(child => child.type.name);
-
-    if (requiredFields.includes("Downloads") || formData['Downloads']) {
-      requiredFields.push("Download");
-    };
     const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
     const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
     const isAllowedOriginsValid = requiredFields.includes("AllowedOrigins") ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
     const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid && formData.Agree === true;
-
     setIsValid(isValid);
 
   }, [formData]);
