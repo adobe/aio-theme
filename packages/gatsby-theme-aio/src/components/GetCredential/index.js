@@ -11,6 +11,8 @@ import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './F
 
 const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 
+  const isBrowser = typeof window !== "undefined";
+
   let getCredentialData = {};
   React.Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) return;
@@ -21,6 +23,8 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
   return (
     <>
+    {
+      isBrowser && 
       <section
         className={classNames(className)}
         css={css`
@@ -52,6 +56,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
           {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.SignIn} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
         </div>
       </section>
+    }
     </>
   )
 

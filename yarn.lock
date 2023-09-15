@@ -53,6 +53,7 @@ __metadata:
     "@spectrum-css/button": 6.0.13
     "@spectrum-css/card": 5.0.0
     "@spectrum-css/checkbox": 3.1.3
+    "@spectrum-css/contextualhelp": ^2.0.35
     "@spectrum-css/dialog": 6.0.15
     "@spectrum-css/divider": 1.0.27
     "@spectrum-css/icon": 3.0.23
@@ -80,6 +81,7 @@ __metadata:
     classnames: ^2.3.2
     core-js: ^3.25.1
     dotenv: ^16.0.2
+    file-saver: ^2.0.5
     gatsby: ^4.22.0
     gatsby-cli: ^4.23.0
     gatsby-plugin-algolia: ^0.26.0
@@ -96,8 +98,11 @@ __metadata:
     gatsby-source-filesystem: ^4.23.0
     gatsby-transformer-remark: ^5.23.0
     gatsby-transformer-sharp: 4.23.0
+    http-proxy-middleware: ^2.0.6
     https-browserify: ^1.0.0
     jsdom: ^20.0.0
+    jszip: ^3.10.1
+    jszip-utils: ^0.1.0
     lottie-web: ^5.9.6
     mdx-embed: ^1.0.0
     mobx: ^6.6.2
@@ -4813,6 +4818,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spectrum-css/contextualhelp@npm:^2.0.35":
+  version: 2.0.37
+  resolution: "@spectrum-css/contextualhelp@npm:2.0.37"
+  peerDependencies:
+    "@spectrum-css/actionbutton": ">=3"
+    "@spectrum-css/popover": ">=6"
+    "@spectrum-css/tokens": ">=10"
+  checksum: 314c633fcfe890d014aca8deff37a1321cddaa578315c49962a71cd13601dc6c3661f37b18c37728ef8560253c78fa132d5b57df463125a003b63ac135e9a087
+  languageName: node
+  linkType: hard
+
 "@spectrum-css/dialog@npm:6.0.15":
   version: 6.0.15
   resolution: "@spectrum-css/dialog@npm:6.0.15"
@@ -5301,7 +5317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/http-proxy@npm:^1.17.7":
+"@types/http-proxy@npm:^1.17.7, @types/http-proxy@npm:^1.17.8":
   version: 1.17.11
   resolution: "@types/http-proxy@npm:1.17.11"
   dependencies:
@@ -10786,7 +10802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.4, eventemitter3@npm:^4.0.7":
+"eventemitter3@npm:^4.0.0, eventemitter3@npm:^4.0.4, eventemitter3@npm:^4.0.7":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1875311c42fcfe9c707b2712c32664a245629b42bb0a5a84439762dd0fd637fc54d078155ea83c2af9e0323c9ac13687e03cfba79b03af9f40c89b4960099374
@@ -11194,6 +11210,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: c62d96e5cebc58b4bdf3ae8a60d5cf9607ad82f75f798c33a4ee63435ac2203002584d5256a2a780eda7feb5e19dc3b6351c2212e58b3f529e63d265a7cc79f7
+  languageName: node
+  linkType: hard
+
 "file-type@npm:^16.5.3, file-type@npm:^16.5.4":
   version: 16.5.4
   resolution: "file-type@npm:16.5.4"
@@ -11366,7 +11389,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.9, follow-redirects@npm:^1.15.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.9, follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -13681,6 +13704,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-proxy-middleware@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "http-proxy-middleware@npm:2.0.6"
+  dependencies:
+    "@types/http-proxy": ^1.17.8
+    http-proxy: ^1.18.1
+    is-glob: ^4.0.1
+    is-plain-obj: ^3.0.0
+    micromatch: ^4.0.2
+  peerDependencies:
+    "@types/express": ^4.17.13
+  peerDependenciesMeta:
+    "@types/express":
+      optional: true
+  checksum: 2ee85bc878afa6cbf34491e972ece0f5be0a3e5c98a60850cf40d2a9a5356e1fc57aab6cff33c1fc37691b0121c3a42602d2b1956c52577e87a5b77b62ae1c3a
+  languageName: node
+  linkType: hard
+
+"http-proxy@npm:^1.18.1":
+  version: 1.18.1
+  resolution: "http-proxy@npm:1.18.1"
+  dependencies:
+    eventemitter3: ^4.0.0
+    follow-redirects: ^1.0.0
+    requires-port: ^1.0.0
+  checksum: f5bd96bf83e0b1e4226633dbb51f8b056c3e6321917df402deacec31dd7fe433914fc7a2c1831cf7ae21e69c90b3a669b8f434723e9e8b71fd68afe30737b6a5
+  languageName: node
+  linkType: hard
+
 "http-signature@npm:~1.2.0":
   version: 1.2.0
   resolution: "http-signature@npm:1.2.0"
@@ -13841,6 +13893,13 @@ __metadata:
   dependencies:
     "@types/node": 16.9.1
   checksum: 6c6a1dd8467833161f46cc17b4a43218d30a3899ff71a4ffb895f71a14ca29de12f79d824d4d2174070924cbd97faa018b2ded8d690483ab7eb269f364cd97cc
+  languageName: node
+  linkType: hard
+
+"immediate@npm:~3.0.5":
+  version: 3.0.6
+  resolution: "immediate@npm:3.0.6"
+  checksum: f9b3486477555997657f70318cc8d3416159f208bec4cca3ff3442fd266bc23f50f0c9bd8547e1371a6b5e82b821ec9a7044a4f7b944798b25aa3cc6d5e63e62
   languageName: node
   linkType: hard
 
@@ -14446,6 +14505,13 @@ __metadata:
   version: 2.1.0
   resolution: "is-plain-obj@npm:2.1.0"
   checksum: cec9100678b0a9fe0248a81743041ed990c2d4c99f893d935545cfbc42876cbe86d207f3b895700c690ad2fa520e568c44afc1605044b535a7820c1d40e38daa
+  languageName: node
+  linkType: hard
+
+"is-plain-obj@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-plain-obj@npm:3.0.0"
+  checksum: a6ebdf8e12ab73f33530641972a72a4b8aed6df04f762070d823808303e4f76d87d5ea5bd76f96a7bbe83d93f04ac7764429c29413bd9049853a69cb630fb21c
   languageName: node
   linkType: hard
 
@@ -15179,6 +15245,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jszip-utils@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "jszip-utils@npm:0.1.0"
+  checksum: 13938fee267ea204e2e512466e4786e51ac6fd387d5218277b5e36b89b37e51a8f153660ea79dded18451baa4130c11133595a7a85af21a220fe9439ac2735de
+  languageName: node
+  linkType: hard
+
+"jszip@npm:^3.10.1":
+  version: 3.10.1
+  resolution: "jszip@npm:3.10.1"
+  dependencies:
+    lie: ~3.3.0
+    pako: ~1.0.2
+    readable-stream: ~2.3.6
+    setimmediate: ^1.0.5
+  checksum: abc77bfbe33e691d4d1ac9c74c8851b5761fba6a6986630864f98d876f3fcc2d36817dfc183779f32c00157b5d53a016796677298272a714ae096dfe6b1c8b60
+  languageName: node
+  linkType: hard
+
 "just-diff-apply@npm:^5.2.0":
   version: 5.5.0
   resolution: "just-diff-apply@npm:5.5.0"
@@ -15411,6 +15496,15 @@ __metadata:
     sigstore: ^1.4.0
     ssri: ^10.0.1
   checksum: 334996850d0015b97e615f47cf13e4eb65c9d74b702da70031209a969a0cd99b6b8577dc153f6588843172f930fba71199bd9a71b4ac034ec94ede6d27acbbd6
+  languageName: node
+  linkType: hard
+
+"lie@npm:~3.3.0":
+  version: 3.3.0
+  resolution: "lie@npm:3.3.0"
+  dependencies:
+    immediate: ~3.0.5
+  checksum: 33102302cf19766f97919a6a98d481e01393288b17a6aa1f030a3542031df42736edde8dab29ffdbf90bebeffc48c761eb1d064dc77592ca3ba3556f9fe6d2a8
   languageName: node
   linkType: hard
 
@@ -16660,7 +16754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
+"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
   version: 4.0.5
   resolution: "micromatch@npm:4.0.5"
   dependencies:
@@ -18473,7 +18567,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:^1.0.5, pako@npm:~1.0.5":
+"pako@npm:^1.0.5, pako@npm:~1.0.2, pako@npm:~1.0.5":
   version: 1.0.11
   resolution: "pako@npm:1.0.11"
   checksum: 1be2bfa1f807608c7538afa15d6f25baa523c30ec870a3228a89579e474a4d992f4293859524e46d5d87fd30fa17c5edf34dbef0671251d9749820b488660b16

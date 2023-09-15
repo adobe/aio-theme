@@ -32,7 +32,7 @@ import TextBlockComp from "./textblock/textblock.md"
 import MiniResource from "./miniresource_block/index.md"
 import TextBlockImage from "./imageTextBlock/index.md"
 import ListComp from "./listblock/index.md"
-import { GetCredentialExternal } from "./credential/GetCredentialExternal.js"
+import GetCredentialExternal from "./credential/GetCredentialExternal.js"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
