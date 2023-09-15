@@ -31,7 +31,7 @@ const MyCredential = ({
     domain = JSON.parse(atob(apiKey));
   }
 
-  const { response, credentialName, Credential } = domain || {};
+  const { response, credentialName, Credential, downloadOption, downloadFileName } = domain || {};
 
   const handleCopy = (value) => {
     setIsCopied(true);
@@ -58,60 +58,78 @@ const MyCredential = ({
         gap: 16px;
       `}
     >
-      {card?.title &&
-        <h2
-          className="spectrum-Heading spectrum-Heading--sizeL"
-          css={css`
+      <div
+        className={classNames(card?.className)}
+        css={css`
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          color:var(--spectrum-global-color-gray-800);
+          padding-left: var(--spectrum-global-dimension-size-800);
+          width: calc(7 * 100% / 12);
+          height: 100%;
+          text-align: left;
+
+          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+            padding: 0;
+            width: 100%;
+          }
+        `}
+      >
+        {card?.title &&
+          <h2
+            className="spectrum-Heading spectrum-Heading--sizeL"
+            css={css`
             font-weight:700;
             color:var(--spectrum-global-color-gray-900);
           `}
-        >{card?.title}</h2>}
-      {card?.paragraph &&
-        <p
-          className="spectrum-Body spectrum-Body--sizeL"
-          css={css`
-            width: 50%;
+          >{card?.title}</h2>}
+        {card?.paragraph &&
+          <p
+            className="spectrum-Body spectrum-Body--sizeL"
+            css={css`
             color:var(--spectrum-global-color-gray-900);
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
-              width: 100% ;
-            }
           `}>
-          {card?.paragraph}
-        </p>
-      }
-      <p
-        className="spectrum-Body spectrum-Body--sizeS"
-        css={css`
-          color:var(--spectrum-global-color-gray-900);
-        `}
-      >
-        Download not working?
-        <button
-          css={css`
-            padding:0;
-            font-family:'adobe-clean';
-            border: none;
-            background: transparent;
-            margin-left: 10px;
-            cursor:pointer;
-            text-decoration:underline;
-            color:rgb(0, 84, 182);
-            &:hover {
-              color: rgb(2, 101, 220);
-            }
-          `}
-          onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`)}
-        >
-          Restart download
-        </button>
-      </p>
+            {card?.paragraph}
+          </p>
+        }
+        {downloadOption &&
+          <p
+            className="spectrum-Body spectrum-Body--sizeS"
+            css={css`
+              color:var(--spectrum-global-color-gray-900);
+            `}
+          >
+            Download not working?
+            <button
+              css={css`
+                padding:0;
+                font-family:'adobe-clean';
+                border: none;
+                background: transparent;
+                margin-left: 10px;
+                cursor:pointer;
+                text-decoration:underline;
+                color:rgb(0, 84, 182);
+                &:hover {
+                  color: rgb(2, 101, 220);
+                }
+              `}
+              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, downloadFileName)}
+            >
+              Restart download
+            </button>
+          </p>}
+      </div>
       <div
         css={css`
           display:flex;
           gap: 35px;
+          padding-left: var(--spectrum-global-dimension-size-800);
           
           @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
             flex-direction:column;
+            padding-left: 0;
           }
 
         `}

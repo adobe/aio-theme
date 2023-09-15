@@ -124,15 +124,15 @@ export const LinkOut = () => {
 
 const zip = new JSZip();
 
-const createZipFile = (jsonToInject) => {
+const createZipFile = (jsonToInject, filename) => {
   zip.file('credential.json', JSON.stringify(jsonToInject, null, 2));
 
   zip.generateAsync({ type: 'blob' }).then(function (blob) {
-    saveAs(blob, 'sample.zip');
+    saveAs(blob, `${filename}.zip`);
   });
 }
 
-export const downloadAndModifyZip = async (zipFileURL) => {
+export const downloadAndModifyZip = async (zipFileURL, filename = "download") => {
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
   const options = {
     method: "GET",
@@ -148,7 +148,7 @@ export const downloadAndModifyZip = async (zipFileURL) => {
 
   if (response.status === 200) {
     JSZipUtils.getBinaryContent(zipFileURL, function () {
-      createZipFile(organization);
+      createZipFile(organization, filename);
     });
   }
 }

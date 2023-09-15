@@ -30,12 +30,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [alertShow, setAlertShow] = useState(false);
   const [organizationChange, setOrganization] = useState(false);
   const [organization, setOrganizationValue] = useState({});
+  const [showOrganization, setShowOrganization] = useState(true)
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = () => {
     const OrgID = localStorage?.getItem('OrgID');
+
+    getOrganization().then((data) => { data?.length > 1 ? setShowOrganization(true) : setShowOrganization(false) });
     if (!OrgID) {
       getOrganization(setOrganizationValue);
     }
@@ -54,7 +57,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
         setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
       }
-      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" } });
+      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" || props?.required } });
     });
 
     if (downloadObj.selectOptions.length) {
@@ -77,7 +80,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     getValueFromLocalStorage();
     setTimeout(() => {
       setOrganization(false);
-    }, 8000);
+    }, 10000);
   }, [organizationChange])
 
   const domains = localStorage.getItem('apiKey');
@@ -112,11 +115,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   }, [isError])
 
   useEffect(() => {
+
     const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type.name === "CredentialName")?.map(child => child.type.name);
     const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
     const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
     const isAllowedOriginsValid = requiredFields.includes("AllowedOrigins") ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
     const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid && formData.Agree === true;
+
     setIsValid(isValid);
 
   }, [formData]);
@@ -165,9 +170,9 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }, { key: "Organization", value: organization?.name }], credentialName: formData["CredentialName"], response: resResp };
+        const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }, { key: "Organization", value: organization?.name }], credentialName: formData["CredentialName"], response: resResp, downloadOption: formData['Downloads'], downloadFileName: formData['Download'] };
         localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
-        downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
+        formData['Downloads'] && downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`, formData['Download']);
       } else if (resResp?.messages) {
         setAlertShow(true);
         setIsValid(false);
@@ -196,47 +201,61 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             gap: 16px;
           `}
         >
-          {credentialForm?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentialForm?.title}</h3>}
-          {credentialForm?.paragraph &&
+          <div
+            css={css`
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            color:var(--spectrum-global-color-gray-800);
+            padding-left: var(--spectrum-global-dimension-size-800);
+            width: calc(7 * 100% / 12);
+            height: 100%;
+            text-align: left;
+            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+              padding: 0;
+              width: 100%;
+            }
+          `}
+          >
+            {credentialForm?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentialForm?.title}</h3>}
+            {credentialForm?.paragraph &&
+              <p
+                className="spectrum-Body spectrum-Body--sizeL">
+                {credentialForm?.paragraph}
+              </p>
+            }
             <p
-              className="spectrum-Body spectrum-Body--sizeL"
-              css={css`
-                width: 50%;
-                @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
-                  width: 100% ;
-                }
-              `}>
-              {credentialForm?.paragraph}
+              className="spectrum-Body spectrum-Body--sizeS"
+              css={css`color:var(--spectrum-global-color-gray-800);`}
+            >You're creating this credential in [<b>{organization?.name}</b>].
+              {showOrganization &&
+                <button
+                  tabIndex="0"
+                  css={css`
+                    border: none;
+                    padding:0;
+                    font-family:'adobe-clean';
+                    background: transparent;
+                    margin-left :10px;
+                    text-decoration:underline;
+                    color: var(--spectrum-global-color-gray-800);
+                    cursor:pointer;`
+                  }
+                  onClick={() => setModalOpen(true)}
+                >
+                  Change organization?
+                </button>}
             </p>
-          }
-          <p
-            className="spectrum-Body spectrum-Body--sizeS"
-            css={css`color:var(--spectrum-global-color-gray-800);`}
-          >You're creating this credential in [<b>{organization?.name}</b>].
-            <button
-              tabIndex="0"
-              css={css`
-                border: none;
-                padding:0;
-                font-family:'adobe-clean';
-                background: transparent;
-                margin-left :10px;
-                text-decoration:underline;
-                color: var(--spectrum-global-color-gray-800);
-                cursor:pointer;`
-              }
-              onClick={() => setModalOpen(true)}
-            >
-              Change organization?
-            </button>
-          </p>
+          </div>
           <div
             css={css`
               display:flex;
               gap: 35px;
+              padding-left: var(--spectrum-global-dimension-size-800);
 
               @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                 flex-direction : column;
+                padding-left: 0;
               }
 
             `}
@@ -305,7 +324,17 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             </div>
             {sideObject ? <SideContent sideContent={sideObject?.Side?.children} /> : null}
           </div>
-          <p className="spectrum-Body spectrum-Body--sizeS" css={css` color:var(--spectrum-global-color-gray-800); `} >
+          <p
+            className="spectrum-Body spectrum-Body--sizeS"
+            css={css` 
+              color:var(--spectrum-global-color-gray-800);
+              padding-left: var(--spectrum-global-dimension-size-800); 
+              
+              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                padding-left: 0;
+              }
+
+            `} >
             Have existing credentials?
             <a href="https://developer.adobe.com/console/"
               css={css`
@@ -382,7 +411,7 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
           placeholder={nameProps?.placeholder}
           maxLength={nameProps?.range}
         />
-        <span css={css`display : ${formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
+        <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
       </div>
     </FormFields>
   )

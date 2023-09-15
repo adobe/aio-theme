@@ -15,6 +15,17 @@ const SignIn = ({ signInProps }) => {
           display: flex;
           flex-direction: column;
           gap: 16px;
+          color:var(--spectrum-global-color-gray-800);
+          padding-left: var(--spectrum-global-dimension-size-800);
+          width: calc(7 * 100% / 12);
+          height: 100%;
+          text-align: left;
+
+          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+            padding: 0;
+            width: 100%;
+          }
+ 
         `}
       >
         {signInProps?.title &&
@@ -28,11 +39,7 @@ const SignIn = ({ signInProps }) => {
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
-                width: 50%;
                 color:var(--spectrum-global-color-gray-800);
-                @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
-                  width: 100% ;
-                }
               `}>
             {signInProps?.paragraph}
           </p>
