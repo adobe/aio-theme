@@ -17,8 +17,6 @@ require('dotenv').config({
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const indexSettings = require('./algolia/index-settings');
 const indexRecords = require('./algolia/index-records');
-const { createProxyMiddleware } = require("http-proxy-middleware");
-
 
 let isDryRun = true;
 
@@ -157,14 +155,4 @@ module.exports = {
       },
     },
   ],
-  developMiddleware: app => {
-    app.use(
-      "/console/api",
-      createProxyMiddleware({
-        target: "https://developer-stage.adobe.com",
-        secure: false,
-        changeOrigin: true,
-      })
-    )
-  },
 };
