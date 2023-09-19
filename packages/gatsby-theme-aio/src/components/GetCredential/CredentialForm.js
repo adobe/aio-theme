@@ -32,7 +32,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [organization, setOrganizationValue] = useState({});
   const [showOrganization, setShowOrganization] = useState(true)
 
-  const credentialForm = formProps?.CredentialForm;
+  const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = () => {
@@ -48,20 +48,20 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   }
 
   const initialLoad = () => {
-    const fields = [];
+    const fields = {};
     const downloadObj = { label: "Language", selectOptions: [] };
 
     credentialForm?.children.forEach(({ type, props }) => {
-      if (type?.name === "Downloads" && props?.children) {
+      if (type === Downloads && props?.children) {
         downloadObj.required = props.required || false;
         downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
         setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
       }
-      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" || props?.required } });
+      fields[type] = { ...props, required: type === CredentialName || props?.required };
     });
 
     if (downloadObj.selectOptions.length) {
-      fields.push({ Download: downloadObj });
+      fields[Download] = downloadObj;
       if (downloadObj.selectOptions.length === 1) {
         setFormData(prevData => ({ ...prevData, Download: downloadObj.selectOptions[0]?.title }));
       }
@@ -116,11 +116,11 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   useEffect(() => {
 
-    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type.name === "CredentialName")?.map(child => child.type.name);
+    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type === CredentialName)?.map(child => child.type);
     const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
     const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
-    const isAllowedOriginsValid = requiredFields.includes("AllowedOrigins") ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
-    const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid && formData.Agree === true;
+    const isAllowedOriginsValid = requiredFields.includes(AllowedOrigins) ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
+    const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
 
     setIsValid(isValid);
 
@@ -188,7 +188,11 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     }
   };
 
-  const sideObject = formField.find(item => 'Side' in item);
+  const sideObject = formField?.[Side];
+  const credentialName = formField?.[CredentialName];
+  const allowedOrigins = formField?.[AllowedOrigins];
+  const downloads = formField?.[Downloads];
+  const download = formField?.[Download];
 
   return (
     <>
@@ -281,25 +285,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                   width: 100%;
                 `}
               >
-                {formField.map(({ CredentialName: name, AllowedOrigins: origins, Downloads: downloads, Download: download, Side: side }, index) => {
-                  return (
-                    <>
-                      {!side &&
-                        <>
-                          {!download ?
-                            <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} key={index}>
-                              {name && <CredentialName nameProps={name} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
-                              {origins && <AllowedOrigins originsProps={origins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
-                              {downloads && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
-                            </div> :
-                            <>{formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}</>
-                          }
-                        </>
-                      }
-                    </>
-                  )
-                })
-                }
+                <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
+                  {credentialName && <CredentialName nameProps={credentialName} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
+                  {allowedOrigins && <AllowedOrigins originsProps={allowedOrigins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
+                  {downloads && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
+                </div>
+                {download && <>{formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}</>}
+                  
                 <div css={css`display: flex; gap: 10px;`}>
                   <input type="checkbox" checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
                   <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
@@ -322,7 +314,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 </button>
               </div>
             </div>
-            {sideObject ? <SideContent sideContent={sideObject?.Side?.children} /> : null}
+            {sideObject ? <SideContent sideContent={sideObject?.children} /> : null}
           </div>
           <p
             className="spectrum-Body spectrum-Body--sizeS"
@@ -376,9 +368,9 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           setOrganizationValue={setOrganizationValue}
         />
       )}
-      {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.IllustratedMessage} />}
+      {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage.name]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} />}
-      {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.JoinBetaProgram} />}
+      {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>
   )
 }

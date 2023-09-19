@@ -24,7 +24,7 @@ const MyCredential = ({
     }
   }, [])
 
-  const card = credentialProps.MyCredential;
+  const card = credentialProps?.[MyCredential];
   let domain;
   const apiKey = localStorage?.getItem('apiKey');
   if ((apiKey !== "null") || (apiKey !== null && apiKey)) {
