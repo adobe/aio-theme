@@ -122,36 +122,44 @@ export const LinkOut = () => {
   )
 };
 
-const zip = new JSZip();
+export const downloadAndModifyZip = async (
+  downloadAPI,
+  fileName = 'download',
+  zipFileURL
+) => {
+  try {
+    const zipData = await JSZipUtils.getBinaryContent(zipFileURL);
+    const zipArrayBuffer = new Uint8Array(zipData).buffer;
+    const zip = new JSZip();
 
-const createZipFile = (jsonToInject, filename) => {
-  zip.file('credential.json', JSON.stringify(jsonToInject, null, 2));
+    await zip.loadAsync(zipArrayBuffer);
 
-  zip.generateAsync({ type: 'blob' }).then(function (blob) {
-    saveAs(blob, `${filename}.zip`);
-  });
-}
+    const token = window.adobeIMS?.getTokenFromStorage()?.token;
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token,
+        "x-api-key": "UDPWeb1"
+      }
+    };
 
-export const downloadAndModifyZip = async (zipFileURL, filename = "download") => {
-  const token = window.adobeIMS?.getTokenFromStorage()?.token;
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token,
-      "x-api-key": "UDPWeb1"
+    const response = await fetch(downloadAPI, options);
+
+    if (response.status === 200) {
+      const credential = await response.json();
+
+      zip.file('credential.json', JSON.stringify(credential));
+
+      const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
+      saveAs(modifiedZipBlob, `${fileName}.zip`);
+    } else {
+      console.error('Failed to fetch additional data. Response status:', response.status);
     }
-  };
-
-  const response = await fetch(zipFileURL, options);
-  const organization = await response.json();
-
-  if (response.status === 200) {
-    JSZipUtils.getBinaryContent(zipFileURL, function () {
-      createZipFile(organization, filename);
-    });
+  } catch (error) {
+    console.error('An error occurred:', error);
   }
-}
+};
 
 export const KeyIcon = () => {
   return (
@@ -176,10 +184,20 @@ export const getOrganization = async (setOrganizationValue) => {
       });
       const organization = await response.json();
 
+      let organs;
+      const OrgID = localStorage?.getItem('OrgID');
+      if (!OrgID) {
+        getOrganization(setOrganizationValue)
+      }
+      else {
+        organs = JSON.parse(atob(OrgID));
+      }
+
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
+        localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])));
       }
-      localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])));
+      localStorage.setItem('isOrganization', organization.length);
       return organization;
     }
 

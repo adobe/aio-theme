@@ -9,10 +9,6 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
   useEffect(() => {
 
-    getOrganization().then((data) => {
-      setOrgans(data)
-    });
-
     const OrgID = localStorage?.getItem('OrgID');
     if (!OrgID) {
       getOrganization(setOrganizationValue)
@@ -22,7 +18,15 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
       setSelectedOrganization(organs?.id)
     }
 
+    getOrganization().then((data) => {
+      setOrgans(data)
+    });
+
   }, []);
+
+  let defaultSelectOragnization = organization?.find((data) => {
+    return data.id === selectedOrganization
+  })
 
   const handleRedirect = () => {
     setAlertShow(true);
@@ -127,6 +131,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                           border-radius: 3px;
                           border: 1px solid #D0D0D0 !important;
                         `}
+                          defaultValue={defaultSelectOragnization?.id}
                           onChange={(e) => handleChange(e)}
                         >
                           {organization && organization?.map((organs, index) => {

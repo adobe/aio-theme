@@ -17,7 +17,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
   React.Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) return;
     if (child.props) {
-      getCredentialData[child.type?.name] = child.props;
+      getCredentialData[child.type] = child.props;
     }
   });
 
@@ -53,7 +53,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
           `}
         >
-          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.SignIn} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
+          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
         </div>
       </section>
     }
@@ -79,5 +79,3 @@ GetCredential.Card = MyCredential;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
 
 export { GetCredential };
-
-

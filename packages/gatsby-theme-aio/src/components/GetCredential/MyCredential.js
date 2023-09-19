@@ -7,7 +7,8 @@ import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_
 const MyCredential = ({
   credentialProps,
   setShowCreateForm,
-  setShowCredential
+  setShowCredential,
+  response
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
@@ -24,14 +25,7 @@ const MyCredential = ({
     }
   }, [])
 
-  const card = credentialProps.MyCredential;
-  let domain;
-  const apiKey = localStorage?.getItem('apiKey');
-  if ((apiKey !== "null") || (apiKey !== null && apiKey)) {
-    domain = JSON.parse(atob(apiKey));
-  }
-
-  const { response, credentialName, Credential, downloadOption, downloadFileName } = domain || {};
+  const card = credentialProps?.[MyCredential];
 
   const handleCopy = (value) => {
     setIsCopied(true);
@@ -41,7 +35,6 @@ const MyCredential = ({
   const handleRestart = () => {
     setShowCreateForm(true);
     setShowCredential(false);
-    localStorage.removeItem('apiKey');
   }
 
   const handleLeave = () => {
@@ -115,7 +108,7 @@ const MyCredential = ({
                   color: rgb(2, 101, 220);
                 }
               `}
-              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, downloadFileName)}
+              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, downloadFileName, zipFileUrl)}
             >
               Restart download
             </button>
