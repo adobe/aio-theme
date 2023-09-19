@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetCredential } from '@adobe/gatsby-theme-aio/src/components/GetCredential';
+import { GetCredential } from "../../../../packages/gatsby-theme-aio/src/components/GetCredential";
 import "./Credential.css"
 
 const GetCredentialExternal = () => {

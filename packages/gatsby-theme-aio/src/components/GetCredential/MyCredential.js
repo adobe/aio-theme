@@ -6,14 +6,31 @@ import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_
 
 const MyCredential = ({
   credentialProps,
+  formData,
   setShowCreateForm,
   setShowCredential,
+  organizationName,
   response
 }) => {
-
+  
   const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
   const [organization, setOrganizationValue] = useState({});
+
+  const Credential = [
+    {
+      key: "API Key",
+      value: response["apiKey"]
+    },
+    {
+      key: "Allowed domains",
+      value: formData['AllowedOrigins']
+    },
+    {
+      key: "Organization",
+      value: organizationName
+    }
+  ]
 
   useEffect(() => {
     const OrgID = localStorage?.getItem('OrgID');
@@ -86,7 +103,7 @@ const MyCredential = ({
             {card?.paragraph}
           </p>
         }
-        {downloadOption &&
+        {formData['Downloads'] &&
           <p
             className="spectrum-Body spectrum-Body--sizeS"
             css={css`
@@ -108,7 +125,7 @@ const MyCredential = ({
                   color: rgb(2, 101, 220);
                 }
               `}
-              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, downloadFileName, zipFileUrl)}
+              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'])}
             >
               Restart download
             </button>
@@ -170,7 +187,7 @@ const MyCredential = ({
                 `}
               >
                 <KeyIcon />
-                <h3 className="spectrum-Heading spectrum-Heading--sizeM">{credentialName}</h3>
+                <h3 className="spectrum-Heading spectrum-Heading--sizeM">{formData['CredentialName']}</h3>
               </div>
               <hr
                 css={css`

@@ -182,6 +182,7 @@ export const getOrganization = async (setOrganizationValue) => {
           "x-api-key": "UDPWeb1"
         }
       });
+      
       const organization = await response.json();
 
       let organs;

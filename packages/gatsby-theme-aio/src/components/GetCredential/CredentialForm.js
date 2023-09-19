@@ -40,7 +40,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
     const isOrganization = Number(localStorage.getItem('isOrganization'));
 
-    if (!isOrganization && isOrganization === 0 || !OrgID) {
+    if ((!isOrganization && isOrganization === 0) || !OrgID) {
       getOrganization(setOrganizationValue);
     } else {
       if (isOrganization > 1 && isOrganization !== 0) {
@@ -387,7 +387,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         />
       )}
       {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage.name]} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>
   )
