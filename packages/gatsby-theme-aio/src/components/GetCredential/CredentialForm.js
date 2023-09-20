@@ -346,7 +346,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
             `} >
             Have existing credentials?
-            <a href="https://developer.adobe.com/console/"
+            <a href="/console/" target="_blank" 
               css={css`
                 margin-left : 10px;
                 color:var(--spectrum-global-color-gray-800);

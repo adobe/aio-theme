@@ -44,6 +44,8 @@ const MyCredential = ({
 
   const card = credentialProps?.[MyCredential];
 
+  const devConsoleLink = `/console/projects/${organization?.id}/${response.projectId}/overview`;
+
   const handleCopy = (value) => {
     setIsCopied(true);
     navigator.clipboard.writeText(value);
@@ -279,14 +281,14 @@ const MyCredential = ({
                     }
                   `}
                 >
-                  <a href={card?.nextStepsHref}>
+                  <a href={card?.nextStepsHref} target="_blank">
                     <button
                       className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
                       css={css`width:fit-content;margin-top:10px`}>
                       <span className="spectrum-Button-label">{card?.nextStepsLabel}</span>
                     </button>
                   </a>
-                  <a href={card?.devConsoleDirection}
+                  <a href={devConsoleLink} target="_blank"
                     css={css`
                       color: var(--spectrum-global-color-gray-800);
                       &:hover {
