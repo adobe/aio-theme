@@ -42,7 +42,7 @@ const IllustratedMessage = ({ setShowCreateForm, errorMessage, errorBoundary }) 
           <button className="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM" onClick={() => setShowCreateForm(true)}>
             <span className="spectrum-Button-label">Try Again</span>
           </button>
-          <p className="spectrum-Body spectrum-Body--sizeS"><a href={errorMessage?.helpLink}>{errorMessage?.helpLinkText}</a></p>
+          <p className="spectrum-Body spectrum-Body--sizeS"><a href={errorMessage?.helpLink} target="_blank" >{errorMessage?.helpLinkText}</a></p>
         </>
       }
     </div>

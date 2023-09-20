@@ -141,6 +141,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                       <div>
                         Can't find your organization?
                         <a href="https://some_help_link"
+                          target="_blank"
                           css={css`
                           color:rgb(0, 84, 182);
                           &:hover {
