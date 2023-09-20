@@ -6,14 +6,17 @@ import PropTypes from 'prop-types';
 const Toast = ({
   variant,
   message,
-  disable
+  disable,
+  customDisableFunction
 }) => {
 
   const [alertShow, setAlertShow] = useState(true);
 
   useEffect(() => {
     if (disable) {
-      setTimeout(() => { setAlertShow(false) }, disable);
+      setTimeout(() => {
+        handleDisable();
+      }, disable);
     }
   }, [alertShow, disable])
 
@@ -24,6 +27,11 @@ const Toast = ({
   };
 
   const { VariantIcon, bgColorVarient } = variantMap[variant] || { VariantIcon: null, bgColorVarient: "#6d6d6d" };
+
+  const handleDisable = () => {
+    setAlertShow(false)
+    customDisableFunction(false)
+  }
 
   return (
     <>
@@ -81,7 +89,7 @@ const Toast = ({
             </div>
             <div ><hr css={css`height:25px;`} /></div>
             <button
-              onClick={() => setAlertShow(false)}
+              onClick={handleDisable}
               css={css`
                   display:flex;
                   cursor: pointer;

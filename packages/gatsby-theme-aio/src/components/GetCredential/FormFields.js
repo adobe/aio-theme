@@ -182,23 +182,14 @@ export const getOrganization = async (setOrganizationValue) => {
           "x-api-key": "UDPWeb1"
         }
       });
-      
-      const organization = await response.json();
 
-      let organs;
-      const OrgID = localStorage?.getItem('OrgID');
-      if (!OrgID) {
-        getOrganization(setOrganizationValue)
-      }
-      else {
-        organs = JSON.parse(atob(OrgID));
-      }
+      const organization = await response.json();
 
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
-        localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])));
+        localStorage.setItem('OrgId', btoa(JSON.stringify(organization[0])));
       }
-      localStorage.setItem('isOrganization', organization.length);
+      localStorage.setItem('isOrganizationLength', organization.length);
       return organization;
     }
 

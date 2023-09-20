@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import classNames from "classnames";
@@ -19,7 +19,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState({});
-  const [errResp, setErrorResp] = useState("`Unable to create credential. Error <code>:<error text>. Please try to submit the form again`");
+  const [errResp, setErrorResp] = useState("");
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
   const [formField, setFormField] = useState([]);
@@ -36,9 +36,9 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = () => {
-    const OrgID = localStorage?.getItem('OrgID');
+    const OrgID = localStorage?.getItem('OrgId');
 
-    const isOrganization = Number(localStorage.getItem('isOrganization'));
+    const isOrganization = Number(localStorage.getItem('isOrganizationLength'));
 
     if ((!isOrganization && isOrganization === 0) || !OrgID) {
       getOrganization(setOrganizationValue);
@@ -48,7 +48,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       } else {
         setShowOrganization(false);
       }
-
       setOrganizationValue(JSON.parse(atob(OrgID)));
     }
   }
@@ -76,20 +75,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     setFormField(fields);
     getValueFromLocalStorage();
 
-    if (domains) {
-      setShowCredential(true);
-      setShowCreateForm(false);
-    }
   }
 
   useEffect(() => {
-    getValueFromLocalStorage();
     setTimeout(() => {
       setOrganization(false);
     }, 8000);
   }, [organizationChange])
-
-  const domains = localStorage.getItem('apiKey');
 
   useEffect(() => {
     if (showCreateForm) setIsError(false);
@@ -103,9 +95,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       };
       setFormData(updateForm);
       setAlertShow(false);
-      initialLoad()
     }
-
   }, [showCredential])
 
   useEffect(() => { initialLoad(); }, []);
@@ -120,41 +110,28 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     }
   }, [isError])
 
-  const memoizedFormData = useMemo(() => ({
-    CredentialName: formData.CredentialName,
-    AllowedOrigins: formData.AllowedOrigins,
-    Agree: formData.Agree,
-    Download: formData.Download,
-  }), [formData]);
-
-  const memoizedRequiredFields = useMemo(() => (
-    Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type === CredentialName)?.map(child => child.type)
-  ), [credentialForm]);
-
   useEffect(() => {
-    const isValidCredentialName = credentialNameRegex.test(memoizedFormData.CredentialName) && formData['CredentialName']?.length >= 6;
-    const isCheckAllowedOrgins = memoizedRequiredFields.filter((data) => data.name === "AllowedOrigins")
+    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type === CredentialName)?.map(child => child.type)
+    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
+    const isCheckAllowedOrgins = requiredFields.filter((data) => data.name === "AllowedOrigins")
     const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
     const isAllowedOriginsValid = isCheckAllowedOrgins ? validateAllowedOrigins?.every((value) => value === true) && formData["AllowedOrigins"] !== undefined && formData["AllowedOrigins"]?.length !== 0 : true;
 
-    const isValid = isValidCredentialName && isAllowedOriginsValid && memoizedFormData.Agree === true;
-
-    formField?.[Download]?.selectOptions.forEach((data) => {
-      if (data.title === memoizedFormData?.Download) {
-        setFormData(prevData => ({ ...prevData, zipUrl: data.href }));
-      }
-    })
+    const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
 
     setIsValid(isValid);
-  }, [memoizedFormData, memoizedRequiredFields]);
-
-  useEffect(() => {
-    setTimeout(() => { setAlertShow(false) }, 8000);
-  }, [alertShow]);
+  }, [formData]);
 
   const handleChange = (e, type) => {
     const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
+    if (type === "Downloads") {
+      formField?.[Download]?.selectOptions.forEach((data) => {
+        if (data.title === formData?.Download) {
+          setFormData(prevData => ({ ...prevData, zipUrl: data.href }));
+        }
+      })
+    }
   };
 
   const createCredential = async () => {
@@ -306,7 +283,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
                   {credentialName && <CredentialName nameProps={credentialName} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                   {allowedOrigins && <AllowedOrigins originsProps={allowedOrigins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
-                  {downloads && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
+                  {downloads && download && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
                 </div>
                 {download && <>{formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}</>}
 
@@ -365,10 +342,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       {alertShow &&
         <>
           {organizationChange ?
-            <Toast message="Organization Changed" variant="success" /> :
+            <Toast message="Organization Changed" variant="success" disable={8000} customDisableFunction={setAlertShow} /> :
             <Toast
+              customDisableFunction={setAlertShow}
               message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
               variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
+              disable={isError || (showCreateForm && !showCredential) ? null : 8000}
             />
           }
         </>
