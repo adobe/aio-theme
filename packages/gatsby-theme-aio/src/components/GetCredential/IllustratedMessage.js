@@ -35,6 +35,7 @@ const IllustratedMessage = ({ setShowCreateForm, errorMessage, errorBoundary }) 
       {errorBoundary ?
         <>
         <p className='spectrum-Body spectrum-Body--sizeM'>Please try again after some times</p>
+        <pre>{errorBoundary.errorInfo}</pre>
         </> :
         <>
           <p className='spectrum-Body spectrum-Body--sizeM'>An error has occured when you tried to create a new credential.</p>
