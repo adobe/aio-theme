@@ -9,14 +9,11 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
   useEffect(() => {
 
-    const OrgID = localStorage?.getItem('OrganizationID');
-    if (!OrgID) {
-      getOrganization(setOrganizationValue)
-    }
-    else {
-      let organs = JSON.parse(OrgID);
-      setSelectedOrganization(organs?.id)
-    }
+    const orgInfo = localStorage?.getItem('OrgInfo');
+    if ( orgInfo !== null ) {
+      const orgData = JSON.parse(orgInfo);
+      setSelectedOrganization(orgData?.id)
+    } 
 
     getOrganization().then((data) => {
       setOrgans(data)
@@ -52,7 +49,12 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
       if (organs?.id === e.target.value) {
         setSelectedOrganization(e.target.value);
         setOrganizationValue(organs)
-        localStorage.setItem('OrganizationID', JSON.stringify(organs));
+        const orgData = {
+          "id":organs?.id,
+          "name":organs?.name,
+          "orgLen":organization?.length
+        }
+        localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }
     })
   };

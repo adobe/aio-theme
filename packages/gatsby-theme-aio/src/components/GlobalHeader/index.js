@@ -1031,6 +1031,7 @@ const GlobalHeader = ({
                           `}
                           onClick={() => {
                             ims.signOut();
+                            localStorage?.removeItem("OrgInfo");
                           }}>
                           Sign out
                         </Button>

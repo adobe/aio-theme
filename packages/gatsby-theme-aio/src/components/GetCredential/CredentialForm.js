@@ -36,19 +36,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = () => {
-    const OrgID = localStorage?.getItem('OrganizationID');
-
-    const isOrganization = Number(localStorage.getItem('isOrganizationLength'));
-
-    if ((!isOrganization && isOrganization === 0) || !OrgID) {
+    const orgInfo = localStorage?.getItem('OrgInfo');
+    if ( orgInfo === null  ) {
       getOrganization(setOrganizationValue);
     } else {
-      if (isOrganization > 1 && isOrganization !== 0) {
-        setShowOrganization(true);
-      } else {
-        setShowOrganization(false);
-      }
-      setOrganizationValue(JSON.parse(OrgID));
+      const orgData = JSON.parse(orgInfo);
+      setShowOrganization(orgData.orgLen == 1 ? false : true);
+      setOrganizationValue(orgData);
     }
   }
 
