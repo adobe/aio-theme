@@ -17,6 +17,7 @@ require('dotenv').config({
 const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
 const indexSettings = require('./algolia/index-settings');
 const indexRecords = require('./algolia/index-records');
+
 let isDryRun = true;
 
 let indexingMode = process.env.ALGOLIA_INDEXATION_MODE;

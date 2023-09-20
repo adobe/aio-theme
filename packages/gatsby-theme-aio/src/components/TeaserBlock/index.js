@@ -94,7 +94,7 @@ TeaserBlock.propTypes = {
     text: PropTypes.element,
     buttons: PropTypes.element,
     position: PropTypes.string,
-    variant: PropTypes.element
+    variant: PropTypes.string
 };
 
 
