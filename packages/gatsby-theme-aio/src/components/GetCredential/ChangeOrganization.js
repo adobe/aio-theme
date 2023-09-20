@@ -9,12 +9,12 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
   useEffect(() => {
 
-    const OrgID = localStorage?.getItem('OrgId');
+    const OrgID = localStorage?.getItem('OrganizationID');
     if (!OrgID) {
       getOrganization(setOrganizationValue)
     }
     else {
-      let organs = JSON.parse(atob(OrgID));
+      let organs = JSON.parse(OrgID);
       setSelectedOrganization(organs?.id)
     }
 
@@ -48,15 +48,13 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   const handleChange = (e) => {
     setOrganization(true);
     setSelectedOrganization(e.target.value);
-    getOrganization().then((data) => {
-      data.forEach((organs) => {
-        if (organs?.id === e.target.value) {
-          setSelectedOrganization(e.target.value);
-          setOrganizationValue(organs)
-          localStorage.setItem('OrgId', btoa(JSON.stringify(organs)));
-        }
-      })
-    });
+    organization.forEach((organs) => {
+      if (organs?.id === e.target.value) {
+        setSelectedOrganization(e.target.value);
+        setOrganizationValue(organs)
+        localStorage.setItem('OrganizationID', JSON.stringify(organs));
+      }
+    })
   };
 
   return (

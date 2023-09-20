@@ -36,7 +36,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = () => {
-    const OrgID = localStorage?.getItem('OrgId');
+    const OrgID = localStorage?.getItem('OrganizationID');
 
     const isOrganization = Number(localStorage.getItem('isOrganizationLength'));
 
@@ -48,7 +48,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       } else {
         setShowOrganization(false);
       }
-      setOrganizationValue(JSON.parse(atob(OrgID)));
+      setOrganizationValue(JSON.parse(OrgID));
     }
   }
 

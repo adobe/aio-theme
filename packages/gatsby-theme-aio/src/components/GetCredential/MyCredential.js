@@ -33,9 +33,9 @@ const MyCredential = ({
   ]
 
   useEffect(() => {
-    const OrgID = localStorage?.getItem('OrgId');
+    const OrgID = localStorage?.getItem('OrganizationID');
     if (OrgID) {
-      setOrganizationValue(JSON.parse(atob(OrgID)))
+      setOrganizationValue(JSON.parse(OrgID));
     }
     else {
       getOrganization(setOrganizationValue);

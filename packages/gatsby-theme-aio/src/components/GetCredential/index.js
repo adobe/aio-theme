@@ -8,6 +8,7 @@ import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
 import { JoinBetaProgram } from './JoinBetaProgram';
 import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import ErrorBoundary from './ErrorBoundary';
 
 const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 
@@ -23,40 +24,42 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
   return (
     <>
-    {
-      isBrowser && 
-      <section
-        className={classNames(className)}
-        css={css`
-          background: #f8f8f8;
-          padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
-                    
-          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
-            padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
-          }
-        `
-        }
-      >
-        <div
-          css={css`
-            width: 75%;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align:initial;
-
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
-              width: 90% ;
-              overflow:hidden;
+      {
+        isBrowser &&
+        <ErrorBoundary >
+          <section
+            className={classNames(className)}
+            css={css`
+                background: #f8f8f8;
+                padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
+                          
+                @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
+                  padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
+                }
+              `
             }
+          >
+            <div
+              css={css`
+                width: 75%;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                text-align:initial;
 
-          `}
-        >
-          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
-        </div>
-      </section>
-    }
+                @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
+                  width: 90% ;
+                  overflow:hidden;
+                }
+
+              `}
+            >
+              {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
+            </div>
+          </section>
+        </ErrorBoundary>
+      }
     </>
   )
 

@@ -187,7 +187,7 @@ export const getOrganization = async (setOrganizationValue) => {
 
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
-        localStorage.setItem('OrgId', btoa(JSON.stringify(organization[0])));
+        localStorage.setItem('OrganizationID', JSON.stringify(organization[0]));
       }
       localStorage.setItem('isOrganizationLength', organization.length);
       return organization;
