@@ -6,17 +6,24 @@ class ErrorBoundary extends Component {
     super(props);
     this.state = {
       hasError: false,
+      error: null,
+      errorInfo: null,
     };
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught:', error, errorInfo);
-    this.setState({ hasError: true });
+    this.setState({
+      hasError: true,
+      error: error,
+      errorInfo: errorInfo,
+    });
   }
+
+  errorMessage = { errorInfo: this.state?.errorInfo?.componentStack };
 
   render() {
     if (this.state.hasError) {
-      return <IllustratedMessage errorBoundary={true} />;
+      return <IllustratedMessage errorBoundary={this.errorMessage} />;
     }
 
     return this.props.children;
