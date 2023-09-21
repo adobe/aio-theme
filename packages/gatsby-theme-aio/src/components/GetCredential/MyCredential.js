@@ -20,7 +20,7 @@ const MyCredential = ({
   const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
   const [organization, setOrganizationValue] = useState({});
-  const [downloadFile, setDownloadFile] = useState(false)
+  const [isDownloadStart, setIsDownloadStart] = useState();
 
   const Credential = [
     {
@@ -46,7 +46,7 @@ const MyCredential = ({
       getOrganization(setOrganizationValue);
     }
     if (formData['Downloads']) {
-      downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setDownloadFile)
+      downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setIsDownloadStart)
     }
 
   }, [])
@@ -80,7 +80,7 @@ const MyCredential = ({
       const zipArrayBuffer = new Uint8Array(zipData).buffer;
       const zip = new JSZip();
 
-      setDownloadFile(true)
+      setIsDownloadStart(true)
 
       await zip.loadAsync(zipArrayBuffer);
 
@@ -103,9 +103,7 @@ const MyCredential = ({
 
         const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
         saveAs(modifiedZipBlob, `${fileName}.zip`);
-        if (setDownloadFile) {
-          setDownloadFile(false)
-        }
+        setIsDownloadStart(false)
       } else {
         console.error('Failed to fetch additional data. Response status:', response.status);
       }
@@ -156,7 +154,7 @@ const MyCredential = ({
                 color:var(--spectrum-global-color-gray-900);
               `}
             >{card?.title}</h2>}
-          {downloadFile &&
+          {isDownloadStart &&
             <div css={
               css`
                 display:flex;
@@ -183,7 +181,7 @@ const MyCredential = ({
             </div>
           }
         </div>
-        {card?.paragraph &&
+        {formData['Downloads'] && card?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
@@ -214,7 +212,7 @@ const MyCredential = ({
                   color: rgb(2, 101, 220);
                 }
               `}
-              onClick={() => downloadZIP(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setDownloadFile)}
+              onClick={() => downloadZIP(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'])}
             >
               Restart download
             </button>
