@@ -30,7 +30,9 @@ const Toast = ({
 
   const handleDisable = () => {
     setAlertShow(false)
-    customDisableFunction(false)
+    if (typeof customDisableFunction === 'function') {
+      customDisableFunction(false);
+    }
   }
 
   return (

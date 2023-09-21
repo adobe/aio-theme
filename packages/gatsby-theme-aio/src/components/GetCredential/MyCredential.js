@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { CopyIcon, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import JSZip from 'jszip';
+import JSZipUtils from 'jszip-utils';
+import { saveAs } from 'file-saver';
 
 const MyCredential = ({
   credentialProps,
@@ -10,12 +13,14 @@ const MyCredential = ({
   setShowCreateForm,
   setShowCredential,
   organizationName,
-  response
+  response,
+  orgID
 }) => {
-  
+
   const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
   const [organization, setOrganizationValue] = useState({});
+  const [downloadFile, setDownloadFile] = useState(false)
 
   const Credential = [
     {
@@ -40,6 +45,10 @@ const MyCredential = ({
     else {
       getOrganization(setOrganizationValue);
     }
+    if (formData['Downloads']) {
+      downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setDownloadFile)
+    }
+
   }, [])
 
   const card = credentialProps?.[MyCredential];
@@ -60,6 +69,50 @@ const MyCredential = ({
     setTooltipOpen(null);
     setIsCopied(false)
   }
+
+  const downloadZIP = async (
+    downloadAPI,
+    fileName = 'download',
+    zipFileURL
+  ) => {
+    try {
+      const zipData = await JSZipUtils.getBinaryContent(zipFileURL);
+      const zipArrayBuffer = new Uint8Array(zipData).buffer;
+      const zip = new JSZip();
+
+      setDownloadFile(true)
+
+      await zip.loadAsync(zipArrayBuffer);
+
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+          "x-api-key": "UDPWeb1"
+        }
+      };
+
+      const response = await fetch(downloadAPI, options);
+
+      if (response.status === 200) {
+        const credential = await response.json();
+
+        zip.file('credential.json', JSON.stringify(credential));
+
+        const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
+        saveAs(modifiedZipBlob, `${fileName}.zip`);
+        if (setDownloadFile) {
+          setDownloadFile(false)
+        }
+      } else {
+        console.error('Failed to fetch additional data. Response status:', response.status);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
 
   return (
     <div
@@ -88,14 +141,48 @@ const MyCredential = ({
           }
         `}
       >
-        {card?.title &&
-          <h2
-            className="spectrum-Heading spectrum-Heading--sizeL"
-            css={css`
-            font-weight:700;
-            color:var(--spectrum-global-color-gray-900);
-          `}
-          >{card?.title}</h2>}
+        <div
+          css={css`
+            display:flex;
+            gap:20px;
+            align-items: baseline;
+        `}
+        >
+          {card?.title &&
+            <h2
+              className="spectrum-Heading spectrum-Heading--sizeL"
+              css={css`
+                font-weight:700;
+                color:var(--spectrum-global-color-gray-900);
+              `}
+            >{card?.title}</h2>}
+          {downloadFile &&
+            <div css={
+              css`
+                display:flex;
+                text-align: center;
+                align-items: center;
+                gap: 10px;
+              `}>
+              <div class="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--small">
+                <div class="spectrum-ProgressCircle-track"></div>
+                <div class="spectrum-ProgressCircle-fills">
+                  <div class="spectrum-ProgressCircle-fillMask1">
+                    <div class="spectrum-ProgressCircle-fillSubMask1">
+                      <div class="spectrum-ProgressCircle-fill"></div>
+                    </div>
+                  </div>
+                  <div class="spectrum-ProgressCircle-fillMask2">
+                    <div class="spectrum-ProgressCircle-fillSubMask2">
+                      <div class="spectrum-ProgressCircle-fill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p css={css`margin:0`}>Downloading...</p>
+            </div>
+          }
+        </div>
         {card?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
@@ -127,7 +214,7 @@ const MyCredential = ({
                   color: rgb(2, 101, 220);
                 }
               `}
-              onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'])}
+              onClick={() => downloadZIP(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setDownloadFile)}
             >
               Restart download
             </button>

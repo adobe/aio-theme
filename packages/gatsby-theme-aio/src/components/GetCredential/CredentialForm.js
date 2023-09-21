@@ -31,14 +31,27 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [organizationChange, setOrganization] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [showOrganization, setShowOrganization] = useState(true);
+  const [isCheckOrg, setOrg] = useState(true);
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
-  const getValueFromLocalStorage = () => {
+  const getValueFromLocalStorage = async () => {
     const orgInfo = localStorage?.getItem('OrgInfo');
-    if ( orgInfo === null  ) {
+    if (orgInfo === null) {
       getOrganization(setOrganizationValue);
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const response = await fetch("/console/api/organizations", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+          "x-api-key": "UDPWeb1"
+        }
+      });
+      if (response.status !== 200) {
+        setOrg(false);
+      }
     } else {
       const orgData = JSON.parse(orgInfo);
       setShowOrganization(orgData.orgLen == 1 ? false : true);
@@ -163,7 +176,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        formData['Downloads'] && downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`, formData['Download'], formData['zipUrl']);
       } else if (resResp?.messages) {
         setAlertShow(true);
         setIsValid(false);
@@ -217,14 +229,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 {credentialForm?.paragraph}
               </p>
             }
-            <p
-              className="spectrum-Body spectrum-Body--sizeS"
-              css={css`color:var(--spectrum-global-color-gray-800);`}
-            >You're creating this credential in [<b>{organization?.name}</b>].
-              {showOrganization &&
-                <button
-                  tabIndex="0"
-                  css={css`
+            {isCheckOrg &&
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                css={css`color:var(--spectrum-global-color-gray-800);`}
+              >You're creating this credential in [<b>{organization?.name}</b>].
+                {showOrganization &&
+                  <button
+                    tabIndex="0"
+                    css={css`
                     border: none;
                     padding:0;
                     font-family:'adobe-clean';
@@ -233,12 +246,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                     text-decoration:underline;
                     color: var(--spectrum-global-color-gray-800);
                     cursor:pointer;`
-                  }
-                  onClick={() => setModalOpen(true)}
-                >
-                  Change organization?
-                </button>}
-            </p>
+                    }
+                    onClick={() => setModalOpen(true)}
+                  >
+                    Change organization?
+                  </button>}
+              </p>}
           </div>
           <div
             css={css`
@@ -317,7 +330,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
             `} >
             Have existing credentials?
-            <a href="/console/" target="_blank" 
+            <a href="/console/" target="_blank"
               css={css`
                 margin-left : 10px;
                 color:var(--spectrum-global-color-gray-800);
@@ -346,7 +359,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           }
         </>
       }
-      {loading && !showCredential && <Loading credentials={credentialForm} />}
+      {loading && !showCredential && <Loading credentials={credentialForm} downloadStatus={formData['Downloads']} />}
       {modalOpen && (
         <ChangeOrganization
           setModalOpen={setModalOpen}
@@ -360,7 +373,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         />
       )}
       {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage.name]} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>
   )

@@ -1,10 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { ContextHelp } from './ContextHelp';
 import { css } from "@emotion/react";
 import classNames from "classnames";
-import JSZip from 'jszip';
-import JSZipUtils from 'jszip-utils';
-import { saveAs } from 'file-saver';
 
 export const FormFields = ({ isFormValue, fields, children, formData, isRed }) => {
 
@@ -120,45 +117,6 @@ export const LinkOut = () => {
       <path d="M16.75,1H11.377A.4.4,0,0,0,11,1.4a.392.392,0,0,0,.1175.28l1.893,1.895L9.4895,7.096a.5.5,0,0,0-.00039.70711l.00039.00039.707.707a.5.5,0,0,0,.707,0l3.5215-3.521L16.318,6.882A.39051.39051,0,0,0,16.6,7a.4.4,0,0,0,.4-.377V1.25A.25.25,0,0,0,16.75,1Z" />
     </svg>
   )
-};
-
-export const downloadAndModifyZip = async (
-  downloadAPI,
-  fileName = 'download',
-  zipFileURL
-) => {
-  try {
-    const zipData = await JSZipUtils.getBinaryContent(zipFileURL);
-    const zipArrayBuffer = new Uint8Array(zipData).buffer;
-    const zip = new JSZip();
-
-    await zip.loadAsync(zipArrayBuffer);
-
-    const token = window.adobeIMS?.getTokenFromStorage()?.token;
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token,
-        "x-api-key": "UDPWeb1"
-      }
-    };
-
-    const response = await fetch(downloadAPI, options);
-
-    if (response.status === 200) {
-      const credential = await response.json();
-
-      zip.file('credential.json', JSON.stringify(credential));
-
-      const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
-      saveAs(modifiedZipBlob, `${fileName}.zip`);
-    } else {
-      console.error('Failed to fetch additional data. Response status:', response.status);
-    }
-  } catch (error) {
-    console.error('An error occurred:', error);
-  }
 };
 
 export const KeyIcon = () => {

@@ -2,7 +2,8 @@ import React, {useEffect, useRef} from 'react';
 import { css } from "@emotion/react";
 
 const Loading = ({
-  credentials
+  credentials,
+  downloadStatus
 }) => {
   const divRef = useRef(null);
   useEffect(() =>{
@@ -45,12 +46,16 @@ const Loading = ({
             font-family: 'adobe-clean';
             color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
           `}
-        >Creating credentials...</div>
-        <div
-          css={css`
+        >
+          Creating credentials...
+        </div>
+        {downloadStatus &&
+          <div
+            css={css`
               color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
             `}
-        >This process may take a few moments. Once complete, you download will start.</div>
+          >This process may take a few moments. Once complete, you download will start.</div>
+        }
       </div>
     </>
   )
