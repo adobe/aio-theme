@@ -27,8 +27,8 @@ const GetCredentialExternal = () => {
             <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
             <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form created an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certian domains.</p>
             <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
-            <a className="side-documentation" href='https://some_help_link'>Authentication documentation</a>
-            <a className='side-documentation' href='https://some_help_link'>Adobe Express Embed SDK documentation</a>
+            <a className="side-documentation" href='https://some_help_link' target="_blank" rel="noreferrer" >Authentication documentation</a>
+            <a className='side-documentation' href='https://some_help_link' target="_blank" rel="noreferrer" >Adobe Express Embed SDK documentation</a>
           </div>
         </GetCredential.Form.Side>
 
@@ -43,8 +43,8 @@ const GetCredentialExternal = () => {
             <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
             <p className="spectrum-Body spectrum-Body--sizeM">An API Key credential was created. The API key credential identifies your application to Adobe servers and can help accept or reject request originating from certain domains.</p>
             <h3 className="spectrum-Heading spectrum-Heading--sizeS" >Learn more</h3>
-            <a className="side-documentation" href='https://some_help_link'>Authentication documentation</a>
-            <a className="side-documentation" href='https://some_help_link'>Adobe Express Embed SDK documentation</a>
+            <a className="side-documentation" href='https://some_help_link' target="_blank" rel="noreferrer" >Authentication documentation</a>
+            <a className="side-documentation" href='https://some_help_link' target="_blank" rel="noreferrer" >Adobe Express Embed SDK documentation</a>
           </div>
         </GetCredential.Side>
 

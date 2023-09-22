@@ -141,6 +141,18 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Embedding local markdown files](#embedding-local-markdown-files)
       - [Embedding external markdown files](#embedding-external-markdown-files)
       - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
+	- [Get Credential](#get-credential)
+    	- [GetCredential.SignIn](#getcredentialsignin)
+    	- [GetCredential.Form](#getcredentialform)
+    	- [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
+    	- [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
+    	- [GetCredential.Form.Downloads](#getcredentialformdownloads)
+    	- [GetCredential.Form.Download](#getcredentialformdownload)
+    	- [GetCredential.Form.Side](#getcredentialformside)
+    	- [GetCredential.UnknownError](#getcredentialunknownerror)
+    	- [GetCredential.Card](#getcredentialcard)
+    	- [GetCredential.Side](#getcredentialside)
+    - [Toast](#toast)
   - [Customizations](#customizations)
     - [Custom layout](#custom-layout)
     - [Frame](#frame)
@@ -2460,17 +2472,19 @@ You can query multiple elements, for example you can add the section with the im
 ```
 # Get Credential 
 
-The Get Credential component allows you to easily generate credentials and access code samples directly from the developer website. Child component should only work if it's inside the parent GetCredential component 
+The `Get Credential` component allows easy credential generation and code sample access on the developer website, utilizing developer console APIs. Child component should only work if it's inside the parent GetCredential component. 
 
 Use `credentialType`(optional) prop to specify the credential type . Defaults to `apiKey`.
 
 Use `service`(optional) prop to define the Adobe Product & Service.The preset is `CCEmbedCompanionAPI`.
 
-Use `className` to customize the component **at your own risk.**.
+Use `className` to customize the component's styling using CSS. However, remember that modifying the component's styles with `className` carries certain risks.
 
 ### GetCredential.SignIn
 
 `GetCredential.SignIn` is a component utilized to prominently showcase the sign-in page, offering users a straightforward access point to login.
+
+![GetCredential.SignIn](docs/images/get-credential-signin.png)
 
 Use `title`(required)  to provide a title for the credential.
 
@@ -2478,11 +2492,17 @@ Use `paragraph`(optional) to describe the credentials.
 
 Use `buttonText`(required) to specify the sign-in button label
 
+### GetCredential.Form
+
 `GetCredential.Form` is a flexible for designing the credential form, ensuring a seamless and personalized user experience.
+
+![GetCredential.Form](docs/images/get-credential-form.png)
 
 Use `title`(required)  to provide a title for the credential.
 
 Use `paragraph`(optional) to describe the credentials.
+
+### GetCredential.Form.CredentialName
 
 `GetCredential.Form.CredentialName`(required) streamlines credential name structure creation.
 
@@ -2504,6 +2524,8 @@ Use `contextHelpLink`(optional) adds a standalone link.
 
 Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
 
+### GetCredential.Form.AllowedOrigins
+
 `GetCredential.Form.AllowedOrigins`(optional) streamlines credential name structure creation.
 
 Use `label`(optional) defines the label for the domain name.
@@ -2522,6 +2544,8 @@ Use `contextHelpLink`(optional) adds a standalone link.
 
 Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
 
+### GetCredential.Form.Downloads
+
 `GetCredential.Form.Downloads`(optional) is used to specify the option for downloading code samples.
 
 Use `label`(optional) defines the label for the domain name.
@@ -2536,13 +2560,21 @@ Use `contextHelpLink`(optional) adds a standalone link.
 
 Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
 
+### GetCredential.Form.Download
+
 `GetCredential.Form.Download`(optional)  is used to define the available languages and provide download links for code samples.
 
 Use `title`  to specify the language title 
 
 Use `href` to set the download hyperlink for sample code in zip files.
 
+### GetCredential.Form.Side
+
 `GetCredential.Form.Side`(optional) content is customizable, allowing you to display whatever you prefer based on user needs.
+
+### GetCredential.UnknownError
+
+![GetCredential.UnknownError](docs/images/get-credential-unknown-error.png)
 
 `GetCredential.UnknownError` (optional) is utilized for displaying unknown errors.
 
@@ -2550,7 +2582,11 @@ Use `helpLink`(optional) is employed for obtaining assistance.
 
 Use `helpLinkText`(optional) is used to specify the label for the help link.
 
+### GetCredential.Card
+
 `GetCredential.Card`(optional)  is employed to present the credential result.
+
+![GetCredential.Card](docs/images/get-credential-result.png)
 
 Use `title`(optional) to furnish a title for the credential card.
 
@@ -2562,14 +2598,16 @@ Use `nextStepsHref`(optional) specifies the hyperlink for the next steps or acti
 
 Use `developerConsoleManage`(optional) specifies the label for the developer console
 
-`GetCredential.Card.Side`(optional) content is customizable, allowing you to display whatever you prefer based on user needs.
+### GetCredential.Side
+
+`GetCredential.Side`(optional) content is customizable, allowing you to display whatever you prefer based on user needs.
 
 ```
 
 <GetCredential credentialType="apiKey" className="getCredentialContainer" service="CCEmbedCompanionAPI" >
  
     
-    <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" className="SignInClass" />
+    <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" />
 
     <GetCredential.Form title="Get credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." className="formClass">
 
@@ -2616,7 +2654,7 @@ Use `developerConsoleManage`(optional) specifies the label for the developer con
 
 ```
 
-Create the new JS component in the component folder and import the component in the markdown file wherever you want to add credentail
+Create the new JS component in the component folder and import the component in the markdown file wherever you want to add credential
 
 For the above code I named like `CreateCredential.js`, You can use the component in the markdown file like the below code
 
@@ -2627,10 +2665,33 @@ import { CreateCredential } from "../components/CreateCredential.js";
 
 <CreateCredential />
 
+```
+To customize the side component within the `GetCredential` component. In `Credential.css` specify the custom styles you want for the side component.
+
+Import the `Credential.css` file into your JavaScript component `CreateCredential.js` to apply the styles.
 
 ```
 
+import './Credential.css';
 
+```
+
+### Toast
+
+Toasts are brief, unobtrusive messages used for user notifications or feedback
+
+![Toast](docs/images/toast.png)
+
+```
+<Toast variant="success" message="Page Loaded successfully" disable={5000} />
+
+```
+
+Use `variant`(optional) to specify the toast's variant.The values are `Info`, `Success`, `Neutral`, and `Error`. By default `Neutral`. 
+
+Use `message`(optional) to display a message within the toast.
+
+Use `disable`(optional) to prevent the automatic closure of the toast. You can set a specific duration (e.g., 1000 milliseconds) to close it, or manually close the toast when desired.
 
 ## Customizations
 

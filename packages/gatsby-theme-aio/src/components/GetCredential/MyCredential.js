@@ -35,18 +35,18 @@ const MyCredential = ({
       key: "Organization",
       value: organizationName
     }
-  ]
+  ];
 
   useEffect(() => {
-    const OrgID = localStorage?.getItem('OrgInfo');
-    if (OrgID) {
-      setOrganizationValue(JSON.parse(OrgID));
+    const OrgInfo = localStorage?.getItem('OrgInfo');
+    if (OrgInfo) {
+      setOrganizationValue(JSON.parse(OrgInfo));
     }
     else {
       getOrganization(setOrganizationValue);
     }
     if (formData['Downloads']) {
-      downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'], setIsDownloadStart)
+      downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'])
     }
 
   }, [])
@@ -103,12 +103,13 @@ const MyCredential = ({
 
         const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
         saveAs(modifiedZipBlob, `${fileName}.zip`);
-        setIsDownloadStart(false)
       } else {
         console.error('Failed to fetch additional data. Response status:', response.status);
       }
     } catch (error) {
       console.error('An error occurred:', error);
+    } finally {
+      setIsDownloadStart(false)
     }
   };
 
@@ -181,7 +182,7 @@ const MyCredential = ({
             </div>
           }
         </div>
-        {formData['Downloads'] && card?.paragraph &&
+        {card?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
@@ -366,14 +367,14 @@ const MyCredential = ({
                     }
                   `}
                 >
-                  <a href={card?.nextStepsHref} target="_blank">
+                  <a href={card?.nextStepsHref} target="_blank" rel="noreferrer">
                     <button
                       className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
                       css={css`width:fit-content;margin-top:10px`}>
                       <span className="spectrum-Button-label">{card?.nextStepsLabel}</span>
                     </button>
                   </a>
-                  <a href={devConsoleLink} target="_blank"
+                  <a href={devConsoleLink} target="_blank" rel="noreferrer"
                     css={css`
                       color: var(--spectrum-global-color-gray-800);
                       &:hover {

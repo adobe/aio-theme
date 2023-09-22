@@ -30,7 +30,7 @@ const JoinBetaProgram = ({ joinBeta }) => {
           color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
         `}
       >{joinBeta.text}</p>
-      <a href={joinBeta?.betaProgramLink} target="_blank" >
+      <a href={joinBeta?.betaProgramLink} target="_blank" rel="noreferrer" >
         <button
           className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
           css={css`width:fit-content;margin-top:10px`}>
