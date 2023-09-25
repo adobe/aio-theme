@@ -138,7 +138,7 @@ export const getOrganization = async (setOrganizationValue) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer " + token,
-          "x-api-key": "UDPWeb1"
+          "x-api-key": "stage_adobe_io"
         }
       });
 
