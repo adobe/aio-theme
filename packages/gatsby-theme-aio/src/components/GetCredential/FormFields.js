@@ -1,10 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { ContextHelp } from './ContextHelp';
 import { css } from "@emotion/react";
 import classNames from "classnames";
-import JSZip from 'jszip';
-import JSZipUtils from 'jszip-utils';
-import { saveAs } from 'file-saver';
 
 export const FormFields = ({ isFormValue, fields, children, formData, isRed }) => {
 
@@ -122,45 +119,6 @@ export const LinkOut = () => {
   )
 };
 
-export const downloadAndModifyZip = async (
-  downloadAPI,
-  fileName = 'download',
-  zipFileURL
-) => {
-  try {
-    const zipData = await JSZipUtils.getBinaryContent(zipFileURL);
-    const zipArrayBuffer = new Uint8Array(zipData).buffer;
-    const zip = new JSZip();
-
-    await zip.loadAsync(zipArrayBuffer);
-
-    const token = window.adobeIMS?.getTokenFromStorage()?.token;
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token,
-        "x-api-key": "UDPWeb1"
-      }
-    };
-
-    const response = await fetch(downloadAPI, options);
-
-    if (response.status === 200) {
-      const credential = await response.json();
-
-      zip.file('credential.json', JSON.stringify(credential));
-
-      const modifiedZipBlob = await zip.generateAsync({ type: 'blob' });
-      saveAs(modifiedZipBlob, `${fileName}.zip`);
-    } else {
-      console.error('Failed to fetch additional data. Response status:', response.status);
-    }
-  } catch (error) {
-    console.error('An error occurred:', error);
-  }
-};
-
 export const KeyIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 18 18" width="32" fill="var(--spectrum-global-color-gray-700)">
@@ -180,7 +138,7 @@ export const getOrganization = async (setOrganizationValue) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer " + token,
-          "x-api-key": "UDPWeb1"
+          "x-api-key": "stage_adobe_io"
         }
       });
 

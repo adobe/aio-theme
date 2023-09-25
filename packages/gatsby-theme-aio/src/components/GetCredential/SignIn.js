@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 import { css } from "@emotion/react";
 import classNames from "classnames";

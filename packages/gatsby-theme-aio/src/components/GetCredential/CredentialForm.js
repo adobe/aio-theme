@@ -7,12 +7,12 @@ import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
 import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, FormFields, downloadAndModifyZip, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { AlertIcon, FormFields, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
 
 const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
-const credentialNameRegex = /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/;
+const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
 const CredentialForm = ({ formProps, credentialType, service }) => {
 
@@ -31,17 +31,36 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [organizationChange, setOrganization] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [showOrganization, setShowOrganization] = useState(true);
+  const [isCheckOrg, setOrg] = useState(true);
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
-  const getValueFromLocalStorage = () => {
+  const getValueFromLocalStorage = async () => {
     const orgInfo = localStorage?.getItem('OrgInfo');
-    if ( orgInfo === null  ) {
+    if (orgInfo === null) {
       getOrganization(setOrganizationValue);
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const response = await fetch("/console/api/organizations", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+          "x-api-key": "stage_adobe_io"
+        }
+      });
+
+      if (response.status !== 200) {
+        setOrg(false);
+      }
+
+      const organizationData = await response.json();
+      if (organizationData?.length === 1) {
+        setShowOrganization(false)
+      }
     } else {
       const orgData = JSON.parse(orgInfo);
-      setShowOrganization(orgData.orgLen == 1 ? false : true);
+      setShowOrganization(orgData.orgLen === 1 ? false : true);
       setOrganizationValue(orgData);
     }
   }
@@ -62,7 +81,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     if (downloadObj.selectOptions.length) {
       fields[Download] = downloadObj;
       if (downloadObj.selectOptions.length === 1) {
-        setFormData(prevData => ({ ...prevData, Download: downloadObj.selectOptions[0]?.title }));
+        setFormData(prevData => ({ ...prevData, Download: downloadObj.selectOptions[0]?.title, zipUrl: downloadObj.selectOptions[0]?.href }));
       }
     }
 
@@ -119,13 +138,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const handleChange = (e, type) => {
     const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
-    if (type === "Downloads") {
-      formField?.[Download]?.selectOptions.forEach((data) => {
-        if (data.title === formData?.Download) {
-          setFormData(prevData => ({ ...prevData, zipUrl: data.href }));
-        }
-      })
+
+    if (type === "Download" && formData['Downloads']) {
+      const selectedData = formField?.[Download]?.selectOptions.find(data => data.title === e.target.value);
+      selectedData && setFormData(prevData => ({ ...prevData, zipUrl: selectedData.href }));
     }
+
   };
 
   const createCredential = async () => {
@@ -152,7 +170,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
-          "x-api-key": "UDPWeb1",
+          "x-api-key": "stage_adobe_io",
         },
         body: JSON.stringify(data),
       });
@@ -163,7 +181,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        formData['Downloads'] && downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`, formData['Download'], formData['zipUrl']);
       } else if (resResp?.messages) {
         setAlertShow(true);
         setIsValid(false);
@@ -217,14 +234,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 {credentialForm?.paragraph}
               </p>
             }
-            <p
-              className="spectrum-Body spectrum-Body--sizeS"
-              css={css`color:var(--spectrum-global-color-gray-800);`}
-            >You're creating this credential in [<b>{organization?.name}</b>].
-              {showOrganization &&
-                <button
-                  tabIndex="0"
-                  css={css`
+            {isCheckOrg &&
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                css={css`color:var(--spectrum-global-color-gray-800);`}
+              >You're creating this credential in [<b>{organization?.name}</b>].
+                {showOrganization &&
+                  <button
+                    tabIndex="0"
+                    css={css`
                     border: none;
                     padding:0;
                     font-family:'adobe-clean';
@@ -233,12 +251,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                     text-decoration:underline;
                     color: var(--spectrum-global-color-gray-800);
                     cursor:pointer;`
-                  }
-                  onClick={() => setModalOpen(true)}
-                >
-                  Change organization?
-                </button>}
-            </p>
+                    }
+                    onClick={() => setModalOpen(true)}
+                  >
+                    Change organization?
+                  </button>}
+              </p>}
           </div>
           <div
             css={css`
@@ -274,13 +292,10 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                   width: 100%;
                 `}
               >
-                <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
-                  {credentialName && <CredentialName nameProps={credentialName} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
-                  {allowedOrigins && <AllowedOrigins originsProps={allowedOrigins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
-                  {downloads && download && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
-                </div>
-                {download && <>{formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}</>}
-
+                {credentialName && <CredentialName nameProps={credentialName} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
+                {allowedOrigins && <AllowedOrigins originsProps={allowedOrigins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
+                {downloads && download && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
+                {formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}
                 <div css={css`display: flex; gap: 10px;`}>
                   <input type="checkbox" checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
                   <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
@@ -317,7 +332,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
             `} >
             Have existing credentials?
-            <a href="/console/" target="_blank" 
+            <a href="/console/" target="_blank" rel="noreferrer"
               css={css`
                 margin-left : 10px;
                 color:var(--spectrum-global-color-gray-800);
@@ -346,7 +361,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           }
         </>
       }
-      {loading && !showCredential && <Loading credentials={credentialForm} />}
+      {loading && !showCredential && <Loading credentials={credentialForm} downloadStatus={formData['Downloads']} />}
       {modalOpen && (
         <ChangeOrganization
           setModalOpen={setModalOpen}
@@ -359,8 +374,8 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           setOrganizationValue={setOrganizationValue}
         />
       )}
-      {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage.name]} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} />}
+      {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage]} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>
   )
@@ -369,7 +384,8 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 const Side = ({ side }) => (side);
 
 const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
-  const isRed = formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0;
+  const inValidName = !credentialNameRegex.test(formData['CredentialName'])
+  const isRed = formData["CredentialName"]?.length !== 0 && inValidName;
   return (
     <FormFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
       <div css={css`position:relative; display:inline-block; width: 100%`}>

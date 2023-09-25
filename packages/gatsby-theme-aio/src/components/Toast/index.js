@@ -4,7 +4,7 @@ import { InfoMedium, SuccessMedium, AlertMedium, Close } from '@adobe/gatsby-the
 import PropTypes from 'prop-types';
 
 const Toast = ({
-  variant,
+  variant = "neutral",
   message,
   disable,
   customDisableFunction
@@ -24,13 +24,16 @@ const Toast = ({
     error: { VariantIcon: AlertMedium, bgColorVarient: "rgb(211, 21, 16)" },
     success: { VariantIcon: SuccessMedium, bgColorVarient: "#007e50" },
     info: { VariantIcon: InfoMedium, bgColorVarient: "#0265dc" },
+    neutral: { VariantIcon: null, bgColorVarient: "#6d6d6d" },
   };
 
   const { VariantIcon, bgColorVarient } = variantMap[variant] || { VariantIcon: null, bgColorVarient: "#6d6d6d" };
 
   const handleDisable = () => {
     setAlertShow(false)
-    customDisableFunction(false)
+    if (customDisableFunction) {
+      customDisableFunction(false);
+    }
   }
 
   return (

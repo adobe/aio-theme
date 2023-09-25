@@ -141,6 +141,18 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Embedding local markdown files](#embedding-local-markdown-files)
       - [Embedding external markdown files](#embedding-external-markdown-files)
       - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
+	- [Get Credential](#get-credential)
+    	- [GetCredential.SignIn](#getcredentialsignin)
+    	- [GetCredential.Form](#getcredentialform)
+    	- [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
+    	- [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
+    	- [GetCredential.Form.Downloads](#getcredentialformdownloads)
+    	- [GetCredential.Form.Download](#getcredentialformdownload)
+    	- [GetCredential.Form.Side](#getcredentialformside)
+    	- [GetCredential.UnknownError](#getcredentialunknownerror)
+    	- [GetCredential.Card](#getcredentialcard)
+    	- [GetCredential.Side](#getcredentialside)
+    - [Toast](#toast)
   - [Customizations](#customizations)
     - [Custom layout](#custom-layout)
     - [Frame](#frame)
@@ -2458,6 +2470,228 @@ You can query multiple elements, for example you can add the section with the im
 ```
  <Debugging query="product=Photoshop&image=test" />
 ```
+# Get Credential 
+
+The `Get Credential` component allows easy credential generation and code sample access on the developer website, utilizing developer console APIs. Child component should only work if it's inside the parent GetCredential component. 
+
+Use `credentialType`(optional) prop to specify the credential type . Defaults to `apiKey`.
+
+Use `service`(optional) prop to define the Adobe Product & Service.The preset is `CCEmbedCompanionAPI`.
+
+Use `className` to customize the component's styling using CSS. However, remember that modifying the component's styles with `className` carries certain risks.
+
+### GetCredential.SignIn
+
+`GetCredential.SignIn` is a component utilized to prominently showcase the sign-in page, offering users a straightforward access point to login.
+
+![GetCredential.SignIn](docs/images/get-credential-signin.png)
+
+Use `title`(required)  to provide a title for the credential.
+
+Use `paragraph`(optional) to describe the credentials.
+
+Use `buttonText`(required) to specify the sign-in button label
+
+### GetCredential.Form
+
+`GetCredential.Form` is a flexible for designing the credential form, ensuring a seamless and personalized user experience.
+
+![GetCredential.Form](docs/images/get-credential-form.png)
+
+Use `title`(required)  to provide a title for the credential.
+
+Use `paragraph`(optional) to describe the credentials.
+
+### GetCredential.Form.CredentialName
+
+`GetCredential.Form.CredentialName`(required) streamlines credential name structure creation.
+
+Use `label`(optional) defines the label for the credential name.
+
+Use `description`(optional) prop is employed for adding helptext to the credential name.
+
+Use `placeholder`(optional) sets the input field's placeholder for the credential name.
+
+Use `range`(optional) prop to specify the allowed length of the credential name.
+
+Use `contextHelp`(optional) shows a user extra information about the state of either an adjacent component.It's boolean value true or false. The preset is `false`.
+
+Use `contextHelpHeading`(optional) defines the contextHelp heading.
+
+Use `contextHelpText`(optional) shows the extra info about the credentialname.
+
+Use `contextHelpLink`(optional) adds a standalone link. 
+
+Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
+
+### GetCredential.Form.AllowedOrigins
+
+`GetCredential.Form.AllowedOrigins`(optional) streamlines credential name structure creation.
+
+Use `label`(optional) defines the label for the domain name.
+
+Use `description`(optional) prop is employed for adding helptext to the domanis.
+
+Use `placeholder`(optional) sets the input field's placeholder for the AllowedOrigins.
+
+Use `contextHelp`(optional) shows a user extra information about the state of either an adjacent component.It's boolean value true or false. By default `false`.
+
+Use `contextHelpHeading`(optional) defines the contextHelp heading.
+
+Use `contextHelpText`(optional) shows the extra info about the credentialname.
+
+Use `contextHelpLink`(optional) adds a standalone link. 
+
+Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
+
+### GetCredential.Form.Downloads
+
+`GetCredential.Form.Downloads`(optional) is used to specify the option for downloading code samples.
+
+Use `label`(optional) defines the label for the domain name.
+
+Use `contextHelp`(optional) shows a user extra information about the state of either an adjacent component.It's boolean value true or false. By default `false`.
+
+Use `contextHelpHeading`(optional) defines the contextHelp heading.
+
+Use `contextHelpText`(optional) shows the extra info about the credentialname.
+
+Use `contextHelpLink`(optional) adds a standalone link. 
+
+Use `contextHelpLabelForLink` (optional) prop to specifies the link label.
+
+### GetCredential.Form.Download
+
+`GetCredential.Form.Download`(optional)  is used to define the available languages and provide download links for code samples.
+
+Use `title`  to specify the language title 
+
+Use `href` to set the download hyperlink for sample code in zip files.
+
+### GetCredential.Form.Side
+
+`GetCredential.Form.Side`(optional) content is customizable, allowing you to display whatever you prefer based on user needs.
+
+### GetCredential.UnknownError
+
+![GetCredential.UnknownError](docs/images/get-credential-unknown-error.png)
+
+`GetCredential.UnknownError` (optional) is utilized for displaying unknown errors.
+
+Use `helpLink`(optional) is employed for obtaining assistance.
+
+Use `helpLinkText`(optional) is used to specify the label for the help link.
+
+### GetCredential.Card
+
+`GetCredential.Card`(optional)  is employed to present the credential result.
+
+![GetCredential.Card](docs/images/get-credential-result.png)
+
+Use `title`(optional) to furnish a title for the credential card.
+
+Use `paragraph`(optional) to provide a description for the credential card.
+
+Use `nextStepsLabel`(optional) is employed to indicate the next steps or actions to be taken.
+
+Use `nextStepsHref`(optional) specifies the hyperlink for the next steps or actions to be taken.
+
+Use `developerConsoleManage`(optional) specifies the label for the developer console
+
+### GetCredential.Side
+
+`GetCredential.Side`(optional) content is customizable, allowing you to display whatever you prefer based on user needs.
+
+```
+
+<GetCredential credentialType="apiKey" className="getCredentialContainer" service="CCEmbedCompanionAPI" >
+ 
+    
+    <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" />
+
+    <GetCredential.Form title="Get credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." className="formClass">
+
+        <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 6 and 45 character long." range="45" />
+
+        <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greater than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains." />
+
+        <GetCredential.Form.Downloads label="Download a personalized code sample" contextHelp={true} contextHelpHeading="Select Language">
+          <GetCredential.Form.Download title="JavaScript" href="https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/8bab684/files/samples_q3_2023/PROD/dc-pdf-services-sdk-java-samples.zip" />
+          <GetCredential.Form.Download title=".Net" href="/Net.zip" />
+          <GetCredential.Form.Download title="Python" href="https://python.zip/" />
+          <GetCredential.Form.Download title="Ruby" href="https://www.ruby.zip/" /> 
+        </GetCredential.Form.Downloads>
+
+        <GetCredential.Form.Side>
+          <div className='side-container'>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
+            <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form created an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certian domains.</p>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
+            <a className="side-documentation" href='https://some_help_link'>Authentication documentation</a>
+            <a className='side-documentation' href='https://some_help_link'>Adobe Express Embed SDK documentation</a>
+          </div>
+        </GetCredential.Form.Side>
+
+    </GetCredential.Form>
+
+    <GetCredential.UnknownError helpLink="https://some_help_link" helpLinkText="Get Help" className="unKnownError" />
+
+    <GetCredential.Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on Developer console" className="card_developer_console">
+
+    <GetCredential.Side>
+        <div className='side-container'>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
+            <p className="spectrum-Body spectrum-Body--sizeM">An API Key credential was created. The API key credential identifies your application to Adobe servers and can help accept or reject request originating from certain domains.</p>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS" >Learn more</h3>
+            <a className="side-documentation" href='https://some_help_link'>Authentication documentation</a>
+            <a className="side-documentation" href='https://some_help_link'>Adobe Express Embed SDK documentation</a>
+        </div>
+    </GetCredential.Side>
+
+    </GetCredential.Card>
+ 
+</GetCredential>
+
+```
+
+Create the new JS component in the component folder and import the component in the markdown file wherever you want to add credential
+
+For the above code I named like `CreateCredential.js`, You can use the component in the markdown file like the below code
+
+```
+import { CreateCredential } from "../components/CreateCredential.js";
+
+...
+
+<CreateCredential />
+
+```
+To customize the side component within the `GetCredential` component. In `Credential.css` specify the custom styles you want for the side component.
+
+Import the `Credential.css` file into your JavaScript component `CreateCredential.js` to apply the styles.
+
+```
+
+import './Credential.css';
+
+```
+
+### Toast
+
+Toasts are brief, unobtrusive messages used for user notifications or feedback
+
+![Toast](docs/images/toast.png)
+
+```
+<Toast variant="success" message="Page Loaded successfully" disable={5000} />
+
+```
+
+Use `variant`(optional) to specify the toast's variant.The values are `Info`, `Success`, `Neutral`, and `Error`. By default `Neutral`. 
+
+Use `message`(optional) to display a message within the toast.
+
+Use `disable`(optional) to prevent the automatic closure of the toast. You can set a specific duration (e.g., 1000 milliseconds) to close it, or manually close the toast when desired.
 
 ## Customizations
 

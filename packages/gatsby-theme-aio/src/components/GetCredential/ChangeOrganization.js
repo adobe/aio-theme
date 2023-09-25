@@ -10,10 +10,10 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   useEffect(() => {
 
     const orgInfo = localStorage?.getItem('OrgInfo');
-    if ( orgInfo !== null ) {
+    if (orgInfo !== null) {
       const orgData = JSON.parse(orgInfo);
       setSelectedOrganization(orgData?.id)
-    } 
+    }
 
     getOrganization().then((data) => {
       setOrgans(data)
@@ -50,9 +50,9 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
         setSelectedOrganization(e.target.value);
         setOrganizationValue(organs)
         const orgData = {
-          "id":organs?.id,
-          "name":organs?.name,
-          "orgLen":organization?.length
+          "id": organs?.id,
+          "name": organs?.name,
+          "orgLen": organization?.length
         }
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }
@@ -144,6 +144,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                         Can't find your organization?
                         <a href="https://some_help_link"
                           target="_blank"
+                          rel="noreferrer"
                           css={css`
                           color:rgb(0, 84, 182);
                           &:hover {
