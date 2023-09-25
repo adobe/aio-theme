@@ -49,13 +49,14 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           "x-api-key": "UDPWeb1"
         }
       });
-      const organizationData = await response.json();
-      if (organizationData?.length === 1) {
-        setShowOrganization(false)
-      }
 
       if (response.status !== 200) {
         setOrg(false);
+      }
+
+      const organizationData = await response.json();
+      if (organizationData?.length === 1) {
+        setShowOrganization(false)
       }
     } else {
       const orgData = JSON.parse(orgInfo);
