@@ -53,8 +53,8 @@ export const ContextHelp = ({ heading, text, link, label }) => {
               
             `}
           >
-            {heading && <h2 className="spectrum-ContextualHelp-heading" css={css`margin:0`}>{heading}</h2>}
-            {text && <p className="spectrum-ContextualHelp-body">{text}</p>}
+            {heading && <h4 className="spectrum-Heading spectrum-Heading--sizeXXS" css={css`margin:0`}>{heading}</h4>}
+            {text && <p class="spectrum-Body spectrum-Body--sizeXS">{text}</p>}
             {link && <a className="spectrum-Link spectrum-ContextualHelp-link" target="_blank" rel="noreferrer" href={link}>{label}</a>}
           </div>
         </div>

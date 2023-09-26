@@ -285,7 +285,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
               <div
                 css={css`
                   display:flex;
-                  gap:30px;
+                  gap:24px;
                   flex-direction:column;
                   width: 100%;
                 `}
