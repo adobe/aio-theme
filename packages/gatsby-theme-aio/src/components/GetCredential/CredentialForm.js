@@ -217,8 +217,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             flex-direction: column;
             gap: 16px;
             color:var(--spectrum-global-color-gray-800);
-            padding-left: var(--spectrum-global-dimension-size-800);
-            width: calc(7 * 100% / 12);
+            width: 100%;
             height: 100%;
             text-align: left;
             @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
@@ -262,7 +261,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             css={css`
               display:flex;
               gap: 35px;
-              padding-left: var(--spectrum-global-dimension-size-800);
 
               @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                 flex-direction : column;
@@ -324,7 +322,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             className="spectrum-Body spectrum-Body--sizeS"
             css={css` 
               color:var(--spectrum-global-color-gray-800);
-              padding-left: var(--spectrum-global-dimension-size-800); 
               
               @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                 padding-left: 0;
