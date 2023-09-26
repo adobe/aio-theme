@@ -41,7 +41,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
           >
             <div
               css={css`
-                width: 75%;
+                width: calc(7 * 100% / 9);
                 margin: auto;
                 display: flex;
                 flex-direction: column;

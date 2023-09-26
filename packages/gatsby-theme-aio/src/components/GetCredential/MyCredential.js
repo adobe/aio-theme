@@ -6,6 +6,8 @@ import { CopyIcon, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, M
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
+import { SuccessMedium } from '../Icons';
+import { Toast } from '../Toast';
 
 const MyCredential = ({
   credentialProps,
@@ -21,6 +23,7 @@ const MyCredential = ({
   const [isCopied, setIsCopied] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [isDownloadStart, setIsDownloadStart] = useState();
+  const [isCopiedTooltip, setCopiedTooltip] = useState('')
 
   const Credential = [
     {
@@ -58,6 +61,7 @@ const MyCredential = ({
   const handleCopy = (value) => {
     setIsCopied(true);
     navigator.clipboard.writeText(value);
+    setCopiedTooltip(true);
   };
 
   const handleRestart = () => {
@@ -129,8 +133,7 @@ const MyCredential = ({
           flex-direction: column;
           gap: 16px;
           color:var(--spectrum-global-color-gray-800);
-          padding-left: var(--spectrum-global-dimension-size-800);
-          width: calc(7 * 100% / 12);
+          width: 100%;
           height: 100%;
           text-align: left;
 
@@ -223,7 +226,6 @@ const MyCredential = ({
         css={css`
           display:flex;
           gap: 35px;
-          padding-left: var(--spectrum-global-dimension-size-800);
           
           @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
             flex-direction:column;
@@ -248,7 +250,7 @@ const MyCredential = ({
           <div
             css={css`
               background: white;
-              border-radius: 10px;
+              border-radius: 8px;
               width: 90%;
 
               @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
@@ -264,7 +266,7 @@ const MyCredential = ({
                 flex-direction:column;
                 gap:24px;
                 border: 1px solid var(--spectrum-global-color-gray-200);
-                border-radius: 10px;
+                border-radius: 8px;
               `}
             >
               <div
@@ -323,14 +325,14 @@ const MyCredential = ({
                                 <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
                                   onMouseEnter={() => setTooltipOpen(index)}
                                   onMouseLeave={handleLeave}
-                                  onClick={() => handleCopy(value)}
+                                  onClick={() => handleCopy(value, index)}
                                   css={css`
                                     border: 1px solid var(--spectrum-global-color-gray-400);
                                     border-radius: 3px;
                                     padding: 3px 6px;
                                   `}
                                 >
-                                  <span className="spectrum-ActionButton-label"><CopyIcon /></span>
+                                  {<span className="spectrum-ActionButton-label">{isCopied && isTooltipOpen === index ? <SuccessMedium /> : <CopyIcon />}</span>}
                                 </button>
 
                                 {isTooltipOpen === index && (
@@ -343,7 +345,7 @@ const MyCredential = ({
                                       white-space: nowrap;
                                     `}
                                   >
-                                    <span className="spectrum-Tooltip-label">{isCopied ? "Copied" : "Copy"}</span>
+                                    <span className="spectrum-Tooltip-label">Copy</span>
                                     <span className="spectrum-Tooltip-tip"></span>
                                   </span>
                                 )}
@@ -377,6 +379,7 @@ const MyCredential = ({
                   <a href={devConsoleLink} target="_blank" rel="noreferrer"
                     css={css`
                       color: var(--spectrum-global-color-gray-800);
+                      margin: 8px 0;
                       &:hover {
                         color: var(--spectrum-global-color-gray-900);
                       }
@@ -430,6 +433,7 @@ const MyCredential = ({
         </div>
         {card?.children ? <SideContent sideContent={card?.children?.props?.children} /> : null}
       </div>
+      {isCopiedTooltip && <Toast variant='success' message="Copied to clipboard" disable={1000} customDisableFunction={setCopiedTooltip} />}
     </div>
   )
 }

@@ -12,8 +12,7 @@ const JoinBetaProgram = ({ joinBeta }) => {
         flex-direction: column;
         gap: 16px;
         color:var(--spectrum-global-color-gray-800);
-        padding-left: var(--spectrum-global-dimension-size-800);
-        width: calc(7 * 100% / 12);
+        width: 100%;
         height: 100%;
         text-align: left;
 

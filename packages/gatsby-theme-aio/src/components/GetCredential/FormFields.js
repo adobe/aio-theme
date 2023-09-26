@@ -129,7 +129,7 @@ export const KeyIcon = () => {
 
 export const getOrganization = async (setOrganizationValue) => {
   try {
-    
+
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
 
     if (token) {
@@ -142,14 +142,14 @@ export const getOrganization = async (setOrganizationValue) => {
         }
       });
 
-      const organization = await response.json();    
+      const organization = await response.json();
 
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
         const orgData = {
-          "id":organization[0]?.id,
-          "name":organization[0]?.name,
-          "orgLen":organization.length
+          "id": organization[0]?.id,
+          "name": organization[0]?.name,
+          "orgLen": organization.length
         }
 
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));

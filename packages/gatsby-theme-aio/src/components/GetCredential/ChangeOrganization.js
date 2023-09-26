@@ -1,40 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { Picker } from '../Picker'
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization, setOrganizationValue }) => {
 
-  const [selectedOrganization, setSelectedOrganization] = useState();
   const [organization, setOrgans] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState();
 
   useEffect(() => {
 
     const orgInfo = localStorage?.getItem('OrgInfo');
-    if (orgInfo !== null) {
-      const orgData = JSON.parse(orgInfo);
-      setSelectedOrganization(orgData?.id)
-    }
-
     getOrganization().then((data) => {
-      setOrgans(data)
+      setOrgans(data);
+      data?.map((value, index) => {
+        const orgData = JSON.parse(orgInfo);
+        if (value?.id == orgData?.id) {
+          setSelectedIndex(index)
+        }
+      })
     });
 
   }, []);
 
-  let defaultSelectOragnization = organization?.find((data) => {
-    return data.id === selectedOrganization
-  })
-
   const handleRedirect = () => {
     setAlertShow(true);
-    if (selectedOrganization === "developer-org-name") {
-      setRedirectBetaProgram(true);
-    }
-    else {
-      setRedirectBetaProgram(false);
-      setModalOpen(false);
-      setOrganization(true);
-    }
+    handleModal()
   };
 
   const handleModal = () => {
@@ -42,12 +33,10 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
     setModalOpen(false);
   };
 
-  const handleChange = (e) => {
+  useEffect(() => {
     setOrganization(true);
-    setSelectedOrganization(e.target.value);
-    organization.forEach((organs) => {
-      if (organs?.id === e.target.value) {
-        setSelectedOrganization(e.target.value);
+    organization.forEach((organs, index) => {
+      if (index === selectedIndex) {
         setOrganizationValue(organs)
         const orgData = {
           "id": organs?.id,
@@ -57,7 +46,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }
     })
-  };
+  }, [selectedIndex])
 
   return (
     <>
@@ -124,24 +113,48 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                             Organization
                           </p>
                         </div>
-                        <select
+
+                        <div
                           css={css`
-                          font-weight: 500;
-                          font-family: 'adobe-clean';
-                          padding: 5px;
-                          border-radius: 3px;
-                          border: 1px solid #D0D0D0 !important;
-                        `}
-                          defaultValue={defaultSelectOragnization?.id}
-                          onChange={(e) => handleChange(e)}
+                        
+                          & > div > .spectrum-Picker {
+                            width: 100% !important;
+                          }
+
+                          & > div > div {
+                            width: 86%;
+                            left: 7%;
+                            height : 40%;
+                          }
+
+                            padding: 5px;
+                            border-radius: 3px;
+                            border: 1px solid #D0D0D0 !important;
+
+                          ` }
                         >
-                          {organization && organization?.map((organs, index) => {
-                            return <option value={organs?.id} key={index}> {organs?.name}</option>
-                          })}
-                        </select>
+                          <Picker
+                            isQuiet
+                            items={organization.map((organs, k) => {
+                              return {
+                                title: organs?.name,
+                                selected: k === selectedIndex
+                              }
+                            })}
+                            onChange={(index) => {
+                              setSelectedIndex(index);
+                            }}
+                          />
+                        </div>
+
                       </div>
-                      <div>
-                        Can't find your organization?
+                      <div
+                        css={css`
+                          display: flex;
+                          gap: 5px;
+                        `}
+                      >
+                        <span>Can't find your organization?</span>
                         <a href="https://some_help_link"
                           target="_blank"
                           rel="noreferrer"
