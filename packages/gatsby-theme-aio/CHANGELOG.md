@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.6...@adobe/gatsby-theme-aio@4.10.7) (2023-09-27)
+
+### Features
+
+* Added README for GetCredential component. [966f69b](https://github.com/adobe/aio-theme/commit/966f69b015a5a3b3a8c5d8cab7fe4403ccb0ab63)
+* Fixed design issue for GetCredential component. [071aebe](https://github.com/adobe/aio-theme/commit/071aebed38e1dd148dc331250c40bba0c8693c16)
+* Bug fixes for GetCredential component. [e9596d](https://github.com/adobe/aio-theme/commit/e9596d25643fe064215b606575cda78013cb024e)
+
+
 ## [4.10.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.5...@adobe/gatsby-theme-aio@4.10.5) (2023-09-20)
 
 ### Features
