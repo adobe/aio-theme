@@ -155,7 +155,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
                           & > div > div {
                             width: 86%;
-                            left: 7%;
+                            left: 9%;
                             height : 40%;
                           }
 
