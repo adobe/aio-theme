@@ -41,7 +41,8 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
         const orgData = {
           "id": organs?.id,
           "name": organs?.name,
-          "orgLen": organization?.length
+          "orgLen": organization?.length,
+          "type":organs?.type
         }
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }

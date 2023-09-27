@@ -143,13 +143,15 @@ export const getOrganization = async (setOrganizationValue) => {
       });
 
       const organization = await response.json();
+    
 
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
         const orgData = {
           "id": organization[0]?.id,
           "name": organization[0]?.name,
-          "orgLen": organization.length
+          "orgLen": organization.length,
+          "type": organization[0].type
         }
 
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
