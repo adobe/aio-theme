@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
-import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { getOrganization, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, MIN_TABLET_SCREEB_WIDTH } from './FormFields';
 import { Picker as SelectBox } from "../Picker"
-import { Item, Picker, Provider, defaultTheme } from "@adobe/react-spectrum";
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization, setOrganizationValue }) => {
 
   const [organization, setOrgans] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState();
-  // const [selectVal, setSelected] = useState(null);
 
   useEffect(() => {
 
@@ -18,7 +16,6 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
       data?.map((value, index) => {
         const orgData = JSON.parse(orgInfo);
         if (value?.id == orgData?.id) {
-          // setSelected(orgData?.id)
           setSelectedIndex(index)
         }
       })
@@ -31,9 +28,6 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
     setAlertShow(true);
     handleModal();
     organization.forEach((organs, index) => {
-      // if (organs?.id === selectVal) {
-      //   setOrganizationValue(organs)
-      // }
       if (index === selectedIndex) {
         setOrganizationValue(organs)
       }
@@ -45,21 +39,6 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
     setModalOpen(false);
     document.documentElement.style.overflow = 'scroll';
   };
-
-  // useEffect(() => {
-  //   setOrganization(true);
-  //   organization.forEach((organs) => {
-  //     if (organs?.id === selectVal) {
-  //       const orgData = {
-  //         "id": organs?.id,
-  //         "name": organs?.name,
-  //         "orgLen": organization?.length,
-  //         "type": organs?.type
-  //       }
-  //       localStorage.setItem('OrgInfo', JSON.stringify(orgData));
-  //     }
-  //   })
-  // }, [selectVal])
 
   useEffect(() => {
     setOrganization(true);
@@ -77,7 +56,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   }, [selectedIndex])
 
   return (
-    <Provider colorScheme="light" theme={defaultTheme} >
+    <>
       {!redirectToBeta &&
         <div className="spectrum-Modal-wrapper spectrum-CSSExample-dialog"
           css={css`
@@ -157,6 +136,28 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                             width: 86%;
                             left: 9%;
                             height : 40%;
+
+                            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
+                              width: 82%;
+                              left: 15%;
+                            }
+
+                            @media screen and (min-width:${MIN_TABLET_SCREEB_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                              width: 91%;
+                              left: 7%;
+                            }
+
+                          }
+
+                          & > div > .spectrum-Picker-popover > ul > li > div > div {
+                            margin : 0 ;
+                          }
+
+                          & > div > .spectrum-Picker-popover > ul > li > div > div > svg {
+                            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                              margin: 3px;
+                              padding: 0;
+                            }
                           }
 
                             padding: 5px;
@@ -178,19 +179,6 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                             }}
                           />
                         </div>
-
-                        {/* <Picker width="100%"
-                          defaultSelectedKey={selectVal}
-                          selectedKey={selectVal}
-                          items={organization}
-                          onSelectionChange={e => setSelected(e)}
-                        >
-                          {item => {
-                            return (
-                              <Item key={item?.id} aria-label="textValue">{item?.name}</Item>
-                            )
-                          }}
-                        </Picker> */}
 
                       </div>
                       <div
@@ -228,7 +216,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
           }
         </div>
       }
-    </Provider>
+    </>
   )
 }
 

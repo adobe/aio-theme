@@ -91,6 +91,7 @@ export const AlertIcon = () => {
 export const MIN_MOBILE_WIDTH = "320px";
 export const MAX_MOBILE_WIDTH = "767px";
 export const MAX_TABLET_SCREEN_WIDTH = "1024px";
+export const MIN_TABLET_SCREEB_WIDTH = "768px";
 
 export const CopyIcon = () => {
   return (
