@@ -90,7 +90,7 @@ const MyCredential = ({
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer " + token,
-          "x-api-key": "stage_adobe_io"
+          "x-api-key": window?.adobeIMS?.adobeIdData?.client_id
         }
       };
 
@@ -181,7 +181,7 @@ const MyCredential = ({
             </div>
           }
         </div>
-        {card?.paragraph &&
+        {formData['Downloads'] && card?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`

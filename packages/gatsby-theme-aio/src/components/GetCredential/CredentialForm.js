@@ -35,7 +35,6 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
-
   const getValueFromLocalStorage = async () => {
     const orgInfo = localStorage?.getItem('OrgInfo');
     if (orgInfo === null) {
@@ -155,7 +154,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
-          "x-api-key": "stage_adobe_io",
+          "x-api-key": window?.adobeIMS?.adobeIdData?.client_id,
         },
         body: JSON.stringify(data),
       });
@@ -357,7 +356,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           setOrganizationValue={setOrganizationValue}
         />
       )}
-      {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage]} />}
+      {isError && !showCreateForm && !showCredential && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>

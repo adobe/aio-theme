@@ -18,7 +18,7 @@ const UnKnownErrorImage = () => {
   )
 }
 
-const IllustratedMessage = ({ setShowCreateForm, errorMessage, errorBoundary }) => {
+const IllustratedMessage = ({ errorMessage }) => {
 
   return (
     <div
@@ -32,15 +32,11 @@ const IllustratedMessage = ({ setShowCreateForm, errorMessage, errorBoundary }) 
     >
       <UnKnownErrorImage />
       <p className="spectrum-Heading spectrum-Heading--sizeXL" css={css` font-weight:100; `}> UnKnown Error </p>
-      {errorBoundary ?
-        <>
-          <p className='spectrum-Body spectrum-Body--sizeM'>Please try again after some times</p>
-          <pre>{errorBoundary.errorInfo}</pre>
-        </> :
+      {
         <>
           <p className='spectrum-Body spectrum-Body--sizeM'>An error has occured when you tried to create a new credential.</p>
           <p className='spectrum-Body spectrum-Body--sizeM'>Please try to submit the form again.</p>
-          <button className="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM" onClick={() => setShowCreateForm(true)}>
+          <button className="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM" onClick={() => window.location.reload()}>
             <span className="spectrum-Button-label">Try Again</span>
           </button>
           <p className="spectrum-Body spectrum-Body--sizeS"><a href={errorMessage?.helpLink} target="_blank" rel="noreferrer">{errorMessage?.helpLinkText}</a></p>

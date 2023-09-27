@@ -149,7 +149,7 @@ export const getOrganization = async (setOrganizationValue) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer " + token,
-          "x-api-key": "stage_adobe_io"
+          "x-api-key": window?.adobeIMS?.adobeIdData?.client_id
         }
       });
 

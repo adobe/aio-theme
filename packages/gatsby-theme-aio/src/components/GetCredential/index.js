@@ -26,7 +26,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
     <>
       {
         isBrowser &&
-        <ErrorBoundary >
+        <ErrorBoundary errorMessage={getCredentialData?.[IllustratedMessage]}>
           <section
             className={classNames(className)}
             css={css`
