@@ -14,7 +14,7 @@ export const FormFields = ({ isFormValue, fields, children, formData, isRed }) =
             display:flex;
             justify-content:space-between;
             position:relative;
-            width: ${isFormValue?.length ? "95%" : "100%"};  
+            width: 100%;  
           `}
       >
         <div css={css` display:flex; gap:3px; `} >
@@ -24,6 +24,21 @@ export const FormFields = ({ isFormValue, fields, children, formData, isRed }) =
             {label}
           </label>}
           {required && <span css={css`font-size: 1.2rem;`}>*</span>}
+          {isFormValue?.length ?
+            <div css={
+              css` 
+                cursor:pointer; 
+                width:20px; 
+                height:20px; 
+                
+                & > div > div > div > button {
+                  border: none;
+                  margin-left: 4px;
+                }
+             `} >
+              {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
+            </div> : null
+          }
         </div>
         {range && <span id="character-count-2" className="spectrum-Textfield-characterCount"
           css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700)) `}>
@@ -38,11 +53,6 @@ export const FormFields = ({ isFormValue, fields, children, formData, isRed }) =
           gap:10px;
         `}>
         {children}
-        {isFormValue?.length ?
-          <div css={css` cursor:pointer; width:20px; height:20px; `} >
-            {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
-          </div> : null
-        }
       </div>
       {description && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
         <p className="spectrum-Body spectrum-Body--sizeXS"

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { Picker } from '../Picker'
+import { Picker as SelectBox } from "../Picker"
+import { Item, Picker, Provider, defaultTheme } from "@adobe/react-spectrum";
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization, setOrganizationValue }) => {
 
   const [organization, setOrgans] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState();
+  // const [selectVal, setSelected] = useState(null);
 
   useEffect(() => {
 
@@ -16,33 +18,58 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
       data?.map((value, index) => {
         const orgData = JSON.parse(orgInfo);
         if (value?.id == orgData?.id) {
+          // setSelected(orgData?.id)
           setSelectedIndex(index)
         }
       })
     });
+    document.documentElement.style.overflow = 'hidden';
 
   }, []);
 
   const handleRedirect = () => {
     setAlertShow(true);
-    handleModal()
+    handleModal();
+    organization.forEach((organs, index) => {
+      // if (organs?.id === selectVal) {
+      //   setOrganizationValue(organs)
+      // }
+      if (index === selectedIndex) {
+        setOrganizationValue(organs)
+      }
+    })
   };
 
   const handleModal = () => {
     setRedirectBetaProgram(false);
     setModalOpen(false);
+    document.documentElement.style.overflow = 'scroll';
   };
+
+  // useEffect(() => {
+  //   setOrganization(true);
+  //   organization.forEach((organs) => {
+  //     if (organs?.id === selectVal) {
+  //       const orgData = {
+  //         "id": organs?.id,
+  //         "name": organs?.name,
+  //         "orgLen": organization?.length,
+  //         "type": organs?.type
+  //       }
+  //       localStorage.setItem('OrgInfo', JSON.stringify(orgData));
+  //     }
+  //   })
+  // }, [selectVal])
 
   useEffect(() => {
     setOrganization(true);
     organization.forEach((organs, index) => {
       if (index === selectedIndex) {
-        setOrganizationValue(organs)
         const orgData = {
           "id": organs?.id,
           "name": organs?.name,
           "orgLen": organization?.length,
-          "type":organs?.type
+          "type": organs?.type
         }
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }
@@ -50,13 +77,16 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   }, [selectedIndex])
 
   return (
-    <>
+    <Provider colorScheme="light" theme={defaultTheme} >
       {!redirectToBeta &&
         <div className="spectrum-Modal-wrapper spectrum-CSSExample-dialog"
           css={css`
             width: 100%;
             height: 100%;
-            background-color: gray;
+            background: var(--spectrum-dialog-underlay-background-color,var(--spectrum-alias-background-color-modal-overlay));
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
             visibility: visible;
           `}
         >
@@ -120,6 +150,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                         
                           & > div > .spectrum-Picker {
                             width: 100% !important;
+                            height: 20px;
                           }
 
                           & > div > div {
@@ -134,7 +165,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
                           ` }
                         >
-                          <Picker
+                          <SelectBox
                             isQuiet
                             items={organization.map((organs, k) => {
                               return {
@@ -147,6 +178,19 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                             }}
                           />
                         </div>
+
+                        {/* <Picker width="100%"
+                          defaultSelectedKey={selectVal}
+                          selectedKey={selectVal}
+                          items={organization}
+                          onSelectionChange={e => setSelected(e)}
+                        >
+                          {item => {
+                            return (
+                              <Item key={item?.id} aria-label="textValue">{item?.name}</Item>
+                            )
+                          }}
+                        </Picker> */}
 
                       </div>
                       <div
@@ -184,7 +228,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
           }
         </div>
       }
-    </>
+    </Provider>
   )
 }
 

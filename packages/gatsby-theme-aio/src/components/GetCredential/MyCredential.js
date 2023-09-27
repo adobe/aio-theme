@@ -6,7 +6,6 @@ import { CopyIcon, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, M
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
-import { SuccessMedium } from '../Icons';
 import { Toast } from '../Toast';
 
 const MyCredential = ({
@@ -20,7 +19,6 @@ const MyCredential = ({
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
-  const [isCopied, setIsCopied] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [isDownloadStart, setIsDownloadStart] = useState();
   const [isCopiedTooltip, setCopiedTooltip] = useState('')
@@ -59,7 +57,6 @@ const MyCredential = ({
   const devConsoleLink = `/console/projects/${organization?.id}/${response.projectId}/overview`;
 
   const handleCopy = (value) => {
-    setIsCopied(true);
     navigator.clipboard.writeText(value);
     setCopiedTooltip(true);
   };
@@ -71,7 +68,6 @@ const MyCredential = ({
 
   const handleLeave = () => {
     setTooltipOpen(null);
-    setIsCopied(false)
   }
 
   const downloadZIP = async (
@@ -332,7 +328,7 @@ const MyCredential = ({
                                     padding: 3px 6px;
                                   `}
                                 >
-                                  {<span className="spectrum-ActionButton-label">{isCopied && isTooltipOpen === index ? <SuccessMedium /> : <CopyIcon />}</span>}
+                                  {<span className="spectrum-ActionButton-label"><CopyIcon /></span>}
                                 </button>
 
                                 {isTooltipOpen === index && (
@@ -379,20 +375,24 @@ const MyCredential = ({
                   <a href={devConsoleLink} target="_blank" rel="noreferrer"
                     css={css`
                       color: var(--spectrum-global-color-gray-800);
-                      margin: 8px 0;
+                      margin: 2px 0;
                       &:hover {
                         color: var(--spectrum-global-color-gray-900);
                       }
                     `}
-                  >{card?.developerConsoleManage}
-                    <span css={
-                      css`
+                  >
+                    <div css={css`display:flex;`}>
+                      <div>{card?.developerConsoleManage}</div>
+                      <div css={
+                        css`
                         margin-left:10px;
                         @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                           display:none;
                         }
                       }`
-                    }><LinkOut /></span></a>
+                      }><LinkOut /></div>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
