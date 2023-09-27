@@ -35,27 +35,11 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
-
   const getValueFromLocalStorage = async () => {
     const orgInfo = localStorage?.getItem('OrgInfo');
     if (orgInfo === null) {
-      getOrganization(setOrganizationValue);
-      const token = window.adobeIMS?.getTokenFromStorage()?.token;
-      const response = await fetch("/console/api/organizations", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + token,
-          "x-api-key": "stage_adobe_io"
-        }
-      });
-
-      if (response.status !== 200) {
-        setOrg(false);
-      }
-
-      const organizationData = await response.json();
-      if (organizationData?.length === 1) {
+      const getOrgs = getOrganization(setOrganizationValue);
+      if (getOrgs?.length === 1) {
         setShowOrganization(false)
       }
     } else {
@@ -170,7 +154,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
-          "x-api-key": "stage_adobe_io",
+          "x-api-key": window?.adobeIMS?.adobeIdData?.client_id,
         },
         body: JSON.stringify(data),
       });
@@ -237,7 +221,8 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
               <p
                 className="spectrum-Body spectrum-Body--sizeS"
                 css={css`color:var(--spectrum-global-color-gray-800);`}
-              >You're creating this credential in [<b>{organization?.name}</b>].
+              >
+                You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
                 {showOrganization &&
                   <button
                     tabIndex="0"
@@ -371,7 +356,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           setOrganizationValue={setOrganizationValue}
         />
       )}
-      {isError && !showCreateForm && !showCredential && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.[IllustratedMessage]} />}
+      {isError && !showCreateForm && !showCredential && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
     </>

@@ -54,7 +54,7 @@ const Loading = ({
             css={css`
               color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
             `}
-          >This process may take a few moments. Once complete, you download will start.</div>
+          >This process may take a few moments. Once complete, your download will start.</div>
         }
       </div>
     </>

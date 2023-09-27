@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
-import { getOrganization, MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { Picker } from '../Picker'
+import { getOrganization, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, MIN_TABLET_SCREEB_WIDTH } from './FormFields';
+import { Picker as SelectBox } from "../Picker"
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization, setOrganizationValue }) => {
 
@@ -20,28 +20,35 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
         }
       })
     });
+    document.documentElement.style.overflow = 'hidden';
 
   }, []);
 
   const handleRedirect = () => {
     setAlertShow(true);
-    handleModal()
+    handleModal();
+    organization.forEach((organs, index) => {
+      if (index === selectedIndex) {
+        setOrganizationValue(organs)
+      }
+    })
   };
 
   const handleModal = () => {
     setRedirectBetaProgram(false);
     setModalOpen(false);
+    document.documentElement.style.overflow = 'scroll';
   };
 
   useEffect(() => {
     setOrganization(true);
     organization.forEach((organs, index) => {
       if (index === selectedIndex) {
-        setOrganizationValue(organs)
         const orgData = {
           "id": organs?.id,
           "name": organs?.name,
-          "orgLen": organization?.length
+          "orgLen": organization?.length,
+          "type": organs?.type
         }
         localStorage.setItem('OrgInfo', JSON.stringify(orgData));
       }
@@ -55,7 +62,10 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
           css={css`
             width: 100%;
             height: 100%;
-            background-color: gray;
+            background: var(--spectrum-dialog-underlay-background-color,var(--spectrum-alias-background-color-modal-overlay));
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
             visibility: visible;
           `}
         >
@@ -119,12 +129,35 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                         
                           & > div > .spectrum-Picker {
                             width: 100% !important;
+                            height: 20px;
                           }
 
                           & > div > div {
                             width: 86%;
-                            left: 7%;
+                            left: 9%;
                             height : 40%;
+
+                            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
+                              width: 82%;
+                              left: 15%;
+                            }
+
+                            @media screen and (min-width:${MIN_TABLET_SCREEB_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                              width: 91%;
+                              left: 7%;
+                            }
+
+                          }
+
+                          & > div > .spectrum-Picker-popover > ul > li > div > div {
+                            margin : 0 ;
+                          }
+
+                          & > div > .spectrum-Picker-popover > ul > li > div > div > svg {
+                            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                              margin: 3px;
+                              padding: 0;
+                            }
                           }
 
                             padding: 5px;
@@ -133,7 +166,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
 
                           ` }
                         >
-                          <Picker
+                          <SelectBox
                             isQuiet
                             items={organization.map((organs, k) => {
                               return {

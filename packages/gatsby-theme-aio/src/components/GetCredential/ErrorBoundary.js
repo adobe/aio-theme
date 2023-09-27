@@ -8,6 +8,7 @@ class ErrorBoundary extends Component {
       hasError: false,
       error: null,
       errorInfo: null,
+      errorMsg: this.props.errorMessage
     };
   }
 
@@ -19,11 +20,10 @@ class ErrorBoundary extends Component {
     });
   }
 
-  errorMessage = { errorInfo: this.state?.errorInfo?.componentStack };
 
   render() {
     if (this.state.hasError) {
-      return <IllustratedMessage errorBoundary={this.errorMessage} />;
+      return <IllustratedMessage errorMessage={this.errorMsg} />;
     }
 
     return this.props.children;
