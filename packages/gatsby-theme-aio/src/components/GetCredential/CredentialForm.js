@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import classNames from "classnames";
@@ -10,6 +10,8 @@ import { JoinBetaProgram } from './JoinBetaProgram';
 import { AlertIcon, FormFields, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
+import { NoDeveloperAccessError } from './NoDeveloperAccessError';
+import Context from '../Context';
 
 const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
 const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
@@ -31,21 +33,29 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const [organizationChange, setOrganization] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [showOrganization, setShowOrganization] = useState(true);
-  const [isCheckOrg, setOrg] = useState(true);
+  const [emailID, setEmailID] = useState('');
+
+  const { ims } = useContext(Context);
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
+
   const getValueFromLocalStorage = async () => {
     const orgInfo = localStorage?.getItem('OrgInfo');
+    const getOrgs = await getOrganization(setOrganizationValue);
     if (orgInfo === null) {
-      const getOrgs = getOrganization(setOrganizationValue);
       if (getOrgs?.length === 1) {
-        setShowOrganization(false)
+        setShowOrganization(false);
       }
-    } else {
+    }
+    else if (getOrgs) {
       const orgData = JSON.parse(orgInfo);
       setShowOrganization(orgData.orgLen === 1 ? false : true);
       setOrganizationValue(orgData);
+    }
+    if (!getOrgs) {
+      setOrganizationValue(getOrgs);
+      setShowCreateForm(false)
     }
   }
 
@@ -119,6 +129,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     setIsValid(isValid);
   }, [formData]);
 
+  useEffect(() => {
+    (async () => {
+      if (ims && ims.isSignedInUser()) {
+        const profile = await ims.getProfile();
+        setEmailID(profile?.email);
+      }
+    })();
+  }, [ims])
+
   const handleChange = (e, type) => {
     const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
@@ -186,7 +205,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   return (
     <>
-      {!redirectToBeta && showCreateForm && !loading &&
+      {!redirectToBeta && showCreateForm && !loading && organization &&
         <div
           className={classNames(credentialForm?.className)}
           css={css`
@@ -217,16 +236,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 {credentialForm?.paragraph}
               </p>
             }
-            {isCheckOrg &&
-              <p
-                className="spectrum-Body spectrum-Body--sizeS"
-                css={css`color:var(--spectrum-global-color-gray-800);`}
-              >
-                You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
-                {showOrganization &&
-                  <button
-                    tabIndex="0"
-                    css={css`
+            <p
+              className="spectrum-Body spectrum-Body--sizeS"
+              css={css`color:var(--spectrum-global-color-gray-800);`}
+            >
+              You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
+              {showOrganization &&
+                <button
+                  tabIndex="0"
+                  css={css`
                     border: none;
                     padding:0;
                     font-family:'adobe-clean';
@@ -235,12 +253,12 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                     text-decoration:underline;
                     color: var(--spectrum-global-color-gray-800);
                     cursor:pointer;`
-                    }
-                    onClick={() => setModalOpen(true)}
-                  >
-                    Change organization?
-                  </button>}
-              </p>}
+                  }
+                  onClick={() => setModalOpen(true)}
+                >
+                  Change organization?
+                </button>}
+            </p>
           </div>
           <div
             css={css`
@@ -359,6 +377,8 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       {isError && !showCreateForm && !showCredential && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
+      {!showCreateForm && !organization && <NoDeveloperAccessError developerAccessError={formProps?.[NoDeveloperAccessError]} title={credentialForm?.title} emailID={emailID} />}
+
     </>
   )
 }
