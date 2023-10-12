@@ -54,7 +54,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
       setOrganizationValue(orgData);
     }
     if (!getOrgs) {
-      setOrganizationValue(getOrgs);
+      setOrganizationValue({});
       setShowCreateForm(false)
     }
   }
@@ -106,6 +106,22 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   }, [showCredential])
 
   useEffect(() => { initialLoad(); }, []);
+
+  useEffect(() => {
+    if (!organization) {
+      setOrganizationValue(undefined);
+      setShowCreateForm(false);
+    }
+    else if (organization && Object.keys(organization)?.length !== 0) {
+      setShowCreateForm(true)
+    }
+    else {
+      if (Object.keys(organization)?.length === 0) {
+        setOrganizationValue(undefined);
+        setShowCreateForm(false);
+      }
+    }
+  }, [organization])
 
   useEffect(() => {
     if (isError) {
