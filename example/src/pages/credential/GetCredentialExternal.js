@@ -52,6 +52,8 @@ const GetCredentialExternal = () => {
 
       <GetCredential.NoBetaAccessError betaProgramLink="https://some_help_link" betaProgramLinkText="Join Beta program" heading="Get Credentials" text="Join Beta program to get access to the Adobe Express Embed SDK and start creating unique credentials that you will use in your application." className="joinBetaProgram" />
 
+      <GetCredential.NoDeveloperAccessError docsLink="https://some_help_link" docsLinkText="How do I got developer permissions for the [Adobe Express Embed SDK]?" />
+
     </GetCredential>
 
   )

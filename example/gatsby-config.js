@@ -13,6 +13,9 @@
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/example/',
   siteMetadata: {
+    docs: {
+      title: 'Get Credential',
+    },
     home: {
       title: 'Home',
       path: '/home/?plop=plip#foo'

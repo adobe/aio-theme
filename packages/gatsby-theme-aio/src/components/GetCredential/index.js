@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
 import { JoinBetaProgram } from './JoinBetaProgram';
+import { NoDeveloperAccessError } from "./NoDeveloperAccessError"
 import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -28,6 +29,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
         isBrowser &&
         <ErrorBoundary errorMessage={getCredentialData?.[IllustratedMessage]}>
           <section
+            id="adobe-get-credential"
             className={classNames(className)}
             css={css`
                 background: #f8f8f8;
@@ -80,5 +82,6 @@ GetCredential.Form.Download = Download;
 GetCredential.UnknownError = IllustratedMessage;
 GetCredential.Card = MyCredential;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
+GetCredential.NoDeveloperAccessError = NoDeveloperAccessError;
 
 export { GetCredential };

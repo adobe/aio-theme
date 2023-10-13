@@ -235,6 +235,20 @@ const GlobalHeader = ({
     }
   };
 
+  const handleCredential = () => {
+
+    const section = document.getElementById('adobe-get-credential');
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+
+  }
+
   return (
     <header
       role="banner"
@@ -864,8 +878,9 @@ const GlobalHeader = ({
                       }
                     }}
                     id={'getCredentialID'}
+                    onClick={handleCredential}
                     variant="primary"
-                    href={withPrefix(docs.href)}>
+                    href={docs.href && withPrefix(docs.href)}>
                     {docs.title ?? 'View Docs'}
                   </AnchorButton>
                 </div>
