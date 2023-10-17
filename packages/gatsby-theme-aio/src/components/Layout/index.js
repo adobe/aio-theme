@@ -260,6 +260,11 @@ export default ({ children, pageContext, location }) => {
               title
               path
             }
+            notice{
+              title
+              type
+              text
+            }
             versions {
               title
               path

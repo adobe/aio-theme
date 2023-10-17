@@ -246,7 +246,12 @@ module.exports = {
           }
         ]
       }
-    ]
+    ],
+    notice: {
+      type: `notice`,
+      title: `IMPORTANT: Deprecation Warning`,
+      text: `This version of the docs and SDK will be sunsetted later this year. As a result, we are no longer approving new submissions that integrate with v2.<br /> <br />Instead, we would love for you to start integrating the new version of the SDK. To join the private beta and get early access to documentation, please fill out <a href="https://developer.adobe.com/embed-sdk/docs">this form</a> `,
+    },
   },
   plugins: [
     `@adobe/gatsby-theme-aio`

@@ -48,6 +48,7 @@ import { jsDocFilter } from '../JsDocParameters';
 
 import { MDXComponents } from './MDXComponents';
 import { MDXBlocks } from './MDXBlocks';
+import { AnnouncementBanner } from '../AnnoncementBanner';
 
 // Filters custom MDX components out of the markdown
 const filterChildren = ({ childrenArray, query, hasSideNav }) => {
@@ -179,7 +180,7 @@ export default ({ children, pageContext, query }) => {
     if (typeof hideBreadcrumbNav != 'boolean') {
       throw new Error('hideBreadcrumbNav is not a boolean. Correct use hideBreadcrumbNav: true');
     }
-    const { home } = siteMetadata;
+    const { home, notice } = siteMetadata;
     const pathWithRootFix = rootFix(location.pathname);
     const pagesWithRootFix = rootFixPages(siteMetadata?.pages);
     const selectedTopPage = findSelectedTopPage(pathWithRootFix, pagesWithRootFix);
@@ -241,6 +242,7 @@ export default ({ children, pageContext, query }) => {
             display: flex;
             flex-direction: column;
           `}>
+          {notice && <AnnouncementBanner notice={notice} />}
           {heroChild && heroChild}
           <div
             css={css`

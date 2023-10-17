@@ -49,6 +49,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       techSupportFAQMenus: [techSupportFAQMenus]
       subMenuPages: [subMenuPages]
       allFile: allFile
+	  notice: Notice
     }
     
     type subMenuPages {
@@ -142,6 +143,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     type allFile {
       edges: Node
     }
+
+    type Notice {
+      title: String
+      text: String
+      type: String
+    }
+
   `);
 };
 
