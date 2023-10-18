@@ -58,6 +58,7 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Frontmatter](#frontmatter)
       - [Edition keyword](#edition-keyword)
       - [Contributor name and link keywords](#contributor-name-and-link-keywords)
+      - [Hide page from search with noIndex](#hide-page-from-search-with-noindex)
     - [Markdown pages](#markdown-pages)
     - [Links](#links)
       - [Anchor links for headings](#anchor-links-for-headings)
@@ -2347,7 +2348,7 @@ import pdf from "./sample.pdf";
 
 ## SDK PDF
 
-Unlock Adobe Express editing capabilities for your users by embedding the SDK in your website.Unlock Adobe Express editing capabilities for your users by embedding the SDK in your website.Unlock Adobe Express editing capabilities for your users by embedding the SDK in your website.
+Unlock Adobe Express editing capabilities for your users by embedding the SDK in your website.
 
 - [Learn more](https://adobe.io)
 
