@@ -10,12 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { cloneElement, useEffect } from "react";
+import React, { cloneElement } from "react";
 import { css } from "@emotion/react";
 import { HeroButtons } from "../Hero";
 import classNames from "classnames";
-import { useExternalScript } from "./useExternalScript";
 import PropTypes from "prop-types";
+import { Script } from "gatsby"
 
 const PDFViewer = ({
   url,
@@ -42,33 +42,17 @@ const PDFViewer = ({
     showDownloadPDF: showDownloadPDF ? true : false,
     showZoomControl: showZoomControl ? true : false,
     showAnnotationTools: showAnnotationTools ? true : false,
-    showPrintPDF: showPrintPDF ? true : false
-  }
+    showPrintPDF: showPrintPDF ? true : false,
+  };
 
   const isDirectionInRow = showDirection === "row";
   const isDirectionInColumn = showDirection === "column";
 
   const srcURL = "https://documentservices.adobe.com/view-sdk/viewer.js";
-  const isScript = useExternalScript(srcURL);
-
-  useEffect(() => {
-
-    if (isScript === "ready") {
-      document.addEventListener("adobe_dc_view_sdk.ready", function () {
-        const adobeDCView = new window.AdobeDC.View({ clientId: client_id, divId: customId });
-        adobeDCView.previewFile({
-          content: { location: { url } },
-          metaData: { fileName }
-        }, previewConfig);
-      });
-
-    }
-
-  }, [isScript]);
 
   return (
     <>
-      {client_id &&
+      {client_id && (
         <section
           className={classNames(className)}
           css={css`
@@ -76,7 +60,7 @@ const PDFViewer = ({
             margin: 3% 0;
           `}
         >
-          {props?.slots ?
+          {props?.slots ? (
             <div
               css={css`
                        
@@ -97,24 +81,25 @@ const PDFViewer = ({
 
             `}
             >
-              {url &&
-                <div id={customId}
+              {url && (
+                <div
+                  id={customId}
                   css={css`
                     @media screen and (min-width:320px) and (max-width:1024px) {
-                        width:100% !important;
+                      width: 100% !important;
                     }
 
                     height: 400px;
                     width: ${isDirectionInRow ? "45%" : "100%"};
-                    margin:auto;
-                `}
+                    margin: auto;
+                  `}
                 ></div>
-              }
-              <div css={css`
-
-              @media screen and (min-width:320px) and (max-width:1024px) {
-                  width:100% !important;
-              }
+              )}
+              <div
+                css={css`
+                  @media screen and (min-width:320px) and (max-width:1024px) {
+                    width: 100% !important;
+                  }
 
               width: ${isDirectionInRow ? "45%" : "100%"};
               margin: auto;
@@ -139,36 +124,58 @@ const PDFViewer = ({
                 <div>
                   {text &&
                     cloneElement(text, {
-                      className: 'spectrum-Body spectrum-Body--sizeM',
+                      className: "spectrum-Body spectrum-Body--sizeM",
                       css: css`
-                    color: ${textColor};
-                  `
-                    })
-                  }
+                        color: ${textColor};
+                      `,
+                    })}
                 </div>
 
-                {buttons &&
+                {buttons && (
                   <HeroButtons
                     buttons={buttons}
-                    variants={['accent', 'secondary']}
-                    css={css` margin-top: var(--spectrum-global-dimension-size-400); `}
-                  />}
-
+                    variants={["accent", "secondary"]}
+                    css={css`
+                      margin-top: var(--spectrum-global-dimension-size-400);
+                    `}
+                  />
+                )}
               </div>
-            </div> :
-            <div id={customId}
+            </div>
+          ) : (
+            <div
+              id={customId}
               css={css`
-            padding: 3% 0;
-            margin: auto;        
-            height: 360px;
-            width: ${variant === "fullWidth" ? "100%" : "80%"}
-          `}></div>
-          }
+                padding: 3% 0;
+                margin: auto;
+                height: 360px;
+                width: ${variant === "fullWidth" ? "100%" : "80%"};
+              `}
+            ></div>
+          )}
         </section>
-      }
+      )}
+      {client_id && (
+        <Script
+          src={srcURL}
+          onLoad={() => {
+            document.addEventListener("adobe_dc_view_sdk.ready", function () {
+              const adobeDCView = new window.AdobeDC.View({
+                clientId: client_id,
+                divId: customId,
+              });
+              adobeDCView.previewFile({
+                content: { location: { url } },
+                metaData: { fileName },
+              }, previewConfig);
+            });
+          }}
+        />
+      )}
     </>
-  )
-}
+  );
+};
+
 PDFViewer.propTypes = {
   heading: PropTypes.element,
   text: PropTypes.element,
@@ -186,4 +193,4 @@ PDFViewer.propTypes = {
   customId: PropTypes.string,
 };
 
-export { PDFViewer }
+export { PDFViewer };
