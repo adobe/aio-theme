@@ -58,6 +58,7 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Frontmatter](#frontmatter)
       - [Edition keyword](#edition-keyword)
       - [Contributor name and link keywords](#contributor-name-and-link-keywords)
+      - [Hide page from search with noIndex](#hide-page-from-search-with-noindex)
     - [Markdown pages](#markdown-pages)
     - [Links](#links)
       - [Anchor links for headings](#anchor-links-for-headings)
@@ -94,15 +95,8 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Deploy to Azure Storage Static Websites](#deploy-to-azure-storage-static-websites)
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
-  - [](#)
-  - [description: This is the guides overview page of Adobe Analytics](#description-this-is-the-guides-overview-page-of-adobe-analytics)
-  - [](#-1)
-  - [](#-2)
-  - [hideBreadcrumbNav: false](#hidebreadcrumbnav-false)
     - [OpenAPI](#openapi)
-  - [openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json](#openapispec-httpsrawgithubusercontentcomadobedocsanalytics-20-apismasterdocsswaggerjson)
     - [JSDoc](#jsdoc)
-  - [jsDoc: true](#jsdoc-true)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
     - [JSX Blocks](#jsx-blocks)
@@ -136,22 +130,23 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Accordion](#accordion)
       - [Accordion item](#accordion-item)
     - [ListBlock](#listblock)
+    - [PDFViewer](#pdfviewer)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
       - [Embedding external markdown files](#embedding-external-markdown-files)
       - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
-	- [Get Credential](#get-credential)
-    	- [GetCredential.SignIn](#getcredentialsignin)
-    	- [GetCredential.Form](#getcredentialform)
-    	- [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
-    	- [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
-    	- [GetCredential.Form.Downloads](#getcredentialformdownloads)
-    	- [GetCredential.Form.Download](#getcredentialformdownload)
-    	- [GetCredential.Form.Side](#getcredentialformside)
-    	- [GetCredential.UnknownError](#getcredentialunknownerror)
-    	- [GetCredential.Card](#getcredentialcard)
-    	- [GetCredential.Side](#getcredentialside)
+    - [Get Credential](#get-credential)
+      - [GetCredential.SignIn](#getcredentialsignin)
+      - [GetCredential.Form](#getcredentialform)
+      - [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
+      - [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
+      - [GetCredential.Form.Downloads](#getcredentialformdownloads)
+      - [GetCredential.Form.Download](#getcredentialformdownload)
+      - [GetCredential.Form.Side](#getcredentialformside)
+      - [GetCredential.UnknownError](#getcredentialunknownerror)
+      - [GetCredential.Card](#getcredentialcard)
+      - [GetCredential.Side](#getcredentialside)
     - [Toast](#toast)
   - [Customizations](#customizations)
     - [Custom layout](#custom-layout)
@@ -2331,6 +2326,52 @@ Use `variant` to specify full width or half width values are `fullWidth,halfWidt
 
 Text1 will align the text on the leftside list i.e (1,3,5,...)
 Text2 will align the text on right side i.e (2,4,6...)
+
+### PDFViewer
+
+The PDFViewer component integrates PDF display with accompanying text, headings, and buttons for a seamless user experience.
+
+![pdfviewer](../../../../docs/images/pdf_viewer.png)
+
+```
+
+import pdf from "./sample.pdf";
+
+<PDFViewer slots="heading,text,buttons" url={pdf}  showDownloadPDF showZoomControl showPrintPDF customId="sample_pdf_viewer" showAnnotationTools fileName="JSON" variant="fullWidth" textColor="#427dcd" showDirection="row"/>
+
+## SDK PDF
+
+Unlock Adobe Express editing capabilities for your users by embedding the SDK in your website.
+
+- [Learn more](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `heading` (optional)
+- `text` (optional)
+- `buttons`(optional)
+
+Use `url` (required) give the imported video varaiables like `url={pdf}` 
+
+Use `client_id`(required)  is used to access and view the PDF.
+
+Use `showDownloadPDF` to display the option for downloading the PDF. 
+
+Use `showZoomControl` to show the option for zooming in the PDF.
+
+Use `showPrintPDF` to show the option for printing the PDF.
+
+Use `showAnnotationTools` to display the edit icon for editing, deleting, or replying to comments.
+
+Use `showDirection` to determine the layout of the content, either in rows or columns. The possible values are row or column, with the default setting as row.
+
+Use `customId` to specify a custom ID for the PDF. The default value is `adobe-pdf`.
+
+Use `textColor` to define the color of the text. The preset is black.
+
+Use `variant` to specify full width or half width. The values can be 'fullWidth' or 'halfWidth', and the default is `fullWidth`.
 
 ### Edition
 

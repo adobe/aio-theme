@@ -33,6 +33,7 @@ import MiniResource from "./miniresource_block/index.md"
 import TextBlockImage from "./imageTextBlock/index.md"
 import ListComp from "./listblock/index.md"
 import GetCredentialExternal from "./credential/GetCredentialExternal.js"
+import PDFViewerComp from "./pdf_viewer/index.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -117,6 +118,8 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 ![Jenkinator](./diagram.svg "Diagram")
 
 <GetCredentialExternal />
+
+<PDFViewerComp />
 
 <Toast variant="success" message="Page Loaded successfully" disable={5000} />
 
