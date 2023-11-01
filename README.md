@@ -131,22 +131,23 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Accordion item](#accordion-item)
     - [ListBlock](#listblock)
     - [PDFViewer](#pdfviewer)
+    - [ProfileCard](#profilecard)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
       - [Embedding external markdown files](#embedding-external-markdown-files)
       - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
-    - [Get Credential](#get-credential)
-      - [GetCredential.SignIn](#getcredentialsignin)
-      - [GetCredential.Form](#getcredentialform)
-      - [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
-      - [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
-      - [GetCredential.Form.Downloads](#getcredentialformdownloads)
-      - [GetCredential.Form.Download](#getcredentialformdownload)
-      - [GetCredential.Form.Side](#getcredentialformside)
-      - [GetCredential.UnknownError](#getcredentialunknownerror)
-      - [GetCredential.Card](#getcredentialcard)
-      - [GetCredential.Side](#getcredentialside)
+	- [Get Credential](#get-credential)
+	    - [GetCredential.SignIn](#getcredentialsignin)
+	    - [GetCredential.Form](#getcredentialform)
+	    - [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
+	    - [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
+	    - [GetCredential.Form.Downloads](#getcredentialformdownloads)
+	    - [GetCredential.Form.Download](#getcredentialformdownload)
+	    - [GetCredential.Form.Side](#getcredentialformside)
+	    - [GetCredential.UnknownError](#getcredentialunknownerror)
+	    - [GetCredential.Card](#getcredentialcard)
+	    - [GetCredential.Side](#getcredentialside)
     - [Toast](#toast)
   - [Customizations](#customizations)
     - [Custom layout](#custom-layout)
@@ -2331,7 +2332,7 @@ Text2 will align the text on right side i.e (2,4,6...)
 
 The PDFViewer component integrates PDF display with accompanying text, headings, and buttons for a seamless user experience.
 
-![pdfviewer](../../../../docs/images/pdf_viewer.png)
+![pdfviewer](docs/images/pdf_viewer.png)
 
 ```
 
@@ -2372,6 +2373,95 @@ Use `customId` to specify a custom ID for the PDF. The default value is `adobe-p
 Use `textColor` to define the color of the text. The preset is black.
 
 Use `variant` to specify full width or half width. The values can be 'fullWidth' or 'halfWidth', and the default is `fullWidth`.
+
+### ProfileCard
+
+This component is designed to showcase product information using images/icons, headings, and links in a profile card format, presenting the details in a concise and visually appealing manner.
+
+![profile_card](docs/images/profile_card.png)
+
+```
+<ProfileCard slots="image,heading,text,link,buttons" repeat="6" theme="lightest" inRow="3"/>
+
+![Remove Background](./remove-background.svg)
+
+### Remove Background
+
+Enable users to edit existing files or create with templates, generative AI, or from scratch.
+After you embed the full editor, users can quickly and easily edit existing files or create new content like social media graphics, flyers, and ads using Adobe Firefly capabilities such as text-to-image and text effects alongside thousands of creative templates and design assets.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Convert to GIF](./convert-to-gif.svg)
+
+### Convert to GIF
+
+To convert the video to the GIF format
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+  
+![Crop Image](./crop-image.svg)
+
+### Crop Image
+
+To crop the image
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Remove Background](./remove-background.svg)
+
+### Remove Background
+
+Enable users to edit existing files or create with templates, generative AI, or from scratch.
+After you embed the full editor, users can quickly and easily edit existing files or create new content like social media graphics, flyers, and ads using Adobe Firefly capabilities such as text-to-image and text effects alongside thousands of creative templates and design assets.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+  
+![Convert to GIF](./convert-to-gif.svg)
+
+### Convert to GIF
+
+To convert the video to the GIF format
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Crop Image](./crop-image.svg)
+
+### Crop Image
+    
+To crop the image
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image`(required)
+- `heading`(required)
+- `text`(optional)
+- `link`(optional)
+- `buttons`(optional)
+
+Use `theme` to match the text color to your color scheme. Defaults to `dark`.
+
+Use `repeat` to define how many code sections are part.
+
+Use `textColor` to define the color of the text. The preset is `black`.
+
+Use `inRow` to define the number of profile cards in a row.
 
 ### Edition
 

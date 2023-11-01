@@ -34,6 +34,7 @@ import TextBlockImage from "./imageTextBlock/index.md"
 import ListComp from "./listblock/index.md"
 import GetCredentialExternal from "./credential/GetCredentialExternal.js"
 import PDFViewerComp from "./pdf_viewer/index.md"
+import ProfileCardComp from "./profile_card/index.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -116,6 +117,8 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 ![Jenkinator](./jenkinator.svg "Jenkinator")
 
 ![Jenkinator](./diagram.svg "Diagram")
+
+<ProfileCardComp />
 
 <GetCredentialExternal />
 
