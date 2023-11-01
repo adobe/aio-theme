@@ -131,22 +131,23 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Accordion item](#accordion-item)
     - [ListBlock](#listblock)
     - [PDFViewer](#pdfviewer)
+    - [Contact Block](#contact-block)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
       - [Embedding external markdown files](#embedding-external-markdown-files)
       - [Filtering content with Variant Blocks](#filtering-content-with-variant-blocks)
-    - [Get Credential](#get-credential)
-      - [GetCredential.SignIn](#getcredentialsignin)
-      - [GetCredential.Form](#getcredentialform)
-      - [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
-      - [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
-      - [GetCredential.Form.Downloads](#getcredentialformdownloads)
-      - [GetCredential.Form.Download](#getcredentialformdownload)
-      - [GetCredential.Form.Side](#getcredentialformside)
-      - [GetCredential.UnknownError](#getcredentialunknownerror)
-      - [GetCredential.Card](#getcredentialcard)
-      - [GetCredential.Side](#getcredentialside)
+	- [Get Credential](#get-credential)
+	    - [GetCredential.SignIn](#getcredentialsignin)
+	    - [GetCredential.Form](#getcredentialform)
+	    - [GetCredential.Form.CredentialName](#getcredentialformcredentialname)
+	    - [GetCredential.Form.AllowedOrigins](#getcredentialformallowedorigins)
+	    - [GetCredential.Form.Downloads](#getcredentialformdownloads)
+	    - [GetCredential.Form.Download](#getcredentialformdownload)
+	    - [GetCredential.Form.Side](#getcredentialformside)
+	    - [GetCredential.UnknownError](#getcredentialunknownerror)
+	    - [GetCredential.Card](#getcredentialcard)
+	    - [GetCredential.Side](#getcredentialside)
     - [Toast](#toast)
   - [Customizations](#customizations)
     - [Custom layout](#custom-layout)
@@ -2331,7 +2332,7 @@ Text2 will align the text on right side i.e (2,4,6...)
 
 The PDFViewer component integrates PDF display with accompanying text, headings, and buttons for a seamless user experience.
 
-![pdfviewer](../../../../docs/images/pdf_viewer.png)
+![pdfviewer](/docs/images/pdf_viewer.png)
 
 ```
 
@@ -2372,6 +2373,68 @@ Use `customId` to specify a custom ID for the PDF. The default value is `adobe-p
 Use `textColor` to define the color of the text. The preset is black.
 
 Use `variant` to specify full width or half width. The values can be 'fullWidth' or 'halfWidth', and the default is `fullWidth`.
+
+### Contact Block
+
+The Contact Block effectively showcases pertinent contact details with text, headings, and actionable buttons, streamlining user access and fostering effortless interaction.
+
+![contactblock](/docs/images/contact_block.png)
+
+```
+<ContactBlock slots="image , heading , subheading , text , link , buttons" repeat="3" textColor="black" className="contactClass" />
+
+![Sales_Icon](./2_Icon_Sales.svg)
+
+### Sales
+
+### Pricing, Billing, and Licensing
+
+For Adobe Enterprise Terms Licensing Agreement (ETLA) customers, you will receive monthly emails on your usage.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Support_Icon](./2_Icon_Support.svg)
+
+### Support
+
+### Technical Support and Implementation
+
+Customers with an Adobe Enterprise Term License Agreement (ETLA) receive enterprise support and can submit support tickets via the Support Tab in the Admin Console
+
+[Adobe theme aio ](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Contact_Icon](./2_Icon_Sales.svg)
+
+### Contact
+
+### Contact Information
+
+For Adobe Enterprise Terms Licensing Agreement (ETLA) customers, you will receive monthly emails on your usage.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image` (required)
+- `heading` (optional)
+- `subheading`(optional)
+- `text` (optional)
+- `link` (optional)
+- `buttons`(optional)
+
+Use `textColor` to define the color of the text. The preset is black.
+
+Use `repeat` to define how many code sections are part.
+
+Use `className` to customize the component **at your own risk.**
 
 ### Edition
 

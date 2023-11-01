@@ -50,6 +50,7 @@ import { ListBlock } from '../ListBlock';
 import { GetCredential } from "../GetCredential";
 import { Toast } from "../Toast";
 import { PDFViewer } from '../PDFViewer';
+import { ContactBlock } from '../ContactBlock';
 
 export const MDXBlocks = {
   Hero,
@@ -91,5 +92,6 @@ export const MDXBlocks = {
   ListBlock,
   GetCredential,
   Toast,
-  PDFViewer
+  PDFViewer,
+  ContactBlock
 };
