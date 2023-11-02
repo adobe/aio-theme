@@ -132,6 +132,7 @@ Using a theme, all of your default configuration lives in an npm package.
     - [ListBlock](#listblock)
     - [PDFViewer](#pdfviewer)
     - [ProfileCard](#profilecard)
+    - [Contact Block](#contact-block)
     - [Edition](#edition)
     - [Embedding markdown documents and filtering content](#embedding-markdown-documents-and-filtering-content)
       - [Embedding local markdown files](#embedding-local-markdown-files)
@@ -2113,7 +2114,7 @@ Use `repeat` to define how many code sections are part of the carousel.
 
 VideoCarousel is used to show the information along with videos and buttons.
 
-![Carousel](docs/images/video-carousel.png)
+![video-carousel](docs/images/video-carousel.png)
 
 Use `slots` to identify the markdown content:
 
@@ -2462,6 +2463,68 @@ Use `repeat` to define how many code sections are part.
 Use `textColor` to define the color of the text. The preset is `black`.
 
 Use `inRow` to define the number of profile cards in a row.
+
+### Contact Block
+
+The Contact Block effectively showcases pertinent contact details with text, headings, and actionable buttons, streamlining user access and fostering effortless interaction.
+
+![contactblock](/docs/images/contact_block.png)
+
+```
+<ContactBlock slots="image , heading , subheading , text , link , buttons" repeat="3" textColor="black" className="contactClass" />
+
+![Sales_Icon](./2_Icon_Sales.svg)
+
+### Sales
+
+### Pricing, Billing, and Licensing
+
+For Adobe Enterprise Terms Licensing Agreement (ETLA) customers, you will receive monthly emails on your usage.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Support_Icon](./2_Icon_Support.svg)
+
+### Support
+
+### Technical Support and Implementation
+
+Customers with an Adobe Enterprise Term License Agreement (ETLA) receive enterprise support and can submit support tickets via the Support Tab in the Admin Console
+
+[Adobe theme aio ](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+![Contact_Icon](./2_Icon_Sales.svg)
+
+### Contact
+
+### Contact Information
+
+For Adobe Enterprise Terms Licensing Agreement (ETLA) customers, you will receive monthly emails on your usage.
+
+[Adobe I/O](https://adobe.io)
+
+- [Adobe](https://adobe.io)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image` (required)
+- `heading` (optional)
+- `subheading`(optional)
+- `text` (optional)
+- `link` (optional)
+- `buttons`(optional)
+
+Use `textColor` to define the color of the text. The preset is black.
+
+Use `repeat` to define how many code sections are part.
+
+Use `className` to customize the component **at your own risk.**
 
 ### Edition
 
