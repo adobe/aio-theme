@@ -51,6 +51,7 @@ import { GetCredential } from "../GetCredential";
 import { Toast } from "../Toast";
 import { PDFViewer } from '../PDFViewer';
 import { ProfileCard } from '../ProfileCard';
+import { OpenAPIBlock } from "../OpenAPIBlock";
 
 export const MDXBlocks = {
   Hero,
@@ -93,5 +94,6 @@ export const MDXBlocks = {
   GetCredential,
   Toast,
   PDFViewer,
-  ProfileCard
+  ProfileCard,
+  OpenAPIBlock
 };
