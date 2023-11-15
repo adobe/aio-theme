@@ -722,4 +722,4 @@ OpenAPIBlock.propTypes = {
   src: PropTypes.string
 };
 
-export default OpenAPIBlock;
+export {OpenAPIBlock};
