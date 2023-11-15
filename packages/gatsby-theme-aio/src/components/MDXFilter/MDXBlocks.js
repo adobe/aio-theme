@@ -52,7 +52,6 @@ import { Toast } from "../Toast";
 import { PDFViewer } from '../PDFViewer';
 import { ProfileCard } from '../ProfileCard';
 import { OpenAPIBlock } from "../OpenAPIBlock";
-import { RedoclyAPI } from "../RedoclyAPI";
 
 export const MDXBlocks = {
   Hero,
@@ -96,6 +95,5 @@ export const MDXBlocks = {
   Toast,
   PDFViewer,
   ProfileCard,
-  OpenAPIBlock,
-  RedoclyAPI
+  OpenAPIBlock
 };
