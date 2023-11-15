@@ -672,35 +672,17 @@ const OpenAPIBlock = ({ src }) => {
               }
             }
           `}>
-          <RedocStandalone
-            {...input}
-            options={{
-              nativeScrollbars: true,
-              disableSearch: true,
-              hideLoading: true,
-              scrollYOffset: 64,
-              menuToggle: true,
-              hideDownloadButton: true,
-              licenseKey: 'eyJ0IjpmYWxzZSwiaSI6MTY5OTY0MjY4MCwiZSI6MTcyNzcyOTQxNywiaCI6WyJyZWRvYy5seSIsImRldmVsb3Blci5hZG9iZS5jb20iLCJkZXZlbG9wZXItc3RhZ2UuYWRvYmUuY29tIl0sInMiOiJwb3J0YWwifQ==.T8gqRqclnJFKZgPU6WhGXNzBUJPNvqfraXqUg9PKNx3PVYS2LfxLgOS3pytNMyPCCSlcNY9l+JBx2rJqSIrXPQ==',
-              theme: {
-                sidebar: {
-                  width: SIDENAV_WIDTH
-                },
-                rightPanel: {
-                  backgroundColor: 'rgb(37, 37, 37)'
-                },
-                codeBlock: {
-                  backgroundColor: 'rgb(50, 50, 50)'
-                },
-                typography: {
-                  fontFamily: `adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif`
-                }
-              }
-            }}
-            onLoaded={() => {
-              setShowProgress(false);
-            }}
-          />
+          <div id="redocly_container"/>
+          <script src="https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js"></script>
+          <script>{
+            `RedoclyReferenceDocs.init(
+               `${src}`,
+              {licenseKey: 'eyJ0IjpmYWxzZSwiaSI6MTY5OTY0MjY4MCwiZSI6MTcyNzcyOTQxNywiaCI6WyJyZWRvYy5seSIsImRldmVsb3Blci5hZG9iZS5jb20iLCJkZXZlbG9wZXItc3RhZ2UuYWRvYmUuY29tIl0sInMiOiJwb3J0YWwifQ==.T8gqRqclnJFKZgPU6WhGXNzBUJPNvqfraXqUg9PKNx3PVYS2LfxLgOS3pytNMyPCCSlcNY9l+JBx2rJqSIrXPQ=='},
+              document.querySelector('#redocly_container'),
+            );`
+          }
+          </script>
+
         </div>
 
         <Footer />
