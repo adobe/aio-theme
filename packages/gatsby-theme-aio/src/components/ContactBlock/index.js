@@ -148,10 +148,14 @@ const ContactBlock = ({
                           justify-content: center;
                           margin:0 !important;
 
-                          &>p{
+                          & > p {
                               margin:0;
                               color:${textColor} !important;
-                              width : 70%
+                              width : 70%;
+                              display: -webkit-box ;
+                              -webkit-line-clamp: 3 ;
+                              -webkit-box-orient: vertical;
+                              overflow: hidden;
                           }
 
                           @media only screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
