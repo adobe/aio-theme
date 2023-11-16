@@ -191,7 +191,7 @@ export default ({ children, pageContext, location }) => {
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
     const IMS_CONFIG = process.env.GATSBY_IMS_CONFIG;
-
+    addScript('https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
     if (IMS_SRC && IMS_CONFIG) {
       (async () => {
         try {
