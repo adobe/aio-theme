@@ -112,13 +112,6 @@ const updatePageSrc = (type, frontMatter, setIsLoading) => {
     // Import statements have to be hardcoded
     if (type === 'openAPI') {
       page.block = loadable(() => import('../OpenAPIBlock'));
-      (async () => {
-        try {
-          await addScript('https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
-        } catch (e) {
-          console.error(`AIO: IMS error.`);
-        }
-      })();
     } else if (type === 'frame') {
       page.block = loadable(() => import('../Frame'));
     }
@@ -194,6 +187,15 @@ export default ({ children, pageContext, location }) => {
   // ["index1", "index2", ...]
   const [indexAll, setIndexAll] = useState(false);
 
+  useEffect(()=>{
+    (async ()=> {
+      try{
+        await addScript('https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
+      } catch (e) {
+        console.error('redocly library not loaded');
+      }
+    })();
+  }, []);
   // Load and initialize IMS
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
