@@ -22,6 +22,8 @@ import PropTypes from 'prop-types';
 const OpenAPIBlock = ({ src }) => {
   const [showProgress, setShowProgress] = useState(true);
 
+  const redoclyLicenseKey = process.env.GATSBY_REDOCLY_KEY;
+
   let input = {};
   if (isExternalLink(src)) {
     input.specUrl = src;
@@ -42,7 +44,7 @@ const OpenAPIBlock = ({ src }) => {
       <script>{
         `RedoclyReferenceDocs.init(
                '${src}',
-              {licenseKey: '${process.env.GATSBY_REDOCLY_KEY}',
+              {licenseKey: '${redoclyLicenseKey}',
               document.querySelector('#redocly_container'),
             );`
       }
