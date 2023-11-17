@@ -19,10 +19,12 @@ import { Footer } from '../Footer';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
+const licenseKey = process.env.GATSBY_REDOCLY_KEY;
+
 const OpenAPIBlock = ({ src }) => {
   const [showProgress, setShowProgress] = useState(true);
 
-  const redoclyLicenseKey = process.env.GATSBY_REDOCLY_KEY;
+  let redoclyLicenseKey = process.env.GATSBY_REDOCLY_KEY;
 
   let input = {};
   if (isExternalLink(src)) {
@@ -44,7 +46,7 @@ const OpenAPIBlock = ({ src }) => {
       <script>{
         `RedoclyReferenceDocs.init(
                '${src}',
-              {licenseKey: '${redoclyLicenseKey}',
+              {licenseKey: '${licenseKey}',
               document.querySelector('#redocly_container'),
             );`
       }
@@ -684,34 +686,7 @@ const OpenAPIBlock = ({ src }) => {
               }
             }
           `}>
-          <RedocStandalone
-            {...input}
-            options={{
-              nativeScrollbars: true,
-              disableSearch: true,
-              hideLoading: true,
-              scrollYOffset: 64,
-              menuToggle: true,
-              hideDownloadButton: true,
-              theme: {
-                sidebar: {
-                  width: SIDENAV_WIDTH
-                },
-                rightPanel: {
-                  backgroundColor: 'rgb(37, 37, 37)'
-                },
-                codeBlock: {
-                  backgroundColor: 'rgb(50, 50, 50)'
-                },
-                typography: {
-                  fontFamily: `adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Trebuchet MS', 'Lucida Grande', sans-serif`
-                }
-              }
-            }}
-            onLoaded={() => {
-              setShowProgress(false);
-            }}
-          />
+
         </div>
 
         <Footer />
