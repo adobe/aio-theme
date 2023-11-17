@@ -24,8 +24,6 @@ const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 const OpenAPIBlock = ({ src }) => {
   const [showProgress, setShowProgress] = useState(true);
 
-  let redoclyLicenseKey = process.env.GATSBY_REDOCLY_KEY;
-
   let input = {};
   if (isExternalLink(src)) {
     input.specUrl = src;
@@ -46,7 +44,7 @@ const OpenAPIBlock = ({ src }) => {
       <script>{
         `RedoclyReferenceDocs.init(
                '${src}',
-              {licenseKey: '${licenseKey}',
+              {licenseKey: '${licenseKey}'},
               document.querySelector('#redocly_container'),
             );`
       }
