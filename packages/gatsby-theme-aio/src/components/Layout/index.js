@@ -667,7 +667,6 @@ export default ({ children, pageContext, location }) => {
           </style>
         `}</noscript>
       </Helmet>
-      <script src="https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js"></script>
       <Global
         styles={css`
           @font-face {
