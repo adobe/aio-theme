@@ -187,15 +187,6 @@ export default ({ children, pageContext, location }) => {
   // ["index1", "index2", ...]
   const [indexAll, setIndexAll] = useState(false);
 
-  useEffect(()=>{
-    (async ()=> {
-      try{
-        await addScript('https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
-      } catch (e) {
-        console.error('redocly library not loaded');
-      }
-    })();
-  }, []);
   // Load and initialize IMS
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
@@ -403,7 +394,13 @@ export default ({ children, pageContext, location }) => {
   const searchButtonId = 'aio-Search-close';
 
   // Update OpenAPI spec and Frame src
-  updatePageSrc('openAPI', frontMatter, setIsLoading);
+  let redocly_script = document.createElement('script');
+  redocly_script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
+  document.body.appendChild(redocly_script);
+  redocly_script.onload = () => {
+    updatePageSrc('openAPI', frontMatter, setIsLoading);
+  }
+
   updatePageSrc('frame', frontMatter, setIsLoading);
 
   // Set Search indexAll
