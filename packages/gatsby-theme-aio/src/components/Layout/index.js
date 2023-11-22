@@ -394,12 +394,15 @@ export default ({ children, pageContext, location }) => {
   const searchButtonId = 'aio-Search-close';
 
   // Update OpenAPI spec and Frame src
-  let redocly_script = document.createElement('script');
-  redocly_script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
-  document.body.appendChild(redocly_script);
-  redocly_script.onload = () => {
-    updatePageSrc('openAPI', frontMatter, setIsLoading);
-  }
+  useEffect(() => {
+    let redocly_script = document.createElement('script');
+    redocly_script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
+    document.body.appendChild(redocly_script);
+    redocly_script.onload = () => {
+      console.log("loaded redocly");
+      updatePageSrc('openAPI', frontMatter, setIsLoading);
+    }
+  }, []);
 
   updatePageSrc('frame', frontMatter, setIsLoading);
 
