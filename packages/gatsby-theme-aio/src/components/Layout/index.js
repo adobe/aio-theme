@@ -397,7 +397,7 @@ export default ({ children, pageContext, location }) => {
   useEffect(() => {
     let redocly_script = document.createElement('script');
     redocly_script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
-    document.body.appendChild(redocly_script);
+    document.head.appendChild(redocly_script);
     redocly_script.onload = () => {
       console.log("loaded redocly");
       updatePageSrc('openAPI', frontMatter, setIsLoading);
