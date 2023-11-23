@@ -69,6 +69,7 @@
     "@loadable/component": "^5.15.2",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
+    "@redocly/reference-docs": "^2.42.3",
     "@spectrum-css/accordion": "3.0.24",
     "@spectrum-css/actionbutton": "2.1.7",
     "@spectrum-css/actiongroup": "^2.0.0",

@@ -393,20 +393,8 @@ export default ({ children, pageContext, location }) => {
   const sideNavId = nextId();
   const searchButtonId = 'aio-Search-close';
 
-  // Update OpenAPI spec and Frame src
-  useEffect(() => {
-    let redocly_script = document.createElement('script');
-    redocly_script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
-    document.head.appendChild(redocly_script);
-    redocly_script.onload = () => {
-      console.log("loaded redocly");
-      setTimeout(updatePageSrc('openAPI', frontMatter, setIsLoading), 20000);
-      updatePageSrc('frame', frontMatter, setIsLoading);
-    }
-  }, []);
-
-
-
+  updatePageSrc('openAPI', frontMatter, setIsLoading)
+  updatePageSrc('frame', frontMatter, setIsLoading);
   // Set Search indexAll
   useEffect(() => {
     if (hasSearch) {
