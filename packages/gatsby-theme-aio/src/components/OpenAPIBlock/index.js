@@ -49,8 +49,6 @@ const OpenAPIBlock = ({ src }) => {
             );`
       }
       </script>
-
-      <Footer />
     </>
   );
 };

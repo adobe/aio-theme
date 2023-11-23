@@ -400,11 +400,12 @@ export default ({ children, pageContext, location }) => {
     document.head.appendChild(redocly_script);
     redocly_script.onload = () => {
       console.log("loaded redocly");
-      updatePageSrc('openAPI', frontMatter, setIsLoading);
+      setTimeout(updatePageSrc('openAPI', frontMatter, setIsLoading), 20000);
+      updatePageSrc('frame', frontMatter, setIsLoading);
     }
   }, []);
 
-  updatePageSrc('frame', frontMatter, setIsLoading);
+
 
   // Set Search indexAll
   useEffect(() => {
