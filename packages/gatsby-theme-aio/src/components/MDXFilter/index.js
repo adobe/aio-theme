@@ -11,7 +11,7 @@
  */
 
 import React, { Children, cloneElement, useContext } from 'react';
-import { withPrefix } from 'gatsby';
+import { withPrefix, LOG_AN_ISSUE } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { css } from '@emotion/react';
 import '@spectrum-css/divider';
@@ -344,7 +344,7 @@ export default ({ children, pageContext, query }) => {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>
-                      {repository && root ? <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} /> : null }
+                      {LOG_AN_ISSUE ? <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} /> : null }
                     </div>
                   </div>
                 )}
