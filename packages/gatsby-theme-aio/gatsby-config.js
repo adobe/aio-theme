@@ -46,7 +46,6 @@ const wrapESMPlugin = name =>
 module.exports = {
   flags: {
     PARALLEL_QUERY_RUNNING: true,
-    LOG_AN_ISSUE: false,
   },
   plugins: [
     `gatsby-plugin-preact`,
