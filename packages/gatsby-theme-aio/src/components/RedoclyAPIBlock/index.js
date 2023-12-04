@@ -12,6 +12,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { withPrefix } from 'gatsby';
+import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
 const licenseKey = process.env.GATSBY_REDOCLY_KEY;
