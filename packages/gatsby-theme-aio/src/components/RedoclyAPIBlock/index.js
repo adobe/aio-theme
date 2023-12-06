@@ -19,7 +19,7 @@ const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
 const RedoclyAPIBlock = ({ src }) => {
-  const [showProgress, setShowProgress] = useState(true);
+  const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
   let input = {};
   if (isExternalLink(src)) {
@@ -29,23 +29,31 @@ const RedoclyAPIBlock = ({ src }) => {
   }
 
   useEffect(() => {
-    if (!showProgress) {
-      setShowProgress(true);
-    }
-  }, [src]);
+    let script = document.createElement('script')
+    script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
+    document.head.appendChild(script);
+
+    script.addEventListener('load', () => {
+      setIsRedoclyLoading(false);
+    })
+
+  }, [isRedoclyLoading]);
 
   return (
     <>
-      <div id="redocly_container"/>
+      {!isRedoclyLoading && (
+        <>
+          <div id="redocly_container"/>
 
-      <script>{
-        `RedoclyReferenceDocs.init(
+          <script>{
+            `RedoclyReferenceDocs.init(
                '${src}',
               {licenseKey: '${licenseKey}'},
               document.querySelector('#redocly_container'),
             );`
-      }
-      </script>
+          }
+          </script>
+        </>)}
     </>
   );
 };
