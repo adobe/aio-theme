@@ -231,6 +231,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             gap: 16px;
           `}
         >
+          <title>Get Credentials</title>
           <div
             css={css`
             display: flex;
