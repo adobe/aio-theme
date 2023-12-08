@@ -41,6 +41,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
               `
             }
           >
+            <title>Get Credentials</title>
             <div
               css={css`
                 width: calc(7 * 100% / 9);
