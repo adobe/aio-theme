@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.7...@adobe/gatsby-theme-aio@4.10.8) (2023-12-08)
+
+### Features
+
+* Fixed issue with no developer access for GetCredential. [4a537db](https://github.com/adobe/aio-theme/commit/4a537dbc46d21222116a84cbf1a0aa88344929c2)
+* Added PDFViewer component. [92e0677](https://github.com/adobe/aio-theme/commit/92e067757d332aadaffe6345ebabab96c1d68648)
+* Profile Card Component [ee5a34b](https://github.com/adobe/aio-theme/commit/ee5a34b6ec5ad8e9d04f043565edf57d79a5cd89)
+* Remove Log an Issue for repo. [6b93795](https://github.com/adobe/aio-theme/commit/6b9379523ceea883faceb7370c0e92688570a9f0)
+* Add a Redocly API Block. [374168c](https://github.com/adobe/aio-theme/commit/374168ce6ef7c2fb7b125489f474b94e34de6038)
+* Update GetCredential Title [da8663e](https://github.com/adobe/aio-theme/commit/da8663e43fc0114a730504ed73498507d2932974)
+
+
 ## [4.10.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.6...@adobe/gatsby-theme-aio@4.10.7) (2023-09-27)
 
 ### Features
