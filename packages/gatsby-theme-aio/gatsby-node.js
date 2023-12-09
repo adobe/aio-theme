@@ -45,6 +45,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       subPages: [SubPage]
       versions: [Version]
       docs: Link
+      github: GitHub
       salesFAQMenus: [salesFAQMenus]
       techSupportFAQMenus: [techSupportFAQMenus]
       subMenuPages: [subMenuPages]
@@ -134,6 +135,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       selected: Boolean
     }
 
+    type Github {
+      logIssue: Boolean
+    }
+    
     type Link {
       title: String
       path: String
