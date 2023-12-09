@@ -134,10 +134,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       selected: Boolean
     }
-
-    type Github {
-      logIssue: Boolean
-    }
     
     type Link {
       title: String

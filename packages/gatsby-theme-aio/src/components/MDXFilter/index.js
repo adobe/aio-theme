@@ -212,7 +212,6 @@ export default ({ children, pageContext, query }) => {
     const isDocs = heroChild === null;
     const isDocsOverview = heroChild !== null && (!heroChild.props.variant || heroChild.props.variant === 'default');
     const isDiscovery = heroChild !== null && heroChild.props.variant && heroChild.props.variant !== 'default';
-    const isLogIssue = siteMetadata?.github?.logIssue;
 
     const tableOfContentsItems = tableOfContents?.items?.[0]?.items;
     const hasOnThisPage =
@@ -345,7 +344,7 @@ export default ({ children, pageContext, query }) => {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>
-                      {isLogIssue && <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} /> }
+                      <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} />
                     </div>
                   </div>
                 )}
