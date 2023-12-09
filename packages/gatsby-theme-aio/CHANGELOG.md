@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.7...@adobe/gatsby-theme-aio@4.10.8) (2023-12-08)
+
+### Features
+* Roll back on the Remove Log an Issue for Repo
+
 ## [4.10.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.7...@adobe/gatsby-theme-aio@4.10.8) (2023-12-08)
 
 ### Features
