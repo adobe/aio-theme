@@ -16,6 +16,9 @@ module.exports = {
     docs: {
       title: 'Get Credential',
     },
+    github: {
+      logIssue: true,
+    },
     home: {
       title: 'Home',
       path: '/home/?plop=plip#foo'
