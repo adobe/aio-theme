@@ -251,9 +251,6 @@ export default ({ children, pageContext, location }) => {
         site {
           pathPrefix
           siteMetadata {
-            github { 
-              logIssue
-            }
             home {
               title
               path
@@ -310,7 +307,7 @@ export default ({ children, pageContext, location }) => {
 
   const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
   const { siteMetadata, pathPrefix } = site;
-  const { home, versions, pages, subPages, docs, github } = siteMetadata;
+  const { home, versions, pages, subPages, docs } = siteMetadata;
 
   const [showSearch, setShowSearch] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);

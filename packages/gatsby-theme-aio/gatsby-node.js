@@ -133,7 +133,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       selected: Boolean
     }
-
+    
     type Link {
       title: String
       path: String
