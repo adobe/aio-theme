@@ -35,5 +35,9 @@
     "cy:open": "cypress open",
     "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
   },
+  "resolutions": {
+    "sharp": "0.33.0",
+    "gatsby-sharp": "1.12.0"
+  },
   "packageManager": "yarn@3.2.3"
 }
