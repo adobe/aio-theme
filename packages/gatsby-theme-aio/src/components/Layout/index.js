@@ -260,6 +260,9 @@ export default ({ children, pageContext, location }) => {
               title
               path
             }
+            githubIssue{
+              logIssue
+            }
             versions {
               title
               path
