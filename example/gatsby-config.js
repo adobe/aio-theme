@@ -13,9 +13,6 @@
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/example/',
   siteMetadata: {
-    githubIssue: {
-      removeLogIssue: true,
-    },
     docs: {
       title: 'Get Credential',
     },
