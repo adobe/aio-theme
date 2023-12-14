@@ -344,7 +344,7 @@ export default ({ children, pageContext, query }) => {
                           margin-top: var(--spectrum-global-dimension-size-200);
                         }
                       `}>
-                      {siteMetadata?.githubIssue?.logIssue ? <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} /> : null }
+                      {siteMetadata && siteMetadata.githubIssue && siteMetadata.githubIssue.removeLogIssue ? null : <GitHubActions repository={repository} branch={branch} root={root} pagePath={pagePath} /> }
                     </div>
                   </div>
                 )}

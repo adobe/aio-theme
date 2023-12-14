@@ -141,7 +141,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     
     type GitHubIssue{
-      logIssue: Boolean
+      removeLogIssue: Boolean
     }
 
     type allFile {
