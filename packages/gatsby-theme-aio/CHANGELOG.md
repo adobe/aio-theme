@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.9...@adobe/gatsby-theme-aio@4.11.0) (2023-12-13)
+
+### Features
+* Added "Log an issue/ Edit in Github" buttons to all document pages - default enabled. [f459686](https://github.com/adobe/aio-theme/commit/f459686d08996b2bb79454796361c637e846245b)
+
+### Fix
+* Fixed deploy errors by enforcing latest sharp and gatsby-sharp pkgs
+ [96031a1](https://github.com/adobe/aio-theme/commit/96031a11a761ed7492fd1d090c5e7ca916c096ab)
+
 ## [4.10.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.7...@adobe/gatsby-theme-aio@4.10.8) (2023-12-08)
 
 ### Features
