@@ -2930,3 +2930,19 @@ You can check the latest released version of the theme at <https://github.com/ad
 This repository is setup as a monorepo using [lerna](https://github.com/lerna/lerna) for automated publishing to NPM.
 
 Use `GH_TOKEN=[YOUR_GH_TOKEN] lerna version --create-release github --conventional-commits --no-private -m "chore(release): publish"` for publishing the theme on npm.
+
+## Remove GitHub Log an issue feature
+
+![log-an-issue](docs/images/log-an-issue.png)
+
+By default, any document pages will have "Log an issue/ Edit in Github" feature enabled. 
+
+This can be turned off through gatsby-config.js 
+
+```
+  siteMetadata: {
+    githubIssue: {
+    removeLogIssue: true,
+  },
+}
+```

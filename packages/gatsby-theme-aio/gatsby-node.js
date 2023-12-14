@@ -45,6 +45,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       subPages: [SubPage]
       versions: [Version]
       docs: Link
+      githubIssue: GitHubIssue
       salesFAQMenus: [salesFAQMenus]
       techSupportFAQMenus: [techSupportFAQMenus]
       subMenuPages: [subMenuPages]
@@ -137,6 +138,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Link {
       title: String
       path: String
+    }
+    
+    type GitHubIssue{
+      removeLogIssue: Boolean
     }
 
     type allFile {
