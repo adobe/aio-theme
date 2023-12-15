@@ -96,6 +96,7 @@ Using a theme, all of your default configuration lives in an npm package.
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
     - [OpenAPI](#openapi)
+    - [Redocly API Block](#Redocly API Block)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1074,6 +1075,12 @@ We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply
 ## openAPISpec: https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json
 
 </pre>
+
+### Redocly API Block
+
+We can now host your own open api yaml files and be rendered by Redocly documents.  This way can avoid to iframe in and host our own api yaml files in Redocly.
+
+When using this block, GATSBY_REDOCLY_KEY : ${{ secrets.REDOCLY_LICENSE_KEY }} will needs to be added in deploy.yml file in the repo. 
 
 ### JSDoc
 
