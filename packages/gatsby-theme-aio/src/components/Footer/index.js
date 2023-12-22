@@ -39,20 +39,6 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       path: '/document-services/homepage'
     }
   ],
-  services: [
-    {
-      title: 'Adobe Cloud Manager',
-      path: '/experience-cloud/cloud-manager'
-    },
-    {
-      title: 'Adobe Analytics',
-      path: '/analytics-apis/docs/2.0'
-    },
-    {
-      title: 'App Builder',
-      path: '/app-builder'
-    }
-  ],
   community: [
     {
       title: 'Adobe Tech Blog',
@@ -67,7 +53,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
       path: 'https://youtube.com/channel/UCDtYqOjS9Eq9gacLcbMwhhQ'
     },
     {
-      title: 'Adobe Developer on Twitter',
+      title: 'Adobe Developer on X',
       path: 'https://twitter.com/adobedevs'
     },
     {
@@ -92,15 +78,11 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     },
     {
       title: 'Developer Distribution',
-      path: '/developer-distribution/creative-cloud/'
+      path: '/developer-distribution/'
     },
     {
       title: 'Open source at Adobe',
       path: '/open'
-    },
-    {
-      title: 'Download SDKs',
-      path: '/console/downloads'
     },
     {
       title: 'Authentication',
@@ -261,15 +243,6 @@ const Footer = ({ hasSideNav = false }) => (
                 <Heading>APIs and Services</Heading>
                 <List>
                   {APIs.map(({ title, path }, i) => (
-                    <li key={i}>
-                      <Link isQuiet={true} variant="secondary">
-                        <a {...getExternalLinkProps(path)} href={path}>
-                          {title}
-                        </a>
-                      </Link>
-                    </li>
-                  ))}
-                  {services.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
                         <a {...getExternalLinkProps(path)} href={path}>
