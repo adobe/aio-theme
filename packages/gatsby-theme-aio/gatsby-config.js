@@ -14,9 +14,12 @@ require('dotenv').config({
   path: `.env`,
 });
 
-const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const indexSettings = require('./algolia/index-settings');
-const indexRecords = require('./algolia/index-records');
+import { DESKTOP_SCREEN_WIDTH } from ('./conf/globals.js');
+import indexSettings from ('./algolia/index-settings.js');
+import indexRecords from ('./algolia/index-records.js');
+const require = createRequire(import.meta.url);
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 
 let isDryRun = true;
 
@@ -32,16 +35,6 @@ if (
   isDryRun = false;
   console.info(`Indexing mode: Indexing to Algolia`);
 }
-
-// Used to convert ESM to CJS modules until Gatsby supports ESM.
-const wrapESMPlugin = name =>
-  function wrapESM(opts) {
-    return async (...args) => {
-      const mod = await import(name);
-      const plugin = mod.default(opts);
-      return plugin(...args);
-    };
-  };
 
 module.exports = {
   flags: {
@@ -64,7 +57,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `src/pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     {
@@ -75,12 +68,6 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve(`./src/components/MDXFilter/index.js`),
         },
-        plugins: [
-          `gatsby-transformer-remark`,
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-images-remote`,
-        ],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-transformer-remark`,
