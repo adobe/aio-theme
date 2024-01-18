@@ -14,12 +14,9 @@ require('dotenv').config({
   path: `.env`,
 });
 
-import { DESKTOP_SCREEN_WIDTH } from ('./conf/globals.js');
-import indexSettings from ('./algolia/index-settings.js');
-import indexRecords from ('./algolia/index-records.js');
-const require = createRequire(import.meta.url);
-const __dirname = dirname(fileURLToPath(import.meta.url))
-
+const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
+const indexSettings = require('./algolia/index-settings');
+const indexRecords = require('./algolia/index-records');
 
 let isDryRun = true;
 

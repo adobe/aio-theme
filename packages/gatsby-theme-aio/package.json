@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.2",
-    "gatsby": "^5.0.0",
     "gatsby-cli": "^5.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
@@ -115,10 +114,10 @@
     "gatsby-plugin-sharp": "^5.13.0",
     "gatsby-remark-autolink-headers": "^6.13.0",
     "gatsby-remark-copy-linked-files": "^6.13.0",
-    "gatsby-remark-images-remote": "^2.1.1",
-    "gatsby-source-filesystem": "^4.23.0",
-    "gatsby-transformer-remark": "^5.23.0",
-    "gatsby-transformer-sharp": "4.23.0",
+    "gatsby-remark-images-remote": "^3.0.0",
+    "gatsby-source-filesystem": "^5.13.0",
+    "gatsby-transformer-remark": "^6.13.0",
+    "gatsby-transformer-sharp": "5.13.0",
     "https-browserify": "^1.0.0",
     "jsdom": "^20.0.0",
     "jszip": "^3.10.1",
