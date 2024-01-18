@@ -10,13 +10,16 @@
  * governing permissions and limitations under the License.
  */
 
-require('dotenv').config({
-  path: `.env`,
-});
 
-const { DESKTOP_SCREEN_WIDTH } = require('./conf/globals');
-const indexSettings = require('./algolia/index-settings');
-const indexRecords = require('./algolia/index-records');
+
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+import { globals } from "./conf/globals.js";
+// import indexSettings from "./algolia/index-settings.js";
+// import indexRecords from "./algolia/index-records.js";
 
 let isDryRun = true;
 
@@ -33,7 +36,7 @@ if (
   console.info(`Indexing mode: Indexing to Algolia`);
 }
 
-module.exports = {
+const config = {
   flags: {
     PARALLEL_QUERY_RUNNING: true,
   },
@@ -47,7 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout/index.js`),
+        component: `./src/components/Layout/index.js`,
       },
     },
     {
@@ -63,7 +66,7 @@ module.exports = {
         mediaTypes: [`text/markdown`, `text/x-markdown`],
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/MDXFilter/index.js`),
+          default: `./src/components/MDXFilter/index.js`,
         },
         gatsbyRemarkPlugins: [
           {
@@ -89,7 +92,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-remote`,
             options: {
-              maxWidth: DESKTOP_SCREEN_WIDTH,
+              maxWidth: globals.DESKTOP_SCREEN_WIDTH,
               linkImagesToOriginal: false,
               showCaptions: false,
               quality: 100,
@@ -114,29 +117,31 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX ? `${process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX}-${process.env.GATSBY_ALGOLIA_INDEX_NAME}` : process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        apiKey: process.env.ALGOLIA_WRITE_API_KEY,
-        queries: indexRecords(isDryRun),
-        chunkSize: 1000,
-        algoliasearchOptions: {
-          timeouts: {
-            connect: 20,
-            read: 60,
-            write: 60,
-          },
-        },
-        settings: indexSettings(),
-        mergeSettings: false,
-        enablePartialUpdates: false,
-        matchFields: ['contentDigest'],
-        concurrentQueries: false, // default: true
-        dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.
-        continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+    //     indexName: process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX ? `${process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX}-${process.env.GATSBY_ALGOLIA_INDEX_NAME}` : process.env.GATSBY_ALGOLIA_INDEX_NAME,
+    //     apiKey: process.env.ALGOLIA_WRITE_API_KEY,
+    //     queries: indexRecords(isDryRun),
+    //     chunkSize: 1000,
+    //     algoliasearchOptions: {
+    //       timeouts: {
+    //         connect: 20,
+    //         read: 60,
+    //         write: 60,
+    //       },
+    //     },
+    //     settings: indexSettings(),
+    //     mergeSettings: false,
+    //     enablePartialUpdates: false,
+    //     matchFields: ['contentDigest'],
+    //     concurrentQueries: false, // default: true
+    //     dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.
+    //     continueOnFailure: true, // default: false. But we want `true` because the plugin will skip indexing but continue the build if the appId, apiKey, or indexName is missing
+    //   },
+    // },
   ],
 };
+
+export default config

@@ -31,4 +31,4 @@ const indexSettings = () => {
   }
 };
 
-module.exports = indexSettings;
+export { indexSettings }

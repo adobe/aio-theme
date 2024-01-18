@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-module.exports = {
+const config = {
   pathPrefix: process.env.PATH_PREFIX || '/example/',
   siteMetadata: {
     docs: {
@@ -255,3 +255,5 @@ module.exports = {
     `@adobe/gatsby-theme-aio`
   ],
 };
+
+export default config

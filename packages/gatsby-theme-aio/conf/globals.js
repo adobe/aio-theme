@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-module.exports = {
+const globals = {
   SIDENAV_WIDTH: 'var(--spectrum-global-dimension-static-size-3200)',
   // --spectrum-global-dimension-static-grid-fixed-max-width
   DESKTOP_SCREEN_WIDTH: process.env.GATSBY_DESKTOP_SCREEN_WIDTH || '1280',
@@ -19,3 +19,5 @@ module.exports = {
   // --spectrum-global-dimension-static-breakpoint-small
   MOBILE_SCREEN_WIDTH: '768px'
 };
+
+export { globals };
