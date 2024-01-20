@@ -33,7 +33,7 @@ const Media = ({ video, ...props }) => {
   const link = getElementChild(video);
   const videos = ["mp4", "3gp", "ogg"];
   const url = new URL(link.props.href);
-  const extension = url.pathname.split(".")[1];
+  const extension = url.pathname.split(".")?.at(-1);
   const youTubeId = getYouTubeId(new URL(link.props.href));
   if (youTubeId) {
     return (
