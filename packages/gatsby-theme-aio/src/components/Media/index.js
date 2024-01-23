@@ -53,6 +53,7 @@ const Media = ({ video, ...props }) => {
       src={link.props.href}
       css={css`
         display: block;
+        width: 100%;
         margin: var(--spectrum-global-dimension-size-400) auto;
       `}
       {...props}
