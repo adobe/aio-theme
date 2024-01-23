@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.0...@adobe/gatsby-theme-aio@4.11.1) (2023-01-23)
+
+### Fix
+* Media component should not autoplay. [f376a65](https://github.com/adobe/aio-theme/commit/f376a65347a508845765a9a19761b059d11868b0)
+
 ## [4.11.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.10.9...@adobe/gatsby-theme-aio@4.11.0) (2023-12-13)
 
 ### Features
