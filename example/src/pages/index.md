@@ -352,4 +352,6 @@ Inline Alert as a nested component
 
 <https://video.tv.adobe.com/v/26260/>
 
+<Media slots="video"/>
 
+<https://www.youtube.com/watch?v=mkgpeWbHrjA>
