@@ -348,7 +348,7 @@ Inline Alert as a nested component
 
 <https://images-tv.adobe.com/mpcv3/5158/d58772af-7a62-49fa-a098-12b11a27fb71_1615917048.854x480at800_h264.mp4#t=3>
 
-<Media slots="video"/>
+<Media slots="video" width="800px" height="600px"/>
 
 <https://video.tv.adobe.com/v/26260/>
 
