@@ -49,6 +49,7 @@ const RedoclyAPIBlock = ({ src }) => {
             `RedoclyReferenceDocs.init(
                '${src}',
               {licenseKey: '${licenseKey}'},
+              {pagination: 'none'},
               document.querySelector('#redocly_container'),
             );`
           }
