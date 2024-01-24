@@ -41,10 +41,13 @@ const RedoclyAPIBlock = ({ src }) => {
 
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
-      adjustSampleBlockSize();
     })
 
   }, [isRedoclyLoading]);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    adjustSampleBlockSize();
+  });
 
   function adjustSampleBlockSize() {
     let samples = document.querySelectorAll("[data-cy='samples-block']");
