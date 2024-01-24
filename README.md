@@ -1078,9 +1078,13 @@ We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply
 
 ### Redocly API Block
 
-We can now host your own open api yaml files and be rendered by Redocly documents.  This way can avoid to iframe in and host our own api yaml files in Redocly.
+We can now host your own OpenAPI YAML files and have them rendered by Redocly documents. This approach allows us to avoid using iframes and instead host our own API YAML files directly in Redocly.
 
-When using this block, GATSBY_REDOCLY_KEY : ${{ secrets.REDOCLY_LICENSE_KEY }} will needs to be added in deploy.yml file in the repo. 
+When implementing this feature, ensure that GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }} is added to the deploy.yml file in the repository. Additionally, for new repositories, remember to include the on-premise license keys through the repository settings.
+
+The license key should be found in your redocly account settings -> On-premise license keys
+
+![redocly-setting](docs/images/redocly-setting.png)
 
 ### JSDoc
 
