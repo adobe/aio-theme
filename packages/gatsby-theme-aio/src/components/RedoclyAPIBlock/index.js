@@ -45,10 +45,25 @@ const RedoclyAPIBlock = ({ src }) => {
   }, [isRedoclyLoading]);
 
   useEffect(()=>{
-    let samples = document.querySelectorAll("[data-cy='samples-block']");
-    samples.forEach(function(sample) {
-      sample.style.width = "500px";
-    })
+    const handleDOMContentLoaded = () => {
+      let samples = document.querySelectorAll("[data-cy='samples-block']");
+      samples.forEach(function (sample) {
+        sample.style.width = "500px";
+      });
+    };
+
+    if (document.readyState === 'loading' || document.readyState === 'complete') {
+      // If the document is still loading, wait for DOMContentLoaded event
+      document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+    } else {
+      // If the document is already loaded, execute the code immediately
+      handleDOMContentLoaded();
+    }
+
+    // Cleanup: remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
+    };
   }, []);
 
   return (
