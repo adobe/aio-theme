@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.2...@adobe/gatsby-theme-aio@4.11.2) (2023-01-24)
+
+### Fix
+* To fix a Redocly component bug. [fd36030](https://github.com/adobe/aio-theme/commit/fd36030e6989a6269df2aa38f39adc2bb6914646)
+
 ## [4.11.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.0...@adobe/gatsby-theme-aio@4.11.1) (2023-01-23)
 
 ### Fix
