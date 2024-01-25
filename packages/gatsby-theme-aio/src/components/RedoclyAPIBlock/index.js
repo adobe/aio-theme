@@ -42,19 +42,16 @@ const RedoclyAPIBlock = ({ src }) => {
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
     })
-    document.addEventListener('DOMContentLoaded', () => {
-      adjustSampleBlockSize();
-    });
   }, [isRedoclyLoading]);
 
-  ;
-
-  function adjustSampleBlockSize() {
-    let samples = document.querySelectorAll("[data-cy='samples-block']");
-    samples.forEach(function(sample) {
-      sample.style.width = "500px";
-    })
-  }
+  useEffect(()=>{
+    document.addEventListener('DOMContentLoaded', () => {
+      let samples = document.querySelectorAll("[data-cy='samples-block']");
+      samples.forEach(function(sample) {
+        sample.style.width = "500px";
+      })
+    });
+  }, []);
 
   return (
     <>
