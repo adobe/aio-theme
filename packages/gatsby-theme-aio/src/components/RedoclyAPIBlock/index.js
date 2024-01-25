@@ -31,12 +31,17 @@ const RedoclyAPIBlock = ({ src }) => {
   useEffect(() => {
     let script = document.createElement('script')
     script.setAttribute('src', 'https://cdn.redoc.ly/reference-docs/latest/redocly-reference-docs.min.js');
+    script.async = true;
     document.head.appendChild(script);
+    let console = document.createElement('script');
+    console.src = 'https://cdn.redoc.ly/reference-docs/latest/console.redocly-reference-docs.min.js';
+    console.async = true;
+    document.head.appendChild(console);
+
 
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
     })
-
   }, [isRedoclyLoading]);
 
   return (
