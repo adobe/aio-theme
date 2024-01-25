@@ -45,12 +45,10 @@ const RedoclyAPIBlock = ({ src }) => {
   }, [isRedoclyLoading]);
 
   useEffect(()=>{
-    document.addEventListener('DOMContentLoaded', () => {
-      let samples = document.querySelectorAll("[data-cy='samples-block']");
-      samples.forEach(function(sample) {
-        sample.style.width = "500px";
-      })
-    });
+    let samples = document.querySelectorAll("[data-cy='samples-block']");
+    samples.forEach(function(sample) {
+      sample.style.width = "500px";
+    })
   }, []);
 
   return (
