@@ -56,7 +56,7 @@ const RedoclyAPIBlock = ({ src }) => {
               {licenseKey: '${licenseKey}',
                theme: {
                 rightPanel: {
-                  width: 500px
+                  width: '500px',
                   },
                 },
               },
