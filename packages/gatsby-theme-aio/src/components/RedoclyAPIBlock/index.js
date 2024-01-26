@@ -55,10 +55,13 @@ const RedoclyAPIBlock = ({ src }) => {
                '${src}',
               {licenseKey: '${licenseKey}',
                theme: {
+                openapi: {
+                  disableTryItRequestUrlEncoding: true,
+                },
                 rightPanel: {
                   width: '500px',
-                  },
                 },
+               },
               },
               document.querySelector('#redocly_container'),
             );`
