@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.2...@adobe/gatsby-theme-aio@4.11.3) (2023-01-24)
+
+### Fix
+* To fix a Redocly right panel size. [af99e1a](https://github.com/adobe/aio-theme/commit/af99e1afe0aa5a8a89ef512e81eaa03ebcd609d7)
+
 ## [4.11.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.1...@adobe/gatsby-theme-aio@4.11.2) (2023-01-24)
 
 ### Fix
