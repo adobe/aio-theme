@@ -10,14 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-
-
 import { dirname } from "path"
 import { fileURLToPath } from "url"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-import { globals } from "./conf/globals.js";
+import { globals } from "./conf/globals.mjs";
 // import indexSettings from "./algolia/index-settings.js";
 // import indexRecords from "./algolia/index-records.js";
 
