@@ -96,7 +96,7 @@ Using a theme, all of your default configuration lives in an npm package.
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
     - [OpenAPI](#openapi)
-    - [Redocly API Block](#Redocly API Block)
+    - [Redocly API Block](#RedoclyAPIBlock)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1076,8 +1076,11 @@ We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply
 
 </pre>
 
-### Redocly API Block
+### RedoclyAPIBlock
 
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." />
+```
 We can now host your own OpenAPI YAML files and have them rendered by Redocly documents. This approach allows us to avoid using iframes and instead host our own API YAML files directly in Redocly.
 
 When implementing this feature, ensure that GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }} is added to the deploy.yml file in the repository. Additionally, for new repositories, remember to include the on-premise license keys through the repository settings.
