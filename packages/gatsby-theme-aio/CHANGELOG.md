@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.3...@adobe/gatsby-theme-aio@4.11.4) (2023-02-28)
+
+### Fix
+* Make changes to Footer [1c840a1](https://github.com/adobe/aio-theme/commit/1c840a10f6f9ef8b8e0702b6f55d425e6b210e88)
+
 ## [4.11.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.2...@adobe/gatsby-theme-aio@4.11.3) (2023-01-24)
 
 ### Fix
