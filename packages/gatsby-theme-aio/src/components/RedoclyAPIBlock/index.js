@@ -57,6 +57,7 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
                theme: {
                 openapi: {
                   disableSidebar: true,
+                  disableSearch: true,
                 },
                 rightPanel: {
                   width: '${width}',
