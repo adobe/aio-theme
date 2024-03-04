@@ -54,11 +54,9 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
             `RedoclyReferenceDocs.init(
                '${src}',
               {licenseKey: '${licenseKey}',
+               disableSidebar: true, 
+               disableSearch: true,
                theme: {
-                openapi: {
-                  disableSidebar: true,
-                  disableSearch: true,
-                },
                 rightPanel: {
                   width: '${width}',
                   },
