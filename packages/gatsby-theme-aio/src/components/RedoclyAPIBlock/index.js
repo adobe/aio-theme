@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
-const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuation: { color: 'red' }}" }) => {
+const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuation: { color: 'white' }}" }, disableSidebar=false, disableSearch=false) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
   let input = {};
@@ -54,8 +54,8 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
             `RedoclyReferenceDocs.init(
                '${src}',
               {licenseKey: '${licenseKey}',
-               disableSidebar: true, 
-               disableSearch: true,
+               disableSidebar: ${disableSidebar}, 
+               disableSearch: ${disableSearch},
                theme: {
                 rightPanel: {
                   width: '${width}',
