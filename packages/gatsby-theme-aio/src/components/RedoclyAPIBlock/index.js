@@ -56,6 +56,7 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
               {licenseKey: '${licenseKey}',
                disableSidebar: true, 
                disableSearch: true,
+               hideLoading: true,
                theme: {
                 rightPanel: {
                   width: '${width}',
