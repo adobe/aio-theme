@@ -51,8 +51,9 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
         <>
           <div id="redocly_container"
             css={css`
-              border: 1px solid magenta;
+              border: 1px solid blue;
               @media only screen and (min-width: ${DESKTOP_SCREEN_WIDTH}) {
+                border: 1px solid magenta;
                 width: calc(100vw - ${SIDENAV_WIDTH});
               }`
             }
