@@ -25,7 +25,7 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
   const sideNavWidth = useLayoutEffect(() => {
     const sideMenu = document.getElementById("side-menu");
     return sideMenu ? sideMenu.getBoundingClientRect().width : 0;
-  }, []);
+  });
 
   let input = {};
   if (isExternalLink(src)) {
