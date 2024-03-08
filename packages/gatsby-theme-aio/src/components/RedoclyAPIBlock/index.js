@@ -10,8 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { css } from '@emotion/react';
 import { withPrefix } from 'gatsby';
+import Context from '../Context';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
@@ -20,6 +22,9 @@ const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
 const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuation: { color: 'white' }}" }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
+
+  const { hasSideNav } = useContext(Context);
+  const sideNavWidth = useMemo(() => hasSideNav ? SIDENAV_WIDTH : 0, [hasSideNav]);
 
   let input = {};
   if (isExternalLink(src)) {
@@ -48,7 +53,11 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container"/>
+          <div id="redocly_container"
+            css={css`
+              border: 1px solid blue;
+              width: calc(100vw - ${sideNavWidth});
+            `} />
 
           <script>{
             `RedoclyReferenceDocs.init(
