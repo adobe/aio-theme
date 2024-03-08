@@ -55,7 +55,7 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
         <>
           <div id="redocly_container"
             css={css`
-              border: 1px solid blue;
+              border: ${hasSideNav ? "1px dotted blue" : "1px dotted magenta"};
               width: calc(100vw - ${sideNavWidth});
             `} />
 
