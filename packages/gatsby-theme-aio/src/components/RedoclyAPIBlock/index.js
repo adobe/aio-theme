@@ -10,10 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { withPrefix } from 'gatsby';
-import Context from '../Context';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
@@ -22,9 +21,6 @@ const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
 const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuation: { color: 'white' }}" }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
-
-  const { hasSideNav } = useContext(Context);
-  const sideNavWidth = useMemo(() => hasSideNav ? SIDENAV_WIDTH : 0, [hasSideNav]);
 
   let input = {};
   if (isExternalLink(src)) {
@@ -55,30 +51,33 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
         <>
           <div id="redocly_container"
             css={css`
-              border: ${hasSideNav ? "1px dotted blue" : "1px dotted magenta"};
-              width: calc(100vw - ${sideNavWidth});
-            `} />
+              border: 1px solid magenta;
+              @media only screen and (min-width: ${DESKTOP_SCREEN_WIDTH}) {
+                width: calc(100vw - ${SIDENAV_WIDTH});
+              }`
+            } />
 
           <script>{
             `RedoclyReferenceDocs.init(
-               '${src}',
-              {licenseKey: '${licenseKey}',
-               disableSidebar: true, 
-               disableSearch: true,
-               hideLoading: true,
-               theme: {
-                rightPanel: {
-                  width: '${width}',
+          '${src}',
+          {licenseKey: '${licenseKey}',
+          disableSidebar: true,
+          disableSearch: true,
+          hideLoading: true,
+          theme: {
+            rightPanel: {
+            width: '${width}',
                   },
-                  ${codeBlock ?
+          ${codeBlock ?
               "codeBlock: { " + codeBlock + "}," : ''}
                 },
               },
-              document.querySelector('#redocly_container'),
-            );`
+          document.querySelector('#redocly_container'),
+          );`
           }
           </script>
-        </>)}
+        </>)
+      }
     </>
   );
 };
