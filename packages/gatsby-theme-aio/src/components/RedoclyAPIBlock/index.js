@@ -11,8 +11,9 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { css } from '@emotion/react';
 import { withPrefix } from 'gatsby';
-import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
+import { SIDENAV_WIDTH, DESKTOP_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
 
 const licenseKey = process.env.GATSBY_REDOCLY_KEY;
@@ -48,28 +49,36 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container"/>
+          <div id="redocly_container"
+            css={css`
+              border: 1px solid magenta;
+              @media only screen and (min-width: ${DESKTOP_SCREEN_WIDTH}) {
+                width: calc(100vw - ${SIDENAV_WIDTH});
+              }`
+            }
+          />
 
           <script>{
             `RedoclyReferenceDocs.init(
-               '${src}',
-              {licenseKey: '${licenseKey}',
-               disableSidebar: true, 
-               disableSearch: true,
-               hideLoading: true,
-               theme: {
-                rightPanel: {
-                  width: '${width}',
+          '${src}',
+          {licenseKey: '${licenseKey}',
+          disableSidebar: true,
+          disableSearch: true,
+          hideLoading: true,
+          theme: {
+            rightPanel: {
+            width: '${width}',
                   },
-                  ${codeBlock ?
+          ${codeBlock ?
               "codeBlock: { " + codeBlock + "}," : ''}
                 },
               },
-              document.querySelector('#redocly_container'),
-            );`
+          document.querySelector('#redocly_container'),
+          );`
           }
           </script>
-        </>)}
+        </>)
+      }
     </>
   );
 };
