@@ -18,7 +18,13 @@ import PropTypes from 'prop-types';
 const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
-const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuation: { color: 'white' }}", disableSidebar = false, disableSearch = false }) => {
+const RedoclyAPIBlock = ({
+  src, width = '500px',
+  typography = 'fontFamily: `adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif`',
+  codeBlock = "tokens: { punctuation: { color: 'white' }}",
+  disableSidebar = false,
+  disableSearch = false
+}) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
   let input = {};
@@ -58,11 +64,11 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
                disableSearch: ${disableSearch},
                hideLoading: true,
                theme: {
+                ${typography ? "typography: { " + typography + "}," : ''}
                 rightPanel: {
                   width: '${width}',
                   },
-                  ${codeBlock ?
-              "codeBlock: { " + codeBlock + "}," : ''}
+                  ${codeBlock ? "codeBlock: { " + codeBlock + "}," : ''}
                 },
               },
               document.querySelector('#redocly_container'),
@@ -77,6 +83,7 @@ const RedoclyAPIBlock = ({ src, width = '500px', codeBlock = "tokens: { punctuat
 RedoclyAPIBlock.propTypes = {
   src: PropTypes.string,
   width: PropTypes.string,
+  typography: PropTypes.string,
   codeBlock: PropTypes.string,
   disableSidebar: PropTypes.bool,
   disableSearch: PropTypes.bool,
