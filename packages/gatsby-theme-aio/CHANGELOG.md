@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.4...@adobe/gatsby-theme-aio@4.11.7) (2024-03-13)
+
+### Features
+
+* **DEVSITE-1106:** Make width and codeblock customizable [8a76182](https://github.com/adobe/aio-theme/commit/8a76182c4f259331975e478d320a19d01a21bf3c)
+* **DEVSITE-1106:** Make disableSidebar and disableSearch customizable [486625c](https://github.com/adobe/aio-theme/commit/486625c98452b8a5f657840e366a701069e41e0d)
+* **DEVSITE-1106:** Make typography customizable [a5e783b](https://github.com/adobe/aio-theme/commit/a5e783bfd5e516de4eb2e2d6d7f26135a8a0e7c3)
+
+### Fix
+
+* **DEVSITE-1106:** Hide loading animation as a work-around to make the redocly integration appear more seamless [c3396c3](https://github.com/adobe/aio-theme/commit/c3396c308ff4a2623500aceba744eec47cef374c)
+
 ## [4.11.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.3...@adobe/gatsby-theme-aio@4.11.4) (2023-02-28)
 
 ### Fix

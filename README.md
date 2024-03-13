@@ -97,6 +97,13 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Metadata with Front matter](#metadata-with-front-matter)
     - [OpenAPI](#openapi)
     - [Redocly API Block](#RedoclyAPIBlock)
+      - [On-premise license keys](#on-premise-license-keys)
+      - [Full width page](#full-width-page)
+      - [width (optional)](#width-optional)
+      - [typography (optional)](#typography-optional)
+      - [codeblock (optional)](#codeblock-optional)
+      - [disableSidebar (optional)](#disablesidebar-optional)
+      - [disableSearch (optional)](#disablesearch-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1081,13 +1088,79 @@ We use [Redoc](https://github.com/Redocly/redoc) to render OpenAPI specs. Simply
 ```js
 <RedoclyAPIBlock src="URL pointing to your open api yaml file." />
 ```
+
 We can now host your own OpenAPI YAML files and have them rendered by Redocly documents. This approach allows us to avoid using iframes and instead host our own API YAML files directly in Redocly.
+
+#### On-premise license keys
 
 When implementing this feature, ensure that GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }} is added to the deploy.yml file in the repository. Additionally, for new repositories, remember to include the on-premise license keys through the repository settings.
 
 The license key should be found in your redocly account settings -> On-premise license keys
 
 ![redocly-setting](docs/images/redocly-setting.png)
+
+#### Full width page 
+
+Use [custom layout](#custom-layout) to do a full width page
+
+#### width (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." width="600px" />
+```
+Sets the width (of the right panel). 
+
+Defaults to ```'500px'```
+
+https://redocly.com/docs/api-reference-docs/configuration/theming/#path=rightPanel
+
+#### typography (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." typography="fontFamily: `serif`, fontSize: '16px'" />
+```
+
+Controls the appearance of text. 
+
+Defaults to ```'fontFamily: `adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif`'```
+
+https://redocly.com/docs/api-reference-docs/configuration/theming/#path=typography
+
+#### codeblock (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." codeBlock="tokens: { punctuation: { color: 'red ' }}" />
+```
+
+Controls the appearance of code snippets. 
+
+Defaults to ```"tokens: { punctuation: { color: 'white' }}"```
+
+https://redocly.com/docs/api-reference-docs/configuration/theming/#path=codeBlock
+
+#### disableSidebar (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." disableSidebar />
+```
+
+If set to `true`, hides the navigation sidebar (the left panel). Setting this option to `false` does not disable the search feature. 
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### disableSearch (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." disableSearch />
+```
+
+Disables search indexing and hides the search box from the API documentation page. 
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
 
 ### JSDoc
 
