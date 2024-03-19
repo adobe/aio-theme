@@ -18,11 +18,11 @@ import { layoutColumns } from '../../utils';
 import { LinkOut } from '../WorkflowIcons';
 import { getElementChild, isExternalLink, TABLET_SCREEN_WIDTH } from '../../utils';
 
-const Resources = ({ heading, links }) => {
+const Resources = ({ heading, links, widthLayoutColumns = 3 }) => {
   return (
     <aside
       css={css`
-        width: ${layoutColumns(3)};
+        width: ${layoutColumns(widthLayoutColumns)};
         margin-left: var(--spectrum-global-dimension-size-400);
         margin-top: var(--spectrum-global-dimension-size-400);
 
@@ -76,7 +76,8 @@ const Resources = ({ heading, links }) => {
 
 Resources.propTypes = {
   heading: PropTypes.element,
-  links: PropTypes.element
+  links: PropTypes.element,
+  widthLayoutColumns: PropTypes.number
 };
 
 export { Resources };
