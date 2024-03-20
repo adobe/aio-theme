@@ -35,6 +35,7 @@ import ListComp from "./listblock/index.md"
 import GetCredentialExternal from "./credential/GetCredentialExternal.js"
 import PDFViewerComp from "./pdf_viewer/index.md"
 import ProfileCardComp from "./profile_card/index.md"
+import MiniProductCardComp from "./mini_product_card/index.md"
 
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
@@ -42,6 +43,8 @@ import ProfileCardComp from "./profile_card/index.md"
 # Adobe Analytics
 
 Adobe Product API offers limitless ways to integrate your most important customer data into key business processes. Adobe Product API offer limitless ways.
+
+<MiniProductCardComp />
 
 <Resources slots="heading, links"/>
 

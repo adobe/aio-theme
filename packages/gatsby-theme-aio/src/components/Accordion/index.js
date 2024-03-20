@@ -57,6 +57,10 @@ const AccordionItem = ({ header, slot_id, isOpen = false, children, isChevronIco
           onClick={toggleOpen}
           onKeyDown={toggleOpen}
           css={css`
+            text-transform: var(--spectrum-body-m-text-transform, none) !important;
+            font-size: var(--spectrum-body-m-text-size, var(--spectrum-global-dimension-font-size-300)) !important;
+            color: var(--spectrum-listitem-m-text-color-hover, var(--spectrum-alias-text-color));
+            font-weight: var(--spectrum-global-font-weight-bold) !important;
             width: 100% !important;
             justify-content: ${(position === "right" && isChevronIcon) && "space-between !important"};
             flex-direction:  ${(position === "right" && isChevronIcon) && "row-reverse !important"};
