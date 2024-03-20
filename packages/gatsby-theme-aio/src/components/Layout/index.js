@@ -783,10 +783,6 @@ export default ({ children, pageContext, location }) => {
                 grid-template-rows: var(--spectrum-global-dimension-size-800);
                 grid-template-columns: ${hasSideNav ? `${SIDENAV_WIDTH} auto` : '0 auto'};
 
-                @media screen and (max-width: ${DESKTOP_SCREEN_WIDTH}) {
-                  grid-template-columns: 0 auto;
-                }
-
                 @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
                   grid-template-rows: 20px;
                 }
