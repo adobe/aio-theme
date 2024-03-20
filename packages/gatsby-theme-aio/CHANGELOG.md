@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.7...@adobe/gatsby-theme-aio@4.11.8) (2024-03-20)
+
+### Features
+
+* Add option to disable Try It widget [eef5338](https://github.com/adobe/aio-theme/commit/eef53381ba865693b311a43974f119e5b7a7419d)
+
 ## [4.11.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.4...@adobe/gatsby-theme-aio@4.11.7) (2024-03-13)
 
 ### Features
