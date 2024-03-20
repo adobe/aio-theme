@@ -104,6 +104,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [codeblock (optional)](#codeblock-optional)
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
+      - [hideTryItPanel (optional)](#hidetryitpanel-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1157,6 +1158,18 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-o
 ```
 
 Disables search indexing and hides the search box from the API documentation page. 
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### hideTryItPanel (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." hideTryItPanel />
+```
+
+Disables the Try it console in the right panel.
 
 Defaults to ```false```
 
