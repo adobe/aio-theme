@@ -128,6 +128,7 @@ Using a theme, all of your default configuration lives in an npm package.
     - [Table Block](#table-block)
     - [Tabs Block](#tabs-block)
     - [Product Card](#product-card)
+    - [Mini Product Card](#product-card)
     - [Product Card Grid](#product-card-grid)
     - [Resource Card](#resource-card)
     - [MiniResourceCard](#miniresourcecard)
@@ -1236,12 +1237,15 @@ Use `slots` to identify the markdown content:
 - `heading` (required)
 - `text` (required)
 - `image` (optional)
+- `videoUrl`(optional) 
 
 Use `background` to set a custom background color matching your color scheme. Defaults to `rgb( 29, 125, 238)`;
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
 Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant. Defaults to false.
+
+Use `videoUrl` to videoURL to post the video in half width /full width
 
 **Half width variant**
 
@@ -2549,6 +2553,35 @@ Use `repeat` to define how many code sections are part.
 Use `textColor` to define the color of the text. The preset is `black`.
 
 Use `inRow` to define the number of profile cards in a row.
+
+### Mini Product Card
+
+Miniproductcard component is used to display the product card with little image and description
+
+![mini_product_card](docs/images/mini-product-card.png)
+
+```
+  <MiniProductCard slots="image, heading , text , buttons" repeat="4" theme="lightest" inRow="4" variantsType="primary" buttonStyle="outline" />
+
+![Forge the path to customer success](./S_AniConvertToGIF.png)
+
+# Firefly API
+
+Firefly API
+
+- [Learn more](https://developer-stage.adobe.com/)
+
+```
+
+Use `slots` to identify the markdown content:
+
+- `image`(required)
+- `heading`(required)
+- `text`(optional)
+- `buttons`(optional)
+
+Use `repeat` to define how many code sections are part.
+
 
 ### Edition
 
