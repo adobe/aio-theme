@@ -23,7 +23,8 @@ const RedoclyAPIBlock = ({
   typography = 'fontFamily: `adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif`',
   codeBlock = "tokens: { punctuation: { color: 'white' }}",
   disableSidebar = false,
-  disableSearch = false
+  disableSearch = false,
+  hideTryItPanel = false,
 }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
@@ -62,6 +63,7 @@ const RedoclyAPIBlock = ({
               {licenseKey: '${licenseKey}',
                disableSidebar: ${disableSidebar}, 
                disableSearch: ${disableSearch},
+               hideTryItPanel: ${hideTryItPanel},
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
@@ -87,6 +89,7 @@ RedoclyAPIBlock.propTypes = {
   codeBlock: PropTypes.string,
   disableSidebar: PropTypes.bool,
   disableSearch: PropTypes.bool,
+  hideTryItPanel: PropTypes.bool,
 };
 
 export { RedoclyAPIBlock };
