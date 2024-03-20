@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.8...@adobe/gatsby-theme-aio@4.11.9) (2024-03-20)
+
+### Features
+
+* Added Mini Product Resources card [ebd47c8](https://github.com/adobe/aio-theme/pull/1567/commits/ebd47c85ff6f37fa5b23e9f38a3ec3653615ad8b)
+* Added video in the Hero Block [ebd47c8](https://github.com/adobe/aio-theme/pull/1567/commits/ebd47c85ff6f37fa5b23e9f38a3ec3653615ad8b)
+* Modified the design in accordion [ebd47c8](https://github.com/adobe/aio-theme/pull/1567/commits/ebd47c85ff6f37fa5b23e9f38a3ec3653615ad8b)
+
 ## [4.11.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.7...@adobe/gatsby-theme-aio@4.11.8) (2024-03-20)
 
 ### Features
