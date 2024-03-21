@@ -25,6 +25,14 @@ const RedoclyAPIBlock = ({
   disableSidebar = false,
   disableSearch = false,
   hideTryItPanel = false,
+  expandDefaultServerVariables = false,
+  expandDefaultRequest = true,
+  expandDefaultResponse = true,
+  expandResponses = '',
+  expandSingleSchemaField = false,
+  jsonSampleExpandLevel = 2,
+  schemaExpansionLevel = 0,
+  searchAutoExpand = true,
 }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
@@ -64,6 +72,14 @@ const RedoclyAPIBlock = ({
                disableSidebar: ${disableSidebar}, 
                disableSearch: ${disableSearch},
                hideTryItPanel: ${hideTryItPanel},
+               expandDefaultServerVariables: ${expandDefaultServerVariables},
+               expandDefaultRequest: ${expandDefaultRequest},
+               expandDefaultResponse: ${expandDefaultResponse},
+               expandResponses: ${expandResponses},
+               expandSingleSchemaField: ${expandSingleSchemaField},
+               jsonSampleExpandLevel: ${jsonSampleExpandLevel},
+               schemaExpansionLevel: ${schemaExpansionLevel},
+               searchAutoExpand: ${searchAutoExpand},
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
@@ -90,6 +106,20 @@ RedoclyAPIBlock.propTypes = {
   disableSidebar: PropTypes.bool,
   disableSearch: PropTypes.bool,
   hideTryItPanel: PropTypes.bool,
+  expandDefaultServerVariables: PropTypes.bool,
+  expandDefaultRequest: PropTypes.bool,
+  expandDefaultResponse: PropTypes.bool,
+  expandResponses: PropTypes.string,
+  expandSingleSchemaField: PropTypes.bool,
+  jsonSampleExpandLevel: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  schemaExpansionLevel: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  searchAutoExpand: PropTypes.bool,
 };
 
 export { RedoclyAPIBlock };
