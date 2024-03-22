@@ -105,6 +105,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
+      - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1175,6 +1176,19 @@ Disables the Try it console in the right panel.
 Defaults to ```false```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### jsonSampleExpandLevel (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." jsonSampleExpandLevel="all" />
+```
+
+Sets the default expand level for JSON payload samples (response and request body). Takes a number >= 1, or the string 'all'.
+
+Defaults to ```2```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
 
 ### JSDoc
 

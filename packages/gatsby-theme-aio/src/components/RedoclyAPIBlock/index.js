@@ -16,6 +16,7 @@ import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils'
 import PropTypes from 'prop-types';
 
 const licenseKey = process.env.GATSBY_REDOCLY_KEY;
+const all = 'all';
 
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
 const RedoclyAPIBlock = ({
@@ -25,6 +26,7 @@ const RedoclyAPIBlock = ({
   disableSidebar = false,
   disableSearch = false,
   hideTryItPanel = false,
+  jsonSampleExpandLevel = 2,
 }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
@@ -64,6 +66,7 @@ const RedoclyAPIBlock = ({
                disableSidebar: ${disableSidebar}, 
                disableSearch: ${disableSearch},
                hideTryItPanel: ${hideTryItPanel},
+               jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
@@ -90,6 +93,10 @@ RedoclyAPIBlock.propTypes = {
   disableSidebar: PropTypes.bool,
   disableSearch: PropTypes.bool,
   hideTryItPanel: PropTypes.bool,
+  jsonSampleExpandLevel: PropTypes.oneOfType([
+    PropTypes.oneOf([all]), 
+    PropTypes.number,
+  ]),
 };
 
 export { RedoclyAPIBlock };
