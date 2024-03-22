@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.9...@adobe/gatsby-theme-aio@4.11.10) (2024-03-21)
+
+### Features
+
+* **DEVSITE-1112:** Make expand level of json samples customizable [3f9d02a](https://github.com/adobe/aio-theme/pull/1567/commits/3f9d02a1a82162ee3585679b6dd7f2256ec52bbf)
+
 ## [4.11.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.8...@adobe/gatsby-theme-aio@4.11.9) (2024-03-20)
 
 ### Features
