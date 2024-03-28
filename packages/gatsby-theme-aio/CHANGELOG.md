@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.10...@adobe/gatsby-theme-aio@4.11.11) (2024-03-28)
+
+### Fix
+
+* **DEVSITE-1116:** Fit resources in main so it aligns correctly with hero [b01b2ab](https://github.com/adobe/aio-theme/pull/1567/commits/b01b2abbab9f969c3ee84299f9f4ff0f65a323e8)
+
 ## [4.11.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.9...@adobe/gatsby-theme-aio@4.11.10) (2024-03-21)
 
 ### Features
