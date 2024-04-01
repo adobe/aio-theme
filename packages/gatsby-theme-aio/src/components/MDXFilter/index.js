@@ -221,12 +221,16 @@ export default ({ children, pageContext, query }) => {
       (tableOfContentsItems.length > 1 ||
         (tableOfContentsItems.length === 1 && tableOfContentsItems[0]?.items?.length > 1) ||
         tableOfContentsItems[0]?.title);
+    const hasResources = Boolean(resourcesChild);
     const isFirstSubPage = selectedPage?.pathname === selectedPageSiblings?.[0]?.pathname;
 
     const columns = 12;
     const diff = [];
     if (hasOnThisPage) {
       diff.push(`${layoutColumns(2)} - var(--spectrum-global-dimension-size-400)`);
+    }
+    if (hasResources) {
+      diff.push(`${layoutColumns(3)} - var(--spectrum-global-dimension-size-400)`);
     }
     if (hasSideNav) {
       diff.push(SIDENAV_WIDTH);
@@ -398,7 +402,7 @@ export default ({ children, pageContext, query }) => {
                 )}
               </div>
               {hasOnThisPage && <OnThisPage tableOfContents={tableOfContents} />}
-              {resourcesChild && resourcesChild}
+              {hasResources && resourcesChild}
             </div>
           </div>
           <Footer hasSideNav={hasSideNav} />
