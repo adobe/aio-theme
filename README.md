@@ -98,7 +98,9 @@ Using a theme, all of your default configuration lives in an npm package.
     - [OpenAPI](#openapi)
     - [Redocly API Block](#RedoclyAPIBlock)
       - [On-premise license keys](#on-premise-license-keys)
+      - [Local development limitation and workaround](#local-development-limitation-and-workaround)
       - [Full width page](#full-width-page)
+      - [Displaying long API response descriptions](#displaying-long-api-response-descriptions)
       - [width (optional)](#width-optional)
       - [typography (optional)](#typography-optional)
       - [codeblock (optional)](#codeblock-optional)
@@ -1096,15 +1098,31 @@ We can now host your own OpenAPI YAML files and have them rendered by Redocly do
 
 #### On-premise license keys
 
-When implementing this feature, ensure that GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }} is added to the deploy.yml file in the repository. Additionally, for new repositories, remember to include the on-premise license keys through the repository settings.
+When using RedoclyAPIBlock, ensure that GATSBY_REDOCLY_KEY: ${{ secrets.REDOCLY_LICENSE_KEY }} is added to the deploy.yml file in your repository (e.g. add to [build-dev](https://github.com/AdobeDocs/ff-services-docs/blob/24b9b522e7521d7169265871023cccfa1f03f349/.github/workflows/deploy.yml#L145) and [build-production](https://github.com/AdobeDocs/ff-services-docs/blob/24b9b522e7521d7169265871023cccfa1f03f349/.github/workflows/deploy.yml#L252)). Any public repo in the AdobeDocs organization will have access to this development environment [secret](https://github.com/organizations/AdobeDocs/settings/secrets/actions).
 
-The license key should be found in your redocly account settings -> On-premise license keys
+Dev-site team is responsible for making sure the license key is up to date, which can be found in redocly account settings -> On-premise license keys.
 
-![redocly-setting](docs/images/redocly-setting.png)
+#### Local development limitation and workaround
+
+Due to the way Redocly API works, it’s not possible to test RedoclyAPIBlock locally:
+![redocly-api-block-on-local](docs/images/redocly-api-block-on-local.png)
+
+To test, temporarily deploy to stage:
+![redocly-api-block-on-stage](docs/images/redocly-api-block-on-stage.png)
 
 #### Full width page 
 
 Use [custom layout](#custom-layout) to do a full width page
+
+#### Displaying long API response descriptions
+
+By default, Redocly displays API response descriptions as the button text (styled as one line, no-wrap). If too long, the text could get truncated, and the page widens beyond 100%:
+![redocly-api-block-long-description-without-x-summary](docs/images/redocly-api-block-long-description-without-x-summary.png)
+![redocly-api-block-long-description-without-x-summary-yaml](docs/images/redocly-api-block-long-description-without-x-summary-yaml.png)
+
+For long descriptions, Redocly suggests to use the [x-summary](https://redocly.com/docs/api-reference-docs/specification-extensions/x-summary/) specification extension. If specified, it is used as the response button text, and the description is rendered under the button:
+![redocly-api-block-long-description-with-x-summary](docs/images/redocly-api-block-long-description-with-x-summary.png)
+![redocly-api-block-long-description-with-x-summary-yaml](docs/images/redocly-api-block-long-description-with-x-summary-yaml.png)
 
 #### width (optional)
 
