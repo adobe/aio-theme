@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.12](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.11...@adobe/gatsby-theme-aio@4.11.12) (2024-04-4)
+
+### Fix
+
+* Fix half width hero image misalignement [9128a8a](https://github.com/adobe/aio-theme/commit/9128a8a5ff85293402b8956e826145af0485f384)
+
+
 ## [4.11.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.10...@adobe/gatsby-theme-aio@4.11.11) (2024-03-28)
 
 ### Fix
