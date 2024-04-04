@@ -862,7 +862,7 @@ const Hero = ({
                 </video>
               </div>
                 :
-                image ? <HeroImage image={image} styles={`position: absolute;`} /> : videoUrl &&
+                image ? <HeroImage image={image} /> : videoUrl &&
                   <div
                     css={css`
                       width : 100%;
