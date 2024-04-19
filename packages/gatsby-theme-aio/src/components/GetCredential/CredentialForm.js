@@ -18,7 +18,7 @@ const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
 const CredentialForm = ({ formProps, credentialType, service }) => {
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState({});
   const [errResp, setErrorResp] = useState("");
@@ -85,6 +85,17 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   }
 
   useEffect(() => {
+    if (window.adobeIMS?.isSignedInUser()) {
+      setTimeout(()=>{
+        setLoading(false)
+      },1000)
+    }
+    else {
+      setLoading(true)
+    }
+  }, [window.adobeIMS?.isSignedInUser()])
+
+  useEffect(() => {
     setTimeout(() => {
       setOrganization(false);
     }, 8000);
@@ -111,10 +122,15 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     if (!organization) {
       setOrganizationValue(undefined);
       setShowCreateForm(false);
-      setIsError(true)
+      setLoading(true);
     }
     else if (organization && Object.keys(organization)?.length !== 0) {
       setShowCreateForm(true)
+      setIsError(true)
+      setTimeout(() => {
+        setLoading(false)
+        setIsError(false)
+      }, 2000)
     }
     else {
       if (Object.keys(organization)?.length === 0) {
@@ -378,7 +394,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           }
         </>
       }
-      {loading && !showCredential && <Loading credentials={credentialForm} downloadStatus={formData['Downloads']} />}
+      {loading && !showCredential && !isError && !showCreateForm && organization && <Loading credentials={credentialForm} isCreateCredential downloadStatus={formData['Downloads']} />}
       {modalOpen && (
         <ChangeOrganization
           setModalOpen={setModalOpen}
@@ -391,11 +407,11 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           setOrganizationValue={setOrganizationValue}
         />
       )}
-      {isError && !showCreateForm && !showCredential && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
+      {(!organization || isError) && loading && <Loading />}
+      {isError && !showCreateForm && !showCredential && !organization && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
-      {!showCreateForm && !organization && !isError && <NoDeveloperAccessError developerAccessError={formProps?.[NoDeveloperAccessError]} title={credentialForm?.title} emailID={emailID} />}
-
+      {!showCreateForm && !organization && !isError && !loading && <NoDeveloperAccessError developerAccessError={formProps?.[NoDeveloperAccessError]} title={credentialForm?.title} emailID={emailID} />}
     </>
   )
 }
