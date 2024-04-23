@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.12...@adobe/gatsby-theme-aio@4.11.13) (2024-04-22)
+
+### Fix
+
+* Fixed the page load issues in the get credential component [a78b072](https://github.com/adobe/aio-theme/commit/a78b0720396b6b35634c9db7125bbc608da506fe)
+
+
 ## [4.11.12](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.11...@adobe/gatsby-theme-aio@4.11.12) (2024-04-4)
 
 ### Fix
