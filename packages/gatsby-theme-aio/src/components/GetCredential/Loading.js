@@ -1,13 +1,14 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import { css } from "@emotion/react";
 
 const Loading = ({
   credentials,
-  downloadStatus
+  downloadStatus,
+  isCreateCredential
 }) => {
   const divRef = useRef(null);
-  useEffect(() =>{
-    if(divRef.current){
+  useEffect(() => {
+    if (divRef.current) {
       divRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -15,9 +16,10 @@ const Loading = ({
       });
     }
   }, [])
+
   return (
     <>
-      {credentials?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.heading}</h3>}
+      {credentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.title}</h3>}
       <div css={css`
           display:flex;
           justify-content:center;
@@ -47,7 +49,7 @@ const Loading = ({
             color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
           `}
         >
-          Creating credentials...
+          {isCreateCredential && "Creating credentials..."}
         </div>
         {downloadStatus &&
           <div
