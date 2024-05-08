@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
-import { SideContent } from './CredentialForm';
-import { CopyIcon, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
+import { SideContent } from './CredentialForm';
+import { CopyIcon, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { Toast } from '../Toast';
+import { CardProducts } from './Products';
 
 const MyCredential = ({
   credentialProps,
@@ -15,13 +16,38 @@ const MyCredential = ({
   setShowCredential,
   organizationName,
   response,
-  orgID
+  orgID,
+  organization
 }) => {
 
-  const [isTooltipOpen, setTooltipOpen] = useState(null);
-  const [organization, setOrganizationValue] = useState({});
   const [isDownloadStart, setIsDownloadStart] = useState();
-  const [isCopiedTooltip, setCopiedTooltip] = useState('')
+  const [isCopiedTooltip, setCopiedTooltip] = useState('');
+
+  const myCredentialFields = {};
+  const productsObj = { label: "products", productList: [] }
+
+  credentialProps?.[MyCredential]?.children.forEach(({ type, props }) => {
+    myCredentialFields[type] = props;
+    if (props.children && type === CardClientDetails) {
+      props?.children?.forEach(({ type, props }) => {
+        myCredentialFields[type] = props
+      })
+    }
+    if (type === CardProducts && props?.children) {
+      productsObj.productList.push(...[].concat(props.children).map(({ props: { label, icon } }) => ({ label, icon })));
+    }
+  })
+
+  const accessToken = myCredentialFields[AccessToken];
+  const cardDevConsoleLink = myCredentialFields[DevConsoleLink];
+  const cardClientDetails = myCredentialFields[CardClientDetails];
+  const cardClientId = myCredentialFields[CardClientId];
+  const cardClientSecret = myCredentialFields[CardClientSecret];
+  const cardOrganizationName = myCredentialFields[CardOrganizationName];
+  const cardScopes = myCredentialFields[CardScopes];
+  const cardAPIKey = myCredentialFields[CardAPIKey];
+  const cardAllowedOrigins = myCredentialFields[CardAllowedOrigins];
+  const product = productsObj?.productList;
 
   const Credential = [
     {
@@ -39,13 +65,20 @@ const MyCredential = ({
   ];
 
   useEffect(() => {
-    const OrgInfo = localStorage?.getItem('OrgInfo');
-    if (OrgInfo) {
-      setOrganizationValue(JSON.parse(OrgInfo));
+    const getItemFromLocalStorage = JSON.parse(localStorage.getItem("myCredential"))
+    let setCredentialValue;
+    const credentialName = formData['CredentialName'];
+    const keyCredential = { "name": credentialName, credential: Credential }
+    if (getItemFromLocalStorage) {
+      setCredentialValue = [keyCredential, ...getItemFromLocalStorage]
     }
     else {
-      getOrganization(setOrganizationValue);
+      setCredentialValue = [keyCredential]
     }
+    localStorage.setItem("myCredential", JSON.stringify(setCredentialValue))
+  }, [])
+
+  useEffect(() => {
     if (formData['Downloads']) {
       downloadZIP(`/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, formData['Download'], formData['zipUrl'])
     }
@@ -56,18 +89,9 @@ const MyCredential = ({
 
   const devConsoleLink = `/console/projects/${organization?.id}/${response.projectId}/overview`;
 
-  const handleCopy = (value) => {
-    navigator.clipboard.writeText(value);
-    setCopiedTooltip(true);
-  };
-
   const handleRestart = () => {
     setShowCreateForm(true);
     setShowCredential(false);
-  }
-
-  const handleLeave = () => {
-    setTooltipOpen(null);
   }
 
   const downloadZIP = async (
@@ -119,7 +143,7 @@ const MyCredential = ({
       css={css`
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 48px;
       `}
     >
       <div
@@ -269,12 +293,32 @@ const MyCredential = ({
                 css={css`
                   display:flex;
                   gap:20px;
-                  align-items:center;
+                  align-items:flex-start;
                 `}
               >
                 <KeyIcon />
-                <h3 className="spectrum-Heading spectrum-Heading--sizeM">{formData['CredentialName']}</h3>
+                <div
+                  css={css`
+                    display : flex ;
+                    flex-direction : column;
+                    gap: 8px;
+                  `}
+                >
+                  <h3 className="spectrum-Heading spectrum-Heading--sizeM">
+                    {formData['CredentialName']}
+                  </h3>
+                  <div
+                    css={css`
+                      display : flex;
+                      gap : 10px; 
+                      align-items : center;                   
+                    `}
+                  >
+                    {product && <CardProducts product={product} />}
+                  </div>
+                </div>
               </div>
+
               <hr
                 css={css`
                   margin:0;
@@ -289,70 +333,12 @@ const MyCredential = ({
                   gap: 32px;
                 `}
               >
-                {Credential?.map(({ key, value }, index) => {
-                  return (
-                    <>
-                      {value &&
-                        <>
-                          <div
-                            css={css`
-                              display:flex;
-                              flex-direction:column;
-                              gap:8px;
-                            `}
-                          >
-                            <h4 className="spectrum-Heading spectrum-Heading--sizeS">{key}</h4>
-                            <div
-                              css={css` 
-                                display:flex;
-                                align-items: center;
-                                gap: 24px; 
-                              `}>
-                              <p className="spectrum-Body spectrum-Body--sizeS"
-                                css={css`
-                                  font-family: Source Code Pro,Monaco,monospace;
-                                  white-space: normal;
-                                  overflow-wrap: anywhere;
-                                  max-width: 300px;
-                                `}
-                              >{value}</p>
+                {accessToken && <AccessToken accessToken={accessToken} />}
 
-                              <div css={css`position:relative;display:${key === "Organization" ? "none" : "block"}`}>
-                                <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
-                                  onMouseEnter={() => setTooltipOpen(index)}
-                                  onMouseLeave={handleLeave}
-                                  onClick={() => handleCopy(value, index)}
-                                  css={css`
-                                    border: 1px solid var(--spectrum-global-color-gray-400);
-                                    border-radius: 3px;
-                                    padding: 3px 6px;
-                                  `}
-                                >
-                                  {<span className="spectrum-ActionButton-label"><CopyIcon /></span>}
-                                </button>
+                {cardDevConsoleLink && <DevConsoleLink cardDevConsoleLink={cardDevConsoleLink} formData={formData} />}
 
-                                {isTooltipOpen === index && (
-                                  <span
-                                    className="spectrum-Tooltip spectrum-Tooltip--top is-open"
-                                    css={css`
-                                      position: absolute;
-                                      bottom: 25px;
-                                      top: unset;
-                                      white-space: nowrap;
-                                    `}
-                                  >
-                                    <span className="spectrum-Tooltip-label">Copy</span>
-                                    <span className="spectrum-Tooltip-tip"></span>
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </>
-                      }
-                    </>
-                  )
-                })}
+                {cardClientDetails && <CardClientDetails cardClientDetails={cardClientDetails} cardClientId={cardClientId} cardClientSecret={cardClientSecret} cardOrganizationName={cardOrganizationName} cardScopes={cardScopes} apiKey={response["apiKey"]} allowedOrigins={formData['AllowedOrigins']} organization={organizationName} cardAPIKey={cardAPIKey} cardAllowedOrigins={cardAllowedOrigins} />}
+
                 <div
                   css={css`
                     display:flex;
@@ -431,11 +417,212 @@ const MyCredential = ({
             </p>
           </div>
         </div>
-        {card?.children ? <SideContent sideContent={card?.children?.props?.children} /> : null}
+        {card?.children ? <SideContent sideContent={myCredentialFields[MyCredentialSide]?.children} SideComp={MyCredentialSide} /> : null}
       </div>
       {isCopiedTooltip && <Toast variant='success' message="Copied to clipboard" disable={1000} customDisableFunction={setCopiedTooltip} />}
+    </div >
+  )
+
+}
+
+const MyCredentialSide = ({ side }) => (side);
+
+const AccessToken = ({ accessToken }) => {
+  return (
+    <>
+      {accessToken && <div css={css`
+        display : flex;
+        flex-direction : column;
+        gap:16px;
+      `}>
+        {accessToken?.heading && <h4 className="spectrum-Heading spectrum-Heading--sizeS">{accessToken?.heading}</h4>}
+        {accessToken?.buttonLabel && <button css={css`width: 180px;`} className="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM">
+          <span className="spectrum-Button-label">{accessToken?.buttonLabel}</span>
+        </button>}
+      </div>}
+    </>
+  )
+};
+
+const DevConsoleLink = ({ cardDevConsoleLink, formData }) => {
+  return (
+    <>
+      <div css={css`
+          display : flex;
+          flex-direction : column;
+          gap:16px;
+        `}>
+        {cardDevConsoleLink?.heading && <h4 className="spectrum-Heading spectrum-Heading--sizeS">{cardDevConsoleLink?.heading}</h4>}
+
+        <div css={css`display:flex;`}>
+          <div><p className="spectrum-Body spectrum-Body--sizeS"
+            css={css`
+              font-family: Source Code Pro,Monaco,monospace;
+              white-space: normal;
+              overflow-wrap: anywhere;
+              max-width: 300px;
+              color: #0265DC;
+            `}
+          >{formData['CredentialName']}</p></div>
+          <div css={
+            css`
+              margin-left:10px;
+              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                display:none;
+              }
+            }`
+          }><LinkOut /></div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const CardClientDetails = ({ cardClientDetails, cardClientId, cardClientSecret, cardOrganizationName, cardScopes, apiKey, allowedOrigins, organization, cardAPIKey, cardAllowedOrigins }) => {
+  return (
+    <div css={css`
+          display : flex;
+          flex-direction : column;
+          gap: 32px;
+        `}>
+      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{cardClientDetails?.heading}</h4>
+      {cardAPIKey && <CardAPIKey cardClientDetails={cardClientDetails} cardAPIKey={cardAPIKey} apiKey={apiKey} />}
+      {cardClientId && <CardClientId cardClientDetails={cardClientDetails} cardClientId={cardClientId} />}
+      {cardAllowedOrigins && <CardAllowedOrigins cardClientDetails={cardClientDetails} allowedOrigins={allowedOrigins} cardAllowedOrigins={cardAllowedOrigins} />}
+      {cardClientSecret && <CardClientSecret cardClientDetails={cardClientDetails} cardClientSecret={cardClientSecret} />}
+      {cardOrganizationName && <CardOrganizationName cardClientDetails={cardClientDetails} cardOrganizationName={cardOrganizationName} organization={organization} />}
+      {cardScopes && <CardScopes cardClientDetails={cardClientDetails} cardScopes={cardScopes} />}
     </div>
   )
 }
 
-export { MyCredential }
+const CardAPIKey = ({ cardClientDetails, cardAPIKey, apiKey }) => {
+  return (
+    <ShowCard heading={cardAPIKey?.heading} value={apiKey} />
+  )
+}
+
+const CardAllowedOrigins = ({ cardClientDetails, cardAllowedOrigins, allowedOrigins }) => {
+  return (
+    <ShowCard heading={cardAllowedOrigins?.heading} value={allowedOrigins} />
+  )
+}
+
+const CardClientId = ({ cardClientDetails, cardClientId, apiKey }) => {
+  return (
+    <ShowCard heading={cardClientId?.heading} value={apiKey} />
+  )
+}
+
+const CardClientSecret = ({ cardClientDetails, cardClientSecret }) => {
+  return (
+    <ShowCard heading={cardClientSecret?.heading} isClientSecret buttonLabel={cardClientSecret?.buttonLabel} />
+  )
+}
+
+const CardScopes = ({ cardClientDetails, cardScopes, allowedOrigins }) => {
+  return (
+    <ShowCard heading={cardScopes?.heading} value={allowedOrigins} />
+  )
+}
+
+const CardOrganizationName = ({ cardClientDetails, cardOrganizationName, organization }) => {
+  return (
+    <ShowCard heading={cardOrganizationName?.heading} value={organization} isOraganization />
+  )
+}
+
+const ShowCard = ({ heading, value, isClientSecret, buttonLabel, isOraganization }) => {
+
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
+
+  const handleLeave = () => {
+    setTooltipOpen(false);
+  }
+
+  const handleCopy = (value) => {
+    navigator.clipboard.writeText(value);
+  };
+
+  return (
+    <div
+      css={css`
+          display:flex;
+          flex-direction:column;
+          gap:8px;
+        `}
+    >
+      <p className="spectrum-Body spectrum-Body--sizeS">{heading}</p>
+      <div
+        css={css` 
+            display:flex;
+            align-items: center;
+            gap: 24px; 
+          `}>
+
+
+        {isClientSecret &&
+          <button class="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM"
+            css={css`
+                cursor : pointer;
+                border: 1px solid var(--spectrum-global-color-gray-400);
+                border-radius: 3px;
+                padding: 3px 6px;
+                height:32px;
+                background :transparent;
+              `}
+          >
+            <span class="spectrum-ActionButton-label">{buttonLabel}</span>
+          </button>}
+
+        {value && <p className="spectrum-Body spectrum-Body--sizeS"
+          css={css`
+              font-family: Source Code Pro,Monaco,monospace;
+              white-space: normal;
+              overflow-wrap: anywhere;
+              max-width: 300px;
+            `}
+        >{value}</p>
+        }
+
+        {!isClientSecret &&
+
+          <div css={css`position:relative;display:${isOraganization ? "none" : "block"}`}>
+            <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
+              onMouseEnter={() => setTooltipOpen(true)}
+              onMouseLeave={handleLeave}
+              onClick={() => handleCopy(value)}
+              css={css`
+                  border: 1px solid var(--spectrum-global-color-gray-400);
+                  border-radius: 3px;
+                  padding: 3px 6px;
+                `}
+            >
+              {<span className="spectrum-ActionButton-label"><CopyIcon /></span>}
+            </button>
+
+            {isTooltipOpen && (
+              <span
+                className="spectrum-Tooltip spectrum-Tooltip--top is-open"
+                css={css`
+                    position: absolute;
+                    bottom: 25px;
+                    top: unset;
+                    white-space: nowrap;
+                  `}
+              >
+                <span className="spectrum-Tooltip-label">Copy</span>
+                <span className="spectrum-Tooltip-tip"></span>
+              </span>
+            )}
+          </div>
+
+        }
+
+      </div>
+    </div>
+  )
+}
+
+
+export { MyCredential, MyCredentialSide, AccessToken, DevConsoleLink, CardClientDetails, CardClientId, CardClientSecret, CardOrganizationName, CardScopes, CardAPIKey, CardAllowedOrigins };
