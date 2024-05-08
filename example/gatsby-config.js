@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/example/',
   siteMetadata: {
@@ -34,6 +36,10 @@ module.exports = {
       {
         title: 'Adobe Analytics',
         path: 'index.md'
+      },
+      {
+        title: 'Get credential',
+        path: "/getCredential"
       },
       {
         title: 'Docs',
@@ -249,9 +255,20 @@ module.exports = {
           }
         ]
       }
+      
     ]
   },
   plugins: [
     `@adobe/gatsby-theme-aio`
   ],
+  developMiddleware: app => {
+    app.use(
+      "/console/api",
+      createProxyMiddleware({
+        target: "https://developer-stage.adobe.com/console/api",
+        secure: false,
+        changeOrigin: true,
+      })
+    )
+  },
 };

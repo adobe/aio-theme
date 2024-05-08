@@ -5,34 +5,47 @@ import classNames from "classnames";
 import { MyCredential } from './MyCredential';
 import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
-import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, FormFields, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { AlertIcon, FormFields, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
 import { NoDeveloperAccessError } from './NoDeveloperAccessError';
 import Context from '../Context';
+import { Product, Products } from './Products';
+import { Organization } from './Organization';
 
 const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
 const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
-const CredentialForm = ({ formProps, credentialType, service }) => {
+const CredentialForm = ({
+  formProps,
+  credentialType,
+  service,
+  organization,
+  setOrganizationValue,
+  organizationChange,
+  setOrganization,
+  alertShow,
+  setAlertShow,
+  redirectToBeta,
+  isShow,
+  setIsShow,
+  setRedirectBetaProgram,
+  allOrganization,
+  showCreateForm,
+  setShowCreateForm,
+  isCreateNewCredential,
+  setIsCreateNewCredential
+}) => {
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState({});
   const [errResp, setErrorResp] = useState("");
-  const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
   const [formField, setFormField] = useState([]);
   const [formData, setFormData] = useState({});
-  const [modalOpen, setModalOpen] = useState(false);
-  const [redirectToBeta, setRedirectBetaProgram] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  const [alertShow, setAlertShow] = useState(false);
-  const [organizationChange, setOrganization] = useState(false);
-  const [organization, setOrganizationValue] = useState({});
-  const [showOrganization, setShowOrganization] = useState(true);
   const [emailID, setEmailID] = useState('');
 
   const { ims } = useContext(Context);
@@ -41,19 +54,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
   const getValueFromLocalStorage = async () => {
-    const orgInfo = localStorage?.getItem('OrgInfo');
-    const getOrgs = await getOrganization(setOrganizationValue);
-    if (orgInfo === null) {
-      if (getOrgs?.length === 1) {
-        setShowOrganization(false);
-      }
-    }
-    else if (getOrgs) {
-      const orgData = JSON.parse(orgInfo);
-      setShowOrganization(orgData.orgLen === 1 ? false : true);
-      setOrganizationValue(orgData);
-    }
-    if (!getOrgs) {
+    if (!allOrganization) {
       setOrganizationValue({});
       setShowCreateForm(false)
     }
@@ -62,12 +63,16 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
   const initialLoad = () => {
     const fields = {};
     const downloadObj = { label: "Language", selectOptions: [] };
+    const productsObj = { label: "products", productList: [] }
 
     credentialForm?.children.forEach(({ type, props }) => {
       if (type === Downloads && props?.children) {
         downloadObj.required = props.required || false;
         downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
         setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
+      }
+      if (type === Products && props?.children) {
+        productsObj.productList.push(...[].concat(props.children).map(({ props: { label, icon } }) => ({ label, icon })));
       }
       fields[type] = { ...props, required: type === CredentialName || props?.required };
     });
@@ -78,6 +83,9 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         setFormData(prevData => ({ ...prevData, Download: downloadObj.selectOptions[0]?.title, zipUrl: downloadObj.selectOptions[0]?.href }));
       }
     }
+    if (productsObj?.productList.length) {
+      fields[Product] = productsObj
+    }
 
     setFormField(fields);
     getValueFromLocalStorage();
@@ -86,9 +94,9 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
 
   useEffect(() => {
     if (window.adobeIMS?.isSignedInUser()) {
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(false)
-      },1000)
+      }, 1000)
     }
     else {
       setLoading(true)
@@ -155,7 +163,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     const isValidCredentialName = credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
     const isCheckAllowedOrgins = requiredFields.filter((data) => data.name === "AllowedOrigins")
     const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
-    const isAllowedOriginsValid = isCheckAllowedOrgins ? validateAllowedOrigins?.every((value) => value === true) && formData["AllowedOrigins"] !== undefined && formData["AllowedOrigins"]?.length !== 0 : true;
+    const isAllowedOriginsValid = isCheckAllowedOrgins.length ? validateAllowedOrigins?.every((value) => value === true) && formData["AllowedOrigins"] !== undefined && formData["AllowedOrigins"]?.length !== 0 : true;
 
     const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
 
@@ -230,11 +238,14 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
     }
   };
 
-  const sideObject = formField?.[Side];
+  const sideObject = formField?.[SideCredential];
   const credentialName = formField?.[CredentialName];
   const allowedOrigins = formField?.[AllowedOrigins];
   const downloads = formField?.[Downloads];
   const download = formField?.[Download];
+  const products = formField?.[Products];
+  const product = formField?.[Product];
+  const adobeDeveloperConsole = formField?.[AdobeDeveloperConsole];
 
   return (
     <>
@@ -244,14 +255,14 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
           css={css`
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 48px;
           `}
         >
           <div
             css={css`
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 48px;
             color:var(--spectrum-global-color-gray-800);
             width: 100%;
             height: 100%;
@@ -262,36 +273,29 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
             }
           `}
           >
-            {credentialForm?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentialForm?.title}</h3>}
-            {credentialForm?.paragraph &&
-              <p
-                className="spectrum-Body spectrum-Body--sizeL">
-                {credentialForm?.paragraph}
-              </p>
-            }
-            <p
-              className="spectrum-Body spectrum-Body--sizeS"
-              css={css`color:var(--spectrum-global-color-gray-800);`}
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+              `}
             >
-              You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
-              {showOrganization &&
-                <button
-                  tabIndex="0"
-                  css={css`
-                    border: none;
-                    padding:0;
-                    font-family:'adobe-clean';
-                    background: transparent;
-                    margin-left :10px;
-                    text-decoration:underline;
-                    color: var(--spectrum-global-color-gray-800);
-                    cursor:pointer;`
-                  }
-                  onClick={() => setModalOpen(true)}
-                >
-                  Change organization?
-                </button>}
-            </p>
+              {credentialForm?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentialForm?.title}</h3>}
+              {credentialForm?.paragraph &&
+                <p
+                  className="spectrum-Body spectrum-Body--sizeL">
+                  {credentialForm?.paragraph}
+                </p>
+              }
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                css={css`color:var(--spectrum-global-color-gray-800);display : inline-flex;`}
+                onClick={() => setIsShow(true)}
+              >
+                You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
+                <Organization isShow={isShow} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
+              </p>
+            </div>
           </div>
           <div
             css={css`
@@ -321,7 +325,7 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
               <div
                 css={css`
                   display:flex;
-                  gap:24px;
+                  gap:32px;
                   flex-direction:column;
                   width: 100%;
                 `}
@@ -330,54 +334,13 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
                 {allowedOrigins && <AllowedOrigins originsProps={allowedOrigins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                 {downloads && download && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
                 {formData['Downloads'] && download && <Download downloadProp={download} formData={formData} isFormValue={isFormValue} handleChange={handleChange} />}
-                <div css={css`display: flex; gap: 10px;`}>
-                  <input type="checkbox" checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
-                  <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
-                    <a
-                      href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
-                      css={css`
-                        color:rgb(0, 84, 182);
-                        &:hover {
-                          color: rgb(2, 101, 220);
-                        }
-                      `}
-                      target="_blank" rel="noreferrer">Adobe Developer Terms of Use</a>.
-                  </p>
-                </div>
-                <button
-                  id="credentialButton"
-                  className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
-                  css={css`width:fit-content;margin-top:10px`} onClick={createCredential} disabled={!isValid} >
-                  <span className="spectrum-Button-label">Create credential</span>
-                </button>
+                <Products products={products} product={product} />
+                {adobeDeveloperConsole && <AdobeDeveloperConsole formData={formData} adobeDeveloperConsole={adobeDeveloperConsole} handleChange={handleChange} />}
+                <CreateCredential createCredential={createCredential} isValid={isValid} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
               </div>
             </div>
-            {sideObject ? <SideContent sideContent={sideObject?.children} /> : null}
+            {sideObject ? <SideContent sideContent={sideObject?.children} SideComp={SideCredential} /> : null}
           </div>
-          <p
-            className="spectrum-Body spectrum-Body--sizeS"
-            css={css` 
-              color:var(--spectrum-global-color-gray-800);
-              
-              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-                padding-left: 0;
-              }
-
-            `} >
-            Have existing credentials?
-            <a href="/console/" target="_blank" rel="noreferrer"
-              css={css`
-                margin-left : 10px;
-                color:var(--spectrum-global-color-gray-800);
-
-                &:hover {
-                  color:var(--spectrum-global-color-gray-900);
-                }
-
-              `}>
-              Go to Developer Console
-            </a>
-          </p>
         </div>
       }
 
@@ -395,28 +358,16 @@ const CredentialForm = ({ formProps, credentialType, service }) => {
         </>
       }
       {loading && !showCredential && !isError && !showCreateForm && organization && <Loading credentials={credentialForm} isCreateCredential downloadStatus={formData['Downloads']} />}
-      {modalOpen && (
-        <ChangeOrganization
-          setModalOpen={setModalOpen}
-          redirectToBeta={redirectToBeta}
-          setRedirectBetaProgram={setRedirectBetaProgram}
-          setAlertShow={setAlertShow}
-          alertShow={alertShow}
-          organizationChange={organizationChange}
-          setOrganization={setOrganization}
-          setOrganizationValue={setOrganizationValue}
-        />
-      )}
       {(!organization || isError) && loading && <Loading />}
       {isError && !showCreateForm && !showCredential && !organization && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} organization={organization} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
       {!showCreateForm && !organization && !isError && !loading && <NoDeveloperAccessError developerAccessError={formProps?.[NoDeveloperAccessError]} title={credentialForm?.title} emailID={emailID} />}
     </>
   )
 }
 
-const Side = ({ side }) => (side);
+const SideCredential = ({ side }) => (side);
 
 const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
   const inValidName = !credentialNameRegex.test(formData['CredentialName'])
@@ -497,7 +448,7 @@ const Downloads = ({ downloadsProp, handleChange, formData }) => {
 
   return (
     <div css={css` display: flex;gap: 10px;align-items: center;`}>
-      <input type="checkbox" onChange={(e) => handleChange(e, "Downloads")} checked={formData['Downloads']} />
+      <input type="checkbox" css={css`accent-color: #5b5a5a;transform: scale(1.1);`} onChange={(e) => handleChange(e, "Downloads")} checked={formData['Downloads']} />
       <p css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));margin:0;`} > {label} </p>
       <div css={css`cursor:pointer;display: flex;justify-content: center;align-items: center;`}>
         {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
@@ -538,7 +489,7 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
   )
 }
 
-const SideContent = ({ sideContent }) => {
+const SideContent = ({ sideContent, SideComp }) => {
   return (
     <>
       <div
@@ -561,10 +512,49 @@ const SideContent = ({ sideContent }) => {
           }
 
         `}>
-        <Side side={sideContent} />
+        <SideComp side={sideContent} />
       </div>
     </>
   )
 }
 
-export { CredentialForm, Side, CredentialName, AllowedOrigins, Downloads, Download, SideContent };
+const AdobeDeveloperConsole = ({ formData, handleChange, adobeDeveloperConsole }) => {
+  return (
+    <div css={css`display: flex; gap: 10px;`}>
+      <input type="checkbox" css={css`accent-color: #5b5a5a;transform: scale(1.1);`} checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
+      <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;display:inline-flex;gap:5px;`} >{adobeDeveloperConsole?.label}
+        <a
+          href={adobeDeveloperConsole?.href}
+          css={css`
+            color:rgb(0, 84, 182);
+            &:hover {adobeDeveloperConsole
+              color: rgb(2, 101, 220);
+            }
+          `}
+          target="_blank" rel="noreferrer">{adobeDeveloperConsole?.linkText}</a>.
+      </p>
+    </div>
+  )
+}
+
+const CreateCredential = ({ createCredential, isValid, setIsCreateNewCredential, isCreateNewCredential }) => {
+  return (
+    <div css={
+      css`
+        display : flex;
+        gap:16px;
+        align-items : center;
+      `
+    }>
+      <button
+        id="credentialButton"
+        className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
+        css={css`width:fit-content;`} onClick={createCredential} disabled={!isValid} >
+        <span className="spectrum-Button-label">Create credential</span>
+      </button>
+      {isCreateNewCredential && <p css={css`text-decoration : underline;margin:0; cursor : pointer;`} onClick={() => setIsCreateNewCredential(false)}>Cancel</p>}
+    </div>
+  )
+}
+
+export { CredentialForm, SideCredential, CredentialName, AllowedOrigins, Downloads, Download, SideContent, AdobeDeveloperConsole };

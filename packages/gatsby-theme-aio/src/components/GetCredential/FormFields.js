@@ -149,23 +149,35 @@ export const getOrganization = async (setOrganizationValue) => {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer " + token,
-          "x-api-key": window?.adobeIMS?.adobeIdData?.client_id
+          "x-api-key": "stage_adobe_io"
         }
       });
 
       const organization = await response.json();
-    
 
       if (setOrganizationValue) {
         setOrganizationValue(organization[0]);
         const orgData = {
           "id": organization[0]?.id,
           "name": organization[0]?.name,
-          "orgLen": organization.length,
-          "type": organization[0].type
+          "orgLen": organization?.length,
+          "type": organization[0]?.type
         }
 
-        localStorage.setItem('OrgInfo', JSON.stringify(orgData));
+        const oldOrganization = JSON.parse(localStorage.getItem('OrgInfo'));
+        if (!oldOrganization) {
+          localStorage.setItem('OrgInfo', JSON.stringify(orgData));
+          setOrganizationValue(orgData)
+        }
+        else {
+          const findOrg = organization?.find((data) => data?.id === oldOrganization?.id);
+          setOrganizationValue({
+            "id": findOrg?.id,
+            "name": findOrg?.name,
+            "orgLen": organization?.length,
+            "type": findOrg.type
+          })
+        }
       }
       return organization;
     }

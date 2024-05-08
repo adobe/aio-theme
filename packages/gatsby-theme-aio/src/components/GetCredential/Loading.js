@@ -64,4 +64,3 @@ const Loading = ({
 }
 
 export { Loading };
-
