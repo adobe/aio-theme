@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
-import { InfoMedium, SuccessMedium, AlertMedium, Close } from '@adobe/gatsby-theme-aio/src/components/Icons';
+import { InfoMedium, SuccessMedium, AlertMedium, Close } from '../Icons';
 import PropTypes from 'prop-types';
 
 const Toast = ({

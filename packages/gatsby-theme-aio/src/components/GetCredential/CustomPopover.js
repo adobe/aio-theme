@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { css } from "@emotion/react";
-import { Popover } from '@adobe/gatsby-theme-aio/src/components/Popover';
+import { Popover } from '../Popover';
 
 const CustomPopover = ({ productList }) => {
 
