@@ -3,35 +3,65 @@ import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import classNames from "classnames";
-import { AdobeDeveloperConsole, AllowedOrigins, CredentialForm, CredentialName, Download, Downloads, SideCredential } from './CredentialForm';
-import { AccessToken, CardAllowedOrigins, CardAPIKey, CardClientDetails, CardClientId, CardClientSecret, CardOrganizationName, CardScopes, DevConsoleLink, MyCredential, MyCredentialSide } from './MyCredential';
 import { getOrganization, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { PreviousCredential, RetunrSideComp, ReturnCustomComp, ReturnNewCredential } from './PreviousCredential';
-import { PreviousProject, ProjectsDropdown, ReturnAccessToken, ReturnClientDetails, ReturnClientSecret, ReturnDevConsoleLink, ReturnManageDeveloperConsole, ReturnOrganizationName, ReturnProduct, ReturnProducts, ReturnClientId, ReturnScopes, ReturnAllowedOrigins, ReturnAPIKey } from './PreviousProject';
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { NoDeveloperAccessError } from "./NoDeveloperAccessError"
+import { NoDeveloperAccessError } from "./NoDeveloperAccessError";
 import ErrorBoundary from './ErrorBoundary';
 import { Product, Products, CardProduct, CardProducts } from './Products';
 import { Loading } from './Loading';
+import { CredentialForm } from './CredentialForm';
+import { CredentialName } from './Form/CredentialName';
+import { AllowedOrigins } from './Form/AllowedOrigins';
+import { SideCredential } from './Form/SideCredential';
+import { Downloads } from './Form/Downloads';
+import { Download } from './Form/Download';
+import { AdobeDeveloperConsole } from './Form/AdobeDeveloperConsole';
+import { CardClientDetails } from './Card/CardClientDetails';
+import { CardClientId } from './Card/CardClientId';
+import { CardClientSecret } from './Card/CardClientSecret';
+import { CardOrganizationName } from './Card/CardOrganizationName';
+import { CardScopes } from './Card/CardScopes';
+import { CardAllowedOrigins } from './Card/CardAllowedOrigins';
+import { CardAPIKey } from './Card/CardAPIKey';
+import { PreviousProject } from './PreviousProject';
+import { PreviousCredential } from "./PreviousCredential";
+import { ReturnAccessToken } from './Return/ReturnAccessToken';
+import { ProjectsDropdown } from './Return/ProjectsDropdown';
+import { ReturnManageDeveloperConsole } from './Return/ReturnManageDeveloperConsole';
+import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
+import { RetunrSideComp } from './Return/RetunrSideComp';
+import { ReturnCustomComp } from './Return/ReturnCustomComp';
+import { ReturnNewCredential } from './Return/ReturnNewCredential';
+import { ReturnProduct } from './Return/ReturnProduct';
+import { ReturnProducts } from './Return/ReturnProducts';
+import { ReturnClientDetails } from './Return/ReturnClientDetails';
+import { ReturnClientId } from './Return/ReturnClientId';
+import { ReturnClientSecret } from './Return/ReturnClientSecret';
+import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
+import { ReturnScopes } from './Return/ReturnScopes';
+import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
+import { ReturnAPIKey } from './Return/ReturnAPIKey';
+import { MyCredential } from './MyCredential';
+import { AccessToken } from './Card/AccessToken';
+import { DevConsoleLink } from './Card/DevConsoleLink';
+import { MyCredentialSide } from './Card/MyCredentialSide';
+import { Toast } from '../Toast';
 
 const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 
   const isBrowser = typeof window !== "undefined";
   const [isPrevious, setIsPrevious] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [redirectToBeta, setRedirectBetaProgram] = useState(false);
-  const [alertShow, setAlertShow] = useState(false);
-  const [organizationChange, setOrganization] = useState(false);
+  const [organizationChange, setOrganizationChange] = useState(false);
   const [organization, setOrganizationValue] = useState({});
   const [showOrganization, setShowOrganization] = useState(true);
   const [initialLoading, setInitialLoading] = useState(true);
-  const [isSignedUser, setIsSignedUser] = useState(false);
-  const [isShow, setIsShow] = useState(false);
   const [allOrganization, setAllOrganization] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(true);
-  const [isCreateNewCredential, setIsCreateNewCredential] = useState(false)
+  const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
+  const [isDeveloperAccess, setIsDeveloperAccess] = useState(false)
 
   let getCredentialData = {};
   React.Children.forEach(children, (child) => {
@@ -71,31 +101,29 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
     }
     setTimeout(() => {
       getValueFromLocalStorage()
-    }, [2500])
+    }, [1000])
   }, []);
 
-  useEffect(() => {
-    if (isSignedUser) {
-      if (organization) {
-        if (Object?.keys(organization)?.length) {
+  useEffect(async () => {
+    if (window.adobeIMS?.isSignedInUser()) {
+      if (Object?.keys(organization)?.length) {
+        setIsDeveloperAccess(true)
+        setInitialLoading(false)
+      }
+      else {
+        if (initialLoading) {
           setInitialLoading(false)
-        }
-        else {
-          setInitialLoading(true)
+          setIsDeveloperAccess(false)
         }
       }
     }
     else {
       setTimeout(() => {
         setInitialLoading(false)
-      }, [2500])
+      }, [3000])
     }
 
-  }, [isSignedUser, organization])
-
-  useEffect(() => {
-    setIsSignedUser(window.adobeIMS?.isSignedInUser() ? true : false)
-  }, [window.adobeIMS?.isSignedInUser()])
+  }, [organization, initialLoading])
 
   useEffect(() => {
 
@@ -113,12 +141,16 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
   }, [isPrevious, isCreateNewCredential])
 
+  useState(() => {
+    setTimeout(() => { setOrganizationChange(false) })
+  }, [organizationChange])
+
   return (
     <>
       {
         isBrowser &&
         <ErrorBoundary errorMessage={getCredentialData?.[IllustratedMessage]}>
-          <Provider theme={defaultTheme} colorScheme="light" height="100%" >
+          <Provider theme={defaultTheme} colorScheme="light" >
             <section
               id="adobe-get-credential"
               className={classNames(className)}
@@ -150,14 +182,23 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
               `}
               >
                 {initialLoading ? <Loading /> :
-                  !window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> :
-                    isPrevious && !showCreateForm && !isCreateNewCredential ?
-                      <PreviousCredential returnProps={getCredentialData} setIsPrevious={setIsPrevious} showOrganization={showOrganization} setOrganizationValue={setOrganizationValue} organizationChange={organizationChange} setOrganization={setOrganization} alertShow={alertShow} setAlertShow={setAlertShow} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} modalOpen={modalOpen} setModalOpen={setModalOpen} organization={organization} isShow={isShow} setIsShow={setIsShow} allOrganization={allOrganization} setIsCreateNewCredential={setIsCreateNewCredential} /> :
 
-                      <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} modalOpen={modalOpen} setModalOpen={setModalOpen} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} alertShow={alertShow} setAlertShow={setAlertShow} organizationChange={organizationChange} setOrganization={setOrganization} organization={organization} setOrganizationValue={setOrganizationValue} showOrganization={showOrganization} setShowOrganization={setShowOrganization} isShow={isShow} setIsShow={setIsShow} allOrganization={allOrganization} isPrevious={isPrevious} showCreateForm={showCreateForm} setShowCreateForm={setShowCreateForm} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
+                  !window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> :
+
+                    !isDeveloperAccess ? <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} /> :
+
+                      isPrevious && !showCreateForm && !isCreateNewCredential && !redirectToBeta ?
+
+                        <PreviousCredential returnProps={getCredentialData} setIsPrevious={setIsPrevious} showOrganization={showOrganization} setOrganizationValue={setOrganizationValue} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organization={organization} allOrganization={allOrganization} setIsCreateNewCredential={setIsCreateNewCredential} /> :
+
+                        <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} organization={organization} setOrganizationValue={setOrganizationValue} showOrganization={showOrganization} setShowOrganization={setShowOrganization} allOrganization={allOrganization} isPrevious={isPrevious} showCreateForm={showCreateForm} setShowCreateForm={setShowCreateForm} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
                 }
+
+                {/* {redirectToBeta && <JoinBetaProgram joinBeta={getCredentialData?.[JoinBetaProgram]} />} */}
+
               </div>
             </section>
+            {organizationChange && <Toast message="Organization Changed" variant="success" disable={8000} />}
           </Provider>
         </ErrorBoundary>
       }

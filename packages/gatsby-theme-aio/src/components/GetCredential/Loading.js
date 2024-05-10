@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { css } from "@emotion/react";
+import { ProgressCircle } from '@adobe/react-spectrum';
 
 const Loading = ({
   credentials,
@@ -27,21 +28,7 @@ const Loading = ({
           flex-direction:column;
           gap:10px;
         `}>
-        <div className="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--large">
-          <div className="spectrum-ProgressCircle-track"></div>
-          <div className="spectrum-ProgressCircle-fills">
-            <div className="spectrum-ProgressCircle-fillMask1">
-              <div className="spectrum-ProgressCircle-fillSubMask1">
-                <div className="spectrum-ProgressCircle-fill"></div>
-              </div>
-            </div>
-            <div className="spectrum-ProgressCircle-fillMask2">
-              <div className="spectrum-ProgressCircle-fillSubMask2">
-                <div className="spectrum-ProgressCircle-fill"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
         <div ref={divRef}
           css={css`
             font-style: italic;

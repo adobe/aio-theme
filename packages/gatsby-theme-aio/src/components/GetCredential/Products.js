@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { css } from "@emotion/react";
 import { Popover } from '../Popover';
-import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-import CustomPopover from './CustomPopover';
+import { ActionButton, Item, Menu, MenuTrigger, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
 const Products = ({ products, product }) => {
 
@@ -74,7 +73,31 @@ const CardProducts = ({ products, product }) => {
       `}
     >
       <CardProduct productList={product} />
-      <CustomPopover productList={product} />
+      <div
+        css={css`
+        & > button , & > button : active {
+          border:none;
+          background:transparent !important;
+        }`}
+      >
+        <MenuTrigger>
+          <ActionButton>
+            <div
+              aria-expanded={true}
+              css={css`
+              text-decoration-color: blue;
+              text-decoration : underline;
+              color: blue;  
+              display: "inline-block";
+              cursor:pointer;
+            `
+              }>+{product.length - 2} more</div>
+          </ActionButton>
+          <Menu items={product}>
+            {item => <Item key={item.label}>{item.label}</Item>}
+          </Menu>
+        </MenuTrigger>
+      </div>
     </div>
   )
 }

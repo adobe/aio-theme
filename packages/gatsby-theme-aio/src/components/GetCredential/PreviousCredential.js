@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import classNames from "classnames";
 import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { PreviousProject, ReturnClientDetails, ReturnProducts } from './PreviousProject';
+import { PreviousProject, ReturnClientDetails } from './PreviousProject';
 import { Organization } from './Organization';
 import { CredentialForm } from './CredentialForm';
+import { RetunrSideComp } from './Return/RetunrSideComp';
+import { ReturnProducts } from './Return/ReturnProducts';
+import { ReturnCustomComp } from './Return/ReturnCustomComp';
+import { ReturnNewCredential } from './Return/ReturnNewCredential';
+
 const PreviousCredential = ({
   returnProps,
   showOrganization,
   setOrganizationValue,
   organization,
-  setIsShow,
-  isShow,
   allOrganization,
-  setIsCreateNewCredential
+  setIsCreateNewCredential,
+  setOrganizationChange
 }) => {
 
+  const [isShow, setIsShow] = useState(false);
   const credentialHeader = returnProps[CredentialForm];
 
   const returnFields = {};
@@ -82,9 +87,9 @@ const PreviousCredential = ({
               onClick={() => setIsShow(true)}
               css={css`color:var(--spectrum-global-color-gray-800);display : inline-flex`}
             >
-              You’re viewing in [<b>{organization?.name}</b>].
+              You’re viewing in {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
               {showOrganization &&
-                <Organization isShow={isShow} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
+                <Organization setOrganizationChange={setOrganizationChange} isShow={isShow} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
               }
             </p>
           </div>
@@ -114,7 +119,7 @@ const PreviousCredential = ({
 
               `}
           >
-            {retunrSideComp && <RetunrSideComp returnNewCredential={returnNewCredential} returnCustomComp={returnCustomComp} setIsCreateNewCredential={setIsCreateNewCredential} />}
+            {retunrSideComp && <RetunrSideComp retunrSideComp={retunrSideComp} returnNewCredential={returnNewCredential} returnCustomComp={returnCustomComp} setIsCreateNewCredential={setIsCreateNewCredential} />}
           </div>
 
           <div
@@ -137,51 +142,4 @@ const PreviousCredential = ({
   )
 };
 
-const RetunrSideComp = ({ setIsCreateNewCredential, returnNewCredential, returnCustomComp }) => {
-  return (
-    <>
-      <div
-        css={css`
-          display:flex;
-          gap:30px;
-          flex-direction:column;
-          width: 100%;
-        `}
-      >
-        <ReturnCustomComp returnCustomComp={returnCustomComp} />
-        <ReturnNewCredential returnNewCredential={returnNewCredential} setIsCreateNewCredential={setIsCreateNewCredential} />
-      </div>
-    </>
-  )
-}
-
-const ReturnCustomComp = ({ returnCustomComp }) => <>{returnCustomComp?.children}</>;
-
-const ReturnNewCredential = ({ returnNewCredential, setIsCreateNewCredential }) => {
-  return (
-    <div
-      css={css`
-        display:flex;
-        gap:16px;
-        flex-direction:column;
-        width: 100%;
-      `}
-    >
-      <h3 className='spectrum-Heading spectrum-Heading--sizeM'>{returnNewCredential?.heading}</h3>
-      <button className="spectrum-Button spectrum-Button--fill spectrum-Button--primary spectrum-Button--sizeM"
-        onClick={() => setIsCreateNewCredential(true)}
-        css={css`
-          width : 180px;
-          height : 32px;
-        `}
-      >
-        <span className="spectrum-Button-label">{returnNewCredential?.buttonLabel}</span>
-      </button>
-
-    </div>
-  )
-}
-
-const ReturnCredentialDetails = () => { }
-
-export { PreviousCredential, ReturnCustomComp, ReturnNewCredential, RetunrSideComp, ReturnCredentialDetails };
+export { PreviousCredential };

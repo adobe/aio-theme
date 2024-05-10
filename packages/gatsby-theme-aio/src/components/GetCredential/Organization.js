@@ -1,38 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
-import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, MIN_TABLET_SCREEB_WIDTH } from './FormFields';
-import { Popover } from '../Popover';
 import { Picker } from '../Picker';
+import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, MIN_TABLET_SCREEB_WIDTH } from './FormFields';
+import { ActionButton, Button, ButtonGroup, Content, Dialog, DialogTrigger, Divider, Heading } from '@adobe/react-spectrum';
 import { Loading } from './Loading';
 
 const Organization = ({
-  isShow,
+  setOrganizationChange,
   setOrganizationValue,
-  setIsShow,
   allOrganization
 }) => {
 
   const [selectedIndex, setSelectedIndex] = useState();
-  const [isModalOpen, setIsModelOpen] = useState(true);
 
-  const organizationRef = useRef();
-  const organizationRef2 = useRef();
-
-  const handleClickOutside = (e) => {
-    if (organizationRef2.current && !organizationRef.current.contains(e.target)) {
-      setIsShow(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  const getValueFromLocalStorage = async () => {
+  const getValueFromLocalStorage = () => {
 
     let organizationObj = JSON.parse(localStorage.getItem("OrgInfo"))
     allOrganization?.forEach((org, index) => {
@@ -58,95 +40,39 @@ const Organization = ({
   }, [selectedIndex])
 
   useEffect(() => {
-    setTimeout(() => {
-      getValueFromLocalStorage()
-    }, [2000])
-  }, [])
+    getValueFromLocalStorage()
+  }, [allOrganization])
 
-
-  const handleClick = (action) => {
-    if (action === "save") {
-      allOrganization?.forEach((organs, index) => {
-        if (index === selectedIndex) {
-          setOrganizationValue(organs)
-        }
-      })
-    }
-    setIsModelOpen(false)
+  const handleClick = (close) => {
+    allOrganization?.forEach((organs, index) => {
+      if (index === selectedIndex) {
+        setOrganizationValue(organs)
+      }
+    })
+    setOrganizationChange(true)
+    close()
   }
 
   return (
-    <>
-      <div
-        ref={organizationRef2}
-      >
-        <div
-          ref={organizationRef}
-          aria-label="credentialProject"
-          aria-controls="credentialProject"
-          aria-expanded={isShow}
-          css={css`
-            text-decoration-color: blue;
-            text-decoration : underline;
-            color: blue;  
-            display: "inline-block";
-            cursor:pointer;
-          `
-          }>
-          <button
-            tabIndex="0"
-            css={css`
-              border: none;
-              padding:0;
-              font-family:'adobe-clean';
-              background: transparent;
-              margin-left :10px;
-              text-decoration:underline;
-              color: var(--spectrum-global-color-gray-800);
-              position : relative;
-              cursor:pointer;`
-            }
-            onClick={() => { setIsModelOpen(true) }}
-          >
-            Change organization?
-          </button>
-        </div>
-      </div>
-      <Popover
-        id="credentialProject"
-        isOpen={isShow}
-        css={css`
-          width: var(--spectrum-global-dimension-size-6000);
-          max-height: var(--spectrum-global-dimension-size-6000);
-          height: var(--spectrum-global-dimension-size-4600);
-          margin-top: 20px;
-          right: 50%;
-        `}>
-        <div
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-          `}
-          onClick={isModalOpen ? (event) => event.stopPropagation() : () => { }}
-        >
-          <div
-            css={css`
-              padding : 40px;
-              cursor : pointer;
-              
-              .spectrum-Dialog-content{
-                overflow : hidden !important;
-              }
-
-            `}
-          >
-            {allOrganization?.length ?
-              <div className="spectrum-Dialog-grid">
-                <h1 className="spectrum-Dialog-heading spectrum-Dialog-heading--noHeader">Change organization</h1>
-                <hr className="spectrum-Divider spectrum-Divider--sizeM spectrum-Divider--horizontal spectrum-Dialog-divider" />
-                <section className="spectrum-Dialog-content">
+    <div css={css`
+      & > .changeOrg{
+        border: none;
+        background: transparent;
+        padding: 0;
+        height: fit-content;
+        text-decoration: underline;
+        cursor : pointer;
+      }
+    `}>
+      <DialogTrigger type="popover" mobileType="tray">
+        <ActionButton UNSAFE_className='changeOrg'>Change Organization</ActionButton>
+        {(close) => (
+          <Dialog size="M">
+            <Heading>Change organization</Heading>
+            <Divider />
+            <Content>
+              {allOrganization?.length ?
+                <section className="spectrum-Dialog-content" css={css`overflow:hidden`}>
                   <div
                     css={css`
                       display:flex;
@@ -170,11 +96,26 @@ const Organization = ({
                       </div>
 
                       <div
+                        className='organization'
                         css={css`
                         
                           & > div > .spectrum-Picker {
                             width: 100% !important;
                             height: 20px;
+                          }
+
+                          & > div > .spectrum-Picker > span {
+                            white-space : nowrap !important;
+                          }
+
+                          & > div > .spectrum-Picker > svg {
+                            position: absolute !important;
+                            top: 80px !important;
+                            left: 150px !important;
+                          }
+
+                          & > div > .spectrum-Picker > svg > path:first-of-type {
+                            display : none !important;
                           }
 
                           & > div > div {
@@ -203,6 +144,10 @@ const Organization = ({
                               margin: 3px;
                               padding: 0;
                             }
+                          }
+
+                          & > div > .spectrum-Picker-popover > ul > li > div > div > svg > path:first-of-type {
+                            display : none !important;
                           }
 
                             padding: 5px;
@@ -245,27 +190,23 @@ const Organization = ({
                       >Learn more about organizations.</a>
                     </div>
 
-                    <div className="spectrum-ButtonGroup spectrum-Dialog-buttonGroup spectrum-Dialog-buttonGroup--noFooter" css={css` gap: 20px; `} >
-                      <button className="spectrum-Button spectrum-Button--sizeM spectrum-Button--outline spectrum-Button--secondary spectrum-ButtonGroup-item" type="button" onClick={() => { handleClick("cancel") }}>
-                        <span className="spectrum-Button-label">Cancel</span>
-                      </button>
-                      <button className="spectrum-Button spectrum-Button--sizeM spectrum-Button--fill spectrum-Button--accent spectrum-ButtonGroup-item" type="button" onClick={() => { handleClick("save") }}>
-                        <span className="spectrum-Button-label" >Save</span>
-                      </button>
-                    </div>
+                    <ButtonGroup alignSelf="end">
+                      <Button variant="secondary" onPress={close}>Cancel</Button>
+                      <Button autoFocus variant="accent" onPress={() => handleClick(close)} >Save</Button>
+                    </ButtonGroup>
+
                   </div>
 
                 </section>
+                :
+                <Loading />
+              }
+            </Content>
+          </Dialog>
+        )}
+      </DialogTrigger>
 
-              </div>
-              :
-              <Loading />
-            }
-          </div>
-        </div>
-      </Popover>
-
-    </>
+    </div>
   )
 }
 

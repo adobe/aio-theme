@@ -1,16 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
-import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import classNames from "classnames";
+import '@spectrum-css/contextualhelp/dist/index-vars.css';
+import { Toast } from '../Toast';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { SideCredential } from './Form/SideCredential';
+import { CredentialName } from './Form/CredentialName';
+import { AllowedOrigins } from './Form/AllowedOrigins';
+import { Downloads } from './Form/Downloads';
+import { Download } from './Form/Download';
+import { SideContent } from './Form/SideContent';
+import { AdobeDeveloperConsole } from './Form/AdobeDeveloperConsole';
+import { CreateCredential } from './Form/CreateCredential';
 import { MyCredential } from './MyCredential';
 import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, FormFields, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { ContextHelp } from './ContextHelp';
-import { Toast } from '../Toast';
 import { NoDeveloperAccessError } from './NoDeveloperAccessError';
-import Context from '../Context';
 import { Product, Products } from './Products';
 import { Organization } from './Organization';
 
@@ -24,13 +30,7 @@ const CredentialForm = ({
   organization,
   setOrganizationValue,
   organizationChange,
-  setOrganization,
-  alertShow,
-  setAlertShow,
-  redirectToBeta,
-  isShow,
-  setIsShow,
-  setRedirectBetaProgram,
+  setOrganizationChange,
   allOrganization,
   showCreateForm,
   setShowCreateForm,
@@ -46,9 +46,11 @@ const CredentialForm = ({
   const [formField, setFormField] = useState([]);
   const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
-  const [emailID, setEmailID] = useState('');
 
-  const { ims } = useContext(Context);
+  const [isShow, setIsShow] = useState(false);
+  const [alertShow, setAlertShow] = useState(false);
+
+
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
@@ -105,7 +107,7 @@ const CredentialForm = ({
 
   useEffect(() => {
     setTimeout(() => {
-      setOrganization(false);
+      setOrganizationChange(false);
     }, 8000);
   }, [organizationChange])
 
@@ -170,14 +172,7 @@ const CredentialForm = ({
     setIsValid(isValid);
   }, [formData]);
 
-  useEffect(() => {
-    (async () => {
-      if (ims && ims.isSignedInUser()) {
-        const profile = await ims.getProfile();
-        setEmailID(profile?.email);
-      }
-    })();
-  }, [ims])
+
 
   const handleChange = (e, type) => {
     const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
@@ -249,7 +244,7 @@ const CredentialForm = ({
 
   return (
     <>
-      {!redirectToBeta && showCreateForm && !loading && organization &&
+      {showCreateForm && !loading && organization &&
         <div
           className={classNames(credentialForm?.className)}
           css={css`
@@ -293,7 +288,7 @@ const CredentialForm = ({
                 onClick={() => setIsShow(true)}
               >
                 You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
-                <Organization isShow={isShow} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
+                <Organization isShow={isShow} setOrganizationChange={setOrganizationChange} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
               </p>
             </div>
           </div>
@@ -361,200 +356,8 @@ const CredentialForm = ({
       {(!organization || isError) && loading && <Loading />}
       {isError && !showCreateForm && !showCredential && !organization && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} organization={organization} />}
-      {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.[JoinBetaProgram]} />}
-      {!showCreateForm && !organization && !isError && !loading && <NoDeveloperAccessError developerAccessError={formProps?.[NoDeveloperAccessError]} title={credentialForm?.title} emailID={emailID} />}
     </>
   )
 }
 
-const SideCredential = ({ side }) => (side);
-
-const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
-  const inValidName = !credentialNameRegex.test(formData['CredentialName'])
-  const isRed = formData["CredentialName"]?.length !== 0 && inValidName;
-  return (
-    <FormFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
-      <div css={css`position:relative; display:inline-block; width: 100%`}>
-        <input
-          type="text"
-          css={css`
-            padding: 7px;
-            border-radius: 3px;
-            width: 97%;
-            border: 1px solid ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
-             &::placeholder {
-               font-style: italic; 
-               color: var(--spectrum-global-color-gray-400); 
-              }
-             &:focus {
-              outline: none;
-              border-color: ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
-            }
-          `}
-          value={formData["CredentialName"]}
-          onChange={(e) => handleChange(e, "CredentialName")}
-          placeholder={nameProps?.placeholder}
-          maxLength={nameProps?.range}
-        />
-        <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
-      </div>
-    </FormFields>
-  )
-}
-
-const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange }) => {
-
-  const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
-  const isAllowedOriginsValid = validateAllowedOrigins?.every((value) => value === true);
-  const isRed = formData["AllowedOrigins"] !== undefined && !isAllowedOriginsValid && formData["AllowedOrigins"]?.length !== 0;
-
-  return (
-    <FormFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >
-      <textarea
-        css={css`
-          flex: 1;
-          padding: 7px;
-          height: 50px;
-          border-radius: 3px;
-          border: 1px solid ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
-          resize: none; 
-          width: 90%;
-          color: #4b4b4b;
-          font-family: adobe-clean, Helvetica, Arial, sans-serif;
-          &::placeholder {
-            color:var(--spectrum-global-color-gray-600);
-            font-style: italic;
-          }
-          &:focus {
-            outline: none;
-            border-color: ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
-          }
-          &:hover {
-            &::placeholder {
-              color:var(--spectrum-global-color-gray-800);
-            }
-          }
-        `}
-        value={formData["AllowedOrigins"]}
-        placeholder={originsProps?.placeholder}
-        onChange={(e) => handleChange(e, "AllowedOrigins")}
-      ></textarea>
-    </FormFields>
-  )
-}
-
-const Downloads = ({ downloadsProp, handleChange, formData }) => {
-  const { label, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading } = downloadsProp;
-
-  return (
-    <div css={css` display: flex;gap: 10px;align-items: center;`}>
-      <input type="checkbox" css={css`accent-color: #5b5a5a;transform: scale(1.1);`} onChange={(e) => handleChange(e, "Downloads")} checked={formData['Downloads']} />
-      <p css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));margin:0;`} > {label} </p>
-      <div css={css`cursor:pointer;display: flex;justify-content: center;align-items: center;`}>
-        {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
-      </div>
-    </div>
-  )
-}
-
-const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
-  return (
-    <>
-      {
-        downloadProp?.selectOptions?.length > 1 &&
-        <FormFields isFormValue={isFormValue} fields={downloadProp}>
-          <select
-            css={css`
-              font-style: italic;
-              font-weight: 500;
-              font-family: 'adobe-clean';
-              padding: 7px;
-              border-radius: 3px;
-              border: 1px solid #D0D0D0 !important;
-              width:100%;
-            `}
-            id="selectBox"
-            value={formData['Download']}
-            onChange={(e) => handleChange(e, "Download")}
-          >
-            {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
-            {downloadProp?.selectOptions?.map((option, index) => (
-              <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
-            ))}
-          </select>
-        </FormFields>
-      }
-    </>
-
-  )
-}
-
-const SideContent = ({ sideContent, SideComp }) => {
-  return (
-    <>
-      <div
-        css={css`
-          width: 2px; 
-          background-color: #D0D0D0; 
-
-          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-            display:none;
-          }
-
-        `}
-      />
-      <div
-        css={css`
-          width:50%;
- 
-          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-            width:100%;
-          }
-
-        `}>
-        <SideComp side={sideContent} />
-      </div>
-    </>
-  )
-}
-
-const AdobeDeveloperConsole = ({ formData, handleChange, adobeDeveloperConsole }) => {
-  return (
-    <div css={css`display: flex; gap: 10px;`}>
-      <input type="checkbox" css={css`accent-color: #5b5a5a;transform: scale(1.1);`} checked={formData['Agree']} onChange={(e) => handleChange(e, 'Agree')} />
-      <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;display:inline-flex;gap:5px;`} >{adobeDeveloperConsole?.label}
-        <a
-          href={adobeDeveloperConsole?.href}
-          css={css`
-            color:rgb(0, 84, 182);
-            &:hover {adobeDeveloperConsole
-              color: rgb(2, 101, 220);
-            }
-          `}
-          target="_blank" rel="noreferrer">{adobeDeveloperConsole?.linkText}</a>.
-      </p>
-    </div>
-  )
-}
-
-const CreateCredential = ({ createCredential, isValid, setIsCreateNewCredential, isCreateNewCredential }) => {
-  return (
-    <div css={
-      css`
-        display : flex;
-        gap:16px;
-        align-items : center;
-      `
-    }>
-      <button
-        id="credentialButton"
-        className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
-        css={css`width:fit-content;`} onClick={createCredential} disabled={!isValid} >
-        <span className="spectrum-Button-label">Create credential</span>
-      </button>
-      {isCreateNewCredential && <p css={css`text-decoration : underline;margin:0; cursor : pointer;`} onClick={() => setIsCreateNewCredential(false)}>Cancel</p>}
-    </div>
-  )
-}
-
-export { CredentialForm, SideCredential, CredentialName, AllowedOrigins, Downloads, Download, SideContent, AdobeDeveloperConsole };
+export { CredentialForm };

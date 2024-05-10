@@ -1,15 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Context from '../Context';
 import { css } from "@emotion/react";
 
 
-const NoDeveloperAccessError = ({ developerAccessError, title, emailID }) => {
+const NoDeveloperAccessError = ({ developerAccessError }) => {
 
   const { ims } = useContext(Context);
 
+  const [emailID, setEmailID] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      if (ims && ims.isSignedInUser()) {
+        const profile = await ims.getProfile();
+        setEmailID(profile?.email);
+      }
+    })();
+  }, [ims])
+
   return (
     <>
-      {title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{title}</h3>}
+      {developerAccessError?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{developerAccessError?.title}</h3>}
       <p
         className="spectrum-Body spectrum-Body--sizeL">
         To create credentials, you need developer role permissions for the [<b>Adobe Express Embed SDK</b>].
