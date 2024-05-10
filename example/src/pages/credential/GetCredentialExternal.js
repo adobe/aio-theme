@@ -64,7 +64,7 @@ const GetCredentialExternal = () => {
           <GetCredential.Card.Product label="Firefly - Firefly and Creative Cloud Automation API" icon={firefly} />
           <GetCredential.Card.Product label="Adobe Photoshop API" icon={ps} />
           <GetCredential.Card.Product label="Adobe Analytics" />
-          {/* <GetCredential.Card.Product label="Lughtgroom" /> */}
+          <GetCredential.Card.Product label="Lughtgroom" />
         </GetCredential.Card.Products>
 
         <GetCredential.Card.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
@@ -78,7 +78,7 @@ const GetCredentialExternal = () => {
         <GetCredential.Card.CredentialDetails heading="Credential details">
           {/* <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" /> */}
           {/* <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" /> */}
-          {/* <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" /> */}
+          <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
           <GetCredential.Card.CredentialDetails.AllowedOrigins heading="Allowed Domains" />
@@ -123,6 +123,8 @@ const GetCredentialExternal = () => {
         </GetCredential.Return.Products>
 
       </GetCredential.Return>
+
+      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="" docsLink="" />
 
     </GetCredential>
 
