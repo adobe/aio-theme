@@ -54,7 +54,6 @@ import GetCredentialContext from './GetCredentialContext';
 const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
   const [isPrevious, setIsPrevious] = useState(false);
-  const [redirectToBeta, setRedirectBetaProgram] = useState(false);
   const [selectedOrganization, setOrganization] = useState({});
   const [loading, setLoading] = useState(true);
   const [allOrganizations, setAllOrganizations] = useState([]);
@@ -178,7 +177,7 @@ const GetCredential = ({ templateId, children, className }) => {
       return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
     }
 
-    if (isPrevious && !showCreateForm && !isCreateNewCredential && !redirectToBeta) {
+    if (isPrevious && !showCreateForm && !isCreateNewCredential) {
       return <PreviousCredential
         returnProps={getCredentialData}
         setIsCreateNewCredential={setIsCreateNewCredential} />
@@ -187,8 +186,6 @@ const GetCredential = ({ templateId, children, className }) => {
     return <GetCredential.Form
       formProps={getCredentialData}
       template={template}
-      redirectToBeta={redirectToBeta}
-      setRedirectBetaProgram={setRedirectBetaProgram}
       isPrevious={isPrevious}
       showCreateForm={showCreateForm}
       setShowCreateForm={setShowCreateForm}
@@ -242,11 +239,8 @@ const GetCredential = ({ templateId, children, className }) => {
               >
                 {render()}
 
-                {/* {redirectToBeta && <JoinBetaProgram joinBeta={getCredentialData?.[JoinBetaProgram]} />} */}
-
               </div>
             </section>
-            {/* {organizationChange && <Toast message="Organization Changed" variant="success" disable={8000} />} */}
             </GetCredentialContext.Provider>
           </Provider>
         </ErrorBoundary>
