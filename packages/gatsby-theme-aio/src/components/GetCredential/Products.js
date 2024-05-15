@@ -107,7 +107,7 @@ const CommonProduct = ({ productList }) => {
   const buttonRef = useRef();
 
   const handleClickOutside = e => {
-    if (buttonRef.current.contains(e.target)) setIsOpen(!isOpen);
+    if (buttonRef.current?.contains(e.target)) setIsOpen(!isOpen);
     else setIsOpen(false);
   };
 
@@ -138,7 +138,7 @@ const CommonProduct = ({ productList }) => {
           )
       })}
 
-      <div
+      {productList?.length > 3 && <div
         css={css`
             display : flex;
             align-items : center;
@@ -162,7 +162,7 @@ const CommonProduct = ({ productList }) => {
                 display: "inline-block";
                 cursor:pointer;
               `
-            }>+{productList?.length - 2} more</div>
+            }>+{productList?.length - 3} more</div>
         </label>
 
         <Popover
@@ -194,7 +194,7 @@ const CommonProduct = ({ productList }) => {
           </div>
         </Popover>
 
-      </div>
+      </div>}
     </>
   )
 }
