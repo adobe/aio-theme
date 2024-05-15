@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.13...@adobe/gatsby-theme-aio@4.11.14) (2024-05-14)
+
+### Fix
+* Update community forums link on footer [0bcfd4a](https://github.com/adobe/aio-theme/commit/0bcfd4abccfd0744550412f0ffacd86d7d0ab3a3)
+
 ## [4.11.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.12...@adobe/gatsby-theme-aio@4.11.13) (2024-04-22)
 
 ### Fix
