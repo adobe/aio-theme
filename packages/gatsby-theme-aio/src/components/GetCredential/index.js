@@ -47,6 +47,11 @@ import { MyCredential } from './MyCredential';
 import { AccessToken } from './Card/AccessToken';
 import { DevConsoleLink } from './Card/DevConsoleLink';
 import { MyCredentialSide } from './Card/MyCredentialSide';
+import { RequestAccess } from "./RequestAccess/RequestAccess"
+import { RestrictedAccess } from './RequestAccess/RestrictedAccessFields';
+import { RestrictedAccessProducts } from './RequestAccess/RestrictedAccessProducts';
+import { RestrictedAccessProduct } from './RequestAccess/RestrictedAccessProduct';
+import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
 import { Toast } from '../Toast';
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
@@ -135,7 +140,7 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsPrevious(false)
     }
     if (!isLoadingIms) {
-      if (window.adobeIMS.isSignedInUser()) {
+      if (window?.adobeIMS?.isSignedInUser()) {
         initialize();
       }
       else {
@@ -160,7 +165,7 @@ const GetCredential = ({ templateId, children, className }) => {
   }, [isPrevious, isCreateNewCredential])
 
   const render = () => {
-    if(!templateId || isError) {
+    if (!templateId || isError) {
       return <IllustratedMessage />
     }
 
@@ -168,7 +173,7 @@ const GetCredential = ({ templateId, children, className }) => {
       return <Loading />
     }
 
-    if (!window.adobeIMS.isSignedInUser()) {
+    if (!window?.adobeIMS?.isSignedInUser()) {
       return <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} />
     }
 
@@ -177,20 +182,23 @@ const GetCredential = ({ templateId, children, className }) => {
       return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
     }
 
-    if (isPrevious && !showCreateForm && !isCreateNewCredential) {
-      return <PreviousCredential
-        returnProps={getCredentialData}
-        setIsCreateNewCredential={setIsCreateNewCredential} />
-    }
 
-    return <GetCredential.Form
-      formProps={getCredentialData}
-      template={template}
-      isPrevious={isPrevious}
-      showCreateForm={showCreateForm}
-      setShowCreateForm={setShowCreateForm}
-      setIsCreateNewCredential={setIsCreateNewCredential}
-      isCreateNewCredential={isCreateNewCredential} />
+    return <RequestAccess allProps={getCredentialData} />
+
+    // if (isPrevious && !showCreateForm && !isCreateNewCredential) {
+    //   return <PreviousCredential
+    //     returnProps={getCredentialData}
+    //     setIsCreateNewCredential={setIsCreateNewCredential} />
+    // }
+
+    // return <GetCredential.Form
+    //   formProps={getCredentialData}
+    //   template={template}
+    //   isPrevious={isPrevious}
+    //   showCreateForm={showCreateForm}
+    //   setShowCreateForm={setShowCreateForm}
+    //   setIsCreateNewCredential={setIsCreateNewCredential}
+    //   isCreateNewCredential={isCreateNewCredential} />
   }
 
   return (
@@ -207,10 +215,10 @@ const GetCredential = ({ templateId, children, className }) => {
                 template
               }}
             >
-            <section
-              id="adobe-get-credential"
-              className={classNames(className)}
-              css={css`
+              <section
+                id="adobe-get-credential"
+                className={classNames(className)}
+                css={css`
                 background: #f8f8f8;
                 padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
                          
@@ -218,11 +226,11 @@ const GetCredential = ({ templateId, children, className }) => {
                   padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
                 }
               `
-              }
-            >
-              <title>Get Credentials</title>
-              <div
-                css={css`
+                }
+              >
+                <title>Get Credentials</title>
+                <div
+                  css={css`
                 width: calc(7 * 100% / 9);
                 margin: auto;
                 display: flex;
@@ -236,11 +244,11 @@ const GetCredential = ({ templateId, children, className }) => {
                 }
 
               `}
-              >
-                {render()}
+                >
+                  {render()}
 
-              </div>
-            </section>
+                </div>
+              </section>
             </GetCredentialContext.Provider>
           </Provider>
         </ErrorBoundary>
@@ -298,5 +306,10 @@ GetCredential.Return.CredentialDetails.OrganizationName = ReturnOrganizationName
 GetCredential.Return.CredentialDetails.Scopes = ReturnScopes;
 GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
+GetCredential.RequestAccess = RequestAccess;
+GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = RestrictedAccessProducts;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = RestrictedAccessProduct;
+GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
 
 export { GetCredential };
