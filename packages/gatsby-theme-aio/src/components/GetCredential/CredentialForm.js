@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
@@ -15,23 +15,15 @@ import { CreateCredential } from './Form/CreateCredential';
 import { MyCredential } from './MyCredential';
 import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
-import { JoinBetaProgram } from './JoinBetaProgram';
-import { NoDeveloperAccessError } from './NoDeveloperAccessError';
 import { Product, Products } from './Products';
 import { Organization } from './Organization';
+import GetCredentialContext from './GetCredentialContext';
 
 const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
 const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
 const CredentialForm = ({
   formProps,
-  credentialType,
-  service,
-  organization,
-  setOrganizationValue,
-  organizationChange,
-  setOrganizationChange,
-  allOrganization,
   showCreateForm,
   setShowCreateForm,
   isCreateNewCredential,
@@ -50,17 +42,12 @@ const CredentialForm = ({
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
 
+  const { selectedOrganization, template } = useContext(GetCredentialContext);
+
 
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
-
-  const getValueFromLocalStorage = async () => {
-    if (!allOrganization) {
-      setOrganizationValue({});
-      setShowCreateForm(false)
-    }
-  }
 
   const initialLoad = () => {
     const fields = {};
@@ -90,7 +77,6 @@ const CredentialForm = ({
     }
 
     setFormField(fields);
-    getValueFromLocalStorage();
 
   }
 
@@ -104,12 +90,6 @@ const CredentialForm = ({
       setLoading(true)
     }
   }, [window.adobeIMS?.isSignedInUser()])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setOrganizationChange(false);
-    }, 8000);
-  }, [organizationChange])
 
   useEffect(() => {
     if (showCreateForm) setIsError(false);
@@ -127,28 +107,6 @@ const CredentialForm = ({
   }, [showCredential])
 
   useEffect(() => { initialLoad(); }, []);
-
-  useEffect(() => {
-    if (!organization) {
-      setOrganizationValue(undefined);
-      setShowCreateForm(false);
-      setLoading(true);
-    }
-    else if (organization && Object.keys(organization)?.length !== 0) {
-      setShowCreateForm(true)
-      setIsError(true)
-      setTimeout(() => {
-        setLoading(false)
-        setIsError(false)
-      }, 2000)
-    }
-    else {
-      if (Object.keys(organization)?.length === 0) {
-        setOrganizationValue(undefined);
-        setShowCreateForm(false);
-      }
-    }
-  }, [organization])
 
   useEffect(() => {
     if (isError) {
@@ -195,16 +153,26 @@ const CredentialForm = ({
     setLoading(true);
     setShowCreateForm(false);
 
+    const apis = template.apis.map(api => ({
+      code: api.code,
+      credentialType: api.credentialType,
+      flowType: api.flowType,
+      licenseConfigs: Array.isArray(api.licenseConfigs) && api.licenseConfigs.length > 0 ? [{...api.licenseConfigs[0], 'op': 'add'}] : null
+    }));
+
     const data = {
-      name: formData["CredentialName"],
-      platform: credentialType,
+      projectName: formData["CredentialName"],
       description: 'created for get credential',
-      domain: formData["AllowedOrigins"],
-      services: [{ sdkCode: service }],
+      metadata: {
+        domain: formData["AllowedOrigins"]
+      },
+      orgId: selectedOrganization.code,
+      apis
     };
 
     try {
-      const response = await fetch(`/console/api/organizations/${organization?.id}/integrations/adobeid`, {
+      const url = `/v1/templates/templates-install?templateId=${template.id}`
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -216,7 +184,7 @@ const CredentialForm = ({
 
       const resResp = await response.json();
 
-      if (response.status === 200) {
+      if (response.ok) {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
@@ -244,7 +212,7 @@ const CredentialForm = ({
 
   return (
     <>
-      {showCreateForm && !loading && organization &&
+      {showCreateForm && !loading &&
         <div
           className={classNames(credentialForm?.className)}
           css={css`
@@ -287,8 +255,8 @@ const CredentialForm = ({
                 css={css`color:var(--spectrum-global-color-gray-800);display : inline-flex;`}
                 onClick={() => setIsShow(true)}
               >
-                You're creating this credential in  {organization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{organization?.name}</b>] </span>}.
-                <Organization isShow={isShow} setOrganizationChange={setOrganizationChange} setOrganizationValue={setOrganizationValue} setIsShow={setIsShow} organization={organization} allOrganization={allOrganization} />
+                You're creating this credential in  {selectedOrganization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{selectedOrganization?.name}</b>] </span>}.
+                <Organization isShow={isShow} setIsShow={setIsShow}/>
               </p>
             </div>
           </div>
@@ -321,7 +289,6 @@ const CredentialForm = ({
                 css={css`
                   display:flex;
                   gap:32px;
-                  flex-direction:column;
                   width: 100%;
                 `}
               >
@@ -338,12 +305,9 @@ const CredentialForm = ({
           </div>
         </div>
       }
-
       {alertShow &&
         <>
-          {organizationChange ?
-            <Toast message="Organization Changed" variant="success" disable={8000} customDisableFunction={setAlertShow} /> :
-            <Toast
+          {<Toast
               customDisableFunction={setAlertShow}
               message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
               variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
@@ -352,10 +316,9 @@ const CredentialForm = ({
           }
         </>
       }
-      {loading && !showCredential && !isError && !showCreateForm && organization && <Loading credentials={credentialForm} isCreateCredential downloadStatus={formData['Downloads']} />}
-      {(!organization || isError) && loading && <Loading />}
-      {isError && !showCreateForm && !showCredential && !organization && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} organizationName={organization?.name} formData={formData} orgID={organization?.id} organization={organization} />}
+      {loading && !showCredential && !isError && !showCreateForm && <Loading credentials={credentialForm} isCreateCredential downloadStatus={formData['Downloads']} />}
+      {isError && !showCreateForm && !showCredential && <IllustratedMessage errorMessage={formProps?.[IllustratedMessage]} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} formData={formData} />}
     </>
   )
 }

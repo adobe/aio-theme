@@ -138,7 +138,7 @@ export const KeyIcon = () => {
   )
 }
 
-export const getOrganization = async (setOrganizationValue) => {
+export const getOrganizations = async () => {
   try {
 
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
@@ -153,34 +153,14 @@ export const getOrganization = async (setOrganizationValue) => {
         }
       });
 
-      const organization = await response.json();
-      console.log('organization-------', organization)
-
-      if (setOrganizationValue) {
-        setOrganizationValue(organization[0]);
-        const orgData = {
-          "id": organization[0]?.id,
-          "name": organization[0]?.name,
-          "orgLen": organization?.length,
-          "type": organization[0]?.type
-        }
-
-        const oldOrganization = JSON.parse(localStorage.getItem('OrgInfo'));
-        if (!oldOrganization) {
-          localStorage.setItem('OrgInfo', JSON.stringify(orgData));
-          setOrganizationValue(orgData)
-        }
-        else {
-          const findOrg = organization?.find((data) => data?.id === oldOrganization?.id);
-          setOrganizationValue({
-            "id": findOrg?.id,
-            "name": findOrg?.name,
-            "orgLen": organization?.length,
-            "type": findOrg.type
-          })
-        }
+      if (!response.ok) {
+        throw new Error('Could not fetch organizations');
       }
-      return organization;
+
+      const organizations = await response.json();
+      console.log('organization-------', organizations)
+
+      return organizations;
     }
 
   } catch (error) {
