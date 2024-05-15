@@ -119,6 +119,69 @@ const GetCredentialExternal = () => {
 
       <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="" docsLink="" />
 
+      <GetCredential.RequestAccess
+        title="Get credentials"
+        paragraph="Create unique credentials that you will use to call multiple APIs from your application."
+      >
+        <GetCredential.RequestAccess.RestrictedAccess
+          title="Restricted Access"
+          buttonLabel="Request access"
+        >
+          <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts label="Included products and services">
+            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+              icon={firefly}
+              label="Firefly API - Firefly Services"
+            />
+            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+              icon={ps}
+              label="Adobe Photoshop API - Firefly Services"
+            />
+            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+              icon={ps}
+              label="Adobe Photoshop API - Firefly Services"
+            />
+          </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
+        </GetCredential.RequestAccess.RestrictedAccess>
+        <GetCredential.RequestAccess.RequestAccessSide>
+          <div
+            style={{ display: "flex", gap: "32px", flexDirection: "column" }}
+          >
+            <div
+              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
+            >
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                OAuth server-to-server credential
+              </h3>
+              <p className="spectrum-Body spectrum-Body--sizeM">
+                This credential allows you to use industry standard OAuth2.0
+                libraries to generate access tokens using the OAuth 2.0 client
+                credentials grant type.
+              </p>
+            </div>
+            <div
+              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
+            >
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                Learn more
+              </h3>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Authentication documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Firefly - Firefly and Creative Cloud Automation API
+                documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Adobe Photoshop API documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Quota usage guide
+              </a>
+            </div>
+          </div>
+        </GetCredential.RequestAccess.RequestAccessSide>
+      </GetCredential.RequestAccess>
+
     </GetCredential>
 
   )
