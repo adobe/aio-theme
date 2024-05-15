@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import classNames from "classnames";
-import { getOrganization, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { getOrganizations, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
@@ -48,20 +48,25 @@ import { AccessToken } from './Card/AccessToken';
 import { DevConsoleLink } from './Card/DevConsoleLink';
 import { MyCredentialSide } from './Card/MyCredentialSide';
 import { Toast } from '../Toast';
+import Context from '../Context';
+import GetCredentialContext from './GetCredentialContext';
 
-const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
-
+const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
   const [isPrevious, setIsPrevious] = useState(false);
-  const [redirectToBeta, setRedirectBetaProgram] = useState(false);
-  const [organizationChange, setOrganizationChange] = useState(false);
-  const [organization, setOrganizationValue] = useState({});
-  const [showOrganization, setShowOrganization] = useState(true);
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [allOrganization, setAllOrganization] = useState([]);
+  const [selectedOrganization, setOrganization] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [allOrganizations, setAllOrganizations] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
-  const [isDeveloperAccess, setIsDeveloperAccess] = useState(false)
+  const [template, setTemplate] = useState(null);
+  const [isError, setIsError] = useState(false);
+
+  if (!templateId) {
+    console.error('No template id provided. Cannot continue. Will fail.');
+  }
+
+  const { isLoadingIms } = useContext(Context);
 
   let getCredentialData = {};
   React.Children.forEach(children, (child) => {
@@ -73,23 +78,53 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
   const isMyCredential = JSON.parse(localStorage.getItem("myCredential"));
 
-  const getValueFromLocalStorage = async () => {
-    const orgInfo = localStorage?.getItem('OrgInfo');
-    const getOrgs = await getOrganization(setOrganizationValue);
-    setAllOrganization(getOrgs)
-    if (orgInfo === null) {
-      if (getOrgs?.length === 1) {
-        setShowOrganization(false);
+  const fetchTemplate = async (org) => {
+    setIsError(false);
+    setLoading(true);
+    if (org.code) {
+      const url = `/v1/templates/templates-get?templateId=${templateId}`
+      const response = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${window.adobeIMS.getTokenFromStorage().token}`,
+          "x-api-key": window.adobeIMS.adobeIdData.client_id,
+          "x-org-id": org.code
+        }
+      });
+
+      if (!response.ok) {
+        console.error('Template not found. Please check template id');
+        setIsError(true);
+        setLoading(false);
+        return;
       }
+
+      setTemplate(await response.json());
     }
-    else if (getOrgs) {
-      const orgData = JSON.parse(orgInfo);
-      setShowOrganization(orgData.orgLen === 1 ? false : true);
-      setOrganizationValue(orgData);
+
+    setLoading(false);
+  }
+
+  const switchOrganization = async (org) => {
+    setOrganization(org);
+
+    if (org) {
+      await fetchTemplate(org);
     }
-    if (!getOrgs) {
-      setOrganizationValue({});
+  }
+
+  const initialize = async () => {
+    const orgInfo = localStorage?.getItem('OrgInfo');
+    const organizations = await getOrganizations();
+
+    if (!organizations || organizations.length < 1) {
+      console.error('No organizations found for the user. Cannot continue.');
+      setIsError(true);
+      return;
     }
+
+    setAllOrganizations(organizations);
+    await switchOrganization(orgInfo ? JSON.parse(orgInfo) : organizations[0]);
   }
 
   useEffect(() => {
@@ -99,34 +134,17 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
     else {
       setIsPrevious(false)
     }
-    setTimeout(() => {
-      getValueFromLocalStorage()
-    }, [1000])
-  }, []);
-
-  useEffect(async () => {
-    if (window.adobeIMS?.isSignedInUser()) {
-      if (Object?.keys(organization)?.length) {
-        setIsDeveloperAccess(true)
-        setInitialLoading(false)
+    if (!isLoadingIms) {
+      if (window.adobeIMS.isSignedInUser()) {
+        initialize();
       }
       else {
-        if (initialLoading) {
-          setInitialLoading(false)
-          setIsDeveloperAccess(false)
-        }
+        setLoading(false);
       }
     }
-    else {
-      setTimeout(() => {
-        setInitialLoading(false)
-      }, [3000])
-    }
-
-  }, [organization, initialLoading])
+  }, [isLoadingIms]);
 
   useEffect(() => {
-
     if (!isPrevious) {
       setShowCreateForm(true)
     }
@@ -141,9 +159,39 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
   }, [isPrevious, isCreateNewCredential])
 
-  useState(() => {
-    setTimeout(() => { setOrganizationChange(false) })
-  }, [organizationChange])
+  const render = () => {
+    if(!templateId || isError) {
+      return <IllustratedMessage />
+    }
+
+    if (isLoadingIms || loading) {
+      return <Loading />
+    }
+
+    if (!window.adobeIMS.isSignedInUser()) {
+      return <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} />
+    }
+
+    if (!template.userEntitled || !template.orgEntitled) {
+      // TODO: cover error, request access cases
+      return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
+    }
+
+    if (isPrevious && !showCreateForm && !isCreateNewCredential) {
+      return <PreviousCredential
+        returnProps={getCredentialData}
+        setIsCreateNewCredential={setIsCreateNewCredential} />
+    }
+
+    return <GetCredential.Form
+      formProps={getCredentialData}
+      template={template}
+      isPrevious={isPrevious}
+      showCreateForm={showCreateForm}
+      setShowCreateForm={setShowCreateForm}
+      setIsCreateNewCredential={setIsCreateNewCredential}
+      isCreateNewCredential={isCreateNewCredential} />
+  }
 
   return (
     <>
@@ -151,13 +199,21 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
         isBrowser &&
         <ErrorBoundary errorMessage={getCredentialData?.[IllustratedMessage]}>
           <Provider theme={defaultTheme} colorScheme="light" >
+            <GetCredentialContext.Provider
+              value={{
+                allOrganizations,
+                switchOrganization,
+                selectedOrganization,
+                template
+              }}
+            >
             <section
               id="adobe-get-credential"
               className={classNames(className)}
               css={css`
                 background: #f8f8f8;
                 padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
-                          
+                         
                 @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
                   padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
                 }
@@ -181,24 +237,11 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
               `}
               >
-                {initialLoading ? <Loading /> :
-
-                  !window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> :
-
-                    !isDeveloperAccess ? <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} /> :
-
-                      isPrevious && !showCreateForm && !isCreateNewCredential && !redirectToBeta ?
-
-                        <PreviousCredential returnProps={getCredentialData} setIsPrevious={setIsPrevious} showOrganization={showOrganization} setOrganizationValue={setOrganizationValue} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organization={organization} allOrganization={allOrganization} setIsCreateNewCredential={setIsCreateNewCredential} /> :
-
-                        <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} organization={organization} setOrganizationValue={setOrganizationValue} showOrganization={showOrganization} setShowOrganization={setShowOrganization} allOrganization={allOrganization} isPrevious={isPrevious} showCreateForm={showCreateForm} setShowCreateForm={setShowCreateForm} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
-                }
-
-                {/* {redirectToBeta && <JoinBetaProgram joinBeta={getCredentialData?.[JoinBetaProgram]} />} */}
+                {render()}
 
               </div>
             </section>
-            {organizationChange && <Toast message="Organization Changed" variant="success" disable={8000} />}
+            </GetCredentialContext.Provider>
           </Provider>
         </ErrorBoundary>
       }
@@ -208,7 +251,7 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 };
 
 GetCredential.propTypes = {
-  credentialType: PropTypes.string,
+  templateId: PropTypes.string,
   className: PropTypes.string,
 }
 

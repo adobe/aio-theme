@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Picker } from '../Picker';
 import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, MIN_TABLET_SCREEB_WIDTH } from './FormFields';
 import { ActionButton, Button, ButtonGroup, Content, Dialog, DialogTrigger, Divider, Heading } from '@adobe/react-spectrum';
 import { Loading } from './Loading';
+import GetCredentialContext from './GetCredentialContext';
 
-const Organization = ({
-  setOrganizationChange,
-  setOrganizationValue,
-  allOrganization
-}) => {
+const Organization = ({}) => {
+
+  const { allOrganizations, switchOrganization } = useContext(GetCredentialContext);
 
   const [selectedIndex, setSelectedIndex] = useState();
 
   const getValueFromLocalStorage = () => {
 
-    let organizationObj = JSON.parse(localStorage.getItem("OrgInfo"))
-    allOrganization?.forEach((org, index) => {
-      if (org.name === organizationObj.name) {
+    let organizationObj = JSON.parse(localStorage.getItem("OrgInfo"));
+    if (!organizationObj) {
+      localStorage.setItem("OrgInfo", JSON.stringify(allOrganizations[0]));
+      organizationObj = allOrganizations[0];
+    }
+    allOrganizations?.forEach((org, index) => {
+      if (org.code === organizationObj.code) {
         setSelectedIndex(index)
       }
     })
@@ -26,30 +29,23 @@ const Organization = ({
   }
 
   useEffect(() => {
-    allOrganization?.forEach((organs, index) => {
+    allOrganizations?.forEach((organs, index) => {
       if (index === selectedIndex) {
-        const orgData = {
-          "id": organs?.id,
-          "name": organs?.name,
-          "orgLen": allOrganization?.length,
-          "type": organs?.type
-        }
-        localStorage.setItem('OrgInfo', JSON.stringify(orgData));
+        localStorage.setItem('OrgInfo', JSON.stringify(organs));
       }
     })
   }, [selectedIndex])
 
   useEffect(() => {
     getValueFromLocalStorage()
-  }, [allOrganization])
+  }, [allOrganizations])
 
   const handleClick = (close) => {
-    allOrganization?.forEach((organs, index) => {
+    allOrganizations?.forEach((organs, index) => {
       if (index === selectedIndex) {
-        setOrganizationValue(organs)
+        switchOrganization(organs)
       }
     })
-    setOrganizationChange(true)
     close()
   }
 
@@ -71,7 +67,7 @@ const Organization = ({
             <Heading>Change organization</Heading>
             <Divider />
             <Content>
-              {allOrganization?.length ?
+              {allOrganizations?.length ?
                 <section className="spectrum-Dialog-content" css={css`overflow:hidden`}>
                   <div
                     css={css`
@@ -158,7 +154,7 @@ const Organization = ({
                       >
                         <Picker
                           isQuiet
-                          items={allOrganization?.map((organs, k) => {
+                          items={allOrganizations?.map((organs, k) => {
                             return {
                               title: organs?.name,
                               selected: k === selectedIndex

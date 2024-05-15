@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Context from '../Context';
 import { css } from "@emotion/react";
+import { Organization } from './Organization';
+import GetCredentialContext from './GetCredentialContext';
 
 
 const NoDeveloperAccessError = ({ developerAccessError }) => {
 
   const { ims } = useContext(Context);
 
+  const { selectedOrganization } = useContext(GetCredentialContext);
+
   const [emailID, setEmailID] = useState('');
+  const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -23,7 +28,7 @@ const NoDeveloperAccessError = ({ developerAccessError }) => {
       {developerAccessError?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{developerAccessError?.title}</h3>}
       <p
         className="spectrum-Body spectrum-Body--sizeL">
-        To create credentials, you need developer role permissions for the [<b>Adobe Express Embed SDK</b>].
+        To create credentials, you need developer role permissions for the services.
       </p>
 
       {developerAccessError &&
@@ -58,9 +63,9 @@ const NoDeveloperAccessError = ({ developerAccessError }) => {
       >
         <p
           className="spectrum-Body spectrum-Body--sizeS"
-          css={css`color:var(--spectrum-global-color-gray-800);`}
+          css={css`color:var(--spectrum-global-color-gray-800);display : inline-flex;`}
         >
-          You're currently signed in as [<b>{emailID}</b>]
+          You're currently signed in as [<b>{emailID}</b>] in [<b>{selectedOrganization?.name}</b>]<Organization isShow={isShow} setIsShow={setIsShow}/>
         </p>
         <p
           className="spectrum-Body spectrum-Body--sizeS"

@@ -6,7 +6,7 @@ import ps from "./images/ps.png";
 const GetCredentialExternal = () => {
   return (
 
-    <GetCredential credentialType="apiKey" className="getCredentialContainer" service="CCEmbedCompanionAPI" >
+    <GetCredential className="getCredentialContainer" templateId="6643f9f3730aae07ce7fb6d6" >
 
       <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." buttonText="Sign in to create credentials" />
 
@@ -14,13 +14,11 @@ const GetCredentialExternal = () => {
 
         <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 3 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
-        <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domain.com) or commas to separate multiple domains (www.domain-1.com, www.domain-2.com). During local development, you can include ports greater than 1023 with localhost (e.g. localhost:3000). Standard ports (80, 443) will be used for non-localhost domains." />
+        {/* <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domain.com) or commas to separate multiple domains (www.domain-1.com, www.domain-2.com). During local development, you can include ports greater than 1023 with localhost (e.g. localhost:3000). Standard ports (80, 443) will be used for non-localhost domains." /> */}
 
         <GetCredential.Form.Products label="Included products and services">
-          <GetCredential.Form.Product label="Firefly - Firefly and Creative Cloud Automation API" icon={firefly} />
-          <GetCredential.Form.Product label="Adobe Photoshop API" icon={ps} />
-          <GetCredential.Form.Product label="Adobe Analytics" />
-          <GetCredential.Form.Product label="Lughtgroom" />
+          <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
+          <GetCredential.Form.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
         </GetCredential.Form.Products>
 
         <GetCredential.Form.Downloads label="Download a personalized code sample" contextHelp={true} contextHelpHeading="Select Language">
@@ -61,10 +59,8 @@ const GetCredentialExternal = () => {
         </GetCredential.Card.Side>
 
         <GetCredential.Card.Products label="Included products and services">
-          <GetCredential.Card.Product label="Firefly - Firefly and Creative Cloud Automation API" icon={firefly} />
-          <GetCredential.Card.Product label="Adobe Photoshop API" icon={ps} />
-          <GetCredential.Card.Product label="Adobe Analytics" />
-          <GetCredential.Card.Product label="Lughtgroom" />
+          <GetCredential.Card.Product label="Firefly - Firefly Services" icon={firefly} />
+          <GetCredential.Card.Product label="Photoshop - Firefly Services" icon={ps} />
         </GetCredential.Card.Products>
 
         <GetCredential.Card.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
@@ -76,12 +72,11 @@ const GetCredentialExternal = () => {
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Card.CredentialDetails heading="Credential details">
-          {/* <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" /> */}
-          {/* <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" /> */}
+          <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
+          <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" />
           <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
-          <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
+          {/* <GetCredential.Card.CredentialDetails.APIKey heading="API Key" /> */}
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
-          <GetCredential.Card.CredentialDetails.AllowedOrigins heading="Allowed Domains" />
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -116,10 +111,8 @@ const GetCredentialExternal = () => {
         <GetCredential.Return.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Return.Products label="Included products and services">
-          <GetCredential.Return.Product label="Firefly - Firefly and Creative Cloud Automation API" icon={firefly} />
-          <GetCredential.Return.Product label="Adobe Photoshop API" icon={ps} />
-          <GetCredential.Return.Product label="Adobe Analytics" />
-          <GetCredential.Return.Product label="Lughtgroom" />
+          <GetCredential.Return.Product label="Firefly - Firefly Services" icon={firefly} />
+          <GetCredential.Return.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
         </GetCredential.Return.Products>
 
       </GetCredential.Return>
