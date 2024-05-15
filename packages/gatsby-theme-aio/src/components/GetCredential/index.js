@@ -49,6 +49,12 @@ import { DevConsoleLink } from './Card/DevConsoleLink';
 import { MyCredentialSide } from './Card/MyCredentialSide';
 import { Toast } from '../Toast';
 
+import { RequestAccess } from './requestAccess/RequestAccess';
+import { RestrictedAccess } from './requestAccess/RestrictedAccessFields';
+import { RestrictedAccessProducts } from './requestAccess/RestrictedAccessProducts';
+import { RestrictedAccessProduct } from './requestAccess/RestrictedAccessProduct';
+import { RequestAccessSide } from './requestAccess/RequestAccessSide';
+
 const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 
   const isBrowser = typeof window !== "undefined";
@@ -181,18 +187,22 @@ const GetCredential = ({ credentialType = 'apiKey', children, className, service
 
               `}
               >
-                {initialLoading ? <Loading /> :
+                {
+                // initialLoading ? <Loading /> :
 
-                  !window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> :
+                //   !window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} /> :
 
-                    !isDeveloperAccess ? <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} /> :
+                //     !isDeveloperAccess ? <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} /> :
 
-                      isPrevious && !showCreateForm && !isCreateNewCredential && !redirectToBeta ?
+                //       isPrevious && !showCreateForm && !isCreateNewCredential && !redirectToBeta ?
 
-                        <PreviousCredential returnProps={getCredentialData} setIsPrevious={setIsPrevious} showOrganization={showOrganization} setOrganizationValue={setOrganizationValue} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organization={organization} allOrganization={allOrganization} setIsCreateNewCredential={setIsCreateNewCredential} /> :
+                //         <PreviousCredential returnProps={getCredentialData} setIsPrevious={setIsPrevious} showOrganization={showOrganization} setOrganizationValue={setOrganizationValue} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organization={organization} allOrganization={allOrganization} setIsCreateNewCredential={setIsCreateNewCredential} /> :
 
-                        <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} organization={organization} setOrganizationValue={setOrganizationValue} showOrganization={showOrganization} setShowOrganization={setShowOrganization} allOrganization={allOrganization} isPrevious={isPrevious} showCreateForm={showCreateForm} setShowCreateForm={setShowCreateForm} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
+                //         <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} organizationChange={organizationChange} setOrganizationChange={setOrganizationChange} organization={organization} setOrganizationValue={setOrganizationValue} showOrganization={showOrganization} setShowOrganization={setShowOrganization} allOrganization={allOrganization} isPrevious={isPrevious} showCreateForm={showCreateForm} setShowCreateForm={setShowCreateForm} setIsCreateNewCredential={setIsCreateNewCredential} isCreateNewCredential={isCreateNewCredential} />
+
+                 <GetCredential.RequestAccess allProps={getCredentialData}/> 
                 }
+
 
                 {/* {redirectToBeta && <JoinBetaProgram joinBeta={getCredentialData?.[JoinBetaProgram]} />} */}
 
@@ -255,5 +265,11 @@ GetCredential.Return.CredentialDetails.OrganizationName = ReturnOrganizationName
 GetCredential.Return.CredentialDetails.Scopes = ReturnScopes;
 GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
+
+GetCredential.RequestAccess = RequestAccess;
+GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = RestrictedAccessProducts;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = RestrictedAccessProduct;
+GetCredential.RequestAccess.RequestAccessSide=RequestAccessSide
 
 export { GetCredential };
