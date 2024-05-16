@@ -178,27 +178,27 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     if (!template.userEntitled || !template.orgEntitled) {
-      // TODO: cover error, request access cases
+      // TODO: cover other error cases
+      if (template.canRequestAccess) {
+        return <RequestAccess allProps={getCredentialData} />
+      }
       return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
     }
 
+    if (isPrevious && !showCreateForm && !isCreateNewCredential) {
+      return <PreviousCredential
+        returnProps={getCredentialData}
+        setIsCreateNewCredential={setIsCreateNewCredential} />
+    }
 
-    return <RequestAccess allProps={getCredentialData} />
-
-    // if (isPrevious && !showCreateForm && !isCreateNewCredential) {
-    //   return <PreviousCredential
-    //     returnProps={getCredentialData}
-    //     setIsCreateNewCredential={setIsCreateNewCredential} />
-    // }
-
-    // return <GetCredential.Form
-    //   formProps={getCredentialData}
-    //   template={template}
-    //   isPrevious={isPrevious}
-    //   showCreateForm={showCreateForm}
-    //   setShowCreateForm={setShowCreateForm}
-    //   setIsCreateNewCredential={setIsCreateNewCredential}
-    //   isCreateNewCredential={isCreateNewCredential} />
+    return <GetCredential.Form
+      formProps={getCredentialData}
+      template={template}
+      isPrevious={isPrevious}
+      showCreateForm={showCreateForm}
+      setShowCreateForm={setShowCreateForm}
+      setIsCreateNewCredential={setIsCreateNewCredential}
+      isCreateNewCredential={isCreateNewCredential} />
   }
 
   return (
