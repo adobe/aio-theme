@@ -52,7 +52,7 @@ import { RestrictedAccess } from './RequestAccess/RestrictedAccessFields';
 import { RestrictedAccessProducts } from './RequestAccess/RestrictedAccessProducts';
 import { RestrictedAccessProduct } from './RequestAccess/RestrictedAccessProduct';
 import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
-import { Toast } from '../Toast';
+import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
 
@@ -177,9 +177,9 @@ const GetCredential = ({ templateId, children, className }) => {
       return <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} />
     }
 
-    if (!template.userEntitled || !template.orgEntitled) {
+    if (!template?.userEntitled || !template?.orgEntitled) {
       // TODO: cover other error cases
-      if (template.canRequestAccess) {
+      if (template?.canRequestAccess) {
         return <RequestAccess allProps={getCredentialData} />
       }
       return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
@@ -199,6 +199,9 @@ const GetCredential = ({ templateId, children, className }) => {
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
       isCreateNewCredential={isCreateNewCredential} />
+
+    // return <SubscriptionError errorProps={getCredentialData?.[SubscriptionError]} />
+
   }
 
   return (
@@ -311,5 +314,6 @@ GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
 GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = RestrictedAccessProducts;
 GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = RestrictedAccessProduct;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
+GetCredential.ErrorCode = SubscriptionError;
 
 export { GetCredential };

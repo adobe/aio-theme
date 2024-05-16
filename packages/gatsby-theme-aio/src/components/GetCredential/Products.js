@@ -119,7 +119,7 @@ const CommonProduct = ({ productList }) => {
   return (
     <>
       {productList && productList?.map((data, index) => {
-        if (index < 3)
+        if (index < 2)
           return (
             <div
               css={css`

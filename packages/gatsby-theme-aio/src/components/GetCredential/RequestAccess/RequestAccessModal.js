@@ -1,12 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import {
-  Content,
   Dialog,
   ProgressCircle,
 } from "@adobe/react-spectrum";
 import GetCredentialContext from "../GetCredentialContext";
-import { Loading } from "../Loading";
 
 const ACRS_HOST_PREFIX = 'env' === 'prod' ? '' : 'stage.';
 const INITIAL_IFRAME_HEIGHT = 420;
@@ -65,26 +63,28 @@ const handleIframeMessage = useCallback(
         role="alert"
         className="request-access-dialog"
         variant="confirmation">
-          {targetUrl ? (
-              <>
-                  <iframe
-                      style={{
-                          marginTop: '20px',
-                          overflow: 'hidden',
-                          width: '480px',
-                          height: iframeHeight,
-                          border: 'none',
-                          display: loading ? 'none' : 'block',
-                      }}
-                      title="Request Access Dialog"
-                      src={targetUrl}
-                  />
-                  {loading && <ProgressCircle  size="L" aria-label="Loading…" isIndeterminate />}
-              </>
-          ) : (
-              'Loading...'
-          )}
-        </Dialog>
+        {targetUrl ? (
+          <>
+            <iframe
+              style={{
+                marginTop: '20px',
+                overflow: 'hidden',
+                width: '480px',
+                height: iframeHeight,
+                border: 'none',
+                display: loading ? 'none' : 'block',
+              }}
+              title="Request Access Dialog"
+              src={targetUrl}
+            />
+            {loading && <div style={{ width: "480px", height: "480px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
+            </div>}
+          </>
+        ) : (
+          'Loading...'
+        )}
+      </Dialog>
     </>
   );
 };

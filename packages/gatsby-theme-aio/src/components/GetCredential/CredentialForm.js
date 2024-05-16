@@ -44,8 +44,6 @@ const CredentialForm = ({
 
   const { selectedOrganization, template } = useContext(GetCredentialContext);
 
-
-
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
 
@@ -157,7 +155,7 @@ const CredentialForm = ({
       code: api.code,
       credentialType: api.credentialType,
       flowType: api.flowType,
-      licenseConfigs: Array.isArray(api.licenseConfigs) && api.licenseConfigs.length > 0 ? [{...api.licenseConfigs[0], 'op': 'add'}] : null
+      licenseConfigs: Array.isArray(api.licenseConfigs) && api.licenseConfigs.length > 0 ? [{ ...api.licenseConfigs[0], 'op': 'add' }] : null
     }));
 
     const data = {
@@ -256,7 +254,7 @@ const CredentialForm = ({
                 onClick={() => setIsShow(true)}
               >
                 You're creating this credential in  {selectedOrganization?.type === "developer" ? "in your personal developer organization" : <span>[<b>{selectedOrganization?.name}</b>] </span>}.
-                <Organization isShow={isShow} setIsShow={setIsShow}/>
+                <Organization isShow={isShow} setIsShow={setIsShow} />
               </p>
             </div>
           </div>
@@ -290,6 +288,7 @@ const CredentialForm = ({
                   display:flex;
                   gap:32px;
                   width: 100%;
+                  flex-direction : column;
                 `}
               >
                 {credentialName && <CredentialName nameProps={credentialName} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
@@ -308,11 +307,11 @@ const CredentialForm = ({
       {alertShow &&
         <>
           {<Toast
-              customDisableFunction={setAlertShow}
-              message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
-              variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
-              disable={isError || (showCreateForm && !showCredential) ? null : 8000}
-            />
+            customDisableFunction={setAlertShow}
+            message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
+            variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
+            disable={isError || (showCreateForm && !showCredential) ? null : 8000}
+          />
           }
         </>
       }

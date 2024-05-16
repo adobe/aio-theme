@@ -60,7 +60,7 @@ const Organization = ({}) => {
         cursor : pointer;
       }
     `}>
-      <DialogTrigger type="popover" mobileType="tray">
+      <DialogTrigger>
         <ActionButton UNSAFE_className='changeOrg'>Change Organization</ActionButton>
         {(close) => (
           <Dialog size="M">
@@ -117,7 +117,7 @@ const Organization = ({}) => {
                           & > div > div {
                             width: 86%;
                             left: 9%;
-                            height : 40%;
+                            height : 100px;
 
                             @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
                               width: 82%;

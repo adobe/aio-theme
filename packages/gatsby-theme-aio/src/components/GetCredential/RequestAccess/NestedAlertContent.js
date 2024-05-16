@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import { css } from "@emotion/react";
 import { ChangeOrganizationModal } from "./ChangeOrganizationModal";
@@ -7,11 +7,15 @@ import { RequestAccessModal } from "./RequestAccessModal";
 import { Popover } from "@adobe/gatsby-theme-aio/src/components/Popover";
 import { RestrictedAccessProducts } from "./RestrictedAccessProducts";
 
+import GetCredentialContext from "../GetCredentialContext";
+
 const NestedAlertContent = ({ restrictedAccess, products }) => {
   const [isRequested, setIsRequested] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const popoverElement = useRef();
   const infoButton = useRef();
+
+  const { selectedOrganization } = useContext(GetCredentialContext);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,7 +55,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
         <p className="spectrum-Body spectrum-Body--sizeS">
           You’re creating this credential in [
           <span className="spectrum-Heading spectrum-Heading--sizeXXS">
-            Adobe IO DEV
+            {selectedOrganization.name}
           </span>
           ] but you do not have a developer access in this organization and need
           admin approval to use this API.

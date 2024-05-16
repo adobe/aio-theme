@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { css } from "@emotion/react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import {
@@ -10,8 +10,12 @@ import {
   Heading,
 } from "@adobe/react-spectrum";
 import { ChangeOrganizationContent } from "./ChangeOrganizationContent";
+import GetCredentialContext from "../GetCredentialContext";
 
 const ChangeOrganizationModal = ({ close }) => {
+  const { switchOrganization, allOrganizations, selectedOrganization } = useContext(GetCredentialContext);
+  const [selectedIndex, setSelectedIndex] = useState(allOrganizations.findIndex(org => org.id === selectedOrganization.id));
+
   return (
     <>
       <Dialog size="M">
@@ -25,7 +29,7 @@ const ChangeOrganizationModal = ({ close }) => {
               gap: 48px;
             `}
           >
-            <ChangeOrganizationContent close={close} />
+            <ChangeOrganizationContent allOrganizations={allOrganizations} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
             <div
               css={css`
                 & > div {
@@ -43,7 +47,7 @@ const ChangeOrganizationModal = ({ close }) => {
                 <Button variant="secondary" onPress={close}>
                   Cancel
                 </Button>
-                <Button variant="accent" onPress={close}>
+                <Button variant="accent" onPress={() => { close(); switchOrganization(allOrganizations[selectedIndex]) }}>
                   Change organization
                 </Button>
               </ButtonGroup>
