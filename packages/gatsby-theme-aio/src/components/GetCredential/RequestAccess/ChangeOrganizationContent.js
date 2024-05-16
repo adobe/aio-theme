@@ -3,15 +3,11 @@ import { css } from "@emotion/react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import { Picker } from "../../Picker";
 
-export const ChangeOrganizationContent = () => {
-  const organizationList = [
-    "Avalon Enterprises",
-    "Avalon Marketing",
-    "organization3",
-    "organization4",
-  ];
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
+const ChangeOrganizationContent = ({
+  allOrganizations,
+  setSelectedIndex,
+  selectedIndex,
+}) => {
   return (
     <>
       <div
@@ -19,38 +15,33 @@ export const ChangeOrganizationContent = () => {
           display: flex;
           flex-direction: column;
           gap: 16px;
-        `}
-      >
+        `}>
         <p
           className="spectrum-Body spectrum-Body--sizeM"
           css={css`
             color: #222222;
-          `}
-        >
+          `}>
           You are currently in [
           <span className="spectrum-Heading spectrum-Heading--sizeXS">
-            Avalon Enterprises
+            {allOrganizations[selectedIndex].name}
           </span>
           ].
         </p>
         <div
           css={css`
             width: 246px;
-          `}
-        >
+          `}>
           <div
             css={css`
               display: flex;
               justify-content: space-between;
               align-items: center;
-            `}
-          >
+            `}>
             <p
               className="spectrum-Body spectrum-Body--sizeXS"
               css={css`
                 color: #464646;
-              `}
-            >
+              `}>
               Choose organization
             </p>
             <p
@@ -58,8 +49,7 @@ export const ChangeOrganizationContent = () => {
               css={css`
                 padding-top: 3px;
                 color: #464646;
-              `}
-            >
+              `}>
               *
             </p>
           </div>
@@ -107,17 +97,16 @@ export const ChangeOrganizationContent = () => {
               & > div > div > ul > li > div > div {
                 height: 20px !important;
               }
-            `}
-          >
+            `}>
             <Picker
               isQuiet={false}
-              items={organizationList.map((organization, k) => {
+              items={allOrganizations.map((organization, k) => {
                 return {
-                  title: organization,
+                  title: organization.name,
                   selected: k === selectedIndex,
                 };
               })}
-              onChange={(index) => {
+              onChange={index => {
                 setSelectedIndex(index);
               }}
             />
@@ -127,3 +116,5 @@ export const ChangeOrganizationContent = () => {
     </>
   );
 };
+
+export { ChangeOrganizationContent };

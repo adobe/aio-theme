@@ -13,6 +13,9 @@ import { ReturnClientId } from './Return/ReturnClientId';
 import { ReturnClientSecret } from './Return/ReturnClientSecret';
 import { ReturnScopes } from './Return/ReturnScopes';
 import { ReturnProducts } from './Return/ReturnProducts';
+import { ReturnAPIKey } from './Return/ReturnAPIKey';
+import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
+import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
 
 const PreviousProject = ({ returnProps, returnFields, productList }) => {
 
@@ -132,75 +135,19 @@ const PreviousProject = ({ returnProps, returnFields, productList }) => {
 
               {returnDevConsoleLink && <ReturnDevConsoleLink returnDevConsoleLink={returnDevConsoleLink} previousProjectsDetails={previousProjectsDetails} selectedIndex={selectedIndex} />}
 
-              {returnClientDetails && <ReturnClientDetails returnClientDetails={returnClientDetails} />}
+              {returnClientDetails && <ReturnClientDetails returnClientDetails={returnClientDetails} returnClientId={returnClientId} returnClientSecret={returnClientSecret} returnScopes={returnScopes} apiKey={response["apiKey"]} allowedOrigins={formData['AllowedOrigins']} />}
 
               {previousCredential?.credential?.map(({ key, value }, index) => {
                 return (
                   <>
-                    {value &&
-                      <>
-                        <div
-                          css={css`
-                              display:flex;
-                              flex-direction:column;
-                              gap:8px;
-                            `}
-                        >
-                          <p className="spectrum-Body spectrum-Body--sizeS">{key}</p>
-                          <div
-                            css={css` 
-                                display:flex;
-                                align-items: center;
-                                gap: 24px; 
-                              `}>
-
-
-                            {key === "Client secret" ?
-                              <button class="spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM"
-                                css={css`
-                                    cursor : pointer;
-                                    border: 1px solid var(--spectrum-global-color-gray-400);
-                                    border-radius: 3px;
-                                    padding: 3px 6px;
-                                    height:32px;
-                                    background :transparent;
-                                  `}
-                              >
-                                <span class="spectrum-ActionButton-label">{value}</span>
-                              </button> :
-                              <p className="spectrum-Body spectrum-Body--sizeS"
-                                css={css`
-                                    font-family: Source Code Pro,Monaco,monospace;
-                                    white-space: normal;
-                                    overflow-wrap: anywhere;
-                                    max-width: 300px;
-                                  `}
-                              >{value}</p>
-                            }
-
-                            {key !== "Client secret" &&
-
-                              <div css={css`position:relative;display:${key === "Organization" ? "none" : "block"}`}>
-                                <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
-                                  onMouseEnter={() => setTooltipOpen(index)}
-                                  onMouseLeave={handleLeave}
-                                  onClick={() => handleCopy(value, index)}
-                                  css={css`
-                                    border: 1px solid var(--spectrum-global-color-gray-400);
-                                    border-radius: 3px;
-                                    padding: 3px 6px;
-                                  `}
-                                >
-                                  {<span className="spectrum-ActionButton-label"><CopyIcon /></span>}
-                                </button>
-
-                              </div>
-
-                            }
-
-                          </div>
-                        </div>
-                      </>
+                    {value && key == "API Key" &&
+                      <ReturnAPIKey credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
+                    }
+                    {value && key == "Allowed domains" &&
+                      <ReturnAllowedOrigins credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
+                    }
+                    {value && key == "Organization" &&
+                      <ReturnOrganizationName credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
                     }
                   </>
                 )

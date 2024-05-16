@@ -13,31 +13,32 @@ const ReturnProducts = ({ productList }) => {
         `}
     >
       <ReturnProduct productList={productList} />
-      <div
-        css={css`
+      {productList.length > 2 &&
+        <div
+          css={css`
           & > button , & > button : active {
             border:none;
             background:transparent !important;
           }`}
-      >
-        <MenuTrigger>
-          <ActionButton>
-            <div
-              aria-expanded={true}
-              css={css`
+        >
+          <MenuTrigger>
+            <ActionButton>
+              <div
+                aria-expanded={true}
+                css={css`
                 text-decoration-color: blue;
                 text-decoration : underline;
                 color: blue;  
                 display: "inline-block";
                 cursor:pointer;
               `
-              }>+{productList.length - 2} more</div>
-          </ActionButton>
-          <Menu items={productList}>
-            {item => <Item key={item.label}>{item.label}</Item>}
-          </Menu>
-        </MenuTrigger>
-      </div>
+                }>+{productList.length - 2} more</div>
+            </ActionButton>
+            <Menu items={productList}>
+              {item => <Item key={item.label}>{item.label}</Item>}
+            </Menu>
+          </MenuTrigger>
+        </div>}
     </div>
   )
 }
