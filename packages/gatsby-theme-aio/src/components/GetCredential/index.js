@@ -174,24 +174,26 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     if (!window?.adobeIMS?.isSignedInUser()) {
-      return <GetCredential.SignIn />
+      return <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} />
     }
 
     // template should never be null or undefined here
     if (!template.userEntitled || !template.orgEntitled) {
       if (template.canRequestAccess) {
-        return <RequestAccess />
+        return <RequestAccess allProps={getCredentialData} />
       }
       // TODO: cover other error cases
-      return <NoDeveloperAccessError />
+      return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
     }
 
     if (isPrevious && !showCreateForm && !isCreateNewCredential) {
       return <PreviousCredential
+        returnProps={getCredentialData}
         setIsCreateNewCredential={setIsCreateNewCredential} />
     }
 
     return <GetCredential.Form
+      formProps={getCredentialData}
       showCreateForm={showCreateForm}
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
@@ -212,8 +214,7 @@ const GetCredential = ({ templateId, children, className }) => {
                 allOrganizations,
                 switchOrganization,
                 selectedOrganization,
-                template,
-                getCredentialData
+                template
               }}
             >
               <section
