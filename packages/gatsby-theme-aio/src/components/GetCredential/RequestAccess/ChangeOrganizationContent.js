@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import { Picker } from "../../Picker";
