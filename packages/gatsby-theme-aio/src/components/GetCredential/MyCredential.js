@@ -62,7 +62,7 @@ const MyCredential = ({
   const Credential = [
     {
       key: "API Key",
-      value: response["apiKey"]
+      value: response.project.workspace.details.credentials[0].oauth_server_to_server?.client_id || response.project.workspace.details.credentials[0].api_key?.client_id
     },
     {
       key: "Allowed domains",

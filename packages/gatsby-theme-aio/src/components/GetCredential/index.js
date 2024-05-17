@@ -177,11 +177,12 @@ const GetCredential = ({ templateId, children, className }) => {
       return <GetCredential.SignIn signInProps={getCredentialData?.[SignIn]} />
     }
 
-    if (!template?.userEntitled || !template?.orgEntitled) {
-      // TODO: cover other error cases
-      if (template?.canRequestAccess) {
+    // template should never be null or undefined here
+    if (!template.userEntitled || !template.orgEntitled) {
+      if (template.canRequestAccess) {
         return <RequestAccess allProps={getCredentialData} />
       }
+      // TODO: cover other error cases
       return <NoDeveloperAccessError developerAccessError={getCredentialData?.[NoDeveloperAccessError]} />
     }
 
@@ -193,8 +194,6 @@ const GetCredential = ({ templateId, children, className }) => {
 
     return <GetCredential.Form
       formProps={getCredentialData}
-      template={template}
-      isPrevious={isPrevious}
       showCreateForm={showCreateForm}
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
