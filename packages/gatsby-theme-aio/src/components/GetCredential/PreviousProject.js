@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Toast } from '../Toast';
 import classNames from "classnames";
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, LinkOut, KeyIcon } from './FormFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH, LinkOut, KeyIcon, CopyIcon } from './FormFields';
 import { ReturnAccessToken } from './Return/ReturnAccessToken';
 import { ProjectsDropdown } from './Return/ProjectsDropdown';
 import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
@@ -16,11 +16,8 @@ import { ReturnProducts } from './Return/ReturnProducts';
 import { ReturnAPIKey } from './Return/ReturnAPIKey';
 import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
-import GetCredentialContext from './GetCredentialContext';
 
-const PreviousProject = ({ returnFields, productList }) => {
-  const { getCredentialData } = useContext(GetCredentialContext);
-  const returnProps = getCredentialData;
+const PreviousProject = ({ returnProps, returnFields, productList }) => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isTooltipOpen, setTooltipOpen] = useState(null);
