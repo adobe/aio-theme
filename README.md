@@ -2692,6 +2692,8 @@ as a dependency in another site, you can run the command `npm install --save ado
 
 Your site package will show up under `node_modules/[PACKAGE_NAME]` e.g. `node_modules/dev-site-documentation-template`.
 
+When pointing to a github repo as a dependency and wanting to get the latest change from that dependency, you have to ensure that your package.json is pointing to latest version of that dependecy. Otherwise, if you have already pulled down that dependency and it exists in your `node_modules/`, it won't grab the latest changes. To get around this, simply delete your `node_modules/` and then `yarn install` again.
+
 See full example below using a Variant block.
 
 #### Filtering content with Variant Blocks
