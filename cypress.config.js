@@ -12,5 +12,5 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost:9000',
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
-  pageLoadTimeout: 100000,
+  pageLoadTimeout: 300000,
 })
