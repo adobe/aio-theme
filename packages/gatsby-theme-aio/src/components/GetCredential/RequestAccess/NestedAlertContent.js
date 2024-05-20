@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { css } from '@emotion/react';
-import { RequestAccessOrganizationContent } from './RequestAccessOrganizationContent';
+import { ChangeOrganizationContent } from './ChangeOrganizationContent';
 import { Button, DialogTrigger } from '@adobe/react-spectrum';
 import { RequestAccessModal } from './RequestAccessModal';
 import { RestrictedAccessProducts } from './RestrictedAccessProducts';
@@ -51,7 +51,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
                 padding: 0px 0px 0px 3px !important;
               }
             `}>
-            <Organization RequestAccessOrganizationContent={RequestAccessOrganizationContent} />
+            <Organization RequestAccessOrganizationContent={ChangeOrganizationContent} />
           </span>
         </p>
         {products && <RestrictedAccessProducts products={products} />}
