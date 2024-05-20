@@ -1,10 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 import { Popover } from '../Popover';
-import { ActionButton, Item, Menu, MenuTrigger, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import {
+  ActionButton,
+  Item,
+  Menu,
+  MenuTrigger,
+  Tooltip,
+  TooltipTrigger,
+} from '@adobe/react-spectrum';
 
 const Products = ({ products, product }) => {
-
   return (
     <div>
       <div
@@ -12,23 +18,26 @@ const Products = ({ products, product }) => {
           display: flex;
           flex-direction: column;
           gap: 10px;
-        `}
-      >
-        {products?.label &&
+        `}>
+        {products?.label && (
           <label
             for="textfield-m"
             className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-            css={css` color: var(--spectrum-global-color-gray-700)`}
-          >{products?.label} </label>}
+            css={css`
+              color: var(--spectrum-global-color-gray-700);
+            `}>
+            {products?.label}{' '}
+          </label>
+        )}
         <Product productList={product?.productList} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Product = ({ productList }) => {
-  return <CommonProduct productList={productList} />
-}
+  return <CommonProduct productList={productList} />;
+};
 
 const CardProduct = ({ productList }) => {
   return (
@@ -38,69 +47,67 @@ const CardProduct = ({ productList }) => {
           return (
             <div
               css={css`
-              & > button {
-                border : none !important;
-              }
-            `}
-            >
+                & > button {
+                  border: none !important;
+                }
+              `}>
               <TooltipTrigger delay={0}>
                 <ActionButton aria-label="Edit Name">
                   <img
                     src={product?.icon}
                     css={css`
-                    width: 35px;
-                    cursor : pointer;
-                  `}
+                      width: 35px;
+                      cursor: pointer;
+                    `}
                   />
                 </ActionButton>
                 <Tooltip>{product?.label}</Tooltip>
               </TooltipTrigger>
             </div>
-          )
+          );
       })}
     </>
-  )
-}
+  );
+};
 
 const CardProducts = ({ products, product }) => {
-
   return (
     <div
       css={css`
-        display : flex;
-        gap : 10px; 
-        align-items : center;  
-      `}
-    >
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      `}>
       <CardProduct productList={product} />
       <div
         css={css`
-        & > button , & > button : active {
-          border:none;
-          background:transparent !important;
-        }`}
-      >
+          &>button , & > button : active {
+            border: none;
+            background: transparent !important;
+          }
+        `}>
         <MenuTrigger>
           <ActionButton>
-            <div
-              aria-expanded={true}
-              css={css`
-              text-decoration-color: blue;
-              text-decoration : underline;
-              color: blue;  
-              display: "inline-block";
-              cursor:pointer;
-            `
-              }>+{product.length - 2} more</div>
+            {product.length - 2 > 0 && (
+              <div
+                aria-expanded={true}
+                css={css`
+                  text-decoration-color: blue;
+                  text-decoration: underline;
+                  color: blue;
+                  display: 'inline-block';
+                  cursor: pointer;
+                `}>
+                +{product.length - 2} more
+              </div>
+            )}
           </ActionButton>
-          <Menu items={product}>
-            {item => <Item key={item.label}>{item.label}</Item>}
-          </Menu>
+          <Menu items={product}>{item => <Item key={item.label}>{item.label}</Item>}</Menu>
         </MenuTrigger>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const CommonProduct = ({ productList }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -118,85 +125,107 @@ const CommonProduct = ({ productList }) => {
 
   return (
     <>
-      {productList && productList?.map((data, index) => {
-        if (index < 2)
-          return (
-            <div
-              css={css`
-                  display : flex;
-                  align-items : center;
-                  gap:10px;
-                `}
-            >
-              <img src={data?.icon} css={css`width: 35px;`} />
-              <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-                css={css` color: var(--spectrum-global-color-gray-700)`}
-              >
-                {data?.label}
-              </label>
-            </div>
-          )
-      })}
+      {productList &&
+        productList?.map((data, index) => {
+          if (index < 2)
+            return (
+              <div
+                css={css`
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                `}>
+                <img
+                  src={data?.icon}
+                  css={css`
+                    width: 35px;
+                  `}
+                />
+                <label
+                  for="textfield-m"
+                  className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+                  css={css`
+                    color: var(--spectrum-global-color-gray-700);
+                  `}>
+                  {data?.label}
+                </label>
+              </div>
+            );
+        })}
 
-      {productList?.length > 3 && <div
-        css={css`
-            display : flex;
-            align-items : center;
-            gap:10px;
-            position : relative;
-          `}
-      >
-        <div css={css`width: 35px;`} />
-        <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-          css={css` color: var(--spectrum-global-color-gray-700)`}
-        >
-          <div
-            ref={buttonRef}
-            aria-label="productList"
-            aria-controls="productList"
-            aria-expanded={true}
-            css={css`
-                text-decoration-color: blue;
-                text-decoration : underline;
-                color: blue;  
-                display: "inline-block";
-                cursor:pointer;
-              `
-            }>+{productList?.length - 3} more</div>
-        </label>
-
-        <Popover
-          id={"productList"}
-          isOpen={isOpen}
+      {productList?.length > 3 && (
+        <div
           css={css`
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+          `}>
+          <div
+            css={css`
+              width: 35px;
+            `}
+          />
+          <label
+            for="textfield-m"
+            className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+            css={css`
+              color: var(--spectrum-global-color-gray-700);
+            `}>
+            <div
+              ref={buttonRef}
+              aria-label="productList"
+              aria-controls="productList"
+              aria-expanded={true}
+              css={css`
+                text-decoration-color: blue;
+                text-decoration: underline;
+                color: blue;
+                display: 'inline-block';
+                cursor: pointer;
+              `}>
+              +{productList?.length - 3} more
+            </div>
+          </label>
+
+          <Popover
+            id={'productList'}
+            isOpen={isOpen}
+            css={css`
               width: var(--spectrum-global-dimension-size-4600);
               max-height: var(--spectrum-global-dimension-size-6000);
               top: 15px;
               margin-left: 40px;
             `}>
-          <div
-            css={css`
+            <div
+              css={css`
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
               `}>
-            <div
-              css={css`
-                    padding : 10px 0;
-                    cursor : pointer;
-                  `}
-            >
-              {productList?.map((product) => {
-                return <div css={css`padding:5px;`}>{product?.label}</div>
-              })}
+              <div
+                css={css`
+                  padding: 10px 0;
+                  cursor: pointer;
+                `}>
+                {productList?.map(product => {
+                  return (
+                    <div
+                      css={css`
+                        padding: 5px;
+                      `}>
+                      {product?.label}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </Popover>
-
-      </div>}
+          </Popover>
+        </div>
+      )}
     </>
-  )
-}
+  );
+};
 
 export { Product, Products, CardProducts, CardProduct };

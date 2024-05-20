@@ -24,12 +24,12 @@ const MyCredential = ({
   formData,
   setShowCreateForm,
   setShowCredential,
-  organizationName,
   response,
   orgID,
   organization
 }) => {
-  const { getCredentialData } = useContext(GetCredentialContext);
+
+  const { getCredentialData, selectedOrganization:organizationName } = useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
   const [isDownloadStart, setIsDownloadStart] = useState();
@@ -65,8 +65,9 @@ const MyCredential = ({
     {
       key: 'API Key',
       value:
-        response.project.workspace.details.credentials[0].oauth_server_to_server?.client_id ||
-        response.project.workspace.details.credentials[0].api_key?.client_id,
+        // response?.project?.workspace?.details?.credentials[0]?.oauth_server_to_server?.client_id ||
+        // response?.project?.workspace?.details?.credentials[0]?.api_key?.client_id,
+        response[`apiKey`]
     },
     {
       key: 'Allowed domains',
@@ -74,7 +75,7 @@ const MyCredential = ({
     },
     {
       key: 'Organization',
-      value: organizationName,
+      value: organizationName.name,
     },
   ];
 
@@ -347,7 +348,7 @@ const MyCredential = ({
                 {accessToken && <AccessToken accessToken={accessToken} />}
 
                 {cardDevConsoleLink && (
-                  <DevConsoleLink cardDevConsoleLink={cardDevConsoleLink} formData={formData} />
+                  <DevConsoleLink cardDevConsoleLink={cardDevConsoleLink} formData={formData} response={response} />
                 )}
 
                 {cardClientDetails && (
