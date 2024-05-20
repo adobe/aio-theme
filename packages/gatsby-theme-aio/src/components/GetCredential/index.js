@@ -81,7 +81,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
   });
 
-  const isMyCredential = JSON.parse(localStorage.getItem("myCredential"));
+  const isMyCredential = isBrowser ? JSON.parse(localStorage.getItem("myCredential")) : undefined;
 
   const fetchTemplate = async (org) => {
     setIsError(false);
