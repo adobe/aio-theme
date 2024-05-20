@@ -158,7 +158,6 @@ export const getOrganizations = async () => {
       }
 
       const organizations = await response.json();
-      console.log('organization-------', organizations)
 
       return organizations;
     }

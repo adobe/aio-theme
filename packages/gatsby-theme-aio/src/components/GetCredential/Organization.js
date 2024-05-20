@@ -3,12 +3,6 @@ import { css } from '@emotion/react';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Picker } from '../Picker';
 import {
-  MAX_MOBILE_WIDTH,
-  MAX_TABLET_SCREEN_WIDTH,
-  MIN_MOBILE_WIDTH,
-  MIN_TABLET_SCREEB_WIDTH,
-} from './FormFields';
-import {
   ActionButton,
   Button,
   ButtonGroup,
@@ -18,13 +12,15 @@ import {
   Divider,
   Heading,
 } from '@adobe/react-spectrum';
-import { Loading } from './Loading';
 import GetCredentialContext from './GetCredentialContext';
 
-const Organization = ({ RequestAccessOrganizationContent }) => {
-  const { allOrganizations, switchOrganization } = useContext(GetCredentialContext);
+const Organization = () => {
+  const { allOrganizations, switchOrganization, selectedOrganization } =
+    useContext(GetCredentialContext);
 
-  const [selectedIndex, setSelectedIndex] = useState();
+  const [selectedIndex, setSelectedIndex] = useState(
+    allOrganizations.findIndex(org => org.id === selectedOrganization.id)
+  );
 
   const getValueFromLocalStorage = () => {
     let organizationObj = JSON.parse(localStorage.getItem('OrgInfo'));
@@ -79,155 +75,142 @@ const Organization = ({ RequestAccessOrganizationContent }) => {
             <Heading>Change organization</Heading>
             <Divider />
             <Content>
-              {allOrganizations?.length ? (
-                RequestAccessOrganizationContent ? (
-                  <RequestAccessOrganizationContent close={close} />
-                ) : (
-                  <section
-                    className="spectrum-Dialog-content"
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  gap: 48px;
+                `}>
+                <div
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                  `}>
+                  <p
+                    className="spectrum-Body spectrum-Body--sizeM"
                     css={css`
-                      overflow: hidden;
+                      color: #222222;
+                    `}>
+                    You are currently in [
+                    <span className="spectrum-Heading spectrum-Heading--sizeXS">
+                      {allOrganizations[selectedIndex].name}
+                    </span>
+                    ].
+                  </p>
+                  <div
+                    css={css`
+                      width: 246px;
                     `}>
                     <div
                       css={css`
                         display: flex;
-                        flex-direction: column;
-                        gap: 20px;
+                        justify-content: space-between;
+                        align-items: center;
                       `}>
-                      <div>
-                        An organization is the entity that functions like a log-in company that
-                        spans all Adobe products and applications. Most often, an organization is
-                        your company name.However, a company can have many organizations. Change the
-                        organization here.
-                      </div>
-                      <div
+                      <p
+                        className="spectrum-Body spectrum-Body--sizeXS"
                         css={css`
-                          display: flex;
-                          flex-direction: column;
+                          color: #464646;
                         `}>
-                        <div className="spectrum-Textfield spectrum-Textfield--sizeM">
-                          <p
-                            css={css`
-                              color: var(--spectrum-global-color-gray-600);
-                              margin: 0;
-                            `}>
-                            Organization
-                          </p>
-                        </div>
-
-                        <div
-                          className="organization"
-                          css={css`
-                            & > div > .spectrum-Picker {
-                              width: 100% !important;
-                              height: 20px;
-                            }
-
-                            & > div > .spectrum-Picker > span {
-                              white-space: nowrap !important;
-                            }
-
-                            & > div > .spectrum-Picker > svg {
-                              position: absolute !important;
-                              top: 80px !important;
-                              left: 150px !important;
-                            }
-
-                            & > div > .spectrum-Picker > svg > path:first-of-type {
-                              display: none !important;
-                            }
-
-                            & > div > div {
-                              width: 86%;
-                              left: 9%;
-                              height: 100px;
-
-                              @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_MOBILE_WIDTH}) {
-                                width: 82%;
-                                left: 15%;
-                              }
-
-                              @media screen and (min-width: ${MIN_TABLET_SCREEB_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
-                                width: 91%;
-                                left: 7%;
-                              }
-                            }
-
-                            & > div > .spectrum-Picker-popover > ul > li > div > div {
-                              margin: 0;
-                            }
-
-                            & > div > .spectrum-Picker-popover > ul > li > div > div > svg {
-                              @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
-                                margin: 3px;
-                                padding: 0;
-                              }
-                            }
-
-                            &
-                              > div
-                              > .spectrum-Picker-popover
-                              > ul
-                              > li
-                              > div
-                              > div
-                              > svg
-                              > path:first-of-type {
-                              display: none !important;
-                            }
-
-                            padding: 5px;
-                            border-radius: 3px;
-                            border: 1px solid #d0d0d0 !important;
-                          `}>
-                          <Picker
-                            isQuiet
-                            items={allOrganizations?.map((organs, k) => {
-                              return {
-                                title: organs?.name,
-                                selected: k === selectedIndex,
-                              };
-                            })}
-                            onChange={index => {
-                              setSelectedIndex(index);
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div
+                        Choose organization
+                      </p>
+                      <p
+                        className="spectrum-Body spectrum-Body--sizeL"
                         css={css`
-                          display: flex;
-                          gap: 5px;
+                          padding-top: 3px;
+                          color: #464646;
                         `}>
-                        <span>Can't find your organization?</span>
-                        <a
-                          href="https://some_help_link"
-                          target="_blank"
-                          rel="noreferrer"
-                          css={css`
-                            color: rgb(0, 84, 182);
-                            &:hover {
-                              color: rgb(2, 101, 220);
-                            }
-                          `}>
-                          Learn more about organizations.
-                        </a>
-                      </div>
-
-                      <ButtonGroup alignSelf="end">
-                        <Button variant="secondary" onPress={close}>
-                          Cancel
-                        </Button>
-                        <Button autoFocus variant="accent" onPress={() => handleClick(close)}>
-                          Save
-                        </Button>
-                      </ButtonGroup>
+                        *
+                      </p>
                     </div>
-                  </section>
-                )
-              ) : (
-                <Loading />
-              )}
+                    <div
+                      css={css`
+                        & > div > button {
+                          width: 100%;
+                          border-radius: 4px;
+                        }
+
+                        & > div > button > svg {
+                          width: 10px;
+                          height: 10px;
+                        }
+
+                        & > div > button {
+                          path:nth-child(1) {
+                            display: none;
+                          }
+                        }
+
+                        & > div > div {
+                          width: 246px;
+                          max-height: 98px;
+
+                          ul:nth-child(1) {
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                            ::-webkit-scrollbar {
+                              display: none;
+                            }
+
+                            svg:nth-child(1) {
+                              width: 10px;
+                              height: 10px;
+                              margin-top: 7px;
+
+                              path:nth-child(1) {
+                                display: none;
+                              }
+                            }
+                          }
+                        }
+
+                        & > div > div > ul > li > div > div {
+                          height: 20px !important;
+                        }
+                      `}>
+                      <Picker
+                        isQuiet={false}
+                        items={allOrganizations.map((organization, k) => {
+                          return {
+                            title: organization.name,
+                            selected: k === selectedIndex,
+                          };
+                        })}
+                        onChange={index => {
+                          setSelectedIndex(index);
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  css={css`
+                    & > div {
+                      display: flex;
+                      justify-content: right;
+                      gap: 12px;
+                      button {
+                        cursor: pointer;
+                        margin: 0px !important;
+                      }
+                    }
+                  `}>
+                  <ButtonGroup>
+                    <Button variant="secondary" onPress={close}>
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="accent"
+                      onPress={() => {
+                        close();
+                        switchOrganization(allOrganizations[selectedIndex]);
+                      }}>
+                      Change organization
+                    </Button>
+                  </ButtonGroup>
+                </div>
+              </div>
             </Content>
           </Dialog>
         )}

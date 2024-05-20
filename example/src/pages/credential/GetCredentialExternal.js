@@ -72,10 +72,10 @@ const GetCredentialExternal = () => {
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Card.CredentialDetails heading="Credential details">
-          <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
-          <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" />
-          <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
-          {/* <GetCredential.Card.CredentialDetails.APIKey heading="API Key" /> */}
+          {/* <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" /> */}
+          {/* <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" /> */}
+          {/* <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" /> */}
+          <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
         </GetCredential.Card.CredentialDetails>
 
