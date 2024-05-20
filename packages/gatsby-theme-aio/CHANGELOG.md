@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.15-rc1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.14...@adobe/gatsby-theme-aio@4.11.15-rc1) (2024-05-20)
+
+### Fix
+* Fix cypress e2e tests [60b42b9](https://github.com/adobe/aio-theme/commit/60b42b9c5fb96f296545b775003620d8fe090051)
+
+### Features
+* Add in get credentials components v2 [33e3d03](https://github.com/adobe/aio-theme/commit/33e3d03fe80dcc37fe1ce3f6c19186f247f02172)
+
 ## [4.11.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.13...@adobe/gatsby-theme-aio@4.11.14) (2024-05-14)
 
 ### Fix
