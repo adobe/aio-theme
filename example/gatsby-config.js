@@ -274,6 +274,12 @@ module.exports = {
         target: "https://stage.adobeioruntime.net/api/v1/web/adp-template-registry-deepeshtest/template-registry-api/",
         secure: false,
         changeOrigin: true,
-    }))
+    }));
+
+    app.use("/ims", createProxyMiddleware({
+      target: "https://ims-na1-stg1.adobelogin.com/ims",
+      secure: false,
+      changeOrigin: true,
+  }));
   },
 };

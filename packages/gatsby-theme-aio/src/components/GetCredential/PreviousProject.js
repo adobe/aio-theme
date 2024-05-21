@@ -134,7 +134,7 @@ const PreviousProject = ({ returnFields, productList }) => {
                 `}
             >
 
-              {returnAccessToken && <ReturnAccessToken returnAccessToken={returnAccessToken} />}
+              {returnAccessToken && <ReturnAccessToken returnAccessToken={returnAccessToken} credential={previousProjectsDetails[selectedIndex]} />}
 
               {returnDevConsoleLink && <ReturnDevConsoleLink returnDevConsoleLink={returnDevConsoleLink} previousProjectsDetails={previousProjectsDetails} selectedIndex={selectedIndex} />}
 
