@@ -179,8 +179,8 @@ const PreviousProject = ({ returnFields, productList }) => {
                   returnClientSecret={returnClientSecret}
                   returnOrganizationName={returnOrganizationName}
                   returnScopes={returnScopes}
-                  apiKey={response["APIKey"]}
-                  allowedOrigins={response['AllowedOrigins']}
+                  apiKey={response?.["APIKey"]}
+                  allowedOrigins={response?.['AllowedOrigins']}
                   organization={selectedOrganization}
                   returnAPIKey={returnAPIKey}
                   returnAllowedOrigins={returnAllowedOrigins}
