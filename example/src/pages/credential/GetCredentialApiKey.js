@@ -1,12 +1,10 @@
 import React from 'react'
 import { GetCredential } from '../../../../packages/gatsby-theme-aio/src/components/GetCredential';
-import firefly from "./images/firefly.png";
-import ps from "./images/ps.png";
+import creativeCloud from "../../pages/creative_cloud/images/cc-icon.png";
 
-const GetCredentialExternal = () => {
+const GetCredentialApiKey = () => {
   return (
-
-    <GetCredential className="getCredentialContainer" templateId="6643f9f3730aae07ce7fb6d6" >
+    <GetCredential className="getCredentialContainer" templateId="664e39607dcc7c0e5a4a035b" >
 
       <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." buttonText="Sign in to create credentials" />
 
@@ -14,11 +12,10 @@ const GetCredentialExternal = () => {
 
         <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 3 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
-        {/* <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domain.com) or commas to separate multiple domains (www.domain-1.com, www.domain-2.com). During local development, you can include ports greater than 1023 with localhost (e.g. localhost:3000). Standard ports (80, 443) will be used for non-localhost domains." /> */}
+        <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domain.com) or commas to separate multiple domains (www.domain-1.com, www.domain-2.com). During local development, you can include ports greater than 1023 with localhost (e.g. localhost:3000). Standard ports (80, 443) will be used for non-localhost domains." />
 
         <GetCredential.Form.Products label="Included products and services">
-          <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
-          <GetCredential.Form.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
+          <GetCredential.Form.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
         </GetCredential.Form.Products>
 
         <GetCredential.Form.Downloads label="Download a personalized code sample" contextHelp={true} contextHelpHeading="Select Language">
@@ -36,8 +33,7 @@ const GetCredentialExternal = () => {
             <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.</p>
             <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
             <a className="side-documentation" style={{ color: "#0265DC" }} href='https://some_help_link'>Authentication documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Firefly - Firefly and Creative Cloud Automation API documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Adobe Photoshop API documentation</a>
+            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Express Embed SDK documentation</a>
           </div>
         </GetCredential.Form.Side>
 
@@ -53,14 +49,12 @@ const GetCredentialExternal = () => {
             <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.</p>
             <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
             <a className="side-documentation" style={{ color: "#0265DC" }} href='https://some_help_link'>Authentication documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Firefly - Firefly and Creative Cloud Automation API documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Adobe Photoshop API documentation</a>
+            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Express Embed SDK documentation</a>
           </div>
         </GetCredential.Card.Side>
 
         <GetCredential.Card.Products label="Included products and services">
-          <GetCredential.Card.Product label="Firefly - Firefly Services" icon={firefly} />
-          <GetCredential.Card.Product label="Photoshop - Firefly Services" icon={ps} />
+        <GetCredential.Card.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
         </GetCredential.Card.Products>
 
         <GetCredential.Card.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
@@ -104,76 +98,35 @@ const GetCredentialExternal = () => {
         <GetCredential.Return.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Return.Products label="Included products and services">
-          <GetCredential.Return.Product label="Firefly - Firefly Services" icon={firefly} />
-          <GetCredential.Return.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
+          <GetCredential.Return.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
         </GetCredential.Return.Products>
 
       </GetCredential.Return>
 
-      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="How do I get developer permissions for the [Firefly - Firefly and Creative Cloud Automation API]?" docsLink="" />
-
       <GetCredential.RequestAccess
-        title="Get credentials"
-        paragraph="Create unique credentials that you will use to call multiple APIs from your application."
+      title="Get credentials"
+      paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
         <GetCredential.RequestAccess.RestrictedAccess
           title="Restricted Access"
           buttonLabel="Request access"
         >
           <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts label="Included products and services">
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
-              icon={firefly}
-              label="Firefly API - Firefly Services"
-            />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
-              icon={ps}
-              label="Adobe Photoshop API - Firefly Services"
-            />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
-              icon={ps}
-              label="Adobe Photoshop API - Firefly Services"
-            />
+            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct label="Adobe Express Embed SDK" icon={creativeCloud} />
           </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>
-          <div
-            style={{ display: "flex", gap: "32px", flexDirection: "column" }}
-          >
-            <div
-              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
-            >
-              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
-                OAuth server-to-server credential
-              </h3>
-              <p className="spectrum-Body spectrum-Body--sizeM">
-                This credential allows you to use industry standard OAuth2.0
-                libraries to generate access tokens using the OAuth 2.0 client
-                credentials grant type.
-              </p>
-            </div>
-            <div
-              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
-            >
-              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
-                Learn more
-              </h3>
-              <a style={{ color: "#0265DC" }} href="https://some_help_link">
-                Authentication documentation
-              </a>
-              <a style={{ color: "#0265DC" }} href="https://some_help_link">
-                Firefly - Firefly and Creative Cloud Automation API
-                documentation
-              </a>
-              <a style={{ color: "#0265DC" }} href="https://some_help_link">
-                Adobe Photoshop API documentation
-              </a>
-              <a style={{ color: "#0265DC" }} href="https://some_help_link">
-                Quota usage guide
-              </a>
-            </div>
+          <div style="display : flex ; gap : 16px ; flex-direction : column;">
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
+            <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.</p>
+            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
+            <a className="side-documentation" style={{ color: "#0265DC" }} href='https://some_help_link'>Authentication documentation</a>
+            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Express Embed SDK documentation</a>
           </div>
         </GetCredential.RequestAccess.RequestAccessSide>
       </GetCredential.RequestAccess>
+
+      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="How do I get developer permissions for the [Firefly - Firefly and Creative Cloud Automation API]?" docsLink="" />
 
       <GetCredential.ErrorCode helpLink="Get help" title="Error code ###" description="Your personal account does not have Developer role permission to access the [Org Name, Inc.] organization in the Adobe Developer Console." buttonLabel="Contact Adobe" buttonLink="https://some_help_link" />
 
@@ -182,4 +135,4 @@ const GetCredentialExternal = () => {
   )
 }
 
-export default GetCredentialExternal;
+export default GetCredentialApiKey;

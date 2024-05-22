@@ -1,3 +1,3 @@
-import GetCredentialOAuth from "../credential/GetCredentialOAuth.js"
+import GetCredentialOAuthS2s from "../credential/GetCredentialOAuthS2s.js"
 
-<GetCredentialOAuth />
+<GetCredentialOAuthS2s />

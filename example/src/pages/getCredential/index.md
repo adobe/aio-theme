@@ -1,3 +1,3 @@
-import GetCredentialExternal from "../credential/GetCredentialExternal.js";
+import GetCredentialApiKey from "../credential/GetCredentialApiKey.js";
 
-<GetCredentialExternal />
+<GetCredentialApiKey />

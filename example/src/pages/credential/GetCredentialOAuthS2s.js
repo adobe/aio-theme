@@ -3,7 +3,7 @@ import { GetCredential } from '../../../../packages/gatsby-theme-aio/src/compone
 import firefly from "./images/firefly.png";
 import ps from "./images/ps.png";
 
-const GetCredentialExternal = () => {
+const GetCredentialOAuthS2s = () => {
   return (
 
     <GetCredential className="getCredentialContainer" templateId="6643f9f3730aae07ce7fb6d6" >
@@ -13,8 +13,6 @@ const GetCredentialExternal = () => {
       <GetCredential.Form title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." className="formClass">
 
         <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 3 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
-
-        {/* <GetCredential.Form.AllowedOrigins label="Allowed domains (up to 5)" contextHelp={true} contextHelpHeading="What are allowed domains" placeholder="Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*.my-domain.com) or commas to separate multiple domains (www.domain-1.com, www.domain-2.com). During local development, you can include ports greater than 1023 with localhost (e.g. localhost:3000). Standard ports (80, 443) will be used for non-localhost domains." /> */}
 
         <GetCredential.Form.Products label="Included products and services">
           <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
@@ -31,13 +29,35 @@ const GetCredentialExternal = () => {
         <GetCredential.Form.AdobeDeveloperConsole label='By checking this box, you agree to' linkText="Adobe Developer Terms of Use" href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf" />
 
         <GetCredential.Form.Side>
-          <div style="display : flex ; gap : 16px ; flex-direction : column;">
-            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
-            <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.</p>
-            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
-            <a className="side-documentation" style={{ color: "#0265DC" }} href='https://some_help_link'>Authentication documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Firefly - Firefly and Creative Cloud Automation API documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Adobe Photoshop API documentation</a>
+          <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                OAuth server-to-server credential
+              </h3>
+              <p className="spectrum-Body spectrum-Body--sizeM">
+                This credential allows you to use industry standard OAuth2.0
+                libraries to generate access tokens using the OAuth 2.0 client
+                credentials grant type.
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                Learn more
+              </h3>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Authentication documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Firefly - Firefly and Creative Cloud Automation API
+                documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Adobe Photoshop API documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Quota usage guide
+              </a>
+            </div>
           </div>
         </GetCredential.Form.Side>
 
@@ -48,13 +68,35 @@ const GetCredentialExternal = () => {
       <GetCredential.Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on Developer console" className="card_developer_console">
 
         <GetCredential.Card.Side>
-          <div style="display : flex ; gap : 16px ; flex-direction : column;">
-            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >API key credential</h3>
-            <p className="spectrum-Body spectrum-Body--sizeM">Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.</p>
-            <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header" >Learn more</h3>
-            <a className="side-documentation" style={{ color: "#0265DC" }} href='https://some_help_link'>Authentication documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Firefly - Firefly and Creative Cloud Automation API documentation</a>
-            <a className='side-documentation' style={{ color: "#0265DC" }} href='https://some_help_link'>Adobe Photoshop API documentation</a>
+          <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                OAuth server-to-server credential
+              </h3>
+              <p className="spectrum-Body spectrum-Body--sizeM">
+                This credential allows you to use industry standard OAuth2.0
+                libraries to generate access tokens using the OAuth 2.0 client
+                credentials grant type.
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
+              <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
+                Learn more
+              </h3>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Authentication documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Firefly - Firefly and Creative Cloud Automation API
+                documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Adobe Photoshop API documentation
+              </a>
+              <a style={{ color: "#0265DC" }} href="https://some_help_link">
+                Quota usage guide
+              </a>
+            </div>
           </div>
         </GetCredential.Card.Side>
 
@@ -69,8 +111,11 @@ const GetCredentialExternal = () => {
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
+        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading="Access Token" />
+
         <GetCredential.Card.CredentialDetails heading="Credential details">
-          <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
+          <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
+          <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
         </GetCredential.Card.CredentialDetails>
 
@@ -89,7 +134,8 @@ const GetCredentialExternal = () => {
         </GetCredential.Return.Side>
 
         <GetCredential.Return.CredentialDetails heading="Credential details">
-          <GetCredential.Return.CredentialDetails.APIKey heading="API Key" />
+          <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
+          <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />
         </GetCredential.Return.CredentialDetails>
 
@@ -134,12 +180,8 @@ const GetCredentialExternal = () => {
           </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>
-          <div
-            style={{ display: "flex", gap: "32px", flexDirection: "column" }}
-          >
-            <div
-              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
-            >
+          <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
               <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
                 OAuth server-to-server credential
               </h3>
@@ -149,9 +191,7 @@ const GetCredentialExternal = () => {
                 credentials grant type.
               </p>
             </div>
-            <div
-              style={{ display: "flex", gap: "16px", flexDirection: "column" }}
-            >
+            <div style={{ display: "flex", gap: "16px", flexDirection: "column" }}>
               <h3 className="spectrum-Heading spectrum-Heading--sizeS side-header">
                 Learn more
               </h3>
@@ -180,4 +220,4 @@ const GetCredentialExternal = () => {
   )
 }
 
-export default GetCredentialExternal;
+export default GetCredentialOAuthS2s;

@@ -38,11 +38,11 @@ module.exports = {
         path: 'index.md'
       },
       {
-        title: 'Get credential API',
+        title: 'Get API Key credential',
         path: "/getCredential"
       },
       {
-        title: 'Get credential OAuth',
+        title: 'Get OAuth S2S credential',
         path: "/get-credential-oauth"
       },
       {
