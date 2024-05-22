@@ -1,11 +1,10 @@
-import React from 'react'
-import { ReturnCredentialsData } from './ReturnCredentialsData'
+import React from 'react';
+import ShowCard from '../Card/ShowCard';
 
-const ReturnScopes = ({ returnClientDetails, returnScopes, allowedOrigins }) => {
+const ReturnScopes = ({ returnCredentialDetails, returnScopes, allowedOrigins }) => {
   return (
-    <ReturnCredentialsData heading={returnScopes?.heading} value={allowedOrigins} />
+    <ShowCard heading={returnScopes?.heading} value={allowedOrigins} />
   )
 }
 
-
-export { ReturnScopes }
+export { ReturnScopes };

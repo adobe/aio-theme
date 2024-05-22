@@ -1,55 +1,66 @@
-import React from 'react';
-import { css } from "@emotion/react";
+import React, { useState } from 'react';
+import { css } from '@emotion/react';
 import { Button } from '@adobe/react-spectrum';
+import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import { CopyIcon } from '../FormFields';
 
-const AccessToken = ({ accessToken, credential }) => {
-  const generateToken = async () => {
-    const secretsUrl = `/console/api/organizations/048F5DE85620B4D87F000101@AdobeOrg/integrations/177756/secrets`;
-    const token = window.adobeIMS?.getTokenFromStorage()?.token;
-    const secretsResponse = await fetch(secretsUrl, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-        'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
-      }
-    });
+const AccessToken = ({ accessToken, token }) => {
 
-    const secrets = await secretsResponse.json();
-    const secret = secrets.client_secrets[0].client_secret;
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: new URLSearchParams({
-        client_id: '6aee704f37524a1f985bb06cdf40a612',
-        client_secret: secret,
-        grant_type: 'client_credentials',
-        scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api'
-      })
-    };
-    
-    const tokenResponse = await fetch('/ims/token/v3', options);
-    const tokenJson = await tokenResponse.json();
-    console.log(tokenJson.access_token);
-  }
+  const [showtoken, setShowToken] = useState(false);
 
   return (
     <>
-      {accessToken && <div css={css`
-        display : flex;
-        flex-direction : column;
-        gap:16px;
-      `}>
-        {accessToken?.heading && <h4 className="spectrum-Heading spectrum-Heading--sizeS">{accessToken?.heading}</h4>}
-        {accessToken?.buttonLabel &&
-          <div css={css`width:fit-content`}>
-            <Button onPress={generateToken} variant="accent">{accessToken?.buttonLabel}</Button>
-          </div>
-        }
-      </div>}
+      {accessToken && (
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          `}>
+          {accessToken?.heading && (
+            <h4 className="spectrum-Heading spectrum-Heading--sizeS">{accessToken?.heading}</h4>
+          )}
+          {showtoken ? (
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                gap: 16px;
+              `}>
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                css={css`
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  color: #000000;
+                  width: 320px;
+                `}>
+                {token}
+              </p>
+              <TooltipTrigger delay={0}>
+                <ActionButton onPress={() => navigator.clipboard.writeText(token)}>
+                  <CopyIcon />
+                </ActionButton>
+                <Tooltip>Copy</Tooltip>
+              </TooltipTrigger>
+            </div>
+          ) : (
+            accessToken?.buttonLabel && (
+              <div
+                css={css`
+                  width: fit-content;
+                `}>
+                <Button onPress={() => { setShowToken(true) }} variant="accent">
+                  {accessToken?.buttonLabel}
+                </Button>
+              </div>
+            )
+          )}
+        </div>
+      )}
     </>
-  )
+  );
 };
 
-export { AccessToken }
+export { AccessToken };

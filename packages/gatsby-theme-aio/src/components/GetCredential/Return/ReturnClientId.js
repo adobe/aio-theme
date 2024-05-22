@@ -1,9 +1,9 @@
 import React from 'react'
-import { ReturnCredentialsData } from './ReturnCredentialsData'
+import ShowCard from '../Card/ShowCard';
 
-const ReturnClientId = ({ returnClientDetails, returnClientId, apiKey }) => {
+const ReturnClientId = ({ returnCredentialDetails, returnClientId, clientId }) => {
   return (
-    <ReturnCredentialsData heading={returnClientId?.heading} value={apiKey} />
+    <ShowCard heading={returnClientId?.heading} value={clientId} />
   )
 }
-export { ReturnClientId }
+export { ReturnClientId };

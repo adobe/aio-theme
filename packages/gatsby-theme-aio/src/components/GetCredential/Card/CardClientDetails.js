@@ -7,7 +7,7 @@ import { CardClientSecret } from './CardClientSecret';
 import { CardOrganizationName } from './CardOrganizationName';
 import { CardScopes } from './CardScopes';
 
-const CardClientDetails = ({ cardClientDetails, cardClientId, cardClientSecret, cardOrganizationName, cardScopes, apiKey, allowedOrigins, organization, cardAPIKey, cardAllowedOrigins }) => {
+const CardClientDetails = ({ cardClientDetails, cardClientId, cardClientSecret, cardOrganizationName, cardScopes, apiKey, allowedOrigins, organization, cardAPIKey, cardAllowedOrigins, clientSecret, clientId }) => {
   
   return (
     <div css={css`
@@ -17,9 +17,9 @@ const CardClientDetails = ({ cardClientDetails, cardClientId, cardClientSecret, 
         `}>
       <h4 className="spectrum-Heading spectrum-Heading--sizeS">{cardClientDetails?.heading}</h4>
       {cardAPIKey && <CardAPIKey cardClientDetails={cardClientDetails} cardAPIKey={cardAPIKey} apiKey={apiKey} />}
-      {cardClientId && <CardClientId cardClientDetails={cardClientDetails} cardClientId={cardClientId} />}
+      {cardClientId && <CardClientId cardClientDetails={cardClientDetails} cardClientId={cardClientId} clientId={clientId} />}
       {cardAllowedOrigins && <CardAllowedOrigins cardClientDetails={cardClientDetails} allowedOrigins={allowedOrigins} cardAllowedOrigins={cardAllowedOrigins} />}
-      {cardClientSecret && <CardClientSecret cardClientDetails={cardClientDetails} cardClientSecret={cardClientSecret} />}
+      {cardClientSecret && <CardClientSecret cardClientDetails={cardClientDetails} cardClientSecret={cardClientSecret} clientSecret={clientSecret} />}
       {cardOrganizationName && <CardOrganizationName cardClientDetails={cardClientDetails} cardOrganizationName={cardOrganizationName} organization={organization?.name} />}
       {cardScopes && <CardScopes cardClientDetails={cardClientDetails} cardScopes={cardScopes} />}
     </div>

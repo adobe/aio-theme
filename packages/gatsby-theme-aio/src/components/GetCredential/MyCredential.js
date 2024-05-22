@@ -26,29 +26,35 @@ const MyCredential = ({
   setShowCredential,
   response,
   orgID,
-  organization
+  organization,
+  clientDetails,
+  setIsMyCredential,
+  setIsCreateNewCredential
 }) => {
 
-  const { getCredentialData, selectedOrganization:organizationName } = useContext(GetCredentialContext);
+  const { getCredentialData, selectedOrganization: organizationName } =
+    useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
   const [isDownloadStart, setIsDownloadStart] = useState();
   const [isCopiedTooltip, setCopiedTooltip] = useState('');
 
   const myCredentialFields = {};
-  const productsObj = { label: "products", productList: [] }
+  const productsObj = { label: 'products', productList: [] };
 
   credentialProps?.[MyCredential]?.children.forEach(({ type, props }) => {
     myCredentialFields[type] = props;
     if (props.children && type === CardClientDetails) {
       props?.children?.forEach(({ type, props }) => {
-        myCredentialFields[type] = props
-      })
+        myCredentialFields[type] = props;
+      });
     }
     if (type === CardProducts && props?.children) {
-      productsObj.productList.push(...[].concat(props.children).map(({ props: { label, icon } }) => ({ label, icon })));
+      productsObj.productList.push(
+        ...[].concat(props.children).map(({ props: { label, icon } }) => ({ label, icon }))
+      );
     }
-  })
+  });
 
   const accessToken = myCredentialFields[AccessToken];
   const cardDevConsoleLink = myCredentialFields[DevConsoleLink];
@@ -61,21 +67,13 @@ const MyCredential = ({
   const cardAllowedOrigins = myCredentialFields[CardAllowedOrigins];
   const product = productsObj?.productList;
 
-  const Credential = [
-    {
-      key: 'API Key',
-      value: response[`apiKey`]
-    },
-    {
-      key: 'Allowed domains',
-      value: formData['AllowedOrigins'],
-    },
-    {
-      key: 'Organization',
-      value: organizationName.name,
-    },
-  ];
-
+  const Credential = {
+    'APIKey': response[`apiKey`],
+    'Allowed domains': formData['AllowedOrigins'],
+    'Organization': organizationName.name,
+    'ClientId': response?.id,
+    'OrgId': response?.orgId
+  };
 
   useEffect(() => {
     const getItemFromLocalStorage = JSON.parse(localStorage.getItem('myCredential'));
@@ -107,6 +105,8 @@ const MyCredential = ({
   const handleRestart = () => {
     setShowCreateForm(true);
     setShowCredential(false);
+    setIsCreateNewCredential(true);
+    setIsMyCredential(true);
   };
 
   const downloadZIP = async (downloadAPI, fileName = 'download', zipFileURL) => {
@@ -342,10 +342,19 @@ const MyCredential = ({
                   flex-direction: column;
                   gap: 32px;
                 `}>
-                {accessToken && <AccessToken accessToken={accessToken} credential={response} />}
+                {accessToken && (
+                  <AccessToken
+                    accessToken={accessToken}
+                    token={clientDetails?.token}
+                  />
+                )}
 
                 {cardDevConsoleLink && (
-                  <DevConsoleLink cardDevConsoleLink={cardDevConsoleLink} formData={formData} response={response} />
+                  <DevConsoleLink
+                    cardDevConsoleLink={cardDevConsoleLink}
+                    formData={formData}
+                    response={response}
+                  />
                 )}
 
                 {cardClientDetails && (
@@ -360,6 +369,8 @@ const MyCredential = ({
                     organization={organizationName}
                     cardAPIKey={cardAPIKey}
                     cardAllowedOrigins={cardAllowedOrigins}
+                    clientSecret={clientDetails?.clientSecret}
+                    clientId={clientDetails?.clientId}
                   />
                 )}
 

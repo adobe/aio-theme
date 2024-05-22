@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReturnCredentialsData } from './ReturnCredentialsData';
+import ShowCard from '../Card/ShowCard';
 
-const ReturnAllowedOrigins = ({ returnClientDetails, credentialKey, value, index, setTooltipOpen, handleLeave, handleCopy }) => {
+const ReturnAllowedOrigins = ({ returnCredentialDetails, returnAllowedOrigins, allowedOrigins }) => {
   return (
-    <ReturnCredentialsData credentialKey={credentialKey} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
+    <ShowCard heading={returnAllowedOrigins?.heading} value={allowedOrigins} />
   )
 }
 

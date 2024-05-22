@@ -67,11 +67,13 @@ const GetCredentialExternal = () => {
 
         <GetCredential.Card.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console' />
 
+        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading="Access Token" />
+
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Card.CredentialDetails heading="Credential details">
-          <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
-          <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
+          <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
+          <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -89,8 +91,8 @@ const GetCredentialExternal = () => {
         </GetCredential.Return.Side>
 
         <GetCredential.Return.CredentialDetails heading="Credential details">
-          <GetCredential.Return.CredentialDetails.APIKey heading="API Key" />
-          <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />
+          <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
+          <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />

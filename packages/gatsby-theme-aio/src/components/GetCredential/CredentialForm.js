@@ -28,6 +28,7 @@ const CredentialForm = ({
   setShowCreateForm,
   isCreateNewCredential,
   setIsCreateNewCredential,
+  setIsPrevious,
 }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
   const formProps = getCredentialData;
@@ -40,7 +41,8 @@ const CredentialForm = ({
   const [formField, setFormField] = useState([]);
   const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
-
+  const [clientDetails, setClientDetails] = useState({})
+  const [isMyCredential, setIsMyCredential] = useState(false)
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
 
@@ -87,6 +89,14 @@ const CredentialForm = ({
     }
     if (productsObj?.productList.length) {
       fields[Product] = productsObj;
+    }
+
+    const isCredential = JSON.parse(localStorage.getItem("myCredential"));
+    if (isCredential) {
+      setIsMyCredential(true)
+    }
+    else {
+      setIsMyCredential(false)
     }
 
     setFormField(fields);
@@ -143,8 +153,8 @@ const CredentialForm = ({
       .map(data => hostnameRegex.test(data.trim()));
     const isAllowedOriginsValid = isCheckAllowedOrgins.length
       ? validateAllowedOrigins?.every(value => value === true) &&
-        formData['AllowedOrigins'] !== undefined &&
-        formData['AllowedOrigins']?.length !== 0
+      formData['AllowedOrigins'] !== undefined &&
+      formData['AllowedOrigins']?.length !== 0
       : true;
 
     const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
@@ -210,8 +220,7 @@ const CredentialForm = ({
 
       if (response.ok) {
         setResponse(resResp);
-        setShowCredential(true);
-        setAlertShow(true);
+        generateToken(resResp);
       } else if (resResp?.messages) {
         setAlertShow(true);
         setIsValid(false);
@@ -220,9 +229,59 @@ const CredentialForm = ({
       }
     } catch (error) {
       setIsError(true);
-    } finally {
+    }
+  };
+
+  useEffect(() => {
+    if(isMyCredential){
+      setIsPrevious(true);
+      setShowCreateForm(true);
+    }
+  }, [isMyCredential])
+
+  const generateToken = async (resResp) => {
+
+    const secretsUrl = `/console/api/organizations/${resResp?.orgId}/integrations/${resResp.id}/secrets`;
+    const token = window.adobeIMS?.getTokenFromStorage()?.token;
+    const secretsResponse = await fetch(secretsUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
+      },
+    });
+
+    const secrets = await secretsResponse.json();
+
+    const secret = secrets.client_secrets[0].client_secret;
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        client_id: resResp?.apiKey,
+        client_secret: secret,
+        grant_type: 'client_credentials',
+        scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
+      }),
+    };
+
+    const tokenResponse = await fetch('/ims/token/v3', options);
+    const tokenJson = await tokenResponse.json();
+
+    setClientDetails({ clientId: secrets?.client_id, clientSecret: secrets.client_secrets[0].client_secret, token: tokenJson.access_token })
+
+    if (!secrets && !tokenJson) {
+      setLoading(true)
+    }
+    else {
+      setShowCredential(true);
+      setAlertShow(true);
       setLoading(false);
     }
+
   };
 
   const sideObject = formField?.[SideCredential];
@@ -406,6 +465,9 @@ const CredentialForm = ({
           setShowCreateForm={setShowCreateForm}
           setShowCredential={setShowCredential}
           formData={formData}
+          clientDetails={clientDetails}
+          setIsMyCredential={setIsMyCredential}
+          setIsCreateNewCredential={setIsCreateNewCredential}
         />
       )}
     </>

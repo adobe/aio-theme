@@ -21,7 +21,7 @@ const ReturnDevConsoleLink = ({ previousProjectsDetails, returnDevConsoleLink, s
               max-width: 300px;
               color: #0265DC;
             `}
-          >{previousProjectsDetails[selectedIndex].name}</p></div>
+          >{previousProjectsDetails?.[selectedIndex].name}</p></div>
         <div css={
           css`
               margin-left:10px;

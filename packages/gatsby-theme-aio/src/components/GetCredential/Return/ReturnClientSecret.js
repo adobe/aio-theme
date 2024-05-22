@@ -1,9 +1,9 @@
-import React from 'react'
-import { ReturnCredentialsData } from './ReturnCredentialsData'
+import React from 'react';
+import ShowCard from '../Card/ShowCard';
 
-const ReturnClientSecret = ({ returnClientDetails, returnClientSecret }) => {
+const ReturnClientSecret = ({ returnCredentialDetails, returnClientSecret , clientSecret}) => {
   return (
-    <ReturnCredentialsData heading={returnClientSecret?.heading} isClientSecret buttonLabel={returnClientSecret?.buttonLabel} />
+    <ShowCard heading={returnClientSecret?.heading} isClientSecret buttonLabel={returnClientSecret?.buttonLabel} clientSecret={clientSecret} />
   )
 }
 

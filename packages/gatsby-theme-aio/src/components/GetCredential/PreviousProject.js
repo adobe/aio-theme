@@ -8,7 +8,7 @@ import { ReturnAccessToken } from './Return/ReturnAccessToken';
 import { ProjectsDropdown } from './Return/ProjectsDropdown';
 import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
 import { ReturnManageDeveloperConsole } from './Return/ReturnManageDeveloperConsole';
-import ReturnClientDetails from './Return/ReturnClientDetails';
+import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
 import { ReturnClientId } from './Return/ReturnClientId';
 import { ReturnClientSecret } from './Return/ReturnClientSecret';
 import { ReturnScopes } from './Return/ReturnScopes';
@@ -19,13 +19,15 @@ import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
 import GetCredentialContext from './GetCredentialContext';
 
 const PreviousProject = ({ returnFields, productList }) => {
-  const { getCredentialData } = useContext(GetCredentialContext);
+
+  const { getCredentialData, selectedOrganization } = useContext(GetCredentialContext);
   const returnProps = getCredentialData;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopiedTooltip, setCopiedTooltip] = useState('');
-  const [previousCredential, setPreviousCredentials] = useState({})
+  const [token, setToken] = useState();
+  const [clientSecret, setClientSecret] = useState();
+  const [clientId, setClientId] = useState();
 
   const previousProjectsDetails = JSON.parse(localStorage.getItem("myCredential"));
   const previousProject = returnProps?.[PreviousProject];
@@ -33,25 +35,57 @@ const PreviousProject = ({ returnFields, productList }) => {
   const returnAccessToken = returnFields?.[ReturnAccessToken];
   const returnDevConsoleLink = returnFields?.[ReturnDevConsoleLink];
   const returnManageDeveloperConsole = returnFields?.[ReturnManageDeveloperConsole];
-  const returnClientDetails = returnFields?.[ReturnClientDetails];
+  const returnCredentialDetails = returnFields?.[ReturnCredentialDetails];
   const returnClientId = returnFields?.[ReturnClientId];
   const returnClientSecret = returnFields?.[ReturnClientSecret];
   const returnScopes = returnFields?.[ReturnScopes];
+  const returnAPIKey = returnFields?.[ReturnAPIKey];
+  const returnOrganizationName = returnFields?.[ReturnOrganizationName];
+  const returnAllowedOrigins = returnFields?.[ReturnAllowedOrigins];
 
-  const filterSelectedProject = previousProjectsDetails?.filter((data, index) => selectedIndex === index);
+  const response = previousProjectsDetails?.[selectedIndex]?.credential;
 
   useEffect(() => {
-    setPreviousCredentials(filterSelectedProject[0])
-  }, [selectedIndex])
 
-  const handleCopy = (value) => {
-    navigator.clipboard.writeText(value);
-    setCopiedTooltip(true);
-  };
+    const generateToken = async () => {
 
-  const handleLeave = () => {
-    setTooltipOpen(null);
-  };
+      const secretsUrl = `/console/api/organizations/${response?.OrgId}/integrations/${response?.ClientId}/secrets`;
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const secretsResponse = await fetch(secretsUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
+        },
+      });
+
+      const secrets = await secretsResponse.json();
+      setClientId(secrets?.client_id)
+
+      const secret = secrets.client_secrets[0].client_secret;
+      setClientSecret(secret);
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          client_id: response?.APIKey,
+          client_secret: secret,
+          grant_type: 'client_credentials',
+          scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
+        }),
+      };
+
+      const tokenResponse = await fetch('/ims/token/v3', options);
+      const tokenJson = await tokenResponse.json();
+      setToken(tokenJson.access_token);
+
+    };
+    generateToken();
+
+  }, [selectedIndex]);
 
   return (
     <>
@@ -111,7 +145,7 @@ const PreviousProject = ({ returnFields, productList }) => {
                   `}
               >
                 <h3 className="spectrum-Heading spectrum-Heading--sizeM">
-                  {previousProjectsDetails[selectedIndex].name}
+                  {previousProjectsDetails?.[selectedIndex].name}
                 </h3>
 
                 {productList && <ReturnProducts productList={productList} />}
@@ -134,27 +168,26 @@ const PreviousProject = ({ returnFields, productList }) => {
                 `}
             >
 
-              {returnAccessToken && <ReturnAccessToken returnAccessToken={returnAccessToken} credential={previousProjectsDetails[selectedIndex]} />}
+              {returnAccessToken && <ReturnAccessToken returnAccessToken={returnAccessToken} credential={previousProjectsDetails?.[selectedIndex]} token={token} />}
 
               {returnDevConsoleLink && <ReturnDevConsoleLink returnDevConsoleLink={returnDevConsoleLink} previousProjectsDetails={previousProjectsDetails} selectedIndex={selectedIndex} />}
 
-              {returnClientDetails && <ReturnClientDetails returnClientDetails={returnClientDetails} returnClientId={returnClientId} returnClientSecret={returnClientSecret} returnScopes={returnScopes} apiKey={response["apiKey"]} allowedOrigins={formData['AllowedOrigins']} />}
+              {returnCredentialDetails && (
+                <ReturnCredentialDetails
+                  returnCredentialDetails={returnCredentialDetails}
+                  returnClientId={returnClientId}
+                  returnClientSecret={returnClientSecret}
+                  returnOrganizationName={returnOrganizationName}
+                  returnScopes={returnScopes}
+                  apiKey={response["APIKey"]}
+                  allowedOrigins={response['AllowedOrigins']}
+                  organization={selectedOrganization}
+                  returnAPIKey={returnAPIKey}
+                  returnAllowedOrigins={returnAllowedOrigins}
+                  clientSecret={clientSecret}
+                  clientId={clientId}
+                />)}
 
-              {previousCredential?.credential?.map(({ key, value }, index) => {
-                return (
-                  <>
-                    {value && key == "API Key" &&
-                      <ReturnAPIKey credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
-                    }
-                    {value && key == "Allowed domains" &&
-                      <ReturnAllowedOrigins credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
-                    }
-                    {value && key == "Organization" &&
-                      <ReturnOrganizationName credentialKey={key} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
-                    }
-                  </>
-                )
-              })}
               <div
                 css={css`
                     display:flex;

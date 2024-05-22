@@ -38,8 +38,12 @@ module.exports = {
         path: 'index.md'
       },
       {
-        title: 'Get credential',
+        title: 'Get credential API',
         path: "/getCredential"
+      },
+      {
+        title: 'Get credential OAuth',
+        path: "/get-credential-oauth"
       },
       {
         title: 'Docs',
@@ -255,7 +259,7 @@ module.exports = {
           }
         ]
       }
-      
+
     ]
   },
   plugins: [
@@ -271,15 +275,15 @@ module.exports = {
       })
     );
     app.use("/v1/templates", createProxyMiddleware({
-        target: "https://stage.adobeioruntime.net/api/v1/web/adp-template-registry-deepeshtest/template-registry-api/",
-        secure: false,
-        changeOrigin: true,
+      target: "https://stage.adobeioruntime.net/api/v1/web/adp-template-registry-deepeshtest/template-registry-api/",
+      secure: false,
+      changeOrigin: true,
     }));
 
     app.use("/ims", createProxyMiddleware({
       target: "https://ims-na1-stg1.adobelogin.com/ims",
       secure: false,
       changeOrigin: true,
-  }));
+    }));
   },
 };

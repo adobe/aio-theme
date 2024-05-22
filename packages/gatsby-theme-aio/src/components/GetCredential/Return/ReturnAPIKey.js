@@ -1,10 +1,10 @@
 import React from 'react';
-import { ReturnCredentialsData } from './ReturnCredentialsData';
+import ShowCard from '../Card/ShowCard';
 
-const ReturnAPIKey = ({ returnClientDetails, credentialKey, value, index, setTooltipOpen, handleLeave, handleCopy }) => {
+const ReturnAPIKey = ({ returnCredentialDetails , returnAPIKey, apiKey }) => {
   return (
-    <ReturnCredentialsData credentialKey={credentialKey} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy} />
+    <ShowCard heading={returnAPIKey?.heading} value={apiKey} />
   )
 }
 
-export { ReturnAPIKey }
+export { ReturnAPIKey };

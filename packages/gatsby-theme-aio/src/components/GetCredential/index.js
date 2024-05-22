@@ -36,7 +36,6 @@ import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
 import { ReturnProduct } from './Return/ReturnProduct';
 import { ReturnProducts } from './Return/ReturnProducts';
-import { ReturnClientDetails } from './Return/ReturnClientDetails';
 import { ReturnClientId } from './Return/ReturnClientId';
 import { ReturnClientSecret } from './Return/ReturnClientSecret';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
@@ -55,6 +54,7 @@ import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
 import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
+import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
 
 const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
@@ -193,6 +193,7 @@ const GetCredential = ({ templateId, children, className }) => {
 
     return <GetCredential.Form
       showCreateForm={showCreateForm}
+      setIsPrevious={setIsPrevious}
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
       isCreateNewCredential={isCreateNewCredential} />
@@ -300,7 +301,7 @@ GetCredential.Return.Side.Custom = ReturnCustomComp;
 GetCredential.Return.Side.NewCredential = ReturnNewCredential;
 GetCredential.Return.Product = ReturnProduct;
 GetCredential.Return.Products = ReturnProducts;
-GetCredential.Return.CredentialDetails = ReturnClientDetails;
+GetCredential.Return.CredentialDetails = ReturnCredentialDetails;
 GetCredential.Return.CredentialDetails.ClientId = ReturnClientId;
 GetCredential.Return.CredentialDetails.ClientSecret = ReturnClientSecret;
 GetCredential.Return.CredentialDetails.OrganizationName = ReturnOrganizationName;

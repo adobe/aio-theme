@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReturnCredentialsData } from './ReturnCredentialsData';
+import ShowCard from '../Card/ShowCard';
 
-const ReturnOrganizationName = ({ returnClientDetails, credentialKey, value, index, setTooltipOpen, handleLeave, handleCopy }) => {
+const ReturnOrganizationName = ({ returnCredentialDetails, returnOrganizationName, organization }) => {
   return (
-    <ReturnCredentialsData credentialKey={credentialKey} value={value} index={index} setTooltipOpen={setTooltipOpen} handleLeave={handleLeave} handleCopy={handleCopy}/>
+    <ShowCard heading={returnOrganizationName?.heading} value={organization} isOraganization />
   )
 }
 

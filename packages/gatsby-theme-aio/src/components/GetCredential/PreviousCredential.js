@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import classNames from 'classnames';
 import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { PreviousProject, ReturnClientDetails } from './PreviousProject';
+import { PreviousProject } from './PreviousProject';
 import { Organization } from './Organization';
 import { CredentialForm } from './CredentialForm';
 import { RetunrSideComp } from './Return/RetunrSideComp';
@@ -11,6 +11,7 @@ import { ReturnProducts } from './Return/ReturnProducts';
 import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
 import GetCredentialContext from './GetCredentialContext';
+import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
 
 const PreviousCredential = ({ setIsCreateNewCredential }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
@@ -36,8 +37,10 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
           productList.push({ label, icon });
         });
       }
-      if (type === ReturnClientDetails) {
-        returnFields[ReturnClientDetails] = props;
+      if (type === ReturnCredentialDetails) {
+        props?.children?.forEach(({ props, type }) => {
+          returnFields[type] = { ...props };
+        });
       }
     }
   });
