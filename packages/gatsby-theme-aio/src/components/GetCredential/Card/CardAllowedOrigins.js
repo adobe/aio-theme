@@ -7,5 +7,4 @@ const CardAllowedOrigins = ({ cardClientDetails, cardAllowedOrigins, allowedOrig
   )
 }
 
-
 export { CardAllowedOrigins };

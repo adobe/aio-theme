@@ -51,18 +51,22 @@ const CardProduct = ({ productList }) => {
                   border: none !important;
                 }
               `}>
-              <TooltipTrigger delay={0}>
-                <ActionButton aria-label="Edit Name">
-                  <img
-                    src={product?.icon}
-                    css={css`
-                      width: 35px;
-                      cursor: pointer;
-                    `}
-                  />
-                </ActionButton>
-                <Tooltip>{product?.label}</Tooltip>
-              </TooltipTrigger>
+              {product?.icon ? (
+                <TooltipTrigger delay={0}>
+                  <ActionButton aria-label="Edit Name">
+                    <img
+                      src={product?.icon}
+                      css={css`
+                        width: 35px;
+                        cursor: pointer;
+                      `}
+                    />
+                  </ActionButton>
+                  <Tooltip>{product?.label}</Tooltip>
+                </TooltipTrigger>
+              ) : (
+                <p className="spectrum-Body spectrum-Body--sizeS">{product?.label}</p>
+              )}
             </div>
           );
       })}
@@ -70,7 +74,7 @@ const CardProduct = ({ productList }) => {
   );
 };
 
-const CardProducts = ({ products, product }) => {
+const CardProducts = ({ products, productList }) => {
   return (
     <div
       css={css`
@@ -78,7 +82,7 @@ const CardProducts = ({ products, product }) => {
         gap: 10px;
         align-items: center;
       `}>
-      <CardProduct productList={product} />
+      <CardProduct productList={productList} />
       <div
         css={css`
           &>button , & > button : active {
@@ -88,7 +92,7 @@ const CardProducts = ({ products, product }) => {
         `}>
         <MenuTrigger>
           <ActionButton>
-            {product.length - 2 > 0 && (
+            {productList.length - 2 > 0 && (
               <div
                 aria-expanded={true}
                 css={css`
@@ -98,11 +102,11 @@ const CardProducts = ({ products, product }) => {
                   display: 'inline-block';
                   cursor: pointer;
                 `}>
-                +{product.length - 2} more
+                +{productList.length - 2} more
               </div>
             )}
           </ActionButton>
-          <Menu items={product}>{item => <Item key={item.label}>{item.label}</Item>}</Menu>
+          <Menu items={productList}>{item => <Item key={item.label}>{item.label}</Item>}</Menu>
         </MenuTrigger>
       </div>
     </div>

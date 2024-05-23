@@ -25,24 +25,23 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
   const productList = [];
 
   returnProps?.[PreviousProject]?.children.forEach(({ type, props }) => {
-    returnFields[type] = { ...props };
+    returnFields[type] = props;
+
     if (props?.children) {
-      if (type === RetunrSideComp) {
-        props?.children?.forEach(({ props, type }) => {
-          returnFields[type] = { ...props };
-        });
-      }
-      if (type === ReturnProducts) {
-        props?.children?.forEach(({ props: { label, icon } }) => {
+
+      const children = Array.isArray(props.children) ? props.children : [props.children];
+
+      children.forEach(({ props: childProps, type: childType }) => {
+        if (type === RetunrSideComp || type === ReturnCredentialDetails) {
+          returnFields[childType] = childProps;
+        } else if (type === ReturnProducts) {
+          const { label, icon } = childProps;
           productList.push({ label, icon });
-        });
-      }
-      if (type === ReturnCredentialDetails) {
-        props?.children?.forEach(({ props, type }) => {
-          returnFields[type] = { ...props };
-        });
-      }
+        }
+
+      });
     }
+
   });
 
   const retunrSideComp = returnFields?.[RetunrSideComp];

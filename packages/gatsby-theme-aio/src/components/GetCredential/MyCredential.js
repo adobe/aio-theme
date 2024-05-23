@@ -19,6 +19,7 @@ import { CardAPIKey } from './Card/CardAPIKey';
 import { CardAllowedOrigins } from './Card/CardAllowedOrigins';
 import { SideContent } from './Form/SideContent';
 import GetCredentialContext from './GetCredentialContext';
+import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const MyCredential = ({
   formData,
@@ -32,7 +33,7 @@ const MyCredential = ({
   setIsCreateNewCredential
 }) => {
 
-  const { getCredentialData, selectedOrganization: organizationName } =
+  const { getCredentialData, selectedOrganization: organizationName, template } =
     useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
@@ -67,25 +68,17 @@ const MyCredential = ({
   const cardAllowedOrigins = myCredentialFields[CardAllowedOrigins];
   const product = productsObj?.productList;
 
-  const Credential = {
-    'APIKey': response[`apiKey`],
-    'Allowed domains': formData['AllowedOrigins'],
-    'Organization': organizationName.name,
-    'ClientId': response?.id,
-    'OrgId': response?.orgId
-  };
 
   useEffect(() => {
-    const getItemFromLocalStorage = JSON.parse(localStorage.getItem('myCredential'));
+    const getItemFromLocalStorage = JSON.parse(localStorage.getItem(`credential_${template.id}`));
     let setCredentialValue;
-    const credentialName = formData['CredentialName'];
-    const keyCredential = { name: credentialName, credential: Credential };
+    const keyCredential = { formData: formData, credential: response };
     if (getItemFromLocalStorage) {
       setCredentialValue = [keyCredential, ...getItemFromLocalStorage];
     } else {
       setCredentialValue = [keyCredential];
     }
-    localStorage.setItem('myCredential', JSON.stringify(setCredentialValue));
+    localStorage.setItem(`credential_${template.id}`, JSON.stringify(setCredentialValue));
   }, []);
 
   useEffect(() => {
@@ -100,7 +93,7 @@ const MyCredential = ({
 
   const card = credentialProps?.[MyCredential];
 
-  const devConsoleLink = `/console/projects/${organization?.id}/${response.projectId}/overview`;
+  const devConsoleLink = `/console`;
 
   const handleRestart = () => {
     setShowCreateForm(true);
@@ -283,149 +276,35 @@ const MyCredential = ({
               width: 100%;
             }
           `}>
-          <div
-            css={css`
-              background: white;
-              border-radius: 8px;
-              width: 90%;
-
-              @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
-                width: 100%;
-              }
-            `}>
-            <div
-              css={css`
-                padding: 5%;
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-                border: 1px solid var(--spectrum-global-color-gray-200);
-                border-radius: 8px;
-              `}>
-              <div
-                css={css`
-                  display: flex;
-                  gap: 20px;
-                  align-items: flex-start;
-                `}>
-                <KeyIcon />
-                <div
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    gap: 8px;
-                  `}>
-                  <h3 className="spectrum-Heading spectrum-Heading--sizeM">
-                    {formData['CredentialName']}
-                  </h3>
-                  <div
-                    css={css`
-                      display: flex;
-                      gap: 10px;
-                      align-items: center;
-                    `}>
-                    {product && <CardProducts product={product} />}
-                  </div>
-                </div>
-              </div>
-
-              <hr
-                css={css`
-                  margin: 0;
-                  border: none;
-                  border-top: 1px solid #d0d0d0 !important;
-                `}
-              />
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  gap: 32px;
-                `}>
-                {accessToken && (
-                  <AccessToken
-                    accessToken={accessToken}
-                    token={clientDetails?.token}
-                  />
-                )}
-
-                {cardDevConsoleLink && (
-                  <DevConsoleLink
-                    cardDevConsoleLink={cardDevConsoleLink}
-                    formData={formData}
-                    response={response}
-                  />
-                )}
-
-                {cardClientDetails && (
-                  <CardClientDetails
-                    cardClientDetails={cardClientDetails}
-                    cardClientId={cardClientId}
-                    cardClientSecret={cardClientSecret}
-                    cardOrganizationName={cardOrganizationName}
-                    cardScopes={cardScopes}
-                    apiKey={response['apiKey']}
-                    allowedOrigins={formData['AllowedOrigins']}
-                    organization={organizationName}
-                    cardAPIKey={cardAPIKey}
-                    cardAllowedOrigins={cardAllowedOrigins}
-                    clientSecret={clientDetails?.clientSecret}
-                    clientId={clientDetails?.clientId}
-                  />
-                )}
-
-                <div
-                  css={css`
-                    display: flex;
-                    gap: 24px;
-                    align-items: end;
-
-                    @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
-                      flex-direction: column;
-                      align-items: start;
-                    }
-                  `}>
-                  <a href={card?.nextStepsHref} target="_blank" rel="noreferrer">
-                    <button
-                      className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
-                      css={css`
-                        width: fit-content;
-                        margin-top: 10px;
-                      `}>
-                      <span className="spectrum-Button-label">{card?.nextStepsLabel}</span>
-                    </button>
-                  </a>
-                  <a
-                    href={devConsoleLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    css={css`
-                      color: var(--spectrum-global-color-gray-800);
-                      margin: 2px 0;
-                      &:hover {
-                        color: var(--spectrum-global-color-gray-900);
-                      }
-                    `}>
-                    <div
-                      css={css`
-                        display: flex;
-                      `}>
-                      <div>{card?.developerConsoleManage}</div>
-                      <div
-                        css={css`
-                        margin-left:10px;
-                        @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-                          display:none;
-                        }
-                      }`}>
-                        <LinkOut />
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CredentialDetailsCard
+            credentialName={formData['CredentialName']}
+            productList={product}
+            ProductComponent={CardProducts}
+            accessToken={accessToken}
+            AccessTokenComponent={AccessToken}
+            token={clientDetails?.token}
+            devConsoleLinkHeading={cardDevConsoleLink?.heading}
+            DevConsoleLinkComponent={DevConsoleLink}
+            projectId={response?.projectId}
+            ClientDetailsComponent={CardClientDetails}
+            clientDetails={cardClientDetails}
+            clientIdDetails={cardClientId}
+            clientSecretDetails={cardClientSecret}
+            organizationDetails={cardOrganizationName}
+            scopesDetails={cardScopes}
+            apiKey={response['apiKey']}
+            allowedOriginsDetails={formData['AllowedOrigins']}
+            organizationName={organizationName}
+            apiKeyDetails={cardAPIKey}
+            allowedOrigins={cardAllowedOrigins}
+            clientSecret={clientDetails?.clientSecret}
+            response={response}
+            clientId={response['apiKey']}
+            nextButtonLink={card?.nextStepsHref}
+            nextButtonLabel={card?.nextStepsLabel}
+            devConsoleLink={devConsoleLink}
+            developerConsoleManage={card?.developerConsoleManage}
+          />
           <div
             css={css`
               display: flex;

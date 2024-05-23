@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
-import { CopyIcon } from '../FormFields';
-import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import { CopyIcon, generateClientSecrets } from '../FormFields';
+import { ActionButton, ProgressCircle, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 
 const ShowCard = ({
   heading,
@@ -10,8 +10,16 @@ const ShowCard = ({
   buttonLabel,
   isOraganization,
   clientSecret,
+  response
 }) => {
   const [showClientSecret, setShowClientSecret] = useState(false);
+  const [clientDetails, setClientDetails] = useState({})
+
+  const handleCreateClientSecret = async () => {
+    setShowClientSecret(true)
+    const secrets = await generateClientSecrets(response);
+    setClientDetails(secrets)
+  }
 
   return (
     <div
@@ -32,29 +40,30 @@ const ShowCard = ({
         `}>
         {isClientSecret &&
           (showClientSecret ? (
-            <div
-              css={css`
+            Object.keys(clientDetails)?.length ?
+              <div
+                css={css`
                 display: flex;
                 align-items: center;
                 gap: 16px;
               `}>
-              <p
-                className="spectrum-Body spectrum-Body--sizeS"
-                css={css`
+                <p
+                  className="spectrum-Body spectrum-Body--sizeS"
+                  css={css`
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   color: #000000;
                 `}>
-                {clientSecret}
-              </p>
-              <TooltipTrigger delay={0}>
-                <ActionButton onPress={() => navigator.clipboard.writeText(clientSecret)}>
-                  <CopyIcon />
-                </ActionButton>
-                <Tooltip>Copy</Tooltip>
-              </TooltipTrigger>
-            </div>
+                  {clientDetails?.clientSecret}
+                </p>
+                <TooltipTrigger delay={0}>
+                  <ActionButton onPress={() => navigator.clipboard.writeText(clientSecret)}>
+                    <CopyIcon />
+                  </ActionButton>
+                  <Tooltip>Copy</Tooltip>
+                </TooltipTrigger>
+              </div> : <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
           ) : (
             <div
               css={css`
@@ -63,9 +72,7 @@ const ShowCard = ({
                 }
               `}>
               <ActionButton
-                onPress={() => {
-                  setShowClientSecret(true);
-                }}>
+                onPress={() => handleCreateClientSecret()}>
                 {buttonLabel}
               </ActionButton>
             </div>

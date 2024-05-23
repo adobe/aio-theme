@@ -7,7 +7,7 @@ import { ReturnClientSecret } from './ReturnClientSecret';
 import { ReturnOrganizationName } from './ReturnOrganizationName';
 import { ReturnScopes } from './ReturnScopes';
 
-const ReturnCredentialDetails = ({ returnCredentialDetails, returnClientId, returnClientSecret, returnOrganizationName, returnScopes, apiKey, allowedOrigins, organization, returnAPIKey, clientId, returnAllowedOrigins , clientSecret }) => {
+const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, apiKey, allowedOrigins, clientSecret, clientId, response }) => {
 
   return (
     <div css={css`
@@ -15,13 +15,13 @@ const ReturnCredentialDetails = ({ returnCredentialDetails, returnClientId, retu
         flex-direction : column;
         gap: 32px;
       `}>
-      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{returnCredentialDetails?.heading}</h4>
-      {returnAPIKey && <ReturnAPIKey returnCredentialDetails={returnCredentialDetails} returnAPIKey={returnAPIKey} apiKey={apiKey} />}
-      {returnAllowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={returnCredentialDetails} allowedOrigins={allowedOrigins} returnAllowedOrigins={returnAllowedOrigins} />}
-      {returnClientId && <ReturnClientId returnCredentialDetails={returnCredentialDetails} returnClientId={returnClientId} clientId={clientId} />}
-      {returnClientSecret && <ReturnClientSecret returnCredentialDetails={returnCredentialDetails} returnClientSecret={returnClientSecret} clientSecret={clientSecret} />}
-      {returnOrganizationName && <ReturnOrganizationName returnCredentialDetails={returnCredentialDetails} returnOrganizationName={returnOrganizationName} organization={organization.name} />}
-      {returnScopes && <ReturnScopes returnCredentialDetails={returnCredentialDetails} returnScopes={returnScopes} />}
+      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
+      {apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={apiKey} />}
+      {allowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={clientDetails} allowedOrigins={allowedOriginsDetails} returnAllowedOrigins={allowedOrigins} />}
+      {clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={clientId} />}
+      {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} clientSecret={clientSecret} response={response} />}
+      {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
+      {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
     </div>
   )
 }

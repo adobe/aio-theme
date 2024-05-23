@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from '../FormFields';
 import GetCredentialContext from '../GetCredentialContext';
 
-const DevConsoleLink = ({ cardDevConsoleLink, formData, response }) => {
+const DevConsoleLink = ({ devConsoleLinkHeading, credentialName, projectId }) => {
 
   const { selectedOrganization } = useContext(GetCredentialContext);
 
@@ -15,9 +15,9 @@ const DevConsoleLink = ({ cardDevConsoleLink, formData, response }) => {
           flex-direction: column;
           gap: 16px;
         `}>
-        {cardDevConsoleLink?.heading && (
+        {devConsoleLinkHeading && (
           <h4 className="spectrum-Heading spectrum-Heading--sizeS">
-            {cardDevConsoleLink?.heading}
+            {devConsoleLinkHeading}
           </h4>
         )}
 
@@ -26,7 +26,7 @@ const DevConsoleLink = ({ cardDevConsoleLink, formData, response }) => {
             display: flex;
           `}
           target='_blank'
-          href={`https://developer-stage.adobe.com/console/projects/${selectedOrganization.id}/${response.projectId}/overview`}>
+          href={`/console/projects/${selectedOrganization?.id}/${projectId}/overview`}>
           <div>
             <p
               className="spectrum-Body spectrum-Body--sizeS"
@@ -37,7 +37,7 @@ const DevConsoleLink = ({ cardDevConsoleLink, formData, response }) => {
                 max-width: 300px;
                 color: #0265dc;
               `}>
-              {formData['CredentialName']}
+              {credentialName}
             </p>
           </div>
           <div

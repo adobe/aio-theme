@@ -91,7 +91,7 @@ const CredentialForm = ({
       fields[Product] = productsObj;
     }
 
-    const isCredential = JSON.parse(localStorage.getItem("myCredential"));
+    const isCredential = JSON.parse(localStorage.getItem(`credential_${template.id}`));
     if (isCredential) {
       setIsMyCredential(true)
     }
@@ -191,7 +191,7 @@ const CredentialForm = ({
       licenseConfigs:
         Array.isArray(api.licenseConfigs) && api.licenseConfigs.length > 0
           ? [{ ...api.licenseConfigs[0], op: 'add' }]
-          : null,
+          : [],
     }));
 
     const data = {
@@ -217,72 +217,31 @@ const CredentialForm = ({
       });
 
       const resResp = await response.json();
-
       if (response.ok) {
         setResponse(resResp);
-        generateToken(resResp);
+        setShowCredential(true);
+        setAlertShow(true);
+        setLoading(false);
       } else if (resResp?.messages) {
+        setLoading(false)
         setAlertShow(true);
         setIsValid(false);
         setErrorResp(resResp?.messages[0]?.message);
         setShowCreateForm(true);
+        setIsError(true);
       }
-    } catch (error) {
+    }
+    catch (error) {
       setIsError(true);
     }
   };
 
   useEffect(() => {
-    if(isMyCredential){
+    if (isMyCredential) {
       setIsPrevious(true);
       setShowCreateForm(true);
     }
   }, [isMyCredential])
-
-  const generateToken = async (resResp) => {
-
-    const secretsUrl = `/console/api/organizations/${resResp?.orgId}/integrations/${resResp.id}/secrets`;
-    const token = window.adobeIMS?.getTokenFromStorage()?.token;
-    const secretsResponse = await fetch(secretsUrl, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-        'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
-      },
-    });
-
-    const secrets = await secretsResponse.json();
-
-    const secret = secrets.client_secrets[0].client_secret;
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams({
-        client_id: resResp?.apiKey,
-        client_secret: secret,
-        grant_type: 'client_credentials',
-        scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
-      }),
-    };
-
-    const tokenResponse = await fetch('/ims/token/v3', options);
-    const tokenJson = await tokenResponse.json();
-
-    setClientDetails({ clientId: secrets?.client_id, clientSecret: secrets.client_secrets[0].client_secret, token: tokenJson.access_token })
-
-    if (!secrets && !tokenJson) {
-      setLoading(true)
-    }
-    else {
-      setShowCredential(true);
-      setAlertShow(true);
-      setLoading(false);
-    }
-
-  };
 
   const sideObject = formField?.[SideCredential];
   const credentialName = formField?.[CredentialName];

@@ -116,7 +116,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Card.CredentialDetails heading="Credential details">
           <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
-          <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
+          {/* <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" /> */}
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -136,7 +136,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Return.CredentialDetails heading="Credential details">
           <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
-          <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />
+          {/* <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" /> */}
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />

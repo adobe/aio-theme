@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
-import { Button } from '@adobe/react-spectrum';
+import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-import { CopyIcon } from '../FormFields';
+import { CopyIcon, generateClientSecrets, generateToken } from '../FormFields';
 
-const AccessToken = ({ accessToken, token }) => {
+const AccessToken = ({ accessToken, token, response }) => {
 
   const [showtoken, setShowToken] = useState(false);
+  const [secretToken, setSecretToken] = useState()
+
+  const handleGenerateToken = async () => {
+    setShowToken(true);
+    const secrets = await generateClientSecrets(response);
+    if (secrets) {
+      const tokenVal = await generateToken(response?.apiKey, secrets?.clientSecret);
+      setSecretToken(tokenVal)
+    }
+  }
 
   return (
     <>
@@ -20,43 +30,44 @@ const AccessToken = ({ accessToken, token }) => {
           {accessToken?.heading && (
             <h4 className="spectrum-Heading spectrum-Heading--sizeS">{accessToken?.heading}</h4>
           )}
-          {showtoken ? (
-            <div
-              css={css`
-                display: flex;
-                align-items: center;
-                gap: 16px;
-              `}>
-              <p
-                className="spectrum-Body spectrum-Body--sizeS"
-                css={css`
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  color: #000000;
-                  width: 320px;
-                `}>
-                {token}
-              </p>
-              <TooltipTrigger delay={0}>
-                <ActionButton onPress={() => navigator.clipboard.writeText(token)}>
-                  <CopyIcon />
-                </ActionButton>
-                <Tooltip>Copy</Tooltip>
-              </TooltipTrigger>
-            </div>
-          ) : (
-            accessToken?.buttonLabel && (
+          {showtoken ?
+            ( secretToken ?
               <div
                 css={css`
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                  `}>
+                <p
+                  className="spectrum-Body spectrum-Body--sizeS"
+                  css={css`
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      color: #000000;
+                      width: 320px;
+                    `}>
+                  {secretToken}
+                </p>
+                <TooltipTrigger delay={0}>
+                  <ActionButton onPress={() => navigator.clipboard.writeText(token)}>
+                    <CopyIcon />
+                  </ActionButton>
+                  <Tooltip>Copy</Tooltip>
+                </TooltipTrigger>
+              </div> : <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
+            ) : (
+              accessToken?.buttonLabel && (
+                <div
+                  css={css`
                   width: fit-content;
                 `}>
-                <Button onPress={() => { setShowToken(true) }} variant="accent">
-                  {accessToken?.buttonLabel}
-                </Button>
-              </div>
-            )
-          )}
+                  <Button onPress={() => handleGenerateToken()} variant="accent">
+                    {accessToken?.buttonLabel}
+                  </Button>
+                </div>
+              )
+            )}
         </div>
       )}
     </>

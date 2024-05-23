@@ -54,25 +54,20 @@ const GetCredentialApiKey = () => {
         </GetCredential.Card.Side>
 
         <GetCredential.Card.Products label="Included products and services">
-        <GetCredential.Card.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
+          <GetCredential.Card.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
         </GetCredential.Card.Products>
-
-        <GetCredential.Card.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
-
-        <GetCredential.Card.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console' />
-
-        <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading="Access Token" />
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
         <GetCredential.Card.CredentialDetails heading="Credential details">
-          <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
-          <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
+          <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
+          <GetCredential.Card.CredentialDetails.AllowedOrigins heading="Allowed domains" />
+          <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
 
-      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." devConsoleDirection="project_overview|api_overview|credential_overview" developerConsoleManage="Manage all your projects and credentials on Adobe Developer Console" className="card_developer_console">
+      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." devConsoleDirection="project_overview|api_overview|credential_overview" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on Developer console" className="card_developer_console">
 
         <GetCredential.Return.Side>
           <GetCredential.Return.Side.Custom>
@@ -85,15 +80,14 @@ const GetCredentialApiKey = () => {
         </GetCredential.Return.Side>
 
         <GetCredential.Return.CredentialDetails heading="Credential details">
-          <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
-          <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
+          <GetCredential.Return.CredentialDetails.APIKey heading="API Key" />
+          <GetCredential.Return.CredentialDetails.AllowedOrigins heading="Allowed domains" />
+          <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />
 
-        <GetCredential.Return.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console' />
-
-        <GetCredential.Return.AccessToken helpText="" buttonLabel="Generate and copy token" heading="Access Token" />
+        <GetCredential.Return.ManageDeveloperConsole label="Manage all your projects and credentials on Adobe Developer Console" direction='/console/projects' />
 
         <GetCredential.Return.DevConsoleLink heading="Developer Console Project" />
 
@@ -104,8 +98,8 @@ const GetCredentialApiKey = () => {
       </GetCredential.Return>
 
       <GetCredential.RequestAccess
-      title="Get credentials"
-      paragraph="Create unique credentials that you will use to call multiple APIs from your application."
+        title="Get credentials"
+        paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
         <GetCredential.RequestAccess.RestrictedAccess
           title="Restricted Access"

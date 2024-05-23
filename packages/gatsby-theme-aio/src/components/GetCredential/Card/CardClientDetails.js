@@ -7,23 +7,23 @@ import { CardClientSecret } from './CardClientSecret';
 import { CardOrganizationName } from './CardOrganizationName';
 import { CardScopes } from './CardScopes';
 
-const CardClientDetails = ({ cardClientDetails, cardClientId, cardClientSecret, cardOrganizationName, cardScopes, apiKey, allowedOrigins, organization, cardAPIKey, cardAllowedOrigins, clientSecret, clientId }) => {
-  
+const CardClientDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, apiKey, allowedOrigins, clientSecret, clientId, response }) => {
+
   return (
     <div css={css`
           display : flex;
           flex-direction : column;
           gap: 32px;
         `}>
-      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{cardClientDetails?.heading}</h4>
-      {cardAPIKey && <CardAPIKey cardClientDetails={cardClientDetails} cardAPIKey={cardAPIKey} apiKey={apiKey} />}
-      {cardClientId && <CardClientId cardClientDetails={cardClientDetails} cardClientId={cardClientId} clientId={clientId} />}
-      {cardAllowedOrigins && <CardAllowedOrigins cardClientDetails={cardClientDetails} allowedOrigins={allowedOrigins} cardAllowedOrigins={cardAllowedOrigins} />}
-      {cardClientSecret && <CardClientSecret cardClientDetails={cardClientDetails} cardClientSecret={cardClientSecret} clientSecret={clientSecret} />}
-      {cardOrganizationName && <CardOrganizationName cardClientDetails={cardClientDetails} cardOrganizationName={cardOrganizationName} organization={organization?.name} />}
-      {cardScopes && <CardScopes cardClientDetails={cardClientDetails} cardScopes={cardScopes} />}
+      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
+      {apiKeyDetails && <CardAPIKey cardClientDetails={clientDetails} cardAPIKey={apiKeyDetails} apiKey={apiKey} />}
+      {clientIdDetails && <CardClientId cardClientDetails={clientDetails} cardClientId={clientIdDetails} clientId={clientId} />}
+      {allowedOrigins && <CardAllowedOrigins cardClientDetails={clientDetails} cardAllowedOrigins={allowedOrigins} allowedOrigins={allowedOriginsDetails} />}
+      {clientSecretDetails && <CardClientSecret cardClientDetails={clientDetails} cardClientSecret={clientSecretDetails} clientSecret={clientSecret} response={response} />}
+      {organizationDetails && <CardOrganizationName cardClientDetails={clientDetails} cardOrganizationName={organizationDetails} organization={organizationName?.name} />}
+      {scopesDetails && <CardScopes cardClientDetails={clientDetails} cardScopes={scopesDetails} />}
     </div>
   )
 }
 
-export { CardClientDetails }
+export { CardClientDetails };

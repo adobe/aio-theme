@@ -62,9 +62,9 @@ const ProjectsDropdown = ({ projectsDropdown, previousProjectsDetails, selectedI
       >
         <Picker
           isQuiet
-          items={previousProjectsDetails.map((organs, k) => {
+          items={previousProjectsDetails?.map((organs, k) => {
             return {
-              title: organs?.name,
+              title: organs?.formData?.CredentialName,
               selected: k === selectedIndex
             }
           })}
