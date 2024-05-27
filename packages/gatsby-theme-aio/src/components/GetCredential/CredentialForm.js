@@ -41,7 +41,6 @@ const CredentialForm = ({
   const [formField, setFormField] = useState([]);
   const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
-  const [clientDetails, setClientDetails] = useState({});
   const [isMyCredential, setIsMyCredential] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
@@ -435,7 +434,6 @@ const CredentialForm = ({
           setShowCreateForm={setShowCreateForm}
           setShowCredential={setShowCredential}
           formData={formData}
-          clientDetails={clientDetails}
           setIsMyCredential={setIsMyCredential}
           setIsCreateNewCredential={setIsCreateNewCredential}
         />
