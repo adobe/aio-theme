@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-import { CopyIcon, generateClientSecrets, generateToken } from '../FormFields';
+import { CopyIcon, getCredentialSecrets, generateToken } from '../FormFields';
+import { Toast } from '../../Toast';
 
-const AccessToken = ({ accessToken, token, response }) => {
+const AccessToken = ({ accessToken, response }) => {
 
-  const [showtoken, setShowToken] = useState(false);
-  const [secretToken, setSecretToken] = useState()
+  const [credentialToken, setCredentialToken] = useState(null);
+  const [isCopiedTooltip, setIsCopiedTooltip] = useState(false)
 
   const handleGenerateToken = async () => {
-    setShowToken(true);
-    const secrets = await generateClientSecrets(response);
+    setCredentialToken('loading');
+    const secrets = await getCredentialSecrets(response);
     if (secrets) {
       const tokenVal = await generateToken(response?.apiKey, secrets?.clientSecret);
-      setSecretToken(tokenVal)
+      setCredentialToken(tokenVal);
     }
+  };
+
+  const handleSecretCopyCode = (copiedVal) => {
+    setIsCopiedTooltip(true)
+    navigator.clipboard.writeText(copiedVal);
   }
 
   return (
@@ -30,44 +36,58 @@ const AccessToken = ({ accessToken, token, response }) => {
           {accessToken?.heading && (
             <h4 className="spectrum-Heading spectrum-Heading--sizeS">{accessToken?.heading}</h4>
           )}
-          {showtoken ?
-            ( secretToken ?
+          {credentialToken === null ? (
+            accessToken?.buttonLabel && (
               <div
                 css={css`
+                  width: fit-content;
+                `}>
+                <Button onPress={() => handleGenerateToken()} variant="accent">
+                  {accessToken?.buttonLabel}
+                </Button>
+              </div>
+            )
+          ) : (
+            credentialToken === 'loading' ? (
+              <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
+            ) :
+              credentialToken && (
+                <div
+                  css={css`
                     display: flex;
                     align-items: center;
                     gap: 16px;
                   `}>
-                <p
-                  className="spectrum-Body spectrum-Body--sizeS"
-                  css={css`
+                  <p
+                    className="spectrum-Body spectrum-Body--sizeS"
+                    css={css`
                       white-space: nowrap;
                       overflow: hidden;
                       text-overflow: ellipsis;
                       color: #000000;
                       width: 320px;
                     `}>
-                  {secretToken}
-                </p>
-                <TooltipTrigger delay={0}>
-                  <ActionButton onPress={() => navigator.clipboard.writeText(token)}>
-                    <CopyIcon />
-                  </ActionButton>
-                  <Tooltip>Copy</Tooltip>
-                </TooltipTrigger>
-              </div> : <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
-            ) : (
-              accessToken?.buttonLabel && (
-                <div
-                  css={css`
-                  width: fit-content;
-                `}>
-                  <Button onPress={() => handleGenerateToken()} variant="accent">
-                    {accessToken?.buttonLabel}
-                  </Button>
+                    {credentialToken}
+                  </p>
+                  <TooltipTrigger delay={0}>
+                    <ActionButton onPress={() => handleSecretCopyCode(credentialToken)}>
+                      <CopyIcon />
+                    </ActionButton>
+                    <Tooltip>Copy</Tooltip>
+                  </TooltipTrigger>
                 </div>
               )
-            )}
+          )}
+          {
+            isCopiedTooltip && (
+              <Toast
+                variant="success"
+                message="Copied to clipboard"
+                disable={1000}
+                customDisableFunction={setIsCopiedTooltip}
+              />
+            )
+          }
         </div>
       )}
     </>

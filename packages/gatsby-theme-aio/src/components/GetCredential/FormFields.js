@@ -167,7 +167,7 @@ export const getOrganizations = async () => {
   }
 }
 
-export const generateClientSecrets = async (response) => {
+export const getCredentialSecrets = async (response) => {
 
   const secretsUrl = `/console/api/organizations/${response?.orgId}/integrations/${response?.id}/secrets`;
   const token = window.adobeIMS?.getTokenFromStorage()?.token;

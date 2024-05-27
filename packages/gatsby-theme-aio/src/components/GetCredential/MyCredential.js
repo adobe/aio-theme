@@ -4,19 +4,13 @@ import classNames from 'classnames';
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
 import { saveAs } from 'file-saver';
-import { KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { Toast } from '../Toast';
 import { CardProducts } from './Products';
-import { MyCredentialSide } from './Card/MyCredentialSide';
+import { SideComponent } from './SideComponent';
 import { AccessToken } from './Card/AccessToken';
 import { DevConsoleLink } from './Card/DevConsoleLink';
 import { CardClientDetails } from './Card/CardClientDetails';
-import { CardClientId } from './Card/CardClientId';
-import { CardClientSecret } from './Card/CardClientSecret';
-import { CardOrganizationName } from './Card/CardOrganizationName';
-import { CardScopes } from './Card/CardScopes';
-import { CardAPIKey } from './Card/CardAPIKey';
-import { CardAllowedOrigins } from './Card/CardAllowedOrigins';
 import { SideContent } from './Form/SideContent';
 import GetCredentialContext from './GetCredentialContext';
 import { CredentialDetailsCard } from './CredentialDetailsCard';
@@ -28,11 +22,9 @@ const MyCredential = ({
   response,
   orgID,
   organization,
-  clientDetails,
   setIsMyCredential,
   setIsCreateNewCredential
 }) => {
-
   const { getCredentialData, selectedOrganization: organizationName, template } =
     useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
@@ -56,16 +48,6 @@ const MyCredential = ({
       );
     }
   });
-
-  const accessToken = myCredentialFields[AccessToken];
-  const cardDevConsoleLink = myCredentialFields[DevConsoleLink];
-  const cardClientDetails = myCredentialFields[CardClientDetails];
-  const cardClientId = myCredentialFields[CardClientId];
-  const cardClientSecret = myCredentialFields[CardClientSecret];
-  const cardOrganizationName = myCredentialFields[CardOrganizationName];
-  const cardScopes = myCredentialFields[CardScopes];
-  const cardAPIKey = myCredentialFields[CardAPIKey];
-  const cardAllowedOrigins = myCredentialFields[CardAllowedOrigins];
   const product = productsObj?.productList;
 
 
@@ -280,30 +262,17 @@ const MyCredential = ({
             credentialName={formData['CredentialName']}
             productList={product}
             ProductComponent={CardProducts}
-            accessToken={accessToken}
             AccessTokenComponent={AccessToken}
-            token={clientDetails?.token}
-            devConsoleLinkHeading={cardDevConsoleLink?.heading}
             DevConsoleLinkComponent={DevConsoleLink}
-            projectId={response?.projectId}
             ClientDetailsComponent={CardClientDetails}
-            clientDetails={cardClientDetails}
-            clientIdDetails={cardClientId}
-            clientSecretDetails={cardClientSecret}
-            organizationDetails={cardOrganizationName}
-            scopesDetails={cardScopes}
-            apiKey={response['apiKey']}
             allowedOriginsDetails={formData['AllowedOrigins']}
             organizationName={organizationName}
-            apiKeyDetails={cardAPIKey}
-            allowedOrigins={cardAllowedOrigins}
-            clientSecret={clientDetails?.clientSecret}
             response={response}
-            clientId={response['apiKey']}
             nextButtonLink={card?.nextStepsHref}
             nextButtonLabel={card?.nextStepsLabel}
             devConsoleLink={devConsoleLink}
             developerConsoleManage={card?.developerConsoleManage}
+            myCredentialFields={myCredentialFields}
           />
           <div
             css={css`
@@ -342,8 +311,8 @@ const MyCredential = ({
         </div>
         {card?.children ? (
           <SideContent
-            sideContent={myCredentialFields[MyCredentialSide]?.children}
-            SideComp={MyCredentialSide}
+            sideContent={myCredentialFields[SideComponent]?.children}
+            SideComp={SideComponent}
           />
         ) : null}
       </div>

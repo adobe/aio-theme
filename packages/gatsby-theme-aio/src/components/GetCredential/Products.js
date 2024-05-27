@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/react';
-import { Popover } from '../Popover';
 import {
   ActionButton,
   Item,
@@ -74,7 +73,7 @@ const CardProduct = ({ productList }) => {
   );
 };
 
-const CardProducts = ({ products, productList }) => {
+const CardProducts = ({ productList }) => {
   return (
     <div
       css={css`
@@ -85,7 +84,7 @@ const CardProducts = ({ products, productList }) => {
       <CardProduct productList={productList} />
       <div
         css={css`
-          &>button , & > button : active {
+          &>button, & > button : active {
             border: none;
             background: transparent !important;
           }
@@ -114,18 +113,6 @@ const CardProducts = ({ products, productList }) => {
 };
 
 const CommonProduct = ({ productList }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const buttonRef = useRef();
-
-  const handleClickOutside = e => {
-    if (buttonRef.current?.contains(e.target)) setIsOpen(!isOpen);
-    else setIsOpen(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  });
 
   return (
     <>
@@ -157,75 +144,32 @@ const CommonProduct = ({ productList }) => {
             );
         })}
 
-      {productList?.length > 3 && (
+      {productList?.length > 2 && (
         <div
           css={css`
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
+            &>button, & > button : active {
+              border: none;
+              background: transparent !important;
+            }
           `}>
-          <div
-            css={css`
-              width: 35px;
-            `}
-          />
-          <label
-            for="textfield-m"
-            className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-            css={css`
-              color: var(--spectrum-global-color-gray-700);
-            `}>
-            <div
-              ref={buttonRef}
-              aria-label="productList"
-              aria-controls="productList"
-              aria-expanded={true}
-              css={css`
-                text-decoration-color: blue;
-                text-decoration: underline;
-                color: blue;
-                display: 'inline-block';
-                cursor: pointer;
-              `}>
-              +{productList?.length - 3} more
-            </div>
-          </label>
-
-          <Popover
-            id={'productList'}
-            isOpen={isOpen}
-            css={css`
-              width: var(--spectrum-global-dimension-size-4600);
-              max-height: var(--spectrum-global-dimension-size-6000);
-              top: 15px;
-              margin-left: 40px;
-            `}>
-            <div
-              css={css`
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-              `}>
-              <div
-                css={css`
-                  padding: 10px 0;
-                  cursor: pointer;
-                `}>
-                {productList?.map(product => {
-                  return (
-                    <div
-                      css={css`
-                        padding: 5px;
-                      `}>
-                      {product?.label}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Popover>
+          <MenuTrigger>
+            <ActionButton>
+              {productList?.length - 2 > 0 && (
+                <div
+                  aria-expanded={true}
+                  css={css`
+                    text-decoration-color: blue;
+                    text-decoration: underline;
+                    color: blue;
+                    display: 'inline-block';
+                    cursor: pointer;
+                  `}>
+                  +{productList?.length - 2} more
+                </div>
+              )}
+            </ActionButton>
+            <Menu items={productList}>{item => <Item key={item.label}>{item.label}</Item>}</Menu>
+          </MenuTrigger>
         </div>
       )}
     </>

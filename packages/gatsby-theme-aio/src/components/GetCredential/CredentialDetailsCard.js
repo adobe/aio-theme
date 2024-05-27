@@ -1,36 +1,65 @@
 import React from 'react';
 import { KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { css } from '@emotion/react';
+import { AccessToken } from './Card/AccessToken';
+import { DevConsoleLink } from './Card/DevConsoleLink';
+import { CardClientDetails } from './Card/CardClientDetails';
+import { CardClientId } from './Card/CardClientId';
+import { CardClientSecret } from './Card/CardClientSecret';
+import { CardOrganizationName } from './Card/CardOrganizationName';
+import { CardScopes } from './Card/CardScopes';
+import { CardAPIKey } from './Card/CardAPIKey';
+import { CardAllowedOrigins } from './Card/CardAllowedOrigins';
+import { ReturnAccessToken } from './Return/ReturnAccessToken';
+import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
+import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
+import { ReturnClientId } from './Return/ReturnClientId';
+import { ReturnClientSecret } from './Return/ReturnClientSecret';
+import { ReturnScopes } from './Return/ReturnScopes';
+import { ReturnAPIKey } from './Return/ReturnAPIKey';
+import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
+import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
 
 export const CredentialDetailsCard = ({
   credentialName,
   productList,
   ProductComponent,
-  accessToken,
   AccessTokenComponent,
-  token,
-  devConsoleLinkHeading,
   DevConsoleLinkComponent,
-  projectId,
   ClientDetailsComponent,
-  clientDetails,
-  clientIdDetails,
-  clientSecretDetails,
-  organizationDetails,
-  scopesDetails,
-  apiKeyDetails,
   allowedOriginsDetails,
   organizationName,
-  apiKey,
-  allowedOrigins,
-  clientSecret,
-  clientId,
   nextButtonLink,
   nextButtonLabel,
   devConsoleLink,
   developerConsoleManage,
-  response
+  response,
+  myCredentialFields,
+  returnFields
 }) => {
+  let accessToken, devConsoleLinkHeading, clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOrigins
+  if (myCredentialFields) {
+    accessToken = myCredentialFields[AccessToken];
+    devConsoleLinkHeading = myCredentialFields[DevConsoleLink]?.heading;
+    clientDetails = myCredentialFields[CardClientDetails];
+    clientIdDetails = myCredentialFields[CardClientId];
+    clientSecretDetails = myCredentialFields[CardClientSecret];
+    organizationDetails = myCredentialFields[CardOrganizationName];
+    scopesDetails = myCredentialFields[CardScopes];
+    apiKeyDetails = myCredentialFields[CardAPIKey];
+    allowedOrigins = myCredentialFields[CardAllowedOrigins];
+  }
+  else if (returnFields) {
+    accessToken = returnFields?.[ReturnAccessToken];
+    devConsoleLinkHeading = returnFields?.[ReturnDevConsoleLink]?.heading;
+    clientDetails = returnFields?.[ReturnCredentialDetails];
+    clientIdDetails = returnFields?.[ReturnClientId];
+    clientSecretDetails = returnFields?.[ReturnClientSecret];
+    scopesDetails = returnFields?.[ReturnScopes];
+    apiKeyDetails = returnFields?.[ReturnAPIKey];
+    organizationDetails = returnFields?.[ReturnOrganizationName];
+    allowedOrigins = returnFields?.[ReturnAllowedOrigins];
+  }
 
   return (
     <>
@@ -91,13 +120,13 @@ export const CredentialDetailsCard = ({
               flex-direction: column;
               gap: 32px;
             `}>
-            {accessToken && <AccessTokenComponent accessToken={accessToken} token={token} response={response} />}
+            {accessToken && <AccessTokenComponent accessToken={accessToken} response={response} />}
 
             {devConsoleLinkHeading && (
               <DevConsoleLinkComponent
                 devConsoleLinkHeading={devConsoleLinkHeading}
                 credentialName={credentialName}
-                projectId={projectId}
+                projectId={response?.projectId}
               />
             )}
 
@@ -111,10 +140,9 @@ export const CredentialDetailsCard = ({
                 apiKeyDetails={apiKeyDetails}
                 allowedOriginsDetails={allowedOriginsDetails}
                 organizationName={organizationName}
-                apiKey={apiKey}
+                apiKey={response?.['apiKey']}
                 allowedOrigins={allowedOrigins}
-                clientSecret={clientSecret}
-                clientId={clientId}
+                clientId={response?.['apiKey']}
                 response={response}
               />
             )}

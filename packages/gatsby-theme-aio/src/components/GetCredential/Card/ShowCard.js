@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
-import { CopyIcon, generateClientSecrets } from '../FormFields';
+import { CopyIcon, getCredentialSecrets } from '../FormFields';
 import { ActionButton, ProgressCircle, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import { Toast } from '../../Toast';
 
 const ShowCard = ({
   heading,
@@ -9,16 +10,21 @@ const ShowCard = ({
   isClientSecret,
   buttonLabel,
   isOraganization,
-  clientSecret,
   response
 }) => {
-  const [showClientSecret, setShowClientSecret] = useState(false);
-  const [clientDetails, setClientDetails] = useState({})
+
+  const [showClientSecret, setShowClientSecret] = useState(null);
+  const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
 
   const handleCreateClientSecret = async () => {
-    setShowClientSecret(true)
-    const secrets = await generateClientSecrets(response);
-    setClientDetails(secrets)
+    setShowClientSecret('loading');
+    const secrets = await getCredentialSecrets(response);
+    setShowClientSecret(secrets);
+  };
+
+  const handleSecretCopyCode = (copiedVal) => {
+    setIsCopiedTooltip(true)
+    navigator.clipboard.writeText(copiedVal);
   }
 
   return (
@@ -38,45 +44,40 @@ const ShowCard = ({
           align-items: center;
           gap: 24px;
         `}>
-        {isClientSecret &&
-          (showClientSecret ? (
-            Object.keys(clientDetails)?.length ?
-              <div
-                css={css`
+        {isClientSecret && (
+          showClientSecret === null ? (
+            <ActionButton
+              onPress={() => handleCreateClientSecret()}>
+              {buttonLabel}
+            </ActionButton>
+          ) : showClientSecret === 'loading' ? (
+            <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
+          ) : (
+            <div
+              css={css`
                 display: flex;
                 align-items: center;
                 gap: 16px;
               `}>
-                <p
-                  className="spectrum-Body spectrum-Body--sizeS"
-                  css={css`
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                css={css`
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   color: #000000;
                 `}>
-                  {clientDetails?.clientSecret}
-                </p>
-                <TooltipTrigger delay={0}>
-                  <ActionButton onPress={() => navigator.clipboard.writeText(clientSecret)}>
-                    <CopyIcon />
-                  </ActionButton>
-                  <Tooltip>Copy</Tooltip>
-                </TooltipTrigger>
-              </div> : <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
-          ) : (
-            <div
-              css={css`
-                button {
-                  cursor: pointer;
-                }
-              `}>
-              <ActionButton
-                onPress={() => handleCreateClientSecret()}>
-                {buttonLabel}
-              </ActionButton>
+                {showClientSecret?.clientSecret}
+              </p>
+              <TooltipTrigger delay={0}>
+                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)}>
+                  <CopyIcon />
+                </ActionButton>
+                <Tooltip>Copy</Tooltip>
+              </TooltipTrigger>
             </div>
-          ))}
+          )
+        )}
 
         {value && (
           <p
@@ -98,7 +99,7 @@ const ShowCard = ({
               display: ${isOraganization ? 'none' : 'block'};
             `}>
             <TooltipTrigger delay={0}>
-              <ActionButton onPress={() => navigator.clipboard.writeText(value)}>
+              <ActionButton onPress={() => handleSecretCopyCode(value)} >
                 <CopyIcon />
               </ActionButton>
               <Tooltip>Copy</Tooltip>
@@ -106,6 +107,16 @@ const ShowCard = ({
           </div>
         )}
       </div>
+      {
+        isCopiedTooltip && (
+          <Toast
+            variant="success"
+            message="Copied to clipboard"
+            disable={1000}
+            customDisableFunction={setIsCopiedTooltip}
+          />
+        )
+      }
     </div>
   );
 };

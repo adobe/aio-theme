@@ -1,8 +1,8 @@
 import React from 'react';
 import { AccessToken } from '../Card/AccessToken';
 
-const ReturnAccessToken = ({ accessToken, token, response }) => {
-  return <AccessToken accessToken={accessToken} token={token} response={response} />
+const ReturnAccessToken = ({ accessToken,response }) => {
+  return <AccessToken accessToken={accessToken} response={response} />
 }
 
 export { ReturnAccessToken }

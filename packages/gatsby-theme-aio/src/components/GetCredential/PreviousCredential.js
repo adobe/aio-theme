@@ -7,7 +7,7 @@ import { PreviousProject } from './PreviousProject';
 import { Organization } from './Organization';
 import { CredentialForm } from './CredentialForm';
 import { RetunrSideComp } from './Return/RetunrSideComp';
-import { ReturnProducts } from './Return/ReturnProducts';
+import { CardProducts } from './Products';
 import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
 import GetCredentialContext from './GetCredentialContext';
@@ -34,7 +34,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
       children.forEach(({ props: childProps, type: childType }) => {
         if (type === RetunrSideComp || type === ReturnCredentialDetails) {
           returnFields[childType] = childProps;
-        } else if (type === ReturnProducts) {
+        } else if (type === CardProducts) {
           const { label, icon } = childProps;
           productList.push({ label, icon });
         }

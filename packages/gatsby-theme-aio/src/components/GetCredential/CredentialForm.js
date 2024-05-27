@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Toast } from '../Toast';
 import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
-import { SideCredential } from './Form/SideCredential';
+import { SideComponent } from './SideComponent';
 import { CredentialName } from './Form/CredentialName';
 import { AllowedOrigins } from './Form/AllowedOrigins';
 import { Downloads } from './Form/Downloads';
@@ -41,8 +41,8 @@ const CredentialForm = ({
   const [formField, setFormField] = useState([]);
   const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
-  const [clientDetails, setClientDetails] = useState({})
-  const [isMyCredential, setIsMyCredential] = useState(false)
+  const [clientDetails, setClientDetails] = useState({});
+  const [isMyCredential, setIsMyCredential] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
 
@@ -93,10 +93,9 @@ const CredentialForm = ({
 
     const isCredential = JSON.parse(localStorage.getItem(`credential_${template.id}`));
     if (isCredential) {
-      setIsMyCredential(true)
-    }
-    else {
-      setIsMyCredential(false)
+      setIsMyCredential(true);
+    } else {
+      setIsMyCredential(false);
     }
 
     setFormField(fields);
@@ -174,6 +173,15 @@ const CredentialForm = ({
     }
   };
 
+  const handleErrors = (detailedMessage) => {
+    setLoading(false);
+    setAlertShow(true);
+    setIsValid(false);
+    setErrorResp(detailedMessage);
+    setShowCreateForm(true);
+    setIsError(true);
+  }
+
   const createCredential = async () => {
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
 
@@ -216,22 +224,25 @@ const CredentialForm = ({
         body: JSON.stringify(data),
       });
 
-      const resResp = await response.json();
+      const resResp = await response?.json();
+
+      const jsonString = resResp.errors[0].message.match(/\((\{.*\})\)/)[1];
+
+      const errorDetails = JSON.parse(jsonString);
+
       if (response.ok) {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
         setLoading(false);
-      } else if (resResp?.messages) {
-        setLoading(false)
-        setAlertShow(true);
-        setIsValid(false);
-        setErrorResp(resResp?.messages[0]?.message);
-        setShowCreateForm(true);
-        setIsError(true);
+      } else {
+        handleErrors(errorDetails.messages[0].message)
       }
-    }
-    catch (error) {
+    } catch (error) {
+      setShowCreateForm(true);
+      setLoading(false);
+      setAlertShow(true);
+      setErrorResp(error.message);
       setIsError(true);
     }
   };
@@ -241,9 +252,9 @@ const CredentialForm = ({
       setIsPrevious(true);
       setShowCreateForm(true);
     }
-  }, [isMyCredential])
+  }, [isMyCredential]);
 
-  const sideObject = formField?.[SideCredential];
+  const sideObject = formField?.[SideComponent];
   const credentialName = formField?.[CredentialName];
   const allowedOrigins = formField?.[AllowedOrigins];
   const downloads = formField?.[Downloads];
@@ -387,7 +398,7 @@ const CredentialForm = ({
               </div>
             </div>
             {sideObject ? (
-              <SideContent sideContent={sideObject?.children} SideComp={SideCredential} />
+              <SideContent sideContent={sideObject?.children} SideComp={SideComponent} />
             ) : null}
           </div>
         </div>

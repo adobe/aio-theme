@@ -3,13 +3,23 @@ import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { css } from '@emotion/react';
 import { Button, DialogTrigger } from '@adobe/react-spectrum';
 import { RequestAccessModal } from './RequestAccessModal';
-import { RestrictedAccessProducts } from './RestrictedAccessProducts';
 import GetCredentialContext from '../GetCredentialContext';
 import { Organization } from '../Organization';
+import { Products } from '../Products';
 
 const NestedAlertContent = ({ restrictedAccess, products }) => {
 
   const { selectedOrganization } = useContext(GetCredentialContext);
+
+  let productList = []
+
+  if (Array.isArray(products?.children)) {
+    productList = products?.children.map((child) => (child?.props))
+  } else {
+    productList.push(products?.children?.props);
+  }
+
+  let product = { productList };
 
   return (
     <>
@@ -53,7 +63,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
             <Organization />
           </span>
         </p>
-        {products && <RestrictedAccessProducts products={products} />}
+        {products && <Products products={products} product={product} />}
         {restrictedAccess?.buttonLabel && (
           <div
             css={css`

@@ -14,7 +14,7 @@ import { Loading } from './Loading';
 import { CredentialForm } from './CredentialForm';
 import { CredentialName } from './Form/CredentialName';
 import { AllowedOrigins } from './Form/AllowedOrigins';
-import { SideCredential } from './Form/SideCredential';
+import { SideComponent } from './SideComponent';
 import { Downloads } from './Form/Downloads';
 import { Download } from './Form/Download';
 import { AdobeDeveloperConsole } from './Form/AdobeDeveloperConsole';
@@ -34,8 +34,6 @@ import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
 import { RetunrSideComp } from './Return/RetunrSideComp';
 import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
-import { ReturnProduct } from './Return/ReturnProduct';
-import { ReturnProducts } from './Return/ReturnProducts';
 import { ReturnClientId } from './Return/ReturnClientId';
 import { ReturnClientSecret } from './Return/ReturnClientSecret';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
@@ -45,11 +43,8 @@ import { ReturnAPIKey } from './Return/ReturnAPIKey';
 import { MyCredential } from './MyCredential';
 import { AccessToken } from './Card/AccessToken';
 import { DevConsoleLink } from './Card/DevConsoleLink';
-import { MyCredentialSide } from './Card/MyCredentialSide';
 import { RequestAccess } from "./RequestAccess/RequestAccess"
 import { RestrictedAccess } from './RequestAccess/RestrictedAccessFields';
-import { RestrictedAccessProducts } from './RequestAccess/RestrictedAccessProducts';
-import { RestrictedAccessProduct } from './RequestAccess/RestrictedAccessProduct';
 import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
 import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
@@ -84,6 +79,7 @@ const GetCredential = ({ templateId, children, className }) => {
   const isMyCredential = isBrowser ? JSON.parse(localStorage.getItem(`credential_${templateId}`)) : undefined;
 
   const fetchTemplate = async (org) => {
+
     setIsError(false);
     setLoading(true);
     if (org.code) {
@@ -223,6 +219,10 @@ const GetCredential = ({ templateId, children, className }) => {
                 css={css`
                 background: #f8f8f8;
                 padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
+
+                button , input[type = checkbox] , a{
+                  cursor:pointer !important;
+                }
                          
                 @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
                   padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
@@ -271,7 +271,7 @@ GetCredential.Form.CredentialName = CredentialName;
 GetCredential.Form.AllowedOrigins = AllowedOrigins;
 GetCredential.Form.Products = Products;
 GetCredential.Form.Product = Product;
-GetCredential.Form.Side = SideCredential;
+GetCredential.Form.Side = SideComponent;
 GetCredential.Form.Downloads = Downloads;
 GetCredential.Form.Download = Download;
 GetCredential.Form.AdobeDeveloperConsole = AdobeDeveloperConsole;
@@ -279,7 +279,7 @@ GetCredential.UnknownError = IllustratedMessage;
 GetCredential.Card = MyCredential;
 GetCredential.Card.AccessToken = AccessToken;
 GetCredential.Card.DevConsoleLink = DevConsoleLink;
-GetCredential.Card.Side = MyCredentialSide;
+GetCredential.Card.Side = SideComponent;
 GetCredential.Card.Product = CardProduct;
 GetCredential.Card.Products = CardProducts;
 GetCredential.Card.CredentialDetails = CardClientDetails;
@@ -299,8 +299,8 @@ GetCredential.Return.DevConsoleLink = ReturnDevConsoleLink;
 GetCredential.Return.Side = RetunrSideComp;
 GetCredential.Return.Side.Custom = ReturnCustomComp;
 GetCredential.Return.Side.NewCredential = ReturnNewCredential;
-GetCredential.Return.Product = ReturnProduct;
-GetCredential.Return.Products = ReturnProducts;
+GetCredential.Return.Product = CardProduct;
+GetCredential.Return.Products = CardProducts;
 GetCredential.Return.CredentialDetails = ReturnCredentialDetails;
 GetCredential.Return.CredentialDetails.ClientId = ReturnClientId;
 GetCredential.Return.CredentialDetails.ClientSecret = ReturnClientSecret;
@@ -310,8 +310,8 @@ GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = RestrictedAccessProducts;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = RestrictedAccessProduct;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = Products;
+GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
 GetCredential.ErrorCode = SubscriptionError;
 

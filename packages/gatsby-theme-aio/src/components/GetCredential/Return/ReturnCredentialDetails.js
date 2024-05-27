@@ -7,7 +7,7 @@ import { ReturnClientSecret } from './ReturnClientSecret';
 import { ReturnOrganizationName } from './ReturnOrganizationName';
 import { ReturnScopes } from './ReturnScopes';
 
-const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, apiKey, allowedOrigins, clientSecret, clientId, response }) => {
+const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response }) => {
 
   return (
     <div css={css`
@@ -16,10 +16,10 @@ const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretD
         gap: 32px;
       `}>
       <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
-      {apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={apiKey} />}
+      {apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={response?.['apiKey']} />}
       {allowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={clientDetails} allowedOrigins={allowedOriginsDetails} returnAllowedOrigins={allowedOrigins} />}
-      {clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={clientId} />}
-      {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} clientSecret={clientSecret} response={response} />}
+      {clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={response?.['apiKey']} />}
+      {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />}
       {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
       {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
     </div>

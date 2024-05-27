@@ -1,18 +1,16 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import {
   Dialog,
   ProgressCircle,
 } from "@adobe/react-spectrum";
-import GetCredentialContext from "../GetCredentialContext";
 
 const ACRS_HOST_PREFIX = 'env' === 'prod' ? '' : 'stage.';
 const INITIAL_IFRAME_HEIGHT = 420;
 
 const RequestAccessModal = ({close}) => {
 
-  // const { template } = useContext(GetCredentialContext);
-  const accessPlatformAppId = 'ContentTaggingSDK1'; //template.requestAccessAppId;
+  const accessPlatformAppId = 'ContentTaggingSDK1';
   const [targetUrl, setTargetUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [iframeHeight, setIframeHeight] =  useState(INITIAL_IFRAME_HEIGHT);
