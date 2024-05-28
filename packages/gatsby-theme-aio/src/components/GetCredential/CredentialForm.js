@@ -212,22 +212,19 @@ const CredentialForm = ({
     };
 
     try {
-      const url = `/v1/templates/templates-install?templateId=${template.id}`;
+      const url = `/templates/install/${template.id}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
           'x-api-key': window?.adobeIMS?.adobeIdData?.client_id,
+          Accept: 'application/json',
         },
         body: JSON.stringify(data),
       });
 
       const resResp = await response?.json();
-
-      const jsonString = resResp.errors[0].message.match(/\((\{.*\})\)/)[1];
-
-      const errorDetails = JSON.parse(jsonString);
 
       if (response.ok) {
         setResponse(resResp);
@@ -235,6 +232,8 @@ const CredentialForm = ({
         setAlertShow(true);
         setLoading(false);
       } else {
+        const jsonString = resResp.errors[0].message.match(/\((\{.*\})\)/)[1];
+        const errorDetails = JSON.parse(jsonString);
         handleErrors(errorDetails.messages[0].message)
       }
     } catch (error) {

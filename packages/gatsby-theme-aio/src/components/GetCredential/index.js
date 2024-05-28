@@ -83,7 +83,7 @@ const GetCredential = ({ templateId, children, className }) => {
     setIsError(false);
     setLoading(true);
     if (org.code) {
-      const url = `/v1/templates/templates-get?templateId=${templateId}`
+      const url = `/templates/${templateId}`
       const response = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
