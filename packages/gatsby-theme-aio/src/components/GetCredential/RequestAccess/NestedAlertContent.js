@@ -9,7 +9,7 @@ import { Products } from '../Products';
 
 const NestedAlertContent = ({ restrictedAccess, products }) => {
 
-  const { selectedOrganization } = useContext(GetCredentialContext);
+  const { template, selectedOrganization } = useContext(GetCredentialContext);
 
   let productList = []
 
@@ -65,7 +65,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
         </p>
         {products && <Products products={products} product={product} />}
         {restrictedAccess?.buttonLabel && (
-          <div
+          template.requestAccessAppId && <div
             css={css`
               display: flex;
               align-items: center;
@@ -87,9 +87,12 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
                     background-color: var(--spectrum-gray-400) !important;
                   }
                 `}>
-                <Button>{restrictedAccess?.buttonLabel}</Button>
+                <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button>
+                {
+                  // TODO: show tooltip as defined here - https://www.figma.com/design/pYnDEcDJqLa5PFO5DugryM/%F0%9F%97%B3%EF%B8%8F-Phase-2%3A-Dev-Console-Enterprise-APIs-%26-Services?node-id=328-37260&t=UxVfXSili8MGvpiT-4
+                }
               </div>
-              {close => <RequestAccessModal close={close} />}
+              {close => <RequestAccessModal accessPlatformAppId={template.requestAccessAppId} close={close} />}
             </DialogTrigger>
           </div>
         )}

@@ -275,7 +275,7 @@ module.exports = {
       })
     );
     app.use("/templates", createProxyMiddleware({
-      target: "https://stage.adobe-runtime.com/apis/adp-template-registry-service-stage/v1/templates",
+      target: "https://developer-stage.adobe.com/templates",
       secure: false,
       changeOrigin: true,
     }));

@@ -5,12 +5,9 @@ import {
   ProgressCircle,
 } from "@adobe/react-spectrum";
 
-const ACRS_HOST_PREFIX = 'env' === 'prod' ? '' : 'stage.';
 const INITIAL_IFRAME_HEIGHT = 420;
 
-const RequestAccessModal = ({close}) => {
-
-  const accessPlatformAppId = 'ContentTaggingSDK1';
+const RequestAccessModal = ({accessPlatformAppId, close}) => {
   const [targetUrl, setTargetUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [iframeHeight, setIframeHeight] =  useState(INITIAL_IFRAME_HEIGHT);
@@ -18,7 +15,8 @@ const RequestAccessModal = ({close}) => {
   useEffect(() => {
     const setTargetUrlHelper = async () => {
         const { userId } = await window.adobeIMS.getProfile();
-        setTargetUrl(`https://${ACRS_HOST_PREFIX}acrs.adobe.com/requestAccess?flow=frame&colorScheme=light&applicationId=UDPWeb1&appId=${accessPlatformAppId}&userId=${userId}&accessRequestType=apiAccess`);
+        const acrsHostPrefix = window.adobeIMS.adobeIdData.environment === 'prod' ? '' : 'stage.';
+        setTargetUrl(`https://${acrsHostPrefix}acrs.adobe.com/requestAccess?flow=frame&colorScheme=light&applicationId=UDPWeb1&appId=${accessPlatformAppId}&userId=${userId}&accessRequestType=apiAccess`);
     };
     setTargetUrlHelper();
 }, [setTargetUrl, accessPlatformAppId]);
