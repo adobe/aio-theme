@@ -51,27 +51,27 @@ const MyCredential = ({
   const product = productsObj?.productList;
 
 
-  useEffect(() => {
-    const getItemFromLocalStorage = JSON.parse(localStorage.getItem(`credential_${template.id}`));
-    let setCredentialValue;
-    const keyCredential = { formData: formData, credential: response };
-    if (getItemFromLocalStorage) {
-      setCredentialValue = [keyCredential, ...getItemFromLocalStorage];
-    } else {
-      setCredentialValue = [keyCredential];
-    }
-    localStorage.setItem(`credential_${template.id}`, JSON.stringify(setCredentialValue));
-  }, []);
+  // useEffect(() => {
+  //   const getItemFromLocalStorage = JSON.parse(localStorage.getItem(`credential_${template.id}`));
+  //   let setCredentialValue;
+  //   const keyCredential = { formData: formData, credential: response };
+  //   if (getItemFromLocalStorage) {
+  //     setCredentialValue = [keyCredential, ...getItemFromLocalStorage];
+  //   } else {
+  //     setCredentialValue = [keyCredential];
+  //   }
+  //   localStorage.setItem(`credential_${template.id}`, JSON.stringify(setCredentialValue));
+  // }, []);
 
-  useEffect(() => {
-    if (formData['Downloads']) {
-      downloadZIP(
-        `/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
-        formData['Download'],
-        formData['zipUrl']
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (formData['Downloads']) {
+  //     downloadZIP(
+  //       `/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
+  //       formData['Download'],
+  //       formData['zipUrl']
+  //     );
+  //   }
+  // }, []);
 
   const card = credentialProps?.[MyCredential];
 

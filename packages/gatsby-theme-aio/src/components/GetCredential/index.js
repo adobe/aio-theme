@@ -61,6 +61,8 @@ const GetCredential = ({ templateId, children, className }) => {
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
   const [template, setTemplate] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [isMyCredential, setIsMyCredential] = useState(false)
+  const [previousProjectDetail, setPreviousProjectDetail] = useState();
 
   if (!templateId) {
     console.error('No template id provided. Cannot continue. Will fail.');
@@ -75,8 +77,6 @@ const GetCredential = ({ templateId, children, className }) => {
       getCredentialData[child.type] = child.props;
     }
   });
-
-  const isMyCredential = isBrowser ? JSON.parse(localStorage.getItem(`credential_${templateId}`)) : undefined;
 
   const fetchTemplate = async (org) => {
 
@@ -129,12 +129,45 @@ const GetCredential = ({ templateId, children, className }) => {
   }
 
   useEffect(() => {
+    const getPreviousProjects = async () => {
+      setLoading(true)
+      const { userId } = await window.adobeIMS.getProfile();
+      const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${template?.id}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const previousProjectDetailsResponse = await fetch(previousProjectDetailsUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
+        },
+      });
+
+      const previousProjectDetails = await previousProjectDetailsResponse.json();
+      setPreviousProjectDetail(previousProjectDetails);
+
+      if (previousProjectDetails.count) {
+        setIsMyCredential(true)
+        setLoading(false)
+      } else {
+        setIsMyCredential(false)
+        setLoading(false)
+      }
+    }
+
+    if (selectedOrganization?.id && template?.id) {
+      getPreviousProjects();
+    }
+
+  }, [template, isPrevious, isCreateNewCredential])
+
+  useEffect(async () => {
     if (isMyCredential) {
       setIsPrevious(true)
     }
     else {
       setIsPrevious(false)
     }
+
     if (!isLoadingIms) {
       if (window?.adobeIMS?.isSignedInUser()) {
         initialize();
@@ -146,6 +179,7 @@ const GetCredential = ({ templateId, children, className }) => {
   }, [isLoadingIms]);
 
   useEffect(() => {
+
     if (!isPrevious) {
       setShowCreateForm(true)
     }
@@ -210,7 +244,8 @@ const GetCredential = ({ templateId, children, className }) => {
                 switchOrganization,
                 selectedOrganization,
                 template,
-                getCredentialData
+                getCredentialData,
+                previousProjectDetail
               }}
             >
               <section

@@ -14,19 +14,19 @@ import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const PreviousProject = ({ returnFields, productList }) => {
 
-  const { getCredentialData, selectedOrganization, template } = useContext(GetCredentialContext);
+  const { getCredentialData, selectedOrganization, previousProjectDetail } = useContext(GetCredentialContext);
   const returnProps = getCredentialData;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isCopiedTooltip, setCopiedTooltip] = useState('');
 
-  const previousProjectsDetails = JSON.parse(localStorage.getItem(`credential_${template.id}`));
+  const previousProjectsDetails = previousProjectDetail?.projects
   const previousProject = returnProps?.[PreviousProject];
   const projectsDropdown = returnFields?.[ProjectsDropdown];
   const returnManageDeveloperConsole = returnFields?.[ReturnManageDeveloperConsole];
 
-  const response = previousProjectsDetails?.[selectedIndex]?.credential;
-  const projectDetails = previousProjectsDetails?.[selectedIndex]?.formData;
+  const response = previousProjectsDetails?.[selectedIndex];
+  const projectDetails = previousProjectsDetails?.[selectedIndex];
 
   return (
     <>
@@ -48,7 +48,7 @@ const PreviousProject = ({ returnFields, productList }) => {
         {/* ----------- credential form ------------  */}
 
         <CredentialDetailsCard
-          credentialName={previousProjectsDetails?.[selectedIndex]?.formData?.CredentialName}
+          credentialName={previousProjectsDetails?.[selectedIndex]?.name}
           productList={productList}
           ProductComponent={CardProducts}
           AccessTokenComponent={ReturnAccessToken}

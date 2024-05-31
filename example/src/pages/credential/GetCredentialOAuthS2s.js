@@ -173,10 +173,6 @@ const GetCredentialOAuthS2s = () => {
               icon={ps}
               label="Adobe Photoshop API - Firefly Services"
             />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
-              icon={ps}
-              label="Adobe Photoshop API - Firefly Services"
-            />
           </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>

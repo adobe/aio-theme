@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { css } from '@emotion/react';
-import { Button, DialogTrigger } from '@adobe/react-spectrum';
+import { Button, Content, ContextualHelp, DialogTrigger, Flex, Heading, Text, Link } from '@adobe/react-spectrum';
 import { RequestAccessModal } from './RequestAccessModal';
 import GetCredentialContext from '../GetCredentialContext';
 import { Organization } from '../Organization';
@@ -20,6 +20,8 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
   }
 
   let product = { productList };
+
+  const TriggerDialog = template.isRequestPending ? "div" : DialogTrigger;
 
   return (
     <>
@@ -71,7 +73,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
               align-items: center;
               gap: 8px;
             `}>
-            <DialogTrigger>
+            <TriggerDialog>
               <div
                 css={css`
                   button {
@@ -86,14 +88,24 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
                   button: active {
                     background-color: var(--spectrum-gray-400) !important;
                   }
+
                 `}>
-                <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button>
-                {
-                  // TODO: show tooltip as defined here - https://www.figma.com/design/pYnDEcDJqLa5PFO5DugryM/%F0%9F%97%B3%EF%B8%8F-Phase-2%3A-Dev-Console-Enterprise-APIs-%26-Services?node-id=328-37260&t=UxVfXSili8MGvpiT-4
+                {!template.isRequestPending ? <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button> :
+                  <Flex gap="size-100" direction="row" alignItems="center">
+                    <p css={css`margin:0;font-style: italic;`}>Request Pending</p>
+                    <ContextualHelp variant="info">
+                      <Heading>Your request is pending approval</Heading>
+                      <Content>
+                        <Text>
+                          You'll hear back from your admin soon. If your request is approved, you'll get an email with instructions on how to start using your apps and service <Link href="https://www.adobe.com/go/user_request_access" variant="secondary">Learn more about requesting Adobe apps.</Link>
+                        </Text>
+                      </Content>
+                    </ContextualHelp>
+                  </Flex>
                 }
               </div>
               {close => <RequestAccessModal accessPlatformAppId={template.requestAccessAppId} close={close} />}
-            </DialogTrigger>
+            </TriggerDialog>
           </div>
         )}
       </div>
