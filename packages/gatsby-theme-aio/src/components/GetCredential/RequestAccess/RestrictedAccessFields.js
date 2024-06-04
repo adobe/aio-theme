@@ -23,14 +23,14 @@ const RestrictedAccess = ({ restrictedAccess, nestedAlertContentEdgeCase }) => {
   }
 
   const render = () => {
-    if (disEntitledReason === "ORG_MISSING_FIS") {
-      return <NestedAlertContentNoProduct content={childProps[NestedAlertContentNoProduct]} />
+    if (selectedOrganization?.type === "developer" && childProps[NestedAlertContentType1User]) {
+      return <NestedAlertContentType1User content={childProps[NestedAlertContentType1User]} />
     }
     else if (disEntitledReason === "USER_MISSING_PUBLIC_BETA") {
       return <NestedAlertContentNotSignUp content={childProps[NestedAlertContentNotSignUp]} />
     }
-    else if (selectedOrganization?.type === "developer") {
-      return <NestedAlertContentType1User content={childProps[NestedAlertContentType1User]} />
+    else if (disEntitledReason === "ORG_MISSING_FIS") {
+      return <NestedAlertContentNoProduct content={childProps[NestedAlertContentNoProduct]} />
     }
     else {
       return <NestedAlertContent restrictedAccess={restrictedAccess} products={products} />
