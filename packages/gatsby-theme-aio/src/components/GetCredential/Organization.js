@@ -136,12 +136,6 @@ const Organization = () => {
                           max-height: 98px;
 
                           ul:nth-child(1) {
-                            -ms-overflow-style: none;
-                            scrollbar-width: none;
-                            ::-webkit-scrollbar {
-                              display: none;
-                            }
-
                             svg:nth-child(1) {
                               width: 10px;
                               height: 10px;
@@ -164,7 +158,7 @@ const Organization = () => {
                           return {
                             title: organization?.name,
                             selected: k === selectedIndex,
-                            type: organization?.type
+                            type: organization?.role
                           };
                         })}
                         onChange={index => {
