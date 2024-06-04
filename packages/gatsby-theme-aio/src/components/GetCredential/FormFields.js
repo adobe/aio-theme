@@ -197,7 +197,7 @@ export const generateToken = async (apikey, secret) => {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
-      client_id: "UDPWeb1",
+      client_id: apikey,
       client_secret: secret,
       grant_type: 'client_credentials',
       scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
