@@ -19,6 +19,7 @@ import { Popover } from '../Popover';
 import { Menu, Item } from '../Menu';
 import '@spectrum-css/picker';
 import { getExternalLinkProps } from '../../utils';
+import { css } from '@emotion/react';
 
 const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
   const popover = useRef(null);
@@ -93,7 +94,14 @@ const Picker = ({ label, isQuiet, items, onChange, ...props }) => {
                 isSelected={option.selected}
                 href={option.href}
                 {...getExternalLinkProps(option.href)}>
-                {option.title}
+                <div>
+                  <p className='spectrum-Body spectrum-Body--sizeS' css={css`
+                    margin-top:6px;
+                  `}>{option.title}</p>
+                  <p className='spectrum-Body spectrum-Body--sizeXS' css={css`
+                    margin-top:1px;
+                  `}>{option?.type}</p>
+                </div>
               </Item>
             );
           })}

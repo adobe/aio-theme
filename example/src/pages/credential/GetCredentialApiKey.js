@@ -101,6 +101,13 @@ const GetCredentialApiKey = () => {
         title="Get credentials"
         paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
+        <GetCredential.RequestAccess.EdgeCase>
+          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Firefly Services" buttonLabel="Contact us to learn more" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.Type1User title="Access to Firefly Services is only available to enterprise accounts at this time." buttonLabel="Learn more about Firefly Services" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotMember title="Access to Firefly Services APIs is not available at this time." buttonLabel="Learn more about Firefly Services" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotSignUp title="Firefly Services APIs is available as part of the beta program. Sign up for the program or log in to an account that has access." buttonLabel="Sign up for the beta" buttonLink="#someLink" />
+        </GetCredential.RequestAccess.EdgeCase>
+
         <GetCredential.RequestAccess.RestrictedAccess
           title="Restricted Access"
           buttonLabel="Request access"

@@ -169,7 +169,8 @@ export const getOrganizations = async () => {
 
 export const getCredentialSecrets = async (response) => {
 
-  const secretsUrl = `/console/api/organizations/${JSON.parse(localStorage.getItem('OrgInfo'))?.code}/integrations/${response?.workspaces[0]?.credentials[0]?.id}/secrets`;
+  let projectId=response?.workspaces ? response?.workspaces[0]?.credentials[0]?.id : response?.id
+  const secretsUrl = `/console/api/organizations/${JSON.parse(localStorage.getItem('OrgInfo'))?.code}/integrations/${projectId}/secrets`;
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
   const secretsResponse = await fetch(secretsUrl, {
     headers: {
@@ -180,6 +181,7 @@ export const getCredentialSecrets = async (response) => {
   });
 
   const secrets = await secretsResponse.json();
+  console.log('secrets', secrets)
 
   const secret = secrets.client_secrets[0]?.client_secret;
 
@@ -188,19 +190,21 @@ export const getCredentialSecrets = async (response) => {
 };
 
 export const generateToken = async (apikey, secret) => {
+  console.log({apikey, secret});
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
-      client_id: apikey,
+      client_id: "UDPWeb1",
       client_secret: secret,
       grant_type: 'client_credentials',
       scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
     }),
   };
 
+  console.log({options});
   const tokenResponse = await fetch('/ims/token/v3', options);
   const tokenJson = await tokenResponse.json();
 

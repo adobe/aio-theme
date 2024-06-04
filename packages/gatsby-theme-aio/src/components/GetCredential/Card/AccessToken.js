@@ -14,7 +14,8 @@ const AccessToken = ({ accessToken, response }) => {
     setCredentialToken('loading');
     const secrets = await getCredentialSecrets(response);
     if (secrets) {
-      const tokenVal = await generateToken(response?.workspaces[0]?.credentials[0]?.clientId, secrets?.clientSecret);
+      let projectId = response?.workspaces ? response?.workspaces[0]?.credentials[0]?.id : response?.id
+      const tokenVal = await generateToken(projectId, secrets?.clientSecret);
       setCredentialToken(tokenVal);
     }
   };

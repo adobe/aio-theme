@@ -50,6 +50,11 @@ import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
 import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
+import { NestedAlertContentEdgeCase } from './RequestAccess/NestedAlertContentEdgeCase';
+import { NestedAlertContentNoProduct } from './RequestAccess/NestedAlertContentNoProduct';
+import { NestedAlertContentType1User } from './RequestAccess/NestedAlertContentType1User';
+import { NestedAlertContentNotMember } from './RequestAccess/NestedAlertContentNotMember';
+import { NestedAlertContentNotSignUp } from './RequestAccess/NestedAlertContentNotSignUp';
 
 const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
@@ -96,14 +101,13 @@ const GetCredential = ({ templateId, children, className }) => {
       if (!response.ok) {
         console.error('Template not found. Please check template id');
         setIsError(true);
-        setLoading(false);
+        // setLoading(false);
         return;
       }
-
       setTemplate(await response.json());
     }
 
-    setLoading(false);
+    // setLoading(false);
   }
 
   const switchOrganization = async (org) => {
@@ -130,7 +134,7 @@ const GetCredential = ({ templateId, children, className }) => {
 
   useEffect(() => {
     const getPreviousProjects = async () => {
-      setLoading(true)
+      // setLoading(true)
       const { userId } = await window.adobeIMS.getProfile();
       const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${template?.id}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
       const token = window.adobeIMS?.getTokenFromStorage()?.token;
@@ -168,7 +172,7 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsPrevious(false)
     }
 
-    if (!isLoadingIms) {
+    if (!isLoadingIms && !isMyCredential) {
       if (window?.adobeIMS?.isSignedInUser()) {
         initialize();
       }
@@ -176,7 +180,7 @@ const GetCredential = ({ templateId, children, className }) => {
         setLoading(false);
       }
     }
-  }, [isLoadingIms]);
+  }, [isLoadingIms, isMyCredential]);
 
   useEffect(() => {
 
@@ -209,11 +213,14 @@ const GetCredential = ({ templateId, children, className }) => {
 
     // template should never be null or undefined here
     if (!template.userEntitled || !template.orgEntitled) {
-      if (template.canRequestAccess) {
-        return <RequestAccess />
-      }
-      // TODO: cover other error cases
-      return <NoDeveloperAccessError />
+      console.log({template});
+      return <RequestAccess />
+
+      // if (template.canRequestAccess) {
+      //   return <RequestAccess />
+      // }
+      // // TODO: cover other error cases
+      // return <NoDeveloperAccessError />
     }
 
     if (isPrevious && !showCreateForm && !isCreateNewCredential) {
@@ -345,6 +352,11 @@ GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
+GetCredential.RequestAccess.EdgeCase = NestedAlertContentEdgeCase;
+GetCredential.RequestAccess.EdgeCase.NoProduct = NestedAlertContentNoProduct;
+GetCredential.RequestAccess.EdgeCase.Type1User = NestedAlertContentType1User;
+GetCredential.RequestAccess.EdgeCase.NotMember = NestedAlertContentNotMember;
+GetCredential.RequestAccess.EdgeCase.NotSignUp = NestedAlertContentNotSignUp;
 GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = Products;
 GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
