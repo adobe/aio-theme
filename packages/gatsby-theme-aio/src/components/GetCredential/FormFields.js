@@ -17,8 +17,8 @@ export const FormFields = ({ isFormValue, fields, children, formData, isRed }) =
             width: 100%;  
           `}
       >
-        <div css={css` display:flex; gap:3px; `} >
-          {label && <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+        <div css={css` display:flex; gap:3px;font-size:small; `} >
+          {label && <label for="textfield-m" className="spectrum-Body spectrum-Body--sizeS"
             css={css` color: var(--spectrum-global-color-gray-700)`}
           >
             {label}
@@ -169,7 +169,8 @@ export const getOrganizations = async () => {
 
 export const getCredentialSecrets = async (response) => {
 
-  const secretsUrl = `/console/api/organizations/${response?.orgId}/integrations/${response?.id}/secrets`;
+  let projectId=response?.workspaces ? response?.workspaces[0]?.credentials[0]?.id : response?.id
+  const secretsUrl = `/console/api/organizations/${JSON.parse(localStorage.getItem('OrgInfo'))?.code}/integrations/${projectId}/secrets`;
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
   const secretsResponse = await fetch(secretsUrl, {
     headers: {
@@ -181,7 +182,7 @@ export const getCredentialSecrets = async (response) => {
 
   const secrets = await secretsResponse.json();
 
-  const secret = secrets.client_secrets[0].client_secret;
+  const secret = secrets.client_secrets[0]?.client_secret;
 
   return { clientId: secrets?.client_id, clientSecret: secret }
 

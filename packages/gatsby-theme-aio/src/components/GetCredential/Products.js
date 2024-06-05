@@ -21,7 +21,7 @@ const Products = ({ products, product }) => {
         {products?.label && (
           <label
             for="textfield-m"
-            className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+            className="spectrum-Body spectrum-Body--sizeS"
             css={css`
               color: var(--spectrum-global-color-gray-700);
             `}>
@@ -134,7 +134,7 @@ const CommonProduct = ({ productList }) => {
                 />
                 <label
                   for="textfield-m"
-                  className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+                  className="spectrum-Body spectrum-Body--sizeS"
                   css={css`
                     color: var(--spectrum-global-color-gray-700);
                   `}>

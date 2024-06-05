@@ -14,19 +14,19 @@ import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const PreviousProject = ({ returnFields, productList }) => {
 
-  const { getCredentialData, selectedOrganization, template } = useContext(GetCredentialContext);
-  const returnProps = getCredentialData;
+  const { getCredentialData: returnProps, selectedOrganization, previousProjectDetail } = useContext(GetCredentialContext);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isCopiedTooltip, setCopiedTooltip] = useState('');
 
-  const previousProjectsDetails = JSON.parse(localStorage.getItem(`credential_${template.id}`));
+  const previousProjectsDetails = previousProjectDetail?.projects
   const previousProject = returnProps?.[PreviousProject];
   const projectsDropdown = returnFields?.[ProjectsDropdown];
   const returnManageDeveloperConsole = returnFields?.[ReturnManageDeveloperConsole];
+  const response = previousProjectsDetails?.[selectedIndex];
+  const projectDetails = previousProjectsDetails?.[selectedIndex];
 
-  const response = previousProjectsDetails?.[selectedIndex]?.credential;
-  const projectDetails = previousProjectsDetails?.[selectedIndex]?.formData;
+  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];
 
   return (
     <>
@@ -48,13 +48,13 @@ const PreviousProject = ({ returnFields, productList }) => {
         {/* ----------- credential form ------------  */}
 
         <CredentialDetailsCard
-          credentialName={previousProjectsDetails?.[selectedIndex]?.formData?.CredentialName}
+          credentialName={previousProjectsDetails?.[selectedIndex]?.name}
           productList={productList}
           ProductComponent={CardProducts}
           AccessTokenComponent={ReturnAccessToken}
           DevConsoleLinkComponent={ReturnDevConsoleLink}
           ClientDetailsComponent={ReturnCredentialDetails}
-          allowedOriginsDetails={projectDetails?.['AllowedOrigins']}
+          allowedOriginsDetails={allowedDomains}
           organizationName={selectedOrganization}
           nextButtonLabel={'Next steps'}
           developerConsoleManage={'Manage on Developer Console'}

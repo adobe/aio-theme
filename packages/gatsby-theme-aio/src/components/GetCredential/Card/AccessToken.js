@@ -14,7 +14,8 @@ const AccessToken = ({ accessToken, response }) => {
     setCredentialToken('loading');
     const secrets = await getCredentialSecrets(response);
     if (secrets) {
-      const tokenVal = await generateToken(response?.apiKey, secrets?.clientSecret);
+      let clientId = response?.workspaces ? response?.workspaces[0]?.credentials[0]?.clientId : response?.apiKey
+      const tokenVal = await generateToken(clientId, secrets?.clientSecret);
       setCredentialToken(tokenVal);
     }
   };
@@ -40,7 +41,13 @@ const AccessToken = ({ accessToken, response }) => {
             accessToken?.buttonLabel && (
               <div
                 css={css`
+
                   width: fit-content;
+
+                  & > button {
+                    background-color : #0265dc !important;
+                  }
+
                 `}>
                 <Button onPress={() => handleGenerateToken()} variant="accent">
                   {accessToken?.buttonLabel}

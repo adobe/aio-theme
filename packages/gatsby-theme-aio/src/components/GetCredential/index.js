@@ -7,7 +7,6 @@ import { getOrganizations, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { NoDeveloperAccessError } from "./NoDeveloperAccessError";
 import ErrorBoundary from './ErrorBoundary';
 import { Product, Products, CardProduct, CardProducts } from './Products';
 import { Loading } from './Loading';
@@ -50,6 +49,11 @@ import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
 import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
+import { NestedAlertContentEdgeCase } from './RequestAccess/NestedAlertContentEdgeCase';
+import { NestedAlertContentNoProduct } from './RequestAccess/NestedAlertContentNoProduct';
+import { NestedAlertContentType1User } from './RequestAccess/NestedAlertContentType1User';
+import { NestedAlertContentNotMember } from './RequestAccess/NestedAlertContentNotMember';
+import { NestedAlertContentNotSignUp } from './RequestAccess/NestedAlertContentNotSignUp';
 
 const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
@@ -61,6 +65,8 @@ const GetCredential = ({ templateId, children, className }) => {
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
   const [template, setTemplate] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [isMyCredential, setIsMyCredential] = useState(false)
+  const [previousProjectDetail, setPreviousProjectDetail] = useState();
 
   if (!templateId) {
     console.error('No template id provided. Cannot continue. Will fail.');
@@ -75,8 +81,6 @@ const GetCredential = ({ templateId, children, className }) => {
       getCredentialData[child.type] = child.props;
     }
   });
-
-  const isMyCredential = isBrowser ? JSON.parse(localStorage.getItem(`credential_${templateId}`)) : undefined;
 
   const fetchTemplate = async (org) => {
 
@@ -96,14 +100,11 @@ const GetCredential = ({ templateId, children, className }) => {
       if (!response.ok) {
         console.error('Template not found. Please check template id');
         setIsError(true);
-        setLoading(false);
         return;
       }
-
       setTemplate(await response.json());
     }
 
-    setLoading(false);
   }
 
   const switchOrganization = async (org) => {
@@ -129,13 +130,45 @@ const GetCredential = ({ templateId, children, className }) => {
   }
 
   useEffect(() => {
+    const getPreviousProjects = async () => {
+      const { userId } = await window.adobeIMS.getProfile();
+      const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${template?.id}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
+      const token = window.adobeIMS?.getTokenFromStorage()?.token;
+      const previousProjectDetailsResponse = await fetch(previousProjectDetailsUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'x-api-key': window.adobeIMS?.adobeIdData?.client_id,
+        },
+      });
+
+      const previousProjectDetails = await previousProjectDetailsResponse.json();
+      setPreviousProjectDetail(previousProjectDetails);
+
+      if (previousProjectDetails.count) {
+        setIsMyCredential(true)
+        setLoading(false)
+      } else {
+        setIsMyCredential(false)
+        setLoading(false)
+      }
+    }
+
+    if (selectedOrganization?.id && template?.id && !isCreateNewCredential) {
+      getPreviousProjects();
+    }
+
+  }, [template, isCreateNewCredential])
+
+  useEffect(async () => {
     if (isMyCredential) {
       setIsPrevious(true)
     }
     else {
       setIsPrevious(false)
     }
-    if (!isLoadingIms) {
+
+    if (!isLoadingIms && !isMyCredential) {
       if (window?.adobeIMS?.isSignedInUser()) {
         initialize();
       }
@@ -143,9 +176,10 @@ const GetCredential = ({ templateId, children, className }) => {
         setLoading(false);
       }
     }
-  }, [isLoadingIms]);
+  }, [isLoadingIms, isMyCredential]);
 
   useEffect(() => {
+
     if (!isPrevious) {
       setShowCreateForm(true)
     }
@@ -175,11 +209,7 @@ const GetCredential = ({ templateId, children, className }) => {
 
     // template should never be null or undefined here
     if (!template.userEntitled || !template.orgEntitled) {
-      if (template.canRequestAccess) {
-        return <RequestAccess />
-      }
-      // TODO: cover other error cases
-      return <NoDeveloperAccessError />
+      return <RequestAccess />
     }
 
     if (isPrevious && !showCreateForm && !isCreateNewCredential) {
@@ -210,7 +240,8 @@ const GetCredential = ({ templateId, children, className }) => {
                 switchOrganization,
                 selectedOrganization,
                 template,
-                getCredentialData
+                getCredentialData,
+                previousProjectDetail
               }}
             >
               <section
@@ -290,7 +321,6 @@ GetCredential.Card.CredentialDetails.Scopes = CardScopes;
 GetCredential.Card.CredentialDetails.AllowedOrigins = CardAllowedOrigins;
 GetCredential.Card.CredentialDetails.APIKey = CardAPIKey;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
-GetCredential.NoDeveloperAccessError = NoDeveloperAccessError;
 GetCredential.Return = PreviousProject;
 GetCredential.Return.AccessToken = ReturnAccessToken;
 GetCredential.Return.ProjectsDropdown = ProjectsDropdown;
@@ -310,8 +340,13 @@ GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = Products;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = Product;
+GetCredential.RequestAccess.EdgeCase = NestedAlertContentEdgeCase;
+GetCredential.RequestAccess.EdgeCase.NoProduct = NestedAlertContentNoProduct;
+GetCredential.RequestAccess.EdgeCase.Type1User = NestedAlertContentType1User;
+GetCredential.RequestAccess.EdgeCase.NotMember = NestedAlertContentNotMember;
+GetCredential.RequestAccess.EdgeCase.NotSignUp = NestedAlertContentNotSignUp;
+GetCredential.RequestAccess.RestrictedAccess.Products = Products;
+GetCredential.RequestAccess.RestrictedAccess.Products.Product = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
 GetCredential.ErrorCode = SubscriptionError;
 

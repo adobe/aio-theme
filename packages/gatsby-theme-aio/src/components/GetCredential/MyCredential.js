@@ -20,8 +20,6 @@ const MyCredential = ({
   setShowCreateForm,
   setShowCredential,
   response,
-  orgID,
-  organization,
   setIsMyCredential,
   setIsCreateNewCredential
 }) => {
@@ -50,23 +48,10 @@ const MyCredential = ({
   });
   const product = productsObj?.productList;
 
-
-  useEffect(() => {
-    const getItemFromLocalStorage = JSON.parse(localStorage.getItem(`credential_${template.id}`));
-    let setCredentialValue;
-    const keyCredential = { formData: formData, credential: response };
-    if (getItemFromLocalStorage) {
-      setCredentialValue = [keyCredential, ...getItemFromLocalStorage];
-    } else {
-      setCredentialValue = [keyCredential];
-    }
-    localStorage.setItem(`credential_${template.id}`, JSON.stringify(setCredentialValue));
-  }, []);
-
   useEffect(() => {
     if (formData['Downloads']) {
       downloadZIP(
-        `/console/api/organizations/${orgID}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
+        `/console/api/organizations/${organizationName?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
         formData['Download'],
         formData['zipUrl']
       );
@@ -227,7 +212,7 @@ const MyCredential = ({
               `}
               onClick={() =>
                 downloadZIP(
-                  `/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
+                  `/console/api/organizations/${organizationName?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`,
                   formData['Download'],
                   formData['zipUrl']
                 )

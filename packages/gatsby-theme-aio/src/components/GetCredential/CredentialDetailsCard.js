@@ -37,6 +37,7 @@ export const CredentialDetailsCard = ({
   myCredentialFields,
   returnFields
 }) => {
+
   let accessToken, devConsoleLinkHeading, clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOrigins
   if (myCredentialFields) {
     accessToken = myCredentialFields[AccessToken];
@@ -126,7 +127,7 @@ export const CredentialDetailsCard = ({
               <DevConsoleLinkComponent
                 devConsoleLinkHeading={devConsoleLinkHeading}
                 credentialName={credentialName}
-                projectId={response?.projectId}
+                projectId={response?.id}
               />
             )}
 
@@ -140,9 +141,7 @@ export const CredentialDetailsCard = ({
                 apiKeyDetails={apiKeyDetails}
                 allowedOriginsDetails={allowedOriginsDetails}
                 organizationName={organizationName}
-                apiKey={response?.['apiKey']}
                 allowedOrigins={allowedOrigins}
-                clientId={response?.['apiKey']}
                 response={response}
               />
             )}

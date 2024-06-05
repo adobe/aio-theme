@@ -45,7 +45,7 @@ const CredentialForm = ({
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
 
-  const { selectedOrganization, template } = useContext(GetCredentialContext);
+  const { selectedOrganization, template, previousProjectDetail } = useContext(GetCredentialContext);
 
   const credentialForm = formProps?.[CredentialForm];
   const isFormValue = credentialForm?.children?.filter(data =>
@@ -90,7 +90,7 @@ const CredentialForm = ({
       fields[Product] = productsObj;
     }
 
-    const isCredential = JSON.parse(localStorage.getItem(`credential_${template.id}`));
+    const isCredential = previousProjectDetail?.count ? true : false;
     if (isCredential) {
       setIsMyCredential(true);
     } else {

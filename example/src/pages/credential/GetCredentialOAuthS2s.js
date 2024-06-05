@@ -154,30 +154,30 @@ const GetCredentialOAuthS2s = () => {
 
       </GetCredential.Return>
 
-      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="How do I get developer permissions for the [Firefly - Firefly and Creative Cloud Automation API]?" docsLink="" />
-
       <GetCredential.RequestAccess
         title="Get credentials"
         paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
+        <GetCredential.RequestAccess.EdgeCase>
+          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Firefly Services" buttonLabel="Contact us to learn more" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.Type1User title="Access to Firefly Services is only available to enterprise accounts at this time." buttonLabel="Learn more about Firefly Services" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotMember title="Access to Firefly Services APIs is not available at this time." buttonLabel="Learn more about Firefly Services" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotSignUp title="Firefly Services APIs is available as part of the beta program. Sign up for the program or log in to an account that has access." buttonLabel="Sign up for the beta" buttonLink="#someLink" />
+        </GetCredential.RequestAccess.EdgeCase>
         <GetCredential.RequestAccess.RestrictedAccess
           title="Restricted Access"
           buttonLabel="Request access"
         >
-          <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts label="Included products and services">
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+          <GetCredential.RequestAccess.RestrictedAccess.Products label="Included products and services">
+            <GetCredential.RequestAccess.RestrictedAccess.Products.Product
               icon={firefly}
               label="Firefly API - Firefly Services"
             />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+            <GetCredential.RequestAccess.RestrictedAccess.Products.Product
               icon={ps}
               label="Adobe Photoshop API - Firefly Services"
             />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
-              icon={ps}
-              label="Adobe Photoshop API - Firefly Services"
-            />
-          </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
+          </GetCredential.RequestAccess.RestrictedAccess.Products>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>
           <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>

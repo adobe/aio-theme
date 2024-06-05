@@ -15,12 +15,10 @@ import {
 import GetCredentialContext from './GetCredentialContext';
 
 const Organization = () => {
-  const { allOrganizations, switchOrganization, selectedOrganization } =
-    useContext(GetCredentialContext);
 
-  const [selectedIndex, setSelectedIndex] = useState(
-    allOrganizations.findIndex(org => org.id === selectedOrganization.id)
-  );
+  const { allOrganizations, switchOrganization, selectedOrganization } = useContext(GetCredentialContext);
+
+  const [selectedIndex, setSelectedIndex] = useState( allOrganizations.findIndex(org => org.id === selectedOrganization.id));
 
   const getValueFromLocalStorage = () => {
     let organizationObj = JSON.parse(localStorage.getItem('OrgInfo'));
@@ -46,15 +44,6 @@ const Organization = () => {
   useEffect(() => {
     getValueFromLocalStorage();
   }, [allOrganizations]);
-
-  const handleClick = close => {
-    allOrganizations?.forEach((organs, index) => {
-      if (index === selectedIndex) {
-        switchOrganization(organs);
-      }
-    });
-    close();
-  };
 
   return (
     <div
@@ -147,12 +136,6 @@ const Organization = () => {
                           max-height: 98px;
 
                           ul:nth-child(1) {
-                            -ms-overflow-style: none;
-                            scrollbar-width: none;
-                            ::-webkit-scrollbar {
-                              display: none;
-                            }
-
                             svg:nth-child(1) {
                               width: 10px;
                               height: 10px;
@@ -173,8 +156,9 @@ const Organization = () => {
                         isQuiet={false}
                         items={allOrganizations.map((organization, k) => {
                           return {
-                            title: organization.name,
+                            title: organization?.name,
                             selected: k === selectedIndex,
+                            type: organization?.role
                           };
                         })}
                         onChange={index => {

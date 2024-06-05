@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { CopyIcon, getCredentialSecrets } from '../FormFields';
 import { ActionButton, ProgressCircle, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 import { Toast } from '../../Toast';
+import GetCredentialContext from '../GetCredentialContext';
 
 const ShowCard = ({
   heading,
@@ -15,10 +16,11 @@ const ShowCard = ({
 
   const [showClientSecret, setShowClientSecret] = useState(null);
   const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
+  const { selectedOrganization } = useContext(GetCredentialContext);
 
   const handleCreateClientSecret = async () => {
     setShowClientSecret('loading');
-    const secrets = await getCredentialSecrets(response);
+    const secrets = await getCredentialSecrets(response, selectedOrganization);
     setShowClientSecret(secrets);
   };
 
@@ -26,6 +28,10 @@ const ShowCard = ({
     setIsCopiedTooltip(true)
     navigator.clipboard.writeText(copiedVal);
   }
+
+  useEffect(() => {
+    setShowClientSecret(null)
+  }, [response])
 
   return (
     <div
@@ -47,7 +53,7 @@ const ShowCard = ({
         {isClientSecret && (
           showClientSecret === null ? (
             <ActionButton
-              onPress={() => handleCreateClientSecret()}>
+              onPress={() => { handleCreateClientSecret() }}>
               {buttonLabel}
             </ActionButton>
           ) : showClientSecret === 'loading' ? (
