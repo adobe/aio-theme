@@ -11,7 +11,7 @@ const NestedAlertContent = ({ restrictedAccess, products }) => {
 
   const { template, selectedOrganization } = useContext(GetCredentialContext);
 
-  let productList = []
+  let productList = [];
 
   if (Array.isArray(products?.children)) {
     productList = products?.children.map((child) => (child?.props))

@@ -7,7 +7,6 @@ import { getOrganizations, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { NoDeveloperAccessError } from "./NoDeveloperAccessError";
 import ErrorBoundary from './ErrorBoundary';
 import { Product, Products, CardProduct, CardProducts } from './Products';
 import { Loading } from './Loading';
@@ -101,13 +100,11 @@ const GetCredential = ({ templateId, children, className }) => {
       if (!response.ok) {
         console.error('Template not found. Please check template id');
         setIsError(true);
-        // setLoading(false);
         return;
       }
       setTemplate(await response.json());
     }
 
-    // setLoading(false);
   }
 
   const switchOrganization = async (org) => {
@@ -134,7 +131,6 @@ const GetCredential = ({ templateId, children, className }) => {
 
   useEffect(() => {
     const getPreviousProjects = async () => {
-      // setLoading(true)
       const { userId } = await window.adobeIMS.getProfile();
       const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${template?.id}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
       const token = window.adobeIMS?.getTokenFromStorage()?.token;
@@ -158,11 +154,11 @@ const GetCredential = ({ templateId, children, className }) => {
       }
     }
 
-    if (selectedOrganization?.id && template?.id) {
+    if (selectedOrganization?.id && template?.id && !isCreateNewCredential) {
       getPreviousProjects();
     }
 
-  }, [template, isPrevious, isCreateNewCredential])
+  }, [template, isCreateNewCredential])
 
   useEffect(async () => {
     if (isMyCredential) {
@@ -212,15 +208,8 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     // template should never be null or undefined here
-    if (!template.userEntitled || !template.orgEntitled) {
-      console.log({template});
+    if (!template.userEntitled || !template.orgEntitled || selectedOrganization?.type === "developer") {
       return <RequestAccess />
-
-      // if (template.canRequestAccess) {
-      //   return <RequestAccess />
-      // }
-      // // TODO: cover other error cases
-      // return <NoDeveloperAccessError />
     }
 
     if (isPrevious && !showCreateForm && !isCreateNewCredential) {
@@ -332,7 +321,6 @@ GetCredential.Card.CredentialDetails.Scopes = CardScopes;
 GetCredential.Card.CredentialDetails.AllowedOrigins = CardAllowedOrigins;
 GetCredential.Card.CredentialDetails.APIKey = CardAPIKey;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
-GetCredential.NoDeveloperAccessError = NoDeveloperAccessError;
 GetCredential.Return = PreviousProject;
 GetCredential.Return.AccessToken = ReturnAccessToken;
 GetCredential.Return.ProjectsDropdown = ProjectsDropdown;
@@ -357,8 +345,8 @@ GetCredential.RequestAccess.EdgeCase.NoProduct = NestedAlertContentNoProduct;
 GetCredential.RequestAccess.EdgeCase.Type1User = NestedAlertContentType1User;
 GetCredential.RequestAccess.EdgeCase.NotMember = NestedAlertContentNotMember;
 GetCredential.RequestAccess.EdgeCase.NotSignUp = NestedAlertContentNotSignUp;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts = Products;
-GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct = Product;
+GetCredential.RequestAccess.RestrictedAccess.Products = Products;
+GetCredential.RequestAccess.RestrictedAccess.Products.Product = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
 GetCredential.ErrorCode = SubscriptionError;
 

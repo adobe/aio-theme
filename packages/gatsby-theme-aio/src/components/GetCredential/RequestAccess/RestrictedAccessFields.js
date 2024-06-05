@@ -14,7 +14,6 @@ const RestrictedAccess = ({ restrictedAccess, nestedAlertContentEdgeCase }) => {
   let childProps = {};
   const { selectedOrganization, template } = useContext(GetCredentialContext);
   let disEntitledReason = template?.disEntitledReasons[0];
-  console.log({ selectedOrganization, disEntitledReason });
 
   if (Array.isArray(nestedAlertContentEdgeCase?.children)) {
     nestedAlertContentEdgeCase?.children?.forEach(({ type, props }) => {

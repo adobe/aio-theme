@@ -154,8 +154,6 @@ const GetCredentialOAuthS2s = () => {
 
       </GetCredential.Return>
 
-      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="How do I get developer permissions for the [Firefly - Firefly and Creative Cloud Automation API]?" docsLink="" />
-
       <GetCredential.RequestAccess
         title="Get credentials"
         paragraph="Create unique credentials that you will use to call multiple APIs from your application."
@@ -170,16 +168,16 @@ const GetCredentialOAuthS2s = () => {
           title="Restricted Access"
           buttonLabel="Request access"
         >
-          <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts label="Included products and services">
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+          <GetCredential.RequestAccess.RestrictedAccess.Products label="Included products and services">
+            <GetCredential.RequestAccess.RestrictedAccess.Products.Product
               icon={firefly}
               label="Firefly API - Firefly Services"
             />
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct
+            <GetCredential.RequestAccess.RestrictedAccess.Products.Product
               icon={ps}
               label="Adobe Photoshop API - Firefly Services"
             />
-          </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
+          </GetCredential.RequestAccess.RestrictedAccess.Products>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>
           <div style={{ display: "flex", gap: "32px", flexDirection: "column" }}>

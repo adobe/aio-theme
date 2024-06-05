@@ -111,9 +111,9 @@ const GetCredentialApiKey = () => {
           title="Restricted Access"
           buttonLabel="Request access"
         >
-          <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts label="Included products and services">
-            <GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts.RestrictedAccessProduct label="Adobe Express Embed SDK" icon={creativeCloud} />
-          </GetCredential.RequestAccess.RestrictedAccess.RestrictedAccessProducts>
+          <GetCredential.RequestAccess.RestrictedAccess.Products label="Included products and services">
+            <GetCredential.RequestAccess.RestrictedAccess.Products.Product label="Adobe Express Embed SDK" icon={creativeCloud} />
+          </GetCredential.RequestAccess.RestrictedAccess.Products>
         </GetCredential.RequestAccess.RestrictedAccess>
         <GetCredential.RequestAccess.RequestAccessSide>
           <div style="display : flex ; gap : 16px ; flex-direction : column;">
@@ -125,8 +125,6 @@ const GetCredentialApiKey = () => {
           </div>
         </GetCredential.RequestAccess.RequestAccessSide>
       </GetCredential.RequestAccess>
-
-      <GetCredential.NoDeveloperAccessError title='Get Credentials' docsLinkText="How do I get developer permissions for the [Firefly - Firefly and Creative Cloud Automation API]?" docsLink="" />
 
       <GetCredential.ErrorCode helpLink="Get help" title="Error code ###" description="Your personal account does not have Developer role permission to access the [Org Name, Inc.] organization in the Adobe Developer Console." buttonLabel="Contact Adobe" buttonLink="https://some_help_link" />
 

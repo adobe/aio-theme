@@ -181,7 +181,6 @@ export const getCredentialSecrets = async (response) => {
   });
 
   const secrets = await secretsResponse.json();
-  console.log('secrets', secrets)
 
   const secret = secrets.client_secrets[0]?.client_secret;
 
@@ -190,7 +189,6 @@ export const getCredentialSecrets = async (response) => {
 };
 
 export const generateToken = async (apikey, secret) => {
-  console.log({apikey, secret});
   const options = {
     method: 'POST',
     headers: {
@@ -204,7 +202,6 @@ export const generateToken = async (apikey, secret) => {
     }),
   };
 
-  console.log({options});
   const tokenResponse = await fetch('/ims/token/v3', options);
   const tokenJson = await tokenResponse.json();
 

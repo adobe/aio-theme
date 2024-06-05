@@ -14,8 +14,7 @@ import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const PreviousProject = ({ returnFields, productList }) => {
 
-  const { getCredentialData, selectedOrganization, previousProjectDetail } = useContext(GetCredentialContext);
-  const returnProps = getCredentialData;
+  const { getCredentialData: returnProps, selectedOrganization, previousProjectDetail } = useContext(GetCredentialContext);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isCopiedTooltip, setCopiedTooltip] = useState('');
@@ -24,9 +23,10 @@ const PreviousProject = ({ returnFields, productList }) => {
   const previousProject = returnProps?.[PreviousProject];
   const projectsDropdown = returnFields?.[ProjectsDropdown];
   const returnManageDeveloperConsole = returnFields?.[ReturnManageDeveloperConsole];
-
   const response = previousProjectsDetails?.[selectedIndex];
   const projectDetails = previousProjectsDetails?.[selectedIndex];
+
+  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];
 
   return (
     <>
@@ -54,7 +54,7 @@ const PreviousProject = ({ returnFields, productList }) => {
           AccessTokenComponent={ReturnAccessToken}
           DevConsoleLinkComponent={ReturnDevConsoleLink}
           ClientDetailsComponent={ReturnCredentialDetails}
-          allowedOriginsDetails={projectDetails?.['AllowedOrigins']}
+          allowedOriginsDetails={allowedDomains}
           organizationName={selectedOrganization}
           nextButtonLabel={'Next steps'}
           developerConsoleManage={'Manage on Developer Console'}
