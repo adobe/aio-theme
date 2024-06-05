@@ -72,7 +72,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     },
     {
       title: 'Community Forums',
-      path: 'https://adobe.com/communities/index.html'
+      path: 'https://community.adobe.com/'
     }
   ],
   support: [
