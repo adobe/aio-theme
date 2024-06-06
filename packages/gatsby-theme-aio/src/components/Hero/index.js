@@ -326,7 +326,7 @@ const Hero = ({
             background: ${background ?? "var(--spectrum-global-color-gray-50)"};
 
             @media screen and (max-width: ${TABLET_SCREEN_WIDTH}) {
-              overflow: auto;
+              overflow-y: hidden;
             }
 
             @media screen and (max-width: ${MOBILE_SCREEN_WIDTH}) {
