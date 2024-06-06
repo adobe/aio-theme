@@ -66,9 +66,10 @@ const NestedAlertContentEdgeCase = ({ content, isNoProduct }) => {
           </p>
           :
           <p className="spectrum-Body spectrum-Body--sizeS">
-            You are currently signed in with your personal account [
-            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>] and
-            can not access Firefly Services APIs.
+            You are currently signed in with [
+            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>] 
+            in organization [<span className="spectrum-Heading spectrum-Heading--sizeXXS">
+            {selectedOrganization.name}</span>] and can not access Firefly Services APIs.
             <span
               css={css`
               margin-left: 3px;

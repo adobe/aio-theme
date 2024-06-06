@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 import { CopyIcon, getCredentialSecrets, generateToken } from '../FormFields';
 import { Toast } from '../../Toast';
+import GetCredentialContext from '../GetCredentialContext';
 
 const AccessToken = ({ accessToken, response }) => {
 
   const [credentialToken, setCredentialToken] = useState(null);
-  const [isCopiedTooltip, setIsCopiedTooltip] = useState(false)
+  const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
+  const {selectedOrganization} = useContext(GetCredentialContext);
 
   const handleGenerateToken = async () => {
     setCredentialToken('loading');
-    const secrets = await getCredentialSecrets(response);
+    const secrets = await getCredentialSecrets(response, selectedOrganization);
     if (secrets) {
       let clientId = response?.workspaces ? response?.workspaces[0]?.credentials[0]?.clientId : response?.apiKey
       const tokenVal = await generateToken(clientId, secrets?.clientSecret);

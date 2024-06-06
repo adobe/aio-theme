@@ -20,31 +20,6 @@ const Organization = () => {
 
   const [selectedIndex, setSelectedIndex] = useState( allOrganizations.findIndex(org => org.id === selectedOrganization.id));
 
-  const getValueFromLocalStorage = () => {
-    let organizationObj = JSON.parse(localStorage.getItem('OrgInfo'));
-    if (!organizationObj) {
-      localStorage.setItem('OrgInfo', JSON.stringify(allOrganizations[0]));
-      organizationObj = allOrganizations[0];
-    }
-    allOrganizations?.forEach((org, index) => {
-      if (org.code === organizationObj.code) {
-        setSelectedIndex(index);
-      }
-    });
-  };
-
-  useEffect(() => {
-    allOrganizations?.forEach((organs, index) => {
-      if (index === selectedIndex) {
-        localStorage.setItem('OrgInfo', JSON.stringify(organs));
-      }
-    });
-  }, [selectedIndex]);
-
-  useEffect(() => {
-    getValueFromLocalStorage();
-  }, [allOrganizations]);
-
   return (
     <div
       css={css`

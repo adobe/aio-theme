@@ -31,8 +31,11 @@ const RestrictedAccess = ({ restrictedAccess, nestedAlertContentEdgeCase }) => {
     else if (disEntitledReason === "ORG_MISSING_FIS") {
       return <NestedAlertContentNoProduct content={childProps[NestedAlertContentNoProduct]} />
     }
-    else {
+    else if (template?.canRequestAccess) {
       return <NestedAlertContent restrictedAccess={restrictedAccess} products={products} />
+    }
+    else {
+      return <NestedAlertContentNotMember content={childProps[NestedAlertContentNotMember]} />
     }
   };
 

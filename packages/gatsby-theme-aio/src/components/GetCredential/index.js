@@ -55,17 +55,18 @@ import { NestedAlertContentType1User } from './RequestAccess/NestedAlertContentT
 import { NestedAlertContentNotMember } from './RequestAccess/NestedAlertContentNotMember';
 import { NestedAlertContentNotSignUp } from './RequestAccess/NestedAlertContentNotSignUp';
 
+const LocalStorageKey = 'OrgInfo';
+
 const GetCredential = ({ templateId, children, className }) => {
   const isBrowser = typeof window !== "undefined";
   const [isPrevious, setIsPrevious] = useState(false);
-  const [selectedOrganization, setOrganization] = useState({});
+  const [selectedOrganization, setOrganization] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [allOrganizations, setAllOrganizations] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
   const [template, setTemplate] = useState(null);
   const [isError, setIsError] = useState(false);
-  const [isMyCredential, setIsMyCredential] = useState(false)
   const [previousProjectDetail, setPreviousProjectDetail] = useState();
 
   if (!templateId) {
@@ -82,57 +83,93 @@ const GetCredential = ({ templateId, children, className }) => {
     }
   });
 
-  const fetchTemplate = async (org) => {
+  useEffect(() => {
+    const fetchTemplate = async () => {
+      try {
+        setIsError(false);
+        setLoading(true);
+        const url = `/templates/${templateId}`
+        const response = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${window.adobeIMS.getTokenFromStorage().token}`,
+            "x-api-key": window.adobeIMS.adobeIdData.client_id,
+            "x-org-id": selectedOrganization.code
+          }
+        });
 
-    setIsError(false);
-    setLoading(true);
-    if (org.code) {
-      const url = `/templates/${templateId}`
-      const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${window.adobeIMS.getTokenFromStorage().token}`,
-          "x-api-key": window.adobeIMS.adobeIdData.client_id,
-          "x-org-id": org.code
+        if (!response.ok) {
+          console.error('Template not found. Please check template id');
+          setIsError(true);
+          return;
         }
-      });
-
-      if (!response.ok) {
-        console.error('Template not found. Please check template id');
-        setIsError(true);
-        return;
+        setTemplate(await response.json());
+        setLoading(false);
       }
-      setTemplate(await response.json());
+      catch (error) {
+        console.error('Error fetching template:', error);
+        setIsError(true);
+        setLoading(false);
+      }
     }
 
-  }
+    if (selectedOrganization?.code) {
+      fetchTemplate();
+    }
+  }, [selectedOrganization]);
 
   const switchOrganization = async (org) => {
-    setOrganization(org);
+    const accountId = (await window.adobeIMS?.getProfile())?.userId;
 
-    if (org) {
-      await fetchTemplate(org);
-    }
-  }
-
-  const initialize = async () => {
-    const orgInfo = localStorage?.getItem('OrgInfo');
-    const organizations = await getOrganizations();
-
-    if (!organizations || organizations.length < 1) {
-      console.error('No organizations found for the user. Cannot continue.');
-      setIsError(true);
+    if (!accountId || !allOrganizations || allOrganizations.length === 0) {
       return;
     }
 
-    setAllOrganizations(organizations);
-    await switchOrganization(orgInfo ? JSON.parse(orgInfo) : organizations[0]);
+    if (!org) {
+      // this means it's initial load. Try reading from local storage
+      const orgInLocalStorage = JSON.parse(localStorage.getItem(LocalStorageKey));
+      console.log('Found', orgInLocalStorage?.name, 'in local storage');
+
+      // check if the user has access to the org
+      if (orgInLocalStorage) {
+        console.log('Checking if user has access to the org in local storage');
+        org = allOrganizations.filter(o => o.code === orgInLocalStorage.code && accountId === orgInLocalStorage.accountId)[0];
+        console.log('Found accessible org in local storage:', org ? org.name : 'none');
+      }
+
+      // if no accessible org found in local storage, we pick the default org
+      if (!org) {
+        console.log('No accessible org found in local storage. Removing entry in local storage, if exists and picking default org');
+        localStorage.removeItem(LocalStorageKey);
+        const currentAccountOrgs = allOrganizations.filter(o => o.accountId === accountId);
+        console.log('Current account orgs:', currentAccountOrgs);
+        org = currentAccountOrgs.filter(o => o.default)[0] ?? currentAccountOrgs[0];
+      }
+    }
+
+    console.log('Switching to org:', org?.name);
+
+    // switch accounts if org requires account switch
+    if (accountId !== org.accountId) {
+      await window.adobeIMS.switchProfile(org.accountId);
+    }
+
+    // set the org in local storage
+    localStorage.setItem(LocalStorageKey, JSON.stringify(org));
+    setOrganization(org);
   }
+
+  useEffect(() => {
+    if (!selectedOrganization) {
+      // switch to default or last used org if no org already selected
+      switchOrganization();
+    }
+  }, [allOrganizations, selectedOrganization]);
 
   useEffect(() => {
     const getPreviousProjects = async () => {
       const { userId } = await window.adobeIMS.getProfile();
-      const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${template?.id}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
+      const previousProjectDetailsUrl = `/console/api/organizations/${selectedOrganization?.id}/search/projects?templateId=${templateId}&createdBy=${userId}&excludeUserProfiles=true&skipReadOnlyCheck=true`;
       const token = window.adobeIMS?.getTokenFromStorage()?.token;
       const previousProjectDetailsResponse = await fetch(previousProjectDetailsUrl, {
         headers: {
@@ -146,37 +183,42 @@ const GetCredential = ({ templateId, children, className }) => {
       setPreviousProjectDetail(previousProjectDetails);
 
       if (previousProjectDetails.count) {
-        setIsMyCredential(true)
+        setIsPrevious(true)
         setLoading(false)
       } else {
-        setIsMyCredential(false)
+        setIsPrevious(false)
         setLoading(false)
       }
     }
 
-    if (selectedOrganization?.id && template?.id && !isCreateNewCredential) {
+    if (selectedOrganization?.id && templateId && template?.userEntitled && !isCreateNewCredential) {
       getPreviousProjects();
     }
 
-  }, [template, isCreateNewCredential])
+  }, [template, selectedOrganization, isCreateNewCredential]);
 
   useEffect(async () => {
-    if (isMyCredential) {
-      setIsPrevious(true)
-    }
-    else {
-      setIsPrevious(false)
+    // if IMS is still loading, do nothing
+    if (isLoadingIms) {
+      return;
     }
 
-    if (!isLoadingIms && !isMyCredential) {
-      if (window?.adobeIMS?.isSignedInUser()) {
-        initialize();
-      }
-      else {
-        setLoading(false);
-      }
+    // if user not signed in, set loading to false so that the sign in screen renders
+    if (!window.adobeIMS.isSignedInUser()) {
+      setLoading(false);
+      return;
     }
-  }, [isLoadingIms, isMyCredential]);
+    const organizations = await getOrganizations();
+
+    if (!organizations || organizations.length < 1) {
+      console.error('No organizations found for the user. Cannot continue.');
+      setIsError(true);
+      return;
+    }
+
+    setAllOrganizations(organizations);
+
+  }, [isLoadingIms]);
 
   useEffect(() => {
 
@@ -203,7 +245,7 @@ const GetCredential = ({ templateId, children, className }) => {
       return <Loading />
     }
 
-    if (!window?.adobeIMS?.isSignedInUser()) {
+    if (!window.adobeIMS.isSignedInUser()) {
       return <GetCredential.SignIn />
     }
 

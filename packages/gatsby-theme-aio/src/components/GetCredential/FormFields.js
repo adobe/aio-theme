@@ -144,7 +144,7 @@ export const getOrganizations = async () => {
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
 
     if (token) {
-      const response = await fetch("/console/api/organizations", {
+      const response = await fetch("/console/api/accounts?includeOrganizations=true", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -154,10 +154,25 @@ export const getOrganizations = async () => {
       });
 
       if (!response.ok) {
-        throw new Error('Could not fetch organizations');
+        throw new Error('Could not fetch accounts');
       }
 
-      const organizations = await response.json();
+      const accountsResult = await response.json();
+
+      const organizations = []
+      accountsResult.accounts.forEach(account => {
+        if (account.organizations?.length > 0) {
+          account.organizations.forEach(org => {
+            organizations.push({
+              ...org,
+              accountId: account.id,
+              accountType: account.type
+            })
+          });
+        }
+      });
+
+      organizations.sort((a, b) => a.name.localeCompare(b.name));
 
       return organizations;
     }
@@ -167,10 +182,10 @@ export const getOrganizations = async () => {
   }
 }
 
-export const getCredentialSecrets = async (response) => {
+export const getCredentialSecrets = async (response, selectedOrganization) => {
 
   let projectId=response?.workspaces ? response?.workspaces[0]?.credentials[0]?.id : response?.id
-  const secretsUrl = `/console/api/organizations/${JSON.parse(localStorage.getItem('OrgInfo'))?.code}/integrations/${projectId}/secrets`;
+  const secretsUrl = `/console/api/organizations/${selectedOrganization.code}/integrations/${projectId}/secrets`;
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
   const secretsResponse = await fetch(secretsUrl, {
     headers: {
