@@ -306,15 +306,7 @@ const CredentialForm = ({
                   display: inline-flex;
                 `}
                 onClick={() => setIsShow(true)}>
-                You're creating this credential in{' '}
-                {selectedOrganization?.type === 'developer' ? (
-                  'in your personal developer organization'
-                ) : (
-                  <span>
-                    [<b>{selectedOrganization?.name}</b>]{' '}
-                  </span>
-                )}
-                .
+                You're creating this credential in [<b>{selectedOrganization?.name}</b>].
                 <Organization isShow={isShow} setIsShow={setIsShow} />
               </p>
             </div>
