@@ -23,7 +23,7 @@ const MyCredential = ({
   setIsMyCredential,
   setIsCreateNewCredential
 }) => {
-  const { getCredentialData, selectedOrganization: organizationName, template } =
+  const { getCredentialData, selectedOrganization: organizationName } =
     useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
@@ -59,8 +59,6 @@ const MyCredential = ({
   }, []);
 
   const card = credentialProps?.[MyCredential];
-
-  const devConsoleLink = `/console`;
 
   const handleRestart = () => {
     setShowCreateForm(true);
@@ -255,7 +253,7 @@ const MyCredential = ({
             response={response}
             nextButtonLink={card?.nextStepsHref}
             nextButtonLabel={card?.nextStepsLabel}
-            devConsoleLink={devConsoleLink}
+            devConsoleLink={card?.devConsoleDirection}
             developerConsoleManage={card?.developerConsoleManage}
             myCredentialFields={myCredentialFields}
           />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
@@ -24,6 +24,10 @@ const AccessToken = ({ accessToken, response }) => {
     setIsCopiedTooltip(true)
     navigator.clipboard.writeText(copiedVal);
   }
+
+  useEffect(() => {
+    setCredentialToken(null);
+  }, [response])
 
   return (
     <>

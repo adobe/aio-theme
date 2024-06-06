@@ -182,7 +182,7 @@ export const CredentialDetailsCard = ({
                   css={css`
                     display: flex;
                   `}>
-                  <div>{developerConsoleManage}</div>
+                  <div className='spectrum-Body spectrum-Body--sizeS'>{developerConsoleManage}</div>
                   <div
                     css={css`
                       margin-left:10px;

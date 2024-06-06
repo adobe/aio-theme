@@ -25,6 +25,7 @@ const PreviousProject = ({ returnFields, productList }) => {
   const returnManageDeveloperConsole = returnFields?.[ReturnManageDeveloperConsole];
   const response = previousProjectsDetails?.[selectedIndex];
   const projectDetails = previousProjectsDetails?.[selectedIndex];
+  const manageProps = returnProps[PreviousProject];
 
   const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];
 
@@ -39,7 +40,7 @@ const PreviousProject = ({ returnFields, productList }) => {
         `}>
         {previousProject?.title && <h3 className='spectrum-Heading spectrum-Heading--sizeM'>{previousProject?.title}</h3>}
 
-        {previousProject?.paragraph && <p className="spectrum-Body spectrum-Body--sizeL">{previousProject?.paragraph}</p>}
+        {previousProject?.paragraph && <p className="spectrum-Body spectrum-Body--sizeM">{previousProject?.paragraph}</p>}
 
         {returnManageDeveloperConsole && <ReturnManageDeveloperConsole returnManageDeveloperConsole={returnManageDeveloperConsole} />}
 
@@ -56,11 +57,11 @@ const PreviousProject = ({ returnFields, productList }) => {
           ClientDetailsComponent={ReturnCredentialDetails}
           allowedOriginsDetails={allowedDomains}
           organizationName={selectedOrganization}
-          nextButtonLabel={'Next steps'}
-          developerConsoleManage={'Manage on Developer Console'}
+          nextButtonLabel={manageProps?.nextStepsLabel}
+          developerConsoleManage={manageProps?.developerConsoleManage}
           response={response}
           nextButtonLink={previousProject?.nextStepsHref}
-          devConsoleLink={"/console"}
+          devConsoleLink={manageProps?.devConsoleDirection}
           returnFields={returnFields}
         />
 

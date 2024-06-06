@@ -1,9 +1,9 @@
 import React from 'react'
 import ShowCard from './ShowCard';
 
-const CardScopes = ({ cardScopes, allowedOrigins }) => {
+const CardScopes = ({ cardScopes }) => {
   return (
-    <ShowCard heading={cardScopes?.heading} value={allowedOrigins} />
+    <ShowCard heading={cardScopes?.heading} value={cardScopes?.scope} />
   )
 }
 export { CardScopes };
