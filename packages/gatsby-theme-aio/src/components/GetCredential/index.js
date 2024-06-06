@@ -140,7 +140,6 @@ const GetCredential = ({ templateId, children, className }) => {
         console.log('No accessible org found in local storage. Removing entry in local storage, if exists and picking default org');
         localStorage.removeItem(LocalStorageKey);
         const currentAccountOrgs = allOrganizations.filter(o => o.accountId === accountId);
-        console.log('Current account orgs:', currentAccountOrgs);
         org = currentAccountOrgs.filter(o => o.default)[0] ?? currentAccountOrgs[0];
       }
     }
