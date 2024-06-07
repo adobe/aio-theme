@@ -33,7 +33,7 @@
     "clean": "yarn workspace example clean",
     "format": "npx prettier --write '**/*.{js,json}'",
     "cy:open": "cypress open",
-    "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
+    "test:e2e": "yarn clean && START_SERVER_AND_TEST_INSECURE=1 CYPRESS_SUPPORT=y start-server-and-test dev:https https://localhost.corp.adobe.com:9000 cy:open"
   },
   "resolutions": {
     "sharp": "0.33.0",

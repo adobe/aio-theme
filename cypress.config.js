@@ -9,7 +9,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config)
     },
-    baseUrl: 'http://localhost:9000',
+    baseUrl: 'https://localhost.corp.adobe.com:9000',
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
   pageLoadTimeout: 500000,
