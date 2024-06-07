@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - get_credential_phase2_e2e_tests
     paths:
       - "example/**"
       - "packages/**"
@@ -11,7 +12,6 @@ on:
   pull_request:
     branches:
       - main
-      - get_credential_phase2
     paths:
       - "example/**"
       - "packages/**"
