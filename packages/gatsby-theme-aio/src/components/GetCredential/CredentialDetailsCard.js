@@ -127,7 +127,7 @@ export const CredentialDetailsCard = ({
               <DevConsoleLinkComponent
                 devConsoleLinkHeading={devConsoleLinkHeading}
                 credentialName={credentialName}
-                projectId={response?.id}
+                projectId={response?.projectId ? response?.projectId : response?.id}
               />
             )}
 
