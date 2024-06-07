@@ -5,13 +5,13 @@ import { MAX_MOBILE_WIDTH } from '../FormFields';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { RequestAccessSide } from './RequestAccessSide';
 import GetCredentialContext from '../GetCredentialContext';
-import { NestedAlertContentEdgeCase } from './NestedAlertContentEdgeCase';
+import { OrganizationAccessDetailsEdgeCase } from './OrganizationAccessDetailsEdgeCase';
 
 const RequestAccess = ({}) => {
   const { getCredentialData } = useContext(GetCredentialContext);
 
   const requestAccess = getCredentialData?.[RequestAccess];
-  let side, restrictedAccess, nestedAlertContentEdgeCase;
+  let side, restrictedAccess, organizationAccessDetailsEdgeCase;
 
   if (Array.isArray(requestAccess?.children)) {
     requestAccess?.children?.forEach(({ type, props }) => {
@@ -21,8 +21,8 @@ const RequestAccess = ({}) => {
       if (type === RestrictedAccess) {
         restrictedAccess = props;
       }
-      if (type === NestedAlertContentEdgeCase) {
-        nestedAlertContentEdgeCase = props;
+      if (type === OrganizationAccessDetailsEdgeCase) {
+        organizationAccessDetailsEdgeCase = props;
       }
     });
   } else {
@@ -65,7 +65,7 @@ const RequestAccess = ({}) => {
               flex-direction: column;
             }
           `}>
-          {restrictedAccess && <RestrictedAccess restrictedAccess={restrictedAccess} nestedAlertContentEdgeCase={nestedAlertContentEdgeCase} />}
+          {restrictedAccess && <RestrictedAccess restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
           {side && <RequestAccessSide side={side} />}
         </div>
       </div>
