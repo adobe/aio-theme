@@ -203,7 +203,7 @@ export const getCredentialSecrets = async (response, selectedOrganization) => {
 
 };
 
-export const generateToken = async (apikey, secret) => {
+export const generateToken = async (apikey, secret, scopesDetails) => {
   const options = {
     method: 'POST',
     headers: {
@@ -213,7 +213,7 @@ export const generateToken = async (apikey, secret) => {
       client_id: apikey,
       client_secret: secret,
       grant_type: 'client_credentials',
-      scope: 'openid, AdobeID, read_organizations, ff_apis, firefly_api',
+      scope: scopesDetails?.scope,
     }),
   };
 

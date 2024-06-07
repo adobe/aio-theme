@@ -121,7 +121,7 @@ export const CredentialDetailsCard = ({
               flex-direction: column;
               gap: 32px;
             `}>
-            {accessToken && <AccessTokenComponent accessToken={accessToken} response={response} />}
+            {accessToken && <AccessTokenComponent accessToken={accessToken} response={response} scopesDetails={scopesDetails} />}
 
             {devConsoleLinkHeading && (
               <DevConsoleLinkComponent
