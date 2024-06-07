@@ -8,8 +8,6 @@ import GetCredentialContext from './GetCredentialContext';
 const SignIn = ({}) => {
   const { getCredentialData } = useContext(GetCredentialContext);
   const signInProps = getCredentialData?.[SignIn];
-  
-  const { ims } = useContext(Context);
 
   return (
     <>
@@ -55,7 +53,7 @@ const SignIn = ({}) => {
               width: fit-content;
               margin-top: 10px;
             `}
-            onClick={() => ims?.signIn()}>
+            onClick={() => window.adobeIMS.signIn()}>
             <span className="spectrum-Button-label">{signInProps?.buttonText}</span>
           </button>
         )}
