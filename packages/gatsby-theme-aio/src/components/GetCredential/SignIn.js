@@ -53,7 +53,8 @@ const SignIn = ({}) => {
               width: fit-content;
               margin-top: 10px;
             `}
-            onClick={() => window.adobeIMS.signIn()}>
+            onClick={() => window.adobeIMS.signIn()}
+            data-cy="sign-in-btn">
             <span className="spectrum-Button-label">{signInProps?.buttonText}</span>
           </button>
         )}
