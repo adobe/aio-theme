@@ -13,12 +13,12 @@ describe('Get Credentials Test', () => {
     it('API Key page loads', () => {
         const route = '/getCredential/';
         init(route);
-        // TODO: test validation failures, error toasts, success scenarios etc.
+        // TODO: test validation failures, error toasts, success scenarios, error edge cases, org switching etc.
     });
 
     it('OAuth s2s page loads', () => {
         const route = '/get-credential-oauth/';
         init(route);
-        // TODO: test validation failures, error toasts, success scenarios etc.
+        // TODO: test validation failures, error toasts, success scenarios, error edge cases, org switching etc.
     });
 });

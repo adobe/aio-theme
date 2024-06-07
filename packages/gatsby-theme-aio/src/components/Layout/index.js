@@ -191,8 +191,6 @@ export default ({ children, pageContext, location }) => {
   useEffect(() => {
     const IMS_SRC = process.env.GATSBY_IMS_SRC;
     const IMS_CONFIG = process.env.GATSBY_IMS_CONFIG;
-    console.log(IMS_SRC);
-    console.log(IMS_CONFIG);
 
     if (IMS_SRC && IMS_CONFIG) {
       (async () => {
