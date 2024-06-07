@@ -3,7 +3,7 @@ import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import classNames from "classnames";
-import { getOrganizations, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
@@ -53,6 +53,7 @@ import { OrganizationAccessDetailsNoProduct } from './RequestAccess/Organization
 import { OrganizationAccessDetailsType1User } from './RequestAccess/OrganizationAccessDetailsType1User';
 import { OrganizationAccessDetailsNotMember } from './RequestAccess/OrganizationAccessDetailsNotMember';
 import { OrganizationAccessDetailsNotSignUp } from './RequestAccess/OrganizationAccessDetailsNotSignUp';
+import { getOrganizations } from './Service';
 
 const LocalStorageKey = 'OrgInfo';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from "@emotion/react";
-import { AlertIcon, FormFields } from "../FormFields";
+import { FormFields } from "../FormFields";
+import { AlertIcon } from '../Icons';
 
 const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
 

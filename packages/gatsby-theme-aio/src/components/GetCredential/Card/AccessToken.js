@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-import { CopyIcon, getCredentialSecrets, generateToken } from '../FormFields';
+import { CopyIcon } from '../Icons';
 import { Toast } from '../../Toast';
 import GetCredentialContext from '../GetCredentialContext';
+import { generateToken, getCredentialSecrets } from '../Service';
 
 const AccessToken = ({ accessToken, response, scopesDetails }) => {
 

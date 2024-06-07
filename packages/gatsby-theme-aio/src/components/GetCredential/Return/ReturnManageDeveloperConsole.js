@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from "@emotion/react";
-import { LinkOut, MIN_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH } from '../FormFields';
+import { MIN_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH } from '../FormFields';
+import { LinkOut } from '../Icons';
 
 const ReturnManageDeveloperConsole = ({ returnManageDeveloperConsole }) => {
   return (
