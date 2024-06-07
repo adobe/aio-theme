@@ -39,7 +39,7 @@ const ProjectsDropdown = ({ projectsDropdown, previousProjectsDetails, selectedI
           }
 
           & > div > .spectrum-Picker-popover > ul > li > div > div {
-            margin : 0 ;
+            margin-top : 5px ;
           }
 
           & > div > .spectrum-Picker-popover > ul > li > div > div > svg {
