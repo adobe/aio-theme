@@ -213,8 +213,6 @@ const GetCredentialOAuthS2s = () => {
         </GetCredential.RequestAccess.RequestAccessSide>
       </GetCredential.RequestAccess>
 
-      <GetCredential.ErrorCode helpLink="Get help" title="Error code ###" description="Your personal account does not have Developer role permission to access the [Org Name, Inc.] organization in the Adobe Developer Console." buttonLabel="Contact Adobe" buttonLink="https://some_help_link" />
-
     </GetCredential>
 
   )

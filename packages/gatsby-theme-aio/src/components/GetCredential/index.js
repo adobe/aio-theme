@@ -45,7 +45,6 @@ import { DevConsoleLink } from './Card/DevConsoleLink';
 import { RequestAccess } from "./RequestAccess/RequestAccess"
 import { RestrictedAccess } from './RequestAccess/RestrictedAccessFields';
 import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
-import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
 import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
@@ -122,7 +121,7 @@ const GetCredential = ({ templateId, children, className }) => {
   }, [selectedOrganization]);
 
   const switchOrganization = async (org) => {
-    const { userId : accountId} = (await window.adobeIMS.getProfile());
+    const { userId: accountId } = (await window.adobeIMS.getProfile());
 
     if (!org) {
       // this means it's initial load. Try reading from local storage
@@ -273,8 +272,6 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsCreateNewCredential={setIsCreateNewCredential}
       isCreateNewCredential={isCreateNewCredential} />
 
-    // return <SubscriptionError errorProps={getCredentialData?.[SubscriptionError]} />
-
   }
 
   return (
@@ -397,6 +394,5 @@ GetCredential.RequestAccess.EdgeCase.NotSignUp = NestedAlertContentNotSignUp;
 GetCredential.RequestAccess.RestrictedAccess.Products = Products;
 GetCredential.RequestAccess.RestrictedAccess.Products.Product = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
-GetCredential.ErrorCode = SubscriptionError;
 
 export { GetCredential };
