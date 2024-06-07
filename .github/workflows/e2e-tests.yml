@@ -27,11 +27,18 @@ jobs:
         run: |
             sudo echo "127.0.0.1 localhost.corp.adobe.com" | sudo tee -a /etc/hosts
 
+      - name: 'Create env file'
+        run: |
+          touch ./example/.env
+          echo GATSBY_IMS_SRC="https://auth-stg1.services.adobe.com/imslib/imslib.min.js" >> ./example/.env
+          echo GATSBY_IMS_CONFIG='{"client_id": "stage_adobe_io", "scope": "AdobeID,openid,unified_dev_portal,read_organizations,additional_info.projectedProductContext,additional_info.roles,gnav,read_pc.dma_bullseye,creative_sdk,adobeio_api,service_principals.read,service_principals.write,read_client_secret", "environment": "stg1"}' >> ./example/.env
+          cat ./example/.env
+
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
           build: yarn build
-          start: "GATSBY_IMS_SRC='https://auth-stg1.services.adobe.com/imslib/imslib.min.js' GATSBY_IMS_CONFIG='{\"client_id\": \"stage_adobe_io\", \"scope\": \"AdobeID,openid,unified_dev_portal,read_organizations,additional_info.projectedProductContext,additional_info.roles,gnav,read_pc.dma_bullseye,creative_sdk,adobeio_api,service_principals.read,service_principals.write,read_client_secret\", \"environment\": \"stg1\"}' yarn dev:https"
+          start: yarn dev:https
           wait-on: 'https://localhost.corp.adobe.com:9000'
           browser: chrome
           config-file: cypress.config.js
