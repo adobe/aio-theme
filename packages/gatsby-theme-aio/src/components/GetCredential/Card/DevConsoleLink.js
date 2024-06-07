@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { css } from '@emotion/react';
-import { LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from '../FormFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from '../FormFields';
 import GetCredentialContext from '../GetCredentialContext';
+import { LinkOut } from '../Icons';
 
 const DevConsoleLink = ({ devConsoleLinkHeading, credentialName, projectId }) => {
 

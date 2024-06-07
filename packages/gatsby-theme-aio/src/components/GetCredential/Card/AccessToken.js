@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Button, ProgressCircle } from '@adobe/react-spectrum';
 import { ActionButton, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
-import { CopyIcon, getCredentialSecrets, generateToken } from '../FormFields';
+import { CopyIcon } from '../Icons';
 import { Toast } from '../../Toast';
 import GetCredentialContext from '../GetCredentialContext';
+import { generateToken, getCredentialSecrets } from '../Service';
 
-const AccessToken = ({ accessToken, response }) => {
+const AccessToken = ({ accessToken, response, scopesDetails }) => {
 
   const [credentialToken, setCredentialToken] = useState(null);
   const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
@@ -17,7 +18,7 @@ const AccessToken = ({ accessToken, response }) => {
     const secrets = await getCredentialSecrets(response, selectedOrganization);
     if (secrets) {
       let clientId = response?.workspaces ? response?.workspaces[0]?.credentials[0]?.clientId : response?.apiKey
-      const tokenVal = await generateToken(clientId, secrets?.clientSecret);
+      const tokenVal = await generateToken(clientId, secrets?.clientSecret, scopesDetails);
       setCredentialToken(tokenVal);
     }
   };

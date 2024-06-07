@@ -68,12 +68,11 @@ const MyCredential = ({
   };
 
   const downloadZIP = async (downloadAPI, fileName = 'download', zipFileURL) => {
+    setIsDownloadStart(true);
     try {
       const zipData = await JSZipUtils.getBinaryContent(zipFileURL);
       const zipArrayBuffer = new Uint8Array(zipData).buffer;
       const zip = new JSZip();
-
-      setIsDownloadStart(true);
 
       await zip.loadAsync(zipArrayBuffer);
 
@@ -154,17 +153,17 @@ const MyCredential = ({
                 align-items: center;
                 gap: 10px;
               `}>
-              <div class="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--small">
-                <div class="spectrum-ProgressCircle-track"></div>
-                <div class="spectrum-ProgressCircle-fills">
-                  <div class="spectrum-ProgressCircle-fillMask1">
-                    <div class="spectrum-ProgressCircle-fillSubMask1">
-                      <div class="spectrum-ProgressCircle-fill"></div>
+              <div className="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--small">
+                <div className="spectrum-ProgressCircle-track"></div>
+                <div className="spectrum-ProgressCircle-fills">
+                  <div className="spectrum-ProgressCircle-fillMask1">
+                    <div className="spectrum-ProgressCircle-fillSubMask1">
+                      <div className="spectrum-ProgressCircle-fill"></div>
                     </div>
                   </div>
-                  <div class="spectrum-ProgressCircle-fillMask2">
-                    <div class="spectrum-ProgressCircle-fillSubMask2">
-                      <div class="spectrum-ProgressCircle-fill"></div>
+                  <div className="spectrum-ProgressCircle-fillMask2">
+                    <div className="spectrum-ProgressCircle-fillSubMask2">
+                      <div className="spectrum-ProgressCircle-fill"></div>
                     </div>
                   </div>
                 </div>

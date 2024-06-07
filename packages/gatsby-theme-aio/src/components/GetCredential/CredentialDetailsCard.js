@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { css } from '@emotion/react';
 import { AccessToken } from './Card/AccessToken';
 import { DevConsoleLink } from './Card/DevConsoleLink';
@@ -19,6 +19,7 @@ import { ReturnScopes } from './Return/ReturnScopes';
 import { ReturnAPIKey } from './Return/ReturnAPIKey';
 import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
+import { KeyIcon, LinkOut } from './Icons';
 
 export const CredentialDetailsCard = ({
   credentialName,
@@ -121,13 +122,13 @@ export const CredentialDetailsCard = ({
               flex-direction: column;
               gap: 32px;
             `}>
-            {accessToken && <AccessTokenComponent accessToken={accessToken} response={response} />}
+            {accessToken && <AccessTokenComponent accessToken={accessToken} response={response} scopesDetails={scopesDetails} />}
 
             {devConsoleLinkHeading && (
               <DevConsoleLinkComponent
                 devConsoleLinkHeading={devConsoleLinkHeading}
                 credentialName={credentialName}
-                projectId={response?.id}
+                projectId={response?.projectId ? response?.projectId : response?.id}
               />
             )}
 

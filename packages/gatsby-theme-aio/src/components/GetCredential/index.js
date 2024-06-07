@@ -3,7 +3,7 @@ import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import classNames from "classnames";
-import { getOrganizations, MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { IllustratedMessage } from './IllustratedMessage';
 import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
@@ -45,15 +45,15 @@ import { DevConsoleLink } from './Card/DevConsoleLink';
 import { RequestAccess } from "./RequestAccess/RequestAccess"
 import { RestrictedAccess } from './RequestAccess/RestrictedAccessFields';
 import { RequestAccessSide } from "./RequestAccess/RequestAccessSide";
-import { SubscriptionError } from "./ErrorCode/SubscriptionError"
 import Context from '../Context';
 import GetCredentialContext from './GetCredentialContext';
 import { ReturnCredentialDetails } from './Return/ReturnCredentialDetails';
-import { NestedAlertContentEdgeCase } from './RequestAccess/NestedAlertContentEdgeCase';
-import { NestedAlertContentNoProduct } from './RequestAccess/NestedAlertContentNoProduct';
-import { NestedAlertContentType1User } from './RequestAccess/NestedAlertContentType1User';
-import { NestedAlertContentNotMember } from './RequestAccess/NestedAlertContentNotMember';
-import { NestedAlertContentNotSignUp } from './RequestAccess/NestedAlertContentNotSignUp';
+import { OrganizationAccessDetailsEdgeCase } from './RequestAccess/OrganizationAccessDetailsEdgeCase';
+import { OrganizationAccessDetailsNoProduct } from './RequestAccess/OrganizationAccessDetailsNoProduct';
+import { OrganizationAccessDetailsType1User } from './RequestAccess/OrganizationAccessDetailsType1User';
+import { OrganizationAccessDetailsNotMember } from './RequestAccess/OrganizationAccessDetailsNotMember';
+import { OrganizationAccessDetailsNotSignUp } from './RequestAccess/OrganizationAccessDetailsNotSignUp';
+import { getOrganizations } from './Service';
 
 const LocalStorageKey = 'OrgInfo';
 
@@ -122,7 +122,7 @@ const GetCredential = ({ templateId, children, className }) => {
   }, [selectedOrganization]);
 
   const switchOrganization = async (org) => {
-    const { userId : accountId} = (await window.adobeIMS.getProfile());
+    const { userId: accountId } = (await window.adobeIMS.getProfile());
 
     if (!org) {
       // this means it's initial load. Try reading from local storage
@@ -273,8 +273,6 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsCreateNewCredential={setIsCreateNewCredential}
       isCreateNewCredential={isCreateNewCredential} />
 
-    // return <SubscriptionError errorProps={getCredentialData?.[SubscriptionError]} />
-
   }
 
   return (
@@ -389,14 +387,13 @@ GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
-GetCredential.RequestAccess.EdgeCase = NestedAlertContentEdgeCase;
-GetCredential.RequestAccess.EdgeCase.NoProduct = NestedAlertContentNoProduct;
-GetCredential.RequestAccess.EdgeCase.Type1User = NestedAlertContentType1User;
-GetCredential.RequestAccess.EdgeCase.NotMember = NestedAlertContentNotMember;
-GetCredential.RequestAccess.EdgeCase.NotSignUp = NestedAlertContentNotSignUp;
+GetCredential.RequestAccess.EdgeCase = OrganizationAccessDetailsEdgeCase;
+GetCredential.RequestAccess.EdgeCase.NoProduct = OrganizationAccessDetailsNoProduct;
+GetCredential.RequestAccess.EdgeCase.Type1User = OrganizationAccessDetailsType1User;
+GetCredential.RequestAccess.EdgeCase.NotMember = OrganizationAccessDetailsNotMember;
+GetCredential.RequestAccess.EdgeCase.NotSignUp = OrganizationAccessDetailsNotSignUp;
 GetCredential.RequestAccess.RestrictedAccess.Products = Products;
 GetCredential.RequestAccess.RestrictedAccess.Products.Product = Product;
 GetCredential.RequestAccess.RequestAccessSide = RequestAccessSide;
-GetCredential.ErrorCode = SubscriptionError;
 
 export { GetCredential };

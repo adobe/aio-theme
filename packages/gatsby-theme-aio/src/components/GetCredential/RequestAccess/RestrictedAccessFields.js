@@ -2,40 +2,40 @@ import React, { useContext } from "react";
 import "@spectrum-css/contextualhelp/dist/index-vars.css";
 import { css } from "@emotion/react";
 import { InlineNestedAlert } from "../../InlineNestedAlert";
-import { NestedAlertContent } from "./NestedAlertContent";
-import { NestedAlertContentNoProduct } from "./NestedAlertContentNoProduct";
-import { NestedAlertContentType1User } from "./NestedAlertContentType1User";
-import { NestedAlertContentNotMember } from "./NestedAlertContentNotMember";
-import { NestedAlertContentNotSignUp } from "./NestedAlertContentNotSignUp";
+import { OrganizationAccessDetails } from "./OrganizationAccessDetails";
+import { OrganizationAccessDetailsNoProduct } from "./OrganizationAccessDetailsNoProduct";
+import { OrganizationAccessDetailsType1User } from "./OrganizationAccessDetailsType1User";
+import { OrganizationAccessDetailsNotMember } from "./OrganizationAccessDetailsNotMember";
+import { OrganizationAccessDetailsNotSignUp } from "./OrganizationAccessDetailsNotSignUp";
 import GetCredentialContext from "../GetCredentialContext";
 
-const RestrictedAccess = ({ restrictedAccess, nestedAlertContentEdgeCase }) => {
+const RestrictedAccess = ({ restrictedAccess, organizationAccessDetailsEdgeCase }) => {
   let products = restrictedAccess?.children?.props;
   let childProps = {};
   const { selectedOrganization, template } = useContext(GetCredentialContext);
   let disEntitledReason = template?.disEntitledReasons[0];
 
-  if (Array.isArray(nestedAlertContentEdgeCase?.children)) {
-    nestedAlertContentEdgeCase?.children?.forEach(({ type, props }) => {
+  if (Array.isArray(organizationAccessDetailsEdgeCase?.children)) {
+    organizationAccessDetailsEdgeCase?.children?.forEach(({ type, props }) => {
       childProps[type] = props;
     });
   }
 
   const render = () => {
-    if (selectedOrganization?.type === "developer" && childProps[NestedAlertContentType1User]) {
-      return <NestedAlertContentType1User content={childProps[NestedAlertContentType1User]} />
+    if (selectedOrganization?.type === "developer" && childProps[OrganizationAccessDetailsType1User]) {
+      return <OrganizationAccessDetailsType1User content={childProps[OrganizationAccessDetailsType1User]} />
     }
     else if (disEntitledReason === "USER_MISSING_PUBLIC_BETA") {
-      return <NestedAlertContentNotSignUp content={childProps[NestedAlertContentNotSignUp]} />
+      return <OrganizationAccessDetailsNotSignUp content={childProps[OrganizationAccessDetailsNotSignUp]} />
     }
     else if (disEntitledReason === "ORG_MISSING_FIS") {
-      return <NestedAlertContentNoProduct content={childProps[NestedAlertContentNoProduct]} />
+      return <OrganizationAccessDetailsNoProduct content={childProps[OrganizationAccessDetailsNoProduct]} />
     }
     else if (template?.canRequestAccess) {
-      return <NestedAlertContent restrictedAccess={restrictedAccess} products={products} />
+      return <OrganizationAccessDetails restrictedAccess={restrictedAccess} products={products} />
     }
     else {
-      return <NestedAlertContentNotMember content={childProps[NestedAlertContentNotMember]} />
+      return <OrganizationAccessDetailsNotMember content={childProps[OrganizationAccessDetailsNotMember]} />
     }
   };
 

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { CopyIcon, getCredentialSecrets } from '../FormFields';
+import { CopyIcon } from '../Icons';
 import { ActionButton, ProgressCircle, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 import { Toast } from '../../Toast';
 import GetCredentialContext from '../GetCredentialContext';
+import { getCredentialSecrets } from '../Service';
 
 const ShowCard = ({
   heading,
