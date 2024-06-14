@@ -108,6 +108,9 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
+      - [generateCodeSamples (optional)](#generatecodesamples-optional)
+      - [onlyRequiredInSamples (optional)](#onlyrequiredinsamples-optional)
+      - [hideRequestPayloadSample (optional)](#hiderequestpayloadsample-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1204,6 +1207,40 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-o
 Sets the default expand level for JSON payload samples (response and request body). Takes a number >= 1, or the string 'all'.
 
 Defaults to ```2```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### generateCodeSamples (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." generateCodeSamples="languages: [{ lang: 'curl }, { lang: 'Node.js' }, { lang: 'JavaScript' }, { lang: 'Python' }], skipOptionalParameters: true," />
+```
+
+Controls options for generating code samples, including code sample languages. For more details, see https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+Defaults to ```undefined```
+
+#### onlyRequiredInSamples (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." onlyRequiredInSamples />
+```
+
+Shows only required fields in request samples.
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### hideRequestPayloadSample (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." hideRequestPayloadSample />
+```
+
+Hides request payload examples.
+
+Defaults to ```false```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
 
