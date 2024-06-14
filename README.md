@@ -108,6 +108,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
+      - [generateCodeSamples (optional)](#generatecodesamples-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1207,6 +1208,17 @@ Defaults to ```2```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
 
+#### generateCodeSamples (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." generateCodeSamples="languages: [{ lang: 'curl' }, { lang: 'Node.js' }, { lang: 'JavaScript' }, {lang: 'Python'}], skipOptionalParameters: true" />
+```
+
+Controls options for generating code samples, including code sample languages.
+
+Defaults to ```languages: [], skipOptionalParameters: true,```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality#theme-object-openapi-schema
 
 ### JSDoc
 
