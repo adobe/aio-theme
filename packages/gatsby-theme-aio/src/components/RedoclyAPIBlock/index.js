@@ -68,6 +68,10 @@ const RedoclyAPIBlock = ({
                hideTryItPanel: ${hideTryItPanel},
                jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                hideLoading: true,
+               generateCodeSamples: {
+                languages: [{ lang: 'curl' }, { lang: 'Node.js' }, { lang: 'JavaScript', label: 'JS' }],
+                skipOptionalParameters: true,
+               },
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
                 rightPanel: {
