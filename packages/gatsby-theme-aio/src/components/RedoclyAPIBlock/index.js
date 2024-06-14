@@ -59,30 +59,33 @@ const RedoclyAPIBlock = ({
         <>
           <div id="redocly_container" />
 
-          <script>{
-            `RedoclyReferenceDocs.init(
-               '${src}',
-              {licenseKey: '${licenseKey}',
-               disableSidebar: ${disableSidebar}, 
-               disableSearch: ${disableSearch},
-               hideTryItPanel: ${hideTryItPanel},
-               jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
-               hideLoading: true,
-               generateCodeSamples: {
-                languages: [{ lang: 'curl' }, { lang: 'Node.js' }, { lang: 'JavaScript', label: 'JS' }],
-                skipOptionalParameters: true,
-               },
-               theme: {
-                ${typography ? "typography: { " + typography + "}," : ''}
-                rightPanel: {
-                  width: '${width}',
+          <script>
+            {
+              `RedoclyReferenceDocs.init
+              (
+                '${src}',
+                {
+                  licenseKey: '${licenseKey}',
+                  disableSidebar: ${disableSidebar}, 
+                  disableSearch: ${disableSearch},
+                  hideTryItPanel: ${hideTryItPanel},
+                  jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
+                  hideLoading: true,
+                  generateCodeSamples: {
+                    languages: [{ lang: 'curl' }, { lang: 'Node.js' }, { lang: 'JavaScript', label: 'JS' }],
+                    skipOptionalParameters: true,
                   },
-                  ${codeBlock ? "codeBlock: { " + codeBlock + "}," : ''}
+                  theme: {
+                    ${typography ? "typography: { " + typography + "}," : ''}
+                    rightPanel: {
+                      width: '${width}',
+                    },
+                    ${codeBlock ? "codeBlock: { " + codeBlock + "}," : ''}
+                  },
                 },
-              },
-              document.querySelector('#redocly_container'),
-            );`
-          }
+                document.querySelector('#redocly_container'),
+              );`
+            }
           </script>
         </>)}
     </>
