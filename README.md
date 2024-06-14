@@ -96,7 +96,7 @@ Using a theme, all of your default configuration lives in an npm package.
   - [Writing Enhanced Markdown](#writing-enhanced-markdown)
     - [Metadata with Front matter](#metadata-with-front-matter)
     - [OpenAPI](#openapi)
-    - [Redocly API Block](#RedoclyAPIBlock)
+    - [Redocly API Block](#RedoclyAPIBlock) 
       - [On-premise license keys](#on-premise-license-keys)
       - [Local development limitation and workaround](#local-development-limitation-and-workaround)
       - [Full width page](#full-width-page)
