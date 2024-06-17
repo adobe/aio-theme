@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.14...@adobe/gatsby-theme-aio@4.11.15) (2024-06-17)
+
+### Features
+* Add option to generate code samples in RedoclyAPIBlock [f751bb5](https://github.com/adobe/aio-theme/commit/f751bb5f91dbbfd8f78bcdea0ea89093f907bbf2)
+
 ## [4.11.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.13...@adobe/gatsby-theme-aio@4.11.14) (2024-05-14)
 
 ### Fix
