@@ -28,7 +28,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
           flex-direction: column;
           gap: 16px;
           margin: 0px;
-        `}>
+        `} data-cy="accessDetails-edgeCase">
         {content?.title &&
           <h6
             className="spectrum-Heading spectrum-Heading--sizeXXS"
@@ -110,7 +110,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
               color: #292929;
             }
           `}>
-          {content?.buttonLink && <a href={`${content?.buttonLink}`} target="_blank">{content?.buttonLabel && <Button>{content?.buttonLabel}</Button>}</a>}
+          {content?.buttonLink && <a href={`${content?.buttonLink}`} target="_blank">{content?.buttonLabel && <Button data-cy="accessDetails-edgeCase-btn">{content?.buttonLabel}</Button>}</a>}
         </div>
       </div>
     </>

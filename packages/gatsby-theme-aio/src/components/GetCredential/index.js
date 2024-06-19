@@ -257,7 +257,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     // template should never be null or undefined here
-    if (!template.userEntitled || !template.orgEntitled) {
+    if (!template?.userEntitled || !template?.orgEntitled) {
       return <RequestAccess />
     }
 

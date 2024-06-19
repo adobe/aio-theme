@@ -56,7 +56,7 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
                   }
 
                 `}>
-                <Button onPress={() => handleGenerateToken()} variant="accent">
+                <Button onPress={() => handleGenerateToken()} variant="accent" data-cy="generate-token">
                   {accessToken?.buttonLabel}
                 </Button>
               </div>
@@ -84,7 +84,7 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
                     {credentialToken}
                   </p>
                   <TooltipTrigger delay={0}>
-                    <ActionButton onPress={() => handleSecretCopyCode(credentialToken)}>
+                    <ActionButton onPress={() => handleSecretCopyCode(credentialToken)} data-cy="copy-token">
                       <CopyIcon />
                     </ActionButton>
                     <Tooltip>Copy</Tooltip>

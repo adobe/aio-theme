@@ -31,7 +31,7 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
           flex-direction: column;
           gap: 16px;
           margin: 0px;
-        `}>
+        `} data-cy="accessDetails">
         {restrictedAccess?.title && (
           <h6 className="spectrum-Heading spectrum-Heading--sizeXXS">{restrictedAccess?.title}</h6>
         )}
@@ -93,7 +93,7 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
                 {!template.isRequestPending ? <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button> :
                   <Flex gap="size-100" direction="row" alignItems="center">
                     <p css={css`margin:0;font-style: italic;`}>Request Pending</p>
-                    <ContextualHelp variant="info">
+                    <ContextualHelp variant="info" data-cy="request-info">
                       <Heading>Your request is pending approval</Heading>
                       <Content>
                         <Text>
