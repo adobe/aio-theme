@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.16](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.15...@adobe/gatsby-theme-aio@4.11.16) (2024-06-19)
+
+### Features
+* Add option to add request interceptor in RedoclyAPIBlock [f044e7b](https://github.com/adobe/aio-theme/commit/f044e7bf2c87b5fe31d54355751655ec7958d02f)
+
 ## [4.11.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.14...@adobe/gatsby-theme-aio@4.11.15) (2024-06-17)
 
 ### Features
