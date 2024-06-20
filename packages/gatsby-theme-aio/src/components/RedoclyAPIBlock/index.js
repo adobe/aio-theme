@@ -28,7 +28,7 @@ const RedoclyAPIBlock = ({
   hideTryItPanel = false,
   jsonSampleExpandLevel = 2,
   generateCodeSamples = 'languages: [], skipOptionalParameters: false,',
-  requestInterceptor = '',
+  requestInterceptorSrc = '',
 }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
@@ -38,6 +38,11 @@ const RedoclyAPIBlock = ({
   } else {
     input.spec = withPrefix(src);
   }
+
+  console.log('~~ 1');
+  import(requestInterceptorSrc).then((mod) => {
+    console.log('~~ 2', mod);
+  });
 
   useEffect(() => {
     let script = document.createElement('script')
@@ -70,7 +75,6 @@ const RedoclyAPIBlock = ({
                hideTryItPanel: ${hideTryItPanel},
                jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                ${generateCodeSamples ? "generateCodeSamples: { " + generateCodeSamples + "}," : ''}
-               ${requestInterceptor ? "requestInterceptor: " + requestInterceptor + "," : ''}
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
@@ -102,7 +106,7 @@ RedoclyAPIBlock.propTypes = {
     PropTypes.number,
   ]),
   generateCodeSamples: PropTypes.string,
-  requestInterceptor: PropTypes.string,
+  requestInterceptorSrc: PropTypes.string,
 };
 
 export { RedoclyAPIBlock };
