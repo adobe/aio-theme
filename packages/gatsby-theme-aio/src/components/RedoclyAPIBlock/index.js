@@ -39,10 +39,17 @@ const RedoclyAPIBlock = ({
     input.spec = withPrefix(src);
   }
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
+  let module;
   console.log('~~ 1');
-  import(requestInterceptorSrc).then((mod) => {
-    console.log('~~ 2', mod);
-  });
+  if(requestInterceptorSrc) {
+    console.log('~~ 2');
+    import(requestInterceptorSrc).then((mod) => {
+      module = mod;
+      console.log('~~ 3', mod, module);
+    });
+  }
+  console.log('~~ 4');
 
   useEffect(() => {
     let script = document.createElement('script')
