@@ -41,19 +41,18 @@ const RedoclyAPIBlock = ({
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action
-  let module;
-  console.log('~~ 1');
+  console.log('~~ 1a');
   if(requestInterceptorSrc) {
-    console.log('~~ 2');
+    console.log('~~ 2a');
     import(requestInterceptorSrc)
       .then((mod) => {
-        console.log('~~ 3', mod);
+        console.log('~~ 3a', mod);
       })
       .catch((err) => {
-        console.log('~~ 4', err.message);
+        console.log('~~ 4a', err.message);
       });
   }
-  console.log('~~ 5');
+  console.log('~~ 5a');
 
   useEffect(() => {
     let script = document.createElement('script')
@@ -69,6 +68,22 @@ const RedoclyAPIBlock = ({
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
     })
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action
+    console.log('~~ 1b');
+    if(requestInterceptorSrc) {
+      console.log('~~ 2b');
+      import(requestInterceptorSrc)
+        .then((mod) => {
+          console.log('~~ 3b', mod);
+        })
+        .catch((err) => {
+          console.log('~~ 4b', err.message);
+        });
+    }
+    console.log('~~ 5b');
+
   }, [isRedoclyLoading]);
 
   return (
