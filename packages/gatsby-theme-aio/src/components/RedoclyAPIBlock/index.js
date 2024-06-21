@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { withPrefix } from 'gatsby';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
