@@ -39,21 +39,15 @@ const RedoclyAPIBlock = ({
     input.spec = withPrefix(src);
   }
 
-  console.log('~~ rc6');
-
   // https://stackoverflow.com/questions/78047114/dynamic-import-with-gatsbyjs
-  console.log('~~ 1a');
+  console.log('~~ rc8');
+  console.log('~~ 1');
   if(requestInterceptorSrc) {
-    console.log('~~ 2a');
-    const mod = lazy(() => import(requestInterceptorSrc)
-      .then((mod) => {
-        console.log('~~ 3a', mod);
-      }).catch((err) => {
-        console.log('~~ 4a', err.message);
-      }));
-      console.log('~~ 6a', mod);
+    console.log('~~ 2');
+    const mod = lazy(() => import(requestInterceptorSrc));
+    console.log('~~ 3', mod);
   }
-  console.log('~~ 7a');
+  console.log('~~ 4');
 
   useEffect(() => {
     let script = document.createElement('script')
@@ -68,20 +62,6 @@ const RedoclyAPIBlock = ({
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
     })
-
-  // https://stackoverflow.com/questions/78047114/dynamic-import-with-gatsbyjs
-  console.log('~~ 1b');
-  if(requestInterceptorSrc) {
-    console.log('~~ 2b');
-    const mod = lazy(() => import(requestInterceptorSrc)
-      .then((mod) => {
-        console.log('~~ 3b', mod);
-      }).catch((err) => {
-        console.log('~~ 4b', err.message);
-      }));
-      console.log('~~ 6b', mod);
-  }
-  console.log('~~ 7b');
 
   }, [isRedoclyLoading]);
 
