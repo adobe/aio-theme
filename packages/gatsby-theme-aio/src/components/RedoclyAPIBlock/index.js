@@ -19,7 +19,7 @@ const licenseKey = process.env.GATSBY_REDOCLY_KEY;
 const all = 'all';
 
 // Redocly API Block that will render the OpenAPI yaml files with Redocly TryIt feature.
-const RedoclyAPIBlock = ({
+const RedoclyAPIBlock = async ({
   src, width = '500px',
   typography = 'fontFamily: `adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif`',
   codeBlock = "tokens: { punctuation: { color: 'white' }}",
@@ -40,11 +40,11 @@ const RedoclyAPIBlock = ({
   }
 
   // https://stackoverflow.com/questions/78047114/dynamic-import-with-gatsbyjs
-  console.log('~~ rc8');
+  console.log('~~ rc9');
   console.log('~~ 1');
   if(requestInterceptorSrc) {
     console.log('~~ 2');
-    const mod = lazy(() => import(requestInterceptorSrc));
+    const mod = await import(requestInterceptorSrc);
     console.log('~~ 3', mod);
   }
   console.log('~~ 4');
