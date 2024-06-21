@@ -39,20 +39,21 @@ const RedoclyAPIBlock = ({
     input.spec = withPrefix(src);
   }
 
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action
+  console.log('~~ rc6');
+
+  // https://stackoverflow.com/questions/78047114/dynamic-import-with-gatsbyjs
   console.log('~~ 1a');
   if(requestInterceptorSrc) {
     console.log('~~ 2a');
-    import(requestInterceptorSrc)
+    const mod = lazy(() => import(requestInterceptorSrc)
       .then((mod) => {
         console.log('~~ 3a', mod);
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log('~~ 4a', err.message);
-      });
+      }));
+      console.log('~~ 6a', mod);
   }
-  console.log('~~ 5a');
+  console.log('~~ 7a');
 
   useEffect(() => {
     let script = document.createElement('script')
@@ -64,25 +65,23 @@ const RedoclyAPIBlock = ({
     console.async = true;
     document.head.appendChild(console);
 
-
     script.addEventListener('load', () => {
       setIsRedoclyLoading(false);
     })
 
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action
-    console.log('~~ 1b');
-    if(requestInterceptorSrc) {
-      console.log('~~ 2b');
-      import(requestInterceptorSrc)
-        .then((mod) => {
-          console.log('~~ 3b', mod);
-        })
-        .catch((err) => {
-          console.log('~~ 4b', err.message);
-        });
-    }
-    console.log('~~ 5b');
+  // https://stackoverflow.com/questions/78047114/dynamic-import-with-gatsbyjs
+  console.log('~~ 1b');
+  if(requestInterceptorSrc) {
+    console.log('~~ 2b');
+    const mod = lazy(() => import(requestInterceptorSrc)
+      .then((mod) => {
+        console.log('~~ 3b', mod);
+      }).catch((err) => {
+        console.log('~~ 4b', err.message);
+      }));
+      console.log('~~ 6b', mod);
+  }
+  console.log('~~ 7b');
 
   }, [isRedoclyLoading]);
 
