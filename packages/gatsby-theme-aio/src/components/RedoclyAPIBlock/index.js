@@ -40,16 +40,20 @@ const RedoclyAPIBlock = ({
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action
   let module;
   console.log('~~ 1');
   if(requestInterceptorSrc) {
     console.log('~~ 2');
-    import(requestInterceptorSrc).then((mod) => {
-      module = mod;
-      console.log('~~ 3', mod, module);
-    });
+    import(requestInterceptorSrc)
+      .then((mod) => {
+        console.log('~~ 3', mod);
+      })
+      .catch((err) => {
+        console.log('~~ 4', err.message);
+      });
   }
-  console.log('~~ 4');
+  console.log('~~ 5');
 
   useEffect(() => {
     let script = document.createElement('script')
