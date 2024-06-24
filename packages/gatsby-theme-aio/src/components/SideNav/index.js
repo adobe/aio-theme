@@ -83,13 +83,14 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
   }, [location.pathname])
 
   useEffect(() => {
-    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+
+    if (window.innerWidth <= 1280) {
       setMobileView(true);
     } else {
       setMobileView(false);
     }
     window.addEventListener('resize', () => {
-      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      if (window.innerWidth <= 1280) {
         setMobileView(true);
       } else {
         setMobileView(false);
