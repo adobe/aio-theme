@@ -109,6 +109,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
       - [generateCodeSamples (optional)](#generatecodesamples-optional)
+      - [requestInterceptor (optional)](#requestinterceptor-optional)
     - [JSDoc](#jsdoc)
     - [MDX](#mdx)
     - [Modular Content System](#modular-content-system)
@@ -1219,6 +1220,28 @@ Controls options for generating code samples, including code sample languages.
 Defaults to ```languages: [], skipOptionalParameters: false```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality#theme-object-openapi-schema
+
+#### requestInterceptor (optional)
+
+```js
+<RedoclyAPIBlock 
+    src="/redocly-test/openapi/openapi.yaml"
+    requestInterceptor=
+        "(req, operation) => ({ 
+            console.log('Args:', req, rawOperation);
+            return req; 
+        })"
+/>
+```
+
+Configures the request interceptor for the Try it console. As a prerequisite, the Try it console must be enabled in Reference docs (hideTryItPanel must be set to false). When configured, the interceptor can capture the request object and modify it according to specified criteria. Async usage is supported.
+
+Defaults to ``````
+
+Limitations: Due to gatsby and markdown limitations, we can't add comments in the function string nor empty lines.
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality#theme-object-openapi-schema
+https://redocly.com/docs/api-reference-docs/configuration/functionality#example-configuration-with-javascript-library
 
 ### JSDoc
 
