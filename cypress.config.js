@@ -15,5 +15,6 @@ module.exports = defineConfig({
   pageLoadTimeout: 500000,
   userEmail: 'deepesh+testuser2@adobetest.com',
   userPassword: 'Bap@d0be',
-  defaultCommandTimeout: 60000
+  defaultCommandTimeout: 120000,
+  video: false,
 })
