@@ -1,4 +1,4 @@
-function init(route) {
+function test(route) {
   cy.visit(route).assertRoute(route);
   cy.expect('button[data-cy="sign-in-btn"]').to.exist;
   cy.get('button[data-cy="sign-in-btn"]').should('be.visible');
@@ -7,7 +7,6 @@ function init(route) {
   cy.login();
   cy.get('button[data-cy="sign-in-btn"]').should('not.exist');
   cy.assertRoute(route + '#');
-  cy.wait(5000);
   enableOrganizationPicker();
   cy.get('button[data-cy="organization-picker"]').siblings().last().find('ul').children().as('list');
   cy.get('@list').each(($element, index) => {
@@ -15,20 +14,6 @@ function init(route) {
     selectOrganization('@ele');
   });
 }
-
-describe('Get Credentials Test', () => {
-  it('API Key page loads', () => {
-    const route = '/getCredential/';
-    init(route);
-    // TODO: test validation failures, error toasts, success scenarios, error edge cases, org switching etc.
-  });
-
-  it('OAuth s2s page loads', () => {
-    const route = '/get-credential-oauth/';
-    init(route);
-    // TODO: test validation failures, error toasts, success scenarios, error edge cases, org switching etc.
-  });
-});
 
 function checkRequestAccessEdgeCase() {
   cy.get('button[data-cy="accessDetails-edgeCase-btn"]').should('be.visible').should('be.enabled').click();
@@ -60,7 +45,6 @@ function checkCredential() {
     if ($body.find('button[data-cy="generate-token"]').length > 0) {
       cy.get('button[data-cy="generate-token"]', { timeout: 10000 }).then(() => {
         cy.get('button[data-cy="generate-token"]').click();
-        cy.wait(5000);
         cy.get('button[data-cy="copy-token"]').click();
       });
     }
@@ -71,7 +55,6 @@ function checkCredential() {
     }
     if ($body.find('[data-cy="API Key-copyIcon"]').length > 0) {
       cy.get('[data-cy="API Key-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.wait(3000)
         cy.get('[data-cy="API Key-copyIcon"]').click();
       });
     }
@@ -82,14 +65,12 @@ function checkCredential() {
     }
     if ($body.find('button[data-cy="ClientId-copyIcon"]').length > 0) {
       cy.get('button[data-cy="ClientId-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.wait(3000)
         cy.get('button[data-cy="ClientId-copyIcon"]').click();
       });
     }
     if ($body.find('button[data-cy="retrieve-client-secret"]').length > 0) {
       cy.get('button[data-cy="retrieve-client-secret"]', { timeout: 10000 }).then(() => {
         cy.get('button[data-cy="retrieve-client-secret"]').click();
-        cy.wait(5000);
         cy.get('button[data-cy="copy-client-secret"]').click();
       });
     }
@@ -177,3 +158,15 @@ function selectOrganization(elementAlias) {
     }
   });
 };
+
+describe('Get Credentials Test', () => {
+  it('API Key page loads', () => {
+    const route = '/getCredential/';
+    test(route);
+  });
+
+  it('OAuth s2s page loads', () => {
+    const route = '/get-credential-oauth/';
+    test(route);
+  });
+});
