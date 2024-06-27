@@ -130,16 +130,6 @@ const CredentialForm = ({
   }, []);
 
   useEffect(() => {
-    if (isError) {
-      const updateForm = { ...formData };
-      for (const key in updateForm) {
-        updateForm[key] = '';
-      }
-      setFormData(updateForm);
-    }
-  }, [isError]);
-
-  useEffect(() => {
     const requiredFields = Array.from(credentialForm?.children || [])
       .filter(child => child?.props?.required || child.type === CredentialName)
       ?.map(child => child.type);
@@ -404,7 +394,7 @@ const CredentialForm = ({
                   : !isError && showCredential && `Your credentials were created successfully.`
               }
               variant={isError || (showCreateForm && !showCredential) ? 'error' : 'success'}
-              disable={isError || (showCreateForm && !showCredential) ? null : 8000}
+              disable={5000}
             />
           }
         </>
