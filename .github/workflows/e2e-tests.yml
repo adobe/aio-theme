@@ -45,6 +45,6 @@ jobs:
           config-file: cypress.config.js
           spec: |
             cypress/e2e/smoke.cy.js
-            cypress/e2e/get-credentials.cy.js
+          # cypress/e2e/get-credentials.cy.js - commenting out this test as it needs to run in corp network
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
