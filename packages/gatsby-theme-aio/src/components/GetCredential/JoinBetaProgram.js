@@ -22,13 +22,13 @@ const JoinBetaProgram = ({ joinBeta }) => {
         }
       `}
     >
-      <h3 className="spectrum-Heading spectrum-Heading--sizeL">{joinBeta.heading}</h3>
+      <h3 className="spectrum-Heading spectrum-Heading--sizeL">{joinBeta?.heading}</h3>
       <p
         className="spectrum-Body spectrum-Body--sizeL"
         css={css`
           color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
         `}
-      >{joinBeta.text}</p>
+      >{joinBeta?.text}</p>
       <a href={joinBeta?.betaProgramLink} target="_blank" rel="noreferrer" >
         <button
           className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}

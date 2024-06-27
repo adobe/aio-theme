@@ -1048,7 +1048,6 @@ const GlobalHeader = ({
                             margin: var(--spectrum-global-dimension-size-200) 0;
                           `}
                           onClick={() => {
-                            localStorage?.removeItem("OrgInfo");
                             ims.signOut();
                           }}>
                           Sign out

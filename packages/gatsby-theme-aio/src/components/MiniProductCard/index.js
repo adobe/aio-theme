@@ -9,7 +9,7 @@ import {
 	MOBILE_SCREEN_WIDTH,
 	DESKTOP_SCREEN_WIDTH
 } from "@adobe/gatsby-theme-aio/src/utils";
-import { GatsbyLink } from '@adobe/gatsby-theme-aio/src/components/GatsbyLink';
+import { GatsbyLink } from '../GatsbyLink';
 import { HeroImage } from "../Hero";
 import classNames from "classnames";
 

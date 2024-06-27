@@ -20,7 +20,6 @@ class ErrorBoundary extends Component {
     });
   }
 
-
   render() {
     if (this.state.hasError) {
       return <IllustratedMessage errorMessage={this.errorMsg} />;
