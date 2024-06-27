@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+const baseUrl = Cypress.config('baseUrl');
 
 Cypress.Commands.add(`assertRoute`, (route) => {
     cy.url().should(`equal`, `${window.location.origin}${route}`);
@@ -122,31 +123,12 @@ Cypress.Commands.add('setCredentials', () => {
 
     cy.get('body').then(($body) => {
         if ($body.text().includes('Select a profile to sign in')) {
-            cy.wait(3000);
-            if ($body.text().includes('Romans entp org')) {
-                cy.contains('Romans entp org', { timeout: 10000 }).should('be.visible').click();
-            }
-            else if ($body.text().includes('Personal Profile')) {
-                cy.contains('Personal Profile', { timeout: 10000 }).should('be.visible').click();
-            }
+            cy.contains('Personal Profile').should('be.visible').click();
         }
     });
 
-
-    // cy.get('body').then(($body) => {
-    //     if ($body.text().includes('Select a profile to sign in')) {
-    //         cy.wait(5000);
-    //         if ($body.text().includes('Romans entp org').length > 0) {
-    //             cy.text().includes('Romans entp org', { timeout: 10000 }).then(() => {
-    //                 cy.contains('Romans entp org').should('be.visible').click();
-    //             });
-    //         }
-
-    //         if ($body.text().includes('Personal Profile').length > 0) {
-    //             cy.text().includes('Personal Profile', { timeout: 10000 }).then(() => {
-    //                 cy.contains('Personal Profile').should('be.visible').click();
-    //             });
-    //         }
-    //     }
-    // });
+    cy.intercept('POST', 'https://adobeid-na1-stg1.services.adobe.com/ims/check/v6/token*', (req) => {
+        console.log('intercepted ims token exchange request');
+        req.headers['Origin'] = new URL(baseUrl).origin;
+    }).as('imsTokenExchange');
 });

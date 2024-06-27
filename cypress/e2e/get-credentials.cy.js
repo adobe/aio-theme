@@ -1,4 +1,7 @@
-function test(route) {
+const API_KEY = 'api_key';
+const OAUTH_S2S = 'oauth_s2s';
+
+function init(route) {
   cy.visit(route).assertRoute(route);
   cy.expect('button[data-cy="sign-in-btn"]').to.exist;
   cy.get('button[data-cy="sign-in-btn"]').should('be.visible');
@@ -7,82 +10,93 @@ function test(route) {
   cy.login();
   cy.get('button[data-cy="sign-in-btn"]').should('not.exist');
   cy.assertRoute(route + '#');
-  enableOrganizationPicker();
-  cy.get('button[data-cy="organization-picker"]').siblings().last().find('ul').children().as('list');
-  cy.get('@list').each(($element, index) => {
-    cy.get('button[data-cy="organization-picker"]').siblings().last().find('ul').children().eq(index).as('ele');
-    selectOrganization('@ele');
-  });
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('button[data-cy="accessDetails-edgeCase-btn"]').should('be.visible').should('be.enabled').click();
+  cy.get('button[data-cy="accessDetails-edgeCase-btn"]').should('be.visible').should('be.enabled');
 };
 
+function getIframeBody() {
+  return cy.get('iframe[data-cy="request-access-iframe"]')
+  .its('0.contentDocument.body').should('not.be.empty')
+  .then(cy.wrap);
+}
+
 function checkRequestAccess() {
+  cy.get('body').then(($body) => {
+    // if the request is not already sent, send the request
+    if ($body.find('[data-cy="request-access-button"]').length > 0) {
+      cy.get('[data-cy="request-access-button"]').click();
+      getIframeBody().find('button[data-testid="send-request-button"]').should('exist').click();
+      getIframeBody().find('button[data-testid="close-button"]').should('exist').click();
+    }
+  });
   cy.get('button[data-cy="request-info"]').should('be.visible').should('be.enabled').click();
   cy.get('body', { timeout: 1000 }).click();
 };
 
-function projectsLooping() {
+function projectsLooping(credentialType) {
   cy.get('button[data-cy="projects-picker"]').should('be.visible').should('be.enabled').click();
   cy.get('button[data-cy="projects-picker"]').siblings().last().find('ul').children().as('list');
   cy.get('@list').each(($element, index) => {
     cy.get('button[data-cy="projects-picker"]').siblings().last().find('ul').children().eq(index).click();
-    checkCredential();
+    checkCredential(credentialType);
   });
 };
 
-function checkReturnFlow() {
+function checkReturnFlow(credentialType) {
+  // verify return flow is visible
+  cy.get('[data-cy="return-flow"]').should('be.visible');
+
+  // verify clicking on create new credential button opens the form
   cy.get('[data-cy="create-new-credential"]').click();
+  cy.get('[data-cy="credential-form"]').should('be.visible');
+
+  // verify clicking on cancel button closes the form
   cy.get('[data-cy="cancel-new-credential"]').click();
-  cy.get('[data-cy="manage-projects-console"]').click();
-  projectsLooping();
+  cy.get('[data-cy="return-flow"]').should('be.visible');
+
+  // verify clicking on manage projects console button exists
+  cy.get('[data-cy="manage-projects-console"]').should('exist');
+
+  // verify all the information is visible based on credential type
+  projectsLooping(credentialType);
 };
 
-function checkCredential() {
-  cy.get('body').then(($body) => {
-    if ($body.find('button[data-cy="generate-token"]').length > 0) {
-      cy.get('button[data-cy="generate-token"]', { timeout: 10000 }).then(() => {
-        cy.get('button[data-cy="generate-token"]').click();
-        cy.get('button[data-cy="copy-token"]').click();
-      });
-    }
-    if ($body.find('[data-cy="credentialName-link"]').length > 0) {
-      cy.get('[data-cy="credentialName-link"]', { timeout: 10000 }).then(() => {
-        cy.get('[data-cy="credentialName-link"]').click();
-      });
-    }
-    if ($body.find('[data-cy="API Key-copyIcon"]').length > 0) {
-      cy.get('[data-cy="API Key-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.get('[data-cy="API Key-copyIcon"]').click();
-      });
-    }
-    if ($body.find('[data-cy="Allowed domains-copyIcon"]').length > 0) {
-      cy.get('[data-cy="Allowed domains-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.get('[data-cy="Allowed domains-copyIcon"]').click();
-      });
-    }
-    if ($body.find('button[data-cy="ClientId-copyIcon"]').length > 0) {
-      cy.get('button[data-cy="ClientId-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.get('button[data-cy="ClientId-copyIcon"]').click();
-      });
-    }
-    if ($body.find('button[data-cy="retrieve-client-secret"]').length > 0) {
-      cy.get('button[data-cy="retrieve-client-secret"]', { timeout: 10000 }).then(() => {
-        cy.get('button[data-cy="retrieve-client-secret"]').click();
-        cy.get('button[data-cy="copy-client-secret"]').click();
-      });
-    }
-    if ($body.find('button[data-cy="Scopes-copyIcon"]').length > 0) {
-      cy.get('button[data-cy="Scopes-copyIcon"]', { timeout: 10000 }).then(() => {
-        cy.get('button[data-cy="Scopes-copyIcon"]').click();
-      });
-    }
+function checkAPIKey() {
+  // verify API key is visible
+  cy.contains('API Key').should('be.visible');
 
-    cy.get('[data-cy="next-step-button"]').click();
-    cy.get('[data-cy="Manage-Dev-Console-link"]').click();
-  })
+  // verify API key copy button is clickable
+  cy.get('[data-cy="API Key-copyIcon"]').should('be.visible');
+
+  // verify allowed domains copy button is clickable
+  cy.get('[data-cy="Allowed domains-copyIcon"]').should('be.visible');
+}
+
+function checkOAuthS2S() {
+  cy.get('button[data-cy="generate-token"]').click();
+  cy.get('button[data-cy="copy-token"]').should('exist');
+  cy.get('[data-cy="credentialName-link"]').should('exist');
+  cy.get('button[data-cy="ClientId-copyIcon"]').should('exist');
+  cy.get('button[data-cy="retrieve-client-secret"]').click();
+  cy.get('button[data-cy="copy-client-secret"]').should('exist');
+  cy.get('button[data-cy="Scopes-copyIcon"]').should('exist');
+  cy.contains('openid, AdobeID, read_organizations, firefly_api, ff_apis').should('exist');
+}
+
+function checkCredential(credentialType) {
+  switch(credentialType) {
+    case API_KEY:
+      checkAPIKey();
+      break;
+    case OAUTH_S2S:
+      checkOAuthS2S();
+      break;
+  }
+
+  cy.get('[data-cy="next-step-button"]').should('exist');
+  cy.get('[data-cy="Manage-Dev-Console-link"]').should('exist');
 };
 
 function addCredential() {
@@ -140,33 +154,34 @@ function checkPage() {
     }
   });
 };
+function waitForLoader() {
+  cy.get('div[data-cy="loader"]').should('exist');
+  cy.get('div[data-cy="loader"]').should('not.exist');
 
-function enableOrganizationPicker() {
-  cy.get('button[data-cy="change-organization-btn"]').click();
+}
+
+function selectOrganization(orgName) {
+  cy.get('button[data-cy="change-organization-btn"]').should('be.visible').should('be.enabled').click();
   cy.get('button[data-cy="organization-picker"]').should('be.visible').should('be.enabled').click();
-};
-
-function selectOrganization(elementAlias) {
-  cy.get(elementAlias).click();
-  cy.get(elementAlias).then($el => {
-    const nextElement = $el.next().length > 0 ? $el.next() : false;
-    cy.get('button[data-cy="submit-change-organization"]').should('be.visible').should('be.enabled').click();
-    cy.wait(5000);
-    checkPage();
-    if (nextElement) {
-      enableOrganizationPicker();
-    }
-  });
+  cy.contains(orgName).should('exist').click();
+  cy.get('button[data-cy="submit-change-organization"]').should('be.visible').should('be.enabled').click();
+  waitForLoader();
 };
 
 describe('Get Credentials Test', () => {
   it('API Key page loads', () => {
-    const route = '/getCredential/';
-    test(route);
+    init('/getCredential/');
+    checkReturnFlow(API_KEY);
+    selectOrganization('AdobeIOTestingOrg');
+    checkReturnFlow(API_KEY);
   });
 
   it('OAuth s2s page loads', () => {
-    const route = '/get-credential-oauth/';
-    test(route);
+    init('/get-credential-oauth/');
+    checkRequestAccessEdgeCase();
+    selectOrganization('Romans entp org');
+    checkRequestAccess();
+    selectOrganization('MAC New Feature Testing');
+    checkReturnFlow(OAUTH_S2S);
   });
 });

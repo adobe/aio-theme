@@ -72,6 +72,7 @@ const handleIframeMessage = useCallback(
               }}
               title="Request Access Dialog"
               src={targetUrl}
+              data-cy="request-access-iframe"
             />
             {loading && <div style={{ width: "480px", height: "480px", display: "flex", justifyContent: "center", alignItems: "center" }}>
               <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />

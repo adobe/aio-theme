@@ -90,7 +90,7 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
                   }
 
                 `}>
-                {!template.isRequestPending ? <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button> :
+                {!template.isRequestPending ? <Button isDisabled={template.isRequestPending} data-cy="request-access-button">{restrictedAccess?.buttonLabel}</Button> :
                   <Flex gap="size-100" direction="row" alignItems="center">
                     <p css={css`margin:0;font-style: italic;`}>Request Pending</p>
                     <ContextualHelp variant="info" data-cy="request-info">

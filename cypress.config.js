@@ -13,8 +13,9 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
   pageLoadTimeout: 500000,
-  userEmail: 'deepesh+testuser2@adobetest.com',
-  userPassword: 'Bap@d0be',
-  defaultCommandTimeout: 120000,
+  userEmail: 'cypress1@adobe.com',
+  userPassword: 'ScotchB33r&1234567',
+  defaultCommandTimeout: 60000,
   video: false,
+  chromeWebSecurity: false
 })

@@ -27,7 +27,8 @@ const Loading = ({
           align-items:center;
           flex-direction:column;
           gap:10px;
-        `}>
+        `}
+        data-cy="loader">
         <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
         <div ref={divRef}
           css={css`
