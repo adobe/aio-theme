@@ -56,7 +56,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
           display: flex;
           flex-direction: column;
           gap: 48px;
-        `}>
+        `} data-cy="return-flow">
         <div
           css={css`
             display: flex;

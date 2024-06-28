@@ -13,10 +13,10 @@ const CreateCredential = ({ createCredential, isValid, setIsCreateNewCredential,
       <button
         id="credentialButton"
         className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
-        css={css`width:fit-content;`} onClick={createCredential} disabled={!isValid} >
+        css={css`width:fit-content;`} onClick={createCredential} disabled={!isValid} data-cy="create-credential-btn">
         <span className="spectrum-Button-label">Create credential</span>
       </button>
-      {isCreateNewCredential && <p css={css`text-decoration : underline;margin:0; cursor : pointer;`} className="spectrum-Body spectrum-Body--sizeS" onClick={() => setIsCreateNewCredential(false)}>Cancel</p>}
+      {isCreateNewCredential && <p css={css`text-decoration : underline;margin:0; cursor : pointer;`} className="spectrum-Body spectrum-Body--sizeS" onClick={() => setIsCreateNewCredential(false)} data-cy="cancel-new-credential">Cancel</p>}
     </div>
   )
 }

@@ -270,7 +270,9 @@ const CredentialForm = ({
             display: flex;
             flex-direction: column;
             gap: 48px;
-          `}>
+          `}
+          data-cy="credential-form"
+          >
           <div
             css={css`
               display: flex;

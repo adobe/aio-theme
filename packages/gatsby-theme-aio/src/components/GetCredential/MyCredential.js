@@ -213,7 +213,9 @@ const MyCredential = ({
                   formData['Download'],
                   formData['zipUrl']
                 )
-              }>
+              }
+              data-cy="restart-download"
+            >
               Restart download
             </button>
           </p>
@@ -285,7 +287,7 @@ const MyCredential = ({
                   &:hover {
                     color: var(--spectrum-global-color-gray-900);
                   }
-                `}>
+                `} data-cy="Restart-new-credential">
                 Restart and create a new credential
               </button>
             </p>

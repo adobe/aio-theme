@@ -54,7 +54,7 @@ const ShowCard = ({
         {isClientSecret && (
           showClientSecret === null ? (
             <ActionButton
-              onPress={() => { handleCreateClientSecret() }}>
+              onPress={() => { handleCreateClientSecret() }} data-cy="retrieve-client-secret">
               {buttonLabel}
             </ActionButton>
           ) : showClientSecret === 'loading' ? (
@@ -77,7 +77,7 @@ const ShowCard = ({
                 {showClientSecret?.clientSecret}
               </p>
               <TooltipTrigger delay={0}>
-                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)}>
+                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)} data-cy="copy-client-secret">
                   <CopyIcon />
                 </ActionButton>
                 <Tooltip>Copy</Tooltip>
@@ -106,7 +106,7 @@ const ShowCard = ({
               display: ${isOraganization ? 'none' : 'block'};
             `}>
             <TooltipTrigger delay={0}>
-              <ActionButton onPress={() => handleSecretCopyCode(value)} >
+              <ActionButton onPress={() => handleSecretCopyCode(value)} data-cy={`${heading}-copyIcon`}>
                 <CopyIcon />
               </ActionButton>
               <Tooltip>Copy</Tooltip>

@@ -19,6 +19,7 @@ const ReturnNewCredential = ({ returnNewCredential, setIsCreateNewCredential, re
           width : 180px;
           height : 32px;
         `}
+        data-cy="create-new-credential"
       >
         <span className="spectrum-Button-label">{returnNewCredential?.buttonLabel}</span>
       </button>

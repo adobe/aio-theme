@@ -63,7 +63,7 @@ const GetCredential = ({ templateId, children, className }) => {
   const [selectedOrganization, setOrganization] = useState(undefined);
   const [orgsLoading, setOrgsLoading] = useState(true);
   const [templateLoading, setTemplateLoading] = useState(true);
-  const [previousProjectsLoading, setPreviousProjectsLoading] = useState(false);
+  const [previousProjectsLoading, setPreviousProjectsLoading] = useState(true);
   const [allOrganizations, setAllOrganizations] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
@@ -192,8 +192,14 @@ const GetCredential = ({ templateId, children, className }) => {
       }
     }
 
-    if (selectedOrganization?.id && templateId && template?.userEntitled && !isCreateNewCredential) {
-      getPreviousProjects();
+    if (selectedOrganization?.id && templateId && template && !isCreateNewCredential) {
+      if (template.userEntitled) {
+        getPreviousProjects();
+      }
+      else {
+        setIsPrevious(false);
+        setPreviousProjectsLoading(false);
+      }
     }
 
   }, [template, isCreateNewCredential]);
@@ -257,7 +263,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     // template should never be null or undefined here
-    if (!template.userEntitled || !template.orgEntitled) {
+    if (!template?.userEntitled || !template?.orgEntitled) {
       return <RequestAccess />
     }
 

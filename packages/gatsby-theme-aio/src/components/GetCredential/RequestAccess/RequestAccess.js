@@ -36,7 +36,7 @@ const RequestAccess = ({}) => {
           display: flex;
           flex-direction: column;
           gap: 48px;
-        `}>
+        `} data-cy="request-access">
         <div
           css={css`
             display: flex;

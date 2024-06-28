@@ -21,10 +21,11 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
             id="selectBox"
             value={formData['Download']}
             onChange={(e) => handleChange(e, "Download")}
+            data-cy="select-download-language"
           >
             {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
             {downloadProp?.selectOptions?.map((option, index) => (
-              <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
+              <option key={index} data-link={option.href} value={option.title} data-cy={`${option.title}-language`}>{option.title}</option>
             ))}
           </select>
         </FormFields>
