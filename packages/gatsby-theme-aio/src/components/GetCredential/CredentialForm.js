@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Toast } from '../Toast';
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { handleAllowedDomainsValidation, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { SideComponent } from './SideComponent';
 import { CredentialName } from './Form/CredentialName';
 import { AllowedOrigins } from './Form/AllowedOrigins';
@@ -19,8 +19,6 @@ import { Product, Products } from './Products';
 import { Organization } from './Organization';
 import GetCredentialContext from './GetCredentialContext';
 
-const hostnameRegex =
-  /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
 const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
 const CredentialForm = ({
@@ -44,6 +42,8 @@ const CredentialForm = ({
   const [isMyCredential, setIsMyCredential] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
+
+  const [isAllowedOriginsValid, setIsAllowedOriginsValid] = useState();
 
   const { selectedOrganization, template, previousProjectDetail } = useContext(GetCredentialContext);
 
@@ -130,23 +130,23 @@ const CredentialForm = ({
   }, []);
 
   useEffect(() => {
-    const requiredFields = Array.from(credentialForm?.children || [])
-      .filter(child => child?.props?.required || child.type === CredentialName)
-      ?.map(child => child.type);
-    const isValidCredentialName =
-      credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
-    const isCheckAllowedOrgins = requiredFields.filter(data => data.name === 'AllowedOrigins');
-    const validateAllowedOrigins = formData['AllowedOrigins']
-      ?.split(',')
-      .map(data => hostnameRegex.test(data.trim()));
-    const isAllowedOriginsValid = isCheckAllowedOrgins.length
-      ? validateAllowedOrigins?.every(value => value === true) &&
-      formData['AllowedOrigins'] !== undefined &&
-      formData['AllowedOrigins']?.length !== 0
-      : true;
+    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
 
-    const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
+    const isCheckAllowedOrgins = credentialForm.children.some((child) => {
+      return child.type === AllowedOrigins;
+    })
+    let isAllowedOriginsValid;
+    if (isCheckAllowedOrgins) {
+      if (formData['AllowedOrigins']) {
+        isAllowedOriginsValid = handleAllowedDomainsValidation(formData['AllowedOrigins'])
+      }
+    }
+    else {
+      isAllowedOriginsValid = true;
+    }
+    setIsAllowedOriginsValid(isAllowedOriginsValid)
 
+    const isValid = isValidCredentialName && (!isCheckAllowedOrgins || isAllowedOriginsValid) && formData.Agree === true;
     setIsValid(isValid);
   }, [formData]);
 
@@ -343,6 +343,7 @@ const CredentialForm = ({
                     isFormValue={isFormValue}
                     formData={formData}
                     handleChange={handleChange}
+                    isAllowedOriginsValid={isAllowedOriginsValid}
                   />
                 )}
                 {downloads && download && (
