@@ -64,7 +64,7 @@ const ProjectsDropdown = ({ projectsDropdown, previousProjectsDetails, selectedI
           isQuiet
           items={previousProjectsDetails?.map((project, k) => {
             return {
-              title: project.name,
+              title: project.title,
               selected: k === selectedIndex
             }
           })}
