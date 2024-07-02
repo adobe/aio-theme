@@ -32,7 +32,7 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
           placeholder={nameProps?.placeholder}
           maxLength={nameProps?.range}
         />
-        <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
+        <span css={css`display : ${formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
       </div>
     </FormFields>
   )
