@@ -36,11 +36,16 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
           <h6 className="spectrum-Heading spectrum-Heading--sizeXXS">{restrictedAccess?.title}</h6>
         )}
         <p className="spectrum-Body spectrum-Body--sizeS">
-          You’re creating this credential in [
-          <span className="spectrum-Heading spectrum-Heading--sizeXXS">
-            {selectedOrganization.name}
-          </span>
-          ] but you do not have a developer access in this organization and need admin approval to
+          You’re creating this credential in {' '}
+          {selectedOrganization.type === "developer" ?
+            "your personal developer organization" :
+            <>
+              [
+              <span className="spectrum-Heading spectrum-Heading--sizeXXS">
+                {selectedOrganization.name}
+              </span>
+              ]
+            </>} but you do not have a developer access in this organization and need admin approval to
           use this API.
           <span
             css={css`

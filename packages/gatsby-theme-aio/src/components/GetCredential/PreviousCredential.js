@@ -92,7 +92,9 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
                 color: var(--spectrum-global-color-gray-800);
                 display: inline-flex;
               `}>
-              You’re viewing in [<b> {selectedOrganization?.name} </b>] .
+              {selectedOrganization.type === "developer" ?
+                "You’re viewing in your personal developer organization" :
+                <>You’re viewing in [<b> {selectedOrganization?.name} </b>] .</>}
               <Organization isShow={isShow} setIsShow={setIsShow} />
             </p>
           </div>
