@@ -161,12 +161,21 @@ const CredentialForm = ({
   }, [formData]);
 
   const handleChange = (e, type) => {
-    const value = type === 'Downloads' || type === 'Agree' ? e.target.checked : e.target.value;
+    let value;
+    if (type === "Download") {
+      value = e;
+    }
+    else {
+      value = type === 'Downloads' || type === 'Agree' ? e.target.checked : e.target.value;
+      if (type === 'Downloads') {
+        handleChange(download?.selectOptions[0], "Download")
+      }
+    }
     setFormData(prevData => ({ ...prevData, [type]: value }));
 
     if (type === 'Download' && formData['Downloads']) {
       const selectedData = formField?.[Download]?.selectOptions.find(
-        data => data.title === e.target.value
+        data => data.title === e
       );
       selectedData && setFormData(prevData => ({ ...prevData, zipUrl: selectedData.href }));
     }
@@ -366,7 +375,6 @@ const CredentialForm = ({
                 {formData['Downloads'] && download && (
                   <Download
                     downloadProp={download}
-                    formData={formData}
                     isFormValue={isFormValue}
                     handleChange={handleChange}
                   />
@@ -404,7 +412,7 @@ const CredentialForm = ({
                   : !isError && showCredential && `Your credentials were created successfully.`
               }
               variant={isError || (showCreateForm && !showCredential) ? 'error' : 'success'}
-              disable={isError || (showCreateForm && !showCredential) ? null : 8000}
+              disable={5000}
             />
           }
         </>
