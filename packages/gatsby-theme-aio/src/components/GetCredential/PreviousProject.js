@@ -49,7 +49,7 @@ const PreviousProject = ({ returnFields, productList }) => {
         {/* ----------- credential form ------------  */}
 
         <CredentialDetailsCard
-          credentialName={previousProjectsDetails?.[selectedIndex]?.name}
+          credentialName={previousProjectsDetails?.[selectedIndex]?.title}
           productList={productList}
           ProductComponent={CardProducts}
           AccessTokenComponent={ReturnAccessToken}
