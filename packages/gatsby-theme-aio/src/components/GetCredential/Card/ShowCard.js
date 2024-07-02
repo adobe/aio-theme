@@ -22,6 +22,7 @@ const ShowCard = ({
   const handleCreateClientSecret = async () => {
     setShowClientSecret('loading');
     const secrets = await getCredentialSecrets(response, selectedOrganization);
+    navigator.clipboard.writeText(secrets?.clientSecret);
     setShowClientSecret(secrets);
   };
 
@@ -76,12 +77,6 @@ const ShowCard = ({
                 `}>
                 {showClientSecret?.clientSecret}
               </p>
-              <TooltipTrigger delay={0}>
-                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)}>
-                  <CopyIcon />
-                </ActionButton>
-                <Tooltip>Copy</Tooltip>
-              </TooltipTrigger>
             </div>
           )
         )}
@@ -99,20 +94,6 @@ const ShowCard = ({
           </p>
         )}
 
-        {!isClientSecret && (
-          <div
-            css={css`
-              position: relative;
-              display: ${isOraganization ? 'none' : 'block'};
-            `}>
-            <TooltipTrigger delay={0}>
-              <ActionButton onPress={() => handleSecretCopyCode(value)} >
-                <CopyIcon />
-              </ActionButton>
-              <Tooltip>Copy</Tooltip>
-            </TooltipTrigger>
-          </div>
-        )}
       </div>
       {
         isCopiedTooltip && (
