@@ -168,33 +168,35 @@ export const CredentialDetailsCard = ({
                   <span className="spectrum-Button-label">{nextButtonLabel}</span>
                 </button>
               </a>
-              <a
-                href={devConsoleLink}
-                target="_blank"
-                rel="noreferrer"
-                css={css`
+              {developerConsoleManage &&
+                <a
+                  href={devConsoleLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  css={css`
                   color: var(--spectrum-global-color-gray-800);
                   margin: 2px 0;
                   &:hover {
                     color: var(--spectrum-global-color-gray-900);
                   }
                 `}>
-                <div
-                  css={css`
-                    display: flex;
-                  `}>
-                  <div className='spectrum-Body spectrum-Body--sizeS'>{developerConsoleManage}</div>
                   <div
                     css={css`
+                    display: flex;
+                  `}>
+                    <div className='spectrum-Body spectrum-Body--sizeS'>{developerConsoleManage}</div>
+                    <div
+                      css={css`
                       margin-left:10px;
                       @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                         display:none;
                       }
                     }`}>
-                    <LinkOut />
+                      <LinkOut />
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              }
             </div>
           </div>
         </div>
