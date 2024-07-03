@@ -18,7 +18,7 @@ const Organization = () => {
 
   const { allOrganizations, switchOrganization, selectedOrganization } = useContext(GetCredentialContext);
 
-  const [selectedIndex, setSelectedIndex] = useState( allOrganizations.findIndex(org => org.id === selectedOrganization.id));
+  const [selectedIndex, setSelectedIndex] = useState(allOrganizations.findIndex(org => org.id === selectedOrganization.id));
 
   return (
     <div
@@ -133,7 +133,7 @@ const Organization = () => {
                           return {
                             title: organization?.name,
                             selected: k === selectedIndex,
-                            type: organization?.role
+                            type: organization?.role === "DEVELOPER" ? 'Developer' : organization?.role === "ADMIN" ? 'System Administrator' : ""
                           };
                         })}
                         onChange={index => {
