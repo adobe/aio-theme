@@ -77,6 +77,12 @@ const ShowCard = ({
                 `}>
                 {showClientSecret?.clientSecret}
               </p>
+              <TooltipTrigger delay={0}>
+                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)}>
+                  <CopyIcon />
+                </ActionButton>
+                <Tooltip>Copy</Tooltip>
+              </TooltipTrigger>
             </div>
           )
         )}
@@ -92,6 +98,21 @@ const ShowCard = ({
             `}>
             {value}
           </p>
+        )}
+
+        {!isClientSecret && (
+          <div
+            css={css`
+              position: relative;
+              display: ${isOraganization ? 'none' : 'block'};
+            `}>
+            <TooltipTrigger delay={0}>
+              <ActionButton onPress={() => handleSecretCopyCode(value)} >
+                <CopyIcon />
+              </ActionButton>
+              <Tooltip>Copy</Tooltip>
+            </TooltipTrigger>
+          </div>
         )}
 
       </div>
