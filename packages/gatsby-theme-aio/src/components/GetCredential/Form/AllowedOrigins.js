@@ -2,12 +2,9 @@ import React from 'react';
 import { css } from "@emotion/react";
 import { FormFields } from '../FormFields';
 
-const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange }) => {
+const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange, isAllowedOriginsValid }) => {
 
-  const hostnameRegex = /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
-  const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => hostnameRegex.test(data.trim()));
-  const isAllowedOriginsValid = validateAllowedOrigins?.every((value) => value === true);
-  const isRed = formData["AllowedOrigins"] !== undefined && !isAllowedOriginsValid && formData["AllowedOrigins"]?.length !== 0;
+  const isRed = isAllowedOriginsValid!==undefined ? !isAllowedOriginsValid : false;
 
   return (
     <FormFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >

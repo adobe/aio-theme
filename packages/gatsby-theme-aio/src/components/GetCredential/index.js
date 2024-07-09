@@ -254,7 +254,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     if (isLoadingIms || orgsLoading || templateLoading || previousProjectsLoading) {
-      return <Loading />
+      return <Loading initialLoading={true} />
     }
 
     if (!window.adobeIMS.isSignedInUser()) {

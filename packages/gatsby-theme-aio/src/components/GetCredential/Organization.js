@@ -18,7 +18,7 @@ const Organization = () => {
 
   const { allOrganizations, switchOrganization, selectedOrganization } = useContext(GetCredentialContext);
 
-  const [selectedIndex, setSelectedIndex] = useState( allOrganizations.findIndex(org => org.id === selectedOrganization.id));
+  const [selectedIndex, setSelectedIndex] = useState(allOrganizations.findIndex(org => org.id === selectedOrganization.id));
 
   return (
     <div
@@ -126,6 +126,13 @@ const Organization = () => {
                         & > div > div > ul > li > div > div {
                           height: 20px !important;
                         }
+
+                        & > div > div > ul > li > span > div > p {
+                              white-space: normal;
+                              overflow: visible;
+                              word-wrap: break-word;
+                              width: 185px;
+                        }
                       `}>
                       <Picker
                         isQuiet={false}
@@ -133,7 +140,7 @@ const Organization = () => {
                           return {
                             title: organization?.name,
                             selected: k === selectedIndex,
-                            type: organization?.role
+                            type: organization?.role === "DEVELOPER" ? 'Developer' : organization?.role === "ADMIN" ? 'System Administrator' : ""
                           };
                         })}
                         onChange={index => {
