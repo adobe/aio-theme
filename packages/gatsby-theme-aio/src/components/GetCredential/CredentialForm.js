@@ -297,6 +297,7 @@ const CredentialForm = ({
               {credentialForm?.paragraph && (
                 <p className="spectrum-Body spectrum-Body--sizeL">{credentialForm?.paragraph}</p>
               )}
+
               <p
                 className="spectrum-Body spectrum-Body--sizeS"
                 css={css`
@@ -304,7 +305,9 @@ const CredentialForm = ({
                   display: inline-flex;
                 `}
                 onClick={() => setIsShow(true)}>
-                You're creating this credential in [<b>{selectedOrganization?.name}</b>].
+                {selectedOrganization.type === "developer" ?
+                  "You're creating this credential in your personal developer organization" :
+                  <>You're creating this credential in [<b>{selectedOrganization?.name}</b>].</>}
                 <Organization isShow={isShow} setIsShow={setIsShow} />
               </p>
             </div>
