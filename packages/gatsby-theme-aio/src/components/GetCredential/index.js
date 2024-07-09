@@ -71,6 +71,8 @@ const GetCredential = ({ templateId, children, className }) => {
   const [isError, setIsError] = useState(false);
   const [previousProjectDetail, setPreviousProjectDetail] = useState();
 
+  const [formData, setFormData] = useState({});
+
   if (!templateId) {
     console.error('No template id provided. Cannot continue. Will fail.');
   }
@@ -157,6 +159,9 @@ const GetCredential = ({ templateId, children, className }) => {
     // set the org in local storage
     localStorage.setItem(LocalStorageKey, JSON.stringify(org));
     setOrganization(org);
+    setFormData(pre=>{
+      return {...pre, Agree:false}
+    })
   }
 
   useEffect(() => {
@@ -249,7 +254,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     if (isLoadingIms || orgsLoading || templateLoading || previousProjectsLoading) {
-      return <Loading />
+      return <Loading initialLoading={true} />
     }
 
     if (!window.adobeIMS.isSignedInUser()) {
@@ -271,8 +276,11 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsPrevious={setIsPrevious}
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
-      isCreateNewCredential={isCreateNewCredential} />
-
+      isCreateNewCredential={isCreateNewCredential}
+      formData={formData}
+      setFormData={setFormData}
+    />
+    
   }
 
   return (
@@ -287,6 +295,7 @@ const GetCredential = ({ templateId, children, className }) => {
                 switchOrganization,
                 selectedOrganization,
                 template,
+                setTemplate,
                 getCredentialData,
                 previousProjectDetail
               }}

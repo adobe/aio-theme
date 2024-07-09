@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import classNames from 'classnames';
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { Toast } from '../Toast';
-import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
+import { handleAllowedDomainsValidation, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { SideComponent } from './SideComponent';
 import { CredentialName } from './Form/CredentialName';
 import { AllowedOrigins } from './Form/AllowedOrigins';
@@ -19,8 +19,6 @@ import { Product, Products } from './Products';
 import { Organization } from './Organization';
 import GetCredentialContext from './GetCredentialContext';
 
-const hostnameRegex =
-  /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/;
 const credentialNameRegex = /^(?=[A-Za-z0-9\s]{6,}$)[A-Za-z0-9\s]*$/;
 
 const CredentialForm = ({
@@ -29,6 +27,8 @@ const CredentialForm = ({
   isCreateNewCredential,
   setIsCreateNewCredential,
   setIsPrevious,
+  formData,
+  setFormData
 }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
   const formProps = getCredentialData;
@@ -39,11 +39,12 @@ const CredentialForm = ({
   const [errResp, setErrorResp] = useState('');
   const [showCredential, setShowCredential] = useState(false);
   const [formField, setFormField] = useState([]);
-  const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
   const [isMyCredential, setIsMyCredential] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
+
+  const [isAllowedOriginsValid, setIsAllowedOriginsValid] = useState();
 
   const { selectedOrganization, template, previousProjectDetail } = useContext(GetCredentialContext);
 
@@ -114,59 +115,48 @@ const CredentialForm = ({
     if (showCreateForm) setIsError(false);
   }, [showCreateForm]);
 
-  useEffect(() => {
-    if (!showCredential && showCreateForm) {
-      const updateForm = { ...formData };
-      for (const key in updateForm) {
-        updateForm[key] = '';
-      }
-      setFormData(updateForm);
-      setAlertShow(false);
-    }
-  }, [showCredential]);
 
   useEffect(() => {
     initialLoad();
   }, []);
 
   useEffect(() => {
-    if (isError) {
-      const updateForm = { ...formData };
-      for (const key in updateForm) {
-        updateForm[key] = '';
+    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
+
+    const isCheckAllowedOrgins = credentialForm.children.some((child) => {
+      return child.type === AllowedOrigins;
+    })
+    let isAllowedOriginsValid;
+    if (isCheckAllowedOrgins) {
+      if (formData['AllowedOrigins']) {
+        isAllowedOriginsValid = handleAllowedDomainsValidation(formData['AllowedOrigins'])
       }
-      setFormData(updateForm);
     }
-  }, [isError]);
+    else {
+      isAllowedOriginsValid = true;
+    }
+    setIsAllowedOriginsValid(isAllowedOriginsValid)
 
-  useEffect(() => {
-    const requiredFields = Array.from(credentialForm?.children || [])
-      .filter(child => child?.props?.required || child.type === CredentialName)
-      ?.map(child => child.type);
-    const isValidCredentialName =
-      credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
-    const isCheckAllowedOrgins = requiredFields.filter(data => data.name === 'AllowedOrigins');
-    const validateAllowedOrigins = formData['AllowedOrigins']
-      ?.split(',')
-      .map(data => hostnameRegex.test(data.trim()));
-    const isAllowedOriginsValid = isCheckAllowedOrgins.length
-      ? validateAllowedOrigins?.every(value => value === true) &&
-      formData['AllowedOrigins'] !== undefined &&
-      formData['AllowedOrigins']?.length !== 0
-      : true;
-
-    const isValid = isValidCredentialName && isAllowedOriginsValid && formData.Agree === true;
-
+    const isValid = isValidCredentialName && (!isCheckAllowedOrgins || isAllowedOriginsValid) && formData.Agree === true;
     setIsValid(isValid);
   }, [formData]);
 
   const handleChange = (e, type) => {
-    const value = type === 'Downloads' || type === 'Agree' ? e.target.checked : e.target.value;
+    let value;
+    if (type === "Download") {
+      value = e;
+    }
+    else {
+      value = type === 'Downloads' || type === 'Agree' ? e.target.checked : e.target.value;
+      if (type === 'Downloads') {
+        handleChange(download?.selectOptions[0], "Download")
+      }
+    }
     setFormData(prevData => ({ ...prevData, [type]: value }));
 
     if (type === 'Download' && formData['Downloads']) {
       const selectedData = formField?.[Download]?.selectOptions.find(
-        data => data.title === e.target.value
+        data => data.title === e
       );
       selectedData && setFormData(prevData => ({ ...prevData, zipUrl: selectedData.href }));
     }
@@ -260,6 +250,14 @@ const CredentialForm = ({
   const products = formField?.[Products];
   const product = formField?.[Product];
   const adobeDeveloperConsole = formField?.[AdobeDeveloperConsole];
+
+  const handleRestart = () => {
+    setShowCreateForm(true);
+    setShowCredential(false);
+    setIsCreateNewCredential(true);
+    setIsMyCredential(true);
+    setFormData({});
+  };
 
   return (
     <>
@@ -356,6 +354,7 @@ const CredentialForm = ({
                     isFormValue={isFormValue}
                     formData={formData}
                     handleChange={handleChange}
+                    isAllowedOriginsValid={isAllowedOriginsValid}
                   />
                 )}
                 {downloads && download && (
@@ -369,7 +368,6 @@ const CredentialForm = ({
                 {formData['Downloads'] && download && (
                   <Download
                     downloadProp={download}
-                    formData={formData}
                     isFormValue={isFormValue}
                     handleChange={handleChange}
                   />
@@ -407,7 +405,7 @@ const CredentialForm = ({
                   : !isError && showCredential && `Your credentials were created successfully.`
               }
               variant={isError || (showCreateForm && !showCredential) ? 'error' : 'success'}
-              disable={isError || (showCreateForm && !showCredential) ? null : 8000}
+              disable={5000}
             />
           }
         </>
@@ -425,11 +423,8 @@ const CredentialForm = ({
       {showCredential && !showCreateForm && (
         <MyCredential
           response={response}
-          setShowCreateForm={setShowCreateForm}
-          setShowCredential={setShowCredential}
           formData={formData}
-          setIsMyCredential={setIsMyCredential}
-          setIsCreateNewCredential={setIsCreateNewCredential}
+          handleRestart={handleRestart}
         />
       )}
     </>

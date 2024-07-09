@@ -22,6 +22,7 @@ const ShowCard = ({
   const handleCreateClientSecret = async () => {
     setShowClientSecret('loading');
     const secrets = await getCredentialSecrets(response, selectedOrganization);
+    navigator.clipboard.writeText(secrets?.clientSecret);
     setShowClientSecret(secrets);
   };
 
@@ -113,6 +114,7 @@ const ShowCard = ({
             </TooltipTrigger>
           </div>
         )}
+
       </div>
       {
         isCopiedTooltip && (
