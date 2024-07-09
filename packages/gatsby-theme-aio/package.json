@@ -1,6 +1,6 @@
 {
   "name": "@adobe/gatsby-theme-aio",
-  "version": "4.11.14",
+  "version": "4.13.0",
   "description": "The Adobe I/O theme for building markdown powered sites",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -133,7 +133,7 @@
     "penpal": "^6.2.2",
     "postcss": "^8.4.16",
     "preact": "^10.11.0",
-    "preact-render-to-string": "^5.2.4",
+    "preact-render-to-string": "^6.5.5",
     "prism-react-renderer": "1.3.5",
     "prop-types": "^15.8.1",
     "react-helmet": "^6.1.0",

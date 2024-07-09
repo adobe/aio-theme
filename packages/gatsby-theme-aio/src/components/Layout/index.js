@@ -327,7 +327,7 @@ export default ({ children, pageContext, location }) => {
   }, [setShowSearch]);
 
   useEffect( () => {
-    if (window.innerWidth >= parseInt(MOBILE_SCREEN_WIDTH)) {
+    if (window.innerWidth >= 1280) {
       setShowSideNav(false);
       setHasSideNav(false);
     }
@@ -420,11 +420,11 @@ export default ({ children, pageContext, location }) => {
           console.error(`AIO: Failed fetching search index.\n${err}`);
         });
     }
-    if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+    if (window.innerWidth <= 1280) {
       setHasSideNav(true);
     }
     window.addEventListener('resize', () => {
-      if (window.innerWidth <= parseInt(MOBILE_SCREEN_WIDTH)) {
+      if (window.innerWidth <= 1280) {
         setHasSideNav(true);
       }
     });

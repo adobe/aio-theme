@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.13.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.12.0..@adobe/gatsby-theme-aio@4.13.0) (2024-07-08)
+
+### Fix
+* Version bump to fix npm 
+
+## [4.12.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.16...@adobe/gatsby-theme-aio@4.12.0) (2024-07-08)
+
+### Fix
+* Fix breaking dependency - set preact-render-to-string@ ^6.5.5 [a0cbb62](https://github.com/adobe/aio-theme/commit/a0cbb62824e77fe36744f77992f4422fd5b0e28c)
+
+
+## [4.11.16](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.15...@adobe/gatsby-theme-aio@4.11.16) (2024-06-19)
+
+### Features
+* Add option to add request interceptor in RedoclyAPIBlock [f044e7b](https://github.com/adobe/aio-theme/commit/f044e7bf2c87b5fe31d54355751655ec7958d02f)
+
+## [4.11.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.14...@adobe/gatsby-theme-aio@4.11.15) (2024-06-17)
+
+### Features
+* Add option to generate code samples in RedoclyAPIBlock [f751bb5](https://github.com/adobe/aio-theme/commit/f751bb5f91dbbfd8f78bcdea0ea89093f907bbf2)
+
 ## [4.11.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.13...@adobe/gatsby-theme-aio@4.11.14) (2024-05-14)
 
 ### Fix

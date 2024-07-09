@@ -311,6 +311,9 @@ const GlobalHeader = ({
                 grid-area: title;
                 padding-left: ${!hasSideNav ? 'var(--spectrum-global-dimension-size-200)' : '0'};
               }
+              @media screen and (width: 768px ){
+                margin-left: 40px;
+              }
             `}>
             <div
               css={css`
