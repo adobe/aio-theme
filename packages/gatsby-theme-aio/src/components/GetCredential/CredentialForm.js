@@ -143,20 +143,21 @@ const CredentialForm = ({
 
   const handleChange = (e, type) => {
     let value;
-    if (type === "Download") {
-      value = e;
+    if (type === 'Download') {
+      value = e.title;
     }
     else {
       value = type === 'Downloads' || type === 'Agree' ? e.target.checked : e.target.value;
-      if (type === 'Downloads') {
-        handleChange(download?.selectOptions[0], "Download")
-      }
     }
-    setFormData(prevData => ({ ...prevData, [type]: value }));
 
-    if (type === 'Download' && formData['Downloads']) {
+    setFormData(prevData => ({ ...prevData, [type]: value }));
+    if (type === 'Downloads') {
+      handleChange(download?.selectOptions[0], 'Download')
+    }
+
+    if (type === 'Download') {
       const selectedData = formField?.[Download]?.selectOptions.find(
-        data => data.title === e
+        data => data.title === value
       );
       selectedData && setFormData(prevData => ({ ...prevData, zipUrl: selectedData.href }));
     }
