@@ -39,7 +39,9 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
           </h6>}
         {isNoProduct ?
           <p className="spectrum-Body spectrum-Body--sizeS">
-            The organization [
+            You are currently signed in with [
+            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>] 
+            in organization [
             <span className="spectrum-Heading spectrum-Heading--sizeXXS">
               {selectedOrganization.name}
             </span>
