@@ -27,6 +27,8 @@ const CredentialForm = ({
   isCreateNewCredential,
   setIsCreateNewCredential,
   setIsPrevious,
+  formData,
+  setFormData
 }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
   const formProps = getCredentialData;
@@ -37,7 +39,6 @@ const CredentialForm = ({
   const [errResp, setErrorResp] = useState('');
   const [showCredential, setShowCredential] = useState(false);
   const [formField, setFormField] = useState([]);
-  const [formData, setFormData] = useState({});
   const [isValid, setIsValid] = useState(false);
   const [isMyCredential, setIsMyCredential] = useState(false);
   const [isShow, setIsShow] = useState(false);
@@ -114,16 +115,6 @@ const CredentialForm = ({
     if (showCreateForm) setIsError(false);
   }, [showCreateForm]);
 
-  useEffect(() => {
-    if (!showCredential && showCreateForm) {
-      const updateForm = { ...formData };
-      for (const key in updateForm) {
-        updateForm[key] = '';
-      }
-      setFormData(updateForm);
-      setAlertShow(false);
-    }
-  }, [showCredential]);
 
   useEffect(() => {
     initialLoad();
@@ -259,6 +250,14 @@ const CredentialForm = ({
   const products = formField?.[Products];
   const product = formField?.[Product];
   const adobeDeveloperConsole = formField?.[AdobeDeveloperConsole];
+
+  const handleRestart = () => {
+    setShowCreateForm(true);
+    setShowCredential(false);
+    setIsCreateNewCredential(true);
+    setIsMyCredential(true);
+    setFormData({});
+  };
 
   return (
     <>
@@ -421,11 +420,8 @@ const CredentialForm = ({
       {showCredential && !showCreateForm && (
         <MyCredential
           response={response}
-          setShowCreateForm={setShowCreateForm}
-          setShowCredential={setShowCredential}
           formData={formData}
-          setIsMyCredential={setIsMyCredential}
-          setIsCreateNewCredential={setIsCreateNewCredential}
+          handleRestart={handleRestart}
         />
       )}
     </>

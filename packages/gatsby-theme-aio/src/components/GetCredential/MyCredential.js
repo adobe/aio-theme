@@ -17,14 +17,10 @@ import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const MyCredential = ({
   formData,
-  setShowCreateForm,
-  setShowCredential,
   response,
-  setIsMyCredential,
-  setIsCreateNewCredential
+  handleRestart
 }) => {
-  const { getCredentialData, selectedOrganization: organizationName } =
-    useContext(GetCredentialContext);
+  const { getCredentialData, selectedOrganization: organizationName } = useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
   const [isDownloadStart, setIsDownloadStart] = useState();
@@ -59,13 +55,6 @@ const MyCredential = ({
   }, []);
 
   const card = credentialProps?.[MyCredential];
-
-  const handleRestart = () => {
-    setShowCreateForm(true);
-    setShowCredential(false);
-    setIsCreateNewCredential(true);
-    setIsMyCredential(true);
-  };
 
   const downloadZIP = async (downloadAPI, fileName = 'download', zipFileURL) => {
     setIsDownloadStart(true);
