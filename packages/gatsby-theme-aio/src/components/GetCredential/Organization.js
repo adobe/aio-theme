@@ -126,6 +126,13 @@ const Organization = () => {
                         & > div > div > ul > li > div > div {
                           height: 20px !important;
                         }
+
+                        & > div > div > ul > li > span > div > p {
+                              white-space: normal;
+                              overflow: visible;
+                              word-wrap: break-word;
+                              width: 185px;
+                        }
                       `}>
                       <Picker
                         isQuiet={false}
