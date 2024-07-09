@@ -130,7 +130,7 @@ const CredentialForm = ({
   }, []);
 
   useEffect(() => {
-    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName) && formData['CredentialName']?.length >= 6;
+    const isValidCredentialName = credentialNameRegex.test(formData.CredentialName);
 
     const isCheckAllowedOrgins = credentialForm.children.some((child) => {
       return child.type === AllowedOrigins;
