@@ -6,7 +6,7 @@ import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { PreviousProject } from './PreviousProject';
 import { Organization } from './Organization';
 import { CredentialForm } from './CredentialForm';
-import { RetunrSideComp } from './Return/RetunrSideComp';
+import { ReturnSideComp } from './Return/ReturnSideComp';
 import { CardProducts } from './Products';
 import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
@@ -32,7 +32,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
       const children = Array.isArray(props.children) ? props.children : [props.children];
 
       children.forEach(({ props: childProps, type: childType }) => {
-        if (type === RetunrSideComp || type === ReturnCredentialDetails) {
+        if (type === ReturnSideComp || type === ReturnCredentialDetails) {
           returnFields[childType] = childProps;
         } else if (type === CardProducts) {
           const { label, icon } = childProps;
@@ -44,7 +44,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
 
   });
 
-  const retunrSideComp = returnFields?.[RetunrSideComp];
+  const returnSideComp = returnFields?.[ReturnSideComp];
   const returnCustomComp = returnFields?.[ReturnCustomComp];
   const returnNewCredential = returnFields?.[ReturnNewCredential];
 
@@ -120,9 +120,9 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
                 width: 100%;
               }
             `}>
-            {retunrSideComp && (
-              <RetunrSideComp
-                retunrSideComp={retunrSideComp}
+            {returnSideComp && (
+              <ReturnSideComp
+                returnSideComp={returnSideComp}
                 returnNewCredential={returnNewCredential}
                 returnCustomComp={returnCustomComp}
                 setIsCreateNewCredential={setIsCreateNewCredential}

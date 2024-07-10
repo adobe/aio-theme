@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from "@emotion/react";
 
-const ReturnNewCredential = ({ returnNewCredential, setIsCreateNewCredential, retunrSideComp }) => {
+const ReturnNewCredential = ({ returnNewCredential, setIsCreateNewCredential, returnSideComp }) => {
 
   return (
     <div
