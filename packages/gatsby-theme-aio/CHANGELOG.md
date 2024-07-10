@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.0..@adobe/gatsby-theme-aio@4.14.0) (2024-07-10)
+
+### Features
+* Add get credential component [c2efa3f](https://github.com/adobe/aio-theme/commit/c2efa3f932a37968e13710ba06c82d0ef0fe9894)
+
 ## [4.13.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.12.0..@adobe/gatsby-theme-aio@4.13.0) (2024-07-08)
 
 ### Fix
