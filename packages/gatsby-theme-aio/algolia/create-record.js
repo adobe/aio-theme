@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-const { getAdobeDocType } = require("./helpers/get-adobe-doctype");
+const { getAdobeDocType } = require('./helpers/get-adobe-doctype');
 
 async function createRecord(rawRecord, file) {
   const record = {
@@ -30,7 +30,7 @@ async function createRecord(rawRecord, file) {
     objectID: rawRecord.objectID,
     path: getPath(rawRecord, file),
     product: file.product,
-    size: file.size,
+    size: Buffer.byteLength(JSON.stringify(rawRecord), 'utf16'),
     slug: file.slug,
     title: rawRecord.title,
     url: getUrl(rawRecord, file),
@@ -62,13 +62,13 @@ function getKeywords(keywords) {
 
 // Full url complete with anchor link to the nearest heading for the search record result.
 function getUrl(rawRecord, file) {
-  return `${process.env.GATSBY_SITE_DOMAIN_URL}${file.pathPrefix}${file.slug == null ? '' : file.slug
-    }${rawRecord.anchor}`;
+  return `${process.env.GATSBY_SITE_DOMAIN_URL}${file.pathPrefix}${
+    file.slug == null ? '' : file.slug
+  }${rawRecord.anchor}`;
 }
 
 function getPath(rawRecord, file) {
-  return `${file.pathPrefix}${file.slug == null ? '' : file.slug
-  }${rawRecord.anchor}`;
+  return `${file.pathPrefix}${file.slug == null ? '' : file.slug}${rawRecord.anchor}`;
 }
 
 module.exports = createRecord;
