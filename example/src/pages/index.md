@@ -32,7 +32,6 @@ import TextBlockComp from "./textblock/textblock.md"
 import MiniResource from "./miniresource_block/index.md"
 import TextBlockImage from "./imageTextBlock/index.md"
 import ListComp from "./listblock/index.md"
-import GetCredentialExternal from "./credential/GetCredentialExternal.js"
 import PDFViewerComp from "./pdf_viewer/index.md"
 import ProfileCardComp from "./profile_card/index.md"
 import MiniProductCardComp from "./mini_product_card/index.md"
@@ -122,8 +121,6 @@ When rate limiting is being enforced you will get `429` HTTP response codes with
 ![Jenkinator](./diagram.svg "Diagram")
 
 <ProfileCardComp />
-
-<GetCredentialExternal />
 
 <PDFViewerComp />
 

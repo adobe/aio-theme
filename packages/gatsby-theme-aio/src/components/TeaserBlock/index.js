@@ -3,7 +3,7 @@
  */
 
 import React, { cloneElement } from "react"
-import { HeroButtons } from "@adobe/gatsby-theme-aio/src/components/Hero"
+import { HeroButtons } from "../Hero"
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import classNames from "classnames";

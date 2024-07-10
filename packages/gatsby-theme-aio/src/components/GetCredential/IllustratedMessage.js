@@ -46,4 +46,4 @@ const IllustratedMessage = ({ errorMessage }) => {
   )
 }
 
-export { IllustratedMessage }
+export { IllustratedMessage , UnKnownErrorImage }
