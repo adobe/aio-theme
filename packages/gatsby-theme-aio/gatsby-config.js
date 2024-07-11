@@ -135,6 +135,8 @@ module.exports = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APPLICATION_ID,
         indexName: process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX ? `${process.env.GATSBY_ALGOLIA_INDEX_ENV_PREFIX}-${process.env.GATSBY_ALGOLIA_INDEX_NAME}` : process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application
+        // Tip: use Search API key with GATSBY_ prefix to access the service from within components
         apiKey: process.env.ALGOLIA_WRITE_API_KEY,
         queries: indexRecords(isDryRun),
         chunkSize: 1000,
@@ -147,7 +149,7 @@ module.exports = {
         },
         settings: indexSettings(),
         mergeSettings: false,
-        enablePartialUpdates: false,
+        enablePartialUpdates: true,
         matchFields: ['contentDigest'],
         concurrentQueries: false, // default: true
         dryRun: isDryRun, // default: true. When false, a new index is pushed to Algolia.

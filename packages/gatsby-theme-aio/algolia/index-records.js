@@ -64,6 +64,7 @@ function indexRecords(isDryRun) {
             frameSrc: node.childMdx.frontmatter.frameSrc,
             headings: node.childMdx.headings,
             howRecent: node.howRecent,
+            contentDigest: node.internal.contentDigest,
             icon: node.icon,
             isNew: node.isNew,
             keywords: node.childMdx.frontmatter.keywords,
