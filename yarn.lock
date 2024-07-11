@@ -40,6 +40,7 @@ __metadata:
     "@adobe/focus-ring-polyfill": ^0.1.5
     "@adobe/gatsby-source-github-file-contributors": ^0.3.1
     "@adobe/prism-adobe": ^1.0.3
+    "@adobe/react-spectrum": ^3.35.1
     "@emotion/react": ^11.10.4
     "@loadable/component": ^5.15.2
     "@mdx-js/mdx": 1.6.22
@@ -166,7 +167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/react-spectrum@npm:^3.35.0":
+"@adobe/react-spectrum@npm:^3.35.1":
   version: 3.35.1
   resolution: "@adobe/react-spectrum@npm:3.35.1"
   dependencies:
@@ -9507,7 +9508,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aio-theme-monorepo@workspace:."
   dependencies:
-    "@adobe/react-spectrum": ^3.35.0
     "@commitlint/cli": ^17.4.4
     "@commitlint/config-conventional": ^17.4.4
     "@testing-library/cypress": ^9.0.0

@@ -65,6 +65,7 @@
     "@adobe/focus-ring-polyfill": "^0.1.5",
     "@adobe/gatsby-source-github-file-contributors": "^0.3.1",
     "@adobe/prism-adobe": "^1.0.3",
+    "@adobe/react-spectrum": "^3.35.1",
     "@emotion/react": "^11.10.4",
     "@loadable/component": "^5.15.2",
     "@mdx-js/mdx": "1.6.22",
