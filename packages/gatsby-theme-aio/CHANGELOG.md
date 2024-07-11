@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.2..@adobe/gatsby-theme-aio@4.14.3) (2024-07-11)
+
+### Fix
+* Missing "@adobe/react-spectrum" in package dependancies [7e34919](https://github.com/adobe/aio-theme/commit/7e349191f22d6e8fd12a14eb60d25551756ec498)
+
 ## [4.14.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.1..@adobe/gatsby-theme-aio@4.14.2) (2024-07-11)
 
 ### Features
