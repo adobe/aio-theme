@@ -64,6 +64,7 @@ function indexRecords(isDryRun) {
             frameSrc: node.childMdx.frontmatter.frameSrc,
             headings: node.childMdx.headings,
             howRecent: node.howRecent,
+            contentDigest: node.internal.contentDigest,
             icon: node.icon,
             isNew: node.isNew,
             keywords: node.childMdx.frontmatter.keywords,
@@ -72,7 +73,7 @@ function indexRecords(isDryRun) {
             objectID: node.id,
             openAPISpec: node.childMdx.frontmatter.openAPISpec,
             pathPrefix: `${pathPrefix}/`,
-            product: productFromPath.productName,
+            product: productFromPath.productName ? productFromPath.productName : "other",
             size: node.size,
             slug: node.childMdx.slug,
             title: node.childMdx.frontmatter.title,
@@ -145,6 +146,7 @@ function indexRecords(isDryRun) {
           for (const rawRecord of rawRecords) {
             const record = await createAlgoliaRecord(rawRecord, markdownFile);
             if (record.size > 20000) {
+              console.warn(JSON.stringify(record));
               console.warn(`Record at path ${record?.path} objectID=${record?.objectID} is too big
               size=${record?.size}/20000 bytes and will be skipped.`);
             } else {

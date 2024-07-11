@@ -3,6 +3,7 @@
 
 const { JSDOM } = require('jsdom');
 const uuid = require('uuid');
+const { createContentDigest } = require("gatsby-core-utils");
 
 // Extract content from an HTML page in the form of items with associated headings data
 module.exports = class HtmlParser {
@@ -93,7 +94,7 @@ module.exports = class HtmlParser {
       };
 
       item.objectID = uuid.v4(item);
-      item.contentDigest = uuid.v4(content);
+      item.contentDigest = createContentDigest(content);
       item.words = content.split(' ').length;
       item.title = Object.values(currentHierarchy).filter(h => h)[0];
       item.contentHeading = Object.values(currentHierarchy).filter(h => h)[1];
