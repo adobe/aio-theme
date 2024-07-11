@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.1..@adobe/gatsby-theme-aio@4.14.2) (2024-07-11)
+
+### Features
+* Enable partial algolia indexing and use contentDigest for diff check [de64ca0](https://github.com/adobe/aio-theme/commit/de64ca0282a4049cb21946e2279ebe7895f74c12)
+
+### Fix
+* Calculate record size instead of using file size when creating algolia records [de64ca0](https://github.com/adobe/aio-theme/commit/de64ca0282a4049cb21946e2279ebe7895f74c12)
+
+
 ## [4.14.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.0..@adobe/gatsby-theme-aio@4.14.1) (2024-07-10)
 
 ### Features
