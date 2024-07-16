@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.3..@adobe/gatsby-theme-aio@4.14.4) (2024-07-16)
+
+### Fix
+* objectIDs formula and contentDigest for partial indexing [e8ec4de](https://github.com/adobe/aio-theme/commit/e8ec4de54be809368f376dd06470993bc21f0bd6)
+
+* Missing search results content/description errors [e8ec4de](https://github.com/adobe/aio-theme/commit/e8ec4de54be809368f376dd06470993bc21f0bd6)
+
+* Redirect user to the signin page if API call errors [41a4e1d](https://github.com/adobe/aio-theme/commit/41a4e1da872905b1976f23ce75dc23d47c706c9e)
+
+
 ## [4.14.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.2..@adobe/gatsby-theme-aio@4.14.3) (2024-07-11)
 
 ### Fix
