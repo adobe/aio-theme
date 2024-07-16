@@ -16,7 +16,7 @@ async function createRecord(rawRecord, file) {
   const record = {
     category: getCategory(file.category),
     content: rawRecord.content,
-    contentDigest: rawRecord.contentDigest,
+    contentDigest: file.contentDigest,
     contentHeading: rawRecord.contentHeading,
     description: rawRecord.description,
     excerpt: file.excerpt,

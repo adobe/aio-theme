@@ -137,7 +137,7 @@ function indexRecords(isDryRun) {
           // Create 'raw' records from content
           let rawRecords =
             Object.keys(htmlContent).length > 0
-              ? parseHtml(htmlContent.content, htmlContent.options)
+              ? parseHtml(htmlContent.content, htmlContent.options, markdownFile)
               : parseMdx(markdownFile);
 
           if (rawRecords == null || rawRecords.length <= 0) continue;

@@ -2,8 +2,6 @@
 // https://github.com/mansona/html-extractor/blob/master/lib/algoliaHtmlExtractor.js
 
 const { JSDOM } = require('jsdom');
-const uuid = require('uuid');
-const { createContentDigest } = require("gatsby-core-utils");
 
 // Extract content from an HTML page in the form of items with associated headings data
 module.exports = class HtmlParser {
@@ -21,7 +19,7 @@ module.exports = class HtmlParser {
     return new JSDOM(input).window.document.querySelectorAll(selector);
   }
 
-  run(input, options = {}) {
+  run(input, options, file = {}) {
     const runOptions = this.defaultOptions(options);
     const { headingSelector, cssSelector, tagsToExclude } = runOptions;
     //
@@ -42,7 +40,7 @@ module.exports = class HtmlParser {
     //
     // We select all nodes that match either the headings or the elements to
     // extract. This will allow us to loop over it in order it appears in the DOM
-    this.css(input, `${headingSelector},${cssSelector}`).forEach(node => {
+    this.css(input, `${headingSelector},${cssSelector}`).forEach((node, index) => {
       // If it's a heading, we update our current hierarchy
       if (node.matches(headingSelector)) {
         // Which level heading is it?
@@ -93,8 +91,7 @@ module.exports = class HtmlParser {
         },
       };
 
-      item.objectID = uuid.v4(item);
-      item.contentDigest = createContentDigest(content);
+      item.objectID = `${file.contentDigest}_${index}`;
       item.words = content.split(' ').length;
       item.title = Object.values(currentHierarchy).filter(h => h)[0];
       item.contentHeading = Object.values(currentHierarchy).filter(h => h)[1];
