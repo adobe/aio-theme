@@ -13,9 +13,9 @@
 const HtmlParser = require('./html-parser');
 const htmlParser = new HtmlParser();
 
-function parseHtml(content, options) {
+function parseHtml(content, options, file) {
   const rawRecords = htmlParser
-    .run(content, { cssSelector: options.tagsToIndex })
+    .run(content, { cssSelector: options.tagsToIndex }, file)
     .filter(
       htmlElement =>
         htmlElement.content.length >= options.minCharsLengthPerTag &&

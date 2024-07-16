@@ -169,9 +169,9 @@ const mapKeywordResults = (facets, results) => {
       const found = results.find((result) => Object.keys(result)[0] === keyword);
       if (found) {
         // Increase keyword count
-        found[keyword] += facets[SEARCH_KEYWORDS][keyword];
+        found[keyword] += facets[SEARCH_KEYWORDS]?.[keyword];
       } else {
-        results.push({ [keyword]: facets[SEARCH_KEYWORDS][keyword] });
+        results.push({ [keyword]: facets[SEARCH_KEYWORDS]?.[keyword] });
       }
     });
   }
@@ -612,9 +612,9 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
                     descriptions.sort((a, b) => {
                       return a[1].value.length > b[1].value.length ? -1 : 1;
                     });
-                    content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                    content = descriptions[0]?.[1]?.value?.length > descriptions[1]?.[1]?.value?.length ? descriptions[0]?.[1]?.value : descriptions[1]?.[1]?.value;
                   } else {
-                    content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                    content = descriptions[0]?.[1]?.value ? descriptions[0]?.[1]?.value : "";
                   }
 
                   content = content.substring(0, 250);
@@ -849,9 +849,9 @@ const Search = ({ algolia, indexAll, indexPrefix, showSearch, setShowSearch, sea
                       descriptions.sort((a, b) => {
                         return a[1].value.length > b[1].value.length ? -1 : 1;
                       });
-                      content = descriptions[0][1]?.value?.length > descriptions[1][1]?.value?.length ? descriptions[0][1]?.value : descriptions[1][1]?.value;
+                      content = descriptions[0]?.[1]?.value?.length > descriptions[1]?.[1]?.value?.length ? descriptions[0]?.[1]?.value : descriptions[1]?.[1]?.value;
                     } else {
-                      content = descriptions[0][1]?.value ? descriptions[0][1]?.value : "";
+                      content = descriptions[0]?.[1]?.value ? descriptions[0]?.[1]?.value : "";
                     }
 
                     content = content.substring(0, 250);
