@@ -20,6 +20,9 @@ jobs:
   smoke_tests:
     runs-on: self-hosted
     steps:
+      - name: Install Yarn
+        run: npm install -g yarn
+
       - name: Checkout
         uses: actions/checkout@v3
       
