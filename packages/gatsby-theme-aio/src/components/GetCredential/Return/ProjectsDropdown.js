@@ -46,6 +46,7 @@ const ProjectsDropdown = ({ projectsDropdown, previousProjectsDetails, selectedI
           onChange={(index) => {
             setSelectedIndex(index);
           }}
+          data-cy="projects-picker"
         />
       </div>
       <p className="spectrum-Body spectrum-Body--sizeS" css={css`color: #464646`}>{projectsDropdown?.subHeading}</p>

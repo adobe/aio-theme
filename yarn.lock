@@ -9508,7 +9508,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aio-theme-monorepo@workspace:."
   dependencies:
-    "@adobe/react-spectrum": ^3.35.0
     "@commitlint/cli": ^17.4.4
     "@commitlint/config-conventional": ^17.4.4
     "@testing-library/cypress": ^9.0.0
@@ -17938,15 +17937,6 @@ __metadata:
   dependencies:
     hasown: ^2.0.2
   checksum: 6bba6c8dc99d88d6f3b2746709d82caddcd9565cafd5870e28ab320720e27e6d9d2bb953ba0839ed4d2ee264bfdd14a9fa1bbc242a916f7dacc8aa95f0322256
-  languageName: node
-  linkType: hard
-
-"is-data-view@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "is-data-view@npm:1.0.1"
-  dependencies:
-    is-typed-array: ^1.1.13
-  checksum: 4ba4562ac2b2ec005fefe48269d6bd0152785458cd253c746154ffb8a8ab506a29d0cfb3b74af87513843776a88e4981ae25c89457bf640a33748eab1a7216b5
   languageName: node
   linkType: hard
 

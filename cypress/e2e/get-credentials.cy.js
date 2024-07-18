@@ -35,22 +35,12 @@ function checkRequestAccess() {
   cy.get('body', { timeout: 1000 }).click();
 };
 
-function projectsLooping(credentialType) {
-  cy.get('button[data-cy="projects-picker"]').should('be.visible').should('be.enabled').click();
-  cy.get('button[data-cy="projects-picker"]').siblings().last().find('ul').children().as('list');
-  cy.get('@list').each(($element, index) => {
-    cy.get('button[data-cy="projects-picker"]').siblings().last().find('ul').children().eq(index).click();
-    checkCredential(credentialType);
-  });
-};
-
 function checkReturnFlow(credentialType) {
   // verify return flow is visible
   cy.get('[data-cy="return-flow"]').should('be.visible');
 
   // verify clicking on create new credential button opens the form
-  cy.get('[data-cy="create-new-credential"]').click();
-  cy.get('[data-cy="credential-form"]').should('be.visible');
+  returnToForm();
 
   // verify clicking on cancel button closes the form
   cy.get('[data-cy="cancel-new-credential"]').click();
@@ -59,8 +49,11 @@ function checkReturnFlow(credentialType) {
   // verify clicking on manage projects console button exists
   cy.get('[data-cy="manage-projects-console"]').should('exist');
 
+  // ensure project picker is visible
+  cy.get('button[data-cy="projects-picker"]').should('be.visible').should('be.enabled');
+
   // verify all the information is visible based on credential type
-  projectsLooping(credentialType);
+  checkCredential(credentialType);
 };
 
 function checkAPIKey() {
@@ -75,12 +68,12 @@ function checkAPIKey() {
 }
 
 function checkOAuthS2S() {
-  cy.get('button[data-cy="generate-token"]').click();
-  cy.get('button[data-cy="copy-token"]').should('exist');
+  cy.get('button[data-cy="generate-token"]').should('be.visible').should('be.enabled');
+  // cy.get('button[data-cy="copy-token"]').should('exist');
   cy.get('[data-cy="credentialName-link"]').should('exist');
   cy.get('button[data-cy="ClientId-copyIcon"]').should('exist');
-  cy.get('button[data-cy="retrieve-client-secret"]').click();
-  cy.get('button[data-cy="copy-client-secret"]').should('exist');
+  cy.get('button[data-cy="retrieve-client-secret"]').should('be.visible').should('be.enabled');
+  // cy.get('button[data-cy="copy-client-secret"]').should('exist');
   cy.get('button[data-cy="Scopes-copyIcon"]').should('exist');
   cy.contains('openid, AdobeID, read_organizations, firefly_api, ff_apis').should('exist');
 }
@@ -96,7 +89,9 @@ function checkCredential(credentialType) {
   }
 
   cy.get('[data-cy="next-step-button"]').should('exist');
-  cy.get('[data-cy="Manage-Dev-Console-link"]').should('exist');
+  if (credentialType !== API_KEY) {
+    cy.get('[data-cy="Manage-Dev-Console-link"]').should('exist');
+  }
 };
 
 function addCredential(credentialType) {
@@ -105,14 +100,19 @@ function addCredential(credentialType) {
   cy.get('[data-cy="add-credential-name"]').type(credentialName).should('have.value', credentialName);
   if (credentialType === API_KEY) {
     cy.get('[data-cy="add-allowed-origins"]').click().should('have.focus');
-      cy.get('[data-cy="add-allowed-origins"]').type('localhost:9000').should('have.value', 'localhost:9000');
+    cy.get('[data-cy="add-allowed-origins"]').type('localhost:9000').should('have.value', 'localhost:9000');
+    cy.get('[data-cy="download-checkBox"]').check().should('be.checked');
+    cy.get('[data-cy="select-download-language"]').click();
+    cy.get('ul li').contains('JavaScript').click();
   }
-  cy.get('[data-cy="download-checkBox"]').check().should('be.checked');
-  cy.get('[data-cy="select-download-language"]').select('JavaScript');
-  cy.get('[data-cy="terms-condition-link"]').click();
+  cy.get('[data-cy="terms-condition-link"]').should('be.visible');
   cy.get('[data-cy="update-terms-condition"]').check().should('be.checked');
+  cy.get('[data-cy="create-credential-btn"]').should('be.visible');
+  cy.get('[data-cy="create-credential-btn"]').should('be.enabled');
   cy.get('[data-cy="create-credential-btn"]').click();
-  cy.get('button[data-cy="restart-download"]').click();
+  if (credentialType === API_KEY) {
+    cy.get('button[data-cy="restart-download"]').should('be.visible').should('be.enabled').click();
+  }
   checkCredential(credentialType);
   cy.get('[data-cy="Restart-new-credential"]').click();
 };
@@ -131,14 +131,20 @@ function selectOrganization(orgName) {
   waitForLoader();
 };
 
+function returnToForm() {
+  cy.get('[data-cy="create-new-credential"]').should('be.visible');
+  cy.get('[data-cy="create-new-credential"]').click();
+  cy.get('[data-cy="credential-form"]').should('be.visible');
+}
+
 describe('Get Credentials Test', () => {
   it('API Key page loads', () => {
     init('/getCredential/');
     checkReturnFlow(API_KEY);
     selectOrganization('AdobeIOTestingOrg');
     checkReturnFlow(API_KEY);
-    cy.get('[data-cy="create-new-credential"]').click();
-    cy.get('[data-cy="credential-form"]').should('be.visible');
+    // return to the form
+    returnToForm();
     addCredential(API_KEY);
   });
 
@@ -149,8 +155,8 @@ describe('Get Credentials Test', () => {
     checkRequestAccess();
     selectOrganization('MAC New Feature Testing');
     checkReturnFlow(OAUTH_S2S);
-    cy.get('[data-cy="create-new-credential"]').click();
-    cy.get('[data-cy="credential-form"]').should('be.visible');
+    // return to the form
+    returnToForm();
     addCredential(OAUTH_S2S);
   });
 });

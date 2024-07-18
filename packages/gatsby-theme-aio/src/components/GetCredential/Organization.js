@@ -33,7 +33,7 @@ const Organization = () => {
         }
       `}>
       <DialogTrigger>
-        <ActionButton UNSAFE_className="changeOrg">Change Organization</ActionButton>
+        <ActionButton UNSAFE_className="changeOrg" data-cy="change-organization-btn">Change Organization</ActionButton>
         {close => (
           <Dialog size="M">
             <Heading>Change organization</Heading>
@@ -146,6 +146,7 @@ const Organization = () => {
                         onChange={index => {
                           setSelectedIndex(index);
                         }}
+                        data-cy="organization-picker"
                       />
                     </div>
                   </div>
@@ -171,7 +172,8 @@ const Organization = () => {
                       onPress={() => {
                         close();
                         switchOrganization(allOrganizations[selectedIndex]);
-                      }}>
+                      }}
+                      data-cy="submit-change-organization">
                       Change organization
                     </Button>
                   </ButtonGroup>
