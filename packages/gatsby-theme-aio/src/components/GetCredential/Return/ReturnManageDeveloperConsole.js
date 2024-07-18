@@ -11,7 +11,6 @@ const ReturnManageDeveloperConsole = ({ returnManageDeveloperConsole }) => {
           css={css`
             color:#0265DC;
           `}
-          data-cy="manage-projects-console"
         >
           {returnManageDeveloperConsole?.label}
         </a>

@@ -28,7 +28,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
           flex-direction: column;
           gap: 16px;
           margin: 0px;
-        `} data-cy="accessDetails-edgeCase">
+        `}>
         {content?.title &&
           <h6
             className="spectrum-Heading spectrum-Heading--sizeXXS"
@@ -39,11 +39,18 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
           </h6>}
         {isNoProduct ?
           <p className="spectrum-Body spectrum-Body--sizeS">
-            The organization [
-            <span className="spectrum-Heading spectrum-Heading--sizeXXS">
-              {selectedOrganization.name}
-            </span>
-            ] currently does not have access to these APIs Contact us to learn more about Firefly
+            You are currently signed in with [
+            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>]
+            in {" "}
+            {selectedOrganization.type === "developer" ?
+              "your personal developer organization" :
+              <>organization [
+                <span className="spectrum-Heading spectrum-Heading--sizeXXS">
+                  {selectedOrganization.name}
+                </span>
+                ]
+              </>}
+            currently does not have access to these APIs Contact us to learn more about Firefly
             Services APIs and how to get a free trial.
             <span
               css={css`
@@ -67,9 +74,14 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
           :
           <p className="spectrum-Body spectrum-Body--sizeS">
             You are currently signed in with [
-            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>] 
-            in organization [<span className="spectrum-Heading spectrum-Heading--sizeXXS">
-            {selectedOrganization.name}</span>] and can not access Firefly Services APIs.
+            <span className="spectrum-Heading spectrum-Heading--sizeXXS">{emailID}</span>]
+            in {" "}
+            {selectedOrganization.type === "developer" ?
+              "your personal developer organization" :
+              <> organization [<span className="spectrum-Heading spectrum-Heading--sizeXXS">
+                {selectedOrganization.name}</span>]
+              </>}
+            and can not access Firefly Services APIs.
             <span
               css={css`
               margin-left: 3px;
@@ -110,7 +122,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
               color: #292929;
             }
           `}>
-          {content?.buttonLink && <a href={`${content?.buttonLink}`} target="_blank">{content?.buttonLabel && <Button data-cy="accessDetails-edgeCase-btn">{content?.buttonLabel}</Button>}</a>}
+          {content?.buttonLink && <a href={`${content?.buttonLink}`} target="_blank">{content?.buttonLabel && <Button>{content?.buttonLabel}</Button>}</a>}
         </div>
       </div>
     </>

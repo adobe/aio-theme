@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.3..@adobe/gatsby-theme-aio@4.14.4) (2024-07-16)
+
+### Fix
+* objectIDs formula and contentDigest for partial indexing [e8ec4de](https://github.com/adobe/aio-theme/commit/e8ec4de54be809368f376dd06470993bc21f0bd6)
+
+* Missing search results content/description errors [e8ec4de](https://github.com/adobe/aio-theme/commit/e8ec4de54be809368f376dd06470993bc21f0bd6)
+
+* Redirect user to the signin page if API call errors [41a4e1d](https://github.com/adobe/aio-theme/commit/41a4e1da872905b1976f23ce75dc23d47c706c9e)
+
+
+## [4.14.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.2..@adobe/gatsby-theme-aio@4.14.3) (2024-07-11)
+
+### Fix
+* Missing "@adobe/react-spectrum" in package dependancies [7e34919](https://github.com/adobe/aio-theme/commit/7e349191f22d6e8fd12a14eb60d25551756ec498)
+
+## [4.14.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.1..@adobe/gatsby-theme-aio@4.14.2) (2024-07-11)
+
+### Features
+* Enable partial algolia indexing and use contentDigest for diff check [de64ca0](https://github.com/adobe/aio-theme/commit/de64ca0282a4049cb21946e2279ebe7895f74c12)
+
+### Fix
+* Calculate record size instead of using file size when creating algolia records [de64ca0](https://github.com/adobe/aio-theme/commit/de64ca0282a4049cb21946e2279ebe7895f74c12)
+
+
+## [4.14.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.0..@adobe/gatsby-theme-aio@4.14.1) (2024-07-10)
+
+### Features
+* Add get credential component [ead5d5e](https://github.com/adobe/aio-theme/commit/ead5d5eed51cf04f124839aac5b72a0653e6c19f)
+
+## [4.13.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.12.0..@adobe/gatsby-theme-aio@4.13.0) (2024-07-08)
+
+### Fix
+* Version bump to fix npm 
+
+## [4.12.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.16...@adobe/gatsby-theme-aio@4.12.0) (2024-07-08)
+
+### Fix
+* Fix breaking dependency - set preact-render-to-string@ ^6.5.5 [a0cbb62](https://github.com/adobe/aio-theme/commit/a0cbb62824e77fe36744f77992f4422fd5b0e28c)
+
+
+## [4.11.16](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.15...@adobe/gatsby-theme-aio@4.11.16) (2024-06-19)
+
+### Features
+* Add option to add request interceptor in RedoclyAPIBlock [f044e7b](https://github.com/adobe/aio-theme/commit/f044e7bf2c87b5fe31d54355751655ec7958d02f)
+
+## [4.11.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.14...@adobe/gatsby-theme-aio@4.11.15) (2024-06-17)
+
+### Features
+* Add option to generate code samples in RedoclyAPIBlock [f751bb5](https://github.com/adobe/aio-theme/commit/f751bb5f91dbbfd8f78bcdea0ea89093f907bbf2)
+
 ## [4.11.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.11.13...@adobe/gatsby-theme-aio@4.11.14) (2024-05-14)
 
 ### Fix

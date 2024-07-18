@@ -5,7 +5,8 @@ import { ProgressCircle } from '@adobe/react-spectrum';
 const Loading = ({
   credentials,
   downloadStatus,
-  isCreateCredential
+  isCreateCredential,
+  initialLoading
 }) => {
   const divRef = useRef(null);
   useEffect(() => {
@@ -27,9 +28,18 @@ const Loading = ({
           align-items:center;
           flex-direction:column;
           gap:10px;
-        `}
-        data-cy="loader">
+        `}>
         <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
+        {initialLoading &&
+          <div ref={divRef}
+            css={css`
+            font-style: italic;
+            font-family: 'adobe-clean';
+            color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
+          `}
+          >
+            {"Loading..."}
+          </div>}
         <div ref={divRef}
           css={css`
             font-style: italic;

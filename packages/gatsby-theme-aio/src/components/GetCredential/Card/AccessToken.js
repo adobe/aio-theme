@@ -10,8 +10,8 @@ import { generateToken, getCredentialSecrets } from '../Service';
 const AccessToken = ({ accessToken, response, scopesDetails }) => {
 
   const [credentialToken, setCredentialToken] = useState(null);
+  const { selectedOrganization } = useContext(GetCredentialContext);
   const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
-  const {selectedOrganization} = useContext(GetCredentialContext);
 
   const handleGenerateToken = async () => {
     setCredentialToken('loading');
@@ -19,6 +19,7 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
     if (secrets) {
       let clientId = response?.workspaces ? response?.workspaces[0]?.credentials[0]?.clientId : response?.apiKey
       const tokenVal = await generateToken(clientId, secrets?.clientSecret, scopesDetails);
+      navigator.clipboard.writeText(tokenVal);
       setCredentialToken(tokenVal);
     }
   };
@@ -56,7 +57,7 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
                   }
 
                 `}>
-                <Button onPress={() => handleGenerateToken()} variant="accent" data-cy="generate-token">
+                <Button onPress={() => handleGenerateToken()} variant="accent">
                   {accessToken?.buttonLabel}
                 </Button>
               </div>
@@ -84,7 +85,7 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
                     {credentialToken}
                   </p>
                   <TooltipTrigger delay={0}>
-                    <ActionButton onPress={() => handleSecretCopyCode(credentialToken)} data-cy="copy-token">
+                    <ActionButton onPress={() => handleSecretCopyCode(credentialToken)}>
                       <CopyIcon />
                     </ActionButton>
                     <Tooltip>Copy</Tooltip>
@@ -92,18 +93,18 @@ const AccessToken = ({ accessToken, response, scopesDetails }) => {
                 </div>
               )
           )}
-          {
-            isCopiedTooltip && (
-              <Toast
-                variant="success"
-                message="Copied to clipboard"
-                disable={1000}
-                customDisableFunction={setIsCopiedTooltip}
-              />
-            )
-          }
         </div>
       )}
+      {
+        isCopiedTooltip && (
+          <Toast
+            variant="success"
+            message="Copied to clipboard"
+            disable={1000}
+            customDisableFunction={setIsCopiedTooltip}
+          />
+        )
+      }
     </>
   );
 };

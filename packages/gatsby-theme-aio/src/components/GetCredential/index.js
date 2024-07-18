@@ -30,7 +30,7 @@ import { ReturnAccessToken } from './Return/ReturnAccessToken';
 import { ProjectsDropdown } from './Return/ProjectsDropdown';
 import { ReturnManageDeveloperConsole } from './Return/ReturnManageDeveloperConsole';
 import { ReturnDevConsoleLink } from './Return/ReturnDevConsoleLink';
-import { RetunrSideComp } from './Return/RetunrSideComp';
+import { ReturnSideComp } from './Return/ReturnSideComp';
 import { ReturnCustomComp } from './Return/ReturnCustomComp';
 import { ReturnNewCredential } from './Return/ReturnNewCredential';
 import { ReturnClientId } from './Return/ReturnClientId';
@@ -63,13 +63,15 @@ const GetCredential = ({ templateId, children, className }) => {
   const [selectedOrganization, setOrganization] = useState(undefined);
   const [orgsLoading, setOrgsLoading] = useState(true);
   const [templateLoading, setTemplateLoading] = useState(true);
-  const [previousProjectsLoading, setPreviousProjectsLoading] = useState(true);
+  const [previousProjectsLoading, setPreviousProjectsLoading] = useState(false);
   const [allOrganizations, setAllOrganizations] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [isCreateNewCredential, setIsCreateNewCredential] = useState(false);
   const [template, setTemplate] = useState(null);
   const [isError, setIsError] = useState(false);
   const [previousProjectDetail, setPreviousProjectDetail] = useState();
+
+  const [formData, setFormData] = useState({});
 
   if (!templateId) {
     console.error('No template id provided. Cannot continue. Will fail.');
@@ -157,6 +159,9 @@ const GetCredential = ({ templateId, children, className }) => {
     // set the org in local storage
     localStorage.setItem(LocalStorageKey, JSON.stringify(org));
     setOrganization(org);
+    setFormData(pre=>{
+      return {...pre, Agree:false}
+    })
   }
 
   useEffect(() => {
@@ -192,14 +197,8 @@ const GetCredential = ({ templateId, children, className }) => {
       }
     }
 
-    if (selectedOrganization?.id && templateId && template && !isCreateNewCredential) {
-      if (template.userEntitled) {
-        getPreviousProjects();
-      }
-      else {
-        setIsPrevious(false);
-        setPreviousProjectsLoading(false);
-      }
+    if (selectedOrganization?.id && templateId && template?.userEntitled && !isCreateNewCredential) {
+      getPreviousProjects();
     }
 
   }, [template, isCreateNewCredential]);
@@ -255,7 +254,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     if (isLoadingIms || orgsLoading || templateLoading || previousProjectsLoading) {
-      return <Loading />
+      return <Loading initialLoading={true} />
     }
 
     if (!window.adobeIMS.isSignedInUser()) {
@@ -263,7 +262,7 @@ const GetCredential = ({ templateId, children, className }) => {
     }
 
     // template should never be null or undefined here
-    if (!template?.userEntitled || !template?.orgEntitled) {
+    if (!template.userEntitled || !template.orgEntitled) {
       return <RequestAccess />
     }
 
@@ -277,8 +276,11 @@ const GetCredential = ({ templateId, children, className }) => {
       setIsPrevious={setIsPrevious}
       setShowCreateForm={setShowCreateForm}
       setIsCreateNewCredential={setIsCreateNewCredential}
-      isCreateNewCredential={isCreateNewCredential} />
-
+      isCreateNewCredential={isCreateNewCredential}
+      formData={formData}
+      setFormData={setFormData}
+    />
+    
   }
 
   return (
@@ -293,6 +295,7 @@ const GetCredential = ({ templateId, children, className }) => {
                 switchOrganization,
                 selectedOrganization,
                 template,
+                setTemplate,
                 getCredentialData,
                 previousProjectDetail
               }}
@@ -379,7 +382,7 @@ GetCredential.Return.AccessToken = ReturnAccessToken;
 GetCredential.Return.ProjectsDropdown = ProjectsDropdown;
 GetCredential.Return.ManageDeveloperConsole = ReturnManageDeveloperConsole;
 GetCredential.Return.DevConsoleLink = ReturnDevConsoleLink;
-GetCredential.Return.Side = RetunrSideComp;
+GetCredential.Return.Side = ReturnSideComp;
 GetCredential.Return.Side.Custom = ReturnCustomComp;
 GetCredential.Return.Side.NewCredential = ReturnNewCredential;
 GetCredential.Return.Product = CardProduct;

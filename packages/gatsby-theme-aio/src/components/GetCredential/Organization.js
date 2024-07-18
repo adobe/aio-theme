@@ -33,7 +33,7 @@ const Organization = () => {
         }
       `}>
       <DialogTrigger>
-        <ActionButton UNSAFE_className="changeOrg" data-cy="change-organization-btn">Change Organization</ActionButton>
+        <ActionButton UNSAFE_className="changeOrg">Change Organization</ActionButton>
         {close => (
           <Dialog size="M">
             <Heading>Change organization</Heading>
@@ -126,6 +126,13 @@ const Organization = () => {
                         & > div > div > ul > li > div > div {
                           height: 20px !important;
                         }
+
+                        & > div > div > ul > li > span > div > p {
+                              white-space: normal;
+                              overflow: visible;
+                              word-wrap: break-word;
+                              width: 185px;
+                        }
                       `}>
                       <Picker
                         isQuiet={false}
@@ -133,13 +140,12 @@ const Organization = () => {
                           return {
                             title: organization?.name,
                             selected: k === selectedIndex,
-                            type: organization?.role
+                            type: organization?.role === "DEVELOPER" ? 'Developer' : organization?.role === "ADMIN" ? 'System Administrator' : ""
                           };
                         })}
                         onChange={index => {
                           setSelectedIndex(index);
                         }}
-                        data-cy="organization-picker"
                       />
                     </div>
                   </div>
@@ -165,8 +171,7 @@ const Organization = () => {
                       onPress={() => {
                         close();
                         switchOrganization(allOrganizations[selectedIndex]);
-                      }}
-                      data-cy="submit-change-organization">
+                      }}>
                       Change organization
                     </Button>
                   </ButtonGroup>

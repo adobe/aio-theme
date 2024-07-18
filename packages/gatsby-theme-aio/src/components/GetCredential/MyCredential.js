@@ -17,14 +17,10 @@ import { CredentialDetailsCard } from './CredentialDetailsCard';
 
 const MyCredential = ({
   formData,
-  setShowCreateForm,
-  setShowCredential,
   response,
-  setIsMyCredential,
-  setIsCreateNewCredential
+  handleRestart
 }) => {
-  const { getCredentialData, selectedOrganization: organizationName } =
-    useContext(GetCredentialContext);
+  const { getCredentialData, selectedOrganization: organizationName } = useContext(GetCredentialContext);
   const credentialProps = getCredentialData;
 
   const [isDownloadStart, setIsDownloadStart] = useState();
@@ -59,13 +55,6 @@ const MyCredential = ({
   }, []);
 
   const card = credentialProps?.[MyCredential];
-
-  const handleRestart = () => {
-    setShowCreateForm(true);
-    setShowCredential(false);
-    setIsCreateNewCredential(true);
-    setIsMyCredential(true);
-  };
 
   const downloadZIP = async (downloadAPI, fileName = 'download', zipFileURL) => {
     setIsDownloadStart(true);
@@ -213,9 +202,7 @@ const MyCredential = ({
                   formData['Download'],
                   formData['zipUrl']
                 )
-              }
-              data-cy="restart-download"
-            >
+              }>
               Restart download
             </button>
           </p>
@@ -287,7 +274,7 @@ const MyCredential = ({
                   &:hover {
                     color: var(--spectrum-global-color-gray-900);
                   }
-                `} data-cy="Restart-new-credential">
+                `}>
                 Restart and create a new credential
               </button>
             </p>

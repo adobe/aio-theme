@@ -22,7 +22,6 @@ const ReturnDevConsoleLink = ({ devConsoleLinkHeading, credentialName, projectId
           `}
         target='_blank'
         href={`/console/projects/${selectedOrganization?.id}/${projectId}/overview`}
-        data-cy="credentialName-link"
       >
         <div>
           <p

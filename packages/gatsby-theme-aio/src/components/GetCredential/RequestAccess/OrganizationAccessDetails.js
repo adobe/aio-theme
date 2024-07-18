@@ -31,16 +31,21 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
           flex-direction: column;
           gap: 16px;
           margin: 0px;
-        `} data-cy="accessDetails">
+        `}>
         {restrictedAccess?.title && (
           <h6 className="spectrum-Heading spectrum-Heading--sizeXXS">{restrictedAccess?.title}</h6>
         )}
         <p className="spectrum-Body spectrum-Body--sizeS">
-          You’re creating this credential in [
-          <span className="spectrum-Heading spectrum-Heading--sizeXXS">
-            {selectedOrganization.name}
-          </span>
-          ] but you do not have a developer access in this organization and need admin approval to
+          You’re creating this credential in {' '}
+          {selectedOrganization.type === "developer" ?
+            "your personal developer organization" :
+            <>
+              [
+              <span className="spectrum-Heading spectrum-Heading--sizeXXS">
+                {selectedOrganization.name}
+              </span>
+              ]
+            </>} but you do not have a developer access in this organization and need admin approval to
           use this API.
           <span
             css={css`
@@ -90,10 +95,10 @@ const OrganizationAccessDetails = ({ restrictedAccess, products }) => {
                   }
 
                 `}>
-                {!template.isRequestPending ? <Button isDisabled={template.isRequestPending} data-cy="request-access-button">{restrictedAccess?.buttonLabel}</Button> :
+                {!template.isRequestPending ? <Button isDisabled={template.isRequestPending}>{restrictedAccess?.buttonLabel}</Button> :
                   <Flex gap="size-100" direction="row" alignItems="center">
                     <p css={css`margin:0;font-style: italic;`}>Request Pending</p>
-                    <ContextualHelp variant="info" data-cy="request-info">
+                    <ContextualHelp variant="info">
                       <Heading>Your request is pending approval</Heading>
                       <Content>
                         <Text>

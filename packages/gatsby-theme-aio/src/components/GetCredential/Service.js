@@ -14,6 +14,9 @@ export const getOrganizations = async () => {
       });
 
       if (!response.ok) {
+        if (response.status === 401) {
+          window.adobeIMS?.signIn();
+        }
         throw new Error('Could not fetch accounts');
       }
 

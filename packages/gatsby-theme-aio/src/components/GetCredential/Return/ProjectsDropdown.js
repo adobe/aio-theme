@@ -17,61 +17,35 @@ const ProjectsDropdown = ({ projectsDropdown, previousProjectsDetails, selectedI
       <p className="spectrum-Body spectrum-Body--sizeS" css={css`color: #464646`}>{projectsDropdown?.label} </p>
       <div
         css={css`
-                  
-          & > div > .spectrum-Picker {
-            width: 100% !important;
-            height: 20px;
+          max-width: 400px;
+
+          & > div{
+            position: relative;
           }
-
-          & > div > div {
-            width: 22%;
-
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
-              width: 82%;
-              left: 15%;
-            }
-
-            @media screen and (min-width:${MIN_TABLET_SCREEB_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-              width: 91%;
-              left: 7%;
-            }
-
-          }
-
-          & > div > .spectrum-Picker-popover > ul > li > div > div {
-            margin-top : 5px ;
-          }
-
-          & > div > .spectrum-Picker-popover > ul > li > div > div > svg {
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-              margin: 3px;
-              padding: 0;
-            }
-          }
-
-          & > .spectrum-Picker{
             
+          & >div> button{
+            width: 100%;
           }
 
-            padding: 8px;
-            border-radius: 3px;
-            border: 1px solid #909090 !important;
-            width: 400px;
+          & >div> div{
+            width: 100%;
+          }
 
-          ` }
+          & >div> div p{
+            margin-top: 2px;
+          }
+        ` }
       >
         <Picker
-          isQuiet
           items={previousProjectsDetails?.map((project, k) => {
             return {
-              title: project.name,
+              title: project.title,
               selected: k === selectedIndex
             }
           })}
           onChange={(index) => {
             setSelectedIndex(index);
           }}
-          data-cy="projects-picker"
         />
       </div>
       <p className="spectrum-Body spectrum-Body--sizeS" css={css`color: #464646`}>{projectsDropdown?.subHeading}</p>

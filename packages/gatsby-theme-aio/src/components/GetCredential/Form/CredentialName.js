@@ -31,9 +31,8 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
           onChange={(e) => handleChange(e, "CredentialName")}
           placeholder={nameProps?.placeholder}
           maxLength={nameProps?.range}
-          data-cy="add-credential-name"
         />
-        <span css={css`display : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
+        <span css={css`display : ${formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0 ? "block" : "none"}`}><AlertIcon /></span>
       </div>
     </FormFields>
   )

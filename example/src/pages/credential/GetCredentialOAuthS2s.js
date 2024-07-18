@@ -12,19 +12,12 @@ const GetCredentialOAuthS2s = () => {
 
       <GetCredential.Form title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." className="formClass">
 
-        <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 3 and 45 characters long. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
+        <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 6 and 45 characters long and must not contain any special characters. A project will be automatically created with the same name in Adobe Developer Console." range="45" />
 
         <GetCredential.Form.Products label="Included products and services">
           <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
           <GetCredential.Form.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
         </GetCredential.Form.Products>
-
-        <GetCredential.Form.Downloads label="Download a personalized code sample" contextHelp={true} contextHelpHeading="Select Language">
-          <GetCredential.Form.Download title="JavaScript" href="https://acrobatservices.adobe.com/dc-integration-creation-app-cdn/8bab684/files/samples_q3_2023/PROD/dc-pdf-services-sdk-java-samples.zip" />
-          <GetCredential.Form.Download title=".Net" href="/Net.zip" />
-          <GetCredential.Form.Download title="Python" href="https://python.zip/" />
-          <GetCredential.Form.Download title="Ruby" href="https://www.ruby.zip/" />
-        </GetCredential.Form.Downloads>
 
         <GetCredential.Form.AdobeDeveloperConsole label='By checking this box, you agree to' linkText="Adobe Developer Terms of Use" href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf" />
 

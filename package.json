@@ -41,7 +41,6 @@
   },
   "packageManager": "yarn@3.2.3",
   "dependencies": {
-    "@adobe/react-spectrum": "^3.35.0",
     "http-proxy-middleware": "^3.0.0"
   }
 }
