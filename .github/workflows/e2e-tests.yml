@@ -46,7 +46,7 @@ jobs:
 
       - name: Add hosts to /etc/hosts
         run: |
-            sudo echo "127.0.0.1 localhost.corp.adobe.com" | sudo tee -a /etc/hosts
+            echo "127.0.0.1 localhost.corp.adobe.com" | tee -a /etc/hosts
 
       - name: 'Create env file'
         run: |
