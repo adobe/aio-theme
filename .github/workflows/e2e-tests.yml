@@ -18,25 +18,28 @@ on:
       - "cypress/**"
 jobs:
   smoke_tests:
+    container:
+      image: cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
+      options: --user 1001
     runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      # - name: Install Yarn
+      #   run: npm install -g yarn
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'yarn'
-          cache-dependency-path: './yarn.lock'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+      #     cache: 'yarn'
+      #     cache-dependency-path: './yarn.lock'
 
       - name: Add hosts to /etc/hosts
         run: |
