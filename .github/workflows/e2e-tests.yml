@@ -26,25 +26,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-
-      # - name: Install Yarn
-      #   run: npm install -g yarn
-
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-      #     cache: 'yarn'
-      #     cache-dependency-path: './yarn.lock'
-
-      - name: Add hosts to /etc/hosts
-        run: |
-            echo "127.0.0.1 localhost.corp.adobe.com" | tee -a /etc/hosts
-
       - name: 'Create env file'
         run: |
           touch ./example/.env
@@ -55,7 +36,6 @@ jobs:
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
-          # build: yarn build
           start: yarn dev:https:ci
           wait-on: 'https://localhost.corp.adobe.com:9000'
           wait-on-timeout: 150
