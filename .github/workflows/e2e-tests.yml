@@ -27,8 +27,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Print node version
+
+      - name: Print sudo node version
         run: sudo node --version
+
+      - name: Print node version
+        run: node --version
 
       - name: Install Yarn
         run: sudo npm install -g yarn
