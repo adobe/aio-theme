@@ -23,9 +23,6 @@ jobs:
       options: --user root
     runs-on: self-hosted
     steps:
-      - name: id
-        run: id
-
       - name: Checkout
         uses: actions/checkout@v4
 
