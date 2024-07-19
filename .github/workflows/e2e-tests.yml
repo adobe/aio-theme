@@ -24,7 +24,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: ls -l /__w/_actions
-        run: ls -l /__w/_actions
+        run: sudo ls -al /__w/_actions
 
       - name: Checkout
         uses: actions/checkout@v4
