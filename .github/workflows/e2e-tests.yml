@@ -23,8 +23,8 @@ jobs:
       options: --user 1001
     runs-on: self-hosted
     steps:
-      - name: ls -l /__w/_actions
-        run: sudo ls -al /__w/_actions
+      - name: id
+        run: id
 
       - name: Checkout
         uses: actions/checkout@v4
