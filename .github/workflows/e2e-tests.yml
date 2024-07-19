@@ -40,8 +40,8 @@ jobs:
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
-          build: yarn build
-          start: yarn dev:https
+          build: sudo yarn build
+          start: sudo yarn dev:https
           wait-on: 'https://localhost.corp.adobe.com:9000'
           browser: chrome
           config-file: cypress.config.js
