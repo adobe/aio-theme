@@ -20,8 +20,8 @@ jobs:
   smoke_tests:
     runs-on: self-hosted
     steps:
-      # - name: Install Yarn
-      #   run: npm install -g yarn
+      - name: Install Yarn
+        run: sudo npm install -g yarn
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -38,10 +38,11 @@ jobs:
           cat ./example/.env
 
       - name: Run Tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
-          build: npx yarn build
-          start: npx yarn dev:https
+          install-command: sudo yarn install
+          build: sudo yarn build
+          start: sudo yarn dev:https
           wait-on: 'https://localhost.corp.adobe.com:9000'
           browser: chrome
           config-file: cypress.config.js
