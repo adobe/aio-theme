@@ -35,7 +35,7 @@ jobs:
         run: node --version
 
       - name: Install Yarn
-        run: sudo npm install -g yarn
+        run: npm install -g yarn
       
       - name: Add hosts to /etc/hosts
         run: |
