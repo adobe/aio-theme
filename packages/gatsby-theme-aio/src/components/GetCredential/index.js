@@ -57,7 +57,7 @@ import { getOrganizations } from './Service';
 
 const LocalStorageKey = 'OrgInfo';
 
-const GetCredential = ({ templateId, children, className }) => {
+const GetCredential = ({ templateId, productName = "Firefly Service", children, className }) => {
   const isBrowser = typeof window !== "undefined";
   const [isPrevious, setIsPrevious] = useState(false);
   const [selectedOrganization, setOrganization] = useState(undefined);
@@ -159,8 +159,8 @@ const GetCredential = ({ templateId, children, className }) => {
     // set the org in local storage
     localStorage.setItem(LocalStorageKey, JSON.stringify(org));
     setOrganization(org);
-    setFormData(pre=>{
-      return {...pre, Agree:false}
+    setFormData(pre => {
+      return { ...pre, Agree: false }
     })
   }
 
@@ -263,7 +263,7 @@ const GetCredential = ({ templateId, children, className }) => {
 
     // template should never be null or undefined here
     if (!template.userEntitled || !template.orgEntitled) {
-      return <RequestAccess />
+      return <RequestAccess productName={productName} />
     }
 
     if (isPrevious && !showCreateForm && !isCreateNewCredential) {
@@ -280,7 +280,7 @@ const GetCredential = ({ templateId, children, className }) => {
       formData={formData}
       setFormData={setFormData}
     />
-    
+
   }
 
   return (

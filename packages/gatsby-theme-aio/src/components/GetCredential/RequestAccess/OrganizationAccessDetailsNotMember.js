@@ -1,11 +1,11 @@
 import React from 'react';
 import { OrganizationAccessDetailsEdgeCase } from './OrganizationAccessDetailsEdgeCase';
 
-const OrganizationAccessDetailsNotMember = ({content}) => {
+const OrganizationAccessDetailsNotMember = ({content , productName}) => {
 
   return (
     <>
-      <OrganizationAccessDetailsEdgeCase content={content} />
+      <OrganizationAccessDetailsEdgeCase content={content}  productName={productName}/>
     </>
   );
 };

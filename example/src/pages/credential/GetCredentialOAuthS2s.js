@@ -6,7 +6,7 @@ import ps from "./images/ps.png";
 const GetCredentialOAuthS2s = () => {
   return (
 
-    <GetCredential className="getCredentialContainer" templateId="66576a0de3cedc3a36fc9f28" >
+    <GetCredential className="getCredentialContainer" templateId="66576a0de3cedc3a36fc9f28" productName="Firefly Services">
 
       <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." buttonText="Sign in to create credentials" />
 
@@ -17,6 +17,7 @@ const GetCredentialOAuthS2s = () => {
         <GetCredential.Form.Products label="Included products and services">
           <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
           <GetCredential.Form.Product label="Adobe Photoshop - Firefly Services" icon={ps} />
+          <GetCredential.Form.Product label="Firefly - Firefly Services" icon={firefly} />
         </GetCredential.Form.Products>
 
         <GetCredential.Form.AdobeDeveloperConsole label='By checking this box, you agree to' linkText="Adobe Developer Terms of Use" href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf" />

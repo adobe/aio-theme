@@ -1,11 +1,11 @@
 import React from "react";
 import { OrganizationAccessDetailsEdgeCase } from "./OrganizationAccessDetailsEdgeCase";
 
-const OrganizationAccessDetailsNoProduct = ({content}) => {
+const OrganizationAccessDetailsNoProduct = ({ content, productName }) => {
 
   return (
     <>
-      <OrganizationAccessDetailsEdgeCase content={content} isNoProduct={true} />
+      <OrganizationAccessDetailsEdgeCase content={content} isNoProduct={true} productName={productName} />
     </>
   );
 };

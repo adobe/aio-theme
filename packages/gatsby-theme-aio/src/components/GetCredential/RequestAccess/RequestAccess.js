@@ -7,7 +7,7 @@ import { RequestAccessSide } from './RequestAccessSide';
 import GetCredentialContext from '../GetCredentialContext';
 import { OrganizationAccessDetailsEdgeCase } from './OrganizationAccessDetailsEdgeCase';
 
-const RequestAccess = ({}) => {
+const RequestAccess = ({ productName }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
 
   const requestAccess = getCredentialData?.[RequestAccess];
@@ -65,7 +65,7 @@ const RequestAccess = ({}) => {
               flex-direction: column;
             }
           `}>
-          {restrictedAccess && <RestrictedAccess restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
+          {restrictedAccess && <RestrictedAccess productName={productName} restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
           {side && <RequestAccessSide side={side} />}
         </div>
       </div>
