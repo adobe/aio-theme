@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { CopyIcon } from '../Icons';
-import { ActionButton, ProgressCircle, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
+import { ActionButton } from "../../ActionButton";
+import { ProgressCircle } from "../../ProgressCircle";
 import { Toast } from '../../Toast';
 import GetCredentialContext from '../GetCredentialContext';
 import { getCredentialSecrets } from '../Service';
@@ -17,6 +18,7 @@ const ShowCard = ({
 
   const [showClientSecret, setShowClientSecret] = useState(null);
   const [isCopiedTooltip, setIsCopiedTooltip] = useState(false);
+  const [isHoveringCopyButton, setIsHoveringCopyButton] = useState(false);
   const { selectedOrganization } = useContext(GetCredentialContext);
 
   const handleCreateClientSecret = async () => {
@@ -27,13 +29,14 @@ const ShowCard = ({
   };
 
   const handleSecretCopyCode = (copiedVal) => {
-    setIsCopiedTooltip(true)
+    setIsCopiedTooltip(true);
     navigator.clipboard.writeText(copiedVal);
+    setTimeout(() => setIsCopiedTooltip(false), 1000); // Hide tooltip after 1 second
   }
 
   useEffect(() => {
-    setShowClientSecret(null)
-  }, [response])
+    setShowClientSecret(null);
+  }, [response]);
 
   return (
     <div
@@ -54,10 +57,16 @@ const ShowCard = ({
         `}>
         {isClientSecret && (
           showClientSecret === null ? (
-            <ActionButton
-              onPress={() => { handleCreateClientSecret() }}>
-              {buttonLabel}
-            </ActionButton>
+            <div onClick={() => { handleCreateClientSecret() }}
+              css={css`
+                & > button {
+                  border: 1px solid rgba(177, 177, 177) !important;
+                  padding: 4px !important;
+                  border-radius: 2px !important;
+                }
+              `}>
+              <ActionButton>{buttonLabel}</ActionButton>
+            </div>
           ) : showClientSecret === 'loading' ? (
             <ProgressCircle size="S" aria-label="Loading…" isIndeterminate />
           ) : (
@@ -77,12 +86,37 @@ const ShowCard = ({
                 `}>
                 {showClientSecret?.clientSecret}
               </p>
-              <TooltipTrigger delay={0}>
-                <ActionButton onPress={() => handleSecretCopyCode(showClientSecret?.clientSecret)}>
-                  <CopyIcon />
-                </ActionButton>
-                <Tooltip>Copy</Tooltip>
-              </TooltipTrigger>
+              <div
+                css={css`
+                  position: relative;
+                `}>
+                <div onMouseEnter={() => setIsHoveringCopyButton(true)}
+                  css={css`
+                    & > button {
+                      border: 1px solid rgba(177, 177, 177) !important;
+                      padding: 4px !important;
+                      border-radius: 2px !important;
+                    }
+                  `}
+                  onMouseLeave={() => setIsHoveringCopyButton(false)} onClick={() => { handleSecretCopyCode(showClientSecret?.clientSecret) }}>
+                  <ActionButton > <CopyIcon /> </ActionButton>
+                </div>
+                {isHoveringCopyButton && (
+                  <div
+                    className="spectrum-Tooltip spectrum-Tooltip--top is-open"
+                    css={css`
+                      position: absolute;
+                      top: -25px; 
+                      transform: translateX(-50%);
+                      width: 40px;
+                      left: -5px;
+                    `}
+                  >
+                    <div className="spectrum-Tooltip-label">Copy</div>
+                    <div className="spectrum-Tooltip-tip"></div>
+                  </div>
+                )}
+              </div>
             </div>
           )
         )}
@@ -102,19 +136,40 @@ const ShowCard = ({
 
         {!isClientSecret && (
           <div
+            onMouseEnter={() => setIsHoveringCopyButton(true)}
+            onMouseLeave={() => setIsHoveringCopyButton(false)}
             css={css`
               position: relative;
               display: ${isOraganization ? 'none' : 'block'};
             `}>
-            <TooltipTrigger delay={0}>
-              <ActionButton onPress={() => handleSecretCopyCode(value)} >
-                <CopyIcon />
-              </ActionButton>
-              <Tooltip>Copy</Tooltip>
-            </TooltipTrigger>
+            <div onClick={() => { handleSecretCopyCode(value) }}
+              css={css`
+                & > button {
+                  border: 1px solid rgba(177, 177, 177) !important;
+                  padding: 4px !important;
+                  border-radius: 2px !important;
+                }
+              `}
+            >
+              <ActionButton> <CopyIcon /> </ActionButton>
+            </div>
+            {isHoveringCopyButton && (
+              <div
+                className="spectrum-Tooltip spectrum-Tooltip--top is-open"
+                css={css`
+                  position: absolute;
+                  top: -25px; 
+                  transform: translateX(-50%);
+                  width: 40px;
+                  left: -5px;
+                `}
+              >
+                <div className="spectrum-Tooltip-label">Copy</div>
+                <div className="spectrum-Tooltip-tip"></div>
+              </div>
+            )}
           </div>
         )}
-
       </div>
       {
         isCopiedTooltip && (

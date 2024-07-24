@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import classNames from "classnames";
 import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './FormFields';
 import { IllustratedMessage } from './IllustratedMessage';
-import { defaultTheme, Provider } from '@adobe/react-spectrum';
 import { JoinBetaProgram } from './JoinBetaProgram';
 import ErrorBoundary from './ErrorBoundary';
 import { Product, Products, CardProduct, CardProducts } from './Products';
@@ -288,22 +287,21 @@ const GetCredential = ({ templateId, children, className }) => {
       {
         isBrowser &&
         <ErrorBoundary errorMessage={getCredentialData?.[IllustratedMessage]}>
-          <Provider theme={defaultTheme} colorScheme="light" >
-            <GetCredentialContext.Provider
-              value={{
-                allOrganizations,
-                switchOrganization,
-                selectedOrganization,
-                template,
-                setTemplate,
-                getCredentialData,
-                previousProjectDetail
-              }}
-            >
-              <section
-                id="adobe-get-credential"
-                className={classNames(className)}
-                css={css`
+          <GetCredentialContext.Provider
+            value={{
+              allOrganizations,
+              switchOrganization,
+              selectedOrganization,
+              template,
+              setTemplate,
+              getCredentialData,
+              previousProjectDetail
+            }}
+          >
+            <section
+              id="adobe-get-credential"
+              className={classNames(className)}
+              css={css`
                 background: #f8f8f8;
                 padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
 
@@ -315,11 +313,11 @@ const GetCredential = ({ templateId, children, className }) => {
                   padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
                 }
               `
-                }
-              >
-                <title>Get Credentials</title>
-                <div
-                  css={css`
+              }
+            >
+              <title>Get Credentials</title>
+              <div
+                css={css`
                 width: calc(7 * 100% / 9);
                 margin: auto;
                 display: flex;
@@ -333,13 +331,12 @@ const GetCredential = ({ templateId, children, className }) => {
                 }
 
               `}
-                >
-                  {render()}
+              >
+                {render()}
 
-                </div>
-              </section>
-            </GetCredentialContext.Provider>
-          </Provider>
+              </div>
+            </section>
+          </GetCredentialContext.Provider>
         </ErrorBoundary>
       }
     </>
