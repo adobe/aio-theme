@@ -26,6 +26,7 @@
     "dev:clean": "yarn workspace example clean && yarn workspace example develop",
     "dev:https": "yarn workspace example develop:https",
     "dev:https:local": "yarn workspace example gatsby develop --https --host local.corp.adobe.com",
+    "dev:https:ci": "yarn workspace example develop --https --host localhost.corp.adobe.com --port 9000 --key-file ./certs/key.key --cert-file ./certs/cert.crt",
     "dev:schema": "yarn workspace example develop:schema",
     "build": "yarn workspace example build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true yarn workspace example build --log-pages",
@@ -33,7 +34,7 @@
     "clean": "yarn workspace example clean",
     "format": "npx prettier --write '**/*.{js,json}'",
     "cy:open": "cypress open",
-    "test:e2e": "start-server-and-test start http://localhost:9000 cy:open"
+    "test:e2e": "yarn clean && START_SERVER_AND_TEST_INSECURE=1 CYPRESS_SUPPORT=y start-server-and-test dev:https https://localhost.corp.adobe.com:9000 cy:open"
   },
   "resolutions": {
     "sharp": "0.33.0",

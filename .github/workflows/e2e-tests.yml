@@ -18,17 +18,31 @@ on:
       - "cypress/**"
 jobs:
   smoke_tests:
-    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
+      options: --user root
+    runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: 'Create env file'
+        run: |
+          touch ./example/.env
+          echo GATSBY_IMS_SRC="https://auth-stg1.services.adobe.com/imslib/imslib.min.js" >> ./example/.env
+          echo GATSBY_IMS_CONFIG='{"client_id": "stage_adobe_io", "scope": "AdobeID,openid,unified_dev_portal,read_organizations,additional_info.projectedProductContext,additional_info.roles,gnav,read_pc.dma_bullseye,creative_sdk,adobeio_api,service_principals.read,service_principals.write,read_client_secret", "environment": "stg1"}' >> ./example/.env
+          cat ./example/.env
 
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
-          build: yarn build
-          start: yarn serve
-          wait-on: 'http://[::1]:9000'
+          start: yarn dev:https:ci
+          wait-on: 'https://localhost.corp.adobe.com:9000'
+          wait-on-timeout: 150
           browser: chrome
           config-file: cypress.config.js
-          spec: cypress/e2e/smoke.cy.js
+          spec: |
+            cypress/e2e/smoke.cy.js
+            cypress/e2e/get-credentials.cy.js
+        env:
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'

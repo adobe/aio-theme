@@ -27,7 +27,8 @@ const DevConsoleLink = ({ devConsoleLinkHeading, credentialName, projectId }) =>
             display: flex;
           `}
           target='_blank'
-          href={`/console/projects/${selectedOrganization?.id}/${projectId}/overview`}>
+          href={`/console/projects/${selectedOrganization?.id}/${projectId}/overview`}
+          data-cy="credentialName-link">
           <div>
             <p
               className="spectrum-Body spectrum-Body--sizeS"

@@ -269,7 +269,9 @@ const CredentialForm = ({
             display: flex;
             flex-direction: column;
             gap: 48px;
-          `}>
+          `}
+          data-cy="credential-form"
+          >
           <div
             css={css`
               display: flex;
@@ -298,7 +300,6 @@ const CredentialForm = ({
               {credentialForm?.paragraph && (
                 <p className="spectrum-Body spectrum-Body--sizeL">{credentialForm?.paragraph}</p>
               )}
-
               <p
                 className="spectrum-Body spectrum-Body--sizeS"
                 css={css`

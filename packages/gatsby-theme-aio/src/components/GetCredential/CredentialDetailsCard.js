@@ -158,7 +158,7 @@ export const CredentialDetailsCard = ({
                   align-items: start;
                 }
               `}>
-              <a href={nextButtonLink} target="_blank" rel="noreferrer">
+              <a href={nextButtonLink} target="_blank" rel="noreferrer" data-cy="next-step-button">
                 <button
                   className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
                   css={css`
@@ -179,7 +179,8 @@ export const CredentialDetailsCard = ({
                   &:hover {
                     color: var(--spectrum-global-color-gray-900);
                   }
-                `}>
+                `}
+                  data-cy="Manage-Dev-Console-link">
                   <div
                     css={css`
                     display: flex;

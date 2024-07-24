@@ -36,6 +36,7 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
         value={formData["AllowedOrigins"]}
         placeholder={originsProps?.placeholder}
         onChange={(e) => handleChange(e, "AllowedOrigins")}
+        data-cy="add-allowed-origins"
       ></textarea>
     </FormFields>
   )

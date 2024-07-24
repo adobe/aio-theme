@@ -64,7 +64,7 @@ const RequestAccess = ({}) => {
             @media screen and (max-width: ${MAX_MOBILE_WIDTH}) {
               flex-direction: column;
             }
-          `}>
+          `} data-cy="request-access">
           {restrictedAccess && <RestrictedAccess restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
           {side && <RequestAccessSide side={side} />}
         </div>
