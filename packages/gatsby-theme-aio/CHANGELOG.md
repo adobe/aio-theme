@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.5..@adobe/gatsby-theme-aio@4.14.6) (2024-07-25)
+
+### Fix
+* fix failing tests [c84a757](https://github.com/adobe/aio-theme/commit/c84a757103138aca16a1096613b31ffc4f01be1d)
+
 ## [4.14.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.4..@adobe/gatsby-theme-aio@4.14.5) (2024-07-25)
 
 ### Fix
