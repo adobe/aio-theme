@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { css } from "@emotion/react";
-import { ProgressCircle } from '@adobe/react-spectrum';
+import { ProgressCircle } from '../ProgressCircle';
 
 const Loading = ({
   credentials,

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { Button } from '@adobe/react-spectrum';
+import { Button } from "../../Button";
 import { Organization } from '../Organization';
 
 import GetCredentialContext from '../GetCredentialContext';
