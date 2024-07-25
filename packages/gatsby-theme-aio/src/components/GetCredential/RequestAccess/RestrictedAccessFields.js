@@ -9,7 +9,7 @@ import { OrganizationAccessDetailsNotMember } from "./OrganizationAccessDetailsN
 import { OrganizationAccessDetailsNotSignUp } from "./OrganizationAccessDetailsNotSignUp";
 import GetCredentialContext from "../GetCredentialContext";
 
-const RestrictedAccess = ({ restrictedAccess, organizationAccessDetailsEdgeCase }) => {
+const RestrictedAccess = ({ restrictedAccess, organizationAccessDetailsEdgeCase , productName}) => {
   let products = restrictedAccess?.children?.props;
   let childProps = {};
   const { selectedOrganization, template } = useContext(GetCredentialContext);
@@ -23,19 +23,19 @@ const RestrictedAccess = ({ restrictedAccess, organizationAccessDetailsEdgeCase 
 
   const render = () => {
     if (selectedOrganization?.type === "developer" && childProps[OrganizationAccessDetailsType1User]) {
-      return <OrganizationAccessDetailsType1User content={childProps[OrganizationAccessDetailsType1User]} />
+      return <OrganizationAccessDetailsType1User productName={productName} content={childProps[OrganizationAccessDetailsType1User]} />
     }
     else if (disEntitledReason === "USER_MISSING_PUBLIC_BETA") {
-      return <OrganizationAccessDetailsNotSignUp content={childProps[OrganizationAccessDetailsNotSignUp]} />
+      return <OrganizationAccessDetailsNotSignUp productName={productName} content={childProps[OrganizationAccessDetailsNotSignUp]} />
     }
     else if (disEntitledReason === "ORG_MISSING_FIS") {
-      return <OrganizationAccessDetailsNoProduct content={childProps[OrganizationAccessDetailsNoProduct]} />
+      return <OrganizationAccessDetailsNoProduct productName={productName} content={childProps[OrganizationAccessDetailsNoProduct]} />
     }
     else if (template?.canRequestAccess) {
-      return <OrganizationAccessDetails restrictedAccess={restrictedAccess} products={products} />
+      return <OrganizationAccessDetails productName={productName} restrictedAccess={restrictedAccess} products={products} />
     }
     else {
-      return <OrganizationAccessDetailsNotMember content={childProps[OrganizationAccessDetailsNotMember]} />
+      return <OrganizationAccessDetailsNotMember productName={productName} content={childProps[OrganizationAccessDetailsNotMember]} />
     }
   };
 

@@ -6,7 +6,7 @@ import ps from "./images/ps.png";
 const GetCredentialOAuthS2s = () => {
   return (
 
-    <GetCredential className="getCredentialContainer" templateId="66576a0de3cedc3a36fc9f28" >
+    <GetCredential className="getCredentialContainer" templateId="66576a0de3cedc3a36fc9f28" productName="Firefly Services">
 
       <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." buttonText="Sign in to create credentials" />
 

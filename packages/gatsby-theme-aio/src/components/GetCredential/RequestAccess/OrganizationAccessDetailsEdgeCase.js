@@ -6,7 +6,7 @@ import { Organization } from '../Organization';
 import GetCredentialContext from '../GetCredentialContext';
 import Context from '../../Context';
 
-const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
+const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct, productName }) => {
   const { selectedOrganization } = useContext(GetCredentialContext);
   const { ims } = useContext(Context);
 
@@ -50,8 +50,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
                 </span>
                 ]
               </>}
-            currently does not have access to these APIs Contact us to learn more about Firefly
-            Services APIs and how to get a free trial.
+            currently does not have access to these APIs Contact us to learn more about {productName} APIs and how to get a free trial.
             <span
               css={css`
               margin-left: 3px;
@@ -81,7 +80,7 @@ const OrganizationAccessDetailsEdgeCase = ({ content, isNoProduct }) => {
               <> organization [<span className="spectrum-Heading spectrum-Heading--sizeXXS">
                 {selectedOrganization.name}</span>]
               </>}
-            and can not access Firefly Services APIs.
+            and can not access {productName} APIs.
             <span
               css={css`
               margin-left: 3px;

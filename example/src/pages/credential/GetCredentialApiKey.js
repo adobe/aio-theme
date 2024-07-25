@@ -4,7 +4,7 @@ import creativeCloud from "../../pages/creative_cloud/images/cc-icon.png";
 
 const GetCredentialApiKey = () => {
   return (
-    <GetCredential className="getCredentialContainer" templateId="664e39607dcc7c0e5a4a035b" >
+    <GetCredential className="getCredentialContainer" templateId="664e39607dcc7c0e5a4a035b" productName="Express Embed SDK" >
 
       <GetCredential.SignIn title="Get credentials" paragraph="Create unique credentials that you will use to call multiple APIs from your application." buttonText="Sign in to create credentials" />
 
@@ -102,9 +102,9 @@ const GetCredentialApiKey = () => {
         paragraph="Create unique credentials that you will use to call multiple APIs from your application."
       >
         <GetCredential.RequestAccess.EdgeCase>
-          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Firefly Services" buttonLabel="Contact us to learn more" buttonLink="#someLink" />
-          <GetCredential.RequestAccess.EdgeCase.NotMember title="Access to Firefly Services APIs is not available at this time." buttonLabel="Learn more about Firefly Services" buttonLink="#someLink" />
-          <GetCredential.RequestAccess.EdgeCase.NotSignUp title="Firefly Services APIs is available as part of the beta program. Sign up for the program or log in to an account that has access." buttonLabel="Sign up for the beta" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NoProduct title="Your organization does not have access to Express Embed SDK" buttonLabel="Contact us to learn more" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotMember title="Access to Express Embed SDK APIs is not available at this time." buttonLabel="Learn more about Express Embed SDK" buttonLink="#someLink" />
+          <GetCredential.RequestAccess.EdgeCase.NotSignUp title="Express Embed SDK APIs is available as part of the beta program. Sign up for the program or log in to an account that has access." buttonLabel="Sign up for the beta" buttonLink="#someLink" />
         </GetCredential.RequestAccess.EdgeCase>
 
         <GetCredential.RequestAccess.RestrictedAccess

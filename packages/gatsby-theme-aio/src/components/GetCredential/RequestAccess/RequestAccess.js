@@ -7,7 +7,7 @@ import { RequestAccessSide } from './RequestAccessSide';
 import GetCredentialContext from '../GetCredentialContext';
 import { OrganizationAccessDetailsEdgeCase } from './OrganizationAccessDetailsEdgeCase';
 
-const RequestAccess = ({}) => {
+const RequestAccess = ({ productName }) => {
   const { getCredentialData } = useContext(GetCredentialContext);
 
   const requestAccess = getCredentialData?.[RequestAccess];
@@ -57,6 +57,7 @@ const RequestAccess = ({}) => {
           )}
         </div>
         <div
+          data-cy="request-access"
           css={css`
             display: flex;
             gap: 48px;
@@ -64,8 +65,8 @@ const RequestAccess = ({}) => {
             @media screen and (max-width: ${MAX_MOBILE_WIDTH}) {
               flex-direction: column;
             }
-          `} data-cy="request-access">
-          {restrictedAccess && <RestrictedAccess restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
+          `}>
+          {restrictedAccess && <RestrictedAccess productName={productName} restrictedAccess={restrictedAccess} organizationAccessDetailsEdgeCase={organizationAccessDetailsEdgeCase} />}
           {side && <RequestAccessSide side={side} />}
         </div>
       </div>
