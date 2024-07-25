@@ -158,16 +158,17 @@ export const CredentialDetailsCard = ({
                   align-items: start;
                 }
               `}>
-              <a href={nextButtonLink} target="_blank" rel="noreferrer" data-cy="next-step-button">
-                <button
-                  className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
-                  css={css`
+              {nextButtonLabel &&
+                <a href={nextButtonLink} target="_blank" rel="noreferrer" data-cy="next-step-button">
+                  <button
+                    className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
+                    css={css`
                     width: fit-content;
                     margin-top: 10px;
                   `}>
-                  <span className="spectrum-Button-label">{nextButtonLabel}</span>
-                </button>
-              </a>
+                    <span className="spectrum-Button-label">{nextButtonLabel}</span>
+                  </button>
+                </a>}
               {developerConsoleManage &&
                 <a
                   href={devConsoleLink}
