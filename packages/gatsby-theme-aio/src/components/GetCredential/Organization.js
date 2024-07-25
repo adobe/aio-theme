@@ -196,11 +196,11 @@ const Organization = () => {
                             <span className="spectrum-Button-label">Cancel</span>
                           </button>
 
-                          <button className="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM" onClick={() => {
+                          <button data-cy="submit-change-organization" className="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM" onClick={() => {
                             close();
                             switchOrganization(allOrganizations[selectedIndex]);
                           }}>
-                            <span className="spectrum-Button-label" data-cy="submit-change-organization">Change organization</span>
+                            <span className="spectrum-Button-label">Change organization</span>
                           </button>
 
                         </div>

@@ -13,7 +13,7 @@ function init(route) {
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('button[data-cy="accessDetails-edgeCase-btn"]').should('be.visible').should('be.enabled');
+  cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
 };
 
 function getIframeBody() {
@@ -68,13 +68,13 @@ function checkAPIKey() {
 }
 
 function checkOAuthS2S() {
-  cy.get('button[data-cy="generate-token"]').should('be.visible').should('be.enabled');
+  cy.get('div[data-cy="generate-token"]').should('be.visible');
   // cy.get('button[data-cy="copy-token"]').should('exist');
   cy.get('[data-cy="credentialName-link"]').should('exist');
-  cy.get('button[data-cy="ClientId-copyIcon"]').should('exist');
-  cy.get('button[data-cy="retrieve-client-secret"]').should('be.visible').should('be.enabled');
+  cy.get('[data-cy="ClientId-copyIcon"]').should('exist');
+  cy.get('[data-cy="retrieve-client-secret"]').should('be.visible');
   // cy.get('button[data-cy="copy-client-secret"]').should('exist');
-  cy.get('button[data-cy="Scopes-copyIcon"]').should('exist');
+  cy.get('[data-cy="Scopes-copyIcon"]').should('exist');
   cy.contains('openid, AdobeID, read_organizations, firefly_api, ff_apis').should('exist');
 }
 
@@ -103,7 +103,7 @@ function addCredential(credentialType) {
     cy.get('[data-cy="add-allowed-origins"]').type('localhost:9000').should('have.value', 'localhost:9000');
     cy.get('[data-cy="download-checkBox"]').check().should('be.checked');
     cy.get('[data-cy="select-download-language"]').click();
-    cy.get('ul li').contains('JavaScript').click();
+    cy.get('ul p').contains('JavaScript').click();
   }
   cy.get('[data-cy="terms-condition-link"]').should('be.visible');
   cy.get('[data-cy="update-terms-condition"]').check().should('be.checked');
@@ -124,7 +124,7 @@ function waitForLoader() {
 }
 
 function selectOrganization(orgName) {
-  cy.get('button[data-cy="change-organization-btn"]').should('be.visible').should('be.enabled').click();
+  cy.get('span[data-cy="change-organization-btn"]').should('be.visible').click();
   cy.get('button[data-cy="organization-picker"]').should('be.visible').should('be.enabled').click();
   cy.contains(orgName).should('exist').click();
   cy.get('button[data-cy="submit-change-organization"]').should('be.visible').should('be.enabled').click();
@@ -138,7 +138,7 @@ function returnToForm() {
 }
 
 describe('Get Credentials Test', () => {
-  it('API Key page loads', () => {
+  it('API Key credential', () => {
     init('/getCredential/');
     checkReturnFlow(API_KEY);
     selectOrganization('AdobeIOTestingOrg');
@@ -148,7 +148,7 @@ describe('Get Credentials Test', () => {
     addCredential(API_KEY);
   });
 
-  it('OAuth s2s page loads', () => {
+  it('OAuth S2S credential', () => {
     init('/get-credential-oauth/');
     checkRequestAccessEdgeCase();
     selectOrganization('Romans entp org');
