@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.4..@adobe/gatsby-theme-aio@4.14.5) (2024-07-25)
+
+### Fix
+* Remove react-spectrum dependency and other get credentials fixes [313c26a](https://github.com/adobe/aio-theme/commit/313c26aa026895a9ad115382f8b3cd671e555e45)
+
+### Features
+* Added e2e tests for get credentials [31838dc](31838dc5ec68d7aaeaa8ada4ed0b766690f50168)
+
 ## [4.14.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.3..@adobe/gatsby-theme-aio@4.14.4) (2024-07-16)
 
 ### Fix
