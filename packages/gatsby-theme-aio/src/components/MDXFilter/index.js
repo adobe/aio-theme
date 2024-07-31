@@ -226,12 +226,17 @@ export default ({ children, pageContext, query }) => {
 
     const columns = 12;
     const diff = [];
-    if (hasOnThisPage) {
-      diff.push(`${layoutColumns(2)} - var(--spectrum-global-dimension-size-400)`);
+
+    let asideCount = 0;
+    if (hasSideNav) ++asideCount;
+    if (hasOnThisPage) ++asideCount;
+    if (hasResources) ++asideCount;
+    
+    if(asideCount > 0) {
+      const layoutWidth = layoutColumns(asideCount + 1);
+      diff.push(`${layoutWidth} - var(--spectrum-global-dimension-size-400)`);
     }
-    if (hasResources) {
-      diff.push(`${layoutColumns(3)} - var(--spectrum-global-dimension-size-400)`);
-    }
+
     if (hasSideNav) {
       diff.push(SIDENAV_WIDTH);
     }
