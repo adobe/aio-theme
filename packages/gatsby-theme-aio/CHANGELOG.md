@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.6..@adobe/gatsby-theme-aio@4.14.7) (2024-07-30)
+
+### Fix
+* **DEVSITE-1154:** Maximize columns in discover block [053003f](https://github.com/adobe/aio-theme/pull/1608/commits/053003f0970ce48c0e7fdd3578465ab27f0bfefe)
+
+
 ## [4.14.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.13.5..@adobe/gatsby-theme-aio@4.14.6) (2024-07-25)
 
 ### Fix
