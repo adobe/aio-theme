@@ -11,7 +11,6 @@
  */
 
 const { selectAll } = require('unist-util-select');
-const uuid = require('uuid');
 
 function parseMdx(markdownFile) {
   // See: https://github.com/syntax-tree/mdast for node type info.
@@ -30,7 +29,14 @@ function parseMdx(markdownFile) {
     nodeValue =
       mdastNode.type === 'code'
         ? mdastNode.value
-        : mdastNode.children.map(child => child.value).join('');
+        : mdastNode.children
+            .map(child => {
+              if (child.type === 'link') {
+                return child?.children?.find(child => child.type === 'text')?.value;
+              }
+              return child?.value;
+            })
+            .join('');
 
     if (nodeValue.length < minCharLength) continue;
 
@@ -42,9 +48,14 @@ function parseMdx(markdownFile) {
       anchor: getAnchor(mdastNode, markdownFile),
       featured: markdownFile.featured,
       category: markdownFile.category,
-      title: markdownFile.title === '' || markdownFile.title == null ? markdownFile.headings[0]?.value : markdownFile.title,
+      title:
+        markdownFile.title === '' || markdownFile.title == null
+          ? markdownFile.headings[0]?.value
+          : markdownFile.title,
       description:
-        markdownFile.description === '' || markdownFile.description == null ? markdownFile.excerpt : markdownFile.description,
+        markdownFile.description === '' || markdownFile.description == null
+          ? markdownFile.excerpt
+          : markdownFile.description,
       words: nodeValue.split(' ').length,
     };
 
