@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.7..@adobe/gatsby-theme-aio@4.14.8) (2024-08-07)
+
+### Fix
+* Index correct mdast value for link text [ec5969d](https://github.com/adobe/aio-theme/commit/ec5969d8e6594d2555ded8e0f9c92530b84c88c2)
+
 ## [4.14.7](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.6..@adobe/gatsby-theme-aio@4.14.7) (2024-07-30)
 
 ### Fix
