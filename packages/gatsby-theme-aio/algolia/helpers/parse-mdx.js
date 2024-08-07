@@ -34,7 +34,7 @@ function parseMdx(markdownFile) {
               if (child.type === 'link') {
                 return child?.children?.find(child => child.type === 'text')?.value;
               }
-              return child.value;
+              return child?.value;
             })
             .join('');
 
