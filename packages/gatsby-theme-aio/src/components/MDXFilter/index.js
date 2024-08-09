@@ -379,6 +379,13 @@ export default ({ children, pageContext, query }) => {
                       align-items: center;
                       justify-content: space-between;
                       margin-bottom: var(--spectrum-global-dimension-size-200);
+                      position: sticky;
+                      bottom: 3px;
+                      background: white;
+                      border: 1px solid;
+                      border-color: lightgray;
+                      border-radius: 4px;
+                      padding: .75rem;
                     `}>
                     <div>
                       <Contributors

@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.8..@adobe/gatsby-theme-aio@4.14.9) (2024-08-09)
+
+### Features
+* **DEVSITE-1070:** Sticky feedback component [285a739](https://github.com/adobe/aio-theme/commit/285a7397f63c6218dc0a73bda93f753fe23af865)
+
 ## [4.14.8](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.7..@adobe/gatsby-theme-aio@4.14.8) (2024-08-07)
 
 ### Fix
