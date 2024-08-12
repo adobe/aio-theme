@@ -110,6 +110,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid, AdobeID, read_organizations, firefly_api, ff_apis" />
+          <GetCredential.Card.CredentialDetails.ImsOrgID heading="IMS Organization ID" />
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -130,6 +131,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid, AdobeID, read_organizations, firefly_api, ff_apis" />
+          <GetCredential.Return.CredentialDetails.ImsOrgID heading="IMS Organization ID" />
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />

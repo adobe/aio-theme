@@ -20,6 +20,8 @@ import { ReturnAPIKey } from './Return/ReturnAPIKey';
 import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
 import { KeyIcon, LinkOut } from './Icons';
+import { CardImsOrgID } from './Card/CardImsOrgID';
+import { ReturnImsOrgID } from './Return/ReturnImsOrgID';
 
 export const CredentialDetailsCard = ({
   credentialName,
@@ -39,7 +41,7 @@ export const CredentialDetailsCard = ({
   returnFields
 }) => {
 
-  let accessToken, devConsoleLinkHeading, clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOrigins
+  let accessToken, devConsoleLinkHeading, clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOrigins , imsOrgID;
   if (myCredentialFields) {
     accessToken = myCredentialFields[AccessToken];
     devConsoleLinkHeading = myCredentialFields[DevConsoleLink]?.heading;
@@ -50,6 +52,7 @@ export const CredentialDetailsCard = ({
     scopesDetails = myCredentialFields[CardScopes];
     apiKeyDetails = myCredentialFields[CardAPIKey];
     allowedOrigins = myCredentialFields[CardAllowedOrigins];
+    imsOrgID = myCredentialFields?.[CardImsOrgID];
   }
   else if (returnFields) {
     accessToken = returnFields?.[ReturnAccessToken];
@@ -61,6 +64,7 @@ export const CredentialDetailsCard = ({
     apiKeyDetails = returnFields?.[ReturnAPIKey];
     organizationDetails = returnFields?.[ReturnOrganizationName];
     allowedOrigins = returnFields?.[ReturnAllowedOrigins];
+    imsOrgID = returnFields?.[ReturnImsOrgID];
   }
 
   return (
@@ -144,6 +148,7 @@ export const CredentialDetailsCard = ({
                 organizationName={organizationName}
                 allowedOrigins={allowedOrigins}
                 response={response}
+                imsOrgID={imsOrgID}
               />
             )}
 

@@ -63,6 +63,7 @@ const GetCredentialApiKey = () => {
           <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Card.CredentialDetails.AllowedOrigins heading="Allowed domains" />
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
+          <GetCredential.Card.CredentialDetails.ImsOrgID heading="IMS Organization ID" />
         </GetCredential.Card.CredentialDetails>
 
       </GetCredential.Card>
@@ -83,6 +84,7 @@ const GetCredentialApiKey = () => {
           <GetCredential.Return.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Return.CredentialDetails.AllowedOrigins heading="Allowed domains" />
           <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />
+          <GetCredential.Return.CredentialDetails.ImsOrgID heading="IMS Organization ID" />
         </GetCredential.Return.CredentialDetails>
 
         <GetCredential.Return.ProjectsDropdown label="Projects" subHeading="Only your projects that contain credentials are shown" />

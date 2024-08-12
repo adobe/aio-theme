@@ -53,6 +53,8 @@ import { OrganizationAccessDetailsType1User } from './RequestAccess/Organization
 import { OrganizationAccessDetailsNotMember } from './RequestAccess/OrganizationAccessDetailsNotMember';
 import { OrganizationAccessDetailsNotSignUp } from './RequestAccess/OrganizationAccessDetailsNotSignUp';
 import { getOrganizations } from './Service';
+import { CardImsOrgID } from './Card/CardImsOrgID';
+import { ReturnImsOrgID } from './Return/ReturnImsOrgID';
 
 const LocalStorageKey = 'OrgInfo';
 
@@ -373,6 +375,7 @@ GetCredential.Card.CredentialDetails.OrganizationName = CardOrganizationName;
 GetCredential.Card.CredentialDetails.Scopes = CardScopes;
 GetCredential.Card.CredentialDetails.AllowedOrigins = CardAllowedOrigins;
 GetCredential.Card.CredentialDetails.APIKey = CardAPIKey;
+GetCredential.Card.CredentialDetails.ImsOrgID = CardImsOrgID;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
 GetCredential.Return = PreviousProject;
 GetCredential.Return.AccessToken = ReturnAccessToken;
@@ -391,6 +394,7 @@ GetCredential.Return.CredentialDetails.OrganizationName = ReturnOrganizationName
 GetCredential.Return.CredentialDetails.Scopes = ReturnScopes;
 GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
+GetCredential.Return.CredentialDetails.ImsOrgID = ReturnImsOrgID;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
 GetCredential.RequestAccess.EdgeCase = OrganizationAccessDetailsEdgeCase;
