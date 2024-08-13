@@ -65,6 +65,10 @@ function checkAPIKey() {
 
   // verify allowed domains copy button is clickable
   cy.get('[data-cy="Allowed domains-copyIcon"]').should('be.visible');
+
+  // verify IMS Organization ID copy button is clickable
+  cy.get('[data-cy="IMS Organization ID-copyIcon"]').should('exist');
+
 }
 
 function checkOAuthS2S() {
@@ -75,6 +79,7 @@ function checkOAuthS2S() {
   cy.get('[data-cy="retrieve-client-secret"]').should('be.visible');
   // cy.get('button[data-cy="copy-client-secret"]').should('exist');
   cy.get('[data-cy="Scopes-copyIcon"]').should('exist');
+  cy.get('[data-cy="IMS Organization ID-copyIcon"]').should('exist');
   cy.contains('openid, AdobeID, read_organizations, firefly_api, ff_apis').should('exist');
 }
 

@@ -6,12 +6,12 @@ import { ReturnClientId } from './ReturnClientId';
 import { ReturnClientSecret } from './ReturnClientSecret';
 import { ReturnOrganizationName } from './ReturnOrganizationName';
 import { ReturnScopes } from './ReturnScopes';
-import { ReturnImsOrgID } from './ReturnImsOrgID';
 import GetCredentialContext from '../GetCredentialContext';
+import { CardImsOrgID } from '../Card/CardImsOrgID';
 
 const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response, imsOrgID }) => {
 
-  const { selectedOrganization } = useContext(GetCredentialContext)
+  const { selectedOrganization } = useContext(GetCredentialContext);
 
   return (
     <div css={css`
@@ -26,7 +26,7 @@ const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretD
       {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />}
       {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
       {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
-      {imsOrgID && <ReturnImsOrgID returnCredentialDetails={clientDetails} returnImsOrgID={imsOrgID} value={selectedOrganization?.code} />}
+      {imsOrgID && <CardImsOrgID returnCredentialDetails={clientDetails} cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />}
     </div>
   )
 }

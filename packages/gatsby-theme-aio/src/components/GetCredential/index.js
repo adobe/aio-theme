@@ -54,7 +54,6 @@ import { OrganizationAccessDetailsNotMember } from './RequestAccess/Organization
 import { OrganizationAccessDetailsNotSignUp } from './RequestAccess/OrganizationAccessDetailsNotSignUp';
 import { getOrganizations } from './Service';
 import { CardImsOrgID } from './Card/CardImsOrgID';
-import { ReturnImsOrgID } from './Return/ReturnImsOrgID';
 
 const LocalStorageKey = 'OrgInfo';
 
@@ -394,7 +393,7 @@ GetCredential.Return.CredentialDetails.OrganizationName = ReturnOrganizationName
 GetCredential.Return.CredentialDetails.Scopes = ReturnScopes;
 GetCredential.Return.CredentialDetails.AllowedOrigins = ReturnAllowedOrigins;
 GetCredential.Return.CredentialDetails.APIKey = ReturnAPIKey;
-GetCredential.Return.CredentialDetails.ImsOrgID = ReturnImsOrgID;
+GetCredential.Return.CredentialDetails.ImsOrgID = CardImsOrgID;
 GetCredential.RequestAccess = RequestAccess;
 GetCredential.RequestAccess.RestrictedAccess = RestrictedAccess;
 GetCredential.RequestAccess.EdgeCase = OrganizationAccessDetailsEdgeCase;

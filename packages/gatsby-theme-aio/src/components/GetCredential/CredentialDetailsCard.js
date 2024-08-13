@@ -21,7 +21,6 @@ import { ReturnAllowedOrigins } from './Return/ReturnAllowedOrigins';
 import { ReturnOrganizationName } from './Return/ReturnOrganizationName';
 import { KeyIcon, LinkOut } from './Icons';
 import { CardImsOrgID } from './Card/CardImsOrgID';
-import { ReturnImsOrgID } from './Return/ReturnImsOrgID';
 
 export const CredentialDetailsCard = ({
   credentialName,
@@ -64,7 +63,7 @@ export const CredentialDetailsCard = ({
     apiKeyDetails = returnFields?.[ReturnAPIKey];
     organizationDetails = returnFields?.[ReturnOrganizationName];
     allowedOrigins = returnFields?.[ReturnAllowedOrigins];
-    imsOrgID = returnFields?.[ReturnImsOrgID];
+    imsOrgID = returnFields?.[CardImsOrgID];
   }
 
   return (
