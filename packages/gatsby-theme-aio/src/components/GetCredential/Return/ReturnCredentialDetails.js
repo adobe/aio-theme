@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { css } from '@emotion/react';
 import { ReturnAPIKey } from './ReturnAPIKey';
 import { ReturnAllowedOrigins } from './ReturnAllowedOrigins';
@@ -6,13 +6,17 @@ import { ReturnClientId } from './ReturnClientId';
 import { ReturnClientSecret } from './ReturnClientSecret';
 import { ReturnOrganizationName } from './ReturnOrganizationName';
 import { ReturnScopes } from './ReturnScopes';
+import GetCredentialContext from '../GetCredentialContext';
+import { CardImsOrgID } from '../Card/CardImsOrgID';
 
-const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response }) => {
-  
+const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response, imsOrgID }) => {
+
+  const { selectedOrganization } = useContext(GetCredentialContext);
+
   return (
     <div css={css`
         display : flex;
-        flex-direction : column;
+        flex-direction : column;  
         gap: 32px;
       `}>
       <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
@@ -22,6 +26,7 @@ const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretD
       {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />}
       {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
       {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
+      {imsOrgID && <CardImsOrgID returnCredentialDetails={clientDetails} cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />}
     </div>
   )
 }

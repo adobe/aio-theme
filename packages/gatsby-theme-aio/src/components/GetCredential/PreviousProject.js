@@ -27,7 +27,7 @@ const PreviousProject = ({ returnFields, productList }) => {
   const projectDetails = previousProjectsDetails?.[selectedIndex];
   const manageProps = returnProps[PreviousProject];
 
-  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];
+  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];  
 
   return (
     <>
