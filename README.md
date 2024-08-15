@@ -107,6 +107,8 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
+      - [sortOperationsAlphabetically (optional)](#sortoperationsalphabetically-optional)
+      - [sortTagsAlphabetically (optional)](#sorttagsalphabetically-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
       - [generateCodeSamples (optional)](#generatecodesamples-optional)
       - [requestInterceptor (optional)](#requestinterceptor-optional)
@@ -1192,6 +1194,30 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-o
 ```
 
 Disables the Try it console in the right panel.
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### sortOperationsAlphabetically (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." sortOperationsAlphabetically />
+```
+
+When set to `true`, sorts operations in the navigation sidebar and in the middle panel alphabetically.˙
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### sortTagsAlphabetically (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." sortTagsAlphabetically />
+```
+
+When set to `true`, sorts tags in the navigation sidebar and in the middle panel alphabetically. Note that only tags will be sorted alphabetically in the middle panel, not the operations associated with each tag. To sort operations alphabetically as well, you must set `sortOperationsAlphabetically` to `true`.
 
 Defaults to ```false```
 
