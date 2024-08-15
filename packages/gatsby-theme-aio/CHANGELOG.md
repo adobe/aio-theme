@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.9..@adobe/gatsby-theme-aio@4.14.10) (2024-08-14)
+
+### Features
+* Add sortTagsAlphabetically config to RedoclyAPIBlock [fced957](https://github.com/adobe/aio-theme/commit/fced957e73c2f0414cb23a5bcdcb4ca4c9d5c979)
+* Add sortOperationsAlphabetically config to RedoclyAPIBlock [24d431e](https://github.com/adobe/aio-theme/commit/24d431ea26fdc7fe278e35169709aa35bdae295f)
+
 ## [4.14.9](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.8..@adobe/gatsby-theme-aio@4.14.9) (2024-08-09)
 
 ### Features
