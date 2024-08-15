@@ -107,6 +107,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
+      - [sortOperationsAlphabetically (optional)](#sortoperationsalphabetically-optional)
       - [sortTagsAlphabetically (optional)](#sorttagsalphabetically-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
       - [generateCodeSamples (optional)](#generatecodesamples-optional)
@@ -1193,6 +1194,18 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-o
 ```
 
 Disables the Try it console in the right panel.
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### sortOperationsAlphabetically (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." sortOperationsAlphabetically />
+```
+
+When set to `true`, sorts operations in the navigation sidebar and in the middle panel alphabetically.˙
 
 Defaults to ```false```
 
