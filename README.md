@@ -1252,12 +1252,12 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality#theme-ob
 ```js
 <RedoclyAPIBlock 
     src="/redocly-test/openapi/openapi.yaml"
-    requestInterceptor=
-        "(req, operation) => ({ 
-            console.log('Args:', req, rawOperation);
+    requestInterceptor="
+        function(req, operation) { 
+            console.log('Args:', req, operation); 
             return req; 
-        })"
-/>
+        }
+    " 
 ```
 
 Configures the request interceptor for the Try it console. As a prerequisite, the Try it console must be enabled in Reference docs (hideTryItPanel must be set to false). When configured, the interceptor can capture the request object and modify it according to specified criteria. Async usage is supported.
