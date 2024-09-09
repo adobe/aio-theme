@@ -77,8 +77,10 @@ const RedoclyAPIBlock = ({
                jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                ${generateCodeSamples ? "generateCodeSamples: { " + generateCodeSamples + "}," : ''}
                ${requestInterceptor ? "requestInterceptor: " + requestInterceptor + "," : ''}
-               ${tryItOpenEventHandler ? "tryItOpen: " + tryItOpenEventHandler + "," : ''}
-               ${tryItSentEventHandler ? "tryItSent: " + tryItSentEventHandler + "," : ''}
+               events: {
+                ${tryItOpenEventHandler ? "tryItOpen: " + tryItOpenEventHandler + "," : ''}
+                ${tryItSentEventHandler ? "tryItSent: " + tryItSentEventHandler + "," : ''}
+               },
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
