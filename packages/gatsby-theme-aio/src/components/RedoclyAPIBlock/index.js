@@ -31,6 +31,8 @@ const RedoclyAPIBlock = ({
   jsonSampleExpandLevel = 2,
   generateCodeSamples = 'languages: [], skipOptionalParameters: false,',
   requestInterceptor = '',
+  tryItOpenEventHandler = '',
+  tryItSentEventHandler = '',
 }) => {
   const [isRedoclyLoading, setIsRedoclyLoading] = useState(true);
 
@@ -75,6 +77,10 @@ const RedoclyAPIBlock = ({
                jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                ${generateCodeSamples ? "generateCodeSamples: { " + generateCodeSamples + "}," : ''}
                ${requestInterceptor ? "requestInterceptor: " + requestInterceptor + "," : ''}
+               events: {
+                ${tryItOpenEventHandler ? "tryItOpen: " + tryItOpenEventHandler + "," : ''}
+                ${tryItSentEventHandler ? "tryItSent: " + tryItSentEventHandler + "," : ''}
+               },
                hideLoading: true,
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
@@ -109,6 +115,8 @@ RedoclyAPIBlock.propTypes = {
   ]),
   generateCodeSamples: PropTypes.string,
   requestInterceptor: PropTypes.string,
+  tryItOpenEventHandler: PropTypes.string,
+  tryItSentEventHandler: PropTypes.string,
 };
 
 export { RedoclyAPIBlock };
