@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.10..@adobe/gatsby-theme-aio@4.14.11) (2024-09-11)
+
+### Features
+* Add hideLogo config to RedoclyAPIBlock [231e791](https://github.com/adobe/aio-theme/commit/231e7914fb877751ae71e4b1d81d539a661ab246)
+
 ## [4.14.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.9..@adobe/gatsby-theme-aio@4.14.10) (2024-08-14)
 
 ### Features

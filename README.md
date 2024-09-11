@@ -106,6 +106,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [codeblock (optional)](#codeblock-optional)
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
+      - [hideLogo (optional)](#hidelogo-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
       - [sortOperationsAlphabetically (optional)](#sortoperationsalphabetically-optional)
       - [sortTagsAlphabetically (optional)](#sorttagsalphabetically-optional)
@@ -1182,6 +1183,18 @@ https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-o
 ```
 
 Disables search indexing and hides the search box from the API documentation page. 
+
+Defaults to ```false```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### hideLogo (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." hideLogo />
+```
+
+Hides the API logo defined in the [x-logo specification extension](https://redocly.com/docs/api-reference-docs/specification-extensions/x-logo).
 
 Defaults to ```false```
 
