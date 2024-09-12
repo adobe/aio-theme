@@ -9,9 +9,63 @@ import { ReturnScopes } from './ReturnScopes';
 import GetCredentialContext from '../GetCredentialContext';
 import { CardImsOrgID } from '../Card/CardImsOrgID';
 
-const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response, imsOrgID }) => {
+const COMPONENT_MAP = {
+  "ReturnAPIKey": ReturnAPIKey,
+  "ReturnAllowedOrigins": ReturnAllowedOrigins,
+  "ReturnClientId": ReturnClientId,
+  "ReturnClientSecret": ReturnClientSecret,
+  "ReturnOrganizationName": ReturnOrganizationName,
+  "ReturnScopes": ReturnScopes,
+  "CardImsOrgID": CardImsOrgID
+};
+
+const ReturnCredentialDetails = ({
+  clientDetails,
+  apiKeyDetails,
+  clientIdDetails,
+  clientSecretDetails,
+  organizationDetails,
+  scopesDetails,
+  allowedOriginsDetails,
+  organizationName,
+  allowedOrigins,
+  response,
+  imsOrgID,
+  returnFields
+}) => {
 
   const { selectedOrganization } = useContext(GetCredentialContext);
+
+  const returnCompDetails = {
+    "ReturnAPIKey": {
+      heading: apiKeyDetails?.heading,
+      apiKey: response?.workspaces[0]?.credentials[0]?.clientId,
+    },
+    "ReturnAllowedOrigins": {
+      heading: allowedOrigins?.heading,
+      allowedOrigins: allowedOriginsDetails,
+    },
+    "ReturnClientId": {
+      heading: clientIdDetails?.heading,
+      clientId: response?.workspaces[0]?.credentials[0]?.clientId,
+    },
+    "ReturnClientSecret": {
+      returnClientSecret: clientSecretDetails,
+      response
+    },
+    "ReturnOrganizationName": {
+      heading: organizationDetails?.heading,
+      organization: organizationName?.name
+    },
+    "ReturnScopes": {
+      heading: scopesDetails?.heading,
+      scope: scopesDetails?.scope
+    },
+    "CardImsOrgID": {
+      heading: imsOrgID?.heading,
+      imsOrgId: selectedOrganization?.code
+    }
+  };
 
   return (
     <div css={css`
@@ -20,15 +74,12 @@ const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretD
         gap: 32px;
       `}>
       <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
-      {apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={response?.workspaces[0]?.credentials[0]?.clientId} />}
-      {allowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={clientDetails} allowedOrigins={allowedOriginsDetails} returnAllowedOrigins={allowedOrigins} />}
-      {clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={response?.workspaces[0]?.credentials[0]?.clientId} />}
-      {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />}
-      {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
-      {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
-      {imsOrgID && <CardImsOrgID returnCredentialDetails={clientDetails} cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />}
+      {returnFields?.[ReturnCredentialDetails]?.children.map(({ type }, index) => {
+        const Component = COMPONENT_MAP[type?.name];
+        return Component ? <Component key={index} val={returnCompDetails[type?.name]} /> : null;
+      })}
     </div>
-  )
-}
+  );
+};
 
 export { ReturnCredentialDetails };

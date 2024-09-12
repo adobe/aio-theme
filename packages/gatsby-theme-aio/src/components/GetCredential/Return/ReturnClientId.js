@@ -1,9 +1,9 @@
 import React from 'react'
 import ShowCard from '../Card/ShowCard';
 
-const ReturnClientId = ({ returnClientId, clientId }) => {
+const ReturnClientId = ({ val: { heading, clientId } }) => {
   return (
-    <ShowCard heading={returnClientId?.heading} value={clientId} />
+    heading && <ShowCard heading={heading} value={clientId} />
   )
 }
 export { ReturnClientId };

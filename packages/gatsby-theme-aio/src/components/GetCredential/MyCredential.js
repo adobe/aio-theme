@@ -32,6 +32,7 @@ const MyCredential = ({
   credentialProps?.[MyCredential]?.children.forEach(({ type, props }) => {
     myCredentialFields[type] = props;
     if (props.children && type === CardClientDetails) {
+      myCredentialFields[type] = props;
       props?.children?.forEach(({ type, props }) => {
         myCredentialFields[type] = props;
       });

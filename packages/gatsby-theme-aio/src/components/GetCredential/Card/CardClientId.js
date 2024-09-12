@@ -1,9 +1,9 @@
 import React from 'react'
 import ShowCard from './ShowCard'
 
-const CardClientId = ({ cardClientId, clientId }) => {
+const CardClientId = ({ val: { heading, clientId } }) => {
   return (
-    <ShowCard heading={cardClientId?.heading} value={clientId} />
+    heading && <ShowCard heading={heading} value={clientId} />
   )
 }
 
