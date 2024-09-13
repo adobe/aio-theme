@@ -1,9 +1,9 @@
 import React from 'react'
 import ShowCard from './ShowCard';
 
-const CardAPIKey = ({ cardAPIKey, apiKey }) => {
+const CardAPIKey = ({ val: { heading, apiKey } }) => {
   return (
-    <ShowCard heading={cardAPIKey?.heading} value={apiKey} />
+    heading && <ShowCard heading={heading} value={apiKey} />
   )
 }
 

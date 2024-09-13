@@ -9,6 +9,16 @@ import { CardScopes } from './CardScopes';
 import { CardImsOrgID } from './CardImsOrgID';
 import GetCredentialContext from '../GetCredentialContext';
 
+const COMPONENT_MAP = {
+  "CardAPIKey": CardAPIKey,
+  "CardAllowedOrigins": CardAllowedOrigins,
+  "CardClientId": CardClientId,
+  "CardClientSecret": CardClientSecret,
+  "CardOrganizationName": CardOrganizationName,
+  "CardScopes": CardScopes,
+  "CardImsOrgID": CardImsOrgID
+};
+
 const CardClientDetails = ({
   clientDetails,
   clientIdDetails,
@@ -21,9 +31,41 @@ const CardClientDetails = ({
   allowedOrigins,
   response,
   imsOrgID,
+  myCredentialFields
 }) => {
 
   const { selectedOrganization } = useContext(GetCredentialContext);
+
+  const cardCompDetails = {
+    "CardAPIKey": {
+      heading: apiKeyDetails?.heading,
+      apiKey: response?.['apiKey']
+    },
+    "CardAllowedOrigins": {
+      heading: allowedOrigins?.heading,
+      allowedOrigins: allowedOriginsDetails,
+    },
+    "CardClientId": {
+      heading: clientIdDetails?.heading,
+      clientId: response?.['apiKey']
+    },
+    "CardClientSecret": {
+      cardClientSecret: clientSecretDetails,
+      response
+    },
+    "CardOrganizationName": {
+      heading: organizationDetails?.heading,
+      organization: organizationName?.name
+    },
+    "CardScopes": {
+      heading: scopesDetails?.heading,
+      scope: scopesDetails?.scope
+    },
+    "CardImsOrgID": {
+      heading: imsOrgID?.heading,
+      imsOrgId: selectedOrganization?.code
+    }
+  };
 
   return (
     <div
@@ -33,45 +75,10 @@ const CardClientDetails = ({
         gap: 32px;
       `}>
       <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
-      {apiKeyDetails && (
-        <CardAPIKey
-          cardClientDetails={clientDetails}
-          cardAPIKey={apiKeyDetails}
-          apiKey={response?.['apiKey']}
-        />
-      )}
-      {clientIdDetails && (
-        <CardClientId
-          cardClientDetails={clientDetails}
-          cardClientId={clientIdDetails}
-          clientId={response?.['apiKey']}
-        />
-      )}
-      {allowedOrigins && (
-        <CardAllowedOrigins
-          cardClientDetails={clientDetails}
-          cardAllowedOrigins={allowedOrigins}
-          allowedOrigins={allowedOriginsDetails}
-        />
-      )}
-      {clientSecretDetails && (
-        <CardClientSecret
-          cardClientDetails={clientDetails}
-          cardClientSecret={clientSecretDetails}
-          response={response}
-        />
-      )}
-      {organizationDetails && (
-        <CardOrganizationName
-          cardClientDetails={clientDetails}
-          cardOrganizationName={organizationDetails}
-          organization={organizationName?.name}
-        />
-      )}
-      {scopesDetails && <CardScopes cardClientDetails={clientDetails} cardScopes={scopesDetails} />}
-      {imsOrgID && (
-        <CardImsOrgID cardClientDetails={clientDetails}  cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />
-      )}
+      {myCredentialFields?.[CardClientDetails]?.children.map(({ type }, index) => {
+        const Component = COMPONENT_MAP[type?.name];
+        return Component ? <Component key={index} val={cardCompDetails[type?.name]} /> : null;
+      })}
     </div>
   );
 };

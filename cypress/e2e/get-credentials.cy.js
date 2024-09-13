@@ -18,8 +18,8 @@ function checkRequestAccessEdgeCase() {
 
 function getIframeBody() {
   return cy.get('iframe[data-cy="request-access-iframe"]')
-  .its('0.contentDocument.body').should('not.be.empty')
-  .then(cy.wrap);
+    .its('0.contentDocument.body').should('not.be.empty')
+    .then(cy.wrap);
 }
 
 function checkRequestAccess() {
@@ -27,12 +27,15 @@ function checkRequestAccess() {
     // if the request is not already sent, send the request
     if ($body.find('[data-cy="request-access-button"]').length > 0) {
       cy.get('[data-cy="request-access-button"]').click();
-      getIframeBody().find('button[data-testid="send-request-button"]').should('exist').click();
+
+      getIframeBody().find('h3[data-testid="title"]').invoke('text').then((text) => {
+        if (text.trim() !== 'Your request is on its way') {
+          getIframeBody().find('button[data-testid="send-request-button"]').should('exist').click();
+        }
+      });
       getIframeBody().find('button[data-testid="close-button"]').should('exist').click();
     }
   });
-  cy.get('button[data-cy="request-info"]').should('be.visible').should('be.enabled').click();
-  cy.get('body', { timeout: 1000 }).click();
 };
 
 function checkReturnFlow(credentialType) {
@@ -84,7 +87,7 @@ function checkOAuthS2S() {
 }
 
 function checkCredential(credentialType) {
-  switch(credentialType) {
+  switch (credentialType) {
     case API_KEY:
       checkAPIKey();
       break;

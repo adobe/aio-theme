@@ -148,6 +148,8 @@ export const CredentialDetailsCard = ({
                 allowedOrigins={allowedOrigins}
                 response={response}
                 imsOrgID={imsOrgID}
+                returnFields={returnFields}
+                myCredentialFields={myCredentialFields}
               />
             )}
 
