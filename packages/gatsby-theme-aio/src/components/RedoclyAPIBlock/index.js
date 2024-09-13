@@ -61,7 +61,7 @@ const RedoclyAPIBlock = ({
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container" />
+          <div id="redocly_container" daa-lh="Redocly-Container" />
 
           <script>{
             `RedoclyReferenceDocs.init(
