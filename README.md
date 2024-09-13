@@ -101,6 +101,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [Local development limitation and workaround](#local-development-limitation-and-workaround)
       - [Full width page](#full-width-page)
       - [Displaying long API response descriptions](#displaying-long-api-response-descriptions)
+      - [Analytics and Redocly API Block](#analytics-and-redocly-api-block)
       - [width (optional)](#width-optional)
       - [typography (optional)](#typography-optional)
       - [codeblock (optional)](#codeblock-optional)
@@ -1129,6 +1130,16 @@ By default, Redocly displays API response descriptions as the button text (style
 For long descriptions, Redocly suggests to use the [x-summary](https://redocly.com/docs/api-reference-docs/specification-extensions/x-summary/) specification extension. If specified, it is used as the response button text, and the description is rendered under the button:
 ![redocly-api-block-long-description-with-x-summary](docs/images/redocly-api-block-long-description-with-x-summary.png)
 ![redocly-api-block-long-description-with-x-summary-yaml](docs/images/redocly-api-block-long-description-with-x-summary-yaml.png)
+
+#### Analytics and Redocly API Block
+
+To track clicks on the Try It button, look for:
+* Link Name: 	Redocly-Container
+* Activity Map Link: d1d1d1d1d3d1d1d3d3d1d2d1d1B1-Try it
+
+To track clicks on the Send button, look for:
+* Link Name: 	Redocly-Container
+* Activity Map Link: d1d1d1d1d3d1d1d3d3d1d2d1d4B1-Send
 
 #### width (optional)
 
