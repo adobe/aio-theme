@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.10..@adobe/gatsby-theme-aio@4.14.11) (2024-09-13)
+
+### Features
+* Add Adobe Analytics tracking ID to RedoclyAPIBlock [343069f](https://github.com/adobe/aio-theme/commit/343069ff624595e9aea6152987eea28aad5c1ded)
+
 ## [4.14.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.9..@adobe/gatsby-theme-aio@4.14.10) (2024-08-14)
 
 ### Features
