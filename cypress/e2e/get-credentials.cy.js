@@ -28,9 +28,7 @@ function checkRequestAccess() {
     if ($body.find('[data-cy="request-access-button"]').length > 0) {
       cy.get('[data-cy="request-access-button"]').click();
 
-      console.log('getIframeBody().find(h3[data-testid="title").invoke(text)', getIframeBody().find('h3[data-testid="title"]').invoke('text'))
       getIframeBody().find('h3[data-testid="title"]').invoke('text').then((text) => {
-        console.log('text', text)
         if (text.trim() !== 'Your request is on its way') {
           getIframeBody().find('button[data-testid="send-request-button"]').should('exist').click();
         }
