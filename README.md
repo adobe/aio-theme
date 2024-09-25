@@ -107,6 +107,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
+      - [scrollYOffset (optional)](#scrollyoffset-optional)
       - [sortOperationsAlphabetically (optional)](#sortoperationsalphabetically-optional)
       - [sortTagsAlphabetically (optional)](#sorttagsalphabetically-optional)
       - [jsonSampleExpandLevel (optional)](#jsonsampleexpandlevel-optional)
@@ -1198,6 +1199,19 @@ Disables the Try it console in the right panel.
 Defaults to ```false```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
+#### scrollYOffset (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." scrollYOffset={64} />
+```
+
+Specifies a vertical scroll-offset. This is useful when there are fixed positioned elements at the top of the page, such as navbars, headers etc. You can specify the scrollYOffset value as a number - a fixed number of pixels to be used as the offset.
+
+Defaults to ```0```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
+
 
 #### sortOperationsAlphabetically (optional)
 

@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.11](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.10..@adobe/gatsby-theme-aio@4.14.11) (2024-09-24)
+
+### Features
+* Add scrollYOffset config to RedoclyAPIBlock [1d2746c](https://github.com/adobe/aio-theme/commit/1d2746c2bc74d5055ec3cdc425fd635bd7bc94ab)
+
 ## [4.14.10](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.9..@adobe/gatsby-theme-aio@4.14.10) (2024-08-14)
 
 ### Features
