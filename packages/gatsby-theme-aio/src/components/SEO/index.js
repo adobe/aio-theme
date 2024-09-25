@@ -27,21 +27,44 @@ const SEO = ({ title, description, keywords }) => (
     <link rel="shortcut icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon" />
     {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
       <script type="text/javascript">{`
+
+        window.alloy_all = window.alloy_all || {};
+        window.alloy_all.data = window.alloy_all.data || {};
+        window.alloy_all.data._adobe_corpnew = window.alloy_all.data._adobe_corpnew || {};
+        window.alloy_all.data._adobe_corpnew.digitalData = window.alloy_all.data._adobe_corpnew.digitalData || {};
+        window.alloy_all.data._adobe_corpnew.digitalData.page = window.alloy_all.data._adobe_corpnew.digitalData.page || {};
+        window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo = window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo || {};
+        window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo.language = 'fr-FR';
+
+        // Update Launch and EdgeConfig based your site
+        var launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-5dd5dd2177e6.min.js';
+        var edgeConfigId = '913eac4d-900b-45e8-9ee7-306216765cd2'; // XLG Prod - adobecomWeb_prod, varies per site
+      
+        // modify this as necessary to target dev/qa/stage sites so that the data
+        // flows into a different bucket for your dev sites
+        var isDev = false;
+        if (isDev) {
+          edgeConfigId = '3a30d55c-d57d-4851-af18-634780f03357'; // XLG DEV - adobecomWeb_QA_v1, varies per site
+          launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-2c94beadc94f-development.min.js';
+        }
+      
         window.marketingtech = {
-          'adobe': {
-            'launch': {
-              'property': 'global',
-              'environment': '${process.env.GATSBY_ADOBE_ANALYTICS_ENV}'
+          adobe: {
+            launch: {
+              url: launchURL,
+              controlPageLoad: true,
             },
-            'analytics': {
-              'additionalAccounts': '${process.env.GATSBY_ADDITIONAL_ADOBE_ANALYTICS_ACCOUNTS}'
-            }
+            alloy: {
+              edgeConfigId: edgeConfigId,
+            },
+            target: true,
+            audienceManager: true,
           }
         };
       `}</script>
     )}
     {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
-      <script src="https://www.adobe.com/marketingtech/main.min.js" async></script>
+      <script src="https://www.adobe.com/marketingtech/main.standard.min.js" async></script>
     )}
   </Helmet>
 );
