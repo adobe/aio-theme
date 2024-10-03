@@ -68,7 +68,7 @@ const GetCredentialApiKey = () => {
 
       </GetCredential.Card>
 
-      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps">
+      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" isCollapsable="true" >
 
         <GetCredential.Return.Side>
           <GetCredential.Return.Side.Custom>

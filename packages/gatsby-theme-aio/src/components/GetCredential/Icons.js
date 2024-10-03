@@ -63,3 +63,19 @@ export const AlertIcon = () => {
     </svg>
   )
 }
+
+export const ArrowDown = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 0 18 18" width="25">
+      <rect id="Canvas" fill="#ff13dc" opacity="0" width="25" height="25" /><path class="fill" d="M4,7.01a1,1,0,0,1,1.7055-.7055l3.289,3.286,3.289-3.286a1,1,0,0,1,1.437,1.3865l-.0245.0245L9.7,11.7075a1,1,0,0,1-1.4125,0L4.293,7.716A.9945.9945,0,0,1,4,7.01Z" />
+    </svg>
+  )
+}
+
+export const ArrowRight = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 0 18 18" width="25">
+      <rect id="Canvas" fill="#ff13dc" opacity="0" width="25" height="25" /><path class="fill" d="M12,9a.994.994,0,0,1-.2925.7045l-3.9915,3.99a1,1,0,1,1-1.4355-1.386l.0245-.0245L9.5905,9,6.3045,5.715A1,1,0,0,1,7.691,4.28l.0245.0245,3.9915,3.99A.994.994,0,0,1,12,9Z" />
+    </svg>
+  )
+}

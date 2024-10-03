@@ -12,7 +12,7 @@ import { CardProducts } from './Products';
 import GetCredentialContext from './GetCredentialContext';
 import { CredentialDetailsCard } from './CredentialDetailsCard';
 
-const PreviousProject = ({ returnFields, productList }) => {
+const PreviousProject = ({ returnFields, productList, collapse }) => {
 
   const { getCredentialData: returnProps, selectedOrganization, previousProjectDetail } = useContext(GetCredentialContext);
 
@@ -27,7 +27,7 @@ const PreviousProject = ({ returnFields, productList }) => {
   const projectDetails = previousProjectsDetails?.[selectedIndex];
   const manageProps = returnProps[PreviousProject];
 
-  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];  
+  const allowedDomains = projectDetails?.workspaces[0]?.credentials[0]?.metadata?.["adobeid.domain"];
 
   return (
     <>
@@ -63,6 +63,7 @@ const PreviousProject = ({ returnFields, productList }) => {
           nextButtonLink={previousProject?.nextStepsHref}
           devConsoleLink={manageProps?.devConsoleDirection}
           returnFields={returnFields}
+          collapse={collapse}
         />
 
       </div>

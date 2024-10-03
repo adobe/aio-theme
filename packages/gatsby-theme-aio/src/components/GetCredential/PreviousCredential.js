@@ -144,6 +144,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
             <PreviousProject
               returnFields={returnFields}
               productList={productList}
+              collapse = { returnProps?.[PreviousProject]?.isCollapsable}
             />
           </div>
         </div>

@@ -304,7 +304,7 @@ const GetCredential = ({ templateId, productName = "Firefly Service", children, 
               className={classNames(className)}
               css={css`
                 background: #f8f8f8;
-                padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
+                padding: var(--spectrum-global-dimension-size-500) 0 var(--spectrum-global-dimension-size-500) 0;
 
                 button , input[type = checkbox] , a{
                   cursor:pointer !important;
