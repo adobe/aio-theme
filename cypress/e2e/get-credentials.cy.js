@@ -14,8 +14,7 @@ function init(route) {
 
 function checkRequestAccessEdgeCase() {
   cy.get('body').then(($body) => {
-    if ($body.find('[data-cy="accessDetails-edgeCase-btn]').length) {
-      // cy.get('[data-cy="return-flow"]').should('be.visible');
+    if ($body.find('a[data-cy="accessDetails-edgeCase-btn"]').length) {
       cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
     }
   });
@@ -98,12 +97,12 @@ function checkAPIKey() {
 
 function checkOAuthS2S() {
 
-  // Check if the collapse open button is present and click it if it is
-  cy.get('body').then(($body) => {
-    if ($body.find('[data-cy="collapse-open"]').length) {
-      cy.get('[data-cy="collapse-open"]').click();
-    }
-  });
+    // Check if the collapse open button is present and click it if it is
+    cy.get('body').then(($body) => {
+      if ($body.find('[data-cy="collapse-open"]').length) {
+        cy.get('[data-cy="collapse-open"]').click();
+      }
+    });
 
   cy.get('div[data-cy="generate-token"]').should('be.visible');
   // cy.get('button[data-cy="copy-token"]').should('exist');
