@@ -13,11 +13,7 @@ function init(route) {
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('body').then(($body) => {
-    if ($body.find('a[data-cy="accessDetails-edgeCase-btn"]').length) {
-      cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
-    }
-  });
+  cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
 };
 
 function getIframeBody() {
@@ -148,7 +144,11 @@ function addCredential(credentialType) {
   cy.get('[data-cy="create-credential-btn"]').should('be.enabled');
   cy.get('[data-cy="create-credential-btn"]').click();
   if (credentialType === API_KEY) {
-    cy.get('button[data-cy="restart-download"]').should('be.visible').should('be.enabled').click();
+    cy.get('body').then(($body) => {
+      if ($body.find('button[data-cy="restart-download"]').length) {
+        cy.get('button[data-cy="restart-download"]').should('be.visible').should('be.enabled').click();
+      }
+    });
   }
   checkCredential(credentialType);
   cy.get('[data-cy="Restart-new-credential"]').click();
