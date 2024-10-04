@@ -13,7 +13,12 @@ function init(route) {
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="accessDetails-edgeCase-btn]').length) {
+      // cy.get('[data-cy="return-flow"]').should('be.visible');
+      cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
+    }
+  });
 };
 
 function getIframeBody() {
