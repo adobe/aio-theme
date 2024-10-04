@@ -164,11 +164,11 @@ function returnToForm() {
 describe('Get Credentials Test', () => {
   it('API Key credential', () => {
     init('/getCredential/');
-    // checkReturnFlow(API_KEY);
-    // selectOrganization('AdobeIOTestingOrg');
-    // checkReturnFlow(API_KEY);
+    checkReturnFlow(API_KEY);
+    selectOrganization('AdobeIOTestingOrg');
+    checkReturnFlow(API_KEY);
     // return to the form
-    // returnToForm();
+    returnToForm();
     addCredential(API_KEY);
   });
 
