@@ -74,11 +74,11 @@ export const CredentialDetailsCard = ({
     setIsCollapse(!isCollapse);
   }
 
-  useEffect(()=>{
-    if(!bool){
+  useEffect(() => {
+    if (!bool) {
       setIsCollapse(true);
     }
-  },[bool])
+  }, [bool])
 
   return (
     <>
@@ -135,7 +135,7 @@ export const CredentialDetailsCard = ({
             </div>
             {
               bool &&
-              <div css={css`cursor:pointer`} onClick={handleCollapse}>
+              <div role="button" css={css`cursor:pointer`} data-cy="collapse-open" onClick={handleCollapse}>
                 {isCollapse ? <ArrowDown /> : <ArrowRight />}
               </div>
             }

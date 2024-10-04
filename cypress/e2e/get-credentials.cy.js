@@ -60,6 +60,14 @@ function checkReturnFlow(credentialType) {
 };
 
 function checkAPIKey() {
+
+  // Check if the collapse open button is present and click it if it is
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="collapse-open"]').length) {
+      cy.get('[data-cy="collapse-open"]').click();
+    }
+  });
+
   // verify API key is visible
   cy.contains('API Key').should('be.visible');
 
@@ -75,6 +83,14 @@ function checkAPIKey() {
 }
 
 function checkOAuthS2S() {
+  
+    // Check if the collapse open button is present and click it if it is
+    cy.get('body').then(($body) => {
+      if ($body.find('[data-cy="collapse-open"]').length) {
+        cy.get('[data-cy="collapse-open"]').click();
+      }
+    });
+
   cy.get('div[data-cy="generate-token"]').should('be.visible');
   // cy.get('button[data-cy="copy-token"]').should('exist');
   cy.get('[data-cy="credentialName-link"]').should('exist');
