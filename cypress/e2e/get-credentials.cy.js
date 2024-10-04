@@ -13,7 +13,7 @@ function init(route) {
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
+  cy.get('[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
 };
 
 function getIframeBody() {
