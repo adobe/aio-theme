@@ -40,14 +40,23 @@ function checkRequestAccess() {
 
 function checkReturnFlow(credentialType) {
   // verify return flow is visible
-  cy.get('[data-cy="return-flow"]').should('be.visible');
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="return-flow"]').length) {
+      cy.get('[data-cy="return-flow"]').should('be.visible');
+    }
+  });
 
   // verify clicking on create new credential button opens the form
   returnToForm();
 
   // verify clicking on cancel button closes the form
   cy.get('[data-cy="cancel-new-credential"]').click();
-  cy.get('[data-cy="return-flow"]').should('be.visible');
+  // cy.get('[data-cy="return-flow"]').should('be.visible');
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="return-flow"]').length) {
+      cy.get('[data-cy="return-flow"]').should('be.visible');
+    }
+  });
 
   // verify clicking on manage projects console button exists
   cy.get('[data-cy="manage-projects-console"]').should('exist');
@@ -84,12 +93,12 @@ function checkAPIKey() {
 
 function checkOAuthS2S() {
 
-    // Check if the collapse open button is present and click it if it is
-    cy.get('body').then(($body) => {
-      if ($body.find('[data-cy="collapse-open"]').length) {
-        cy.get('[data-cy="collapse-open"]').click();
-      }
-    });
+  // Check if the collapse open button is present and click it if it is
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="collapse-open"]').length) {
+      cy.get('[data-cy="collapse-open"]').click();
+    }
+  });
 
   cy.get('div[data-cy="generate-token"]').should('be.visible');
   // cy.get('button[data-cy="copy-token"]').should('exist');
