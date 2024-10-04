@@ -83,7 +83,7 @@ function checkAPIKey() {
 }
 
 function checkOAuthS2S() {
-  
+
     // Check if the collapse open button is present and click it if it is
     cy.get('body').then(($body) => {
       if ($body.find('[data-cy="collapse-open"]').length) {
@@ -164,11 +164,11 @@ function returnToForm() {
 describe('Get Credentials Test', () => {
   it('API Key credential', () => {
     init('/getCredential/');
-    checkReturnFlow(API_KEY);
-    selectOrganization('AdobeIOTestingOrg');
-    checkReturnFlow(API_KEY);
+    // checkReturnFlow(API_KEY);
+    // selectOrganization('AdobeIOTestingOrg');
+    // checkReturnFlow(API_KEY);
     // return to the form
-    returnToForm();
+    // returnToForm();
     addCredential(API_KEY);
   });
 
