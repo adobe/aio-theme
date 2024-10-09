@@ -40,11 +40,7 @@ function checkRequestAccess() {
 
 function checkReturnFlow(credentialType) {
   // verify return flow is visible
-  cy.get('body').then(($body) => {
-    if ($body.find('[data-cy="return-flow"]').length) {
-      cy.get('[data-cy="return-flow"]').should('be.visible');
-    }
-  });
+  cy.get('[data-cy="return-flow"]').should('be.visible');
 
   // verify clicking on create new credential button opens the form
   returnToForm();

@@ -1,9 +1,9 @@
 import React from 'react';
 import ShowCard from '../Card/ShowCard';
 
-const ReturnClientSecret = ({ val: { returnClientSecret, response } }) => {
+const ReturnClientSecret = ({ returnClientSecret, response }) => {
   return (
-    returnClientSecret && <ShowCard heading={returnClientSecret?.heading} isClientSecret buttonLabel={returnClientSecret?.buttonLabel} response={response} />
+    <ShowCard heading={returnClientSecret?.heading} isClientSecret buttonLabel={returnClientSecret?.buttonLabel} response={response} />
   )
 }
 

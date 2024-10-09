@@ -1,9 +1,9 @@
 import React from 'react';
 import ShowCard from '../Card/ShowCard';
 
-const ReturnOrganizationName = ({ val: { heading, organization } }) => {
+const ReturnOrganizationName = ({ returnOrganizationName, organization }) => {
   return (
-    heading && <ShowCard heading={heading} value={organization} isOraganization />
+    <ShowCard heading={returnOrganizationName?.heading} value={organization} isOraganization />
   )
 }
 
