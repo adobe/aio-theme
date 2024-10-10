@@ -1,8 +1,8 @@
 import React from 'react';
 import ShowCard from './ShowCard';
 
-const CardImsOrgID = ({ val: { heading, imsOrgId } }) => {
-  return heading && <ShowCard heading={heading} value={imsOrgId} />
+const CardImsOrgID = ({ cardImsOrgID, imsOrgId }) => {
+  return <ShowCard heading={cardImsOrgID?.heading} value={imsOrgId} />;
 };
 
 export { CardImsOrgID };

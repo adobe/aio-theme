@@ -59,7 +59,7 @@ const GetCredentialApiKey = () => {
 
         <GetCredential.Card.DevConsoleLink heading="Developer Console Project" />
 
-        <GetCredential.Card.CredentialDetails heading="Credential details">
+        <GetCredential.Card.CredentialDetails heading="Credential details" orderBy="APIKey,OrganizationName,ImsOrgID,AllowedOrigins">
           <GetCredential.Card.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Card.CredentialDetails.AllowedOrigins heading="Allowed domains" />
           <GetCredential.Card.CredentialDetails.OrganizationName heading="Organization" />
@@ -68,7 +68,7 @@ const GetCredentialApiKey = () => {
 
       </GetCredential.Card>
 
-      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps">
+      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" isCollapsable="true" >
 
         <GetCredential.Return.Side>
           <GetCredential.Return.Side.Custom>
@@ -80,7 +80,7 @@ const GetCredentialApiKey = () => {
           <GetCredential.Return.Side.NewCredential heading="Need another credential?" buttonLabel="Create new credential" />
         </GetCredential.Return.Side>
 
-        <GetCredential.Return.CredentialDetails heading="Credential details">
+        <GetCredential.Return.CredentialDetails heading="Credential details" orderBy="APIKey,OrganizationName,ImsOrgID,AllowedOrigins">
           <GetCredential.Return.CredentialDetails.APIKey heading="API Key" />
           <GetCredential.Return.CredentialDetails.AllowedOrigins heading="Allowed domains" />
           <GetCredential.Return.CredentialDetails.OrganizationName heading="Organization" />

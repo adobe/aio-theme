@@ -9,77 +9,61 @@ import { ReturnScopes } from './ReturnScopes';
 import GetCredentialContext from '../GetCredentialContext';
 import { CardImsOrgID } from '../Card/CardImsOrgID';
 
-const COMPONENT_MAP = {
-  "ReturnAPIKey": ReturnAPIKey,
-  "ReturnAllowedOrigins": ReturnAllowedOrigins,
-  "ReturnClientId": ReturnClientId,
-  "ReturnClientSecret": ReturnClientSecret,
-  "ReturnOrganizationName": ReturnOrganizationName,
-  "ReturnScopes": ReturnScopes,
-  "CardImsOrgID": CardImsOrgID
-};
-
-const ReturnCredentialDetails = ({
-  clientDetails,
-  apiKeyDetails,
-  clientIdDetails,
-  clientSecretDetails,
-  organizationDetails,
-  scopesDetails,
-  allowedOriginsDetails,
-  organizationName,
-  allowedOrigins,
-  response,
-  imsOrgID,
-  returnFields
-}) => {
+const ReturnCredentialDetails = ({ clientDetails, clientIdDetails, clientSecretDetails, organizationDetails, scopesDetails, apiKeyDetails, allowedOriginsDetails, organizationName, allowedOrigins, response, imsOrgID }) => {
 
   const { selectedOrganization } = useContext(GetCredentialContext);
 
-  const returnCompDetails = {
-    "ReturnAPIKey": {
-      heading: apiKeyDetails?.heading,
-      apiKey: response?.workspaces[0]?.credentials[0]?.clientId,
-    },
-    "ReturnAllowedOrigins": {
-      heading: allowedOrigins?.heading,
-      allowedOrigins: allowedOriginsDetails,
-    },
-    "ReturnClientId": {
-      heading: clientIdDetails?.heading,
-      clientId: response?.workspaces[0]?.credentials[0]?.clientId,
-    },
-    "ReturnClientSecret": {
-      returnClientSecret: clientSecretDetails,
-      response
-    },
-    "ReturnOrganizationName": {
-      heading: organizationDetails?.heading,
-      organization: organizationName?.name
-    },
-    "ReturnScopes": {
-      heading: scopesDetails?.heading,
-      scope: scopesDetails?.scope
-    },
-    "CardImsOrgID": {
-      heading: imsOrgID?.heading,
-      imsOrgId: selectedOrganization?.code
-    }
-  };
+  const splitedOrderBy = clientDetails?.orderBy ? clientDetails?.orderBy?.split(',') : [];
 
-  return (
-    <div css={css`
+return (
+  <div css={css`
         display : flex;
         flex-direction : column;  
         gap: 32px;
       `}>
-      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading}</h4>
-      {returnFields?.[ReturnCredentialDetails]?.children.map(({ type }, index) => {
-        const Component = COMPONENT_MAP[type?.name];
-        return Component ? <Component key={index} val={returnCompDetails[type?.name]} /> : null;
-      })}
-    </div>
-  );
-};
+
+    <h4 className="spectrum-Heading spectrum-Heading--sizeS">{clientDetails?.heading} </h4>
+    {
+      splitedOrderBy?.length > 0 ?
+        <>
+          {splitedOrderBy?.map((list) => {
+            if (list === "APIKey") {
+              return apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={response?.workspaces[0]?.credentials[0]?.clientId} />
+            }
+            if (list === "AllowedOrigins") {
+              return allowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={clientDetails} allowedOrigins={allowedOriginsDetails} returnAllowedOrigins={allowedOrigins} />
+            }
+            if (list === "ImsOrgID") {
+              return imsOrgID && <CardImsOrgID returnCredentialDetails={clientDetails} cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />
+            }
+            if (list === "OrganizationName") {
+              return organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />
+            }
+            if (list === "ClientId") {
+              return clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={response?.workspaces[0]?.credentials[0]?.clientId} />
+            }
+            if (list === "ClientSecret") {
+              return clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />
+            }
+            if (list === "Scopes") {
+              return scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />
+            }
+          })}
+        </> :
+        <>
+          {apiKeyDetails && <ReturnAPIKey returnCredentialDetails={clientDetails} returnAPIKey={apiKeyDetails} apiKey={response?.workspaces[0]?.credentials[0]?.clientId} />}
+          {allowedOrigins && <ReturnAllowedOrigins returnCredentialDetails={clientDetails} allowedOrigins={allowedOriginsDetails} returnAllowedOrigins={allowedOrigins} />}
+          {clientIdDetails && <ReturnClientId returnCredentialDetails={clientDetails} returnClientId={clientIdDetails} clientId={response?.workspaces[0]?.credentials[0]?.clientId} />}
+          {clientSecretDetails && <ReturnClientSecret returnCredentialDetails={clientDetails} returnClientSecret={clientSecretDetails} response={response} />}
+          {organizationDetails && <ReturnOrganizationName returnCredentialDetails={clientDetails} returnOrganizationName={organizationDetails} organization={organizationName?.name} />}
+          {scopesDetails && <ReturnScopes returnCredentialDetails={clientDetails} returnScopes={scopesDetails} />}
+          {imsOrgID && <CardImsOrgID returnCredentialDetails={clientDetails} cardImsOrgID={imsOrgID} imsOrgId={selectedOrganization?.code} />}
+
+        </>
+    }
+
+  </div>
+)
+}
 
 export { ReturnCredentialDetails };
