@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.12..@adobe/gatsby-theme-aio@4.14.13) (2024-10-10)
+
+### Fix
+* Fixes to the create credentials component [afa017b](https://github.com/adobe/aio-theme/commit/afa017b34905c4152b118837bc7ad6f9c2d31566)
+
+
 ## [4.14.12](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.10..@adobe/gatsby-theme-aio@4.14.12) (2024-09-24)
 
 ### Features
