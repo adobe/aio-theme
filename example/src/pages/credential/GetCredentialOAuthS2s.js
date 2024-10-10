@@ -106,7 +106,7 @@ const GetCredentialOAuthS2s = () => {
 
         <GetCredential.Card.AccessToken helpText="" buttonLabel="Generate and copy token" heading="Access Token" />
 
-        <GetCredential.Card.CredentialDetails heading="Credential details">
+        <GetCredential.Card.CredentialDetails heading="Credential details" orderBy="ClientId,Scopes,ClientSecret,ImsOrgID">
           <GetCredential.Card.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Card.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Card.CredentialDetails.Scopes heading="Scopes" scope="openid, AdobeID, read_organizations, firefly_api, ff_apis" />
@@ -115,7 +115,7 @@ const GetCredentialOAuthS2s = () => {
 
       </GetCredential.Card>
 
-      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." devConsoleDirection="/console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on Developer Console" className="card_developer_console">
+      <GetCredential.Return title="Previously created projects" paragraph="Select a project and access your existing credentials for Firefly - Firefly and Creative Cloud Automation." devConsoleDirection="/console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on Developer Console" className="card_developer_console" isCollapsable="true">
 
         <GetCredential.Return.Side>
           <GetCredential.Return.Side.Custom>
@@ -127,7 +127,7 @@ const GetCredentialOAuthS2s = () => {
           <GetCredential.Return.Side.NewCredential heading="Need another credential?" buttonLabel="Create new credential" />
         </GetCredential.Return.Side>
 
-        <GetCredential.Return.CredentialDetails heading="Credential details">
+        <GetCredential.Return.CredentialDetails heading="Credential details" orderBy="ClientId,Scopes,ClientSecret,ImsOrgID">
           <GetCredential.Return.CredentialDetails.ClientId heading="ClientId" />
           <GetCredential.Return.CredentialDetails.ClientSecret heading="Client Secret" buttonLabel="Retrieve and copy client secret" />
           <GetCredential.Return.CredentialDetails.Scopes heading="Scopes" scope="openid, AdobeID, read_organizations, firefly_api, ff_apis" />

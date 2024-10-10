@@ -18,7 +18,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
   const returnProps = getCredentialData;
 
   const [isShow, setIsShow] = useState(false);
-  const credentialHeader = returnProps[CredentialForm];
+  const credentialHeader = returnProps?.[CredentialForm];
   const { selectedOrganization } = useContext(GetCredentialContext);
 
   const returnFields = {};
@@ -144,6 +144,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
             <PreviousProject
               returnFields={returnFields}
               productList={productList}
+              collapse = { returnProps?.[PreviousProject]?.isCollapsable}
             />
           </div>
         </div>

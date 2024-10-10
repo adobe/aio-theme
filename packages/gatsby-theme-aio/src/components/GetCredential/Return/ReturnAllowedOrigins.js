@@ -1,9 +1,9 @@
 import React from 'react';
 import ShowCard from '../Card/ShowCard';
 
-const ReturnAllowedOrigins = ({ val: { allowedOrigins, heading } }) => {
+const ReturnAllowedOrigins = ({ returnAllowedOrigins, allowedOrigins }) => {
   return (
-    heading && <ShowCard heading={heading} value={allowedOrigins} />
+    <ShowCard heading={returnAllowedOrigins?.heading} value={allowedOrigins} />
   )
 }
 

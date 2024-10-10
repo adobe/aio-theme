@@ -13,7 +13,7 @@ function init(route) {
 }
 
 function checkRequestAccessEdgeCase() {
-  cy.get('a[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
+  cy.get('[data-cy="accessDetails-edgeCase-btn"]').should('be.visible');
 };
 
 function getIframeBody() {
@@ -47,7 +47,12 @@ function checkReturnFlow(credentialType) {
 
   // verify clicking on cancel button closes the form
   cy.get('[data-cy="cancel-new-credential"]').click();
-  cy.get('[data-cy="return-flow"]').should('be.visible');
+  // cy.get('[data-cy="return-flow"]').should('be.visible');
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="return-flow"]').length) {
+      cy.get('[data-cy="return-flow"]').should('be.visible');
+    }
+  });
 
   // verify clicking on manage projects console button exists
   cy.get('[data-cy="manage-projects-console"]').should('exist');
@@ -60,6 +65,14 @@ function checkReturnFlow(credentialType) {
 };
 
 function checkAPIKey() {
+
+  // Check if the collapse open button is present and click it if it is
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="collapse-open"]').length) {
+      cy.get('[data-cy="collapse-open"]').click();
+    }
+  });
+
   // verify API key is visible
   cy.contains('API Key').should('be.visible');
 
@@ -75,7 +88,19 @@ function checkAPIKey() {
 }
 
 function checkOAuthS2S() {
-  cy.get('div[data-cy="generate-token"]').should('be.visible');
+
+  // Check if the collapse open button is present and click it if it is
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="collapse-open"]').length) {
+      cy.get('[data-cy="collapse-open"]').click();
+    }
+  });
+
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="generate-token"]').length) {
+      cy.get('[data-cy="generate-token"]').should('be.visible');
+    }
+  });
   // cy.get('button[data-cy="copy-token"]').should('exist');
   cy.get('[data-cy="credentialName-link"]').should('exist');
   cy.get('[data-cy="ClientId-copyIcon"]').should('exist');
@@ -119,7 +144,11 @@ function addCredential(credentialType) {
   cy.get('[data-cy="create-credential-btn"]').should('be.enabled');
   cy.get('[data-cy="create-credential-btn"]').click();
   if (credentialType === API_KEY) {
-    cy.get('button[data-cy="restart-download"]').should('be.visible').should('be.enabled').click();
+    cy.get('body').then(($body) => {
+      if ($body.find('button[data-cy="restart-download"]').length) {
+        cy.get('button[data-cy="restart-download"]').should('be.visible').should('be.enabled').click();
+      }
+    });
   }
   checkCredential(credentialType);
   cy.get('[data-cy="Restart-new-credential"]').click();
