@@ -31,6 +31,16 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       }),
     ],
   });
+  if(stage === 'build-html'){
+    actions.setWebpackConfig({
+      module: {
+        rules: [{
+          test: /lottie/,
+          use: loaders.null()
+        }]
+      }
+    })
+  }
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
