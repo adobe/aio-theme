@@ -246,6 +246,7 @@ const MyCredential = ({
             devConsoleLink={card?.devConsoleDirection}
             developerConsoleManage={card?.developerConsoleManage}
             myCredentialFields={myCredentialFields}
+            collapse={card?.isCollapsable}
           />
           <div
             css={css`
