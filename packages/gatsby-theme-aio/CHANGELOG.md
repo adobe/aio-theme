@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.13..@adobe/gatsby-theme-aio@4.14.14) (2024-10-30)
+
+### Fix
+* Ignore lottie module during server-side rendering to avoid build error [efbc27b](https://github.com/adobe/aio-theme/commit/efbc27b7a6ca3f859dbde85ffe09cb2ffff53784)
+
 ## [4.14.13](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.12..@adobe/gatsby-theme-aio@4.14.13) (2024-10-10)
 
 ### Fix
