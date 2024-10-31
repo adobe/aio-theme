@@ -346,7 +346,7 @@ root
 ```
 
 Using a folder structure with only `index.md` files gets you close to the final site build files. During the build process, `md` files will be transformed into `index.html` files.
-The build files can be found in the `public` folder. Please read the [Overview of the Build Process](https://www.gatsbyjs.com/docs/overview-of-the-gatsby-build-process/) for more information.
+The build files can be found in the `public` folder. Please read the [Overview of the Build Process](https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process/) for more information.
 
 Here's a simple example of a content structure with `md` files and the resulting `html` files:
 
