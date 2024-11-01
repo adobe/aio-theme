@@ -18,27 +18,27 @@ on:
       - "cypress/**"
 jobs:
   smoke_tests:
-    # container:
-    #   credentials:
-    #     username: dcartfy
-    #     # This secret was added as a repository action secret manually. The
-    #     # secret will eventually be managed via Terraform in a `glb/github/glb`
-    #     # configuration in Developer Website's infrastructure repository.
-    #     password: ${{ secrets.ADOBE_ARTIFACTORY_CORP_API_KEY_DCARTFY }}
-    #   image: docker-hub-remote.dr.corp.adobe.com/cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
-    #   options: --user root
+    container:
+      credentials:
+        username: dcartfy
+        # This secret was added as a repository action secret manually. The
+        # secret will eventually be managed via Terraform in a `glb/github/glb`
+        # configuration in Developer Website's infrastructure repository.
+        password: ${{ secrets.ADOBE_ARTIFACTORY_CORP_API_KEY_DCARTFY }}
+      image: docker-hub-remote.dr.corp.adobe.com/cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
+      options: --user root
     runs-on: developer-website-arc-dev-runners-aat 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 16
+      # - name: Setup Node
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 16
           
-      - name: Setup Yarn
-        run: npm install --global yarn@1.22.22
+      # - name: Setup Yarn
+      #   run: npm install --global yarn@1.22.22
 
       - name: 'Create env file'
         run: |
@@ -58,7 +58,7 @@ jobs:
           spec: |
             cypress/e2e/smoke.cy.js
             cypress/e2e/get-credentials.cy.js
-          tag: node-16
+          # tag: node-16
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
           NODE_OPTIONS: '--max-old-space-size=16384'
