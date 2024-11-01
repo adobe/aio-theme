@@ -26,7 +26,7 @@ jobs:
         # configuration in Developer Website's infrastructure repository.
         password: ${{ secrets.ADOBE_ARTIFACTORY_CORP_API_KEY_DCARTFY }}
       image: docker-hub-remote.dr.corp.adobe.com/cypress/browsers:node-20.14.0-chrome-126.0.6478.114-1-ff-127.0.1-edge-126.0.2592.61-1
-      options: --user root
+      options: --user 1001
     runs-on: developer-website-arc-dev-runners-aat 
     steps:
       - name: Checkout
