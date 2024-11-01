@@ -50,7 +50,7 @@ jobs:
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
-          start: DEBUG=true yarn dev:https:ci
+          start: yarn dev:https:ci
           wait-on: 'https://localhost.corp.adobe.com:9000'
           wait-on-timeout: 150
           browser: chrome
