@@ -41,7 +41,7 @@ const GetCredentialApiKey = () => {
 
       <GetCredential.UnknownError helpLink="https://some_help_link" helpLinkText="Get Help" className="unKnownError" />
 
-      <GetCredential.Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps">
+      <GetCredential.Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." className="card_developer_console" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" isCollapsable="true">
 
         <GetCredential.Card.Side>
           <div style="display : flex ; gap : 16px ; flex-direction : column;">
