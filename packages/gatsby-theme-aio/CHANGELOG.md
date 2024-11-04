@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.14..@adobe/gatsby-theme-aio@4.14.15) (2024-11-04)
+
+### Feature
+* Added ability to make card collapsable [4bf012f](https://github.com/adobe/aio-theme/commit/4bf012fac6e3ca63e8635d880bc07ff3a7eff6ed)
+
 ## [4.14.14](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.13..@adobe/gatsby-theme-aio@4.14.14) (2024-10-30)
 
 ### Fix
