@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.16](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.15..@adobe/gatsby-theme-aio@4.14.16) (2024-11-05)
+
+### Fix
+
+* Space issues on the return flow [1cd0ea1](https://github.com/adobe/aio-theme/commit/1cd0ea10b1e6534b737751ce8396c4ab30f7af40)
+
+
 ## [4.14.15](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.14..@adobe/gatsby-theme-aio@4.14.15) (2024-11-04)
 
 ### Feature
