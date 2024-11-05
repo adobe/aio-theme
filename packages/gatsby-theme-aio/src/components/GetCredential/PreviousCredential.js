@@ -60,48 +60,6 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
         <div
           css={css`
             display: flex;
-            flex-direction: column;
-            gap: 48px;
-            color: var(--spectrum-global-color-gray-800);
-            width: 100%;
-            height: 100%;
-            text-align: left;
-            @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
-              padding: 0;
-              width: 100%;
-            }
-          `}>
-          <div
-            css={css`
-              display: flex;
-              flex-direction: column;
-              gap: 16px;
-            `}>
-            {credentialHeader?.title && (
-              <h3 className="spectrum-Heading spectrum-Heading--sizeXL">
-                {credentialHeader?.title}
-              </h3>
-            )}
-            {credentialHeader?.paragraph && (
-              <p className="spectrum-Body spectrum-Body--sizeL"> {credentialHeader?.paragraph} </p>
-            )}
-            <p
-              className="spectrum-Body spectrum-Body--sizeS"
-              onClick={() => setIsShow(true)}
-              css={css`
-                color: var(--spectrum-global-color-gray-800);
-                display: inline-flex;
-              `}>
-              {selectedOrganization.type === "developer" ?
-                "You’re viewing in your personal developer organization" :
-                <>You’re viewing in [<b> {selectedOrganization?.name} </b>] .</>}
-              <Organization isShow={isShow} setIsShow={setIsShow} />
-            </p>
-          </div>
-        </div>
-        <div
-          css={css`
-            display: flex;
             gap: 35px;
 
             @media screen and (min-width: ${MIN_MOBILE_WIDTH}) and (max-width: ${MAX_TABLET_SCREEN_WIDTH}) {
@@ -120,14 +78,41 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
                 width: 100%;
               }
             `}>
-            {returnSideComp && (
-              <ReturnSideComp
-                returnSideComp={returnSideComp}
-                returnNewCredential={returnNewCredential}
-                returnCustomComp={returnCustomComp}
-                setIsCreateNewCredential={setIsCreateNewCredential}
-              />
-            )}
+            <div
+              css={css`
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+            `}>
+              {credentialHeader?.title && (
+                <h3 className="spectrum-Heading spectrum-Heading--sizeXL">
+                  {credentialHeader?.title}
+                </h3>
+              )}
+              {credentialHeader?.paragraph && (
+                <p className="spectrum-Body spectrum-Body--sizeL"> {credentialHeader?.paragraph} </p>
+              )}
+              <p
+                className="spectrum-Body spectrum-Body--sizeS"
+                onClick={() => setIsShow(true)}
+                css={css`
+                color: var(--spectrum-global-color-gray-800);
+                display: inline-flex;
+              `}>
+                {selectedOrganization.type === "developer" ?
+                  "You’re viewing in your personal developer organization" :
+                  <>You’re viewing in [<b> {selectedOrganization?.name} </b>] .</>}
+                <Organization isShow={isShow} setIsShow={setIsShow} />
+              </p>
+              {returnSideComp && (
+                <ReturnSideComp
+                  returnSideComp={returnSideComp}
+                  returnNewCredential={returnNewCredential}
+                  returnCustomComp={returnCustomComp}
+                  setIsCreateNewCredential={setIsCreateNewCredential}
+                />
+              )}
+            </div>
           </div>
 
           <div
@@ -144,7 +129,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
             <PreviousProject
               returnFields={returnFields}
               productList={productList}
-              collapse = { returnProps?.[PreviousProject]?.isCollapsable}
+              collapse={returnProps?.[PreviousProject]?.isCollapsable}
             />
           </div>
         </div>
