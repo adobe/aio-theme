@@ -64,4 +64,5 @@ jobs:
           NODE_OPTIONS: '--max-old-space-size=16384'
 
       - name: Pause workflow for investigation
+        if: ${{ always() }}
         run: sleep 300
