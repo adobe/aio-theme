@@ -47,6 +47,10 @@ jobs:
           echo GATSBY_IMS_CONFIG='{"client_id": "stage_adobe_io", "scope": "AdobeID,openid,unified_dev_portal,read_organizations,additional_info.projectedProductContext,additional_info.roles,gnav,read_pc.dma_bullseye,creative_sdk,adobeio_api,service_principals.read,service_principals.write,read_client_secret", "environment": "stg1"}' >> ./example/.env
           cat ./example/.env
 
+      - name: Pause workflow for investigation
+        if: ${{ always() }}
+        run: sleep 600
+
       - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
@@ -62,7 +66,3 @@ jobs:
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
           NODE_OPTIONS: '--max-old-space-size=16384'
-
-      - name: Pause workflow for investigation
-        if: ${{ always() }}
-        run: sleep 300
