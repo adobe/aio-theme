@@ -128,6 +128,11 @@ function checkCredential(credentialType) {
 };
 
 function addCredential(credentialType) {
+  cy.get('body').then(($body) => {
+    if ($body.find('[data-cy="create-new-credential"]').length) {
+      cy.get('[data-cy="create-new-credential"]').click();
+    }
+  });
   const credentialName = `CypressTest${credentialType}${Math.floor(Math.random() * 1000)}`;
   cy.get('[data-cy="add-credential-name"]').click().should('have.focus');
   cy.get('[data-cy="add-credential-name"]').type(credentialName).should('have.value', credentialName);
@@ -176,24 +181,56 @@ function returnToForm() {
 
 describe('Get Credentials Test', () => {
   it('API Key credential', () => {
-    init('/getCredential/');
-    checkReturnFlow(API_KEY);
+    const path = '/getCredential/';
+    init(path);
+    const orgId = 2316;
+    interceptSearchRequest(orgId);
     selectOrganization('AdobeIOTestingOrg');
-    checkReturnFlow(API_KEY);
-    // return to the form
-    returnToForm();
+    waitForSearchRequestAndDeleteProjects(orgId);
+
     addCredential(API_KEY);
+    cy.visit(path);
+    checkReturnFlow(API_KEY);
   });
 
   it('OAuth S2S credential', () => {
-    init('/get-credential-oauth/');
+    const path = '/get-credential-oauth/';
+    init(path);
     checkRequestAccessEdgeCase();
     selectOrganization('Romans entp org');
     checkRequestAccess();
+    const orgId = 918;
+    interceptSearchRequest(orgId);
     selectOrganization('MAC New Feature Testing');
-    checkReturnFlow(OAUTH_S2S);
-    // return to the form
-    returnToForm();
+    waitForSearchRequestAndDeleteProjects(orgId);
     addCredential(OAUTH_S2S);
+    cy.visit(path);
+    checkReturnFlow(OAUTH_S2S);
   });
 });
+
+function interceptSearchRequest(orgId) {
+  cy.intercept('GET', `/console/api/organizations/${orgId}/search/projects*`).as('searchProjects' + orgId);
+}
+
+function waitForSearchRequestAndDeleteProjects(orgId) {
+  cy.wait('@searchProjects' + orgId, { requestTimeout: 30000 }).then(({request: req, response: res}) => {
+    const token = req.headers.authorization;
+
+    if(res?.body?.projects?.length > 0) {
+      res.body.projects.forEach((project) => {
+        const projectId = project.id;
+        const deleteProjectOptions = {
+          url: `/console/api/organizations/${orgId}/projects/${projectId}`,
+          headers: {
+            'Authorization': token,
+            'X-Api-Key': 'stage_adobe_io',
+          },
+          method: 'DELETE',
+          failOnStatusCode: false,
+        };
+        cy.request(deleteProjectOptions).then(() => {});
+     });
+    }
+  });
+}
