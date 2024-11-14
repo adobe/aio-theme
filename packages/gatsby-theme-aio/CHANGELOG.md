@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.17](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.16..@adobe/gatsby-theme-aio@4.14.17) (2024-11-14)
+
+### Fix
+
+* Add Compliance site to Footer [1ddf2f4](https://github.com/adobe/aio-theme/commit/1ddf2f4d3ea4fdd71be3537daf38ce72a916cb46)
+
+
 ## [4.14.16](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.15..@adobe/gatsby-theme-aio@4.14.16) (2024-11-05)
 
 ### Fix
