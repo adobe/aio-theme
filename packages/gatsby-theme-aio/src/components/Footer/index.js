@@ -109,6 +109,10 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     {
       title: 'Careers',
       path: 'https://adobe.com/careers.html'
+    },
+    {
+      title: 'Compliance',
+      path: 'https://developer.adobe.com/compliance/'
     }
   ],
   legal: [
