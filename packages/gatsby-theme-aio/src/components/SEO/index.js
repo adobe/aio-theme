@@ -38,13 +38,15 @@ const SEO = ({ title, description, keywords }) => (
 
         // Update Launch and EdgeConfig based your site
         var launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-5dd5dd2177e6.min.js';
-        var edgeConfigId = '913eac4d-900b-45e8-9ee7-306216765cd2'; // XLG Prod - adobecomWeb_prod, varies per site
+        var edgeConfigId = '8d2805dd-85bf-4748-82eb-f99fdad117a6'; 
+        // TODO: replace these with env keys setting to stage for now
       
         // modify this as necessary to target dev/qa/stage sites so that the data
         // flows into a different bucket for your dev sites
         var isDev = false;
         if (isDev) {
-          edgeConfigId = '3a30d55c-d57d-4851-af18-634780f03357'; // XLG DEV - adobecomWeb_QA_v1, varies per site
+          edgeConfigId = '8d2805dd-85bf-4748-82eb-f99fdad117a6';
+          // TODO: replace these with env keys setting to stage for now
           launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-2c94beadc94f-development.min.js';
         }
       
