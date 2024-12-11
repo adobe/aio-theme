@@ -7,7 +7,7 @@ const ReturnNewCredential = ({ returnNewCredential, setIsCreateNewCredential, re
     <div
       css={css`
         display:flex;
-        gap:16px;
+        gap:15px;
         flex-direction:column;
         width: 100%;
       `}
