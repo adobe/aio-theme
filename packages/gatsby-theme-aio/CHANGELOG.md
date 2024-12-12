@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.18](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.17..@adobe/gatsby-theme-aio@4.14.18) (2024-12-12)
+
+### Feature
+* Add ctrlFHijack config to RedoclyAPIBlock [fd5c946](https://github.com/adobe/aio-theme/commit/fd5c9461b9b31ec6c597c8c37a9c4c27efd78fa0)
+
 ## [4.14.17](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.16..@adobe/gatsby-theme-aio@4.14.17) (2024-11-14)
 
 ### Fix
