@@ -36,11 +36,11 @@ const SEO = ({ title, description, keywords }) => (
         window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo.language = 'en-US';
 
         var launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-5dd5dd2177e6.min.js';
-        var edgeConfigId = '8d2805dd-85bf-4748-82eb-f99fdad117a6'; 
+        var edgeConfigId = '57c20bab-94c3-425e-95cb-0b9948b1fdd4';
         // TODO: replace these with env keys setting to stage for now
       
         if (window.location.hostname === ('localhost') || window.location.hostname.includes('developer-dev') || window.location.hostname.includes('developer-stage')) {
-          edgeConfigId = '8d2805dd-85bf-4748-82eb-f99fdad117a6';
+          edgeConfigId = 'a44f0037-2ada-441f-a012-243832ce5ff9';
           launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-2c94beadc94f-development.min.js';
         }
       
