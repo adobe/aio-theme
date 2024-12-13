@@ -104,6 +104,7 @@ Using a theme, all of your default configuration lives in an npm package.
       - [width (optional)](#width-optional)
       - [typography (optional)](#typography-optional)
       - [codeblock (optional)](#codeblock-optional)
+      - [ctrlFHijack (optional)](#ctrlfhijack-optional)
       - [disableSidebar (optional)](#disablesidebar-optional)
       - [disableSearch (optional)](#disablesearch-optional)
       - [hideTryItPanel (optional)](#hidetryitpanel-optional)
@@ -1163,6 +1164,18 @@ Controls the appearance of code snippets.
 Defaults to ```"tokens: { punctuation: { color: 'white' }}"```
 
 https://redocly.com/docs/api-reference-docs/configuration/theming/#path=codeBlock
+
+#### ctrlFHijack (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." ctrlFHijack={false} />
+```
+
+Brings focus to the search bar when Control-F is pressed.
+
+Defaults to ```true```
+
+https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
 
 #### disableSidebar (optional)
 
