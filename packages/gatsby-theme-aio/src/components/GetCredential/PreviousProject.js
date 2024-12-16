@@ -38,9 +38,17 @@ const PreviousProject = ({ returnFields, productList, collapse }) => {
           flex-direction : column;
           gap:24px;
         `}>
-        {previousProject?.title && <h3 className='spectrum-Heading spectrum-Heading--sizeM'>{previousProject?.title}</h3>}
 
-        {previousProject?.paragraph && <p className="spectrum-Body spectrum-Body--sizeM">{previousProject?.paragraph}</p>}
+        <div
+          css={css`
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        `}
+        >
+          {previousProject?.title && <h3 className='spectrum-Heading spectrum-Heading--sizeM'>{previousProject?.title}</h3>}
+          {previousProject?.paragraph && <p className="spectrum-Body spectrum-Body--sizeM">{previousProject?.paragraph}</p>}
+        </div>
 
         {returnManageDeveloperConsole && <ReturnManageDeveloperConsole returnManageDeveloperConsole={returnManageDeveloperConsole} />}
 

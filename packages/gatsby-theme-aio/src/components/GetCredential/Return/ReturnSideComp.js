@@ -9,7 +9,7 @@ const ReturnSideComp = ({ returnSideComp, setIsCreateNewCredential, returnNewCre
       <div
         css={css`
           display:flex;
-          gap:30px;
+          gap:15px;
           flex-direction:column;
           width: 100%;
         `}

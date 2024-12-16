@@ -82,7 +82,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
               css={css`
               display: flex;
               flex-direction: column;
-              gap: 30px;
+              gap: 15px;
             `}>
               {credentialHeader?.title && (
                 <h3 className="spectrum-Heading spectrum-Heading--sizeXL">
@@ -125,7 +125,7 @@ const PreviousCredential = ({ setIsCreateNewCredential }) => {
               }
             `}
           />
-          <div>
+          <div css={css`width : 50%`}>
             <PreviousProject
               returnFields={returnFields}
               productList={productList}
