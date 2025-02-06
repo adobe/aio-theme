@@ -61,9 +61,9 @@ const SEO = ({ title, description, keywords }) => (
     )}
     {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
       `
-      let scripts = Array.from(document.querySelectorAll('script')).map(scr => scr.src);
+      let scriptsLoaded = Array.from(document.querySelectorAll('script')).map(scr => scr.src);
       // load only once due to react helmet
-      if (!scripts.includes('https://www.adobe.com/marketingtech/main.standard.min.js')) {
+      if (!scriptsLoaded.includes('https://www.adobe.com/marketingtech/main.standard.min.js')) {
         <script src='https://www.adobe.com/marketingtech/main.standard.min.js' async></script>
       }
       `
