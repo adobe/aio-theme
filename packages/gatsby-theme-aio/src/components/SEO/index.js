@@ -69,7 +69,7 @@ const SEO = ({ title, description, keywords }) => (
           document.head.appendChild(aepScript);
         }
       `
-      </script>
+      }</script>
     )}
   </Helmet>
 
