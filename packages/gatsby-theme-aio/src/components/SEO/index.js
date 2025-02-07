@@ -60,13 +60,16 @@ const SEO = ({ title, description, keywords }) => (
       `}</script>
     )}
     {process.env.GATSBY_ADOBE_ANALYTICS_ENV && (
+      <script type="text/javascript">{`
+        let scriptsLoadedList = Array.from(document.querySelectorAll('script')).map(scr => scr.src);
+        // load only once due to react helmet
+        if (!scriptsLoadedList.includes('https://www.adobe.com/marketingtech/main.standard.min.js')) {
+          const aepScript = document.createElement('script');
+          aepScript.src = 'https://www.adobe.com/marketingtech/main.standard.min.js';
+          document.head.appendChild(aepScript);
+        }
       `
-      let scriptsLoaded = Array.from(document.querySelectorAll('script')).map(scr => scr.src);
-      // load only once due to react helmet
-      if (!scriptsLoaded.includes('https://www.adobe.com/marketingtech/main.standard.min.js')) {
-        <script src='https://www.adobe.com/marketingtech/main.standard.min.js' async></script>
-      }
-      `
+      </script>
     )}
   </Helmet>
 
