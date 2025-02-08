@@ -66,6 +66,7 @@ const SEO = ({ title, description, keywords }) => (
         if (!scriptsLoadedList.includes('https://www.adobe.com/marketingtech/main.standard.min.js')) {
           const aepScript = document.createElement('script');
           aepScript.src = 'https://www.adobe.com/marketingtech/main.standard.min.js';
+          aepScript.async = true;
           document.head.appendChild(aepScript);
         }
       `
