@@ -430,6 +430,14 @@ export default ({ children, pageContext, location }) => {
     });
   }, []);
 
+  const Head = (frontMatter) => (
+    <SEO
+      title={frontMatter?.title}
+      description={frontMatter?.description}
+      keywords={frontMatter?.keywords}
+    />
+  )
+
   if (pathPrefix === '/search-frame') {
     return (
       <>
@@ -761,11 +769,10 @@ export default ({ children, pageContext, location }) => {
           allGithub,
           allGithubContributors,
         }}>
-        <SEO
-          title={frontMatter?.title}
-          description={frontMatter?.description}
-          keywords={frontMatter?.keywords}
-        />
+        <Head />
+        <Helmet>
+          
+        </Helmet>
         <div
           dir="ltr"
           className="spectrum spectrum--medium spectrum--large spectrum--light"
