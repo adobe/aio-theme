@@ -222,7 +222,7 @@ export default ({ children, pageContext, location }) => {
     if (ADOBE_ANALYTICS_ENV) {
       (async () => {
         try {
-          await addScript(`https://www.adobe.com/marketingtech/main.standard.min.js`);
+
 
           window.alloy_all = window.alloy_all || {};
           window.alloy_all.data = window.alloy_all.data || {};
@@ -253,7 +253,7 @@ export default ({ children, pageContext, location }) => {
               audienceManager: false,
             }
           };
-
+          await addScript(`https://www.adobe.com/marketingtech/main.standard.min.js`);
         } catch (e) {
           console.error(`AIO: Adobe Analytics Error`);
         }
