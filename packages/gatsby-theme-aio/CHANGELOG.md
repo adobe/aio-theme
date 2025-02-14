@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.19](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.18..@adobe/gatsby-theme-aio@4.14.19) (2024-12-13)
+
+### Fix
+* credential design issues - remove padding [693439c](https://github.com/adobe/aio-theme/commit/693439c33dc6f472c70d4f096be2565fda94085c)
+* add in try catch when trying to parse search message [f894ae2](https://github.com/adobe/aio-theme/commit/f894ae224df648852076d807a19f30191cdbee96)
+
 ## [4.14.18](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.17..@adobe/gatsby-theme-aio@4.14.18) (2024-12-12)
 
 ### Feature
