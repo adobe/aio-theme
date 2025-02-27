@@ -106,6 +106,7 @@
     "classnames": "^2.3.2",
     "core-js": "^3.25.1",
     "file-saver": "^2.0.5",
+    "gatsby-plugin-adobe-aep": "^1.0.0",
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-emotion": "^7.23.0",
     "gatsby-plugin-layout": "^3.23.0",
