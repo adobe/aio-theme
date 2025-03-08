@@ -173,6 +173,7 @@ const Footer = ({ hasSideNav = false }) => (
     )}
 
     <footer
+      daa-lh="footer"
       css={css`
         position: relative;
         padding-bottom: var(--spectrum-global-dimension-size-400);
@@ -267,7 +268,7 @@ const Footer = ({ hasSideNav = false }) => (
                   {APIs.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...getExternalLinkProps(path)} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path} daa-ll={title}>
                           {title}
                         </a>
                       </Link>
@@ -276,7 +277,7 @@ const Footer = ({ hasSideNav = false }) => (
                   {services.map(({ title, path }, i) => (
                     <li key={i}>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...getExternalLinkProps(path)} href={path}>
+                        <a {...getExternalLinkProps(path)} href={path} daa-ll={title}>
                           {title}
                         </a>
                       </Link>
@@ -284,7 +285,7 @@ const Footer = ({ hasSideNav = false }) => (
                   ))}
                   <li>
                     <Link isQuiet={true}>
-                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path} aria-labelledby="allAPIsDesc">
+                      <a {...getExternalLinkProps(allAPIs.path)} href={allAPIs.path} aria-labelledby="allAPIsDesc" daa-ll={allAPIs.title}>
                         <span id="allAPIsDesc" css={css`display: none;`}>{VIEW_ALL_APIS_DESC}</span>
                         <strong>{allAPIs.title}</strong>
                       </a>
@@ -329,7 +330,7 @@ const Footer = ({ hasSideNav = false }) => (
               {community.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...getExternalLinkProps(path)} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path} daa-ll={title}>
                       {title}
                     </a>
                   </Link>
@@ -356,7 +357,7 @@ const Footer = ({ hasSideNav = false }) => (
               {support.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...getExternalLinkProps(path)} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path} daa-ll={title}>
                       {title}
                     </a>
                   </Link>
@@ -383,7 +384,7 @@ const Footer = ({ hasSideNav = false }) => (
               {developer.map(({ title, path }, i) => (
                 <li key={i}>
                   <Link isQuiet={true} variant="secondary">
-                    <a {...getExternalLinkProps(path)} href={path}>
+                    <a {...getExternalLinkProps(path)} href={path} daa-ll={title}>
                       {title}
                     </a>
                   </Link>
@@ -452,7 +453,7 @@ const Footer = ({ hasSideNav = false }) => (
                         />
                       </svg>
                       <Link isQuiet={true} variant="secondary">
-                        <a {...getExternalLinkProps(path)} href={path} aria-label={title}>
+                        <a {...getExternalLinkProps(path)} href={path} aria-label={title} daa-ll={title}>
                           {title}
                         </a>
                       </Link>
@@ -469,7 +470,7 @@ const Footer = ({ hasSideNav = false }) => (
                               text-decoration: underline;
                               text-decoration-style: double;
                           }
-                        `} href={path} aria-label="Cookie preferences" tabindex="0"></a>
+                        `} href={path} aria-label="Cookie preferences" tabindex="0" daa-ll="cookiePreference"></a>
                       </Link>
                     </li>
                   );
@@ -478,7 +479,7 @@ const Footer = ({ hasSideNav = false }) => (
                 return (
                   <li key={i}>
                     <Link isQuiet={true} variant="secondary">
-                      <a {...getExternalLinkProps(path)} href={path} aria-label={title}>
+                      <a {...getExternalLinkProps(path)} href={path} aria-label={title} daa-ll={title}>
                         {title}
                       </a>
                     </Link>

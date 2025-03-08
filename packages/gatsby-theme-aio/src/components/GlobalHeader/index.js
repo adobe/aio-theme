@@ -299,7 +299,7 @@ const GlobalHeader = ({
             `}>
             <ActionButton
               isQuiet
-              daall="toggleSideNav"
+              daa-ll="toggleSideNav"
               onClick={() => {
                 toggleSideNav && toggleSideNav();
               }}>
@@ -333,7 +333,7 @@ const GlobalHeader = ({
                 <a
                   href="/"
                   tabIndex={'0'}
-                  daall="adobeIcon"
+                  daa-ll="adobeIcon"
                   id="adobeIcon"
                   onKeyDown={e => {
                     if (e.key === 'ArrowRight') {
@@ -539,7 +539,7 @@ const GlobalHeader = ({
                   <TabsItem
                     elementType={GatsbyLink}
                     to={home?.href || DEFAULT_HOME.href}
-                    daall={home?.title || DEFAULT_HOME.title}
+                    daa-ll={home?.title || DEFAULT_HOME.title}
                     {...getExternalLinkProps(home?.href || DEFAULT_HOME.href)}>
                     <TabsItemLabel>{home?.title || DEFAULT_HOME.title}</TabsItemLabel>
                   </TabsItem>
@@ -576,7 +576,7 @@ const GlobalHeader = ({
                         id={`tabindex${i}`}
                         to={withPrefix(page.href)}
                         selected={isSelectedTab}
-                        daall={page.title}>
+                        daa-ll={page.title}>
                         <TabsItemLabel> {page.title} </TabsItemLabel>
                       </TabsItem>
                     ) : (
@@ -611,7 +611,7 @@ const GlobalHeader = ({
                         selected={isSelectedTab}
                         aria-controls={menuPopoverId}
                         aria-label={page.title}
-                        daall={page.title}
+                        daa-ll={page.title}
                         onClick={event => {
                           event.stopImmediatePropagation();
 
@@ -640,7 +640,7 @@ const GlobalHeader = ({
                           }}
                           role="button"
                           tabIndex={0}
-                          daall={page.title}
+                          daa-ll={page.title}
                           aria-label={page.title}
                           onFocus={() => {
                             setOpenMenuIndex(i);
@@ -678,7 +678,7 @@ const GlobalHeader = ({
                                     isHighlighted={menu === selectedMenu}
                                     isSelected={menu === selectedMenuItem}
                                     isHeightUnset={menu.description ? true : false}
-                                    daall={menu.title}
+                                    daa-ll={menu.title}
                                     css={css`
                                       display: -webkit-box;
                                       display: -webkit-flex;
@@ -844,7 +844,7 @@ const GlobalHeader = ({
                                 key={k}
                                 isSelected={version.selected}
                                 isHighlighted={version.selected}
-                                daall={version.selected}
+                                daa-ll={version.selected}
                                 onClick={() => {
                                   setOpenVersion(false);
                                 }}
@@ -893,7 +893,7 @@ const GlobalHeader = ({
                     }}
                     id={'getCredentialID'}
                     onClick={handleCredential}
-                    daall={docs.title ?? 'View Docs'}
+                    daa-ll={docs.title ?? 'View Docs'}
                     variant="primary"
                     href={docs.href && withPrefix(docs.href)}>
                     {docs.title ?? 'View Docs'}
@@ -920,7 +920,7 @@ const GlobalHeader = ({
                   aria-label={showSearch ? 'Close Search' : 'Search'}
                   isQuiet
                   tabIndex="0"
-                  daall="searchButton"
+                  daa-ll="searchButton"
                   css={css`
                     margin-right: var(--spectrum-global-dimension-size-200);
 
@@ -971,7 +971,7 @@ const GlobalHeader = ({
                     variant="primary"
                     tabIndex="0"
                     isQuiet
-                    daall="imsButton"
+                    daa-ll="imsButton"
                     onClick={() => {
                       ims.signIn();
                     }}>
@@ -1051,14 +1051,14 @@ const GlobalHeader = ({
                           <Divider size="S" />
                         </div>
 
-                        <AnchorButton daall="imsEditProfile" href="https://account.adobe.com/" variant="primary" isQuiet>
+                        <AnchorButton daa-ll="imsEditProfile" href="https://account.adobe.com/" variant="primary" isQuiet>
                           Edit Profile
                         </AnchorButton>
 
                         <Button
                           tabIndex="0"
                           variant="primary"
-                          daall="imsSignOut"
+                          daa-ll="imsSignOut"
                           css={css`
                             margin: var(--spectrum-global-dimension-size-200) 0;
                           `}

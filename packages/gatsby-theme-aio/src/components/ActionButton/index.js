@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import '@spectrum-css/actionbutton';
 import { css } from '@emotion/react';
 
-const ActionButton = ({ children, elementType = 'button', isQuiet, className, daall, ...props }) => {
+const ActionButton = ({ children, elementType = 'button', isQuiet, className, ...props }) => {
   const Element = elementType;
   if (elementType === 'a') {
     props.role = 'button';
@@ -28,7 +28,6 @@ const ActionButton = ({ children, elementType = 'button', isQuiet, className, da
       className={classNames(className, 'spectrum-ActionButton', 'spectrum-ActionButton--sizeM', {
         'spectrum-ActionButton--quiet': isQuiet
       })}>
-      daa-ll={daall}
       {children}
     </Element>
   );
