@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## [4.15.0](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.19..@adobe/gatsby-theme-aio@4.15.0) (2024-3-27)
+
+### Feat
+* Switched to AEP Adobe Analytics [031448b](https://github.com/adobe/aio-theme/commit/031448b31cb83aba7157b3460cfd5283cf4668a2)
+
 ## [4.14.19](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.18..@adobe/gatsby-theme-aio@4.14.19) (2024-12-13)
 
 ### Fix
