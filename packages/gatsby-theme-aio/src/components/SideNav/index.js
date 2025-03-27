@@ -138,7 +138,8 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
               <a
                 {...getExternalLinkProps(pageHref)}
                 href={pageHref}
-                className="spectrum-SideNav-itemLink">
+                className="spectrum-SideNav-itemLink"
+                daa-ll={page.title}>
                 {page.title}
               </a>
             ) : (
@@ -156,7 +157,8 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
                   }
                 }}
                 to={pageHref}
-                className="spectrum-SideNav-itemLink">
+                className="spectrum-SideNav-itemLink"
+                daa-ll={page.title}>
                 {page.title}
                 {page.pages && page.pages.length > 0 ? (
                   <ChevronRight
@@ -237,7 +239,8 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
               <a
                 {...getExternalLinkProps(pageHref)}
                 href={pageHref}
-                className="spectrum-SideNav-itemLink">
+                className="spectrum-SideNav-itemLink"
+                daa-ll={page.title}>
 
                 {page.title}
               </a>
@@ -256,7 +259,8 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
                   }
                 }}
                 to={pageHref}
-                className="spectrum-SideNav-itemLink">
+                className="spectrum-SideNav-itemLink"
+                daa-ll={page.title}>
                 { selectedMenuItem === page  && <CheckMark /> }
                 {page.title}
                 {page.menu && page.menu.length > 0 ? (
@@ -301,6 +305,7 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
   return (
     <nav
       ref={ref}
+      daa-lh="sideNav"
       id="side-menu"
       role="navigation"
       aria-label="Primary"
@@ -325,10 +330,11 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
             <ul
               role="tree"
               aria-label="Global Navigation"
+              daa-lh="sideNav"
               className={classNames('spectrum-SideNav', 'spectrum-SideNav--multiLevel')}>
               {versions && renderMenuTree([{title: 'Versions', menu: versions}], 1)}
               {renderMenuTree(mainNavPages, 1)}
-              <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0">
+              <AnchorButton variant="primary" href="/console" id={'consoleId'} tabIndex="0" daa-ll="console">
                 Console
               </AnchorButton>
             </ul>
