@@ -215,6 +215,54 @@ export default ({ children, pageContext, location }) => {
     }
   }, []);
 
+  // Load and initialize AEP
+  // ReactHelmet seems to load the script multiple times causing analytics errors
+  useEffect(() => {
+    const ADOBE_ANALYTICS_ENV = process.env.GATSBY_ADOBE_ANALYTICS_ENV;
+    if (ADOBE_ANALYTICS_ENV) {
+      (async () => {
+        try {
+
+
+          window.alloy_all = window.alloy_all || {};
+          window.alloy_all.data = window.alloy_all.data || {};
+          window.alloy_all.data._adobe_corpnew = window.alloy_all.data._adobe_corpnew || {};
+          window.alloy_all.data._adobe_corpnew.digitalData = window.alloy_all.data._adobe_corpnew.digitalData || {};
+          window.alloy_all.data._adobe_corpnew.digitalData.page = window.alloy_all.data._adobe_corpnew.digitalData.page || {};
+          window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo = window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo || {};
+          window.alloy_all.data._adobe_corpnew.digitalData.page.pageInfo.language = 'en-US';
+
+          var launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-5dd5dd2177e6.min.js';
+          var edgeConfigId = '57c20bab-94c3-425e-95cb-0b9948b1fdd4';
+
+          if (window.location.hostname === ('localhost') || window.location.hostname.includes('developer-dev') || window.location.hostname.includes('developer-stage')) {
+            edgeConfigId = 'a44f0037-2ada-441f-a012-243832ce5ff9';
+            launchURL = 'https://assets.adobedtm.com/d4d114c60e50/a0e989131fd5/launch-2c94beadc94f-development.min.js';
+          }
+
+          window.marketingtech = {
+            adobe: {
+              launch: {
+                url: launchURL,
+                controlPageLoad: true,
+              },
+              alloy: {
+                edgeConfigId: edgeConfigId,
+              },
+              target: false,
+              audienceManager: false,
+            }
+          };
+          await addScript(`https://www.adobe.com/marketingtech/main.standard.min.js`);
+        } catch (e) {
+          console.error(`AIO: Adobe Analytics Error`);
+        }
+      })();
+    } else {
+      console.warn('AIO: Adobe Analytics Missing env');
+    }
+  }, []);
+
   // Load all data once and pass it to the Provider
   const data = useStaticQuery(
     graphql`
