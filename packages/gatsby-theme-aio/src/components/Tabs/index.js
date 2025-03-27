@@ -509,6 +509,7 @@ const TabsBlock = ({
                       href={APIReference}
                       tabIndex={-1}
                       id="apiReference"
+                      daa-lh="apiReference"
                       css={css`
                         color: #4b9cf5;
                          &:focus {
