@@ -186,6 +186,7 @@ __metadata:
     file-saver: ^2.0.5
     gatsby: ^4.22.0
     gatsby-cli: ^4.23.0
+    gatsby-plugin-adobe-aep: ^1.0.0
     gatsby-plugin-algolia: ^0.26.0
     gatsby-plugin-emotion: ^7.23.0
     gatsby-plugin-layout: ^3.23.0
@@ -12500,6 +12501,13 @@ __metadata:
   peerDependencies:
     "@parcel/core": ^2.0.0
   checksum: 3a7c034237be32a3c07d18aee75926054d9e93dc33c0f0b6b5f599c84e2d72f436e2103ebe9a7836ca4f7f4880daa93de12f91ff48710f364f604f53ca615368
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-adobe-aep@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "gatsby-plugin-adobe-aep@npm:1.0.0"
+  checksum: 14505afe1ca3b0c6b3cd32b1618a5929c2cafb88d28a8eacd53915c631c2256551ee0ff98eb932b1f07c1aa90526d53aa6b8a3c2b4260cdc38bd0b3f19365deb
   languageName: node
   linkType: hard
 
