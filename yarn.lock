@@ -72,7 +72,7 @@ __metadata:
     "@spectrum-css/tooltip": 3.1.18
     "@spectrum-css/typography": 4.0.20
     "@spectrum-css/underlay": 2.0.31
-    "@spectrum-css/vars": 8.0.0
+    "@spectrum-css/vars": 8.0.5
     "@spectrum-css/well": 3.0.22
     algolia-html-extractor: ^0.0.1
     algoliasearch: ^4.14.2
@@ -5375,14 +5375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/vars@npm:8.0.0":
-  version: 8.0.0
-  resolution: "@spectrum-css/vars@npm:8.0.0"
-  checksum: a0639066b21a2300bdc61f567e990960c626d53e2b8966de1174aa42790d29a13da878bf2ace398b875ced2afd622daf3b8bdaecd526e93451d3404f76091378
-  languageName: node
-  linkType: hard
-
-"@spectrum-css/vars@npm:^8.0.0":
+"@spectrum-css/vars@npm:8.0.5, @spectrum-css/vars@npm:^8.0.0":
   version: 8.0.5
   resolution: "@spectrum-css/vars@npm:8.0.5"
   checksum: 3735bc2858d970cc56ec9db74a52583410aa1a4ef4db57e01c575b2fd39ea8bbff3506ae517e4df6c19c7b72d9141bd2bc828e232651879b7ce1123610aae420
