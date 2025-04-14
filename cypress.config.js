@@ -14,7 +14,7 @@ module.exports = defineConfig({
   },
   pageLoadTimeout: 500000,
   userEmail: 'cypress1@adobe.com',
-  userPassword: 'ScotchB33r&1234567',
+  userPassword: process.env.CYPRESS_USER_PASSWORD,
   defaultCommandTimeout: 60000,
   video: false,
   chromeWebSecurity: false
