@@ -46,3 +46,4 @@ jobs:
             cypress/e2e/get-credentials.cy.js
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: '0'
+          CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
