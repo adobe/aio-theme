@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.20](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.19..@adobe/gatsby-theme-aio@4.14.20) (2025-05-12)
+
+### Fix
+
+* Update Footer link for Adobe Tech Blog [426452a](https://github.com/adobe/aio-theme/commit/426452abe330d70c3656780baed7aeb6d4de1240)
+
+
 ## [4.14.19](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.14.18..@adobe/gatsby-theme-aio@4.14.19) (2024-12-13)
 
 ### Fix
