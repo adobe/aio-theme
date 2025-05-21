@@ -55,8 +55,8 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   ],
   community: [
     {
-      title: 'Adobe Tech Blog',
-      path: 'https://medium.com/adobetech'
+      title: 'Adobe Developers Blog',
+      path: 'https://blog.developer.adobe.com/'
     },
     {
       title: 'Adobe on GitHub',
