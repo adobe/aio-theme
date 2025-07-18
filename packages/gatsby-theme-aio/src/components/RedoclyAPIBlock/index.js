@@ -11,6 +11,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { css } from "@emotion/react";
 import { withPrefix } from 'gatsby';
 import { SIDENAV_WIDTH, MOBILE_SCREEN_WIDTH, isExternalLink } from '../../utils';
 import PropTypes from 'prop-types';
@@ -63,7 +64,14 @@ const RedoclyAPIBlock = ({
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container" />
+          <div id="redocly_container" 
+            css={css`
+              /* Target redocly_container that is not a descendant of main (i.e. when layout: none is set) */
+              not(main #redocly_container) {
+                width: 100vw;
+              }
+            `}
+          />
 
           <script>{
             `RedoclyReferenceDocs.init(

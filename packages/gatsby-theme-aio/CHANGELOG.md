@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.1..@adobe/gatsby-theme-aio@4.15.2) (2025-07-21)
+
+### Fix
+
+* Prevent RedoclyAPIBlock from overflowing when layout is set to none [e6d094e](https://github.com/adobe/aio-theme/commit/e6d094e660e5ae1727b069a65230effe7c8af377)
+
 ## [4.15.1](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.0..@adobe/gatsby-theme-aio@4.15.1) (2025-05-21)
 
 ### Fix
