@@ -63,7 +63,14 @@ const RedoclyAPIBlock = ({
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container" />
+          <div id="redocly_container" 
+            css={css`
+              /* Target redocly_container that is not a descendant of main (i.e. when layout: none is set) */
+              not(main #redocly_container) {
+                width: 100vw;
+              }
+            `}
+          />
 
           <script>{
             `RedoclyReferenceDocs.init(
