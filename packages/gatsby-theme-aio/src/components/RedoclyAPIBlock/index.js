@@ -63,7 +63,7 @@ const RedoclyAPIBlock = ({
     <>
       {!isRedoclyLoading && (
         <>
-          <div id="redocly_container" />
+          <div id="redocly_container" style={{ maxWidth: "100vw" }} />
 
           <script>{
             `RedoclyReferenceDocs.init(
