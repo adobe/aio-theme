@@ -26,6 +26,7 @@ const RedoclyAPIBlock = ({
   disableSidebar = false,
   disableSearch = false,
   ctrlFHijack = true,
+  hideLoading = false,
   hideTryItPanel = false,
   scrollYOffset = 0,
   sortOperationsAlphabetically = false,
@@ -79,7 +80,7 @@ const RedoclyAPIBlock = ({
                jsonSampleExpandLevel: ${jsonSampleExpandLevel === all ? `'${jsonSampleExpandLevel}'` : jsonSampleExpandLevel},
                ${generateCodeSamples ? "generateCodeSamples: { " + generateCodeSamples + "}," : ''}
                ${requestInterceptor ? "requestInterceptor: " + requestInterceptor + "," : ''}
-               hideLoading: true,
+               hideLoading: ${hideLoading},
                theme: {
                 ${typography ? "typography: { " + typography + "}," : ''}
                 rightPanel: {
@@ -104,6 +105,7 @@ RedoclyAPIBlock.propTypes = {
   codeBlock: PropTypes.string,
   disableSidebar: PropTypes.bool,
   disableSearch: PropTypes.bool,
+  hideLoading: PropTypes.bool,
   hideTryItPanel: PropTypes.bool,
   scrollYOffset: PropTypes.number,
   sortOperationsAlphabetically: PropTypes.bool,
