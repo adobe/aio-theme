@@ -1201,6 +1201,16 @@ Defaults to ```false```
 
 https://redocly.com/docs/api-reference-docs/configuration/functionality/#theme-object-openapi-schema
 
+#### hideLoading (optional)
+
+```js
+<RedoclyAPIBlock src="URL pointing to your open api yaml file." hideLoading />
+```
+
+When set to `true` it disables the loading spinner when rendering an OpenAPI file client-side.
+
+Defaults to ```false```.
+
 #### hideTryItPanel (optional)
 
 ```js
