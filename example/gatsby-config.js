@@ -71,11 +71,6 @@ module.exports = {
             path: '/api/index.md/'
           },
           {
-            title: 'Analytics API - RedoclyAPIBlock',
-            description: 'This is the OpenAPI page of Adobe Analytics',
-            path: '/api-2.md/'
-          },
-          {
             title: 'Analytics Swagger file',
             description: 'External link',
             path: 'https://raw.githubusercontent.com/AdobeDocs/analytics-2.0-apis/master/docs/swagger.json'

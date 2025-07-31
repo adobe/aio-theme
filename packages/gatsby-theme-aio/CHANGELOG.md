@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.2..@adobe/gatsby-theme-aio@4.15.3) (2025-07-30)
+
+### Feat
+
+* Add hideLoading config to RedoclyAPIBlock [bbb402c](https://github.com/adobe/aio-theme/commit/bbb402ccd2e64f3949f1f478e6051da735264f47)
+
 ## [4.15.2](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.1..@adobe/gatsby-theme-aio@4.15.2) (2025-07-21)
 
 ### Fix
