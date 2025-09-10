@@ -399,19 +399,19 @@ Using markdown links to link to pages e.g. :
 
 _Relative link_
 
-```
+```markdown
 [Link to mypage](../mypage.md)
 ```
 
 _Absolute link_
 
-```
+```markdown
 [Link to mypage](/src/pages/mypage.md)
 ```
 
 Add the suffix `#` to a link to jump to a section of the page for example if your page has a heading named `Join the future`, you can link to it:
 
-```
+```markdown
 [Link to mypage](../mypage.md#join-the-future)
 ```
 
@@ -419,13 +419,13 @@ You can also use absolute links or relative links to link between markdown pages
 
 _Relative link_
 
-```
+```markdown
 [Link to API](../api/)
 ```
 
 _Absolute link_
 
-```
+```markdown
 [Link to API](/api/)
 ```
 
@@ -435,7 +435,7 @@ _Absolute link_
 
 External links will automatically open in a new tab or window.
 
-```
+```markdown
 [Link to example.com](https://example.com)
 ```
 
@@ -462,13 +462,13 @@ root
 
 where `image.png` is referenced in `index.md` as an image:
 
-```
+```markdown
 ![alt image](./image.png)
 ```
 
 and `document.pdf` is referenced in `index.md` as a link:
 
-```
+```markdown
 [document](/document.pdf)
 ```
 
@@ -1365,7 +1365,7 @@ There are 3 different variants:
 
 ![hero default](docs/images/hero-default.png)
 
-```
+```markdown
 <Hero slots="image, heading, text" background="rgb(64, 34, 138)" hideBreadcrumbNav={false}/>
 
 ![Hero image](./illustration.png)
@@ -1394,7 +1394,7 @@ Use `videoUrl` to videoURL to post the video in half width /full width
 
 ![hero halfwidth](docs/images/hero-halfwidth.png)
 
-```
+```markdown
 <Hero slots="image, icon, heading, text1, text2, buttons" variant="halfwidth" />
 
 ![Creative Cloud banner](images/cc-hero.png)
@@ -1426,7 +1426,7 @@ Use `slots` to identify the markdown content:
 
 ![hero fullwidth](docs/images/hero-fullwidth.png)
 
-```
+```markdown
 <Hero slots="image, heading, text, buttons" variant="fullwidth" background="rgb(51, 51, 51)" />
 
 ![IO banner](images/io-banner.png)
@@ -1460,7 +1460,7 @@ They can point to internal or external documents or pages.
 
 ![resources block](docs/images/resources-block.png)
 
-```
+```markdown
 <Resources slots="heading, links"/>
 
 #### Resources
@@ -1483,7 +1483,7 @@ Discover Blocks can be illustrated but only one illustration per row is allowed.
 
 ![single discover block](docs/images/discover-block-single.png)
 
-```
+```markdown
 <DiscoverBlock width="100%" slots="heading, link, text"/>
 
 ### Get Started
@@ -1497,7 +1497,7 @@ Get started with the Adobe Analytics APIs.
 
 ![multiple discover blocks](docs/images/discover-block-multiple.png)
 
-```
+```markdown
 <DiscoverBlock slots="heading, link, text"/>
 
 ### Guides
@@ -1529,7 +1529,7 @@ Provides configuration guidance and best practices for the /reports endpoint.
 
 ![illustrated discover block](docs/images/discover-block-illustrated.png)
 
-```
+```markdown
 <DiscoverBlock slots="image, heading, link, text"/>
 
 ![Adobe Experience Cloud](experience_cloud.png)
@@ -1743,7 +1743,7 @@ It's used to call out new features, blog posts, news etc. anything that needs th
 
 ![announcement block](docs/images/announcement-block.png)
 
-```
+```markdown
 
 <AnnouncementBlock slots="heading, text, button" />
 
@@ -1771,7 +1771,7 @@ The Summary Block acts as an anchor at the end of the page. It's a change for Pr
 
 ![summary block](docs/images/summary-block.png)
 
-```
+```markdown
 
 <SummaryBlock slots="image, heading, text, buttons" background="rgb(246, 16, 27)" />
 
@@ -1806,7 +1806,7 @@ A Title Block is used at the beginning of sections, or to frame compositions on 
 
 ![title block](docs/images/title-block.png)
 
-```
+```markdown
 
 <TitleBlock slots="heading, text" theme="light" />
 
@@ -1834,7 +1834,7 @@ They are coupled with images or videos.
 
 **With an image, texts and links**
 
-```
+```markdown
 
 <TextBlock slots="image, heading, text1, text2, links" />
 
@@ -1858,7 +1858,7 @@ And be sure to join the [Exchange Program for Creative Cloud](https://partners.a
 
 ![centered text blocks](docs/images/text-block-centered.png)
 
-```
+```markdown
 
 <TextBlock slots="image, heading, text, links" width="33%" />
 
@@ -1896,7 +1896,7 @@ Instantly share Creative Cloud files, designs, specs, and notifications all in r
 
 ![text block with a video](docs/images/text-block-video.png)
 
-```
+```markdown
 
 <TextBlock slots="video, icons, heading, text, buttons" theme="dark" />
 
@@ -1919,7 +1919,7 @@ world-class creative assets with the Adobe Stock API, or sign up for early infor
 
 ![text block with a local video](docs/images/textblockwithvideo.png)
 
-```
+```markdown
 
 import video1 from '../videos/localVideo.mp4'
 
@@ -2053,7 +2053,7 @@ Tabs block is a custom block component that allows for tabbed content that can b
 
 ![tabsBlock](docs/images/tabsBlock.png)
 
-```
+```markdown
 
 <TabsBlock orientation="vertical" slots="heading, image, content" theme="light" />
 
@@ -2071,7 +2071,7 @@ Tabs block is a custom block component that allows for tabbed content that can b
 
 ```
 
-```
+```markdown
 
 <TabsBlock orientation="horizontal" slots="heading, image, content" theme="light" />
 
@@ -2107,7 +2107,7 @@ Product Cards group information that allow to browse a collection of related con
 
 ![product card](docs/images/product-card.png)
 
-```
+```markdown
 
 <ProductCard slots="icon, heading, text, buttons" theme="light" width="33%" />
 
@@ -2184,7 +2184,7 @@ There are 2 variants: horizontal and vertical Resource Cards. Use multiple Resou
 
 ![resource card](docs/images/resource-card.png)
 
-```
+```markdown
 <ResourceCard slots="link, image, heading, text" width="33%"/>
 
 [Adobe I/O](https://adobe.io)
@@ -2236,7 +2236,7 @@ Used to display the Product information along with the images/icons and headings
 
 ![miniresource card](docs/images/mini-resource.png)
 
-```
+```markdown
 <MiniResourceCard slots="image,heading,text,link" repeat="6" theme="lightest" inRow="3" textColor="#427dcd"/>
 
 ![Forge the path to customer success](./S_AniChangeBackground.png)
@@ -2310,7 +2310,7 @@ Carousel is used to show the information along with images and buttons.
 
 ![Carousel](docs/images/carousel.png)
 
-```
+```markdown
 <Carousel slots="image,heading, text, buttons" repeat="2"  theme="light"  />
 
 ![Resource 3](images/resource3.png)
@@ -2365,7 +2365,7 @@ Use `enableNavigation` to display navigation icon. By default it is in false. If
 
 Use `navigationIconColor` to change the icon color. By default it is black.
 
-```
+```markdown
 import video1 from './video1.mp4'
 import video2 from "./video2.mp4"
 import video3 from "./video3.mp4"
@@ -2400,7 +2400,7 @@ ImageTextBlock is used to display two images, along with text, a heading, and bu
 
 ![ImageTextBlock](docs/images/imagetext-block.png)
 
-```
+```markdown
 <ImageTextBlock slots="image,heading,text,buttons" repeat="2" bgColor="#f8f8f8" className="boxmodal" isCenter variantsTypePrimary='accent'/>
 
 ![Adobe Service](6_Image_Sales.jpg)
@@ -2442,7 +2442,7 @@ Teaser component is used to place the text over the background image/color
 
 ![TeaserBlock](docs/images/TeaserBlock.png)
 
-```
+```markdown
 import bgImg from "./Images/black_image.png"
 <TeaserBlock  slots="heading,text,button" textColor="white" position="right" bgURL={bgImg}/> 
 
@@ -2568,7 +2568,7 @@ The PDFViewer component integrates PDF display with accompanying text, headings,
 
 ![pdfviewer](docs/images/pdf_viewer.png)
 
-```
+```markdown
 
 import pdf from "./sample.pdf";
 
@@ -2614,7 +2614,7 @@ This component is designed to showcase product information using images/icons, h
 
 ![profile_card](docs/images/profile_card.png)
 
-```
+```markdown
 <ProfileCard slots="image,heading,text,link,buttons" repeat="6" theme="lightest" inRow="3"/>
 
 ![Remove Background](./remove-background.svg)
@@ -2703,7 +2703,7 @@ Miniproductcard component is used to display the product card with little image 
 
 ![mini_product_card](docs/images/mini-product-card.png)
 
-```
+```markdown
   <MiniProductCard slots="image, heading , text , buttons" repeat="4" theme="lightest" inRow="4" variantsType="primary" buttonStyle="outline" />
 
 ![Forge the path to customer success](./S_AniConvertToGIF.png)
@@ -2740,7 +2740,7 @@ For example, if you want to include the content of `overview.md` into `index.md`
 
 `index.md` content:
 
-```
+```markdown
 import Overview from './overview.md'
 
 # Welcome
@@ -2805,7 +2805,7 @@ Both are sites using the theme and have markdown content defined under `src/page
 
 1. repo1 has reusable markdown content written with Variant Blocks under `/src/pages/debugging/index.md`:
 
-```
+```markdown
 ## How to Debug Your Plugin
 
 Bugs happen! In this tutorial, you will learn how to debug your plugin.
@@ -2835,7 +2835,7 @@ _Use `repeat` to define how many elements are part of the Variant Block. Use any
 
 3. repo2 embeds repo1 content by using the `import` statement and inserts the content in its own markdown together with a `query` filter to only display what is needed.
 
-```
+```markdown
 import Debugging from 'repo1/src/pages/debugging/index.md'
 
 # Debugging
@@ -2847,7 +2847,7 @@ More content
 
 will be rendered as:
 
-```
+```markdown
 # Debugging
 
 ## How to Debug Your Plugin
