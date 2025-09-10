@@ -68,7 +68,7 @@ __metadata:
     "@spectrum-css/sidenav": 3.0.24
     "@spectrum-css/table": 4.0.19
     "@spectrum-css/tabs": 3.2.19
-    "@spectrum-css/textfield": 3.2.4
+    "@spectrum-css/textfield": 3.2.16
     "@spectrum-css/tooltip": 3.1.18
     "@spectrum-css/typography": 4.0.20
     "@spectrum-css/underlay": 2.0.31
@@ -5338,12 +5338,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/textfield@npm:3.2.4":
-  version: 3.2.4
-  resolution: "@spectrum-css/textfield@npm:3.2.4"
+"@spectrum-css/textfield@npm:3.2.16":
+  version: 3.2.16
+  resolution: "@spectrum-css/textfield@npm:3.2.16"
   peerDependencies:
     "@spectrum-css/vars": ^8.0.0
-  checksum: 87581ba368337c438a54cbf9e66f7e34de574cbeea931f5dab244c701d3eaea04de772cf880183d6cac08d8af940fdee982a19a29012f2d0785379c4f424c6bb
+  checksum: b3945840ed25cdd1a7993873de415387e083d2c69a5fede5416c28ba3f3780ed199b9ca1950efcab89bab365593c5c53db5ca1e5d407a6f8de943c1b2fe22f86
   languageName: node
   linkType: hard
 
