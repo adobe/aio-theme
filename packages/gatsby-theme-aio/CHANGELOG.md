@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.4](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.3..@adobe/gatsby-theme-aio@4.15.4) (2025-11-11)
+
+### Feature
+
+* Add MCP Server link to footer [a8e61d7](https://github.com/adobe/aio-theme/commit/a8e61d7c93c4448a98eedd48b248dee5a022b5ca)
+
 ## [4.15.3](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.2..@adobe/gatsby-theme-aio@4.15.3) (2025-07-30)
 
 ### Feat
