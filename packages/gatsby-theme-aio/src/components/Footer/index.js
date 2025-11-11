@@ -27,19 +27,23 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   },
   APIs: [
     {
+      title: 'MCP Servers',
+      path: '/ai-registry'
+    },
+    {
       title: 'Adobe Creative Cloud',
       path: '/creative-cloud'
     },
     {
       title: 'Adobe Experience Platform',
       path: '/experience-platform-apis'
-    },
-    {
-      title: 'Adobe Document Cloud',
-      path: '/document-services/homepage'
     }
   ],
   services: [
+    {
+      title: 'Adobe Document Cloud',
+      path: '/document-services/homepage'
+    },
     {
       title: 'Adobe Cloud Manager',
       path: '/experience-cloud/cloud-manager'
@@ -47,10 +51,6 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
     {
       title: 'Adobe Analytics',
       path: '/analytics-apis/docs/2.0'
-    },
-    {
-      title: 'App Builder',
-      path: '/app-builder'
     }
   ],
   community: [
