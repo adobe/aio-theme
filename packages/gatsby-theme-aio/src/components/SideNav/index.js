@@ -12,7 +12,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link as GatsbyLink } from 'gatsby';
+import { withPrefix } from 'gatsby';
+import { GatsbyLink } from '../GatsbyLink';
 import { isBrowser,   findSelectedTopPage,
   findSelectedTopPageMenu,
   rootFix,
@@ -156,7 +157,7 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
                     setShowSideNav(false);
                   }
                 }}
-                to={pageHref}
+                to={withPrefix(pageHref)}
                 className="spectrum-SideNav-itemLink"
                 daa-ll={page.title}>
                 {page.title}
@@ -258,7 +259,7 @@ const SideNav = ({versions, mainNavPages, selectedPages, selectedSubPages, setSh
                     setShowSideNav(false);
                   }
                 }}
-                to={pageHref}
+                to={withPrefix(pageHref)}
                 className="spectrum-SideNav-itemLink"
                 daa-ll={page.title}>
                 { selectedMenuItem === page  && <CheckMark /> }
