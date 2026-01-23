@@ -1386,7 +1386,7 @@ Use `background` to set a custom background color matching your color scheme. De
 
 Use `theme` to match the text color to your color scheme. Defaults to `dark`.
 
-Use `hideBreadcrumbNav` to optionaly hide the breadcrumb navigation on this variant. Defaults to false.
+Use `hideBreadcrumbNav` to optionally hide the breadcrumb navigation on this variant. Defaults to false.
 
 Use `videoUrl` to videoURL to post the video in half width /full width
 
