@@ -27,7 +27,7 @@ const { APIs, services, community, support, developer, legal, allAPIs } = {
   },
   APIs: [
     {
-      title: 'MCP Servers',
+      title: 'Adobe AI Registry',
       path: '/ai-registry'
     },
     {
