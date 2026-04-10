@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.6](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.5..@adobe/gatsby-theme-aio@4.15.6) (2026-04-10)
+
+### Feature
+
+* Update API title from 'MCP Servers' to 'Adobe AI Registry' in footer [d02efe3](https://github.com/adobe/aio-theme/commit/d02efe3cfe53eab95aebfc837c2ff187bf4badb3)
+
 ## [4.15.5](https://github.com/adobe/aio-theme/compare/@adobe/gatsby-theme-aio@4.15.4..@adobe/gatsby-theme-aio@4.15.5) (2025-11-20)
 
 ### Fix
