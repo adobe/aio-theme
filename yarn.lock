@@ -44,7 +44,7 @@ __metadata:
     "@loadable/component": ^5.15.2
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
-    "@spectrum-css/accordion": 3.0.24
+    "@spectrum-css/accordion": 3.0.36
     "@spectrum-css/actionbutton": 2.1.7
     "@spectrum-css/actiongroup": ^2.0.0
     "@spectrum-css/assetlist": 3.0.24
@@ -5082,13 +5082,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/accordion@npm:3.0.24":
-  version: 3.0.24
-  resolution: "@spectrum-css/accordion@npm:3.0.24"
+"@spectrum-css/accordion@npm:3.0.36":
+  version: 3.0.36
+  resolution: "@spectrum-css/accordion@npm:3.0.36"
   peerDependencies:
-    "@spectrum-css/icon": ^3.0.21
+    "@spectrum-css/icon": ^3.0.0
     "@spectrum-css/vars": ^8.0.0
-  checksum: 721cbaf75e623f1d853552573948fc60b574f34688df7ed8f7ba72ceaff28e8c4bba0ec4e21bdbb9ab511a0473827a83bd7d6fcb6c6c72051713c357c7ecde0f
+  checksum: aa41d99c074b674b53e665da9971e8719d386a182edf1b5b7bb04a71129db5940595d242abe9028a167c852521ce7f3c8d17d43c634cd725cac4eb7b4d299e5e
   languageName: node
   linkType: hard
 
